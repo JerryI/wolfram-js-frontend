@@ -1,0 +1,32 @@
+.output-node {
+  margin-bottom: 0.5em;
+  /* margin-left: 0em; */
+}
+.input-node {
+  margin-bottom: 0.5em;
+  border-right: 3px solid gray;
+}
+
+.parent-node {
+  /* background: red; */
+   padding: 0.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+  padding-left: 0px;
+  padding-right: 1em;
+  /* width: 80%; */
+  border-right: 3px solid gray;
+  /* border-image: linear-gradient(to bottom, turquoise, greenyellow) 0 1; */
+}
+
+.flat-node {
+  /* background: red; */
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+  padding-left: 0px;
+
+  /* border-image: linear-gradient(to bottom, turquoise, greenyellow) 0 1; */
+}
+
+
+  
