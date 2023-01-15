@@ -6,7 +6,7 @@ _An alternative way of operation in REPL mode of the freeware Wolfram Engine bri
 
 ### Important note
 - this is a preliminary working example
-- I am not a programmer
+- only `Graphics3D` is supported by now
 - js part of the source code may look terrible
 - feel free to contribute
 
