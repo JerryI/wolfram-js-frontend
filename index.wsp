@@ -40,15 +40,6 @@
       socket.send(q);
     }
     var global;
-    function eval(ne, id, cell) {
-      console.log(ne);
-      global = ne;
-      var fixed = ne.replaceAll('\"','\\"');
-      console.log(fixed);
-
-      var q = 'CellObj["'+cell+'"]["data"]="'+fixed+'"; NotebookEvaluate["'+id+'", "'+cell+'"]';
-      socket.send(q);
-    }
 
     var last;
 
