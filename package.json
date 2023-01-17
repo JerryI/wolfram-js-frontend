@@ -1,0 +1,31 @@
+{
+  "name": "mathematica-threejs-graphics-engine",
+  "version": "0.0.1",
+  "description": "3D Graphics drawer for Mathematica based on Three.js Written in JS parser and drawer allow to export or embed to web pages 3D graphics from Wolfram notebook.  Unlike other build-in export functions it recreates pure Mathematica's functions like ``Sphere[]``, ``GraphicsComplex[]``, ``Polygon[]`` and etc. See disscussion at https://mathematica.stackexchange.com/a/215025/53728.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node bin/dev.js devserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JerryI/wolfram-js-frontend.git"
+  },
+  "author": "Kirill Vasin",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/JerryI/wolfram-js-frontend/issues"
+  },
+  "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
+  "devDependencies": {
+    "codemirror": "^6.0.1",
+    "rollup": "^3.10.0",
+    "serve-static": "^1.14.1"
+  },
+  "dependencies": {
+    "@codemirror/legacy-modes": "^6.3.1",
+    "@rollup/plugin-node-resolve": "15.0.1",
+    "chokidar": "^3.5.3",
+    "finalhandler": "^1.2.0",
+    "three": "^0.123.0"    
+  }
+}
