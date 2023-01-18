@@ -29,8 +29,7 @@
     <!-- Custom styles for this template -->
     <link href="styles.css" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/gh/JerryI/wolfram-js-frontend@master/src/core.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/JerryI/wolfram-js-frontend@master/build/bundle.js"></script>
+    <script src="build/bundle.js"></script>
 
     
 

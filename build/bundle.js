@@ -1,4 +1,66 @@
-/**
+const aflatten = (ary) => ary.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), [])
+var core, interpretate;
+
+core = {};
+
+interpretate = function(d, env = {element: document.body, mesh: undefined}) {
+  if (typeof d === 'undefined') {
+    throw 'undefined type (not an object or string!)';
+  }
+  if (typeof d === 'string') {
+    return d.slice(1, -1);
+  }
+  if (typeof d === 'number') {
+    return d;
+  }
+  
+  this.name = d[0];
+  this.args = d.slice(1, d.length);
+  console.log(this.name);
+  return core[this.name](this.args, env);
+};
+
+core.List = function(args, env) {
+  var copy, e, i, len, list;
+  copy = Object.assign({}, env);
+  list = [];
+  for (i = 0, len = args.length; i < len; i++) {
+    e = args[i];
+    list.push(interpretate(e, copy));
+  }
+  return list;
+};
+
+core.Association = function(args, env) {
+  var copy, e, i, len, list;
+  copy = Object.assign({}, env);
+  copy.association = {};
+  
+  for (i = 0, len = args.length; i < len; i++) {
+    interpretate(args[i], copy);
+  }
+  
+  return copy.association;
+};
+
+core.Rule = function(args, env) {
+  env.association[args[0]] = args[1];
+};
+
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+  });
+}
+
+function parse(input) {
+  var i = str.length;
+  var brakets = 0;
+  while (i--) {
+    alert(str[i]);
+  }
+}/**
 The data structure for documents. @nonabstract
 */
 class Text {
@@ -3883,7 +3945,7 @@ function findColumn(string, col, tabSize, strict) {
 const C = "\u037c";
 const COUNT = typeof Symbol == "undefined" ? "__" + C : Symbol.for(C);
 const SET = typeof Symbol == "undefined" ? "__styleSet" + Math.floor(Math.random() * 1e8) : Symbol("styleSet");
-
+const top0 = typeof globalThis != "undefined" ? globalThis : typeof window != "undefined" ? window : {};
 
 // :: - Style modules encapsulate a set of CSS rules defined from
 // JavaScript. Their definitions are only available in a given DOM
@@ -19690,6 +19752,8 @@ const mathematica = {
 
 // threejs.org/license
 const REVISION = '123';
+const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
+const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 const CullFaceNone = 0;
 const CullFaceBack = 1;
 const CullFaceFront = 2;
@@ -62841,6 +62905,89 @@ Object.assign( Raycaster.prototype, {
 
 } );
 
+/**
+ * Ref: https://en.wikipedia.org/wiki/Spherical_coordinate_system
+ *
+ * The polar angle (phi) is measured from the positive y-axis. The positive y-axis is up.
+ * The azimuthal angle (theta) is measured from the positive z-axis.
+ */
+
+class Spherical {
+
+	constructor( radius = 1, phi = 0, theta = 0 ) {
+
+		this.radius = radius;
+		this.phi = phi; // polar angle
+		this.theta = theta; // azimuthal angle
+
+		return this;
+
+	}
+
+	set( radius, phi, theta ) {
+
+		this.radius = radius;
+		this.phi = phi;
+		this.theta = theta;
+
+		return this;
+
+	}
+
+	clone() {
+
+		return new this.constructor().copy( this );
+
+	}
+
+	copy( other ) {
+
+		this.radius = other.radius;
+		this.phi = other.phi;
+		this.theta = other.theta;
+
+		return this;
+
+	}
+
+	// restrict phi to be betwee EPS and PI-EPS
+	makeSafe() {
+
+		const EPS = 0.000001;
+		this.phi = Math.max( EPS, Math.min( Math.PI - EPS, this.phi ) );
+
+		return this;
+
+	}
+
+	setFromVector3( v ) {
+
+		return this.setFromCartesianCoords( v.x, v.y, v.z );
+
+	}
+
+	setFromCartesianCoords( x, y, z ) {
+
+		this.radius = Math.sqrt( x * x + y * y + z * z );
+
+		if ( this.radius === 0 ) {
+
+			this.theta = 0;
+			this.phi = 0;
+
+		} else {
+
+			this.theta = Math.atan2( x, z );
+			this.phi = Math.acos( MathUtils.clamp( y / this.radius, - 1, 1 ) );
+
+		}
+
+		return this;
+
+	}
+
+}
+
 const _vector$7 = /*@__PURE__*/ new Vector2();
 
 class Box2 {
@@ -65151,1284 +65298,1199 @@ if ( typeof __THREE_DEVTOOLS__ !== 'undefined' ) {
 
 }
 
-function RGBtoColor(i,k,j) {
-  var r = Math.round(255*i);
-  var g = Math.round(255*k);
-  var b = Math.round(255*j);
-  
-  return(new Color("rgb("+r+","+g+","+b+")")); 
-}
+// This set of controls performs orbiting, dollying (zooming), and panning.
+// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
+//
+//    Orbit - left mouse / touch: one-finger move
+//    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
+//    Pan - right mouse, or left mouse + ctrl/meta/shiftKey, or arrow keys / touch: two-finger move
 
-core.Style = function(args, env) {
-  var copy = Object.assign({}, env);
-  
-  args.forEach(function(el) {
-      interpretate(el, copy);
-  });
-};	
+var OrbitControls = function ( object, domElement ) {
 
-core.Annotation = function(args, env) {
-  args.forEach(function(el) {
-      interpretate(el, env);
-  });
-};	
+	if ( domElement === undefined ) console.warn( 'THREE.OrbitControls: The second parameter "domElement" is now mandatory.' );
+	if ( domElement === document ) console.error( 'THREE.OrbitControls: "document" should not be used as the target "domElement". Please use "renderer.domElement" instead.' );
 
-core.GraphicsGroup = function(args, env) {
-  var group = new Group();
-  var copy = Object.assign({}, env);
-  
-  copy.mesh = group;
-  
-  args.forEach(function(el) {
-      interpretate(el, copy);
-  });
-  
-  env.mesh.add(group);
+	this.object = object;
+	this.domElement = domElement;
+
+	// Set to false to disable this control
+	this.enabled = true;
+
+	// "target" sets the location of focus, where the object orbits around
+	this.target = new Vector3();
+
+	// How far you can dolly in and out ( PerspectiveCamera only )
+	this.minDistance = 0;
+	this.maxDistance = Infinity;
+
+	// How far you can zoom in and out ( OrthographicCamera only )
+	this.minZoom = 0;
+	this.maxZoom = Infinity;
+
+	// How far you can orbit vertically, upper and lower limits.
+	// Range is 0 to Math.PI radians.
+	this.minPolarAngle = 0; // radians
+	this.maxPolarAngle = Math.PI; // radians
+
+	// How far you can orbit horizontally, upper and lower limits.
+	// If set, the interval [ min, max ] must be a sub-interval of [ - 2 PI, 2 PI ], with ( max - min < 2 PI )
+	this.minAzimuthAngle = - Infinity; // radians
+	this.maxAzimuthAngle = Infinity; // radians
+
+	// Set to true to enable damping (inertia)
+	// If damping is enabled, you must call controls.update() in your animation loop
+	this.enableDamping = false;
+	this.dampingFactor = 0.05;
+
+	// This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
+	// Set to false to disable zooming
+	this.enableZoom = true;
+	this.zoomSpeed = 1.0;
+
+	// Set to false to disable rotating
+	this.enableRotate = true;
+	this.rotateSpeed = 1.0;
+
+	// Set to false to disable panning
+	this.enablePan = true;
+	this.panSpeed = 1.0;
+	this.screenSpacePanning = true; // if false, pan orthogonal to world-space direction camera.up
+	this.keyPanSpeed = 7.0;	// pixels moved per arrow key push
+
+	// Set to true to automatically rotate around the target
+	// If auto-rotate is enabled, you must call controls.update() in your animation loop
+	this.autoRotate = false;
+	this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
+
+	// Set to false to disable use of the keys
+	this.enableKeys = true;
+
+	// The four arrow keys
+	this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40 };
+
+	// Mouse buttons
+	this.mouseButtons = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN };
+
+	// Touch fingers
+	this.touches = { ONE: TOUCH.ROTATE, TWO: TOUCH.DOLLY_PAN };
+
+	// for reset
+	this.target0 = this.target.clone();
+	this.position0 = this.object.position.clone();
+	this.zoom0 = this.object.zoom;
+
+	//
+	// public methods
+	//
+
+	this.getPolarAngle = function () {
+
+		return spherical.phi;
+
+	};
+
+	this.getAzimuthalAngle = function () {
+
+		return spherical.theta;
+
+	};
+
+	this.saveState = function () {
+
+		scope.target0.copy( scope.target );
+		scope.position0.copy( scope.object.position );
+		scope.zoom0 = scope.object.zoom;
+
+	};
+
+	this.reset = function () {
+
+		scope.target.copy( scope.target0 );
+		scope.object.position.copy( scope.position0 );
+		scope.object.zoom = scope.zoom0;
+
+		scope.object.updateProjectionMatrix();
+		scope.dispatchEvent( changeEvent );
+
+		scope.update();
+
+		state = STATE.NONE;
+
+	};
+
+	// this method is exposed, but perhaps it would be better if we can make it private...
+	this.update = function () {
+
+		var offset = new Vector3();
+
+		// so camera.up is the orbit axis
+		var quat = new Quaternion().setFromUnitVectors( object.up, new Vector3( 0, 1, 0 ) );
+		var quatInverse = quat.clone().invert();
+
+		var lastPosition = new Vector3();
+		var lastQuaternion = new Quaternion();
+
+		var twoPI = 2 * Math.PI;
+
+		return function update() {
+
+			var position = scope.object.position;
+
+			offset.copy( position ).sub( scope.target );
+
+			// rotate offset to "y-axis-is-up" space
+			offset.applyQuaternion( quat );
+
+			// angle from z-axis around y-axis
+			spherical.setFromVector3( offset );
+
+			if ( scope.autoRotate && state === STATE.NONE ) {
+
+				rotateLeft( getAutoRotationAngle() );
+
+			}
+
+			if ( scope.enableDamping ) {
+
+				spherical.theta += sphericalDelta.theta * scope.dampingFactor;
+				spherical.phi += sphericalDelta.phi * scope.dampingFactor;
+
+			} else {
+
+				spherical.theta += sphericalDelta.theta;
+				spherical.phi += sphericalDelta.phi;
+
+			}
+
+			// restrict theta to be between desired limits
+
+			var min = scope.minAzimuthAngle;
+			var max = scope.maxAzimuthAngle;
+
+			if ( isFinite( min ) && isFinite( max ) ) {
+
+				if ( min < - Math.PI ) min += twoPI; else if ( min > Math.PI ) min -= twoPI;
+
+				if ( max < - Math.PI ) max += twoPI; else if ( max > Math.PI ) max -= twoPI;
+
+				if ( min <= max ) {
+
+					spherical.theta = Math.max( min, Math.min( max, spherical.theta ) );
+
+				} else {
+
+					spherical.theta = ( spherical.theta > ( min + max ) / 2 ) ?
+						Math.max( min, spherical.theta ) :
+						Math.min( max, spherical.theta );
+
+				}
+
+			}
+
+			// restrict phi to be between desired limits
+			spherical.phi = Math.max( scope.minPolarAngle, Math.min( scope.maxPolarAngle, spherical.phi ) );
+
+			spherical.makeSafe();
+
+
+			spherical.radius *= scale;
+
+			// restrict radius to be between desired limits
+			spherical.radius = Math.max( scope.minDistance, Math.min( scope.maxDistance, spherical.radius ) );
+
+			// move target to panned location
+
+			if ( scope.enableDamping === true ) {
+
+				scope.target.addScaledVector( panOffset, scope.dampingFactor );
+
+			} else {
+
+				scope.target.add( panOffset );
+
+			}
+
+			offset.setFromSpherical( spherical );
+
+			// rotate offset back to "camera-up-vector-is-up" space
+			offset.applyQuaternion( quatInverse );
+
+			position.copy( scope.target ).add( offset );
+
+			scope.object.lookAt( scope.target );
+
+			if ( scope.enableDamping === true ) {
+
+				sphericalDelta.theta *= ( 1 - scope.dampingFactor );
+				sphericalDelta.phi *= ( 1 - scope.dampingFactor );
+
+				panOffset.multiplyScalar( 1 - scope.dampingFactor );
+
+			} else {
+
+				sphericalDelta.set( 0, 0, 0 );
+
+				panOffset.set( 0, 0, 0 );
+
+			}
+
+			scale = 1;
+
+			// update condition is:
+			// min(camera displacement, camera rotation in radians)^2 > EPS
+			// using small-angle approximation cos(x/2) = 1 - x^2 / 8
+
+			if ( zoomChanged ||
+				lastPosition.distanceToSquared( scope.object.position ) > EPS ||
+				8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS ) {
+
+				scope.dispatchEvent( changeEvent );
+
+				lastPosition.copy( scope.object.position );
+				lastQuaternion.copy( scope.object.quaternion );
+				zoomChanged = false;
+
+				return true;
+
+			}
+
+			return false;
+
+		};
+
+	}();
+
+	this.dispose = function () {
+
+		scope.domElement.removeEventListener( 'contextmenu', onContextMenu, false );
+
+		scope.domElement.removeEventListener( 'pointerdown', onPointerDown, false );
+		scope.domElement.removeEventListener( 'wheel', onMouseWheel, false );
+
+		scope.domElement.removeEventListener( 'touchstart', onTouchStart, false );
+		scope.domElement.removeEventListener( 'touchend', onTouchEnd, false );
+		scope.domElement.removeEventListener( 'touchmove', onTouchMove, false );
+
+		scope.domElement.ownerDocument.removeEventListener( 'pointermove', onPointerMove, false );
+		scope.domElement.ownerDocument.removeEventListener( 'pointerup', onPointerUp, false );
+
+		scope.domElement.removeEventListener( 'keydown', onKeyDown, false );
+
+		//scope.dispatchEvent( { type: 'dispose' } ); // should this be added here?
+
+	};
+
+	//
+	// internals
+	//
+
+	var scope = this;
+
+	var changeEvent = { type: 'change' };
+	var startEvent = { type: 'start' };
+	var endEvent = { type: 'end' };
+
+	var STATE = {
+		NONE: - 1,
+		ROTATE: 0,
+		DOLLY: 1,
+		PAN: 2,
+		TOUCH_ROTATE: 3,
+		TOUCH_PAN: 4,
+		TOUCH_DOLLY_PAN: 5,
+		TOUCH_DOLLY_ROTATE: 6
+	};
+
+	var state = STATE.NONE;
+
+	var EPS = 0.000001;
+
+	// current position in spherical coordinates
+	var spherical = new Spherical();
+	var sphericalDelta = new Spherical();
+
+	var scale = 1;
+	var panOffset = new Vector3();
+	var zoomChanged = false;
+
+	var rotateStart = new Vector2();
+	var rotateEnd = new Vector2();
+	var rotateDelta = new Vector2();
+
+	var panStart = new Vector2();
+	var panEnd = new Vector2();
+	var panDelta = new Vector2();
+
+	var dollyStart = new Vector2();
+	var dollyEnd = new Vector2();
+	var dollyDelta = new Vector2();
+
+	function getAutoRotationAngle() {
+
+		return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
+
+	}
+
+	function getZoomScale() {
+
+		return Math.pow( 0.95, scope.zoomSpeed );
+
+	}
+
+	function rotateLeft( angle ) {
+
+		sphericalDelta.theta -= angle;
+
+	}
+
+	function rotateUp( angle ) {
+
+		sphericalDelta.phi -= angle;
+
+	}
+
+	var panLeft = function () {
+
+		var v = new Vector3();
+
+		return function panLeft( distance, objectMatrix ) {
+
+			v.setFromMatrixColumn( objectMatrix, 0 ); // get X column of objectMatrix
+			v.multiplyScalar( - distance );
+
+			panOffset.add( v );
+
+		};
+
+	}();
+
+	var panUp = function () {
+
+		var v = new Vector3();
+
+		return function panUp( distance, objectMatrix ) {
+
+			if ( scope.screenSpacePanning === true ) {
+
+				v.setFromMatrixColumn( objectMatrix, 1 );
+
+			} else {
+
+				v.setFromMatrixColumn( objectMatrix, 0 );
+				v.crossVectors( scope.object.up, v );
+
+			}
+
+			v.multiplyScalar( distance );
+
+			panOffset.add( v );
+
+		};
+
+	}();
+
+	// deltaX and deltaY are in pixels; right and down are positive
+	var pan = function () {
+
+		var offset = new Vector3();
+
+		return function pan( deltaX, deltaY ) {
+
+			var element = scope.domElement;
+
+			if ( scope.object.isPerspectiveCamera ) {
+
+				// perspective
+				var position = scope.object.position;
+				offset.copy( position ).sub( scope.target );
+				var targetDistance = offset.length();
+
+				// half of the fov is center to top of screen
+				targetDistance *= Math.tan( ( scope.object.fov / 2 ) * Math.PI / 180.0 );
+
+				// we use only clientHeight here so aspect ratio does not distort speed
+				panLeft( 2 * deltaX * targetDistance / element.clientHeight, scope.object.matrix );
+				panUp( 2 * deltaY * targetDistance / element.clientHeight, scope.object.matrix );
+
+			} else if ( scope.object.isOrthographicCamera ) {
+
+				// orthographic
+				panLeft( deltaX * ( scope.object.right - scope.object.left ) / scope.object.zoom / element.clientWidth, scope.object.matrix );
+				panUp( deltaY * ( scope.object.top - scope.object.bottom ) / scope.object.zoom / element.clientHeight, scope.object.matrix );
+
+			} else {
+
+				// camera neither orthographic nor perspective
+				console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.' );
+				scope.enablePan = false;
+
+			}
+
+		};
+
+	}();
+
+	function dollyOut( dollyScale ) {
+
+		if ( scope.object.isPerspectiveCamera ) {
+
+			scale /= dollyScale;
+
+		} else if ( scope.object.isOrthographicCamera ) {
+
+			scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom * dollyScale ) );
+			scope.object.updateProjectionMatrix();
+			zoomChanged = true;
+
+		} else {
+
+			console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+			scope.enableZoom = false;
+
+		}
+
+	}
+
+	function dollyIn( dollyScale ) {
+
+		if ( scope.object.isPerspectiveCamera ) {
+
+			scale *= dollyScale;
+
+		} else if ( scope.object.isOrthographicCamera ) {
+
+			scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom / dollyScale ) );
+			scope.object.updateProjectionMatrix();
+			zoomChanged = true;
+
+		} else {
+
+			console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+			scope.enableZoom = false;
+
+		}
+
+	}
+
+	//
+	// event callbacks - update the object state
+	//
+
+	function handleMouseDownRotate( event ) {
+
+		rotateStart.set( event.clientX, event.clientY );
+
+	}
+
+	function handleMouseDownDolly( event ) {
+
+		dollyStart.set( event.clientX, event.clientY );
+
+	}
+
+	function handleMouseDownPan( event ) {
+
+		panStart.set( event.clientX, event.clientY );
+
+	}
+
+	function handleMouseMoveRotate( event ) {
+
+		rotateEnd.set( event.clientX, event.clientY );
+
+		rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
+
+		var element = scope.domElement;
+
+		rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientHeight ); // yes, height
+
+		rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight );
+
+		rotateStart.copy( rotateEnd );
+
+		scope.update();
+
+	}
+
+	function handleMouseMoveDolly( event ) {
+
+		dollyEnd.set( event.clientX, event.clientY );
+
+		dollyDelta.subVectors( dollyEnd, dollyStart );
+
+		if ( dollyDelta.y > 0 ) {
+
+			dollyOut( getZoomScale() );
+
+		} else if ( dollyDelta.y < 0 ) {
+
+			dollyIn( getZoomScale() );
+
+		}
+
+		dollyStart.copy( dollyEnd );
+
+		scope.update();
+
+	}
+
+	function handleMouseMovePan( event ) {
+
+		panEnd.set( event.clientX, event.clientY );
+
+		panDelta.subVectors( panEnd, panStart ).multiplyScalar( scope.panSpeed );
+
+		pan( panDelta.x, panDelta.y );
+
+		panStart.copy( panEnd );
+
+		scope.update();
+
+	}
+
+	function handleMouseWheel( event ) {
+
+		if ( event.deltaY < 0 ) {
+
+			dollyIn( getZoomScale() );
+
+		} else if ( event.deltaY > 0 ) {
+
+			dollyOut( getZoomScale() );
+
+		}
+
+		scope.update();
+
+	}
+
+	function handleKeyDown( event ) {
+
+		var needsUpdate = false;
+
+		switch ( event.keyCode ) {
+
+			case scope.keys.UP:
+				pan( 0, scope.keyPanSpeed );
+				needsUpdate = true;
+				break;
+
+			case scope.keys.BOTTOM:
+				pan( 0, - scope.keyPanSpeed );
+				needsUpdate = true;
+				break;
+
+			case scope.keys.LEFT:
+				pan( scope.keyPanSpeed, 0 );
+				needsUpdate = true;
+				break;
+
+			case scope.keys.RIGHT:
+				pan( - scope.keyPanSpeed, 0 );
+				needsUpdate = true;
+				break;
+
+		}
+
+		if ( needsUpdate ) {
+
+			// prevent the browser from scrolling on cursor keys
+			event.preventDefault();
+
+			scope.update();
+
+		}
+
+
+	}
+
+	function handleTouchStartRotate( event ) {
+
+		if ( event.touches.length == 1 ) {
+
+			rotateStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+
+		} else {
+
+			var x = 0.5 * ( event.touches[ 0 ].pageX + event.touches[ 1 ].pageX );
+			var y = 0.5 * ( event.touches[ 0 ].pageY + event.touches[ 1 ].pageY );
+
+			rotateStart.set( x, y );
+
+		}
+
+	}
+
+	function handleTouchStartPan( event ) {
+
+		if ( event.touches.length == 1 ) {
+
+			panStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+
+		} else {
+
+			var x = 0.5 * ( event.touches[ 0 ].pageX + event.touches[ 1 ].pageX );
+			var y = 0.5 * ( event.touches[ 0 ].pageY + event.touches[ 1 ].pageY );
+
+			panStart.set( x, y );
+
+		}
+
+	}
+
+	function handleTouchStartDolly( event ) {
+
+		var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+		var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
+
+		var distance = Math.sqrt( dx * dx + dy * dy );
+
+		dollyStart.set( 0, distance );
+
+	}
+
+	function handleTouchStartDollyPan( event ) {
+
+		if ( scope.enableZoom ) handleTouchStartDolly( event );
+
+		if ( scope.enablePan ) handleTouchStartPan( event );
+
+	}
+
+	function handleTouchStartDollyRotate( event ) {
+
+		if ( scope.enableZoom ) handleTouchStartDolly( event );
+
+		if ( scope.enableRotate ) handleTouchStartRotate( event );
+
+	}
+
+	function handleTouchMoveRotate( event ) {
+
+		if ( event.touches.length == 1 ) {
+
+			rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+
+		} else {
+
+			var x = 0.5 * ( event.touches[ 0 ].pageX + event.touches[ 1 ].pageX );
+			var y = 0.5 * ( event.touches[ 0 ].pageY + event.touches[ 1 ].pageY );
+
+			rotateEnd.set( x, y );
+
+		}
+
+		rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
+
+		var element = scope.domElement;
+
+		rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientHeight ); // yes, height
+
+		rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight );
+
+		rotateStart.copy( rotateEnd );
+
+	}
+
+	function handleTouchMovePan( event ) {
+
+		if ( event.touches.length == 1 ) {
+
+			panEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+
+		} else {
+
+			var x = 0.5 * ( event.touches[ 0 ].pageX + event.touches[ 1 ].pageX );
+			var y = 0.5 * ( event.touches[ 0 ].pageY + event.touches[ 1 ].pageY );
+
+			panEnd.set( x, y );
+
+		}
+
+		panDelta.subVectors( panEnd, panStart ).multiplyScalar( scope.panSpeed );
+
+		pan( panDelta.x, panDelta.y );
+
+		panStart.copy( panEnd );
+
+	}
+
+	function handleTouchMoveDolly( event ) {
+
+		var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+		var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
+
+		var distance = Math.sqrt( dx * dx + dy * dy );
+
+		dollyEnd.set( 0, distance );
+
+		dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed ) );
+
+		dollyOut( dollyDelta.y );
+
+		dollyStart.copy( dollyEnd );
+
+	}
+
+	function handleTouchMoveDollyPan( event ) {
+
+		if ( scope.enableZoom ) handleTouchMoveDolly( event );
+
+		if ( scope.enablePan ) handleTouchMovePan( event );
+
+	}
+
+	function handleTouchMoveDollyRotate( event ) {
+
+		if ( scope.enableZoom ) handleTouchMoveDolly( event );
+
+		if ( scope.enableRotate ) handleTouchMoveRotate( event );
+
+	}
+
+	//
+	// event handlers - FSM: listen for events and reset state
+	//
+
+	function onPointerDown( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		switch ( event.pointerType ) {
+
+			case 'mouse':
+			case 'pen':
+				onMouseDown( event );
+				break;
+
+			// TODO touch
+
+		}
+
+	}
+
+	function onPointerMove( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		switch ( event.pointerType ) {
+
+			case 'mouse':
+			case 'pen':
+				onMouseMove( event );
+				break;
+
+			// TODO touch
+
+		}
+
+	}
+
+	function onPointerUp( event ) {
+
+		switch ( event.pointerType ) {
+
+			case 'mouse':
+			case 'pen':
+				onMouseUp();
+				break;
+
+			// TODO touch
+
+		}
+
+	}
+
+	function onMouseDown( event ) {
+
+		// Prevent the browser from scrolling.
+		event.preventDefault();
+
+		// Manually set the focus since calling preventDefault above
+		// prevents the browser from setting it automatically.
+
+		scope.domElement.focus ? scope.domElement.focus() : window.focus();
+
+		var mouseAction;
+
+		switch ( event.button ) {
+
+			case 0:
+
+				mouseAction = scope.mouseButtons.LEFT;
+				break;
+
+			case 1:
+
+				mouseAction = scope.mouseButtons.MIDDLE;
+				break;
+
+			case 2:
+
+				mouseAction = scope.mouseButtons.RIGHT;
+				break;
+
+			default:
+
+				mouseAction = - 1;
+
+		}
+
+		switch ( mouseAction ) {
+
+			case MOUSE.DOLLY:
+
+				if ( scope.enableZoom === false ) return;
+
+				handleMouseDownDolly( event );
+
+				state = STATE.DOLLY;
+
+				break;
+
+			case MOUSE.ROTATE:
+
+				if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+					if ( scope.enablePan === false ) return;
+
+					handleMouseDownPan( event );
+
+					state = STATE.PAN;
+
+				} else {
+
+					if ( scope.enableRotate === false ) return;
+
+					handleMouseDownRotate( event );
+
+					state = STATE.ROTATE;
+
+				}
+
+				break;
+
+			case MOUSE.PAN:
+
+				if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+					if ( scope.enableRotate === false ) return;
+
+					handleMouseDownRotate( event );
+
+					state = STATE.ROTATE;
+
+				} else {
+
+					if ( scope.enablePan === false ) return;
+
+					handleMouseDownPan( event );
+
+					state = STATE.PAN;
+
+				}
+
+				break;
+
+			default:
+
+				state = STATE.NONE;
+
+		}
+
+		if ( state !== STATE.NONE ) {
+
+			scope.domElement.ownerDocument.addEventListener( 'pointermove', onPointerMove, false );
+			scope.domElement.ownerDocument.addEventListener( 'pointerup', onPointerUp, false );
+
+			scope.dispatchEvent( startEvent );
+
+		}
+
+	}
+
+	function onMouseMove( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		event.preventDefault();
+
+		switch ( state ) {
+
+			case STATE.ROTATE:
+
+				if ( scope.enableRotate === false ) return;
+
+				handleMouseMoveRotate( event );
+
+				break;
+
+			case STATE.DOLLY:
+
+				if ( scope.enableZoom === false ) return;
+
+				handleMouseMoveDolly( event );
+
+				break;
+
+			case STATE.PAN:
+
+				if ( scope.enablePan === false ) return;
+
+				handleMouseMovePan( event );
+
+				break;
+
+		}
+
+	}
+
+	function onMouseUp( event ) {
+
+		scope.domElement.ownerDocument.removeEventListener( 'pointermove', onPointerMove, false );
+		scope.domElement.ownerDocument.removeEventListener( 'pointerup', onPointerUp, false );
+
+		if ( scope.enabled === false ) return;
+
+		scope.dispatchEvent( endEvent );
+
+		state = STATE.NONE;
+
+	}
+
+	function onMouseWheel( event ) {
+
+		if ( scope.enabled === false || scope.enableZoom === false || ( state !== STATE.NONE && state !== STATE.ROTATE ) ) return;
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		scope.dispatchEvent( startEvent );
+
+		handleMouseWheel( event );
+
+		scope.dispatchEvent( endEvent );
+
+	}
+
+	function onKeyDown( event ) {
+
+		if ( scope.enabled === false || scope.enableKeys === false || scope.enablePan === false ) return;
+
+		handleKeyDown( event );
+
+	}
+
+	function onTouchStart( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		event.preventDefault(); // prevent scrolling
+
+		switch ( event.touches.length ) {
+
+			case 1:
+
+				switch ( scope.touches.ONE ) {
+
+					case TOUCH.ROTATE:
+
+						if ( scope.enableRotate === false ) return;
+
+						handleTouchStartRotate( event );
+
+						state = STATE.TOUCH_ROTATE;
+
+						break;
+
+					case TOUCH.PAN:
+
+						if ( scope.enablePan === false ) return;
+
+						handleTouchStartPan( event );
+
+						state = STATE.TOUCH_PAN;
+
+						break;
+
+					default:
+
+						state = STATE.NONE;
+
+				}
+
+				break;
+
+			case 2:
+
+				switch ( scope.touches.TWO ) {
+
+					case TOUCH.DOLLY_PAN:
+
+						if ( scope.enableZoom === false && scope.enablePan === false ) return;
+
+						handleTouchStartDollyPan( event );
+
+						state = STATE.TOUCH_DOLLY_PAN;
+
+						break;
+
+					case TOUCH.DOLLY_ROTATE:
+
+						if ( scope.enableZoom === false && scope.enableRotate === false ) return;
+
+						handleTouchStartDollyRotate( event );
+
+						state = STATE.TOUCH_DOLLY_ROTATE;
+
+						break;
+
+					default:
+
+						state = STATE.NONE;
+
+				}
+
+				break;
+
+			default:
+
+				state = STATE.NONE;
+
+		}
+
+		if ( state !== STATE.NONE ) {
+
+			scope.dispatchEvent( startEvent );
+
+		}
+
+	}
+
+	function onTouchMove( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		event.preventDefault(); // prevent scrolling
+		event.stopPropagation();
+
+		switch ( state ) {
+
+			case STATE.TOUCH_ROTATE:
+
+				if ( scope.enableRotate === false ) return;
+
+				handleTouchMoveRotate( event );
+
+				scope.update();
+
+				break;
+
+			case STATE.TOUCH_PAN:
+
+				if ( scope.enablePan === false ) return;
+
+				handleTouchMovePan( event );
+
+				scope.update();
+
+				break;
+
+			case STATE.TOUCH_DOLLY_PAN:
+
+				if ( scope.enableZoom === false && scope.enablePan === false ) return;
+
+				handleTouchMoveDollyPan( event );
+
+				scope.update();
+
+				break;
+
+			case STATE.TOUCH_DOLLY_ROTATE:
+
+				if ( scope.enableZoom === false && scope.enableRotate === false ) return;
+
+				handleTouchMoveDollyRotate( event );
+
+				scope.update();
+
+				break;
+
+			default:
+
+				state = STATE.NONE;
+
+		}
+
+	}
+
+	function onTouchEnd( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		scope.dispatchEvent( endEvent );
+
+		state = STATE.NONE;
+
+	}
+
+	function onContextMenu( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		event.preventDefault();
+
+	}
+
+	//
+
+	scope.domElement.addEventListener( 'contextmenu', onContextMenu, false );
+
+	scope.domElement.addEventListener( 'pointerdown', onPointerDown, false );
+	scope.domElement.addEventListener( 'wheel', onMouseWheel, false );
+
+	scope.domElement.addEventListener( 'touchstart', onTouchStart, false );
+	scope.domElement.addEventListener( 'touchend', onTouchEnd, false );
+	scope.domElement.addEventListener( 'touchmove', onTouchMove, false );
+
+	scope.domElement.addEventListener( 'keydown', onKeyDown, false );
+
+	// force an update at start
+
+	this.update();
+
 };
 
-core.RGBColor = function(args, env) {
-  if (args.length !== 3) console.error( "RGB values should be triple!");
+OrbitControls.prototype = Object.create( EventDispatcher.prototype );
+OrbitControls.prototype.constructor = OrbitControls;
 
-  var r = Math.round(255*interpretate(args[0]));
-  var g = Math.round(255*interpretate(args[1]));
-  var b = Math.round(255*interpretate(args[2]));
-  
-  env.color = new Color("rgb("+r+","+g+","+b+")");			
-};
 
-core.Opacity = function(args, env) {
-  var o = interpretate(args[0]);
-  if (typeof o !== 'number') console.error( "Opacity must have number value!");
-  console.log(o);
-  env.opacity = o;
-}; 
+// This set of controls performs orbiting, dollying (zooming), and panning.
+// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
+// This is very similar to OrbitControls, another set of touch behavior
+//
+//    Orbit - right mouse, or left mouse + ctrl/meta/shiftKey / touch: two-finger rotate
+//    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
+//    Pan - left mouse, or arrow keys / touch: one-finger move
 
-core.ImageScaled = function(args, env) {
+var MapControls = function ( object, domElement ) {
 
-};
+	OrbitControls.call( this, object, domElement );
 
-core.Thickness = function(args, env) {
+	this.screenSpacePanning = false; // pan orthogonal to world-space direction camera.up
 
-};
+	this.mouseButtons.LEFT = MOUSE.PAN;
+	this.mouseButtons.RIGHT = MOUSE.ROTATE;
 
-core.Arrowheads = function(args, env) {
+	this.touches.ONE = TOUCH.PAN;
+	this.touches.TWO = TOUCH.DOLLY_ROTATE;
 
 };
 
-core.Arrow = function(args, env) {
-  interpretate(args[0], env);
-};
+MapControls.prototype = Object.create( EventDispatcher.prototype );
+MapControls.prototype.constructor = MapControls;
 
-core.Tube = function(args, env) {
-  var arr = interpretate(args[0]);
-  if (arr.length ===  1) arr = arr[0];
-  if (arr.length !== 2) console.error( "Tube must have 2 vectors!");
-  
-  var points = [new Vector4(...arr[0], 1),
-              new Vector4(...arr[1], 1)];
-  
-  points.forEach(function(p) {
-      p = p.applyMatrix4(env.matrix);
-  });
-
-  var origin = points[0].clone();
-  var dir = points[1].add(points[0].negate());
-  
-  var arrowHelper = new ArrowHelper(dir.normalize(), origin, dir.length(), env.color);
-  env.mesh.add(arrowHelper);
-  arrowHelper.line.material.linewidth = env.thickness;
-};
-
-core.Sphere = function(args, env) {
-  var radius = 1;
-  if (args.length > 1) radius = args[1];
-  
-  var material = new MeshLambertMaterial({
-      color:env.color,
-      transparent:false,
-      opacity:env.opacity,
-  });				
-  
-  function addSphere(cr) {
-      var origin = new Vector4(...cr, 1);
-      var geometry = new SphereGeometry( radius, 20, 20 );
-      var sphere = new Mesh( geometry, material );
-      
-      sphere.position.x = origin.x; 
-      sphere.position.y = origin.y; 
-      sphere.position.z = origin.z;
-
-      env.mesh.add( sphere );
-      geometry.dispose(); 			
-  }	
-
-  var list = interpretate(args[0]);
-  
-  if (list.length === 1) list=list[0];
-  if (list.length === 1) list=list[0];
-  
-  if (list.length === 3) {
-      addSphere(list);
-  } else if (list.length > 3) {
-      list.forEach(function(el) {
-          addSphere(el);		
-      });	
-  } else {
-      console.log(list);
-      console.error( "List of coords. for sphere object is less 1");
-  }
-  
-  material.dispose();    
-};
-  
-core.Cuboid = function(args, env) {
-  //if (params.hasOwnProperty('geometry')) {
-  //	var points = [new THREE.Vector4(...interpretate(func.args[0]), 1),
-  //				new THREE.Vector4(...interpretate(func.args[1]), 1)];				
-  //}
-  console.log("Cuboid");
-  var points, diff, origin, p;
-  
-  if (args.length === 2) {
-  
-      points = [new Vector4(...interpretate(args[0]), 1),
-              new Vector4(...interpretate(args[1]), 1)];			
-  
-      origin = points[0].clone().add(points[1].clone()).divideScalar(2);
-      diff = points[0].clone().add(points[1].clone().negate());
-  
-  } else if (args.length === 1) {
-      p = interpretate(args[0]);
-      origin = new Vector4(...p, 1);
-      diff = new Vector4(1,1,1, 1);
-      
-      //shift it
-      origin.add(diff.clone().divideScalar(2));
-  } else {
-      console.error( "Expected 2 or 1 arguments");
-  }
-  
-  
-  var geometry = new BoxGeometry(diff.x, diff.y, diff.z);
-  var material = new MeshLambertMaterial({
-      color:env.color,
-      transparent:true,
-      opacity:env.opacity,
-      depthWrite: true
-  });
-  
-  //material.side = THREE.DoubleSide;
-  
-  var cube = new Mesh( geometry, material );
-  
-  //var tr = new THREE.Matrix4();
-  //	tr.makeTranslation(origin.x,origin.y,origin.z);
-  
-  //cube.applyMatrix(params.matrix.clone().multiply(tr));
-  
-  
-  
-  cube.position.x = origin.x; 
-  cube.position.y = origin.y; 
-  cube.position.z = origin.z; 
-  
-  
-  env.mesh.add(cube);
-  
-  geometry.dispose();
-  material.dispose();
-
-};
-
-core.Center = function(args, env) {
-  return 'Center';
-};
-
-core.Cylinder = function(args, env) {
-//some troubles with positioning...
-//fixme  
-var radius = 1;
-if (args.length > 1) radius = args[1];
-
-var coordinates = interpretate(args[0]);
-
-
-let material = new MeshLambertMaterial({
-  color:env.color,
-  transparent:false,
-  opacity:env.opacity,
-});  
-
-//point 1
-var p1 = new Vector4(...coordinates[0], 1);
-//point 2 - 1
-var dp = new Vector4(...coordinates[1], 1).addScaledVector(p1, -1);
-
-var geometry = new CylinderGeometry(radius, radius, dp.length(), 20, 1);
-
-var cylinder = new Mesh( geometry, material );
-
-//fethcing the angle of rotation of the cylider
-let phi   = Math.atan2(dp.y, dp.x);
-let theta = Math.acos(dp.z / dp.length());
-
-console.log(phi + "   " + theta);
-
-var euler = new Euler(phi, theta, 0, 'XYZ' );
-var matrix = new Matrix4().makeRotationFromEuler(euler);
-
-//some troubles with positioning...
-//fixme
-cylinder.position.x = p1.x; 
-cylinder.position.y = p1.y; 
-cylinder.position.z = p1.z; 
-
-let group = new Group();
-group.add(cylinder);
-group.applyMatrix4(matrix);
-
-env.mesh.add(group);
-
-geometry.dispose();
-material.dispose();
-
-};
-
-core.Tetrahedron = function(args, env) {
-  var points = interpretate(args[0]);
-  var faces = [];
-  console.log("Points of tetrahedron:");
-  console.log(points);
-  
-  faces.push([points[0], points[1], points[2]]);
-  faces.push([points[0], points[1], points[3]]);
-  faces.push([points[1], points[2], points[3]]);
-  faces.push([points[0], points[3], points[2]]);
-
-  var fake = ["List"];
-  
-  var listVert = function(cord) {
-          return([
-                  "List",
-                  cord[0],
-                  cord[1],
-                  cord[2]
-                  ]);
-  };
-      
-  faces.forEach(function(fs) {
-
-      var struc = [
-                      "Polygon",
-                      [
-                          "List",
-                          listVert(fs[0]),
-                          listVert(fs[1]),
-                          listVert(fs[2])
-                      ]
-                  ];
-      fake.push(struc);
-  });
-  console.log(fake);
-  interpretate(fake, env);
-};
-      
-
-core.GeometricTransformation = function(args, env) {
-  
-  var group = new Group();
-  //Если center, то наверное надо приметь matrix 
-  //к каждому объекту относительно родительской группы.
-  var p = interpretate(args[1]);
-  var centering = false;
-  var centrans = [];
-  
-  
-  
-  
-  if (p.length === 1) { p = p[0]; }
-  if (p.length === 1) { p = p[0]; }
-  else if (p.length === 2) {
-      console.log(p);
-      if (p[1] === 'Center') {
-          
-          centering = true;
-      } else {
-          console.log("NON CENTERING ISSUE!!!");
-          console.log(p);
-          centrans = p[1];
-          console.log("???");
-      }
-      //return;
-      p = p[0];
-  }
-  
-  if (p.length === 3) {
-      
-  
-      if (typeof p[0] === 'number') {
-          var dir = p;
-          var matrix = new Matrix4().makeTranslation(...dir,1);
-      } else {
-          
-          //make it like Matrix4
-          p.forEach(function(el) {
-              el.push(0);
-          });
-          p.push([0,0,0,1]);
-          
-
-          var matrix = new Matrix4();
-          console.log("Apply matrix to group::");
-          matrix.set(...aflatten(p));
-      }
-  } else {
-      console.log(p);
-      console.error( "Unexpected length matrix: :: " + p);
-  }
-  
-  
-  //Backup of params
-  var copy = Object.assign({}, env);
-  copy.mesh = group;	
-  interpretate(args[0], copy);
-  
-  console.log(matrix);
-  
-  
-  if (centering || centrans.length > 0) {
-      console.log("::CENTER::");
-      var bbox = new Box3().setFromObject(group);
-      console.log(bbox);
-      var center = new Vector3().addVectors(bbox.max,bbox.min).divideScalar(2);
-      if (centrans.length > 0) {
-          console.log("CENTRANS");
-          center = center.fromArray(centrans);
-      }
-      console.log(center);
-      
-      var	translate = new Matrix4().makeTranslation(-center.x,-center.y,-center.z,1);
-      group.applyMatrix(translate);
-      group.applyMatrix(matrix);
-          translate = new Matrix4().makeTranslation(center.x,center.y,center.z,1);
-      group.applyMatrix(translate);
-  } else {
-      group.applyMatrix(matrix);
-  }
-  
-  env.mesh.add(group);
-  
-};
-
-core.GraphicsComplex = function(args, env) {			
-  var copy = Object.assign({}, env);
-  
-  copy.geometry = new Geometry();
-  
-  interpretate(args[0]).forEach(function(el) {
-      if (typeof el[0] !== 'number') console.error( "not a triple of number"+el);
-      copy.geometry.vertices.push(
-          new Vector3(el[0],el[1],el[2])
-      );
-  });
-
-  var group = new Group();
-  
-  
-  interpretate(args[1], copy);
-  
-  env.mesh.add(group);	
-  copy.geometry.dispose();
-};
-
-core.Polygon = function(args, env) {	
-  if (env.hasOwnProperty('geometry')) {
-      var geometry = env.geometry.clone();
-
-      var createFace = function(c) {
-          
-          switch(c.length) {
-              case 3:
-                  geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[2]-1));
-              break;
-              
-              case 4:
-                  geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[2]-1));
-                  geometry.faces.push(new Face3(c[0]-1,c[2]-1,c[3]-1));
-              break;
-              
-              case 5:
-                  geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[4]-1));
-                  geometry.faces.push(new Face3(c[1]-1,c[2]-1,c[3]-1));
-                  geometry.faces.push(new Face3(c[1]-1,c[3]-1,c[4]-1));
-              break;
-              
-              default:
-                  console.log(c);
-                  console.log(c.length);
-                  console.error( "Cant produce complex polygons! at"+c);
-              
-          }
-      };
-      
-      var a = interpretate(args[0]);
-      if (a.length === 1) {
-          a = a[0];
-      }
-      
-      if (typeof a[0] === 'number') {
-          console.log("Create single face");
-          createFace(a);
-      } else {
-          console.log("Create multiple face");
-          console.log(a);
-          a.forEach(function(el) {
-          
-              createFace(el);
-          });
-      }
-  } else {
-      
-      var geometry = new Geometry();
-      var points = interpretate(args[0]);
-  
-      points.forEach(function(el) {
-          if (typeof el[0] !== 'number') console.error( "not a triple of number"+el);
-          geometry.vertices.push(
-              new Vector3(el[0],el[1],el[2])
-          );					
-      });
-      
-      console.log("points");
-      console.log(points);
-      
-      switch(points.length) {
-          case 3:
-              geometry.faces.push(new Face3(0,1,2));
-          break;
-          
-          case 4:
-              geometry.faces.push(new Face3(0,1,2));
-              geometry.faces.push(new Face3(0,2,3));
-          break;
-          
-          case 5:
-              geometry.faces.push(new Face3(0,1,4));
-              geometry.faces.push(new Face3(1,2,3));
-              geometry.faces.push(new Face3(1,3,4));
-          break;
-          
-          default:
-              console.log(points);
-              console.error( "Cant build complex polygon ::");
-      }
-      
-  }
-  
-  var material = new MeshLambertMaterial({
-      color:env.color,
-      transparent: env.opacity < 0.9? true : false,
-      opacity:env.opacity,
-
-      //depthTest: false
-      //depthWrite: false
-  });
-  console.log(env.opacity);
-  material.side = DoubleSide;
-  
-  geometry.computeFaceNormals();
-  //complex.computeVertexNormals();
-  var poly = new Mesh(geometry, material);
-  
-  //poly.frustumCulled = false;
-  env.mesh.add(poly);
-  material.dispose();
-};
-
-core.Polyhedron = function(args, env) {
-if(args[1][1].length > 4) {
-  //non-optimised variant to work with 4 vertex per face
-  interpretate([ "GraphicsComplex", args[0], [ "Polygon", args[1]] ], env);
-} else {
-  //reguar one. gpu-fiendly
-  /**
-   * @type {number[]}
-   */
-  const indices = interpretate(args[1]).flat(4).map(i=>i-1);  
-  /**
-   * @type {number[]}
-   */
-  const vertices = interpretate(args[0]).flat(4);
-
-  const geometry = new PolyhedronGeometry(vertices, indices);
-
-  var material = new MeshLambertMaterial({
-    color:env.color,
-    transparent:true,
-    opacity:env.opacity,
-    depthWrite: true
-  });
-
-  const mesh = new Mesh(geometry, material);
-  env.mesh.add(mesh);
-  geometry.dispose();
-  material.dispose();
-}
-};
-
-core.GrayLevel = function(args, env) {
-
-};
-
-core.EdgeForm = function(args, env) {
-
-};	
-
-core.Specularity = function(args, env) {
-
-};
-
-core.Text = function(args, env) {
-
-};
-
-core.Directive = function(args, env) {
-
-};
-
-core.Line = function(args, env) {
-  if (env.hasOwnProperty('geometry')) {
-      var geometry = new Geometry();
-      
-      var points = interpretate(args[0]);
-      points.forEach(function(el) {
-          geometry.vertices.push(new Vector3().copy(env.geometry.vertices[el-1]));
-      });
-      
-      var material = new LineBasicMaterial( { linewidth: env.thickness, color: env.edgecolor } );
-      var line = new Line( geometry, material );
-      
-      line.material.polygonOffset = true;
-      line.material.polygonOffsetFactor = 1;
-      line.material.polygonOffsetUnits = 1;
-      
-      env.mesh.add(line);
-      
-      geometry.dispose();
-      material.dispose();
-  } else {
-      var arr = interpretate(args[0]);
-      if (arr.length ===  1) arr = arr[0];
-      //if (arr.length !== 2) console.error( "Tube must have 2 vectors!");
-      console.log("points: "+arr.length);
-  
-      var points = [];
-      arr.forEach(function(p) {
-          points.push(new Vector4(...p, 1));
-      });
-      //new THREE.Vector4(...arr[0], 1)
-      
-      points.forEach(function(p) {
-          p = p.applyMatrix4(env.matrix);
-      });
-
-      const geometry = new BufferGeometry().setFromPoints( points );
-      const material = new LineBasicMaterial({
-          color: env.edgecolor,
-          linewidth: env.thickness
-      });
-      
-      env.mesh.add(new Line( geometry, material ));
-      
-  }
-};
-
-
-core.Graphics3D = function(args, env) {
-  console.log("GRAPHICS3D");
-
-  /*** the part of a code from http://mathics.github.io.  ***/
-  var data = {"axes": {}, 
-              "extent": {"zmax": 1.0, "ymax": 1.0, "zmin": -1.0, "xmax": 1.0, "xmin": -1.0, "ymin": -1.0}, 
-
-              "lighting": [ {"type": "Ambient", "color": [0.3, 0.2, 0.4]},
-                              {"type": "Directional", "color": [0.8, 0., 0.],
-                              "position": [2, 0, 2]},
-                              {"type": "Directional", "color": [0., 0.8, 0.],
-                              "position": [2, 2, 2]},
-                              {"type": "Directional", "color": [0., 0., 0.8],
-                              "position": [0, 2, 2]}],
-   
-              "viewpoint":[1.3, -2.4, 2]};
-  /**
-   * @type {HTMLElement}
-   */
-  var container = env.element;
-  
-  var camera, scene, renderer, boundbox, hasaxes, viewpoint,
-    isMouseDown = false, onMouseDownPosition,
-    theta, onMouseDownTheta, phi, onMouseDownPhi;
-
-  // Scene
-  scene = new Scene();
-  
-  var group = new Group();
-  
-  var envcopy = Object.assign({}, env);
-      envcopy.matrix = new Matrix4();
-      envcopy.color = RGBtoColor(1,1,1);
-      envcopy.opacity = 1;
-      envcopy.thickness = 1;
-      envcopy.edgecolor = RGBtoColor(0,0,0);
-  
-      envcopy.matrix.set( 1,0,0,0,
-                          0,1,0,0,
-                          0,0,1,0,
-                          0,0,0,1 );
-
-      envcopy.mesh = group;
-  
-  interpretate(args[0], envcopy);
-  
-  var bbox = new Box3().setFromObject(group);
-      
-  var center = new Vector3().addVectors(bbox.max,bbox.min).divideScalar(2);
-  console.log("BBOX CENTER");
-  console.log(center);
-  console.log(bbox);
-  //var	translate = new THREE.Matrix4().makeTranslation(-center.x,-center.y,-center.z,1);
-  //group.applyMatrix(translate);	
-  scene.position = center;
-  
-                  
-    
-  // Center of the scene
-  //var center = new THREE.Vector3(
-  //  0.5 * (data.extent.xmin + data.extent.xmax),
-  //  0.5 * (data.extent.ymin + data.extent.ymax), 
-  //  0.5 * (data.extent.zmin + data.extent.zmax));
-  
-  // Where the camera is looking
-  var focus = new Vector3(center.x, center.y, center.z);
-  
-  // Viewpoint
-  viewpoint = new Vector3(data.viewpoint[0], data.viewpoint[1], data.viewpoint[2]).sub(focus);
-  
-  var ln = new Vector3().addVectors(bbox.max,bbox.min.clone().negate()).length();
-  
-  console.log("Radius is "+ln);
-  
-  viewpoint.x *= ln; 
-  viewpoint.y *= ln; 
-  viewpoint.z *= ln;
-  
-  var radius = viewpoint.length();
-  
-  onMouseDownTheta = theta = Math.acos(viewpoint.z / radius);
-  onMouseDownPhi = phi = (Math.atan2(viewpoint.y, viewpoint.x) + 2*Math.PI) % (2 * Math.PI);
-
-  
-  
-  
-  camera = new PerspectiveCamera(
-    35,             // Field of view
-    1,            // Aspect ratio
-    0.1*radius,     // Near plane
-    1000*radius     // Far plane
-  );
-  
-  function update_camera_position() {
-    camera.position.x = radius * Math.sin(theta) * Math.cos(phi);
-    camera.position.y = radius * Math.sin(theta) * Math.sin(phi);
-    camera.position.z = radius * Math.cos(theta);
-    camera.position.add(focus);
-    camera.lookAt(focus);
-  }
-  
-  //update_camera_position();
-  camera.up = new Vector3(0,0,1);
-  
-  scene.add(camera);
-  
-  // Lighting
-  function addLight(l) {
-    var color = new Color().setRGB(l.color[0], l.color[1], l.color[2]);
-    var light;
-  
-    if (l.type === "Ambient") {
-      light = new AmbientLight(color.getHex());
-    } else if (l.type === "Directional") {
-      light = new DirectionalLight(color.getHex(), 1);
-    } else if (l.type === "Spot") {
-      light = new SpotLight(color.getHex());
-      light.position.set(l.position[0], l.position[1], l.position[2]);
-      light.target.position.set(l.target[0], l.target[1], l.target[2]);
-      light.target.updateMatrixWorld(); // This fixes bug in THREE.js
-      light.angle = l.angle;
-    } else if (l.type === "Point") {
-      light = new PointLight(color.getHex());
-      light.position.set(l.position[0], l.position[1], l.position[2]);
-  
-      // Add visible light sphere
-      var lightsphere = new Mesh(
-        new SphereGeometry(0.007*radius, 16, 8),
-        new MeshBasicMaterial({color: color.getHex()})
-      );
-      lightsphere.position = light.position;
-      scene.add(lightsphere);
-    } else {
-      alert("Error: Internal Light Error", l.type);
-      return;
-    }
-    return light;
-  }
-  
-  function getInitLightPos(l) {
-    // Initial Light position in spherical polar coordinates
-    if (l.position instanceof Array) {
-      var tmppos = new Vector3(l.position[0], l.position[1], l.position[2]);
-      var result = {"radius": radius * tmppos.length()};
-  
-      if (tmppos.length() <= 0.0001) {
-        result.theta = 0;
-        result.phi = 0;
-      } else {
-        result.phi = (Math.atan2(tmppos.y, tmppos.x) + 2 * Math.PI) % (2 * Math.PI);
-        result.theta = Math.asin(tmppos.z / result.radius);
-      }
-      return result;
-    }
-    return;
-  }
-  
-  function positionLights() {
-    for (var i = 0; i < lights.length; i++) {
-      if (lights[i] instanceof DirectionalLight) {
-        lights[i].position.x = initLightPos[i].radius * Math.sin(theta + initLightPos[i].theta) * Math.cos(phi + initLightPos[i].phi);
-        lights[i].position.y = initLightPos[i].radius * Math.sin(theta + initLightPos[i].theta) * Math.sin(phi + initLightPos[i].phi);
-        lights[i].position.z = initLightPos[i].radius * Math.cos(theta + initLightPos[i].theta);
-        lights[i].position.add(focus);
-      }
-    }
-  }
-  
-  var lights = new Array(data.lighting.length);
-  var initLightPos = new Array(data.lighting.length);
-  
-  for (var i = 0; i < data.lighting.length; i++) {
-    initLightPos[i] = getInitLightPos(data.lighting[i]);
-    
-    lights[i] = addLight(data.lighting[i]);
-    scene.add(lights[i]);
-  }
-  
-  // BoundingBox
-  boundbox = new Mesh(
-    new BoxGeometry(
-      bbox.max.x - bbox.min.x,
-      bbox.max.y - bbox.min.y,
-      bbox.max.z - bbox.min.z),
-    new MeshBasicMaterial({color: 0x666666, wireframe: true})
-  );
-  boundbox.position = center;
-
-  var geo = new EdgesGeometry( new BoxGeometry(
-      bbox.max.x - bbox.min.x,
-      bbox.max.y - bbox.min.y,
-      bbox.max.z - bbox.min.z) ); // or WireframeGeometry( geometry )
-  
-  var mat = new LineBasicMaterial( { color: 0x666666, linewidth: 2 } );
-  
-  new LineSegments( geo.translate(center.x,center.y,center.z), mat );				
-  
-  
-  //scene.add(wireframe);  
-  
-  // Draw the Axes
-  if (Array.isArray(data.axes.hasaxes)) {
-    hasaxes = [data.axes.hasaxes[0], data.axes.hasaxes[1], data.axes.hasaxes[2]];
-  } else if (data.axes.hasaxes instanceof Boolean) {
-    if (data.axes) {
-      hasaxes = [true, true, true];
-    } else {
-      hasaxes = [false, false, false];
-    }
-  } else {
-    hasaxes = [false, false, false];
-  }
-  var axesmat = new LineBasicMaterial({ color: 0x000000, linewidth : 1.5 });
-  var axesgeom = [];
-  var axesindicies = [
-    [[0,5], [1,4], [2,7], [3,6]],
-    [[0,2], [1,3], [4,6], [5,7]],
-    [[0,1], [2,3], [4,5], [6,7]]
-  ];
-  /**
-   * @type {THREE.Geometry[]}
-   */
-  var axesmesh = new Array(3);
-  for (var i=0; i<3; i++) {
-    if (hasaxes[i]) {
-      axesgeom[i] = new Geometry();
-      axesgeom[i].vertices.push(new Vector3().addVectors(
-        boundbox.geometry.vertices[axesindicies[i][0][0]], boundbox.position)
-      );
-      axesgeom[i].vertices.push(new Vector3().addVectors(
-        boundbox.geometry.vertices[axesindicies[i][0][1]], boundbox.position)
-      );
-      axesmesh[i] = new Line(axesgeom[i], axesmat);
-      axesmesh[i].geometry.dynamic = true;
-      scene.add(axesmesh[i]);
-    }
-  }
-  
-  function boxEdgeLength(i, j) {
-    edge = new Vector3().sub(
-      toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][0]]),
-      toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][1]])
-    );
-    edge.z = 0;
-    return edge.length();
-  }
-  
-  function positionAxes() {
-    // Automatic axes placement
-    nearj = null;
-    nearl = 10*radius;
-    farj = null;
-    farl = 0.0;
-    
-    var tmpv = new Vector3();
-    for (var j = 0; j < 8; j++) {
-      tmpv.addVectors(boundbox.geometry.vertices[j], boundbox.position);
-      tmpv.sub(camera.position);
-      tmpl = tmpv.length();
-      if (tmpl < nearl) {
-        nearl = tmpl;
-        nearj = j;
-      } else if (tmpl > farl) {
-        farl = tmpl;
-        farj = j;
-      }
-    }
-    for (var i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        maxj = null;
-        maxl = 0.0;
-        for (var j = 0; j < 4; j++) {
-          if (axesindicies[i][j][0] !== nearj && axesindicies[i][j][1] !== nearj && axesindicies[i][j][0] !== farj && axesindicies[i][j][1] !== farj) {
-            tmpl = boxEdgeLength(i, j);
-            if (tmpl > maxl) {
-              maxl = tmpl;
-              maxj = j;
-            }
-          }
-        }
-        axesmesh[i].geometry.vertices[0].addVectors(boundbox.geometry.vertices[axesindicies[i][maxj][0]], boundbox.position);
-        axesmesh[i].geometry.vertices[1].addVectors(boundbox.geometry.vertices[axesindicies[i][maxj][1]], boundbox.position);
-        axesmesh[i].geometry.verticesNeedUpdate = true;
-      }
-    }
-    update_axes();
-  }
-  
-  // Axes Ticks
-  var tickmat = new LineBasicMaterial({ color: 0x000000, linewidth : 1.2 });
-  /**
-   * @type {THREE.Line[][]}
-   */
-  var ticks = new Array(3);
-  /**
-   * @type {THREE.Line[][]}
-   */
-  var ticks_small = new Array(3);
-  var ticklength = 0.005*radius;
-  
-  for (var i = 0; i < 3; i++) {
-    if (hasaxes[i]) {
-      ticks[i] = [];
-      for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
-        var tickgeom = new Geometry();
-        tickgeom.vertices.push(new Vector3());
-        tickgeom.vertices.push(new Vector3());
-        ticks[i].push(new Line(tickgeom, tickmat));
-        scene.add(ticks[i][j]);
-      }
-      ticks_small[i] = [];
-      for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
-         var tickgeom = new Geometry();
-         tickgeom.vertices.push(new Vector3());
-         tickgeom.vertices.push(new Vector3());
-         ticks_small[i].push(new Line(tickgeom, tickmat));
-         scene.add(ticks_small[i][j]);
-      }
-    }
-  }
-  
-  function getTickDir(i) {
-    var tickdir = new Vector3();
-    if (i === 0) {
-      if (0.25*Math.PI < theta && theta < 0.75*Math.PI) {
-        if (axesgeom[0].vertices[0].z > boundbox.position.z) {
-          tickdir.set(0, 0, -ticklength);
-        } else {
-          tickdir.set(0, 0, ticklength);
-        }
-      } else {
-        if (axesgeom[0].vertices[0].y > boundbox.position.y) {
-          tickdir.set(0,-ticklength, 0);
-        } else {
-          tickdir.set(0, ticklength, 0);
-        }
-      }
-    } else if (i === 1) {
-      if (0.25*Math.PI < theta && theta < 0.75*Math.PI) {
-        if (axesgeom[1].vertices[0].z > boundbox.position.z) {
-          tickdir.set(0, 0, -ticklength);
-        } else {
-          tickdir.set(0, 0, ticklength);
-        }
-      } else {
-        if (axesgeom[1].vertices[0].x > boundbox.position.x) {
-          tickdir.set(-ticklength, 0, 0);
-        } else {
-          tickdir.set(ticklength, 0, 0);
-        }
-      }
-    } else if (i === 2) {
-      if ((0.25*Math.PI < phi && phi < 0.75*Math.PI) || (1.25*Math.PI < phi && phi < 1.75*Math.PI)) {
-        if (axesgeom[2].vertices[0].x > boundbox.position.x) {
-          tickdir.set(-ticklength, 0, 0);
-        } else {
-          tickdir.set(ticklength, 0, 0);
-        }
-      } else {
-        if (axesgeom[2].vertices[0].y > boundbox.position.y) {
-          tickdir.set(0, -ticklength, 0, 0);
-        } else {
-          tickdir.set(0, ticklength, 0, 0);
-        }
-      }
-    }
-    return tickdir;
-  }
-  
-  function update_axes() {
-    for (var i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        var tickdir = getTickDir(i);
-        var small_tickdir = tickdir.clone();
-        small_tickdir.multiplyScalar(0.5);
-        for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
-          var tmpval = data.axes.ticks[i][0][j];
-  
-          ticks[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
-          ticks[i][j].geometry.vertices[1].addVectors(axesgeom[i].vertices[0], tickdir);
-  
-          if (i === 0) {
-            ticks[i][j].geometry.vertices[0].x = tmpval;
-            ticks[i][j].geometry.vertices[1].x = tmpval;
-          } else if (i === 1) {
-            ticks[i][j].geometry.vertices[0].y = tmpval;
-            ticks[i][j].geometry.vertices[1].y = tmpval;
-          } else if (i === 2) {
-            ticks[i][j].geometry.vertices[0].z = tmpval;
-            ticks[i][j].geometry.vertices[1].z = tmpval;
-          }
-  
-          ticks[i][j].geometry.verticesNeedUpdate = true;
-        }
-        for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
-          tmpval = data.axes.ticks[i][1][j];
-  
-          ticks_small[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
-          ticks_small[i][j].geometry.vertices[1].addVectors(axesgeom[i].vertices[0], small_tickdir);
-  
-          if (i === 0) {
-            ticks_small[i][j].geometry.vertices[0].x = tmpval;
-            ticks_small[i][j].geometry.vertices[1].x = tmpval;
-          } else if (i === 1) {
-            ticks_small[i][j].geometry.vertices[0].y = tmpval;
-            ticks_small[i][j].geometry.vertices[1].y = tmpval;
-          } else if (i === 2) {
-            ticks_small[i][j].geometry.vertices[0].z = tmpval;
-            ticks_small[i][j].geometry.vertices[1].z = tmpval;
-          }
-  
-          ticks_small[i][j].geometry.verticesNeedUpdate = true;
-        }
-      }
-    }
-  }
-  update_axes();
-  
-  // Axes numbering using divs
-  var ticknums = new Array(3);
-  for (var i = 0; i < 3; i++) {
-    if (hasaxes[i]) {
-      ticknums[i] = new Array(data.axes.ticks[i][0].length);
-      for (var j = 0; j < ticknums[i].length; j++) {
-        ticknums[i][j] = document.createElement('div');
-        ticknums[i][j].innerHTML = data.axes.ticks[i][2][j];
-  
-        // Handle Minus signs
-        if (data.axes.ticks[i][0][j] >= 0) {
-          ticknums[i][j].style.paddingLeft = "0.5em";
-        } else {
-          ticknums[i][j].style.paddingLeft = 0;
-        }
-  
-        ticknums[i][j].style.position = "absolute";
-        ticknums[i][j].style.fontSize = "0.8em";
-        container.appendChild(ticknums[i][j]);
-      }
-    }
-  }
-  
-  function toCanvasCoords(position) {
-    var pos = position.clone();
-    var projScreenMat = new Matrix4();
-    projScreenMat.multiply(camera.projectionMatrix, camera.matrixWorldInverse);
-    //.multiplyVector3( pos );
-    pos = pos.applyMatrix4(projScreenMat);
-  
-    var result = new Vector3((pos.x + 1 ) * 200, (1-pos.y) * 200, (pos.z + 1 ) * 200);
-    return result;
-  }
-  
-  function positionticknums() {
-    for (var i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        for (var j = 0; j < ticknums[i].length; j++) {
-          var tickpos3D = ticks[i][j].geometry.vertices[0].clone();
-          var tickDir = new Vector3().sub(ticks[i][j].geometry.vertices[0], ticks[i][j].geometry.vertices[1]);
-          //tickDir.multiplyScalar(3);
-          tickDir.setLength(3*ticklength);
-          tickDir.x *= 2.0;
-          tickDir.y *= 2.0;
-          tickpos3D.add(tickDir);
-          var tickpos = toCanvasCoords(tickpos3D);
-          tickpos.x -= 10;
-          tickpos.y += 8;
-  
-          ticknums[i][j].style.left = tickpos.x.toString() + "px";
-          ticknums[i][j].style.top = tickpos.y.toString() + "px";
-          if (tickpos.x < 5 || tickpos.x > 395 || tickpos.y < 5 || tickpos.y > 395) {
-            ticknums[i][j].style.display = "none";
-          }
-          else {
-            ticknums[i][j].style.display = "";
-          }
-        }
-      }
-    }
-  }
-  
-  
-
-  scene.add(group);
-  //loader = new THREE.JSONLoader();
-
-  //loader.load( JSON.parse(str));
-  //loader.onLoadComplete=function(mesh){scene.add( mesh )} 
-  
-  // Plot the primatives
-  /*for (var indx = 0; indx < data.elements.length; indx++) {
-    var type = data.elements[indx].type;
-    switch(type) {
-      case "point":
-        scene.add(drawPoint(data.elements[indx]));
-        break;
-      case "line":
-        scene.add(drawLine(data.elements[indx]));
-        break;
-      case "polygon":
-        scene.add(drawPolygon(data.elements[indx]));
-        break;
-      case "sphere":
-        scene.add(drawSphere(data.elements[indx]));
-        break;
-      case "cube":
-        scene.add(drawCube(data.elements[indx]));
-        break;
-      default:
-        alert("Error: Unknown type passed to drawGraphics3D");
-    }
-  }*/
-  
-  // Renderer (set preserveDrawingBuffer to deal with issue
-  // of weird canvas content after switching windows)
-
-  renderer = new WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
-  
-  renderer.setSize(400, 400);
-  renderer.setClearColor( 0xffffff );
-  container.appendChild(renderer.domElement);
-  renderer.domElement.style = "margin:auto";
-  
-  function render() {
-    positionLights();
-    renderer.render( scene, camera );
-  }
-  
-  function ScaleInView() {
-    var tmp_fov = 0.0;
-    //var proj2d = new THREE.Vector3();
-  
-    /*for (var i=0; i<boundbox.geometry.vertices.length; i++) {
-      proj2d = proj2d.addVectors(boundbox.geometry.vertices[i], boundbox.position);
-      proj2d = toScreenCoords(proj2d);
-  
-      angle = 114.59 * Math.max(
-         Math.abs(Math.atan(proj2d.x/proj2d.z) / camera.aspect),
-         Math.abs(Math.atan(proj2d.y/proj2d.z))
-      );
-      tmp_fov = Math.max(tmp_fov, angle);
-    }*/
-    //console.log(bbox);
-    var height = bbox.min.clone().sub(bbox.max).length();
-    var dist = center.clone().sub(camera.position).length();
-    tmp_fov = 2 * Math.atan( height / ( 2 * dist ) ) * ( 180 / Math.PI );
-    
-    camera.fov = tmp_fov + 5;
-    camera.updateProjectionMatrix();
-  }
-  
-
-  /**
-   * 
-   * @param {MouseEvent} event 
-   * @description Mouse Interactions
-   */
-  function onDocumentMouseDown( event ) {
-    event.preventDefault();
-  
-    isMouseDown = true;
-    isShiftDown = false;
-    isCtrlDown = false;
-  
-    onMouseDownTheta = theta;
-    onMouseDownPhi = phi;
-  
-    onMouseDownPosition.x = event.clientX;
-    onMouseDownPosition.y = event.clientY;
-  
-    onMouseDownFocus = new Vector3().copy(focus);
-  }
-  /**
-   * 
-   * @param {MouseEvent} event 
-   */
-  function onDocumentMouseMove(event) {
-    event.preventDefault();
-  
-    if (isMouseDown) {
-      positionticknums();
-  
-      if (event.shiftKey) {
-        // console.log("Pan");
-        if (! isShiftDown) {
-          isShiftDown = true;
-          onMouseDownPosition.x = event.clientX;
-          onMouseDownPosition.y = event.clientY;
-          autoRescale = false;
-          container.style.cursor = "move";
-        }
-        var camz = new Vector3().sub(focus, camera.position);
-        camz.normalize();
-  
-        var camx = new Vector3(
-            - radius * Math.cos(theta) * Math.sin(phi) * (theta<0.5*Math.PI?1:-1),
-            radius * Math.cos(theta) * Math.cos(phi) * (theta<0.5*Math.PI?1:-1),
-            0
-        );
-        camx.normalize();
-  
-        var camy = new Vector3();
-        camy.cross(camz, camx);
-  
-        focus.x = onMouseDownFocus.x + (radius / 400)*(camx.x * (onMouseDownPosition.x - event.clientX) + camy.x * (onMouseDownPosition.y - event.clientY));
-        focus.y = onMouseDownFocus.y + (radius / 400)*(camx.y * (onMouseDownPosition.x - event.clientX) + camy.y * (onMouseDownPosition.y - event.clientY));
-        focus.z = onMouseDownFocus.z + (radius / 400)*(camx.z * (onMouseDownPosition.x - event.clientX) + camy.z * (onMouseDownPosition.y - event.clientY));
-  
-        update_camera_position();
-  
-      } else if (event.ctrlKey) {
-        // console.log("Zoom");
-        if (! isCtrlDown) {
-          isCtrlDown = true;
-          onCtrlDownFov = camera.fov;
-          onMouseDownPosition.x = event.clientX;
-          onMouseDownPosition.y = event.clientY;
-          autoRescale = false;
-          container.style.cursor = "crosshair";
-        }
-        camera.fov =  onCtrlDownFov + 20 * Math.atan((event.clientY - onMouseDownPosition.y)/50);
-        
-        camera.fov = Math.max(1, Math.min(camera.fov, 150));
-        //console.log("fov"+camera.fov);
-        camera.updateProjectionMatrix();
-        //console.log(JSON.stringify(camera));
-      } else {
-        // console.log("Spin");
-        if (isCtrlDown || isShiftDown) {
-          onMouseDownPosition.x = event.clientX;
-          onMouseDownPosition.y = event.clientY;
-          isShiftDown = false;
-          isCtrlDown = false;
-          container.style.cursor = "pointer";
-        }
-  
-        phi = 2 * Math.PI * (onMouseDownPosition.x - event.clientX) / 400 + onMouseDownPhi;
-        phi = (phi + 2 * Math.PI) % (2 * Math.PI);
-        theta = 2 * Math.PI * (onMouseDownPosition.y - event.clientY) / 400 + onMouseDownTheta;
-        var epsilon = 1e-12; // Prevents spinnging from getting stuck
-        theta = Math.max(Math.min(Math.PI - epsilon, theta), epsilon);
-  
-        update_camera_position();
-      }
-      render();
-    } else {
-      container.style.cursor = "pointer";
-    }
-  }
-  /**
-   * 
-   * @param {MouseEvent} event 
-   */
-  function onDocumentMouseUp(event) {
-    event.preventDefault();
-  
-    isMouseDown = false;
-    container.style.cursor = "pointer";
-  
-    if (autoRescale) {
-        ScaleInView();
-        render();
-    }
-    positionAxes();
-    render();
-    positionticknums();
-  }
-  
-  // Bind Mouse events
-  container.addEventListener('mousemove', onDocumentMouseMove, false);
-  container.addEventListener('mousedown', onDocumentMouseDown, false);
-  container.addEventListener('mouseup', onDocumentMouseUp, false);
-  container.addEventListener('touchmove', onDocumentMouseMove, false);
-  onMouseDownPosition = new Vector2();
-  var autoRescale = true;
-  
-  update_camera_position();
-  positionAxes();
-  render(); // Rendering twice updates camera.matrixWorldInverse so that ScaleInView works properly
-  ScaleInView(); 
-  render();     
-  positionticknums();	
-  /*** the part of a code from http://mathics.github.io.  ***/
-};
-
-    const placeholderMatcher = new MatchDecorator({
+const placeholderMatcher = new MatchDecorator({
       regexp: /FrontEndExecutable\["(.+)"\]/g,
       decoration: match => Decoration.replace({
           widget: new PlaceholderWidget(match[1]),
@@ -66440,7 +66502,7 @@ core.Graphics3D = function(args, env) {
       }
       update(update) {
           this.placeholders = placeholderMatcher.updateDeco(update, this.placeholders);
-      }
+      } 
   }, {
       decorations: instance => instance.placeholders,
       provide: plugin => EditorView.atomicRanges.of(view => {
@@ -66641,3 +66703,1280 @@ function celleval(ne, id, cell) {
   var q = 'CellObj["'+cell+'"]["data"]="'+fixed+'"; NotebookEvaluate["'+id+'", "'+cell+'"]';
   socket.send(q);
 }
+
+function RGBtoColor(i,k,j) {
+    var r = Math.round(255*i);
+    var g = Math.round(255*k);
+    var b = Math.round(255*j);
+    
+    return(new Color("rgb("+r+","+g+","+b+")")); 
+}
+
+core.Style = function(args, env) {
+    var copy = Object.assign({}, env);
+    
+    args.forEach(function(el) {
+        interpretate(el, copy);
+    });
+};	
+
+core.Annotation = function(args, env) {
+    args.forEach(function(el) {
+        interpretate(el, env);
+    });
+};	
+
+core.GraphicsGroup = function(args, env) {
+    var group = new Group();
+    var copy = Object.assign({}, env);
+    
+    copy.mesh = group;
+    
+    args.forEach(function(el) {
+        interpretate(el, copy);
+    });
+    
+    env.mesh.add(group);
+};
+
+core.RGBColor = function(args, env) {
+    if (args.length !== 3) console.error( "RGB values should be triple!");
+
+    var r = Math.round(255*interpretate(args[0]));
+    var g = Math.round(255*interpretate(args[1]));
+    var b = Math.round(255*interpretate(args[2]));
+    
+    env.color = new Color("rgb("+r+","+g+","+b+")");			
+};
+
+core.Opacity = function(args, env) {
+    var o = interpretate(args[0]);
+    if (typeof o !== 'number') console.error( "Opacity must have number value!");
+    console.log(o);
+    env.opacity = o;
+}; 
+
+core.ImageScaled = function(args, env) {
+
+};
+
+core.Thickness = function(args, env) {
+
+};
+
+core.Arrowheads = function(args, env) {
+
+};
+
+core.Arrow = function(args, env) {
+    interpretate(args[0], env);
+};
+
+core.Tube = function(args, env) {
+    var arr = interpretate(args[0]);
+    if (arr.length ===  1) arr = arr[0];
+    if (arr.length !== 2) console.error( "Tube must have 2 vectors!");
+    
+    var points = [new Vector4(...arr[0], 1),
+                new Vector4(...arr[1], 1)];
+    
+    points.forEach(function(p) {
+        p = p.applyMatrix4(env.matrix);
+    });
+
+    var origin = points[0].clone();
+    var dir = points[1].add(points[0].negate());
+    
+    var arrowHelper = new ArrowHelper(dir.normalize(), origin, dir.length(), env.color);
+    env.mesh.add(arrowHelper);
+    arrowHelper.line.material.linewidth = env.thickness;
+};
+
+core.Sphere = function(args, env) {
+    var radius = 1;
+    if (args.length > 1) radius = args[1];
+    
+    var material = new MeshLambertMaterial({
+        color:env.color,
+        transparent:false,
+        opacity:env.opacity,
+    });				
+    
+    function addSphere(cr) {
+        var origin = new Vector4(...cr, 1);
+        var geometry = new SphereGeometry( radius, 20, 20 );
+        var sphere = new Mesh( geometry, material );
+        
+        sphere.position.x = origin.x; 
+        sphere.position.y = origin.y; 
+        sphere.position.z = origin.z;
+
+        env.mesh.add( sphere );
+        geometry.dispose(); 			
+    }	
+
+    var list = interpretate(args[0]);
+    
+    if (list.length === 1) list=list[0];
+    if (list.length === 1) list=list[0];
+    
+    if (list.length === 3) {
+        addSphere(list);
+    } else if (list.length > 3) {
+        list.forEach(function(el) {
+            addSphere(el);		
+        });	
+    } else {
+        console.log(list);
+        console.error( "List of coords. for sphere object is less 1");
+    }
+    
+    material.dispose();    
+};
+    
+core.Cuboid = function(args, env) {
+    //if (params.hasOwnProperty('geometry')) {
+    //	var points = [new THREE.Vector4(...interpretate(func.args[0]), 1),
+    //				new THREE.Vector4(...interpretate(func.args[1]), 1)];				
+    //}
+    console.log("Cuboid");
+    var points, diff, origin, p;
+    
+    if (args.length === 2) {
+    
+        points = [new Vector4(...interpretate(args[0]), 1),
+                new Vector4(...interpretate(args[1]), 1)];			
+    
+        origin = points[0].clone().add(points[1].clone()).divideScalar(2);
+        diff = points[0].clone().add(points[1].clone().negate());
+    
+    } else if (args.length === 1) {
+        p = interpretate(args[0]);
+        origin = new Vector4(...p, 1);
+        diff = new Vector4(1,1,1, 1);
+        
+        //shift it
+        origin.add(diff.clone().divideScalar(2));
+    } else {
+        console.error( "Expected 2 or 1 arguments");
+    }
+    
+    
+    var geometry = new BoxGeometry(diff.x, diff.y, diff.z);
+    var material = new MeshLambertMaterial({
+        color:env.color,
+        transparent:true,
+        opacity:env.opacity,
+        depthWrite: true
+    });
+    
+    //material.side = THREE.DoubleSide;
+    
+    var cube = new Mesh( geometry, material );
+    
+    //var tr = new THREE.Matrix4();
+    //	tr.makeTranslation(origin.x,origin.y,origin.z);
+    
+    //cube.applyMatrix(params.matrix.clone().multiply(tr));
+    
+    
+    
+    cube.position.x = origin.x; 
+    cube.position.y = origin.y; 
+    cube.position.z = origin.z; 
+    
+    
+    env.mesh.add(cube);
+    
+    geometry.dispose();
+    material.dispose();
+
+};
+
+core.Center = function(args, env) {
+    return 'Center';
+};
+
+core.Cylinder = function(args, env) {
+  //some troubles with positioning...
+  //fixme  
+  var radius = 1;
+  if (args.length > 1) radius = args[1];
+
+  var coordinates = interpretate(args[0]);
+
+  
+  let material = new MeshLambertMaterial({
+    color:env.color,
+    transparent:false,
+    opacity:env.opacity,
+  });  
+
+  //point 1
+  var p1 = new Vector4(...coordinates[0], 1);
+  //point 2 - 1
+  var dp = new Vector4(...coordinates[1], 1).addScaledVector(p1, -1);
+
+  var geometry = new CylinderGeometry(radius, radius, dp.length(), 20, 1);
+
+  var cylinder = new Mesh( geometry, material );
+
+  //fethcing the angle of rotation of the cylider
+  let phi   = Math.atan2(dp.y, dp.x);
+  let theta = Math.acos(dp.z / dp.length());
+
+  console.log(phi + "   " + theta);
+
+  var euler = new Euler(phi, theta, 0, 'XYZ' );
+  var matrix = new Matrix4().makeRotationFromEuler(euler);
+
+  //some troubles with positioning...
+  //fixme
+  cylinder.position.x = p1.x; 
+  cylinder.position.y = p1.y; 
+  cylinder.position.z = p1.z; 
+  
+  let group = new Group();
+  group.add(cylinder);
+  group.applyMatrix4(matrix);
+
+  env.mesh.add(group);
+  
+  geometry.dispose();
+  material.dispose();
+
+};
+
+core.Tetrahedron = function(args, env) {
+    var points = interpretate(args[0]);
+    var faces = [];
+    console.log("Points of tetrahedron:");
+    console.log(points);
+    
+    faces.push([points[0], points[1], points[2]]);
+    faces.push([points[0], points[1], points[3]]);
+    faces.push([points[1], points[2], points[3]]);
+    faces.push([points[0], points[3], points[2]]);
+
+    var fake = ["List"];
+    
+    var listVert = function(cord) {
+            return([
+                    "List",
+                    cord[0],
+                    cord[1],
+                    cord[2]
+                    ]);
+    };
+        
+    faces.forEach(function(fs) {
+
+        var struc = [
+                        "Polygon",
+                        [
+                            "List",
+                            listVert(fs[0]),
+                            listVert(fs[1]),
+                            listVert(fs[2])
+                        ]
+                    ];
+        fake.push(struc);
+    });
+    console.log(fake);
+    interpretate(fake, env);
+};
+        
+
+core.GeometricTransformation = function(args, env) {
+    
+    var group = new Group();
+    //Если center, то наверное надо приметь matrix 
+    //к каждому объекту относительно родительской группы.
+    var p = interpretate(args[1]);
+    var centering = false;
+    var centrans = [];
+    
+    
+    
+    
+    if (p.length === 1) { p = p[0]; }
+    if (p.length === 1) { p = p[0]; }
+    else if (p.length === 2) {
+        console.log(p);
+        if (p[1] === 'Center') {
+            
+            centering = true;
+        } else {
+            console.log("NON CENTERING ISSUE!!!");
+            console.log(p);
+            centrans = p[1];
+            console.log("???");
+        }
+        //return;
+        p = p[0];
+    }
+    
+    if (p.length === 3) {
+        
+    
+        if (typeof p[0] === 'number') {
+            var dir = p;
+            var matrix = new Matrix4().makeTranslation(...dir,1);
+        } else {
+            
+            //make it like Matrix4
+            p.forEach(function(el) {
+                el.push(0);
+            });
+            p.push([0,0,0,1]);
+            
+
+            var matrix = new Matrix4();
+            console.log("Apply matrix to group::");
+            matrix.set(...aflatten(p));
+        }
+    } else {
+        console.log(p);
+        console.error( "Unexpected length matrix: :: " + p);
+    }
+    
+    
+    //Backup of params
+    var copy = Object.assign({}, env);
+    copy.mesh = group;	
+    interpretate(args[0], copy);
+    
+    console.log(matrix);
+    
+    
+    if (centering || centrans.length > 0) {
+        console.log("::CENTER::");
+        var bbox = new Box3().setFromObject(group);
+        console.log(bbox);
+        var center = new Vector3().addVectors(bbox.max,bbox.min).divideScalar(2);
+        if (centrans.length > 0) {
+            console.log("CENTRANS");
+            center = center.fromArray(centrans);
+        }
+        console.log(center);
+        
+        var	translate = new Matrix4().makeTranslation(-center.x,-center.y,-center.z,1);
+        group.applyMatrix(translate);
+        group.applyMatrix(matrix);
+            translate = new Matrix4().makeTranslation(center.x,center.y,center.z,1);
+        group.applyMatrix(translate);
+    } else {
+        group.applyMatrix(matrix);
+    }
+    
+    env.mesh.add(group);
+    
+};
+
+core.GraphicsComplex = function(args, env) {			
+    var copy = Object.assign({}, env);
+    
+    copy.geometry = new Geometry();
+    
+    interpretate(args[0]).forEach(function(el) {
+        if (typeof el[0] !== 'number') console.error( "not a triple of number"+el);
+        copy.geometry.vertices.push(
+            new Vector3(el[0],el[1],el[2])
+        );
+    });
+
+    var group = new Group();
+    
+    
+    interpretate(args[1], copy);
+    
+    env.mesh.add(group);	
+    copy.geometry.dispose();
+};
+
+core.Polygon = function(args, env) {	
+    if (env.hasOwnProperty('geometry')) {
+        var geometry = env.geometry.clone();
+
+        var createFace = function(c) {
+            
+            switch(c.length) {
+                case 3:
+                    geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[2]-1));
+                break;
+                
+                case 4:
+                    geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[2]-1));
+                    geometry.faces.push(new Face3(c[0]-1,c[2]-1,c[3]-1));
+                break;
+                
+                case 5:
+                    geometry.faces.push(new Face3(c[0]-1,c[1]-1,c[4]-1));
+                    geometry.faces.push(new Face3(c[1]-1,c[2]-1,c[3]-1));
+                    geometry.faces.push(new Face3(c[1]-1,c[3]-1,c[4]-1));
+                break;
+                
+                default:
+                    console.log(c);
+                    console.log(c.length);
+                    console.error( "Cant produce complex polygons! at"+c);
+                
+            }
+        };
+        
+        var a = interpretate(args[0]);
+        if (a.length === 1) {
+            a = a[0];
+        }
+        
+        if (typeof a[0] === 'number') {
+            console.log("Create single face");
+            createFace(a);
+        } else {
+            console.log("Create multiple face");
+            console.log(a);
+            a.forEach(function(el) {
+            
+                createFace(el);
+            });
+        }
+    } else {
+        
+        var geometry = new Geometry();
+        var points = interpretate(args[0]);
+    
+        points.forEach(function(el) {
+            if (typeof el[0] !== 'number') console.error( "not a triple of number"+el);
+            geometry.vertices.push(
+                new Vector3(el[0],el[1],el[2])
+            );					
+        });
+        
+        console.log("points");
+        console.log(points);
+        
+        switch(points.length) {
+            case 3:
+                geometry.faces.push(new Face3(0,1,2));
+            break;
+            
+            case 4:
+                geometry.faces.push(new Face3(0,1,2));
+                geometry.faces.push(new Face3(0,2,3));
+            break;
+            
+            case 5:
+                geometry.faces.push(new Face3(0,1,4));
+                geometry.faces.push(new Face3(1,2,3));
+                geometry.faces.push(new Face3(1,3,4));
+            break;
+            
+            default:
+                console.log(points);
+                console.error( "Cant build complex polygon ::");
+        }
+        
+    }
+    
+    var material = new MeshLambertMaterial({
+        color:env.color,
+        transparent: env.opacity < 0.9? true : false,
+        opacity:env.opacity,
+
+        //depthTest: false
+        //depthWrite: false
+    });
+    console.log(env.opacity);
+    material.side = DoubleSide;
+    
+    geometry.computeFaceNormals();
+    //complex.computeVertexNormals();
+    var poly = new Mesh(geometry, material);
+    
+    //poly.frustumCulled = false;
+    env.mesh.add(poly);
+    material.dispose();
+};
+
+core.Polyhedron = function(args, env) {
+  if(args[1][1].length > 4) {
+    //non-optimised variant to work with 4 vertex per face
+    interpretate([ "GraphicsComplex", args[0], [ "Polygon", args[1]] ], env);
+  } else {
+    //reguar one. gpu-fiendly
+    /**
+     * @type {number[]}
+     */
+    const indices = interpretate(args[1]).flat(4).map(i=>i-1);  
+    /**
+     * @type {number[]}
+     */
+    const vertices = interpretate(args[0]).flat(4);
+
+    const geometry = new PolyhedronGeometry(vertices, indices);
+
+    var material = new MeshLambertMaterial({
+      color:env.color,
+      transparent:true,
+      opacity:env.opacity,
+      depthWrite: true
+    });
+
+    const mesh = new Mesh(geometry, material);
+    env.mesh.add(mesh);
+    geometry.dispose();
+    material.dispose();
+  }
+};
+
+core.GrayLevel = function(args, env) {
+
+};
+
+core.EdgeForm = function(args, env) {
+
+};	
+
+core.Specularity = function(args, env) {
+
+};
+
+core.Text = function(args, env) {
+
+};
+
+core.Directive = function(args, env) {
+
+};
+
+core.Line = function(args, env) {
+    if (env.hasOwnProperty('geometry')) {
+        var geometry = new Geometry();
+        
+        var points = interpretate(args[0]);
+        points.forEach(function(el) {
+            geometry.vertices.push(new Vector3().copy(env.geometry.vertices[el-1]));
+        });
+        
+        var material = new LineBasicMaterial( { linewidth: env.thickness, color: env.edgecolor } );
+        var line = new Line( geometry, material );
+        
+        line.material.polygonOffset = true;
+        line.material.polygonOffsetFactor = 1;
+        line.material.polygonOffsetUnits = 1;
+        
+        env.mesh.add(line);
+        
+        geometry.dispose();
+        material.dispose();
+    } else {
+        var arr = interpretate(args[0]);
+        if (arr.length ===  1) arr = arr[0];
+        //if (arr.length !== 2) console.error( "Tube must have 2 vectors!");
+        console.log("points: "+arr.length);
+    
+        var points = [];
+        arr.forEach(function(p) {
+            points.push(new Vector4(...p, 1));
+        });
+        //new THREE.Vector4(...arr[0], 1)
+        
+        points.forEach(function(p) {
+            p = p.applyMatrix4(env.matrix);
+        });
+
+        const geometry = new BufferGeometry().setFromPoints( points );
+        const material = new LineBasicMaterial({
+            color: env.edgecolor,
+            linewidth: env.thickness
+        });
+        
+        env.mesh.add(new Line( geometry, material ));
+        
+    }
+};
+
+
+core.Graphics3D = function(args, env) {
+    console.log("GRAPHICS3D");
+
+    /*** the part of a code from http://mathics.github.io.  ***/
+    var data = {"axes": {}, 
+                "extent": {"zmax": 1.0, "ymax": 1.0, "zmin": -1.0, "xmax": 1.0, "xmin": -1.0, "ymin": -1.0}, 
+
+                "lighting": [ {"type": "Ambient", "color": [0.3, 0.2, 0.4]},
+                                {"type": "Directional", "color": [0.8, 0., 0.],
+                                "position": [2, 0, 2]},
+                                {"type": "Directional", "color": [0., 0.8, 0.],
+                                "position": [2, 2, 2]},
+                                {"type": "Directional", "color": [0., 0., 0.8],
+                                "position": [0, 2, 2]}],
+     
+                "viewpoint":[1.3, -2.4, 2]};
+    /**
+     * @type {HTMLElement}
+     */
+    var container = env.element;
+    
+    var camera, scene, renderer, boundbox, hasaxes, viewpoint,
+      isMouseDown = false, onMouseDownPosition,
+      theta, onMouseDownTheta, phi, onMouseDownPhi;
+
+    // Scene
+    scene = new Scene();
+    
+    var group = new Group();
+    
+    var envcopy = Object.assign({}, env);
+        envcopy.matrix = new Matrix4();
+        envcopy.color = RGBtoColor(1,1,1);
+        envcopy.opacity = 1;
+        envcopy.thickness = 1;
+        envcopy.edgecolor = RGBtoColor(0,0,0);
+    
+        envcopy.matrix.set( 1,0,0,0,
+                            0,1,0,0,
+                            0,0,1,0,
+                            0,0,0,1 );
+
+        envcopy.mesh = group;
+    
+    interpretate(args[0], envcopy);
+    
+    var bbox = new Box3().setFromObject(group);
+        
+    var center = new Vector3().addVectors(bbox.max,bbox.min).divideScalar(2);
+    console.log("BBOX CENTER");
+    console.log(center);
+    console.log(bbox);
+    //var	translate = new THREE.Matrix4().makeTranslation(-center.x,-center.y,-center.z,1);
+    //group.applyMatrix(translate);	
+    scene.position = center;
+    
+                    
+      
+    // Center of the scene
+    //var center = new THREE.Vector3(
+    //  0.5 * (data.extent.xmin + data.extent.xmax),
+    //  0.5 * (data.extent.ymin + data.extent.ymax), 
+    //  0.5 * (data.extent.zmin + data.extent.zmax));
+    
+    // Where the camera is looking
+    var focus = new Vector3(center.x, center.y, center.z);
+    
+    // Viewpoint
+    viewpoint = new Vector3(data.viewpoint[0], data.viewpoint[1], data.viewpoint[2]).sub(focus);
+    
+    var ln = new Vector3().addVectors(bbox.max,bbox.min.clone().negate()).length();
+    
+    console.log("Radius is "+ln);
+    
+    viewpoint.x *= ln; 
+    viewpoint.y *= ln; 
+    viewpoint.z *= ln;
+    
+    var radius = viewpoint.length();
+    
+    onMouseDownTheta = theta = Math.acos(viewpoint.z / radius);
+    onMouseDownPhi = phi = (Math.atan2(viewpoint.y, viewpoint.x) + 2*Math.PI) % (2 * Math.PI);
+
+    
+    
+    
+    camera = new PerspectiveCamera(
+      35,             // Field of view
+      1,            // Aspect ratio
+      0.1*radius,     // Near plane
+      1000*radius     // Far plane
+    );
+    
+    function update_camera_position() {
+      camera.position.x = radius * Math.sin(theta) * Math.cos(phi);
+      camera.position.y = radius * Math.sin(theta) * Math.sin(phi);
+      camera.position.z = radius * Math.cos(theta);
+      camera.position.add(focus);
+      camera.lookAt(focus);
+    }
+    
+    //update_camera_position();
+    camera.up = new Vector3(0,0,1);
+    
+    scene.add(camera);
+    
+    // Lighting
+    function addLight(l) {
+      var color = new Color().setRGB(l.color[0], l.color[1], l.color[2]);
+      var light;
+    
+      if (l.type === "Ambient") {
+        light = new AmbientLight(color.getHex());
+      } else if (l.type === "Directional") {
+        light = new DirectionalLight(color.getHex(), 1);
+      } else if (l.type === "Spot") {
+        light = new SpotLight(color.getHex());
+        light.position.set(l.position[0], l.position[1], l.position[2]);
+        light.target.position.set(l.target[0], l.target[1], l.target[2]);
+        light.target.updateMatrixWorld(); // This fixes bug in THREE.js
+        light.angle = l.angle;
+      } else if (l.type === "Point") {
+        light = new PointLight(color.getHex());
+        light.position.set(l.position[0], l.position[1], l.position[2]);
+    
+        // Add visible light sphere
+        var lightsphere = new Mesh(
+          new SphereGeometry(0.007*radius, 16, 8),
+          new MeshBasicMaterial({color: color.getHex()})
+        );
+        lightsphere.position = light.position;
+        scene.add(lightsphere);
+      } else {
+        alert("Error: Internal Light Error", l.type);
+        return;
+      }
+      return light;
+    }
+    
+    function getInitLightPos(l) {
+      // Initial Light position in spherical polar coordinates
+      if (l.position instanceof Array) {
+        var tmppos = new Vector3(l.position[0], l.position[1], l.position[2]);
+        var result = {"radius": radius * tmppos.length()};
+    
+        if (tmppos.length() <= 0.0001) {
+          result.theta = 0;
+          result.phi = 0;
+        } else {
+          result.phi = (Math.atan2(tmppos.y, tmppos.x) + 2 * Math.PI) % (2 * Math.PI);
+          result.theta = Math.asin(tmppos.z / result.radius);
+        }
+        return result;
+      }
+      return;
+    }
+    
+    function positionLights() {
+      for (var i = 0; i < lights.length; i++) {
+        if (lights[i] instanceof DirectionalLight) {
+          lights[i].position.x = initLightPos[i].radius * Math.sin(theta + initLightPos[i].theta) * Math.cos(phi + initLightPos[i].phi);
+          lights[i].position.y = initLightPos[i].radius * Math.sin(theta + initLightPos[i].theta) * Math.sin(phi + initLightPos[i].phi);
+          lights[i].position.z = initLightPos[i].radius * Math.cos(theta + initLightPos[i].theta);
+          lights[i].position.add(focus);
+        }
+      }
+    }
+    
+    var lights = new Array(data.lighting.length);
+    var initLightPos = new Array(data.lighting.length);
+    
+    for (var i = 0; i < data.lighting.length; i++) {
+      initLightPos[i] = getInitLightPos(data.lighting[i]);
+      
+      lights[i] = addLight(data.lighting[i]);
+      scene.add(lights[i]);
+    }
+    
+    // BoundingBox
+    boundbox = new Mesh(
+      new BoxGeometry(
+        bbox.max.x - bbox.min.x,
+        bbox.max.y - bbox.min.y,
+        bbox.max.z - bbox.min.z),
+      new MeshBasicMaterial({color: 0x666666, wireframe: true})
+    );
+    boundbox.position = center;
+
+    var geo = new EdgesGeometry( new BoxGeometry(
+        bbox.max.x - bbox.min.x,
+        bbox.max.y - bbox.min.y,
+        bbox.max.z - bbox.min.z) ); // or WireframeGeometry( geometry )
+    
+    var mat = new LineBasicMaterial( { color: 0x666666, linewidth: 2 } );
+    
+    new LineSegments( geo.translate(center.x,center.y,center.z), mat );				
+    
+    
+    //scene.add(wireframe);  
+    
+    // Draw the Axes
+    if (Array.isArray(data.axes.hasaxes)) {
+      hasaxes = [data.axes.hasaxes[0], data.axes.hasaxes[1], data.axes.hasaxes[2]];
+    } else if (data.axes.hasaxes instanceof Boolean) {
+      if (data.axes) {
+        hasaxes = [true, true, true];
+      } else {
+        hasaxes = [false, false, false];
+      }
+    } else {
+      hasaxes = [false, false, false];
+    }
+    var axesmat = new LineBasicMaterial({ color: 0x000000, linewidth : 1.5 });
+    var axesgeom = [];
+    var axesindicies = [
+      [[0,5], [1,4], [2,7], [3,6]],
+      [[0,2], [1,3], [4,6], [5,7]],
+      [[0,1], [2,3], [4,5], [6,7]]
+    ];
+    /**
+     * @type {THREE.Geometry[]}
+     */
+    var axesmesh = new Array(3);
+    for (var i=0; i<3; i++) {
+      if (hasaxes[i]) {
+        axesgeom[i] = new Geometry();
+        axesgeom[i].vertices.push(new Vector3().addVectors(
+          boundbox.geometry.vertices[axesindicies[i][0][0]], boundbox.position)
+        );
+        axesgeom[i].vertices.push(new Vector3().addVectors(
+          boundbox.geometry.vertices[axesindicies[i][0][1]], boundbox.position)
+        );
+        axesmesh[i] = new Line(axesgeom[i], axesmat);
+        axesmesh[i].geometry.dynamic = true;
+        scene.add(axesmesh[i]);
+      }
+    }
+    
+    function boxEdgeLength(i, j) {
+      edge = new Vector3().sub(
+        toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][0]]),
+        toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][1]])
+      );
+      edge.z = 0;
+      return edge.length();
+    }
+    
+    function positionAxes() {
+      // Automatic axes placement
+      nearj = null;
+      nearl = 10*radius;
+      farj = null;
+      farl = 0.0;
+      
+      var tmpv = new Vector3();
+      for (var j = 0; j < 8; j++) {
+        tmpv.addVectors(boundbox.geometry.vertices[j], boundbox.position);
+        tmpv.sub(camera.position);
+        tmpl = tmpv.length();
+        if (tmpl < nearl) {
+          nearl = tmpl;
+          nearj = j;
+        } else if (tmpl > farl) {
+          farl = tmpl;
+          farj = j;
+        }
+      }
+      for (var i = 0; i < 3; i++) {
+        if (hasaxes[i]) {
+          maxj = null;
+          maxl = 0.0;
+          for (var j = 0; j < 4; j++) {
+            if (axesindicies[i][j][0] !== nearj && axesindicies[i][j][1] !== nearj && axesindicies[i][j][0] !== farj && axesindicies[i][j][1] !== farj) {
+              tmpl = boxEdgeLength(i, j);
+              if (tmpl > maxl) {
+                maxl = tmpl;
+                maxj = j;
+              }
+            }
+          }
+          axesmesh[i].geometry.vertices[0].addVectors(boundbox.geometry.vertices[axesindicies[i][maxj][0]], boundbox.position);
+          axesmesh[i].geometry.vertices[1].addVectors(boundbox.geometry.vertices[axesindicies[i][maxj][1]], boundbox.position);
+          axesmesh[i].geometry.verticesNeedUpdate = true;
+        }
+      }
+      update_axes();
+    }
+    
+    // Axes Ticks
+    var tickmat = new LineBasicMaterial({ color: 0x000000, linewidth : 1.2 });
+    /**
+     * @type {THREE.Line[][]}
+     */
+    var ticks = new Array(3);
+    /**
+     * @type {THREE.Line[][]}
+     */
+    var ticks_small = new Array(3);
+    var ticklength = 0.005*radius;
+    
+    for (var i = 0; i < 3; i++) {
+      if (hasaxes[i]) {
+        ticks[i] = [];
+        for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
+          var tickgeom = new Geometry();
+          tickgeom.vertices.push(new Vector3());
+          tickgeom.vertices.push(new Vector3());
+          ticks[i].push(new Line(tickgeom, tickmat));
+          scene.add(ticks[i][j]);
+        }
+        ticks_small[i] = [];
+        for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
+           var tickgeom = new Geometry();
+           tickgeom.vertices.push(new Vector3());
+           tickgeom.vertices.push(new Vector3());
+           ticks_small[i].push(new Line(tickgeom, tickmat));
+           scene.add(ticks_small[i][j]);
+        }
+      }
+    }
+    
+    function getTickDir(i) {
+      var tickdir = new Vector3();
+      if (i === 0) {
+        if (0.25*Math.PI < theta && theta < 0.75*Math.PI) {
+          if (axesgeom[0].vertices[0].z > boundbox.position.z) {
+            tickdir.set(0, 0, -ticklength);
+          } else {
+            tickdir.set(0, 0, ticklength);
+          }
+        } else {
+          if (axesgeom[0].vertices[0].y > boundbox.position.y) {
+            tickdir.set(0,-ticklength, 0);
+          } else {
+            tickdir.set(0, ticklength, 0);
+          }
+        }
+      } else if (i === 1) {
+        if (0.25*Math.PI < theta && theta < 0.75*Math.PI) {
+          if (axesgeom[1].vertices[0].z > boundbox.position.z) {
+            tickdir.set(0, 0, -ticklength);
+          } else {
+            tickdir.set(0, 0, ticklength);
+          }
+        } else {
+          if (axesgeom[1].vertices[0].x > boundbox.position.x) {
+            tickdir.set(-ticklength, 0, 0);
+          } else {
+            tickdir.set(ticklength, 0, 0);
+          }
+        }
+      } else if (i === 2) {
+        if ((0.25*Math.PI < phi && phi < 0.75*Math.PI) || (1.25*Math.PI < phi && phi < 1.75*Math.PI)) {
+          if (axesgeom[2].vertices[0].x > boundbox.position.x) {
+            tickdir.set(-ticklength, 0, 0);
+          } else {
+            tickdir.set(ticklength, 0, 0);
+          }
+        } else {
+          if (axesgeom[2].vertices[0].y > boundbox.position.y) {
+            tickdir.set(0, -ticklength, 0, 0);
+          } else {
+            tickdir.set(0, ticklength, 0, 0);
+          }
+        }
+      }
+      return tickdir;
+    }
+    
+    function update_axes() {
+      for (var i = 0; i < 3; i++) {
+        if (hasaxes[i]) {
+          var tickdir = getTickDir(i);
+          var small_tickdir = tickdir.clone();
+          small_tickdir.multiplyScalar(0.5);
+          for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
+            var tmpval = data.axes.ticks[i][0][j];
+    
+            ticks[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
+            ticks[i][j].geometry.vertices[1].addVectors(axesgeom[i].vertices[0], tickdir);
+    
+            if (i === 0) {
+              ticks[i][j].geometry.vertices[0].x = tmpval;
+              ticks[i][j].geometry.vertices[1].x = tmpval;
+            } else if (i === 1) {
+              ticks[i][j].geometry.vertices[0].y = tmpval;
+              ticks[i][j].geometry.vertices[1].y = tmpval;
+            } else if (i === 2) {
+              ticks[i][j].geometry.vertices[0].z = tmpval;
+              ticks[i][j].geometry.vertices[1].z = tmpval;
+            }
+    
+            ticks[i][j].geometry.verticesNeedUpdate = true;
+          }
+          for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
+            tmpval = data.axes.ticks[i][1][j];
+    
+            ticks_small[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
+            ticks_small[i][j].geometry.vertices[1].addVectors(axesgeom[i].vertices[0], small_tickdir);
+    
+            if (i === 0) {
+              ticks_small[i][j].geometry.vertices[0].x = tmpval;
+              ticks_small[i][j].geometry.vertices[1].x = tmpval;
+            } else if (i === 1) {
+              ticks_small[i][j].geometry.vertices[0].y = tmpval;
+              ticks_small[i][j].geometry.vertices[1].y = tmpval;
+            } else if (i === 2) {
+              ticks_small[i][j].geometry.vertices[0].z = tmpval;
+              ticks_small[i][j].geometry.vertices[1].z = tmpval;
+            }
+    
+            ticks_small[i][j].geometry.verticesNeedUpdate = true;
+          }
+        }
+      }
+    }
+    update_axes();
+    
+    // Axes numbering using divs
+    var ticknums = new Array(3);
+    for (var i = 0; i < 3; i++) {
+      if (hasaxes[i]) {
+        ticknums[i] = new Array(data.axes.ticks[i][0].length);
+        for (var j = 0; j < ticknums[i].length; j++) {
+          ticknums[i][j] = document.createElement('div');
+          ticknums[i][j].innerHTML = data.axes.ticks[i][2][j];
+    
+          // Handle Minus signs
+          if (data.axes.ticks[i][0][j] >= 0) {
+            ticknums[i][j].style.paddingLeft = "0.5em";
+          } else {
+            ticknums[i][j].style.paddingLeft = 0;
+          }
+    
+          ticknums[i][j].style.position = "absolute";
+          ticknums[i][j].style.fontSize = "0.8em";
+          container.appendChild(ticknums[i][j]);
+        }
+      }
+    }
+    
+    function toCanvasCoords(position) {
+      var pos = position.clone();
+      var projScreenMat = new Matrix4();
+      projScreenMat.multiply(camera.projectionMatrix, camera.matrixWorldInverse);
+      //.multiplyVector3( pos );
+      pos = pos.applyMatrix4(projScreenMat);
+    
+      var result = new Vector3((pos.x + 1 ) * 200, (1-pos.y) * 200, (pos.z + 1 ) * 200);
+      return result;
+    }
+    
+    function positionticknums() {
+      for (var i = 0; i < 3; i++) {
+        if (hasaxes[i]) {
+          for (var j = 0; j < ticknums[i].length; j++) {
+            var tickpos3D = ticks[i][j].geometry.vertices[0].clone();
+            var tickDir = new Vector3().sub(ticks[i][j].geometry.vertices[0], ticks[i][j].geometry.vertices[1]);
+            //tickDir.multiplyScalar(3);
+            tickDir.setLength(3*ticklength);
+            tickDir.x *= 2.0;
+            tickDir.y *= 2.0;
+            tickpos3D.add(tickDir);
+            var tickpos = toCanvasCoords(tickpos3D);
+            tickpos.x -= 10;
+            tickpos.y += 8;
+    
+            ticknums[i][j].style.left = tickpos.x.toString() + "px";
+            ticknums[i][j].style.top = tickpos.y.toString() + "px";
+            if (tickpos.x < 5 || tickpos.x > 395 || tickpos.y < 5 || tickpos.y > 395) {
+              ticknums[i][j].style.display = "none";
+            }
+            else {
+              ticknums[i][j].style.display = "";
+            }
+          }
+        }
+      }
+    }
+    
+    
+
+    scene.add(group);
+    //loader = new THREE.JSONLoader();
+
+    //loader.load( JSON.parse(str));
+    //loader.onLoadComplete=function(mesh){scene.add( mesh )} 
+    
+    // Plot the primatives
+    /*for (var indx = 0; indx < data.elements.length; indx++) {
+      var type = data.elements[indx].type;
+      switch(type) {
+        case "point":
+          scene.add(drawPoint(data.elements[indx]));
+          break;
+        case "line":
+          scene.add(drawLine(data.elements[indx]));
+          break;
+        case "polygon":
+          scene.add(drawPolygon(data.elements[indx]));
+          break;
+        case "sphere":
+          scene.add(drawSphere(data.elements[indx]));
+          break;
+        case "cube":
+          scene.add(drawCube(data.elements[indx]));
+          break;
+        default:
+          alert("Error: Unknown type passed to drawGraphics3D");
+      }
+    }*/
+    
+    // Renderer (set preserveDrawingBuffer to deal with issue
+    // of weird canvas content after switching windows)
+  
+    renderer = new WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
+    
+    renderer.setSize(400, 400);
+    renderer.setClearColor( 0xffffff );
+    container.appendChild(renderer.domElement);
+    renderer.domElement.style = "margin:auto";
+    
+    function render() {
+      positionLights();
+      renderer.render( scene, camera );
+    }
+    
+    function ScaleInView() {
+      var tmp_fov = 0.0;
+      //var proj2d = new THREE.Vector3();
+    
+      /*for (var i=0; i<boundbox.geometry.vertices.length; i++) {
+        proj2d = proj2d.addVectors(boundbox.geometry.vertices[i], boundbox.position);
+        proj2d = toScreenCoords(proj2d);
+    
+        angle = 114.59 * Math.max(
+           Math.abs(Math.atan(proj2d.x/proj2d.z) / camera.aspect),
+           Math.abs(Math.atan(proj2d.y/proj2d.z))
+        );
+        tmp_fov = Math.max(tmp_fov, angle);
+      }*/
+      //console.log(bbox);
+      var height = bbox.min.clone().sub(bbox.max).length();
+      var dist = center.clone().sub(camera.position).length();
+      tmp_fov = 2 * Math.atan( height / ( 2 * dist ) ) * ( 180 / Math.PI );
+      
+      camera.fov = tmp_fov + 5;
+      camera.updateProjectionMatrix();
+    }
+    
+
+    /**
+     * 
+     * @param {MouseEvent} event 
+     * @description Mouse Interactions
+     */
+    function onDocumentMouseDown( event ) {
+      event.preventDefault();
+    
+      isMouseDown = true;
+      isShiftDown = false;
+      isCtrlDown = false;
+    
+      onMouseDownTheta = theta;
+      onMouseDownPhi = phi;
+    
+      onMouseDownPosition.x = event.clientX;
+      onMouseDownPosition.y = event.clientY;
+    
+      onMouseDownFocus = new Vector3().copy(focus);
+    }
+    /**
+     * 
+     * @param {MouseEvent} event 
+     */
+    function onDocumentMouseMove(event) {
+      event.preventDefault();
+    
+      if (isMouseDown) {
+        positionticknums();
+    
+        if (event.shiftKey) {
+          // console.log("Pan");
+          if (! isShiftDown) {
+            isShiftDown = true;
+            onMouseDownPosition.x = event.clientX;
+            onMouseDownPosition.y = event.clientY;
+            autoRescale = false;
+            container.style.cursor = "move";
+          }
+          var camz = new Vector3().sub(focus, camera.position);
+          camz.normalize();
+    
+          var camx = new Vector3(
+              - radius * Math.cos(theta) * Math.sin(phi) * (theta<0.5*Math.PI?1:-1),
+              radius * Math.cos(theta) * Math.cos(phi) * (theta<0.5*Math.PI?1:-1),
+              0
+          );
+          camx.normalize();
+    
+          var camy = new Vector3();
+          camy.cross(camz, camx);
+    
+          focus.x = onMouseDownFocus.x + (radius / 400)*(camx.x * (onMouseDownPosition.x - event.clientX) + camy.x * (onMouseDownPosition.y - event.clientY));
+          focus.y = onMouseDownFocus.y + (radius / 400)*(camx.y * (onMouseDownPosition.x - event.clientX) + camy.y * (onMouseDownPosition.y - event.clientY));
+          focus.z = onMouseDownFocus.z + (radius / 400)*(camx.z * (onMouseDownPosition.x - event.clientX) + camy.z * (onMouseDownPosition.y - event.clientY));
+    
+          update_camera_position();
+    
+        } else if (event.ctrlKey) {
+          // console.log("Zoom");
+          if (! isCtrlDown) {
+            isCtrlDown = true;
+            onCtrlDownFov = camera.fov;
+            onMouseDownPosition.x = event.clientX;
+            onMouseDownPosition.y = event.clientY;
+            autoRescale = false;
+            container.style.cursor = "crosshair";
+          }
+          camera.fov =  onCtrlDownFov + 20 * Math.atan((event.clientY - onMouseDownPosition.y)/50);
+          
+          camera.fov = Math.max(1, Math.min(camera.fov, 150));
+          //console.log("fov"+camera.fov);
+          camera.updateProjectionMatrix();
+          //console.log(JSON.stringify(camera));
+        } else {
+          // console.log("Spin");
+          if (isCtrlDown || isShiftDown) {
+            onMouseDownPosition.x = event.clientX;
+            onMouseDownPosition.y = event.clientY;
+            isShiftDown = false;
+            isCtrlDown = false;
+            container.style.cursor = "pointer";
+          }
+    
+          phi = 2 * Math.PI * (onMouseDownPosition.x - event.clientX) / 400 + onMouseDownPhi;
+          phi = (phi + 2 * Math.PI) % (2 * Math.PI);
+          theta = 2 * Math.PI * (onMouseDownPosition.y - event.clientY) / 400 + onMouseDownTheta;
+          var epsilon = 1e-12; // Prevents spinnging from getting stuck
+          theta = Math.max(Math.min(Math.PI - epsilon, theta), epsilon);
+    
+          update_camera_position();
+        }
+        render();
+      } else {
+        container.style.cursor = "pointer";
+      }
+    }
+    /**
+     * 
+     * @param {MouseEvent} event 
+     */
+    function onDocumentMouseUp(event) {
+      event.preventDefault();
+    
+      isMouseDown = false;
+      container.style.cursor = "pointer";
+    
+      if (autoRescale) {
+          ScaleInView();
+          render();
+      }
+      positionAxes();
+      render();
+      positionticknums();
+    }
+    
+    // Bind Mouse events
+    container.addEventListener('mousemove', onDocumentMouseMove, false);
+    container.addEventListener('mousedown', onDocumentMouseDown, false);
+    container.addEventListener('mouseup', onDocumentMouseUp, false);
+    container.addEventListener('touchmove', onDocumentMouseMove, false);
+    onMouseDownPosition = new Vector2();
+    var autoRescale = true;
+    
+    update_camera_position();
+    positionAxes();
+    render(); // Rendering twice updates camera.matrixWorldInverse so that ScaleInView works properly
+    ScaleInView();
+    render();     
+    positionticknums();	
+    /*** the part of a code from http://mathics.github.io.  ***/
+};

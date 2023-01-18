@@ -2,7 +2,7 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 
 export default {
 
-  input: 'src/sandbox.js',
+  input: 'temp/merged.js',
   
   output: {
     file: 'build/bundle.js',

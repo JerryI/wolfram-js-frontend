@@ -127,7 +127,7 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := (
         If[(parent = CellObjFindParent[CellObj[cell]]) =!= Null,
             CellObjRemoveAllNext[CellObj[cell]];
             
-            fireEvent["RemovedCell"][CellObj[cell]];
+            (*fireEvent["RemovedCell"][CellObj[cell]];*)
 
             (*dont touch the previuos children*)
             If[CellObj[cell]["prev"] =!= Null, CellObj[cell]["prev"]["next"] = Null, parent["child"] = Null];
@@ -148,9 +148,9 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := (
             CellObj[cell]["type"] = "input";
             CellObj[cell]["parent"] = Null;
 
-            (*fireEvent["CellMove"][CellObj[cell], parent];*)
-            (*fireEvent["CellMorph"][CellObj[cell]];*)
-            fireEvent["NewCell"][CellObj[cell]];
+            fireEvent["CellMove"][CellObj[cell], parent];
+            fireEvent["CellMorph"][CellObj[cell]];
+            (*fireEvent["NewCell"][CellObj[cell]];*)
 
             ,
 
