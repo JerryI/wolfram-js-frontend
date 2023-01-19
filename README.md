@@ -4,11 +4,11 @@ _An alternative way of operation in REPL mode of the freeware Wolfram Engine bri
 
 ![](imgs/demo2gif-3.gif)
 
-### Important note
-- this is a preliminary working example
-- only `Graphics3D` is supported by now
-- js part of the source code may look terrible
-- feel free to contribute
+### Supported
+- syntax check
+- `\n` multiline expressions
+- `Graphics3D` as a interactive frontend object
+- single kernel evaluation
 
 ### How it works
 A web server and the half of logic runs on freeware Wolfram Engine as a __backend__
