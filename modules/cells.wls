@@ -53,16 +53,15 @@ CellObjFindParent[CellObj[cell_]] := (
 
 CellObj /: 
 CellObjCreateChild[CellObj[cell_]] := (  
-    Module[{next = CellObj[cell]["child"], new = CellObj[]},
-        If[next =!= Null,
-            While[next["next"] =!= Null, next = next["next"] ];
-            next["next"] = new;
-            new["prev"] = next;        
+    Module[{child = CellObj[cell]["child"], new},
+        If[child =!= Null,
+            new = CellObjCreateNext[child];      
         ,
+            new = CellObj[];
             CellObj[cell]["child"] = new;
-            new["parent"] = CellObj[cell];
-            new["sign"] = CellObj[cell]["sign"];
         ];
+        new["parent"] = CellObj[cell];
+        new["sign"] = CellObj[cell]["sign"];
         new
     ]  
 );
@@ -119,9 +118,33 @@ Options[CellObjEvaluate] = {
     "callback" -> Null
 };
 
+(*exprs splitter. credits https://github.com/njpipeorgan *)
+CellSplitInputs[str_] := 
+  StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
+   Flatten[{#1 - 1, #2 + 1} & @@@ 
+     Sort@
+      Cases[
+       CodeParser`CodeConcreteParse[str, 
+         CodeParser`SourceConvention -> "SourceCharacterIndex"][[2]], 
+       LeafNode[Token`Newline, _, a_] :> Lookup[a, Source, Nothing]]];
+
 CellObj /: 
-CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := (  
-    Module[{exps = (*StringSplit[*){CellObj[cell]["data"]}(*, "\n"]*), parent},
+CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},  
+    (*syntax check. credits https://github.com/njpipeorgan *)
+    With[{syntaxErrors = Cases[CodeParser`CodeParse[CellObj[cell]["data"]],(ErrorNode|AbstractSyntaxErrorNode|UnterminatedGroupNode|UnterminatedCallNode)[___],Infinity]},
+        If[Length[syntaxErrors]=!=0 ,
+            fireEvent["CellError"][cell, StringRiffle[
+                TemplateApply["Syntax error `` at line `` column ``",
+                    {ToString[#1],Sequence@@#3[CodeParser`Source][[1]]}
+                ]&@@@syntaxErrors
+
+            , "\n"]];
+
+            Return[$Failed, Module];
+        ];
+    ];
+
+    Module[{exps = CellSplitInputs[CellObj[cell]["data"]], parent},
 
         (*will break the chain if we try to evaluate a child cell*)
         If[(parent = CellObjFindParent[CellObj[cell]]) =!= Null,
@@ -163,23 +186,27 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := (
         ];    
 
 
+        
 
         With[{callback = OptionValue["callback"], fireLocalEvent=fireEvent},
-            evaluator[#, $conversionTemplate, CellObj[cell]["storage"], Function[{result, st},
-                If[result =!= "Null",
+            (
+                Print[StringTemplate["Eval: ``"][#]];
+                evaluator[#, $conversionTemplate, CellObj[cell]["storage"], Function[{result, st},
+                    If[result =!= "Null" && StringLength[result] > 0,
 
-                    With[{new = CellObjCreateChild[CellObj[cell] ]},
-                        new["data"] = result;
-                        new["type"] = "output";
-                        new["storage"] = st;
+                        With[{new = CellObjCreateChild[CellObj[cell] ]},
+                            new["data"] = result;
+                            new["type"] = "output";
+                            new["storage"] = st;
 
-                        fireLocalEvent["NewCell"][new];
+                            fireLocalEvent["NewCell"][new];
+                        ]
                     ]
-                ]
-            ] ]& /@ exps;
+                ] ]
+            )& /@ exps;
         ];
     ];  
-);
+];
 
 
 

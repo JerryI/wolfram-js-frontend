@@ -101,6 +101,8 @@ CellEventFire[addr_]["ClearStorage"][cell_] := (
     ];
 );
 
+CellEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, FrontEndCellError[cell[[1]], text]];
+
 CellEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[
         {

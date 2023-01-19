@@ -103,8 +103,6 @@ core.FrontEndMoveCell = function (args, env) {
 
   newDiv.appendChild(cell);
 
-  //buggy thing
-
 }
 
 core.FrontEndMorphCell = function (args, env) {
@@ -123,6 +121,10 @@ core.FrontEndClearStorage = function (args, env) {
   });
 
   //not implemented
+}
+
+core.FrontEndCellError = function (args, env) {
+  alert(interpretate(args[1]));
 }
 
 core.FrontEndCreateCell = function (args, env) {
@@ -162,33 +164,12 @@ core.FrontEndCreateCell = function (args, env) {
   var notebook = input["sign"];
   var uuid = input["id"];
 
-  //var newCell = CodeMirror(target, {value: input["data"], mode:  "mathematica", extraKeys: {
-  //  "Shift-Enter": function(instance) {
-  //     eval(instance.getValue(), notebook, uuid);
-  //  },
-  // }});
-
-  //newCell.on("blur",function(cm,change){ socket.send('CellObj["'+cm.display.wrapper.id.split('---')[0]+'"]["data"] = "'+cm.getValue().replaceAll('\"','\\"')+'";'); });
-
   var wrapper = document.createElement("div");
   target.appendChild(wrapper);
 
   wrapper.id = `${input["id"]}---${input["type"]}`;
 
   wrapper.classList.add(`${input["type"]}-node`);
-
-  /*const editor = new EditorView({
-    doc: input["data"],
-    extensions: [placeholders, minimalSetup,
-
-      keymap({
-        "Shift-Enter": (state, dispatch) => {
-          eval(state.doc.toString(), notebook, uuid);
-        }
-      })
-    ],
-    parent: wrapper
-  });*/
 
   var uid = input["id"];
 

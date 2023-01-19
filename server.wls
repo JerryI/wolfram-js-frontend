@@ -9,6 +9,7 @@ NullQ[x_] := TrueQ[x === Null];
 (*dunno if it helps here*)
 $HistoryLength = 0;
 
+Needs["CodeParser`"];
 Import["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/Tinyweb/Tinyweb.wl"];
 Import["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"];
 

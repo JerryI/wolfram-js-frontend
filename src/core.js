@@ -3,7 +3,7 @@ var core, interpretate;
 
 core = {};
 
-interpretate = function (d, env = { element: document.body, mesh: undefined }) {
+interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false }) {
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
   }
@@ -16,7 +16,7 @@ interpretate = function (d, env = { element: document.body, mesh: undefined }) {
 
   this.name = d[0];
   this.args = d.slice(1, d.length);
-  console.log(this.name);
+  
   try {
     return core[this.name](this.args, env);
   }
@@ -24,6 +24,12 @@ interpretate = function (d, env = { element: document.body, mesh: undefined }) {
     console.error(e, "not implemented");
   }
 };
+
+core.Rational = function (args, env) {
+  if (env.numerical === true) return interpretate(args[0], env)/interpretate(args[1], env);
+  //return the original form igoring other arguments
+  return ["Rational", args[0], args[1]];
+}
 
 core.List = function (args, env) {
   var copy, e, i, len, list;
@@ -62,12 +68,4 @@ function uuidv4() {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
-}
-
-function parse(input) {
-  var i = str.length;
-  var brakets = 0;
-  while (i--) {
-    alert(str[i]);
-  }
 }
