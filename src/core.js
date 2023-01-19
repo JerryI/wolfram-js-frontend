@@ -49,7 +49,12 @@ core.Association = function (args, env) {
 };
 
 core.Rule = function (args, env) {
-  env.association[args[0]] = args[1];
+  try {
+    env.association[args[0]] = args[1];
+  }
+  catch (err) {
+    console.error(err);
+  }
 };
 
 function uuidv4() {
