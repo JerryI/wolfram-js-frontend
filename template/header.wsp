@@ -34,7 +34,7 @@
     
 
     <script>
-      let socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
+      const socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
 
       socket.onopen = function(e) {
           console.log("[open] Соединение установлено");
