@@ -82,26 +82,25 @@ core.FrontEndRemoveCell = function (args, env) {
 }
 
 core.FrontEndMoveCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var template = interpretate(args[0]);
+  var input = JSON.parse(interpretate(args[1]));
 
   //document.getElementById(input["cell"]["id"]+"---"+input["cell"]["type"]).remove();
+  const cell   = document.getElementById(`${input["cell"]["id"]}---output`);
+  //make it different id, so it will not conflict
+  cell.id = cell.id + '--old';
 
-  const cell = document.getElementById(`${input["cell"]["id"]}---output`);
+  const editor = cell.firstChild; 
+  const parentcellwrapper = cell.parentNode.parentNode;
 
-  const parent = document.getElementById(input["parent"]["id"]);
-
-  console.log(parent);
+  console.log(parentcellwrapper);
   console.log(cell);
+  console.log(editor);
 
-  cell.id = `${input["cell"]["id"]}---${input["cell"]["type"]}`;
-
-  const newDiv = document.createElement("div");
-  newDiv.id = input["cell"]["id"];
-  newDiv.classList.add("parent-node");
-
-  parent.insertAdjacentElement('afterend', newDiv);
-
-  newDiv.appendChild(cell);
+  parentcellwrapper.insertAdjacentHTML('afterend', template);
+  console.log(document.getElementById(`${input["cell"]["id"]}---input`));
+  document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
+  cell.remove();
 
 }
 
@@ -128,52 +127,30 @@ core.FrontEndCellError = function (args, env) {
 }
 
 core.FrontEndCreateCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var template = interpretate(args[0]);
+  var input = JSON.parse(interpretate(args[1]));
+
+  console.log(template);
   console.log(input);
 
   $objetsstorage = Object.assign({}, $objetsstorage, input["storage"]);
 
-  var target;
 
   if (input["parent"] === "") {
-    // create a new div element
-    const newDiv = document.createElement("div");
-    newDiv.id = input["id"];
-    newDiv.classList.add("parent-node");
-
     if (input["prev"] !== "") {
-
-      //console.log(input["prev"]);
-      console.log(input["prev"]);
-      const p = document.getElementById(input["prev"]);
-      console.log(p);
-      p.insertAdjacentElement('afterend', newDiv);
-
+      document.getElementById(input["prev"]).parentNode.insertAdjacentHTML('afterend', template);
     } else {
-
-      document.getElementById(input["sign"]).appendChild(newDiv);
-
+      document.getElementById(input["sign"]).parentNode.insertAdjacentHTML('afterend', template);
     }
-
-    target = newDiv;
     last = input["id"];
   } else {
-    target = document.getElementById(input["parent"]);
+    document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
   }
 
   var notebook = input["sign"];
-  var uuid = input["id"];
-
-  var wrapper = document.createElement("div");
-  target.appendChild(wrapper);
-
-  wrapper.id = `${input["id"]}---${input["type"]}`;
-
-  wrapper.classList.add(`${input["type"]}-node`);
-
   var uid = input["id"];
 
-  const editor = new EditorView({
+  new EditorView({
     doc: input["data"],
     extensions: [
       highlightActiveLineGutter(),
@@ -194,7 +171,7 @@ core.FrontEndCreateCell = function (args, env) {
       StreamLanguage.define(mathematica),
       placeholders,
       keymap.of([
-        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uuid); } }, ...defaultKeymap, ...historyKeymap
+        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
@@ -203,7 +180,7 @@ core.FrontEndCreateCell = function (args, env) {
         }
       })
     ],
-    parent: wrapper
+    parent: document.getElementById(input["id"]+"---"+input["type"])
   });
 
 }

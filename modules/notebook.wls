@@ -21,7 +21,7 @@ NotebookCreate[OptionsPattern[]] := (
             "evaluator" -> OptionValue["evaluator"]
         |>;
 
-        notebooks[id, "cell"] = CellObj["sign"->id, "type"->"input", "data"->"\"Hello World!\""];
+        notebooks[id, "cell"] = CellObj["sign"->id, "type"->"input", "data"->"\"1+1\""];
         id
     ]
 );
@@ -46,7 +46,7 @@ NotebookOperate[id_, cellid_] := (
 );
 
 CellEventFire[addr_]["NewCell"][cell_] := (
-    (*actually frirstly you need to check!*)
+    (*looks ugly actually. we do not need so much info*)
     With[
         {
             obj = <|
@@ -59,10 +59,12 @@ CellEventFire[addr_]["NewCell"][cell_] := (
                         "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
                         "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
                         "storage"->cell["storage"]
-                    |>
+                    |>,
+            
+            template = LoadPage["template/cells/"<>cell["type"]<>".wsp", {id = cell[[1]]}]
         },
 
-        WebSocketSend[addr, FrontEndCreateCell[ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, FrontEndCreateCell[template, ExportString[obj, "JSON"] ]];
     ];
 );
 
@@ -105,7 +107,7 @@ CellEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, FrontEndC
 
 CellEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[
-        {
+        {   template = LoadPage["template/cells/input.wsp", {id = cell[[1]]}],
             obj = <|
                     "cell"-> <|
                         "id"->cell[[1]], 
@@ -129,7 +131,7 @@ CellEventFire[addr_]["CellMove"][cell_, parent_] := (
                 |>
         },
 
-        WebSocketSend[addr, FrontEndMoveCell[ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, FrontEndMoveCell[template, ExportString[obj, "JSON"] ]];
     ];
 );
 

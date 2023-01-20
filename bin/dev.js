@@ -77,12 +77,4 @@ function rebuildAndRestart() {
   build();
 }
 
-const watcher = chokidar.watch(join(root, '/src'), {
-  ignored: /(^|[\/\\])\../,
-  persistent: true
-});
-
-watcher
-  .on('change', rebuildAndRestart);
-
-//start()
+startServer()

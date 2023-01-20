@@ -63,6 +63,11 @@ wolframscript -f server.wls dev
 ```
 The filewatcher will rebuild the js bundle everytime you change something in `src` folder.
 
+### Reused code
+- [Mathics](https://github.com/Mathics3)
+- [Wolfram Notebook (VS Code)](https://github.com/njpipeorgan/wolfram-language-notebook)
+- [Observable](https://github.com/observablehq)
+
 ### Plans
 - create and write a module for `Graphics` (2D) objects using possibly d3.js
 - make alternative functions (user will choose) for the `Plot[]` using ploty.js

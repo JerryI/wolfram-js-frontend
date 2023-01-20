@@ -12,7 +12,7 @@
                 <label class="form-group-label" for="function">
                   Wolfram Language
                 </label>
-                <button class="btn btn-sm btn-outline-info" onclick="addCell()">+</button>
+                
                 <div id="console">
                 
                 </div>
@@ -35,8 +35,8 @@
   </div>
 
   <script>
-    function addCell() {
-      var q = 'Block[{fireEvent = CellEventFire[client]}, CellObjCreateNext[CellObj["'+last+'"]]]';
+    function AddCell(id) {
+      var q = 'Block[{fireEvent = CellEventFire[client]}, CellObjCreateNext[CellObj["'+id+'"]]]';
       socket.send(q);
     }
     var global;
@@ -51,7 +51,8 @@
         if (socket.readyState != 1) {
             setTimeout(OpenOnLoad, 500);
         } else {
-            socket.send(q);
+            
+            setTimeout(socket.send(q), 500);
         }
     };
 

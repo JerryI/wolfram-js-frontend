@@ -66510,26 +66510,25 @@ core.FrontEndRemoveCell = function (args, env) {
 };
 
 core.FrontEndMoveCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var template = interpretate(args[0]);
+  var input = JSON.parse(interpretate(args[1]));
 
   //document.getElementById(input["cell"]["id"]+"---"+input["cell"]["type"]).remove();
+  const cell   = document.getElementById(`${input["cell"]["id"]}---output`);
+  //make it different id, so it will not conflict
+  cell.id = cell.id + '--old';
 
-  const cell = document.getElementById(`${input["cell"]["id"]}---output`);
+  const editor = cell.firstChild; 
+  const parentcellwrapper = cell.parentNode.parentNode;
 
-  const parent = document.getElementById(input["parent"]["id"]);
-
-  console.log(parent);
+  console.log(parentcellwrapper);
   console.log(cell);
+  console.log(editor);
 
-  cell.id = `${input["cell"]["id"]}---${input["cell"]["type"]}`;
-
-  const newDiv = document.createElement("div");
-  newDiv.id = input["cell"]["id"];
-  newDiv.classList.add("parent-node");
-
-  parent.insertAdjacentElement('afterend', newDiv);
-
-  newDiv.appendChild(cell);
+  parentcellwrapper.insertAdjacentHTML('afterend', template);
+  console.log(document.getElementById(`${input["cell"]["id"]}---input`));
+  document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
+  cell.remove();
 
 };
 
@@ -66556,49 +66555,27 @@ core.FrontEndCellError = function (args, env) {
 };
 
 core.FrontEndCreateCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var template = interpretate(args[0]);
+  var input = JSON.parse(interpretate(args[1]));
+
+  console.log(template);
   console.log(input);
 
   $objetsstorage = Object.assign({}, $objetsstorage, input["storage"]);
 
-  var target;
 
   if (input["parent"] === "") {
-    // create a new div element
-    const newDiv = document.createElement("div");
-    newDiv.id = input["id"];
-    newDiv.classList.add("parent-node");
-
     if (input["prev"] !== "") {
-
-      //console.log(input["prev"]);
-      console.log(input["prev"]);
-      const p = document.getElementById(input["prev"]);
-      console.log(p);
-      p.insertAdjacentElement('afterend', newDiv);
-
+      document.getElementById(input["prev"]).parentNode.insertAdjacentHTML('afterend', template);
     } else {
-
-      document.getElementById(input["sign"]).appendChild(newDiv);
-
+      document.getElementById(input["sign"]).parentNode.insertAdjacentHTML('afterend', template);
     }
-
-    target = newDiv;
     last = input["id"];
   } else {
-    target = document.getElementById(input["parent"]);
+    document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
   }
 
   var notebook = input["sign"];
-  var uuid = input["id"];
-
-  var wrapper = document.createElement("div");
-  target.appendChild(wrapper);
-
-  wrapper.id = `${input["id"]}---${input["type"]}`;
-
-  wrapper.classList.add(`${input["type"]}-node`);
-
   var uid = input["id"];
 
   new EditorView({
@@ -66622,7 +66599,7 @@ core.FrontEndCreateCell = function (args, env) {
       StreamLanguage.define(mathematica),
       placeholders,
       keymap.of([
-        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uuid); } }, ...defaultKeymap, ...historyKeymap
+        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
@@ -66631,7 +66608,7 @@ core.FrontEndCreateCell = function (args, env) {
         }
       })
     ],
-    parent: wrapper
+    parent: document.getElementById(input["id"]+"---"+input["type"])
   });
 
 };
@@ -66849,8 +66826,6 @@ core.Center = function (args, env) {
 };
 
 core.Cylinder = function (args, env) {
-  //some troubles with positioning...
-  //fixme
   let radius = 1;
   if (args.length > 1) radius = args[1];
   /**
@@ -66876,35 +66851,35 @@ core.Cylinder = function (args, env) {
   geometry.computeBoundingBox();
   const position = geometry.boundingBox;
 
-  const center = position.max.addScaledVector(position.min, -1); 
+  const center = position.max.addScaledVector(position.min, -1);
 
   //default geometry
   const cylinder = new Mesh(geometry, material);
 
   //the default axis of a Three.js cylinder is [010], then we rotate it to dp vector.
   //using https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-  const v = new Vector3().set(0,1,0).cross(dp.normalize());
+  const v = new Vector3(0, 1, 0).cross(dp.normalize());
   const theta = Math.asin(v.length() / dp.length());
   const sc = Math.sin(theta);
   const mcs = 1.0 - Math.cos(theta);
 
   //Did not find how to write it using vectors
-  const matrix = new Matrix4().set( 1 - mcs*(v.y*v.y + v.z*v.z),  mcs*v.x*v.y - sc*v.z,         sc*v.y + mcs*v.x*v.z,         0,
-                                          mcs*v.x*v.y + sc*v.z,         1 - mcs*(v.x*v.x + v.z*v.z),  -(sc*v.x) + mcs*v.y*v.z,      0, 
-                                          -(sc*v.y) + mcs*v.x*v.z,      sc*v.x + mcs*v.y*v.z,         1 - mcs*(v.x*v.x + v.y*v.y),   0,
-                                          
-                                          0,0,0,1
-                                        );
+  const matrix = new Matrix4().set(
+    1 - mcs * (v.y * v.y + v.z * v.z), mcs * v.x * v.y - sc * v.z,/*   */ sc * v.y + mcs * v.x * v.z,/*   */ 0,//
+    mcs * v.x * v.y + sc * v.z,/*   */ 1 - mcs * (v.x * v.x + v.z * v.z), -(sc * v.x) + mcs * v.y * v.z,/**/ 0,//
+    -(sc * v.y) + mcs * v.x * v.z,/**/ sc * v.x + mcs * v.y * v.z,/*   */ 1 - mcs * (v.x * v.x + v.y * v.y), 0,//
+    0,/*                            */0,/*                            */ 0,/**                           */ 1
+  );
 
   //middle target point
-  const middle = p1.divideScalar(2.0).addScaledVector(p2, 0.5); 
+  const middle = p1.divideScalar(2.0).addScaledVector(p2, 0.5);
 
-  //shift to the center and rotate 
+  //shift to the center and rotate
   cylinder.position = center;
   cylinder.applyMatrix4(matrix);
-  
+
   //translate its center to the middle target point
-  cylinder.position.addScaledVector(middle,-1);
+  cylinder.position.addScaledVector(middle, -1);
 
   env.mesh.add(cylinder);
 
