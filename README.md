@@ -1,6 +1,6 @@
 ## Wolfram Engine JS Frontend
 
-_An alternative way of operation in REPL mode of the freeware Wolfram Engine bringing similar experience as Mathematica Notebook._
+_An alternative way of operating in REPL mode of the freeware Wolfram Engine bringing similar experience as Mathematica Notebook._
 
 ![](imgs/demo2gif-3.gif)
 
