@@ -39,9 +39,9 @@ NotebookEvaluate[id_, cellid_] := (
     ];
 );
 
-NotebookOperate[id_, cellid_] := (
+NotebookOperate[cellid_, op_] := (
     Block[{fireEvent = CellEventFire[client]},
-        CellObjEvaluate[CellObj[cellid], notebooks[id, "evaluator"] ];
+        op[CellObj[cellid]];
     ];
 );
 

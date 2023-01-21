@@ -1,4 +1,4 @@
-$SupportedGraphicsObjectList = {Graphics3D};
+$SupportedGraphicsObjectList = {Graphics3D, HTMLForm};
 
 $conversionTemplate = Table[
  With[{item = i},
@@ -8,3 +8,6 @@ $conversionTemplate = Table[
     FrontEndExecutable[$uuid]]
   ]
  , {i, $SupportedGraphicsObjectList}];
+
+ 
+ SVGForm[x_] := ExportString[x, "SVG"]//HTMLForm;

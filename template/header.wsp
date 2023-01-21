@@ -55,3 +55,4 @@
     <title>Wolfram Engine</title>
   </head>
   <body>
+    <?wsp LoadPage["template/menu.wsp"] ?>

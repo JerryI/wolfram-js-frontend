@@ -75,7 +75,7 @@ var $objetsstorage = {};
 core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   if (input["parent"] === "") {
-    document.getElementById(input["id"]).remove();
+    document.getElementById(input["id"]).parentNode.remove();
   } else {
     document.getElementById(`${input["id"]}---${input["type"]}`).remove();
   }
@@ -171,6 +171,7 @@ core.FrontEndCreateCell = function (args, env) {
       StreamLanguage.define(mathematica),
       placeholders,
       keymap.of([
+        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`) }  } },
         { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
@@ -194,6 +195,13 @@ function celleval(ne, id, cell) {
   var q = `CellObj["${cell}"]["data"]="${fixed}"; NotebookEvaluate["${id}", "${cell}"]`;
   socket.send(q);
 }
+
+core.HTMLForm = function (args, env) {
+    env.element.innerHTML = interpretate(args[0]);
+}
+
+
+
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";

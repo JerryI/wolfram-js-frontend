@@ -36,11 +36,11 @@
 
   <script>
     function AddCell(id) {
-      var q = 'Block[{fireEvent = CellEventFire[client]}, CellObjCreateNext[CellObj["'+id+'"]]]';
+      var q = 'Block[{fireEvent = CellEventFire[client]}, CellObjCreateAfter[CellObj["'+id+'"]]]';
       socket.send(q);
     }
-    var global;
 
+    var global;
     var last;
 
 

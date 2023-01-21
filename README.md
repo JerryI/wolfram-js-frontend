@@ -10,6 +10,10 @@ _An alternative way of operation in REPL mode of the freeware Wolfram Engine bri
 - `Graphics3D` as a interactive frontend object
 - single kernel evaluation
 
+### Extra cool stuff
+- `HTMLForm[String]` embeds `String` as a dom innerHTML at the given output cell
+- `SVGForm[anything]` exports the object as `svg` to the fronted cell. Try to eval `Plot[x,{x,0,1}]//SVGForm`
+
 ### How it works
 A web server and the half of logic runs on freeware Wolfram Engine as a __backend__
 - serves the static page via library [TinyWeb & WSP](https://github.com/JerryI/tinyweb-mathematica) (hypertext preprocessor)

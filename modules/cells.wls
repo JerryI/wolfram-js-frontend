@@ -79,6 +79,61 @@ CellObjCreateNext[CellObj[cell_]] := (
     ]  
 );
 
+CellObj /: 
+CellObjCreateAfter[CellObj[cell_]] := (  
+    Module[{new = CellObj[]},
+        If[CellObj[cell]["next"] =!= Null,
+            CellObj[cell]["next"]["prev"] = new;
+            new["next"] = CellObj[cell]["next"];
+        ];
+        CellObj[cell]["next"] = new;
+        new["prev"] = CellObj[cell];
+
+        new["sign"] = CellObj[cell]["sign"];
+        fireEvent["NewCell"][new];
+        new
+    ]  
+);
+
+CellObj /:
+CellObjRemoveFull[CellObj[cell_]] := Module[{}, 
+    Print[notebooks[CellObj[cell]["sign"], "cell"]];
+    If[notebooks[CellObj[cell]["sign"], "cell"] === CellObj[cell],
+        If[!NullQ[CellObj[cell]["next"]],
+            CellObj[cell]["next"]["prev"] = Null;
+            notebooks[CellObj[cell]["sign"], "cell"] = CellObj[cell]["next"];
+            CellObjRemove[CellObj[cell]];
+            Return[$Ok, Module];
+        ,
+            fireEvent["CellError"][cell, "There must be at least one cell in the notebook"];
+            Return[$Failed, Module];
+        ]
+    ];
+
+    If[!NullQ[CellObj[cell]["parent"]],
+        CellObj[cell]["parent"]["child"] = Null;
+    ];
+    
+    If[!NullQ[CellObj[cell]["next"]],
+        If[!NullQ[CellObj[cell]["prev"]],
+            CellObj[cell]["next"]["prev"] = CellObj[cell]["prev"];
+            CellObj[cell]["prev"]["next"] = CellObj[cell]["next"];
+        ,
+            CellObj[cell]["next"]["prev"] = Null;
+        ];
+    ,
+        If[!NullQ[CellObj[cell]["prev"]],
+            CellObj[cell]["prev"]["next"] = Null;
+        ];    
+    ];    
+
+    If[!NullQ[CellObj[cell]["child"]],
+        CellObjRemoveFull[CellObj[cell]["child"]];
+    ];
+
+    CellObjRemove[CellObj[cell]];
+];
+
 CellObj /:
 CellObjRemove[CellObj[cell_]] := ( 
     fireEvent["RemovedCell"][CellObj[cell]];

@@ -72,6 +72,20 @@
   
     /* border-image: linear-gradient(to bottom, turquoise, greenyellow) 0 1; */
   }
+
+  .menu-tools {
+    z-index: 999999;
+  }
+
+  .popup {
+    display:none;
+    position: absolute;
+    
+  }
+
+  .popup.show {
+    display:block;
+  }
   
   @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
   /*! TACHYONS v4.9.0 | http://tachyons.io */

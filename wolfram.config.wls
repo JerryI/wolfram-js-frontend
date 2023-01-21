@@ -2,6 +2,7 @@
     "watch" -> "src",
     "merge" -> {
         "src/frontend.js",
+        "src/misc.js",
         "https://raw.githubusercontent.com/JerryI/Mathematica-ThreeJS-graphics-engine/master/src/graphics3d.js"
     },
     "after" :> (
