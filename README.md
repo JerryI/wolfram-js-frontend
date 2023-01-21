@@ -7,6 +7,8 @@ _An alternative way of operation in REPL mode of the freeware Wolfram Engine bri
 ### Supported
 - syntax check
 - `\n` multiline expressions
+- `%` symbol
+- `Print` function
 - `Graphics3D` as a interactive frontend object
 - single kernel evaluation
 

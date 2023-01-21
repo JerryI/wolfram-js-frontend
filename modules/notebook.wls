@@ -21,7 +21,7 @@ NotebookCreate[OptionsPattern[]] := (
             "evaluator" -> OptionValue["evaluator"]
         |>;
 
-        notebooks[id, "cell"] = CellObj["sign"->id, "type"->"input", "data"->"\"1+1\""];
+        notebooks[id, "cell"] = CellObj["sign"->id, "type"->"input", "data"->"1+1"];
         id
     ]
 );

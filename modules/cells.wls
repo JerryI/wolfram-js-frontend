@@ -174,14 +174,15 @@ Options[CellObjEvaluate] = {
 };
 
 (*exprs splitter. credits https://github.com/njpipeorgan *)
-CellSplitInputs[str_] := 
+CellSplitInputs[astr_] := With[{str = StringReplace[astr, "%"->"$$$out"]},
   StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
    Flatten[{#1 - 1, #2 + 1} & @@@ 
      Sort@
       Cases[
        CodeParser`CodeConcreteParse[str, 
          CodeParser`SourceConvention -> "SourceCharacterIndex"][[2]], 
-       LeafNode[Token`Newline, _, a_] :> Lookup[a, Source, Nothing]]];
+       LeafNode[Token`Newline, _, a_] :> Lookup[a, Source, Nothing]]]
+];
 
 CellObj /: 
 CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},  
@@ -246,18 +247,22 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},
         With[{callback = OptionValue["callback"], fireLocalEvent=fireEvent},
             (
                 Print[StringTemplate["Eval: ``"][#]];
-                evaluator[#, $conversionTemplate, CellObj[cell]["storage"], Function[{result, st},
-                    If[result =!= "Null" && StringLength[result] > 0,
+                Module[{str = StringTrim[#], block = False},
 
-                        With[{new = CellObjCreateChild[CellObj[cell] ]},
-                            new["data"] = result;
-                            new["type"] = "output";
-                            new["storage"] = st;
+                    If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
+                    evaluator[str, $conversionTemplate, CellObj[cell]["storage"], block, Function[{result, st},
 
-                            fireLocalEvent["NewCell"][new];
+                        If[result =!= "Null" && StringLength[result] > 0,
+                            With[{new = CellObjCreateChild[CellObj[cell] ]},
+                                new["data"]     = result;
+                                new["type"]     = "output";
+                                new["storage"]  = st;
+
+                                fireLocalEvent["NewCell"][new];
+                            ]
                         ]
-                    ]
-                ] ]
+                    ] ]
+                ]
             )& /@ exps;
         ];
     ];  
@@ -276,10 +281,16 @@ CellObjGenerateTree[CellObj[cell_]] := (
 Unprotect[FrontEndExecutable];
 ClearAll[FrontEndExecutable];
 
-SimpleEvaluator[exp_, rules_, storage_, callback_] := 
+SimpleEvaluator[exp_, rules_, storage_, block_, callback_] := 
     Block[{$$$evaluated, $$$storage = <||>},
-        Block[{FrontEndExecutable = Function[uid, ImportString[storage[uid], "ExpressionJSON"] ]},
-            $$$evaluated = ToExpression[exp]
+        Block[  {
+                    FrontEndExecutable = Function[uid, ImportString[storage[uid], "ExpressionJSON"] ], 
+                    Print = Function[x, callback@@{ToString[x/.rules, InputForm], $$$storage}]
+                },
+
+            $$$evaluated = ToExpression[exp];
+            $$$out = $$$evaluated;
+            If[block === True, $$$evaluated = Null];
         ];
 
         With[{$$$result = $$$evaluated /.rules}, 
