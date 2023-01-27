@@ -4,6 +4,8 @@ _An alternative way of operating in REPL mode of the freeware Wolfram Engine bri
 
 ![](imgs/demo2gif-3.gif)
 
+__upd 28.01.2023 Next week - Huge update__
+
 ### Supported
 - syntax check
 - `\n` multiline expressions
