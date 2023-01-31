@@ -10,6 +10,8 @@ The project is in __alpha stage__ (or may be even lower), some features might be
 
 > PS: please, do not use master kernel for the evaluation, it exposes all internal scope of the webserver to the user. Spawn a separate process from the menu
 
+__upd 28.01.2023 Next week - Huge update__
+
 ### Supported
 - syntax check
 - `\n` multiline expressions
