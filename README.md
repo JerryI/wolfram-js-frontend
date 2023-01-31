@@ -148,11 +148,11 @@ Apart from the frontend parts located in `src`, the rest can be threated as a "w
 The building procedure is stored in `config.prior.wls` file, as well as in `rollup.config.mjs`. Using just one `rollup` is a pain, since the building procedure is quite complicated.
 
 To add a new feature, check the following files
-`src/converter.wls` - converts registered types of functions to the objects, which can be executed using frontend's JS interpreter
-`src/webobjects.wls` - defines supporting functions for the graphics and other things
-`sr/core.js` - simplified JS interpreter, can be called from anywhere as `interpretate(json object, environment)`
-`src/frontend.js` - the cells creating functions of the frontend, expands `core.js`
-`src/misc.js` - everything else, which expands `core.js` functions
+- `src/converter.wls` - converts registered types of functions to the objects, which can be executed using frontend's JS interpreter
+- `src/webobjects.wls` - defines supporting functions for the graphics and other things
+- `sr/core.js` - simplified JS interpreter, can be called from anywhere as `interpretate(json object, environment)`
+- `src/frontend.js` - the cells creating functions of the frontend, expands `core.js`
+- `src/misc.js` - everything else, which expands `core.js` functions
 
 To define your own function, define anywhere you want (inside `<script>` or in `.js` files)
 ```js
