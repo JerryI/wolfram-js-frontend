@@ -5,7 +5,7 @@ export default {
   input: 'temp/merged.js',
   
   output: {
-    file: 'build/bundle.js',
+    file: 'temp/bundle.js',
     format: 'cjs',
     strict: false
   },

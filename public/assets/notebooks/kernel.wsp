@@ -1,0 +1,29 @@
+<div class="btn-group ml-2">
+      <button class="btn btn-secondary btn-sm" id="kernel-status" type="button">Kernel</button>
+      <button type="button" id="kernel-button" onclick="$('#kernel-selection').toggle()"  class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu" id="kernel-selection" aria-labelledby="kernel-button">
+        <?wsp Table[ ?>
+            <button class="dropdown-item" onclick='attachProcess("<?wsp i ?>")'><?wsp StringTemplate["Attach to ``"][settings["processes", i, "name"]] ?></button>
+        <?wsp , {i, settings["processes"]//Keys}]?>
+        <?wsp If[!notebooks[id, "sandboxed"], ?>
+          <button class="dropdown-item" onclick='attachProcess("master")'>Attach to the master kernel</button>
+        <?wsp , " "] ?>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" onclick='attachProcess("Null")'>Start a new process</button>
+  </div>
+  <button class="btn btn-light btn-sm" onclick="exportNotebook()" type="button">Export</button>
+</div>
+
+<script>
+    function attachProcess(dest) {
+        socket.send('NotebookAttach["<?wsp id ?>", "'+dest+'"]');
+        $('#kernel-selection').toggle()
+    }
+    function exportNotebook() {
+        socket.send('NotebookExport["<?wsp id ?>"]');
+
+    }    
+</script>
+

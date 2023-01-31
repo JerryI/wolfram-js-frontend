@@ -1,8 +1,8 @@
-wconfig = Import["wolfram.config.wls"]; 
+wdates = FileDate/@FileNames["*.*", wconfig["watch"]];
 
 CheckFiles := (
-    If[wdates =!= FileDate/@FileNames["*.js", wconfig["watch"]], Rebuild];
-    wdates = FileDate/@FileNames["*.js", wconfig["watch"]];
+    If[wdates =!= FileDate/@FileNames["*", wconfig["watch"]], Rebuild];
+    wdates = FileDate/@FileNames["*", wconfig["watch"]];
 );
 
 Rebuild := (
@@ -11,6 +11,6 @@ Rebuild := (
     wconfig["after"];
 );
 
-If[$ScriptCommandLine[[2]] === "dev",
+If[MemberQ[$ScriptCommandLine, "dev"],
     SessionSubmit[ScheduledTask[CheckFiles, Quantity[3, "Seconds"]]]
 ];

@@ -1,0 +1,30 @@
+<div class="col">
+      <div class="card shadow-sm" >
+        
+        
+      <div class="card-body">
+     
+          <div class="d-flex justify-content-between align-items-left mb-1">
+            <div class="align-items-sm-baseline align-items-left">
+             
+              <small class="text-muted">Latest backup <span style="badge badge-info "><?wsp TextString[ (Now - settings["backup date"])//Round ] ?></span></small>
+              
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="backupnow()">Backup now</button>
+                    </div>
+                    
+
+            </div>              
+          </div> 
+        </div>
+      </div>
+      </div>
+<script>
+
+    function backupnow() {
+      socket.send('PushNotification["assets/widgets/backup", "starting backing up..."]; CBackup;');
+    }
+
+</script>

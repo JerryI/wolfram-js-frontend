@@ -1,0 +1,95 @@
+<?wsp
+  session[urlExtend] = If[KeyExistsQ[session, "q"], session["q"]//URLEncode, ""];
+  ""
+?>
+
+<div class="flex-shrink-0 p-3" style="width: 280px; float:left; min-height:800px;">
+  <div class="fire pb-3">
+    <div class="flames" id="logoFlames" style="display:none">
+       <div class="flame"></div>
+       <div class="flame"></div>
+       <div class="flame"></div>
+       <div class="flame"></div>
+    </div>
+    <img height="44" id="logoico" src="/mathematicaIcon.svg" />
+    <div id="smoke" style="display: <?wsp If[settings[ToString[cpu]] > 0, block, none ] ?>">
+      <span class="s0"></span>
+      <span class="s1"></span>
+      <span class="s2"></span>
+      <span class="s3"></span>
+      <span class="s4"></span>
+      <span class="s5"></span>
+      <span class="s6"></span>
+      <span class="s7"></span>
+      <span class="s8"></span>
+      <span class="s9"></span>
+    </div>
+ </div>
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    
+
+      <span class="fs-5 fw-semibold" style="padding-left: 10px;">Wolfram Engine</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          Home
+        </button>
+        <div class="collapse show" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="/index.wsp" class="link-dark rounded">Notebooks</a></li>
+            <li><a href="/console.wsp" class="link-dark rounded">Console</a></li>
+          </ul>
+        </div>
+      </li>
+         
+      <li class="border-top my-3"></li>
+      <li class="mb-1" id="processPlace">
+        <?wsp Table[ ?>
+
+        <?wsp LoadPage["assets/processtoast.wsp", {id = i, state = ""}] ?>
+        
+        <?wsp  , {i, settings["processes"]//Keys}] ?>
+      </li>
+
+      <li class="mb-1" id="toastPlace">
+        <?wsp Table[ ?>
+
+        <?wsp LoadPage["assets/singletoast.wsp", {id = i, state = ""}] ?>
+        
+        <?wsp  , {i, Select[settings["notifications"]//Keys, !TrueQ[settings["notifications"][#]["hide"]]&]//Reverse}] ?>
+
+        <button id="showallnotifications" class="btn btn-sm btn-outline-secondary" >Show older</button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var rotationdegrees = 0;
+
+    core.Pong = function(args, env) {
+      console.log("[p]");
+      rotationdegrees = rotationdegrees + 90;
+      document.getElementById("logoico").style= "transform: rotate("+rotationdegrees+"deg);";
+    };
+
+    core.PushMessage = function(args, env) {
+      console.log("ahhae!");
+      document.getElementById("toastPlace").insertAdjacentHTML("afterbegin", interpretate(args[0]));
+    };
+
+    core.UpdateProcesses = function(args, env) {
+      console.log("ahhae porp!");
+      document.getElementById("processPlace").innerHTML = interpretate(args[0]);
+    };    
+
+    core.SetSmoke = function(args, env) {
+      if(interpretate(args[0]) == 0) {
+        document.getElementById('smoke').style = "display: none";
+      } else {
+        document.getElementById('smoke').style = "display: block";
+      } 
+    };    
+
+    document.getElementById("showallnotifications").onclick = function(e) {console.log(e); modalLoad('notifications');};    
+  </script>

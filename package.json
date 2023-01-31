@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/codemirror": "^5.60.6",
     "codemirror": "^6.0.1",
+    "purify-css": "^1.2.5",
     "rollup": "^3.10.0",
     "serve-static": "^1.14.1"
   },

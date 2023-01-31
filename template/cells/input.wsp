@@ -1,6 +1,0 @@
-<div class="parent-node-wrapper">
-    <?wsp LoadPage["template/cells/toolbox.wsp"] ?>
-    <div id="<?wsp id?>" class="parent-node">
-        <div id="<?wsp id?>---input" class="input-node"></div>
-    </div>
-</div>

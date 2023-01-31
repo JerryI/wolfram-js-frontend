@@ -1,0 +1,10 @@
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<div class="d-flex align-items-center">
+  
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <?wsp Table[ LoadPage["assets/widgets/"<>i], {i, FileNameTake/@FileNames["*.wsp", "public/assets/widgets"]}]   ?>
+ 
+</div>
+
+</div>

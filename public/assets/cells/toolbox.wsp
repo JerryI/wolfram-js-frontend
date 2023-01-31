@@ -1,0 +1,35 @@
+<div class="parent-toolbox">
+<!--<button title="Add comment" aria-label="Add comment" class="flex items-center sans-serif f6 pointer pa0 hover-mid-gray moon-gray bg-transparent bn no-wrap absolute top-0 z-1" style="right: 4em; height: 29px;">
+<svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2">
+            <path d="M8 12V4M4 8H12"></path>
+        </svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 3L9 3L3 3C2.44772 3 2 3.44772 2 4L2 11C2 11.5523 2.44772 12 3 12L7.5 12L9.5 14L11.5 12L13 12C13.5523 12 14 11.5523 14 11L14 4C14 3.44772 13.5523 3 13 3Z"></path>
+            <line x1="5" y1="6" x2="10" y2="6"></line>
+            <line x1="5" y1="9" x2="11" y2="9"></line>
+        </svg></button>-->
+        
+    <!--<button aria-label="gutter" title="Blur cell" class="jsx-3846077284 db bn bg-transparent absolute top-0 bottom-0 right-0 w-100 pointer moon-gray hover-mid-gray">
+        <div class="jsx-3846077284 absolute top-0 flex items-center justify-center" style="right: 2.5em; width: 1em; height: 29px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="transition: transform 150ms ease 0s;">
+                <path d="M13 6.5L8 12L3 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></div>
+    </button>
+
+    <button onclick="OpenMenu('<?wsp id ?>', event)" aria-haspopup="true" class="observable-focus-dark-blue hover-blue bg-observable-focus-light-blue jsx-1840425797 absolute top-0 bn pa0" title="Click for cell actions. Drag to move cell" aria-label="Click for cell actions. Drag to move cell" style="right: 0px; top: 1px; width: 2em; height: 2em; border-radius: 6px 0px 0px; position: absolute; pad: ; margin-left: -3px; z-index: 9;" id="menu-button--menu" type="button" data-reach-menu-button="">
+        <div style="width: 1em; height: 29px;" class="jsx-3846077284 absolute top-0 flex items-center justify-center">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                <circle r="1.5" cx="8" cy="2.5"></circle>
+                <circle r="1.5" cx="8" cy="7.5"></circle>
+                <circle r="1.5" cx="8" cy="12.5"></circle>
+            </svg>
+        </div>
+    </button>-->
+
+    <button onclick="AddCell('<?wsp id ?>')" aria-haspopup="true" aria-controls="menu--91" class="observable-focus-dark-blue pointer hover-blue bg-observable-focus-light-blue jsx-2740246534 absolute bottom-0 bn pa0" title="Add Cell" id="menu-button--menu--91" type="button" data-reach-menu-button="" style="bottom: -0.25em; right: 0; /* margin: auto; */ width: 2em; height: 1em; /* position: relative; */ /* position: relative; */ border-top-width: 1px; border-top-style: solid; border-top-color: white; display: inline-block; height: 1em;">
+            <div class="jsx-3846077284 absolute top-0 flex items-center justify-center" style="width: 1em; height: 1em;"><svg width="17" height="15" viewBox="-8.5 -7.5 17 15" style="overflow:visible" role="button" aria-label="Click to insert or merge cells" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" class="jsx-7869de80898f8af0"><title class="jsx-7869de80898f8af0">Insert cell</title><path d="M0,-4.5V4.5M-4.5,0H4.5" class="jsx-7869de80898f8af0 "></path></svg></div>
+        </button>
+
+</div>
+
+<script>
+    console.log("hi");
+</script>

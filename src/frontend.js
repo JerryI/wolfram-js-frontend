@@ -79,7 +79,7 @@ core.FrontEndRemoveCell = function (args, env) {
   } else {
     document.getElementById(`${input["id"]}---${input["type"]}`).remove();
   }
-}
+};
 
 core.FrontEndMoveCell = function (args, env) {
   var template = interpretate(args[0]);
@@ -102,14 +102,14 @@ core.FrontEndMoveCell = function (args, env) {
   document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
   cell.remove();
 
-}
+};
 
 core.FrontEndMorphCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   console.log(input);
 
   //not implemented
-}
+};
 
 core.FrontEndClearStorage = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
@@ -120,11 +120,19 @@ core.FrontEndClearStorage = function (args, env) {
   });
 
   //not implemented
-}
+};
 
 core.FrontEndCellError = function (args, env) {
   alert(interpretate(args[1]));
+};
+
+core.FrontEndTruncated = function (args, env) {
+    env.element.innerHTML = interpretate(args[0]) + " ...";
 }
+
+core.FrontEndJSEval = function (args, env) {
+  eval(interpretate(args[0]));
+} 
 
 core.FrontEndCreateCell = function (args, env) {
   var template = interpretate(args[0]);
@@ -163,6 +171,7 @@ core.FrontEndCreateCell = function (args, env) {
       syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
       bracketMatching(),
       closeBrackets(),
+      EditorView.lineWrapping,
       autocompletion(),
       rectangularSelection(),
       crosshairCursor(),
@@ -171,30 +180,44 @@ core.FrontEndCreateCell = function (args, env) {
       StreamLanguage.define(mathematica),
       placeholders,
       keymap.of([
-        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`) }  } },
+        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
         { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
           console.log(v.state.doc.toString());
-          socket.send(`CellObj["${uid}"]["data"] = "${v.state.doc.toString().replaceAll('\"', '\\"')}";`);
+          socket.send(`CellObj["${uid}"]["data"] = "${v.state.doc.toString().replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"')}";`);
         }
       })
     ],
     parent: document.getElementById(input["id"]+"---"+input["type"])
   });
 
+};  
+
+var notebookkernel = false;
+
+core.FrontEndAddKernel = function(args, env) {
+  document.getElementById('kernel-status').classList.add('btn-info');
+  notebookkernel = true;
 }
 
 function celleval(ne, id, cell) {
   console.log(ne);
   global = ne;
-  var fixed = ne.replaceAll('\"', '\\"');
+  var fixed = ne.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
   console.log(fixed);
 
   var q = `CellObj["${cell}"]["data"]="${fixed}"; NotebookEvaluate["${id}", "${cell}"]`;
+  if(!notebookkernel) {
+    alert("no kernel was attached");
+    return;
+  }
+
   socket.send(q);
 }
+
+
 
 
 

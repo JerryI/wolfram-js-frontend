@@ -1,0 +1,28 @@
+<div class="toast show  <?wsp state ?>" role="alert" aria-live="assertive" aria-atomic="true" id="<?wsp id ?>" style="border-color: <?wsp <|ToString[running]->ToString[red], ToString[launching]->ToString[lightskyblue], ToString[failed]->ToString[black], ToString[finished]->ToString[green]|>@settings[ToString[processes]][id][ToString[status]] ?>; background-color: <?wsp <|ToString[running]->ToString[white], ToString[launching]->ToString[white], ToString[failed]->ToString[lightpink], ToString[finished]->ToString[lightgreen]|>@settings[ToString[processes]][id][ToString[status]] ?>">
+  <div class="toast-header">
+    
+    <strong class="mr-auto"><?wsp settings["processes"][id]["name"] ?></strong>
+    <small class="text-muted"><?wsp TextString[(Now - settings["processes"][id]["date"])//Round] ?></small>
+    <!--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="toast-body">
+    
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button class="btn btn-sm btn-outline-secondary" onclick="killProcess('<?wspid?>')">Kill</button>
+        <?wsp If [settings["processes"][id]["status"] == "running", ?>  
+          <div class="btn btn-sm"></button><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+        <?wsp , "" ] ?>
+        <?wsp If [settings["processes"][id]["status"] == "launching", ?>  
+          <div class="btn btn-sm"></button><div class="lds-ripple"><div></div><div></div><div></div><div></div></div></div>
+        <?wsp , "" ] ?>             
+        <button class="btn btn-sm"><?wsp settings["processes"][id]["status"] ?></button>
+      </div>
+      
+  
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="col">
+      <div class="card shadow-sm" >
+        <svg  style="background: #55595c; cursor: pointer;" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><?wsp i ?></title>
+          
+          
+          PLOT
+          
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em">TEXT</text>
+        
+        </svg>
+        
+        <div class="card-body">
+          <p class="card-text">Descr</p>
+          <div class="d-flex justify-content-between align-items-left mb-3">
+            <div class="align-items-sm-baseline align-items-left"">
+              <svg class="bi me-2" width="1em" height="1em" style="margin-right:0.5em"><use xlink:href="#people-circle"></use></svg>
+              <small class="text-muted">Small</small>
+            </div>
+            <div class="align-items-sm-baseline align-items-left"">
+              <svg class="bi me-2" width="1em" height="1em" style="margin-right:0.5em"><use xlink:href="#calendar3"></use></svg>
+              <small class="text-muted">Date</small>
+            </div>
+          </div>                
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-sm btn-outline-secondary">View</a>
+              <button class="btn btn-sm btn-outline-secondary" >Export</button>
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>

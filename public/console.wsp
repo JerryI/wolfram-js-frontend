@@ -1,0 +1,130 @@
+<?wsp
+    session["result"] = "";
+
+
+        session["data"] = <||>;
+        session["data"]["function"] = "Now";
+
+      ""
+      
+?>
+
+  <?wsp LoadPage["assets/header.wsp"] ?>
+  
+  <div class="container" style="margin-top:1em">
+  
+      <?wsp LoadPage["assets/navigation.wsp"] ?>
+      <div class="d-flex">
+        <h1 class="fw-light">Console</h1>
+        
+</div>
+<div class="d-flex">
+<p class="lead text-muted">Widgets</p>
+</div>
+        <div class="d-flex align-items-center">
+          
+          <?wsp LoadPage["assets/dashboard.wsp"] ?>        
+
+        </div>
+        
+     
+        <div class="d-flex">
+
+       
+
+              <p class="lead text-muted">Direct commands to WF Engine</p>
+</div>
+          <div class="d-flex">      
+              <div action=""  id="service">
+              <div class="form-group">
+                  
+             
+                <label class="form-group-label" for="function">
+                  Wolfram Language
+                </label>
+                <textarea class="form-control" id="function" rows="4" name="function"><?wspsession["data"]["function"]?></textarea>
+
+                <div class="d-flex align-items-center" id="res">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+
+
+  
+
+  
+  </div>
+
+  <script>
+    function calculate(func) {
+      var data = `
+      With[
+            {
+        
+                virt = {Graphics[xs___] :> ExportString[Graphics[xs], "SVG"]},
+                cli = client
+    
+            },
+
+            WebSocketSend[cli, EvaluatedResult[ToString[(${func}) /. virt]]]
+
+        ];
+      `;
+
+      socket.send(data);
+      document.getElementById('logoFlames').style = "display: block";
+      document.getElementById('bigFlames').style = "opacity: 0.2"; 
+
+
+
+    };
+
+    core.EvaluatedResult = function(args, env) {
+      var r = interpretate(args[0]);
+
+      
+
+      var html = `
+      <div class="row py-lg-3">
+  
+      <div class="col-lg-10 col-md-8 mx-left">
+      <div class="form-control" style="height: 100%;" id="evaluated">
+         ${r} 
+      </div>
+    </div>
+    </div>  
+      
+      `;
+      document.getElementById("res").innerHTML = html;
+      document.getElementById('logoFlames').style = "display: none";
+      document.getElementById('bigFlames').style = "opacity: 0"; 
+
+    };
+
+    var editor = CodeMirror.fromTextArea(document.getElementById("function"), {
+       lineNumbers: false,
+       autoCloseTags: true,
+       setSize: (200,200),
+       mode:  "mathematica",
+       indentWithTabs: true,
+       theme: "default",   
+       lineWrapping: true,         
+       extraKeys: {
+         "F11": function(cm) {
+           cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+         },
+         "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        },
+        "Shift-Enter": function(instance) { 
+          calculate(instance.getValue());
+        },
+      }      
+    });
+    </script>
+  
+  <?wsp LoadPage["assets/footer.wsp"] ?>

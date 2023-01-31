@@ -1,2 +1,8 @@
-.DS_Store
-node_modules
+/logs.txt
+/old
+/running.lock
+/public/trashcan/*
+/nohup.out
+migrate
+/archive/*
+/node_modules

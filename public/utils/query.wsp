@@ -1,0 +1,5 @@
+<?wsp
+    With[{q = session["Query"]},
+        ExportString[q["command"]//StringUnfix//ToExpression, q["type"]]
+    ]
+?>
