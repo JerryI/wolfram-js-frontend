@@ -66429,7 +66429,7 @@ MapControls.prototype = Object.create( EventDispatcher.prototype );
 MapControls.prototype.constructor = MapControls;
 
 const placeholderMatcher = new MatchDecorator({
-  regexp: /FrontEndExecutable\["(.+)"\]/g,
+  regexp: /FrontEndExecutable\["([^"]+)"\]/g,
   decoration: match => Decoration.replace({
     widget: new PlaceholderWidget(match[1]),
   })
@@ -66477,6 +66477,7 @@ class PlaceholderWidget extends WidgetType {
 
 var $objetsstorage = {};
 
+
 core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   if (input["parent"] === "") {
@@ -66507,7 +66508,7 @@ core.FrontEndMoveCell = function (args, env) {
   document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
   cell.remove();
 
-};
+}; 
 
 core.FrontEndMorphCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
@@ -66650,6 +66651,33 @@ core.WListPloty = function(args, env) {
     }});
 };  
 
+//TableView
+core.TableForm = function(args, env) {
+  const table = document.createElement('table');
+  table.classList.add("table");
+  table.classList.add("table-sm");
+
+  const list = interpretate(args[0], {...env, hold:true});
+
+  // create a few data rows 
+  for (var i = 0; i < list.length; i++) {
+    const dataRow = document.createElement("tr");
+    const row = interpretate(list[i], {...env, hold:true});
+
+    for (var j = 0; j < row.length; j++) {
+      const dataCell = document.createElement("td");
+      interpretate(row[j], {...env, todom:true, element: dataCell});
+
+      dataRow.appendChild(dataCell);
+    }
+
+
+    table.appendChild(dataRow);
+  }  
+
+  env.element.appendChild(table);
+};
+
 
 var setInnerHTML = function(elm, html) {
     elm.innerHTML = html;
@@ -66702,17 +66730,17 @@ core.RGBColor = (args, env) => {
     return;
   }
   if (args.length === 1) {
-    args = interpretate(args[0]); // return [r, g, b] , 0<=r, g, b<=1
+    args = interpretate(args[0], env); // return [r, g, b] , 0<=r, g, b<=1
   }
-  const r = interpretate(args[0]);
-  const g = interpretate(args[1]);
-  const b = interpretate(args[2]);
+  const r = interpretate(args[0], env);
+  const g = interpretate(args[1], env);
+  const b = interpretate(args[2], env);
 
   env.color = new Color(r, g, b);
 };
 
 core.Opacity = (args, env) => {
-  var o = interpretate(args[0]);
+  var o = interpretate(args[0], env);
   if (typeof o !== "number") console.error("Opacity must have number value!");
   console.log(o);
   env.opacity = o;
@@ -66729,7 +66757,7 @@ core.Arrow = (args, env) => {
 };
 
 core.Tube = (args, env) => {
-  var arr = interpretate(args[0]);
+  var arr = interpretate(args[0], env);
   if (arr.length === 1) arr = arr[0];
   if (arr.length !== 2) {
     console.error("Tube must have 2 vectors!");
@@ -66779,7 +66807,7 @@ core.Sphere = (args, env) => {
     geometry.dispose();
   }
 
-  let list = interpretate(args[0]);
+  let list = interpretate(args[0], env);
 
   if (list.length === 1) list = list[0];
   if (list.length === 1) list = list[0];
@@ -66816,8 +66844,8 @@ core.Cuboid = (args, env) => {
 
   if (args.length === 2) {
     var points = [
-      new Vector4(...interpretate(args[0]), 1),
-      new Vector4(...interpretate(args[1]), 1),
+      new Vector4(...interpretate(args[0], env), 1),
+      new Vector4(...interpretate(args[1], env), 1),
     ];
 
     origin = points[0]
@@ -66826,7 +66854,7 @@ core.Cuboid = (args, env) => {
       .divideScalar(2);
     diff = points[0].clone().add(points[1].clone().negate());
   } else if (args.length === 1) {
-    p = interpretate(args[0]);
+    p = interpretate(args[0], env);
     origin = new Vector4(...p, 1);
     diff = new Vector4(1, 1, 1, 1);
 
@@ -66872,7 +66900,7 @@ core.Cylinder = (args, env) => {
   /**
    * @type {THREE.Vector3}}
    */
-  const coordinates = interpretate(args[0]);
+  const coordinates = interpretate(args[0], env);
 
   const material = new MeshLambertMaterial({
     color: env.color,
@@ -66932,7 +66960,7 @@ core.Tetrahedron = (args, env) => {
   /**
    * @type {number[]}
    */
-  var points = interpretate(args[0]);
+  var points = interpretate(args[0], env);
   console.log("Points of tetrahedron:");
   console.log(points);
   var faces = [
@@ -66960,7 +66988,7 @@ core.GeometricTransformation = (args, env) => {
   var group = new Group();
   //Если center, то наверное надо приметь matrix
   //к каждому объекту относительно родительской группы.
-  var p = interpretate(args[1]);
+  var p = interpretate(args[1], env);
   var centering = false;
   var centrans = [];
 
@@ -67046,7 +67074,7 @@ core.GraphicsComplex = (args, env) => {
 
   copy.geometry = new Geometry();
 
-  interpretate(args[0]).forEach((el) => {
+  interpretate(args[0], copy).forEach((el) => {
     if (typeof el[0] !== "number") console.error("not a triple of number" + el);
     copy.geometry.vertices.push(new Vector3(el[0], el[1], el[2]));
   });
@@ -67108,7 +67136,7 @@ core.Polygon = (args, env) => {
       }
     };
 
-    var a = interpretate(args[0]);
+    var a = interpretate(args[0], env);
     if (a.length === 1) {
       a = a[0];
     }
@@ -67122,7 +67150,7 @@ core.Polygon = (args, env) => {
     }
   } else {
     var geometry = new Geometry();
-    var points = interpretate(args[0]);
+    var points = interpretate(args[0], env);
 
     points.forEach((el) => {
       if (typeof el[0] !== "number") {
@@ -67204,13 +67232,13 @@ core.Polyhedron = (args, env) => {
     /**
      * @type {number[]}
      */
-    const indices = interpretate(args[1])
+    const indices = interpretate(args[1], env)
       .flat(4)
       .map((i) => i - 1);
     /**
      * @type {number[]}
      */
-    const vertices = interpretate(args[0]).flat(4);
+    const vertices = interpretate(args[0], env).flat(4);
 
     const geometry = new PolyhedronGeometry(vertices, indices);
 
@@ -67242,7 +67270,7 @@ core.Line = (args, env) => {
   if (env.hasOwnProperty("geometry")) {
     const geometry = new Geometry();
 
-    const points = interpretate(args[0]);
+    const points = interpretate(args[0], env);
     points.forEach((el) => {
       geometry.vertices.push((env.geometry.vertices[el - 1]).clone(),);
     });
@@ -67264,7 +67292,7 @@ core.Line = (args, env) => {
     geometry.dispose();
     material.dispose();
   } else {
-    let arr = interpretate(args[0]);
+    let arr = interpretate(args[0], env);
     if (arr.length === 1) arr = arr[0];
     //if (arr.length !== 2) console.error( "Tube must have 2 vectors!");
     console.log("points: ", arr.length);
@@ -67343,6 +67371,7 @@ core.Graphics3D = (args, env) => {
   const envcopy = {
     ...env,
     numerical: true,
+    todom: false,
     matrix: new Matrix4().set(
       1, 0, 0, 0,//
       0, 1, 0, 0,//

@@ -22,7 +22,7 @@ import {
 } from "@codemirror/view"
 
 const placeholderMatcher = new MatchDecorator({
-  regexp: /FrontEndExecutable\["(.+)"\]/g,
+  regexp: /FrontEndExecutable\["([^"]+)"\]/g,
   decoration: match => Decoration.replace({
     widget: new PlaceholderWidget(match[1]),
   })
@@ -72,6 +72,7 @@ import { defaultKeymap } from "@codemirror/commands";
 
 var $objetsstorage = {};
 
+
 core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   if (input["parent"] === "") {
@@ -102,7 +103,7 @@ core.FrontEndMoveCell = function (args, env) {
   document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
   cell.remove();
 
-};
+}; 
 
 core.FrontEndMorphCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));

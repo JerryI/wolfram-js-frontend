@@ -3,7 +3,7 @@ wconfig = <|
     "merge" -> {
         "src/frontend.js",
         "src/misc.js",
-        "https://raw.githubusercontent.com/JerryI/Mathematica-ThreeJS-graphics-engine/master/src/graphics3d.js"
+        "https://raw.githubusercontent.com/JerryI/Mathematica-ThreeJS-graphics-engine/night/src/graphics3d.js"
     },
     "after" :> (
         (* copy core files *)

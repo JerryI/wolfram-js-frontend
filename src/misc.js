@@ -22,6 +22,33 @@ core.WListPloty = function(args, env) {
     }});
 }  
 
+//TableView
+core.TableForm = function(args, env) {
+  const table = document.createElement('table');
+  table.classList.add("table");
+  table.classList.add("table-sm");
+
+  const list = interpretate(args[0], {...env, hold:true});
+
+  // create a few data rows 
+  for (var i = 0; i < list.length; i++) {
+    const dataRow = document.createElement("tr");
+    const row = interpretate(list[i], {...env, hold:true});
+
+    for (var j = 0; j < row.length; j++) {
+      const dataCell = document.createElement("td");
+      const data = interpretate(row[j], {...env, todom:true, element: dataCell});
+
+      dataRow.appendChild(dataCell);
+    }
+
+
+    table.appendChild(dataRow);
+  }  
+
+  env.element.appendChild(table);
+}
+
 
 var setInnerHTML = function(elm, html) {
     elm.innerHTML = html;

@@ -775,6 +775,21 @@
   .observable-focus-dark-blue {
     color: rgb(185, 185, 185);
   }
+
+  .frac {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle; 
+    letter-spacing: 0.001em;
+    text-align: center;
+    
+    }
+.frac > span { 
+    display: block; 
+    padding: 0.1em; 
+    }
+.frac span.bottom {border-top: thin solid black;}
+.frac span.symbol {display: none;}
   
 
 
