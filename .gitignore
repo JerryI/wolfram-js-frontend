@@ -6,3 +6,4 @@
 migrate
 /archive/*
 /node_modules
+.DS_STORE

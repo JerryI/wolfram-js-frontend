@@ -36,6 +36,9 @@ With[{},
 
 ProcessKill[id_] := With[{},
     KillProcess[settings["processes", id, "pid"]];
+    JTPClientSend[settings["processes", id, "listener"], $Die];
+    
+    (*now for sure kill it*)
     Run["ps aux | grep \"WolframKernel -wlbanner\" | awk '{print $2}' | xargs kill -9 $1"];
     ProcessUpdateStatus[id, "failed"];
     settings["processes"][id] = .;

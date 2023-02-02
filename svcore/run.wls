@@ -10,8 +10,12 @@ MEMORYLimit = 200 1024 1024;
 
 kitchen = (JTPClient@@Uncompress[$kitchen]) // JTPClientStart;
 
-eventlistener = JTPServer[] // JTPServerStart;
+Print[kitchen["status"] ];
+
+eventlistener = JTPServer["host"->"127.0.0.1", "port"->8096] // JTPServerStart;
 eventlistener["promise"] = Null;
+
+Print[eventlistener["status"] ];
 
 $data = With[{uid = $id, eengine = List["host" -> eventlistener["host"], "port" -> eventlistener["port"]]},
     JTPClientEvaluate[kitchen, ProcessCheckIn[uid, eengine]]
