@@ -27,8 +27,8 @@ wconfig = <|
         (* To change the order of the function. Rollup puts "var core" to the bottom, which is wrong *)
         wcontent = Import["temp/bundle.js", "String"];
 
-        (* A bug of CodeMirror *)
-        wcontent = StringReplace[wcontent, "const top = typeof globalThis"->"const top0 = typeof globalThis"];
+        (* A bug of non-stricked mode *)
+        wcontent = StringReplace[wcontent, {"const top = typeof globalThis"->"const top0 = typeof globalThis", "chrome"->"chromee"}];
 
         (* Export the modified bundle *)
         Export["public/assets/notebooks/bundle.js", wcontent, "String"];

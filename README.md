@@ -58,14 +58,14 @@ the rest will be downloaded via the internet. Then `cd` to the project folder an
 ```shell
 git clone https://github.com/JerryI/wolfram-js-frontend
 cd wolfram-js-frontend
-sudo wolframscript start.wls
+wolframscript start.wls
 ```
 Open your browser with `http://127.0.0.1:8090`
-> using `sudo` is bad here, but on some linux dists it doesn't allow to spawn a separate kernel
+
 
 or to define ip address
 ```shell
-sudo wolframscript start.wls ip 127.0.0.1 port 8090
+wolframscript start.wls ip 127.0.0.1 port 8090
 ```
 
 There is a `Demo` notebook, which covers the most functions.
@@ -138,7 +138,7 @@ npm i
 ```
 then
 ```
-sudo wolframscript start.wls dev
+wolframscript start.wls dev
 ```
 The filewatcher will rebuild the js bundle every time you change something in `src` folder and copy the rest to the `modules` (reimporting the lib into Wolfram Engine).
 

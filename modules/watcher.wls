@@ -1,4 +1,4 @@
-wdates = FileDate/@FileNames["*.*", wconfig["watch"]];
+wdates = {};
 
 CheckFiles := (
     If[wdates =!= FileDate/@FileNames["*", wconfig["watch"]], Rebuild];

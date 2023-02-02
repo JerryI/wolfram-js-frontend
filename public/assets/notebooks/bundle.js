@@ -4121,10 +4121,10 @@ var shift = {
   222: "\""
 };
 
-var chrome$1 = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent);
+var chromee$1 = typeof navigator != "undefined" && /Chrome\/(\d+)/.exec(navigator.userAgent);
 var mac = typeof navigator != "undefined" && /Mac/.test(navigator.platform);
 var ie$1 = typeof navigator != "undefined" && /MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent);
-var brokenModifierNames = mac || chrome$1 && +chrome$1[1] < 57;
+var brokenModifierNames = mac || chromee$1 && +chromee$1[1] < 57;
 
 // Fill in the digit keys
 for (var i = 0; i < 10; i++) base[48 + i] = base[96 + i] = String(i);
@@ -4812,7 +4812,7 @@ const ie_upto10 = /*@__PURE__*//MSIE \d/.test(nav.userAgent);
 const ie_11up = /*@__PURE__*//Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(nav.userAgent);
 const ie = !!(ie_upto10 || ie_11up || ie_edge);
 const gecko = !ie && /*@__PURE__*//gecko\/(\d+)/i.test(nav.userAgent);
-const chrome = !ie && /*@__PURE__*//Chrome\/(\d+)/.exec(nav.userAgent);
+const chromee = !ie && /*@__PURE__*//Chrome\/(\d+)/.exec(nav.userAgent);
 const webkit = "webkitFontSmoothing" in doc.documentElement.style;
 const safari = !ie && /*@__PURE__*//Apple Computer/.test(nav.vendor);
 const ios = safari && (/*@__PURE__*//Mobile\/\w+/.test(nav.userAgent) || nav.maxTouchPoints > 2);
@@ -4824,8 +4824,8 @@ var browser = {
     ie_version: ie_upto10 ? doc.documentMode || 6 : ie_11up ? +ie_11up[1] : ie_edge ? +ie_edge[1] : 0,
     gecko,
     gecko_version: gecko ? +(/*@__PURE__*//Firefox\/(\d+)/.exec(nav.userAgent) || [0, 0])[1] : 0,
-    chrome: !!chrome,
-    chrome_version: chrome ? +chrome[1] : 0,
+    chromee: !!chromee,
+    chromee_version: chromee ? +chromee[1] : 0,
     ios,
     android: /*@__PURE__*//Android\b/.test(nav.userAgent),
     webkit,
@@ -4952,7 +4952,7 @@ function textCoords(text, pos, side) {
         pos = length;
     let from = pos, to = pos, flatten = 0;
     if (pos == 0 && side < 0 || pos == length && side >= 0) {
-        if (!(browser.chrome || browser.gecko)) { // These browsers reliably return valid rectangles for empty ranges
+        if (!(browser.chromee || browser.gecko)) { // These browsers reliably return valid rectangles for empty ranges
             if (pos) {
                 from--;
                 flatten = 1;
@@ -6716,7 +6716,7 @@ class DocView extends ContentView {
         // getSelection than the one that it actually shows to the user.
         // This forces a selection update when lines are joined to work
         // around that. Issue #54
-        if ((browser.ie || browser.chrome) && !this.compositionDeco.size && update &&
+        if ((browser.ie || browser.chromee) && !this.compositionDeco.size && update &&
             update.state.doc.lines != update.startState.doc.lines)
             this.forceSelection = true;
         let prevDeco = this.decorations, deco = this.updateDeco();
@@ -6749,7 +6749,7 @@ class DocView extends ContentView {
             // around the selection, get confused and report a different
             // selection from the one it displays (issue #218). This tries
             // to detect that situation.
-            let track = browser.chrome || browser.ios ? { node: observer.selectionRange.focusNode, written: false } : undefined;
+            let track = browser.chromee || browser.ios ? { node: observer.selectionRange.focusNode, written: false } : undefined;
             this.sync(track);
             this.dirty = 0 /* Dirty.Not */;
             if (track && (track.written || observer.selectionRange.focusNode != track.node))
@@ -6806,7 +6806,7 @@ class DocView extends ContentView {
                 // inside an uneditable node, and not bring it back when we
                 // move the cursor to its proper position. This tries to
                 // restore the keyboard by cycling focus.
-                if (browser.android && browser.chrome && this.dom.contains(domSel.focusNode) &&
+                if (browser.android && browser.chromee && this.dom.contains(domSel.focusNode) &&
                     inUneditable(domSel.focusNode, this.dom)) {
                     this.dom.blur();
                     this.dom.focus({ preventScroll: true });
@@ -7307,7 +7307,7 @@ function domPosInText(node, x, y) {
             let dy = (rect.top > y ? rect.top - y : y - rect.bottom) - 1;
             if (rect.left - 1 <= x && rect.right + 1 >= x && dy < closestDY) {
                 let right = x >= (rect.left + rect.right) / 2, after = right;
-                if (browser.chrome || browser.gecko) {
+                if (browser.chromee || browser.gecko) {
                     // Check for RTL on browsers that support getting client
                     // rects for empty ranges.
                     let rectBefore = textRange(node, i).getBoundingClientRect();
@@ -7386,7 +7386,7 @@ function posAtCoords(view, { x, y }, precise, bias = -1) {
                 ({ startContainer: node, startOffset: offset } = range);
                 if (!view.contentDOM.contains(node) ||
                     browser.safari && isSuspiciousSafariCaretResult(node, offset, x) ||
-                    browser.chrome && isSuspiciousChromeCaretResult(node, offset, x))
+                    browser.chromee && isSuspiciousChromeCaretResult(node, offset, x))
                     node = undefined;
             }
         }
@@ -7541,7 +7541,7 @@ class InputState {
         this.lastFocusTime = 0;
         this.lastScrollTop = 0;
         this.lastScrollLeft = 0;
-        this.chromeScrollHack = -1;
+        this.chromeeScrollHack = -1;
         // On iOS, some keys need to have their default behavior happen
         // (after which we retroactively handle them and reset the DOM) to
         // avoid messing up the virtual keyboard state.
@@ -7589,17 +7589,17 @@ class InputState {
             if (event.target == view.scrollDOM)
                 handleEvent(handlers.mousedown, event);
         });
-        if (browser.chrome && browser.chrome_version == 102) { // FIXME remove at some point
+        if (browser.chromee && browser.chromee_version == 102) { // FIXME remove at some point
             // On Chrome 102, viewport updates somehow stop wheel-based
             // scrolling. Turning off pointer events during the scroll seems
             // to avoid the issue.
             view.scrollDOM.addEventListener("wheel", () => {
-                if (this.chromeScrollHack < 0)
+                if (this.chromeeScrollHack < 0)
                     view.contentDOM.style.pointerEvents = "none";
                 else
-                    window.clearTimeout(this.chromeScrollHack);
-                this.chromeScrollHack = setTimeout(() => {
-                    this.chromeScrollHack = -1;
+                    window.clearTimeout(this.chromeeScrollHack);
+                this.chromeeScrollHack = setTimeout(() => {
+                    this.chromeeScrollHack = -1;
                     view.contentDOM.style.pointerEvents = "";
                 }, 100);
             }, { passive: true });
@@ -7674,7 +7674,7 @@ class InputState {
         // composition changes. When an enter or backspace key event is
         // seen, hold off on handling DOM events for a bit, and then
         // dispatch it.
-        if (browser.android && browser.chrome && !event.synthetic &&
+        if (browser.android && browser.chromee && !event.synthetic &&
             (event.keyCode == 13 || event.keyCode == 8)) {
             view.observer.delayAndroidKey(event.key, event.keyCode);
             return true;
@@ -8216,7 +8216,7 @@ handlers.compositionend = view => {
     view.inputState.composing = -1;
     view.inputState.compositionEndedAt = Date.now();
     view.inputState.compositionFirstChange = null;
-    if (browser.chrome && browser.android)
+    if (browser.chromee && browser.android)
         view.observer.flushSoon();
     setTimeout(() => {
         // Force the composition state to be cleared if it hasn't already been
@@ -8237,7 +8237,7 @@ handlers.beforeinput = (view, event) => {
     // (preventDefault on beforeinput, though supported in the spec,
     // seems to do nothing at all on Chrome).
     let pending;
-    if (browser.chrome && browser.android && (pending = PendingKeys.find(key => key.inputType == event.inputType))) {
+    if (browser.chromee && browser.android && (pending = PendingKeys.find(key => key.inputType == event.inputType))) {
         view.observer.delayAndroidKey(pending.key, pending.keyCode);
         if (pending.key == "Backspace" || pending.key == "Delete") {
             let startViewHeight = ((_a = window.visualViewport) === null || _a === void 0 ? void 0 : _a.height) || 0;
@@ -9755,7 +9755,7 @@ function applyDOMChange(view, domChange) {
         if (diff) {
             // Chrome inserts two newlines when pressing shift-enter at the
             // end of a line. DomChange drops one of those.
-            if (browser.chrome && view.inputState.lastKeyCode == 13 &&
+            if (browser.chromee && view.inputState.lastKeyCode == 13 &&
                 diff.toB == diff.from + 2 && domChange.text.slice(diff.from, diff.toB) == LineBreakPlaceholder + LineBreakPlaceholder)
                 diff.toB--;
             change = { from: from + diff.from, to: from + diff.toA,
@@ -9790,7 +9790,7 @@ function applyDOMChange(view, domChange) {
             newSel = EditorSelection.single(newSel.main.anchor - 1, newSel.main.head - 1);
         change = { from: sel.from, to: sel.to, insert: Text.of([" "]) };
     }
-    else if (browser.chrome && change && change.from == change.to && change.from == sel.head &&
+    else if (browser.chromee && change && change.from == change.to && change.from == sel.head &&
         change.insert.toString() == "\n " && view.lineWrapping) {
         // In Chrome, if you insert a space at the start of a wrapped
         // line, it will actually insert a newline and a space, causing a
@@ -10092,7 +10092,7 @@ class DOMObserver {
         // reported.
         // Chrome Android has a similar issue when backspacing out a
         // selection (#645).
-        if ((browser.ie && browser.ie_version <= 11 || browser.android && browser.chrome) && !view.state.selection.main.empty &&
+        if ((browser.ie && browser.ie_version <= 11 || browser.android && browser.chromee) && !view.state.selection.main.empty &&
             // (Selection.isCollapsed isn't reliable on IE)
             sel.focusNode && isEquivalentPosition(sel.focusNode, sel.focusOffset, sel.anchorNode, sel.anchorOffset))
             this.flushSoon();

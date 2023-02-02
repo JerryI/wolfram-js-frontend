@@ -11,7 +11,7 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
     return d.slice(1, -1);
   }
   if (typeof d === 'number') {
-    return d;
+    return d; 
   }
 
   this.name = d[0];
