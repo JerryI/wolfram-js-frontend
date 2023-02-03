@@ -2,9 +2,13 @@ SVGForm[x_] := ExportString[x, "SVG"]//HTMLForm;
 
 JSRun[x_String, name_String:"JS"] := (StringTemplate["<div class=\"badge badge-danger\">``</div><script>``</script>"][name, x])//HTMLForm;
 
+ListContourPloty[s_List] := WListContourPloty[Transpose[s//N]];
+
 Options[ListLinePloty] = {
     PlotRange -> {{-Infinity, Infinity}, {-Infinity, Infinity}}
 };
+
+
  
 ListLinePloty[x_List, OptionsPattern[]] := Module[{transp},
     Switch[Depth[x//N],

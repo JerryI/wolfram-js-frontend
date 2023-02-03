@@ -1,4 +1,4 @@
-$SupportedGraphicsObjectList = {Graphics3D, HTMLForm, WListPloty, TableForm};
+$SupportedGraphicsObjectList = {WListContourPloty, Graphics3D, HTMLForm, WListPloty, TableForm};
 
 $conversionTemplate = Table[
  With[{item = i},
