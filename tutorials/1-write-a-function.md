@@ -60,9 +60,11 @@ Therefore there are two possibilities how we can do this:
 
 Since our webbrowser is already suffering from drawing stuff and etc. Here is the last option
 
-*src/webobjects.wls*
+***src/webobjects.wls***
 ```mathematica
+...
 ListContourPloty[s_List] := WListContourPloty[Transpose[s//N]];
+...
 ```
 
 Using a wrapped function `WListContourPloty` might looks unnecessary, but I can help to prepare the data in a more complicated cases. This is just an example.
@@ -71,7 +73,7 @@ Now we need to register this one in `src/converter.wls`, that the system will kn
 
 add the function to the list
 
-*src/converter.wls*
+***src/converter.wls***
 ```mathematica
 $SupportedGraphicsObjectList = {WListContourPloty, Graphics3D, HTMLForm, WListPloty, TableForm};
 ...
@@ -96,7 +98,7 @@ Now the entire function with its data will be replaced by `FrontEndExecutable["i
 
 Go to `src/misc.js` for example. This is a good place to start. Let us write the the name and the body of the function 1:1
 
-*src/misc.js*
+***src/misc.js***
 ```js
 ...
 
@@ -156,7 +158,7 @@ The dom element in the cell created for each interactive object is accessible fr
 
 Then let's add the rest of the code 
 
-*src/misc.js*
+***src/misc.js***
 ```js
 ...
 
