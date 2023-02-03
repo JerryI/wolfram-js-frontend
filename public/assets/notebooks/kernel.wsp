@@ -1,4 +1,4 @@
-<div class="btn-group ml-2">
+<div class="btn-group">
       <button class="btn btn-secondary btn-sm" id="kernel-status" type="button">Kernel</button>
       <button type="button" id="kernel-button" onclick="$('#kernel-selection').toggle()"  class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
@@ -13,6 +13,7 @@
         <div class="dropdown-divider"></div>
         <button class="dropdown-item" onclick='attachProcess("Null")'>Start a new process</button>
   </div>
+  <button class="btn btn-light btn-sm" onclick='abortProcess("Null")' type="button">Abort</button>
   <button class="btn btn-light btn-sm" onclick="exportNotebook()" type="button">Export</button>
 </div>
 
@@ -21,6 +22,9 @@
         socket.send('NotebookAttach["<?wsp id ?>", "'+dest+'"]');
         $('#kernel-selection').toggle()
     }
+    function abortProcess() {
+        socket.send('NotebookAbort["<?wsp id ?>"]');
+    }    
     function exportNotebook() {
         socket.send('NotebookExport["<?wsp id ?>"]');
 

@@ -73,6 +73,12 @@ NotebookEvaluate[id_, cellid_] := (
     ];
 );
 
+NotebookAbort[id_] := (
+    Block[{fireEvent = CellEventFire[client]},
+        notebooks[id, "evaluator"]["abort"];
+    ];
+);
+
 NotebookOperate[cellid_, op_] := (
     Block[{fireEvent = CellEventFire[client]},
         op[CellObj[cellid]];

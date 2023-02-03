@@ -291,6 +291,8 @@ ClearAll[FrontEndExecutable];
 
 EvaluatorTemporaryStorage = <||>;
 
+SimpleEvaluator["abort"] := PushNotification["modules/cells", "master kernel cannot be aborted"];
+
 SimpleEvaluator[exp_, rules_, storage_, block_, callback_] := 
     Block[{$$$evaluated, $$$storage = <||>},
         Block[  {

@@ -5,7 +5,7 @@
 }
   .input-node {
     margin-bottom: 0em;
-    border-left: 3px solid gray;
+    /*border-left: 3px solid gray;*/
     border-radius: 2px;
     /* background-color: #ffffffff; */
 }

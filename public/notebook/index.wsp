@@ -22,9 +22,9 @@
               <div class="form-group">
                   
              
-                <label class="form-group-label" for="function">
-                  Wolfram Language
-                </label>
+                <!--<label class="form-group-label" for="function">
+            
+                </label>-->
 
                 <?wsp With[{uid = session["Query", "id"]}, LoadPage["assets/notebooks/kernel.wsp", {id = uid}] ] ?>
 

@@ -1,7 +1,7 @@
 Options[ProcessStart] = {"task"->Null, "init"->{}, "prolog"->Null,"epilog"->Null, "list"->{}, "name"->"Untitled", "after"->Null};  
 
 ProcessStart[id_, OptionsPattern[]] :=   
-With[{},      
+Module[{repl},      
     If[!KeyExistsQ[settings["processes"], id],
         settings["processes"][id] = <||>;
         settings["processes"][id]["name"]  = OptionValue["name"];
@@ -20,26 +20,31 @@ With[{},
 
     settings["processes"][id]["date"] = Now;
 
-    settings["processes"][id]["pid"] = StartProcess["wolframscript"];
-    WriteString[settings["processes"][id]["pid"], StringTemplate["$id = \"``\" \r\n"][id]];
-    WriteString[settings["processes"][id]["pid"], StringTemplate["$kitchen = \"``\" \r\n"][List["host" -> $env["addr"], "port" -> jtp["port"] ]//Compress] ];
- 
-    
-
-    WriteString[settings["processes"][id]["pid"], "Get[\"svcore/run.wls\"] \r\n"];
     ProcessUpdateStatus[id, "launching"];
+    settings["processes"][id]["link"] = LinkLaunch[First[$CommandLine] <> " -wstp"];
 
+    With[{uid = id},
+        LinkWrite[settings["processes"][id]["link"], Unevaluated[$id = uid]];
+    
+    ];
+
+    With[{packed = (List["host" -> $env["addr"], "port" -> jtp["port"] ]//Compress)},
+        LinkWrite[settings["processes"][id]["link"], Unevaluated[$kitchen = packed]];
+      
+    ];
+
+    LinkWrite[settings["processes"][id]["link"], Unevaluated[Get["svcore/run.wls"]]];  
+  
     SessionSubmit[ScheduledTask[ProcessCheck[id], {Quantity[10, "Seconds"], 1},  AutoRemove->True]];
 
     id
 ];
 
 ProcessKill[id_] := With[{},
-    KillProcess[settings["processes", id, "pid"]];
     JTPClientSend[settings["processes", id, "listener"], $Die];
     
     (*now for sure kill it*)
-    Run["ps aux | grep \"WolframKernel -wlbanner\" | awk '{print $2}' | xargs kill -9 $1"];
+    LinkClose[settings["processes", id, "link"]];
     ProcessUpdateStatus[id, "failed"];
     settings["processes"][id] = .;
 ];
@@ -87,20 +92,10 @@ ProcessCheckOut[id_, logs_] := With[{},
 ProcessCheck[id_] := With[{},
     If[settings["processes", id, "status"] == "launching",
 
-        console["log", "process >> received ``", ReadString[settings["processes"][id]["pid"], EndOfBuffer]];
+        PushNotification["modules/svhost/processcheck", StringTemplate["Process `` is freezed. We will try to restart it"][settings["processes"][id]["name"]]];
 
-        console["log", "process >> END OF FILE"];
+        LinkClose[settings["processes", id, "link"]];
 
-        If[TrueQ[ProcessStatus[settings["processes", id, "pid"]] == "Finished"],
-            PushNotification["modules/svhost/processcheck", StringTemplate["Process `` crashed. We will try to restart it"][settings["processes"][id]["name"]]];
-        ,
-            PushNotification["modules/svhost/processcheck", StringTemplate["Process `` is freezed. We will try to restart it"][settings["processes"][id]["name"]]];
-        ];
-
-        KillProcess[settings["processes", id, "pid"]];
-        Run["ps aux | grep \"WolframKernel -wlbanner\" | awk '{print $2}' | xargs kill -9 $1"];
-
-        
         settings["processes"][id]["trials"] =  settings["processes"][id]["trials"] + 1;
         
 
@@ -118,8 +113,10 @@ ProcessCheck[id_] := With[{},
 ];
 
 RemoteEvaluator[id_][exp_, rules_, storage_, block_, callback_] := (
-    JTPClientSend[settings["processes", id, "listener"], SimpleEvaluator[exp, rules, storage, block, callback ] ];
+    LinkWrite[settings["processes", id, "link"], Unevaluated[SimpleEvaluator[exp, rules, storage, block, callback ]] ];
 );
+
+RemoteEvaluator[id_]["abort"] := ( LinkInterrupt[settings["processes", id, "link"], 3]; LinkWrite[settings["processes", id, "link"], Unevaluated[$Aborted] ] );
 
 
 ProcessUpdateStatus[personal_, mess_] := With[{}, 

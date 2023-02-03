@@ -36,6 +36,7 @@ If[MemoryConstrained[Import[$data["task"]], MEMORYLimit] === $Aborted, PushNotif
 
 $data["epilog"]//ReleaseHold;
 
+(*
 While[True, 
     (Block[{This := $loop[#]}, If[MemoryConstrained[$loop[#, "expression"]//ReleaseHold, MEMORYLimit] === $Aborted, PushNotification["svcore/run/loop", "<span style=\"badge badge-danger\">Memory limit was exeeded</span>"] ] ]; $loop[#] = .) &/@ Keys@$loop;
     Pause[0.1];
@@ -50,7 +51,7 @@ While[True,
 
 PushNotification["svcore/run/loop", "<span style=\"badge badge-danger\">loop error</span> bye"];
 
-$Die;
+$Die; *)
 
 
 
