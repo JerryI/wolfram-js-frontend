@@ -14,6 +14,7 @@ The project is in __alpha stage__ (or may be even lower), some features might be
 - syntax check
 - `\n` multiline expressions
 - `%` symbol
+- `Abort` button
 - `Print` function
 - paradigm, where all frontend objects are powerful syntax sugar 
 - `Graphics3D` (partial) as a interactive frontend `three.js` object. see [repo](https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine)
@@ -79,7 +80,7 @@ There is a `Demo` notebook, which covers the most functions.
 - [ ] floating menu at cells to change their properties
 - [ ] export any cell as `.html` interactive page
 - [ ] indicator or a progress bar of the evaluation process 
-- [ ] non-destructive abortion (full evaluation control)
+- [x] non-destructive abortion (full evaluation control)
 - [ ] `TableForm`, `MatrixForm` as a `FrontendExecutable`
 - [ ] `Dynamic` or `Manipulate` using websokets; event system `EventBind[]`, `DynamicControl[]` and etc
 - [ ] export notebook as a file
