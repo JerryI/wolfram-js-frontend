@@ -86,8 +86,10 @@ CellObjCreateNext[CellObj[cell_]] := (
 );
 
 CellObj /: 
-CellObjCreateAfter[CellObj[cell_]] := (  
-    Module[{new = CellObj[]},
+CellObjCreateAfter[CellObj[ucell_]] := (  
+    Module[{new = CellObj[], cell = ucell, parent = CellObjFindParent[CellObj[ucell]]},
+        If[parent =!= Null, cell = parent[[1]]];
+        
         If[CellObj[cell]["next"] =!= Null,
             CellObj[cell]["next"]["prev"] = new;
             new["next"] = CellObj[cell]["next"];

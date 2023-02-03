@@ -127,6 +127,10 @@ core.FrontEndCellError = function (args, env) {
   alert(interpretate(args[1]));
 };
 
+var temp0;
+var editorLastCursor = 0;
+var editorLastId = "null";
+
 core.FrontEndTruncated = function (args, env) {
     env.element.innerHTML = interpretate(args[0]) + " ...";
 }
@@ -141,6 +145,8 @@ core.FrontEndCreateCell = function (args, env) {
 
   console.log(template);
   console.log(input);
+
+  console.log(temp0);
 
   $objetsstorage = Object.assign({}, $objetsstorage, input["storage"]);
 
@@ -158,6 +164,7 @@ core.FrontEndCreateCell = function (args, env) {
 
   var notebook = input["sign"];
   var uid = input["id"];
+
 
   new EditorView({
     doc: input["data"],
@@ -182,11 +189,13 @@ core.FrontEndCreateCell = function (args, env) {
       placeholders,
       keymap.of([
         { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
+        { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
+        { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { AddCell(uid);  }; editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
         { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
-          console.log(v.state.doc.toString());
+         
           socket.send(`CellObj["${uid}"]["data"] = "${v.state.doc.toString().replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"')}";`);
         }
       })

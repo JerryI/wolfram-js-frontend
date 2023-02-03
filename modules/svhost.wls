@@ -116,7 +116,7 @@ RemoteEvaluator[id_][exp_, rules_, storage_, block_, callback_] := (
     LinkWrite[settings["processes", id, "link"], Unevaluated[SimpleEvaluator[exp, rules, storage, block, callback ]] ];
 );
 
-RemoteEvaluator[id_]["abort"] := ( LinkInterrupt[settings["processes", id, "link"], 3]; LinkWrite[settings["processes", id, "link"], Unevaluated[$Aborted] ] );
+RemoteEvaluator[id_]["abort"] := ( LinkInterrupt[settings["processes", id, "link"], 3]; LinkWrite[settings["processes", id, "link"], Unevaluated[$Aborted] ]; PushNotification["modules/svhost", "Evaluation <span class=\"badge badge-danger\">aborted</span>"]; );
 
 
 ProcessUpdateStatus[personal_, mess_] := With[{}, 
