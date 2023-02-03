@@ -1,5 +1,7 @@
 # 1 How to add a new function to the frontend
-Let us start with a neat one - `ListContourPlot` or `ContourPlot`
+Let us start with a neat one - `ListContourPlot` or `ContourPlot`. 
+The steps without much details are shown at the bottom at [TL;DR](#tldr) section
+
 ### Preliminary steps
 The simplest approach will be to take the existing `.js` library and fetch for a given function. The one I found [ploty.js](https://plotly.com/javascript/contour-plots/)
 
@@ -180,3 +182,34 @@ The result is following
 ![img](../imgs/tutor-1-img-contourplot.png)
 
 fully interactive; zooming, panning is there
+
+## TL;DR
+
+Added lines
+***src/webobjects.wls***
+```mathematica
+...
+ListContourPloty[s_List] := WListContourPloty[Transpose[s//N]];
+...
+```
+
+***src/converter.wls***
+```mathematica
+$SupportedGraphicsObjectList = {WListContourPloty, ...};
+...
+...
+```
+
+***src/misc.js***
+```js
+...
+
+core.WListContourPloty = function(args, env) {
+  const data = interpretate(args[0], env);
+  console.log(data);
+
+  Plotly.newPlot(env.element, [{z:data[2], x:data[0], y:data[1], type: 'contour'}]);
+} 
+
+...
+```
