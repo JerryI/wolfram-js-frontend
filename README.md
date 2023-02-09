@@ -71,8 +71,7 @@ wolframscript start.wls ip 127.0.0.1 port 8090
 
 There is a `Demo` notebook, which covers the most functions.
 
-## Tutorials
-- [How to write a function for the frontend](tutorials/1-write-a-function.md)
+## [Tutorials](docs/README.md)
 
 ## TODO
 - [ ] Documentation

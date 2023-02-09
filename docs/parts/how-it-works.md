@@ -1,5 +1,5 @@
 ## An overview picture
-![[overview.excalidraw.svg]]
+![[../drawings/overview.excalidraw.svg]]
 
 ## JS Interpreter / browser's side
-![[browser-side.excalidraw.svg]]
+![[../drawings/browser-side.excalidraw.svg]]

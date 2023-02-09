@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/README.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/README.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/README.md"
+                "file": "README.md"
               }
             }
           }
@@ -184,10 +184,10 @@
   },
   "active": "a2db3c0534bb8f31",
   "lastOpenFiles": [
-    "README.md",
-    "docs/parts/writting-a-function.md",
     "docs/README.md",
     "docs/parts/how-it-works.md",
+    "README.md",
+    "docs/parts/writting-a-function.md",
     "docs/drawings/browser-side.excalidraw.md",
     "docs/drawings/overview.excalidraw.md",
     "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.md"
