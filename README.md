@@ -133,7 +133,7 @@ The set of `Graphics3D` objects is loaded from [this](https://github.com/JerryI/
 
 In general, it is possible to insert inside `FrontEndExecutable` anything you want to execute at a frontend side.
 
-
+![](/docs/drawings/browser-side.excalidraw.svg)
 
 ## Development
 type
