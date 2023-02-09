@@ -1,10 +1,27 @@
 ## How to add a new function to the frontend
 
 Let us start with a fancy one - `ListContourPlot`. 
-*__Quotes are used as footnotes__ for whom wants to have a deeper view on what it happening inside. The shorter version of this tutorial without many details is at [TL;DR](#tldr) section*
+
+
+>> **Note 1 :** _The quote formatting below is used to refer to side remarks_  
+
+>> **Note 2 :** _A shorter version of this tutorial is given at [TL;DR](#tldr)_ 
+
+**Outline**
+
+- Preliminary steps
+- Adding a new function to the kernel
+- Writing the JS representation of the function
+  - Testing
+  - Making DOM objects
+- TL;DR
 
 ### Preliminary steps
-The simplest approach will be to take the existing `.js` library and fetch for a given function. The one I found was [ploty.js](https://plotly.com/javascript/contour-plots/). The example below refers to basic usage it to make contour plots, borrowed from the official page
+
+The simplest approach will be to take >>an existing `.js` library and fetch for a given function. The one I found was [ploty.js](https://plotly.com/javascript/contour-plots/). The example below pertains to the basic utilization of ListContourPlot. It is borrowed from the official page.
+
+>> We are mainly interested in the plotting part of the code below (the last lines below //Plotting). This is is an example. That is the section that will be used in the frontend to render the plot later 😁.
+
 
 ```js
 //Data generation
@@ -34,28 +51,27 @@ var data = [ {
 Plotly.newPlot('myDiv', data);
 ```
 
-In principle, we are interested in the last 9 lines of the code above, which stand for the actual plotting of the data. We will use them in our frontend to render the graph later.
-
 ### Adding a new function to the kernel
 
-Since we want to keep the original function from Wolfram Engine untouched (one can still use them using `//SVGForm`), let us create a new one
+>> Since we wish to keep the original function from the Wolfram Engine untouched[^1], let us create a new one.
+
+
+[^1]: one can still use them using `//SVGForm` (click the arrow to return to the previous position in the text)
+
 
 __all new graphical or interactive objects are stored in `src/webobjects.wls`__
 
-Those definitions are visible for both `master` kernel and any wolfram engine `processes` spawned by the core.
+>> The definitions in that file are visible to the `master` kernel and any wolfram engine `processes` spawned by the core.
 
-> In the present implementations, the `webobjects.wls` syncs with `shared/webobjects.wls`, which is the first folder which is loaded by `master.wls` and by a child process, located in `svcore/run.wls`
+> In >> present implementations, the `webobjects.wls` syncs with `shared/webobjects.wls`. `shared/webobjects.wls` is the first folder loaded by `master.wls` and by a child process, located in `svcore/run.wls`.
 
-Let's start from the basic functionality of `ListContourPlot`
+Let's start >>with the basic functionality of `ListContourPlot`.
 
 ```mathematica
 ListContourPlot[
  Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
 ```
-
-Here the input in simplified to the form of `{x,y,f[x,y]}, ...`, therefore `Flatten` and `Partition` were used. The original system function also accepts nested arrays `{{f[1,1], f[1,2]}, {f[2,1], f[2,2]}}`, where the position of the element corresponds to the coordinates in the contour plane.
-
-One should consider the input form of the data passed to `ploty.js`, here it is actually transposed, compared to the default input form for `ListContourPlot` function
+One should consider the input form of the data passed to `ploty.js`, here it is actually transposed, compared to the default input form for >>the `ListContourPlot` function
 
 ```js
 var data = [ {
@@ -67,8 +83,8 @@ var data = [ {
 ];
 ```
 
-Therefore, there are two possibilities how we can do this:
-- transpose it on client's side using JS tools
+Therefore, there are two possibilities:
+- transpose >>the table on >>the client's side using JS tools
 - write a wrapped function (let us call it `WListContourPloty`) for mathematica, which will do the job
 
 Since our web browser is already suffering from drawing stuff etc. Here is the implementation of the last option
@@ -82,7 +98,7 @@ ListContourPloty[s_List] := WListContourPloty[Transpose[s//N]];
 
 Using a wrapper-function `WListContourPloty` might look unnecessary, but it can help to prepare the data in more complicated cases. This is just an example.
 
-Now we need to register this one in `src/converter.wls`, so that the system will know that this has to be executed on the frontend and not just returned as a string
+Now we need to register this one in `src/converter.wls`, so that the system will know that this has to be executed on the frontend and not just returned as a string.
 
 add the function `WListContourPloty` to the list
 
@@ -109,7 +125,7 @@ Now the entire function with its data will be automatically replaced after the c
 
 ### Writing the JS representation of the function
 
-Go to `src/misc.js`. This is a good place to start. Let us write the name and the body of js representation of the function
+Go to `src/misc.js`. This is a good place to start. Let us write the name and the body of >>a >>JS representation of the function
 
 ***src/misc.js*** (added a few lines)
 ```js
@@ -125,15 +141,15 @@ core.WListContourPloty = function(args, env) {
 ...
 ```
 
-If the arguments may have rational numbers and other symbolic stuff, you can specify, that the output has to be numerical by setting `env.numberical = true` or better to do it like that
+If the arguments may have rational numbers and other symbolic stuff, you can specify, that the output has to be numerical by setting `env.numberical = true` or better,>>
 
 ```js
 const data = interpretate(args[0], {...env, numerical:true});
 ```
 
-It will force all functions `core.Rational`, `core.Times` etc to return a numerical result.
+>>That will force all functions `core.Rational`, `core.Times` etc to return a numerical result.
 
-However, since there is no point in overloading the browser with the data processing in a such a particular case, one can pre-convert it to the numerical form using `data//N` (what we've done already in the section [Adding a new function to the kernel](#Adding a new function to the kernel)).
+However, since there is no point in overloading the browser with the data processing in a such a particular case, one can pre-convert it to the numerical form using `data//N` (what we've done already in the section [Adding a new function to the kernel](# Adding a new function to the kernel)).
 
 #### Testing
 Save our modified files
@@ -147,7 +163,7 @@ open the folder in the terminal and run
 wolframscript start.wls dev
 ```
 
-or if you use in for the first time, please, install `nodejs` (used for the bundling js files) and then
+or if you use >>it for the first time, please, install `nodejs` (used for the bundling js files) and then
 
 ```bash
 npm i
@@ -162,14 +178,15 @@ ListContourPloty[Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten
 
 ![image](../../imgs/tutor-1-img-emptycell.png)
 
-This is right, there is nothing to display. In the browser's developer console (press F12) we will see our arrays received by the browser from Wolfram Kernel
+>>That is correct, there is nothing to display. In the browser's developer console (press F12), we will see the arrays received by the browser from the Wolfram Kernel.
 
 ![image](../../imgs/tutor-1-img-consolelog.png)
 
 #### Making DOM objects
+
 The DOM element in the cell created for each interactive object is accessible from the argument `env.element`
 
->This is rather simple, every time when the `FrontEndExecutable` runs, it creates a `<span>` element and puts it's `id` into the `env` variable
+>This is rather simple, whenever the `FrontEndExecutable` runs, it creates a `<span>` element and puts it's `id` into the `env` variable.
 >
 >*src/frontend.js* (corresponding fragment of the code)
 >```js
@@ -178,7 +195,7 @@ The DOM element in the cell created for each interactive object is accessible fr
 >```
 >and runs the evaluation using written wolfram JS interpreter (see src/core.js)
 
-Then let's finish the rest of the code 
+>> Just a bit more, the rest of the code 
 
 ***src/misc.js*** (added a few lines)
 ```js
