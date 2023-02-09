@@ -160,11 +160,11 @@ Open the browser and write in a new notebook's cell
 ListContourPloty[Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
 ```
 
-![image](tutor-1-img-emptycell.png)
+![image](../../imgs/tutor-1-img-emptycell.png)
 
 This is right, there is nothing to display. In the browser's developer console (press F12) we will see our arrays received by the browser from Wolfram Kernel
 
-![image](tutor-1-img-consolelog.png)
+![image](../../imgs/tutor-1-img-consolelog.png)
 
 #### Making DOM objects
 The DOM element in the cell created for each interactive object is accessible from the argument `env.element`
@@ -201,7 +201,7 @@ Easy, ha? Save the modified files and wait until the wolfram script finish rebui
 
 Refresh the page and see the result
 
-![img](tutor-1-img-contourplot.png)
+![img](../../imgs/tutor-1-img-contourplot.png)
 
 Fully interactive; zooming, panning are there. If you have troubles with cache, please, force your browser to flush it.
 
