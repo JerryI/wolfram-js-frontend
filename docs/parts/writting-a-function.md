@@ -3,9 +3,13 @@
 Let us start with a fancy one - `ListContourPlot`. 
 
 
->> **Note 1 :** _The quote formatting below is used to refer to side remarks_  
+**Note 1 :** _The quote formatting below_
 
->> **Note 2 :** _A shorter version of this tutorial is given at [TL;DR](#tldr)_ 
+>like  this
+
+_is used to refer to side remarks._  
+
+**Note 2 :** _A shorter version of this tutorial is given at [TL;DR](#tldr)._ 
 
 **Outline**
 
@@ -18,9 +22,9 @@ Let us start with a fancy one - `ListContourPlot`.
 
 ### Preliminary steps
 
-The simplest approach will be to take >>an existing `.js` library and fetch for a given function. The one I found was [ploty.js](https://plotly.com/javascript/contour-plots/). The example below pertains to the basic utilization of ListContourPlot. It is borrowed from the official page.
+The simplest approach will be to take an existing `.js` library and fetch for a given function. The one I found was [ploty.js](https://plotly.com/javascript/contour-plots/). The example below pertains to the basic utilization of `ListContourPlot`. It is borrowed from the official page.
 
->> We are mainly interested in the plotting part of the code below (the last lines below //Plotting). This is is an example. That is the section that will be used in the frontend to render the plot later 😁.
+We are mainly interested in the plotting part of the code below (the last lines below `//Plotting`). That part will be used in the frontend to render the plot later.
 
 
 ```js
@@ -53,7 +57,7 @@ Plotly.newPlot('myDiv', data);
 
 ### Adding a new function to the kernel
 
->> Since we wish to keep the original function from the Wolfram Engine untouched[^1], let us create a new one.
+Since we wish to keep the original function from the Wolfram Engine untouched[^1], let us create a new one.
 
 
 [^1]: one can still use them using `//SVGForm` (click the arrow to return to the previous position in the text)
@@ -61,17 +65,17 @@ Plotly.newPlot('myDiv', data);
 
 __all new graphical or interactive objects are stored in `src/webobjects.wls`__
 
->> The definitions in that file are visible to the `master` kernel and any wolfram engine `processes` spawned by the core.
+The definitions in that file are visible to the `master` kernel and any wolfram engine `processes` spawned by the core.
 
-> In >> present implementations, the `webobjects.wls` syncs with `shared/webobjects.wls`. `shared/webobjects.wls` is the first folder loaded by `master.wls` and by a child process, located in `svcore/run.wls`.
+> In present implementations, the `webobjects.wls` syncs with `shared/webobjects.wls`. `shared/webobjects.wls` is the first folder loaded by `master.wls` and by a child process, located in `svcore/run.wls`.
 
-Let's start >>with the basic functionality of `ListContourPlot`.
+Let's start with the basic functionality of `ListContourPlot`.
 
 ```mathematica
 ListContourPlot[
  Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
 ```
-One should consider the input form of the data passed to `ploty.js`, here it is actually transposed, compared to the default input form for >>the `ListContourPlot` function
+One should consider the input form of the data passed to `ploty.js`, here it is actually transposed, compared to the default input form for the `ListContourPlot` function
 
 ```js
 var data = [ {
@@ -84,8 +88,8 @@ var data = [ {
 ```
 
 Therefore, there are two possibilities:
-- transpose >>the table on >>the client's side using JS tools
-- write a wrapped function (let us call it `WListContourPloty`) for mathematica, which will do the job
+- Transpose the table on the client's side using JS tools.
+- Write a wrapped function (let us call it `WListContourPloty`) for mathematica, which will do the job.
 
 Since our web browser is already suffering from drawing stuff etc. Here is the implementation of the last option
 
@@ -109,7 +113,7 @@ $SupportedGraphicsObjectList = {WListContourPloty, Graphics3D, HTMLForm, WListPl
 ...
 ```
 
->May be one can generalize all those calls to a single `WListPloty[data, typeofdiagram, settings]` with a couple of parameters, which will tell how to display the given data, instead of writing the same code all over again
+>May be one can generalize all those calls to a single `WListPloty[data, typeofdiagram, settings]` with a couple of parameters, which will tell how to display the given data, instead of writing the same code all over again.
 
 Now the entire function with its data will be automatically replaced after the cell's evaluation with `FrontEndExecutable["id"]` - a reference to a JSON object - where the function `WListContourPloty[data]` will be presented. 
 
@@ -125,7 +129,7 @@ Now the entire function with its data will be automatically replaced after the c
 
 ### Writing the JS representation of the function
 
-Go to `src/misc.js`. This is a good place to start. Let us write the name and the body of >>a >>JS representation of the function
+Go to `src/misc.js`. This is a good place to start. Let us write the name and the body of a JS representation of the function
 
 ***src/misc.js*** (added a few lines)
 ```js
@@ -141,13 +145,13 @@ core.WListContourPloty = function(args, env) {
 ...
 ```
 
-If the arguments may have rational numbers and other symbolic stuff, you can specify, that the output has to be numerical by setting `env.numberical = true` or better,>>
+If the arguments may have rational numbers and other symbolic stuff, you can specify, that the output has to be numerical by setting `env.numberical = true` or better,
 
 ```js
 const data = interpretate(args[0], {...env, numerical:true});
 ```
 
->>That will force all functions `core.Rational`, `core.Times` etc to return a numerical result.
+That will force all functions `core.Rational`, `core.Times` etc to return a numerical result.
 
 However, since there is no point in overloading the browser with the data processing in a such a particular case, one can pre-convert it to the numerical form using `data//N` (what we've done already in the section [Adding a new function to the kernel](# Adding a new function to the kernel)).
 
@@ -163,7 +167,7 @@ open the folder in the terminal and run
 wolframscript start.wls dev
 ```
 
-or if you use >>it for the first time, please, install `nodejs` (used for the bundling js files) and then
+or if you use it for the first time, please, install `nodejs` (used for the bundling js files) and then
 
 ```bash
 npm i
@@ -178,7 +182,7 @@ ListContourPloty[Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten
 
 ![image](../../imgs/tutor-1-img-emptycell.png)
 
->>That is correct, there is nothing to display. In the browser's developer console (press F12), we will see the arrays received by the browser from the Wolfram Kernel.
+That is correct, there is nothing to display. In the browser's developer console (press F12), we will see the arrays received by the browser from the Wolfram Kernel.
 
 ![image](../../imgs/tutor-1-img-consolelog.png)
 
@@ -195,7 +199,7 @@ The DOM element in the cell created for each interactive object is accessible fr
 >```
 >and runs the evaluation using written wolfram JS interpreter (see src/core.js)
 
->> Just a bit more, the rest of the code 
+Just a bit more.
 
 ***src/misc.js*** (added a few lines)
 ```js
