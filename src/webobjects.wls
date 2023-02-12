@@ -25,17 +25,7 @@ ListLinePloty[x_List, OptionsPattern[]] := Module[{transp},
     WListPloty[ExportString[transp//N, "JSON"] ]
 ];
 
-Options[Ploty] = {
-    PlotRange -> {{-Infinity, Infinity}, {-Infinity, Infinity}}
-};
-
-Ploty[function_, range_, OptionsPattern[] ] := Module[{transp, data},
-    With[{ite = range[[1]], it = Join[range, {range[[3]]-range[[2]]}/200//N]},
-        With[{fn = #},
-            Table[{ite, fn}, it ]
-        ] &/@ Flatten[{function}]
-    ]//ListLinePloty
-]; 
+Ploty[f_, range_, op : OptionsPattern[Plot]] := Plot[f, range, op] // Cases[#, Line[x_] :> x, All] & // ListLinePloty[#, op] & ;
 
 Options[WebExport] = {
     Popup -> False 

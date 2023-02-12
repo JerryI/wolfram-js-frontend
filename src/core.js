@@ -80,7 +80,7 @@ core.Times = function (args, env) {
   }
   if (env.numerical === true) return interpretate(args[0], env)*interpretate(args[1], env);
   
-  //return the original form igoring other arguments
+  //TODO: evaluate it before sending its original symbolic form
   return ["Times", ...args];
 }
 
@@ -118,12 +118,16 @@ core.Association = function (args, env) {
 };
 
 core.Rule = function (args, env) {
-  try {
-    env.association[args[0]] = args[1];
+  if (env.hasOwnProperty('association')) {
+
+    let copy = Object.assign({}, env);
+    delete copy.association;
+
+    env.association[args[0]] = interpretate(args[1], copy);
   }
-  catch (err) {
-    console.error(err);
-  }
+
+  //TODO: evaluate it before sending it
+  return ["Rule", ...args];
 };
 
 function uuidv4() {
