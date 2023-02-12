@@ -56,4 +56,15 @@ WebSlider[min_, max_, step_:1] := Module[{view, script, id = CreateUUID[]},
     EventObject[<|"id"->id, "view"->StringJoin[view, script]|>]
 ];
 
+(* stupid version with a full reevaluation *)
+WebDynamic[expr_, EventObject[assoc_]] := Module[{view, script, id = CreateUUID[]},
+    EventBind[EventObject[assoc], Function[{cli,data},
+        WebSocketSend[addr, FrontEndUpdateCell[template, ExportString[obj, "JSON"] ]];
+        expr @ data (* we need an async evalutor!! *)
+        (* I stopped here *)
+    ]];
+
+    "-- Dynamics --"
+];
+
 HTMLForm[EventObject[assoc_]] ^:= HTMLForm[assoc["view"]];
