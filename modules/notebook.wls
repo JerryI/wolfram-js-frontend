@@ -61,6 +61,15 @@ NotebookAttach[id_, proc_, init_:Null] := Module[{pid = proc},
     notebooks[id]["evaluator"] = RemoteEvaluator[pid];
 ];
 
+EmittEvent[id_, data_] := With[{cli = client},
+    (* global *)
+    EmittedEvent[id, cli, data];
+    ( JTPClientSend[settings["processes", #, "listener"], EmittedEvent[id, cli, data]]; ) &/@ Keys[settings["processes"]];
+];
+
+EventBind[EventObject[assoc_], handler_] ^:= (EventHandlers[assoc["id"]] = handler);
+EmittedEvent[id_, cli_, data_] := EventHandlers[id][cli, data];
+
 NotebookOpen[id_] := (
     Block[{fireEvent = CellEventFire[client]},
         CellObjGenerateTree[notebooks[id, "cell"]];
@@ -206,4 +215,3 @@ CellEventFire[addr_]["CellMorph"][cell_] := (
         WebSocketSend[addr, FrontEndMorphCell[ExportString[obj, "JSON"] ]];
     ];
 );
-

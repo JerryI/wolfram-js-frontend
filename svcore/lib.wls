@@ -9,7 +9,7 @@ LoopBack[obj_] := JTPClientEvaluate[kitchen, obj];
 SetAttributes[LoopBack, HoldAll];
 
 EventBind[type_, handler_] := (EventHandlers[type] = handler);
-EmittedEvent[type_, cli_, data_] := Withh[{err=MemoryConstrained[EventHandlers[type][cli, data], MEMORYLimit]}, If[err === $Aborted, PushNotification["svcore/lib/eventemitt", StringTemplate["<span style=\"badge badge-danger\">Event handler failed</span> <i>``</i>."]["Out of Memory"] ]; ] ];
+EmittedEvent[type_, cli_, data_] := With[{err=MemoryConstrained[EventHandlers[type][cli, data], MEMORYLimit]}, If[err === $Aborted, PushNotification["svcore/lib/eventemitt", StringTemplate["<span style=\"badge badge-danger\">Event handler failed</span> <i>``</i>."]["Out of Memory"] ]; ] ];
 
 WebSocketSend[cli_, data_] := JTPClientEvaluate[kitchen, Tinyweb`WebSocketSend[cli, data]];
 WebSocketPublish[exp_, chan_] := JTPClientEvaluate[kitchen, Tinyweb`WebSocketPublish[server, exp, chan]];
