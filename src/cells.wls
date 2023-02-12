@@ -253,7 +253,7 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},
 
 
         
-
+        (* move it to a different function. make it possible to perform async or quired evaluation*)
         With[{callback = OptionValue["callback"], fireLocalEvent=fireEvent},
             (
                 Print[StringTemplate["Eval: ``"][#]];

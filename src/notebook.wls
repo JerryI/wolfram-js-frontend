@@ -11,6 +11,7 @@ Options[NotebookCreate] = {
     "name" -> "Untitled",
     "id" :> CreateUUID[],
     "evaluator" -> SimpleEvaluator,
+    "asyncevaluator" -> SimpleEvaluator,
     "ref" -> Null,
     "sandboxed" -> False,
     "data" -> "1+1",
