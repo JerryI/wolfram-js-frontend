@@ -73,7 +73,8 @@ Let's start with the basic functionality of `ListContourPlot`.
 
 ```mathematica
 ListContourPlot[
- Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
+ Catenate@Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}]
+]
 ```
 One should consider the input form of the data passed to `ploty.js`, here it is actually transposed, compared to the default input form for the `ListContourPlot` function
 
@@ -177,7 +178,7 @@ wolframscript start.wls dev
 Open the browser and write in a new notebook's cell
 
 ```mathematica
-ListContourPloty[Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
+ListContourPloty[Catenate@Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}]]
 ```
 
 ![image](../../imgs/tutor-1-img-emptycell.png)
@@ -269,7 +270,7 @@ wolframscript start.wls dev
 open the web browser at `http://127.0.0.1:8090` find an empty notebook and write to a cell
 
 ```mathematica
-ListContourPloty[Partition[Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}] // Flatten, 3]]
+ListContourPloty[Catenate@Table[{x, y, x y}, {x, -2, 2}, {y, -2, 2}]]
 ```
 
 see the result after pressing `Shift-Enter`
