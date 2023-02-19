@@ -1,2 +1,9 @@
+BeginPackage["JerryI`WolframJSFrontend`Dynamics`", {}];
 
-Use $NotebookID
+Begin["`Private`"]; 
+
+(*Use $NotebookID*)
+
+End[];
+
+EndPackage[];

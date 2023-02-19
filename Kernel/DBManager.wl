@@ -1,6 +1,6 @@
 BeginPackage["JerryI`WolframJSFrontend`DBManager`", {"JerryI`WolframJSFrontend`Notifications`", "JerryI`WolframJSFrontend`Utils`"}]; 
 
-DBLoad::usage = "DBLoad"
+DBLoad::usage = "DBLoad[] loads the Notebooks from the last backup"
 
 Begin["`Private`"]; 
 

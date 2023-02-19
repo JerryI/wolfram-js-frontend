@@ -11,6 +11,3 @@ Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/Tinyweb
 Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"]
 
 Get["JerryI`WolframJSFrontend`Starter`"]
-Get["JerryI`WolframJSFrontend`Notifications`"]
-Get["JerryI`WolframJSFrontend`DBManager`"]
-Get["JerryI`WolframJSFrontend`Utils`"]

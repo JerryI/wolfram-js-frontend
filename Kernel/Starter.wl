@@ -1,13 +1,18 @@
 (* ::Package:: *)
 
 (* ::Chapter:: *)
-(*TCP Server*)
-
 
 (* ::Section::Closed:: *)
 (*Begin package*)
 
-BeginPackage["JerryI`WolframJSFrontend`Starter`", {"JerryI`WolframJSFrontend`Utils`", "JerryI`WolframJSFrontend`DBManager`", "Tinyweb`", "CodeParser`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Starter`", {
+  "Tinyweb`", "CodeParser`", "JerryI`WolframJSFrontend`Cells`", 
+  "JerryI`WolframJSFrontend`DBManager`", "JerryI`WolframJSFrontend`Dynamics`", 
+  "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Kernel`",
+  "JerryI`WolframJSFrontend`Notebook`", "JerryI`WolframJSFrontend`Notifications`",
+  "JerryI`WolframJSFrontend`Starter`", "JerryI`WolframJSFrontend`Utils`",
+  "JerryI`WolframJSFrontend`WebObjects`"
+  }]; 
 
 JSFrontendStart::usage = "JSFrontendStart[addr->, port->]"
 
@@ -23,13 +28,14 @@ JSFrontendStart[OptionsPattern[]] := (
   jsf`server = jsf`server // WEBServerStart;
 
   NotificationMethodRegister;
-
   DBLoad;
-
   SetUpCron;
+  LoadWebObjects;
 
   console["log", "Open http://`` in your browser", jsf`server["addr"]];
 );
+
+JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
 
 SetUpCron := (
   (* ping-pong with frontend *)
@@ -44,7 +50,7 @@ SetUpCron := (
   SessionSubmit[ScheduledTask[console["log", "<*Now*>"]; console["memory stat"];, Quantity[20, "Minutes"]]]; 
 );
 
-DefineEvaluators["Default",
+NotebookDefineEvaluators["Default",
   {
     MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
     WSPQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->WSPProcessor       |>,
@@ -86,7 +92,7 @@ WolframCheckSyntax[str_String] :=
 WolframProcessor[expr_String, signature_String, callback_] := Module[{str = StringTrim[expr], block = False},
   Print["WolframProcessor!"];
   If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
-  JerryI`WolframJSFrontend`Notebook[signature]["kernel"][WolframEvaluator[str, block, signature], callback, "Link"->"WSTP"];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][WolframEvaluator[str, block, signature], callback, "Link"->"WSTP"];
 ];    
 
 

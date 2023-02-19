@@ -1,4 +1,26 @@
-(*binging to the events*)
+
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notification`"}]; 
+
+NotebookDefineEvaluators::usage = "NotebookDefineEvaluators[] defines the processor for languages"
+NotebookExtendDefinitions::usage = "NotebookExtendDefinitions[] extends the JSON objects of the notebook"
+NotebookCreate::usage = "NotebookCreate[]"
+NotebookRemove::usage = "NotebookRemove[]"
+NotebookAttach::usage = "NotebookAttach[] attaches to the local or remote kernel"
+NotebookOpen::usage = "NotebookOpen[]"
+NotebookEvaluate::usage = "NotebookEvaluate[]"
+NotebookAbort::usage = "NotebookAbort[]"
+NotebookGetObject::usage = "NotebookGetObject[] gets the JSON notebook object"
+NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
+
+Begin["`Private`"]; 
+
+$ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
+
+jsfn`Notebooks = <||>;
+jsfn`Processors = Null;
+
+$NotifyName = $InputFileName;
+
 Unprotect[NotebookCreate];
 Unprotect[NotebookOpen];
 Unprotect[NotebookEvaluate];
@@ -10,95 +32,80 @@ ClearAll[NotebookEvaluate];
 Options[NotebookCreate] = {
     "name" -> "Untitled",
     "id" :> CreateUUID[],
-    "evaluator" -> SimpleEvaluator,
-    "kernel" -> Null,
+    "kernel" -> LocalKernel,
     "objects" -> <||>,
-    "variables" -> <||>,
-    "ref" -> Null,
-    "sandboxed" -> False,
     "data" -> "1+1",
-    "pre" -> Null
+    "cell" -> Null
 };
 
-NotebookExtendDefinitions[defs_][sign_] := ;
+NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
+
+NotebookExtendDefinitions[defs_][sign_] := (
+    jsfn`Notebooks[sign]["objects"] = Join[jsfn`Notebooks[sign]["objects"], defs];
+);
 
 NotebookCreate[OptionsPattern[]] := (
     With[{id = OptionValue["id"]},
 
-        notebooks[id] = <|
+        jsfn`Notebooks[id] = <|
             "name" -> OptionValue["name"],
-            "evaluator" -> OptionValue["evaluator"],
-            "ref" -> OptionValue["ref"],
-            "sandboxed" -> OptionValue["sandboxed"],
-            "pre" -> OptionValue["pre"]
+            "id"   -> id,
+            "kernel" -> OptionValue["kernel"],
+            "objects" -> OptionValue["objects"]        
         |>;
 
-        notebooks[id, "cell"] = CellObj["sign"->id, "type"->"input", "data"->OptionValue["data"]];
+        jsfn`Notebooks[id]["cell"] = CellObj["sign"->id, "type"->"input", "data"->OptionValue["data"]];
         id
     ]
 );
 
 NotebookRemove[id_] := (
-    CellObjRemoveAllNext[notebooks[id, "cell"] ];
-    CellObjRemove[notebooks[id, "cell"] ];
+    CellObjRemoveAllNext[ jsfn`Notebooks[id]["cell"] ];
+    CellObjRemove[ jsfn`Notebooks[id]["cell"] ];
     
-    notebooks[id] = .;
+    jsfn`Notebooks[id] = .;
 );
 
 (*access only via websockets*)
 NotebookAttach[id_, proc_, init_:Null] := Module[{pid = proc},
     If[proc === "master", 
-        notebooks[id]["evaluator"] = SimpleEvaluator; 
-        WebSocketSend[client, FrontEndAddKernel[pid, "sandbox"] ]; 
-        PushNotification["modules/notebook", "<span class=\"badge badge-danger\">Master kernel attached</span> <p>If we die, we die</p>"]; 
+        jsfn`Notebooks[id]["kernel"] = LocalKernel; 
+        WebSocketSend[client, Global`FrontEndAddKernel[pid] ]; 
+        PushNotification[$NotifyName, "<span class=\"badge badge-danger\">Master kernel attached</span> <p>If we die, we die</p>"]; 
         Return["master", Module] 
     ];
-    With[{c = client, p = pid},
-        If[proc === "Null"  ,
-            pid = CreateUUID[];
-            ProcessStart[pid, "name" -> "sandbox", "task" -> "svcore/sandbox.wls", "epilog"->Hold[WebSocketSend[c, FrontEndAddKernel[p, "sandbox"] ];], "prolog" -> notebooks[id]["pre"] ];
-        
-        ,
-            JTPClientSend[settings["processes", proc, "listener"], Import["svcore/sandbox.wls"]; WebSocketSend[c, FrontEndAddKernel[proc, "sandbox"] ]; ];
-        ];
-    ];
-
-    notebooks[id]["evaluator"] = RemoteEvaluator[pid];
 ];
 
-EmittEvent[id_, data_] := With[{cli = client},
-    (* global *)
-    EmittedEvent[id, cli, data];
-    ( JTPClientSend[settings["processes", #, "listener"], EmittedEvent[id, cli, data]]; ) &/@ Keys[settings["processes"]];
-];
-
-EventBind[EventObject[assoc_], handler_] ^:= (EventHandlers[assoc["id"]] = handler);
-EmittedEvent[id_, cli_, data_] := EventHandlers[id][cli, data];
 
 NotebookOpen[id_] := (
-    Block[{fireEvent = CellEventFire[client]},
-        CellObjGenerateTree[notebooks[id, "cell"]];
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+        CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
 );
 
 NotebookEvaluate[id_, cellid_] := (
-    Block[{fireEvent = CellEventFire[client]},
-        CellObjEvaluate[CellObj[cellid], notebooks[id, "evaluator"] ];
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+        CellObjEvaluate[CellObj[cellid], jsfn`Processors];
     ];
 );
 
 NotebookAbort[id_] := (
-    Block[{fireEvent = CellEventFire[client]},
-        notebooks[id, "evaluator"]["abort"];
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+        jsfn`Notebooks[id]["kernel"]["Abort"];
     ];
 );
 
+NotebookGetObject[cellid_, uid_] := (
+    WebSocketSend[client, Global`FrontEndExtendDefinitions[uid, jsfn`Notebooks[CellObj[cellid]["sign"]]["objects"][uid] ]];
+);
+
 NotebookOperate[cellid_, op_] := (
-    Block[{fireEvent = CellEventFire[client]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
         op[CellObj[cellid]];
     ];
 );
 
+(*
 NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake[CreateUUID[], 3]<>".html"},
     content = Block[{session = <|"Query"-><|"id"->id|>|>, commandslist = {}},
         Block[{WebSocketSend = Function[{addr, data}, commandslist={commandslist, data};], fireEvent = CellEventFire[""]},
@@ -112,8 +119,9 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
     Export["public/trashcan/"<>file, content, "String"];
     WebSocketSend[client, FrontEndJSEval[StringTemplate["downloadByURL('http://'+window.location.hostname+':'+window.location.port+'/trashcan/``', '``')"][file, file]]];
 ];
+*)
 
-CellEventFire[addr_]["NewCell"][cell_] := (
+NotebookEventFire[addr_]["NewCell"][cell_] := (
     (*looks ugly actually. we do not need so much info*)
     With[
         {
@@ -125,18 +133,17 @@ CellEventFire[addr_]["NewCell"][cell_] := (
                         "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
                         "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
                         "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
-                        "storage"->cell["storage"]
+                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
                     |>,
             
             template = LoadPage["public/assets/cells/"<>cell["type"]<>".wsp", {id = cell[[1]]}]
         },
 
-        WebSocketSend[addr, FrontEndCreateCell[template, ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndCreateCell[template, ExportString[obj, "JSON"] ]];
     ];
 );
 
-CellEventFire[addr_]["RemovedCell"][cell_] := (
+NotebookEventFire[addr_]["RemovedCell"][cell_] := (
     (*actually frirstly you need to check!*)
   
     With[
@@ -152,28 +159,13 @@ CellEventFire[addr_]["RemovedCell"][cell_] := (
                     |>
         },
 
-        WebSocketSend[addr, FrontEndRemoveCell[ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndRemoveCell[ExportString[obj, "JSON"] ]];
     ];
 );
 
-CellEventFire[addr_]["ClearStorage"][cell_] := (
-    (*actually frirstly you need to check!*)
-  
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "storage"->Keys[cell["storage"]]
-                    |>
-        },
+NotebookEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, Global`FrontEndCellError[cell[[1]], text]];
 
-        WebSocketSend[addr, FrontEndClearStorage[ExportString[obj, "JSON"] ]];
-    ];
-);
-
-CellEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, FrontEndCellError[cell[[1]], text]];
-
-CellEventFire[addr_]["CellMove"][cell_, parent_] := (
+NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[
         {   template = LoadPage["public/assets/cells/input.wsp", {id = cell[[1]]}],
             obj = <|
@@ -199,11 +191,11 @@ CellEventFire[addr_]["CellMove"][cell_, parent_] := (
                 |>
         },
 
-        WebSocketSend[addr, FrontEndMoveCell[template, ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndMoveCell[template, ExportString[obj, "JSON"] ]];
     ];
 );
 
-CellEventFire[addr_]["CellMorph"][cell_] := (
+NotebookEventFire[addr_]["CellMorph"][cell_] := (
     With[
         {
             obj = <|
@@ -217,6 +209,9 @@ CellEventFire[addr_]["CellMorph"][cell_] := (
                 |>
         },
 
-        WebSocketSend[addr, FrontEndMorphCell[ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndMorphCell[ExportString[obj, "JSON"] ]];
     ];
 );
+
+End[];
+EndPackage[];

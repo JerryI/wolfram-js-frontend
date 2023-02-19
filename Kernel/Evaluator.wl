@@ -1,10 +1,19 @@
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WolframJSFrontend`WebObjects`"}];
+
+(*going to be executed on the remote or local kernels*)
+
+WolframEvaluator::usage = "WolframEvaluator[] a basic mathematica kernel, which executes the commands. Can be run on Local or on Remote kernel"
+CellPrologOption::usage = "CellPrologOption[] used for overriding cell's id"
+
+Begin["`Private`"]; 
+
 JerryI`WolframJSFrontend`Evaluator`objects   = <||>;
 (*JerryI`WolframJSFrontend`Evaluator`variables = <||>;*)
 
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
-  Block[{$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out},
+  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out},
     Block[{
-            FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]], 
+            Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
           },
 
       $evaluated = ToExpression[str];
@@ -12,15 +21,15 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       If[block === True, $evaluated = Null];
     ];  
 
-    With[$result = $evaluated /. JerryI`WolframJSFrontend`WebObjects`replacement,
-      JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, $NewDefinitions];
+    With[{$result = $evaluated /. JerryI`WolframJSFrontend`WebObjects`replacement},
+      JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       
       With[{$string = ToString[$result, InputForm]},
         callback[
           If[StringLength[$string] > 5000,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},
               JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = $string;
-              $NewDefinitions[dumpid] = ExportString[FrontEndTruncated[short, len], "ExpressionJSON"];
+              Global`$NewDefinitions[dumpid] = ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON"];
 
               "FrontEndExecutable[\""<>dumpid<>"\"]"
             ]
@@ -30,7 +39,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
 
           $CellUid, 
           "codemirror",
-          NotebookExtendDefinitions[$NewDefinitions]
+          JerryI`WolframJSFrontend`ExtendDefinitions[Global`$NewDefinitions]
 
         ];
       ]
@@ -60,3 +69,6 @@ WolframEvaluatorFast[str_String, "String"][callback_] := Module[{},
 (* i do not need them, since the dynamics is internal  *)
 
 CellPrologOption[expr_, "id"->uid_] := ($CellUid=uid; expr);
+
+End[];
+EndPackage[];

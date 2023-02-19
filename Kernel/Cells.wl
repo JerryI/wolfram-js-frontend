@@ -1,4 +1,21 @@
-BeginPackage["JerryI`WolframJSFrontend`Cells`", {}];
+BeginPackage["JerryI`WolframJSFrontend`Cells`"];
+
+CellObj::usage = "to create CellObj[\"id\"->smth]"
+CellObjFindLast::usage = "CellObjFindLast"
+CellObjFindFirst::usage = "CellObjFindFirst"
+CellObjFindParent::usage = "CellObjFindParent"
+CellObjCreateChild::usage = "CellObjCreateChild"
+
+CellObjCreateNext::usage = "CellObjCreateNext"
+CellObjCreateAfter::usage = "CellObjCreateAfter"
+CellObjRemoveFull::usage = "CellObjRemoveFull"
+CellObjRemove::usage = "CellObjRemove"
+
+CellObjRemoveAllNext::usage = "CellObjRemoveAllNext"
+CellObjEvaluate::usage = "CellObjEvaluate"
+CellObjGenerateTree::usage = "CellObjGenerateTree"
+
+Begin["`Private`"]; 
 
 Options[CellObj] = {
     "type" -> "input",
@@ -9,12 +26,12 @@ Options[CellObj] = {
     "display" -> "codemirror",
     "lang" -> "mathematica",
     "data" -> Null,
-    "storage" -> <||>,
     "props" -> {},
-    "sign" :> CreateUUID[]
+    "sign" :> CreateUUID[],
+    "id" :> CreateUUID[]
 };
 
-CellObj[OptionsPattern[]] := With[{cell = CreateUUID[]}, 
+CellObj[OptionsPattern[]] := With[{cell = OptionValue["id"]}, 
 
 	CellObj[cell]["type"    ] = OptionValue["type"    ];
     CellObj[cell]["type"    ] = OptionValue["type"    ];
@@ -25,8 +42,6 @@ CellObj[OptionsPattern[]] := With[{cell = CreateUUID[]},
     CellObj[cell]["display" ] = OptionValue["display" ];
     CellObj[cell]["lang"    ] = OptionValue["lang"    ];
     CellObj[cell]["data"    ] = OptionValue["data"    ];
-    CellObj[cell]["kernel"  ] = OptionValue["kernel"  ];
-    CellObj[cell]["storage" ] = OptionValue["storage" ];
     CellObj[cell]["props"   ] = OptionValue["props"   ];
     CellObj[cell]["sign"    ] = OptionValue["sign"    ];
 
@@ -180,16 +195,10 @@ CellObjRemoveAllNext[CellObj[cell_]] := (
 );
 
 
-Options[CellObjEvaluate] = {
-    "JSON" -> False,
-    "callback" -> Null
-};
-
-
 CellObj /: 
-CellObjEvaluate[CellObj[cell_], evaluators_, OptionsPattern[]] := Module[{expr, evaluator},  
+CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},  
     expr = CellObj[cell]["data"];
-    evaluator = Flatten[ReplaceAll[evaluators, Rule[x_,y_] :> List[x[expr],y]]]
+    evaluator = Which@@Flatten[ReplaceAll[evaluators, Rule[x_,y_] :> List[x[expr],y]]];
     
     
     With[{errors = evaluator["SyntaxChecker"][expr]},
@@ -270,5 +279,5 @@ CellObjGenerateTree[CellObj[cell_]] := (
     If[CellObj[cell]["next"] =!= Null, CellObjGenerateTree[CellObj[cell]["next"]]];
 );
 
-Unprotect[FrontEndExecutable];
-ClearAll[FrontEndExecutable];
+End[];
+EndPackage[];

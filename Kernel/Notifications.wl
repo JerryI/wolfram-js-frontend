@@ -1,7 +1,7 @@
 BeginPackage["JerryI`WolframJSFrontend`Notifications`", {"JerryI`WolframJSFrontend`Utils`", "Tinyweb`"}]; 
 
 PushNotification::usage = "PushNotification[from, message, \"duration\" -> duration]"
-NotificationMethodRegister::usage = "NotificationMethodRegister"
+NotificationMethodRegister::usage = "NotificationMethodRegister overrides the Message Output"
 
 Begin["`Private`"]; 
 
