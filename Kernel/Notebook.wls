@@ -11,11 +11,16 @@ Options[NotebookCreate] = {
     "name" -> "Untitled",
     "id" :> CreateUUID[],
     "evaluator" -> SimpleEvaluator,
+    "kernel" -> Null,
+    "objects" -> <||>,
+    "variables" -> <||>,
     "ref" -> Null,
     "sandboxed" -> False,
     "data" -> "1+1",
     "pre" -> Null
 };
+
+NotebookExtendDefinitions[defs_][sign_] := ;
 
 NotebookCreate[OptionsPattern[]] := (
     With[{id = OptionValue["id"]},

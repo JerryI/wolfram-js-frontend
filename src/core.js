@@ -29,6 +29,14 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
   }
 };
 
+core.FrontEndExecutable = function (args, env) {
+
+}
+
+core.FrontEndVariable = function (args, env) {
+
+}
+
 core.Rational = function (args, env) {
 
   if (env.todom  === true) {

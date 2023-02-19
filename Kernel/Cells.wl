@@ -1,4 +1,4 @@
-Needs["CodeParser`"];
+BeginPackage["JerryI`WolframJSFrontend`Cells`", {}];
 
 Options[CellObj] = {
     "type" -> "input",
@@ -6,27 +6,29 @@ Options[CellObj] = {
     "parent" -> Null,
     "next" -> Null,
     "prev" -> Null,
-    "display" -> Null,
+    "display" -> "codemirror",
+    "lang" -> "mathematica",
     "data" -> Null,
-    "dump" -> "",
     "storage" -> <||>,
-    "props" -> <||>,
+    "props" -> {},
     "sign" :> CreateUUID[]
 };
 
 CellObj[OptionsPattern[]] := With[{cell = CreateUUID[]}, 
 
-	CellObj[cell]["type"   ] = OptionValue["type"];
-    CellObj[cell]["child"  ] = OptionValue["child"];
-    CellObj[cell]["parent" ] = OptionValue["parent"];
-    CellObj[cell]["next"   ] = OptionValue["next"];
-    CellObj[cell]["prev"   ] = OptionValue["prev"];
-    CellObj[cell]["display"] = OptionValue["display"];
-    CellObj[cell]["data"]    = OptionValue["data"];
-    CellObj[cell]["sign"]    = OptionValue["sign"];
-    CellObj[cell]["dump"]    = OptionValue["dump"];
-    CellObj[cell]["props"]    = OptionValue["props"];
-    CellObj[cell]["storage"]    = OptionValue["storage"];
+	CellObj[cell]["type"    ] = OptionValue["type"    ];
+    CellObj[cell]["type"    ] = OptionValue["type"    ];
+    CellObj[cell]["child"   ] = OptionValue["child"   ];
+    CellObj[cell]["parent"  ] = OptionValue["parent"  ];
+    CellObj[cell]["next"    ] = OptionValue["next"    ];
+    CellObj[cell]["prev"    ] = OptionValue["prev"    ];
+    CellObj[cell]["display" ] = OptionValue["display" ];
+    CellObj[cell]["lang"    ] = OptionValue["lang"    ];
+    CellObj[cell]["data"    ] = OptionValue["data"    ];
+    CellObj[cell]["kernel"  ] = OptionValue["kernel"  ];
+    CellObj[cell]["storage" ] = OptionValue["storage" ];
+    CellObj[cell]["props"   ] = OptionValue["props"   ];
+    CellObj[cell]["sign"    ] = OptionValue["sign"    ];
 
     CellObj[cell]
 ];
@@ -58,12 +60,12 @@ CellObjFindParent[CellObj[cell_]] := (
 );
 
 CellObj /: 
-CellObjCreateChild[CellObj[cell_]] := (  
+CellObjCreateChild[CellObj[cell_], uid_:CreateUUID[]] := (  
     Module[{child = CellObj[cell]["child"], new},
         If[child =!= Null,
-            new = CellObjCreateNext[child];      
+            new = CellObjCreateNext[child, uid];      
         ,
-            new = CellObj[];
+            new = CellObj["id"->uid];
             CellObj[cell]["child"] = new;
         ];
         new["parent"] = CellObj[cell];
@@ -73,14 +75,14 @@ CellObjCreateChild[CellObj[cell_]] := (
 );
 
 CellObj /: 
-CellObjCreateNext[CellObj[cell_]] := (  
-    Module[{next = CellObj[cell], new = CellObj[]},
+CellObjCreateNext[CellObj[cell_], uid_:CreateUUID[]] := (  
+    Module[{next = CellObj[cell], new = CellObj["id"->uid]},
         While[next["next"] =!= Null, next = next["next"]];
         next["next"] = new;
         new["prev"] = next;
         new["sign"] = next["sign"];
 
-        fireEvent["NewCell"][new];
+        JerryI`WolframJSFrontend`fireEvent["NewCell"][new];
         new
     ]  
 );
@@ -98,7 +100,7 @@ CellObjCreateAfter[CellObj[ucell_]] := (
         new["prev"] = CellObj[cell];
 
         new["sign"] = CellObj[cell]["sign"];
-        fireEvent["NewCell"][new];
+        JerryI`WolframJSFrontend`fireEvent["NewCell"][new];
         new
     ]  
 );
@@ -113,7 +115,7 @@ CellObjRemoveFull[CellObj[cell_]] := Module[{},
             CellObjRemove[CellObj[cell]];
             Return[$Ok, Module];
         ,
-            fireEvent["CellError"][cell, "There must be at least one cell in the notebook"];
+            JerryI`WolframJSFrontend`fireEvent["CellError"][cell, "There must be at least one cell in the notebook"];
             Return[$Failed, Module];
         ]
     ];
@@ -144,8 +146,8 @@ CellObjRemoveFull[CellObj[cell_]] := Module[{},
 
 CellObj /:
 CellObjRemove[CellObj[cell_]] := ( 
-    fireEvent["RemovedCell"][CellObj[cell]];
-    fireEvent["ClearStorage"][CellObj[cell]];
+    JerryI`WolframJSFrontend`fireEvent["RemovedCell"][CellObj[cell]];
+    JerryI`WolframJSFrontend`fireEvent["ClearStorage"][CellObj[cell]];
 
     Unset[CellObj[cell]["data"]];
     Unset[CellObj[cell]["type"]];
@@ -183,40 +185,27 @@ Options[CellObjEvaluate] = {
     "callback" -> Null
 };
 
-(*exprs splitter. credits https://github.com/njpipeorgan *)
-CellSplitInputs[astr_] := With[{str = StringReplace[astr, "%"->"$$$out"]},
-  StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
-   Flatten[{#1 - 1, #2 + 1} & @@@ 
-     Sort@
-      Cases[
-       CodeParser`CodeConcreteParse[str, 
-         CodeParser`SourceConvention -> "SourceCharacterIndex"][[2]], 
-       LeafNode[Token`Newline, _, a_] :> Lookup[a, Source, Nothing]]]
-];
 
 CellObj /: 
-CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},  
-    (*syntax check. credits https://github.com/njpipeorgan *)
-    With[{syntaxErrors = Cases[CodeParser`CodeParse[CellObj[cell]["data"]],(ErrorNode|AbstractSyntaxErrorNode|UnterminatedGroupNode|UnterminatedCallNode)[___],Infinity]},
-        If[Length[syntaxErrors]=!=0 ,
-            fireEvent["CellError"][cell, StringRiffle[
-                TemplateApply["Syntax error `` at line `` column ``",
-                    {ToString[#1],Sequence@@#3[CodeParser`Source][[1]]}
-                ]&@@@syntaxErrors
-
-            , "\n"]];
-
+CellObjEvaluate[CellObj[cell_], evaluators_, OptionsPattern[]] := Module[{expr, evaluator},  
+    expr = CellObj[cell]["data"];
+    evaluator = Flatten[ReplaceAll[evaluators, Rule[x_,y_] :> List[x[expr],y]]]
+    
+    
+    With[{errors = evaluator["SyntaxChecker"][expr]},
+        If[!NullQ[errors],
+            JerryI`WolframJSFrontend`fireEvent["CellError"][cell, errors];
             Return[$Failed, Module];
         ];
     ];
 
-    Module[{exps = CellSplitInputs[CellObj[cell]["data"]], parent},
+    Module[{parent},
 
         (*will break the chain if we try to evaluate a child cell*)
         If[(parent = CellObjFindParent[CellObj[cell]]) =!= Null,
             CellObjRemoveAllNext[CellObj[cell]];
             
-            (*fireEvent["RemovedCell"][CellObj[cell]];*)
+            (*JerryI`WolframJSFrontend`fireEvent["RemovedCell"][CellObj[cell]];*)
 
             (*dont touch the previuos children*)
             If[CellObj[cell]["prev"] =!= Null, CellObj[cell]["prev"]["next"] = Null, parent["child"] = Null];
@@ -237,9 +226,8 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},
             CellObj[cell]["type"] = "input";
             CellObj[cell]["parent"] = Null;
 
-            fireEvent["CellMove"][CellObj[cell], parent];
-            fireEvent["CellMorph"][CellObj[cell]];
-            (*fireEvent["NewCell"][CellObj[cell]];*)
+            JerryI`WolframJSFrontend`fireEvent["CellMove"][CellObj[cell], parent];
+            JerryI`WolframJSFrontend`fireEvent["CellMorph"][CellObj[cell]];
 
             ,
 
@@ -252,37 +240,31 @@ CellObjEvaluate[CellObj[cell_], evaluator_, OptionsPattern[]] := Module[{},
         ];    
 
 
-        
-
-        With[{callback = OptionValue["callback"], fireLocalEvent=fireEvent},
-            (
+        With[{fireLocalEvent=JerryI`WolframJSFrontend`fireEvent},
+            (   
                 Print[StringTemplate["Eval: ``"][#]];
-                Module[{str = StringTrim[#], block = False},
+                fireLocalEvent["Query++"][CellObj[cell]];
+                evaluator["Evaluator"][#, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
+                    If[result =!= "Null" && StringLength[result] > 0,
+                        With[{new = CellObjCreateChild[CellObj[cell], uid]},
+                            new["data"]     = result;
+                            new["type"]     = "output";
 
-                    If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
-                    evaluator[str, $conversionTemplate, CellObj[cell]["storage"], block, Function[{result, st},
-
-                        If[result =!= "Null" && StringLength[result] > 0,
-                            With[{new = CellObjCreateChild[CellObj[cell] ]},
-                                new["data"]     = result;
-                                new["type"]     = "output";
-                                new["storage"]  = st;
-
-                                fireLocalEvent["NewCell"][new];
-                            ]
+                            epilog[new["sign"]];
+                            fireLocalEvent["NewCell"][new];
                         ]
-                    ] ]
-                ]
-            )& /@ exps;
+                    ];
+                    fireLocalEvent["Query--"][CellObj[cell]];
+                ]];
+            )& /@ Flatten[{evaluator["Epilog"][expr]}];
         ];
     ];  
 ];
 
 
-
 CellObj /: 
 CellObjGenerateTree[CellObj[cell_]] := (  
-    fireEvent["NewCell"][CellObj[cell]];
+    JerryI`WolframJSFrontend`fireEvent["NewCell"][CellObj[cell]];
     
     If[CellObj[cell]["child"] =!= Null, CellObjGenerateTree[CellObj[cell]["child"]]];
     If[CellObj[cell]["next"] =!= Null, CellObjGenerateTree[CellObj[cell]["next"]]];
@@ -290,38 +272,3 @@ CellObjGenerateTree[CellObj[cell_]] := (
 
 Unprotect[FrontEndExecutable];
 ClearAll[FrontEndExecutable];
-
-EvaluatorTemporaryStorage = <||>;
-
-SimpleEvaluator["abort"] := PushNotification["modules/cells", "master kernel cannot be aborted"];
-
-SimpleEvaluator[exp_, rules_, storage_, block_, callback_] := 
-    Block[{$$$evaluated, $$$storage = <||>},
-        Block[  {
-                    FrontEndExecutable = Function[uid, If[KeyExistsQ[EvaluatorTemporaryStorage, uid], EvaluatorTemporaryStorage[uid]//ToExpression, ImportString[storage[uid], "ExpressionJSON"] ]  ], 
-                    Print = Function[x, callback@@{ToString[x/.rules, InputForm], $$$storage}]
-                },
-
-            $$$evaluated = ToExpression[exp];
-            $$$out = $$$evaluated;
-            If[block === True, $$$evaluated = Null];
-        ];
-
-        With[{$$$result = $$$evaluated /.rules}, 
-            With[{$string = ToString[$$$result, InputForm]},
-                If[StringLength[$string] > 1000,
-                    With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},
-                        EvaluatorTemporaryStorage[dumpid] = $string;
-                        $$$storage[dumpid] = ExportString[FrontEndTruncated[short, len], "ExpressionJSON"];
-                        callback@@{"FrontEndExecutable[\""<>dumpid<>"\"]", $$$storage}
-                    ]
-                    
-                ,
-                    callback@@{$string, $$$storage} 
-                ]
-            ]
-            
-        ];   
-    ];
-
-

@@ -57,7 +57,7 @@
 
         <?wsp LoadPage["assets/singletoast.wsp", {id = i, state = ""}] ?>
         
-        <?wsp  , {i, Select[settings["notifications"]//Keys, !TrueQ[settings["notifications"][#]["hide"]]&]//Reverse}] ?>
+        <?wsp  , {i, Select[JerryI`WolframJSFrontend`notifications//Keys, !TrueQ[JerryI`WolframJSFrontend`notifications[#]["hide"]]&]//Reverse}] ?>
 
         <button id="showallnotifications" class="btn btn-sm btn-outline-secondary" >Show older</button>
       </li>

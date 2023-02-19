@@ -6,11 +6,12 @@ Options[CellObj] = {
     "parent" -> Null,
     "next" -> Null,
     "prev" -> Null,
-    "display" -> Null,
+    "display" -> "codemirror",
+    "lang" -> "mathematica",
     "data" -> Null,
-    "dump" -> "",
+    "kernel" -> Null,
     "storage" -> <||>,
-    "props" -> <||>,
+    "props" -> {},
     "sign" :> CreateUUID[]
 };
 
