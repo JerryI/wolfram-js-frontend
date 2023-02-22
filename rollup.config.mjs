@@ -2,10 +2,10 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 
 export default {
 
-  input: 'temp/merged.js',
+  input: 'Temp/merged.js',
   
   output: {
-    file: 'temp/bundle.js',
+    file: 'Temp/bundle.js',
     format: 'cjs',
     strict: false
   },

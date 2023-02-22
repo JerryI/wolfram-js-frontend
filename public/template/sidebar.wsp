@@ -1,0 +1,389 @@
+<div  style="">
+                                        
+                                        
+                                        <div style="">
+                                            <div style="display: flex; flex-direction: column; height: 100%; max-height: 100%;">
+                                                <div style="display: block; flex-shrink: 0; flex-grow: 0;">
+                                                    <div class="notion-sidebar-switcher notion-focusable" role="button" tabindex="0" style="
+                                                            -webkit-user-select: none;
+                                                            transition: background 20ms ease-in 0s;
+                                                            cursor: pointer;
+                                                            display: flex;
+                                                            align-items: center;
+                                                            min-width: 0px;
+                                                            height: 45px;
+                                                            width: 100%;
+                                                            margin-bottom: 0px;
+                                                        ">
+                                                        
+                                                        <div class="notion-fadein" style="display: flex; align-items: center; height: 100%; margin-left: auto; margin-right: 12px;">
+                                                            <div class="notion-close-sidebar notion-focusable" role="button" aria-label="Close sidebar" tabindex="0" style="
+                                                                    -webkit-user-select: none;
+                                                                    transition: background 20ms ease-in 0s;
+                                                                    cursor: pointer;
+                                                                    display: inline-flex;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    flex-shrink: 0;
+                                                                    border-radius: 3px;
+                                                                    height: 24px;
+                                                                    width: 24px;
+                                                                    padding: 0px;
+                                                                    position: relative;
+                                                                    margin-left: 10px;
+                                                                    opacity: 1;
+                                                                ">
+                                                                <svg viewBox="0 0 16 16" class="doubleChevronLeft" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                    <path d="M7.07031 13.8887C7.2207 14.0391 7.40527 14.1211 7.62402 14.1211C8.06836 14.1211 8.41699 13.7725 8.41699 13.3281C8.41699 13.1094 8.32812 12.9043 8.17773 12.7539L3.37207 8.05762L8.17773 3.375C8.32812 3.21777 8.41699 3.0127 8.41699 2.80078C8.41699 2.35645 8.06836 2.00781 7.62402 2.00781C7.40527 2.00781 7.2207 2.08984 7.07031 2.24023L1.73828 7.44922C1.56055 7.62012 1.46484 7.8252 1.46484 8.06445C1.46484 8.29688 1.55371 8.49512 1.73828 8.67969L7.07031 13.8887ZM13.1748 13.8887C13.3252 14.0391 13.5098 14.1211 13.7354 14.1211C14.1797 14.1211 14.5283 13.7725 14.5283 13.3281C14.5283 13.1094 14.4395 12.9043 14.2891 12.7539L9.4834 8.05762L14.2891 3.375C14.4395 3.21777 14.5283 3.0127 14.5283 2.80078C14.5283 2.35645 14.1797 2.00781 13.7354 2.00781C13.5098 2.00781 13.3252 2.08984 13.1748 2.24023L7.84961 7.44922C7.66504 7.62012 7.57617 7.8252 7.56934 8.06445C7.56934 8.29688 7.66504 8.49512 7.84961 8.67969L13.1748 13.8887Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="flex-grow: 0; flex-shrink: 0; padding-bottom: 8px;">
+                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                        <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
+                                                            <div style="
+                                                                    flex-shrink: 0;
+                                                                    flex-grow: 0;
+                                                                    border-radius: 3px;
+                                                                    color: rgba(55, 53, 47, 0.65);
+                                                                    width: 22px;
+                                                                    height: 22px;
+                                                                    display: flex;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    margin-right: 8px;
+                                                                ">
+                                                                <svg viewBox="0 0 14 14" class="sidebarSearch" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                    <path d="M5.92239093,0.540000021 C2.94055203,0.540000021 0.5,2.98052217 0.5,5.96238099 C0.5,8.9442199 2.94055203,11.384762 5.92239093,11.384762 C7.02329179,11.384762 8.05258749,11.0564678 8.91032559,10.4866744 L12.1460745,13.6802311 C12.5695899,14.1037465 13.2589477,14.1037465 13.6823635,13.6802311 C14.1058788,13.2567158 14.1058788,12.5730353 13.6823635,12.1495199 L10.4410368,8.95033558 C11.0107904,8.09259747 11.3447619,7.06329182 11.3447619,5.96238099 C11.3447619,2.98052217 8.90420992,0.540000021 5.92239093,0.540000021 Z M5.92239093,2.70895241 C7.7320027,2.70895241 9.17580956,4.15272939 9.17580956,5.96238099 C9.17580956,7.77201268 7.7320027,9.21581954 5.92239093,9.21581954 C4.11275925,9.21581954 2.66895239,7.77201268 2.66895239,5.96238099 C2.66895239,4.15272939 4.11275925,2.70895241 5.92239093,2.70895241 Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Search</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                        <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px; background-image: none;">
+                                                            <div style="
+                                                                    flex-shrink: 0;
+                                                                    flex-grow: 0;
+                                                                    border-radius: 3px;
+                                                                    color: rgba(55, 53, 47, 0.65);
+                                                                    width: 22px;
+                                                                    height: 22px;
+                                                                    display: flex;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    margin-right: 8px;
+                                                                ">
+                                                                <div style="color: inherit;">
+                                                                    <svg viewBox="0 0 14 14" class="sidebarUpdates" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                        <path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: clip;">Updates</div>
+                                                            <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; height: 100%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                        <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
+                                                            <div style="
+                                                                    flex-shrink: 0;
+                                                                    flex-grow: 0;
+                                                                    border-radius: 3px;
+                                                                    color: rgba(55, 53, 47, 0.65);
+                                                                    width: 22px;
+                                                                    height: 22px;
+                                                                    display: flex;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    margin-right: 8px;
+                                                                ">
+                                                                <svg viewBox="0 0 14 14" class="sidebarSettings" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                    <path d="M14,7.77 L14,6.17 L12.06,5.53 L11.61,4.44 L12.49,2.6 L11.36,1.47 L9.55,2.38 L8.46,1.93 L7.77,0.01 L6.17,0.01 L5.54,1.95 L4.43,2.4 L2.59,1.52 L1.46,2.65 L2.37,4.46 L1.92,5.55 L0,6.23 L0,7.82 L1.94,8.46 L2.39,9.55 L1.51,11.39 L2.64,12.52 L4.45,11.61 L5.54,12.06 L6.23,13.98 L7.82,13.98 L8.45,12.04 L9.56,11.59 L11.4,12.47 L12.53,11.34 L11.61,9.53 L12.08,8.44 L14,7.75 L14,7.77 Z M7,10 C5.34,10 4,8.66 4,7 C4,5.34 5.34,4 7,4 C8.66,4 10,5.34 10,7 C10,8.66 8.66,10 7,10 Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;"><div>Settings &amp; members</div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="notion-scroller vertical" style="">
+                                                    <nav>
+                                                        <div class="notion-outliner-private" style="display: block;">
+                                                            <div style="">
+                                                            <?wsp Table[ ?>
+
+                                                                <div class="notion-selectable notion-page-block">
+                                                                    <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                                                                        <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                                -webkit-user-select: none;
+                                                                                transition: background 20ms ease-in 0s;
+                                                                                cursor: pointer;
+                                                                                width: calc(100% - 8px);
+                                                                                border-radius: 3px;
+                                                                                margin-left: 4px;
+                                                                                margin-right: 4px;
+                                                                            ">
+                                                                            <div style="
+                                                                                    display: flex;
+                                                                                    align-items: center;
+                                                                                    width: 100%;
+                                                                                    font-size: 14px;
+                                                                                    min-height: 27px;
+                                                                                    padding: 2px 10px 2px 5px;
+                                                                                    margin-top: 1px;
+                                                                                    margin-bottom: 1px;
+                                                                                    font-weight: 600;
+                                                                                    background-color: rgba(0, 0, 0, 0.04);
+                                                                                    color: rgb(55, 53, 47);
+                                                                                    border-radius: 3px;
+                                                                                ">
+                                                                                <div style="
+                                                                                        flex-shrink: 0;
+                                                                                        flex-grow: 0;
+                                                                                        border-radius: 3px;
+                                                                                        color: rgba(55, 53, 47, 0.65);
+                                                                                        width: 22px;
+                                                                                        height: 22px;
+                                                                                        display: flex;
+                                                                                        align-items: center;
+                                                                                        justify-content: center;
+                                                                                        margin-right: 0px;
+                                                                                    ">
+                                                                                    <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                                            -webkit-user-select: none;
+                                                                                            transition: background 20ms ease-in 0s;
+                                                                                            cursor: pointer;
+                                                                                            position: relative;
+                                                                                            display: flex;
+                                                                                            align-items: center;
+                                                                                            justify-content: center;
+                                                                                            width: 20px;
+                                                                                            height: 20px;
+                                                                                            border-radius: 3px;
+                                                                                        ">
+                                                                                        <svg viewBox="0 0 12 12" class="chevronDownRoundedThick" style="
+                                                                                                width: 12px;
+                                                                                                height: 12px;
+                                                                                                display: block;
+                                                                                                fill: rgba(55, 53, 47, 0.35);
+                                                                                                flex-shrink: 0;
+                                                                                                backface-visibility: hidden;
+                                                                                                transition: transform 200ms ease-out 0s;
+                                                                                                transform: rotateZ(-90deg);
+                                                                                                opacity: 1;
+                                                                                            ">
+                                                                                            <path d="M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z"></path>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div style="
+                                                                                        display: flex;
+                                                                                        align-items: center;
+                                                                                        justify-content: center;
+                                                                                        flex-shrink: 0;
+                                                                                        flex-grow: 0;
+                                                                                        width: 22px;
+                                                                                        height: 18px;
+                                                                                        margin-left: -3px;
+                                                                                        margin-right: 4px;
+                                                                                        position: relative;
+                                                                                    ">
+                                                                                    <div class="notion-record-icon notranslate notion-focusable" role="button" tabindex="0" style="
+                                                                                            -webkit-user-select: none;
+                                                                                            transition: background 20ms ease-in 0s;
+                                                                                            cursor: pointer;
+                                                                                            display: flex;
+                                                                                            align-items: center;
+                                                                                            justify-content: center;
+                                                                                            height: 20px;
+                                                                                            width: 20px;
+                                                                                            border-radius: 0.25em;
+                                                                                            flex-shrink: 0;
+                                                                                        ">
+                                                                                        <svg viewBox="0 0 30 30" class="page" style="width: 18px; height: 18px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                                            <g>
+                                                                                                <path d="M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V27z M8,17h14v-2H8V17z M8,21h14v-2H8V21z M8,25h14v-2H8V25z"></path>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                                                                    <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?wsp FileNameTake[i] ?></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            
+                                                            <?wsp , {i, FileNames["*.*", If[DirectoryQ[session["Query", "path"]], 
+                                                                            session["Query", "path"], 
+                                                                            DirectoryName[session["Query", "path"]]
+                                                                        ]] }] ?>    
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;">
+                                                                    <div style="
+                                                                            display: flex;
+                                                                            align-items: center;
+                                                                            width: 100%;
+                                                                            font-size: 14px;
+                                                                            min-height: 27px;
+                                                                            padding: 2px 10px;
+                                                                            margin-top: 1px;
+                                                                            margin-bottom: 1px;
+                                                                            color: rgba(55, 53, 47, 0.65);
+                                                                        ">
+                                                                        <div style="
+                                                                                flex-shrink: 0;
+                                                                                flex-grow: 0;
+                                                                                border-radius: 3px;
+                                                                                color: rgba(55, 53, 47, 0.65);
+                                                                                width: 22px;
+                                                                                height: 22px;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                justify-content: center;
+                                                                                margin-right: 8px;
+                                                                            ">
+                                                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                                                <svg viewBox="0 0 14 14" class="plusThick" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                                    <path d="M2 7.16357C2 7.59692 2.36011 7.95093 2.78735 7.95093H6.37622V11.5398C6.37622 11.9731 6.73022 12.3271 7.16357 12.3271C7.59692 12.3271 7.95093 11.9731 7.95093 11.5398V7.95093H11.5398C11.9731 7.95093 12.3271 7.59692 12.3271 7.16357C12.3271 6.73022 11.9731 6.37622 11.5398 6.37622H7.95093V2.78735C7.95093 2.36011 7.59692 2 7.16357 2C6.73022 2 6.37622 2.36011 6.37622 2.78735V6.37622H2.78735C2.36011 6.37622 2 6.73022 2 7.16357Z"></path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Add a page</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="margin-top: 18px;"></div>
+                                                        <div style="flex-grow: 0; flex-shrink: 0;">
+                                                            
+                                                            <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                    -webkit-user-select: none;
+                                                                    transition: background 20ms ease-in 0s;
+                                                                    cursor: pointer;
+                                                                    border-radius: 3px;
+                                                                    margin-left: 4px;
+                                                                    margin-right: 4px;
+                                                                    width: calc(100% - 8px);
+                                                                    background-color: rgba(55, 53, 47, 0.08);
+                                                                ">
+                                                                <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
+                                                                    <div style="
+                                                                            flex-shrink: 0;
+                                                                            flex-grow: 0;
+                                                                            border-radius: 3px;
+                                                                            color: rgba(55, 53, 47, 0.65);
+                                                                            width: 22px;
+                                                                            height: 22px;
+                                                                            display: flex;
+                                                                            align-items: center;
+                                                                            justify-content: center;
+                                                                            margin-right: 8px;
+                                                                        ">
+                                                                        <svg viewBox="0 0 14 14" class="sidebarTemplates" style="width: 100%; height: 15px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.237 1l7.84 1.237-1.201 7.61L11.5 6.15 9.424 9.38 6 8.84 7.237 1zM5.545 5.31a4 4 0 1 0 2.29 4.832l-2.979-.47.689-4.363zM7 15l4.5-7 4.5 7H7z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Templates</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                                <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
+                                                                    <div style="
+                                                                            flex-shrink: 0;
+                                                                            flex-grow: 0;
+                                                                            border-radius: 3px;
+                                                                            color: rgba(55, 53, 47, 0.65);
+                                                                            width: 22px;
+                                                                            height: 22px;
+                                                                            display: flex;
+                                                                            align-items: center;
+                                                                            justify-content: center;
+                                                                            margin-right: 8px;
+                                                                        ">
+                                                                        <svg viewBox="0 0 14 14" class="sidebarImport" style="width: 100%; height: 15px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                            <path d="M11.2857,6.05714 L10.08571,4.85714 L7.85714,7.14786 L7.85714,1 L6.14286,1 L6.14286,7.14786 L3.91429,4.85714 L2.71429,6.05714 L7,10.42857 L11.2857,6.05714 Z M1,11.2857 L1,13 L13,13 L13,11.2857 L1,11.2857 Z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Import</div>
+                                                                </div>
+                                                            </div>
+                                                            <div data-block-id="0fedbe0d-e31d-46e2-8cbb-4ab031640bc9" class="notion-selectable notion-page-block">
+                                                                <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                        -webkit-user-select: none;
+                                                                        transition: background 20ms ease-in 0s;
+                                                                        cursor: pointer;
+                                                                        border-radius: 3px;
+                                                                        margin-left: 4px;
+                                                                        margin-right: 4px;
+                                                                        width: calc(100% - 8px);
+                                                                    ">
+                                                                    <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
+                                                                        <div style="
+                                                                                flex-shrink: 0;
+                                                                                flex-grow: 0;
+                                                                                border-radius: 3px;
+                                                                                color: rgba(55, 53, 47, 0.65);
+                                                                                width: 22px;
+                                                                                height: 22px;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                justify-content: center;
+                                                                                margin-right: 8px;
+                                                                            ">
+                                                                            <svg viewBox="0 0 14 14" class="sidebarTrash" style="width: 14px; height: 100%; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                                <path d="M13.5000308,3.23952 C13.5000308,4.55848168 11.9230308,12.0493 11.9230308,12.0782 C11.9230308,12.6571 9.73825083,14 7.04165083,14 C4.34504083,14 2.16025083,12.6571 2.16025083,12.0782 C2.16025083,12.0541 0.5,4.55799105 0.5,3.23952 C0.5,1.91780104 3.02713083,0 7.03525083,0 C11.0433308,0 13.5000308,1.9178004 13.5000308,3.23952 Z M7,2 C3.625,2 2.5,3.25 2.5,4 C2.5,4.75 3.625,6 7,6 C10.375,6 11.5,4.75 11.5,4 C11.5,3.25 10.375,2 7,2 Z"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Trash</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </nav>
+                                                </div>
+                                                <div style="display: block; flex: 0 0 auto; margin-top: auto;">
+                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px;">
+                                                        <div style="
+                                                                display: flex;
+                                                                align-items: center;
+                                                                width: 100%;
+                                                                font-size: 14px;
+                                                                min-height: 27px;
+                                                                padding: 2px 10px;
+                                                                margin-top: 1px;
+                                                                margin-bottom: 1px;
+                                                                color: rgba(55, 53, 47, 0.65);
+                                                                height: 45px;
+                                                            ">
+                                                            <div style="
+                                                                    flex-shrink: 0;
+                                                                    flex-grow: 0;
+                                                                    border-radius: 3px;
+                                                                    color: rgba(55, 53, 47, 0.65);
+                                                                    width: 22px;
+                                                                    height: 22px;
+                                                                    display: flex;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    margin-right: 8px;
+                                                                ">
+                                                                <div style="display: flex; align-items: center; justify-content: center;">
+                                                                    <svg viewBox="0 0 16 16" class="plus" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
+                                                                        <path d="M7.977 14.963c.407 0 .747-.324.747-.723V8.72h5.362c.399 0 .74-.34.74-.747a.746.746 0 00-.74-.738H8.724V1.706c0-.398-.34-.722-.747-.722a.732.732 0 00-.739.722v5.529h-5.37a.746.746 0 00-.74.738c0 .407.341.747.74.747h5.37v5.52c0 .399.332.723.739.723z"></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">New page</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>

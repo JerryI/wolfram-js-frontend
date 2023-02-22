@@ -5,13 +5,20 @@ PacletDirectoryLoad[Directory[]]
 
 Get["JerryI`WolframJSFrontend`Cells`"]
 Get["JerryI`WolframJSFrontend`Evaluator`"]
-Get["JerryI`WolframJSFrontend`WebObjects`"]
+
+Get["JerryI`WolframJSFrontend`Colors`"]
+
+Print[Magenta <> "Cells and Evaluator Tests"];
+Print[Reset];
 
 eventHandler[type_][cell_] := (
+    lastevent = {type, cell};
+    Print[Black];
     Print[">>> "<>type<>" <<<"];
     Print["id:\t"<>cell[[1]]];
     Print["data:\t"<>cell["data"]];
     Print["type:\t"<>cell["type"]];
+    Print[Reset];
 );
 
 wrapper[cmd_] := Block[
@@ -63,13 +70,42 @@ WolframProcessor[expr_String, signature_String, callback_] := Module[{str = Stri
   WolframEvaluator[str, block, signature][callback];
 ];    
 
-JerryI`WolframJSFrontend`ExtendDefinitions[defs_] := Print[StringTemplate["extended defs by ``"][defs]];
 
-LoadWebObjects;
-Print["WebObjects example"];
-cell = CellObj["data"->"Graphics3D[]", "sign"->"0xff", "type"->"input"];
+JerryI`WolframJSFrontend`WebObjects`replacement = {};
+
+(* ************************************  *)
+
+Print["Create cell silently"];
+cell = wrapper[CellObj["sign"->"0xff", "data"->"1+1", "type"->"input"]];
+Print["Generate tree"];
+wrapper[CellObjGenerateTree[cell ]];
+
+If[lastevent[[1]] === "NewCell" && cell["data"] === "1+1",
+  Print[Green]; Print["Passed"]; 
+  ,
+  Print[Green]; Print["Failed"];
+  Print[lastevent]; 
+  Print[cell["data"]];
+  failed=True;
+];
+
+Print[Reset];
+
+
+Print["Try to evaluate"];
 wrapper[CellObjEvaluate[cell, evaluator]];
 
-Print[];Print[];Print[];Print[];
-cell = CellObj["data"->"FrontEndObj[Graphics3D[1+1], \"ahahha\"]", "sign"->"0xff", "type"->"input"];
-wrapper[CellObjEvaluate[cell, evaluator]];
+If[cell["child"]["data"] === "2",
+  Print[Green]; Print["Passed"];
+,
+  Print[Red]; Print["Failed"];
+  Print[cell["child"]["data"]];
+  failed=True;
+];
+Print[Reset];
+
+Print["Overall"];
+If[failed//TrueQ, Print[Red<>"Failed"], Print[Green<>"Passed"]]; 
+Print[Reset];
+
+

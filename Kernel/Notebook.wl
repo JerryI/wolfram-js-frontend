@@ -1,5 +1,5 @@
 
-BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notification`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notifications`"}]; 
 
 NotebookDefineEvaluators::usage = "NotebookDefineEvaluators[] defines the processor for languages"
 NotebookExtendDefinitions::usage = "NotebookExtendDefinitions[] extends the JSON objects of the notebook"
@@ -31,10 +31,10 @@ ClearAll[NotebookEvaluate];
 
 Options[NotebookCreate] = {
     "name" -> "Untitled",
+    "signature" -> "wsf-notebook",
     "id" :> CreateUUID[],
     "kernel" -> LocalKernel,
     "objects" -> <||>,
-    "data" -> "1+1",
     "cell" -> Null
 };
 

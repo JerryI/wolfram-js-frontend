@@ -25,6 +25,8 @@ PacletObject[
           {"JerryI`WolframJSFrontend`Starter`", "Starter.wl"}, 
           {"JerryI`WolframJSFrontend`Utils`", "Utils.wl"}, 
           {"JerryI`WolframJSFrontend`WebObjects`", "WebObjects.wl"}, 
+          {"JerryI`WolframJSFrontend`Colors`", "Colors.wl"},
+          {"JerryI`WolframJSFrontend`Dev`", "Dev.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},
