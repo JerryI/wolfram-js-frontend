@@ -1,0 +1,8 @@
+<section class="cell-wrapper frontend-node" data-node-id="8da4c754-d27f-4904-a4be-0877f88f6b5c" data-node-type="paragraph" data-slate-node="element" style="opacity: 1;">
+    <?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template/cells/tools.wsp"}]] ?>
+    <div class="content-wrapper" id="<?wsp Global`id?>">
+        <p class="cell-paragraph frontend-paragraph" draggable="false" id="<?wsp Global`id?>---input">
+            
+        </p>
+    </div>
+</section>

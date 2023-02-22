@@ -34,7 +34,6 @@ Options[CellObj] = {
 CellObj[OptionsPattern[]] := With[{cell = OptionValue["id"]}, 
 
 	CellObj[cell]["type"    ] = OptionValue["type"    ];
-    CellObj[cell]["type"    ] = OptionValue["type"    ];
     CellObj[cell]["child"   ] = OptionValue["child"   ];
     CellObj[cell]["parent"  ] = OptionValue["parent"  ];
     CellObj[cell]["next"    ] = OptionValue["next"    ];
@@ -273,6 +272,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
 
 CellObj /: 
 CellObjGenerateTree[CellObj[cell_]] := (  
+    console["log", "> CellObjGenerateTree call"];
     JerryI`WolframJSFrontend`fireEvent["NewCell"][CellObj[cell]];
     
     If[CellObj[cell]["child"] =!= Null, CellObjGenerateTree[CellObj[cell]["child"]]];

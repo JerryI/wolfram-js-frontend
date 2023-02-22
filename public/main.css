@@ -308,9 +308,6 @@
 	width: 246px;
 }
 
-.notion-sidebar {
-
-}
 
 .notion-sidebar-switcher.notion-focusable {
 	-webkit-user-select: none;
@@ -322,6 +319,10 @@
 	height: 45px;
 	width: 100%;
 	margin-bottom: 0px;
+}
+
+.sidebar-option:hover {
+	background-color: rgba(0, 0, 0, 0.04);
 }
 
 .notion-fadein {

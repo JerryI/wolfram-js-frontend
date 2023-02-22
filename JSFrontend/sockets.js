@@ -1,7 +1,10 @@
 let socket;
+const wsconnected = new Event("wsconnected");
+
 socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
+  window.dispatchEvent(wsconnected);
 }; 
 
 socket.onmessage = function(event) {

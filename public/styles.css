@@ -128,8 +128,9 @@
 }
 
 .styles-container-editor {
-  max-width: 800px;
+  max-width: 1280px;
   width: 100%;
+  padding: 2em;
   padding-top: 3.5rem;
   padding-bottom: 400px
 }

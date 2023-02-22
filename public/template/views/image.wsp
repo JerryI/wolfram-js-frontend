@@ -1,1 +1,1 @@
-<img src="<?wsp url ?>">
+<img src="<?wsp url ?>" style="width: 70%; height: 100%; aspect-ratio: 1; object-fit: contain;">

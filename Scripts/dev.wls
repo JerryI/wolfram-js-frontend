@@ -100,7 +100,7 @@ LoadNotebook[path_] := Module[{},
 
 
 ImageFileQ[path_] := MemberQ[{"png", "svg", "jpg", "jpeg", "gif"}, FileExtension[path]];
-ImageViewer[path_] := <|"view" :> Block[{$publicpath = Null}, LoadPage["template/views/image.wsp", {url = path}] ] |>;
+ImageViewer[path_] := <|"view" :> LoadPage["template/views/image.wsp", {url = path}]  |>;
 
 SupportedTypes = {
   DirectoryQ  ->  EmptyWindow,
@@ -111,8 +111,8 @@ SupportedTypes = {
 
 
 
-$AssoticatedPath[FileNameJoin[JerryI`WolframJSFrontend`defaultvault, "test.mx"]] = "test";
-NotebookCreate["id"->"test", "cell"->CellObj["type"->"input", "data"->"1+1"]]
+$AssoticatedPath[FileNameJoin[{JerryI`WolframJSFrontend`defaultvault, "test.mx"}]] = "test";
+NotebookCreate["id"->"test"]
 
 address = ip<>":"<>port;
 

@@ -10,6 +10,7 @@
                             <h4>Hey 👋 You just opend a demo notebook.</h4>
                             <p>Connect to the Kernel first!</p>
                         </div>
+
                         <section class="cell-wrapper frontend-node" data-node-id="ed117ae4-0177-4879-b4fd-c6423f57b190" data-node-type="heading-two" data-slate-node="element" style="opacity: 1;">
                             <div class="tool-wrapper node-settings-actions frontend-tools" contenteditable="false">
                                 <div>
@@ -120,15 +121,10 @@
                                 </p>
                             </div>
                         </section>
-                        
                     </div>
                 </div>
             </main>
 
 <script>
-    window.addEventListener("wsconnected", function() { 
-        console.log('thf'); 
-        socket.send('NotebookOpen["<?wsp notebook ?>"]') 
-    });
+    window.addEventListener("wsconnected", function() { console.log('thf'); socket.send('NotebookOpen["<?wsp notebook ?>"]') });
 </script>
-

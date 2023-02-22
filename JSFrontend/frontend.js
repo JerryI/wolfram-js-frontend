@@ -3,6 +3,8 @@ import { EditorView } from "codemirror";
 import { StreamLanguage } from "@codemirror/language"
 import { mathematica } from "@codemirror/legacy-modes/mode/mathematica"
 
+import {noctisLilac, smoothy} from 'thememirror'
+
 import { MatchDecorator, WidgetType, keymap } from "@codemirror/view"
 
 import {
@@ -68,6 +70,12 @@ class PlaceholderWidget extends WidgetType {
 }
 
 import { defaultKeymap } from "@codemirror/commands";
+
+let editorCustomTheme = EditorView.theme({
+  "&.cm-focused": {
+    outline: "none"
+  }
+});
 
 
 var $objetsstorage = {};
@@ -140,6 +148,75 @@ core.FrontEndJSEval = function (args, env) {
 } 
 
 core.FrontEndCreateCell = function (args, env) {
+  var template = interpretate(args[0]);
+  var input = JSON.parse(interpretate(args[1]));
+
+  console.log(template);
+  console.log(input);
+
+  if (input["parent"] === "") {
+    if (input["prev"] !== "") {
+      document.getElementById(input["prev"]).parentNode.insertAdjacentHTML('afterend', template);
+    } else {
+      document.getElementById("frontend-contenteditable").insertAdjacentHTML('beforeend', template);
+    }
+    last = input["id"];
+  } else {
+    document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
+  }
+
+  var notebook = input["sign"];
+  var uid = input["id"];
+
+
+  new EditorView({
+    doc: input["data"],
+    extensions: [
+      highlightActiveLineGutter(),
+      highlightSpecialChars(),
+      history(),
+      smoothy,
+      drawSelection(),
+      dropCursor(),
+      EditorState.allowMultipleSelections.of(true),
+      indentOnInput(),
+      bracketMatching(),
+      closeBrackets(),
+      EditorView.lineWrapping,
+      autocompletion(),
+      rectangularSelection(),
+      crosshairCursor(),
+      highlightActiveLine(),
+      highlightSelectionMatches(),
+      StreamLanguage.define(mathematica),
+      placeholders,
+      keymap.of([
+        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
+        { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
+        { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { AddCell(uid);  }; editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
+        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
+      ]),
+      EditorView.updateListener.of((v) => {
+        if (v.docChanged) {
+         
+          socket.send(`CellObj["${uid}"]["data"] = "${v.state.doc.toString().replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"')}";`);
+        }
+      }),
+      editorCustomTheme
+    ],
+    parent: document.getElementById(input["id"]+"---"+input["type"])
+  });
+
+  const body = document.getElementById(input["id"]).parentNode;
+  const toolbox = body.getElementsByClassName('frontend-tools')[0];
+  
+
+  body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show")};
+  body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show")};  
+
+};  
+
+core.FrontEndCreateCell0 = function (args, env) {
   var template = interpretate(args[0]);
   var input = JSON.parse(interpretate(args[1]));
 

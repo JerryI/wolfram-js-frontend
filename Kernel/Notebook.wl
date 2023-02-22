@@ -1,5 +1,5 @@
 
-BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notifications`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notifications`"}]; 
 
 NotebookDefineEvaluators::usage = "NotebookDefineEvaluators[] defines the processor for languages"
 NotebookExtendDefinitions::usage = "NotebookExtendDefinitions[] extends the JSON objects of the notebook"
@@ -11,6 +11,8 @@ NotebookEvaluate::usage = "NotebookEvaluate[]"
 NotebookAbort::usage = "NotebookAbort[]"
 NotebookGetObject::usage = "NotebookGetObject[] gets the JSON notebook object"
 NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
+
+NotebookEventFire::usage = "internal usage"
 
 Begin["`Private`"]; 
 
@@ -35,7 +37,8 @@ Options[NotebookCreate] = {
     "id" :> CreateUUID[],
     "kernel" -> LocalKernel,
     "objects" -> <||>,
-    "cell" -> Null
+    "cell" -> Null,
+    "data" -> "1+1"
 };
 
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
@@ -70,37 +73,38 @@ NotebookRemove[id_] := (
 NotebookAttach[id_, proc_, init_:Null] := Module[{pid = proc},
     If[proc === "master", 
         jsfn`Notebooks[id]["kernel"] = LocalKernel; 
-        WebSocketSend[client, Global`FrontEndAddKernel[pid] ]; 
+        WebSocketSend[Global`client, Global`FrontEndAddKernel[pid] ]; 
         PushNotification[$NotifyName, "<span class=\"badge badge-danger\">Master kernel attached</span> <p>If we die, we die</p>"]; 
         Return["master", Module] 
     ];
 ];
 
 
-NotebookOpen[id_] := (
-    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+NotebookOpen[id_String] := (
+    console["log", "generating the three of `` for ``", id, Global`client];
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
 );
 
 NotebookEvaluate[id_, cellid_] := (
-    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[CellObj[cellid], jsfn`Processors];
     ];
 );
 
 NotebookAbort[id_] := (
-    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         jsfn`Notebooks[id]["kernel"]["Abort"];
     ];
 );
 
 NotebookGetObject[cellid_, uid_] := (
-    WebSocketSend[client, Global`FrontEndExtendDefinitions[uid, jsfn`Notebooks[CellObj[cellid]["sign"]]["objects"][uid] ]];
+    WebSocketSend[Global`client, Global`FrontEndExtendDefinitions[uid, jsfn`Notebooks[CellObj[cellid]["sign"]]["objects"][uid] ]];
 );
 
 NotebookOperate[cellid_, op_] := (
-    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[client]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         op[CellObj[cellid]];
     ];
 );
@@ -123,6 +127,7 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 
 NotebookEventFire[addr_]["NewCell"][cell_] := (
     (*looks ugly actually. we do not need so much info*)
+    console["log", "fire event `` for ``", cell, addr];
     With[
         {
             obj = <|
@@ -136,7 +141,7 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
                     |>,
             
-            template = LoadPage["public/assets/cells/"<>cell["type"]<>".wsp", {id = cell[[1]]}]
+            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]
         },
 
         WebSocketSend[addr, Global`FrontEndCreateCell[template, ExportString[obj, "JSON"] ]];

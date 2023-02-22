@@ -27,6 +27,7 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "chokidar": "^3.5.3",
     "finalhandler": "^1.2.0",
+    "thememirror": "^2.0.1",
     "three": "^0.123.0"
   }
 }

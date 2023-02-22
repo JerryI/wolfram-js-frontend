@@ -1,0 +1,19 @@
+<div class="tool-wrapper node-settings-actions frontend-tools" contenteditable="false">
+        <div>
+            <div class="tool-div">
+                <button type="button" contenteditable="false" class="btn node-settings-add">
+                    <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.838 10c0-.345.28-.625.625-.625h2.91v-2.91a.625.625 0 0 1 1.25 0v2.91h2.911a.625.625 0 0 1 0 1.25h-2.91v2.91a.625.625 0 1 1-1.25 0v-2.91H6.462A.625.625 0 0 1 5.838 10Z" fill="gray"></path>
+                        <path d="M10 3v14M17 10H3" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button class="btn node-settings-drag" type="button" contenteditable="false">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="drag_svg__StyledIconBase-ea9ulj-0 drag_svg__iuNRof" style="width: 18px; height: 18px; color: rgba(55, 53, 47, 0.3);">
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
