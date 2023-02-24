@@ -118,6 +118,8 @@ address = ip<>":"<>port;
 
 WSPCache["Off"]//Print;
 
+jsf`jtp   =  JTPServer["host" -> ip, "port" -> 2850] // JTPServerStart
+
 jsf`server = WEBServer["addr" -> address, "path" -> jsf`public, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 

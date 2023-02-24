@@ -7,7 +7,15 @@
                                         </div>
                                         <div style=""></div>
                                         <div class="notion-topbar-action-buttons" style="">
-                                            <div></div>
+                                        <?wsp If[NotebookQ[session["Query", "path"]], With[{kernel = JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]]]["kernel"]}, With[{signal = kernel["Status"]["signal"], text = kernel["Status"]["text"]},  ?>
+                                            <div id="kernel-text" style=" opacity: 1; transition: opacity 150ms linear 0s; display: flex; align-items: center; font-size: 14px; color: rgba(55, 53, 47, 0.5); height: 28px; margin-right:10px; white-space: nowrap; line-height: 1.2; "><?wsp text ?></div>
+                                            <div id="kernel-button" class="<?wsp signal ?>-kernel notion-focusable" style="display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0px; height: 20px; border-radius: 3px; padding-left: 6px; padding-right: 6px; font-size: 14px; line-height: 120%;  margin: 0px;">
+                                                <div  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex;">
+                                                    <div style="display: block;"><?wsp kernel ?></div>
+                                                </div>
+                                                <?wsp LoadPage["template/dropdown/kernel.wsp"] ?>
+                                            </div>
+                                        <?wsp ]] , ""] ?>
                                             <div style="">
                                                 <div class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Updates" tabindex="0" style="
                                                         -webkit-user-select: none;
@@ -94,5 +102,10 @@
     const clocks = document.getElementById('clocks');
     core.Pong = function(args, env) {
         clocks.style.transform = 'rotate('+args[0]+'deg)';
+    }
+
+    core.UpdateKernelStatus = function(args, env) {
+        document.getElementById('kernel-button').className  = interpretate(args[0])+"-kernel notion-focusable";
+        document.getElementById('kernel-text').innerText    = interpretate(args[1]);
     }
 </script>

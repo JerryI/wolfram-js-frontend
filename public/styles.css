@@ -82,7 +82,7 @@
   left: 0;
   opacity: 0;
   position: absolute;
-  top: 2.5px;
+  bottom: 2.5px;
   transition: opacity .18s cubic-bezier(.4, 0, .2, 1);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -91,6 +91,28 @@
 
 .tools-show {
   opacity: 1
+}
+
+.dropdown {
+  position: absolute;
+}
+
+.dropdown-kernel {
+  display: flex; 
+  align-items: center; 
+  flex-direction: column-reverse; 
+  transform-origin: 50% top; 
+  top: 45px; 
+  transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+  transform: translateY(0.5rem);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropdown-kernel-show {
+  transform: translateY(0rem);
+  visibility: visible;
+  opacity: 1;
 }
 
 .cell-wrapper {
@@ -227,4 +249,23 @@ p {
   margin-bottom:.125rem
 }
 
+.no-kernel {
+  background-color: rgb(236, 236, 236);
+  color: rgba(55, 53, 47, 0.5);
+}
+
+.bad-kernel {
+  background-color: rgb(255, 226, 221);
+  color: rgb(93, 23, 21);
+}
+
+.load-kernel {
+  background-color: rgb(255, 245, 221);
+  color: rgba(71, 71, 71, 0.792);
+}
+
+.good-kernel {
+  background-color: rgb(219, 237, 219);
+  color: rgba(71, 71, 71, 0.792);
+}
 

@@ -247,6 +247,10 @@
 	height: 45px;
 }
 
+.notion-focusable:hover {
+	background-color: rgba(55, 53, 47, 0.08);
+}
+
 . > div {
 	max-width: 100vw;
 	z-index: 100;

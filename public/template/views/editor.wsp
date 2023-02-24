@@ -127,8 +127,9 @@
 
 <script>
     window.addEventListener("wsconnected", function() { 
-        console.log('thf'); 
-        socket.send('NotebookOpen["<?wsp notebook ?>"]') 
+        console.log('subscribe and load notebook'); 
+        socket.send('NotebookOpen["<?wsp notebook ?>"]'); 
+        socket.send('Tinyweb`WebSocketSubscribe[server, "<?wsp notebook ?>", client]'); 
     });
 </script>
 
