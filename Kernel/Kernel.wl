@@ -15,7 +15,7 @@ ping = 0;
 lastPong = Now;
 pongHandler = Null;
 
-Options[LocalKernel] = {"Link"->"WSTP", "PongHandler"->Null};
+Options[LocalKernel] = {"Link"->"WSTP", "WatchDog"->Infinity};
 
 LocalKernel["JTPLink"] := asyncsocket;
 LocalKernel["WSTPLink"] := link;
@@ -39,12 +39,23 @@ LocalKernel["Abort"][cbk_] := (
     cbk[LocalKernel["Status"]]; 
 );
 
+LocalKernel["Exit"][cbk_] := ( 
+    LinkClose[link]; 
+    status["signal"] = "no"; status["text"] = "Closed";
+    cbk[LocalKernel["Status"]]; 
+);
+
+LocalKernel["Restart"][cbk_] := ( 
+    LocalLinkRestart;
+);
+
 LocalKernel["Status"] := status;
 
-LocalKernel["Start"][cbk_] := Module[{},
+LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
     link = LinkLaunch[First[$CommandLine] <> " -wstp"];
     status["signal"] = "load"; status["text"] = "Starting...";
     callback = cbk;
+    cbk[status];
 
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
@@ -62,9 +73,36 @@ LocalKernel["Start"][cbk_] := Module[{},
 
     checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[10, "Seconds"], 1},  AutoRemove->True]];
 
+    If[OptionValue["WatchDog"] =!= Infinity,
+        With[{timeout = OptionValue["WatchDog"]},
+            SessionSubmit[ScheduledTask[LocalLinkTimeoutCheck[timeout], OptionValue["WatchDog"]]]
+        ]
+    ];
+
     LocalKernel["Status"]      
 ];
 
+
+
+LocalLinkRestart := (
+    Print["Timeout"];
+    status = <|"signal"->"load", "text"->"Restarting..."|>;
+    LinkClose[link];
+    callback[LocalKernel["Status"]];
+    SessionSubmit[ScheduledTask[LocalKernel["Start"][callback], {Quantity[2, "Seconds"], 1},  AutoRemove->True]];
+);
+
+LocalLinkTimeoutCheck[timeout_] := (
+    If[Now - lastPong > timeout,
+        LocalKernel["Exit"][Function[s,
+            status["signal"] = "bad"; status["text"] = "WatchDog Timeout";
+            callback[LocalKernel["Status"]];
+            SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[2, "Seconds"], 1},  AutoRemove->True]];
+        ]]
+    ]
+);
+
+(* internal functions!!! called by secodnary kernel *)
 LocalKernel["Started"] := (
     Print["Connected"];
     TaskRemove[checker];
@@ -78,14 +116,6 @@ LocalKernel["Pong"] := (
     ping = Now - lastPong;
     lastPong = Now;
     pongHandler[ping];
-);
-
-LocalLinkRestart := (
-    Print["Timeout"];
-    status = <|"signal"->"load", "text"->"Restarting..."|>;
-    LinkClose[link];
-    callback[LocalKernel["Status"]];
-    SessionSubmit[ScheduledTask[LocalKernel["Start"][callback], {Quantity[2, "Seconds"], 1},  AutoRemove->True]];
 );
 
 (*RemoteKernel[pid_][ev_, cbk_, OptionsPattern[]] := Module[{},

@@ -8,15 +8,19 @@ Begin["`Private`"];
 
 master = Null;
 
-ConnectToMaster[params_List] := (
+Options[ConnectToMaster] = {"PingCheck"->False};
+
+ConnectToMaster[params_List, OptionsPattern[]] := (
     master = (JTPClient@@params) // JTPClientStart;
     master["promise"] = Null;
     JTPClientEvaluateAsync[master, Global`LocalKernel["Started"]];
 
-    SessionSubmit[ScheduledTask[JTPClientEvaluateAsync[master, Global`LocalKernel["Pong"]], Quantity[0.5, "Seconds"]]]
+    SessionSubmit[ScheduledTask[JTPClientEvaluateAsync[master, Global`LocalKernel["Pong"]], Quantity[1, "Seconds"]]]
 );
 
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsync[master, cbk[args]];
+
+WebSocketPublish[] := Null;
 
 End[];
 EndPackage[];

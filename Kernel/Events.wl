@@ -7,3 +7,5 @@ EmittEvent[id_, data_] := With[{cli = client},
 
 EventBind[EventObject[assoc_], handler_] ^:= (EventHandlers[assoc["id"]] = handler);
 EmittedEvent[id_, cli_, data_] := EventHandlers[id][cli, data];
+
+TrackedSymbols

@@ -131,7 +131,7 @@ core.Rule = function (args, env) {
     let copy = Object.assign({}, env);
     delete copy.association;
 
-    env.association[args[0]] = interpretate(args[1], copy);
+    env.association[interpretate(args[0])] = interpretate(args[1], copy);
   }
 
   //TODO: evaluate it before sending it
@@ -15959,50 +15959,6 @@ class TreeHighlighter {
 const treeHighlighter = /*@__PURE__*/Prec.high(/*@__PURE__*/ViewPlugin.fromClass(TreeHighlighter, {
     decorations: v => v.decorations
 }));
-/**
-A default highlight style (works well with light themes).
-*/
-const defaultHighlightStyle = /*@__PURE__*/HighlightStyle.define([
-    { tag: tags.meta,
-        color: "#404740" },
-    { tag: tags.link,
-        textDecoration: "underline" },
-    { tag: tags.heading,
-        textDecoration: "underline",
-        fontWeight: "bold" },
-    { tag: tags.emphasis,
-        fontStyle: "italic" },
-    { tag: tags.strong,
-        fontWeight: "bold" },
-    { tag: tags.strikethrough,
-        textDecoration: "line-through" },
-    { tag: tags.keyword,
-        color: "#708" },
-    { tag: [tags.atom, tags.bool, tags.url, tags.contentSeparator, tags.labelName],
-        color: "#219" },
-    { tag: [tags.literal, tags.inserted],
-        color: "#164" },
-    { tag: [tags.string, tags.deleted],
-        color: "#a11" },
-    { tag: [tags.regexp, tags.escape, /*@__PURE__*/tags.special(tags.string)],
-        color: "#e40" },
-    { tag: /*@__PURE__*/tags.definition(tags.variableName),
-        color: "#00f" },
-    { tag: /*@__PURE__*/tags.local(tags.variableName),
-        color: "#30a" },
-    { tag: [tags.typeName, tags.namespace],
-        color: "#085" },
-    { tag: tags.className,
-        color: "#167" },
-    { tag: [/*@__PURE__*/tags.special(tags.variableName), tags.macroName],
-        color: "#256" },
-    { tag: /*@__PURE__*/tags.definition(tags.propertyName),
-        color: "#00c" },
-    { tag: tags.comment,
-        color: "#940" },
-    { tag: tags.invalid,
-        color: "#f00" }
-]);
 
 const baseTheme$1 = /*@__PURE__*/EditorView.baseTheme({
     "&.cm-focused .cm-matchingBracket": { backgroundColor: "#328c8252" },
@@ -20975,8 +20931,6 @@ core.FrontEndClearStorage = function (args, env) {
 core.FrontEndCellError = function (args, env) {
   alert(interpretate(args[1]));
 };
-
-var temp0;
 var editorLastCursor = 0;
 var editorLastId = "null";
 
@@ -20996,6 +20950,7 @@ core.FrontEndCreateCell = function (args, env) {
   console.log(input);
 
   if (input["parent"] === "") {
+    
     if (input["prev"] !== "") {
       document.getElementById(input["prev"]).parentNode.insertAdjacentHTML('afterend', template);
     } else {
@@ -21006,7 +20961,8 @@ core.FrontEndCreateCell = function (args, env) {
     document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
   }
 
-  var notebook = input["sign"];
+
+
   var uid = input["id"];
 
 
@@ -21035,7 +20991,7 @@ core.FrontEndCreateCell = function (args, env) {
         { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
         { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
         { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { AddCell(uid);  } editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
-        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
+        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
         if (v.docChanged) {
@@ -21048,97 +21004,38 @@ core.FrontEndCreateCell = function (args, env) {
     parent: document.getElementById(input["id"]+"---"+input["type"])
   });
 
-  const body = document.getElementById(input["id"]).parentNode;
-  const toolbox = body.getElementsByClassName('frontend-tools')[0];
-  
-
-  body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show");};
-  body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show");};  
-
-};  
-
-core.FrontEndCreateCell0 = function (args, env) {
-  var template = interpretate(args[0]);
-  var input = JSON.parse(interpretate(args[1]));
-
-  console.log(template);
-  console.log(input);
-
-  console.log(temp0);
-
-  $objetsstorage = Object.assign({}, $objetsstorage, input["storage"]);
-
-
   if (input["parent"] === "") {
-    if (input["prev"] !== "") {
-      document.getElementById(input["prev"]).parentNode.insertAdjacentHTML('afterend', template);
-    } else {
-      document.getElementById(input["sign"]).parentNode.insertAdjacentHTML('afterend', template);
-    }
-    last = input["id"];
-  } else {
-    document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
-  }
-
-  var notebook = input["sign"];
-  var uid = input["id"];
-
-
-  new EditorView({
-    doc: input["data"],
-    extensions: [
-      highlightActiveLineGutter(),
-      highlightSpecialChars(),
-      history(),
-      drawSelection(),
-      dropCursor(),
-      EditorState.allowMultipleSelections.of(true),
-      indentOnInput(),
-      syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-      bracketMatching(),
-      closeBrackets(),
-      EditorView.lineWrapping,
-      autocompletion(),
-      rectangularSelection(),
-      crosshairCursor(),
-      highlightActiveLine(),
-      highlightSelectionMatches(),
-      StreamLanguage.define(mathematica),
-      placeholders,
-      keymap.of([
-        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
-        { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
-        { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { AddCell(uid);  } editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
-        { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), notebook, uid); } }, ...defaultKeymap, ...historyKeymap
-      ]),
-      EditorView.updateListener.of((v) => {
-        if (v.docChanged) {
-         
-          socket.send(`CellObj["${uid}"]["data"] = "${v.state.doc.toString().replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"')}";`);
-        }
-      })
-    ],
-    parent: document.getElementById(input["id"]+"---"+input["type"])
-  });
+    const body = document.getElementById(input["id"]).parentNode;
+    const toolbox = body.getElementsByClassName('frontend-tools')[0];
+    const drag    = body.getElementsByClassName('node-settings-drag')[0];
+    body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show");};
+    body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show");}; 
+    drag.addEventListener("click", function (e) {
+      document.getElementById(uid+"---input").classList.toggle("cell-hidden");
+      const path = drag.getElementsByTagName('path');
+        path[0].classList.toggle("path-hidden");
+        path[1].classList.toggle("path-hidden");
+        path[2].classList.toggle("path-hidden");
+      socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
+    });
+  } 
 
 };  
-
-var notebookkernel = false;
 
 core.FrontEndAddKernel = function(args, env) {
   document.getElementById('kernel-status').classList.add('btn-info');
-  notebookkernel = true;
 };
 
-function celleval(ne, id, cell) {
+function celleval(ne, cell) {
   console.log(ne);
+  console.log(cell);   
   global = ne;
   var fixed = ne.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
   console.log(fixed);
 
-  var q = `CellObj["${cell}"]["data"]="${fixed}"; NotebookEvaluate["${id}", "${cell}"]`;
-  if(!notebookkernel) {
-    alert("no kernel was attached");
+  var q = `CellObj["${cell}"]["data"]="${fixed}"; NotebookEvaluate["${cell}"]`;
+  if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
+    alert("No active kernel is attached");
     return;
   }
 

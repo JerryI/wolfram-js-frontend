@@ -26,7 +26,7 @@ Options[CellObj] = {
     "display" -> "codemirror",
     "lang" -> "mathematica",
     "data" -> Null,
-    "props" -> {},
+    "props" -> <|"hidden"->False|>,
     "sign" :> CreateUUID[],
     "id" :> CreateUUID[]
 };

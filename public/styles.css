@@ -45,6 +45,14 @@
   position: relative
 }
 
+.cell-hidden {
+  display: none;
+}
+
+.path-hidden {
+  display: none;
+}
+
 .tool-div {
   display: flex
 }

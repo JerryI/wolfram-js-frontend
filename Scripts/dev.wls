@@ -116,19 +116,20 @@ NotebookCreate["id"->"test"]
 
 address = ip<>":"<>port;
 
-WSPCache["Off"]//Print;
+WSPCache["Off"];
 
-jsf`jtp   =  JTPServer["host" -> ip, "port" -> 2850] // JTPServerStart
+jsf`jtp   =  JTPServer["host" -> ip, "port" -> 2850, "nohup"->True] // JTPServerStart
+jsf`jtp["promise"] = Null
 
 jsf`server = WEBServer["addr" -> address, "path" -> jsf`public, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 
 (*NotificationMethodRegister;*)
 SetUpCron;
-LoadWebObjects;
-
-console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
 LoadBuildFile["config.build.wl"];
+JerryI`WolframJSFrontend`Dev`Private`Rebuild;
+
+console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
 While[True, Pause[1]];

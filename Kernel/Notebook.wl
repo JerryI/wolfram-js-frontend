@@ -8,9 +8,10 @@ NotebookRemove::usage = "NotebookRemove[]"
 NotebookAttach::usage = "NotebookAttach[] attaches to the local or remote kernel"
 NotebookOpen::usage = "NotebookOpen[]"
 NotebookEvaluate::usage = "NotebookEvaluate[]"
-NotebookAbort::usage = "NotebookAbort[]"
 NotebookGetObject::usage = "NotebookGetObject[] gets the JSON notebook object"
 NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
+
+NotebookKernelOperate::usage = "Kernel control"
 
 NotebookEventFire::usage = "internal usage"
 
@@ -22,6 +23,8 @@ jsfn`Notebooks = <||>;
 jsfn`Processors = Null;
 
 $NotifyName = $InputFileName;
+
+$AssociationSocket = <||>;
 
 Unprotect[NotebookCreate];
 Unprotect[NotebookOpen];
@@ -62,17 +65,11 @@ NotebookCreate[OptionsPattern[]] := (
     ]
 );
 
-NotebookRemove[id_] := (
-    CellObjRemoveAllNext[ jsfn`Notebooks[id]["cell"] ];
-    CellObjRemove[ jsfn`Notebooks[id]["cell"] ];
-    
-    jsfn`Notebooks[id] = .;
-);
 
 (*access only via websockets*)
-NotebookAttach[id_, proc_, init_:Null] := Module[{pid = proc},
+NotebookAttach[proc_, init_:Null] := Module[{pid = proc},
     If[proc === "master", 
-        jsfn`Notebooks[id]["kernel"] = LocalKernel; 
+        jsfn`Notebooks[$AssociationSocket[Global`client]]["kernel"] = LocalKernel; 
         WebSocketSend[Global`client, Global`FrontEndAddKernel[pid] ]; 
         PushNotification[$NotifyName, "<span class=\"badge badge-danger\">Master kernel attached</span> <p>If we die, we die</p>"]; 
         Return["master", Module] 
@@ -82,22 +79,26 @@ NotebookAttach[id_, proc_, init_:Null] := Module[{pid = proc},
 
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
+    $AssociationSocket[Global`client] = id;
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
 );
 
-NotebookEvaluate[id_, cellid_] := (
+NotebookEvaluate[cellid_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[CellObj[cellid], jsfn`Processors];
     ];
 );
 
-NotebookAbort[id_] := (
-    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
-        jsfn`Notebooks[id]["kernel"]["Abort"];
-    ];
-);
+NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]},
+    jsfn`Notebooks[channel]["kernel"][cmd][Function[state,
+        Print[StringTemplate["callback for `` channel"][channel]];
+        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
+    ]];
+];
+
+
 
 NotebookGetObject[cellid_, uid_] := (
     WebSocketSend[Global`client, Global`FrontEndExtendDefinitions[uid, jsfn`Notebooks[CellObj[cellid]["sign"]]["objects"][uid] ]];
@@ -138,7 +139,8 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
                         "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
                         "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
+                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
+                        "props"->cell["props"]
                     |>,
             
             template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]

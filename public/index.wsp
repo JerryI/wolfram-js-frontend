@@ -1,4 +1,8 @@
-<?wsp If[!KeyExistsQ[session["Query"], "path"], session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, session["Query", "path"] = session["Query", "path"]//URLDecode]; " " ?>
+<?wsp If[!KeyExistsQ[session["Query"], "path"], 
+            session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
+            session["Query", "path"] = session["Query", "path"]//URLDecode
+        ]; 
+" " ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>
 

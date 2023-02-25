@@ -131,7 +131,7 @@ core.Rule = function (args, env) {
     let copy = Object.assign({}, env);
     delete copy.association;
 
-    env.association[args[0]] = interpretate(args[1], copy);
+    env.association[interpretate(args[0])] = interpretate(args[1], copy);
   }
 
   //TODO: evaluate it before sending it
