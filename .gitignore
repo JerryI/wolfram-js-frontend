@@ -7,3 +7,9 @@ migrate
 /archive/*
 /node_modules
 .DS_STORE
+/db
+/gsrc
+/public_old
+/svcore
+/public/js/bundle.js
+/Temp/*

@@ -140,7 +140,8 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
                         "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
                         "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
-                        "props"->cell["props"]
+                        "props"->cell["props"],
+                        "display"->cell["display"]
                     |>,
             
             template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]

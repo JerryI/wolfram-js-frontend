@@ -257,6 +257,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
                         With[{new = CellObjCreateChild[CellObj[cell], uid]},
                             new["data"]     = result;
                             new["type"]     = "output";
+                            new["display"]  = display;
 
                             epilog[new["sign"]];
                             fireLocalEvent["NewCell"][new];

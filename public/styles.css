@@ -53,6 +53,10 @@
   display: none;
 }
 
+.icon-hidden {
+  transform: rotate(-90deg);
+}
+
 .tool-div {
   display: flex
 }

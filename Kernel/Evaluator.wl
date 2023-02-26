@@ -1,8 +1,9 @@
-BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WolframJSFrontend`WebObjects`"}];
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WolframJSFrontend`WebObjects`", "WSP`"}];
 
 (*going to be executed on the remote or local kernels*)
 
 WolframEvaluator::usage = "WolframEvaluator[] a basic mathematica kernel, which executes the commands. Can be run on Local or on Remote kernel"
+WSPEvaluator::usage = "WSPEvaluator[]"
 CellPrologOption::usage = "CellPrologOption[] used for overriding cell's id"
 
 Begin["`Private`"]; 
@@ -45,6 +46,21 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       ]
     ];
 
+    
+  ]
+];
+
+WSPEvaluator[str_String, signature_][callback_] := Module[{},
+  Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
+          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
+        },
+        
+    callback[
+      LoadString[str],
+      $CellUid, 
+      "html",
+      Null
+    ];
     
   ]
 ];

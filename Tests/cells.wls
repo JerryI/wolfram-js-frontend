@@ -2,9 +2,11 @@
 
 $HistoryLength = 0
 PacletDirectoryLoad[Directory[]]
-
+Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"]
 Get["JerryI`WolframJSFrontend`Cells`"]
 Get["JerryI`WolframJSFrontend`Evaluator`"]
+
+
 
 Get["JerryI`WolframJSFrontend`Colors`"]
 
@@ -68,7 +70,12 @@ WolframProcessor[expr_String, signature_String, callback_] := Module[{str = Stri
   Print["WolframProcessor!"];
   If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
   WolframEvaluator[str, block, signature][callback];
-];    
+];   
+
+WSPProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
+  Print["WSPProcessor!"];
+  WSPEvaluator[str, signature][callback];
+];
 
 
 JerryI`WolframJSFrontend`WebObjects`replacement = {};
@@ -108,4 +115,14 @@ Print["Overall"];
 If[failed//TrueQ, Print[Red<>"Failed"], Print[Green<>"Passed"]]; 
 Print[Reset];
 
+
+
+
+
+
+Print[Magneta<>"WSP Test"]; Print[Reset];
+
+cell["data"] = ".wsp\n<div><?wsp Now ?></div>";
+wrapper[CellObjEvaluate[cell, evaluator]];
+Print[cell["child"]["data"]]
 

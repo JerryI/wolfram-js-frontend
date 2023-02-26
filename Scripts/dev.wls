@@ -33,12 +33,16 @@ NotebookDefineEvaluators["Default",
   {
     MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
     WSPQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->WSPProcessor       |>,
+    JSQ       ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->JSProcessor        |>,
     (True&)   ->  <|"SyntaxChecker"->WolframCheckSyntax,    "Epilog"->SplitExpression,  "Prolog"->(#&), "Evaluator"->WolframProcessor   |>
   }
 ];
 
 MarkdownQ[str_] := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.md$"]]] > 0;
 WSPQ[str_]      := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.(wsp|html|htm)$"]]] > 0;
+
+JSQ[str_]       := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.(js|jsx)$"]]] > 0;
+
 
 SplitExpression[astr_] := With[{str = StringReplace[astr, "%"->"$$$out"]},
   StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
@@ -70,6 +74,21 @@ WolframProcessor[expr_String, signature_String, callback_] := Module[{str = Stri
   If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
   JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][WolframEvaluator[str, block, signature], callback, "Link"->"WSTP"];
 ];    
+
+WSPProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
+  Print["WSPProcessor!"];
+  WSPEvaluator[str, signature][callback];
+];
+
+MarkdownProcessor[expr_String, signature_String, callback_] := Module[{},
+  Print["MarkdownProcessor!"];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][MarkdownEvaluator[str, signature], callback, "Link"->"WSTP"];
+];
+
+JSProcessor[expr_String, signature_String, callback_] := Module[{},
+  Print["JSProcessor!"];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][JSEvaluator[str, signature], callback, "Link"->"WSTP"];
+];
 
 port = "8090";
 ip = "127.0.0.1";

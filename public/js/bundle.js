@@ -20965,7 +20965,7 @@ core.FrontEndCreateCell = function (args, env) {
 
   var uid = input["id"];
 
-
+  if (input["display"] === "codemirror") {
   new EditorView({
     doc: input["data"],
     extensions: [
@@ -21003,19 +21003,19 @@ core.FrontEndCreateCell = function (args, env) {
     ],
     parent: document.getElementById(input["id"]+"---"+input["type"])
   });
-
+  } else {
+    setInnerHTML(document.getElementById(input["id"]+"---"+input["type"]), input["data"]);
+  }
   if (input["parent"] === "") {
     const body = document.getElementById(input["id"]).parentNode;
     const toolbox = body.getElementsByClassName('frontend-tools')[0];
-    const drag    = body.getElementsByClassName('node-settings-drag')[0];
+    const hide    = body.getElementsByClassName('node-settings-hide')[0];
     body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show");};
     body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show");}; 
-    drag.addEventListener("click", function (e) {
+    hide.addEventListener("click", function (e) {
       document.getElementById(uid+"---input").classList.toggle("cell-hidden");
-      const path = drag.getElementsByTagName('path');
-        path[0].classList.toggle("path-hidden");
-        path[1].classList.toggle("path-hidden");
-        path[2].classList.toggle("path-hidden");
+      const svg = hide.getElementsByTagName('svg');
+        svg[0].classList.toggle("icon-hidden");
       socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
     });
   } 
@@ -21189,3 +21189,14 @@ function WSPHttpBigQuery(command, promise, type = "String") {
 
     promise("OK");
 }
+
+var setInnerHTML = function(elm, html) {
+  elm.innerHTML = html;
+  Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+    const newScript = document.createElement("script");
+    Array.from(oldScript.attributes)
+      .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+};
