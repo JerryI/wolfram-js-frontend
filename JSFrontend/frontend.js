@@ -9,7 +9,7 @@ import { MatchDecorator, WidgetType, keymap } from "@codemirror/view"
 
 import {
   highlightSpecialChars, drawSelection, highlightActiveLine, dropCursor,
-  rectangularSelection, crosshairCursor,
+  rectangularSelection, crosshairCursor, placeholder,
   highlightActiveLineGutter
 } from "@codemirror/view"
 import { EditorState } from "@codemirror/state"
@@ -22,6 +22,17 @@ import {
   Decoration,
   ViewPlugin
 } from "@codemirror/view"
+
+import {marked} from "marked"
+import markedKatex from "marked-katex-extension"
+
+const TexOptions = {
+  throwOnError: false
+};
+
+
+
+marked.use(markedKatex(TexOptions));
 
 const placeholderMatcher = new MatchDecorator({
   regexp: /FrontEndExecutable\["([^"]+)"\]/g,
@@ -84,7 +95,7 @@ var $objetsstorage = {};
 core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   if (input["parent"] === "") {
-    document.getElementById(input["id"]).parentNode.remove();
+    document.getElementById(input["id"]).parentNode.parentNode.remove();
   } else {
     document.getElementById(`${input["id"]}---${input["type"]}`).remove();
   }
@@ -138,6 +149,7 @@ core.FrontEndCellError = function (args, env) {
 var temp0;
 var editorLastCursor = 0;
 var editorLastId = "null";
+var forceFocusNext = false;
 
 core.FrontEndTruncated = function (args, env) {
     env.element.innerHTML = interpretate(args[0]) + " ...";
@@ -166,13 +178,52 @@ core.FrontEndCreateCell = function (args, env) {
     document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
   }
 
-
-
   var uid = input["id"];
 
-  if (input["display"] === "codemirror") {
-  new EditorView({
-    doc: input["data"],
+  {
+    let el = document.getElementById(input["id"]+"---"+input["type"]);
+
+    switch(input["display"]) {
+      case 'codemirror':
+        createCodeMirror(el, uid, input["data"]);
+        break;
+      case 'markdown':
+        el.innerHTML = marked.parse(input["data"]);
+        break;
+      case 'wsp':
+        setInnerHTML(el, input["data"]);
+        break;
+    };
+
+  }
+
+  if (input["parent"] === "") {
+    const body = document.getElementById(input["id"]).parentNode;
+    const toolbox = body.getElementsByClassName('frontend-tools')[0];
+    const hide    = body.getElementsByClassName('node-settings-hide')[0];
+    const addafter   = body.getElementsByClassName('node-settings-add')[0];
+    body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show")};
+    body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show")}; 
+
+    
+    addafter.addEventListener("click", function (e) {
+      addcellafter(uid);
+    });
+
+    hide.addEventListener("click", function (e) {
+      document.getElementById(uid+"---input").classList.toggle("cell-hidden");
+      const svg = hide.getElementsByTagName('svg');
+        svg[0].classList.toggle("icon-hidden");
+      socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
+    });
+  } 
+
+};  
+
+
+function createCodeMirror(element, uid, data) {
+    const editor = new EditorView({
+    doc: data,
     extensions: [
       highlightActiveLineGutter(),
       highlightSpecialChars(),
@@ -191,11 +242,12 @@ core.FrontEndCreateCell = function (args, env) {
       highlightActiveLine(),
       highlightSelectionMatches(),
       StreamLanguage.define(mathematica),
+      placeholder('Type Wolfram Expression / .md / .html / .js'),
       placeholders,
       keymap.of([
         { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
         { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
-        { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { AddCell(uid);  }; editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
+        { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { addcellafter(uid);  }; editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
         { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), uid); } }, ...defaultKeymap, ...historyKeymap
       ]),
       EditorView.updateListener.of((v) => {
@@ -206,34 +258,17 @@ core.FrontEndCreateCell = function (args, env) {
       }),
       editorCustomTheme
     ],
-    parent: document.getElementById(input["id"]+"---"+input["type"])
+    parent: element
   });
-  } else {
-    setInnerHTML(document.getElementById(input["id"]+"---"+input["type"]), input["data"]);
-  };
 
-  if (input["parent"] === "") {
-    const body = document.getElementById(input["id"]).parentNode;
-    const toolbox = body.getElementsByClassName('frontend-tools')[0];
-    const hide    = body.getElementsByClassName('node-settings-hide')[0];
-    body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show")};
-    body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show")}; 
-    hide.addEventListener("click", function (e) {
-      document.getElementById(uid+"---input").classList.toggle("cell-hidden");
-      const svg = hide.getElementsByTagName('svg');
-        svg[0].classList.toggle("icon-hidden");
-      socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
-    });
-  } 
+  if(forceFocusNext) editor.focus();
+  forceFocusNext = false;
+}
 
-};  
-
-
-var notebookkernel = false;
-
-core.FrontEndAddKernel = function(args, env) {
-  document.getElementById('kernel-status').classList.add('btn-info');
-  notebookkernel = true;
+function addcellafter(id) {
+  var q = 'NotebookOperate["'+id+'", CellObjCreateAfter]';
+  forceFocusNext = true;
+  socket.send(q);
 }
 
 function celleval(ne, cell) {

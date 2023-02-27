@@ -27,6 +27,8 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "chokidar": "^3.5.3",
     "finalhandler": "^1.2.0",
+    "marked": "^4.2.12",
+    "marked-katex-extension": "^1.0.2",
     "thememirror": "^2.0.1",
     "three": "^0.123.0"
   }

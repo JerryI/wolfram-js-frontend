@@ -33,8 +33,7 @@ NotebookDefineEvaluators["Default",
   {
     MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
     WSPQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->WSPProcessor       |>,
-    JSQ       ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->JSProcessor        |>,
-    (True&)   ->  <|"SyntaxChecker"->WolframCheckSyntax,    "Epilog"->SplitExpression,  "Prolog"->(#&), "Evaluator"->WolframProcessor   |>
+   (True&)    ->  <|"SyntaxChecker"->WolframCheckSyntax,    "Epilog"->SplitExpression,  "Prolog"->(#&), "Evaluator"->WolframProcessor   |>
   }
 ];
 
@@ -77,10 +76,10 @@ WolframProcessor[expr_String, signature_String, callback_] := Module[{str = Stri
 
 WSPProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["WSPProcessor!"];
-  WSPEvaluator[str, signature][callback];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][WSPEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
 
-MarkdownProcessor[expr_String, signature_String, callback_] := Module[{},
+MarkdownProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["MarkdownProcessor!"];
   JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][MarkdownEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
