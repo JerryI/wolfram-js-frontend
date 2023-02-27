@@ -41,7 +41,7 @@ Options[NotebookCreate] = {
     "kernel" -> LocalKernel,
     "objects" -> <||>,
     "cell" -> Null,
-    "data" -> "1+1"
+    "data" -> ""
 };
 
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
