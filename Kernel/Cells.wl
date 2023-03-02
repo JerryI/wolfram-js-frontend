@@ -15,6 +15,12 @@ CellObjRemoveAllNext::usage = "CellObjRemoveAllNext"
 CellObjEvaluate::usage = "CellObjEvaluate"
 CellObjGenerateTree::usage = "CellObjGenerateTree"
 
+CellObjQuery::usage = "query"
+CellObjPack::usage = "pack to association"
+CellObjUnpack::usage = "assotiation to cellobj"
+
+setCellID::usage = "convert string to cellObj"
+
 Begin["`Private`"]; 
 
 Options[CellObj] = {
@@ -323,6 +329,48 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
     ];  
 ];
 
+CellObjQuery[field_, dt_] := Module[{},
+    Select[(Extract[#[[1]], {1, 0}] & /@ SubValues[CellObj]), Function[x, x[field] === dt] ]//DeleteDuplicates
+];
+
+getCellID[prop_] := If[prop === Null, Null, prop[[1]]];
+setCellID[prop_] := If[prop === Null, Null, CellObj[prop] ];
+
+
+CellObj /: 
+CellObjPack[CellObj[cell_]] := (  
+    <|  "id"->cell, 
+        "type"      ->  CellObj[cell]["type"], 
+        "data"      ->  CellObj[cell]["data"],
+        "display"   ->  CellObj[cell]["display"],
+        "sign"      ->  CellObj[cell]["sign"],
+
+        "prev"      ->  getCellID[CellObj[cell]["prev"]],
+        "next"      ->  getCellID[CellObj[cell]["next"]],
+        "parent"    ->  getCellID[CellObj[cell]["parent"]],
+
+        "child"     ->  getCellID[CellObj[cell]["child"]],
+        "props"     ->  CellObj[cell]["props"]
+    |>
+);
+
+
+
+CellObjUnpack[assoc_] := With[{id = assoc["id"]},  
+    Print["Create cell"];
+    CellObj[id]["type"] = assoc["type"];
+    CellObj[id]["data"] = assoc["data"];
+
+    CellObj[id]["display"] = assoc["display"];
+    CellObj[id]["sign"] = assoc["sign"];
+    CellObj[id]["prev"] = setCellID[assoc["prev"]];
+    CellObj[id]["next"] = setCellID[assoc["next"]];
+
+    CellObj[id]["parent"] = setCellID[assoc["parent"]];
+    CellObj[id]["child"] = setCellID[assoc["child"]];
+
+    CellObj[id]["props"] = assoc["props"];
+];
 
 CellObj /: 
 CellObjGenerateTree[CellObj[cell_]] := (  

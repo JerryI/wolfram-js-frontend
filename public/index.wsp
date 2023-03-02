@@ -2,6 +2,8 @@
             session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
             session["Query", "path"] = session["Query", "path"]//URLDecode
         ];  
+    
+      If[NotebookQ[session["Query", "path"]], PreloadNotebook[session["Query", "path"]] ];
 " " ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>

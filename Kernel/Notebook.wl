@@ -16,6 +16,8 @@ NotebookKernelOperate::usage = "Kernel control"
 NotebookEventFire::usage = "internal usage for events"
 NotebookPromise::usage = "ask a server to do something..internal"
 
+NotebookStore::usage = "save the notebook to a file"
+
 Begin["`Private`"]; 
 
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
@@ -30,6 +32,7 @@ $AssociationSocket = <||>;
 Unprotect[NotebookCreate];
 Unprotect[NotebookOpen];
 Unprotect[NotebookEvaluate];
+Unprotect[NotebookStore];
 
 ClearAll[NotebookOpen];
 ClearAll[NotebookCreate];
@@ -42,16 +45,32 @@ Options[NotebookCreate] = {
     "kernel" -> LocalKernel,
     "objects" -> <||>,
     "cell" -> Null,
-    "data" -> ""
+    "data" -> "",
+    "path" -> Null
 };
 
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
-NotebookExtendDefinitions[defs_][sign_] := (
+NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
     Print["Extend definitions"];
-    Print[defs];
+    updated = Intersection[Keys[defs], Keys[jsfn`Notebooks[sign]["objects"] ] ];
     jsfn`Notebooks[sign]["objects"] = Join[jsfn`Notebooks[sign]["objects"], defs];
-);
+    Print["Will be updated: "<>ToString[Length[updated] ] ];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#] ], sign] &/@ updated;
+];
+
+NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},
+    cells = CellObjQuery["sign", channel];
+    Print[StringTemplate["`` objects to save"][Length[cells] ] ];
+    notebook["notebook"] = jsfn`Notebooks[channel];
+    notebook["cells"] = CellObjPack /@ cells;
+    notebook["serializer"] = "jsfn";
+    notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
+    Put[notebook, jsfn`Notebooks[channel]["path"]];
+
+    Clear[notebook];
+    Print["SAVED"];
+];
 
 NotebookCreate[OptionsPattern[]] := (
     With[{id = OptionValue["id"]},
@@ -60,7 +79,8 @@ NotebookCreate[OptionsPattern[]] := (
             "name" -> OptionValue["name"],
             "id"   -> id,
             "kernel" -> OptionValue["kernel"],
-            "objects" -> OptionValue["objects"]        
+            "objects" -> OptionValue["objects"] ,
+            "path" -> OptionValue["path"]       
         |>;
 
         jsfn`Notebooks[id]["cell"] = CellObj["sign"->id, "type"->"input", "data"->OptionValue["data"]];

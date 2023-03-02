@@ -112,13 +112,33 @@ FileTypeHandler[path_, types_] := Module[{},
 NotFound[path_] := <|"view" :> LoadPage["template/views/404.wsp"] |>;
 EmptyWindow[path_] := <|"view" :> LoadPage["template/views/empty.wsp"] |>;
 
-NotebookQ[path_] := (StringTake[path, -2] === "mx");
+NotebookQ[path_] := (StringTake[path, -2] === "wl");
 
 $AssoticatedPath = <||>;
+
+PreloadNotebook[path_] := Module[{notebook},
+  If[!MemberQ[$AssoticatedPath//Keys, path],
+    notebook = Get[path];
+    If[notebook["serializer"] =!= "jsfn",  ];
+
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
+    
+    Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+    JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
+
+    $AssoticatedPath[path] = notebook["notebook", "id"];
+    Print[$AssoticatedPath];
+    Clear[notebook];
+    Print["LOADED"];
+  ]
+]
+
+
 LoadNotebook[path_] := Module[{},
   <|"view":> LoadPage["template/views/editor.wsp", {notebook = $AssoticatedPath[path]}] |>
 ];
-
 
 
 ImageFileQ[path_] := MemberQ[{"png", "svg", "jpg", "jpeg", "gif"}, FileExtension[path]];
@@ -133,8 +153,6 @@ SupportedTypes = {
 
 
 
-$AssoticatedPath[FileNameJoin[{JerryI`WolframJSFrontend`defaultvault, "test.mx"}]] = "test";
-NotebookCreate["id"->"test"]
 
 address = ip<>":"<>port;
 

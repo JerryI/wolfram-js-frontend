@@ -11,7 +11,7 @@
                                             <?wsp If[NotebookQ[session["Query", "path"]], LoadPage["template/kernelcontrol.wsp", {path = session["Query", "path"]}], ""] ?>
 
                                             <div style="">
-                                                <div class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Updates" tabindex="0" style="
+                                                <div id="save-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Updates" tabindex="0" style="
                                                         -webkit-user-select: none;
                                                         transition: background 20ms ease-in 0s;
                                                         cursor: pointer;
@@ -102,4 +102,10 @@
         document.getElementById('kernel-button').className  = interpretate(args[0])+"-kernel notion-focusable";
         document.getElementById('kernel-text').innerText    = interpretate(args[1]);
     }
+
+    <?wsp If[NotebookQ[session["Query", "path"]], ?>
+    document.getElementById('save-button').addEventListener('click', (e)=> {
+        socket.send('NotebookStore;');
+    })
+    <?wsp , ""] ?>
 </script>

@@ -61,6 +61,12 @@ core.PromiseResolve = function (args, env) {
   delete $promisesAssoc[uid];
 }
 
+core.UpdateFrontEndExecutable = function (args, env) {
+  const key = interpretate(args[0], env);
+  var data  = JSON.parse(interpretate(args[1], env));
+  $objetsStorage[key] = data;
+}
+
 core.FrontEndExecutable = function (args, env) {
   const key = interpretate(args[0], env);
   var copy = Object.assign({}, env);
@@ -83,7 +89,7 @@ core.FrontEndExecutable = function (args, env) {
 core.FrontEndRef = function(args, env) {
   return core.FrontEndExecutable(args, env);
 }
-
+//hold analogue for the backend
 core.FrontEndOnly = function(args, env) {
   return interpretate(args[0], env);
 }
