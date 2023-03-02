@@ -1,6 +1,6 @@
 RegisterWebObject[HTMLForm];
 
-SVGForm[x_] := ExportString[x, "SVG"]//HTMLForm;
+Global`SVGForm[x_] := ExportString[x, "SVG"]//HTMLForm;
 
 JSRun[x_String, name_String:"JS"] := (StringTemplate["<div class=\"badge badge-danger\">``</div><script>``</script>"][name, x])//HTMLForm;
 

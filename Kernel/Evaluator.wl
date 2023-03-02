@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WolframJSFrontend`WebObjects`", "WSP`"}];
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`"}];
 
 (*going to be executed on the remote or local kernels*)
 

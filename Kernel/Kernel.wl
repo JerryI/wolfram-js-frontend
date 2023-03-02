@@ -59,17 +59,23 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
-    LinkWrite[link, Unevaluated[Get["https://raw.githubusercontent.com/JerryI/tcp-mathematica/main/JTP/JTP.wl"]]];
-    LinkWrite[link, Unevaluated[Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"]]];
-    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Evaluator`"}]]; 
+    LinkWrite[link, Unevaluated[Get["../tcp-mathematica/JTP/JTP.wl"]]];
+    LinkWrite[link, Unevaluated[Get["../tinyweb-mathematica/WSP/WSP.wl"]]];
     
-    With[{list = JerryI`WolframJSFrontend`WebObjects`list, table = JerryI`WolframJSFrontend`WebObjects`replacement},
-        LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`WebObjects`list = list; JerryI`WolframJSFrontend`WebObjects`replacement = table;]]; 
-    ]
+    With[{root = JerryI`WolframJSFrontend`root},
+        LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
+    ];
+
+    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}]]; 
+    
+    
 
     With[{packed = (List["host" -> JerryI`WolframJSFrontend`jtp["host"], "port" -> JerryI`WolframJSFrontend`jtp["port"] ])},
         LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
     ];
+
+    (* i dunno. this is a fucking bug *)
+    LinkWrite[link, Unevaluated["LoadWebObjects"//ToExpression]];
 
     checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[10, "Seconds"], 1},  AutoRemove->True]];
 

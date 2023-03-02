@@ -4,6 +4,7 @@ BeginPackage["JerryI`WolframJSFrontend`Remote`", {"JTP`"}];
 ConnectToMaster::usage = "Connects to the master-kernel"
 SendToMaster::usage = "Send evaluated the data inside the callback to the master kernel"
 
+
 Begin["`Private`"]; 
 
 master = Null;

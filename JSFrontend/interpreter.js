@@ -1,5 +1,16 @@
 const aflatten = (ary) => ary.flat(Infinity);
 var core, interpretate;
+var $objetsStorage = {};
+var $promisesAssoc = {};
+
+class Deferred {
+  constructor(uid) {
+    this.promise = new Promise((resolve, reject)=> {
+      this.reject = reject
+      this.resolve = resolve
+    });
+  }
+}
 
 core = {};
 
@@ -29,12 +40,52 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
   }
 };
 
-core.FrontEndExecutable = function (args, env) {
 
+
+core.CallServer = function (args, env) {
+  const uid = uuidv4();
+  var promise = new Deferred(uid);
+  $promisesAssoc[uid] = promise;
+
+  const func = interpretate(args[0], env);
+  //const params = JSON.stringify(env).replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
+  socket.send('NotebookPromise["'+uid+'", ""]['+func+']');
+  return promise.promise;
 }
 
-core.FrontEndVariable = function (args, env) {
+core.PromiseResolve = function (args, env) {
+  const uid = interpretate(args[0], env);
+  const data = JSON.parse(interpretate(args[1], env));
+  //todo allow to interprete the result
+  $promisesAssoc[uid].resolve(data);
+  delete $promisesAssoc[uid];
+}
 
+core.FrontEndExecutable = function (args, env) {
+  const key = interpretate(args[0], env);
+  var copy = Object.assign({}, env);
+
+  if (key in $objetsStorage) {
+    if (copy.hold === true) return $objetsStorage[key];
+    return interpretate($objetsStorage[key], copy);
+  }
+  
+  return new Promise((resolve, reject) => {
+    core.CallServer([`'NotebookGetObject["${key}"]'`], {...copy, hold: true})
+      .then((val) => {
+        $objetsStorage[key] = val;
+        if (copy.hold === true) resolve(val); else resolve(interpretate(val, copy));
+      });
+    });
+}
+
+//to prevent codemirror 6 from drawing it
+core.FrontEndRef = function(args, env) {
+  return core.FrontEndExecutable(args, env);
+}
+
+core.FrontEndOnly = function(args, env) {
+  return interpretate(args[0], env);
 }
 
 core.Rational = function (args, env) {

@@ -4,7 +4,7 @@
         (* merge and bundle the files *)
         MergeFiles[{
                 "JSFrontend/frontend.js",
-                (*"https://raw.githubusercontent.com/JerryI/Mathematica-ThreeJS-graphics-engine/night/src/graphics3d.js",*)
+                "../Mathematica-ThreeJS-graphics-engine/src/graphics3d.js",
                 FileNames["*.js", "WebObjects", Infinity]
             } -> "Temp/merged.js"
         ],
@@ -29,10 +29,7 @@
                 "const top = typeof globalThis"->"const top0 = typeof globalThis", 
                 "chrome"->"chromee"
             }]&)
-        ],
-
-        (* reloading the webobjects *)
-        LoadWebObjects
+        ]
 
     }
 |>

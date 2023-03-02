@@ -3,6 +3,8 @@ import { EditorView } from "codemirror";
 import { StreamLanguage } from "@codemirror/language"
 import { mathematica } from "@codemirror/legacy-modes/mode/mathematica"
 
+import {indentWithTab} from "@codemirror/commands"
+
 import {noctisLilac, smoothy} from 'thememirror'
 
 import { MatchDecorator, WidgetType, keymap } from "@codemirror/view"
@@ -34,27 +36,28 @@ const TexOptions = {
 
 marked.use(markedKatex(TexOptions));
 
-const placeholderMatcher = new MatchDecorator({
+const FEMatcher = new MatchDecorator({
   regexp: /FrontEndExecutable\["([^"]+)"\]/g,
   decoration: match => Decoration.replace({
-    widget: new PlaceholderWidget(match[1]),
+    widget: new FEWidget(match[1]),
   })
 });
-const placeholders = ViewPlugin.fromClass(class {
+const FEholders = ViewPlugin.fromClass(class {
   constructor(view) {
-    this.placeholders = placeholderMatcher.createDeco(view);
+    this.FEholders = FEMatcher.createDeco(view);
   }
   update(update) {
-    this.placeholders = placeholderMatcher.updateDeco(update, this.placeholders);
+    this.FEholders = FEMatcher.updateDeco(update, this.FEholders);
   }
 }, {
-  decorations: instance => instance.placeholders,
+  decorations: instance => instance.FEholders,
   provide: plugin => EditorView.atomicRanges.of(view => {
     var _a;
-    return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.placeholders) || Decoration.none;
+    return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.FEholders) || Decoration.none;
   })
 });
-class PlaceholderWidget extends WidgetType {
+
+class FEWidget extends WidgetType {
   constructor(name) {
     super();
     this.name = name;
@@ -63,20 +66,17 @@ class PlaceholderWidget extends WidgetType {
     return this.name === other.name;
   }
   toDOM() {
-    let elt = document.createElement("span");
-    elt.style.cssText = `
-              border: 1px solid rgb(200, 200, 200);
-              border-radius: 4px;
-              padding: 0 3px;
-              display:inline-block;
-              `;
-
-    interpretate(JSON.parse($objetsstorage[this.name]), { element: elt });
+    let elt = document.createElement("div");
+    elt.classList.add("frontend-object");
+    elt.setAttribute('data-object', this.name);
+    
+    //can call async
+    core.FrontEndExecutable(["'"+this.name+"'"], { element: elt });
 
     return elt;
   }
   ignoreEvent() {
-    return false;
+    return false; 
   }
 }
 
@@ -89,13 +89,10 @@ let editorCustomTheme = EditorView.theme({
 });
 
 
-var $objetsstorage = {};
-
-
 core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
-  if (input["parent"] === "") {
-    document.getElementById(input["id"]).parentNode.parentNode.remove();
+  if (input["type"] === 'input') {
+    document.getElementById(input["id"]).parentNode.remove();
   } else {
     document.getElementById(`${input["id"]}---${input["type"]}`).remove();
   }
@@ -105,22 +102,18 @@ core.FrontEndMoveCell = function (args, env) {
   var template = interpretate(args[0]);
   var input = JSON.parse(interpretate(args[1]));
 
-  //document.getElementById(input["cell"]["id"]+"---"+input["cell"]["type"]).remove();
   const cell   = document.getElementById(`${input["cell"]["id"]}---output`);
   //make it different id, so it will not conflict
   cell.id = cell.id + '--old';
-
   const editor = cell.firstChild; 
+
   const parentcellwrapper = cell.parentNode.parentNode;
 
-  console.log(parentcellwrapper);
-  console.log(cell);
-  console.log(editor);
-
   parentcellwrapper.insertAdjacentHTML('afterend', template);
-  console.log(document.getElementById(`${input["cell"]["id"]}---input`));
   document.getElementById(`${input["cell"]["id"]}---input`).appendChild(editor);
   cell.remove();
+
+  attachToolbox(input["cell"], input["cell"]["id"]);
 
 }; 
 
@@ -146,13 +139,8 @@ core.FrontEndCellError = function (args, env) {
   alert(interpretate(args[1]));
 };
 
-var temp0;
-var editorLastCursor = 0;
-var editorLastId = "null";
-var forceFocusNext = false;
-
 core.FrontEndTruncated = function (args, env) {
-    env.element.innerHTML = interpretate(args[0]) + " ...";
+  env.element.innerHTML = interpretate(args[0]) + " ...";
 }
 
 core.FrontEndJSEval = function (args, env) {
@@ -190,7 +178,7 @@ core.FrontEndCreateCell = function (args, env) {
       case 'markdown':
         el.innerHTML = marked.parse(input["data"]);
         break;
-      case 'wsp':
+      case 'html':
         setInnerHTML(el, input["data"]);
         break;
     };
@@ -198,28 +186,39 @@ core.FrontEndCreateCell = function (args, env) {
   }
 
   if (input["parent"] === "") {
-    const body = document.getElementById(input["id"]).parentNode;
-    const toolbox = body.getElementsByClassName('frontend-tools')[0];
-    const hide    = body.getElementsByClassName('node-settings-hide')[0];
-    const addafter   = body.getElementsByClassName('node-settings-add')[0];
-    body.onmouseout  =  function(ev) {toolbox.classList.toggle("tools-show")};
-    body.onmouseover =  function(ev) {toolbox.classList.toggle("tools-show")}; 
-
-    
-    addafter.addEventListener("click", function (e) {
-      addcellafter(uid);
-    });
-
-    hide.addEventListener("click", function (e) {
-      document.getElementById(uid+"---input").classList.toggle("cell-hidden");
-      const svg = hide.getElementsByTagName('svg');
-        svg[0].classList.toggle("icon-hidden");
-      socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
-    });
+    attachToolbox(input, uid);
   } 
 
 };  
 
+function attachToolbox(input, uid) {
+  const body = document.getElementById(input["id"]).parentNode;
+  const toolbox = body.getElementsByClassName('frontend-tools')[0];
+  const hide    = body.getElementsByClassName('node-settings-hide')[0];
+  const addafter   = body.getElementsByClassName('node-settings-add')[0];
+  body.onmouseout  =  function(ev) {toolbox.classList.remove("tools-show")};
+  body.onmouseover =  function(ev) {toolbox.classList.add("tools-show")}; 
+
+  
+  addafter.addEventListener("click", function (e) {
+    addcellafter(uid);
+  });
+
+  hide.addEventListener("click", function (e) {
+    if(document.getElementById(uid).getElementsByClassName('output-cell').length === 0) {
+      alert('The are no output cells can be hidden');
+      return;
+    }
+    document.getElementById(uid+"---input").classList.toggle("cell-hidden");
+    const svg = hide.getElementsByTagName('svg');
+      svg[0].classList.toggle("icon-hidden");
+    socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
+  });
+}
+
+var editorLastCursor = 0;
+var editorLastId = "null";
+var forceFocusNext = false;
 
 function createCodeMirror(element, uid, data) {
     const editor = new EditorView({
@@ -243,9 +242,9 @@ function createCodeMirror(element, uid, data) {
       highlightSelectionMatches(),
       StreamLanguage.define(mathematica),
       placeholder('Type Wolfram Expression / .md / .html / .js'),
-      placeholders,
-      keymap.of([
-        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveFull];`); }  } },
+      FEholders,
+      keymap.of([indentWithTab,
+        { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveAccurate];`); }  } },
         { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
         { key: "ArrowDown", run: function (editor, key) { if(editorLastId === uid && editorLastCursor === editor.state.selection.ranges[0].to) { addcellafter(uid);  }; editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
         { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { console.log(editor.state.doc.toString()); celleval(editor.state.doc.toString(), uid); } }, ...defaultKeymap, ...historyKeymap

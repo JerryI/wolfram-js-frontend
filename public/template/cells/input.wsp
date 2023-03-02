@@ -1,10 +1,8 @@
-<section class="cell-wrapper frontend-node" data-node-id="8da4c754-d27f-4904-a4be-0877f88f6b5c" data-node-type="paragraph" data-slate-node="element" style="opacity: 1;">
+<section class="cell-wrapper frontend-node"  style="opacity: 1;">
     <?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template/cells/tools.wsp"}], {hideButtonClass = If[CellObj[Global`id]["props"]["hidden"], "icon-hidden", ""]}] ?>
     <div class="content-wrapper" id="<?wsp Global`id?>">
         <?wsp With[{prop = If[CellObj[Global`id]["props"]["hidden"], " cell-hidden", " " ]}, ?>
-            <p class="cell-paragraph frontend-paragraph <?wsp prop ?>" draggable="false" id="<?wsp Global`id?>---input">
-            
-            </p>
+            <p class="cell-paragraph frontend-paragraph <?wsp prop ?>" draggable="false" id="<?wsp Global`id?>---input"></p>
         <?wsp ] ?>
     </div>
 </section>

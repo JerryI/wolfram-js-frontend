@@ -16,7 +16,9 @@
   },
   "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@types/codemirror": "^5.60.6",
+    "@types/plotly.js": "^2.12.18",
     "codemirror": "^6.0.1",
     "purify-css": "^1.2.5",
     "rollup": "^3.10.0",
@@ -24,11 +26,16 @@
   },
   "dependencies": {
     "@codemirror/legacy-modes": "^6.3.1",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "chokidar": "^3.5.3",
+    "d3": "^7.8.2",
     "finalhandler": "^1.2.0",
     "marked": "^4.2.12",
     "marked-katex-extension": "^1.0.2",
+    "plotly.js": "^2.13.1",
+    "plotly.js-dist": "^2.18.2",
+    "plotly.js-dist-min": "^2.18.2",
     "thememirror": "^2.0.1",
     "three": "^0.123.0"
   }

@@ -102,6 +102,10 @@ If[MemberQ[$ScriptCommandLine, "ip"],
 
 
 FileTypeHandler[path_, types_] := Module[{},
+  (* add the path to the server PATH variable for loading pictures from the vault *)
+  jsf`server["path"] = Join[Take[jsf`server["path"], 2], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
+
+  (* handlers *)
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]
 ]
 
@@ -136,10 +140,10 @@ address = ip<>":"<>port;
 
 WSPCache["Off"];
 
-jsf`jtp   =  JTPServer["host" -> ip, "port" -> 2850, "nohup"->True] // JTPServerStart
+jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart
 jsf`jtp["promise"] = Null
 
-jsf`server = WEBServer["addr" -> address, "path" -> jsf`public, "socket-close" -> True];
+jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 
 (*NotificationMethodRegister;*)

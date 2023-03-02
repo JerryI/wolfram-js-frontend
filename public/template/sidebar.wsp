@@ -116,7 +116,8 @@
 
                                                                 <div class="notion-selectable notion-page-block">
                                                                     <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
-                                                                        <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                    <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
+                                                                        <div class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" style="
                                                                                 -webkit-user-select: none;
                                                                                 transition: background 20ms ease-in 0s;
                                                                                 cursor: pointer;
@@ -125,6 +126,8 @@
                                                                                 margin-left: 4px;
                                                                                 margin-right: 4px;
                                                                             ">
+                                                                        <?wsp ] ?>
+
                                                                             <div class="sidebar-option" style="
                                                                                     display: flex;
                                                                                     align-items: center;
@@ -136,7 +139,7 @@
                                                                                     margin-bottom: 1px;
                                                                                     /*font-weight: 600;*/
                                                                                     
-                                                                                    color: rgb(55, 53, 47);
+                                                                                   
                                                                                     border-radius: 3px;
                                                                                 ">
                                                                                 <div style="
@@ -163,6 +166,7 @@
                                                                                             height: 20px;
                                                                                             border-radius: 3px;
                                                                                         ">
+                                                                                        <?wsp If[DirectoryQ[i], ?>
                                                                                         <svg viewBox="0 0 12 12" class="chevronDownRoundedThick" style="
                                                                                                 width: 12px;
                                                                                                 height: 12px;
@@ -176,6 +180,7 @@
                                                                                             ">
                                                                                             <path d="M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z"></path>
                                                                                         </svg>
+                                                                                        <?wsp , "" ] ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div style="
@@ -190,6 +195,7 @@
                                                                                         margin-right: 4px;
                                                                                         position: relative;
                                                                                     ">
+                                                                                    
                                                                                     <div class="notion-record-icon notranslate notion-focusable" role="button" tabindex="0" style="
                                                                                             -webkit-user-select: none;
                                                                                             transition: background 20ms ease-in 0s;
@@ -202,6 +208,7 @@
                                                                                             border-radius: 0.25em;
                                                                                             flex-shrink: 0;
                                                                                         ">
+                                                                                   
 
                                                                                         <?wsp If[NotebookQ[i], ?>
                                                                                             <svg viewBox="0 0 30 30" class="page" style="width: 18px; height: 18px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
@@ -210,7 +217,7 @@
                                                                                                 </g>
                                                                                             </svg>
                                                                                         <?wsp , "" ] ?>
-                                                                                        <?wsp If[ImageFileQ[i], ?>
+                                                                                        <?wsp If[ImageFileQ[i],  ?>
                                                                                             <svg viewBox="0 0 14 14" class="sidebarTemplates" style="width: 100%; height: 15px; display: block; fill: rgba(55, 53, 47, 0.45); flex-shrink: 0; backface-visibility: hidden;">
                                                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.237 1l7.84 1.237-1.201 7.61L11.5 6.15 9.424 9.38 6 8.84 7.237 1zM5.545 5.31a4 4 0 1 0 2.29 4.832l-2.979-.47.689-4.363zM7 15l4.5-7 4.5 7H7z"></path>
                                                                                             </svg>
@@ -225,10 +232,10 @@
                                                                     </a>
                                                                 </div>
                                                             
-                                                            <?wsp , {i, FileNames["*.*", If[DirectoryQ[session["Query", "path"]], 
+                                                            <?wsp , {i, SortBy[FileNames["*", If[DirectoryQ[session["Query", "path"]], 
                                                                             session["Query", "path"], 
                                                                             DirectoryName[session["Query", "path"]]
-                                                                        ]] }] ?>    
+                                                                        ]], DirectoryQ] }] ?>    
                                                                 
                                                                 
                                                                 
@@ -263,7 +270,7 @@
                                                                                 </svg>
                                                                             </div>
                                                                         </div>
-                                                                        <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Add a page</div>
+                                                                        <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Add a notebook</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -358,7 +365,7 @@
                                                                     </svg>
                                                                 </div>
                                                             </div>
-                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">New page</div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">New notebook</div>
                                                         </div>
                                                     </div>
                                                 </div>

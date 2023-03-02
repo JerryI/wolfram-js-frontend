@@ -13,7 +13,8 @@ NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
 
 NotebookKernelOperate::usage = "Kernel control"
 
-NotebookEventFire::usage = "internal usage"
+NotebookEventFire::usage = "internal usage for events"
+NotebookPromise::usage = "ask a server to do something..internal"
 
 Begin["`Private`"]; 
 
@@ -47,6 +48,8 @@ Options[NotebookCreate] = {
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
 NotebookExtendDefinitions[defs_][sign_] := (
+    Print["Extend definitions"];
+    Print[defs];
     jsfn`Notebooks[sign]["objects"] = Join[jsfn`Notebooks[sign]["objects"], defs];
 );
 
@@ -99,10 +102,13 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
 ];
 
 
+NotebookGetObject[uid_] := With[{channel = $AssociationSocket[Global`client]},
+    jsfn`Notebooks[channel]["objects"][uid]
+];
 
-NotebookGetObject[cellid_, uid_] := (
-    WebSocketSend[Global`client, Global`FrontEndExtendDefinitions[uid, jsfn`Notebooks[CellObj[cellid]["sign"]]["objects"][uid] ]];
-);
+NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel];
+];
 
 NotebookOperate[cellid_, op_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
@@ -175,7 +181,7 @@ NotebookEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, Globa
 
 NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[
-        {   template = LoadPage["public/assets/cells/input.wsp", {id = cell[[1]]}],
+        {   template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}],
             obj = <|
                     "cell"-> <|
                         "id"->cell[[1]], 
@@ -203,23 +209,7 @@ NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
     ];
 );
 
-NotebookEventFire[addr_]["CellMorph"][cell_] := (
-    With[
-        {
-            obj = <|
-                    "id"->cell[[1]], 
-                    "sign"->cell["sign"],
-                    "type"->cell["type"],
-                    "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
-                    "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
-                    "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                    "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
-                |>
-        },
-
-        WebSocketSend[addr, Global`FrontEndMorphCell[ExportString[obj, "JSON"] ]];
-    ];
-);
+NotebookEventFire[addr_]["CellMorph"][cell_] := (Null);
 
 End[];
 EndPackage[];

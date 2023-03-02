@@ -1,6 +1,6 @@
 <div class="notion-topbar" style="">
                                     <div style="">
-                                        <div class="notranslate" style="">
+                                        <div class="notranslate topbar-url-container" style="">
                                             <div class="notion-focusable" role="button" tabindex="0" style="">
                                                 <div class="notranslate" style=""><?wsp session["Query", "path"] ?></div>
                                             </div>

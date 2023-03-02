@@ -1,4 +1,6 @@
 import nodeResolve from "@rollup/plugin-node-resolve";
+import commonjs from '@rollup/plugin-commonjs';
+import json from "@rollup/plugin-json";
 
 export default {
 
@@ -13,6 +15,8 @@ export default {
   nodeResolve({
     jsnext: true,
     main: false
-  })
+  }),
+  json(),
+  commonjs({transformMixedEsModules:true})
   ]
 };

@@ -2,7 +2,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="/styles.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+        <link rel="stylesheet" href="/katex.css">
         <script src="/js/bundle.js"></script>
     </head>
     <body class="notion-body">
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="" style="">
-                            <div style="">
+                            <div>
                                 <?wsp LoadPage["template/topbar.wsp"] ?>
                                 
                             </div>

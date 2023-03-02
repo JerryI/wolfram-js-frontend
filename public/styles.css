@@ -177,6 +177,52 @@
   line-height: 27px
 }
 
+
+.frontend-object {
+  background-color: #fff;
+  display:inline-block;
+  border-radius: 4px;
+  position: relative;
+  color: #444;
+  cursor: pointer;
+}
+.frontend-object:empty {
+  width: auto;
+  height: 1em;
+  line-height: 1em;
+}
+.frontend-object:empty::after {
+  margin:auto;
+  right:0;
+  left:0;
+  position: relative;
+  padding-left:1em;
+  padding-right:1em;
+  font-size:14px;
+  background:none;
+  content: attr(data-object);
+}
+.frontend-object:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #ccc;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  top: 50%;
+  z-index: -1;
+  box-shadow: 0 0 40px #999;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.frontend-object.level-3:hover:before {
+  box-shadow: 0 0 80px #999;
+}
+.frontend-object h5 {
+  font-weight: 300;
+  font-size: 30px;
+}
+
 body,
 html {
   -webkit-font-smoothing: antialiased;

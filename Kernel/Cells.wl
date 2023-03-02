@@ -8,7 +8,7 @@ CellObjCreateChild::usage = "CellObjCreateChild"
 
 CellObjCreateNext::usage = "CellObjCreateNext"
 CellObjCreateAfter::usage = "CellObjCreateAfter"
-CellObjRemoveFull::usage = "CellObjRemoveFull"
+CellObjRemoveAccurate::usage = "CellObjRemoveAccurate"
 CellObjRemove::usage = "CellObjRemove"
 
 CellObjRemoveAllNext::usage = "CellObjRemoveAllNext"
@@ -119,75 +119,129 @@ CellObjCreateAfter[CellObj[ucell_]] := (
     ]  
 );
 
-CellObj /:
-CellObjRemoveFull[CellObj[cell_]] := Module[{}, 
-    Print[notebooks[CellObj[cell]["sign"], "cell"]];
-    If[notebooks[CellObj[cell]["sign"], "cell"] === CellObj[cell],
-        If[!NullQ[CellObj[cell]["next"]],
-            CellObj[cell]["next"]["prev"] = Null;
-            notebooks[CellObj[cell]["sign"], "cell"] = CellObj[cell]["next"];
-            CellObjRemove[CellObj[cell]];
-            Return[$Ok, Module];
-        ,
-            JerryI`WolframJSFrontend`fireEvent["CellError"][cell, "There must be at least one cell in the notebook"];
-            Return[$Failed, Module];
-        ]
-    ];
-
-    If[!NullQ[CellObj[cell]["parent"]],
-        CellObj[cell]["parent"]["child"] = Null;
-    ];
-    
-    If[!NullQ[CellObj[cell]["next"]],
-        If[!NullQ[CellObj[cell]["prev"]],
-            CellObj[cell]["next"]["prev"] = CellObj[cell]["prev"];
-            CellObj[cell]["prev"]["next"] = CellObj[cell]["next"];
-        ,
-            CellObj[cell]["next"]["prev"] = Null;
-        ];
-    ,
-        If[!NullQ[CellObj[cell]["prev"]],
-            CellObj[cell]["prev"]["next"] = Null;
-        ];    
-    ];    
-
-    If[!NullQ[CellObj[cell]["child"]],
-        CellObjRemoveFull[CellObj[cell]["child"]];
-    ];
-
-    CellObjRemove[CellObj[cell]];
-];
 
 CellObj /:
-CellObjRemove[CellObj[cell_]] := ( 
-    JerryI`WolframJSFrontend`fireEvent["RemovedCell"][CellObj[cell]];
-    JerryI`WolframJSFrontend`fireEvent["ClearStorage"][CellObj[cell]];
+CellObjRemoveAccurate[CellObj[cell_]] := Module[{},
 
-    Unset[CellObj[cell]["data"]];
-    Unset[CellObj[cell]["type"]];
-    Unset[CellObj[cell]["next"]];
-    Unset[CellObj[cell]["prev"]];
-    Unset[CellObj[cell]["parent"]];
-    Unset[CellObj[cell]["sign"]];
-    Unset[CellObj[cell]["props"]];
-    Unset[CellObj[cell]["dump"]];
-    Unset[CellObj[cell]["storage"]];
+    (* check if this is a parent cell *)
 
     If[CellObj[cell]["child"] =!= Null,
-        CellObjRemoveAllNext[CellObj[cell]["child"]];
-        CellObjRemove[CellObj[cell]["child"]];
+        Print["this is a parent cell"];
+        (* check next and previous  *)
+        If[CellObj[cell]["prev"] =!= Null,
+            If[CellObj[cell]["next"] =!= Null,
+                (* reconnect *)
+                CellObj[cell]["prev"]["next"] = CellObj[cell]["next"];
+                CellObj[cell]["next"]["prev"] = CellObj[cell]["prev"];
+            ,
+                (* reconnect *)
+                CellObj[cell]["prev"]["next"] = Null;
+            ];
+            ,
+            If[CellObj[cell]["next"] =!= Null,
+                (* reconnect *)
+                CellObj[cell]["next"]["prev"] = Null;
+            ,
+                (* !exceptional case! *)
+                (* the LAST CELL of the notebook *)
+                Print["last cell"];
+                (* remove kids *)
+                CellObjRemoveAllNext[CellObj[cell]["child"] ];
+                CellObjRemove[CellObj[cell]["child"] ];
+                CellObj[cell]["child"] = Null;        
+
+                (* clear the content *)
+                CellObj[cell]["data"] = "";
+                JerryI`WolframJSFrontend`fireEvent["UpdateCell"][CellObj[cell] ];     
+                Return[Null, Module];
+            ];         
+        ];
+
+        (* remove kids quite *)
+        CellObjRemoveAllNext[CellObj[cell]["child"], True];
+        CellObjRemove[CellObj[cell]["child"], True];
+        (* remove it *)
+        CellObjRemove[CellObj[cell] ];
+    ,
+
+        (* we do not know *)
+        (* might be a child or a parent with no kids *)
+
+        If[CellObj[cell]["parent"] =!= Null,
+            (* 100% a child *)
+            Print["this is a kid cell"];
+            (* check next *)
+            If[CellObj[cell]["next"] =!= Null,
+                (* reconnect *)
+                CellObj[cell]["next"]["prev"] = Null;
+                CellObj[cell]["next"]["parent"] = CellObj[cell]["parent"];
+                CellObj[cell]["parent"]["child"] = CellObj[cell]["next"];
+            ,
+                CellObj[cell]["parent"]["child"] = Null;
+            ];         
+
+            (* remove it *)
+            CellObjRemove[CellObj[cell] ];            
+
+        ,
+            (* we do not know *)
+            Print["we do not know"];
+            (* check next and previous  *)
+            If[CellObj[cell]["prev"] =!= Null,
+                If[CellObj[cell]["next"] =!= Null,
+                    (* reconnect *)
+                    CellObj[cell]["prev"]["next"] = CellObj[cell]["next"];
+                    CellObj[cell]["next"]["prev"] = CellObj[cell]["prev"];
+                ,
+                    (* reconnect *)
+                    CellObj[cell]["prev"]["next"] = Null;
+                ];
+                ,
+                If[CellObj[cell]["next"] =!= Null,
+                    (* reconnect *)
+                    CellObj[cell]["next"]["prev"] = Null;
+                ,
+                    (* !exceptional case! *)
+                    (* the LAST CELL of the notebook *)      
+
+                    (* clear the content *)
+                    CellObj[cell]["data"] = "";
+                    JerryI`WolframJSFrontend`fireEvent["UpdateCell"][CellObj[cell] ];     
+                    Return[Null, Module];
+                ];         
+            ];
+
+            (* remove it *)
+            CellObjRemove[CellObj[cell] ];
+
+        ];
     ];
 
-    Unset[CellObj[cell]["child"]];
-    Unset[CellObj[cell]["display"]];
-);
+];
+
 
 CellObj /:
-CellObjRemoveAllNext[CellObj[cell_]] := ( 
+CellObjRemove[CellObj[cell_], Quite_:False] := ( 
+    If[!Quite, JerryI`WolframJSFrontend`fireEvent["RemovedCell"][CellObj[cell] ] ];
+
+    Unset[CellObj[cell]["data"] ];
+    Unset[CellObj[cell]["type"] ];
+    Unset[CellObj[cell]["next"] ];
+    Unset[CellObj[cell]["prev"] ];
+    Unset[CellObj[cell]["parent"] ];
+    Unset[CellObj[cell]["sign"] ];
+    Unset[CellObj[cell]["props"] ];
+    Unset[CellObj[cell]["child"] ];
+    Unset[CellObj[cell]["display"] ];
+);
+
+
+CellObj /:
+CellObjRemoveAllNext[CellObj[cell_], Quite_:False] := ( 
     If[CellObj[cell]["next"] =!= Null, 
         Module[{next = CellObj[cell]["next"]},
             While[next["next"] =!= Null, next = next["next"]];
-            While[next =!= CellObj[cell], next = next["prev"]; CellObjRemove[next["next"]]; ];
+            While[next =!= CellObj[cell], next = next["prev"]; CellObjRemove[next["next"], Quite]; ];
             CellObj[cell]["next"] = Null;
         ]
     ]  
@@ -235,7 +289,6 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
             CellObj[cell]["parent"] = Null;
 
             JerryI`WolframJSFrontend`fireEvent["CellMove"][CellObj[cell], parent];
-            JerryI`WolframJSFrontend`fireEvent["CellMorph"][CellObj[cell]];
 
             ,
 

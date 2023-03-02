@@ -1,10 +1,12 @@
-core.WListPloty = function(args, env) {
-    const arr = JSON.parse(interpretate(args[0]));
-    console.log("Ploty.js");
+
+var Plotly = require('plotly.js-dist');
+
+core.WListPlotly = function(args, env) {
+    const arr = interpretate(args[0], env);
     console.log(arr);
     let newarr = [];
     arr.forEach(element => {
-        newarr.push({x: element[0], y: element[1]});
+        newarr.push({x: element[0], y: element[1]}); 
     });
     Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
         l: 30,
@@ -15,7 +17,7 @@ core.WListPloty = function(args, env) {
       }});
   }  
   
-  core.WListContourPloty = function(args, env) {
+  core.WListContourPlotly = function(args, env) {
     const data = interpretate(args[0], env);
     Plotly.newPlot(env.element, [{z:data[2], x:data[0], y:data[1], type: 'contour'}],
     {autosize: false, width: 500, height: 300, margin: {

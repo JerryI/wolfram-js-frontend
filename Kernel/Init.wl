@@ -7,6 +7,6 @@ JerryI`WolframJSFrontend`notifications = <||>;
 
 JerryI`WolframJSFrontend`ram = 0.0;
 
-Get["https://raw.githubusercontent.com/JerryI/tcp-mathematica/main/JTP/JTP.wl"]
-Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/Tinyweb/Tinyweb.wl"]
-Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"]
+Get["../tcp-mathematica/JTP/JTP.wl"]
+Get["../tinyweb-mathematica/Tinyweb/Tinyweb.wl"]
+Get["../tinyweb-mathematica/WSP/WSP.wl"]

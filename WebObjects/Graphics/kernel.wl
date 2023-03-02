@@ -1,26 +1,26 @@
-ListContourPloty[s_List] := WListContourPloty[Transpose[s//N]];
+ListContourPlotly[s_List] := WListContourPlotly[Transpose[s//N]];
 
-RegisterWebObject[WListContourPloty];
+RegisterWebObject[WListContourPlotly];
 
-Options[ListLinePloty] = {
+Options[ListLinePlotly] = {
     PlotRange -> {{-Infinity, Infinity}, {-Infinity, Infinity}}
 };
 
-ListLinePloty[x_List, OptionsPattern[]] := Module[{transp},
+ListLinePlotly[x_List, OptionsPattern[]] := Module[{transp},
     Switch[Depth[x//N],
         3,
-            transp = { (Transpose[FilterRange[x, OptionValue[PlotRange] ] ])}
+            transp = { (Transpose[x])}
         ,
         4,
-            transp = ( Transpose[FilterRange[#, OptionValue[PlotRange] ] ] ) &/@ x
+            transp = ( Transpose[#] ) &/@ x
         ,
         2,
             transp = {Table[i, {i, 1, Length[x]}], x}
     ];
 
-    WListPloty[ExportString[transp//N, "JSON"] ]
+    WListPlotly[transp//N]
 ];
 
-Ploty[f_, range_, op : OptionsPattern[Plot]] := Plot[f, range, op] // Cases[#, Line[x_] :> x, All] & // ListLinePloty[#, op] & ;
+Plotly[f_, range_, op : OptionsPattern[Plot]] := Plot[f, range, op] // Cases[#, Line[x_] :> x, All] & // ListLinePlotly[#, op] & ;
 
-RegisterWebObject[WListPloty];
+RegisterWebObject[WListPlotly];
