@@ -71,7 +71,7 @@ class FEWidget extends WidgetType {
     elt.setAttribute('data-object', this.name);
     
     //can call async
-    core.FrontEndExecutable(["'"+this.name+"'"], { element: elt });
+    core.FrontEndExecutable(["'"+this.name+"'"], { element: elt, chain:[] });
 
     return elt;
   }

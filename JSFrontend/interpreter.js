@@ -14,7 +14,7 @@ class Deferred {
 
 core = {};
 
-interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false}) {
+interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false, chain: []}) {
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
   }
@@ -29,6 +29,8 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
 
   this.name = d[0];
   this.args = d.slice(1, d.length);
+
+  env.chain.push({func: this.name, args: this.args});
 
   console.log(this.name);
   
@@ -70,6 +72,9 @@ core.UpdateFrontEndExecutable = function (args, env) {
 core.FrontEndExecutable = function (args, env) {
   const key = interpretate(args[0], env);
   var copy = Object.assign({}, env);
+
+  console.log('chain arrived');
+  console.log(env.chain);
 
   if (key in $objetsStorage) {
     if (copy.hold === true) return $objetsStorage[key];
