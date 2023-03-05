@@ -151,9 +151,6 @@ core.FrontEndCreateCell = function (args, env) {
   var template = interpretate(args[0]);
   var input = JSON.parse(interpretate(args[1]));
 
-  console.log(template);
-  console.log(input);
-
   if (input["parent"] === "") {
     
     if (input["prev"] !== "") {

@@ -1,3 +1,9 @@
+SetAttributes[SetFrontEndObject, HoldFirst];
+
+FrontEndExecutableWrapper[uid_] := ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"];
+SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
+SetFrontEndObject[FrontEndExecutable[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
+
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`"}];
 
 (*going to be executed on the remote or local kernels*)
@@ -12,13 +18,14 @@ Begin["`Private`"];
 JerryI`WolframJSFrontend`Evaluator`objects   = <||>;
 (*JerryI`WolframJSFrontend`Evaluator`variables = <||>;*)
 
+
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
   Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out},
     Block[{
-            Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
+            Global`FrontEndExecutable = Global`FrontEndExecutableWrapper
           },
 
-      $evaluated = ToExpression[str];
+      $evaluated = ToExpression[str, InputForm, Hold] /. {Global`SetFrontEndObject[Global`FrontEndExecutable[uid_], expr_] :> Global`SetFrontEndObject[uid, expr]} // ReleaseHold;
       $out = $evaluated;
       If[block === True, $evaluated = Null];
     ];  

@@ -18,6 +18,8 @@ NotebookPromise::usage = "ask a server to do something..internal"
 
 NotebookStore::usage = "save the notebook to a file"
 
+NotebookFrontEndSend::usage = "sends to the frotnend an expr"
+
 Begin["`Private`"]; 
 
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
@@ -68,6 +70,8 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
     notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
     Put[notebook, jsfn`Notebooks[channel]["path"]];
 
+    jsfn`Notebooks[channel]["date"] = Now;
+
     Clear[notebook];
     Print["SAVED"];
 ];
@@ -106,6 +110,8 @@ NotebookOpen[id_String] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
 );
 
 NotebookEvaluate[cellid_] := (
@@ -118,6 +124,9 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
     jsfn`Notebooks[channel]["kernel"][cmd][Function[state,
         Print[StringTemplate["callback for `` channel"][channel]];
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
+        
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel];
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel];
     ]];
 ];
 
@@ -151,6 +160,11 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
     WebSocketSend[client, FrontEndJSEval[StringTemplate["downloadByURL('http://'+window.location.hostname+':'+window.location.port+'/trashcan/``', '``')"][file, file]]];
 ];
 *)
+
+NotebookFrontEndSend[channel_][expr_String] := With[{},
+    Print["Publish from kernel to the channel "<>channel];
+    WebSocketPublishString[JerryI`WolframJSFrontend`server, expr, channel];
+];
 
 NotebookEventFire[addr_]["NewCell"][cell_] := (
     (*looks ugly actually. we do not need so much info*)

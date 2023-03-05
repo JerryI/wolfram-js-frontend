@@ -22,14 +22,14 @@ LoadWebObjects := (
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[
     With[{item = i},
       {
-        Global`FrontEndObj[item[x__], $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ],
+        Global`CreateFrontEndObject[item[x__], $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ],
         item[x__] :> With[{$ouid = CreateUUID[]}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ]
       }
     ]
    , {i, JerryI`WolframJSFrontend`WebObjects`list}];
 
   JerryI`WolframJSFrontend`WebObjects`replacement = {JerryI`WolframJSFrontend`WebObjects`replacement, 
-    Global`FrontEndObj[x_, $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[x, "ExpressionJSON"]; Global`FrontEndExecutable[$ouid]]
+    Global`CreateFrontEndObject[x_, $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[x, "ExpressionJSON"]; Global`FrontEndExecutable[$ouid]]
   } // Flatten;
 
   Print[Blue<>"done!"]; Print[Reset];

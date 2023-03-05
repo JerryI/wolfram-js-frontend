@@ -30,7 +30,9 @@
 
 
                                                     </svg>
-                                                </div><span style="
+                                                </div>
+                                                <?wsp If[NotebookQ[session["Query", "path"]], ?>
+                                                <span style="
                                                         opacity: 1;
                                                         transition: opacity 150ms linear 0s;
                                                         display: flex;
@@ -41,8 +43,9 @@
                                                         white-space: nowrap;
                                                         line-height: 1.2;
                                                     ">
-                                                    <div style="display: flex; flex-flow: wrap;"><div>Edited 12m ago</div></div>
+                                                    <div style="display: flex; flex-flow: wrap;"><div>Saved<span> </span><span id="date-saved"><?wsp TextString[(Now - JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]], "date"])//Round] ?></span><span> </span>ago</div></div>
                                                 </span>
+                                                <?wsp , ""] ?>
                                                 <div style="margin-left: 12px;"></div>
                                                 <div class="notion-topbar-favorite-button notion-focusable" role="button" aria-label="Favorite" tabindex="0" style="
                                                         -webkit-user-select: none;
@@ -101,11 +104,50 @@
     core.UpdateKernelStatus = function(args, env) {
         document.getElementById('kernel-button').className  = interpretate(args[0])+"-kernel notion-focusable";
         document.getElementById('kernel-text').innerText    = interpretate(args[1]);
-    }
+    };
 
     <?wsp If[NotebookQ[session["Query", "path"]], ?>
+
+    var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]], "date"]] ?> * 1000);
+
     document.getElementById('save-button').addEventListener('click', (e)=> {
         socket.send('NotebookStore;');
-    })
+        lastTimeSaved = new Date();
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
+    });
+
+    const datesaved = document.getElementById('date-saved');
+    setInterval(function () {
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+    }, 5000);
+
+    function formatDateDiff(startDate, endDate) {
+      const diff = Math.abs(endDate - startDate);
+      const diffInSeconds = Math.round(diff / 1000);
+      const diffInMinutes = Math.round(diff / (1000 * 60));
+      const diffInHours = Math.round(diff / (1000 * 60 * 60));
+      const diffInDays = Math.round(diff / (1000 * 60 * 60 * 24));
+      const diffInWeeks = Math.round(diff / (1000 * 60 * 60 * 24 * 7));
+      const diffInMonths = Math.round(diff / (1000 * 60 * 60 * 24 * 30));
+      const diffInYears = Math.round(diff / (1000 * 60 * 60 * 24 * 365));
+    
+      if (diffInSeconds < 60) {
+        return `${diffInSeconds} secs`;
+      } else if (diffInMinutes < 60) {
+        return `${diffInMinutes} mins`;
+      } else if (diffInHours < 24) {
+        return `${diffInHours} hrs`;
+      } else if (diffInDays < 7) {
+        return `${diffInDays} days`;
+      } else if (diffInWeeks < 4) {
+        return `${diffInWeeks} weeks`;
+      } else if (diffInMonths < 12) {
+        return `${diffInMonths} months`;
+      } else {
+        return `${diffInYears} years`;
+      }
+    }
+    
+
     <?wsp , ""] ?>
 </script>

@@ -151,9 +151,6 @@ core.FrontEndCreateCell = function (args, env) {
   var template = interpretate(args[0]);
   var input = JSON.parse(interpretate(args[1]));
 
-  console.log(template);
-  console.log(input);
-
   if (input["parent"] === "") {
     
     if (input["prev"] !== "") {
@@ -1546,10 +1543,29 @@ var Plotly = require('plotly.js-dist');
 core.WListPlotly = function(args, env) {
     const arr = interpretate(args[0], env);
     console.log(arr);
+
     let newarr = [];
     arr.forEach(element => {
         newarr.push({x: element[0], y: element[1]}); 
     });
+
+    if (env.update === 'data') {
+      console.log('UPDATE DATA');
+
+      Plotly.animate(env.element, {
+        data: newarr,
+      }, {
+        transition: {
+          duration: 300,
+          easing: 'cubic-in-out'
+        },
+        frame: {
+          duration: 300
+        }
+      });     
+      return;
+    }
+
     Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
         l: 30,
         r: 30,

@@ -45,6 +45,16 @@ LocalKernel["Exit"][cbk_] := (
     cbk[LocalKernel["Status"]]; 
 );
 
+LocalKernel["AttachNotebook"][id_] := ( 
+    Print["attaching "<>id];
+    If[status["signal"] == "good", 
+        JTPSend[asyncsocket, JerryI`WolframJSFrontend`Remote`Private`notebook = id];
+        Print["Kenrel now is aware about notebook id"];
+    ,
+        Print["Kenrel is not ready yet to attach notebook id"];
+    ];
+);
+
 LocalKernel["Restart"][cbk_] := ( 
     LocalLinkRestart;
 );
@@ -114,9 +124,11 @@ LocalKernel["Started"] := (
     TaskRemove[checker];
     lastPong = Now;
     asyncsocket = jsocket;
+    Print["asyncsocket id: "<>jsocket];
     status = <|"signal"->"good", "text"->"Connected"|>;
     callback[LocalKernel["Status"]];
 ); 
+
 
 LocalKernel["Pong"] := (
     ping = Now - lastPong;

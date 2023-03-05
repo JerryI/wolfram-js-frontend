@@ -14,7 +14,7 @@ class Deferred {
 
 core = {};
 
-interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false, chain: []}) {
+interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false, chain: {}}) {
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
   }
@@ -30,16 +30,9 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
   this.name = d[0];
   this.args = d.slice(1, d.length);
 
-  env.chain.push({func: this.name, args: this.args});
-
   console.log(this.name);
   
-  try {
-    return core[this.name](this.args, env);
-  }
-  catch (e) {
-    console.error(e, "not implemented");
-  }
+  return core[this.name](this.args, env);
 };
 
 
@@ -66,25 +59,68 @@ core.PromiseResolve = function (args, env) {
 core.UpdateFrontEndExecutable = function (args, env) {
   const key = interpretate(args[0], env);
   var data  = JSON.parse(interpretate(args[1], env));
-  $objetsStorage[key] = data;
+  $objetsStorage[key].data = data;
+
+  $objetsStorage[key].handlers.forEach(element => {
+    let envobject = Object.assign({}, element.env);
+    envobject.chain = {}; 
+    core.FrontEndExecutable([element.exe], {...envobject, update: 'data'})
+  });
+}
+
+core.SetFrontEndObject = function (args, env) {
+  console.log(args);
+  const key = interpretate(args[0], env);
+  $objetsStorage[key].data = args[1];
+  console.log("new data");
+  console.log($objetsStorage[key].data);
+  console.log("end");
+
+
+  $objetsStorage[key].handlers.forEach(element => {
+    let envobject = Object.assign({}, element.env);
+    envobject.chain = {}; 
+    console.log("reactive chain of functions will be applied");
+    core.FrontEndExecutable([element.exe], {...envobject, update: 'data'})
+  });
 }
 
 core.FrontEndExecutable = function (args, env) {
   const key = interpretate(args[0], env);
-  var copy = Object.assign({}, env);
 
-  console.log('chain arrived');
-  console.log(env.chain);
+  if(!env.update) {
+    console.log('chain arrived');
+    var chain = Object.assign({}, env.chain);
+    console.log(chain);
+
+    env.chain = {exe: "'"+key+"'", env: Object.assign({}, env)};
+  } else {
+    var chain = {};
+  }
+
+  var copy = env;
 
   if (key in $objetsStorage) {
-    if (copy.hold === true) return $objetsStorage[key];
-    return interpretate($objetsStorage[key], copy);
+    if (Object.keys(chain).length > 0 && $objetsStorage[key].handlers.length === 0) {
+      $objetsStorage[key].handlers.push(chain);
+    }
+    if (copy.hold === true) return $objetsStorage[key].data;
+    console.log('already there. getting...');
+    return interpretate($objetsStorage[key].data, copy);
   }
   
+  console.log('not here. asking server...');
+
   return new Promise((resolve, reject) => {
     core.CallServer([`'NotebookGetObject["${key}"]'`], {...copy, hold: true})
       .then((val) => {
-        $objetsStorage[key] = val;
+        $objetsStorage[key] = {data: [], handlers: []};
+        $objetsStorage[key].data = val;
+        console.log('chain info');
+        console.log(chain);
+        if (Object.keys(chain).length > 0 && $objetsStorage[key].handlers.length === 0) {
+          $objetsStorage[key].handlers.push(chain);
+        }        
         if (copy.hold === true) resolve(val); else resolve(interpretate(val, copy));
       });
     });
@@ -100,28 +136,6 @@ core.FrontEndOnly = function(args, env) {
 }
 
 core.Rational = function (args, env) {
-
-  if (env.todom  === true) {
-    const rationalNumber = document.createElement("div");
-    rationalNumber.classList.add("frac");
-
-    const numerator = document.createElement("span");
-    interpretate(args[0], {...env, element: numerator});
-
-    const separator = document.createElement("span");
-    separator.innerHTML = "/";
-    separator.classList.add("symbol");
-
-    const denominator = document.createElement("span");
-    interpretate(args[1], {...env, element: denominator});
-    denominator.classList.add("bottom");
-
-    rationalNumber.appendChild(numerator);
-    rationalNumber.appendChild(separator);
-    rationalNumber.appendChild(denominator);
-    env.element.appendChild(rationalNumber);
-    return null;
-  }
   if (env.numerical === true) return interpretate(args[0], env)/interpretate(args[1], env);
   
   //return the original form igoring other arguments
@@ -129,25 +143,6 @@ core.Rational = function (args, env) {
 }
 
 core.Times = function (args, env) {
-
-  if (env.todom  === true) {
-    const product = document.createElement("div");
-
-    const numerator = document.createElement("span");
-    interpretate(args[0], {...env, element: numerator});
-
-    const separator = document.createElement("span");
-    separator.innerHTML = "x";
-
-    const denominator = document.createElement("span");
-    interpretate(args[1], {...env, element: denominator});
-
-    product.appendChild(numerator);
-    product.appendChild(separator);
-    product.appendChild(denominator);
-    env.element.appendChild(product);
-    return null;
-  }
   if (env.numerical === true) return interpretate(args[0], env)*interpretate(args[1], env);
   
   //TODO: evaluate it before sending its original symbolic form
