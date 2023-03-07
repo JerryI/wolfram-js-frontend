@@ -27,7 +27,9 @@ PacletObject[
           {"JerryI`WolframJSFrontend`WebObjects`", "WebObjects.wl"}, 
           {"JerryI`WolframJSFrontend`Colors`", "Colors.wl"},
           {"JerryI`WolframJSFrontend`Dev`", "Dev.wl"},
-          {"JerryI`WolframJSFrontend`Remote`", "Remote.wl"}
+          {"JerryI`WolframJSFrontend`Remote`", "Remote.wl"},
+          {"JerryI`WolframJSFrontend`Events`", "Events.wl"},
+          {"JerryI`WolframJSFrontend`WSPDynamicsExtension`", "WSPDynamicsExtension.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

@@ -1,16 +1,17 @@
-<?wsp If[!KeyExistsQ[session["Query"], "path"], 
+<?wsp WSPDynamic[
+        If[!KeyExistsQ[session["Query"], "path"], 
             session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
             session["Query", "path"] = session["Query", "path"]//URLDecode
-        ];  
+        ] ;  
     
       If[NotebookQ[session["Query", "path"]], PreloadNotebook[session["Query", "path"]] ];
-" " ?>
+" " ] ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>
 
-<div class="styles-container-body">
-    <?wsp FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] ?>     
-</div>
+
+<?wsp Wrapper[FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] // WSPDynamic, "class"->"styles-container-body", "tag"->"div"] ?>     
+
 
 <?wsp LoadPage["template/footer.wsp"] ?>
 

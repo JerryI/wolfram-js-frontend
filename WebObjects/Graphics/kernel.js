@@ -1,14 +1,33 @@
 
 var Plotly = require('plotly.js-dist');
 
-core.WListPlotly = function(args, env) {
+function arrDepth(arr) {
+  if (arr[0].length === undefined)        return 1;
+  if (arr[0][0].length === undefined)     return 2;
+  if (arr[0][0][0].length === undefined)  return 3;
+}
+
+core.ListLinePlotly = function(args, env) {
+    env.numerical = true;
     const arr = interpretate(args[0], env);
     console.log(arr);
-
     let newarr = [];
-    arr.forEach(element => {
-        newarr.push({x: element[0], y: element[1]}); 
-    });
+
+    switch(arrDepth(arr)) {
+      case 1:
+        newarr.push({y: arr});
+      break;
+      case 2:
+        arr.forEach(element => {
+          newarr.push({y: element}); 
+        });
+      break;
+      case 3:
+        arr.forEach(element => {
+          newarr.push({x: element[0], y: element[1]}); 
+        });
+      break;      
+    }
 
     if (env.update === 'data') {
       console.log('UPDATE DATA');

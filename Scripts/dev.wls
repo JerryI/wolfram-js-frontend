@@ -10,7 +10,8 @@ Get/@{
   "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Kernel`",
   "JerryI`WolframJSFrontend`Notebook`", "JerryI`WolframJSFrontend`Notifications`",
   "JerryI`WolframJSFrontend`Starter`", "JerryI`WolframJSFrontend`Utils`",
-  "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Dev`"
+  "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Dev`", 
+  "JerryI`WolframJSFrontend`WSPDynamicsExtension`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
@@ -164,6 +165,8 @@ jsf`jtp["promise"] = Null
 
 jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
+
+WSPDynamicAttachServer[jsf`server];
 
 (*NotificationMethodRegister;*)
 SetUpCron;

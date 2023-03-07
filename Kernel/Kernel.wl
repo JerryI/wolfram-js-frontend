@@ -20,6 +20,8 @@ Options[LocalKernel] = {"Link"->"WSTP", "WatchDog"->Infinity};
 LocalKernel["JTPLink"] := asyncsocket;
 LocalKernel["WSTPLink"] := link;
 
+LocalKernel["Emitt"][event_] := (Print["Event emitt (to kernel)!"]; JTPSend[asyncsocket, event]);
+
 LocalKernel[ev_, cbk_, OptionsPattern[]] := (
     If[OptionValue["Link"] === "JTP",
         JTPSend[asyncsocket, ev[Global`SendToMaster[cbk]]]
@@ -76,7 +78,7 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
     ];
 
-    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}]]; 
+    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Events`"}]]; 
     
     
 

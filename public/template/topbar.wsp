@@ -96,6 +96,7 @@
                                 </div>
 
 <script>
+{
     const clocks = document.getElementById('clocks');
     core.Pong = function(args, env) {
         clocks.style.transform = 'rotate('+args[0]+'deg)';
@@ -105,9 +106,9 @@
         document.getElementById('kernel-button').className  = interpretate(args[0])+"-kernel notion-focusable";
         document.getElementById('kernel-text').innerText    = interpretate(args[1]);
     };
-
+}
     <?wsp If[NotebookQ[session["Query", "path"]], ?>
-
+{
     var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]], "date"]] ?> * 1000);
 
     document.getElementById('save-button').addEventListener('click', (e)=> {
@@ -147,7 +148,7 @@
         return `${diffInYears} years`;
       }
     }
-    
+}    
 
     <?wsp , ""] ?>
 </script>

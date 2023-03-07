@@ -35,7 +35,12 @@ interpretate = function (d, env = { element: document.body, mesh: undefined, num
   return core[this.name](this.args, env);
 };
 
+core.FireEvent = function(args, env) {
+  const key  = interpretate(args[0], env);
+  const data = interpretate(args[1], env);
 
+  socket.send(`NotebookEmitt[EmittedEvent["${key}", ${data}]]`);
+}
 
 core.CallServer = function (args, env) {
   const uid = uuidv4();

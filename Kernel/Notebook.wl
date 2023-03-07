@@ -20,6 +20,8 @@ NotebookStore::usage = "save the notebook to a file"
 
 NotebookFrontEndSend::usage = "sends to the frotnend an expr"
 
+NotebookEmitt::usage = "send anything to the kernel (async)"
+
 Begin["`Private`"]; 
 
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
@@ -103,6 +105,8 @@ NotebookAttach[proc_, init_:Null] := Module[{pid = proc},
     ];
 ];
 
+NotebookEmitt[symbol_] := With[{channel = $AssociationSocket[Global`client]}, Print["Event emitt!"]; jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
+SetAttributes[NotebookEmitt, HoldFirst];
 
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];

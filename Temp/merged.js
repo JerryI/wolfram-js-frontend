@@ -1536,18 +1536,55 @@ core.Graphics3D = (args, env) => {
   positionticknums();
 };
 
-    
+import rangeSlider from 'range-slider-input';
+
+core.WEBSlider = function(args, env) {
+    let eventuid = interpretate(args[0], env);
+    let range    = interpretate(args[1], env);
+
+    env.element.classList.add('web-slider');
+
+    rangeSlider(env.element, {
+        value: [range[0], range[1]],
+        step: range[2],
+        thumbsDisabled: [true, false],
+        rangeSlideDisabled: true,
+        onInput: (value, userInteraction) => {
+            console.log(value);
+            core.FireEvent(["'"+eventuid+"'", value[1]]);
+        }
+    });    
+}
 
 var Plotly = require('plotly.js-dist');
 
-core.WListPlotly = function(args, env) {
+function arrDepth(arr) {
+  if (arr[0].length === undefined)        return 1;
+  if (arr[0][0].length === undefined)     return 2;
+  if (arr[0][0][0].length === undefined)  return 3;
+}
+
+core.ListLinePlotly = function(args, env) {
+    env.numerical = true;
     const arr = interpretate(args[0], env);
     console.log(arr);
-
     let newarr = [];
-    arr.forEach(element => {
-        newarr.push({x: element[0], y: element[1]}); 
-    });
+
+    switch(arrDepth(arr)) {
+      case 1:
+        newarr.push({y: arr});
+      break;
+      case 2:
+        arr.forEach(element => {
+          newarr.push({y: element}); 
+        });
+      break;
+      case 3:
+        arr.forEach(element => {
+          newarr.push({x: element[0], y: element[1]}); 
+        });
+      break;      
+    }
 
     if (env.update === 'data') {
       console.log('UPDATE DATA');
@@ -1556,11 +1593,11 @@ core.WListPlotly = function(args, env) {
         data: newarr,
       }, {
         transition: {
-          duration: 300,
+          duration: 100,
           easing: 'cubic-in-out'
         },
         frame: {
-          duration: 300
+          duration: 100
         }
       });     
       return;

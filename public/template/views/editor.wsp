@@ -3,13 +3,7 @@
                 <div id="frontend-editor-content" class="group-container" aria-hidden="true">
                     <div role="textbox" aria-multiline="true" spellcheck="true" id="frontend-contenteditable" data-slate-editor="true" data-slate-editor-id="0" data-slate-node="value" zindex="-1">
                         
-                        <div class="styles-notice-box    ">
-                            <span role="button" tabindex="0" class="styles-dismiss-cross">
-                                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMjIuODggMjIuODgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIyLjg4IDIyLjg4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cGF0aCBmaWxsPSIjOTc1YTE2IiBkPSJNMC4zMjQsMS45MDljLTAuNDI5LTAuNDI5LTAuNDI5LTEuMTQzLDAtMS41ODdjMC40NDQtMC40MjksMS4xNDMtMC40MjksMS41ODcsMGw5LjUyMyw5LjUzOQ0KCWw5LjUzOS05LjUzOWMwLjQyOS0wLjQyOSwxLjE0My0wLjQyOSwxLjU3MSwwYzAuNDQ0LDAuNDQ0LDAuNDQ0LDEuMTU5LDAsMS41ODdsLTkuNTIzLDkuNTI0bDkuNTIzLDkuNTM5DQoJYzAuNDQ0LDAuNDI5LDAuNDQ0LDEuMTQzLDAsMS41ODdjLTAuNDI5LDAuNDI5LTEuMTQzLDAuNDI5LTEuNTcxLDBsLTkuNTM5LTkuNTM5bC05LjUyMyw5LjUzOWMtMC40NDQsMC40MjktMS4xNDMsMC40MjktMS41ODcsMA0KCWMtMC40MjktMC40NDQtMC40MjktMS4xNTksMC0xLjU4N2w5LjUyMy05LjUzOUwwLjMyNCwxLjkwOXoiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" alt="close icon">
-                            </span>
-                            <h4>Hey 👋 You just opend a demo notebook.</h4>
-                            <p>Connect to the Kernel first!</p>
-                        </div>
+                    <?wsp LoadPage["template/cells/banner.wsp", {box = JerryI`WolframJSFrontend`Notebook`Notebooks[notebook, "banner"] } ] ?>
                         
                     </div>
                 </div>

@@ -1,5 +1,0 @@
-<?wsp
-    session["Redirect"] = "utils/redir.wsp";
-    session["data", "command"]//ToExpression;
-    ""
-?>

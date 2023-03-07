@@ -6,12 +6,12 @@ MergeFiles::usage = "MergeFiles[{from,from,from}->to]"
 
 Begin["`Private`"]; 
 
-JerryI`WolframJSFrontend`Dev`wdates = FileDate/@FileNames["*", JerryI`WolframJSFrontend`Dev`config["watch"], Infinity];
+JerryI`WolframJSFrontend`Dev`wdates = FileDate/@FileNames["*.js", JerryI`WolframJSFrontend`Dev`config["watch"], Infinity];
 JerryI`WolframJSFrontend`Dev`config = Null;
 
 CheckFiles := With[{cf = JerryI`WolframJSFrontend`Dev`config},
-    If[JerryI`WolframJSFrontend`Dev`wdates =!= FileDate/@FileNames["*", cf["watch"], Infinity], Rebuild];
-    JerryI`WolframJSFrontend`Dev`wdates = FileDate/@FileNames["*", cf["watch"], Infinity];
+    If[JerryI`WolframJSFrontend`Dev`wdates =!= FileDate/@FileNames["*.js", cf["watch"], Infinity], Rebuild];
+    JerryI`WolframJSFrontend`Dev`wdates = FileDate/@FileNames["*.js", cf["watch"], Infinity];
 ];
 
 Rebuild := With[{cf = JerryI`WolframJSFrontend`Dev`config},

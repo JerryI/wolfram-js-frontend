@@ -36,6 +36,7 @@
     "plotly.js": "^2.13.1",
     "plotly.js-dist": "^2.18.2",
     "plotly.js-dist-min": "^2.18.2",
+    "range-slider-input": "^2.4.3",
     "thememirror": "^2.0.1",
     "three": "^0.123.0"
   }
