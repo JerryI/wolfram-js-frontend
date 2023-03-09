@@ -13,10 +13,15 @@ NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
 
 NotebookKernelOperate::usage = "Kernel control"
 
+NotebookRename::usage = "rename"
+
+FileOperate::usage = "file operations"
+
 NotebookEventFire::usage = "internal usage for events"
 NotebookPromise::usage = "ask a server to do something..internal"
 
 NotebookStore::usage = "save the notebook to a file"
+NotebookStoreManually::usage = "manually save"
 
 NotebookFrontEndSend::usage = "sends to the frotnend an expr"
 
@@ -76,6 +81,53 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
 
     Clear[notebook];
     Print["SAVED"];
+];
+
+NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
+    cells = CellObjQuery["sign", channel];
+    Print[StringTemplate["`` objects to save"][Length[cells] ] ];
+    notebook["notebook"] = jsfn`Notebooks[channel];
+    notebook["cells"] = CellObjPack /@ cells;
+    notebook["serializer"] = "jsfn";
+    notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
+    Put[notebook, jsfn`Notebooks[channel]["path"]];
+
+    jsfn`Notebooks[channel]["date"] = Now;
+
+    Clear[notebook];
+    Print["SAVED"];
+];
+
+FileOperate["Remove"][path_] := With[{channel = $AssociationSocket[Global`client]},
+    DeleteFile[path];
+    If[path === jsfn`Notebooks[channel]["path"] ,
+        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndJSEval["openawindow('/index.wsp')" ], channel ];
+    ,
+        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+    ];
+];
+
+NotebookRename[name_] := Module[{channel, newname, newpath},
+    channel = $AssociationSocket[Global`client];
+    newname = name;
+    newname = StringReplace[newname, {","->"", "."->"", " "->"", "/"->""}];
+
+    If[FileBaseName[jsfn`Notebooks[channel]["path"] ] === newname, Return[Null, Module] ];
+
+    newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wl"}];
+
+    While[FileExistsQ[ newpath ],
+        newname = newname <> "-One";
+        newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wl"}];
+    ];
+
+    RenameFile[jsfn`Notebooks[channel]["path"], newpath];
+
+    jsfn`Notebooks[channel]["path"] = newpath;
+    Global`$AssociationPath[ jsfn`Notebooks[channel]["path"] ] = channel;
+    
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileName[newname, jsfn`Notebooks[channel]["path"]], channel];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
 ];
 
 NotebookCreate[OptionsPattern[]] := (
