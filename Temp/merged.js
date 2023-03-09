@@ -1542,11 +1542,16 @@ core.WEBSlider = function(args, env) {
     let eventuid = interpretate(args[0], env);
     let range    = interpretate(args[1], env);
 
+    console.log('range');
+    console.log(range);
+
     env.element.classList.add('web-slider');
 
     rangeSlider(env.element, {
-        value: [range[0], range[1]],
+        min: range[0], 
+        max: range[1],
         step: range[2],
+        value: [range[0], range[0]],
         thumbsDisabled: [true, false],
         rangeSlideDisabled: true,
         onInput: (value, userInteraction) => {
@@ -1556,75 +1561,117 @@ core.WEBSlider = function(args, env) {
     });    
 }
 
-var Plotly = require('plotly.js-dist');
+core.Panel = function(args, env) {
+    if(env.update) {
+        console.error("Dynamic panels are not supported");
+        return;
+    }
 
-function arrDepth(arr) {
-  if (arr[0].length === undefined)        return 1;
-  if (arr[0][0].length === undefined)     return 2;
-  if (arr[0][0][0].length === undefined)  return 3;
+    const objects = interpretate(args[0], {...env, hold:true});
+    console.log(objects);
+    console.log(env);
+
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('panel');
+    env.element.appendChild(wrapper);
+
+    objects.forEach((e)=>{
+        const child = document.createElement('div');
+        child.classList.add('child');
+
+        interpretate(e, {...env, element: child});
+        wrapper.appendChild(child);
+    });
+
 }
+{
+  var Plotly = require('plotly.js-dist');
 
-core.ListLinePlotly = function(args, env) {
-    env.numerical = true;
-    const arr = interpretate(args[0], env);
-    console.log(arr);
-    let newarr = [];
+  function arrDepth(arr) {
+    if (arr[0].length === undefined)        return 1;
+    if (arr[0][0].length === undefined)     return 2;
+    if (arr[0][0][0].length === undefined)  return 3;
+  }
 
-    switch(arrDepth(arr)) {
-      case 1:
-        newarr.push({y: arr});
-      break;
-      case 2:
-        arr.forEach(element => {
-          newarr.push({y: element}); 
-        });
-      break;
-      case 3:
-        arr.forEach(element => {
-          newarr.push({x: element[0], y: element[1]}); 
-        });
-      break;      
+  function transpose(matrix) {
+    for (var i = 0; i < matrix.length; i++) {
+      for (var j = 0; j < i; j++) {
+        const temp = matrix[i][j];
+        matrix[i][j] = matrix[j][i];
+        matrix[j][i] = temp;
+      }
     }
+  }
 
-    if (env.update === 'data') {
-      console.log('UPDATE DATA');
+  core.ListLinePlotly = async function(args, env) {
+      env.numerical = true;
+      let arr = await interpretate(args[0], env);
+      console.log(arr);
+      let newarr = [];
 
-      Plotly.animate(env.element, {
-        data: newarr,
-      }, {
-        transition: {
-          duration: 100,
-          easing: 'cubic-in-out'
-        },
-        frame: {
-          duration: 100
-        }
-      });     
-      return;
-    }
+      switch(arrDepth(arr)) {
+        case 1:
+          newarr.push({y: arr});
+        break;
+        case 2:
+          if (arr[0].length === 2) {
+            console.log('1 XY plot');
+            transpose(arr);
+      
+            newarr.push({x: arr[0], y: arr[1]});
+          } else {
+            console.log('multiple Y plot');
+            arr.forEach(element => {
+              newarr.push({y: element}); 
+            });
+          }
+        break;
+        case 3:
+          arr.forEach(element => {
+            newarr.push({x: element[0], y: element[1]}); 
+          });
+        break;      
+      }
 
-    Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
+      if (env.update === 'data') {
+        console.log('UPDATE DATA');
+
+        Plotly.animate(env.element, {
+          data: newarr,
+        }, {
+          transition: {
+            duration: 100,
+            easing: 'cubic-in-out'
+          },
+          frame: {
+            duration: 100
+          }
+        });     
+        return;
+      }
+
+      Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
+          l: 30,
+          r: 30,
+          b: 30,
+          t: 30,
+          pad: 4
+        }});
+    }  
+
+    core.WListContourPlotly = function(args, env) {
+      const data = interpretate(args[0], env);
+      Plotly.newPlot(env.element, [{z:data[2], x:data[0], y:data[1], type: 'contour'}],
+      {autosize: false, width: 500, height: 300, margin: {
         l: 30,
         r: 30,
         b: 30,
         t: 30,
         pad: 4
       }});
-  }  
-  
-  core.WListContourPlotly = function(args, env) {
-    const data = interpretate(args[0], env);
-    Plotly.newPlot(env.element, [{z:data[2], x:data[0], y:data[1], type: 'contour'}],
-    {autosize: false, width: 500, height: 300, margin: {
-      l: 30,
-      r: 30,
-      b: 30,
-      t: 30,
-      pad: 4
-    }});
-  
-  } 
-
+    
+    } 
+}
 core.HTMLForm = function (args, env) {
     setInnerHTML(env.element, interpretate(args[0]));
 }

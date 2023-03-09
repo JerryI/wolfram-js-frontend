@@ -15,6 +15,7 @@ class Deferred {
 core = {};
 
 interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false, chain: {}}) {
+
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
   }
@@ -76,6 +77,7 @@ core.UpdateFrontEndExecutable = function (args, env) {
 core.SetFrontEndObject = function (args, env) {
   console.log(args);
   const key = interpretate(args[0], env);
+
   $objetsStorage[key].data = args[1];
   console.log("new data");
   console.log($objetsStorage[key].data);
@@ -90,8 +92,9 @@ core.SetFrontEndObject = function (args, env) {
   });
 }
 
-core.FrontEndExecutable = function (args, env) {
+core.FrontEndExecutable = async function (args, env) {
   const key = interpretate(args[0], env);
+  var chain = {};
 
   if(!env.update) {
     console.log('chain arrived');
@@ -99,9 +102,7 @@ core.FrontEndExecutable = function (args, env) {
     console.log(chain);
 
     env.chain = {exe: "'"+key+"'", env: Object.assign({}, env)};
-  } else {
-    var chain = {};
-  }
+  } 
 
   var copy = env;
 
@@ -111,7 +112,7 @@ core.FrontEndExecutable = function (args, env) {
     }
     if (copy.hold === true) return $objetsStorage[key].data;
     console.log('already there. getting...');
-    return interpretate($objetsStorage[key].data, copy);
+    return await interpretate($objetsStorage[key].data, copy);
   }
   
   console.log('not here. asking server...');
@@ -130,6 +131,8 @@ core.FrontEndExecutable = function (args, env) {
       });
     });
 }
+
+core.FrontEndExecutableHold = core.FrontEndExecutable;
 
 //to prevent codemirror 6 from drawing it
 core.FrontEndRef = function(args, env) {

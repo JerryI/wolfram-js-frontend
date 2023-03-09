@@ -30,9 +30,10 @@ ndOnly\",\n\t[\n\t\t\"WListPlotly\",\n\t\t[\n\t\t\t\"FrontEndExecutable\",\n\
 '\"\n\t\t]\n\t]\n]", "2465cbfe-fee1-47f7-bc44-96efa8ec0740" -> "[\n\t\"FrontE\
 ndOnly\",\n\t[\n\t\t\"ListLinePlotly\",\n\t\t[\n\t\t\t\"FrontEndExecutable\",\
 \n\t\t\t\"'myObject'\"\n\t\t]\n\t]\n]"|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/test.wl", 
+   "path" -> 
+    "/Volumes/Data/Github/wolfram-js-frontend/Demo/simple dynamics.wl", 
    "cell" -> "b2ab36d4-8f61-4801-8664-929cf4afe352", 
-   "date" -> DateObject[{2023, 3, 5, 16, 52, 54.447227`8.48855074044659}, 
+   "date" -> DateObject[{2023, 3, 9, 15, 9, 24.828977`8.14753380879722}, 
      "Instant", "Gregorian", 1.]|>, 
  "cells" -> {<|"id" -> "0bd9e81b-0c06-419a-9033-fa19483f6929", 
     "type" -> "input", "data" -> ".md\nDynamic update from the WL Kernel", 
@@ -64,6 +65,11 @@ directly in frontend", "display" -> "markdown", "sign" -> "test",
     "data" -> "FrontEndExecutable[\"myObject\"]", "display" -> "codemirror", 
     "sign" -> "test", "prev" -> Null, "next" -> Null, 
     "parent" -> "b2ab36d4-8f61-4801-8664-929cf4afe352", "child" -> Null, 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a378b7cb-2e41-4a6d-b1b5-5742aa5dde3a", "type" -> "output", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "test", 
+    "prev" -> Null, "next" -> Null, "parent" -> 
+     "b2ab36d4-8f61-4801-8664-929cf4afe352", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "ad99efd2-d966-4764-842b-038a9c1402f6", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"2465cbfe-fee1-47f7-bc44-96efa8ec0740\"]", 

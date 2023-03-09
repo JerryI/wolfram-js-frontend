@@ -4,11 +4,16 @@ core.WEBSlider = function(args, env) {
     let eventuid = interpretate(args[0], env);
     let range    = interpretate(args[1], env);
 
+    console.log('range');
+    console.log(range);
+
     env.element.classList.add('web-slider');
 
     rangeSlider(env.element, {
-        value: [range[0], range[1]],
+        min: range[0], 
+        max: range[1],
         step: range[2],
+        value: [range[0], range[0]],
         thumbsDisabled: [true, false],
         rangeSlideDisabled: true,
         onInput: (value, userInteraction) => {
@@ -16,4 +21,28 @@ core.WEBSlider = function(args, env) {
             core.FireEvent(["'"+eventuid+"'", value[1]]);
         }
     });    
+}
+
+core.Panel = function(args, env) {
+    if(env.update) {
+        console.error("Dynamic panels are not supported");
+        return;
+    }
+
+    const objects = interpretate(args[0], {...env, hold:true});
+    console.log(objects);
+    console.log(env);
+
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('panel');
+    env.element.appendChild(wrapper);
+
+    objects.forEach((e)=>{
+        const child = document.createElement('div');
+        child.classList.add('child');
+
+        interpretate(e, {...env, element: child});
+        wrapper.appendChild(child);
+    });
+
 }

@@ -18,8 +18,9 @@
                             </div>
                         </div>
                         <div class="" style="">
-                          
-                                <?wsp Wrapper[LoadPage["template/topbar.wsp"]//WSPDynamic] ?>
+                            <div>
+                                <?wsp LoadPage["template/topbar.wsp"] ?>
+                            </div>
                                 
                          
         <div class="notion-frame" style="">

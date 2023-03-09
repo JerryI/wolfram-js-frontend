@@ -55,8 +55,11 @@
     };
 
     window.addEventListener("wsconnected", function() { 
+
         core.PageModulesUpdate = function(args, env) {
             const list = interpretate(args[0], env);
+            console.log("wsp dynamic load");
+            console.log(list);
             list.forEach((e) => {
                 setInnerHTML($wsppages[e[0]], e[1]);
             });

@@ -1,8 +1,11 @@
 <div class="notion-topbar" style="">
                                     <div style="">
                                         <div class="notranslate topbar-url-container" style="">
-                                            <div class="notion-focusable" role="button" tabindex="0" style="">
-                                                <div class="notranslate" style=""><?wsp session["Query", "path"] ?></div>
+                                            <div id="path-button" class="notion-focusable" role="button" tabindex="0" style="">
+                                            <?wsp With[{path = session["Query", "path"]}, ?>
+                                                <div id="path-path" class="notranslate"><?wsp path ?></div>
+                                                <input id="path-filename" class="filename-input any-hidden" type="text" style="font-size:14px" value="<?wsp FileBaseName[path] ?>">
+                                            <?wsp ] ?>
                                             </div>
                                         </div>
                                         <div style=""></div>
@@ -109,6 +112,26 @@
 }
     <?wsp If[NotebookQ[session["Query", "path"]], ?>
 {
+    document.getElementById("path-button").addEventListener('click', (e)=>{
+        document.getElementById("path-path").classList.add('any-hidden');
+        document.getElementById("path-filename").classList.remove('any-hidden');
+    });
+
+    core.FrontEndUpdateFileName = function(args, env) {
+        const name = interpretate(args[0])+".wl";
+        const path = interpretate(args[1]);
+
+        document.getElementById("path-path").innerText = path;
+    }
+
+    document.getElementById("path-filename").addEventListener("blur", (e)=>{
+        document.getElementById("path-path").classList.remove('any-hidden');
+        const field = document.getElementById("path-filename");
+        field.classList.add('any-hidden');
+
+        socket.send('NotebookRename["'+field.value+'"]');
+    }, true);
+
     var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]], "date"]] ?> * 1000);
 
     document.getElementById('save-button').addEventListener('click', (e)=> {

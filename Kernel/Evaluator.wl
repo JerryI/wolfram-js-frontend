@@ -30,7 +30,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       If[block === True, $evaluated = Null];
     ];  
 
-    With[{$result = $evaluated /. JerryI`WolframJSFrontend`WebObjects`replacement},
+    With[{$result = $evaluated /. JerryI`WolframJSFrontend`WebObjects`replacement /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}},
       JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       
       With[{$string = ToString[$result, InputForm]},

@@ -116,3 +116,9 @@ var setInnerHTML = function(elm, html) {
     oldScript.parentNode.replaceChild(newScript, oldScript);
   });
 };
+
+function openawindow(url) {
+  const fake = document.createElement('a');
+  fake.href = url;
+  fake.click();
+}

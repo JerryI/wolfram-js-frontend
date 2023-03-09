@@ -117,10 +117,23 @@ NotebookQ[path_] := (StringTake[path, -2] === "wl");
 
 $AssoticatedPath = <||>;
 
+$WatchingDirectories = <||>;
+
+WatchDirectories := (
+  (*Select[Keys[$WatchingDirectories], ($WatchingDirectories[#] =!= FileNames["*", #])&]*)
+  Null;
+  (*i have not finished...*)
+  (*WebSocketBroadcast[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ] ];*)
+);
+
 PreloadNotebook[path_] := Module[{notebook},
   If[!MemberQ[$AssoticatedPath//Keys, path],
     notebook = Get[path];
-    If[notebook["serializer"] =!= "jsfn",  ];
+    If[notebook["serializer"] =!= "jsfn",  
+      CreateNewNotebookByPath[path];
+      Print["CREATED A NEW ONE"];
+      Return[Null, Module];
+    ];
 
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
@@ -134,12 +147,31 @@ PreloadNotebook[path_] := Module[{notebook},
     Print[$AssoticatedPath];
     Clear[notebook];
     Print["LOADED"];
+    
+    $WatchingDirectories[ DirectoryName[path] ] = FileNames["*", DirectoryName[path] ];
   ]
 ]
 
 
 LoadNotebook[path_] := Module[{},
   <|"view":> LoadPage["template/views/editor.wsp", {notebook = $AssoticatedPath[path]}] |>
+];
+
+CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = "Untitled"},
+  While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
+    filename = StringJoin[filename, "-New"];
+  ];
+
+  $AssoticatedPath[path] = uid;
+  NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
+  NotebookStoreManually[uid];
+  WebSocketSend[Global`client, FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
+];
+
+CreateNewNotebookByPath[name_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5]},
+  $AssoticatedPath[name] = uid;
+  NotebookCreate["id"->uid, "name"->FileBaseName[name], "path"->name ];
+  NotebookStoreManually[uid];
 ];
 
 
@@ -165,8 +197,6 @@ jsf`jtp["promise"] = Null
 
 jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
-
-WSPDynamicAttachServer[jsf`server];
 
 (*NotificationMethodRegister;*)
 SetUpCron;

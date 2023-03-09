@@ -4,43 +4,44 @@ WSPDynamic::usage = "define dyn"
 
 WSPDynamicGet::usage = "get"
 
+Hidden::usage = ""
+
 Wrapper::usage = "set calss and tag"
 
 Begin["`Private`"]; 
 
 hashedObjects = <||>;
 
-WSPDynamic[expr_] := Module[{hash},
-    hash = "wsp-"<>Hash[Hold[expr], "Expression", "DecimalString"];
-    hashedObjects[hash] = Hold[expr];
-
-    {StringTemplate["<`` data-wsp=\"``\" style=\"display:none\">"]["div", hash], ReleaseHold[expr], "</div>"}
-];
-
-
-SetAttributes[Wrapper, HoldFirst]
-
-Options[Wrapper] = {
-    "tag" -> "div",
-    "class" -> ""
-};
-
-SetAttributes[Wrapper, HoldFirst]
-
-Wrapper[WSPDynamic[expr_], OptionsPattern[]] ^:= Module[{hash},
-    hash = "wsp-"<>Hash[Hold[expr], "Expression", "DecimalString"];
-    hashedObjects[hash] = Hold[expr];
-
-    {StringTemplate["<`` data-wsp=\"``\" class=\"``\">"][OptionValue["tag"], hash, OptionValue["class"]], ReleaseHold[expr], "</"<>OptionValue["tag"]<>">"}
-];
-
-
+ClearAll[WSPDynamic]
 SetAttributes[WSPDynamic, HoldFirst]
 
-WSPDynamicGet[uids_, url_] := Module[{result},
-    result = Block[{session = URLParse[url], WSP`$publicpath = JerryI`WolframJSFrontend`public},
-        session["Query"] = Association[session["Query"]];
-        {#, (ToString /@ Flatten[{hashedObjects[#]//ReleaseHold}]) // StringJoin} &/@ uids
+
+
+WSPDynamic[expr_, ihash_:Null] := Module[{hash = ihash}, 
+    If[!StringQ[hash],
+        hash = "wsp-"<>Hash[Hold[expr], "Expression", "DecimalString"];
+    ];
+
+    hashedObjects[hash] = <|"hidden"->False, "expr"->Hold[expr]|>;
+
+    {StringTemplate["<`` data-wsp=\"``\">"]["div", hash], ReleaseHold[expr], "</div>"}
+];
+
+
+WSPDynamicGet[uids_, s_] := Module[{result},
+    result = Block[{session = s, WSP`$publicpath = JerryI`WolframJSFrontend`public},
+        
+        DeleteMissing[
+            With[{},
+                If[hashedObjects[#,"hidden"],
+                    hashedObjects[#, "expr"]//ReleaseHold;
+                    Missing[]
+                ,
+                    {#, (ToString /@ Flatten[{hashedObjects[#, "expr"]//ReleaseHold}]) // StringJoin} 
+                ]
+            
+            ]&/@ uids
+        ]
     ];
 
     WebSocketSend[Global`client, Global`PageModulesUpdate[result] ];

@@ -1,16 +1,25 @@
-<?wsp WSPDynamic[
-        If[!KeyExistsQ[session["Query"], "path"], 
-            session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
-            session["Query", "path"] = session["Query", "path"]//URLDecode
-        ] ;  
-    
+<?wsp 
+      If[!KeyExistsQ[session["Query"], "path"], 
+          session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
+          session["Query", "path"] = session["Query", "path"]//URLDecode;
+
+
+      ];  
+      
+      session["dir"] = If[DirectoryQ[session["Query", "path"]],
+                            session["Query", "path"]
+                          ,
+                            DirectoryName[session["Query", "path"]]
+                          ];      
+      
       If[NotebookQ[session["Query", "path"]], PreloadNotebook[session["Query", "path"]] ];
-" " ] ?>
+" "   ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>
 
-
-<?wsp Wrapper[FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] // WSPDynamic, "class"->"styles-container-body", "tag"->"div"] ?>     
+<div class="styles-container-body"> 
+  <?wsp FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] ?>     
+</div>
 
 
 <?wsp LoadPage["template/footer.wsp"] ?>

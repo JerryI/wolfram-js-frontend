@@ -5,10 +5,15 @@ LoadWebObjects::usage = "LoadWebObjects loads all objects into memory and makes 
 
 FrontEndOnly::usage = "Will not be processed outside the frontend"
 
+CreateFrontEndObject::usage = "Create object"
+
 Begin["`Private`"]; 
 
 JerryI`WolframJSFrontend`WebObjects`replacement = {};
 JerryI`WolframJSFrontend`WebObjects`list = {};
+
+CreateFrontEndObject[expr_, $iouid_:CreateUUID[]] := With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[expr, "ExpressionJSON"]; Global`FrontEndExecutableHold[$ouid] ]
+
 
 SetAttributes[FrontEndOnly, HoldFirst]
 
@@ -26,11 +31,7 @@ LoadWebObjects := (
         item[x__] :> With[{$ouid = CreateUUID[]}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ]
       }
     ]
-   , {i, JerryI`WolframJSFrontend`WebObjects`list}];
-
-  JerryI`WolframJSFrontend`WebObjects`replacement = {JerryI`WolframJSFrontend`WebObjects`replacement, 
-    Global`CreateFrontEndObject[x_, $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[x, "ExpressionJSON"]; Global`FrontEndExecutable[$ouid]]
-  } // Flatten;
+   , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;
 
   Print[Blue<>"done!"]; Print[Reset];
 );

@@ -112,9 +112,9 @@
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
                                                             <div style="">
-                                                            <?wsp Table[ ?>
+                                                            <?wsp WSPDynamic[ Table[ ?>
 
-                                                                <div class="notion-selectable notion-page-block">
+                                                                <div class="notion-selectable notion-page-block" id="file-button-<?wsp FileBaseName[i] ?>">
                                                                     <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                                     <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
                                                                         <div class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" style="
@@ -230,17 +230,15 @@
                                                                             </div>
                                                                         </div>
                                                                     </a>
+                                                                    <?wsp LoadPage["template/dropdown/file.wsp", {file = i}] ?>
                                                                 </div>
                                                             
-                                                            <?wsp , {i, SortBy[FileNames["*", If[DirectoryQ[session["Query", "path"]], 
-                                                                            session["Query", "path"], 
-                                                                            DirectoryName[session["Query", "path"]]
-                                                                        ]], DirectoryQ] }] ?>    
+                                                            <?wsp , {i, SortBy[FileNames["*", session["dir"] ], DirectoryQ] }] , "fileslist"]  ?>    
                                                                 
                                                                 
                                                                 
                                                                 
-                                                                <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;">
+                                                                <div class="notion-focusable" id="add-notebook-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;">
                                                                     <div style="
                                                                             display: flex;
                                                                             align-items: center;
@@ -334,7 +332,7 @@
                                                     </nav>
                                                 </div>
                                                 <div style="display: block; flex: 0 0 auto; margin-top: auto;">
-                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px;">
+                                                    <div id="new-notebook-button" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px;">
                                                         <div style="
                                                                 display: flex;
                                                                 align-items: center;
@@ -372,3 +370,22 @@
                                             </div>
                                         </div>
                                     </div>
+
+<script>
+{
+    document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
+        const dir = '<?wsp session["dir"] ?>';
+        socket.send('CreateNewNotebook["'+dir+'"]');
+    });
+
+    document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
+        const dir = '<?wsp session["dir"] ?>';
+        socket.send('CreateNewNotebook["'+dir+'"]');
+    });
+
+    core.FrontEndUpdateFileList = function(args, env) {
+        const path = interpretate(args[0]);
+        socket.send('WSPDynamicGet[{"fileslist"}, <|"dir"->"'+path+'" |>];');
+    }
+}
+</script>

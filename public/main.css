@@ -672,3 +672,11 @@
 	z-index: 111;
 	transform: translateX(0px) translateZ(0px);
 }
+
+.notion-focusable > div.any-hidden {
+	display: none;
+  }
+
+  .any-hidden {
+	display: none;
+  }  
