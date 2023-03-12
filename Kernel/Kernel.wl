@@ -78,7 +78,7 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
     ];
 
-    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Events`"}]]; 
+    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Events`"}]]; 
     
     
 

@@ -288,7 +288,7 @@ function createJSOutputCell(el, data, uid) {
   } 
 
   const editor = new EditorView({
-    doc: result,
+    doc: String(result),
     extensions: [
       highlightSpecialChars(),
       smoothy,

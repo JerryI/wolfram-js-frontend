@@ -1,13 +1,3 @@
-/logs.txt
-/old
-/running.lock
-public/js/bundle.js
-/nohup.out
-migrate
-/archive/*
 /node_modules
-/gsrc
-/public_old
-/svcore
-/public/js/bundle.js
 /Temp/*
+/public/js/bundle.js

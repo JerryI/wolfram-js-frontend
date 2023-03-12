@@ -1,4 +1,8 @@
 {
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "absolute",
+  "userIgnoreFilters": [
+    "node_modules/"
+  ],
+  "useMarkdownLinks": true
 }
