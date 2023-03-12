@@ -110,7 +110,7 @@ FileOperate["Remove"][path_] := With[{channel = $AssociationSocket[Global`client
 NotebookRename[name_] := Module[{channel, newname, newpath},
     channel = $AssociationSocket[Global`client];
     newname = name;
-    newname = StringReplace[newname, {","->"", "."->"", " "->"", "/"->""}];
+    newname = StringReplace[newname, {","->"-", "."->"-", " "->"-", "/"->"-"}];
 
     If[FileBaseName[jsfn`Notebooks[channel]["path"] ] === newname, Return[Null, Module] ];
 

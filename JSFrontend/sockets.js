@@ -117,8 +117,9 @@ var setInnerHTML = function(elm, html) {
   });
 };
 
-function openawindow(url) {
+function openawindow(url, target='_self') {
   const fake = document.createElement('a');
+  fake.target = target;
   fake.href = url;
   fake.click();
 }

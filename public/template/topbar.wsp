@@ -145,6 +145,13 @@
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
     }, 5000);
 
+    setInterval(function () {
+        console.log('autosave');
+        socket.send('NotebookStore;');
+        lastTimeSaved = new Date();
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+    }, 1000*60*3);
+
     function formatDateDiff(startDate, endDate) {
       const diff = Math.abs(endDate - startDate);
       const diffInSeconds = Math.round(diff / 1000);

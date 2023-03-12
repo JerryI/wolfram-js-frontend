@@ -34,6 +34,7 @@ NotebookDefineEvaluators["Default",
   {
     MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
     WSPQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->WSPProcessor       |>,
+    JSQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->JSProcessor       |>,
    (True&)    ->  <|"SyntaxChecker"->WolframCheckSyntax,    "Epilog"->SplitExpression,  "Prolog"->(#&), "Evaluator"->WolframProcessor   |>
   }
 ];
@@ -85,10 +86,11 @@ MarkdownProcessor[expr_String, signature_String, callback_] := Module[{str = Str
   JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][MarkdownEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
 
-JSProcessor[expr_String, signature_String, callback_] := Module[{},
+JSProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["JSProcessor!"];
   JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][JSEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
+
 
 port = "8090";
 ip = "127.0.0.1";

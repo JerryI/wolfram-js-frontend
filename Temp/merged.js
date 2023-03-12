@@ -1,9 +1,20 @@
 import { EditorView } from "codemirror";
 
-import { StreamLanguage } from "@codemirror/language"
+import {StreamLanguage } from "@codemirror/language"
+import {language} from "@codemirror/language"
+
 import { mathematica } from "@codemirror/legacy-modes/mode/mathematica"
 
-import {indentWithTab} from "@codemirror/commands"
+const wolframlanguage = StreamLanguage.define(mathematica)
+
+import {javascriptLanguage, javascript } from "@codemirror/lang-javascript"
+
+import {markdownLanguage, markdown} from "@codemirror/lang-markdown"
+
+import {htmlLanguage, html} from "@codemirror/lang-html"
+
+
+import {indentWithTab} from "@codemirror/commands" 
 
 import {noctisLilac, smoothy} from 'thememirror'
 
@@ -14,7 +25,7 @@ import {
   rectangularSelection, crosshairCursor, placeholder,
   highlightActiveLineGutter
 } from "@codemirror/view"
-import { EditorState } from "@codemirror/state"
+import { EditorState, Compartment } from "@codemirror/state"
 import { defaultHighlightStyle, syntaxHighlighting, indentOnInput, bracketMatching } from "@codemirror/language"
 import { history, historyKeymap } from "@codemirror/commands"
 import { highlightSelectionMatches } from "@codemirror/search"
@@ -32,9 +43,53 @@ const TexOptions = {
   throwOnError: false
 };
 
-
+var $jscells = {};
 
 marked.use(markedKatex(TexOptions));
+
+
+const languageConf = new Compartment
+
+const regLang = new RegExp('^\s*.(js|md|wsp|html|htm)');
+
+function checkDocType(str) {
+  const r = regLang.exec(str);
+  if (r == null) return {type: 'mathematica', lang: wolframlanguage}
+  switch(r[1]) {
+    case 'js': 
+      return {type: javascriptLanguage.name, lang: javascript()}; 
+    case 'md':
+      return {type: markdownLanguage.name, lang: markdown()};
+    case 'html':
+    case 'htm':
+    case 'wsp':
+      return {type: htmlLanguage.name, lang: html()};
+  }
+}
+
+const autoLanguage = EditorState.transactionExtender.of(tr => {
+  if (!tr.docChanged) return null
+  let docType = checkDocType(tr.newDoc.sliceString(0, 5));
+
+  if (docType.type == 'mathematica') {
+ 
+    if (tr.startState.facet(language).constructor.name == 'StreamLanguage') return null;
+    console.log('switching... to mathematica');
+    return {
+      effects: languageConf.reconfigure(docType.lang)
+    }
+  } else {
+    console.log(tr.startState.facet(language));
+    console.log(docType.type);
+    console.log(docType.lang);
+    if (docType.type == tr.startState.facet(language).name) return null;
+    console.log('switching... to js html md');
+    return {
+      effects: languageConf.reconfigure(docType.lang)
+    }
+  }
+})
+
 
 const FEMatcher = new MatchDecorator({
   regexp: /FrontEndExecutable\["([^"]+)"\]/g,
@@ -93,8 +148,26 @@ core.FrontEndRemoveCell = function (args, env) {
   var input = JSON.parse(interpretate(args[0]));
   if (input["type"] === 'input') {
     document.getElementById(input["id"]).parentNode.remove();
+
+    //purge js
+    if (input["id"] in $jscells) {
+      $jscells[input["id"]].ondestroy();
+      
+      delete $jscells[input["id"]];
+      //remove child
+      if (input["child"] in $jscells) {
+        $jscells[input["child"]].ondestroy();
+        delete $jscells[input["child"]];
+      }
+    }
   } else {
     document.getElementById(`${input["id"]}---${input["type"]}`).remove();
+
+    //purge js
+    if (input["id"] in $jscells) {
+      $jscells[input["id"]].ondestroy();
+      delete $jscells[input["id"]];
+    }
   }
 };
 
@@ -178,6 +251,9 @@ core.FrontEndCreateCell = function (args, env) {
       case 'html':
         setInnerHTML(el, input["data"]);
         break;
+      case 'js':
+        createJSOutputCell(el, input["data"], uid);
+        break;
     };
 
   }
@@ -187,6 +263,42 @@ core.FrontEndCreateCell = function (args, env) {
   } 
 
 };  
+
+function isElement(element) {
+  return element instanceof Element || element instanceof HTMLDocument;  
+}
+
+const scopedEval = (scope, script) => Function(`"use strict"; ${script}`).bind(scope)();
+const createScopedEval = (scope, script) => {return({
+  ondestroy: function() {},
+  result: Function(`${script}`)
+})};
+
+
+function createJSOutputCell(el, data, uid) {
+  $jscells[uid] = createScopedEval({document, core}, data);
+  
+  console.log($jscells[uid]);
+
+  const result = $jscells[uid].result();
+
+  if (isElement(result)) {
+    el.appendChild(result);
+    return;
+  } 
+
+  const editor = new EditorView({
+    doc: result,
+    extensions: [
+      highlightSpecialChars(),
+      smoothy,
+      EditorState.readOnly.of(true),
+      javascript(),
+      editorCustomTheme
+    ],
+    parent: el
+  });
+}
 
 function attachToolbox(input, uid) {
   const body = document.getElementById(input["id"]).parentNode;
@@ -218,6 +330,10 @@ var editorLastId = "null";
 var forceFocusNext = false;
 
 function createCodeMirror(element, uid, data) {
+
+    const initialLang = checkDocType(data).lang;
+    console.log('language: ');
+    console.log(initialLang);
     const editor = new EditorView({
     doc: data,
     extensions: [
@@ -237,9 +353,10 @@ function createCodeMirror(element, uid, data) {
       crosshairCursor(),
       highlightActiveLine(),
       highlightSelectionMatches(),
-      StreamLanguage.define(mathematica),
       placeholder('Type Wolfram Expression / .md / .html / .js'),
       FEholders,
+      languageConf.of(initialLang),
+      autoLanguage, 
       keymap.of([indentWithTab,
         { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { socket.send(`NotebookOperate["${uid}", CellObjRemoveAccurate];`); }  } },
         { key: "ArrowUp", run: function (editor, key) {  editorLastId = uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },
@@ -1584,6 +1701,8 @@ core.Panel = function(args, env) {
     });
 
 }
+import * as d3 from "d3";
+
 {
   var Plotly = require('plotly.js-dist');
 
@@ -1628,7 +1747,9 @@ core.Panel = function(args, env) {
         break;
         case 3:
           arr.forEach(element => {
-            newarr.push({x: element[0], y: element[1]}); 
+            let newEl = element;
+            transpose(newEl);
+            newarr.push({x: newEl[0], y: newEl[1]}); 
           });
         break;      
       }

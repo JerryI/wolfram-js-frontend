@@ -41,7 +41,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="flex-grow: 0; flex-shrink: 0; padding-bottom: 8px;">
-                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                    <div class="notion-focusable" id="open-vault-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
                                                         <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
                                                             <div style="
                                                                     flex-shrink: 0;
@@ -59,10 +59,10 @@
                                                                     <path d="M5.92239093,0.540000021 C2.94055203,0.540000021 0.5,2.98052217 0.5,5.96238099 C0.5,8.9442199 2.94055203,11.384762 5.92239093,11.384762 C7.02329179,11.384762 8.05258749,11.0564678 8.91032559,10.4866744 L12.1460745,13.6802311 C12.5695899,14.1037465 13.2589477,14.1037465 13.6823635,13.6802311 C14.1058788,13.2567158 14.1058788,12.5730353 13.6823635,12.1495199 L10.4410368,8.95033558 C11.0107904,8.09259747 11.3447619,7.06329182 11.3447619,5.96238099 C11.3447619,2.98052217 8.90420992,0.540000021 5.92239093,0.540000021 Z M5.92239093,2.70895241 C7.7320027,2.70895241 9.17580956,4.15272939 9.17580956,5.96238099 C9.17580956,7.77201268 7.7320027,9.21581954 5.92239093,9.21581954 C4.11275925,9.21581954 2.66895239,7.77201268 2.66895239,5.96238099 C2.66895239,4.15272939 4.11275925,2.70895241 5.92239093,2.70895241 Z"></path>
                                                                 </svg>
                                                             </div>
-                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Search</div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">Open vault</div>
                                                         </div>
                                                     </div>
-                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                    <div class="notion-focusable" id="history-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
                                                         <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px; background-image: none;">
                                                             <div style="
                                                                     flex-shrink: 0;
@@ -82,11 +82,11 @@
                                                                     </svg>
                                                                 </div>
                                                             </div>
-                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: clip;">Updates</div>
+                                                            <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: clip;">History</div>
                                                             <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; height: 100%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                    <div class="notion-focusable" id="settings-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
                                                         <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
                                                             <div style="
                                                                     flex-shrink: 0;
@@ -117,7 +117,7 @@
                                                                 <div class="notion-selectable notion-page-block" id="file-button-<?wsp FileBaseName[i] ?>">
                                                                     <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                                     <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
-                                                                        <div class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" style="
+                                                                        <div oncontextmenu="return false;" class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" style="
                                                                                 -webkit-user-select: none;
                                                                                 transition: background 20ms ease-in 0s;
                                                                                 cursor: pointer;
@@ -128,7 +128,7 @@
                                                                             ">
                                                                         <?wsp ] ?>
 
-                                                                            <div class="sidebar-option" style="
+                                                                            <div oncontextmenu="return false;" class="sidebar-option" style="
                                                                                     display: flex;
                                                                                     align-items: center;
                                                                                     width: 100%;
@@ -142,7 +142,7 @@
                                                                                    
                                                                                     border-radius: 3px;
                                                                                 ">
-                                                                                <div style="
+                                                                                <div oncontextmenu="return false;" style="
                                                                                         flex-shrink: 0;
                                                                                         flex-grow: 0;
                                                                                         border-radius: 3px;
@@ -154,7 +154,7 @@
                                                                                         justify-content: center;
                                                                                         margin-right: 0px;
                                                                                     ">
-                                                                                    <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                                    <div oncontextmenu="return false;" class="notion-focusable" role="button" tabindex="0" style="
                                                                                             -webkit-user-select: none;
                                                                                             transition: background 20ms ease-in 0s;
                                                                                             cursor: pointer;
@@ -276,7 +276,7 @@
                                                         <div style="margin-top: 18px;"></div>
                                                         <div style="flex-grow: 0; flex-shrink: 0;">
                                                             
-                                                            <div class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
+                                                            <div class="notion-focusable" id="import-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);">
                                                                 <div style="display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;">
                                                                     <div class="sidebar-option" style="
                                                                             flex-shrink: 0;
@@ -298,7 +298,7 @@
                                                                 </div>
                                                             </div>
                                                             <div data-block-id="0fedbe0d-e31d-46e2-8cbb-4ab031640bc9" class="notion-selectable notion-page-block">
-                                                                <div class="notion-focusable" role="button" tabindex="0" style="
+                                                                <div class="notion-focusable" id="trash-button" role="button" tabindex="0" style="
                                                                         -webkit-user-select: none;
                                                                         transition: background 20ms ease-in 0s;
                                                                         cursor: pointer;
@@ -382,6 +382,28 @@
         const dir = '<?wsp session["dir"] ?>';
         socket.send('CreateNewNotebook["'+dir+'"]');
     });
+
+    document.getElementById("open-vault-button").addEventListener('click', (e)=>{
+        alert('Not implemented');
+    });
+
+    document.getElementById("history-button").addEventListener('click', (e)=>{
+        alert('Not implemented');
+    });    
+
+    document.getElementById("settings-button").addEventListener('click', (e)=>{
+        alert('Not implemented');
+    }); 
+    
+    document.getElementById("import-button").addEventListener('click', (e)=>{
+        alert('Not implemented');
+    });     
+
+    document.getElementById("trash-button").addEventListener('click', (e)=>{
+        alert('Not implemented');
+    });    
+
+    
 
     core.FrontEndUpdateFileList = function(args, env) {
         const path = interpretate(args[0]);

@@ -71,8 +71,8 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
-    LinkWrite[link, Unevaluated[Get["../tcp-mathematica/JTP/JTP.wl"]]];
-    LinkWrite[link, Unevaluated[Get["../tinyweb-mathematica/WSP/WSP.wl"]]];
+    LinkWrite[link, Unevaluated[Get["Services/JTP/JTP.wl"]]];
+    LinkWrite[link, Unevaluated[Get["Services/WSP/WSP.wl"]]];
     
     With[{root = JerryI`WolframJSFrontend`root},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];

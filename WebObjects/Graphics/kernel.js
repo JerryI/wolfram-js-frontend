@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+
 {
   var Plotly = require('plotly.js-dist');
 
@@ -42,7 +44,9 @@
         break;
         case 3:
           arr.forEach(element => {
-            newarr.push({x: element[0], y: element[1]}); 
+            let newEl = element;
+            transpose(newEl);
+            newarr.push({x: newEl[0], y: newEl[1]}); 
           });
         break;      
       }
