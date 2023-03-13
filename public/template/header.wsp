@@ -3,6 +3,10 @@
         <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/katex.css">
+        <script>
+            //sync code
+            var core = {};
+        </script>
         <script defer src="/js/bundle.js"></script>
     </head>
     <body class="notion-body">

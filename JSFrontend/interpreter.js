@@ -1,5 +1,5 @@
 const aflatten = (ary) => ary.flat(Infinity);
-var core, interpretate;
+var interpretate;
 var $objetsStorage = {};
 var $promisesAssoc = {};
 
@@ -11,8 +11,6 @@ class Deferred {
     });
   }
 }
-
-core = {};
 
 interpretate = function (d, env = { element: document.body, mesh: undefined, numerical: false, todom: false, chain: {}}) {
 
