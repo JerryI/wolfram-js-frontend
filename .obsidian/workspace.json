@@ -147,43 +147,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "floating": {
-    "id": "7b96b2abeaaf06af",
-    "type": "floating",
-    "children": [
-      {
-        "id": "812091b66caeba3b",
-        "type": "window",
-        "children": [
-          {
-            "id": "9254448ad01ffa15",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "b267014603f29d5a",
-                "type": "leaf",
-                "state": {
-                  "type": "excalidraw",
-                  "state": {
-                    "file": "docs/drawings/overview.excalidraw.md"
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 74,
-        "y": 36,
-        "width": 1684,
-        "height": 958,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
   "active": "a2db3c0534bb8f31",
   "lastOpenFiles": [
+    "Demo/Untitled.wl",
+    "Demo/Metaballs.wl",
     "Demo/Diffusion-Limited-Aggregation.wl",
     "Demo/Request-Animation-Frame.wl",
     "docs/README.md",
