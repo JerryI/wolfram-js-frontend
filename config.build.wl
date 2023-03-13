@@ -4,7 +4,7 @@
         (* merge and bundle the files *)
         MergeFiles[{
                 "JSFrontend/frontend.js",
-                "../Mathematica-ThreeJS-graphics-engine/src/graphics3d.js",
+                "JSFrontend/graphics3d.js",
                 FileNames["*.js", "WebObjects", Infinity]
             } -> "Temp/merged.js"
         ],
