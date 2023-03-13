@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="/main.css">
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/katex.css">
-        <script src="/js/bundle.js"></script>
+        <script defer src="/js/bundle.js"></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

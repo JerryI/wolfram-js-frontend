@@ -1,22 +1,19 @@
-let socket;
+
 const wsconnected = new Event("wsconnected");
 
-socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
+var socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
   window.dispatchEvent(wsconnected);
 }; 
 
 socket.onmessage = function(event) {
-
-  let data = JSON.parse(event.data);
-  
-  interpretate(data);
+  interpretate(JSON.parse(event.data));
 };
 
 socket.onclose = function(event) {
   console.log(event);
-  console.log('Connection lost. Please, update the page to see new changes.');
+  alert('Connection lost. Please, update the page to see new changes.');
 };
 
 function WSPHttpQueryQuite(command, promise, type = "String") {
