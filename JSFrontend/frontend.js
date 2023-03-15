@@ -355,6 +355,7 @@ function createCodeMirror(element, uid, data) {
       highlightSelectionMatches(),
       placeholder('Type Wolfram Expression / .md / .html / .js'),
       FEholders,
+      Greekholder,
       languageConf.of(initialLang),
       autoLanguage, 
       keymap.of([indentWithTab,

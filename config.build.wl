@@ -3,8 +3,9 @@
     "recipy" :> {
         (* merge and bundle the files *)
         MergeFiles[{
+                "JSFrontend/autocomplete.js",
                 "JSFrontend/frontend.js",
-                "JSFrontend/graphics3d.js",
+                "JSFrontend/greek.js",
                 FileNames["*.js", "WebObjects", Infinity]
             } -> "Temp/merged.js"
         ],

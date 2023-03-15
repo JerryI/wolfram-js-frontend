@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/katex.css">
         <script>
-            //sync code
+            //avoid errors, when loading the scripts takes too much time
             var core = {};
         </script>
         <script defer src="/js/bundle.js"></script>

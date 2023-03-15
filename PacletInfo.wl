@@ -16,13 +16,9 @@ PacletObject[
         "Context" -> {
           {"JerryI`WolframJSFrontend`", "Init.wl"}, 
           {"JerryI`WolframJSFrontend`Cells`", "Cells.wl"}, 
-          {"JerryI`WolframJSFrontend`DBManager`", "DBManager.wl"}, 
-          {"JerryI`WolframJSFrontend`Dynamics`", "Dynamics.wl"}, 
           {"JerryI`WolframJSFrontend`Evaluator`", "Evaluator.wl"}, 
           {"JerryI`WolframJSFrontend`Notebook`", "Notebook.wl"}, 
-          {"JerryI`WolframJSFrontend`Notifications`", "Notifications.wl"}, 
           {"JerryI`WolframJSFrontend`Kernel`", "Kernel.wl"}, 
-          {"JerryI`WolframJSFrontend`Starter`", "Starter.wl"}, 
           {"JerryI`WolframJSFrontend`Utils`", "Utils.wl"}, 
           {"JerryI`WolframJSFrontend`WebObjects`", "WebObjects.wl"}, 
           {"JerryI`WolframJSFrontend`Colors`", "Colors.wl"},

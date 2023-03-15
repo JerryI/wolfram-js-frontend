@@ -24165,11 +24165,16 @@ st\",\n\t\t\t\t3.01752894035533,\n\t\t\t\t-0.9940435530160724\n\t\t\t],\n\t\t\
 \t\t]\n\t\t]\n\t]\n]"|>, "path" -> 
     "/Volumes/Data/Github/wolfram-js-frontend/Demo/Introduction.wl", 
    "cell" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee", 
-   "date" -> DateObject[{2023, 3, 12, 16, 31, 23.471444`8.123114791783937}, 
+   "date" -> DateObject[{2023, 3, 16, 0, 1, 40.432151`8.359301824767313}, 
      "Instant", "Gregorian", 1.]|>, 
- "cells" -> {<|"id" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", 
-    "type" -> "input", "data" -> 
-     ".md\nHello World. The time is *<?wsp Now//TextString ?>*", 
+ "cells" -> {<|"id" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", 
+    "type" -> "input", "data" -> "\[Alpha], \[Beta], \[Gamma], \[Delta]", 
+    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
+    "prev" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", 
+    "next" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "parent" -> Null, 
+    "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", "type" -> "input", 
+    "data" -> ".md\nHello World. The time is *<?wsp Now//TextString ?>*", 
     "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
     "prev" -> "52192397-356d-4d69-901f-68bcad77ac5d", 
     "next" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c", "parent" -> Null, 
@@ -24196,12 +24201,20 @@ js example adapted from \
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "28a7b816-a143-417e-81da-e8403080d01c", "type" -> "input", 
     "data" -> "Graphics3D[Table[GeometricTransformation[Cuboid[], i], {i, \
-RandomReal[{-5,5},{40,3}]}]]", "display" -> "codemirror", 
+RandomReal[{-5,5}, {40,3}]}]]", "display" -> "codemirror", 
     "sign" -> "intolerance-4cafb", "prev" -> 
      "5d28913e-4f20-47b9-b24d-7f8f137917c5", 
     "next" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d8", "parent" -> Null, 
     "child" -> "c46ca925-91ee-482a-8bca-b70ead9e32f0", 
     "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "type" -> "input", 
+    "data" -> ".md\nNative Wolfram Mathematica graphics can be exported to an \
+SVG image using `SVGForm`", "display" -> "codemirror", 
+    "sign" -> "intolerance-4cafb", "prev" -> 
+     "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", 
+    "next" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f", "parent" -> Null, 
+    "child" -> "9386dc28-7128-405d-970b-962645c4e2c9", 
+    "props" -> <|"hidden" -> True|>|>, 
    <|"id" -> "3fbaec5a-b604-4d21-b638-959d9ab35304", "type" -> "input", 
     "data" -> "ShowTheSign = \
 FrontEndExecutable[\"c7d941bb-0da0-4822-a986-c893340708be\"];", 
@@ -24259,7 +24272,7 @@ is also supported.", "display" -> "codemirror",
     "data" -> 
      "Plot[{Sin[t^2 Sqrt[t]], Cos[t^2 Sqrt[t]]}, {t, 0, Pi}]//SVGForm", 
     "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", 
+    "prev" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", 
     "next" -> "e4a26590-2bed-4855-a2d9-11a06dfde112", "parent" -> Null, 
     "child" -> "f597fc2f-3601-428e-8e86-b1f9223055fb", 
     "props" -> <|"hidden" -> False|>|>, 
@@ -24322,21 +24335,25 @@ types of cells are supported", "display" -> "markdown",
    <|"id" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", "type" -> "input", 
     "data" -> ".md\nThe input syntax sugar is not supported by now. However, \
 it is still possible to bring all Greek symbols, fractions and etc with a bit \
-of work on CodeMirror 6 Decorations extensions. \n\nNative Wolfram \
-Mathematica graphics can be exported to an SVG image using `SVGForm`", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", 
-    "next" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f", "parent" -> Null, 
-    "child" -> "8c86991b-9579-4443-902f-52a6e05fe8b2", 
+of work on CodeMirror 6 Decorations extensions. ", "display" -> "codemirror", 
+    "sign" -> "intolerance-4cafb", "prev" -> 
+     "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", 
+    "next" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", "parent" -> Null, 
+    "child" -> "874198e4-8bf1-4093-926a-326ae83a4fde", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "8c86991b-9579-4443-902f-52a6e05fe8b2", "type" -> "output", 
+   <|"id" -> "874198e4-8bf1-4093-926a-326ae83a4fde", "type" -> "output", 
     "data" -> "\nThe input syntax sugar is not supported by now. However, it \
 is still possible to bring all Greek symbols, fractions and etc with a bit of \
-work on CodeMirror 6 Decorations extensions. \n\nNative Wolfram Mathematica \
-graphics can be exported to an SVG image using `SVGForm`", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", 
-    "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
+work on CodeMirror 6 Decorations extensions. ", "display" -> "markdown", 
+    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
+    "parent" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", "child" -> Null, 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9386dc28-7128-405d-970b-962645c4e2c9", "type" -> "output", 
+    "data" -> "\nNative Wolfram Mathematica graphics can be exported to an \
+SVG image using `SVGForm`", "display" -> "markdown", 
+    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
+    "parent" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "child" -> Null, 
+    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "9d97f112-77b7-4400-a91b-7c1179221a7e", "type" -> "output", 
     "data" -> "\n### Markdown\nType `.md` in the beginning of the cell and \
 then type from the new line. It also supports __WSP__ preprocessor. $\\LaTeX$ \

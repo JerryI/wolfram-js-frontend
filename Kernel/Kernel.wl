@@ -1,7 +1,17 @@
-
 BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`"}]; 
 
-LocalKernel::usage = "A wrapper for the local evaluator"
+(*
+    ::Only for MASTER kernel::
+
+    An abstract Kernel controller package
+    - creates a local kernel
+    - maintains the WSTP and JTP links
+    - plays ping-pong
+    - attaches the notebook (or other objects)
+    - sets up the modules (can be improved)
+*)
+
+LocalKernel::usage = "A wrapper for the local evaluator and its commands"
 
 Begin["`Private`"]; 
 
@@ -17,11 +27,18 @@ pongHandler = Null;
 
 Options[LocalKernel] = {"Link"->"WSTP", "WatchDog"->Infinity};
 
+(* we uses subvalues to create an easy representation of it on notebooks *)
+(* in general, why do not we use subvalues instead of typical OOP?! *)
+
+(* keep the objects for the links *)
 LocalKernel["JTPLink"] := asyncsocket;
 LocalKernel["WSTPLink"] := link;
 
-LocalKernel["Emitt"][event_] := (Print["Event emitt (to kernel)!"]; JTPSend[asyncsocket, event]);
+(* send some random command async, in our case it will be events *)
+LocalKernel["Emitt"][event_] := (JTPSend[asyncsocket, event]);
 
+(* evaluate something with a callback function as a subvalue and get the result via async link *)
+(* it can be some evaluator with a data inside *)
 LocalKernel[ev_, cbk_, OptionsPattern[]] := (
     If[OptionValue["Link"] === "JTP",
         JTPSend[asyncsocket, ev[Global`SendToMaster[cbk]]]
@@ -47,9 +64,11 @@ LocalKernel["Exit"][cbk_] := (
     cbk[LocalKernel["Status"]]; 
 );
 
+(* tell the kernel an id of a notebook for the future fast direct communication *)
 LocalKernel["AttachNotebook"][id_] := ( 
     Print["attaching "<>id];
     If[status["signal"] == "good", 
+        (* can be a bug, but it doesnt work if we use a wrapper function *)
         JTPSend[asyncsocket, JerryI`WolframJSFrontend`Remote`Private`notebook = id];
         Print["Kenrel now is aware about notebook id"];
     ,

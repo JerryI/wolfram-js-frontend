@@ -1,23 +1,48 @@
 BeginPackage["JerryI`WolframJSFrontend`Cells`"];
 
-CellObj::usage = "to create CellObj[\"id\"->smth]"
-CellObjFindLast::usage = "CellObjFindLast"
-CellObjFindFirst::usage = "CellObjFindFirst"
-CellObjFindParent::usage = "CellObjFindParent"
-CellObjCreateChild::usage = "CellObjCreateChild"
+(* 
+    ::Only for MASTER kernel::
+    
+    Abstract cells operation package 
+*)
 
-CellObjCreateNext::usage = "CellObjCreateNext"
-CellObjCreateAfter::usage = "CellObjCreateAfter"
-CellObjRemoveAccurate::usage = "CellObjRemoveAccurate"
-CellObjRemove::usage = "CellObjRemove"
+CellObj::usage = "class constructor"
 
-CellObjRemoveAllNext::usage = "CellObjRemoveAllNext"
-CellObjEvaluate::usage = "CellObjEvaluate"
-CellObjGenerateTree::usage = "CellObjGenerateTree"
+CellObjFindLast::usage = "find the last one in the connected list"
+CellObjFindFirst::usage = "find the first one in the connected list"
+CellObjFindParent::usage = "find the parent cell of a random cell"
 
-CellObjQuery::usage = "query"
-CellObjPack::usage = "pack to association"
-CellObjUnpack::usage = "assotiation to cellobj"
+CellObjCreateChild::usage = "create a child cell from the paren cell and assign in to the parent"
+CellObjCreateNext::usage = "create a cell next to the given one and assign them to each other"
+CellObjCreateAfter::usage = "create a cell after the given one "
+
+CellObjRemoveAccurate::usage = "remove a cell considering all connections fixing broken links"
+CellObjRemove::usage = "just remove a cell object from memory"
+CellObjRemoveAllNext::usage = "remove all next cells till the end"
+
+CellObjEvaluate::usage = "evaluate the cell by calling using the given evaluator and create an output cells"
+(*  CellObjEvaluate[CellObj[uid], evaluators]  
+    
+    where evaluators is a list of rules, which 
+    - has a criteria to be chosen 
+    - has a syntax-check function
+    - has an evaluator function
+
+    for example
+    {
+        MardownQ -> <|"SyntaxChecker" -> (True&), 
+            "Epilog"->(#&), "Prolog"->(#&), 
+            "Evaluator"->MarkdownProcessor
+        |>
+    }
+*)
+
+CellObjGenerateTree::usage = "reveal the structure of the cell's three under the given cell"
+
+CellObjQuery::usage = "find all cells with"
+
+CellObjPack::usage = "pack/serialse cell to the association"
+CellObjUnpack::usage = "unpack the assotiation to cellobj"
 
 setCellID::usage = "convert string to cellObj"
 

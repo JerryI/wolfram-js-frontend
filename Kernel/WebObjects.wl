@@ -1,26 +1,35 @@
 BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`"}];
 
-RegisterWebObject::usage = "RegisterWebObject register objects, which are FrontEndObjs automatically (have JS representation)"
+(*
+  ::Only for SECONDARY kernel::
+
+    FrontEndObject/WebObjects package
+    - creates the replacement table for all registered objects in WebObjects/... folder
+    - extends the difinitions of the Kernel with a created objects as well
+    - provides a direct link to communicate with frontened
+*)
+
+RegisterWebObject::usage = "RegisterWebObject register objects, which are FrontEndExecutables by the default (have JS representation)"
 LoadWebObjects::usage = "LoadWebObjects loads all objects into memory and makes a replacement table"
 
-FrontEndOnly::usage = "Will not be processed outside the frontend"
+FrontEndOnly::usage = "a wrapper, where the expression will not be processed outside the frontend"
 
-CreateFrontEndObject::usage = "Create object"
+CreateFrontEndObject::usage = "Create an object"
 
 Begin["`Private`"]; 
 
 JerryI`WolframJSFrontend`WebObjects`replacement = {};
 JerryI`WolframJSFrontend`WebObjects`list = {};
 
+(* create and extend the definitionsof the kernel *)
 CreateFrontEndObject[expr_, $iouid_:CreateUUID[]] := With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[expr, "ExpressionJSON"]; Global`FrontEndExecutableHold[$ouid] ]
-
 
 SetAttributes[FrontEndOnly, HoldFirst]
 
 RegisterWebObject[sym_] := JerryI`WolframJSFrontend`WebObjects`list = {JerryI`WolframJSFrontend`WebObjects`list, sym}//Flatten;
 
 LoadWebObjects := (
-  JerryI`WolframJSFrontend`WebObjects`list = {Graphics, Graphics3D};
+  JerryI`WolframJSFrontend`WebObjects`list = {};
 
   Get/@FileNames["*.wl", FileNameJoin[{JerryI`WolframJSFrontend`root, "WebObjects"}], Infinity];
 

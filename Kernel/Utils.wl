@@ -1,5 +1,9 @@
 BeginPackage["JerryI`WolframJSFrontend`Utils`"];
 
+(*
+	Useful utilites package
+*)
+
 console::usage = "console[\"log\", message, args]"
 NullQ::usage = "NullQ[x]"
 Cached::usage = "Cached[expr_, interval_String: \"Minute\"]"

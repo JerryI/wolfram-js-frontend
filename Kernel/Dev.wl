@@ -1,6 +1,12 @@
 BeginPackage["JerryI`WolframJSFrontend`Dev`", {"JerryI`WolframJSFrontend`Colors`"}];
 
-LoadBuildFile::usage = "LoadBuildFile[] loads build configuration"
+(* 
+    ::Only for MASTER kernel::
+    
+    Autobuilder/configurator package 
+*)
+
+LoadBuildFile::usage = "LoadBuildFile[] loads the build configuration"
 MergeFiles::usage = "MergeFiles[{from,from,from}->to]"
 
 

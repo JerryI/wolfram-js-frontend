@@ -6,30 +6,26 @@ Needs["CodeParser`"]
 Get["JerryI`WolframJSFrontend`"]
 Get/@{
   "JerryI`WolframJSFrontend`Cells`", 
-  "JerryI`WolframJSFrontend`DBManager`", "JerryI`WolframJSFrontend`Dynamics`", 
-  "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Kernel`",
-  "JerryI`WolframJSFrontend`Notebook`", "JerryI`WolframJSFrontend`Notifications`",
-  "JerryI`WolframJSFrontend`Starter`", "JerryI`WolframJSFrontend`Utils`",
+  "JerryI`WolframJSFrontend`Kernel`",
+  "JerryI`WolframJSFrontend`Notebook`", 
+  "JerryI`WolframJSFrontend`Utils`",
   "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Dev`", 
   "JerryI`WolframJSFrontend`WSPDynamicsExtension`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
-console["log", "Hi!"];
 
+(* assign the handler for ExtendDefiniton command from the kernel to Notebook API *)
 JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
 
 SetUpCron := (
   (* ping-pong with frontend *)
   SessionSubmit[ScheduledTask[WebSocketBroadcast[jsf`server, Global`Pong[360.0 Now[[1, -1]] / 60.0 //Round]], Quantity[3, "Seconds"]]];
-  (* hidding up the notifications *)
-  SessionSubmit[ScheduledTask[(jsf`notifications[#]["hide"] = True) &/@ (Select[jsf`notifications//Keys,  (jsf`notifications[#, "date"] < (Now - jsf`notifications[#, "duration"]))&]), Quantity[2, "Minutes"]]];  
-  (* cleanining up the notifications *)
-  SessionSubmit[ScheduledTask[(jsf`notifications[#] = .;)&/@ (Select[jsf`notifications//Keys,  (jsf`notifications[#]["date"] < (Now - Quantity[1, "Days"]))&]), Quantity[6, "Hours"]]];  
   (* stats *)
   SessionSubmit[ScheduledTask[console["log", "<*Now*>"], Quantity[20, "Minutes"]]]; 
 );
 
+(* define supported cell types / processors *)
 NotebookDefineEvaluators["Default",
   {
     MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
@@ -70,6 +66,8 @@ WolframCheckSyntax[str_String] :=
         Return[True, Module];
     ];
 
+(* assign available Evaluators to the processsors *)
+
 WolframProcessor[expr_String, signature_String, callback_] := Module[{str = StringTrim[expr], block = False},
   Print["WolframProcessor!"];
   If[StringTake[str, -1] === ";", block = True; str = StringDrop[str, -1]];
@@ -103,7 +101,7 @@ If[MemberQ[$ScriptCommandLine, "ip"],
   ip =  $ScriptCommandLine[[(Position[$ScriptCommandLine, "ip"]//First//First) + 1]]
 ];
 
-
+(* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault *)
   jsf`server["path"] = Join[Take[jsf`server["path"], 2], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
@@ -112,34 +110,52 @@ FileTypeHandler[path_, types_] := Module[{},
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]
 ]
 
+(* default templates depending of the opened path *)
 NotFound[path_] := <|"view" :> LoadPage["template/views/404.wsp"] |>;
 EmptyWindow[path_] := <|"view" :> LoadPage["template/views/empty.wsp"] |>;
 
-NotebookQ[path_] := (StringTake[path, -2] === "wl");
-
+(* association file_path -> notebook id *)
 $AssoticatedPath = <||>;
 
-$WatchingDirectories = <||>;
+NotebookQ[path_] := (StringTake[path, -2] === "wl");
+LoadNotebook[path_] := Module[{},
+  <|"view":> LoadPage["template/views/editor.wsp", {notebook = $AssoticatedPath[path]}] |>
+];
 
-WatchDirectories := (
-  (*Select[Keys[$WatchingDirectories], ($WatchingDirectories[#] =!= FileNames["*", #])&]*)
-  Null;
-  (*i have not finished...*)
-  (*WebSocketBroadcast[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ] ];*)
-);
+ImageFileQ[path_] := MemberQ[{"png", "svg", "jpg", "jpeg", "gif"}, FileExtension[path]];
+ImageViewer[path_] := <|"view" :> LoadPage["template/views/image.wsp", {url = path}]  |>;
 
+(* supported type for the UI viewer *)
+SupportedTypes = {
+  DirectoryQ  ->  EmptyWindow,
+  NotebookQ   ->  LoadNotebook,
+  ImageFileQ  ->  ImageViewer,
+  (True&)     ->  NotFound
+}
+
+
+
+(* it has to be in Notebook` package, but it is here... *)
+(* load a notebook into memory  *)
 PreloadNotebook[path_] := Module[{notebook},
   If[!MemberQ[$AssoticatedPath//Keys, path],
     notebook = Get[path];
+
+    (* if not found or corrupted -> create a new one *)
     If[notebook["serializer"] =!= "jsfn",  
       CreateNewNotebookByPath[path];
       Print["CREATED A NEW ONE"];
       Return[Null, Module];
     ];
 
+    (*** deserialisation of the notebook and cells ***)
+
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
+    (* assiciate with a current path for further easy detection *)
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
+
+    (* assign the cellid of the first cell to the notebook *)
     JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
     
     Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
@@ -150,15 +166,12 @@ PreloadNotebook[path_] := Module[{notebook},
     Clear[notebook];
     Print["LOADED"];
     
-    $WatchingDirectories[ DirectoryName[path] ] = FileNames["*", DirectoryName[path] ];
   ]
 ]
 
 
-LoadNotebook[path_] := Module[{},
-  <|"view":> LoadPage["template/views/editor.wsp", {notebook = $AssoticatedPath[path]}] |>
-];
-
+(* it has to be in Notebook` package, but it is here... *)
+(* create a serialsed notebook and store it as a file *)
 CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = "Untitled"},
   While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
     filename = StringJoin[filename, "-New"];
@@ -170,28 +183,17 @@ CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUI
   WebSocketSend[Global`client, FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
 ];
 
+(* it has to be in Notebook` package, but it is here... *)
+(* create a serialsed notebook and store it as a file *)
 CreateNewNotebookByPath[name_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5]},
   $AssoticatedPath[name] = uid;
   NotebookCreate["id"->uid, "name"->FileBaseName[name], "path"->name ];
   NotebookStoreManually[uid];
 ];
 
-
-ImageFileQ[path_] := MemberQ[{"png", "svg", "jpg", "jpeg", "gif"}, FileExtension[path]];
-ImageViewer[path_] := <|"view" :> LoadPage["template/views/image.wsp", {url = path}]  |>;
-
-SupportedTypes = {
-  DirectoryQ  ->  EmptyWindow,
-  NotebookQ   ->  LoadNotebook,
-  ImageFileQ  ->  ImageViewer,
-  (True&)     ->  NotFound
-}
-
-
-
-
 address = ip<>":"<>port;
 
+(* no cache, we are developers *)
 WSPCache["Off"];
 
 jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart
@@ -203,7 +205,9 @@ jsf`server = jsf`server // WEBServerStart;
 (*NotificationMethodRegister;*)
 SetUpCron;
 
+(* dev mode on *)
 LoadBuildFile["config.build.wl"];
+(* force to rebuild for the first time *)
 JerryI`WolframJSFrontend`Dev`Private`Rebuild;
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];

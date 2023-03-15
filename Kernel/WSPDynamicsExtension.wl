@@ -1,12 +1,17 @@
 BeginPackage["JerryI`WolframJSFrontend`WSPDynamicsExtension`", {"Tinyweb`", "WSP`"}];
 
-WSPDynamic::usage = "define dyn"
+(*
+    ::Only for MASTER kernel::
 
-WSPDynamicGet::usage = "get"
+    WSP Extension for dynamically updatable HTML blocks
+    - creates a wrapper around using DIV element
+    - stores unevaluated expressions in the memory
+    - simulates the natural loading routine with a given fake session and generates result
+*)
 
-Hidden::usage = ""
-
-Wrapper::usage = "set calss and tag"
+WSPDynamic::usage = "mark a dynamic element"
+WSPDynamicGet::usage = "get the updated dynamic element with a substituted session"
+(* can be improved a lot.... *)
 
 Begin["`Private`"]; 
 
@@ -14,8 +19,6 @@ hashedObjects = <||>;
 
 ClearAll[WSPDynamic]
 SetAttributes[WSPDynamic, HoldFirst]
-
-
 
 WSPDynamic[expr_, ihash_:Null] := Module[{hash = ihash}, 
     If[!StringQ[hash],

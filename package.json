@@ -41,6 +41,8 @@
     "plotly.js-dist-min": "^2.18.2",
     "range-slider-input": "^2.4.3",
     "thememirror": "^2.0.1",
-    "three": "^0.123.0"
+    "three": "^0.123.0",
+    "three-addons": "^1.2.0",
+    "three-sky": "^1.1.3"
   }
 }

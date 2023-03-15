@@ -317,7 +317,7 @@ With[
 WebSocketReceive[server_Symbol?AssociationQ][uuid_] :=
 With[{data = BufferFlatten[server][uuid]//Normal (*it sucks. unpacking creates more data*)},
 Module[{frame},
-	writeLog[server, "websockets received"];
+	(*writeLog[server, "websockets received"];*)
 
 	(*close message detection*)
 	If[Take[data, 2] == {136, 130}, 
@@ -341,8 +341,7 @@ Module[{frame},
 	(*writeLog[server, "frame: ``", frame//Compress];*)
 
     If[frame["received"] < frame["length"],
-        writeLog[server, "websocket data received ``, must be ``", Length[data], frame["length"] + If[data[[2]] - 128 <= 125, 6, 8]];
-
+        
         server["connection", uuid,"buffer"] = data//ByteArray;
 		server["connection", uuid,"currentLength"] = Length[data];
 		(*considering extra data from the header of the frame, because handle doent care about websokets*)
@@ -350,7 +349,7 @@ Module[{frame},
     ,
 
         frame = MapIndexed[BitXor[#1, frame["key"][[Mod[#2[[1]] - 1, 4] + 1]]] &, frame["payload"]] // ByteArray // ByteArrayToString;
-        writeLog[server, "websockets was finnaly received and will be evaluated: ``", frame];
+        
 
 		(*reset for a new q*)
         server["connection", uuid,"buffer"] = {};
@@ -541,26 +540,26 @@ With[{uuid = message["SourceSocket"][[1]]},
 			"time" -> Now,
  			"currentLength" -> 0
 		|>; 
-		writeLog[server, esc["red"]<>"[<*Now*>] New client"<>esc["reset"] ];
-		writeLog[server, esc["red"]<>"id: "<>uuid<>esc["reset"] ];
+		(*writeLog[server, esc["red"]<>"[<*Now*>] New client"<>esc["reset"] ];
+		writeLog[server, esc["red"]<>"id: "<>uuid<>esc["reset"] ];*)
 	,
-		writeLog[server, esc["magenta"]<>"[<*Now*>] Old client"<>esc["reset"] ];
-		writeLog[server, esc["magenta"]<>"id: "<>uuid<>esc["reset"] ];
+		(*writeLog[server, esc["magenta"]<>"[<*Now*>] Old client"<>esc["reset"] ];
+		writeLog[server, esc["magenta"]<>"id: "<>uuid<>esc["reset"] ];*)
 	];
 
 	(*keep alive, until we still have requests*)
 	server["connection", "time"] = Now;
 
-	If[server["extralog"]//TrueQ,
+	(*If[server["extralog"]//TrueQ,
 		writeLog[server, "-------- raw-tcp-data -------"];
 		writeLog[server, esc["blue"]<>(message["DataByteArray"]//ByteArrayToString)<>esc["reset"]];
 		writeLog[server, "-------- end-tcp-data -------"];
-	];
+	];*)
 	(*writeLog[server, "--- raw data ---"];
 	writeLog[server, message["Data"]];
 	writeLog[server, "--- end data ---"];*)
 
-	writeLog[server, "received: `` bytes", Length[message["DataByteArray"]]];
+	(*writeLog[server, "received: `` bytes", Length[message["DataByteArray"]]];*)
 
 	(*close open connections if it was set to keep them*)
 	(*If[!server["socket-close"], 
@@ -577,10 +576,10 @@ With[{uuid = message["SourceSocket"][[1]]},
 	(*we have to work with ByteArrays, otherwise websokets will not work. It creates a shitty conversion between string and bytes, cuz there is no method to stream bytearray*)
 	server["connection", uuid, "buffer"] = {server["connection", uuid, "buffer"], message["DataByteArray"]};
 	 
-	writeLog[server, "buffer length: ``, must be: ``, real: ``", server["connection", uuid, "currentLength"], server["connection", uuid, "length"], Length@BufferFlatten[server][uuid]];
+	(*writeLog[server, "buffer length: ``, must be: ``, real: ``", server["connection", uuid, "currentLength"], server["connection", uuid, "length"], Length@BufferFlatten[server][uuid]];*)
 	
 	(*go by the default to next*)
-	writeLog[server, "try default"];
+	(*writeLog[server, "try default"];*)
 	(*let us try to check the headers and may be, we will find something to write an answer*)
 	If[server["connection", uuid, "length"] == 0, 
 		server["connection", uuid, "default"][server][uuid]; 
@@ -712,7 +711,7 @@ WebSocketPublish[WEBServer[server_Symbol?AssociationQ], exp_, channel_] := With[
         clients = Select[server["connection"]//Keys, (MemberQ[server["connection", #, "session", "Upgrade"], "websocket"] && TrueQ[server["connection", #, "subscription"] === channel]) &]
     },
 
-    StringTemplate["broadcast websocket only for subs of `` channel. number of connections: ``"][channel, Length[clients]]//Print;
+    (*StringTemplate["broadcast websocket only for subs of `` channel. number of connections: ``"][channel, Length[clients]]//Print;*)
 
     BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON"]]]& /@ clients;
         
@@ -724,7 +723,7 @@ WebSocketPublishString[WEBServer[server_Symbol?AssociationQ], exp_, channel_] :=
         clients = Select[server["connection"]//Keys, (MemberQ[server["connection", #, "session", "Upgrade"], "websocket"] && TrueQ[server["connection", #, "subscription"] === channel]) &]
     },
 
-    StringTemplate["broadcast websocket only for subs of `` channel. number of connections: ``"][channel, Length[clients]]//Print;
+    (*StringTemplate["broadcast websocket only for subs of `` channel. number of connections: ``"][channel, Length[clients]]//Print;*)
 
     BinaryWrite[SocketObject[#], constructReply[exp]]& /@ clients;
         

@@ -1,31 +1,52 @@
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`"}]; 
+(*
+    ::Only for MASTER kernel::
 
-BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Notifications`"}]; 
+    The central API package
+    - operates with notebooks in the memory
+    - operates with filesystem
+    - connects websockets with Cells` and Kernel` functions 
+*)
 
-NotebookDefineEvaluators::usage = "NotebookDefineEvaluators[] defines the processor for languages"
-NotebookExtendDefinitions::usage = "NotebookExtendDefinitions[] extends the JSON objects of the notebook"
-NotebookCreate::usage = "NotebookCreate[]"
-NotebookRemove::usage = "NotebookRemove[]"
-NotebookAttach::usage = "NotebookAttach[] attaches to the local or remote kernel"
-NotebookOpen::usage = "NotebookOpen[]"
-NotebookEvaluate::usage = "NotebookEvaluate[]"
-NotebookGetObject::usage = "NotebookGetObject[] gets the JSON notebook object"
-NotebookOperate::usage = "NotebookOperate[] a wrapper to CellObj methods"
+NotebookDefineEvaluators::usage = "defines the processors and languages to be used on Cells`Evaluate"
 
-NotebookKernelOperate::usage = "Kernel control"
+NotebookExtendDefinitions::usage = "extends the JSON objects of the notebook storage. internal command of the Evaluator"
 
-NotebookRename::usage = "rename"
+(* 
+    Functions used by the frontened, aka API 
+    - they do not use the notebook id directly, but takes it from the associated websocket client's id
+*)
 
-FileOperate::usage = "file operations"
+NotebookCreate::usage = "create an empty untitled notebook with an empty cell attached"
 
-NotebookEventFire::usage = "internal usage for events"
-NotebookPromise::usage = "ask a server to do something..internal"
+NotebookOpen::usage = "opens the notebook from the memory (not from the file!) and prints the cells to all associated clients"
+(* it also registers the address, which did open the notebook and associate this client with a coresponding notebook ID *)
 
-NotebookStore::usage = "save the notebook to a file"
-NotebookStoreManually::usage = "manually save"
+NotebookEvaluate::usage = "a wrapper for Cells`Evaluate function, which substitute the given Kernel for the evaluation"
 
-NotebookFrontEndSend::usage = "sends to the frotnend an expr"
+NotebookGetObject::usage = "gets the JSON notebook object by ID and returns promise-resolve object back to the frontend"
+
+NotebookOperate::usage = "a wrapper for CellObj methods to manipulate cells from the frontend"
+
+NotebookKernelOperate::usage = "a wrapper for Kernel methods to manipulate kernels from the frontend"
+
+NotebookRename::usage = "sanitize the given name, then rename a notebook and update the name in UI"
+
+FileOperate::usage = "a wrapper for easy-file operations"
+
+NotebookPromise::usage = "ask a server to do something... and return result as a resolved promise to the frontend"
+
+NotebookStore::usage = "save (serialise) the notebook to a file using Cells`Pack methods"
+NotebookStoreManually::usage = "altered version of the previous command"
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
+
+(*
+    Internal commands used by other packages
+    must not be PUBLIC!
+*)
+NotebookEventFire::usage = "internal command for cell's operation events, that publish changes via websockets"
+NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel to the frontened with no changes"
 
 Begin["`Private`"]; 
 
@@ -36,6 +57,7 @@ jsfn`Processors = Null;
 
 $NotifyName = $InputFileName;
 
+(* list of rules socket id -> notebook id *)
 $AssociationSocket = <||>;
 
 Unprotect[NotebookCreate];
@@ -58,16 +80,22 @@ Options[NotebookCreate] = {
     "path" -> Null
 };
 
+(* define the default supported evaluators list *)
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
+(* internal command used by the Evaluator from the remote/local kernel to extend the objects storage on notebook *)
 NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
     Print["Extend definitions"];
+    (* add new stuff *)
     updated = Intersection[Keys[defs], Keys[jsfn`Notebooks[sign]["objects"] ] ];
     jsfn`Notebooks[sign]["objects"] = Join[jsfn`Notebooks[sign]["objects"], defs];
+
+    (* if some objects were updated -> force to update the cached objects on the associated clients *)
     Print["Will be updated: "<>ToString[Length[updated] ] ];
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#] ], sign] &/@ updated;
 ];
 
+(* serialise the notebook to a file *)
 NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},
     cells = CellObjQuery["sign", channel];
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
@@ -83,6 +111,7 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
     Print["SAVED"];
 ];
 
+(* the same, but with a specified notebook ID *)
 NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
     cells = CellObjQuery["sign", channel];
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
@@ -98,11 +127,14 @@ NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
     Print["SAVED"];
 ];
 
+(* remove a file and update UI elements via WSPDynamicExtension *)
 FileOperate["Remove"][path_] := With[{channel = $AssociationSocket[Global`client]},
     DeleteFile[path];
     If[path === jsfn`Notebooks[channel]["path"] ,
+        (* if it was a current notebook -> redirect to the landing page *)
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndJSEval["openawindow('/index.wsp')" ], channel ];
     ,
+        (* just update the UI elements *)
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
     ];
 ];
@@ -124,8 +156,10 @@ NotebookRename[name_] := Module[{channel, newname, newpath},
     RenameFile[jsfn`Notebooks[channel]["path"], newpath];
 
     jsfn`Notebooks[channel]["path"] = newpath;
+    (* update the associated path *)
     Global`$AssociationPath[ jsfn`Notebooks[channel]["path"] ] = channel;
     
+    (* update UI elements *)
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileName[newname, jsfn`Notebooks[channel]["path"]], channel];
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
 ];
@@ -146,18 +180,8 @@ NotebookCreate[OptionsPattern[]] := (
     ]
 );
 
-
-(*access only via websockets*)
-NotebookAttach[proc_, init_:Null] := Module[{pid = proc},
-    If[proc === "master", 
-        jsfn`Notebooks[$AssociationSocket[Global`client]]["kernel"] = LocalKernel; 
-        WebSocketSend[Global`client, Global`FrontEndAddKernel[pid] ]; 
-        PushNotification[$NotifyName, "<span class=\"badge badge-danger\">Master kernel attached</span> <p>If we die, we die</p>"]; 
-        Return["master", Module] 
-    ];
-];
-
-NotebookEmitt[symbol_] := With[{channel = $AssociationSocket[Global`client]}, Print["Event emitt!"]; jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
+(* redirect *)
+NotebookEmitt[symbol_] := With[{channel = $AssociationSocket[Global`client]},  jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
 SetAttributes[NotebookEmitt, HoldFirst];
 
 NotebookOpen[id_String] := (
@@ -217,10 +241,17 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 ];
 *)
 
-NotebookFrontEndSend[channel_][expr_String] := With[{},
-    Print["Publish from kernel to the channel "<>channel];
+(* redirect *)
+NotebookFrontEndSend[channel_][expr_String] := (
+    (*Print["Publish from kernel to the channel "<>channel];*)
     WebSocketPublishString[JerryI`WolframJSFrontend`server, expr, channel];
-];
+);
+
+
+(* 
+    Internal commands
+    events on cells operations
+*)
 
 NotebookEventFire[addr_]["NewCell"][cell_] := (
     (*looks ugly actually. we do not need so much info*)

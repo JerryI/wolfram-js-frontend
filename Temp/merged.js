@@ -1,3 +1,35 @@
+import {CompletionContext} from "@codemirror/autocomplete"
+
+const autocompleteVocabulary = [
+    {label: "Table", type: "keyword"},
+    {label: "Do", type: "keyword"},
+    {label: "CreateFrontEndObject", type: "keyword"},
+    {label: "Plotly", type: "keyword"},
+    {label: "ListLinePlotly", type: "keyword"},
+    {label: "SendToFrontEnd", type: "keyword"},
+    {label: "Sqrt", type: "keyword"},
+    {label: "Graphics3D", type: "keyword"},
+
+    {label: "hello", type: "variable", info: "(World)"},
+
+    {label: ":a:",   type: "text", apply: "\[Alpha]", detail: "macro"},
+    {label: ":th:",   type: "text", apply: "\[Theta]", detail: "macro"},
+    {label: ":l:",   type: "text", apply: "\[Lambda]", detail: "macro"},
+    {label: ":w:",   type: "text", apply: "\[Omega]", detail: "macro"},
+    {label: ":t:",   type: "text", apply: "\[Tau]", detail: "macro"},
+    {label: ":m:",   type: "text", apply: "\[Mu]", detail: "macro"},
+    {label: ":ph:",   type: "text", apply: "\[Phi]", detail: "macro"}
+]
+
+function wolframCompletions(cotext) {
+    let word = cotext.matchBefore(/\w*/)
+    if (word.from == word.to && !cotext.explicit)
+      return null
+    return {
+      from: word.from,
+      options: autocompleteVocabulary
+    }
+  } 
 import { EditorView } from "codemirror";
 
 import {StreamLanguage } from "@codemirror/language"
@@ -355,6 +387,7 @@ function createCodeMirror(element, uid, data) {
       highlightSelectionMatches(),
       placeholder('Type Wolfram Expression / .md / .html / .js'),
       FEholders,
+      Greekholder,
       languageConf.of(initialLang),
       autoLanguage, 
       keymap.of([indentWithTab,
@@ -406,8 +439,98 @@ function celleval(ne, cell) {
 
 
 
+const GreekMatcher = new MatchDecorator({
+    regexp: /\\\[([a-zA-z]+)\]/g,
+    decoration: match => Decoration.replace({
+      widget: new GreekWidget(match[1]),
+    })
+  });
+  const Greekholder = ViewPlugin.fromClass(class {
+    constructor(view) {
+      this.Greekholder = GreekMatcher.createDeco(view);
+    }
+    update(update) {
+      this.Greekholder = GreekMatcher.updateDeco(update, this.Greekholder);
+    }
+  }, {
+    decorations: instance => instance.Greekholder,
+    provide: plugin => EditorView.atomicRanges.of(view => {
+      var _a;
+      return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.Greekholder) || Decoration.none;
+    })
+  });
+  
+  class GreekWidget extends WidgetType {
+    constructor(name) {
+      super();
+      this.name = name;
+    }
+    eq(other) {
+      return this.name === other.name;
+    }
+    toDOM() {
+      let elt = document.createElement("span");
+      elt.innerHTML = '&'+this.name.toLowerCase()+';';
+  
+      return elt;
+    }
+    ignoreEvent() {
+      return false; 
+    }
+  }
+
+import rangeSlider from 'range-slider-input';
+
+core.WEBSlider = function(args, env) {
+    let eventuid = interpretate(args[0], env);
+    let range    = interpretate(args[1], env);
+
+    console.log('range');
+    console.log(range);
+
+    env.element.classList.add('web-slider');
+
+    rangeSlider(env.element, {
+        min: range[0], 
+        max: range[1],
+        step: range[2],
+        value: [range[0], range[0]],
+        thumbsDisabled: [true, false],
+        rangeSlideDisabled: true,
+        onInput: (value, userInteraction) => {
+            console.log(value);
+            core.FireEvent(["'"+eventuid+"'", value[1]]);
+        }
+    });    
+}
+
+core.Panel = function(args, env) {
+    if(env.update) {
+        console.error("Dynamic panels are not supported");
+        return;
+    }
+
+    const objects = interpretate(args[0], {...env, hold:true});
+    console.log(objects);
+    console.log(env);
+
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('panel');
+    env.element.appendChild(wrapper);
+
+    objects.forEach((e)=>{
+        const child = document.createElement('div');
+        child.classList.add('child');
+
+        interpretate(e, {...env, element: child});
+        wrapper.appendChild(child);
+    });
+
+}
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Water } from 'three/examples/jsm/objects/Water';
+import { Sky } from 'three/examples/jsm/objects/Sky';
 
 function computeGroupCenter(group) {
   var center = new THREE.Vector3();
@@ -520,9 +643,9 @@ core.Sphere = (args, env) => {
   var radius = 1;
   if (args.length > 1) radius = args[1];
 
-  const material = new THREE.MeshLambertMaterial({
+  const material = new THREE.MeshStandardMaterial({
     color: env.color,
-    transparent: false,
+    roughness: env.roughness,
     opacity: env.opacity
   });
 
@@ -556,6 +679,48 @@ core.Sphere = (args, env) => {
 
   material.dispose();
 };
+
+core.Sky = (args, env) => {
+  const sky = new Sky();
+	sky.scale.setScalar( 10000 );
+	env.mesh.add( sky );
+  env.sky = sky;
+  env.sun = new THREE.Vector3();
+
+	const skyUniforms = sky.material.uniforms;
+
+	skyUniforms[ 'turbidity' ].value = 10;
+	skyUniforms[ 'rayleigh' ].value = 2;
+	skyUniforms[ 'mieCoefficient' ].value = 0.005;
+	skyUniforms[ 'mieDirectionalG' ].value = 0.8;
+}
+
+core.Water = (args, env) => {
+  const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+
+	const water = new Water(
+		waterGeometry,
+		{
+			textureWidth: 512,
+			textureHeight: 512,
+			waterNormals: new THREE.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
+
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+			} ),
+
+      sunDirection: new THREE.Vector3(),
+			sunColor: 0xffffff,
+			waterColor: 0x001e0f,
+			distortionScale: 3.7,
+			fog: true
+		}
+		);
+
+		water.rotation.x = - Math.PI / 2;
+
+		env.mesh.add( water );
+    env.water = water;
+}
 
 core.Cuboid = (args, env) => {
   //if (params.hasOwnProperty('geometry')) {
@@ -596,10 +761,11 @@ core.Cuboid = (args, env) => {
   }
 
   const geometry = new THREE.BoxGeometry(diff.x, diff.y, diff.z);
-  const material = new THREE.MeshLambertMaterial({
+  const material = new THREE.MeshStandardMaterial({
     color: env.color,
     transparent: true,
     opacity: env.opacity,
+    roughness: env.roughness,
     depthWrite: true
   });
 
@@ -632,9 +798,10 @@ core.Cylinder = (args, env) => {
    */
   const coordinates = interpretate(args[0], env);
 
-  const material = new THREE.MeshLambertMaterial({
+  const material = new THREE.MeshStandardMaterial({
     color: env.color,
     transparent: false,
+    roughness: env.roughness,
     opacity: env.opacity
   });
 
@@ -933,11 +1100,11 @@ core.Polygon = (args, env) => {
     }
   }
 
-  const material = new THREE.MeshLambertMaterial({
+  const material = new THREE.MeshStandardMaterial({
     color: env.color,
     transparent: env.opacity < 0.9,
     opacity: env.opacity,
-
+    roughness: env.roughness
     //depthTest: false
     //depthWrite: false
   });
@@ -972,11 +1139,12 @@ core.Polyhedron = (args, env) => {
 
     const geometry = new THREE.PolyhedronGeometry(vertices, indices);
 
-    var material = new THREE.MeshLambertMaterial({
+    var material = new THREE.MeshStandardMaterial({
       color: env.color,
       transparent: true,
       opacity: env.opacity,
       depthWrite: true,
+      roughness: env.roughness
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -995,6 +1163,8 @@ core.Specularity = (args, env) => { };
 core.Text = (args, env) => { };
 
 core.Directive = (args, env) => { };
+
+core.PlaneGeometry = () => { new THREE.PlaneGeometry;  };
 
 core.Line = (args, env) => {
   if (env.hasOwnProperty("geometry")) {
@@ -1048,659 +1218,168 @@ core.Line = (args, env) => {
 };
 
 core.Graphics3D = (args, env) => {
-  console.log("GRAPHICS3D");
-
-  /*** the part of a code from http://mathics.github.io.  ***/
-  var data = {
-    axes: {},
-    extent: {
-      zmax: 1.0,
-      ymax: 1.0,
-      zmin: -1.0,
-      xmax: 1.0,
-      xmin: -1.0,
-      ymin: -1.0,
-    },
-
-    lighting: [
-      { type: "Ambient", color: [0.3, 0.2, 0.4] },
-      {
-        type: "Directional",
-        color: [0.8, 0, 0],
-        position: [2, 0, 2],
-      },
-      {
-        type: "Directional",
-        color: [0, 0.8, 0],
-        position: [2, 2, 2],
-      },
-      {
-        type: "Directional",
-        color: [0, 0, 0.8],
-        position: [0, 2, 2],
-      },
-    ],
-
-    viewpoint: [1.3, -2.4, 2],
-  };
   /**
    * @type {HTMLElement}
    */
   var container = env.element;
+
   /**
   * @type {THREE.Mesh<THREE.Geometry>}
   */
-  var boundbox;
-  var hasaxes;
 
-  // Scene
-  const scene = new THREE.Scene();
+  let camera, scene, renderer;
+  let controls, water, sun, mesh;
 
-  const group = new THREE.Group();
+  init();
+  animate();
 
-  const envcopy = {
-    ...env,
-    numerical: true,
-    tostring: false,
-    matrix: new THREE.Matrix4().set(
-      1, 0, 0, 0,//
-      0, 1, 0, 0,//
-      0, 0, 1, 0,//
-      0, 0, 0, 1),
-    color: new THREE.Color(1, 1, 1),
-    opacity: 1,
-    thickness: 1,
-    edgecolor: new THREE.Color(0, 0, 0),
-    mesh: group,
-  }
+  function init() {
+    //
 
-  interpretate(args[0], envcopy);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( 400, 400 );
+    //renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.domElement.style = "margin:auto";
+    container.appendChild( renderer.domElement );
 
-  const bbox = new THREE.Box3().setFromObject(group);
-  if (!isFinite(bbox.min.x)) {
-    bbox.set(new THREE.Vector3(-1, -1, -1), new THREE.Vector3(1, 1, 1))
-  }
-  const center = new THREE.Vector3();
-  console.log(
-    "BBOX CENTER",
-    center,
-    bbox);
-  scene.position = center;
+    //
 
-  const focus = center.clone();
+    scene = new THREE.Scene();
 
-  const viewpoint = new THREE.Vector3()
-    .fromArray(data.viewpoint)
-    .sub(focus);
+    const group = new THREE.Group();
 
-  const ln = bbox
-    .max
-    .clone()
-    .add(bbox.min.clone().negate())
-    .length();
-
-  console.log("Radius is ", ln);
-
-  viewpoint.multiplyScalar(ln);
-
-  const radius = viewpoint.length();
-
-  let theta = Math.acos(viewpoint.z / radius);
-  let phi =
-    (Math.atan2(viewpoint.y, viewpoint.x) + 2 * Math.PI) % (2 * Math.PI);
-
-  const camera = new THREE.PerspectiveCamera(
-    35, // Field of view
-    1, // Aspect ratio
-    0.1 * radius, // Near plane
-    1000 * radius, // Far plane
-  );
-
-  function update_camera_position() {
-    camera.position.set(
-      radius * Math.sin(theta) * Math.cos(phi),
-      radius * Math.sin(theta) * Math.sin(phi),
-      radius * Math.cos(theta));
-    camera.position.add(focus);
-    camera.lookAt(focus);
-  }
-
-  //update_camera_position();
-  camera.up = new THREE.Vector3(0, 0, 1);
-
-  scene.add(camera);
-
-  // Lighting
-  function addLight(l) {
-    var color = new THREE.Color().setRGB(l.color[0], l.color[1], l.color[2]);
-    var light;
-
-    if (l.type === "Ambient") {
-      light = new THREE.AmbientLight(color);
-    } else if (l.type === "Directional") {
-      light = new THREE.DirectionalLight(color, 1);
-    } else if (l.type === "Spot") {
-      light = new THREE.SpotLight(color);
-      light.position.fromArray(l.position);
-      light.target.position.fromArray(l.target);
-      light.target.updateMatrixWorld(); // This fixes bug in THREE.js
-      light.angle = l.angle;
-    } else if (l.type === "Point") {
-      light = new THREE.PointLight(color);
-      light.position.fromArray(l.position);
-
-      // Add visible light sphere
-      const lightsphere = new THREE.Mesh(
-        new THREE.SphereGeometry(0.007 * radius, 16, 8),
-        new THREE.MeshBasicMaterial({ color }),
-      );
-      lightsphere.position = light.position;
-      scene.add(lightsphere);
-    } else {
-      alert("Error: Internal Light Error", l.type);
-      return;
+    const envcopy = {
+      ...env,
+      numerical: true,
+      tostring: false,
+      matrix: new THREE.Matrix4().set(
+        1, 0, 0, 0,//
+        0, 1, 0, 0,//
+        0, 0, 1, 0,//
+        0, 0, 0, 1),
+      color: new THREE.Color(1, 1, 1),
+      opacity: 1,
+      thickness: 1,
+      roughness: 0.5,
+      edgecolor: new THREE.Color(0, 0, 0),
+      mesh: group,
     }
-    return light;
-  }
+  
+    interpretate(args[0], envcopy);
+    
+    group.applyMatrix4(new THREE.Matrix4().set(
+      1, 0, 0, 0,
+      0, 0, 1, 0,
+      0,-1, 0, 0,
+      0, 0, 0, 1));
 
-  function getInitLightPos(l) {
-    // Initial Light position in spherical polar coordinates
-    if (Array.isArray(l.position)) {
-      var tmppos = new THREE.Vector3(
-        l.position[0],
-        l.position[1],
-        l.position[2],
-      );
-      var result = { radius: radius * tmppos.length() };
+    scene.add(group);
 
-      if (tmppos.length() <= 0.0001) {
-        result.theta = 0;
-        result.phi = 0;
-      } else {
-        result.phi =
-          (Math.atan2(tmppos.y, tmppos.x) + 2 * Math.PI) % (2 * Math.PI);
-        result.theta = Math.asin(tmppos.z / result.radius);
+    camera = new THREE.PerspectiveCamera( 55, 400/400, 1, 20000 );
+    camera.position.set( 3, 3, 10 );
+
+    //
+
+    sun = new THREE.Vector3();
+
+    // Water
+
+    const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+
+    water = new Water(
+      waterGeometry,
+      {
+        textureWidth: 512,
+        textureHeight: 512,
+        waterNormals: new THREE.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
+
+          texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+        } ),
+        sunDirection: new THREE.Vector3(),
+        sunColor: 0xffffff,
+        waterColor: 0x001e0f,
+        distortionScale: 3.7,
+        fog: true
       }
-      return result;
-    }
-    return;
-  }
-
-  function positionLights() {
-    for (let i = 0; i < lights.length; i++) {
-      if (lights[i] instanceof THREE.DirectionalLight) {
-        lights[i].position.set(
-          initLightPos[i].radius *
-          Math.sin(theta + initLightPos[i].theta) *
-          Math.cos(phi + initLightPos[i].phi),
-          initLightPos[i].radius *
-          Math.sin(theta + initLightPos[i].theta) *
-          Math.sin(phi + initLightPos[i].phi),
-          initLightPos[i].radius *
-          Math.cos(theta + initLightPos[i].theta),
-        )
-        lights[i].position.add(focus);
-      }
-    }
-  }
-
-  const lights = new Array(data.lighting.length);
-  const initLightPos = new Array(data.lighting.length);
-
-  for (let i = 0; i < data.lighting.length; i++) {
-    initLightPos[i] = getInitLightPos(data.lighting[i]);
-
-    lights[i] = addLight(data.lighting[i]);
-    scene.add(lights[i]);
-  }
-
-  // BoundingBox
-  boundbox = new THREE.Mesh(
-    new THREE.BoxGeometry(
-      bbox.max.x - bbox.min.x,
-      bbox.max.y - bbox.min.y,
-      bbox.max.z - bbox.min.z,
-    ),
-    new THREE.MeshBasicMaterial({ color: 0x666666, wireframe: true }),
-  );
-  boundbox.position = center;
-
-  const geo = new THREE.EdgesGeometry(
-    new THREE.BoxGeometry(
-      bbox.max.x - bbox.min.x,
-      bbox.max.y - bbox.min.y,
-      bbox.max.z - bbox.min.z,
-    ),
-  ); // or WireframeGeometry( geometry )
-
-  var mat = new THREE.LineBasicMaterial({ color: 0x666666, linewidth: 2 });
-
-  var wireframe = new THREE.LineSegments(
-    geo.translate(center.x, center.y, center.z),
-    mat,
-  );
-
-  //scene.add(wireframe);
-
-  // Draw the Axes
-  if (Array.isArray(data.axes.hasaxes)) {
-    hasaxes = [
-      data.axes.hasaxes[0],
-      data.axes.hasaxes[1],
-      data.axes.hasaxes[2],
-    ];
-  } else if (data.axes.hasaxes instanceof Boolean) {
-    if (data.axes) {
-      hasaxes = [true, true, true];
-    } else {
-      hasaxes = [false, false, false];
-    }
-  } else {
-    hasaxes = [false, false, false];
-  }
-  var axesmat = new THREE.LineBasicMaterial({
-    color: 0x000000,
-    linewidth: 1.5,
-  });
-  /**
-   * @type {THREE.Geometry[]}
-   */
-  var axesgeom = [];
-  var axesindicies = [
-    [
-      [0, 5],
-      [1, 4],
-      [2, 7],
-      [3, 6],
-    ],
-    [
-      [0, 2],
-      [1, 3],
-      [4, 6],
-      [5, 7],
-    ],
-    [
-      [0, 1],
-      [2, 3],
-      [4, 5],
-      [6, 7],
-    ],
-  ];
-  /**
-   * @type {THREE.Geometry[]}
-   */
-  const axesmesh = new Array(3);
-  for (var i = 0; i < 3; i++) {
-    if (hasaxes[i]) {
-      axesgeom[i] = new THREE.Geometry();
-      axesgeom[i].vertices.push(
-        boundbox.geometry.vertices[axesindicies[i][0][0]].clone().add(
-          boundbox.position,
-        ),
-      );
-      axesgeom[i].vertices.push(
-        boundbox.geometry.vertices[axesindicies[i][0][1]].clone().add(
-          boundbox.position,
-        ),
-      );
-      axesmesh[i] = new THREE.Line(axesgeom[i], axesmat);
-      scene.add(axesmesh[i]);
-    }
-  }
-
-  function boxEdgeLength(i, j) {
-    return toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][0]])
-      .clone()
-      .sub(toCanvasCoords(boundbox.geometry.vertices[axesindicies[i][j][1]]))
-      .setZ(0)
-      .length();
-  }
-
-  function positionAxes() {
-    // Automatic axes placement
-    var nearj = null;
-    var nearl = 10 * radius;
-    var farj = null;
-    var farl = 0.0;
-
-    const tmpv = new THREE.Vector3();
-    for (var j = 0; j < 8; j++) {
-      tmpv.addVectors(boundbox.geometry.vertices[j], boundbox.position);
-      tmpv.sub(camera.position);
-      var tmpl = tmpv.length();
-      if (tmpl < nearl) {
-        nearl = tmpl;
-        nearj = j;
-      } else if (tmpl > farl) {
-        farl = tmpl;
-        farj = j;
-      }
-    }
-    for (var i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        var maxj = null;
-        var maxl = 0.0;
-        for (var j = 0; j < 4; j++) {
-          if (
-            axesindicies[i][j][0] !== nearj &&
-            axesindicies[i][j][1] !== nearj &&
-            axesindicies[i][j][0] !== farj &&
-            axesindicies[i][j][1] !== farj
-          ) {
-            tmpl = boxEdgeLength(i, j);
-            if (tmpl > maxl) {
-              maxl = tmpl;
-              maxj = j;
-            }
-          }
-        }
-        axesmesh[i].vertices[0].addVectors(
-          boundbox.geometry.vertices[axesindicies[i][maxj][0]],
-          boundbox.position,
-        );
-        axesmesh[i].vertices[1].addVectors(
-          boundbox.geometry.vertices[axesindicies[i][maxj][1]],
-          boundbox.position,
-        );
-        axesmesh[i].verticesNeedUpdate = true;
-      }
-    }
-    update_axes();
-  }
-
-  // Axes Ticks
-  var tickmat = new THREE.LineBasicMaterial({
-    color: 0x000000,
-    linewidth: 1.2,
-  });
-  /**
-   * @type {THREE.Line<THREE.Geometry>[][]}
-   */
-  const ticks = new Array(3);
-  /**
-   * @type {THREE.Line<THREE.Geometry>[][]}
-   */
-  var ticks_small = new Array(3);
-  var ticklength = 0.005 * radius;
-
-  for (var i = 0; i < 3; i++) {
-    if (hasaxes[i]) {
-      ticks[i] = [];
-      for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
-        var tickgeom = new THREE.Geometry();
-        tickgeom.vertices.push(new THREE.Vector3(), new THREE.Vector3());
-        ticks[i].push(new THREE.Line(tickgeom, tickmat));
-        scene.add(ticks[i][j]);
-      }
-      ticks_small[i] = [];
-      for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
-        var tickgeom = new THREE.Geometry();
-        tickgeom.vertices.push(new THREE.Vector3(), new THREE.Vector3());
-        ticks_small[i].push(new THREE.Line(tickgeom, tickmat));
-        scene.add(ticks_small[i][j]);
-      }
-    }
-  }
-
-  function getTickDir(i) {
-    var tickdir = new THREE.Vector3();
-    if (i === 0) {
-      if (0.25 * Math.PI < theta && theta < 0.75 * Math.PI) {
-        if (axesgeom[0].vertices[0].z > boundbox.position.z) {
-          tickdir.set(0, 0, -ticklength);
-        } else {
-          tickdir.set(0, 0, ticklength);
-        }
-      } else {
-        if (axesgeom[0].vertices[0].y > boundbox.position.y) {
-          tickdir.set(0, -ticklength, 0);
-        } else {
-          tickdir.set(0, ticklength, 0);
-        }
-      }
-    } else if (i === 1) {
-      if (0.25 * Math.PI < theta && theta < 0.75 * Math.PI) {
-        if (axesgeom[1].vertices[0].z > boundbox.position.z) {
-          tickdir.set(0, 0, -ticklength);
-        } else {
-          tickdir.set(0, 0, ticklength);
-        }
-      } else {
-        if (axesgeom[1].vertices[0].x > boundbox.position.x) {
-          tickdir.set(-ticklength, 0, 0);
-        } else {
-          tickdir.set(ticklength, 0, 0);
-        }
-      }
-    } else if (i === 2) {
-      if (
-        (0.25 * Math.PI < phi && phi < 0.75 * Math.PI) ||
-        (1.25 * Math.PI < phi && phi < 1.75 * Math.PI)
-      ) {
-        if (axesgeom[2].vertices[0].x > boundbox.position.x) {
-          tickdir.set(-ticklength, 0, 0);
-        } else {
-          tickdir.set(ticklength, 0, 0);
-        }
-      } else {
-        if (axesgeom[2].vertices[0].y > boundbox.position.y) {
-          tickdir.set(0, -ticklength, 0, 0);
-        } else {
-          tickdir.set(0, ticklength, 0, 0);
-        }
-      }
-    }
-    return tickdir;
-  }
-
-  function update_axes() {
-    for (var i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        var tickdir = getTickDir(i);
-        var small_tickdir = tickdir.clone();
-        small_tickdir.multiplyScalar(0.5);
-        for (var j = 0; j < data.axes.ticks[i][0].length; j++) {
-          var tmpval = data.axes.ticks[i][0][j];
-
-          ticks[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
-          ticks[i][j].geometry.vertices[1].addVectors(
-            axesgeom[i].vertices[0],
-            tickdir,
-          );
-
-          if (i === 0) {
-            ticks[i][j].geometry.vertices[0].x = tmpval;
-            ticks[i][j].geometry.vertices[1].x = tmpval;
-          } else if (i === 1) {
-            ticks[i][j].geometry.vertices[0].y = tmpval;
-            ticks[i][j].geometry.vertices[1].y = tmpval;
-          } else if (i === 2) {
-            ticks[i][j].geometry.vertices[0].z = tmpval;
-            ticks[i][j].geometry.vertices[1].z = tmpval;
-          }
-
-          ticks[i][j].geometry.verticesNeedUpdate = true;
-        }
-        for (var j = 0; j < data.axes.ticks[i][1].length; j++) {
-          tmpval = data.axes.ticks[i][1][j];
-
-          ticks_small[i][j].geometry.vertices[0].copy(axesgeom[i].vertices[0]);
-          ticks_small[i][j].geometry.vertices[1].addVectors(
-            axesgeom[i].vertices[0],
-            small_tickdir,
-          );
-
-          if (i === 0) {
-            ticks_small[i][j].geometry.vertices[0].x = tmpval;
-            ticks_small[i][j].geometry.vertices[1].x = tmpval;
-          } else if (i === 1) {
-            ticks_small[i][j].geometry.vertices[0].y = tmpval;
-            ticks_small[i][j].geometry.vertices[1].y = tmpval;
-          } else if (i === 2) {
-            ticks_small[i][j].geometry.vertices[0].z = tmpval;
-            ticks_small[i][j].geometry.vertices[1].z = tmpval;
-          }
-
-          ticks_small[i][j].geometry.verticesNeedUpdate = true;
-        }
-      }
-    }
-  }
-  update_axes();
-
-  // Axes numbering using divs
-
-  /**
-   * @type {HTMLDivElement[][]}
-   */
-  var ticknums = new Array(3);
-  for (var i = 0; i < 3; i++) {
-    if (hasaxes[i]) {
-      ticknums[i] = new Array(data.axes.ticks[i][0].length);
-      for (var j = 0; j < ticknums[i].length; j++) {
-        ticknums[i][j] = document.createElement("div");
-        ticknums[i][j].innerHTML = data.axes.ticks[i][2][j];
-
-        // Handle Minus signs
-        if (data.axes.ticks[i][0][j] >= 0) {
-          ticknums[i][j].style.paddingLeft = "0.5em";
-        } else {
-          ticknums[i][j].style.paddingLeft = 0;
-        }
-
-        ticknums[i][j].style.position = "absolute";
-        ticknums[i][j].style.fontSize = "0.8em";
-        container.appendChild(ticknums[i][j]);
-      }
-    }
-  }
-
-  function toCanvasCoords(position) {
-    var pos = position.clone();
-    var projScreenMat = new THREE.Matrix4();
-    projScreenMat.multiply(camera.projectionMatrix, camera.matrixWorldInverse);
-    //.multiplyVector3( pos );
-    pos = pos.applyMatrix4(projScreenMat);
-
-    var result = new THREE.Vector3(
-      (pos.x + 1) * 200,
-      (1 - pos.y) * 200,
-      (pos.z + 1) * 200,
     );
-    return result;
-  }
 
-  function positionticknums() {
-    for (let i = 0; i < 3; i++) {
-      if (hasaxes[i]) {
-        for (let j = 0; j < ticknums[i].length; j++) {
-          /**
-           * @type {THREE.Vector3}}
-           */
-          var tickpos3D = ticks[i][j].geometry.vertices[0].clone();
-          var tickDir = new THREE.Vector3().sub(
-            ticks[i][j].geometry.vertices[0],
-            ticks[i][j].geometry.vertices[1],
-          );
-          //tickDir.multiplyScalar(3);
-          tickDir.setLength(3 * ticklength);
-          tickDir.x *= 2.0;
-          tickDir.y *= 2.0;
-          tickpos3D.add(tickDir);
-          var tickpos = toCanvasCoords(tickpos3D);
-          tickpos.x -= 10;
-          tickpos.y += 8;
+    water.rotation.x = - Math.PI / 2;
 
-          ticknums[i][j].style.left = `${tickpos.x.toString()}px`;
-          ticknums[i][j].style.top = `${tickpos.y.toString()}px`;
-          if (
-            tickpos.x < 5 ||
-            tickpos.x > 395 ||
-            tickpos.y < 5 ||
-            tickpos.y > 395
-          ) {
-            ticknums[i][j].style.display = "none";
-          } else {
-            ticknums[i][j].style.display = "";
-          }
-        }
-      }
+    scene.add( water );
+
+    // Skybox
+
+    const sky = new Sky();
+    sky.scale.setScalar( 10000 );
+    scene.add( sky );
+
+    const skyUniforms = sky.material.uniforms;
+
+    skyUniforms[ 'turbidity' ].value = 10;
+    skyUniforms[ 'rayleigh' ].value = 2;
+    skyUniforms[ 'mieCoefficient' ].value = 0.005;
+    skyUniforms[ 'mieDirectionalG' ].value = 0.8;
+
+    const parameters = {
+      elevation: 8,
+      azimuth: 180
+    };
+
+    const pmremGenerator = new THREE.PMREMGenerator( renderer );
+    let renderTarget;
+
+    function updateSun() {
+
+      const phi = THREE.MathUtils.degToRad( 90 - parameters.elevation );
+      const theta = THREE.MathUtils.degToRad( parameters.azimuth );
+
+      sun.setFromSphericalCoords( 1, phi, theta );
+
+      sky.material.uniforms[ 'sunPosition' ].value.copy( sun );
+      water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
+
+      if ( renderTarget !== undefined ) renderTarget.dispose();
+
+      renderTarget = pmremGenerator.fromScene( sky );
+
+      scene.environment = renderTarget.texture;
+
     }
+
+    updateSun();
+
+    //
+
+    //
+
+    controls = new OrbitControls( camera, renderer.domElement );
+    controls.target.set( 0, 1, 0 );
+    controls.update();
+
+
   }
 
-  scene.add(group);
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    preserveDrawingBuffer: true,
-  });
-  new OrbitControls(camera, renderer.domElement);
-  renderer.setSize(400, 400);
-  renderer.setClearColor(0xffffff);
-  container.appendChild(renderer.domElement);
-  renderer.domElement.style = "margin:auto";
-  function render() {
-    positionLights();
-    renderer.render(scene, camera);
-  }
 
   function animate() {
-    requestAnimationFrame(animate);
+
+    requestAnimationFrame( animate );
     render();
   }
-  update_camera_position();
-  positionAxes();
-  animate();
-  positionticknums();
+
+  function render() {
+    const time = performance.now() * 0.001;
+
+    water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+
+    renderer.render( scene, camera );
+
+  }
+
+
 };
 
-import rangeSlider from 'range-slider-input';
-
-core.WEBSlider = function(args, env) {
-    let eventuid = interpretate(args[0], env);
-    let range    = interpretate(args[1], env);
-
-    console.log('range');
-    console.log(range);
-
-    env.element.classList.add('web-slider');
-
-    rangeSlider(env.element, {
-        min: range[0], 
-        max: range[1],
-        step: range[2],
-        value: [range[0], range[0]],
-        thumbsDisabled: [true, false],
-        rangeSlideDisabled: true,
-        onInput: (value, userInteraction) => {
-            console.log(value);
-            core.FireEvent(["'"+eventuid+"'", value[1]]);
-        }
-    });    
-}
-
-core.Panel = function(args, env) {
-    if(env.update) {
-        console.error("Dynamic panels are not supported");
-        return;
-    }
-
-    const objects = interpretate(args[0], {...env, hold:true});
-    console.log(objects);
-    console.log(env);
-
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('panel');
-    env.element.appendChild(wrapper);
-
-    objects.forEach((e)=>{
-        const child = document.createElement('div');
-        child.classList.add('child');
-
-        interpretate(e, {...env, element: child});
-        wrapper.appendChild(child);
-    });
-
-}
 import * as d3 from "d3";
 
 {
