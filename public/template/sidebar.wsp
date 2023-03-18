@@ -17,7 +17,7 @@
                                                         ">
                                                         
                                                         <div class="notion-fadein" style="display: flex; align-items: center; height: 100%; margin-left: auto; margin-right: 12px;">
-                                                            <div class="notion-close-sidebar notion-focusable" role="button" aria-label="Close sidebar" tabindex="0" style="
+                                                            <div id="toggle-sidebar-button" class="notion-close-sidebar notion-focusable" role="button" aria-label="Close sidebar" tabindex="0" style="
                                                                     -webkit-user-select: none;
                                                                     transition: background 20ms ease-in 0s;
                                                                     cursor: pointer;
@@ -403,11 +403,39 @@
         alert('Not implemented');
     });    
 
-    
+    //toggle sidebar
+    {
+        let sidebarToggle = localStorage.getItem("sidebar-hide");
+
+        if (typeof sidebarToggle === 'undefined') {
+            localStorage.setItem("sidebar-hide", 'false');
+            sidebarToggle = 'false';
+        }
+
+        if (sidebarToggle == 'true') {
+            document.querySelectorAll('.notion-sidebar-container')[0].classList.add('notion-sidebar-container-hide');
+            document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
+        }
+
+        document.getElementById("toggle-sidebar-button").addEventListener('click', (e)=>{
+            document.querySelectorAll('.notion-sidebar-container')[0].classList.toggle('notion-sidebar-container-hide');
+            document.querySelectorAll('.doubleChevronLeft')[0].classList.toggle('doubleChevronLeft-rotate');
+            
+            if (sidebarToggle == 'true')
+                sidebarToggle = 'false'
+            else
+                sidebarToggle = 'true'
+            
+            localStorage.setItem("sidebar-hide", sidebarToggle);
+        });        
+            
+    }    
 
     core.FrontEndUpdateFileList = function(args, env) {
         const path = interpretate(args[0]);
         socket.send('WSPDynamicGet[{"fileslist"}, <|"dir"->"'+path+'" |>];');
     }
+
+
 }
 </script>

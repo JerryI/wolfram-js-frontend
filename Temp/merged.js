@@ -136,6 +136,9 @@ const FEholders = ViewPlugin.fromClass(class {
   update(update) {
     this.FEholders = FEMatcher.updateDeco(update, this.FEholders);
   }
+  destroy() {
+    console.log('removed holder')
+  }
 }, {
   decorations: instance => instance.FEholders,
   provide: plugin => EditorView.atomicRanges.of(view => {
@@ -164,6 +167,9 @@ class FEWidget extends WidgetType {
   }
   ignoreEvent() {
     return false; 
+  }
+  destroy() {
+    console.log('destroyed!');
   }
 }
 
@@ -470,7 +476,7 @@ const GreekMatcher = new MatchDecorator({
     }
     toDOM() {
       let elt = document.createElement("span");
-      elt.innerHTML = '&'+this.name.toLowerCase()+';';
+      elt.innerHTML = '&'+this.name.toLowerCase().replace('sqrt', 'radic')+';';
   
       return elt;
     }
@@ -532,6 +538,12 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Water } from 'three/examples/jsm/objects/Water';
 import { Sky } from 'three/examples/jsm/objects/Sky';
 
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
+import { GUI } from 'dat.gui'
+
 function computeGroupCenter(group) {
   var center = new THREE.Vector3();
   var children = group.children;
@@ -576,6 +588,16 @@ core.GraphicsGroup = (args, env) => {
   env.mesh.add(group);
 };
 
+core.Metalness = (args, env) => {
+  env.metalness = interpretate(args[0], env);
+}
+
+core.Emissive = (args, env) => {
+  var copy = Object.assign({}, env);
+  interpretate(args[0], copy);
+  env.emissive = copy.color;
+}
+
 core.RGBColor = (args, env) => {
   if (args.length !== 3 && args.length !== 1) {
     console.log("RGB format not implemented", args);
@@ -591,6 +613,13 @@ core.RGBColor = (args, env) => {
 
   env.color = new THREE.Color(r, g, b);
 };
+
+core.Roughness = (args, env) => {
+  const o = interpretate(args[0], env);
+  if (typeof o !== "number") console.error("Opacity must have number value!");
+  console.log(o);
+  env.roughness = o;  
+}
 
 core.Opacity = (args, env) => {
   var o = interpretate(args[0], env);
@@ -646,7 +675,9 @@ core.Sphere = (args, env) => {
   const material = new THREE.MeshStandardMaterial({
     color: env.color,
     roughness: env.roughness,
-    opacity: env.opacity
+    opacity: env.opacity,
+    metalness: env.metalness,
+    emissive: env.emissive
   });
 
   function addSphere(cr) {
@@ -766,7 +797,9 @@ core.Cuboid = (args, env) => {
     transparent: true,
     opacity: env.opacity,
     roughness: env.roughness,
-    depthWrite: true
+    depthWrite: true,
+    metalness: env.metalness,
+    emissive: env.emissive
   });
 
   //material.side = THREE.DoubleSide;
@@ -802,7 +835,9 @@ core.Cylinder = (args, env) => {
     color: env.color,
     transparent: false,
     roughness: env.roughness,
-    opacity: env.opacity
+    opacity: env.opacity,
+    metalness: env.metalness,
+    emissive: env.emissive
   });
 
   //points 1, 2
@@ -1104,7 +1139,9 @@ core.Polygon = (args, env) => {
     color: env.color,
     transparent: env.opacity < 0.9,
     opacity: env.opacity,
-    roughness: env.roughness
+    roughness: env.roughness,
+    metalness: env.metalness,
+    emissive: env.emissive
     //depthTest: false
     //depthWrite: false
   });
@@ -1144,7 +1181,9 @@ core.Polyhedron = (args, env) => {
       transparent: true,
       opacity: env.opacity,
       depthWrite: true,
-      roughness: env.roughness
+      roughness: env.roughness,
+      metalness: env.metalness,
+      emissive: env.emissive
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -1219,33 +1258,112 @@ core.Line = (args, env) => {
 
 core.Graphics3D = (args, env) => {
   /**
+   * @type {Object}
+   */  
+  const options = core._getRules(args, env);
+  console.log(options);
+
+  /**
    * @type {HTMLElement}
    */
   var container = env.element;
 
   /**
+   * @type {[Number, Number]}
+   */
+  let ImageSize = options.ImageSize || [400, 400];
+
+  //if only the width is specified
+  if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*0.7];
+  console.log('Image size');
+  console.log(ImageSize);
+
+  /**
   * @type {THREE.Mesh<THREE.Geometry>}
   */
 
-  let camera, scene, renderer;
+  let camera, scene, renderer, composer;
   let controls, water, sun, mesh;
+
+  const params = {
+    exposure: 1,
+    bloomStrength: 0.1,
+    bloomThreshold: 0.5,
+    bloomRadius: 0.11
+  };
 
   init();
   animate();
 
+
+
   function init() {
-    //
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera( 55, ImageSize[0]/ImageSize[1], 1, 20000 );
+    camera.position.set( 3, 3, 10 );
 
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( 400, 400 );
+    renderer.setSize(ImageSize[0], ImageSize[1]);
     //renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.domElement.style = "margin:auto";
     container.appendChild( renderer.domElement );
 
-    //
+    /* postprocess */
+		const renderScene = new RenderPass( scene, camera );
 
-    scene = new THREE.Scene();
+		const bloomPass = new UnrealBloomPass( new THREE.Vector2( ImageSize[0], ImageSize[1] ), 1.5, 0.4, 0.85 );
+		bloomPass.threshold = params.bloomThreshold;
+		bloomPass.strength = params.bloomStrength;
+		bloomPass.radius = params.bloomRadius;
+
+    composer = new EffectComposer( renderer );
+		composer.addPass( renderScene );
+		composer.addPass( bloomPass );
+
+    composer.setSize(ImageSize[0], ImageSize[1]);
+
+    function takeScheenshot() {
+      //renderer.render( scene, camera );
+      composer.render();
+      renderer.domElement.toBlob(function(blob){
+        var a = document.createElement('a');
+        var url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'screenshot.png';
+        a.click();
+      }, 'image/png', 1.0);
+    }
+    
+    const gui = new GUI({ autoPlace: false });
+    const button = { Save:function(){ takeScheenshot() }};
+    gui.add(button, 'Save');
+
+    const bloomFolder = gui.addFolder('Bloom');
+
+		bloomFolder.add( params, 'exposure', 0.1, 2 ).onChange( function ( value ) {
+			renderer.toneMappingExposure = Math.pow( value, 4.0 );
+		} );
+
+		bloomFolder.add( params, 'bloomThreshold', 0.0, 1.0 ).onChange( function ( value ) {
+			bloomPass.threshold = Number( value );
+		} );
+
+		bloomFolder.add( params, 'bloomStrength', 0.0, 3.0 ).onChange( function ( value ) {
+			bloomPass.strength = Number( value );
+		} );
+
+		bloomFolder.add( params, 'bloomRadius', 0.0, 1.0 ).step( 0.01 ).onChange( function ( value ) {
+			bloomPass.radius = Number( value );
+		} );
+
+    const guiContainer = document.createElement('div');
+    guiContainer.classList.add('graphics3d-controller');
+    guiContainer.appendChild(gui.domElement);
+    container.appendChild( guiContainer );    
+
+    
 
     const group = new THREE.Group();
 
@@ -1264,6 +1382,8 @@ core.Graphics3D = (args, env) => {
       roughness: 0.5,
       edgecolor: new THREE.Color(0, 0, 0),
       mesh: group,
+      metalness: 0,
+      emissive: new THREE.Color(0, 0, 0)
     }
   
     interpretate(args[0], envcopy);
@@ -1275,9 +1395,6 @@ core.Graphics3D = (args, env) => {
       0, 0, 0, 1));
 
     scene.add(group);
-
-    camera = new THREE.PerspectiveCamera( 55, 400/400, 1, 20000 );
-    camera.position.set( 3, 3, 10 );
 
     //
 
@@ -1369,18 +1486,20 @@ core.Graphics3D = (args, env) => {
   }
 
   function render() {
-    const time = performance.now() * 0.001;
-
     water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
 
-    renderer.render( scene, camera );
-
+    //renderer.render( scene, camera );
+    composer.render();
   }
 
 
 };
 
-import * as d3 from "d3";
+core.Graphics3D.destroy = (args, env) => {
+  console.log('Graphics3D was removed');
+}
+
+/*import * as d3 from "d3";
 
 {
   var Plotly = require('plotly.js-dist');
@@ -1593,7 +1712,7 @@ import * as d3 from "d3";
       }});
     
     } 
-}
+}*/
 core.HTMLForm = function (args, env) {
     setInnerHTML(env.element, interpretate(args[0]));
 }

@@ -68,7 +68,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
               JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = $string;
 
               (* create a separate representation for the notebook and frontened using the same id *)
-              Global`$NewDefinitions[dumpid] = ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON"];
+              Global`$NewDefinitions[dumpid] = ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1];
               "FrontEndExecutable[\""<>dumpid<>"\"]"
             ]
           ,

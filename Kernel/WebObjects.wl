@@ -22,7 +22,7 @@ JerryI`WolframJSFrontend`WebObjects`replacement = {};
 JerryI`WolframJSFrontend`WebObjects`list = {};
 
 (* create and extend the definitionsof the kernel *)
-CreateFrontEndObject[expr_, $iouid_:CreateUUID[]] := With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[expr, "ExpressionJSON"]; Global`FrontEndExecutableHold[$ouid] ]
+CreateFrontEndObject[expr_, $iouid_:CreateUUID[]] := With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[expr, "ExpressionJSON", "Compact" -> -1]; Global`FrontEndExecutableHold[$ouid] ]
 
 SetAttributes[FrontEndOnly, HoldFirst]
 
@@ -36,8 +36,8 @@ LoadWebObjects := (
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[
     With[{item = i},
       {
-        Global`CreateFrontEndObject[item[x__], $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ],
-        item[x__] :> With[{$ouid = CreateUUID[]}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON"]; Global`FrontEndExecutable[$ouid] ]
+        Global`CreateFrontEndObject[item[x__], $iouid_:CreateUUID[]] :> With[{$ouid = $iouid}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON", "Compact" -> -1]; Global`FrontEndExecutable[$ouid] ],
+        item[x__] :> With[{$ouid = CreateUUID[]}, Global`$NewDefinitions[$ouid] = ExportString[item[x], "ExpressionJSON", "Compact" -> -1]; Global`FrontEndExecutable[$ouid] ]
       }
     ]
    , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;

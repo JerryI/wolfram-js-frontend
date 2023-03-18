@@ -58,7 +58,7 @@ writeLog[server_, message_, args___] :=
 
 
 
-WebSocketSend[cli_, exp_] := BinaryWrite[SocketObject[cli], constructReply[ExportString[exp,"ExpressionJSON"]]];
+WebSocketSend[cli_, exp_] := BinaryWrite[SocketObject[cli], constructReply[ExportString[exp,"ExpressionJSON", "Compact" -> -1]]];
 
 Begin["`Private`"]
 
@@ -688,7 +688,7 @@ WebSocketBroadcast[WEBServer[server_Symbol?AssociationQ], exp_] := With[
 
     logWrite[server, StringTemplate["broadcast websocket. number of connections: ``"][Length[clients]]];
 
-    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON"]]]& /@ clients;
+    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON", "Compact" -> -1]]]& /@ clients;
         
 ]
 
@@ -701,7 +701,7 @@ WebSocketBroadcast[WEBServer[server_Symbol?AssociationQ], exp_, exception_] := W
 
     logWrite[server, StringTemplate["broadcast websocket. number of connections: ``"][Length[clients]]];
 
-    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON"]]]& /@ clients;
+    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON", "Compact" -> -1]]]& /@ clients;
         
 ]
 
@@ -713,7 +713,7 @@ WebSocketPublish[WEBServer[server_Symbol?AssociationQ], exp_, channel_] := With[
 
     (*StringTemplate["broadcast websocket only for subs of `` channel. number of connections: ``"][channel, Length[clients]]//Print;*)
 
-    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON"]]]& /@ clients;
+    BinaryWrite[SocketObject[#], constructReply[ExportString[exp,"ExpressionJSON", "Compact" -> -1]]]& /@ clients;
         
 ]
 

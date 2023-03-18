@@ -315,7 +315,11 @@
 	box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset;
 	width: 246px;
 	height: 100%;
+    transition: all ease-in-out 0.3s;
+}
 
+.notion-sidebar-container-hide {
+	width: 0px;
 }
 
 
@@ -367,6 +371,12 @@
 	fill: rgba(55, 53, 47, 0.45);
 	flex-shrink: 0;
 	backface-visibility: hidden;
+
+	transition: all 20ms ease-in 0s;
+}
+
+.doubleChevronLeft-rotate {
+	transform: rotateZ(-180deg);
 }
 
 .notion-focusable {

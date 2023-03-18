@@ -35,7 +35,7 @@ ConnectToMaster[params_List, OptionsPattern[]] := (
 );
 
 (* might be slow on converting to JSON *)
-SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJSON"]}, JTPClientEvaluateAsync[master, Global`NotebookFrontEndSend[i][ e ] ] ];
+SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJSON", "Compact" -> -1]}, JTPClientEvaluateAsync[master, Global`NotebookFrontEndSend[i][ e ] ] ];
 
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsync[master, cbk[args]];
 

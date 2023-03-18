@@ -81,7 +81,7 @@ Print["WebObjects example"];
 cell = CellObj["data"->"Graphics3D[]", "sign"->"0xff", "type"->"input"];
 wrapper[CellObjEvaluate[cell, evaluator]];
 
-If[defs[[1]] === ExportString[Graphics3D[], "ExpressionJSON"],
+If[defs[[1]] === ExportString[Graphics3D[], "ExpressionJSON", "Compact" -> -1],
   Print[Green]; Print["Passed"];
 ,
   Print[Red]; Print["Failed"];
@@ -93,7 +93,7 @@ Print[Reset];
 cell = CellObj["data"->"FrontEndObj[Graphics3D[1+1], \"ahahha\"]", "sign"->"0xff", "type"->"input"];
 wrapper[CellObjEvaluate[cell, evaluator]];
 
-If[defs["ahahha"] === ExportString[Graphics3D[1+1], "ExpressionJSON"],
+If[defs["ahahha"] === ExportString[Graphics3D[1+1], "ExpressionJSON", "Compact" -> -1],
   Print[Green]; Print["Passed"];
 ,
   Print[Red]; Print["Failed"];

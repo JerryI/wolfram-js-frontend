@@ -104,6 +104,9 @@ const FEholders = ViewPlugin.fromClass(class {
   update(update) {
     this.FEholders = FEMatcher.updateDeco(update, this.FEholders);
   }
+  destroy() {
+    console.log('removed holder')
+  }
 }, {
   decorations: instance => instance.FEholders,
   provide: plugin => EditorView.atomicRanges.of(view => {
@@ -132,6 +135,9 @@ class FEWidget extends WidgetType {
   }
   ignoreEvent() {
     return false; 
+  }
+  destroy() {
+    console.log('destroyed!');
   }
 }
 

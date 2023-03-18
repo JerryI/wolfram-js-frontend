@@ -11,11 +11,9 @@
             "id": "a2db3c0534bb8f31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.svg"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.svg",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.svg",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.svg"
               }
             }
           }
@@ -147,8 +145,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "a2db3c0534bb8f31",
+  "active": "33997795a8a7e133",
   "lastOpenFiles": [
+    "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.md",
+    "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.svg",
+    "README.md",
     "JSFrontend/graphics3d.js",
     "Demo/Untitled.wl",
     "Demo/Metaballs.wl",
@@ -156,10 +157,8 @@
     "Demo/Request-Animation-Frame.wl",
     "docs/README.md",
     "docs/parts/how-it-works.md",
-    "README.md",
     "docs/parts/writting-a-function.md",
     "docs/drawings/browser-side.excalidraw.md",
-    "docs/drawings/overview.excalidraw.md",
-    "docs/drawings/Drawing 2023-02-09 16.52.56.excalidraw.md"
+    "docs/drawings/overview.excalidraw.md"
   ]
 }

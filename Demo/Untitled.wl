@@ -1,0 +1,11 @@
+<|"notebook" -> <|"name" -> "Untitled", "id" -> "rolled-fbe47", 
+   "kernel" -> LocalKernel, "objects" -> <||>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Untitled.wl", 
+   "cell" -> "9702bcb4-a6c6-45b9-8bfc-28a20ebba744", 
+   "date" -> DateObject[{2023, 3, 18, 17, 24, 56.480178`8.504471030631656}, 
+     "Instant", "Gregorian", 1.]|>, 
+ "cells" -> {<|"id" -> "9702bcb4-a6c6-45b9-8bfc-28a20ebba744", 
+    "type" -> "input", "data" -> ".md\nHello world", 
+    "display" -> "codemirror", "sign" -> "rolled-fbe47", "prev" -> Null, 
+    "next" -> Null, "parent" -> Null, "child" -> Null, 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn"|>

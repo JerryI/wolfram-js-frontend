@@ -9,6 +9,7 @@ BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Ut
 *)
 
 NotebookDefineEvaluators::usage = "defines the processors and languages to be used on Cells`Evaluate"
+NotebookAddEvaluator::usage = "add new supported lang/tool to the cell's evaluator"
 
 NotebookExtendDefinitions::usage = "extends the JSON objects of the notebook storage. internal command of the Evaluator"
 
@@ -16,6 +17,8 @@ NotebookExtendDefinitions::usage = "extends the JSON objects of the notebook sto
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
 *)
+$AssoticatedPath::usage = "an association table, it helpt to find notebook id by the path, on which it was opened by a client using NotebookPreload"
+$AssociationSocket::usage = "an association table, it helps to find notebook id by the associated socket of a random client"
 
 NotebookCreate::usage = "create an empty untitled notebook with an empty cell attached"
 
@@ -39,6 +42,10 @@ NotebookPromise::usage = "ask a server to do something... and return result as a
 NotebookStore::usage = "save (serialise) the notebook to a file using Cells`Pack methods"
 NotebookStoreManually::usage = "altered version of the previous command"
 
+PreloadNotebook::usage = "load into memeory (if it was not there) and updates date and path"
+CreateNewNotebook::usage = "create a serialised notebook and store it on a disk"
+CreateNewNotebookByPath::usage = "alternamtive version of the prev."
+
 NotebookEmitt::usage = "send anything to the kernel (async)"
 
 (*
@@ -59,6 +66,8 @@ $NotifyName = $InputFileName;
 
 (* list of rules socket id -> notebook id *)
 $AssociationSocket = <||>;
+
+$AssoticatedPath = <||>;
 
 Unprotect[NotebookCreate];
 Unprotect[NotebookOpen];
@@ -83,6 +92,8 @@ Options[NotebookCreate] = {
 (* define the default supported evaluators list *)
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
+NotebookAddEvaluator[type_] := jsfn`Processors = {type, jsfn`Processors}//Flatten;
+
 (* internal command used by the Evaluator from the remote/local kernel to extend the objects storage on notebook *)
 NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
     Print["Extend definitions"];
@@ -94,6 +105,62 @@ NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
     Print["Will be updated: "<>ToString[Length[updated] ] ];
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#] ], sign] &/@ updated;
 ];
+
+
+
+(* load a notebook into memory  *)
+PreloadNotebook[path_] := Module[{notebook},
+  If[!MemberQ[$AssoticatedPath//Keys, path],
+    notebook = Get[path];
+
+    (* if not found or corrupted -> create a new one *)
+    If[notebook["serializer"] =!= "jsfn",  
+      CreateNewNotebookByPath[path];
+      Print["CREATED A NEW ONE"];
+      Return[Null, Module];
+    ];
+
+    (*** deserialisation of the notebook and cells ***)
+
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
+    (* assiciate with a current path for further easy detection *)
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
+
+    (* assign the cellid of the first cell to the notebook *)
+    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
+    
+    Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+    JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
+
+    $AssoticatedPath[path] = notebook["notebook", "id"];
+    Print[$AssoticatedPath];
+    Clear[notebook];
+    Print["LOADED"];
+    
+  ]
+]
+
+
+(* create a serialsed notebook and store it as a file *)
+CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = "Untitled"},
+  While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
+    filename = StringJoin[filename, "-New"];
+  ];
+
+  $AssoticatedPath[path] = uid;
+  NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
+  NotebookStoreManually[uid];
+  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
+];
+
+(* create a serialsed notebook and store it as a file *)
+CreateNewNotebookByPath[name_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5]},
+  $AssoticatedPath[name] = uid;
+  NotebookCreate["id"->uid, "name"->FileBaseName[name], "path"->name ];
+  NotebookStoreManually[uid];
+];
+
 
 (* serialise the notebook to a file *)
 NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},

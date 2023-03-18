@@ -18,8 +18,10 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "@types/codemirror": "^5.60.6",
+    "@types/dat.gui": "^0.7.7",
     "@types/plotly.js": "^2.12.18",
     "codemirror": "^6.0.1",
+    "dat.gui": "^0.7.9",
     "purify-css": "^1.2.5",
     "rollup": "^3.10.0",
     "serve-static": "^1.14.1"

@@ -469,6 +469,20 @@ p {
   line-height: 2em;
 }
 
+.graphics3d-controller {
+  position: absolute;
+  top:0;
+  right:0;
+  opacity: 0;
+}
+
+.graphics3d-controller:hover {
+  position: absolute;
+  top:0;
+  right:0;
+  opacity: 0.7;
+}
+
 
 
 
