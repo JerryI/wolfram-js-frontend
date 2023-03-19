@@ -101083,6 +101083,12 @@ core.FrontEndCreateCell = function (args, env) {
       case 'js':
         createJSOutputCell(el, input["data"], uid);
         break;
+      case 'image':
+        createImageOutputCell(el, input["data"]);
+        break;
+      case 'fileprint':
+        createFileOutputCell(el, input["data"]);
+        break;
     }
   }
 
@@ -101100,6 +101106,30 @@ const createScopedEval = (scope, script) => {return({
   result: Function(`${script}`)
 })};
 
+function createFileOutputCell(el, data, uid) {
+
+  new EditorView({
+    doc: data,
+    extensions: [
+      smoothy,
+      EditorState.readOnly.of(true),
+      editorCustomTheme
+    ],
+    parent: el
+  });
+}
+
+function createImageOutputCell(el, data, uid) {
+  let elt = document.createElement("div");
+  
+  elt.classList.add("frontend-object");
+  el.appendChild(elt);  
+
+  let img = document.createElement("img");
+  img.width = 500;
+  img.src = data;
+  elt.appendChild(img);  
+}
 
 function createJSOutputCell(el, data, uid) {
   $jscells[uid] = createScopedEval({document, core}, data);

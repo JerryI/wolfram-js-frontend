@@ -30,7 +30,8 @@ PacletObject[
           {"JerryI`WolframJSFrontend`HTMLSupport`", "Addons/HTMLSupport.wl"},
           {"JerryI`WolframJSFrontend`MarkdownSupport`", "Addons/MarkdownSupport.wl"},
           {"JerryI`WolframJSFrontend`JSSupport`", "Addons/JSSupport.wl"},
-          {"JerryI`WolframJSFrontend`WolframLanguageSupport`", "Addons/WolframLanguageSupport.wl"}
+          {"JerryI`WolframJSFrontend`WolframLanguageSupport`", "Addons/WolframLanguageSupport.wl"},
+          {"JerryI`WolframJSFrontend`MagicFileEditor`", "Addons/MagicFileEditor.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

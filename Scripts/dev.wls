@@ -14,7 +14,8 @@ Get/@{
   "JerryI`WolframJSFrontend`WolframLanguageSupport`",
   "JerryI`WolframJSFrontend`HTMLSupport`",
   "JerryI`WolframJSFrontend`MarkdownSupport`",
-  "JerryI`WolframJSFrontend`JSSupport`"
+  "JerryI`WolframJSFrontend`JSSupport`",
+  "JerryI`WolframJSFrontend`MagicFileEditor`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
@@ -90,6 +91,8 @@ SetUpCron;
 LoadBuildFile["config.build.wl"];
 (* force to rebuild for the first time *)
 JerryI`WolframJSFrontend`Dev`Private`Rebuild;
+
+Print[JerryI`WolframJSFrontend`Notebook`Processors//InputForm];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
