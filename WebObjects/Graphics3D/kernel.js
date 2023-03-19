@@ -95,15 +95,95 @@ core.Opacity = (args, env) => {
 
 core.ImageScaled = (args, env) => { };
 
-core.Thickness = (args, env) => { };
+core.Thickness = (args, env) => { env.thickness = interpretate(args[0], env)};
 
-core.Arrowheads = (args, env) => { };
-
-core.Arrow = (args, env) => {
-  interpretate(args[0], env);
+core.Arrowheads = (args, env) => {
+  if (args.length == 1) {
+    env.arrowRadius = interpretate(args[0], env);
+  } else {
+    env.arrowHeight = interpretate(args[1], env);
+    env.arrowRadius = interpretate(args[0], env);
+  }
 };
 
-core.Tube = (args, env) => {
+core.TubeArrow = (args, env) => {
+  console.log('Context test');
+  console.log(this);
+
+  let radius = 1;
+  if (args.length > 1) radius = args[1];
+  /**
+   * @type {THREE.Vector3}}
+   */
+  const coordinates = interpretate(args[0], env);
+
+  const material = new THREE.MeshStandardMaterial({
+    color: env.color,
+    transparent: false,
+    roughness: env.roughness,
+    opacity: env.opacity,
+    metalness: env.metalness,
+    emissive: env.emissive
+  });
+
+  //points 1, 2
+  const p1 = new THREE.Vector3(...coordinates[0]);
+  const p2 = new THREE.Vector3(...coordinates[1]);
+  //direction
+  const dp = p2.clone().addScaledVector(p1, -1);
+
+  const geometry = new THREE.CylinderGeometry(radius, radius, dp.length(), 20, 1);
+
+  //calculate the center (might be done better, i hope BoundingBox doest not envolve heavy computations)
+  geometry.computeBoundingBox();
+  const position = geometry.boundingBox;
+
+  const center = position.max.addScaledVector(position.min, -1);
+
+  //default geometry
+  const cylinder = new THREE.Mesh(geometry, material);
+
+  //cone
+  const conegeometry = new THREE.ConeBufferGeometry(env.arrowRadius, env.arrowHeight, 32 );
+  const cone = new THREE.Mesh(conegeometry, material);
+  cone.position.y = dp.length()/2 + env.arrowHeight/2;
+
+  const group = new THREE.Group();
+  group.add(cylinder, cone);
+
+  //the default axis of a Three.js cylinder is [010], then we rotate it to dp vector.
+  //using https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+  const v = new THREE.Vector3(0, 1, 0).cross(dp.normalize());
+  const theta = Math.asin(v.length() / dp.length());
+  const sc = Math.sin(theta);
+  const mcs = 1.0 - Math.cos(theta);
+
+  //Did not find how to write it using vectors
+  const matrix = new THREE.Matrix4().set(
+    1 - mcs * (v.y * v.y + v.z * v.z), mcs * v.x * v.y - sc * v.z,/*   */ sc * v.y + mcs * v.x * v.z,/*   */ 0,//
+    mcs * v.x * v.y + sc * v.z,/*   */ 1 - mcs * (v.x * v.x + v.z * v.z), -(sc * v.x) + mcs * v.y * v.z,/**/ 0,//
+    -(sc * v.y) + mcs * v.x * v.z,/**/ sc * v.x + mcs * v.y * v.z,/*   */ 1 - mcs * (v.x * v.x + v.y * v.y), 0,//
+    0,/*                            */0,/*                            */ 0,/**                           */ 1
+  );
+
+  //middle target point
+  const middle = p1.divideScalar(2.0).addScaledVector(p2, 0.5);
+
+  //shift to the center and rotate
+  group.position = center;
+  group.applyMatrix4(matrix);
+
+  //translate its center to the middle target point
+  group.position.addScaledVector(middle, -1);
+
+  env.mesh.add(group);
+
+  geometry.dispose();
+  conegeometry.dispose();
+  material.dispose();
+};
+
+core.Arrow = (args, env) => {
   var arr = interpretate(args[0], env);
   if (arr.length === 1) arr = arr[0];
   if (arr.length !== 2) {
@@ -848,7 +928,9 @@ core.Graphics3D = (args, env) => {
       edgecolor: new THREE.Color(0, 0, 0),
       mesh: group,
       metalness: 0,
-      emissive: new THREE.Color(0, 0, 0)
+      emissive: new THREE.Color(0, 0, 0),
+      arrowHeight: 20,
+      arrowRadius: 5
     }
   
     interpretate(args[0], envcopy);

@@ -29,7 +29,7 @@ const GreekMatcher = new MatchDecorator({
     }
     toDOM() {
       let elt = document.createElement("span");
-      elt.innerHTML = '&'+this.name.toLowerCase().replace('sqrt', 'radic')+';';
+      elt.innerHTML = '&'+this.name.toLowerCase().replace('sqrt', 'radic').replace('degree', 'deg')+';';
   
       return elt;
     }

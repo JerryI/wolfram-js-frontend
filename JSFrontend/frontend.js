@@ -151,7 +151,7 @@ let editorCustomTheme = EditorView.theme({
 
 
 core.FrontEndRemoveCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var input = interpretate(args[0]);
   if (input["type"] === 'input') {
     document.getElementById(input["id"]).parentNode.remove();
 
@@ -179,7 +179,7 @@ core.FrontEndRemoveCell = function (args, env) {
 
 core.FrontEndMoveCell = function (args, env) {
   var template = interpretate(args[0]);
-  var input = JSON.parse(interpretate(args[1]));
+  var input = interpretate(args[1]);
 
   const cell   = document.getElementById(`${input["cell"]["id"]}---output`);
   //make it different id, so it will not conflict
@@ -197,14 +197,14 @@ core.FrontEndMoveCell = function (args, env) {
 }; 
 
 core.FrontEndMorphCell = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var input = interpretate(args[0]);
   console.log(input);
 
   //not implemented
 };
 
 core.FrontEndClearStorage = function (args, env) {
-  var input = JSON.parse(interpretate(args[0]));
+  var input = interpretate(args[0]);
   console.log(input);
 
   input["storage"].forEach(element => {
@@ -226,9 +226,29 @@ core.FrontEndJSEval = function (args, env) {
   eval(interpretate(args[0]));
 } 
 
+core.FrontEndGlobalAbort = function (args, env) {
+  const arr = Array.from(document.getElementById("frontend-editor").getElementsByClassName('loader-line'));
+  arr.forEach((el)=>{
+    el.classList.remove('loader-line-pending');
+  });
+}
+
+core.FrontEndUpdateCellState = function (args, env) {
+  const input = interpretate(args[0], env);
+  const loader = document.getElementById(input["id"]+"---"+input["type"]).parentNode.getElementsByClassName('loader-line')[0];
+
+  console.log(input["state"]);
+    if (input["state"] === 'pending')
+      loader.classList.add('loader-line-pending');
+    else
+      loader.classList.remove('loader-line-pending');
+}
+
 core.FrontEndCreateCell = function (args, env) {
+
   var template = interpretate(args[0]);
-  var input = JSON.parse(interpretate(args[1]));
+  var input = interpretate(args[1]);
+  
 
   if (input["parent"] === "") {
     
@@ -241,7 +261,7 @@ core.FrontEndCreateCell = function (args, env) {
   } else {
     document.getElementById(input["parent"]).insertAdjacentHTML('beforeend', template);
   }
-
+ 
   var uid = input["id"];
 
   {

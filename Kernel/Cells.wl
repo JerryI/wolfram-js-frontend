@@ -20,6 +20,8 @@ CellObjRemoveAccurate::usage = "remove a cell considering all connections fixing
 CellObjRemove::usage = "just remove a cell object from memory"
 CellObjRemoveAllNext::usage = "remove all next cells till the end"
 
+CellObjGetAllNext::usage = "forms a list of cellobjects"
+
 CellObjEvaluate::usage = "evaluate the cell by calling using the given evaluator and create an output cells"
 (*  CellObjEvaluate[CellObj[uid], evaluators]  
     
@@ -59,7 +61,8 @@ Options[CellObj] = {
     "data" -> Null,
     "props" -> <|"hidden"->False|>,
     "sign" :> CreateUUID[],
-    "id" :> CreateUUID[]
+    "id" :> CreateUUID[],
+    "state" -> "idle"
 };
 
 CellObj[OptionsPattern[]] := With[{cell = OptionValue["id"]}, 
@@ -73,7 +76,8 @@ CellObj[OptionsPattern[]] := With[{cell = OptionValue["id"]},
     CellObj[cell]["lang"    ] = OptionValue["lang"    ];
     CellObj[cell]["data"    ] = OptionValue["data"    ];
     CellObj[cell]["props"   ] = OptionValue["props"   ];
-    CellObj[cell]["sign"    ] = OptionValue["sign"    ];
+    CellObj[cell]["sign"    ]  = OptionValue["sign"    ];
+    CellObj[cell]["state"    ] = OptionValue["state"    ];
 
     CellObj[cell]
 ];
@@ -85,6 +89,15 @@ CellObjFindLast[CellObj[cell_]] := (
         next
     ]   
 );
+
+CellObj /: 
+CellObjGetAllNext[CellObj[cell_]] := Module[{array = {}},
+    Module[{next = CellObj[cell]},
+        array = {next};
+        While[next["next"] =!= Null, next = next["next"]; array = {next, array}//Flatten; ];
+    ];
+    array   
+];
 
 CellObj /: 
 CellObjFindFirst[CellObj[cell_]] := (
@@ -264,6 +277,7 @@ CellObjRemove[CellObj[cell_], Quite_:False] := (
     Unset[CellObj[cell]["props"] ];
     Unset[CellObj[cell]["child"] ];
     Unset[CellObj[cell]["display"] ];
+    Unset[CellObj[cell]["state"] ];
 );
 
 
@@ -332,11 +346,14 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
         ];    
 
 
-        With[{fireLocalEvent=JerryI`WolframJSFrontend`fireEvent},
-            (   
-                Print[StringTemplate["Eval: ``"][#]];
-                fireLocalEvent["Query++"][CellObj[cell]];
-                evaluator["Evaluator"][#, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
+        With[{fireLocalEvent=JerryI`WolframJSFrontend`fireEvent, list = Flatten[{evaluator["Epilog"][expr]}], length = Length[Flatten[{evaluator["Epilog"][expr]}]]},
+            CellObj[cell]["state"] = "pending";
+            fireLocalEvent["UpdateState"][CellObj[cell] ];
+
+            MapIndexed[(   
+                Print[StringTemplate["Eval: ``"][#1]];
+
+                evaluator["Evaluator"][#1, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
                     If[result =!= "Null" && StringLength[result] > 0,
                         With[{new = CellObjCreateChild[CellObj[cell], uid]},
                             new["data"]     = result;
@@ -347,9 +364,14 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
                             fireLocalEvent["NewCell"][new];
                         ]
                     ];
-                    fireLocalEvent["Query--"][CellObj[cell]];
+
+                    If[#2[[1]] == length,
+                        CellObj[cell]["state"] = "idle";
+                        fireLocalEvent["UpdateState"][CellObj[cell]];
+                    ];
+
                 ]];
-            )& /@ Flatten[{evaluator["Epilog"][expr]}];
+            )& , list];
         ];
     ];  
 ];

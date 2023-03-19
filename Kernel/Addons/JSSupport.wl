@@ -7,10 +7,10 @@ JSQ[str_]       := Length[StringCases[StringSplit[str, "\n"] // First, RegularEx
 
 JSProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["JSProcessor!"];
-  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][JSEvaluator[str, signature], callback, "Link"->"WSTP"];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][JerryI`WolframJSFrontend`Evaluator`JSEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
 
-JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[JSQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->JSProcessor       |>];
+JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[(JSQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->JSProcessor       |>)];
 
 End[];
 

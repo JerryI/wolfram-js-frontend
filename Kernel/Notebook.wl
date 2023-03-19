@@ -27,6 +27,8 @@ NotebookOpen::usage = "opens the notebook from the memory (not from the file!) a
 
 NotebookEvaluate::usage = "a wrapper for Cells`Evaluate function, which substitute the given Kernel for the evaluation"
 
+NotebookAbort::usage = "abort"
+
 NotebookGetObject::usage = "gets the JSON notebook object by ID and returns promise-resolve object back to the frontend"
 
 NotebookOperate::usage = "a wrapper for CellObj methods to manipulate cells from the frontend"
@@ -60,7 +62,7 @@ Begin["`Private`"];
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
 
 jsfn`Notebooks = <||>;
-jsfn`Processors = Null;
+jsfn`Processors = {};
 
 $NotifyName = $InputFileName;
 
@@ -92,7 +94,7 @@ Options[NotebookCreate] = {
 (* define the default supported evaluators list *)
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
-NotebookAddEvaluator[type_] := jsfn`Processors = {type, jsfn`Processors}//Flatten;
+NotebookAddEvaluator[type_] := jsfn`Processors = Join[{type}, jsfn`Processors];
 
 (* internal command used by the Evaluator from the remote/local kernel to extend the objects storage on notebook *)
 NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
@@ -251,6 +253,13 @@ NotebookCreate[OptionsPattern[]] := (
 NotebookEmitt[symbol_] := With[{channel = $AssociationSocket[Global`client]},  jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
 SetAttributes[NotebookEmitt, HoldFirst];
 
+NotebookAbort := With[{channel = $AssociationSocket[Global`client]},
+    NotebookKernelOperate["Abort"];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndGlobalAbort[Null], channel];
+    Print[CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ] ];
+    (#["state"]="idle") &/@ CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ];
+];
+
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
     $AssociationSocket[Global`client] = id;
@@ -335,13 +344,14 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
                         "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
                         "props"->cell["props"],
-                        "display"->cell["display"]
+                        "display"->cell["display"],
+                        "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
                     |>,
             
             template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]
         },
 
-        WebSocketSend[addr, Global`FrontEndCreateCell[template, ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ]];
     ];
 );
 
@@ -361,7 +371,22 @@ NotebookEventFire[addr_]["RemovedCell"][cell_] := (
                     |>
         },
 
-        WebSocketSend[addr, Global`FrontEndRemoveCell[ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndRemoveCell[obj ]];
+    ];
+);
+
+NotebookEventFire[addr_]["UpdateState"][cell_] := (
+    With[
+        {
+            obj = <|
+                        "id"->cell[[1]], 
+                        "sign"->cell["sign"],
+                        "type"->cell["type"],
+                        "state"->cell["state"]
+                    |>
+        },
+
+        WebSocketSend[addr, Global`FrontEndUpdateCellState[obj ] ];
     ];
 );
 
@@ -393,7 +418,7 @@ NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
                 |>
         },
 
-        WebSocketSend[addr, Global`FrontEndMoveCell[template, ExportString[obj, "JSON"] ]];
+        WebSocketSend[addr, Global`FrontEndMoveCell[template, obj ]];
     ];
 );
 

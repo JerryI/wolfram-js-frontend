@@ -8,14 +8,13 @@ Get/@{
   "JerryI`WolframJSFrontend`Kernel`",
   "JerryI`WolframJSFrontend`Notebook`", 
   "JerryI`WolframJSFrontend`Utils`",
-  "JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Dev`", 
+  "JerryI`WolframJSFrontend`Dev`", 
   "JerryI`WolframJSFrontend`WSPDynamicsExtension`",
 
   "JerryI`WolframJSFrontend`WolframLanguageSupport`",
   "JerryI`WolframJSFrontend`HTMLSupport`",
   "JerryI`WolframJSFrontend`MarkdownSupport`",
-  "JerryI`WolframJSFrontend`JSSupport`",
-  "JerryI`WolframJSFrontend`WolframLanguageSupport`"
+  "JerryI`WolframJSFrontend`JSSupport`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";

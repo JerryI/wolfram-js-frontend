@@ -6,10 +6,10 @@ MarkdownQ[str_] := Length[StringCases[StringSplit[str, "\n"] // First, RegularEx
 
 MarkdownProcessor[expr_String, signature_String, callback_] := Module[{str = StringDrop[expr, StringLength[First[StringSplit[expr, "\n"]]] ]},
   Print["MarkdownProcessor!"];
-  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][MarkdownEvaluator[str, signature], callback, "Link"->"WSTP"];
+  JerryI`WolframJSFrontend`Notebook`Notebooks[signature]["kernel"][JerryI`WolframJSFrontend`Evaluator`MarkdownEvaluator[str, signature], callback, "Link"->"WSTP"];
 ];
 
-JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>];
+JerryI`WolframJSFrontend`Notebook`NotebookAddEvaluator[(MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>)];
 
 End[];
 
