@@ -403,33 +403,7 @@
         alert('Not implemented');
     });    
 
-    //toggle sidebar
-    {
-        let sidebarToggle = localStorage.getItem("sidebar-hide");
-
-        if (typeof sidebarToggle === 'undefined') {
-            localStorage.setItem("sidebar-hide", 'false');
-            sidebarToggle = 'false';
-        }
-
-        if (sidebarToggle == 'true') {
-            document.querySelectorAll('.notion-sidebar-container')[0].classList.add('notion-sidebar-container-hide');
-            document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
-        }
-
-        document.getElementById("toggle-sidebar-button").addEventListener('click', (e)=>{
-            document.querySelectorAll('.notion-sidebar-container')[0].classList.toggle('notion-sidebar-container-hide');
-            document.querySelectorAll('.doubleChevronLeft')[0].classList.toggle('doubleChevronLeft-rotate');
-            
-            if (sidebarToggle == 'true')
-                sidebarToggle = 'false'
-            else
-                sidebarToggle = 'true'
-            
-            localStorage.setItem("sidebar-hide", sidebarToggle);
-        });        
-            
-    }    
+   
 
     core.FrontEndUpdateFileList = function(args, env) {
         const path = interpretate(args[0]);

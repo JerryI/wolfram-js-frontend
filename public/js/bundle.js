@@ -94,6 +94,14 @@ core.UpdateFrontEndExecutable = function (args, env) {
   });
 }
 
+core.FrontEndDispose = function (args, env) {
+  const arr = interpretate(args[0], env);
+  arr.forEach((el)=>{
+    delete $objetsStorage[el];
+  });
+  console.log('garbage removed');
+}
+
 core.SetFrontEndObject = function (args, env) {
   console.log(args);
   const key = interpretate(args[0], env);

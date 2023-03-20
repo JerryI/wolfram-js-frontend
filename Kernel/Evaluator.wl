@@ -13,7 +13,7 @@
 SetAttributes[SetFrontEndObject, HoldFirst];
 
 (* autoconvertion of the frontend object back to the original expressions *)
-FrontEndExecutableWrapper[uid_] := ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"];
+FrontEndExecutableWrapper[uid_] := ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"];
 (* exceptional case, when the frontened object is set *)
 SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 SetFrontEndObject[FrontEndExecutable[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
@@ -68,7 +68,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
               JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = $string;
 
               (* create a separate representation for the notebook and frontened using the same id *)
-              Global`$NewDefinitions[dumpid] = ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1];
+              Global`$NewDefinitions[dumpid] = <|"json"->ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1], "date"->Now |>;
               "FrontEndExecutable[\""<>dumpid<>"\"]"
             ]
           ,
@@ -94,7 +94,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
 
 WSPEvaluator[str_String, signature_][callback_] := Module[{},
   Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
+          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
         },
         
     callback[
@@ -109,7 +109,7 @@ WSPEvaluator[str_String, signature_][callback_] := Module[{},
 
 JSEvaluator[str_String, signature_][callback_] := Module[{},
   Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
+          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
         },
         
     callback[
@@ -124,7 +124,7 @@ JSEvaluator[str_String, signature_][callback_] := Module[{},
 
 MarkdownEvaluator[str_String, signature_][callback_] := Module[{},
   Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid], "ExpressionJSON"]]
+          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
         },
         
     callback[

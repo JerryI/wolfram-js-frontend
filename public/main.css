@@ -659,7 +659,13 @@
     max-height: 100%;
     position: relative;
 	margin-left: 246px;
-    width: 80vw;
+    width: calc(100vw - 250px);
+	transition: all ease-in-out 0.3s;
+}
+
+.notion-frame-extended {
+	margin-left: 0;
+	width: calc(100vw - 10px);
 }
 
 .notion-help-button.notion-focusable {

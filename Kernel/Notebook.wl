@@ -50,6 +50,8 @@ CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
 
+GarbageCollector::usage = "collect garbage form notebook"
+
 (*
     Internal commands used by other packages
     must not be PUBLIC!
@@ -105,7 +107,7 @@ NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
 
     (* if some objects were updated -> force to update the cached objects on the associated clients *)
     Print["Will be updated: "<>ToString[Length[updated] ] ];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#] ], sign] &/@ updated;
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#]["json"] ], sign] &/@ updated;
 ];
 
 
@@ -116,29 +118,53 @@ PreloadNotebook[path_] := Module[{notebook},
     notebook = Get[path];
 
     (* if not found or corrupted -> create a new one *)
-    If[notebook["serializer"] =!= "jsfn",  
-      CreateNewNotebookByPath[path];
-      Print["CREATED A NEW ONE"];
-      Return[Null, Module];
+    Switch[notebook["serializer"],
+        "jsfn",
+            Print["old format"];
+            Print["converting..."];
+            (*** deserialisation of the notebook and cells ***)
+            (notebook["notebook", "objects", #] = <|"date"->Now, "json"->notebook["notebook", "objects", #]|>) &/@ Keys[notebook["notebook", "objects"]];
+
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
+            (* assiciate with a current path for further easy detection *)
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
+        
+            (* assign the cellid of the first cell to the notebook *)
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
+            
+            Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+            JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
+        
+            $AssoticatedPath[path] = notebook["notebook", "id"];
+            Print[$AssoticatedPath];
+            Clear[notebook];
+            Print["LOADED"];
+        ,
+        "jsfn2",
+            (*** deserialisation of the notebook and cells ***)
+
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
+            (* assiciate with a current path for further easy detection *)
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
+
+            (* assign the cellid of the first cell to the notebook *)
+            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
+
+            Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+            JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
+
+            $AssoticatedPath[path] = notebook["notebook", "id"];
+            Print[$AssoticatedPath];
+            Clear[notebook];
+            Print["LOADED"];
+        ,
+        _,
+            CreateNewNotebookByPath[path];
+            Print["CREATED A NEW ONE"];
+            Return[Null, Module];
     ];
-
-    (*** deserialisation of the notebook and cells ***)
-
-    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
-    (* assiciate with a current path for further easy detection *)
-    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
-    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
-
-    (* assign the cellid of the first cell to the notebook *)
-    JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
-    
-    Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
-    JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
-
-    $AssoticatedPath[path] = notebook["notebook", "id"];
-    Print[$AssoticatedPath];
-    Clear[notebook];
-    Print["LOADED"];
     
   ]
 ]
@@ -170,7 +196,7 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
     notebook["notebook"] = jsfn`Notebooks[channel];
     notebook["cells"] = CellObjPack /@ cells;
-    notebook["serializer"] = "jsfn";
+    notebook["serializer"] = "jsfn2";
     notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
     Put[notebook, jsfn`Notebooks[channel]["path"]];
 
@@ -186,7 +212,7 @@ NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
     notebook["notebook"] = jsfn`Notebooks[channel];
     notebook["cells"] = CellObjPack /@ cells;
-    notebook["serializer"] = "jsfn";
+    notebook["serializer"] = "jsfn2";
     notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
     Put[notebook, jsfn`Notebooks[channel]["path"]];
 
@@ -260,6 +286,19 @@ NotebookAbort := With[{channel = $AssociationSocket[Global`client]},
     (#["state"]="idle") &/@ CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ];
 ];
 
+GarbageCollector[id_] := Module[{garbage},
+    Print["Collection garbage!"];
+    garbage = <||>;
+
+    (* a shitty bug did not allow me to do it properly *)
+    (If[Now - jsfn`Notebooks[id]["objects", #, "date"] > Quantity[40, "Seconds"], garbage[#]=True; jsfn`Notebooks[id]["objects", #] = .; ])&/@ Keys[ jsfn`Notebooks[id]["objects"] ];
+
+    garbage = garbage//Keys;
+
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndDispose[garbage], id];
+    Print[StringTemplate["`` were collected"][Length[garbage]] ];
+];
+
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
     $AssociationSocket[Global`client] = id;
@@ -268,7 +307,11 @@ NotebookOpen[id_String] := (
     ];
     jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
     jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
+
+    SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[30, "Seconds"], 1}, AutoRemove->True]]; 
 );
+
+
 
 NotebookEvaluate[cellid_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
@@ -288,7 +331,8 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
 
 
 NotebookGetObject[uid_] := With[{channel = $AssociationSocket[Global`client]},
-    jsfn`Notebooks[channel]["objects"][uid]
+    jsfn`Notebooks[channel]["objects"][uid]["date"] = Now;
+    jsfn`Notebooks[channel]["objects"][uid]["json"]
 ];
 
 NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},

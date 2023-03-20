@@ -2,7 +2,7 @@
    "kernel" -> LocalKernel, "objects" -> <||>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Untitled-New.wl", 
    "cell" -> "3b99b22b-7eed-4cd0-86fa-449626e932ba", 
-   "date" -> DateObject[{2023, 3, 19, 23, 28, 28.766696`8.21146496536772}, 
+   "date" -> DateObject[{2023, 3, 20, 16, 51, 40.071286`8.35540825863466}, 
      "Instant", "Gregorian", 1.]|>, 
  "cells" -> {<|"id" -> "0ab651a7-84f4-4e53-8af3-ce3d57702ff9", 
     "type" -> "output", "data" -> "randompic.png", "display" -> "image", 
@@ -77,4 +77,4 @@ RegularExpression[\"^([a-zA-Z_0-9\\-]+)\\.([a-zA-Z_]+)\"] ] //First",
      "56f36b86-58cb-4587-9eae-fd46e11f1659", 
     "next" -> "1aa2cfc0-a718-4cef-a4f2-b88fb801a460", "parent" -> Null, 
     "child" -> "4c84da88-25d6-428f-bf56-848df2db1540", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn"|>
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn2"|>
