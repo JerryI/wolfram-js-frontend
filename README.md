@@ -3,6 +3,8 @@
 This is a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects built for freeware __Wolfram Engine__
 
 ![](imgs/ezgif.com-crop.gif)
+
+
 **This project is still in alpha stage!**
 
 ## Motivation
