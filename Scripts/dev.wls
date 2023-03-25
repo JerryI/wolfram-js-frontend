@@ -15,7 +15,9 @@ Get/@{
   "JerryI`WolframJSFrontend`HTMLSupport`",
   "JerryI`WolframJSFrontend`MarkdownSupport`",
   "JerryI`WolframJSFrontend`JSSupport`",
-  "JerryI`WolframJSFrontend`MagicFileEditor`"
+  "JerryI`WolframJSFrontend`MagicFileEditor`",
+  "JerryI`WolframJSFrontend`SVGBobSupport`",
+  "JerryI`WolframJSFrontend`MermaidSupport`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
@@ -78,10 +80,9 @@ address = ip<>":"<>port;
 (* no cache, we are developers *)
 WSPCache["Off"];
 
-jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart
-jsf`jtp["promise"] = Null
+jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart;
 
-jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, "/", {"/"}}, "socket-close" -> True];
+jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, FileNameJoin[{jsf`root, "Assets"}], "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 
 (*NotificationMethodRegister;*)
@@ -89,8 +90,7 @@ SetUpCron;
 
 (* dev mode on *)
 LoadBuildFile["config.build.wl"];
-(* force to rebuild for the first time *)
-JerryI`WolframJSFrontend`Dev`Private`Rebuild;
+
 
 Print[JerryI`WolframJSFrontend`Notebook`Processors//InputForm];
 

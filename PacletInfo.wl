@@ -27,11 +27,13 @@ PacletObject[
           {"JerryI`WolframJSFrontend`Events`", "Events.wl"},
           {"JerryI`WolframJSFrontend`WSPDynamicsExtension`", "WSPDynamicsExtension.wl"},
 
-          {"JerryI`WolframJSFrontend`HTMLSupport`", "Addons/HTMLSupport.wl"},
-          {"JerryI`WolframJSFrontend`MarkdownSupport`", "Addons/MarkdownSupport.wl"},
-          {"JerryI`WolframJSFrontend`JSSupport`", "Addons/JSSupport.wl"},
-          {"JerryI`WolframJSFrontend`WolframLanguageSupport`", "Addons/WolframLanguageSupport.wl"},
-          {"JerryI`WolframJSFrontend`MagicFileEditor`", "Addons/MagicFileEditor.wl"}
+          {"JerryI`WolframJSFrontend`HTMLSupport`", "Addons/HTML/HTMLSupport.wl"},
+          {"JerryI`WolframJSFrontend`MarkdownSupport`", "Addons/Markdown/MarkdownSupport.wl"},
+          {"JerryI`WolframJSFrontend`JSSupport`", "Addons/JS/JSSupport.wl"},
+          {"JerryI`WolframJSFrontend`WolframLanguageSupport`", "Addons/WolframLanguage/WolframLanguageSupport.wl"},
+          {"JerryI`WolframJSFrontend`MagicFileEditor`", "Addons/MagicEditor/MagicFileEditor.wl"},
+          {"JerryI`WolframJSFrontend`SVGBobSupport`", "Addons/SVGBob/SVGBobSupport.wl"},
+          {"JerryI`WolframJSFrontend`MermaidSupport`", "Addons/Mermaid/MermaidSupport.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

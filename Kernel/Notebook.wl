@@ -30,6 +30,7 @@ NotebookEvaluate::usage = "a wrapper for Cells`Evaluate function, which substitu
 NotebookAbort::usage = "abort"
 
 NotebookGetObject::usage = "gets the JSON notebook object by ID and returns promise-resolve object back to the frontend"
+NotebookGetObjectForMe::usage = "gets ...the same"
 
 NotebookOperate::usage = "a wrapper for CellObj methods to manipulate cells from the frontend"
 
@@ -100,7 +101,9 @@ NotebookAddEvaluator[type_] := jsfn`Processors = Join[{type}, jsfn`Processors];
 
 (* internal command used by the Evaluator from the remote/local kernel to extend the objects storage on notebook *)
 NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
-    Print["Extend definitions"];
+    Print["Extend definitions with "];
+    Print[defs//InputForm//ToString];
+    Print["Endl"];
     (* add new stuff *)
     updated = Intersection[Keys[defs], Keys[jsfn`Notebooks[sign]["objects"] ] ];
     jsfn`Notebooks[sign]["objects"] = Join[jsfn`Notebooks[sign]["objects"], defs];
@@ -179,7 +182,7 @@ CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUI
   $AssoticatedPath[path] = uid;
   NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
   NotebookStoreManually[uid];
-  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
+  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', '_blank')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
 ];
 
 (* create a serialsed notebook and store it as a file *)
@@ -305,8 +308,7 @@ NotebookOpen[id_String] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 
     SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[30, "Seconds"], 1}, AutoRemove->True]]; 
 );
@@ -324,16 +326,23 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
         Print[StringTemplate["callback for `` channel"][channel]];
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
         
-        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel];
-        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel];
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
     ]];
 ];
 
 
 NotebookGetObject[uid_] := With[{channel = $AssociationSocket[Global`client]},
+    Print[StringTemplate["getting object `` with data inside \\n `` \\n"][uid, jsfn`Notebooks[channel]["objects"][uid]]];
+
     jsfn`Notebooks[channel]["objects"][uid]["date"] = Now;
     jsfn`Notebooks[channel]["objects"][uid]["json"]
 ];
+
+NotebookGetObjectForMe[uid_][id_] := (
+    Print["getting uid object "<>uid<>" for notebook "<>id];
+ 
+    jsfn`Notebooks[id]["objects"][uid]
+);
 
 NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel];
@@ -462,7 +471,7 @@ NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
                 |>
         },
 
-        WebSocketSend[addr, Global`FrontEndMoveCell[template, obj ]];
+        WebSocketSend[addr, Global`FrontEndMorpCell[template, obj ]];
     ];
 );
 

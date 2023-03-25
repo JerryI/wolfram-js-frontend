@@ -7,8 +7,8 @@ export default {
   input: 'Temp/merged.js',
   
   output: {
-    file: 'Temp/bundle.js',
-    format: 'cjs',
+    dir: 'public/js',
+    format: "es",
     strict: false
   },
   plugins    : [

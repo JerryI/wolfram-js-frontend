@@ -1,24 +1,24 @@
 const aflatten = (ary) => ary.flat(Infinity);
-var interpretate;
-var $objetsStorage = {};
-var $promisesAssoc = {};
 
 class Deferred {
-  constructor(uid) {
+  promise = {}
+  reject = {}
+  resolve = {}
+  
+  constructor() {
     this.promise = new Promise((resolve, reject)=> {
       this.reject = reject
       this.resolve = resolve
     });
   }
-}
-
-interpretate = function (d, env = { 
+}  
+    
+var interpretate = (d, env = { 
   element: document.body, 
   mesh: undefined, 
   numerical: false, 
-  todom: false, 
-  chain: {}
-}) {
+  todom: false
+}) => {
 
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
@@ -29,7 +29,7 @@ interpretate = function (d, env = {
     return d;
   }
   if (typeof d === 'number') {
-    if (env.todom === true) env.element.innerHTML = d;
+    if (env.todom === true) env.element.innerHTML = String(d);
     return d; 
   }
 
@@ -38,11 +38,183 @@ interpretate = function (d, env = {
   this.name = d[0];
   this.args = d.slice(1, d.length);
 
-  console.log(this.name);
-
   if ('method' in env) return core[this.name][env.method](this.args, env);
   return core[this.name](this.args, env);
 };
+
+//Server API
+let server = {
+  promises : {},
+  socket: {},
+  
+  init(socket) {
+    this.socket = socket
+  },
+  ask(expr) {
+    const uid = Date.now() + Math.floor(Math.random() * 100);
+
+    const promise = new Deferred();
+    this.promises[uid] = promise;
+    
+    this.socket.send('NotebookPromise["'+uid+'", ""]['+expr+']');
+    
+    return promise.promise 
+  },
+  emitt(uid, data) {
+    this.socket.send('NotebookEmitt[EmittedEvent["'+uid+'", '+data+']]');
+  }
+}
+ 
+
+var ObjectHashMap = {}
+
+class ObjectStorage {
+  refs = {}
+  uid = ''
+  cached = false
+  cache = []
+  
+  constructor(uid) {
+    this.uid = uid;
+    ObjectHashMap[uid] = this;
+  } 
+  
+  assign(obj) {
+    this.refs[obj.instance] = obj;
+  }
+  
+  dropref(obj) {
+    console.log('dropped ref: ' + obj.instance);
+    delete this.refs[obj.instance];
+  }
+  
+  update(newdata) {
+    this.cache = newdata;
+    Object.keys(this.refs).forEach((ref)=>{
+      console.log('Updating... ' + this.refs[ref].uid);
+      this.refs[ref].update();
+    });
+  }
+  
+  get() {
+    if (this.cached) return this.cache;
+    const promise = new Deferred();
+    console.log('NotebookGetObject["'+this.uid+'"]');
+    server.ask('NotebookGetObject["'+this.uid+'"]').then((data)=>{
+      this.cache = JSON.parse(interpretate(data));
+      this.cached = true;
+      console.log('got from the server. storing in cache...');
+      promise.resolve(this.cache);
+    })
+    
+    return promise.promise;  
+  }
+}
+
+class ExecutableObject {
+  env = {}
+  
+  uid = ''
+  
+  dead = false
+
+  //local scope
+  local = {}
+
+  async execute() {
+    console.log('executing '+this.uid+'....');
+    const content = await this.storage.get(this.uid);
+
+    //pass local scope
+    this.env.local = this.local;
+    console.log('interpreting the content of '+this.uid+'....');
+    console.log('content');
+    console.log(content);
+    return interpretate(content, this.env);
+  }
+
+  dispose() {
+    if (this.dead) return;
+    this.dead = true;
+
+    console.log('DESTORY: ' + this.uid);
+    //going down
+    this.env.method = 'destroy';
+    
+    //unregister from the storage class
+    this.storage.dropref(this);
+
+    //pass local scope
+    this.env.local = this.local;    
+    //the link between objects will be dead automatically
+    interpretate(this.storage.get(this.uid), this.env);
+  }
+  
+  update() {
+    console.log('updating...'+this.uid);
+    //bubble up (only by 1 level... cuz some BUG)
+    if (this.parent instanceof ExecutableObject && !(this.child instanceof ExecutableObject)) return this.parent.update(); 
+    
+    //update the three
+    this.env.method = 'update';
+    //pass local scope
+    this.env.local = this.local;
+    console.log('interprete...'+this.uid);
+    return interpretate(this.storage.get(this.uid), this.env);
+  }
+
+  constructor(uid, env) {
+    console.log('constructing the instance of '+uid+'...');
+    
+    this.uid = uid;
+    this.env = env;
+    
+    this.instance = Date.now() + Math.floor(Math.random() * 100);
+    
+    this.env.element = this.env.element || 'body';
+    //global scope
+    //making a stack-call only for executable objects
+    this.env.global.stack = this.env.global.stack || {};
+    this.env.global.stack[uid] = this;
+    
+    this.env.root = this.env.root || {};
+    
+    if (uid in ObjectHashMap) this.storage = ObjectHashMap[uid]; else this.storage = new ObjectStorage(uid);
+    this.storage.assign(this);
+    
+    if (this.env.root instanceof ExecutableObject) {
+      //connecting together
+      console.log('connection between two: '+this.env.root.uid + ' and a link to '+this.uid);
+      this.parent = this.env.root;
+      this.env.root.child = this;
+    }
+    
+    this.env.root = this;
+    return this;
+  }  
+};
+
+core.FrontEndExecutable = async (args, env) => {
+  const key = interpretate(args[0], env);
+  //creates an instance with its own separate env
+  //we need this local context to create stuff and then, destory it if it necessary
+  console.log("FEE: creating an object with key "+key);
+  const obj = new ExecutableObject(key, env);
+  
+  const result = await obj.execute()
+  return result;  
+};
+
+core.FrontEndExecutable.update = async (args, env) => {
+  const key = interpretate(args[0], env);
+  return await env.global.stack[key].execute();
+};
+
+core.FrontEndExecutable.destroy = async (args, env) => {
+  const key = interpretate(args[0], env);
+  await env.global.stack[key].dispose();
+};
+
 
 core._getRules = function(args, env) {
   let rules = {};
@@ -60,116 +232,49 @@ core.FireEvent = function(args, env) {
   const key  = interpretate(args[0], env);
   const data = interpretate(args[1], env);
 
-  socket.send(`NotebookEmitt[EmittedEvent["${key}", ${data}]]`);
+  server.emitt(key, data);
 }
 
-core.CallServer = function (args, env) {
-  const uid = uuidv4();
-  var promise = new Deferred(uid);
-  $promisesAssoc[uid] = promise;
 
-  const func = interpretate(args[0], env);
-  //const params = JSON.stringify(env).replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
-  socket.send('NotebookPromise["'+uid+'", ""]['+func+']');
-  return promise.promise;
-}
-
-core.PromiseResolve = function (args, env) {
+core.PromiseResolve = (args, env) => {
   const uid = interpretate(args[0], env);
-  const data = JSON.parse(interpretate(args[1], env));
-  //todo allow to interprete the result
-  $promisesAssoc[uid].resolve(data);
-  delete $promisesAssoc[uid];
+  server.promises[uid].resolve(args[1]);
+  delete server.promises[uid];
 }
 
 core.UpdateFrontEndExecutable = function (args, env) {
   const key = interpretate(args[0], env);
   var data  = JSON.parse(interpretate(args[1], env));
-  $objetsStorage[key].data = data;
-
-  $objetsStorage[key].handlers.forEach(element => {
-    let envobject = Object.assign({}, element.env);
-    envobject.chain = {}; 
-    core.FrontEndExecutable([element.exe], {...envobject, method: 'update'})
-  });
+  
+  ObjectHashMap[key].update(data);
 }
 
 core.FrontEndDispose = function (args, env) {
-  const arr = interpretate(args[0], env);
-  arr.forEach((el)=>{
-    delete $objetsStorage[el];
-  });
+  //no need anymore
   console.log('garbage removed');
 }
 
+
 core.SetFrontEndObject = function (args, env) {
-  console.log(args);
   const key = interpretate(args[0], env);
-
-  $objetsStorage[key].data = args[1];
-  console.log("new data");
-  console.log($objetsStorage[key].data);
-  console.log("end");
-
-
-  $objetsStorage[key].handlers.forEach(element => {
-    let envobject = Object.assign({}, element.env);
-    envobject.chain = {}; 
-    console.log("reactive chain of functions will be applied");
-    core.FrontEndExecutable([element.exe], {...envobject, update: 'data'})
-  });
-}
-
-core.FrontEndExecutable = async function (args, env) {
-  const key = interpretate(args[0], env);
-  //var chain = {};
-
-  /*if(!env.method) {
-    console.log('chain arrived');
-    var chain = Object.assign({}, env.chain);
-    console.log(chain);
-
-    env.chain = {exe: "'"+key+"'", env: Object.assign({}, env)};
-  }*/
-
-  var copy = env;
-
-  if (key in $objetsStorage) {
-    //if (Object.keys(chain).length > 0 && $objetsStorage[key].handlers.length === 0) {
-    //  $objetsStorage[key].handlers.push(chain);
-    //}
-    if (copy.hold === true) return $objetsStorage[key].data;
-    console.log('already there. getting...');
-    return await interpretate($objetsStorage[key].data, copy);
-  }
-  
-  console.log('not here. asking server...');
-
-  return new Promise((resolve, reject) => {
-    core.CallServer([`'NotebookGetObject["${key}"]'`], {...copy, hold: true})
-      .then((val) => {
-        $objetsStorage[key] = {data: [], handlers: []};
-        $objetsStorage[key].data = val;
-        //console.log('chain info');
-        //console.log(chain);
-        //if (Object.keys(chain).length > 0 && $objetsStorage[key].handlers.length === 0) {
-        //  $objetsStorage[key].handlers.push(chain);
-        //}        
-        if (copy.hold === true) resolve(val); else resolve(interpretate(val, copy));
-      });
-    });
+  ObjectHashMap[key].update(args[1]);
 }
 
 core.FrontEndExecutableHold = core.FrontEndExecutable;
-
 //to prevent codemirror 6 from drawing it
-core.FrontEndRef = function(args, env) {
-  return core.FrontEndExecutable(args, env);
-}
+core.FrontEndRef = core.FrontEndExecutable;
 //hold analogue for the backend
-core.FrontEndOnly = function(args, env) {
+core.FrontEndOnly = (args, env) => {
   return interpretate(args[0], env);
-}
+};
+
+core.FrontEndOnly.update = (args, env) => {
+  return interpretate(args[0], env);
+};
+
+core.FrontEndOnly.destroy = (args, env) => {
+  interpretate(args[0], env);
+};
 
 core.Rational = function (args, env) {
   if (env.numerical === true) return interpretate(args[0], env)/interpretate(args[1], env);
@@ -196,8 +301,26 @@ core.List = function (args, env) {
     }
     return list;
   }
-
   
+  copy = Object.assign({}, env);
+  for (i = 0, len = args.length; i < len; i++) {
+    e = args[i];
+    list.push(interpretate(e, copy));
+  }
+  return list;
+};
+
+core.List.destroy = (args, env) => {
+  var copy, i, len, list;
+  for (i = 0, len = args.length; i < len; i++) {
+    interpretate(args[i], env);
+  }
+};
+
+core.List.update = (args, env) => {
+  var copy, e, i, len, list;
+  list = [];
+
   copy = Object.assign({}, env);
   for (i = 0, len = args.length; i < len; i++) {
     e = args[i];
@@ -227,15 +350,6 @@ core.Rule = function (args, env) {
 };
 
 core.Rule.update = core.Rule;
-
-core.Slot = function (args, env) {
-  return env.slot[interpretate(args[0], env)];
-}
-
-core.Function = function (args, env) {
-  env.todom = false;
-
-}
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

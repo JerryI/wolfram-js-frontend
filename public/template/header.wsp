@@ -7,7 +7,8 @@
             //avoid errors, when loading the scripts takes too much time
             var core = {};
         </script>
-        <script defer src="/js/bundle.js"></script>
+        <script defer type="module" src="/js/bundle.js"></script>
+        <script defer src="/js/core.js"></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

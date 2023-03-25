@@ -13,23 +13,29 @@
 SetAttributes[SetFrontEndObject, HoldFirst];
 
 (* autoconvertion of the frontend object back to the original expressions *)
-FrontEndExecutableWrapper[uid_] := ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"];
+FrontEndExecutableWrapper[uid_] :=  ImportString[
+  Function[res, If[!StringQ[res], 
+                  JerryI`WolframJSFrontend`Evaluator`objects[uid] = AskMaster[Global`NotebookGetObjectForMe[uid]];
+                  JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"]
+                  ,
+                  res
+    ]
+  ] @ (JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"])
+, "ExpressionJSON"];
 (* exceptional case, when the frontened object is set *)
 SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 SetFrontEndObject[FrontEndExecutable[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 
-BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`"}];
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`", "JerryI`WolframJSFrontend`Remote`"}];
 
 (* going to be executed on the remote or local kernels *)
 
 WolframEvaluator::usage = "WolframEvaluator[] a basic mathematica kernel, which executes the commands. Can be run on Local or on Remote kernel"
 (*
-  WolframEvaluator[::expression string::, ::blocks or not the output::, ::signature, i.e. notebook ID::]
+  WolframEvaluator[::expression string::, ::blocks or not the output::, ::signature, i.e. notebook ID::, ::type::]
   accepts the ::callback function:: as a subvalue, which prevents it from the evaluation on the transport stage
 *)
-WSPEvaluator::usage = "WSPEvaluator[]"
-MarkdownEvaluator::usage = "MarkdownEvaluator[]"
-JSEvaluator:usage = "JSEval"
+TemplateEvaluator::usage = "used for custom built cell types. uses WSP engine"
 CellPrologOption::usage = "CellPrologOption[] used for overriding cell's id"
 
 Begin["`Private`"]; 
@@ -92,50 +98,19 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
   ]
 ];
 
-WSPEvaluator[str_String, signature_][callback_] := Module[{},
-  Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
-        },
+TemplateEvaluator[str_String, signature_, type_:String][callback_] := Module[{},
+  Block[{$CellUid = CreateUUID[]},
         
     callback[
       LoadString[str],
       $CellUid, 
-      "html",
+      type,
       Null
     ];
     
   ]
 ];
 
-JSEvaluator[str_String, signature_][callback_] := Module[{},
-  Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
-        },
-        
-    callback[
-      LoadString[str],
-      $CellUid, 
-      "js",
-      Null
-    ];
-    
-  ]
-];
-
-MarkdownEvaluator[str_String, signature_][callback_] := Module[{},
-  Block[{$CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out,
-          Global`FrontEndExecutable = Function[uid,   ImportString[JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"], "ExpressionJSON"]]
-        },
-        
-    callback[
-      LoadString[str],
-      $CellUid, 
-      "markdown",
-      Null
-    ];
-    
-  ]
-];
 
 (* i do not need them anymore  *)
 

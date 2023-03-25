@@ -23,11 +23,10 @@ core.WEBSlider = function(args, env) {
     });    
 }
 
+core.WEBSlider.update = () => {}
+core.WEBSlider.destroy = () => {}
+
 core.Panel = function(args, env) {
-    if(env.update) {
-        console.error("Dynamic panels are not supported");
-        return;
-    }
 
     const objects = interpretate(args[0], {...env, hold:true});
     console.log(objects);
@@ -46,3 +45,7 @@ core.Panel = function(args, env) {
     });
 
 }
+
+core.Panel.update = (args, env) => { interpretate(args[0], env) }
+
+core.Panel.destroy = () => {}

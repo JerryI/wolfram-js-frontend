@@ -63,6 +63,8 @@ JTPClientEvaluate::usage =
 JTPClientEvaluateAsync::usage = 
 "JTPClientEvaluateAsync[client, expr]"
 
+JTPClientEvaluateAsyncNoReply::usage = "just write, no reply"
+
 
 JTPClientStopListening::usage = 
 "JTPClientStopListening[client]"
@@ -457,6 +459,12 @@ Module[{},
 	BinaryWrite[server["socket"], serialize[Hold[expr]]]; 
 ]
 
+JTPClient /: 
+JTPClientEvaluateAsyncNoReply[JTPClient[server_Symbol?AssociationQ], expr_, opts___?OptionQ] :=
+Module[{}, 
+	BinaryWrite[server["socket"], serialize[Hold[expr]]]; 
+]
+
 
 
 JTPClient /: 
@@ -471,6 +479,8 @@ SetAttributes[JTPClientSend, HoldRest]
 
 
 SetAttributes[JTPClientEvaluate, HoldRest]
+
+SetAttributes[JTPClientEvaluateAsyncNoReply, HoldRest]
 
 
 SetAttributes[JTPClientEvaluateAsync, HoldRest]

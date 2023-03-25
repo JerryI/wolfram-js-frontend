@@ -1,16 +1,7 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Water } from 'three/examples/jsm/objects/Water';
-import { Sky } from 'three/examples/jsm/objects/Sky';
-
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-
-import { GUI } from 'dat.gui'
+let three = false
 
 function computeGroupCenter(group) {
-  var center = new THREE.Vector3();
+  var center = new three.Vector3();
   var children = group.children;
   var count = children.length;
   for (var i = 0; i < count; i++) {
@@ -41,7 +32,7 @@ core.Annotation = (args, env) => {
 };
 
 core.GraphicsGroup = (args, env) => {
-  var group = new THREE.Group();
+  var group = new three.Group();
   var copy = Object.assign({}, env);
 
   copy.mesh = group;
@@ -76,7 +67,7 @@ core.RGBColor = (args, env) => {
   const g = interpretate(args[1], env);
   const b = interpretate(args[2], env);
 
-  env.color = new THREE.Color(r, g, b);
+  env.color = new three.Color(r, g, b);
 };
 
 core.Roughness = (args, env) => {
@@ -113,53 +104,59 @@ core.TubeArrow = (args, env) => {
   let radius = 1;
   if (args.length > 1) radius = args[1];
   /**
-   * @type {THREE.Vector3}}
+   * @type {three.Vector3}}
    */
   const coordinates = interpretate(args[0], env);
 
-  const material = new THREE.MeshStandardMaterial({
+  /**
+   * @type {THREE.MeshPhysicalMaterial}}
+   */  
+  const material = new three.MeshPhysicalMaterial({
     color: env.color,
     transparent: false,
     roughness: env.roughness,
     opacity: env.opacity,
     metalness: env.metalness,
-    emissive: env.emissive
+    emissive: env.emissive,
+    reflectivity: env.reflectivity,
+    clearcoat: env.clearcoat,
+    ior: env.ior
   });
 
   //points 1, 2
-  const p1 = new THREE.Vector3(...coordinates[0]);
-  const p2 = new THREE.Vector3(...coordinates[1]);
+  const p1 = new three.Vector3(...coordinates[0]);
+  const p2 = new three.Vector3(...coordinates[1]);
   //direction
   const dp = p2.clone().addScaledVector(p1, -1);
 
-  const geometry = new THREE.CylinderGeometry(radius, radius, dp.length(), 20, 1);
+  const geometry = new three.CylinderGeometry(radius, radius, dp.length(), 20, 1);
 
   //calculate the center (might be done better, i hope BoundingBox doest not envolve heavy computations)
   geometry.computeBoundingBox();
-  const position = geometry.boundingBox;
+  let position = geometry.boundingBox;
 
-  const center = position.max.addScaledVector(position.min, -1);
+  let center = position.max.addScaledVector(position.min, -1);
 
   //default geometry
-  const cylinder = new THREE.Mesh(geometry, material);
+  const cylinder = new three.Mesh(geometry, material);
 
   //cone
-  const conegeometry = new THREE.ConeBufferGeometry(env.arrowRadius, env.arrowHeight, 32 );
-  const cone = new THREE.Mesh(conegeometry, material);
+  const conegeometry = new three.ConeBufferGeometry(env.arrowRadius, env.arrowHeight, 32 );
+  const cone = new three.Mesh(conegeometry, material);
   cone.position.y = dp.length()/2 + env.arrowHeight/2;
 
-  const group = new THREE.Group();
+  let group = new three.Group();
   group.add(cylinder, cone);
 
   //the default axis of a Three.js cylinder is [010], then we rotate it to dp vector.
   //using https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-  const v = new THREE.Vector3(0, 1, 0).cross(dp.normalize());
+  const v = new three.Vector3(0, 1, 0).cross(dp.normalize());
   const theta = Math.asin(v.length() / dp.length());
   const sc = Math.sin(theta);
   const mcs = 1.0 - Math.cos(theta);
 
   //Did not find how to write it using vectors
-  const matrix = new THREE.Matrix4().set(
+  const matrix = new three.Matrix4().set(
     1 - mcs * (v.y * v.y + v.z * v.z), mcs * v.x * v.y - sc * v.z,/*   */ sc * v.y + mcs * v.x * v.z,/*   */ 0,//
     mcs * v.x * v.y + sc * v.z,/*   */ 1 - mcs * (v.x * v.x + v.z * v.z), -(sc * v.x) + mcs * v.y * v.z,/**/ 0,//
     -(sc * v.y) + mcs * v.x * v.z,/**/ sc * v.x + mcs * v.y * v.z,/*   */ 1 - mcs * (v.x * v.x + v.y * v.y), 0,//
@@ -170,7 +167,7 @@ core.TubeArrow = (args, env) => {
   const middle = p1.divideScalar(2.0).addScaledVector(p2, 0.5);
 
   //shift to the center and rotate
-  group.position = center;
+  //group.position = center;
   group.applyMatrix4(matrix);
 
   //translate its center to the middle target point
@@ -192,8 +189,8 @@ core.Arrow = (args, env) => {
   }
 
   const points = [
-    new THREE.Vector4(...arr[0], 1),
-    new THREE.Vector4(...arr[1], 1),
+    new three.Vector4(...arr[0], 1),
+    new three.Vector4(...arr[1], 1),
   ];
 
   points.forEach((p) => {
@@ -203,7 +200,7 @@ core.Arrow = (args, env) => {
   const origin = points[0].clone();
   const dir = points[1].add(points[0].negate());
 
-  const arrowHelper = new THREE.ArrowHelper(
+  const arrowHelper = new three.ArrowHelper(
     dir.normalize(),
     origin,
     dir.length(),
@@ -217,18 +214,21 @@ core.Sphere = (args, env) => {
   var radius = 1;
   if (args.length > 1) radius = args[1];
 
-  const material = new THREE.MeshStandardMaterial({
+  const material = new three.MeshPhysicalMaterial({
     color: env.color,
     roughness: env.roughness,
     opacity: env.opacity,
     metalness: env.metalness,
-    emissive: env.emissive
+    emissive: env.emissive,
+    reflectivity: env.reflectivity,
+    clearcoat: env.clearcoat,
+    ior: env.ior
   });
 
   function addSphere(cr) {
-    const origin = new THREE.Vector4(...cr, 1);
-    const geometry = new THREE.SphereGeometry(radius, 20, 20);
-    const sphere = new THREE.Mesh(geometry, material);
+    const origin = new three.Vector4(...cr, 1);
+    const geometry = new three.SphereGeometry(radius, 20, 20);
+    const sphere = new three.Mesh(geometry, material);
 
     sphere.position.set(origin.x, origin.y, origin.z);
 
@@ -261,7 +261,7 @@ core.Sky = (args, env) => {
 	sky.scale.setScalar( 10000 );
 	env.mesh.add( sky );
   env.sky = sky;
-  env.sun = new THREE.Vector3();
+  env.sun = new three.Vector3();
 
 	const skyUniforms = sky.material.uniforms;
 
@@ -272,19 +272,19 @@ core.Sky = (args, env) => {
 }
 
 core.Water = (args, env) => {
-  const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+  const waterGeometry = new three.PlaneGeometry( 10000, 10000 );
 
 	const water = new Water(
 		waterGeometry,
 		{
 			textureWidth: 512,
 			textureHeight: 512,
-			waterNormals: new THREE.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
+			waterNormals: new three.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
 
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        texture.wrapS = texture.wrapT = three.RepeatWrapping;
 			} ),
 
-      sunDirection: new THREE.Vector3(),
+      sunDirection: new three.Vector3(),
 			sunColor: 0xffffff,
 			waterColor: 0x001e0f,
 			distortionScale: 3.7,
@@ -300,23 +300,23 @@ core.Water = (args, env) => {
 
 core.Cuboid = (args, env) => {
   //if (params.hasOwnProperty('geometry')) {
-  //	var points = [new THREE.Vector4(...interpretate(func.args[0]), 1),
-  //				new THREE.Vector4(...interpretate(func.args[1]), 1)];
+  //	var points = [new three.Vector4(...interpretate(func.args[0]), 1),
+  //				new three.Vector4(...interpretate(func.args[1]), 1)];
   //}
   /**
-   * @type {THREE.Vector4}
+   * @type {three.Vector4}
    */
   var diff;
   /**
-   * @type {THREE.Vector4}
+   * @type {three.Vector4}
    */
   var origin;
   var p;
 
   if (args.length === 2) {
     var points = [
-      new THREE.Vector4(...interpretate(args[0], env), 1),
-      new THREE.Vector4(...interpretate(args[1], env), 1),
+      new three.Vector4(...interpretate(args[0], env), 1),
+      new three.Vector4(...interpretate(args[1], env), 1),
     ];
 
     origin = points[0]
@@ -326,8 +326,8 @@ core.Cuboid = (args, env) => {
     diff = points[0].clone().add(points[1].clone().negate());
   } else if (args.length === 1) {
     p = interpretate(args[0], env);
-    origin = new THREE.Vector4(...p, 1);
-    diff = new THREE.Vector4(1, 1, 1, 1);
+    origin = new three.Vector4(...p, 1);
+    diff = new three.Vector4(1, 1, 1, 1);
 
     //shift it
     origin.add(diff.clone().divideScalar(2));
@@ -336,22 +336,25 @@ core.Cuboid = (args, env) => {
     return;
   }
 
-  const geometry = new THREE.BoxGeometry(diff.x, diff.y, diff.z);
-  const material = new THREE.MeshStandardMaterial({
+  const geometry = new three.BoxGeometry(diff.x, diff.y, diff.z);
+  const material = new three.MeshPhysicalMaterial({
     color: env.color,
     transparent: true,
     opacity: env.opacity,
     roughness: env.roughness,
     depthWrite: true,
     metalness: env.metalness,
-    emissive: env.emissive
+    emissive: env.emissive,
+    reflectivity: env.reflectivity,
+    clearcoat: env.clearcoat,
+    ior: env.ior
   });
 
-  //material.side = THREE.DoubleSide;
+  //material.side = three.DoubleSide;
 
-  const cube = new THREE.Mesh(geometry, material);
+  const cube = new three.Mesh(geometry, material);
 
-  //var tr = new THREE.Matrix4();
+  //var tr = new three.Matrix4();
   //	tr.makeTranslation(origin.x,origin.y,origin.z);
 
   //cube.applyMatrix(params.matrix.clone().multiply(tr));
@@ -372,26 +375,29 @@ core.Cylinder = (args, env) => {
   let radius = 1;
   if (args.length > 1) radius = args[1];
   /**
-   * @type {THREE.Vector3}}
+   * @type {three.Vector3}}
    */
   const coordinates = interpretate(args[0], env);
 
-  const material = new THREE.MeshStandardMaterial({
+  const material = new three.MeshPhysicalMaterial({
     color: env.color,
     transparent: false,
     roughness: env.roughness,
     opacity: env.opacity,
     metalness: env.metalness,
-    emissive: env.emissive
+    emissive: env.emissive,
+    reflectivity: env.reflectivity,
+    clearcoat: env.clearcoat,
+    ior: env.ior
   });
 
   //points 1, 2
-  const p1 = new THREE.Vector3(...coordinates[0]);
-  const p2 = new THREE.Vector3(...coordinates[1]);
+  const p1 = new three.Vector3(...coordinates[0]);
+  const p2 = new three.Vector3(...coordinates[1]);
   //direction
   const dp = p2.clone().addScaledVector(p1, -1);
 
-  const geometry = new THREE.CylinderGeometry(radius, radius, dp.length(), 20, 1);
+  const geometry = new three.CylinderGeometry(radius, radius, dp.length(), 20, 1);
 
   //calculate the center (might be done better, i hope BoundingBox doest not envolve heavy computations)
   geometry.computeBoundingBox();
@@ -400,17 +406,17 @@ core.Cylinder = (args, env) => {
   const center = position.max.addScaledVector(position.min, -1);
 
   //default geometry
-  const cylinder = new THREE.Mesh(geometry, material);
+  const cylinder = new three.Mesh(geometry, material);
 
   //the default axis of a Three.js cylinder is [010], then we rotate it to dp vector.
   //using https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-  const v = new THREE.Vector3(0, 1, 0).cross(dp.normalize());
+  const v = new three.Vector3(0, 1, 0).cross(dp.normalize());
   const theta = Math.asin(v.length() / dp.length());
   const sc = Math.sin(theta);
   const mcs = 1.0 - Math.cos(theta);
 
   //Did not find how to write it using vectors
-  const matrix = new THREE.Matrix4().set(
+  const matrix = new three.Matrix4().set(
     1 - mcs * (v.y * v.y + v.z * v.z), mcs * v.x * v.y - sc * v.z,/*   */ sc * v.y + mcs * v.x * v.z,/*   */ 0,//
     mcs * v.x * v.y + sc * v.z,/*   */ 1 - mcs * (v.x * v.x + v.z * v.z), -(sc * v.x) + mcs * v.y * v.z,/**/ 0,//
     -(sc * v.y) + mcs * v.x * v.z,/**/ sc * v.x + mcs * v.y * v.z,/*   */ 1 - mcs * (v.x * v.x + v.y * v.y), 0,//
@@ -462,7 +468,7 @@ core.Tetrahedron = (args, env) => {
 };
 
 core.GeometricTransformation = (args, env) => {
-  var group = new THREE.Group();
+  var group = new three.Group();
   //Если center, то наверное надо приметь matrix
   //к каждому объекту относительно родительской группы.
   var p = interpretate(args[1], env);
@@ -491,7 +497,7 @@ core.GeometricTransformation = (args, env) => {
   if (p.length === 3) {
     if (typeof p[0] === "number") {
       var dir = p;
-      var matrix = new THREE.Matrix4().makeTranslation(...dir, 1);
+      var matrix = new three.Matrix4().makeTranslation(...dir, 1);
     } else {
       //make it like Matrix4
       p.forEach((el) => {
@@ -499,7 +505,7 @@ core.GeometricTransformation = (args, env) => {
       });
       p.push([0, 0, 0, 1]);
 
-      var matrix = new THREE.Matrix4();
+      var matrix = new three.Matrix4();
       console.log("Apply matrix to group::");
       matrix.set(...aflatten(p));
     }
@@ -517,7 +523,7 @@ core.GeometricTransformation = (args, env) => {
 
   if (centering || centrans.length > 0) {
     console.log("::CENTER::");
-    var bbox = new THREE.Box3().setFromObject(group);
+    var bbox = new three.Box3().setFromObject(group);
     console.log(bbox);
     var center = bbox.max.clone().add(bbox.min).divideScalar(2);
     if (centrans.length > 0) {
@@ -526,14 +532,14 @@ core.GeometricTransformation = (args, env) => {
     }
     console.log(center);
 
-    var translate = new THREE.Matrix4().makeTranslation(
+    var translate = new three.Matrix4().makeTranslation(
       -center.x,
       -center.y,
       -center.z,
     );
     group.applyMatrix4(translate);
     group.applyMatrix4(matrix);
-    translate = new THREE.Matrix4().makeTranslation(
+    translate = new three.Matrix4().makeTranslation(
       center.x,
       center.y,
       center.z
@@ -549,14 +555,14 @@ core.GeometricTransformation = (args, env) => {
 core.GraphicsComplex = (args, env) => {
   var copy = Object.assign({}, env);
 
-  copy.geometry = new THREE.Geometry();
+  copy.geometry = new three.Geometry();
 
   interpretate(args[0], copy).forEach((el) => {
     if (typeof el[0] !== "number") console.error("not a triple of number" + el);
-    copy.geometry.vertices.push(new THREE.Vector3(el[0], el[1], el[2]));
+    copy.geometry.vertices.push(new three.Vector3(el[0], el[1], el[2]));
   });
 
-  const group = new THREE.Group();
+  const group = new three.Group();
 
   interpretate(args[1], copy);
 
@@ -567,7 +573,7 @@ core.GraphicsComplex = (args, env) => {
 core.Polygon = (args, env) => {
   if (env.hasOwnProperty("geometry")) {
     /**
-     * @type {THREE.Geometry}
+     * @type {three.Geometry}
      */
     var geometry = env.geometry.clone();
 
@@ -576,21 +582,21 @@ core.Polygon = (args, env) => {
 
       switch (c.length) {
         case 3:
-          geometry.faces.push(new THREE.Face3(c[0], c[1], c[2]));
+          geometry.faces.push(new three.Face3(c[0], c[1], c[2]));
           break;
 
         case 4:
           geometry.faces.push(
-            new THREE.Face3(c[0], c[1], c[2]),
-            new THREE.Face3(c[0], c[2], c[3]),
+            new three.Face3(c[0], c[1], c[2]),
+            new three.Face3(c[0], c[2], c[3]),
           );
           break;
 
         case 5:
           geometry.faces.push(
-            new THREE.Face3(c[0], c[1], c[4]),
-            new THREE.Face3(c[1], c[2], c[3]),
-            new THREE.Face3(c[1], c[3], c[4]),
+            new three.Face3(c[0], c[1], c[4]),
+            new three.Face3(c[1], c[2], c[3]),
+            new three.Face3(c[1], c[3], c[4]),
           );
           break;
         /**
@@ -600,10 +606,10 @@ core.Polygon = (args, env) => {
          */
         case 6:
           geometry.faces.push(
-            new THREE.Face3(c[0], c[1], c[5]),
-            new THREE.Face3(c[1], c[2], c[5]),
-            new THREE.Face3(c[5], c[2], c[4]),
-            new THREE.Face3(c[2], c[3], c[4])
+            new three.Face3(c[0], c[1], c[5]),
+            new three.Face3(c[1], c[2], c[5]),
+            new three.Face3(c[5], c[2], c[4]),
+            new three.Face3(c[2], c[3], c[4])
           );
           break;
         default:
@@ -626,7 +632,7 @@ core.Polygon = (args, env) => {
       a.forEach(createFace);
     }
   } else {
-    var geometry = new THREE.Geometry();
+    var geometry = new three.Geometry();
     var points = interpretate(args[0], env);
 
     points.forEach((el) => {
@@ -634,7 +640,7 @@ core.Polygon = (args, env) => {
         console.error("not a triple of number", el);
         return;
       }
-      geometry.vertices.push(new THREE.Vector3(el[0], el[1], el[2]));
+      geometry.vertices.push(new three.Vector3(el[0], el[1], el[2]));
     });
 
     console.log("points");
@@ -642,13 +648,13 @@ core.Polygon = (args, env) => {
 
     switch (points.length) {
       case 3:
-        geometry.faces.push(new THREE.Face3(0, 1, 2));
+        geometry.faces.push(new three.Face3(0, 1, 2));
         break;
 
       case 4:
         geometry.faces.push(
-          new THREE.Face3(0, 1, 2),
-          new THREE.Face3(0, 2, 3));
+          new three.Face3(0, 1, 2),
+          new three.Face3(0, 2, 3));
         break;
       /**
        *  0 1
@@ -657,9 +663,9 @@ core.Polygon = (args, env) => {
        */
       case 5:
         geometry.faces.push(
-          new THREE.Face3(0, 1, 4),
-          new THREE.Face3(1, 2, 3),
-          new THREE.Face3(1, 3, 4));
+          new three.Face3(0, 1, 4),
+          new three.Face3(1, 2, 3),
+          new three.Face3(1, 3, 4));
         break;
       /**
        * 0  1
@@ -668,10 +674,10 @@ core.Polygon = (args, env) => {
        */
       case 6:
         geometry.faces.push(
-          new THREE.Face3(0, 1, 5),
-          new THREE.Face3(1, 2, 5),
-          new THREE.Face3(5, 2, 4),
-          new THREE.Face3(2, 3, 4)
+          new three.Face3(0, 1, 5),
+          new three.Face3(1, 2, 5),
+          new three.Face3(5, 2, 4),
+          new three.Face3(2, 3, 4)
         );
         break;
       default:
@@ -680,22 +686,25 @@ core.Polygon = (args, env) => {
     }
   }
 
-  const material = new THREE.MeshStandardMaterial({
+  const material = new three.MeshPhysicalMaterial({
     color: env.color,
     transparent: env.opacity < 0.9,
     opacity: env.opacity,
     roughness: env.roughness,
     metalness: env.metalness,
-    emissive: env.emissive
+    emissive: env.emissive,
+    reflectivity: env.reflectivity,
+    clearcoat: env.clearcoat,
+    ior: env.ior
     //depthTest: false
     //depthWrite: false
   });
   console.log(env.opacity);
-  material.side = THREE.DoubleSide;
+  material.side = three.DoubleSide;
 
   geometry.computeFaceNormals();
-  //complex.computeVertexNormals();
-  const poly = new THREE.Mesh(geometry, material);
+  geometry.computeVertexNormals(true);
+  const poly = new three.Mesh(geometry, material);
 
   //poly.frustumCulled = false;
   env.mesh.add(poly);
@@ -719,19 +728,22 @@ core.Polyhedron = (args, env) => {
      */
     const vertices = interpretate(args[0], env).flat(4);
 
-    const geometry = new THREE.PolyhedronGeometry(vertices, indices);
+    const geometry = new three.PolyhedronGeometry(vertices, indices);
 
-    var material = new THREE.MeshStandardMaterial({
+    var material = new three.MeshPhysicalMaterial({
       color: env.color,
       transparent: true,
       opacity: env.opacity,
       depthWrite: true,
       roughness: env.roughness,
       metalness: env.metalness,
-      emissive: env.emissive
+      emissive: env.emissive,
+      reflectivity: env.reflectivity,
+      clearcoat: env.clearcoat,
+      ior: env.ior
     });
 
-    const mesh = new THREE.Mesh(geometry, material);
+    const mesh = new three.Mesh(geometry, material);
     env.mesh.add(mesh);
     geometry.dispose();
     material.dispose();
@@ -748,22 +760,22 @@ core.Text = (args, env) => { };
 
 core.Directive = (args, env) => { };
 
-core.PlaneGeometry = () => { new THREE.PlaneGeometry;  };
+core.PlaneGeometry = () => { new three.PlaneGeometry;  };
 
 core.Line = (args, env) => {
   if (env.hasOwnProperty("geometry")) {
-    const geometry = new THREE.Geometry();
+    const geometry = new three.Geometry();
 
     const points = interpretate(args[0], env);
     points.forEach((el) => {
       geometry.vertices.push((env.geometry.vertices[el - 1]).clone(),);
     });
 
-    const material = new THREE.LineBasicMaterial({
+    const material = new three.LineBasicMaterial({
       linewidth: env.thickness,
       color: env.edgecolor,
     });
-    const line = new THREE.Line(geometry, material);
+    const line = new three.Line(geometry, material);
 
     line.material.setValues({
       polygonOffset: true,
@@ -783,25 +795,51 @@ core.Line = (args, env) => {
 
     const points = [];
     arr.forEach((p) => {
-      points.push(new THREE.Vector4(...p, 1));
+      points.push(new three.Vector4(...p, 1));
     });
-    //new THREE.Vector4(...arr[0], 1)
+    //new three.Vector4(...arr[0], 1)
 
     points.forEach((p) => {
       p = p.applyMatrix4(env.matrix);
     });
 
-    const geometry = new THREE.Geometry().setFromPoints(points);
-    const material = new THREE.LineBasicMaterial({
+    const geometry = new three.Geometry().setFromPoints(points);
+    const material = new three.LineBasicMaterial({
       color: env.edgecolor,
       linewidth: env.thickness,
     });
 
-    env.mesh.add(new THREE.Line(geometry, material));
+    env.mesh.add(new three.Line(geometry, material));
   }
 };
 
-core.Graphics3D = (args, env) => {
+let OrbitControls;
+
+let EffectComposer;
+let RenderPass; 
+let UnrealBloomPass;
+
+let GUI;
+
+core.Graphics3D = async (args, env) => {
+  /* lazy loading */
+  
+  if (!three) {
+    console.log('not there...')
+    three         = (await import('three'));
+    OrbitControls = (await import("three/examples/jsm/controls/OrbitControls")).OrbitControls;
+    EffectComposer= (await import('three/examples/jsm/postprocessing/EffectComposer')).EffectComposer;
+    RenderPass    = (await import('three/examples/jsm/postprocessing/RenderPass.js')).RenderPass;
+    UnrealBloomPass=(await import('three/examples/jsm/postprocessing/UnrealBloomPass.js')).UnrealBloomPass;
+    GUI           = (await import('dat.gui')).GUI;
+  }
+
+  /**
+   * @type {Object}
+   */   
+  env.local.handlers = [];
+  env.local.prolog   = [];
+
   /**
    * @type {Object}
    */  
@@ -818,13 +856,19 @@ core.Graphics3D = (args, env) => {
    */
   let ImageSize = options.ImageSize || [400, 400];
 
+  let background = options.Background || new three.Color(0xffffff);
+
+  const lighting = options.Lighting || "Default";
+
+  const aspectratio = options.AspectRatio || 0.7;
+
   //if only the width is specified
-  if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*0.7];
+  if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*aspectratio];
   console.log('Image size');
   console.log(ImageSize);
 
   /**
-  * @type {THREE.Mesh<THREE.Geometry>}
+  * @type {three.Mesh<three.Geometry>}
   */
 
   let camera, scene, renderer, composer;
@@ -844,21 +888,21 @@ core.Graphics3D = (args, env) => {
 
   function init() {
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera( 55, ImageSize[0]/ImageSize[1], 1, 20000 );
+    scene = new three.Scene();
+    camera = new three.PerspectiveCamera( 55, ImageSize[0]/ImageSize[1], 1, 20000 );
     camera.position.set( 3, 3, 10 );
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new three.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(ImageSize[0], ImageSize[1]);
-    //renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    //renderer.toneMapping = three.ACESFilmicToneMapping;
     renderer.domElement.style = "margin:auto";
     container.appendChild( renderer.domElement );
 
     /* postprocess */
 		const renderScene = new RenderPass( scene, camera );
 
-		const bloomPass = new UnrealBloomPass( new THREE.Vector2( ImageSize[0], ImageSize[1] ), 1.5, 0.4, 0.85 );
+		const bloomPass = new UnrealBloomPass( new three.Vector2( ImageSize[0], ImageSize[1] ), 1.5, 0.4, 0.85 );
 		bloomPass.threshold = params.bloomThreshold;
 		bloomPass.strength = params.bloomStrength;
 		bloomPass.radius = params.bloomRadius;
@@ -903,39 +947,51 @@ core.Graphics3D = (args, env) => {
 			bloomPass.radius = Number( value );
 		} );
 
+    if (background instanceof three.Color) scene.background = background;
+    
+
     const guiContainer = document.createElement('div');
     guiContainer.classList.add('graphics3d-controller');
     guiContainer.appendChild(gui.domElement);
     container.appendChild( guiContainer );    
 
-    
+    env.local.renderer = renderer;
+    env.local.scene    = scene;
+    env.local.camera = camera;
 
-    const group = new THREE.Group();
+    scene.add(camera);
+
+    if (lighting === "Default") core.DefaultLighting([], env);
+
+    const group = new three.Group();
 
     const envcopy = {
       ...env,
       numerical: true,
       tostring: false,
-      matrix: new THREE.Matrix4().set(
+      matrix: new three.Matrix4().set(
         1, 0, 0, 0,//
         0, 1, 0, 0,//
         0, 0, 1, 0,//
         0, 0, 0, 1),
-      color: new THREE.Color(1, 1, 1),
+      color: new three.Color(1, 1, 1),
       opacity: 1,
       thickness: 1,
       roughness: 0.5,
-      edgecolor: new THREE.Color(0, 0, 0),
+      edgecolor: new three.Color(0, 0, 0),
       mesh: group,
       metalness: 0,
-      emissive: new THREE.Color(0, 0, 0),
+      emissive: new three.Color(0, 0, 0),
       arrowHeight: 20,
-      arrowRadius: 5
+      arrowRadius: 5,
+      reflectivity: 0.5,
+      clearcoat: 0,
+      ior: 1.5
     }
   
     interpretate(args[0], envcopy);
     
-    group.applyMatrix4(new THREE.Matrix4().set(
+    group.applyMatrix4(new three.Matrix4().set(
       1, 0, 0, 0,
       0, 0, 1, 0,
       0,-1, 0, 0,
@@ -943,105 +999,200 @@ core.Graphics3D = (args, env) => {
 
     scene.add(group);
 
-    //
-
-    sun = new THREE.Vector3();
-
-    // Water
-
-    const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
-
-    water = new Water(
-      waterGeometry,
-      {
-        textureWidth: 512,
-        textureHeight: 512,
-        waterNormals: new THREE.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
-
-          texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-
-        } ),
-        sunDirection: new THREE.Vector3(),
-        sunColor: 0xffffff,
-        waterColor: 0x001e0f,
-        distortionScale: 3.7,
-        fog: true
-      }
-    );
-
-    water.rotation.x = - Math.PI / 2;
-
-    scene.add( water );
-
-    // Skybox
-
-    const sky = new Sky();
-    sky.scale.setScalar( 10000 );
-    scene.add( sky );
-
-    const skyUniforms = sky.material.uniforms;
-
-    skyUniforms[ 'turbidity' ].value = 10;
-    skyUniforms[ 'rayleigh' ].value = 2;
-    skyUniforms[ 'mieCoefficient' ].value = 0.005;
-    skyUniforms[ 'mieDirectionalG' ].value = 0.8;
-
-    const parameters = {
-      elevation: 8,
-      azimuth: 180
-    };
-
-    const pmremGenerator = new THREE.PMREMGenerator( renderer );
-    let renderTarget;
-
-    function updateSun() {
-
-      const phi = THREE.MathUtils.degToRad( 90 - parameters.elevation );
-      const theta = THREE.MathUtils.degToRad( parameters.azimuth );
-
-      sun.setFromSphericalCoords( 1, phi, theta );
-
-      sky.material.uniforms[ 'sunPosition' ].value.copy( sun );
-      water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
-
-      if ( renderTarget !== undefined ) renderTarget.dispose();
-
-      renderTarget = pmremGenerator.fromScene( sky );
-
-      scene.environment = renderTarget.texture;
-
-    }
-
-    updateSun();
-
-    //
-
-    //
-
     controls = new OrbitControls( camera, renderer.domElement );
     controls.target.set( 0, 1, 0 );
     controls.update();
-
 
   }
 
 
   function animate() {
 
-    requestAnimationFrame( animate );
+    env.local.aid = requestAnimationFrame( animate );
     render();
   }
 
   function render() {
-    water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+    //added loop-handlers, void
+    env.local.handlers.forEach((f)=>{
+      f();
+    });
 
     //renderer.render( scene, camera );
     composer.render();
   }
 
 
-};
+}; 
+
+let Water = false;
+let Sky   = false;
+
+core.Reflectivity = (args, env) => {
+  env.reflectivity = interpretate(args[0], env);
+}
+
+core.IOR = (args, env) => {
+  env.ior = interpretate(args[0], env);
+}
+
+core.Clearcoat = (args, env) => {
+  env.clearcoat = interpretate(args[0], env);
+}
+
+core.LightProbe = (args, env) => {
+  //three.js light probe irradiance
+}
+
+core.DefaultLighting = (args, env) => {
+  const lighting = [
+    { type: "Ambient", color: [0.3, 0.2, 0.4] },
+    {
+      type: "Directional",
+      color: [0.8, 0, 0],
+      position: [2, 0, 2]
+    },
+    {
+      type: "Directional",
+      color: [0, 0.8, 0],
+      position: [2, 2, 2]
+    },
+    {
+      type: "Directional",
+      color: [0, 0, 0.8],
+      position: [0, 2, 2]
+    }
+  ];
+
+  function addLight(l) {
+    var color = new three.Color().setRGB(l.color[0], l.color[1], l.color[2]);
+    var light;
+
+    if (l.type === "Ambient") {
+      light = new three.AmbientLight(color, 0.5);
+    } else if (l.type === "Directional") {
+      console.log('adding direction light');
+      console.log(l);
+      light = new three.DirectionalLight(color, 1);
+      light.position.fromArray(l.position);
+
+    } else if (l.type === "Spot") {
+      light = new three.SpotLight(color);
+      light.position.fromArray(l.position);
+      light.target.position.fromArray(l.target);
+      //light.target.updateMatrixWorld(); // This fixes bug in three.js
+      light.angle = l.angle;
+    } else if (l.type === "Point") {
+      light = new three.PointLight(color);
+      light.position.fromArray(l.position);
+
+    } else {
+      alert("Error: Internal Light Error", l.type);
+      return;
+    }
+    return light;
+  } 
+  
+  lighting.forEach((el) => env.local.camera.add(addLight(el)) );
+
+}
+
+core.SkyAndWater = async (args, env) => {
+  if (!Water) {
+    Water         = (await import('three/examples/jsm/objects/Water')).Water;
+    Sky           = (await import('three/examples/jsm/objects/Sky')).Sky;  
+  }
+
+  let options = core._getRules(args);
+  console.log('options:');
+  options.dims = options.dims || [10000, 10000];
+  options.skyscale = options.skyscale || 10000;
+  options.elevation = options.elevation ||  8;
+  options.azimuth = options.azimuth || 180;
+
+
+  console.log(options);
+
+  let sun = new three.Vector3();
+  let water;
+  // Water
+
+  const waterGeometry = new three.PlaneGeometry(...options.dims);
+
+  water = new Water(
+    waterGeometry,
+    {
+      textureWidth: 512,
+      textureHeight: 512,
+      waterNormals: new three.TextureLoader().load( 'textures/waternormals.jpg', function ( texture ) {
+
+        texture.wrapS = texture.wrapT = three.RepeatWrapping;
+
+      } ),
+      sunDirection: new three.Vector3(),
+      sunColor: 0xffffff,
+      waterColor: 0x001e0f,
+      distortionScale: 3.7,
+      fog: true
+    }
+  );
+
+  water.rotation.x = - Math.PI / 2;
+  
+  env.local.water = water;
+
+  // Skybox
+
+  const sky = new Sky();
+  sky.scale.setScalar( options.skyscale );
+
+  env.local.sky = sky;  
+
+  const skyUniforms = sky.material.uniforms;
+
+  skyUniforms[ 'turbidity' ].value = 10;
+  skyUniforms[ 'rayleigh' ].value = 2;
+  skyUniforms[ 'mieCoefficient' ].value = 0.005;
+  skyUniforms[ 'mieDirectionalG' ].value = 0.8;
+
+  const parameters = {
+    elevation: options.elevation,
+    azimuth: options.azimuth
+  };
+
+
+
+  env.local.scene.add( water );
+  env.local.scene.add( sky );
+
+  const pmremGenerator = new three.PMREMGenerator( env.local.renderer );
+  let renderTarget;
+
+  const phi = three.MathUtils.degToRad( 90 - parameters.elevation );
+  const theta = three.MathUtils.degToRad( parameters.azimuth );
+
+  sun.setFromSphericalCoords( 1, phi, theta );
+
+  sky.material.uniforms[ 'sunPosition' ].value.copy( sun );
+  water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
+
+  if ( renderTarget !== undefined ) renderTarget.dispose();
+
+  renderTarget = pmremGenerator.fromScene( sky );
+
+  env.local.scene.environment = renderTarget.texture;  
+
+  //every frame
+  env.local.handlers.push(
+    function() {
+      env.local.water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+    }
+  );
+}
 
 core.Graphics3D.destroy = (args, env) => {
   console.log('Graphics3D was removed');
+  console.log('env global:'); console.log(env.global);
+  console.log('env local:'); console.log(env.local);
+  cancelAnimationFrame(env.local.aid);
 }

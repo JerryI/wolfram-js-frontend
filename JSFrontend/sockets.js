@@ -4,6 +4,7 @@ const wsconnected = new Event("wsconnected");
 var socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
+  server.init(socket);
   window.dispatchEvent(wsconnected);
 }; 
 

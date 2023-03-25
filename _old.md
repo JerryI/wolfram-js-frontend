@@ -7,7 +7,7 @@ A web server and the half of logic runs on freeware Wolfram Engine as a __backen
 CodeMirror 6 library was used to operate notebook cells inside the page, when you press `Shift-Enter` it sends the content and a command to Wolfram Engine via websockets. 
 
 See an overview picture here
-![](/docs/drawings/overview.excalidraw.svg)
+![](docs/drawings/overview.excalidraw.svg)
 
 #### Evaluation process
 On the backend, it evaluates the result and sends it back via websockets. However, if there is a `Graphics3D` object (in future can be extended to many) it replaces it with a  special symbol `FrontEndExecutable["uid"]`, which tells to frontend, that the content can be executed in a browser. Also, web server sends a JSON representation of the content behind `FrontEndExecutable` to be parsed by JS. 

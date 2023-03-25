@@ -545,6 +545,28 @@ border-radius: 4px;
 }
 }
 
+.svgbob-object line,
+.svgbob-object path, 
+.svgbob-object circle, 
+.svgbob-object rect, 
+.svgbob-object polygon{stroke:black;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter;}
+.svgbob-object text{font-family:Iosevka Fixed, monospace;font-size:14px;}
+.svgbob-object rect.backdrop{stroke:none;fill:transparent;}
+.broken{stroke-dasharray:8;}
+.filled{fill:black;}
+.bg_filled{fill:transparent;}
+.nofill{fill:transparent;}
+.end_marked_arrow{marker-end:url(#arrow);}
+.start_marked_arrow{marker-start:url(#arrow);}
+.end_marked_diamond{marker-end:url(#diamond);}
+.start_marked_diamond{marker-start:url(#diamond);}
+.end_marked_circle{marker-end:url(#circle);}
+.start_marked_circle{marker-start:url(#circle);}
+.end_marked_open_circle{marker-end:url(#open_circle);}
+.start_marked_open_circle{marker-start:url(#open_circle);}
+.end_marked_big_open_circle{marker-end:url(#big_open_circle);}
+.start_marked_big_open_circle{marker-start:url(#big_open_circle);}
+
 
 
 

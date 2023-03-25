@@ -1,8 +1,0 @@
-{
-  "alwaysUpdateLinks": true,
-  "newLinkFormat": "absolute",
-  "userIgnoreFilters": [
-    "node_modules/"
-  ],
-  "useMarkdownLinks": true
-}
