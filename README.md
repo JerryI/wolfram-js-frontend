@@ -1,24 +1,24 @@
-## Wolfram Engine JS Frontend
+# Wolfram Engine JS Frontend
 *the synergy of web technologies and symbolic computations*
 This is a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects built for freeware __Wolfram Engine__
 
 ![](imgs/ezgif.com-crop.gif)
 **This project is still in alpha stage!**
 
-### Motivation
+## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine, which can be easily extended to any user's defined functions and exported as a standalone `.html` application. __There is no aim to copy Mathematica__ (it will never be possible), but make the notebook interface in a different and unique way relying on the web-technology stack with its own features.
 
 The target community can probably divided by two groups
 - who like and can write in Javascript and Mathematica
 - who uses Jypiter with Wolfram Language and needs *much more* features
 
-#### Crossplatform
+### Crossplatform
 The frontened is an HTTP & Websockets server, which runs locally on your PC and the notebook interface built from opensource components is entirely in your browser. Which also makes possible to do all work remotely attaching different wolfram kernels to the notebook.
 
-#### Performance
+### Performance
 Web technologies nowadays are aimed to be extremely efficient in order to compete with a native desktop applications. Therfore we are using classical HTML5 + JS stack to brind life to UI and all graphical objects by __recreating some of Mathematica's function__ using `plotly.js`, `d3.js` and `Three.js` (add your own one! this is easy) libraries. 
 
-#### Flexibillity
+### Flexibillity
 Want to make fancy WebGl animated figures of your brilliant calculaltions? Sure! - Use modern stack of __Javascript__ and `three.js` or any other framework you like, by typing `.js` in the beginning of a cell or write your own Wolfram Language function and attach it to the core library. 
 
 Several data transfer method between Wolfram Kernel and Javascript are already implemented. __HTML__, __Markdown__ cells are the part of frontened. You can define your own evaluators kernels (processors) and add new languages used in frontened.
