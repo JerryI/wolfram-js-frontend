@@ -14,7 +14,7 @@ socket.onmessage = function(event) {
 
 socket.onclose = function(event) {
   console.log(event);
-  alert('Connection lost. Please, update the page to see new changes.');
+  //alert('Connection lost. Please, update the page to see new changes.');
 };
 
 function WSPHttpQueryQuite(command, promise, type = "String") {
