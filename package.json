@@ -16,17 +16,39 @@
   },
   "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
   "devDependencies": {
+    "@ddietr/codemirror-themes": "^1.4.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@types/codemirror": "^5.60.6",
+    "@types/dat.gui": "^0.7.7",
+    "@types/plotly.js": "^2.12.18",
     "codemirror": "^6.0.1",
+    "dat.gui": "^0.7.9",
     "purify-css": "^1.2.5",
     "rollup": "^3.10.0",
-    "serve-static": "^1.14.1"
+    "serve-static": "^1.14.1",
+    "systemjs": "^6.14.1"
   },
   "dependencies": {
+    "@codemirror/lang-html": "^6.4.2",
+    "@codemirror/lang-javascript": "^6.1.4",
+    "@codemirror/lang-markdown": "^6.1.0",
     "@codemirror/legacy-modes": "^6.3.1",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
+    "bob-wasm": "^1.0.0",
     "chokidar": "^3.5.3",
+    "d3": "^7.8.2",
     "finalhandler": "^1.2.0",
-    "three": "^0.123.0"
+    "marked": "^4.2.12",
+    "marked-katex-extension": "^1.0.2",
+    "mermaid": "^10.0.2",
+    "plotly.js": "^2.13.1",
+    "plotly.js-dist": "^2.18.2",
+    "plotly.js-dist-min": "^2.18.2",
+    "range-slider-input": "^2.4.3",
+    "thememirror": "^2.0.1",
+    "three": "^0.123.0",
+    "three-addons": "^1.2.0",
+    "three-sky": "^1.1.3"
   }
 }

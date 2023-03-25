@@ -1,0 +1,18 @@
+<main id="frontend-editor" aria-hidden="true" class="main-container styles-container-editor">
+
+                <div id="frontend-editor-content" class="group-container" aria-hidden="true">
+                    <div role="textbox" style="padding-bottom:50em;" aria-multiline="true" spellcheck="true" id="frontend-contenteditable" data-slate-editor="true" data-slate-editor-id="0" data-slate-node="value" zindex="-1">
+                        
+                    <?wsp LoadPage["template/cells/banner.wsp", {box = JerryI`WolframJSFrontend`Notebook`Notebooks[notebook, "banner"] } ] ?>
+                        
+                    </div>
+                </div>
+            </main>
+
+<script>
+    window.addEventListener("wsconnected", function() { 
+        console.log('subscribe and load notebook'); 
+        socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
+    });
+</script>
+

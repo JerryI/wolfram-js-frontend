@@ -1,0 +1,33 @@
+<?wsp
+    With[{kernel = JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[path]]["kernel"], nid = $AssoticatedPath[path]}, 
+        With[{signal = kernel["Status"]["signal"], text = kernel["Status"]["text"]}, 
+?>
+
+<script>
+    var $KernelStatus = '<?wsp signal ?>';
+</script>
+
+<div id="kernel-text" style=" opacity: 1; transition: opacity 150ms linear 0s; display: flex; align-items: center; font-size: 14px; color: rgba(55, 53, 47, 0.5); height: 28px; margin-right:10px; white-space: nowrap; line-height: 1.2; ">
+    <?wsp text ?>
+</div>
+<div id="kernel-button" class="<?wsp signal ?>-kernel" style="cursor: pointer; display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0px; height: 20px; border-radius: 3px; padding-left: 6px; padding-right: 6px; font-size: 14px; line-height: 120%;  margin: 0px;">
+    <div  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex;">
+        <div style="display: block;"><?wsp kernel ?></div>
+    </div>
+    <?wsp LoadPage["template/dropdown/kernel.wsp", {notebookID = nid}] ?>  
+</div>
+
+<script>
+    
+    core.FrontEndKernelStatus = function(args, env) {
+        console.log("status update");
+        
+        let state = interpretate(args[0], env);
+        console.log(state);
+        $KernelStatus = state['signal'];
+        document.getElementById("kernel-text").innerText = state['text'];
+        document.getElementById("kernel-button").className = state['signal']+'-kernel';
+    }
+</script>
+
+<?wsp ]] ?>

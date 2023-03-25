@@ -1,0 +1,113 @@
+</div>
+                        </div>
+                        <div class="notion-help-button notion-focusable" role="button" tabindex="0" style="">
+                            ?
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+        
+ <script>
+    $wsppages = {};
+    let arrayWSPuids = "";
+
+    const locationHandler = async () => {
+        const location = window.location.pathname; // get the url path
+        // if the path length is 0, set it to primary page route
+        if (location.length == 0) {
+            location = "/";
+        }
+        // get the route object from the urlRoutes object
+        socket.send('WSPDynamicGet[' + arrayWSPuids + ', "'+location+'"];');
+    };
+
+    // create document click that watches the nav links only
+    /*document.getElementsByTagName('nav')[0].addEventListener("click", (e) => {
+        const { target } = e;
+        
+        if (!e.target.closest(`a`)) {
+            console.log('not match!');
+            return;
+        }
+        e.preventDefault();
+        route();
+    });*/
+
+    const route = (event) => {
+        event = event || window.event; // get window.event if event argument not provided
+        event.preventDefault();
+
+        console.log(event.target.closest(`a`));
+        // window.history.pushState(state, unused, target link);
+   
+        //window.history.pushState({}, "", event.target.href);
+        //window.location.pathname = event.target.href;
+
+        //locationHandler();
+        socket.send('WSPDynamicGet[' + arrayWSPuids + ', "'+event.target.closest(`a`).href+'"];');
+    };
+
+    window.addEventListener("wsconnected", function() { 
+
+        core.PageModulesUpdate = function(args, env) {
+            const list = interpretate(args[0], env);
+            console.log("wsp dynamic load");
+            console.log(list);
+            list.forEach((e) => {
+                setInnerHTML($wsppages[e[0]], e[1]);
+            });
+        };
+
+        document.querySelectorAll('[data-wsp]').forEach((e)=>{
+            $wsppages[e.getAttribute('data-wsp')] = e;
+        });
+
+        arrayWSPuids = '{'+JSON.stringify(Object.keys($wsppages)).slice(1, -1)+"}";
+
+
+ 
+    });
+
+    //toggle sidebar
+    {
+        let sidebarToggle = localStorage.getItem("sidebar-hide");
+
+        if (typeof sidebarToggle === 'undefined') {
+            localStorage.setItem("sidebar-hide", 'false');
+            sidebarToggle = 'false';
+        }
+
+        if (sidebarToggle == 'true') {
+            document.querySelectorAll('.notion-sidebar-container')[0].classList.add('notion-sidebar-container-hide');
+            document.querySelectorAll('.notion-frame')[0].classList.add('notion-frame-extended');
+            document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
+        }
+
+        document.getElementById("toggle-sidebar-button").addEventListener('click', (e)=>{
+            document.querySelectorAll('.notion-sidebar-container')[0].classList.toggle('notion-sidebar-container-hide');
+            document.querySelectorAll('.doubleChevronLeft')[0].classList.toggle('doubleChevronLeft-rotate');
+            document.querySelectorAll('.notion-frame')[0].classList.toggle('notion-frame-extended');
+            
+            if (sidebarToggle == 'true')
+                sidebarToggle = 'false'
+            else
+                sidebarToggle = 'true'
+            
+            localStorage.setItem("sidebar-hide", sidebarToggle);
+        });        
+            
+    }     
+
+ </script>
+    
+
+
+
+</body></html>

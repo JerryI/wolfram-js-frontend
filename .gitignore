@@ -1,9 +1,3 @@
-/logs.txt
-/old
-/running.lock
-/public/trashcan/*
-/nohup.out
-migrate
-/archive/*
 /node_modules
-.DS_STORE
+/Temp/*
+/public/js/*

@@ -1,18 +1,22 @@
 import nodeResolve from "@rollup/plugin-node-resolve";
+import commonjs from '@rollup/plugin-commonjs';
+import json from "@rollup/plugin-json";
 
 export default {
 
-  input: 'temp/merged.js',
+  input: 'Temp/merged.js',
   
   output: {
-    file: 'temp/bundle.js',
-    format: 'cjs',
+    dir: 'public/js',
+    format: "es",
     strict: false
   },
   plugins    : [
   nodeResolve({
     jsnext: true,
     main: false
-  })
+  }),
+  json(),
+  commonjs({transformMixedEsModules:true})
   ]
 };

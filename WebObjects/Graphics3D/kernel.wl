@@ -1,0 +1,2 @@
+
+RegisterWebObject[Graphics3D];
