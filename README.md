@@ -151,6 +151,12 @@ filename.txt
 Hello World
 ```
 
+to display an ASCII art
+```
+.svgbob
+--------->
+```
+
 to evaluate a regular WL expression
 ```mathematica
 1+1
