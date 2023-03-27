@@ -1,3 +1,5 @@
 /node_modules
 /Temp/*
 /public/js/*
+*.DS_STORE
+.obsidian

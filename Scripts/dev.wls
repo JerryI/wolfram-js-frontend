@@ -91,9 +91,6 @@ SetUpCron;
 (* dev mode on *)
 LoadBuildFile["config.build.wl"];
 
-
-Print[JerryI`WolframJSFrontend`Notebook`Processors//InputForm];
-
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
 While[True, Pause[1]];

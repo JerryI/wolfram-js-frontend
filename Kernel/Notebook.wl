@@ -116,17 +116,55 @@ NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
 
 
 (* load a notebook into memory  *)
-PreloadNotebook[path_] := Module[{notebook},
+PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = False, postfix},
+
+  notebook = Get[path]; 
+
+  (* if doent match - remove from the Association can be a copied by user *)
+  If[MemberQ[$AssoticatedPath//Keys, path],
+    If[notebook["notebook", "path"] =!= path, $AssoticatedPath[path] = .]
+  ];
+
   If[!MemberQ[$AssoticatedPath//Keys, path],
-    notebook = Get[path];
+    (* if not here - load *)
+    Print["Not there. loading into memeory..."];
 
     (* if not found or corrupted -> create a new one *)
     Switch[notebook["serializer"],
         "jsfn",
             Print["old format"];
-            Print["converting..."];
+            Print["converting... to a new one"];
             (*** deserialisation of the notebook and cells ***)
             (notebook["notebook", "objects", #] = <|"date"->Now, "json"->notebook["notebook", "objects", #]|>) &/@ Keys[notebook["notebook", "objects"]];
+
+            (* make sure that if this is a copy of an old one -> regenrate an ID in DB *)
+            If[notebook["notebook", "path"] =!= path,
+                Print["Seems to be cloned or renamed"];
+                Print["Regenerating the inner ID..."];
+
+                oldsign = notebook["notebook", "id"];
+                newsign = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5];
+                notebook["notebook", "id"] = newsign;
+                Print["New name "<>notebook["notebook", "id"]<>" instead of "<>oldsign];
+
+                postfix = StringTake[CreateUUID[], 3];
+
+                notebook["notebook", "cell"] = notebook["notebook", "cell"]<>postfix;
+
+                notebook["cells"] = Module[{cell = #},
+                    cell["sign"] = newsign;
+                    cell["id"] = cell["id"]<>postfix;
+
+                    If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
+                    If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
+                    If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
+
+                    cell
+
+                ] &/@ notebook["cells"];
+                Print["done"];
+                regenerated = True;
+            ];
 
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
             (* assiciate with a current path for further easy detection *)
@@ -143,9 +181,40 @@ PreloadNotebook[path_] := Module[{notebook},
             Print[$AssoticatedPath];
             Clear[notebook];
             Print["LOADED"];
+
+            If[regenerated, (*force to save if it was regenerated*) NotebookStoreManually[$AssoticatedPath[path]]];
         ,
         "jsfn2",
             (*** deserialisation of the notebook and cells ***)
+
+            (* make sure that if this is a copy of an old one -> regenrate an ID in DB *)
+            If[notebook["notebook", "path"] =!= path,
+                Print["Seems to be cloned or renamed"];
+                Print["Regenerating the inner ID..."];
+
+                oldsign = notebook["notebook", "id"];
+                newsign = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5];
+                notebook["notebook", "id"] = newsign;
+                Print["New name "<>notebook["notebook", "id"]<>" instead of "<>oldsign];
+
+                postfix = StringTake[CreateUUID[], 3];
+
+                notebook["notebook", "cell"] = notebook["notebook", "cell"]<>postfix;
+
+                notebook["cells"] = Module[{cell = #},
+                    cell["sign"] = newsign;
+                    cell["id"] = cell["id"]<>postfix;
+
+                    If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
+                    If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
+                    If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
+
+                    cell
+
+                ] &/@ notebook["cells"];
+                Print["done"];
+                regenerated = True;
+            ];
 
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
             (* assiciate with a current path for further easy detection *)
@@ -162,8 +231,11 @@ PreloadNotebook[path_] := Module[{notebook},
             Print[$AssoticatedPath];
             Clear[notebook];
             Print["LOADED"];
+
+            If[regenerated, (*force to save if it was regenerated*) NotebookStoreManually[$AssoticatedPath[path]]];
         ,
         _,
+            (* we do not know wtf is this. lets just create a notebook by the given path *)
             CreateNewNotebookByPath[path];
             Print["CREATED A NEW ONE"];
             Return[Null, Module];
@@ -226,7 +298,9 @@ NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
 ];
 
 (* remove a file and update UI elements via WSPDynamicExtension *)
-FileOperate["Remove"][path_] := With[{channel = $AssociationSocket[Global`client]},
+FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSocket[Global`client]},
+    path = URLDecode[urlpath];
+
     DeleteFile[path];
     If[path === jsfn`Notebooks[channel]["path"] ,
         (* if it was a current notebook -> redirect to the landing page *)
@@ -235,6 +309,22 @@ FileOperate["Remove"][path_] := With[{channel = $AssociationSocket[Global`client
         (* just update the UI elements *)
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
     ];
+]];
+
+(* clone and open a new page *)
+FileOperate["Clone"][urlpath_] := Module[{new, path},
+    path = URLDecode[urlpath];
+
+    If[DirectoryQ[path],
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('Cannot clone a directory')" ]];
+        Return[Null, Module];
+    ];
+
+    new = FileNameJoin[{DirectoryName[path], FileBaseName[path]<>"-Clone."<>FileExtension[path]}];
+    CopyFile[path, new];
+
+    (* open a new page *)
+    WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', '_blank')"][new//URLEncode ] ] ];
 ];
 
 NotebookRename[name_] := Module[{channel, newname, newpath},

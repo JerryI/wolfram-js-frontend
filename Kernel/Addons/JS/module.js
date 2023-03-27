@@ -2,6 +2,22 @@ function __isElement(element) {
     return element instanceof Element || element instanceof HTMLDocument;  
   }
   
+class ScopedEval {
+  ondestroy = function() {}
+  error  = false
+    
+  constructor(scope, script) {
+    this.script = '(() => {'+ script + '})()';
+  }
+    
+  eval() {
+    try {
+      return eval(this.script);
+    } catch(err) {
+      this.error = err;
+    }
+  }
+} 
 
 class JSCell {
     scope = {}
@@ -16,9 +32,18 @@ class JSCell {
     
     constructor(parent, data) {
       this.origin = parent;
-      this.scope = this.createScopedEval({document, core}, data);
+      this.scope = new ScopedEval({}, data)
       
-      const result = this.scope.result();
+      const result = this.scope.eval();
+
+      if (this.scope.error) {
+        const errorDiv = document.createElement('div');
+        errorDiv.innerText = this.scope.error;
+        errorDiv.classList.add('err-js');
+        this.origin.element.appendChild(errorDiv);
+        return this;
+      }
+
       if (__isElement(result)) {
         this.origin.element.appendChild(result);
         return this;

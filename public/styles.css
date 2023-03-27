@@ -545,6 +545,10 @@ border-radius: 4px;
 }
 }
 
+.err-js {
+  color: rgb(201, 73, 73);
+}
+
 .svgbob-object line,
 .svgbob-object path, 
 .svgbob-object circle, 

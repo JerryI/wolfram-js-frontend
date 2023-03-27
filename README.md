@@ -339,3 +339,29 @@ Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbol
 
 However, people now are using sort-of syntax sugar for the live previews of Markdown, where the code you typing is replaced by the corresponding styled object. A good example is Obsidian notes making app, and CodeMirror 6 Decorations. TL-DR see [[Decoration]]
 
+
+# Technology stack
+## Backend
+- Wolfram Engine
+*as HTTP Server, IO operator, DB manager and etc*
+- NodeJS
+*as JS bundler (using Rollup.js) for dev. purposes*
+## Frontend
+- WL JS interpreter *for graphics, internal commands, events handing, lightweight calculations*
+- CodeMirror 6 *as a cell's editor*
+- d3.js, plotly.js *for 2D Graphics*
+- three.js *for 3D Graphics*
+- mermaid.js, svgbob *for diagrams*
+- svgbob.js *for svg drawings*
+- marked.js *for markdown exprs. processing*
+- katex.js *as $\LaTeX$ renderer*
+- styles and layout from Notion
+
+
+## Inspired by
+- *Wolfram Mathematica*
+- [Observable](http://observablehq.com/@jerryi)
+- [Wolfram Language Notebook VSCode](https://github.com/njpipeorgan/wolfram-language-notebook)
+- [Mathics](https://mathics.org)
+
+

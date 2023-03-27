@@ -1,20 +1,15 @@
 <|"notebook" -> <|"name" -> "Untitled", "id" -> "distort-b4d5c", 
    "kernel" -> LocalKernel, "objects" -> 
-    <|"a9522e9c-828c-4b9a-941b-f495698d1531" -> 
-      <|"json" -> "[\"FrontEndTruncated\",\"'NBodySimulationData[<|1 -> \
-<|\\\"Mass\\\" -> 1, \\\"Positio'\",150632]", 
-       "date" -> DateObject[{2023, 3, 25, 18, 9, 
-          48.094957`8.434674516851366}, "Instant", "Gregorian", 1.]|>, 
-     "8c66969c-2bed-445d-8848-2535f177f035" -> 
+    <|"8c66969c-2bed-445d-8848-2535f177f035" -> 
       <|"json" -> "[\"FrontEndTruncated\",\"'NBodySimulationData[<|1 -> \
 <|\\\"Mass\\\" -> 1, \\\"Positio'\",152308]", 
-       "date" -> DateObject[{2023, 3, 25, 18, 10, 
-          2.363479`7.126126736474181}, "Instant", "Gregorian", 1.]|>|>, 
+       "date" -> DateObject[{2023, 3, 26, 22, 48, 
+          53.147294`8.478056131977562}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> 
     "/Volumes/Data/Github/wolfram-js-frontend/Demo/Metaballs-WebGL.wl", 
    "cell" -> "c97fcaff-e58a-4bc3-9a6c-9ef5e920fddf", 
-   "date" -> DateObject[{2023, 3, 25, 18, 15, 48.142693`8.435105356197266}, 
-     "Instant", "Gregorian", 1.]|>, 
+   "date" -> DateObject[{2023, 3, 26, 22, 51, 49.444038`8.446688907323754}, 
+     "Instant", "Gregorian", 2.]|>, 
  "cells" -> {<|"id" -> "0f9d99c7-8598-41b2-b4b8-66e8175bb877", 
     "type" -> "output", "data" -> "\nThen define some parameters and create \
 an `EventObject` to be used for the interconnection with JS", 

@@ -10,6 +10,7 @@ Cached::usage = "Cached[expr_, interval_String: \"Minute\"]"
 RandomString::usage = "RandomString[length]"
 DropHalf::usage = "DropHalf drops a half of a list from the end"
 AssociationToggle::usage = "mutable boolean assoc manipulator"
+HashString32::usage = "Hash the string using CRC32 and represent using Base64"
 
 Begin["`Private`"]; 
 
@@ -32,6 +33,8 @@ Cached[expr_, interval_String: "Minute"] := (
 		Cached[expr, Cached[expr, {"Date"}]] =.]; 
 	Cached[expr, DateObject[Now, interval]]
 );
+
+HashString32[str_String] := Hash[str, "CRC32", "Base64Encoding"]
 
 RandomString[n_] := Alphabet[][ [RandomInteger[ {1, 26}, n] ] ] // StringJoin;
 DropHalf[x_List] := Drop[x,-Length[x]/2 //Round];
