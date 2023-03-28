@@ -363,6 +363,7 @@ function downloadByURL(url, name) {
   link.setAttribute('href', url);
   link.setAttribute('download', name);
   link.click();
+  link.remove();
 }
 
 var setInnerHTML = function(elm, html) {

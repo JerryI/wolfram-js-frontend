@@ -26,7 +26,19 @@
                                 </div>
                                 
                             </div>
-                        </div>                        
+                        </div>  
+                        <div id="file-download-<?wsp file//FileBaseName//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
+                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
+                                    <div style="display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" class="duplicate" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.85); flex-shrink: 0; backface-visibility: hidden;"> <path d="M11.2857,6.05714 L10.08571,4.85714 L7.85714,7.14786 L7.85714,1 L6.14286,1 L6.14286,7.14786 L3.91429,4.85714 L2.71429,6.05714 L7,10.42857 L11.2857,6.05714 Z M1,11.2857 L1,13 L13,13 L13,11.2857 L1,11.2857 Z"></path></svg></div>
+                                </div>
+                                <div style="margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;">
+                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Download</div>
+                                </div>
+                                
+                            </div>
+                        </div>  
+                    
                         <div id="file-remove-<?wsp file//FileBaseName//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
                             <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
                                 <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
@@ -66,6 +78,10 @@
 
     document.getElementById("file-open-<?wsp file//FileBaseName//HashString32 ?>").addEventListener("click", function (e) {
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>', '_blank');
-    });    
+    });  
+
+    document.getElementById("file-download-<?wsp file//FileBaseName//HashString32 ?>").addEventListener("click", function (e) {
+        downloadByURL('<?wsp file ?>', '<?wsp FileNameTake[file] ?>');
+    });
 }
 </script>
