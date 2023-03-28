@@ -2,4 +2,5 @@
 /Temp/*
 /public/js/*
 *.DS_STORE
+/public/.DS_STORE
 .obsidian

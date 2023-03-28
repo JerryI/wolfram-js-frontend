@@ -55,7 +55,9 @@ It will be implemented later, but here is a proof of concept example example
 ![](imgs/ezgif.com-gif-maker-4.gif)
 
 ### Export to standalone HTML notebook app
-Will be in a future
+Click on `Share` button in the top-right corner, it will export the whole notebook into `.html` with no external dependecies. There is no need even to have an internet connection.
+
+![](imgs/Screenshot%202023-03-28%20at%2013.17.25.png)
 
 ### Runs locally and stores the data to a file
 no external dependencies 
@@ -75,7 +77,7 @@ npm i
 wolframscript -f Scripts/dev.wls
 ```
 
-Wait until the bundle will be finished (takes some time) and open your browser with `http://127.0.0.1:8090`
+Wait until the bundle will be finished (takes some time ~80 seconds) and open your browser with `http://127.0.0.1:8090`
 
 There is a `Introduction` notebook, which shows most gems...
 

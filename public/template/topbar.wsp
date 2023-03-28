@@ -108,7 +108,7 @@
                                                     </svg>
                                                 </div>
                                                 <?wsp If[NotebookQ[session["Query", "path"]], ?>
-                                                    <div class="notion-topbar-share-menu notion-focusable" role="button" tabindex="0" style="
+                                                    <div id="share-button" class="notion-topbar-share-menu notion-focusable" role="button" tabindex="0" style="
                                                         -webkit-user-select: none;
                                                         transition: background 20ms ease-in 0s;
                                                         cursor: pointer;
@@ -195,6 +195,10 @@
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
     });
+
+    document.getElementById('share-button').addEventListener('click', (e)=> {
+        socket.send('NotebookExport;'); 
+    });    
 
     const datesaved = document.getElementById('date-saved');
     setInterval(function () {

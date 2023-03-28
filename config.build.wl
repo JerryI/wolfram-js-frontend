@@ -40,7 +40,18 @@
                 "JSFrontend/interpreter.js",
                 "JSFrontend/sockets.js"
             } -> "public/js/core.js"
-        ];        
+        ]; 
+
+        (* for standalone app *)
+        MergeFiles[{
+                "JSFrontend/interpreter.js",
+                "JSFrontend/fakesockets.js"
+            } -> "public/js/export/fakecore.js"
+        ];            
+
+
+        (* for standalone app *)
+        RunProcess[{"./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
 
     )
 |>

@@ -1,0 +1,67 @@
+<html><head lang="en">
+        <meta charset="utf-8">
+        <style><?wsp Import["public/main.css", "String"] ?></style>
+        <style><?wsp Import["public/styles.css", "String"] ?></style>
+        <style><?wsp Import["public/katex.css", "String"] ?></style>
+        <script>
+            //avoid errors, when loading the scripts takes too much time
+            var core = {};
+        </script>
+        <script><?wsp Import["public/js/export/merged.js", "String"] ?></script>
+        <script><?wsp Import["public/js/export/fakecore.js", "String"] ?></script>
+    </head>
+    <body class="notion-body">
+        <div id="notion-app">
+            <div class="notion-app-inner notion-light-theme" style="">
+                <div style="">
+                    <div class="notion-cursor-listener" style="">
+                        <div class="" style="">
+
+                                
+                         
+        <div class="notion-frame notion-frame-extended" style="">
+            <main id="frontend-editor" aria-hidden="true" class="main-container styles-container-editor">
+
+                <div id="frontend-editor-content" class="group-container" aria-hidden="true">
+                    <div role="textbox" style="padding-bottom:50em;" aria-multiline="true" spellcheck="true" id="frontend-contenteditable" data-slate-editor="true" data-slate-editor-id="0" data-slate-node="value" zindex="-1">
+
+                    
+        
+                    </div>
+                </div>
+            </main>
+
+
+        </div>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+        
+<script>
+    window.addEventListener("wsconnected", function() { 
+        console.log('subscribe and load notebook'); 
+        socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
+    });
+</script>
+    
+<script>
+    <?wsp Table[ ?>
+        { const ob =  new ObjectStorage('<?wsp key ?>'); ob.cached = true; ob.cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>; };
+    <?wsp , {key, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"]//Keys}]  ?>
+        ;
+    <?wsp Table[ ?>
+        interpretate(<?wsp c ?>);
+    <?wsp , {c, ExportString[#, "ExpressionJSON", "Compact"->-1]&/@cells["data"]}] ?>
+</script>
+
+
+</body></html>        

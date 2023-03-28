@@ -89,7 +89,7 @@ jsf`server = jsf`server // WEBServerStart;
 SetUpCron;
 
 (* dev mode on *)
-LoadBuildFile["config.build.wl"];
+LoadBuildFile0["config.build.wl"];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 

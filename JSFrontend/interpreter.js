@@ -364,3 +364,21 @@ function downloadByURL(url, name) {
   link.setAttribute('download', name);
   link.click();
 }
+
+var setInnerHTML = function(elm, html) {
+  elm.innerHTML = html;
+  Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+    const newScript = document.createElement("script");
+    Array.from(oldScript.attributes)
+      .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+};
+
+function openawindow(url, target='_self') {
+  const fake = document.createElement('a');
+  fake.target = target;
+  fake.href = url;
+  fake.click();
+}

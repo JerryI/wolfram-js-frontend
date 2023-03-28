@@ -25,6 +25,7 @@
     "dat.gui": "^0.7.9",
     "purify-css": "^1.2.5",
     "rollup": "^3.10.0",
+    "rollup-plugin-combine": "^2.1.1",
     "serve-static": "^1.14.1",
     "systemjs": "^6.14.1"
   },

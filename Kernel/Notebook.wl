@@ -53,12 +53,16 @@ NotebookEmitt::usage = "send anything to the kernel (async)"
 
 GarbageCollector::usage = "collect garbage form notebook"
 
+
+NotebookExport::usage = "export to standalone html"
+
 (*
     Internal commands used by other packages
     must not be PUBLIC!
 *)
 NotebookEventFire::usage = "internal command for cell's operation events, that publish changes via websockets"
 NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel to the frontened with no changes"
+NotebookFakeEventFire::usage = "fake event fire for the standalone"
 
 Begin["`Private`"]; 
 
@@ -295,6 +299,25 @@ NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
 
     Clear[notebook];
     Print["SAVED"];
+];
+
+NotebookExport := Module[{channel = $AssociationSocket[Global`client], path},
+    path = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], FileBaseName[jsfn`Notebooks[channel]["path"]]<>".html"}];
+    
+    tempArray["data"] = {};
+    tempArray["Push", data_] := (tempArray["data"] = {tempArray["data"], data} // Flatten);
+
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookFakeEventFire[tempArray]},
+        CellObjGenerateTree[jsfn`Notebooks[channel]["cell"]];
+    ];
+    
+    With[{uid = channel, tempArrayPointer = tempArray},
+        Export[path,
+            LoadPage[FileNameJoin[{"public", "template", "export", "notebook.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "base"->JerryI`WolframJSFrontend`root]
+        , "String"]
+    ];
+
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
 ];
 
 (* remove a file and update UI elements via WSPDynamicExtension *)
@@ -566,6 +589,34 @@ NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
 );
 
 NotebookEventFire[addr_]["CellMorph"][cell_] := (Null);
+
+(* fake events for forming standalone app *)
+
+NotebookFakeEventFire[array_]["NewCell"][cell_] := (
+    (*looks ugly actually. we do not need so much info*)
+    console["log", "fire event `` for ``", cell, array];
+    With[
+        {
+            obj = <|
+                        "id"->cell[[1]], 
+                        "sign"->cell["sign"],
+                        "type"->cell["type"],
+                        "data"->If[cell["data"]//NullQ, "", ExportString[cell["data"], "String", CharacterEncoding -> "UTF8"] ],
+                        "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
+                        "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
+                        "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
+                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
+                        "props"->cell["props"],
+                        "display"->cell["display"],
+                        "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
+                    |>,
+            
+            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]
+        },
+
+        array["Push", Global`FrontEndCreateCell[template, obj ]];
+    ];
+);
 
 End[];
 EndPackage[];
