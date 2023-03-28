@@ -2,7 +2,7 @@
         <meta charset="utf-8">
         <style><?wsp Import["public/main.css", "String"] ?></style>
         <style><?wsp Import["public/styles.css", "String"] ?></style>
-        <style><?wsp Import["public/katex.css", "String"] ?></style>
+        <style><?wsp Import["public/katex-standalone.css", "String"] ?></style>
         <script>
             //avoid errors, when loading the scripts takes too much time
             var core = {};
