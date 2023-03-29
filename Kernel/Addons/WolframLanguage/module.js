@@ -3,7 +3,8 @@ import { EditorView } from "codemirror";
 import {StreamLanguage } from "@codemirror/language"
 import {language} from "@codemirror/language"
 
-import { mathematica } from "@codemirror/legacy-modes/mode/mathematica"
+//import { mathematica } from "@codemirror/legacy-modes/mode/mathematica"
+import { mathematica } from "./../JSLibs/mathematica/mathematica"
 
 const wolframlanguage = StreamLanguage.define(mathematica)
 
@@ -24,8 +25,9 @@ import {
   rectangularSelection, crosshairCursor, placeholder,
   highlightActiveLineGutter
 } from "@codemirror/view"
+
 import { EditorState, Compartment } from "@codemirror/state"
-import { defaultHighlightStyle, syntaxHighlighting, indentOnInput, bracketMatching } from "@codemirror/language"
+import { syntaxHighlighting, indentOnInput, bracketMatching, defaultHighlightStyle } from "@codemirror/language"
 import { history, historyKeymap } from "@codemirror/commands"
 import { highlightSelectionMatches } from "@codemirror/search"
 import { autocompletion, closeBrackets } from "@codemirror/autocomplete"
@@ -181,7 +183,6 @@ class CodeMirrorCell {
           highlightActiveLineGutter(),
           highlightSpecialChars(),
           history(),
-          rosePineDawn,
           drawSelection(),
           dropCursor(),
           EditorState.allowMultipleSelections.of(true),
@@ -192,6 +193,7 @@ class CodeMirrorCell {
           autocompletion(),
           rectangularSelection(),
           crosshairCursor(),
+          syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
           highlightActiveLine(),
           highlightSelectionMatches(),
           placeholder('Type Wolfram Expression / .md / .html / .js'),

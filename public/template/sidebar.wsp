@@ -114,7 +114,7 @@
                                                             <div style="">
                                                             <?wsp WSPDynamic[ Table[ ?>
 
-                                                                <div class="notion-selectable notion-page-block" id="file-button-<?wsp i//FileBaseName//HashString32 ?>">
+                                                                <div class="notion-selectable notion-page-block" id="file-button-<?wsp i//FileNameTake//HashString32 ?>">
                                                                     <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                                     <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
                                                                         <div oncontextmenu="return false;" class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" style="

@@ -42,6 +42,7 @@
             } -> "public/js/core.js"
         ]; 
 
+        Print["Bundling for the standalone export app..."];
         (* for standalone app *)
         MergeFiles[{
                 "JSFrontend/interpreter.js",
@@ -49,9 +50,12 @@
             } -> "public/js/export/fakecore.js"
         ];            
 
-
+        Print[Red<>" the process is not done yet... wait..."];
+        Print[Reset];
         (* for standalone app *)
         RunProcess[{"./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
 
+        Print[Red<>"everything is done!"];
+        Print[Reset];
     )
 |>

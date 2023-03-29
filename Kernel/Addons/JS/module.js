@@ -53,9 +53,9 @@ class JSCell {
         doc: String(result),
         extensions: [
           highlightSpecialChars(),
-          rosePineDawn,
           EditorState.readOnly.of(true),
           javascript(),
+          syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
           editorCustomTheme
         ],
         parent: this.origin.element

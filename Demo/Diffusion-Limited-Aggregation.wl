@@ -1,13 +1,13 @@
 <|"notebook" -> <|"name" -> "Untitled", "id" -> "fierce-0109d", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"67376fb3-4623-455f-9dee-d97bcf8d5aaa" -> 
-      <|"date" -> DateObject[{2023, 3, 28, 12, 57, 
-          26.683384`8.178815888247364}, "Instant", "Gregorian", 2.], 
+      <|"date" -> DateObject[{2023, 3, 29, 13, 58, 
+          16.405775`7.967571735840647}, "Instant", "Gregorian", 2.], 
        "json" -> "[\n\t\"FrontEndTruncated\",\n\t\"'{{0.030173536789228406, \
 0.8134571807456905, 0.}, {'\",\n\t23213\n]"|>, 
      "5de19910-20f6-470c-9e32-58e59acdc572" -> 
-      <|"date" -> DateObject[{2023, 3, 28, 12, 57, 
-          26.743654`8.179795726939803}, "Instant", "Gregorian", 2.], 
+      <|"date" -> DateObject[{2023, 3, 29, 13, 58, 
+          16.435881`7.968367972993525}, "Instant", "Gregorian", 2.], 
        "json" -> "[\n\t\"ListPlotly\",\n\t[\n\t\t\"List\",\n\t\t[\n\t\t\t\"Li\
 st\",\n\t\t\t[\n\t\t\t\t\"List\",\n\t\t\t\t3.0173536789228406e-2,\n\t\t\t\t0.\
 8134571807456905\n\t\t\t],\n\t\t\t[\n\t\t\t\t\"List\",\n\t\t\t\t0.38056992960\
@@ -637,7 +637,7 @@ List\",\n\t\t\t\t0.6389961603784509,\n\t\t\t\t0.45805017576136975\n\t\t\t],\n\
 'czunkfjyemwcpqfgmuuk'\",\n\t\t\t\"'symczunkfjyemwcpqfgmuuk'\"\n\t\t]\n\t]\n]\
 "|>|>, "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Diffusion-Lim\
 ited-Aggregation.wl", "cell" -> "185adda9-66d6-44e7-9760-e22b3b1cad40", 
-   "date" -> DateObject[{2023, 3, 28, 13, 9, 24.936028`8.149402259540617}, 
+   "date" -> DateObject[{2023, 3, 29, 14, 1, 13.290199`7.876106469488038}, 
      "Instant", "Gregorian", 2.]|>, 
  "cells" -> {<|"id" -> "1215f01f-2d3e-4132-8657-32bc2554df46", 
     "type" -> "output", "data" -> "\nInitialize the system", 

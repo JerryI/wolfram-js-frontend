@@ -74,12 +74,19 @@ the rest will be downloaded via the internet. Then `cd` to the project folder an
 git clone --branch indev https://github.com/JerryI/wolfram-js-frontend
 cd wolfram-js-frontend
 npm i
-wolframscript -f Scripts/dev.wls
+wolframscript -f Scripts/build.wls
+wolframscript -f Scripts/run.wls
 ```
 
 Wait until the bundle will be finished (takes some time ~80 seconds) and open your browser with `http://127.0.0.1:8090`
 
 There is a `Introduction` notebook, which shows most gems...
+
+## Development
+
+```shell
+wolframscript -f Scripts/run.wls dev
+```
 
 ## The general concept
 

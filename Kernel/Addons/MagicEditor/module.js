@@ -30,8 +30,8 @@ class FileOutputCell {
       const editor = new EditorView({
         doc: data,
         extensions: [
-          rosePineDawn,
           EditorState.readOnly.of(true),
+          syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
           editorCustomTheme
         ],
         parent: parent.element

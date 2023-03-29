@@ -30,6 +30,7 @@
     "systemjs": "^6.14.1"
   },
   "dependencies": {
+    "@codemirror/highlight": "^0.19.8",
     "@codemirror/lang-html": "^6.4.2",
     "@codemirror/lang-javascript": "^6.1.4",
     "@codemirror/lang-markdown": "^6.1.0",

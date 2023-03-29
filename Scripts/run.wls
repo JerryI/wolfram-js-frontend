@@ -44,6 +44,12 @@ If[MemberQ[$ScriptCommandLine, "ip"],
   ip =  $ScriptCommandLine[[(Position[$ScriptCommandLine, "ip"]//First//First) + 1]]
 ];
 
+If[MemberQ[$ScriptCommandLine, "dev"],
+  devmode = True;
+  Print[Red<>"Dev mode is activated"];
+  Print[Reset];
+];
+
 (* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault *)
@@ -78,7 +84,7 @@ SupportedTypes = {
 address = ip<>":"<>port;
 
 (* no cache, we are developers *)
-WSPCache["Off"];
+If[TrueQ[devmode], WSPCache["Off"]];
 
 jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart;
 
@@ -89,7 +95,7 @@ jsf`server = jsf`server // WEBServerStart;
 SetUpCron;
 
 (* dev mode on *)
-LoadBuildFile["config.build.wl"];
+If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
