@@ -11,8 +11,8 @@ var reFloatForm       = new RegExp('(?:' + pFloat + pPrecision + '?(?:\\*\\^[+-]
 var reIdInContext     = new RegExp('(?:`?)(?:' + Identifier + ')(?:`(?:' + Identifier + '))*(?:`?)');
 
 var reKeywords = new RegExp(
-  "Sqrt|Switch|Which|While|Flatten|If|FrontEndOnly|FrontEndCreateObject|FrontEndSend|ListLinePlot|ListLinePlotly|Sphere|Plot3D|Plotly|Plot|Graphics3D|Graphics|EventBind|WEBSlider|RequestAnimationFrame|EventObject|Plus|Times|Dot|Apply|Scan|Map|MapIndexed|Function|Table|List|True|False|Do|While|Subscript|Supscript|Keys|Values|(/@)|(//)|~|@"
-  );
+  "StringQ|Null|NullQ|Do|Block|Module|With|While|Sqrt|Switch|Which|Flatten|If|FrontEndOnly|FrontEndCreateObject|FrontEndSend|ListLinePlotly|ListLinePlot|Plotly|Graphics3D|Graphics|Plot3D|Plot|If|Plus|Times|Dot|Apply|Scan|Map|MapIndexed|Function|Table|List|True|False|Do|While|Subscript|SupscriptEventBind|WEBSlider|RequestAnimationFrame|EventObject|Plus|Times|Dot|Apply|Scan|Map|MapIndexed|Function|Table|List|True|False|Do|While|Subscript|Supscript|Keys|Values|(/@)|(//)|~|@"
+);
 
 function tokenBase(stream, state) {
   var ch;

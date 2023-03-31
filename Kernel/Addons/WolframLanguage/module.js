@@ -20,6 +20,8 @@ import {smoothy, rosePineDawn} from 'thememirror'
  
 import { MatchDecorator, WidgetType, keymap } from "@codemirror/view"
 
+import { mathematicaMath } from "./../JSLibs/sugar/sugar";
+
 import {
   highlightSpecialChars, drawSelection, highlightActiveLine, dropCursor,
   rectangularSelection, crosshairCursor, placeholder,
@@ -201,6 +203,7 @@ class CodeMirrorCell {
           Greekholder,
           languageConf.of(initialLang),
           autoLanguage, 
+          mathematicaMath(),
           keymap.of([indentWithTab,
             { key: "Backspace", run: function (editor, key) { if(editor.state.doc.length === 0) { origin.remove() }  } },
             { key: "ArrowUp", run: function (editor, key) {  editorLastId = origin.uid; editorLastCursor = editor.state.selection.ranges[0].to;   } },

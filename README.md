@@ -7,6 +7,8 @@ This is a minimalistic, opensource, portable and lightweight notebook interface 
 
 **This project is still in alpha stage!**
 
+**Documentation/tutorials are on a way**
+
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine, which can be easily extended to any user's defined functions and exported as a standalone `.html` application. __There is no aim to copy Mathematica__ (it will never be possible), but make the notebook interface in a different and unique way relying on the web-technology stack with its own features.
 
@@ -21,7 +23,9 @@ The frontened is an HTTP & Websockets server, which runs locally on your PC and 
 Web technologies nowadays are aimed to be extremely efficient in order to compete with a native desktop applications. Therfore we are using classical HTML5 + JS stack to brind life to UI and all graphical objects by __recreating some of Mathematica's function__ using `plotly.js`, `d3.js` and `Three.js` (add your own one! this is easy) libraries. 
 
 ### Flexibillity
-Want to make fancy WebGl animated figures of your brilliant calculaltions? Sure! - Use modern stack of __Javascript__ and `three.js` or any other framework you like, by typing `.js` in the beginning of a cell or write your own Wolfram Language function and attach it to the core library. 
+Want to make fancy WebGl animated figures of your brilliant calculaltions? Sure! - Use modern stack of __Javascript__ and `three.js` or any other framework you like, by typing `.js` in the beginning of a cell or write your own Wolfram Language function and attach it to the core library.
+
+![](imgs/ezgif.com-video-to-gif-4.gif)
 
 Several data transfer method between Wolfram Kernel and Javascript are already implemented. __HTML__, __Markdown__ cells are the part of frontened. You can define your own evaluators kernels (processors) and add new languages used in frontened.
 
@@ -34,25 +38,34 @@ In principle, one can perform hetero-calculations, splittting your code between 
 ## Highlights
 
 ### Minimalistic WEB-GUI
-Now it is kinda buggy, since it runs purely on Wolfram Script and plain JS
+Now it is kinda buggy. It runs purely on Wolfram Script and plain JS with a partial server-side rendering
 
-![](imgs/Screenshot%202023-03-25%20at%2017.39.52.png)
+![](imgs/Screenshot%202023-03-31%20at%2015.45.53.png)
 
 ### 2D Plots and 3D
 The following functions`Plotly`, `ListLinePlotly`, `Graphics3D`, `Plot3D`, `SphericalPlot3D` are implemented and are interactive (without styling and options)
 
-![](imgs/Screenshot%202023-03-25%20at%2017.49.03.png)
-![](imgs/Screenshot%202023-03-25%20at%2017.55.26.png)
+![](imgs/ezgif.com-video-to-gif-3.gif)
+![](imgs/ezgif.com-video-to-gif-2.gif)
 
 ### JS, Markdown, Mermaid... cell types
 There are several cell types are available, which can communicate with Wolfram Kernel using templates or directly using TCP connection
 
 ![](imgs/Screenshot%202023-03-25%20at%2018.01.21.png)
 
+## Syntax sugar
+`Subscript`, `Superscript` are supported and works at syntax.
+
+![](imgs/ezgif.com-video-to-gif.gif)
+
+Fractions, square roots and etc will be implemented in future as well.
+
+
+
 ### Dynamics
 It will be implemented later, but here is a proof of concept example example
+
 ![](imgs/ezgif.com-gif-maker-3.gif)
-![](imgs/ezgif.com-gif-maker-4.gif)
 
 ### Export to standalone HTML notebook app
 Click on `Share` button in the top-right corner, it will export the whole notebook into `.html` with no external dependecies. There is no need even to have an internet connection.
@@ -112,42 +125,50 @@ An input cell is a key. Nobody knows the type of it until it has submitted for t
 The user can add its own extensions and type handlers. 
 
 to write a JS code
-```
+```js
 .js
-return 1+1
+const canvas = document.createElement("canvas");
+let context = canvas.getContext("2d");
+context.fillStyle = "red";
+context.fillRect(10, 10, 100, 50);
+return canvas
 ```
 
-![](imgs/Screenshot%202023-03-25%20at%2018.26.05.png)
+![](imgs/Screenshot%202023-03-31%20at%2016.15.21.png)
 
 to write Markdown
 ```markdown
 .md
 # Hello World!
+- 1
+- 2
 ```
 
-![](imgs/Screenshot%202023-03-25%20at%2018.26.56.png)
+![](imgs/Screenshot%202023-03-31%20at%2016.09.54.png)
 
 to make Mermaid diagram
-```
+```shell
 .mermaid
 pie title NETFLIX
          "Time spent looking for movie" : 90
          "Time spent watching it" : 10
 ```
 
-![](imgs/Screenshot%202023-03-25%20at%2018.29.56.png)
+![](imgs/Screenshot%202023-03-31%20at%2016.01.28.png)
 to write HTML
 ```html
 .html
 <h1>Hello World</h1>
 ```
 
-![](imgs/Screenshot%202023-03-25%20at%2018.30.54.png)
+![](imgs/Screenshot%202023-03-31%20at%2016.09.04.png)
 
 to display an image
-```
+```shell
 exampleimage.png
 ```
+
+![](imgs/Screenshot%202023-03-31%20at%2016.06.38.png)
 
 to display a file
 ```
@@ -160,11 +181,15 @@ filename.txt
 Hello World
 ```
 
+![](imgs/Screenshot%202023-03-31%20at%2016.07.58.png)
+
 to display an ASCII art
-```
+```shell
 .svgbob
 --------->
 ```
+
+![](imgs/Screenshot%202023-03-31%20at%2015.59.37.png)
 
 to evaluate a regular WL expression
 ```mathematica
@@ -348,6 +373,7 @@ Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbol
 
 However, people now are using sort-of syntax sugar for the live previews of Markdown, where the code you typing is replaced by the corresponding styled object. A good example is Obsidian notes making app, and CodeMirror 6 Decorations. TL-DR see [[Decoration]]
 
+...to be concluded
 
 # Technology stack
 ## Backend
@@ -372,5 +398,6 @@ However, people now are using sort-of syntax sugar for the live previews of Mark
 - [Observable](http://observablehq.com/@jerryi)
 - [Wolfram Language Notebook VSCode](https://github.com/njpipeorgan/wolfram-language-notebook)
 - [Mathics](https://mathics.org)
+- [Markdown Decoration extension](https://github.com/fuermosi777) 
 
 

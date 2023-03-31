@@ -250,7 +250,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
 
 (* create a serialsed notebook and store it as a file *)
-CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = "Untitled"},
+CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = (RandomWord[]//Capitalize)},
   While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
     filename = StringJoin[filename, "-New"];
   ];

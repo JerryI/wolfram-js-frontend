@@ -35,6 +35,7 @@ MergeFiles[Rule[files_, target_], OptionsPattern[]] := (
 
 LoadBuildFile[file_String] := With[{},
     JerryI`WolframJSFrontend`Dev`config = Get[file];
+    CheckFiles;
     SessionSubmit[ScheduledTask[CheckFiles, Quantity[3, "Seconds"]]];
 ];
 
