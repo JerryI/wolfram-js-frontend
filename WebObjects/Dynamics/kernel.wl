@@ -15,8 +15,11 @@ InputField[default_] := Module[{view, script, id = CreateUUID[]},
     EventObject[<|"id"->id, "view"->WEBInputField[id, default]|>]
 ];
 
+CM6Form[EventObject[assoc_]] ^:= If[KeyExistsQ[assoc, "view"], CreateFrontEndObject[assoc["view"]],  EventObject[assoc_]];
+
 CreateFrontEndObject[EventObject[assoc_]] ^:= CreateFrontEndObject[assoc["view"]];
 CreateFrontEndObject[EventObject[assoc_], uid_] ^:= CreateFrontEndObject[assoc["view"], uid];
+
 
 Unprotect[Manipulate]
 ClearAll[Manipulate]

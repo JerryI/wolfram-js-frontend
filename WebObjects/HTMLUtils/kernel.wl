@@ -1,4 +1,7 @@
 RegisterWebObject[HTMLForm];
+RegisterWebObject[TextForm];
+
+RegisterWebObject[FrontEndTruncated];
 
 Global`SVGForm[x_] := ExportString[x, "SVG"]//HTMLForm;
 

@@ -1,5 +1,5 @@
 <|
-    "watch" -> {"JSFrontend", "WebObjects"},
+    "watch" -> {"JSFrontend", "WebObjects", "JSLibs", "Kernel/Addons"},
     "recipy" :> (
         (* merge and bundle the files *)
         MergeFiles[{

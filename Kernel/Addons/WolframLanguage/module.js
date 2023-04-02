@@ -143,7 +143,7 @@ class FEWidget extends WidgetType {
     return elt;
   }
   ignoreEvent() {
-    return false; 
+    return true; 
   }
   destroy() {
     console.log('widget got destroyed!');
@@ -157,8 +157,11 @@ let editorCustomTheme = EditorView.theme({
   "&.cm-focused": {
     outline: "none"
   },
-  "&.cm-focused .cm-line": {
-    padding: "0"
+  "&.cm-line": {
+    padding: 0
+  },
+  ".cm-line": {
+    padding: 0
   }
 });
 

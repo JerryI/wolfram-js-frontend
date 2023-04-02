@@ -11,9 +11,10 @@
 
 (* global scope *)
 SetAttributes[SetFrontEndObject, HoldFirst];
+SetAttributes[FrontEndRef, HoldFirst];
 
 (* autoconvertion of the frontend object back to the original expressions *)
-FrontEndExecutableWrapper[uid_] :=  ImportString[
+FrontEndExecutableWrapper[uid_] :=  (Print["Importing string"]; ImportString[
   Function[res, If[!StringQ[res], 
                   JerryI`WolframJSFrontend`Evaluator`objects[uid] = AskMaster[Global`NotebookGetObjectForMe[uid]];
                   JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"]
@@ -21,10 +22,22 @@ FrontEndExecutableWrapper[uid_] :=  ImportString[
                   res
     ]
   ] @ (JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"])
-, "ExpressionJSON"];
+, "ExpressionJSON"] );
+
+FrontEndRef[FrontEndExecutableWrapper[uid_]] := FrontEndExecutableHold[uid];
+FrontEndRef[FrontEndExecutable[uid_]]        := FrontEndExecutableHold[uid];
+
+
+
 (* exceptional case, when the frontened object is set *)
 SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
-SetFrontEndObject[FrontEndExecutable[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
+Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (Print["Did work!"]; SetFrontEndObject[uid, expr]//SendToFrontEnd);
+
+SetFrontEndObject[FrontEndRef[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
+Set[FrontEndRef[uid_], expr_] ^:= (Print["Did work!"]; SetFrontEndObject[uid, expr]//SendToFrontEnd);
+
+(* special post-handler, only used for upvalues *)
+CM6Form[e_] := e
 
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`", "JerryI`WolframJSFrontend`Remote`"}];
 
@@ -46,11 +59,11 @@ JerryI`WolframJSFrontend`Evaluator`objects   = <||>;
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
   Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out},
     Block[{
-            Global`FrontEndExecutable = Global`FrontEndExecutableWrapper
+            
           },
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
-      $evaluated = ToExpression[str, InputForm, Hold] /. {Global`SetFrontEndObject[Global`FrontEndExecutable[uid_], expr_] :> Global`SetFrontEndObject[uid, expr]} // ReleaseHold;
+      $evaluated = ToExpression[str, InputForm, Hold] /. {Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper} // ReleaseHold;
       
       (* a shitty analogue of % symbol *)
       $out = $evaluated;
@@ -60,7 +73,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
     ];  
 
     (* replaces the output with a registered WebObjects/FrontEndObjects and releases created held frontend objects *)
-    With[{$result = $evaluated /. JerryI`WolframJSFrontend`WebObjects`replacement /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}},
+    With[{$result = ($evaluated // Global`CM6Form) /. JerryI`WolframJSFrontend`WebObjects`replacement /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}},
       (* each creation of FrontEndExecutable extends the objects to $NewDefinitiions, now me merge it with the local storage *)
       JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       

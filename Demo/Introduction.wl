@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Untitled", "id" -> "intolerance-4cafb", 
+<|"notebook" -> <|"name" -> "Untitled", "id" -> "viable-34ade", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"e0d72740-db65-412d-a1a2-c0c7f4437e1a" -> 
       <|"json" -> "[\"HTMLForm\",\"'<?xml version=\\\"1.0\\\" \
@@ -2146,67 +2146,67 @@ Sphere\",[\"List\",2.562448650937636,-0.25278851291526117,-3.944415469967833]\
 \"],[\"Rule\",\"Lighting\",\"None\"]]", "date" -> 
         DateObject[{2023, 3, 25, 18, 20, 17.037525`7.983981490628045}, 
          "Instant", "Gregorian", 1.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Introduction.wl", 
-   "cell" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee", 
-   "date" -> DateObject[{2023, 3, 25, 18, 31, 21.38075`8.082597918876859}, 
-     "Instant", "Gregorian", 1.]|>, 
- "cells" -> {<|"id" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a", 
+   "path" -> "/root/wolfram-js-frontend/Demo/Introduction.wl", 
+   "cell" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee03c", 
+   "date" -> DateObject[{2023, 4, 2, 23, 3, 5.541821`7.496227481821305}, 
+     "Instant", "Gregorian", 3.]|>, 
+ "cells" -> {<|"id" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a03c", 
     "type" -> "input", "data" -> "Graphics3D[{Roughness[0], Reflectivity[1], \
 IOR[2], Clearcoat[0.5], Table[{RGBColor[Normalize[i]], Sphere[i]}, {i, \
 RandomReal[{-5,5}, {40,3}]}], SkyAndWater[]}, Background->None, \
-Lighting->None]", "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "5d28913e-4f20-47b9-b24d-7f8f137917c5", 
-    "next" -> "a3027cf2-70bb-4851-8e80-5548a00e50d0", "parent" -> Null, 
-    "child" -> "6c76c3aa-9f18-46d6-af1c-7e4c4dbf68be", 
+Lighting->None]", "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "5d28913e-4f20-47b9-b24d-7f8f137917c503c", 
+    "next" -> "a3027cf2-70bb-4851-8e80-5548a00e50d003c", "parent" -> Null, 
+    "child" -> "6c76c3aa-9f18-46d6-af1c-7e4c4dbf68be03c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0248f89c-d3ef-471a-925f-d13645e8875d", "type" -> "output", 
+   <|"id" -> "0248f89c-d3ef-471a-925f-d13645e8875d03c", "type" -> "output", 
     "data" -> "randompic.png", "display" -> "image", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "d26a0704-ee1c-48d2-9e98-2b55a8523304", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "d26a0704-ee1c-48d2-9e98-2b55a852330403c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", "type" -> "input", 
+   <|"id" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa03c", "type" -> "input", 
     "data" -> "\[Alpha], \[Beta], \[Gamma], \[Delta]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", 
-    "next" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "parent" -> Null, 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "7b48d5bf-a566-4839-b859-7613cee5b2d803c", 
+    "next" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f6803c", "parent" -> Null, 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0dc91c54-0e50-4b0f-ae52-5fbbe3f4e7fb", "type" -> "output", 
+   <|"id" -> "0dc91c54-0e50-4b0f-ae52-5fbbe3f4e7fb03c", "type" -> "output", 
     "data" -> "\n## SVG ASCII Art\nJust for fun there is a WASM package for \
 SVG-ASCII diagrams converter, written in Rust - \
 [SVGBob](https://github.com/ivanceras/svgbob)", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "c94d4e27-7017-440a-88f0-994f433fc87a", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "c94d4e27-7017-440a-88f0-994f433fc87a03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", "type" -> "input", 
+   <|"id" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea11503c", "type" -> "input", 
     "data" -> ".md\nHello World. The time is *<?wsp Now//TextString ?>*", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "52192397-356d-4d69-901f-68bcad77ac5d", 
-    "next" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c", "parent" -> Null, 
-    "child" -> "e81e0e2c-8197-4b5e-a8c3-1171b19f71c4", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "52192397-356d-4d69-901f-68bcad77ac5d03c", 
+    "next" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c03c", "parent" -> Null, 
+    "child" -> "e81e0e2c-8197-4b5e-a8c3-1171b19f71c403c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1856e2a3-203c-433d-9f1d-5f08a95d4af7", "type" -> "output", 
+   <|"id" -> "1856e2a3-203c-433d-9f1d-5f08a95d4af703c", "type" -> "output", 
     "data" -> "<blockquote>Your location is \
 <it>Prague/Prague/CzechRepublic</it></blockquote>", "display" -> "html", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1d8b93a5-bf76-48ac-a5e1-33c11f6ba11a", "type" -> "output", 
+   <|"id" -> "1d8b93a5-bf76-48ac-a5e1-33c11f6ba11a03c", "type" -> "output", 
     "data" -> "\n### JS\nYou can program is JS and communicate with WL as \
 well as with a frontened. More about it - later...\n\nHere is some neat pure \
 js example adapted from \
 [Observable](https://observablehq.com/@mbostock/tadpoles).", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "type" -> "input", 
+   <|"id" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f6803c", "type" -> "input", 
     "data" -> ".md\nNative Wolfram Mathematica graphics can be exported to an \
 SVG image using `SVGForm`", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", 
-    "next" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f", "parent" -> Null, 
-    "child" -> "9386dc28-7128-405d-970b-962645c4e2c9", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "0c8ff742-1701-4a3c-b9c3-b56f4869cafa03c", 
+    "next" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f03c", "parent" -> Null, 
+    "child" -> "9386dc28-7128-405d-970b-962645c4e2c903c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "38a71d5e-4e07-40b3-aa33-54c2d72c1caa", "type" -> "output", 
+   <|"id" -> "38a71d5e-4e07-40b3-aa33-54c2d72c1caa03c", "type" -> "output", 
     "data" -> "\n       +10-15V           ___0,047R\n      \
 *---------o-----o-|___|-o--o---------o----o-------.\n    + |         |     |  \
      |  |         |    |       |\n    -===-      _|_    |       | .+.        \
@@ -2237,11 +2237,11 @@ GND\n               |            5|   4|             |             |\n        \
 + 3k3\n                                                    | | in Serie\n     \
                                                '+'\n                          \
                            |\n                                                \
-    GND\n\n", "display" -> "svgbob", "sign" -> "intolerance-4cafb", 
+    GND\n\n", "display" -> "svgbob", "sign" -> "viable-34ade", 
     "prev" -> Null, "next" -> Null, "parent" -> 
-     "3c499c23-0d88-4431-a3a9-e518bf31d2c8", "child" -> Null, 
+     "3c499c23-0d88-4431-a3a9-e518bf31d2c803c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c8", "type" -> "input", 
+   <|"id" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c803c", "type" -> "input", 
     "data" -> ".svgbob\n       +10-15V           ___0,047R\n      \
 *---------o-----o-|___|-o--o---------o----o-------.\n    + |         |     |  \
      |  |         |    |       |\n    -===-      _|_    |       | .+.        \
@@ -2272,12 +2272,12 @@ GND\n               |            5|   4|             |             |\n        \
 + 3k3\n                                                    | | in Serie\n     \
                                                '+'\n                          \
                            |\n                                                \
-    GND\n\n", "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "c94d4e27-7017-440a-88f0-994f433fc87a", 
-    "next" -> "940efc90-8962-4e22-839e-3ae0edfe0ca9", "parent" -> Null, 
-    "child" -> "38a71d5e-4e07-40b3-aa33-54c2d72c1caa", 
+    GND\n\n", "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "c94d4e27-7017-440a-88f0-994f433fc87a03c", 
+    "next" -> "940efc90-8962-4e22-839e-3ae0edfe0ca903c", "parent" -> Null, 
+    "child" -> "38a71d5e-4e07-40b3-aa33-54c2d72c1caa03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3f8f1ad5-5bc7-4918-9c6c-9aa05fac533a", "type" -> "output", 
+   <|"id" -> "3f8f1ad5-5bc7-4918-9c6c-9aa05fac533a03c", "type" -> "output", 
     "data" -> "\nflowchart LR\n  subgraph Browser\n  In[Input Cell]\n  \
 Out[Output Cell]\n    subgraph JS Engine\n        direction RL\n        \
 WJ[Wolfram Interpreter]\n    end\n    WJ[Interpreter] --> Out[Output Cell]\n  \
@@ -2287,35 +2287,35 @@ Kernel\n    B[Preprocessor]\n    V[Postprocessor]\n    subgraph Addons\n      \
 end\n    Addons -.- B[Preprocessor]\n  end\n  subgraph Secondary Kernel\n    \
 B[Preprocessor]-- TCP/WSTP -->E[Evaluator] -- TCP --> V[Postprocessor] -- \
 WebSockets --> WJ[Interpreter]\n  end  ", "display" -> "mermaid", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "9f5108f5-4216-42a6-adda-79fd6c1a6762", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "9f5108f5-4216-42a6-adda-79fd6c1a676203c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3fbaec5a-b604-4d21-b638-959d9ab35304", "type" -> "input", 
+   <|"id" -> "3fbaec5a-b604-4d21-b638-959d9ab3530403c", "type" -> "input", 
     "data" -> "ShowTheSign = \
 FrontEndExecutable[\"bae1ef84-8f41-4cd9-a3fd-f1b9d949ff94\"];", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "ad9489aa-ba52-496a-99d8-2a5cc1b88786", 
-    "next" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", "parent" -> Null, 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "ad9489aa-ba52-496a-99d8-2a5cc1b8878603c", 
+    "next" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e78538903c", "parent" -> Null, 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "43bbf872-d314-4e58-8c25-2fdbc089476c", "type" -> "output", 
+   <|"id" -> "43bbf872-d314-4e58-8c25-2fdbc089476c03c", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"e0d72740-db65-412d-a1a2-c0c7f4437e1a\"]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "47cf46bc-b4bb-4425-b675-0d4d9be78acf", "type" -> "output", 
+   <|"id" -> "47cf46bc-b4bb-4425-b675-0d4d9be78acf03c", "type" -> "output", 
     "data" -> "\nEverything is a symbol! You can __edit the output cell and \
-evaluate it as well__", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e74", "child" -> Null, 
+evaluate it as well__", "display" -> "markdown", "sign" -> "viable-34ade", 
+    "prev" -> Null, "next" -> Null, "parent" -> 
+     "68ade6e4-db74-4c94-b2ae-33d03aa40e7403c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", "type" -> "input", 
+   <|"id" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e78538903c", "type" -> "input", 
     "data" -> "Table[ShowTheSign, {i, 3}]", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "3fbaec5a-b604-4d21-b638-959d9ab35304", 
-    "next" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", "parent" -> Null, 
-    "child" -> "666c3d4d-820a-4a29-a08c-4fb6878539c5", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "3fbaec5a-b604-4d21-b638-959d9ab3530403c", 
+    "next" -> "7b48d5bf-a566-4839-b859-7613cee5b2d803c", "parent" -> Null, 
+    "child" -> "666c3d4d-820a-4a29-a08c-4fb6878539c503c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d8", "type" -> "input", 
+   <|"id" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d803c", "type" -> "input", 
     "data" -> ".md\n# Technology stack\n## Backend\n- Wolfram Engine\n*as \
 HTTP Server, IO operator, DB manager and etc*\n- NodeJS\n*as JS bundler \
 (using Rollup.js) for dev. purposes*\n## Frontend\n- WL JS interpreter *for \
@@ -2328,122 +2328,122 @@ by\n- *Wolfram Mathematica*\n- \
 [Observable](http://observablehq.com/@jerryi)\n- [Wolfram Language Notebook \
 VSCode](https://github.com/njpipeorgan/wolfram-language-notebook)\n- \
 [Mathics](https://mathics.org)\n\n  ", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "940efc90-8962-4e22-839e-3ae0edfe0ca9", "next" -> Null, 
-    "parent" -> Null, "child" -> "cb5a5fb3-fcfc-46be-885b-d933c5ddabde", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "940efc90-8962-4e22-839e-3ae0edfe0ca903c", "next" -> Null, 
+    "parent" -> Null, "child" -> "cb5a5fb3-fcfc-46be-885b-d933c5ddabde03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "52192397-356d-4d69-901f-68bcad77ac5d", "type" -> "input", 
+   <|"id" -> "52192397-356d-4d69-901f-68bcad77ac5d03c", "type" -> "input", 
     "data" -> ".md\n### Markdown & LaTeX\nType `.md` in the beginning of the \
 cell and then type from the new line. It also supports __WSP__ preprocessor. \
 $\\LaTeX$ is also supported.", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "f0544531-f172-4cbe-b4f4-35b3bb38d71e", 
-    "next" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", "parent" -> Null, 
-    "child" -> "8774151e-2e7a-4eac-8886-f53fab23f639", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "f0544531-f172-4cbe-b4f4-35b3bb38d71e03c", 
+    "next" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea11503c", "parent" -> Null, 
+    "child" -> "8774151e-2e7a-4eac-8886-f53fab23f63903c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "5384dd05-83b6-4917-b75e-7d20526aec9a", "type" -> "input", 
+   <|"id" -> "5384dd05-83b6-4917-b75e-7d20526aec9a03c", "type" -> "input", 
     "data" -> "myFile.txt", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "6d1c7fc9-1e83-46d5-9d78-1274fa81d242", 
-    "next" -> "6516d993-9a04-413e-a352-61e5cdbd8225", "parent" -> Null, 
-    "child" -> "6d2c61cc-6fd7-41ef-b9ea-07d39b26afac", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "6d1c7fc9-1e83-46d5-9d78-1274fa81d24203c", 
+    "next" -> "6516d993-9a04-413e-a352-61e5cdbd822503c", "parent" -> Null, 
+    "child" -> "6d2c61cc-6fd7-41ef-b9ea-07d39b26afac03c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a", "type" -> "input", 
+   <|"id" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a03c", "type" -> "input", 
     "data" -> 
      ".md\n### Wolfram Language\nType anything without any preparations ;)", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "ba581116-b588-4b0e-bc00-bd7b7fccf299", 
-    "next" -> "fc052b37-4185-466c-a44a-b48d802cd63e", "parent" -> Null, 
-    "child" -> "689949aa-868f-4e23-9c91-2e60268fb577", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "ba581116-b588-4b0e-bc00-bd7b7fccf29903c", 
+    "next" -> "fc052b37-4185-466c-a44a-b48d802cd63e03c", "parent" -> Null, 
+    "child" -> "689949aa-868f-4e23-9c91-2e60268fb57703c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "59462123-5072-4762-bae6-15bf054a2626", "type" -> "output", 
+   <|"id" -> "59462123-5072-4762-bae6-15bf054a262603c", "type" -> "output", 
     "data" -> "\nSee more examples in the sidebar", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "940efc90-8962-4e22-839e-3ae0edfe0ca9", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "940efc90-8962-4e22-839e-3ae0edfe0ca903c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5b0db213-c4d6-4191-9a18-7f0b8087878a", "type" -> "output", 
+   <|"id" -> "5b0db213-c4d6-4191-9a18-7f0b8087878a03c", "type" -> "output", 
     "data" -> "\nNow you have created a file `myFile.txt` with the \
 corresponding content. One can print the content using the same command", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d242", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d24203c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f", "type" -> "input", 
+   <|"id" -> "5c6fac47-1a2d-4111-833d-5836acbe6b5f03c", "type" -> "input", 
     "data" -> 
      "Plot[{Sin[t^2 Sqrt[t]], Cos[t^2 Sqrt[t]]}, {t, 0, Pi}]//SVGForm", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", 
-    "next" -> "e4a26590-2bed-4855-a2d9-11a06dfde112", "parent" -> Null, 
-    "child" -> "43bbf872-d314-4e58-8c25-2fdbc089476c", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f6803c", 
+    "next" -> "e4a26590-2bed-4855-a2d9-11a06dfde11203c", "parent" -> Null, 
+    "child" -> "43bbf872-d314-4e58-8c25-2fdbc089476c03c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5d28913e-4f20-47b9-b24d-7f8f137917c5", "type" -> "input", 
+   <|"id" -> "5d28913e-4f20-47b9-b24d-7f8f137917c503c", "type" -> "input", 
     "data" -> ".md\n3D Graphics is also partially supported", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f", 
-    "next" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a", "parent" -> Null, 
-    "child" -> "c518d431-942d-4932-9c4f-9593bea0c583", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f03c", 
+    "next" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a03c", "parent" -> Null, 
+    "child" -> "c518d431-942d-4932-9c4f-9593bea0c58303c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "64f345cd-c8f7-4dc1-8186-02bfc727dc96", "type" -> "output", 
-    "data" -> "2", "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
+   <|"id" -> "64f345cd-c8f7-4dc1-8186-02bfc727dc9603c", "type" -> "output", 
+    "data" -> "2", "display" -> "codemirror", "sign" -> "viable-34ade", 
     "prev" -> Null, "next" -> Null, "parent" -> 
-     "fc052b37-4185-466c-a44a-b48d802cd63e", "child" -> Null, 
+     "fc052b37-4185-466c-a44a-b48d802cd63e03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6516d993-9a04-413e-a352-61e5cdbd8225", "type" -> "input", 
+   <|"id" -> "6516d993-9a04-413e-a352-61e5cdbd822503c", "type" -> "input", 
     "data" -> ".md\nOr one can show the image file directly omitting \
 Markdown/HTML processor", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "5384dd05-83b6-4917-b75e-7d20526aec9a", 
-    "next" -> "d26a0704-ee1c-48d2-9e98-2b55a8523304", "parent" -> Null, 
-    "child" -> "cacc33e2-2a0c-4e2b-b2be-ee640b905a6e", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "5384dd05-83b6-4917-b75e-7d20526aec9a03c", 
+    "next" -> "d26a0704-ee1c-48d2-9e98-2b55a852330403c", "parent" -> Null, 
+    "child" -> "cacc33e2-2a0c-4e2b-b2be-ee640b905a6e03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "666c3d4d-820a-4a29-a08c-4fb6878539c5", "type" -> "output", 
+   <|"id" -> "666c3d4d-820a-4a29-a08c-4fb6878539c503c", "type" -> "output", 
     "data" -> "{FrontEndExecutable[\"cf8c34c8-712f-4485-807f-eaf2d4b89dd6\"], \
 FrontEndExecutable[\"7d1e9edc-d528-42fd-a7c5-f637c805a2cf\"], \
 FrontEndExecutable[\"8d7a5170-43d7-4cfd-9ec6-5bf468f20e06\"]}", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "492ddc5c-dc5f-45cb-bd29-fc3b2e78538903c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "689949aa-868f-4e23-9c91-2e60268fb577", "type" -> "output", 
+   <|"id" -> "689949aa-868f-4e23-9c91-2e60268fb57703c", "type" -> "output", 
     "data" -> 
      "\n### Wolfram Language\nType anything without any preparations ;)", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e74", "type" -> "input", 
+   <|"id" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e7403c", "type" -> "input", 
     "data" -> ".md\nEverything is a symbol! You can __edit the output cell \
 and evaluate it as well__", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "fc052b37-4185-466c-a44a-b48d802cd63e", 
-    "next" -> "ad9489aa-ba52-496a-99d8-2a5cc1b88786", "parent" -> Null, 
-    "child" -> "47cf46bc-b4bb-4425-b675-0d4d9be78acf", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "fc052b37-4185-466c-a44a-b48d802cd63e03c", 
+    "next" -> "ad9489aa-ba52-496a-99d8-2a5cc1b8878603c", "parent" -> Null, 
+    "child" -> "47cf46bc-b4bb-4425-b675-0d4d9be78acf03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6c76c3aa-9f18-46d6-af1c-7e4c4dbf68be", "type" -> "output", 
+   <|"id" -> "6c76c3aa-9f18-46d6-af1c-7e4c4dbf68be03c", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"9f662bd7-6d82-4051-babc-ba4812eabd34\"]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d242", "type" -> "input", 
+   <|"id" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d24203c", "type" -> "input", 
     "data" -> ".md\nNow you have created a file `myFile.txt` with the \
 corresponding content. One can print the content using the same command", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "9521501e-e17c-4031-b14f-049cc19f5132", 
-    "next" -> "5384dd05-83b6-4917-b75e-7d20526aec9a", "parent" -> Null, 
-    "child" -> "5b0db213-c4d6-4191-9a18-7f0b8087878a", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "9521501e-e17c-4031-b14f-049cc19f513203c", 
+    "next" -> "5384dd05-83b6-4917-b75e-7d20526aec9a03c", "parent" -> Null, 
+    "child" -> "5b0db213-c4d6-4191-9a18-7f0b8087878a03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6d2c61cc-6fd7-41ef-b9ea-07d39b26afac", "type" -> "output", 
+   <|"id" -> "6d2c61cc-6fd7-41ef-b9ea-07d39b26afac03c", "type" -> "output", 
     "data" -> "Hello World", "display" -> "fileprint", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "5384dd05-83b6-4917-b75e-7d20526aec9a", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "5384dd05-83b6-4917-b75e-7d20526aec9a03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", "type" -> "input", 
+   <|"id" -> "7b48d5bf-a566-4839-b859-7613cee5b2d803c", "type" -> "input", 
     "data" -> ".md\nThe input syntax sugar is not supported by now. However, \
 it is still possible to bring all Greek symbols, fractions and etc with a bit \
 of work on CodeMirror 6 Decorations extensions. ", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "492ddc5c-dc5f-45cb-bd29-fc3b2e785389", 
-    "next" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa", "parent" -> Null, 
-    "child" -> "874198e4-8bf1-4093-926a-326ae83a4fde", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "492ddc5c-dc5f-45cb-bd29-fc3b2e78538903c", 
+    "next" -> "0c8ff742-1701-4a3c-b9c3-b56f4869cafa03c", "parent" -> Null, 
+    "child" -> "874198e4-8bf1-4093-926a-326ae83a4fde03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "83bf7d67-ca9f-4e6a-84a8-0b776433a4d8", "type" -> "output", 
+   <|"id" -> "83bf7d67-ca9f-4e6a-84a8-0b776433a4d803c", "type" -> "output", 
     "data" -> "\n# Introduction\nThis a freeware frontened written in JS for \
 Wolfram Language. Start from the connecting to the Kernel using the button \
 `LocalKernel` in the top-right corner. Everything is depicted as cells like \
@@ -2458,57 +2458,57 @@ all cells__ - press a **curvy arrow** icon in the top-right corner.\n\nTo \
 rename the file - click to the topbar path, where the name is written.\n\n## \
 The general concept\n> Everyhting is a symbol\n> \n> One cell to rule them \
 all\n>\n> Output cells, graphs are editable/evaluatable\n\nHere is the graph \
-shows how the data flow", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee", "child" -> Null, 
+shows how the data flow", "display" -> "markdown", "sign" -> "viable-34ade", 
+    "prev" -> Null, "next" -> Null, "parent" -> 
+     "fadf2962-8595-40e0-935b-d60f8c8dd0ee03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "874198e4-8bf1-4093-926a-326ae83a4fde", "type" -> "output", 
+   <|"id" -> "874198e4-8bf1-4093-926a-326ae83a4fde03c", "type" -> "output", 
     "data" -> "\nThe input syntax sugar is not supported by now. However, it \
 is still possible to bring all Greek symbols, fractions and etc with a bit of \
 work on CodeMirror 6 Decorations extensions. ", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "7b48d5bf-a566-4839-b859-7613cee5b2d8", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "7b48d5bf-a566-4839-b859-7613cee5b2d803c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8774151e-2e7a-4eac-8886-f53fab23f639", "type" -> "output", 
+   <|"id" -> "8774151e-2e7a-4eac-8886-f53fab23f63903c", "type" -> "output", 
     "data" -> "\n### Markdown & LaTeX\nType `.md` in the beginning of the \
 cell and then type from the new line. It also supports __WSP__ preprocessor. \
 $\\LaTeX$ is also supported.", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "52192397-356d-4d69-901f-68bcad77ac5d", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "52192397-356d-4d69-901f-68bcad77ac5d03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9386dc28-7128-405d-970b-962645c4e2c9", "type" -> "output", 
+   <|"id" -> "9386dc28-7128-405d-970b-962645c4e2c903c", "type" -> "output", 
     "data" -> "\nNative Wolfram Mathematica graphics can be exported to an \
 SVG image using `SVGForm`", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f68", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "3152ccc7-e5b8-4d99-a5b0-b637b3968f6803c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "940efc90-8962-4e22-839e-3ae0edfe0ca9", "type" -> "input", 
+   <|"id" -> "940efc90-8962-4e22-839e-3ae0edfe0ca903c", "type" -> "input", 
     "data" -> ".md\nSee more examples in the sidebar", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c8", 
-    "next" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d8", "parent" -> Null, 
-    "child" -> "59462123-5072-4762-bae6-15bf054a2626", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c803c", 
+    "next" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d803c", "parent" -> Null, 
+    "child" -> "59462123-5072-4762-bae6-15bf054a262603c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "9420223b-a0d1-4c4c-83c1-6bb6465cccf4", "type" -> "output", 
+   <|"id" -> "9420223b-a0d1-4c4c-83c1-6bb6465cccf403c", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"539948e6-f4fb-4fe0-bb8a-3c80abf689af\"]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9521501e-e17c-4031-b14f-049cc19f5132", "type" -> "input", 
+   <|"id" -> "9521501e-e17c-4031-b14f-049cc19f513203c", "type" -> "input", 
     "data" -> "myFile.txt\nHello World", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "a3027cf2-70bb-4851-8e80-5548a00e50d0", 
-    "next" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d242", "parent" -> Null, 
-    "child" -> "ce3a1365-77e6-40ac-822f-64f209f3d445", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "a3027cf2-70bb-4851-8e80-5548a00e50d003c", 
+    "next" -> "6d1c7fc9-1e83-46d5-9d78-1274fa81d24203c", "parent" -> Null, 
+    "child" -> "ce3a1365-77e6-40ac-822f-64f209f3d44503c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f", "type" -> "input", 
+   <|"id" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f03c", "type" -> "input", 
     "data" -> "Plotly[{Sin[t^2 Sqrt[t]], Cos[t^2 Sqrt[t]]}, {t, 0, Pi}]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "e4a26590-2bed-4855-a2d9-11a06dfde112", 
-    "next" -> "5d28913e-4f20-47b9-b24d-7f8f137917c5", "parent" -> Null, 
-    "child" -> "9420223b-a0d1-4c4c-83c1-6bb6465cccf4", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "e4a26590-2bed-4855-a2d9-11a06dfde11203c", 
+    "next" -> "5d28913e-4f20-47b9-b24d-7f8f137917c503c", "parent" -> Null, 
+    "child" -> "9420223b-a0d1-4c4c-83c1-6bb6465cccf403c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9f5108f5-4216-42a6-adda-79fd6c1a6762", "type" -> "input", 
+   <|"id" -> "9f5108f5-4216-42a6-adda-79fd6c1a676203c", "type" -> "input", 
     "data" -> ".mermaid\nflowchart LR\n  subgraph Browser\n  In[Input Cell]\n \
  Out[Output Cell]\n    subgraph JS Engine\n        direction RL\n        \
 WJ[Wolfram Interpreter]\n    end\n    WJ[Interpreter] --> Out[Output Cell]\n  \
@@ -2518,25 +2518,25 @@ Kernel\n    B[Preprocessor]\n    V[Postprocessor]\n    subgraph Addons\n      \
 end\n    Addons -.- B[Preprocessor]\n  end\n  subgraph Secondary Kernel\n    \
 B[Preprocessor]-- TCP/WSTP -->E[Evaluator] -- TCP --> V[Postprocessor] -- \
 WebSockets --> WJ[Interpreter]\n  end  ", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "fadf2962-8595-40e0-935b-d60f8c8dd0ee", 
-    "next" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e", "parent" -> Null, 
-    "child" -> "3f8f1ad5-5bc7-4918-9c6c-9aa05fac533a", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "fadf2962-8595-40e0-935b-d60f8c8dd0ee03c", 
+    "next" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e03c", "parent" -> Null, 
+    "child" -> "3f8f1ad5-5bc7-4918-9c6c-9aa05fac533a03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "a3027cf2-70bb-4851-8e80-5548a00e50d0", "type" -> "input", 
+   <|"id" -> "a3027cf2-70bb-4851-8e80-5548a00e50d003c", "type" -> "input", 
     "data" -> ".md\n## Magic File Editor\nType in the beginning of the cell", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a", 
-    "next" -> "9521501e-e17c-4031-b14f-049cc19f5132", "parent" -> Null, 
-    "child" -> "c2cd0581-7565-42b7-a884-501d8da45227", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a03c", 
+    "next" -> "9521501e-e17c-4031-b14f-049cc19f513203c", "parent" -> Null, 
+    "child" -> "c2cd0581-7565-42b7-a884-501d8da4522703c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ad9489aa-ba52-496a-99d8-2a5cc1b88786", "type" -> "input", 
+   <|"id" -> "ad9489aa-ba52-496a-99d8-2a5cc1b8878603c", "type" -> "input", 
     "data" -> "HTMLForm[\"<h3>Hello World</h3>\"]", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e74", 
-    "next" -> "3fbaec5a-b604-4d21-b638-959d9ab35304", "parent" -> Null, 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e7403c", 
+    "next" -> "3fbaec5a-b604-4d21-b638-959d9ab3530403c", "parent" -> Null, 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ba581116-b588-4b0e-bc00-bd7b7fccf299", "type" -> "input", 
+   <|"id" -> "ba581116-b588-4b0e-bc00-bd7b7fccf29903c", "type" -> "input", 
     "data" -> ".js\n\n  const n = 100;\n  const m = 12;\n  const v = 2;\n  \
 const height = 300;\n  const width = 600;\n  const div = \
 document.createElement('canvas');\n  div.width = width;\n  div.height = \
@@ -2570,28 +2570,28 @@ i = 1; i < m; ++i) context.lineTo(t.px[i], t.py[i]);\n      context.lineWidth \
 requestAnimationFrame(update);\n\n//remove from the scheldue, when the cell \
 is destoyed\nthis.ondestroy = function() \
 {cancelAnimationFrame(uid)};\n\nreturn div;", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c", 
-    "next" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a", "parent" -> Null, 
-    "child" -> "c7f6e6f9-fcc9-4bef-9e19-784256ef4456", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c03c", 
+    "next" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a03c", "parent" -> Null, 
+    "child" -> "c7f6e6f9-fcc9-4bef-9e19-784256ef445603c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "bae91541-2b72-4373-add6-c6a447c21fe7", "type" -> "output", 
+   <|"id" -> "bae91541-2b72-4373-add6-c6a447c21fe703c", "type" -> "output", 
     "data" -> "\nFor the interactivity, please, consider to use `Plotly` and \
 `ListLinePlotly` functions", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "e4a26590-2bed-4855-a2d9-11a06dfde112", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "e4a26590-2bed-4855-a2d9-11a06dfde11203c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c2cd0581-7565-42b7-a884-501d8da45227", "type" -> "output", 
+   <|"id" -> "c2cd0581-7565-42b7-a884-501d8da4522703c", "type" -> "output", 
     "data" -> "\n## Magic File Editor\nType in the beginning of the cell", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "a3027cf2-70bb-4851-8e80-5548a00e50d0", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "a3027cf2-70bb-4851-8e80-5548a00e50d003c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c518d431-942d-4932-9c4f-9593bea0c583", "type" -> "output", 
+   <|"id" -> "c518d431-942d-4932-9c4f-9593bea0c58303c", "type" -> "output", 
     "data" -> "\n3D Graphics is also partially supported", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "5d28913e-4f20-47b9-b24d-7f8f137917c5", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "5d28913e-4f20-47b9-b24d-7f8f137917c503c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c7f6e6f9-fcc9-4bef-9e19-784256ef4456", "type" -> "output", 
+   <|"id" -> "c7f6e6f9-fcc9-4bef-9e19-784256ef445603c", "type" -> "output", 
     "data" -> "\n\n  const n = 100;\n  const m = 12;\n  const v = 2;\n  const \
 height = 300;\n  const width = 600;\n  const div = \
 document.createElement('canvas');\n  div.width = width;\n  div.height = \
@@ -2623,31 +2623,31 @@ i = 1; i < m; ++i) context.lineTo(t.px[i], t.py[i]);\n      context.lineWidth \
 = 2;\n      context.stroke();\n    }\n\n   requestAnimationFrame(update);\n \
 };\n\nconst uid = requestAnimationFrame(update);\nthis.ondestroy = function() \
 {cancelAnimationFrame(uid)};\n\nreturn div;", "display" -> "js", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "ba581116-b588-4b0e-bc00-bd7b7fccf299", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "ba581116-b588-4b0e-bc00-bd7b7fccf29903c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c80524c1-8f8e-4a7e-baff-15546bb525e9", "type" -> "output", 
+   <|"id" -> "c80524c1-8f8e-4a7e-baff-15546bb525e903c", "type" -> "output", 
     "data" -> 
      "\n### HTML\nType `.html` or `.htm` or `.wsp` in the beginning", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c03c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c94d4e27-7017-440a-88f0-994f433fc87a", "type" -> "input", 
+   <|"id" -> "c94d4e27-7017-440a-88f0-994f433fc87a03c", "type" -> "input", 
     "data" -> ".md\n## SVG ASCII Art\nJust for fun there is a WASM package \
 for SVG-ASCII diagrams converter, written in Rust - \
 [SVGBob](https://github.com/ivanceras/svgbob)", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "d26a0704-ee1c-48d2-9e98-2b55a8523304", 
-    "next" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c8", "parent" -> Null, 
-    "child" -> "0dc91c54-0e50-4b0f-ae52-5fbbe3f4e7fb", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "d26a0704-ee1c-48d2-9e98-2b55a852330403c", 
+    "next" -> "3c499c23-0d88-4431-a3a9-e518bf31d2c803c", "parent" -> Null, 
+    "child" -> "0dc91c54-0e50-4b0f-ae52-5fbbe3f4e7fb03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "cacc33e2-2a0c-4e2b-b2be-ee640b905a6e", "type" -> "output", 
+   <|"id" -> "cacc33e2-2a0c-4e2b-b2be-ee640b905a6e03c", "type" -> "output", 
     "data" -> "\nOr one can show the image file directly omitting \
-Markdown/HTML processor", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "6516d993-9a04-413e-a352-61e5cdbd8225", "child" -> Null, 
+Markdown/HTML processor", "display" -> "markdown", "sign" -> "viable-34ade", 
+    "prev" -> Null, "next" -> Null, "parent" -> 
+     "6516d993-9a04-413e-a352-61e5cdbd822503c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cb5a5fb3-fcfc-46be-885b-d933c5ddabde", "type" -> "output", 
+   <|"id" -> "cb5a5fb3-fcfc-46be-885b-d933c5ddabde03c", "type" -> "output", 
     "data" -> "\n# Technology stack\n## Backend\n- Wolfram Engine\n*as HTTP \
 Server, IO operator, DB manager and etc*\n- NodeJS\n*as JS bundler (using \
 Rollup.js) for dev. purposes*\n## Frontend\n- WL JS interpreter *for \
@@ -2660,78 +2660,78 @@ by\n- *Wolfram Mathematica*\n- \
 [Observable](http://observablehq.com/@jerryi)\n- [Wolfram Language Notebook \
 VSCode](https://github.com/njpipeorgan/wolfram-language-notebook)\n- \
 [Mathics](https://mathics.org)\n\n  ", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d8", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "4f745af8-a3f7-4847-bcc1-297bd1cb79d803c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ce3a1365-77e6-40ac-822f-64f209f3d445", "type" -> "output", 
+   <|"id" -> "ce3a1365-77e6-40ac-822f-64f209f3d44503c", "type" -> "output", 
     "data" -> "* 11 characters were written *", "display" -> "fileprint", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "9521501e-e17c-4031-b14f-049cc19f5132", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "9521501e-e17c-4031-b14f-049cc19f513203c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d26a0704-ee1c-48d2-9e98-2b55a8523304", "type" -> "input", 
+   <|"id" -> "d26a0704-ee1c-48d2-9e98-2b55a852330403c", "type" -> "input", 
     "data" -> "randompic.png", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "6516d993-9a04-413e-a352-61e5cdbd8225", 
-    "next" -> "c94d4e27-7017-440a-88f0-994f433fc87a", "parent" -> Null, 
-    "child" -> "0248f89c-d3ef-471a-925f-d13645e8875d", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "6516d993-9a04-413e-a352-61e5cdbd822503c", 
+    "next" -> "c94d4e27-7017-440a-88f0-994f433fc87a03c", "parent" -> Null, 
+    "child" -> "0248f89c-d3ef-471a-925f-d13645e8875d03c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c", "type" -> "input", 
+   <|"id" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c03c", "type" -> "input", 
     "data" -> ".md\n### JS\nYou can program is JS and communicate with WL as \
 well as with a frontened. More about it - later...\n\nHere is some neat pure \
 js example adapted from \
 [Observable](https://observablehq.com/@mbostock/tadpoles).", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e", 
-    "next" -> "ba581116-b588-4b0e-bc00-bd7b7fccf299", "parent" -> Null, 
-    "child" -> "1d8b93a5-bf76-48ac-a5e1-33c11f6ba11a", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e03c", 
+    "next" -> "ba581116-b588-4b0e-bc00-bd7b7fccf29903c", "parent" -> Null, 
+    "child" -> "1d8b93a5-bf76-48ac-a5e1-33c11f6ba11a03c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c", "type" -> "input", 
+   <|"id" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c03c", "type" -> "input", 
     "data" -> 
      ".md\n### HTML\nType `.html` or `.htm` or `.wsp` in the beginning", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", 
-    "next" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e", "parent" -> Null, 
-    "child" -> "c80524c1-8f8e-4a7e-baff-15546bb525e9", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea11503c", 
+    "next" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e03c", "parent" -> Null, 
+    "child" -> "c80524c1-8f8e-4a7e-baff-15546bb525e903c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "e4a26590-2bed-4855-a2d9-11a06dfde112", "type" -> "input", 
+   <|"id" -> "e4a26590-2bed-4855-a2d9-11a06dfde11203c", "type" -> "input", 
     "data" -> ".md\nFor the interactivity, please, consider to use `Plotly` \
 and `ListLinePlotly` functions", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "5c6fac47-1a2d-4111-833d-5836acbe6b5f", 
-    "next" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f", "parent" -> Null, 
-    "child" -> "bae91541-2b72-4373-add6-c6a447c21fe7", 
+    "sign" -> "viable-34ade", "prev" -> 
+     "5c6fac47-1a2d-4111-833d-5836acbe6b5f03c", 
+    "next" -> "9da9e3ac-fedf-4773-aa7c-4e514495376f03c", "parent" -> Null, 
+    "child" -> "bae91541-2b72-4373-add6-c6a447c21fe703c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "e62ded47-8a86-4d38-92b0-69e8b5575329", "type" -> "output", 
+   <|"id" -> "e62ded47-8a86-4d38-92b0-69e8b557532903c", "type" -> "output", 
     "data" -> "\nFor the clarity there is no dropdown menu or visual editor, \
 everything can be done by *magic commands* similar to Jupyter. You have an \
 empty canvas, where nothing will distract you.", "display" -> "markdown", 
-    "sign" -> "intolerance-4cafb", "prev" -> Null, "next" -> Null, 
-    "parent" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e", "child" -> Null, 
+    "sign" -> "viable-34ade", "prev" -> Null, "next" -> Null, 
+    "parent" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e03c", "child" -> Null, 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e81e0e2c-8197-4b5e-a8c3-1171b19f71c4", "type" -> "output", 
+   <|"id" -> "e81e0e2c-8197-4b5e-a8c3-1171b19f71c403c", "type" -> "output", 
     "data" -> "Hello World. The time is *Sat 11 Mar 2023 12:26:49*", 
-    "display" -> "markdown", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> Null, "parent" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea115", 
+    "display" -> "markdown", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> Null, "parent" -> "13fb2c9f-93cf-458d-b95d-ddfcea7ea11503c", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e", "type" -> "input", 
+   <|"id" -> "ec12e879-e82b-4449-9c63-c19598a8ff2e03c", "type" -> "input", 
     "data" -> ".html\n<blockquote>Your location is <it><?wsp \
 StringRiffle[GeoNearest[\"City\", Here, {1, Quantity[10, \
 \"Kilometers\"]}]//First//Last, \"/\"] ?></it></blockquote>", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c", 
-    "next" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c", "parent" -> Null, 
-    "child" -> "1856e2a3-203c-433d-9f1d-5f08a95d4af7", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "e2b91d42-5f47-46e6-8875-e0e7a79c9e6c03c", 
+    "next" -> "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c03c", "parent" -> Null, 
+    "child" -> "1856e2a3-203c-433d-9f1d-5f08a95d4af703c", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e", "type" -> "input", 
+   <|"id" -> "f0544531-f172-4cbe-b4f4-35b3bb38d71e03c", "type" -> "input", 
     "data" -> ".md\nFor the clarity there is no dropdown menu or visual \
 editor, everything can be done by *magic commands* similar to Jupyter. You \
 have an empty canvas, where nothing will distract you.", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", 
-    "prev" -> "9f5108f5-4216-42a6-adda-79fd6c1a6762", 
-    "next" -> "52192397-356d-4d69-901f-68bcad77ac5d", "parent" -> Null, 
-    "child" -> "e62ded47-8a86-4d38-92b0-69e8b5575329", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "9f5108f5-4216-42a6-adda-79fd6c1a676203c", 
+    "next" -> "52192397-356d-4d69-901f-68bcad77ac5d03c", "parent" -> Null, 
+    "child" -> "e62ded47-8a86-4d38-92b0-69e8b557532903c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee", "type" -> "input", 
+   <|"id" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee03c", "type" -> "input", 
     "data" -> ".md\n# Introduction\nThis a freeware frontened written in JS \
 for Wolfram Language. Start from the connecting to the Kernel using the \
 button `LocalKernel` in the top-right corner. Everything is depicted as cells \
@@ -2747,14 +2747,13 @@ top-right corner.\n\nTo rename the file - click to the topbar path, where the \
 name is written.\n\n## The general concept\n> Everyhting is a symbol\n> \n> \
 One cell to rule them all\n>\n> Output cells, graphs are \
 editable/evaluatable\n\nHere is the graph shows how the data flow", 
-    "display" -> "codemirror", "sign" -> "intolerance-4cafb", "prev" -> Null, 
-    "next" -> "9f5108f5-4216-42a6-adda-79fd6c1a6762", "parent" -> Null, 
-    "child" -> "83bf7d67-ca9f-4e6a-84a8-0b776433a4d8", 
+    "display" -> "codemirror", "sign" -> "viable-34ade", "prev" -> Null, 
+    "next" -> "9f5108f5-4216-42a6-adda-79fd6c1a676203c", "parent" -> Null, 
+    "child" -> "83bf7d67-ca9f-4e6a-84a8-0b776433a4d803c", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "fc052b37-4185-466c-a44a-b48d802cd63e", "type" -> "input", 
-    "data" -> "1+1", "display" -> "codemirror", 
-    "sign" -> "intolerance-4cafb", "prev" -> 
-     "581bbfb6-f1ac-4786-a711-1c2533ecc73a", 
-    "next" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e74", "parent" -> Null, 
-    "child" -> "64f345cd-c8f7-4dc1-8186-02bfc727dc96", 
+   <|"id" -> "fc052b37-4185-466c-a44a-b48d802cd63e03c", "type" -> "input", 
+    "data" -> "1+1", "display" -> "codemirror", "sign" -> "viable-34ade", 
+    "prev" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a03c", 
+    "next" -> "68ade6e4-db74-4c94-b2ae-33d03aa40e7403c", "parent" -> Null, 
+    "child" -> "64f345cd-c8f7-4dc1-8186-02bfc727dc9603c", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn2"|>

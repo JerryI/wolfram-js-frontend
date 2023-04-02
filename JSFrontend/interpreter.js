@@ -291,6 +291,8 @@ core.SetFrontEndObject = function (args, env) {
 core.FrontEndExecutableHold = core.FrontEndExecutable;
 //to prevent codemirror 6 from drawing it
 core.FrontEndRef = core.FrontEndExecutable;
+//another alias
+core.FrontEndExecutableWrapper = core.FrontEndExecutable;
 //hold analogue for the backend
 core.FrontEndOnly = (args, env) => {
   return interpretate(args[0], env);

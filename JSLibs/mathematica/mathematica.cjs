@@ -7208,8 +7208,13 @@ const builtins = [
   "EventObject",
   "EventBind",
   "WebOpen",
-  "RequestAnimationFrame"
+  "RequestAnimationFrame",
+  "SetFrontEndObject",
+  "EventRemove",
+  "InputField"
 ];
+
+const builtinsSpecial = ['True', 'False', 'All', 'None', 'Null', 'Full', '$Failed', '$Aborted'];
 
 let localVariables = {};
 
@@ -7248,11 +7253,6 @@ function tokenBase(stream, state) {
   // (``float). Note: while 1.2` is possible 1.2`` is not. At the end an exponent (float*^+12) can follow.
   if (stream.match(reFloatForm, true, false)) {
     return "number";
-  }
-
-  /* In[23] and Out[34] */
-  if (stream.match(/(In|Out|True|False|Any|All|Full)/, true, false)) {
-    return "atom";
   }
 
   // usage
@@ -7326,9 +7326,10 @@ function tokenBase(stream, state) {
 
   // Literals like variables, keywords, functions
   if (stream.match(reIdInContext, true, false)) {
+    if (builtinsSpecial.indexOf(stream.current()) > -1) return "number";
     if (builtins.indexOf(stream.current()) > -1) return "keyword";
     if (stream.current() in state.localVars) return "atom";
-
+    
     state.localVars[stream.current()] = true;
 
     return "function";

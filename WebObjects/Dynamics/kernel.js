@@ -37,8 +37,12 @@ core.WEBInputField = function(args, env) {
     env.element.appendChild(input);
 
     input.addEventListener('input', (e)=>{
-        core.FireEvent(["'"+eventuid+"'", "'"+input.value+"'"]); 
+        core.FireEvent(["'"+eventuid+"'", "'\""+input.value+"\"'"]); 
     });    
+
+    input.addEventListener('click', (e)=>{
+        input.focus();
+    });
 }
 
 core.WEBInputField.destroy = () => {}
