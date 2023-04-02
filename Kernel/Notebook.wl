@@ -124,6 +124,10 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
   notebook = Get[path]; 
 
+  (* remember the last path *)
+  JerryI`WolframJSFrontend`defaultvault = If[DirectoryQ[path], path, DirectoryName[path]];
+  JerryI`WolframJSFrontend`defaultvault >> FileNameJoin[{JerryI`WolframJSFrontend`root, ".lastpath"}];
+
   (* if doent match - remove from the Association can be a copied by user *)
   If[MemberQ[$AssoticatedPath//Keys, path],
     If[notebook["notebook", "path"] =!= path, $AssoticatedPath[path] = .]
@@ -162,6 +166,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
                     If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
                     If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
                     If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
+                    If[cell["parent"] =!= Null, cell["parent"] = cell["parent"]<>postfix];
 
                     cell
 
@@ -212,6 +217,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
                     If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
                     If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
                     If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
+                    If[cell["parent"] =!= Null, cell["parent"] = cell["parent"]<>postfix];
 
                     cell
 
@@ -460,6 +466,12 @@ NotebookGetObjectForMe[uid_][id_] := (
 NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel];
 ];
+
+(*NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
+
+
+    jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ Global`WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel] ] ]
+];*)
 
 NotebookOperate[cellid_, op_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},

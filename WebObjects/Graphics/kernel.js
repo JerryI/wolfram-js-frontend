@@ -224,19 +224,4 @@
     }
     
     core.ListLinePlotly.destroy = ()=>{};
-
-    core.WListContourPlotly = async function(args, env) {
-      if (!Plotly) Plotly = await import('plotly.js-dist-min');
-
-      const data = interpretate(args[0], env);
-      Plotly.newPlot(env.element, [{z:data[2], x:data[0], y:data[1], type: 'contour'}],
-      {autosize: false, width: 500, height: 300, margin: {
-        l: 30,
-        r: 30,
-        b: 30,
-        t: 30,
-        pad: 4
-      }});
-    
-    } 
 }

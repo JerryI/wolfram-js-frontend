@@ -62,6 +62,22 @@ let server = {
   },
   emitt(uid, data) {
     this.socket.send('NotebookEmitt[EmittedEvent["'+uid+'", '+data+']]');
+  },
+
+  askKernel(expr) {
+    const uid = Date.now() + Math.floor(Math.random() * 100);
+
+    const promise = new Deferred();
+    this.promises[uid] = promise;
+    //not implemented
+    console.error('askKernel is not implemented');
+    this.socket.send('NotebookPromiseKernel["'+uid+'", ""][Hold['+expr+']]');
+    
+    return promise.promise    
+  },
+
+  talkKernel(expr) {
+    this.socket.send('NotebookEmitt['+expr+']');
   }
 }
  
@@ -233,6 +249,18 @@ core.FireEvent = function(args, env) {
   const data = interpretate(args[1], env);
 
   server.emitt(key, data);
+}
+
+core.KernelFire = function(args, env) {
+  const data = interpretate(args[0], env);
+
+  server.talkKernel(data);
+}
+
+core.KernelEvaluate = function(args, env) {
+  const data = interpretate(args[0], env);
+
+  server.askKernel(data);
 }
 
 

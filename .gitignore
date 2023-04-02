@@ -4,3 +4,5 @@
 *.DS_STORE
 /public/.DS_STORE
 .obsidian
+.lastpath
+Kernel/.lastpath

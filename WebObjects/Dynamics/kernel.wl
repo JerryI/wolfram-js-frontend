@@ -1,5 +1,18 @@
-HTMLSlider[min_, max_, step_:1] := Module[{view, script, id = CreateUUID[]},
+Unprotect[Slider]
+ClearAll[Slider]
+
+Slider[min_, max_, step_:1] := Module[{view, script, id = CreateUUID[]},
     EventObject[<|"id"->id, "view"->WEBSlider[id, {min, max, step}]|>]
+];
+
+(* old alias *)
+HTMLSlider = Slider
+
+Unprotect[InputField]
+ClearAll[InputField]
+
+InputField[default_] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "view"->WEBInputField[id, default]|>]
 ];
 
 CreateFrontEndObject[EventObject[assoc_]] ^:= CreateFrontEndObject[assoc["view"]];
@@ -44,7 +57,7 @@ Module[{
 		CreateFrontEndObject[Panel[{slider, show}, "panel-"<>CreateUUID[]]]
 	];
 	
-	slider = HTMLSlider[min, max, step];
+	slider = Slider[min, max, step];
 	
 	show = function @@ (CreateFrontEndObject[objects[#, "data"], #] &/@ Keys[objects]);
 	show = With[{show = show}, FrontEndOnly[show]] /. {function -> Extract[target,1, Head]};

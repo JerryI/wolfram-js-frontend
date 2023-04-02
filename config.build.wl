@@ -17,7 +17,7 @@
 
         (* rolling up using Node *)
         Print[Green<>"rolling up..."]; Print[Reset];
-        RunProcess[{"./node_modules/.bin/rollup", "--config", "rollup.config.mjs"}]["StandardError"]//Print;
+        RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.config.mjs"}]["StandardError"]//Print;
         Print[Green<>"rolling up is done"]; Print[Reset];
 
         (* merge in the right sequence, because core.js is not a ~real JS module~ and needed to be added separately *)
@@ -53,7 +53,7 @@
         Print[Red<>" the process is not done yet... wait..."];
         Print[Reset];
         (* for standalone app *)
-        RunProcess[{"./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
+        RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
 
         Print[Red<>"everything is done!"];
         Print[Reset];

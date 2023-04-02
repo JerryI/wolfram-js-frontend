@@ -156,6 +156,9 @@ import { defaultKeymap } from "@codemirror/commands";
 let editorCustomTheme = EditorView.theme({
   "&.cm-focused": {
     outline: "none"
+  },
+  "&.cm-focused .cm-line": {
+    padding: "0"
   }
 });
 

@@ -9,6 +9,11 @@ This is a minimalistic, opensource, portable and lightweight notebook interface 
 
 **Documentation/tutorials are on a way**
 
+To help maintain this project. 
+kirill.vasin@uni-a.de
+[__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
+Thank you 🍺 
+
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine, which can be easily extended to any user's defined functions and exported as a standalone `.html` application. __There is no aim to copy Mathematica__ (it will never be possible), but make the notebook interface in a different and unique way relying on the web-technology stack with its own features.
 

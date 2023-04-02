@@ -26,6 +26,23 @@ core.WEBSlider = function(args, env) {
 core.WEBSlider.update = () => {}
 core.WEBSlider.destroy = () => {}
 
+core.WEBInputField = function(args, env) {
+    let eventuid = interpretate(args[0], env);
+    let value    = interpretate(args[1], env);
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = value;
+
+    env.element.appendChild(input);
+
+    input.addEventListener('input', (e)=>{
+        core.FireEvent(["'"+eventuid+"'", "'"+input.value+"'"]); 
+    });    
+}
+
+core.WEBInputField.destroy = () => {}
+
 core.Panel = function(args, env) {
 
     const objects = interpretate(args[0], {...env, hold:true});
@@ -46,6 +63,5 @@ core.Panel = function(args, env) {
 
 }
 
-core.Panel.update = (args, env) => { interpretate(args[0], env) }
-
-core.Panel.destroy = () => {}
+core.Panel.update = (args, env) => { /* just go to the inner three */ interpretate(args[0], env) }
+core.Panel.destroy = (args, env) => { /* just go to the inner three */ interpretate(args[0], env) }
