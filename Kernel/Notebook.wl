@@ -126,7 +126,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
   (* remember the last path *)
   JerryI`WolframJSFrontend`defaultvault = If[DirectoryQ[path], path, DirectoryName[path]];
-  JerryI`WolframJSFrontend`defaultvault >> FileNameJoin[{JerryI`WolframJSFrontend`root, ".lastpath"}];
+  Put[JerryI`WolframJSFrontend`defaultvault, FileNameJoin[{JerryI`WolframJSFrontend`root, ".lastpath"}]];
 
   (* if doent match - remove from the Association can be a copied by user *)
   If[MemberQ[$AssoticatedPath//Keys, path],
