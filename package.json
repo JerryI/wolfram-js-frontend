@@ -42,6 +42,7 @@
     "codemirror-languageserver": "^1.11.0",
     "d3": "^7.8.2",
     "finalhandler": "^1.2.0",
+    "hash-sum": "^2.0.0",
     "marked": "^4.2.12",
     "marked-katex-extension": "^1.0.2",
     "mermaid": "^10.0.2",
@@ -52,6 +53,7 @@
     "thememirror": "^2.0.1",
     "three": "^0.123.0",
     "three-addons": "^1.2.0",
+    "three-gpu-pathtracer": "0.0.14",
     "three-sky": "^1.1.3"
   }
 }

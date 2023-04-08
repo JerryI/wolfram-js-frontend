@@ -1,0 +1,19 @@
+<div class="pop-up" id="popup-<?wsp id ?>">
+    <div style="border-radius: 4px; background-color: rgb(255, 226, 221);
+  color: rgb(93, 23, 21); position: relative; max-width: calc(-24px + 100vw); box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px; overflow: hidden;">
+        <div class="notion-scroller vertical" style="padding-bottom: 6px; padding-top: 0px; flex-grow: 1; min-height: 0px; transform: translateZ(0px); z-index: 1; overflow: hidden auto; margin-right: 0px; margin-bottom: 0px;">
+                    <div>
+                        <div style="display: flex; padding-left: 14px; padding-right: 14px; margin-top: 6px; margin-bottom: 8px;  fill: rgba(55, 53, 47, 0.45); font-size: 12px; font-weight: 500; line-height: 120%; -webkit-user-select: none;">
+                            <div style="align-self: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?wsp from ?></div>
+                        </div>
+                        <div  class="notion-focusable"  tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
+                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
+                                <div style="margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;">
+                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?wsp Global`message ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+</div>
+</div>

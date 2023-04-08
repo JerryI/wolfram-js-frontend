@@ -3,7 +3,6 @@ function __emptyFalse(a) {
   return a;
 }
 
-
 var SupportedCellDisplays = {};
 var CellHash = {};
 
@@ -209,6 +208,8 @@ core.FrontEndCreateCell = function (args, env) {
 
   new CellWrapper(template, input);
 }
+
+
 
 
 

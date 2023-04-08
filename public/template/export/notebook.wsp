@@ -6,6 +6,7 @@
         <script>
             //avoid errors, when loading the scripts takes too much time
             var core = {};
+            core.name = "Core Context";
         </script>
         <script><?wsp Import["public/js/export/merged.js", "String"] ?></script>
         <script><?wsp Import["public/js/export/fakecore.js", "String"] ?></script>

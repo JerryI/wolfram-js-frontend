@@ -18,4 +18,7 @@ RequestAnimationFrame[ListPlotly[data_], opts : OptionsPattern[]] ^:= Module[{ev
 ]
 
 RegisterWebObject[ListLinePlotly];
+
 RegisterWebObject[ListPlotly];
+
+RegisterWebObject[Graphics];

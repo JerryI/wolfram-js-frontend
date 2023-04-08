@@ -53,7 +53,7 @@ If[MemberQ[$ScriptCommandLine, "dev"],
 (* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault *)
-  jsf`server["path"] = Join[Take[jsf`server["path"], 2], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
+  jsf`server["path"] = Join[Take[jsf`server["path"], Length[jsf`server["path"]]-1], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
 
   (* handlers *)
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]

@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Cells`"];
+BeginPackage["JerryI`WolframJSFrontend`Cells`", {"JerryI`WolframJSFrontend`Utils`"}];
 
 (* 
     ::Only for MASTER kernel::
@@ -300,7 +300,9 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
     
     
     With[{errors = evaluator["SyntaxChecker"][expr]},
-        If[!NullQ[errors],
+        Print["Errors:"];
+        Print[errors];
+        If[!TrueQ[{errors}//Flatten//First],
             JerryI`WolframJSFrontend`fireEvent["CellError"][cell, errors];
             Return[$Failed, Module];
         ];

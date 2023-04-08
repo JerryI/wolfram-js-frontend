@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Colors`"}]; 
 (*
     ::Only for MASTER kernel::
 
@@ -56,6 +56,8 @@ GarbageCollector::usage = "collect garbage form notebook"
 
 NotebookExport::usage = "export to standalone html"
 
+
+NotebookPopupFire::usage = "generate pop-up message using templates and send to the frontened"
 (*
     Internal commands used by other packages
     must not be PUBLIC!
@@ -427,7 +429,14 @@ NotebookOpen[id_String] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
     ];
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]],
+        (* callback *)
+        Function[state,
+            WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], id];
+        ]
+    ];
+
+    
 
     SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[30, "Seconds"], 1}, AutoRemove->True]]; 
 );
@@ -445,7 +454,11 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
         Print[StringTemplate["callback for `` channel"][channel]];
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
         
-        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]],
+        (* callback *)
+        Function[state,
+            WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
+        ]];
     ]];
 ];
 
@@ -568,7 +581,44 @@ NotebookEventFire[addr_]["UpdateState"][cell_] := (
     ];
 );
 
-NotebookEventFire[addr_]["CellError"][cell_, text_] := WebSocketSend[addr, Global`FrontEndCellError[cell[[1]], text]];
+NotebookEventFire[addr_]["CellError"][cell_, text_] := Module[{template},
+    Print[Red<>"ERROR"];
+    Print[Reset];
+
+    With[{t = text},
+        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "error.wsp"}], {Global`id = cell, Global`from = "Wolfram Evaluator", Global`message = t}];
+    ];
+
+    WebSocketSend[addr, Global`FrontEndPopUp[template]];
+];
+
+NotebookEventFire[addr_]["Warning"][text_] := Module[{template},
+    With[{t = text},
+        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "warning.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}];
+    ];
+    Print[Yellow<>"Warning"];
+    Print[Reset];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template], addr];
+];
+
+NotebookPopupFire[name_, text_] := Module[{template},
+    With[{t = text},
+        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", name<>".wsp"}], {Global`id = CreateUUID[], Global`from = "JS Console", Global`message = t}];
+    ];
+    Print[Blue<>"loopback"];
+    Print[Reset];
+    WebSocketSend[Global`client, Global`FrontEndPopUp[template]];
+];
+
+
+NotebookEventFire[addr_]["Print"][text_] := Module[{template},
+    With[{t = text},
+        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "print.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}];
+    ];
+    Print[Green<>"Print"];
+    Print[Reset];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template], addr];
+];
 
 NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[

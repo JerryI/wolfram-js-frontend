@@ -9,7 +9,11 @@ socket.onopen = function(e) {
 }; 
 
 socket.onmessage = function(event) {
-  interpretate(JSON.parse(event.data));
+  //create global context
+  //callid
+  const uid = Date.now() + Math.floor(Math.random() * 100);
+  var global = {call: uid};
+  interpretate(JSON.parse(event.data), {global: global});
 };
 
 socket.onclose = function(event) {

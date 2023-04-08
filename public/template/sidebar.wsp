@@ -112,8 +112,114 @@
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
                                                             <div style="">
-                                                            <?wsp WSPDynamic[ Table[ ?>
+                                                            <?wsp WSPDynamic[ ?>
 
+                                                                <div class="notion-selectable notion-page-block">
+                                                                    <a href="/index.wsp?path=<?wsp URLEncode[ParentDirectory[session["dir"]]] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                                                            
+                                                                        <div oncontextmenu="return false;" class="notion-focusable" role="button" tabindex="0" style="
+                                                                                -webkit-user-select: none;
+                                                                                transition: background 20ms ease-in 0s;
+                                                                                cursor: pointer;
+                                                                                width: calc(100% - 8px);
+                                                                                border-radius: 3px;
+                                                                                margin-left: 4px;
+                                                                                margin-right: 4px;
+                                                                            ">
+                                                                       
+
+                                                                            <div oncontextmenu="return false;" class="sidebar-option" style="
+                                                                                    display: flex;
+                                                                                    align-items: center;
+                                                                                    width: 100%;
+                                                                                    font-size: 14px;
+                                                                                    min-height: 27px;
+                                                                                    padding: 2px 10px 2px 5px;
+                                                                                    margin-top: 1px;
+                                                                                    margin-bottom: 1px;
+                                                                                    /*font-weight: 600;*/
+                                                                                    
+                                                                                   
+                                                                                    border-radius: 3px;
+                                                                                ">
+                                                                                <div oncontextmenu="return false;" style="
+                                                                                        flex-shrink: 0;
+                                                                                        flex-grow: 0;
+                                                                                        border-radius: 3px;
+                                                                                        color: rgba(55, 53, 47, 0.65);
+                                                                                        width: 22px;
+                                                                                        height: 22px;
+                                                                                        display: flex;
+                                                                                        align-items: center;
+                                                                                        justify-content: center;
+                                                                                        margin-right: 0px;
+                                                                                    ">
+                                                                                    <div oncontextmenu="return false;" class="notion-focusable" role="button" tabindex="0" style="
+                                                                                            -webkit-user-select: none;
+                                                                                            transition: background 20ms ease-in 0s;
+                                                                                            cursor: pointer;
+                                                                                            position: relative;
+                                                                                            display: flex;
+                                                                                            align-items: center;
+                                                                                            justify-content: center;
+                                                                                            width: 20px;
+                                                                                            height: 20px;
+                                                                                            border-radius: 3px;
+                                                                                        ">
+                                                                                        
+                                                                                        <svg viewBox="0 0 12 12" class="chevronDownRoundedThick" style="
+                                                                                                width: 12px;
+                                                                                                height: 12px;
+                                                                                                display: block;
+                                                                                                fill: rgba(55, 53, 47, 0.35);
+                                                                                                flex-shrink: 0;
+                                                                                                backface-visibility: hidden;
+                                                                                                transition: transform 200ms ease-out 0s;
+                                                                                                transform: rotateZ(-90deg);
+                                                                                                opacity: 1;
+                                                                                            ">
+                                                                                            <path d="M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div style="
+                                                                                        display: flex;
+                                                                                        align-items: center;
+                                                                                        justify-content: center;
+                                                                                        flex-shrink: 0;
+                                                                                        flex-grow: 0;
+                                                                                        width: 22px;
+                                                                                        height: 18px;
+                                                                                        margin-left: -3px;
+                                                                                        margin-right: 4px;
+                                                                                        position: relative;
+                                                                                    ">
+                                                                                    
+                                                                                    <div class="notion-record-icon notranslate notion-focusable" role="button" tabindex="0" style="
+                                                                                            -webkit-user-select: none;
+                                                                                            transition: background 20ms ease-in 0s;
+                                                                                            cursor: pointer;
+                                                                                            display: flex;
+                                                                                            align-items: center;
+                                                                                            justify-content: center;
+                                                                                            height: 20px;
+                                                                                            width: 20px;
+                                                                                            border-radius: 0.25em;
+                                                                                            flex-shrink: 0;
+                                                                                        ">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div style="flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;">
+                                                                                    <div class="notranslate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">../</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                    
+                                                                </div>                                                                
+                                                                
+                                                            <?wsp Table[ ?>
                                                                 <div class="notion-selectable notion-page-block" id="file-button-<?wsp i//FileNameTake//HashString32 ?>">
                                                                     <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                                     <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
@@ -233,7 +339,8 @@
                                                                     <?wsp LoadPage["template/dropdown/file.wsp", {file = i}] ?>
                                                                 </div>
                                                             
-                                                            <?wsp , {i, SortBy[FileNames["*", session["dir"] ], DirectoryQ] }] , "fileslist"]  ?>    
+                                                            <?wsp , {i, SortBy[FileNames["*", session["dir"] ], DirectoryQ] }] ?>
+                                                            <?wsp , "fileslist"]  ?>    
                                                                 
                                                                 
                                                                 

@@ -1,0 +1,78 @@
+"str::shdw: Symbol str appears in multiple contexts \n    \
+{JerryI`WolframJSFrontend`Colors`, WSP`}; definitions in context \n    \
+JerryI`WolframJSFrontend`Colors`\n     may shadow or be shadowed by other \
+definitions."
+"Global`CreateFrontEndObject::shdw: \n   Symbol CreateFrontEndObject appears \
+in multiple contexts \n    {Global`, JerryI`WolframJSFrontend`WebObjects`}; \
+definitions in context \n    Global` may shadow or be shadowed by other \
+definitions."
+"RuleDelayed::rhs: \n   Pattern assoc_ appears on the right-hand side of rule \
+\n    CM6Form[EventObject[assoc_]] :> \n     If[KeyExistsQ[assoc, view], \
+CreateFrontEndObject[assoc[view]], \n      EventObject[assoc_]]."
+"\"\[RawEscape][1;34mdone!\""
+"\"\[RawEscape][1;0m\""
+"General::munfl: \n             9\n   Exp[-1. 10 ] is too small to represent \
+as a normalized machine number;\n     precision may be lost."
+"str::shdw: Symbol str appears in multiple contexts \n    \
+{JerryI`WolframJSFrontend`Colors`, WSP`}; definitions in context \n    \
+JerryI`WolframJSFrontend`Colors`\n     may shadow or be shadowed by other \
+definitions."
+"Global`CreateFrontEndObject::shdw: \n   Symbol CreateFrontEndObject appears \
+in multiple contexts \n    {Global`, JerryI`WolframJSFrontend`WebObjects`}; \
+definitions in context \n    Global` may shadow or be shadowed by other \
+definitions."
+"RuleDelayed::rhs: \n   Pattern assoc_ appears on the right-hand side of rule \
+\n    CM6Form[EventObject[assoc_]] :> \n     If[KeyExistsQ[assoc, view], \
+CreateFrontEndObject[assoc[view]], \n      EventObject[assoc_]]."
+"\"\[RawEscape][1;34mdone!\""
+"\"\[RawEscape][1;0m\""
+"General::munfl: \n             9\n   Exp[-1. 10 ] is too small to represent \
+as a normalized machine number;\n     precision may be lost."
+"General::munfl: \n             9\n   Exp[-1. 10 ] is too small to represent \
+as a normalized machine number;\n     precision may be lost."
+"\"Hello\""
+"str::shdw: Symbol str appears in multiple contexts \n    \
+{JerryI`WolframJSFrontend`Colors`, WSP`}; definitions in context \n    \
+JerryI`WolframJSFrontend`Colors`\n     may shadow or be shadowed by other \
+definitions."
+"Global`CreateFrontEndObject::shdw: \n   Symbol CreateFrontEndObject appears \
+in multiple contexts \n    {Global`, JerryI`WolframJSFrontend`WebObjects`}; \
+definitions in context \n    Global` may shadow or be shadowed by other \
+definitions."
+"RuleDelayed::rhs: \n   Pattern assoc_ appears on the right-hand side of rule \
+\n    CM6Form[EventObject[assoc_]] :> \n     If[KeyExistsQ[assoc, view], \
+CreateFrontEndObject[assoc[view]], \n      EventObject[assoc_]]."
+"\"\[RawEscape][1;34mdone!\""
+"\"\[RawEscape][1;0m\""
+"General::munfl: \n             9\n   Exp[-1. 10 ] is too small to represent \
+as a normalized machine number;\n     precision may be lost."
+"str::shdw: Symbol str appears in multiple contexts \n    \
+{JerryI`WolframJSFrontend`Colors`, WSP`}; definitions in context \n    \
+JerryI`WolframJSFrontend`Colors`\n     may shadow or be shadowed by other \
+definitions."
+"Global`CreateFrontEndObject::shdw: \n   Symbol CreateFrontEndObject appears \
+in multiple contexts \n    {Global`, JerryI`WolframJSFrontend`WebObjects`}; \
+definitions in context \n    Global` may shadow or be shadowed by other \
+definitions."
+"RuleDelayed::rhs: \n   Pattern assoc_ appears on the right-hand side of rule \
+\n    CM6Form[EventObject[assoc_]] :> \n     If[KeyExistsQ[assoc, view], \
+CreateFrontEndObject[assoc[view]], \n      EventObject[assoc_]]."
+"\"\[RawEscape][1;34mdone!\""
+"\"\[RawEscape][1;0m\""
+"General::munfl: \n             9\n   Exp[-1. 10 ] is too small to represent \
+as a normalized machine number;\n     precision may be lost."
+"\"Notebook kindhearted-02c38 attached!\""
+"str::shdw: Symbol str appears in multiple contexts \n    \
+{JerryI`WolframJSFrontend`Colors`, WSP`}; definitions in context \n    \
+JerryI`WolframJSFrontend`Colors`\n     may shadow or be shadowed by other \
+definitions."
+"Global`CreateFrontEndObject::shdw: \n   Symbol CreateFrontEndObject appears \
+in multiple contexts \n    {Global`, JerryI`WolframJSFrontend`WebObjects`}; \
+definitions in context \n    Global` may shadow or be shadowed by other \
+definitions."
+"RuleDelayed::rhs: \n   Pattern assoc_ appears on the right-hand side of rule \
+\n    CM6Form[EventObject[assoc_]] :> \n     If[KeyExistsQ[assoc, view], \
+CreateFrontEndObject[assoc[view]], \n      EventObject[assoc_]]."
+"\"\[RawEscape][1;34mdone!\""
+"\"\[RawEscape][1;0m\""
+"\"Notebook kindhearted-02c38 attached!\""

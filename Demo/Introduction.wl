@@ -874,8 +874,8 @@ style=\\\"fill:none;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:mite\
 r;stroke:rgb(39.99939%,39.99939%,39.99939%);stroke-opacity:1;stroke-miterlimi\
 t:3.25;\\\" d=\\\"M 23 212.082031 L 23 0.5 \
 \\\"\\/>\\n<\\/g>\\n<\\/svg>\\n'\"]", "date" -> DateObject[
-         {2023, 3, 25, 18, 20, 16.426611`7.9681229574935415}, "Instant", 
-         "Gregorian", 1.]|>, "539948e6-f4fb-4fe0-bb8a-3c80abf689af" -> 
+         {2023, 4, 3, 16, 14, 57.639187`8.513292820080036}, "Instant", 
+         "Gregorian", 3.]|>, "539948e6-f4fb-4fe0-bb8a-3c80abf689af" -> 
       <|"json" -> "[\"ListLinePlotly\",[\"List\",[\"List\",[\"List\",6.411413\
 578754679e-8,1.0408412166136048e-18],[\"List\",9.635827659544611e-4,2.8821896\
 858266124e-8],[\"List\",1.9271014177731347e-3,1.6302770966476308e-7],[\"List\
@@ -2037,16 +2037,16 @@ ist\",3.128653741115483,3.508725623519033e-2],[\"List\",3.1329666905688747,9.\
 637839364329],[\"List\",3.1383578773856136,0.16884996524501972],[\"List\",3.1\
 394361147489613,0.18360583469567662],[\"List\",3.1405143521123096,0.198328016\
 51668763],[\"List\",3.1415925894756573,0.21301313392701532]]]]", 
-       "date" -> DateObject[{2023, 3, 25, 18, 20, 
-          16.646601`7.973900554912124}, "Instant", "Gregorian", 1.]|>, 
+       "date" -> DateObject[{2023, 4, 3, 16, 14, 
+          57.691344`8.513685630182277}, "Instant", "Gregorian", 3.]|>, 
      "bae1ef84-8f41-4cd9-a3fd-f1b9d949ff94" -> 
       <|"json" -> "[\"HTMLForm\",\"'<h3>Hello World<\\/h3>'\"]", 
-       "date" -> DateObject[{2023, 3, 25, 18, 20, 
-          16.345444`7.965971706844813}, "Instant", "Gregorian", 1.]|>, 
+       "date" -> DateObject[{2023, 4, 3, 16, 14, 
+          57.351465`8.511119489717618}, "Instant", "Gregorian", 3.]|>, 
      "cf8c34c8-712f-4485-807f-eaf2d4b89dd6" -> 
       <|"json" -> "[\"HTMLForm\",\"'<h3>Hello World<\\/h3>'\"]", 
-       "date" -> DateObject[{2023, 3, 25, 18, 20, 
-          16.390394`7.967164378266906}, "Instant", "Gregorian", 1.]|>, 
+       "date" -> DateObject[{2023, 4, 3, 16, 14, 57.384413`8.51136891710219}, 
+         "Instant", "Gregorian", 3.]|>, 
      "9f662bd7-6d82-4051-babc-ba4812eabd34" -> 
       <|"json" -> "[\"Graphics3D\",[\"List\",[\"Roughness\",0],[\"Reflectivit\
 y\",1],[\"IOR\",2],[\"Clearcoat\",0.5],[\"List\",[\"List\",[\"RGBColor\",[\"L\
@@ -2144,11 +2144,11 @@ Sphere\",[\"List\",2.562448650937636,-0.25278851291526117,-3.944415469967833]\
 .118254777825753]],[\"Sphere\",[\"List\",3.3661393306731497,1.409362939069502\
 8,-0.4345934578145716]]]],[\"SkyAndWater\"]],[\"Rule\",\"Background\",\"None\
 \"],[\"Rule\",\"Lighting\",\"None\"]]", "date" -> 
-        DateObject[{2023, 3, 25, 18, 20, 17.037525`7.983981490628045}, 
-         "Instant", "Gregorian", 1.]|>|>, 
+        DateObject[{2023, 4, 3, 16, 14, 57.759348`8.514197255792336}, 
+         "Instant", "Gregorian", 3.]|>|>, 
    "path" -> "/root/wolfram-js-frontend/Demo/Introduction.wl", 
    "cell" -> "fadf2962-8595-40e0-935b-d60f8c8dd0ee03c", 
-   "date" -> DateObject[{2023, 4, 2, 23, 3, 5.541821`7.496227481821305}, 
+   "date" -> DateObject[{2023, 4, 3, 16, 14, 49.427194`8.44654093189802}, 
      "Instant", "Gregorian", 3.]|>, 
  "cells" -> {<|"id" -> "01ae10a8-ced2-4cad-bb5a-08814c0f970a03c", 
     "type" -> "input", "data" -> "Graphics3D[{Roughness[0], Reflectivity[1], \
@@ -2574,7 +2574,7 @@ is destoyed\nthis.ondestroy = function() \
      "d7e84fe6-c4ea-4d82-9c02-2c3beb57a43c03c", 
     "next" -> "581bbfb6-f1ac-4786-a711-1c2533ecc73a03c", "parent" -> Null, 
     "child" -> "c7f6e6f9-fcc9-4bef-9e19-784256ef445603c", 
-    "props" -> <|"hidden" -> True|>|>, 
+    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "bae91541-2b72-4373-add6-c6a447c21fe703c", "type" -> "output", 
     "data" -> "\nFor the interactivity, please, consider to use `Plotly` and \
 `ListLinePlotly` functions", "display" -> "markdown", 

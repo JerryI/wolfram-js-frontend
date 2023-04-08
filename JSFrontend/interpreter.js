@@ -12,35 +12,99 @@ class Deferred {
     });
   }
 }  
-    
-var interpretate = (d, env = { 
-  element: document.body, 
-  mesh: undefined, 
-  numerical: false, 
-  todom: false
-}) => {
+
+var interpretate = (d, env = {}) => {
 
   if (typeof d === 'undefined') {
     throw 'undefined type (not an object or string!)';
   }
   if (typeof d === 'string') {
-    if (env.todom === true) env.element.innerHTML = d;
+    //if (env.todom === true) env.element.innerHTML = d;
     if (d.charAt(0) == "'") return d.slice(1, -1);
     return d;
   }
   if (typeof d === 'number') {
-    if (env.todom === true) env.element.innerHTML = String(d);
+    //if (env.todom === true) env.element.innerHTML = String(d);
     return d; 
   }
 
+  //if not a JSON array, probably a promise object
   if (!(d instanceof Array)) return d;
 
-  this.name = d[0];
-  this.args = d.slice(1, d.length);
+  //console.log("interpreting...");
+  //console.log(d);
+  //console.log(env);
 
-  if ('method' in env) return core[this.name][env.method](this.args, env);
-  return core[this.name](this.args, env);
+
+  //check if containezed
+  /*if ('virtual' in env.context[name]) {
+    console.log('virtualised function');
+    if (hash(d) in VirtualHashMap) {
+      console.log(hash(d));
+    } else {
+      console.log('creating an instance of it...');
+    }
+  }*/
+
+  //reading the structure of Wolfram ExpressionJSON
+  const name = d[0];
+  const args = d.slice(1, d.length);
+  
+
+  //checking the context
+  if ('context' in env) {
+    if (name in env.context) {
+      //checking the method
+      
+      if ('method' in env) return env.context[name][env.method](args, env);
+      
+      //fake frontendexecutable
+      //to bring local vars and etc
+      if ('virtual' in env.context[name]) {
+        const obj = new ExecutableObject('virtual-'+uuidv4(), env, d);
+        let virtualenv = obj.assignScope();
+        console.log('virtual env');
+        console.log(virtualenv);
+        return env.context[name](args, virtualenv);    
+      }
+
+      return env.context[name](args, env);
+    }
+  }
+
+  //just go over all contextes defined to find the symbol
+  const c = interpretate.contextes;
+
+  for (i = 0; i < c.length; ++i) {
+    if (name in c[i]) {
+      //console.log('symbol '+name+' was found in '+c[i].name);
+
+      if ('method' in env) return c[i][name][env.method](args, env);
+
+      //fake frontendexecutable
+      //to bring local vars and etc
+      if ('virtual' in c[i][name]) {
+        const obj = new ExecutableObject('virtual-'+uuidv4(), env, d);
+        let virtualenv = obj.assignScope();
+        console.log('virtual env');
+        console.log(virtualenv);        
+        return c[i][name](args, virtualenv);    
+      }     
+
+      return c[i][name](args, env);    
+    }
+  };
+
+  console.error('symbol '+name+' is undefined in any contextes available');
 };
+
+//contexes, so symbols names might be duplicated, therefore one can specify the propority context in env variable
+interpretate.contextes = [];
+//add new context
+interpretate.contextExpand = (context) => {
+  console.log(context.name + ' was added to the contextes of the interpreter');
+  interpretate.contextes.push(context);
+}
 
 //Server API
 let server = {
@@ -48,8 +112,26 @@ let server = {
   socket: {},
   
   init(socket) {
-    this.socket = socket
+    this.socket = socket;
+
+    window.onerror = function (message, file, line, col, error) {
+      socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+      return false;
+    };
+    window.addEventListener("error", function (e) {
+      socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+      return false;
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+    });
+
+    console.error = function(e) {
+      socket.send('NotebookPopupFire["error", "'+e+'"]');
+    };
   },
+
+  //evaluate something on the master kernel and make a promise for the reply
   ask(expr) {
     const uid = Date.now() + Math.floor(Math.random() * 100);
 
@@ -60,10 +142,12 @@ let server = {
     
     return promise.promise 
   },
+  //fire event on the secondary kernel (your working area) (no reply)
   emitt(uid, data) {
     this.socket.send('NotebookEmitt[EmittedEvent["'+uid+'", '+data+']]');
   },
 
+  //evaluate something on the secondary kernel (your working area) and make a promise for the reply
   askKernel(expr) {
     const uid = Date.now() + Math.floor(Math.random() * 100);
 
@@ -76,6 +160,7 @@ let server = {
     return promise.promise    
   },
 
+  //evaluate something on the secondary kernel (your working area) (no reply)
   talkKernel(expr) {
     this.socket.send('NotebookEmitt['+expr+']');
   }
@@ -84,6 +169,7 @@ let server = {
 
 var ObjectHashMap = {}
 
+//storage for the frontend objects / executables
 class ObjectStorage {
   refs = {}
   uid = ''
@@ -95,15 +181,18 @@ class ObjectStorage {
     ObjectHashMap[uid] = this;
   } 
   
+  //assign an instance of FrontEndExecutable to it
   assign(obj) {
     this.refs[obj.instance] = obj;
   }
   
+  //remove a reference to the instance of FrontEndExecutable
   dropref(obj) {
     console.log('dropped ref: ' + obj.instance);
     delete this.refs[obj.instance];
   }
   
+  //update the data in the storage and go over all assigned objects
   update(newdata) {
     this.cache = newdata;
     Object.keys(this.refs).forEach((ref)=>{
@@ -112,6 +201,7 @@ class ObjectStorage {
     });
   }
   
+  //just get the object (if not in the client -> ask for it and wait)
   get() {
     if (this.cached) return this.cache;
     const promise = new Deferred();
@@ -127,19 +217,34 @@ class ObjectStorage {
   }
 }
 
+//instance of FrontEndExecutable object
 class ExecutableObject {
   env = {}
   
+  //uid (not unique) (global)
   uid = ''
+  //uid (unique) (internal)
+  instance = ''
   
   dead = false
+  virtual = false
 
   //local scope
   local = {}
 
+  assignScope() {
+    this.env.local = this.local;
+    return this.env;
+  }
+
+  //run the code inside
   async execute() {
     console.log('executing '+this.uid+'....');
-    const content = await this.storage.get(this.uid);
+    let content;
+    
+    if (this.virtual) console.error('execute() method is not allowed on virtual functions!');
+
+    content = await this.storage.get(this.uid);
 
     //pass local scope
     this.env.local = this.local;
@@ -149,37 +254,52 @@ class ExecutableObject {
     return interpretate(content, this.env);
   }
 
+  //dispose the object and all three of object underneath
+  //direction: TOP -> BOTTOM
   dispose() {
     if (this.dead) return;
     this.dead = true;
 
     console.log('DESTORY: ' + this.uid);
-    //going down
+    //change the mathod of interpreting
     this.env.method = 'destroy';
+
+    if (this.virtual) console.log('virtual type');
     
     //unregister from the storage class
-    this.storage.dropref(this);
+    if (!this.virtual) this.storage.dropref(this);
+    
+    let content;
+    if (!this.virtual) content = this.storage.get(this.uid); else content = this.virtual;
 
     //pass local scope
     this.env.local = this.local;    
     //the link between objects will be dead automatically
-    interpretate(this.storage.get(this.uid), this.env);
+    interpretate(content, this.env);
   }
   
+  //update the state of it and recompute all objects inside
+  //direction: BOTTOM -> TOP
   update() {
     console.log('updating...'+this.uid);
-    //bubble up (only by 1 level... cuz some BUG)
+    //bubble up (only by 1 level... cuz some BUG, but can still work even with this limitation)
     if (this.parent instanceof ExecutableObject && !(this.child instanceof ExecutableObject)) return this.parent.update(); 
     
-    //update the three
+    if (this.virtual) console.log('virtual type');
+
+    //change the method of interpreting 
     this.env.method = 'update';
     //pass local scope
     this.env.local = this.local;
     console.log('interprete...'+this.uid);
-    return interpretate(this.storage.get(this.uid), this.env);
+
+    let content;
+    if (!this.virtual) content = this.storage.get(this.uid); else content = this.virtual;
+
+    return interpretate(content, this.env);
   }
 
-  constructor(uid, env) {
+  constructor(uid, env, virtual = false) {
     console.log('constructing the instance of '+uid+'...');
     
     this.uid = uid;
@@ -195,8 +315,16 @@ class ExecutableObject {
     
     this.env.root = this.env.root || {};
     
-    if (uid in ObjectHashMap) this.storage = ObjectHashMap[uid]; else this.storage = new ObjectStorage(uid);
-    this.storage.assign(this);
+    //for virtual functions
+    if (virtual) {
+      console.log('virtual object detected!');
+      console.log('local storage is enabled');
+      console.log(virtual);
+      this.virtual = virtual;
+    } else {
+      if (uid in ObjectHashMap) this.storage = ObjectHashMap[uid]; else this.storage = new ObjectStorage(uid);
+      this.storage.assign(this);
+    }
     
     if (this.env.root instanceof ExecutableObject) {
       //connecting together
@@ -210,158 +338,6 @@ class ExecutableObject {
   }  
 };
 
-core.FrontEndExecutable = async (args, env) => {
-  const key = interpretate(args[0], env);
-  //creates an instance with its own separate env
-  //we need this local context to create stuff and then, destory it if it necessary
-  console.log("FEE: creating an object with key "+key);
-  const obj = new ExecutableObject(key, env);
-  
-  const result = await obj.execute()
-  return result;  
-};
-
-core.FrontEndExecutable.update = async (args, env) => {
-  const key = interpretate(args[0], env);
-  return await env.global.stack[key].execute();
-};
-
-core.FrontEndExecutable.destroy = async (args, env) => {
-  const key = interpretate(args[0], env);
-  await env.global.stack[key].dispose();
-};
-
-
-core._getRules = function(args, env) {
-  let rules = {};
-  args.forEach((el)=>{
-    if(el instanceof Array) {
-      if (el[0] === 'Rule') {
-        rules[interpretate(el[1], env)] = interpretate(el[2], env);
-      }
-    }
-  });
-  return rules; 
-}
-
-core.FireEvent = function(args, env) {
-  const key  = interpretate(args[0], env);
-  const data = interpretate(args[1], env);
-
-  server.emitt(key, data);
-}
-
-core.KernelFire = function(args, env) {
-  const data = interpretate(args[0], env);
-
-  server.talkKernel(data);
-}
-
-core.KernelEvaluate = function(args, env) {
-  const data = interpretate(args[0], env);
-
-  server.askKernel(data);
-}
-
-
-core.PromiseResolve = (args, env) => {
-  const uid = interpretate(args[0], env);
-  server.promises[uid].resolve(args[1]);
-  delete server.promises[uid];
-}
-
-core.UpdateFrontEndExecutable = function (args, env) {
-  const key = interpretate(args[0], env);
-  var data  = JSON.parse(interpretate(args[1], env));
-  
-  ObjectHashMap[key].update(data);
-}
-
-core.FrontEndDispose = function (args, env) {
-  //no need anymore
-  console.log('garbage removed');
-}
-
-
-core.SetFrontEndObject = function (args, env) {
-  const key = interpretate(args[0], env);
-  ObjectHashMap[key].update(args[1]);
-}
-
-core.FrontEndExecutableHold = core.FrontEndExecutable;
-//to prevent codemirror 6 from drawing it
-core.FrontEndRef = core.FrontEndExecutable;
-//another alias
-core.FrontEndExecutableWrapper = core.FrontEndExecutable;
-//hold analogue for the backend
-core.FrontEndOnly = (args, env) => {
-  return interpretate(args[0], env);
-};
-
-core.FrontEndOnly.update = (args, env) => {
-  return interpretate(args[0], env);
-};
-
-core.FrontEndOnly.destroy = (args, env) => {
-  interpretate(args[0], env);
-};
-
-core.Rational = function (args, env) {
-  if (env.numerical === true) return interpretate(args[0], env)/interpretate(args[1], env);
-  
-  //return the original form igoring other arguments
-  return ["Rational", args[0], args[1]];
-}
-
-core.Times = function (args, env) {
-  if (env.numerical === true) return interpretate(args[0], env)*interpretate(args[1], env);
-  
-  //TODO: evaluate it before sending its original symbolic form
-  return ["Times", ...args];
-}
-
-core.List = function (args, env) {
-  var copy, e, i, len, list;
-  list = [];
-
-  if (env.hold === true) {
-    for (i = 0, len = args.length; i < len; i++) {
-      e = args[i];
-      list.push(e);
-    }
-    return list;
-  }
-  
-  copy = Object.assign({}, env);
-  for (i = 0, len = args.length; i < len; i++) {
-    e = args[i];
-    list.push(interpretate(e, copy));
-  }
-  return list;
-};
-
-core.List.destroy = (args, env) => {
-  var copy, i, len, list;
-  for (i = 0, len = args.length; i < len; i++) {
-    interpretate(args[i], env);
-  }
-};
-
-core.List.update = (args, env) => {
-  var copy, e, i, len, list;
-  list = [];
-
-  copy = Object.assign({}, env);
-  for (i = 0, len = args.length; i < len; i++) {
-    e = args[i];
-    list.push(interpretate(e, copy));
-  }
-  return list;
-};
-
-core.Association = function (args, env) {
-  return core._getRules(args, env);
-};
 
 class jsRule {
   // Constructor
@@ -370,16 +346,6 @@ class jsRule {
     this.right = right;
   }
 }
-
-core.Rule = function (args, env) {
-  //actaully an function generator. can be improved
-  const left  = interpretate(args[0], env);
-  const right = interpretate(args[1], env);
-
-  return new jsRule(left, right);
-};
-
-core.Rule.update = core.Rule;
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

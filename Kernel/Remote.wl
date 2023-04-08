@@ -30,10 +30,6 @@ AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] 
 
 ConnectToMaster[params_List, OptionsPattern[]] := (
 
-
-    stream = OpenWrite["kernel.log", FormatType -> OutputForm];
-    $Output = {stream};
-
     master = (JTPClient@@params) // JTPClientStart;
     JTPClientStartListening[master];
 
@@ -52,6 +48,51 @@ SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJ
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
 
 AttachNotebook[id_, path_] := (Print["Notebook "<>id<>" attached!"];  notebook = id; SetDirectory[path]);
+
+DefineOutputStreamMethod[
+  "ToastWarning", {"ConstructorFunction" -> 
+    Function[{name, isAppend, caller, opts}, 
+     With[{state = Unique["JaBoo"]},
+      {True, state}]], 
+   "CloseFunction" -> Function[state, ClearAll[state]], 
+   "WriteFunction" -> 
+    Function[{state, bytes},(*Since we're writing to a cell,
+     we don't want that trailing newline.*)
+     With[{out = bytes /. {most___, 10} :> FromCharacterCode[{most}]},
+       With[{ }, 
+       If[out === "", {0, state},
+       
+
+        With[{text =ByteArrayToString[out // ByteArray], uid = notebook},
+            JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Warning"][text] ];
+        ];
+
+        {Length@bytes, state}]]]]}
+];
+
+DefineOutputStreamMethod[
+  "ToastPrint", {"ConstructorFunction" -> 
+    Function[{name, isAppend, caller, opts}, 
+     With[{state = Unique["JaBoo"]},
+      {True, state}]], 
+   "CloseFunction" -> Function[state, ClearAll[state]], 
+   "WriteFunction" -> 
+    Function[{state, bytes},(*Since we're writing to a cell,
+     we don't want that trailing newline.*)
+     With[{out = bytes /. {most___, 10} :> FromCharacterCode[{most}]},
+       With[{ }, 
+       If[out === "", {0, state},
+       
+
+        With[{text =ToString[out], uid = notebook},
+            JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Print"][text] ];
+        ];
+
+        {Length@bytes, state}]]]]}
+];
+
+$Messages = {OpenWrite[Method -> "ToastWarning"]};
+$Output = {OpenWrite[Method -> "ToastPrint"]};
 
 End[];
 EndPackage[];

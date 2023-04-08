@@ -3,7 +3,6 @@
     "recipy" :> (
         (* merge and bundle the files *)
         MergeFiles[{
-                "JSFrontend/autocomplete.js",
                 (* the core of frontened *)
                 "JSFrontend/frontend.js",
                 (* all cells types *)
@@ -36,16 +35,14 @@
         ];
 
         (* merge in the right sequence, because core.js is not a ~real JS module~ and needed to be added separately *)
-        MergeFiles[{
-                "JSFrontend/interpreter.js",
+        MergeFiles[{  
                 "JSFrontend/sockets.js"
-            } -> "public/js/core.js"
+            } -> "public/js/sockets.js"
         ]; 
 
-        Print["Bundling for the standalone export app..."];
+        (*Print["Bundling for the standalone export app..."];
         (* for standalone app *)
         MergeFiles[{
-                "JSFrontend/interpreter.js",
                 "JSFrontend/fakesockets.js"
             } -> "public/js/export/fakecore.js"
         ];            
@@ -54,7 +51,7 @@
         Print[Reset];
         (* for standalone app *)
         RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
-
+        *)
         Print[Red<>"everything is done!"];
         Print[Reset];
     )

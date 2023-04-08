@@ -65,8 +65,11 @@ LocalKernel["Exit"][cbk_] := (
 );
 
 (* tell the kernel an id of a notebook for the future fast direct communication *)
-LocalKernel["AttachNotebook"][id_, path_] := ( 
+LocalKernel["AttachNotebook"][id_, path_, cbk_] := ( 
     Print["attaching "<>id];
+    callback = cbk;
+    cbk[status];
+    
     If[status["signal"] == "good", 
         (* can be a bug, but it doesnt work if we use a wrapper function *)
         JTPSend[asyncsocket, Global`AttachNotebook[id, path]];

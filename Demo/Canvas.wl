@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Untitled", "id" -> "endpoint-a7714", 
+<|"notebook" -> <|"name" -> "Untitled", "id" -> "papery-9b7e3", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"6bbc4a04-8bf4-4649-b574-8e06caf4b211" -> 
       <|"json" -> "[\"ListLinePlotly\",[\"List\",[\"List\",[\"List\",2.040816\
@@ -162,24 +162,24 @@ List\",0.305545518858404,0.305545518858404],[\"List\",0.32647059825508584,0.3\
 \"List\",0.9999999795918367,0.9999999795918367]]]]", 
        "date" -> DateObject[{2023, 3, 31, 15, 57, 
           48.315103`8.436657885789897}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Canvas.wl", 
-   "cell" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c", 
-   "date" -> DateObject[{2023, 3, 31, 16, 20, 14.11884`7.902374002008066}, 
-     "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c", 
+   "path" -> "/root/wolfram-js-frontend/Demo/Canvas.wl", 
+   "cell" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c40d", 
+   "date" -> DateObject[{2023, 4, 5, 12, 36, 16.07927`7.958841312655578}, 
+     "Instant", "Gregorian", 3.]|>, 
+ "cells" -> {<|"id" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c40d", 
     "type" -> "input", "data" -> ".js\nconst canvas = \
 document.createElement(\"canvas\");\nlet context = \
 canvas.getContext(\"2d\");\ncontext.fillStyle = \
 \"red\";\ncontext.fillRect(10, 10, 100, 50);\nreturn canvas", 
-    "display" -> "codemirror", "sign" -> "endpoint-a7714", "prev" -> Null, 
+    "display" -> "codemirror", "sign" -> "papery-9b7e3", "prev" -> Null, 
     "next" -> Null, "parent" -> Null, "child" -> 
-     "e7e3898a-a78d-481a-9b4e-d540be7eb647", 
+     "e7e3898a-a78d-481a-9b4e-d540be7eb64740d", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e7e3898a-a78d-481a-9b4e-d540be7eb647", "type" -> "output", 
+   <|"id" -> "e7e3898a-a78d-481a-9b4e-d540be7eb64740d", "type" -> "output", 
     "data" -> "\nconst canvas = document.createElement(\"canvas\");\nlet \
 context = canvas.getContext(\"2d\");\ncontext.fillStyle = \
 \"red\";\ncontext.fillRect(10, 10, 100, 50);\nreturn canvas", 
-    "display" -> "js", "sign" -> "endpoint-a7714", "prev" -> Null, 
-    "next" -> Null, "parent" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c", 
+    "display" -> "js", "sign" -> "papery-9b7e3", "prev" -> Null, 
+    "next" -> Null, "parent" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c40d", 
     "child" -> Null, "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn2"|>

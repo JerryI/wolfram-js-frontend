@@ -56,7 +56,7 @@
         break;      
       }
 
-      Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
+      Plotly.newPlot(env.element, newarr, {autosize: false, width: core.DefaultWidth, height: core.DefaultWidth*0.618034, margin: {
           l: 30,
           r: 30,
           b: 30,
@@ -110,7 +110,7 @@
               data: newarr2
             }, {
               transition: {
-                duration: 0
+                duration: 30
               },
               frame: {
                 duration: 0,
@@ -161,7 +161,7 @@
         break;      
       }
 
-      Plotly.newPlot(env.element, newarr, {autosize: false, width: 500, height: 300, margin: {
+      Plotly.newPlot(env.element, newarr, {autosize: false, width: core.DefaultWidth, height: core.DefaultWidth*0.618034, margin: {
           l: 30,
           r: 30,
           b: 30,
@@ -214,14 +214,185 @@
         data: newarr,
       }, {
         transition: {
-          duration: 100,
+          duration: 300,
           easing: 'cubic-in-out'
         },
         frame: {
-          duration: 100
+          duration: 300
         }
       });     
     }
     
     core.ListLinePlotly.destroy = ()=>{};
+}
+
+{
+  let d3 = false;
+
+  let g2d = {};
+  g2d.name = "WebObjects/Graphics";
+
+  interpretate.contextExpand(g2d);
+
+  g2d.Graphics = async (args, env) => {
+    if (!d3) d3 = await import('d3');
+
+    /**
+     * @type {Object}
+     */  
+    let options = core._getRules(args, env);
+    
+
+    if (Object.keys(options).length == 0) 
+      options = core._getRules(interpretate(args[1], {...env, hold:true}), env);
+
+    console.log(options);
+
+    /**
+     * @type {HTMLElement}
+     */
+    var container = env.element;
+
+    /**
+     * @type {[Number, Number]}
+     */
+    let ImageSize = options.ImageSize || [core.DefaultWidth, 0.618034*core.DefaultWidth];
+
+    const aspectratio = options.AspectRatio || 0.618034;
+
+    //if only the width is specified
+    if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*aspectratio];
+
+    console.log('Image size');
+    console.log(ImageSize); 
+
+    let margin = {top: 10, right: 30, bottom: 30, left: 60},
+    width = ImageSize[0] - margin.left - margin.right,
+    height = ImageSize[1] - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    let svg = d3.select(container)
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+    
+    const range = options.PlotRange;
+
+    console.log(range);
+
+    // Add X axis --> it is a date format
+    let x = d3.scaleLinear()
+      .domain(range[0])
+      .range([ 0, width ]);
+    
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+    // Add Y axis
+    let y = d3.scaleLinear()
+      .domain(range[1])
+      .range([ height, 0 ]);
+    
+      svg.append("g")
+      .call(d3.axisLeft(y));   
+      
+      const envcopy = {
+        ...env,
+        context: g2d,
+        svg: svg,
+        xAxis: x,
+        yAxis: y,
+        numerical: true,
+        tostring: false,
+        color: 'black',
+        opacity: 1,
+        strokeWidth: 1.5,
+        pointSize: 0.013,
+        fill: 'none'
+      };   
+
+      interpretate(args[0], envcopy);
+  }
+
+  g2d.Graphics.update = (args, env) => {}
+  g2d.Graphics.destory = (args, env) => {}
+
+  g2d.AbsoluteThickness = (args, env) => {
+    env.strokeWidth = interpretate(args[0], env);
+  }
+
+  g2d.PointSize = (args, env) => {
+    env.pointSize = interpretate(args[0], env);
+  }
+
+  g2d.Annotation = core.List;
+
+  g2d.Directive = (args, env) => {
+    args.forEach((el) => {
+      interpretate(el, env);
+    })
+  }
+
+  g2d.Opacity = (args, env) => {
+    env.opacity = interpretate(args[0], env);
+  }
+
+  g2d.RGBColor = (args, env) => {
+    if (args.length == 3) {
+      const color = args.map(el => 255*interpretate(el, env));
+      env.color = "rgb("+color[0]+","+color[1]+","+color[2]+")";
+    } else {
+      console.error('g2d: RGBColor must have three arguments!');
+    }
+  }
+
+
+  g2d.Line = async (args, env) => {
+    const data = await interpretate(args[0], env);
+    const x = env.xAxis;
+    const y = env.yAxis;
+
+    env.svg.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", env.color)
+      .attr("stroke-width", env.strokeWidth)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d[0]) })
+        .y(function(d) { return y(d[1]) })
+        );
+  }
+
+  g2d.Point = async (args, env) => {
+    const data = await interpretate(args[0], env);
+    const x = env.xAxis;
+    const y = env.yAxis;
+
+    env.svg.append('g')
+    .selectAll("dot")
+    .data(data)
+    .enter()
+    .append("circle")
+      .attr("cx", function (d) { return x(d[0]); } )
+      .attr("cy", function (d) { return y(d[1]); } )
+      .attr("r", env.pointSize*100)
+      .style("fill", env.color)
+  }
+
+  //plugs
+  g2d.Void = (args, env) => {}
+
+  g2d.Identity              = g2d.Void
+  g2d.Automatic             = g2d.Void
+  g2d.Scaled                = g2d.Void
+  g2d.GoldenRatio           = g2d.Void
+  g2d.None                  = g2d.Void
+  g2d.GrayLevel             = g2d.Void
+  g2d.AbsolutePointSize     = g2d.Void
+  g2d.CopiedValueFunction   = g2d.Void
+
 }

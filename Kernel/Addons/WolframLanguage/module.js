@@ -132,7 +132,9 @@ class FEWidget extends WidgetType {
     elt.classList.add("frontend-object");
     elt.setAttribute('data-object', this.name);
     
-    let global = {}; //Created in CM6
+    //callid
+    const cuid = Date.now() + Math.floor(Math.random() * 100);
+    var global = {call: cuid};
     let env = {global: global, element: elt}; //Created in CM6
     console.log("CM6: creating an object with key "+this.name);
     this.fobj = new ExecutableObject(this.name, env);

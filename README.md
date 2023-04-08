@@ -15,11 +15,14 @@ kirill.vasin@uni-a.de
 Thank you 🍺 
 
 ## Motivation
-The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine, which can be easily extended to any user's defined functions and exported as a standalone `.html` application. __There is no aim to copy Mathematica__ (it will never be possible), but make the notebook interface in a different and unique way relying on the web-technology stack with its own features.
+The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine, which can be easily extended to any user's defined functions and exported as a standalone `.html` application. 
+
+__There is no aim to copy Mathematica__ (it will never be possible), but make the notebook interface in a different and unique taking advantage of the web-technology stack.
 
 The target community can probably divided by two groups
 - who like and can write in Javascript and Mathematica
-- who uses Jypiter with Wolfram Language and needs *much more* features
+- who uses Jypiter with free Wolfram Language Kernel and needs *much more* features
+- who wants to share their research notebook to some collegues or people on the web with no access to Wolfram Mathematica/Player
 
 ### Crossplatform
 The frontened is an HTTP & Websockets server, which runs locally on your PC and the notebook interface built from opensource components is entirely in your browser. Which also makes possible to do all work remotely attaching different wolfram kernels to the notebook.
@@ -52,11 +55,6 @@ The following functions`Plotly`, `ListLinePlotly`, `Graphics3D`, `Plot3D`, `Sphe
 
 ![](imgs/ezgif.com-video-to-gif-3.gif)
 ![](imgs/ezgif.com-video-to-gif-2.gif)
-
-### JS, Markdown, Mermaid... cell types
-There are several cell types are available, which can communicate with Wolfram Kernel using templates or directly using TCP connection
-
-![](imgs/Screenshot%202023-03-25%20at%2018.01.21.png)
 
 ## Syntax sugar
 `Subscript`, `Superscript` are supported and works at syntax.

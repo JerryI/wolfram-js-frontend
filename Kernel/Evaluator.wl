@@ -31,10 +31,10 @@ FrontEndRef[FrontEndExecutable[uid_]]        := FrontEndExecutableHold[uid];
 
 (* exceptional case, when the frontened object is set *)
 SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
-Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (Print["Did work!"]; SetFrontEndObject[uid, expr]//SendToFrontEnd);
+Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd);
 
 SetFrontEndObject[FrontEndRef[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
-Set[FrontEndRef[uid_], expr_] ^:= (Print["Did work!"]; SetFrontEndObject[uid, expr]//SendToFrontEnd);
+Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd);
 
 (* special post-handler, only used for upvalues *)
 CM6Form[e_] := e

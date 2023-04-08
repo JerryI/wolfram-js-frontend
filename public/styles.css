@@ -601,7 +601,22 @@ border-radius: 4px;
 .end_marked_big_open_circle{marker-end:url(#big_open_circle);}
 .start_marked_big_open_circle{marker-start:url(#big_open_circle);}
 
+.pop-up {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.5, 1);
+  transform: translateY(100px);
+}
 
+.pop-up-show {
+  transform: translateY(0px);
+  padding-top: 1em;
+}
+
+
+.pop-up-container {
+  position: fixed;
+  bottom: 2em;
+  right: 6em;
+}
 
 
 

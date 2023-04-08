@@ -7,12 +7,38 @@
                         
                     </div>
                 </div>
-            </main>
+
+                <div class="pop-up-container">
+                </div>
+</main>
 
 <script>
     window.addEventListener("wsconnected", function() { 
         console.log('subscribe and load notebook'); 
         socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
     });
+
+    {
+        const popholder = document.getElementsByClassName("pop-up-container")[0];
+
+        core.FrontEndPopUp = (args, env) => {
+            const message = document.createElement('div');
+            message.innerHTML = interpretate(args[0], env);
+            popholder.appendChild(message);
+
+            const inner = message.getElementsByClassName('pop-up')[0];
+            setTimeout(()=>{
+                inner.classList.toggle('pop-up-show');
+            }, 100);
+
+            setTimeout(()=>{
+                //message.remove();
+                inner.classList.toggle('pop-up-show');
+                setTimeout(()=>{
+                    message.remove();    
+                }, 300);
+            }, 6500);
+        }
+    }
 </script>
 
