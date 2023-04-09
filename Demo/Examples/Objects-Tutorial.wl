@@ -2,49 +2,35 @@
    "kernel" -> LocalKernel, "objects" -> 
     <|"myObject" -> <|"json" -> 
         "[\"ListLinePlotly\",[\"List\",1,2,3,4,3,2,1]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 7.751506`7.641961074782783}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.600067`8.291651919653178}, 
          "Instant", "Gregorian", 3.]|>, 
      "b97913e3-45cc-43f3-aff7-12b02a0251a8" -> 
       <|"json" -> "[\"ListLinePlotly\",[\"List\",1,2,3,4,3,2,1]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 7.7948`7.644379963733761}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.61137`8.291793769924906}, 
          "Instant", "Gregorian", 3.]|>, "myData" -> 
       <|"json" -> "[\"List\",4,2,3,4,3,2,4]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 8.127632`7.662539018533496}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.719883`8.29315323289599}, 
          "Instant", "Gregorian", 3.]|>, "myPlot" -> 
       <|"json" -> "[\"ListLinePlotly\",[\"List\",1,2,3,4,3,2,1]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 
-          7.925723`7.6516138771421565}, "Instant", "Gregorian", 3.]|>, 
-     "dc4d637a-f021-455d-9f77-a9823626f9d2" -> 
-      <|"json" -> 
-        "[\"ListLinePlotly\",[\"FrontEndExecutableHold\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 
-          28.207776`8.202943827727752}, "Instant", "Gregorian", 3.]|>, 
-     "f291b664-33fb-466c-a2a9-a6050e7f8f51" -> 
-      <|"json" -> "[\"ListLinePlotly\",[\"FrontEndRef\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 30.765223`8.24063504837211}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.659275`8.292394453821304}, 
          "Instant", "Gregorian", 3.]|>, 
-     "b93ffd25-58f4-41ad-b8ed-723890f5e614" -> 
-      <|"json" -> 
-        "[\"ListLinePlotly\",[\"FrontEndExecutableHold\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 
-          34.368918`8.288740839808678}, "Instant", "Gregorian", 3.]|>, 
      "67930b09-bdde-4632-9d32-f5a905ed36b7" -> 
       <|"json" -> 
         "[\"ListLinePlotly\",[\"FrontEndExecutableHold\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 28.27724`8.204011999403551}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.685156`8.292718632009688}, 
          "Instant", "Gregorian", 3.]|>, 
      "2ddf9a39-5acf-4f5b-89a5-6cb988b4d47c" -> 
       <|"json" -> "[\"ListLinePlotly\",[\"FrontEndRef\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 
-          31.107534`8.245440565177473}, "Instant", "Gregorian", 3.]|>, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.696449`8.292860009183867}, 
+         "Instant", "Gregorian", 3.]|>, 
      "a2038741-7e8e-4324-8738-5e42bccca079" -> 
       <|"json" -> 
         "[\"ListLinePlotly\",[\"FrontEndExecutableHold\",\"'myData'\"]]", 
-       "date" -> DateObject[{2023, 4, 5, 15, 20, 34.387877`8.28898034455264}, 
+       "date" -> DateObject[{2023, 4, 9, 14, 8, 34.708314`8.293008497669533}, 
          "Instant", "Gregorian", 3.]|>|>, 
    "path" -> "/root/wolfram-js-frontend/Demo/Frontend-Object.wl", 
    "cell" -> "dcfd59f1-b37d-44bc-900e-c078ea7fe94c", 
-   "date" -> DateObject[{2023, 4, 5, 15, 23, 7.019477`7.598879742617604}, 
+   "date" -> DateObject[{2023, 4, 9, 15, 57, 10.131405`7.758244662931468}, 
      "Instant", "Gregorian", 3.]|>, 
  "cells" -> {<|"id" -> "12206a87-d2f4-4180-b9a1-3f7da15b220a", 
     "type" -> "input", "data" -> ".md\nJust do not forget to wrap it in \
