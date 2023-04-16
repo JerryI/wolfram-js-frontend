@@ -1,5 +1,5 @@
 # Wolfram Engine JS Frontend
-*the synergy of web technologies and symbolic computations*
+*The synergy of web technologies and symbolic computations*
 This is a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects built for freeware __Wolfram Engine__
 
 ![](imgs/ezgif.com-crop.gif)
@@ -36,7 +36,7 @@ Several data transfer method between Wolfram Kernel and Javascript are already i
 
 Built-in Wolfram Language JS engine will serve the purpose by interpreting Wolfram expressions in the browser.
 
-In principle, one can perform hetero-calculations, splittting your code between parts evaluated on the frontned and backend to optimize the perfomance.
+In principle, one can perform hetero-calculations, splittting your code between parts evaluated on the frontend and backend to optimize the performance.
 
 > The project is in __alpha stage__, some features might be changed. Some experimental features can be buggy. Check your browser's console more often
 
@@ -110,24 +110,23 @@ wolframscript -f Scripts/run.wls dev
 
 > Everyhting is a symbol
 
-For me @JerryI as a maintener, the most facinating feature from Mathematica was the symbolic concept, which was fully implemented on the frontened as well. Here it was a compromise between showing the actual code of the cell and interpreting the result of it in-place.
+For me @JerryI as a maintener, the most fascinating feature from Mathematica was the symbolic concept, which was fully implemented on the frontend as well. Here it was a compromise between showing the actual code of the cell and interpreting the result of it in-place.
 
-Here there is an example, where one can copy and paste 3D object into the cell if it was a single  symbol and apply different settings to it
+Here is an example where one can copy and paste a 3D object into a cell as if it was a single symbol and then apply different settings to it
 
 ![](imgs/Screenshot%202023-03-25%20at%2017.19.00.png)
  
- Behind it there is nothing else, than `FrontEndExectuable["ref"]` a reference. However, here the idea is to expand this concept and be able to store and execute any expressions on the frontened. Not it is very limited, by the idea is there
+There is nothing else behind it other than a `FrontEndExectuable["ref"]` reference. However, here the idea is to expand this concept and be able to store and execute any expressions on the frontend. Note that it is very limited, but the idea is there
 
 ![](imgs/Screenshot%202023-03-25%20at%2017.29.21.png)
-The goal here is to make it possible a manual or semi-automaic code splitting between frontened and the backend. Therefore for the sake of perfomance, one can rely on custom written JS functions (you can do it within the same notebook) and update the content dynamically, without the reevaluating the whole cell.
+The goal here is to enable manual or semi-automatic code splitting between the frontend and the backend. Therefore for the sake of performance, one can rely on custom written JS functions (you can do it within the same notebook) and update the content dynamically, without re-evaluating the whole cell.
 
 ![](imgs/Screenshot%202023-03-25%20at%2017.34.22.png)
-Dynamic binding between JS and Wolfram Kernel removes all borders, you can be really creative designing your own approach on visualising the data.
+Dynamic binding between JS and the Wolfram Kernel removes all borders, you can be really creative designing your own approach on visualising the data.
 
 > One cell to rule them all
 
-An input cell is a key. Nobody knows the type of it until it has submitted for the evaluation
-The user can add its own extensions and type handlers. 
+An input cell is like a key - its type is not known until it is submitted for evaluation. Users have the ability to add their own extensions and type handlers.
 
 to write a JS code
 ```js
@@ -345,15 +344,15 @@ i.e. this is an executable object, written as a sort of computable WL functions.
 The power of Mathematica's frontend, that it expands and follows the paradigm of WL, where 
 > Everything is symbol
 
-to all intergactive objects, including mostly graphics. It makes you feel like you are still operating a bunch of symbolic expressions underneath it
-> Graphics is a syntax sugar
+to all interactive objects, including mostly graphics. It makes you feel like you are still operating a bunch of symbolic expressions underneath it
+> Graphics is syntax sugar
 
 ```mathematica
 Cuboid[]//Graphics3D
 % /. {Cuboid :> Sphere}
 ```
 
-To recreate the functionality of Mathematica's frontend in this manner is doomed by a few reasons
+Recreating the functionality of Mathematica's frontend in this manner is doomed for a few reasons :
 
 - frontend functions are poorely documented
 - WYSIWIG editor with mutable WL expressions inside is a mess
@@ -370,13 +369,13 @@ In principle, we do not need to make the whole WL expression mutable and interac
 
 *The first one* can be even separated from the actual code-area, since it originally works as inline block (a symbol). 
 
-In the simples case, where the Graphics and symbols are mixed in the code, one could just replace graphics objects with images and substitute it to some advanced HTML-like editor. For this see [[Frontend Object]].
+In the simplest case, where the Graphics and symbols are mixed in the code, one could just replace graphics objects with images and substitute it for some advanced HTML-like editor. For this see [[Frontend Object]].
 
-Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy of our graphs inside made from other symbols, afterwards one need to interprete it and display to the user, i.e. ==we need a frontend WL interpreter==. Our main language in the WEB stack apart from HTML/CSS is JS. See [[WLJS Interpreter]]
+Anyway, since `Plot` and `Plot3D` are sets of `Graphics` and `Graphics3D` symbols with recipes for creating our graphs from other symbols, we need to interpret and display them to the user. In other words, ==we need a frontend Wolfram Language interpreter==. Our main language in the web stack, apart from HTML/CSS, is JavaScript. See [[WLJS Interpreter]]
 
 *The second one* is rather tricky to implement fully, since it involves mutable WL expressions. 
 
-However, people now are using sort-of syntax sugar for the live previews of Markdown, where the code you typing is replaced by the corresponding styled object. A good example is Obsidian notes making app, and CodeMirror 6 Decorations. TL-DR see [[Decoration]]
+However, nowadays people are using a sort of syntax sugar for live previews of Markdown, where the code you type is replaced by the corresponding styled object. Good examples of this can be found in Obsidian notes and CodeMirror 6 Decorations. TL-DR see [[Decoration]]
 
 ...to be concluded
 
