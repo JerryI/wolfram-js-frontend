@@ -4,12 +4,11 @@
         <style><?wsp Import["public/styles.css", "String"] ?></style>
         <style><?wsp Import["public/katex-standalone.css", "String"] ?></style>
         <script>
-            //avoid errors, when loading the scripts takes too much time
-            var core = {};
-            core.name = "Core Context";
+            <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
+            <?wsp Import["JSFrontend/core.js", "String"] ?>
         </script>
         <script><?wsp Import["public/js/export/merged.js", "String"] ?></script>
-        <script><?wsp Import["public/js/export/fakecore.js", "String"] ?></script>
+        <script><?wsp Import["public/js/export/fakesockets.js", "String"] ?></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

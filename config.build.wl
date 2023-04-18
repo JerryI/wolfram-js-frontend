@@ -7,8 +7,6 @@
                 "JSFrontend/frontend.js",
                 (* all cells types *)
                 FileNames["*.js", "Kernel/Addons", Infinity],
-                (* greek symbols support *)
-                "JSFrontend/greek.js",
                 (* all webobjects *)
                 FileNames["*.js", "WebObjects", Infinity]
             } -> "Temp/merged.js"
@@ -40,18 +38,18 @@
             } -> "public/js/sockets.js"
         ]; 
 
-        (*Print["Bundling for the standalone export app..."];
+        Print["Bundling for the standalone export app..."];
         (* for standalone app *)
         MergeFiles[{
                 "JSFrontend/fakesockets.js"
-            } -> "public/js/export/fakecore.js"
+            } -> "public/js/export/fakesockets.js"
         ];            
 
         Print[Red<>" the process is not done yet... wait..."];
         Print[Reset];
         (* for standalone app *)
         RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
-        *)
+        
         Print[Red<>"everything is done!"];
         Print[Reset];
     )

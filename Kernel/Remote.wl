@@ -47,7 +47,7 @@ SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJ
 
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
 
-AttachNotebook[id_, path_] := (Print["Notebook "<>id<>" attached!"];  notebook = id; SetDirectory[path]);
+AttachNotebook[id_, path_] := ( notebook = id; SetDirectory[path]; Print["Notebook "<>id<>" attached!"];);
 
 DefineOutputStreamMethod[
   "ToastWarning", {"ConstructorFunction" -> 
