@@ -9,6 +9,8 @@
   - HTML/WSP postprocessor
 *)
 
+Global`$out = Null;
+
 (* global scope *)
 SetAttributes[SetFrontEndObject, HoldFirst];
 SetAttributes[FrontEndRef, HoldFirst];
@@ -22,7 +24,7 @@ FrontEndExecutableWrapper[uid_] :=  (Print["Importing string"]; ImportString[
                   res
     ]
   ] @ (JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"])
-, "ExpressionJSON"] );
+, "ExpressionJSON"] // ReleaseHold );
 
 FrontEndRef[FrontEndExecutableWrapper[uid_]] := FrontEndExecutableHold[uid];
 FrontEndRef[FrontEndExecutable[uid_]]        := FrontEndExecutableHold[uid];
@@ -57,7 +59,7 @@ Begin["`Private`"];
 JerryI`WolframJSFrontend`Evaluator`objects   = <||>;
 
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
-  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, $out},
+  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated},
     Block[{
             
           },
@@ -66,7 +68,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       $evaluated = ToExpression[str, InputForm, Hold] /. {Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper} // ReleaseHold;
       
       (* a shitty analogue of % symbol *)
-      $out = $evaluated;
+      Global`$out = $evaluated;
       
       (* blocks the output if the was a command from the procesor *)
       If[block === True, $evaluated = Null];

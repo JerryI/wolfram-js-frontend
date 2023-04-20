@@ -8,13 +8,15 @@
   } 
 
   function transpose(matrix) {
+    let newm = structuredClone(matrix);
     for (var i = 0; i < matrix.length; i++) {
       for (var j = 0; j < i; j++) {
-        const temp = matrix[i][j];
-        matrix[i][j] = matrix[j][i];
-        matrix[j][i] = temp;
+   
+        newm[i][j] = matrix[j][i];
+        newm[j][i] = matrix[i][j];
       }
     } 
+    return newm;
   } 
  
   core.ListPlotly = async function(args, env) {
@@ -37,9 +39,9 @@
         case 2:
           if (arr[0].length === 2) {
             console.log('1 XY plot');
-            transpose(arr);
+            let t = transpose(arr);
       
-            newarr.push({x: arr[0], y: arr[1], mode: 'markers'});
+            newarr.push({x: t[0], y: t[1], mode: 'markers'});
           } else {
             console.log('multiple Y plot');
             arr.forEach(element => {
@@ -49,9 +51,8 @@
         break;
         case 3:
           arr.forEach(element => {
-            let newEl = element;
-            transpose(newEl);
-            newarr.push({x: newEl[0], y: newEl[1], mode: 'markers'}); 
+            let t = transpose(element);
+            newarr.push({x: t[0], y: t[1], mode: 'markers'}); 
           });
         break;      
       }
@@ -87,9 +88,9 @@
               case 2:
                 if (arr2[0].length === 2) {
                  
-                  transpose(arr2);
+                  let t = transpose(arr2);
             
-                  newarr2.push({x: arr2[0], y: arr2[1]});
+                  newarr2.push({x: t[0], y: t[1]});
                 } else {
          
                   arr2.forEach(element => {
@@ -99,8 +100,8 @@
               break;
               case 3:
                 arr2.forEach(element => {
-                  let newEl = element;
-                  transpose(newEl);
+   
+                   let newEl = transpose(element);
                   newarr2.push({x: newEl[0], y: newEl[1]}); 
                 });
               break;      
@@ -133,7 +134,22 @@
       env.numerical = true;
       let arr = await interpretate(args[0], env);
       console.log('listlineplot: got the data...');
+      console.log(arr);
       let newarr = [];
+
+      let options = core._getRules(args, env);
+      /**
+       * @type {[Number, Number]}
+       */
+      let ImageSize = options.ImageSize || [core.DefaultWidth, 0.618034*core.DefaultWidth];
+  
+      const aspectratio = options.AspectRatio || 0.618034;
+  
+      //if only the width is specified
+      if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*aspectratio];
+  
+      console.log('Image size');
+      console.log(ImageSize);         
 
       switch(arrDepth(arr)) {
         case 1:
@@ -142,9 +158,10 @@
         case 2:
           if (arr[0].length === 2) {
             console.log('1 XY plot');
-            transpose(arr);
+            let t = transpose(arr);
+            console.log(t);
       
-            newarr.push({x: arr[0], y: arr[1]});
+            newarr.push({x: t[0], y: t[1]});
           } else {
             console.log('multiple Y plot');
             arr.forEach(element => {
@@ -154,14 +171,14 @@
         break;
         case 3:
           arr.forEach(element => {
-            let newEl = element;
-            transpose(newEl);
+             
+             let newEl = transpose(element);
             newarr.push({x: newEl[0], y: newEl[1]}); 
           });
         break;      
       }
 
-      Plotly.newPlot(env.element, newarr, {autosize: false, width: core.DefaultWidth, height: core.DefaultWidth*0.618034, margin: {
+      Plotly.newPlot(env.element, newarr, {autosize: false, width: ImageSize[0], height: ImageSize[1], margin: {
           l: 30,
           r: 30,
           b: 30,
@@ -176,7 +193,8 @@
       console.log(args);
       console.log('interpretate!');
       let arr = await interpretate(args[0], env);
-      console.log(arr);
+      console.log(arr);    
+
       let newarr = [];
 
       switch(arrDepth(arr)) {
@@ -186,9 +204,9 @@
         case 2:
           if (arr[0].length === 2) {
             console.log('1 XY plot');
-            transpose(arr);
+            let t = transpose(arr);
       
-            newarr.push({x: arr[0], y: arr[1]});
+            newarr.push({x: t[0], y: t[1]});
           } else {
             console.log('multiple Y plot');
             arr.forEach(element => {
@@ -198,8 +216,8 @@
         break;
         case 3:
           arr.forEach(element => {
-            let newEl = element;
-            transpose(newEl);
+            let newEl = transpose(element);
+            
             newarr.push({x: newEl[0], y: newEl[1]}); 
           });
         break;      
@@ -319,7 +337,7 @@
   }
 
   g2d.Graphics.update = (args, env) => {}
-  g2d.Graphics.destory = (args, env) => {}
+  g2d.Graphics.destroy = (args, env) => {}
 
   g2d.AbsoluteThickness = (args, env) => {
     env.strokeWidth = interpretate(args[0], env);
@@ -349,6 +367,15 @@
       console.error('g2d: RGBColor must have three arguments!');
     }
   }
+
+  g2d.Hue = (args, env) => {
+    if (args.length == 3) {
+      const color = args.map(el => 100*interpretate(el, env));
+      env.color = "hls("+(3.59*color[0])+","+color[1]+","+color[2]+")";
+    } else {
+      console.error('g2d: Hue must have three arguments!');
+    }
+  }  
 
 
   g2d.Line = async (args, env) => {

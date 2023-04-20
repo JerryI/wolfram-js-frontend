@@ -10,6 +10,7 @@ class SVGBobCell {
   
     elt.classList.add("frontend-object");
     parent.element.appendChild(elt);
+    parent.element.classList.add('padding-fix');
   
     let container = document.createElement("div");
     container.classList.add('svgbob-object');

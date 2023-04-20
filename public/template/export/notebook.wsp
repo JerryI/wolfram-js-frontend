@@ -55,7 +55,7 @@
     
 <script>
     <?wsp Table[ ?>
-        { const ob =  new ObjectStorage('<?wsp key ?>'); ob.cached = true; ob.cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>; };
+        { let ob =  new ObjectStorage('<?wsp key ?>'); ob.cached = true; ob.cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>; };
     <?wsp , {key, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"]//Keys}]  ?>
         ;
     <?wsp Table[ ?>

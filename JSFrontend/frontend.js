@@ -26,9 +26,54 @@ class CellWrapper {
     return cell;
   }
 
+  findLast() {
+    let cell = this;
+    while(true) {
+      cell = CellHash[cell.next];
+      if (!(cell instanceof CellWrapper)) cell = this;
+      if (!cell.next) break;
+    }
+    return cell;
+  }  
+
   findNext() {
     return CellHash[this.next]; 
   }
+
+  focusNext(startpoint) {
+    console.log('next');
+    console.log(this);    
+    if (startpoint.uid !== this.uid) return this.display?.editor?.focus();
+ 
+
+    if (this.child)
+      return CellHash[this.child].focusNext(startpoint)
+    
+    if (this.next)
+      return CellHash[this.next].focusNext(startpoint)
+    
+    if (this.parent)
+      if (CellHash[this.parent].next)
+        return CellHash[CellHash[this.parent].next].focusNext(startpoint)
+    
+    if (this.parent) CellHash[this.parent].addCellAfter(); else this.addCellAfter();
+  }
+
+  focusPrev(startpoint) {
+    console.log('prev');
+    console.log(this);
+    if (startpoint.uid !== this.uid) return this.display?.editor?.focus();
+
+    if (this.prev)
+      if (CellHash[this.prev].child)
+        return CellHash[CellHash[this.prev].child].findLast().focusPrev(startpoint) 
+    
+    if (this.prev)
+      return CellHash[this.prev].focusPrev(startpoint)
+    
+    if (this.parent)
+      return CellHash[this.parent].focusPrev(startpoint)
+  }  
 
   morph(template, input) {
     this.type = input["type"];
@@ -48,6 +93,7 @@ class CellWrapper {
   
     this.toolbox();
   }
+
 
   updateState(state) {
     const loader = document.getElementById(this.uid+"---"+this.type).parentNode.getElementsByClassName('loader-line')[0];
@@ -90,7 +136,8 @@ class CellWrapper {
   }
   
   addCellAfter(uid) {  
-    var q = 'NotebookOperate["'+uid+'", CellObjCreateAfter]';
+    const id = uid || this.uid;
+    var q = 'NotebookOperate["'+id+'", CellObjCreateAfter]';
     forceFocusNext = true;
     socket.send(q);  
   }

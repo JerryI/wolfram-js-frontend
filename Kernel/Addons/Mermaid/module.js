@@ -13,6 +13,7 @@ class MermaidCell {
     
     elt.classList.add("frontend-object");
     parent.element.appendChild(elt);
+    parent.element.classList.add('padding-fix');
   
     let cotainer = document.createElement("div");
     cotainer.style.width = "80vw";

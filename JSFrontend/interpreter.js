@@ -116,18 +116,22 @@ let server = {
 
     window.onerror = function (message, file, line, col, error) {
       socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+      console.log(error);
       return false;
     };
     window.addEventListener("error", function (e) {
-      socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+      socket.send('NotebookPopupFire["error", "'+e.message+'"]');
+      console.log(e);
       return false;
     });
     window.addEventListener('unhandledrejection', function (e) {
-      socket.send('NotebookPopupFire["error", "'+error.message+'"]');
+      socket.send('NotebookPopupFire["error", "'+e.message+'"]');
+      console.log(e);
     });
 
     console.error = function(e) {
       socket.send('NotebookPopupFire["error", "'+e+'"]');
+      console.log(e);
     };
   },
 

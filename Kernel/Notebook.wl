@@ -589,7 +589,7 @@ NotebookEventFire[addr_]["CellError"][cell_, text_] := Module[{template},
         template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "error.wsp"}], {Global`id = cell, Global`from = "Wolfram Evaluator", Global`message = t}];
     ];
 
-    WebSocketSend[addr, Global`FrontEndPopUp[template]];
+    WebSocketSend[addr, Global`FrontEndPopUp[template, text//ToString]];
 ];
 
 NotebookEventFire[addr_]["Warning"][text_] := Module[{template},
@@ -598,7 +598,7 @@ NotebookEventFire[addr_]["Warning"][text_] := Module[{template},
     ];
     Print[Yellow<>"Warning"];
     Print[Reset];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template], addr];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template, text//ToString], addr];
 ];
 
 NotebookPopupFire[name_, text_] := Module[{template},
@@ -607,7 +607,7 @@ NotebookPopupFire[name_, text_] := Module[{template},
     ];
     Print[Blue<>"loopback"];
     Print[Reset];
-    WebSocketSend[Global`client, Global`FrontEndPopUp[template]];
+    WebSocketSend[Global`client, Global`FrontEndPopUp[template, text//ToString]];
 ];
 
 
@@ -617,7 +617,7 @@ NotebookEventFire[addr_]["Print"][text_] := Module[{template},
     ];
     Print[Green<>"Print"];
     Print[Reset];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template], addr];
+    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template, text//ToString], addr];
 ];
 
 NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (

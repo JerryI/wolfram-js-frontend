@@ -26,6 +26,8 @@
             message.innerHTML = interpretate(args[0], env);
             popholder.appendChild(message);
 
+            core.ConsoleLog.push(interpretate(args[1], env));
+
             const inner = message.getElementsByClassName('pop-up')[0];
             setTimeout(()=>{
                 inner.classList.toggle('pop-up-show');

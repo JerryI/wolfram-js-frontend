@@ -8,6 +8,7 @@ class ImageCell {
     
       elt.classList.add("frontend-object");
       parent.element.appendChild(elt);  
+      parent.element.classList.add('padding-fix');
   
       let img = document.createElement("img");
       img.style.width = "80vw";

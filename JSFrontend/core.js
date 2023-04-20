@@ -4,6 +4,8 @@ interpretate.contextExpand(core);
 
 core.DefaultWidth = 400;
 
+core.ConsoleLog = [];
+
 core.FrontEndExecutable = async (args, env) => {
     const key = interpretate(args[0], env);
     //creates an instance with its own separate env

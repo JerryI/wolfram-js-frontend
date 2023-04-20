@@ -2,7 +2,7 @@ BeginPackage["JerryI`WolframJSFrontend`WolframLanguageSupport`", {"CodeParser`"}
 
 Begin["Private`"];
 
-SplitExpression[astr_] := With[{str = StringReplace[astr, "%"->"$$$out"]},
+SplitExpression[astr_] := With[{str = StringReplace[astr, "%"->"Global`$out"]},
   StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
    Flatten[{#1 - 1, #2 + 1} & @@@ 
      Sort@
