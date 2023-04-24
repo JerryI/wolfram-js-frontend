@@ -10,16 +10,16 @@ import { isCursorInside } from "./utils";
 import { BallancedMatchDecorator } from "./matcher";
 
 import { keymap } from "@codemirror/view";
-
+ 
 import { EditorSelection } from "@codemirror/state";
 
-var subEditor;
+var subEditor; 
 
-export function mathematicaMath(view) {
+export function fractionsWidget(view) {
   subEditor = view;
   return [
     //mathematicaMathDecoration,
-    Fracholders,
+    placeholder,
     keymap.of([{ key: "Ctrl-/", run: snippet() }])
   ];
 }
@@ -33,12 +33,12 @@ function snippet() {
       const prev = state.sliceDoc(from, to);
       if (prev.length === 0) {
         return {
-          changes: { from, to, insert: "Rational[1, 1]" },
+          changes: { from, to, insert: "CM6Fraction[_,_]" },
           range: EditorSelection.cursor(from)
         };
       }
       return {
-        changes: { from, to, insert: "Rational[" + prev + ", 1]" },
+        changes: { from, to, insert: "CM6Fraction[" + prev + ", _]" },
         range: EditorSelection.cursor(from)
       };
     });
@@ -50,49 +50,91 @@ function snippet() {
   };
 }
 
-class FracWidgetX extends WidgetType {
-  constructor(visibleValue, ref) {
+class Widget extends WidgetType {
+  constructor(visibleValue, ref, view) {
     super();
+    this.view = view;
     this.visibleValue = visibleValue;
     this.ref = ref;
     this.subEditor = subEditor;
   }
   eq(other) {
+    console.log('compare');
+    console.log(this.visibleValue.str === other.visibleValue.str)
     return this.visibleValue.str === other.visibleValue.str;
   }
-  toDOM() {
+  updateDOM(dom, view) {
+    console.log('update widget DOM');
+    return true
+  }
+  toDOM(view) {
     let span = document.createElement("span");
-    span.classList.add("frac-holder");
+    span.classList.add('fraction');
 
     if (this.visibleValue.args.length !== 2) {
-      this.visibleValue.args = ["1", "1"];
+      this.visibleValue.args = ["_", "_"];
       console.error("argumets doesnt match");
     }
-
+    console.log('create widget DOM!!!!');
+    console.log(this.visibleValue);
+ 
     const args = this.visibleValue.args;
 
-    const top = document.createElement("div");
+    const table      = document.createElement("table");
+    table.classList.add('container');
+    span.appendChild(table);
+    
+    const tbody      = document.createElement("tbody");
+    table.appendChild(tbody);
+
+    const tre        = document.createElement("tr");
+    const trd        = document.createElement("tr");
+    tbody.appendChild(tre);
+    tbody.appendChild(trd);
+
+    const enumenator  = document.createElement("td");
+    enumenator.classList.add('enumenator');
+    tre.appendChild(enumenator);
+
+    const denumenator = document.createElement("td");
+    trd.appendChild(denumenator);
+
+    
+    const visibleValue = this.visibleValue;
+    //const view = this.view;
+    const recreateString = (args) => {
+      this.visibleValue.str =  'CM6Fraction['+args[0]+', '+args[1]+']';
+      const changes = {from: visibleValue.pos, to: visibleValue.pos + visibleValue.length, insert: this.visibleValue.str};
+      this.visibleValue.length = this.visibleValue.str.length;
+
+      return changes;
+    }
 
     this.subEditor({
       doc: args[0],
-      parent: top
+      parent: enumenator,
+      update: (upd) => {
+        this.visibleValue.args[0] = upd;
+        const change = recreateString(this.visibleValue.args);
+        console.log('insert change');
+        console.log(change);
+        view.dispatch({changes: change});
+      }
     });
 
-    top.classList.add("frac-top");
-
-    const bottom = document.createElement("div");
-
-    //console.log("bottom string: " + bottomstring);
     this.subEditor({
       doc: args[1],
-      parent: bottom
+      parent: denumenator,
+      update: (upd) => {
+        this.visibleValue.args[1] = upd;
+        const change = recreateString(this.visibleValue.args);
+        console.log('insert change');
+        console.log(change);
+        view.dispatch({changes: change});
+      }      
     });
 
-    bottom.classList.add("frac-bottom");
 
-    span.appendChild(top);
-    span.appendChild(bottom);
-    //span.classList.add("cm-bold");*/
     return span;
   }
 
@@ -101,27 +143,27 @@ class FracWidgetX extends WidgetType {
   }
 }
 
-const FracMatcher = (ref) => {
+const matcher = (ref, view) => {
   return new BallancedMatchDecorator({
-    regexp: /Rational\[/,
+    regexp: /CM6Fraction\[/,
     decoration: (match) => {
       return Decoration.replace({
-        widget: new FracWidgetX(match, ref)
+        widget: new Widget(match, ref, view)
       });
     }
   });
 };
 
-const Fracholders = ViewPlugin.fromClass(
+const placeholder = ViewPlugin.fromClass(
   class {
     constructor(view) {
       this.disposable = [];
-      this.Fracholders = FracMatcher(this.disposable).createDeco(view);
+      this.placeholder = matcher(this.disposable, view).createDeco(view);
     }
     update(update) {
-      this.Fracholders = FracMatcher(this.disposable).updateDeco(
+      this.placeholder = matcher(this.disposable, update).updateDeco(
         update,
-        this.Fracholders
+        this.placeholder
       );
     }
     destroy() {
@@ -134,41 +176,15 @@ const Fracholders = ViewPlugin.fromClass(
     }
   },
   {
-    decorations: (instance) => instance.Fracholders,
+    decorations: (instance) => instance.placeholder,
     provide: (plugin) =>
       EditorView.atomicRanges.of((view) => {
         var _a;
         return (
           ((_a = view.plugin(plugin)) === null || _a === void 0
             ? void 0
-            : _a.Fracholders) || Decoration.none
+            : _a.placeholder) || Decoration.none
         );
       })
   }
 );
-
-/*class FEWidget extends WidgetType {
-  constructor(name, ref) {
-    super();
-    this.ref = ref;
-    this.name = name;
-  }
-  eq(other) {
-    return this.name === other.name;
-  }
-  toDOM() {
-    let elt = document.createElement("div");
-    elt.classList.add("frontend-object");
-
-    this.ref.push(this.fobj);
-
-    return elt;
-  }
-  ignoreEvent() {
-    return true;
-  }
-  destroy() {
-    console.log("widget got destroyed!");
-    this.fobj.dispose();
-  }
-}*/

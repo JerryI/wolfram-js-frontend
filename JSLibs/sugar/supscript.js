@@ -15,33 +15,37 @@ import { EditorSelection } from "@codemirror/state";
 
 var subEditor; 
 
-export function subscriptWidget(view) {
+export function supscriptWidget(view) {
   subEditor = view;
   return [
     //mathematicaMathDecoration,
     placeholder,
-    keymap.of([{ key: "Ctrl--", run: snippet() }])
+    keymap.of([{ key: "Ctrl-6", run: snippet() }])
   ];
 }
 
 function snippet() {
   return ({ state, dispatch }) => {
     if (state.readOnly) return false;
+    console.log(state);
     let changes = state.changeByRange((range) => {
       let { from, to } = range;
       //if (atEof) from = to = (to <= line.to ? line : state.doc.lineAt(to)).to
       const prev = state.sliceDoc(from, to);
       if (prev.length === 0) {
         return {
-          changes: { from, to, insert: "CM6Subscript[_,_]" },
+          changes: { from, to, insert: "CM6Superscript[_,_]" },
           range: EditorSelection.cursor(from)
         };
       }
       return {
-        changes: { from, to, insert: "CM6Subscript[" + prev + ", _]" },
+        changes: { from, to, insert: "CM6Superscript[" + prev + ", _]" },
         range: EditorSelection.cursor(from)
       };
     });
+
+    state.config.nextFocus = true;
+    
 
     dispatch(
       state.update(changes, { scrollIntoView: true, userEvent: "input" })
@@ -68,13 +72,15 @@ class Widget extends WidgetType {
     return true
   }
   toDOM(view) {
+    console.log(view);
+
     let span = document.createElement("span");
 
     if (this.visibleValue.args.length !== 2) {
       this.visibleValue.args = ["_", "_"];
       console.error("argumets doesnt match");
     }
-
+    
     console.log('create widget DOM!!!!');
     console.log(this.visibleValue);
  
@@ -86,7 +92,7 @@ class Widget extends WidgetType {
     const visibleValue = this.visibleValue;
     
     const recreateString = (args) => {
-      this.visibleValue.str =  'CM6Subscript['+args[0]+', '+args[1]+']';
+      this.visibleValue.str =  'CM6Superscript['+args[0]+', '+args[1]+']';
       const changes = {from: visibleValue.pos, to: visibleValue.pos + visibleValue.length, insert: this.visibleValue.str};
       this.visibleValue.length = this.visibleValue.str.length;
 
@@ -105,10 +111,10 @@ class Widget extends WidgetType {
       }
     });
 
-    const sub = document.createElement("sub");
+    const sub = document.createElement("sup");
     sub.classList.add("subscript-tail");
 
-    this.subEditor({
+    const editor = this.subEditor({
       doc: args[1],
       parent: sub,
       update: (upd) => {
@@ -119,6 +125,12 @@ class Widget extends WidgetType {
         view.dispatch({changes: change});
       }      
     });
+
+    
+    if (view.viewState.state.config.nextFocus) {
+      editor.focus();
+      view.viewState.state.config.nextFocus = false;
+    }
 
     span.appendChild(head);
     span.appendChild(sub);
@@ -134,7 +146,7 @@ class Widget extends WidgetType {
 
 const matcher = (ref, view) => {
   return new BallancedMatchDecorator({
-    regexp: /CM6Subscript\[/,
+    regexp: /CM6Superscript\[/,
     decoration: (match) => {
       return Decoration.replace({
         widget: new Widget(match, ref, view)

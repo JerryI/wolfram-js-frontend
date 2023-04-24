@@ -618,46 +618,50 @@ border-radius: 4px;
   right: 6em;
 }
 
-.matrix {
-  position: relative;
-  display: inline-block;
-  margin-left: 6px;
-  padding-right: 6px;
-}
-.matrix:before,
-.matrix:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  border: 1px solid #000;
-  width: 6px;
-  height: 100%;
-}
-.matrix:before {
-  left: -6px;
-  border-right: 0;
-}
-.matrix:after {
-  right: 0;
-  border-left: 0;
-}
-.frac-holder {
-  display: inline-block;
-}
-.frac-top {
-  border-bottom: solid black 1px;
-  display: inline-block;
-  float: left;
-}
-.frac-bottom {
-  border-top: solid black 1px;
-  display: inline-block;
-  clear: left;
-  float: left;
-}
-
 .subscript-tail {
   display: inline-block;
+}
+
+.fraction {
+  display: inline-flex;
+}
+
+.matrix {
+  display: inline-flex;
+}
+
+.fraction .container .enumenator {
+  border-bottom:solid 1px;
+}
+
+.root {
+  display: inline-block;
+  vertical-align: middle;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  transform: skew(-15deg);
+  transform-origin: bottom left;
+  margin: 0 10px;
+  position: relative;
+}
+
+.root:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 40%;
+  width: 5px;
+  left: -5px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  transform: skew(30deg);
+  transform-origin: bottom right;
+}
+
+.radicand {
+  display: inline-block;
+  padding-left: 0.5em;
+  transform: skew(15deg);
 }
 
 .cell-type-widget {

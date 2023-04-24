@@ -36,16 +36,6 @@ var interpretate = (d, env = {}) => {
   //console.log(env);
 
 
-  //check if containezed
-  /*if ('virtual' in env.context[name]) {
-    console.log('virtualised function');
-    if (hash(d) in VirtualHashMap) {
-      console.log(hash(d));
-    } else {
-      console.log('creating an instance of it...');
-    }
-  }*/
-
   //reading the structure of Wolfram ExpressionJSON
   const name = d[0];
   const args = d.slice(1, d.length);
@@ -56,7 +46,11 @@ var interpretate = (d, env = {}) => {
     if (name in env.context) {
       //checking the method
       
-      if ('method' in env) return env.context[name][env.method](args, env);
+      
+      if ('method' in env) {
+        if (!env.context[name][env.method]) return console.error('method '+env['method']+' is not defined for '+name);
+        return env.context[name][env.method](args, env);
+      }
       
       //fake frontendexecutable
       //to bring local vars and etc
@@ -79,7 +73,10 @@ var interpretate = (d, env = {}) => {
     if (name in c[i]) {
       //console.log('symbol '+name+' was found in '+c[i].name);
 
-      if ('method' in env) return c[i][name][env.method](args, env);
+      if ('method' in env) {
+        if (!c[i][name][env.method]) return console.error('method '+env['method']+' is not defined for '+name);
+        return c[i][name][env.method](args, env);
+      }
 
       //fake frontendexecutable
       //to bring local vars and etc

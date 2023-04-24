@@ -33,6 +33,7 @@ function iterMatches(
             m.index + m.length - 1
           );
 
+
           //console.log(sub);
 
           const compoundMatches = new Balanced({
@@ -89,9 +90,10 @@ function iterMatches(
 
             args.push(...localargs.reverse());
           });
-
+ 
           f(pos + m.index, {
             length: m.length,
+            pos: pos + m.index,
             args: args.reverse(),
             str: sub
           });

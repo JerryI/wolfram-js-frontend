@@ -1,4 +1,4 @@
-import { EditorView } from "codemirror";
+import { EditorView, minimalSetup } from "codemirror";
 
 import {language} from "@codemirror/language"
 
@@ -14,6 +14,8 @@ import {htmlLanguage, html} from "@codemirror/lang-html"
 import {indentWithTab} from "@codemirror/commands" 
  
 import { MatchDecorator, WidgetType, keymap } from "@codemirror/view"
+
+import rainbowBrackets from 'rainbowbrackets'
 
 /*import { phraseEmphasis } from './../JSLibs/markword/phraseEmphasis';
 import { heading, headingRE } from './../JSLibs/markword/heading';
@@ -46,7 +48,11 @@ import {
 
 import { wolframLanguage } from "./../JSLibs/mathematica/mathematica"
 import { Arrowholder, Greekholder } from "./../JSLibs/sugar/misc"
-import { subscriptWidget } from "./../JSLibs/sugar/subscript"
+import { fractionsWidget } from "./../JSLibs/sugar/fractions";
+import { subscriptWidget } from "./../JSLibs/sugar/subscript";
+import { supscriptWidget } from "./../JSLibs/sugar/supscript";
+import { squareRootWidget } from "./../JSLibs/sugar/squareroot";
+import { matrixWidget } from "./../JSLibs/sugar/matrix";
 import { cellTypesHighlight } from "./../JSLibs/sugar/cells"
 
 var editorLastCursor = 0;
@@ -145,26 +151,25 @@ let compactWLEditor = null;
 compactWLEditor = (args) => new EditorView({
   doc: args.doc,
   extensions: [
-    highlightSpecialChars(),
-    drawSelection(),
-    dropCursor(),
-    indentOnInput(),
-    bracketMatching(),
-    closeBrackets(),
-    syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-    highlightSelectionMatches(),
-    wolframLanguage, 
-    FEholders, 
-    Greekholder, 
-    Arrowholder, 
+    minimalSetup,
+    editorCustomThemeCompact,      
+    wolframLanguage,
+    FEholders,
+    fractionsWidget(compactWLEditor),
     subscriptWidget(compactWLEditor),
+    supscriptWidget(compactWLEditor),
+    matrixWidget(compactWLEditor),
+    squareRootWidget(compactWLEditor),
+    bracketMatching(),
+    rainbowBrackets(),
+    Greekholder,
+    Arrowholder,
     
     EditorView.updateListener.of((v) => {
       if (v.docChanged) {
-        //v.state.doc.toString()
+        args.update(v.state.doc.toString());
       }
-    }),
-      editorCustomTheme
+    })
   ],
   parent: args.parent
 });
@@ -172,9 +177,15 @@ compactWLEditor = (args) => new EditorView({
 const mathematicaPlugins = [
   wolframLanguage, 
   FEholders, 
-  Greekholder, 
-  Arrowholder, 
-  subscriptWidget(compactWLEditor)
+  fractionsWidget(compactWLEditor),
+  subscriptWidget(compactWLEditor),
+  supscriptWidget(compactWLEditor),
+  matrixWidget(compactWLEditor),
+  squareRootWidget(compactWLEditor),
+  bracketMatching(),
+  rainbowBrackets(),
+  Greekholder,
+  Arrowholder,
 ]
 
 function checkDocType(str) {
@@ -229,6 +240,30 @@ let editorCustomTheme = EditorView.theme({
   },
   ".cm-activeLine": {
     'background-color': 'transparent'
+  }
+});
+
+let editorCustomThemeCompact = EditorView.theme({
+  "&.cm-focused": {
+    outline: "none",
+    background: 'inherit'
+  },
+  ".cm-line": {
+    padding: 0,
+    'padding-left': '2px',
+    'align-items': 'center'
+  },
+  ".cm-activeLine": {
+    'background-color': 'transparent'
+  },
+  ".cm-scroller": {
+    'line-height': 'inherit',
+    'overflow-x': 'overlay',
+    'overflow-y': 'overlay',
+    'align-items': 'initial'
+  },
+  ".cm-content": {
+    "padding": '0px 0'
   }
 });
 

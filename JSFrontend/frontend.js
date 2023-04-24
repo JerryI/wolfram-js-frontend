@@ -90,7 +90,18 @@ class CellWrapper {
 
     this.element.appendChild(editor);
     cell.remove();
-  
+
+    if (this.next) {
+      if (CellHash[this.parent].next) {
+        CellHash[CellHash[this.parent].next].prev = this.uid;
+      } else {
+        this.next = false;
+      }   
+    }
+    //FIXME when goes from up to down - error!!
+    
+
+    this.parent = false;
     this.toolbox();
   }
 
@@ -107,7 +118,7 @@ class CellWrapper {
     this.state = state;
   }
 
-  tollbox() {
+  toolbox() {
     if (this.parent) throw 'not possible. this is a child cell';
     
     const body = document.getElementById(this.uid).parentNode;
@@ -162,7 +173,7 @@ class CellWrapper {
     }
  
     this.element = document.getElementById(this.uid+"---"+this.type);
-    if (!this.parent) this.tollbox();
+    if (!this.parent) this.toolbox();
     
     this.display = new SupportedCellDisplays[input["display"]](this, input["data"]);
     
@@ -229,6 +240,12 @@ core.FrontEndCellError = function (args, env) {
 core.FrontEndTruncated = function (args, env) {
   env.element.innerHTML = interpretate(args[0]) + " ...";
 }
+
+core.IconizeWrapper = function (args, env) {
+  env.element.innerText = "{ }";
+}
+
+core.IconizeWrapper.destroy = (args, env) => {}
 
 core.FrontEndTruncated.destroy = (args, env) => {}
 

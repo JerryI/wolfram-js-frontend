@@ -15,12 +15,12 @@ import { EditorSelection } from "@codemirror/state";
 
 var subEditor; 
 
-export function subscriptWidget(view) {
+export function squareRootWidget(view) {
   subEditor = view;
   return [
     //mathematicaMathDecoration,
     placeholder,
-    keymap.of([{ key: "Ctrl--", run: snippet() }])
+    keymap.of([{ key: "Ctrl-2", run: snippet() }])
   ];
 }
 
@@ -33,12 +33,12 @@ function snippet() {
       const prev = state.sliceDoc(from, to);
       if (prev.length === 0) {
         return {
-          changes: { from, to, insert: "CM6Subscript[_,_]" },
+          changes: { from, to, insert: "CM6Sqrt[_]" },
           range: EditorSelection.cursor(from)
         };
       }
       return {
-        changes: { from, to, insert: "CM6Subscript[" + prev + ", _]" },
+        changes: { from, to, insert: "CM6Sqrt[" + prev + "]" },
         range: EditorSelection.cursor(from)
       };
     });
@@ -69,24 +69,25 @@ class Widget extends WidgetType {
   }
   toDOM(view) {
     let span = document.createElement("span");
+    span.classList.add("root");
 
-    if (this.visibleValue.args.length !== 2) {
-      this.visibleValue.args = ["_", "_"];
-      console.error("argumets doesnt match");
+    if (this.visibleValue.args.length !== 1) {
+      this.visibleValue.args = [this.visibleValue.str];
+      console.log("single argument or not found");
     }
-
+    
     console.log('create widget DOM!!!!');
     console.log(this.visibleValue);
  
     const args = this.visibleValue.args;
 
     const head = document.createElement("span");
-    head.classList.add("subscript-tail");
+    head.classList.add("radicand");
     
     const visibleValue = this.visibleValue;
     
     const recreateString = (args) => {
-      this.visibleValue.str =  'CM6Subscript['+args[0]+', '+args[1]+']';
+      this.visibleValue.str =  'CM6Sqrt['+args[0]+']';
       const changes = {from: visibleValue.pos, to: visibleValue.pos + visibleValue.length, insert: this.visibleValue.str};
       this.visibleValue.length = this.visibleValue.str.length;
 
@@ -105,23 +106,7 @@ class Widget extends WidgetType {
       }
     });
 
-    const sub = document.createElement("sub");
-    sub.classList.add("subscript-tail");
-
-    this.subEditor({
-      doc: args[1],
-      parent: sub,
-      update: (upd) => {
-        this.visibleValue.args[1] = upd;
-        const change = recreateString(this.visibleValue.args);
-        console.log('insert change');
-        console.log(change);
-        view.dispatch({changes: change});
-      }      
-    });
-
     span.appendChild(head);
-    span.appendChild(sub);
 
     //span.classList.add("cm-bold");*/
     return span;
@@ -134,7 +119,7 @@ class Widget extends WidgetType {
 
 const matcher = (ref, view) => {
   return new BallancedMatchDecorator({
-    regexp: /CM6Subscript\[/,
+    regexp: /CM6Sqrt\[/,
     decoration: (match) => {
       return Decoration.replace({
         widget: new Widget(match, ref, view)

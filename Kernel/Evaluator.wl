@@ -41,6 +41,33 @@ Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd)
 (* special post-handler, only used for upvalues *)
 CM6Form[e_] := e
 
+(* iconize *)
+Unprotect[Iconize]
+ClearAll[Iconize]
+
+(* unsupported tagbox *)
+RowBoxToCM[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
+CMGrid[x_List, y__] := CMGrid[x]
+TagBoxToCM[x_, y__] := x
+
+(* on-output convertion *)
+$CMReplacements = {RowBox -> RowBoxToCM, SqrtBox -> CM6Sqrt, FractionBox -> CM6Fraction, 
+ GridBox -> CM6Grid, TagBox -> TagBoxToCM, SubscriptBox -> CM6Subscript, SuperscriptBox -> CM6Superscript}
+
+(* on-input convertion *)
+$CMExpressions = {
+        Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper,
+        Global`CM6Sqrt -> Sqrt,
+        Global`CM6Fraction -> Global`CM6FractionWrapper,
+        Global`CM6Grid -> Identity,
+        Global`CM6Subscript -> Subscript,
+        Global`CM6Superscript -> Superscript}
+
+CM6FractionWrapper[x_,y_] := x/y;
+
+
+Iconize[expr_] := CreateFrontEndObject[IconizeWrapper[expr], CreateUUID[]]
+
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`", "JerryI`WolframJSFrontend`Remote`"}];
 
 (* going to be executed on the remote or local kernels *)
@@ -65,7 +92,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
           },
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
-      $evaluated = ToExpression[str, InputForm, Hold] /. {Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper} // ReleaseHold;
+      $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold) /. {Global`IconizeWrapper -> Identity};
       
       (* a shitty analogue of % symbol *)
       Global`$out = $evaluated;
@@ -80,7 +107,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       
       (* truncate the output, if it is too long and create a fake object to represent it *)
-      With[{$string = ToString[$result, InputForm]},
+      With[{$string = StringReplace[($result // ToBoxes) /. Global`$CMReplacements // ToString, "\[NoBreak]"->""]},
         callback[
           If[StringLength[$string] > 5000,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},
