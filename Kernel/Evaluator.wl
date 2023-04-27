@@ -61,10 +61,9 @@ $CMExpressions = {
         Global`CM6Fraction -> Global`CM6FractionWrapper,
         Global`CM6Grid -> Identity,
         Global`CM6Subscript -> Subscript,
-        Global`CM6Superscript -> Superscript}
+        Global`CM6Superscript -> Power}
 
 CM6FractionWrapper[x_,y_] := x/y;
-
 
 Iconize[expr_] := CreateFrontEndObject[IconizeWrapper[expr], CreateUUID[]]
 

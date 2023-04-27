@@ -515,6 +515,7 @@ and then
 core.MyFunction = async (args, env) => {
 	...
 	//since this is a list of arguments, prevent evaluation
+	//global - cuz CM6 is a starting point here
 	const extraargs = interpretate(env.global.args, {...env, hold:true})
 	//special build-in function to parse options
 	const options  = core.__getRules(extraargs, env);

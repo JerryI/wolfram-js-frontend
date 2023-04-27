@@ -162,7 +162,7 @@ class CellWrapper {
     this.type = input["type"];
     this.state = input["state"];
     
-    
+    //inject into the right place
     if (this.parent) {
       document.getElementById(this.parent).insertAdjacentHTML('beforeend', template);
     } else {
@@ -171,6 +171,16 @@ class CellWrapper {
       else
         document.getElementById("frontend-contenteditable").insertAdjacentHTML('beforeend', template);
     }
+
+    //notify others
+    if (this.next)
+      if (CellHash[this.next]) CellHash[this.next].prev = this.uid;
+    
+    if (this.prev)
+      if (CellHash[this.prev]) CellHash[this.prev].next = this.uid;
+
+    if (this.parent)
+      if (CellHash[this.parent]) CellHash[this.parent].child = this.uid;      
  
     this.element = document.getElementById(this.uid+"---"+this.type);
     if (!this.parent) this.toolbox();
@@ -181,18 +191,47 @@ class CellWrapper {
     
     return this;
   }
+
+  disposeAll() {
+    if (this.next) CellHash[this.next].disposeAll();
+    this.dispose();
+  }
   
   dispose() {
+    //notify others
+    if (this.prev)
+      if (CellHash[this.prev]) 
+        if (this.next) {
+          CellHash[this.prev].next = this.next;
+          CellHash[this.next].prev = this.prev;
+          this.next = false;
+          this.prev = false;
+        } else {
+          CellHash[this.prev].next = false;
+        }
+
+    if (this.parent)
+      if (CellHash[this.next]) {
+        CellHash[this.next].parent = this.parent;
+        CellHash[this.parent].child = this.next;
+      } else {
+        CellHash[this.parent].child = false;
+      }
+    //now we covered 100% cases    
+    
+    //call dispose action
+    this.display.dispose();
+    //remove hash
+    delete CellHash[this.uid];
+
+    //remove dom holders
     if (this.type === 'input') {
       document.getElementById(this.uid).parentNode.remove();
-      CellHash[this.child]?.dispose();
+      CellHash[this.child]?.disposeAll();
     } else {
       document.getElementById(`${this.uid}---${this.type}`)?.remove();
-      CellHash[this.next]?.dispose();
-    }
-
-    this.display.dispose();
-    delete CellHash[this.uid];
+      //CellHash[this.next]?.dispose();
+    }    
   }
   
   remove() {
@@ -262,6 +301,8 @@ core.FrontEndGlobalAbort = function (args, env) {
 
 core.FrontEndUpdateCellState = function (args, env) {
   const input = interpretate(args[0], env);
+  console.log('update state');
+  console.log(input["id"]);
 
   CellHash[input["id"]].updateState(input["state"]);
 }

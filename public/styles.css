@@ -618,6 +618,17 @@ border-radius: 4px;
   right: 6em;
 }
 
+span .cm-scroller {
+  overflow-y: scroll;
+}
+span .cm-scroller::-webkit-scrollbar {
+  width: 4px;
+}
+
+.frame-box {
+  border: 1px solid #000000;
+}
+
 .subscript-tail {
   display: inline-block;
 }
@@ -662,6 +673,11 @@ border-radius: 4px;
   display: inline-block;
   padding-left: 0.5em;
   transform: skew(15deg);
+}
+
+table {
+  font-size:inherit ;
+  font-weight: inherit ;
 }
 
 .cell-type-widget {

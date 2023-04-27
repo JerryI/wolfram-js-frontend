@@ -46,14 +46,16 @@ import {
   ViewPlugin
 } from "@codemirror/view"
 
-import { wolframLanguage } from "./../JSLibs/mathematica/mathematica"
-import { Arrowholder, Greekholder } from "./../JSLibs/sugar/misc"
-import { fractionsWidget } from "./../JSLibs/sugar/fractions";
-import { subscriptWidget } from "./../JSLibs/sugar/subscript";
-import { supscriptWidget } from "./../JSLibs/sugar/supscript";
-import { squareRootWidget } from "./../JSLibs/sugar/squareroot";
-import { matrixWidget } from "./../JSLibs/sugar/matrix";
-import { cellTypesHighlight } from "./../JSLibs/sugar/cells"
+import { wolframLanguage } from "priceless-mathematica/src/mathematica/mathematica"
+import { Arrowholder, Greekholder } from "priceless-mathematica/src/sugar/misc"
+import { fractionsWidget } from "priceless-mathematica/src/sugar/fractions";
+import { subscriptWidget } from "priceless-mathematica/src/sugar/subscript";
+import { supscriptWidget } from "priceless-mathematica/src/sugar/supscript";
+import { squareRootWidget } from "priceless-mathematica/src/sugar/squareroot";
+import { matrixWidget } from "priceless-mathematica/src/sugar/matrix";
+import { cellTypesHighlight } from "priceless-mathematica/src/sugar/cells"
+
+import { BallancedMatchDecorator } from "priceless-mathematica/src/sugar/matcher";
 
 var editorLastCursor = 0;
 var editorLastId = "null";
@@ -79,21 +81,21 @@ const markdownPlugins = [
   frontMatter()*/
 ]
 
-const FEMatcher = (ref) => { return new MatchDecorator({
-  regexp: /FrontEndExecutable\["([^"]+)"\]/g,
+const BoxesMatcher = (ref, view) => { return new BallancedMatchDecorator({
+  regexp: /FrontEndBox\[/,
   decoration: match => Decoration.replace({
-    widget: new FEWidget(match[1], ref),
+    widget: new BoxesWidget(match, ref, view),
   })
 }) };
 
-const FEholders = ViewPlugin.fromClass(class {
+const BoxesHolder = ViewPlugin.fromClass(class {
   constructor(view) {
     this.disposable = [];
-    this.FEholders = FEMatcher(this.disposable).createDeco(view);
+    this.BoxesHolder = BoxesMatcher(this.disposable, view).createDeco(view);
     
   }
   update(update) {
-    this.FEholders = FEMatcher(this.disposable).updateDeco(update, this.FEholders);
+    this.BoxesHolder = BoxesMatcher(this.disposable, update).updateDeco(update, this.BoxesHolder);
   }
   destroy() {
     console.log('removed holder');
@@ -104,14 +106,118 @@ const FEholders = ViewPlugin.fromClass(class {
     });
   }
 }, {
-  decorations: instance => instance.FEholders,
+  decorations: instance => instance.BoxesHolder,
   provide: plugin => EditorView.atomicRanges.of(view => {
     var _a;
-    return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.FEholders) || Decoration.none;
+    return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.BoxesHolder) || Decoration.none;
   })
 });   
 
-class FEWidget extends WidgetType {
+class BoxesWidget extends WidgetType {
+  constructor(visibleValue, ref, view) {
+    super();
+    this.view = view;
+    this.visibleValue = visibleValue;
+    this.ref = ref;
+    this.subEditor = compactWLEditor;
+  }
+  eq(other) {
+    return this.visibleValue.str === other.visibleValue.str;
+  }
+  updateDOM(dom, view) {
+    console.log('update widget DOM');
+    return true
+  }
+  toDOM(view) {
+    let span = document.createElement("span");
+    span.classList.add("subscript-tail");
+ 
+    const args = this.visibleValue.args;
+    const visibleValue = this.visibleValue;
+    
+    const recreateString = (args) => {
+      this.visibleValue.str =  'FrontEndBox['+args[0]+','+args[1]+']';
+      const changes = {from: visibleValue.pos, to: visibleValue.pos + visibleValue.length, insert: this.visibleValue.str};
+      this.visibleValue.length = this.visibleValue.str.length;
+
+      return changes;
+    }
+
+    this.subEditor({
+      doc: args[0],
+      parent: span,
+      update: (upd) => {
+        this.visibleValue.args[0] = upd;
+        const change = recreateString(this.visibleValue.args);
+        console.log('insert change');
+        console.log(change);
+        view.dispatch({changes: change});
+      },
+      extensions: {}, //for arrow up down and etc
+      eval: () => {
+        view.viewState.state.config.eval();
+      }
+    });
+
+    console.log("args:");
+    console.log(args);
+    console.log('json data');
+    const ss = decodeURIComponent(args[1]).trim().slice(1,-1);
+    console.log(ss);
+    const json = JSON.parse(JSON.parse('"'+ss+'"'));
+
+
+    const cuid = Date.now() + Math.floor(Math.random() * 100);
+    var global = {call: cuid};
+    let env = {global: global, element: span}; //Created in CM6
+    interpretate(json, env);
+
+
+    return span;
+  }
+
+  ignoreEvent() {
+    return true;
+  }
+
+  destroy() {
+    console.error('not implemented');
+  }
+}
+
+const ExecutableMatcher = (ref) => { return new MatchDecorator({
+  regexp: /FrontEndExecutable\["([^"]+)"\]/g,
+  decoration: match => Decoration.replace({
+    widget: new ExecutableWidget(match[1], ref),
+  })
+}) };
+
+const ExecutableHolder = ViewPlugin.fromClass(class {
+  constructor(view) {
+    this.disposable = [];
+    this.ExecutableHolder = ExecutableMatcher(this.disposable).createDeco(view);
+    
+  }
+  update(update) {
+    this.ExecutableHolder = ExecutableMatcher(this.disposable).updateDeco(update, this.ExecutableHolder);
+  }
+  destroy() {
+    console.log('removed holder');
+    console.log('disposable');
+    console.log(this.disposable);
+    this.disposable.forEach((el)=>{
+        el.dispose();
+    });
+  }
+}, {
+  decorations: instance => instance.ExecutableHolder,
+  provide: plugin => EditorView.atomicRanges.of(view => {
+    var _a;
+    return ((_a = view.plugin(plugin)) === null || _a === void 0 ? void 0 : _a.ExecutableHolder) || Decoration.none;
+  })
+});   
+
+class ExecutableWidget extends WidgetType {
   constructor(name, ref) {
     super();
     this.ref = ref;
@@ -148,13 +254,25 @@ class FEWidget extends WidgetType {
 
 let compactWLEditor = null;
 
-compactWLEditor = (args) => new EditorView({
+compactWLEditor = (args) => {
+  let editor = new EditorView({
   doc: args.doc,
   extensions: [
+    keymap.of([
+      { key: "Enter", preventDefault: true, run: function (editor, key) { 
+        return true;
+      } }
+    ]),  
+    keymap.of([
+      { key: "Shift-Enter", preventDefault: true, run: function (editor, key) { 
+        args.eval();
+        return true;
+      } }
+    ]),    
     minimalSetup,
     editorCustomThemeCompact,      
     wolframLanguage,
-    FEholders,
+    ExecutableHolder,
     fractionsWidget(compactWLEditor),
     subscriptWidget(compactWLEditor),
     supscriptWidget(compactWLEditor),
@@ -162,6 +280,7 @@ compactWLEditor = (args) => new EditorView({
     squareRootWidget(compactWLEditor),
     bracketMatching(),
     rainbowBrackets(),
+    BoxesHolder,
     Greekholder,
     Arrowholder,
     
@@ -172,11 +291,16 @@ compactWLEditor = (args) => new EditorView({
     })
   ],
   parent: args.parent
-});
+  });
+
+  editor.viewState.state.config.eval = args.eval;
+  return editor;
+}
+
 
 const mathematicaPlugins = [
   wolframLanguage, 
-  FEholders, 
+  ExecutableHolder, 
   fractionsWidget(compactWLEditor),
   subscriptWidget(compactWLEditor),
   supscriptWidget(compactWLEditor),
@@ -186,6 +310,7 @@ const mathematicaPlugins = [
   rainbowBrackets(),
   Greekholder,
   Arrowholder,
+  BoxesHolder
 ]
 
 function checkDocType(str) {
@@ -230,7 +355,7 @@ import { defaultKeymap } from "@codemirror/commands";
 
 let editorCustomTheme = EditorView.theme({
   "&.cm-focused": {
-    outline: "none",
+    outline: "1px dashed #696969", 
     background: 'inherit'
   },
   ".cm-line": {
@@ -245,7 +370,7 @@ let editorCustomTheme = EditorView.theme({
 
 let editorCustomThemeCompact = EditorView.theme({
   "&.cm-focused": {
-    outline: "none",
+    outline: "1px dashed #696969",
     background: 'inherit'
   },
   ".cm-line": {
@@ -283,6 +408,9 @@ class CodeMirrorCell {
     constructor(parent, data) {
       this.origin = parent;
       const origin = this.origin;
+
+      console.log('new data');
+      console.log(data);
       
       const initialLang = checkDocType(data).lang;
       console.log('language: ');
@@ -350,6 +478,9 @@ class CodeMirrorCell {
       });
       
       this.editor = editor;
+      this.editor.viewState.state.config.eval = () => {
+        origin.eval(this.editor.state.doc.toString());
+      };
   
       if(forceFocusNext) editor.focus();
       forceFocusNext = false;    

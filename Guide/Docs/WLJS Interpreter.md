@@ -186,7 +186,7 @@ library.Symbol = (args, env) => {/*...*/}
 The interpreter will check all available contextes and find the first match. However, you ==can prioritize the context== providing the information in `env` object
 
 ```js
-core.GrantSymbol = (args, env) => {
+core.GrandSymbol = (args, env) => {
 	const data = interpretate(args, {...env, context: library});
 	//...
 }

@@ -380,3 +380,10 @@ Function[x, FrontEndExecutable["myDataId"] = x RandomReal[{-1,1}, 4]] // slider;
 
 slider
 ```
+
+## Inline frontend objects
+One can compress small FE objects in way like
+
+```mathematica
+FrontEndExecutableInline["JSON expression"]
+```
