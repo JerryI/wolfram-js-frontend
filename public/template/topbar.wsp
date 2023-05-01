@@ -166,11 +166,7 @@
             return;
         }
 
-        let cell = core.CellHash[Object.keys(core.CellHash)[0]].findFirstParent();
-        while(typeof cell != 'undefined') {
-            cell.eval(cell.display.editor.state.doc.toString());
-            cell = cell.findNext();
-        }
+        alert('not implemented');
     });    
 
     core.FrontEndUpdateFileName = function(args, env) {

@@ -33,7 +33,7 @@ Web technologies nowadays are aimed to be extremely efficient in order to compet
 ### Flexibillity
 Want to make fancy WebGl animated figures of your brilliant calculaltions? Sure! - Use modern stack of __Javascript__ and `three.js` or any other framework you like, by typing `.js` in the beginning of a cell or write your own Wolfram Language function and attach it to the core library.
 
-![](imgs/ezgif.com-video-to-gif-4.gif)
+![](ezgif.com-video-to-gif-4.gif)
 
 Several data transfer method between Wolfram Kernel and Javascript are already implemented. __HTML__, __Markdown__ cells are the part of frontened. You can define your own evaluators kernels (processors) and add new languages used in frontened.
 

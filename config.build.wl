@@ -20,7 +20,7 @@
         (* merge in the right sequence, because core.js is not a ~real JS module~ and needed to be added separately *)
         MergeFiles[{
                 "public/js/merged.js"
-            } -> "public/js/bundle.js",
+            } -> "public/js/merged.js",
 
             (* annoying bugs as a consiquence of non-strict compilation using Rollup *)
             (* chromee issue was on Firefox browsers as well as on Vivalldi *)
@@ -47,10 +47,10 @@
 
         Print[Red<>" the process is not done yet... wait..."];
         Print[Reset];
-        (* for standalone app *)
-        (*RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
-        *)
+        (* for standalone app 
+        RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
+        
         Print[Red<>"everything is done!"];
-        Print[Reset];
+        Print[Reset];*)
     )
 |>

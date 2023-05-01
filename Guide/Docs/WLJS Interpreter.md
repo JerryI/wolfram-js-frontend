@@ -19,6 +19,9 @@ Graphics3D[{
 
 where, in principle it tells us that one should plot polygons using the set of 4 vertices indexed as `2,1,11,12` with absolute coordinates stored in an array located in the first argument of `GraphicsComplex`.
 
+### Internal representaion
+A good hint how the internal data structure looks like can be seen in [Compress](https://mathematica.stackexchange.com/questions/104660/what-algorithm-do-the-compress-and-uncompress-functions-use)
+
 ### Parser
 Taking advantage of the standart library packed with Wolfram Kernel we can use directly a `ExportString` function
 

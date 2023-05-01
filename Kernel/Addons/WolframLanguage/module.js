@@ -28,6 +28,8 @@ import { codeblock } from './../JSLibs/markword/codeblock';
 import { webkitPlugins } from './../JSLibs/markword/webkit';
 
 import { frontMatter } from './../JSLibs/markword/frontMatter';*/
+import { Balanced } from "node-balanced";
+import { Mma } from "mma-uncompress/src/mma";
 
 import {
   highlightSpecialChars, drawSelection, highlightActiveLine, dropCursor,
@@ -64,6 +66,12 @@ var forceFocusNext = false;
 const languageConf = new Compartment
 
 let globalExtensions = []
+
+const validator = new Balanced({
+  open: ['{', '[', '('],
+  close: ['}', ']', ')'],
+  balance: true
+});
 
 const regLang = new RegExp('^\s*.(js|md|wsp|html|htm)');
 
@@ -137,6 +145,8 @@ class BoxesWidget extends WidgetType {
     
     const recreateString = (args) => {
       this.visibleValue.str =  'FrontEndBox['+args[0]+','+args[1]+']';
+      console.log('recreated');
+      console.log(this.visibleValue.str);
       const changes = {from: visibleValue.pos, to: visibleValue.pos + visibleValue.length, insert: this.visibleValue.str};
       this.visibleValue.length = this.visibleValue.str.length;
 
@@ -147,6 +157,9 @@ class BoxesWidget extends WidgetType {
       doc: args[0],
       parent: span,
       update: (upd) => {
+        const valid = validator.matchContentsInBetweenBrackets(upd, []);
+        if (!valid) return;
+
         this.visibleValue.args[0] = upd;
         const change = recreateString(this.visibleValue.args);
         console.log('insert change');
@@ -161,11 +174,8 @@ class BoxesWidget extends WidgetType {
 
     console.log("args:");
     console.log(args);
-    console.log('json data');
-    const ss = decodeURIComponent(args[1]).trim().slice(1,-1);
-    console.log(ss);
-    const json = JSON.parse(JSON.parse('"'+ss+'"'));
-
+    const decoded = Mma.DecompressDecode(args[1]);
+    const json = Mma.toArray(decoded.parts[0]);
 
     const cuid = Date.now() + Math.floor(Math.random() * 100);
     var global = {call: cuid};
@@ -269,6 +279,7 @@ compactWLEditor = (args) => {
         return true;
       } }
     ]),    
+    args.extensions || [],   
     minimalSetup,
     editorCustomThemeCompact,      
     wolframLanguage,
@@ -445,7 +456,7 @@ class CodeMirrorCell {
             } },                      
             { key: "ArrowUp", run: function (editor, key) {  
               console.log('arrowup');
-              console.log(editor.state);
+              console.log(editor.state.selection.ranges[0]);
               if (editor?.editorLastCursor === editor.state.selection.ranges[0].to)
                 origin.focusPrev(origin);
 
@@ -453,7 +464,7 @@ class CodeMirrorCell {
             } },
             { key: "ArrowDown", run: function (editor, key) { 
               console.log('arrowdown');
-              console.log(editor.state);
+              console.log(editor.state.selection.ranges[0]);
               if (editor?.editorLastCursor === editor.state.selection.ranges[0].to)
                 origin.focusNext(origin);
 

@@ -141,14 +141,12 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
     (* if not found or corrupted -> create a new one *)
     Switch[notebook["serializer"],
-        "jsfn",
-            Print["old format"];
-            Print["converting... to a new one"];
+        "jsfn3",
             (*** deserialisation of the notebook and cells ***)
-            (notebook["notebook", "objects", #] = <|"date"->Now, "json"->notebook["notebook", "objects", #]|>) &/@ Keys[notebook["notebook", "objects"]];
 
             (* make sure that if this is a copy of an old one -> regenrate an ID in DB *)
             If[notebook["notebook", "path"] =!= path,
+                Exit[];
                 Print["Seems to be cloned or renamed"];
                 Print["Regenerating the inner ID..."];
 
@@ -159,16 +157,9 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
                 postfix = StringTake[CreateUUID[], 3];
 
-                notebook["notebook", "cell"] = notebook["notebook", "cell"]<>postfix;
-
                 notebook["cells"] = Module[{cell = #},
                     cell["sign"] = newsign;
                     cell["id"] = cell["id"]<>postfix;
-
-                    If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
-                    If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
-                    If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
-                    If[cell["parent"] =!= Null, cell["parent"] = cell["parent"]<>postfix];
 
                     cell
 
@@ -181,52 +172,19 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
             (* assiciate with a current path for further easy detection *)
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
-        
-            (* assign the cellid of the first cell to the notebook *)
-            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
-            
+
             Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
-            JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
-        
+            CellListUnpack[notebook["cells"]];
+
             $AssoticatedPath[path] = notebook["notebook", "id"];
             Print[$AssoticatedPath];
             Clear[notebook];
             Print["LOADED"];
 
             If[regenerated, (*force to save if it was regenerated*) NotebookStoreManually[$AssoticatedPath[path]]];
-        ,
+        ,    
         "jsfn2",
-            (*** deserialisation of the notebook and cells ***)
-
-            (* make sure that if this is a copy of an old one -> regenrate an ID in DB *)
-            If[notebook["notebook", "path"] =!= path,
-                Print["Seems to be cloned or renamed"];
-                Print["Regenerating the inner ID..."];
-
-                oldsign = notebook["notebook", "id"];
-                newsign = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5];
-                notebook["notebook", "id"] = newsign;
-                Print["New name "<>notebook["notebook", "id"]<>" instead of "<>oldsign];
-
-                postfix = StringTake[CreateUUID[], 3];
-
-                notebook["notebook", "cell"] = notebook["notebook", "cell"]<>postfix;
-
-                notebook["cells"] = Module[{cell = #},
-                    cell["sign"] = newsign;
-                    cell["id"] = cell["id"]<>postfix;
-
-                    If[cell["next"]  =!= Null, cell["next"]  = cell["next"]<>postfix];
-                    If[cell["prev"]  =!= Null, cell["prev"]  = cell["prev"]<>postfix];
-                    If[cell["child"] =!= Null, cell["child"] = cell["child"]<>postfix];
-                    If[cell["parent"] =!= Null, cell["parent"] = cell["parent"]<>postfix];
-
-                    cell
-
-                ] &/@ notebook["cells"];
-                Print["done"];
-                regenerated = True;
-            ];
+            (*** convert from legacy format ***)
 
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ] = notebook["notebook"];
             (* assiciate with a current path for further easy detection *)
@@ -234,10 +192,11 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
 
             (* assign the cellid of the first cell to the notebook *)
-            JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] = JerryI`WolframJSFrontend`Cells`setCellID[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "cell"] ];
 
+            
             Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
-            JerryI`WolframJSFrontend`Cells`CellObjUnpack /@ notebook["cells"];
+            
+            CellListUnpackLegacy[notebook["cells"], notebook["notebook", "cell"]];
 
             $AssoticatedPath[path] = notebook["notebook", "id"];
             Print[$AssoticatedPath];
@@ -258,7 +217,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
 
 (* create a serialsed notebook and store it as a file *)
-CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = (RandomWord[]//Capitalize)},
+CreateNewNotebook[dir_, window_:False] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = (RandomWord[]//Capitalize)},
   While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
     filename = StringJoin[filename, "-New"];
   ];
@@ -266,7 +225,7 @@ CreateNewNotebook[dir_] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUI
   $AssoticatedPath[path] = uid;
   NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
   NotebookStoreManually[uid];
-  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', '_blank')"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode ] ] ];
+  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', ``)"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode, If[window, "'_blank'", "'_self'"] ] ] ];
 ];
 
 (* create a serialsed notebook and store it as a file *)
@@ -279,12 +238,11 @@ CreateNewNotebookByPath[name_] := Module[{uid = RandomWord[]<>"-"<>StringTake[Cr
 
 (* serialise the notebook to a file *)
 NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},
-    cells = CellObjQuery["sign", channel];
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
     notebook["notebook"] = jsfn`Notebooks[channel];
-    notebook["cells"] = CellObjPack /@ cells;
-    notebook["serializer"] = "jsfn2";
-    notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
+    notebook["cells"] = CellListPack[channel];
+    notebook["serializer"] = "jsfn3";
+    
     Put[notebook, jsfn`Notebooks[channel]["path"]];
 
     jsfn`Notebooks[channel]["date"] = Now;
@@ -295,12 +253,11 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
 
 (* the same, but with a specified notebook ID *)
 NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
-    cells = CellObjQuery["sign", channel];
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
     notebook["notebook"] = jsfn`Notebooks[channel];
-    notebook["cells"] = CellObjPack /@ cells;
-    notebook["serializer"] = "jsfn2";
-    notebook["notebook", "cell"] = First[notebook["notebook", "cell"]];
+    notebook["cells"] = CellListPack[channel];
+    notebook["serializer"] = "jsfn3";
+
     Put[notebook, jsfn`Notebooks[channel]["path"]];
 
     jsfn`Notebooks[channel]["date"] = Now;
@@ -391,10 +348,11 @@ NotebookCreate[OptionsPattern[]] := (
             "id"   -> id,
             "kernel" -> OptionValue["kernel"],
             "objects" -> OptionValue["objects"] ,
-            "path" -> OptionValue["path"]       
+            "path" -> OptionValue["path"],
+            "cell" :> Exit[] (* to catch old ones *)       
         |>;
 
-        jsfn`Notebooks[id]["cell"] = CellObj["sign"->id, "type"->"input", "data"->OptionValue["data"]];
+        CellList[id] = { CellObj["sign"->id, "type"->"input", "data"->OptionValue["data"]] };
         id
     ]
 );
@@ -427,18 +385,11 @@ NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
     $AssociationSocket[Global`client] = id;
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
-        CellObjGenerateTree[jsfn`Notebooks[id]["cell"]];
+        CellListTree[id];
     ];
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]],
-        (* callback *)
-        Function[state,
-            WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], id];
-        ]
-    ];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 
-    
-
-    SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[30, "Seconds"], 1}, AutoRemove->True]]; 
+    SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[35, "Seconds"], 1}, AutoRemove->True]]; 
 );
 
 
@@ -454,11 +405,7 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
         Print[StringTemplate["callback for `` channel"][channel]];
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
         
-        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]],
-        (* callback *)
-        Function[state,
-            WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
-        ]];
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
     ]];
 ];
 
@@ -489,6 +436,12 @@ NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Glob
 NotebookOperate[cellid_, op_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         op[CellObj[cellid]];
+    ];
+);
+
+NotebookOperate[cellid_, op_, arg_] := (
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        op[CellObj[cellid], arg];
     ];
 );
 
@@ -530,10 +483,6 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "sign"->cell["sign"],
                         "type"->cell["type"],
                         "data"->If[cell["data"]//NullQ, "", ExportString[cell["data"], "String", CharacterEncoding -> "UTF8"] ],
-                        "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
-                        "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
-                        "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
                         "props"->cell["props"],
                         "display"->cell["display"],
                         "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
@@ -554,11 +503,7 @@ NotebookEventFire[addr_]["RemovedCell"][cell_] := (
             obj = <|
                         "id"->cell[[1]], 
                         "sign"->cell["sign"],
-                        "type"->cell["type"],
-                        "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
-                        "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
-                        "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
+                        "type"->cell["type"]
                     |>
         },
 
@@ -578,6 +523,52 @@ NotebookEventFire[addr_]["UpdateState"][cell_] := (
         },
 
         WebSocketSend[addr, Global`FrontEndUpdateCellState[obj ] ];
+    ];
+);
+
+NotebookEventFire[addr_]["AddCellAfter"][next_, parent_] := (
+    Print["Add cell after"];
+    (*looks ugly actually. we do not need so much info*)
+    console["log", "fire event `` for ``", next, addr];
+    With[
+        {
+            obj = <|
+                        "id"->next[[1]], 
+                        "sign"->next["sign"],
+                        "type"->next["type"],
+                        "data"->If[next["data"]//NullQ, "", ExportString[next["data"], "String", CharacterEncoding -> "UTF8"] ],
+                        "props"->next["props"],
+                        "display"->next["display"],
+                        "state"->If[StringQ[ next["state"] ], next["state"], "idle"],
+                        "after"-> <|
+                            "id"->parent[[1]], 
+                            "sign"->parent["sign"],
+                            "type"->parent["type"]                           
+                        |>
+                    |>,
+            
+            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", next["type"]<>".wsp"}], {Global`id = next[[1]]}]
+        },
+
+        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ]];
+    ];
+);
+
+NotebookEventFire[addr_]["CellMorphInput"][cell_] := (
+    (*looks ugly actually. we do not need so much info*)
+    console["log", "fire event `` for ``", cell, addr];
+    With[
+        {
+            obj = <|
+                        "id"->cell[[1]], 
+                        "sign"->cell["sign"],
+                        "type"->cell["type"]
+                    |>,
+            
+            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", "input.wsp"}], {Global`id = cell[[1]]}]
+        },
+
+        WebSocketSend[addr, Global`FrontEndCellMorphInput[template, obj ]];
     ];
 );
 

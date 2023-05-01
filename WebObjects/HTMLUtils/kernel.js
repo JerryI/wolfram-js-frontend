@@ -47,7 +47,7 @@ core.HTMLForm.update = async (args, env) => {
     }    
 }
 
-core.HTMLForm.destroy = () => {/* just go to the inner three */ interpretate(args[0], env)}
+core.HTMLForm.destroy = (args, env) => {/* just go to the inner three */ interpretate(args[0], env)}
 
 core.TextForm = async function (args, env) {
     const data = await interpretate(args[0], env);
@@ -59,4 +59,4 @@ core.TextForm.update = async (args, env) => {
     env.element.innerText = data;   
 }
 
-core.TextForm.destroy = () => {/* just go to the inner three */ interpretate(args[0], env)}
+core.TextForm.destroy = (args, env) => {/* just go to the inner three */ interpretate(args[0], env)}

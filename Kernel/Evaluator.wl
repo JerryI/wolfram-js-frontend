@@ -5,8 +5,7 @@
   used by the remote/local Kernel
 
   - Wolfram Language with WebObjects` support
-  - Markdown postprocessor
-  - HTML/WSP postprocessor
+  - Template postprocessor
 *)
 
 Global`$out = Null;
@@ -67,7 +66,7 @@ CM6FractionWrapper[x_,y_] := x/y;
 
 Iconize[expr_] := CreateFrontEndObject[IconizeWrapper[expr], CreateUUID[]]
 
-BeginPackage["JerryI`WolframJSFrontend`Evaluator`", { "WSP`", "JerryI`WolframJSFrontend`Remote`"}];
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"WSP`"}];
 
 (* going to be executed on the remote or local kernels *)
 

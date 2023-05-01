@@ -28,13 +28,14 @@ Cuboid[]//Graphics3D
 The idea to reproduce the functionality of Mathematica's frontend in this manner is doomed by a few reasons
 
 - frontend functions are poorely documented
-- WYSIWIG editor with mutable WL expressions inside is a mess
-- even with a ~20 years of development, Mathematica frontend is quite slow and laggy
+- ~~WYSIWIG editor with mutable WL expressions inside is a mess~~ (see [[Decorations#Editable Two-ways binded widgets]])
+- even with a ~20 years of development, Mathematica frontend is quite laggy
 
-*We need something more flexible, lightweight and easily expandable.*
-However, one can find a compromise
+*With some compromises, giving to a user a full control and abillity to customise the processes under the hood it might result is a extremely flexible and relayable tool.*
 
-## Relaying on InputForm
+Since Mathematica is a paid software, one have to do it from the scratch.
+
+## Ballancing between InputForm and DisplayFrom
 In principle, we do not need to make the whole WL expression mutable and interactive. There are only a few cases, where we really need this
 
 1. Graphics, sliders, buttons and etc - __separate objects__
@@ -42,11 +43,36 @@ In principle, we do not need to make the whole WL expression mutable and interac
 
 *The first one* (__separate objects__) can be even separated from the actual code-area, since it originally works as inline block (a symbol or an atom). 
 
-In the simples case, where the Graphics and symbols are mixed in the code, one could just replace graphic objects with images (svgs) and substitute it to some advanced HTML-like editor, like a lot people did before
-- Jypiter
+In the simples case one could just replace graphic objects with images (svgs) and substitute it to some advanced HTML-like editor, like a lot people did before
+
+- Jupyter
 - Wolfram Notebook VS Code extension
-Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy inside made from other symbols, afterwards one need to cook it and display to the user, i.e. ==we need a frontend WL interpreter for sure==. Since one the main goals is portabillity - we should use web-stack, where Javascript rules all computations. See [[WLJS Interpreter]]
 
-*The second one* (__mixed__) is rather tricky to implement fully, since it involves kinda-mutable WL expressions. 
+Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy inside made from other symbols, one need to cook it and display to the user, i.e. ==we need a frontend WL interpreter for sure==. Since the portabillity is great - we should use web-stack, where Javascript rules all computations. See [[WLJS Interpreter]]
 
-However, here also have an approach. Nowadays developers are using sort-of syntax sugar for the live previews of Markdown, where the code you typing is replaced by the corresponding styled object. A good example is Obsidian - notes making app based on CodeMirror 6 Decorations. Which will requeire to write a WL tokenizer inside the editor. TL-DR see [[Decorations]] 
+*The second one* (__mixed__) is rather tricky to implement fully, since it involves mutable WL expressions. 
+
+However, here also we have a solution. Nowadays developers are using sort-of syntax sugar for the live previews of Markdown, where the code you typing is replaced by the corresponding styled object. A good example is Obsidian - notes making app based on CodeMirror 6 Decorations. Which will requeire to write a WL tokenizer inside the editor. TL-DR see [[Decorations]]
+
+### For the sake of perfomance
+For the most cases there is no point in interpreting the whole output expression.
+Lets have a look at the `DisplayForm` output from Mathematica or Wolfram Engine for
+$$\frac{a\times b}{\sqrt{2}}$$
+```mathematica
+FractionBox[RowBox[{"a", " ", "b"}], SqrtBox["2"]]
+```
+
+what I (as @JerryI a maintainer) would like to simplify here - __keep the actual code__ 
+
+```mathematica
+FractionBox[a b, SqrtBox[2]]
+```
+
+to remove an overhead while editing those expressions. Thankfully, it can easily be done
+```mathematica
+RowBoxAlt[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
+( (a b)/Sqrt[2] // ToBoxes ) /. {RowBox -> RowBoxAlt} // ToString
+```
+
+The issues with styling and etc can also be solved - see [[Decorations#FrameBox, StyleBox... Custom decorations]].
+

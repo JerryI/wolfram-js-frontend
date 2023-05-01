@@ -52,10 +52,15 @@ LocalKernel[ev_, cbk_, OptionsPattern[]] := (
 LocalKernel["PongHandler"][cbk_] := pongHandler = cbk;
 
 LocalKernel["Abort"][cbk_] := ( 
-    LinkInterrupt[link, 3]; 
-    LinkWrite[link, Unevaluated[$Aborted] ]; 
-    status["signal"] = "good"; status["text"] = "Aborted";
-    cbk[LocalKernel["Status"]]; 
+    If[status["signal"] === "good",
+        LinkInterrupt[link, 3]; 
+        LinkWrite[link, Unevaluated[$Aborted] ]; 
+        status["signal"] = "good"; status["text"] = "Aborted";
+         
+    ,
+        status["text"] = "Not possible";
+    ];
+    cbk[LocalKernel["Status"]];
 );
 
 LocalKernel["Exit"][cbk_] := ( 
@@ -65,10 +70,8 @@ LocalKernel["Exit"][cbk_] := (
 );
 
 (* tell the kernel an id of a notebook for the future fast direct communication *)
-LocalKernel["AttachNotebook"][id_, path_, cbk_] := ( 
+LocalKernel["AttachNotebook"][id_, path_] := ( 
     Print["attaching "<>id];
-    callback = cbk;
-    cbk[status];
     
     If[status["signal"] == "good", 
         (* can be a bug, but it doesnt work if we use a wrapper function *)

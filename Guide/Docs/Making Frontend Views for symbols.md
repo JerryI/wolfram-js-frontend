@@ -2,6 +2,8 @@ If you use Mathematica quite often, you might probably familliar with `MakeBoxes
 
 🚧  **Warning this chapter is in early development** 
 
+Also see [[Decorations]]
+
 ## Low-level implementation
 
 For example, you have an object like this
@@ -47,7 +49,6 @@ It principle it gives you much more flexibillity, but is also harder to do.
 💡 Great for "heavy" views
 
 #### Example
-
 
 ## High-level | Easy
 Since it is about Wolfram Language we need something better. Therefore you can use build-in helper function
@@ -96,7 +97,7 @@ viola
 One can ommit the problems with creating [[Frontend objects]] each time, therfore one can compress it in a way like
 
 ```mathematica
-FrontEndViewInline[expr, ExportString[decoration, "ExpressionJSON"]]
+FrontEndViewInline[expr, Compress[decoration]]
 ```
 inside the decoration is a complete calculated expression as a replacement for view.
 
@@ -107,6 +108,7 @@ inside the decoration is a complete calculated expression as a replacement for v
 💡 Great for "lightweight" views
 
 ## Editable Boxes
+See [[Boxes]]
 Another way to make it is to use CM6 template boxes, i.e.
 ```mathematica
 TemplateBox[exp, ] or FrameBox[] or Style[] or general FrontEndBox[exp, "json"]
@@ -114,7 +116,7 @@ TemplateBox[exp, ] or FrameBox[] or Style[] or general FrontEndBox[exp, "json"]
 
 there is no convertion to [[Frontend Object]] happends, but just interpretation using CM6 decorations.
 
-example
+🎡  type an example
 ```mathematica
 Table[If[PrimeQ[i], Framed[i, Background -> LightYellow], i], {i, 1, 
   100}]
@@ -125,7 +127,8 @@ The difference with respect to [[#Pefomance goal]] and [[Frontend objects#Inline
 ✅  easy to write using native WL functions
 ✅  it is inline function, evaluation happends in-place
 ✅  editable by user in-place
-❗️  significat load on the editor (each time you type it recalculates strings)
-❗️  significat load on the network (each time you type it sends the content to server)
+❗️  Not suitable for complex views
+- significat load on the editor (each time you type it recalculates strings)
+- significat load on the network (each time you type it sends the content to server)
 
 💡 Great for "superlightweight" views

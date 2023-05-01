@@ -1,0 +1,17 @@
+- [x] Fix decorations parser
+- [ ] Make a plane structure of cells
+- [x] Fix movements through the subeditors (using arrowup and so on)
+- [x] Make `FrontEndView`
+- [x] Validation of [] before update
+- [ ] Context menu for evaluation in-place
+- [ ] Graphics 2D
+- [ ] Graphics 3D path tracing
+- [ ] Excalidraw (graphics integraton, mb using SVG)
+- [x] Fix TCP connection btween master and secondary kernel
+- [ ] Write missing chapters in docs
+- [ ] Make plugins support
+- [x] UI bugfixes (Kernel spawns and etc)
+- [ ] TemplateBox
+- [ ] MakeBoxes support
+- [ ] `FrontEndObject` privews for lists
+- [ ] Inline frontend objects

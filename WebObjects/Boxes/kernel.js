@@ -13,8 +13,32 @@
         if ('Background' in options) {
             env.element.style.backgroundColor = env.color;
         }
+    }
 
+    boxes.StyleBox = (args, env) => {
+        env.context = boxes;
+        console.log('style box');
+        
+        console.log(args);
 
+        const options = core._getRules(args, env) || {};
+        
+        if ('Background' in options) {
+            env.element.style.backgroundColor = env.color;
+        }        
+    }
+
+    boxes.TemplateBox = (args, env) => {
+        env.context = boxes;
+        console.log('template box');
+
+        console.log(args);
+
+        const options = core._getRules(args, env) || {};
+        
+        if ('Background' in options) {
+            env.element.style.backgroundColor = env.color;
+        }    
     }
 
     boxes.Opacity = (args, env) => {

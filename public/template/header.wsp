@@ -7,7 +7,7 @@
             <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
             <?wsp Import["JSFrontend/core.js", "String"] ?>
         </script>
-        <script defer type="module" src="/js/bundle.js"></script>
+        <script defer type="module" src="/js/merged.js"></script>
         <script defer src="/js/sockets.js"></script>
     </head>
     <body class="notion-body">

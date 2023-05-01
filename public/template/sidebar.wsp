@@ -482,12 +482,12 @@
 {
     document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
         const dir = '<?wsp session["dir"] ?>';
-        socket.send('CreateNewNotebook["'+dir+'"]');
+        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[session["Query", "path"]] ?>]');
     });
 
     document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
         const dir = '<?wsp session["dir"] ?>';
-        socket.send('CreateNewNotebook["'+dir+'"]');
+        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[session["Query", "path"]] ?>]');
     });
 
     document.getElementById("open-vault-button").addEventListener('click', (e)=>{

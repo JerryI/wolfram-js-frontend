@@ -4,9 +4,28 @@ function __emptyFalse(a) {
 }
 
 var SupportedCellDisplays = {};
-var CellHash = {};
+let CellHashStorage = {};
+
+const CellHash = {
+  add: (obj) => {
+    CellHashStorage[obj.uid] = obj;
+  },
+
+  get: (uid) => {
+    return CellHashStorage[uid];
+  },
+
+  remove: (uid) => {
+    CellHashStorage[uid] = undefined;
+  },
+
+}
+
+let CellList = [];
 
 core.CellHash = CellHash;
+core.CellList = CellList;
+
 
 class CellWrapper {
   uid = ''
@@ -16,67 +35,27 @@ class CellWrapper {
   element = document.body
   state = 'idle'
 
-  findFirstParent() {
-    let cell = this;
-    while(true) {
-      if (!cell.parent) cell = CellHash[cell.prev]; else cell = CellHash[cell.parent];
-      if (!(cell instanceof CellWrapper)) cell = this;
-      if (!cell.prev) break;
-    }
-    return cell;
-  }
-
-  findLast() {
-    let cell = this;
-    while(true) {
-      cell = CellHash[cell.next];
-      if (!(cell instanceof CellWrapper)) cell = this;
-      if (!cell.next) break;
-    }
-    return cell;
-  }  
-
-  findNext() {
-    return CellHash[this.next]; 
-  }
-
   focusNext(startpoint) {
     console.log('next');
-    console.log(this);    
-    if (startpoint.uid !== this.uid) return this.display?.editor?.focus();
- 
-
-    if (this.child)
-      return CellHash[this.child].focusNext(startpoint)
-    
-    if (this.next)
-      return CellHash[this.next].focusNext(startpoint)
-    
-    if (this.parent)
-      if (CellHash[this.parent].next)
-        return CellHash[CellHash[this.parent].next].focusNext(startpoint)
-    
-    if (this.parent) CellHash[this.parent].addCellAfter(); else this.addCellAfter();
+    const pos = CellList.indexOf(this.uid);
+    if (pos + 1 < CellList.length) {
+      CellHash.get(CellList[pos + 1]).display?.editor?.focus();
+    } else {
+      this.addCellAfter();
+    }
   }
 
   focusPrev(startpoint) {
     console.log('prev');
-    console.log(this);
-    if (startpoint.uid !== this.uid) return this.display?.editor?.focus();
-
-    if (this.prev)
-      if (CellHash[this.prev].child)
-        return CellHash[CellHash[this.prev].child].findLast().focusPrev(startpoint) 
-    
-    if (this.prev)
-      return CellHash[this.prev].focusPrev(startpoint)
-    
-    if (this.parent)
-      return CellHash[this.parent].focusPrev(startpoint)
+    const pos = CellList.indexOf(this.uid);
+    if (pos - 1 > 0) {
+      CellHash.get(CellList[pos - 1]).display?.editor?.focus();
+    }
   }  
 
   morph(template, input) {
-    this.type = input["type"];
+    this.type = 'input';
+    console.log('morph');
 
     const cell   = document.getElementById(`${this.uid}---output`);
     //make it different id, so it will not conflict
@@ -91,17 +70,6 @@ class CellWrapper {
     this.element.appendChild(editor);
     cell.remove();
 
-    if (this.next) {
-      if (CellHash[this.parent].next) {
-        CellHash[CellHash[this.parent].next].prev = this.uid;
-      } else {
-        this.next = false;
-      }   
-    }
-    //FIXME when goes from up to down - error!!
-    
-
-    this.parent = false;
     this.toolbox();
   }
 
@@ -119,7 +87,7 @@ class CellWrapper {
   }
 
   toolbox() {
-    if (this.parent) throw 'not possible. this is a child cell';
+    if (this.type === 'output') throw 'not possible. this is a child cell';
     
     const body = document.getElementById(this.uid).parentNode;
     const toolbox = body.getElementsByClassName('frontend-tools')[0];
@@ -148,98 +116,99 @@ class CellWrapper {
   
   addCellAfter(uid) {  
     const id = uid || this.uid;
-    var q = 'NotebookOperate["'+id+'", CellObjCreateAfter]';
+    var q = 'NotebookOperate["'+id+'", CellListAddNewAfter]';
     forceFocusNext = true;
     socket.send(q);  
   }
   
   constructor(template, input) {
     this.uid = input["id"];
-    this.parent = __emptyFalse(input["parent"]);
-    this.prev = __emptyFalse(input["prev"]);
-    this.next = __emptyFalse(input["next"]);
-    this.child = __emptyFalse(input["child"]);
     this.type = input["type"];
     this.state = input["state"];
-    
-    //inject into the right place
-    if (this.parent) {
-      document.getElementById(this.parent).insertAdjacentHTML('beforeend', template);
+
+    if ('after' in input) {
+      console.log('inserting after something');
+
+      const beforeType = input["after"]["type"];
+      const currentType = input["type"];
+      const pos = CellList.indexOf(input["after"]["id"]);
+
+      if (beforeType === 'input' && currentType === 'input') {
+        console.log("input cell after inputcell");
+        document.getElementById(input["after"]["id"]).parentNode.insertAdjacentHTML('afterend', template);
+      }
+
+      if (beforeType === 'output' && currentType === 'input') {
+        console.log("input cell after outputcell");
+        document.getElementById(input["after"]["id"]+"---output").parentNode.parentNode.insertAdjacentHTML('afterend', template);
+      }
+      
+      if (beforeType === 'input' && currentType === 'output') {
+        console.log("output cell after inputcell");
+        document.getElementById(input["after"]["id"]).insertAdjacentHTML('beforeend', template);
+      }   
+      
+      if (beforeType === 'output' && currentType === 'output') {
+        console.log("output cell after outputcell");
+        document.getElementById(input["after"]["id"]+"---output").insertAdjacentHTML('afterend', template);
+      }     
+      
+      CellList.splice(pos+1, 0, input["id"]);
+
+
     } else {
-      if (this.prev)
-        document.getElementById(this.prev).parentNode.insertAdjacentHTML('afterend', template);
-      else
+      
+      console.log('plain insertion');
+      //inject into the right place
+      if (this.type === 'output') {
+
+        document.getElementById(CellList.slice(-1)).insertAdjacentHTML('beforeend', template);
+      } else {
         document.getElementById("frontend-contenteditable").insertAdjacentHTML('beforeend', template);
+      }
+
+      CellList.push(this.uid);
     }
 
-    //notify others
-    if (this.next)
-      if (CellHash[this.next]) CellHash[this.next].prev = this.uid;
-    
-    if (this.prev)
-      if (CellHash[this.prev]) CellHash[this.prev].next = this.uid;
+    CellHash.add(this);
+    console.log('cell hashes');
+    console.log(CellHash);
 
-    if (this.parent)
-      if (CellHash[this.parent]) CellHash[this.parent].child = this.uid;      
- 
     this.element = document.getElementById(this.uid+"---"+this.type);
-    if (!this.parent) this.toolbox();
-    
-    this.display = new SupportedCellDisplays[input["display"]](this, input["data"]);
-    
-    CellHash[this.uid] = this;
+    if (this.type === 'input') this.toolbox();
+
+    this.display = new SupportedCellDisplays[input["display"]](this, input["data"]);    
     
     return this;
   }
-
-  disposeAll() {
-    if (this.next) CellHash[this.next].disposeAll();
-    this.dispose();
-  }
   
   dispose() {
-    //notify others
-    if (this.prev)
-      if (CellHash[this.prev]) 
-        if (this.next) {
-          CellHash[this.prev].next = this.next;
-          CellHash[this.next].prev = this.prev;
-          this.next = false;
-          this.prev = false;
-        } else {
-          CellHash[this.prev].next = false;
-        }
+    //remove a single cell
 
-    if (this.parent)
-      if (CellHash[this.next]) {
-        CellHash[this.next].parent = this.parent;
-        CellHash[this.parent].child = this.next;
-      } else {
-        CellHash[this.parent].child = false;
-      }
-    //now we covered 100% cases    
-    
     //call dispose action
     this.display.dispose();
+
+    //remove from the list
+    const pos = CellList.indexOf(this.uid);
+    CellList.splice(pos, 1);
     //remove hash
-    delete CellHash[this.uid];
+    CellHash.remove(this.uid);
 
     //remove dom holders
     if (this.type === 'input') {
       document.getElementById(this.uid).parentNode.remove();
-      CellHash[this.child]?.disposeAll();
     } else {
       document.getElementById(`${this.uid}---${this.type}`)?.remove();
-      //CellHash[this.next]?.dispose();
     }    
   }
   
   remove() {
-    socket.send(`NotebookOperate["${this.uid}", CellObjRemoveAccurate];`);
+    socket.send(`NotebookOperate["${this.uid}", CellListRemoveAccurate];`);
   }
   
   save(content) {
-    socket.send(`CellObj["${this.uid}"]["data"] = "${content}";`);
+    //const fixed = content.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
+    socket.send(`NotebookOperate["${this.uid}", CellObjSave, "${content}"];`);
   }
   
   eval(content) {
@@ -248,8 +217,8 @@ class CellWrapper {
       return;
     }
 
-    const fixed = content.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
-    const q = `CellObj["${this.uid}"]["data"]="${fixed}"; NotebookEvaluate["${this.uid}"]`;
+    //const fixed = content.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
+    const q = `NotebookEvaluate["${this.uid}"]`;
 
     if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
       alert("No active kernel is attached");
@@ -262,14 +231,14 @@ class CellWrapper {
 
 core.FrontEndRemoveCell = function (args, env) {
   var input = interpretate(args[0]);
-  CellHash[input["id"]].dispose();
+  CellHash.get(input["id"]).dispose();
 };
 
-core.FrontEndMorpCell = function (args, env) {
+core.FrontEndCellMorphInput = function (args, env) {
   var template = interpretate(args[0]);
   var input = interpretate(args[1]);
 
-  CellHash[input["cell"]["id"]].morph(template, input["cell"]);
+  CellHash.get(input["id"]).morph(template, input);
 }; 
 
 core.FrontEndCellError = function (args, env) {
@@ -293,9 +262,9 @@ core.FrontEndJSEval = function (args, env) {
 } 
 
 core.FrontEndGlobalAbort = function (args, env) {
-  const arr = Object.keys(CellHash)
+  const arr = Object.keys(CellHashStorage)
   arr.forEach((el)=>{
-    CellHash[el].updateState('idle');
+    CellHash.get(el).updateState('idle');
   });
 }
 
@@ -304,12 +273,15 @@ core.FrontEndUpdateCellState = function (args, env) {
   console.log('update state');
   console.log(input["id"]);
 
-  CellHash[input["id"]].updateState(input["state"]);
+  CellHash.get(input["id"]).updateState(input["state"]);
 }
 
 core.FrontEndCreateCell = function (args, env) {
   var template = interpretate(args[0]);
   var input = interpretate(args[1]);
+  console.log('new cell!');
+  console.log(template);
+  console.log(input);
 
   new CellWrapper(template, input);
 }
