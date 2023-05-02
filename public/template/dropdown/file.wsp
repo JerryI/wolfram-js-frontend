@@ -1,51 +1,59 @@
 <div oncontextmenu="return false;" class="dropdown-file dropdown" id="dropdown-file-<?wsp file//FileNameTake//HashString32 ?>">
-    <div style="border-radius: 4px; background-color: white; position: relative; max-width: calc(-24px + 100vw); box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px; overflow: hidden;">
-        <div class="notion-scroller vertical" style="padding-bottom: 6px; padding-top: 0px; flex-grow: 1; min-height: 0px; transform: translateZ(0px); z-index: 1; overflow: hidden auto; margin-right: 0px; margin-bottom: 0px;">
-                <div style="padding-top: 6px; padding-bottom: 6px; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px; margin-top: 1px;">
+    <div class="dropdown-frame">
+        <div class="notion-scroller vertical">
+                <div class="notion-shadow">
                         
 
 
-                        <div id="file-open-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
-                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
-                                <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
-                                    <div style="display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" class="moveTo" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.85); flex-shrink: 0; backface-visibility: hidden;"><path d="M2.34668 13.5469C2.78418 13.5469 3.07812 13.2393 3.07812 12.8018C3.07812 12.542 3.05762 12.2754 3.05762 11.8994C3.05762 9.60254 3.86426 8.67285 6.14062 8.67285H10.5771L12.2109 8.57031L10.1738 10.4297L8.64941 11.9678C8.5127 12.1045 8.43066 12.2891 8.43066 12.501C8.43066 12.9111 8.73828 13.2188 9.16895 13.2188C9.35352 13.2188 9.53809 13.1436 9.70215 12.9863L14.207 8.48145C14.3711 8.33105 14.4531 8.12598 14.4531 7.9209C14.4531 7.71582 14.3711 7.51758 14.207 7.36035L9.71582 2.86914C9.53809 2.70508 9.35352 2.62305 9.16895 2.62305C8.73828 2.62305 8.43066 2.93066 8.43066 3.34082C8.43066 3.55273 8.5127 3.7373 8.64941 3.87402L10.1738 5.41895L12.2041 7.27148L10.5771 7.17578H6.04492C2.87988 7.17578 1.54688 8.63184 1.54688 11.8516C1.54688 12.2549 1.56055 12.6035 1.61523 12.877C1.67676 13.2051 1.88184 13.5469 2.34668 13.5469Z"></path></svg></div>
+                        <div id="file-open-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/moveTo.svg"/>    
+                                    </div>
                                 </div>
-                                <div style="margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;">
-                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Open in a new window</div>
+                                <div class="button-label">
+                                    <div class="label-clear">Open in a new window</div>
                                 </div>
                                 
                             </div>
                         </div>
-                        <div id="file-clone-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
-                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
-                                <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
-                                    <div style="display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" class="duplicate" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.85); flex-shrink: 0; backface-visibility: hidden;"><path d="M2.83887 12.1523H4.00098V13.1846C4.00098 14.6406 4.75977 15.3994 6.24316 15.3994H13.1611C14.6377 15.3994 15.4033 14.6406 15.4033 13.1846V6.21191C15.4033 4.75586 14.6377 3.99707 13.1611 3.99707H11.999V2.96484C11.999 1.50879 11.2334 0.75 9.75684 0.75H2.83887C1.3623 0.75 0.59668 1.50195 0.59668 2.96484V9.93066C0.59668 11.3936 1.3623 12.1523 2.83887 12.1523ZM2.9209 10.8125C2.28516 10.8125 1.93652 10.4844 1.93652 9.82129V3.08105C1.93652 2.41797 2.28516 2.08301 2.9209 2.08301H9.68164C10.3105 2.08301 10.666 2.41797 10.666 3.08105V3.99707H6.24316C4.75977 3.99707 4.00098 4.75586 4.00098 6.21191V10.8125H2.9209ZM6.31836 14.0596C5.68262 14.0596 5.34082 13.7314 5.34082 13.0684V6.32812C5.34082 5.66504 5.68262 5.33691 6.31836 5.33691H13.0791C13.708 5.33691 14.0635 5.66504 14.0635 6.32812V13.0684C14.0635 13.7314 13.708 14.0596 13.0791 14.0596H6.31836Z"></path></svg></div>
+                        <div id="file-clone-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/duplicate.svg"/>
+                                    </div>
                                 </div>
-                                <div style="margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;">
-                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clone</div>
+                                <div class="button-label">
+                                    <div class="label-clear">Clone</div>
                                 </div>
                                 
                             </div>
                         </div>  
-                        <div id="file-download-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
-                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
-                                <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
-                                    <div style="display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" class="duplicate" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.85); flex-shrink: 0; backface-visibility: hidden;"> <path d="M11.2857,6.05714 L10.08571,4.85714 L7.85714,7.14786 L7.85714,1 L6.14286,1 L6.14286,7.14786 L3.91429,4.85714 L2.71429,6.05714 L7,10.42857 L11.2857,6.05714 Z M1,11.2857 L1,13 L13,13 L13,11.2857 L1,11.2857 Z"></path></svg></div>
+                        <div id="file-download-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                    <img width="15" height="15" src="/svg/download.svg"/>
+                                    </div>
                                 </div>
-                                <div style="margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;">
-                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Download</div>
+                                <div class="button-label">
+                                    <div class="label-clear">Download</div>
                                 </div>
                                 
                             </div>
                         </div>  
                     
-                        <div id="file-remove-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: calc(100% - 8px); margin-left: 4px; margin-right: 4px; border-radius: 3px;">
-                            <div style="display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;">
-                                <div style="display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;">
-                                    <div style="display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 16 16" class="trash" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.85); flex-shrink: 0; backface-visibility: hidden;"><path d="M4.8623 15.4287H11.1445C12.1904 15.4287 12.8672 14.793 12.915 13.7402L13.3799 3.88965H14.1318C14.4736 3.88965 14.7402 3.62988 14.7402 3.28809C14.7402 2.95312 14.4736 2.69336 14.1318 2.69336H11.0898V1.66797C11.0898 0.62207 10.4268 0 9.29199 0H6.69434C5.56641 0 4.89648 0.62207 4.89648 1.66797V2.69336H1.86133C1.5332 2.69336 1.25977 2.95312 1.25977 3.28809C1.25977 3.62988 1.5332 3.88965 1.86133 3.88965H2.62012L3.08496 13.7471C3.13281 14.7998 3.80273 15.4287 4.8623 15.4287ZM6.1543 1.72949C6.1543 1.37402 6.40039 1.14844 6.7832 1.14844H9.20312C9.58594 1.14844 9.83203 1.37402 9.83203 1.72949V2.69336H6.1543V1.72949ZM4.99219 14.2188C4.61621 14.2188 4.34277 13.9453 4.32227 13.542L3.86426 3.88965H12.1152L11.6709 13.542C11.6572 13.9453 11.3838 14.2188 10.9941 14.2188H4.99219ZM5.9834 13.1182C6.27051 13.1182 6.45508 12.9336 6.44824 12.667L6.24316 5.50293C6.23633 5.22949 6.04492 5.05176 5.77148 5.05176C5.48438 5.05176 5.2998 5.23633 5.30664 5.50293L5.51172 12.667C5.51855 12.9404 5.70996 13.1182 5.9834 13.1182ZM8 13.1182C8.28711 13.1182 8.47852 12.9336 8.47852 12.667V5.50293C8.47852 5.23633 8.28711 5.05176 8 5.05176C7.71289 5.05176 7.52148 5.23633 7.52148 5.50293V12.667C7.52148 12.9336 7.71289 13.1182 8 13.1182ZM10.0166 13.1182C10.29 13.1182 10.4746 12.9404 10.4814 12.667L10.6934 5.50293C10.7002 5.23633 10.5088 5.05176 10.2285 5.05176C9.95508 5.05176 9.76367 5.22949 9.75684 5.50293L9.54492 12.667C9.53809 12.9336 9.72949 13.1182 10.0166 13.1182Z"></path></svg></div>
+                        <div id="file-remove-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/trash.svg"/>
+                                    </div>
                                 </div>
-                                <div style="margin-left: 6px; margin-right: 12px; min-width: 0px; flex: 1 1 auto;">
-                                    <div  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Delete</div>
+                                <div class="button-label2">
+                                    <div  class="label-clear">Delete</div>
                                 </div>
                             </div>
                         </div>                        

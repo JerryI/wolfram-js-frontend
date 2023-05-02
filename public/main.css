@@ -8,6 +8,16 @@
 	height: 100%;
 }
 
+.modal {
+	width: 100vw; height: 100vh; position: fixed; top: 0px; left: 0px; display: flex; align-items: center; justify-content: center; pointer-events: auto; opacity: 1; 
+	z-index: 999;
+}
+
+.modal-hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
 .notion-sidebar > div {
 	display: none;
 	position: absolute;
@@ -48,6 +58,45 @@
 	padding: 2px 10px;
 	margin-top: 1px;
 	margin-bottom: 1px;
+}
+
+.sidebar-new-class {
+	display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    min-height: 27px;
+    padding: 2px 10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    color: rgba(55, 53, 47, 0.65);
+    height: 45px;
+}
+
+.topbar-path {
+	opacity: 1;
+    transition: opacity 150ms linear 0s;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(55, 53, 47, 0.5);
+    height: 28px;
+    white-space: nowrap;
+    line-height: 1.2;
+  
+}
+
+.notion-focusable .focusable-add {
+	display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    min-height: 27px;
+    padding: 2px 10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    color: rgba(55, 53, 47, 0.65);
+                                                                        
 }
 
 .notion-focusable > div {
@@ -255,12 +304,6 @@
 	background-color: rgba(55, 53, 47, 0.08);
 }
 
-. > div {
-	max-width: 100vw;
-	z-index: 100;
-	background-color: white;
-	-webkit-user-select: none;
-}
 
 .notion-topbar > div {
 	display: flex;
@@ -276,14 +319,6 @@
 	display: flex;
 }
 
-#notion-app {
-}
-
-#a {
-}
-
-#b {
-}
 
 .notion-app-inner.notion-light-theme {
     color: rgb(55, 53, 47);
@@ -347,6 +382,94 @@
 	margin-right: 12px;
 }
 
+.sidebar-button {
+	-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; border-radius: 3px; margin-left: 4px; margin-right: 4px; width: calc(100% - 8px);
+}
+
+.sidebar-button-inner {
+	display: flex; align-items: center; width: 100%; font-size: 14px; min-height: 27px; padding: 2px 10px; margin-top: 1px; margin-bottom: 1px;
+}
+
+.sidebar-button-svg {
+	flex-shrink: 0;
+    flex-grow: 0;
+    border-radius: 3px;
+    color: rgba(55, 53, 47, 0.65);
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+                                                                
+}
+
+.sidebar-button-delim {
+	display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; height: 100%;
+}
+
+
+
+.sidebar-option {
+	display: flex;
+    align-items: center;
+    font-size: 14px;
+    min-height: 27px;
+    padding: 2px 10px 2px 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    /*font-weight: 600;*/
+    border-radius: 3px;                                                                            
+}
+
+.sidebar-option .option-holder {
+	flex-shrink: 0;
+	flex-grow: 0;
+	border-radius: 3px;
+	color: rgba(55, 53, 47, 0.65);
+	width: 22px;
+	height: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 0px;
+}
+
+.focusable-pointer {
+	-webkit-user-select: none;
+    transition: background 20ms ease-in 0s;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.sidebar-option-button {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 22px;
+    height: 18px;
+    margin-left: -3px;
+    margin-right: 4px;
+    position: relative;
+ 
+}
+
+.sidebar-label-clearfix {
+	flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;
+}
+
+.sidebar-button-label {
+	flex: 1 1 auto; white-space: nowrap; min-width: 0px; overflow: hidden; text-overflow: ellipsis;
+}
+
 .notion-close-sidebar.notion-focusable {
 	-webkit-user-select: none;
 	transition: background 20ms ease-in 0s;
@@ -387,6 +510,50 @@
 	margin-left: 4px;
 	margin-right: 4px;
 	width: calc(100% - 8px);
+}
+
+.notion-focusable .button-body {
+	display: flex; align-items: center; justify-content: center;
+}
+
+.notion-focusable .button-label {
+	margin-left: 6px; margin-right: 6px; min-width: 0px; flex: 1 1 auto;
+}
+
+.notion-focusable .button-label2 {
+	margin-left: 6px; margin-right: 12px; min-width: 0px; flex: 1 1 auto;
+}
+
+.label-clear {
+	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.sidebar-flex {
+	display: flex; flex-direction: column; height: 100%; max-height: 100%;
+}
+
+.sidebar-flex .sidebar-holder {
+	display: block; flex-shrink: 0; flex-grow: 0;
+}
+
+.sidebar-container {
+	-webkit-user-select: none;
+    transition: background 20ms ease-in 0s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-width: 0px;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.notion-focusable .focusable-holder {
+	display: flex; align-items: center; line-height: 120%; width: 100%; min-height: 28px; font-size: 14px;
+}
+
+.notion-focusable .focusable-holder .focusable-holder-holder {
+	display: flex; align-items: center; justify-content: center; margin-left: 10px; margin-right: 4px;
 }
 
 .sidebarSearch {
@@ -431,7 +598,22 @@
 	display: block;
 }
 
-.notion-selectable.notion-page-block {
+.notion-outliner-private-hide {
+	width:0px;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.dropdown-frame {
+	border-radius: 4px; background-color: white; position: relative; max-width: calc(-24px + 100vw); box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px; overflow: hidden;
+}
+
+.vertical {
+	padding-bottom: 6px; padding-top: 0px; flex-grow: 1; min-height: 0px; transform: translateZ(0px); z-index: 1; overflow: hidden auto; margin-right: 0px; margin-bottom: 0px;
+}
+
+.notion-shadow {
+	padding-top: 6px; padding-bottom: 6px; box-shadow: rgba(55, 53, 47, 0.09) 0px -1px 0px; margin-top: 1px;
 }
 
 .chevronDownRoundedThick {
@@ -474,8 +656,7 @@
 	text-overflow: ellipsis;
 }
 
-.notion-selectable.notion-collection_view_page-block {
-}
+
 
 .plusThick {
 	width: 16px;
@@ -531,12 +712,7 @@
 	backface-visibility: hidden;
 }
 
-. {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	overflow: hidden;
-}
+
 
 .topbar-url-container {
 	margin-left: 246px;

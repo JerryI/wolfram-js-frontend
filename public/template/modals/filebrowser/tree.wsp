@@ -1,0 +1,19 @@
+<?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template","modals","filebrowser","file.wsp"}], {file = FileNameJoin[{path, "../"}]}] ?>
+
+<?wsp Table[ ?>
+    <?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template","modals","filebrowser","file.wsp"}], {file = i}] ?>
+<?wsp , {i, FileNames["*", path]}] ?>
+
+<script>
+    {
+        const files = <?wsp ExportString[({"filebrowser-"<>HashString32[#], #})&/@ Join[{FileNameJoin[{path, "../"}]}, Select[FileNames["*", path], DirectoryQ]], "JSON"] ?>;
+        console.log(files);
+        files.forEach((el)=>{
+            document.getElementById(el[0]).addEventListener('click', ()=>{
+                core.BrowserThreeUpdate(el[1]);
+            })
+        })
+
+        core.BrowserURLVault = '<?wsp URLEncode[path] ?>';
+    }
+</script>

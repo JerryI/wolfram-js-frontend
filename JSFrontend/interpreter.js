@@ -164,11 +164,31 @@ let server = {
   //evaluate something on the secondary kernel (your working area) (no reply)
   talkKernel(expr) {
     this.socket.send('NotebookEmitt['+expr+']');
+  },
+
+  clearObject(uid) {
+    this.socket.send('NotebookGarbagePut["'+uid+'"];');
   }
 }
  
 
+
+
 var ObjectHashMap = {}
+
+let garbageTimeout = false;
+
+const renewGarbageTimer = () => {
+  if (garbageTimeout) clearTimeout(garbageTimeout);
+  garbageTimeout = setTimeout(collectGarbage, 10000);
+}
+
+const collectGarbage = () => {
+  console.log('collecting garbage...');
+  Object.keys(ObjectHashMap).forEach((el)=>{
+    ObjectHashMap[el].garbageCollect();
+  });
+}
 
 //storage for the frontend objects / executables
 class ObjectStorage {
@@ -176,10 +196,22 @@ class ObjectStorage {
   uid = ''
   cached = false
   cache = []
+
+  garbageCollect() {
+    if (Object.keys(this.refs).length == 0) {
+      server.clearObject(this.uid);
+      this.cached = true;
+      this.cache = ['GarbageCollected', 'Null'];
+    }
+
+  }
   
   constructor(uid) {
     this.uid = uid;
     ObjectHashMap[uid] = this;
+
+    //check garbage
+    renewGarbageTimer();
   } 
   
   //assign an instance of FrontEndExecutable to it

@@ -166,7 +166,6 @@ class BoxesWidget extends WidgetType {
         console.log(change);
         view.dispatch({changes: change});
       },
-      extensions: {}, //for arrow up down and etc
       eval: () => {
         view.viewState.state.config.eval();
       }

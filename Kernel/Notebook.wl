@@ -13,6 +13,11 @@ NotebookAddEvaluator::usage = "add new supported lang/tool to the cell's evaluat
 
 NotebookExtendDefinitions::usage = "extends the JSON objects of the notebook storage. internal command of the Evaluator"
 
+
+NotebookGarbagePut::usage = "collect garbage"
+
+NotebookLoadPage::usage = "load modal windows"
+NotebookLoadModal::usage = "load modal windows"
 (* 
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
@@ -368,6 +373,13 @@ NotebookAbort := With[{channel = $AssociationSocket[Global`client]},
     (#["state"]="idle") &/@ CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ];
 ];
 
+
+
+NotebookGarbagePut[id_] := With[{channel = $AssociationSocket[Global`client]},
+    Print["Garbage collected: "<>id];
+    jsfn`Notebooks[channel]["objects"][id] = .;
+];
+
 GarbageCollector[id_] := Module[{garbage},
     Print["Collection garbage!"];
     garbage = <||>;
@@ -389,7 +401,7 @@ NotebookOpen[id_String] := (
     ];
     jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 
-    SessionSubmit[ScheduledTask[Print["Collection garbage..."]; Print[GarbageCollector[id]];, {Quantity[35, "Seconds"], 1}, AutoRemove->True]]; 
+    
 );
 
 
@@ -494,6 +506,17 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
         WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ]];
     ];
 );
+
+NotebookLoadModal[name_, params_List] := (
+    LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "modals", name, "index.wsp"}], params]
+)
+
+NotebookLoadPage[name_, params_List] := (
+    LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, name}], params]
+)
+
+SetAttributes[NotebookLoadPage, HoldRest];
+SetAttributes[NotebookLoadModal, HoldRest];
 
 NotebookEventFire[addr_]["RemovedCell"][cell_] := (
     (*actually frirstly you need to check!*)

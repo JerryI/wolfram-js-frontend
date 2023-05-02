@@ -2,9 +2,16 @@ var core = {};
 core.name = "Core Context";
 interpretate.contextExpand(core);
 
-core.DefaultWidth = 400;
+core.DefaultWidth = 600;
 
 core.ConsoleLog = [];
+
+core.GarbageCollected = async (args, env) => {
+    if ('element' in env) {
+      env.element.innerText = '- Garbage -';
+    }
+    console.log('garbage collected');
+}
 
 core.FrontEndExecutable = async (args, env) => {
     const key = interpretate(args[0], env);

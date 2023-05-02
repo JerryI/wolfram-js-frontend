@@ -1,5 +1,5 @@
 - [x] Fix decorations parser
-- [ ] Make a plane structure of cells
+- [x] Make a plane structure of cells
 - [x] Fix movements through the subeditors (using arrowup and so on)
 - [x] Make `FrontEndView`
 - [x] Validation of [] before update

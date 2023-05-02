@@ -15,6 +15,7 @@
             <div class="notion-app-inner notion-light-theme" style="">
                 <div style="">
                     <div class="notion-cursor-listener" style="">
+                        <?wsp LoadPage["template/modal.wsp"] ?>
                         <div class="notion-sidebar-container" style="">
                             <div style="">
                                 <div style="">
