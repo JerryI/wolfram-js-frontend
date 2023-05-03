@@ -8,7 +8,9 @@
                 (* all cells types *)
                 FileNames["*.js", "Kernel/Addons", Infinity],
                 (* all webobjects *)
-                FileNames["*.js", "WebObjects", Infinity]
+                FileNames["*.js", "WebObjects", Infinity],
+
+                "JSFrontend/epilog.js"
             } -> "Temp/merged.js"
         ];
 

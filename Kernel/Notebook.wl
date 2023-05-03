@@ -18,6 +18,7 @@ NotebookGarbagePut::usage = "collect garbage"
 
 NotebookLoadPage::usage = "load modal windows"
 NotebookLoadModal::usage = "load modal windows"
+NotebookUpdateThumbnail::usage = "provide html thumbnail"
 (* 
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
@@ -70,6 +71,8 @@ NotebookPopupFire::usage = "generate pop-up message using templates and send to 
 NotebookEventFire::usage = "internal command for cell's operation events, that publish changes via websockets"
 NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel to the frontened with no changes"
 NotebookFakeEventFire::usage = "fake event fire for the standalone"
+
+GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
 
@@ -151,7 +154,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
             (* make sure that if this is a copy of an old one -> regenrate an ID in DB *)
             If[notebook["notebook", "path"] =!= path,
-                Exit[];
+            
                 Print["Seems to be cloned or renamed"];
                 Print["Regenerating the inner ID..."];
 
@@ -240,6 +243,45 @@ CreateNewNotebookByPath[name_] := Module[{uid = RandomWord[]<>"-"<>StringTake[Cr
   NotebookStoreManually[uid];
 ];
 
+jsfn`Thumbnails = <||>;
+If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".thumbnails"}]],
+    jsfn`Thumbnails = Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".thumbnails"}]];
+]
+
+SaveThumbnails := (
+    Put[jsfn`Thumbnails, FileNameJoin[{JerryI`WolframJSFrontend`root, ".thumbnails"}]];
+)
+
+GetThumbnail[path_] := 
+If[KeyExistsQ[jsfn`Thumbnails, path],
+    jsfn`Thumbnails[path]
+,
+    {"..."}    
+]
+
+AddThumbnail[id_] := Module[{list = CellList[id], pos = 1, data = {}, back},
+    If[!ListQ[list], Return[$Failed, Module]];
+    
+    data = Select[list, (#["type"]==="input")&];
+    data = Take[data, Min[4, Length[data]]];
+
+    data = {#["data"]//StringLength, #["data"]} &/@ data;
+    data[[All,1]] = Accumulate[data[[All,1]]];
+
+    back = data//First;
+
+    data = Select[data, (#[[1]] < 500 + 200) &];
+
+    If[Length[data] == 0, data = {back}];
+
+    If[StringLength[data[[-1, 2]]] - (data[[-1, 1]] - 500) > 0, 
+        data[[-1, 2]] = StringTake[data[[-1, 2]], Min[StringLength[data[[-1, 2]]], StringLength[data[[-1, 2]]] - (data[[-1, 1]] - 500)]];
+        data[[-1, 2]] = data[[-1, 2]] <> " ...";
+    ];
+
+
+    jsfn`Thumbnails[jsfn`Notebooks[id]["path"]] = data[[All,2]];
+];
 
 (* serialise the notebook to a file *)
 NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},
@@ -254,6 +296,11 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
 
     Clear[notebook];
     Print["SAVED"];
+
+    (* generate privew *)
+    AddThumbnail[channel];
+    SaveThumbnails;
+
 ];
 
 (* the same, but with a specified notebook ID *)
@@ -303,6 +350,10 @@ FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSo
         WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
     ];
 ]];
+
+NotebookUpdateThumbnail[data_] := With[{channel = $AssociationSocket[Global`client]},
+    jsfn`Notebooks[channel]["thumbnail"] = data;
+];
 
 (* clone and open a new page *)
 FileOperate["Clone"][urlpath_] := Module[{new, path},
@@ -435,8 +486,8 @@ NotebookGetObjectForMe[uid_][id_] := (
     jsfn`Notebooks[id]["objects"][uid]
 );
 
-NotebookPromise[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel];
+NotebookPromise[uid_, params_][expr_] := With[{},
+    WebSocketSend[Global`client, Global`PromiseResolve[uid, expr]];
 ];
 
 (*NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
@@ -507,16 +558,18 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
     ];
 );
 
-NotebookLoadModal[name_, params_List] := (
-    LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "modals", name, "index.wsp"}], params]
-)
+NotebookLoadModal[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},
+    LoadPage[FileNameJoin[{"template", "modals", name, "index.wsp"}], params]
+]
 
-NotebookLoadPage[name_, params_List] := (
-    LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, name}], params]
-)
+NotebookLoadPage[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},
+    LoadPage[name, params]
+]
 
 SetAttributes[NotebookLoadPage, HoldRest];
 SetAttributes[NotebookLoadModal, HoldRest];
+
+
 
 NotebookEventFire[addr_]["RemovedCell"][cell_] := (
     (*actually frirstly you need to check!*)

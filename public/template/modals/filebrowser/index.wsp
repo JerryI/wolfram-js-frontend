@@ -2,6 +2,9 @@
    .filebrowser-strip:hover {
       background-color: rgba(35, 131, 226, 0.14);
    }
+   #filethree-holder {
+      max-height: 70vh;
+   }
 </style>
 <script>
    core.BrowserThreeUpdate = (url) => {
@@ -29,7 +32,7 @@
                      </div>
                   </div>
                </div>
-               <div style="display: flex; flex-direction: row;">
+               <!--<div style="display: flex; flex-direction: row;">
                   <div class="notion-collection-view-tab-button" style="display: flex; align-items: center; background-image: none; height: 100%;">
                      <div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 4px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 8px; padding-right: 8px; color: rgba(55, 53, 47, 0.65); font-weight: 500; max-width: 220px;">
                         <svg viewBox="0 0 16 16" class="collectionTable" style="width: 16px; height: 16px; display: block; fill: rgba(55, 53, 47, 0.65); flex-shrink: 0; margin-right: 6px;">
@@ -38,11 +41,11 @@
                         <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;">Table</span>
                      </div>
                   </div>
-               </div>
+               </div>-->
             </div>
          </div>
          <div style="display: flex; align-items: center; row-gap: 2px; column-gap: 2px; opacity: 1;">
-            <div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; font-size: 14px; line-height: 1; min-width: 0px; padding: 6px; color: rgba(55, 53, 47, 0.65); font-weight: 400;">Path</div>
+            <!--<div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 3px; font-size: 14px; line-height: 1; min-width: 0px; padding: 6px; color: rgba(55, 53, 47, 0.65); font-weight: 400;">Path</div>
             <div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 3px; height: 28px; width: 28px; padding: 6px; font-size: 14px; color: rgba(55, 53, 47, 0.65); fill: rgba(55, 53, 47, 0.45); font-weight: 400; line-height: 1;">
                <svg viewBox="0 0 16 16" class="collectionSearch" style="width: 14px; display: block; fill: rgba(55, 53, 47, 0.65); flex-shrink: 0; backface-visibility: hidden;">
                   <path d="M0 6.35938C0 9.86719 2.85156 12.7188 6.35938 12.7188C7.66406 12.7188 8.85938 12.3203 9.85938 11.6406L13.4531 15.2344C13.6719 15.4609 13.9766 15.5625 14.2812 15.5625C14.9453 15.5625 15.4219 15.0625 15.4219 14.4141C15.4219 14.1016 15.3125 13.8125 15.1016 13.5938L11.5312 10.0156C12.2734 8.99219 12.7188 7.72656 12.7188 6.35938C12.7188 2.85156 9.86719 0 6.35938 0C2.85156 0 0 2.85156 0 6.35938ZM1.65625 6.35938C1.65625 3.76562 3.75781 1.65625 6.35938 1.65625C8.95312 1.65625 11.0625 3.76562 11.0625 6.35938C11.0625 8.95312 8.95312 11.0625 6.35938 11.0625C3.75781 11.0625 1.65625 8.95312 1.65625 6.35938Z"></path>
@@ -56,7 +59,7 @@
                      <path d="M13,1.5A1.5,1.5,0,1,1,11.5,0,1.5,1.5,0,0,1,13,1.5Z"></path>
                   </g>
                </svg>
-            </div>
+            </div>-->
             <div class="notion-collection-view-item-add" style="position: relative; display: inline-flex; flex-shrink: 0; border-radius: 3px; overflow: hidden; height: 28px; margin-left: 8px; font-size: 14px;">
                     <div id="filebrowser-open" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; white-space: nowrap; border-top-left-radius: 3px; border-bottom-left-radius: 3px; line-height: 1.1; padding-left: 8px; padding-right: 8px; font-weight: 500; background-color: rgba(0, 10, 39, 0.41); color: white;">Open</div>
                     
@@ -70,11 +73,11 @@
 <div style="position: sticky; height: 0px; left: 0px; z-index: 87;"></div>
 <div data-content-editable-void="true" style="flex-grow: 1; flex-shrink: 0; display: flex; flex-direction: column; position: relative;" contenteditable="false">
    <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
-      <div class="notion-list-view" style="padding-bottom: 3em; padding-left: 2em; padding-right: 2em; /*! min-width: calc(100% - 192px); */">
+      <div class="notion-list-view" style="overflow: scroll; padding-bottom: 3em; padding-left: 2em; padding-right: 2em; /*! min-width: calc(100% - 192px); */">
          <div data-block-id="d7e8ced4-80aa-4257-8868-ae0b42b173c7" class="notion-selectable notion-collection_view_page-block" style="display: flex; flex-direction: column; padding-top: 8px; padding-bottom: 4px;">
             <div id="filethree-holder">
 
-               <?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template","modals","filebrowser","tree.wsp"}]] ?>
+               <?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","tree.wsp"}]] ?>
            
 
                <div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; height: 30px; border-radius: 3px; font-size: 14px;">

@@ -34,9 +34,9 @@
 
                                                 <?wsp , ""] ?>
                                                 <div style="margin-left: 12px;"></div>
-                                                <div class="notion-topbar-favorite-button notion-focusable" role="button" aria-label="Favorite" tabindex="0" >
+                                                <!--<div class="notion-topbar-favorite-button notion-focusable" role="button" aria-label="Favorite" tabindex="0" >
                                                     <img width="15" height="15" src="/svg/comment.svg"/>
-                                                </div>
+                                                </div>-->
                                                 <?wsp If[NotebookQ[session["Query", "path"]], ?>
                                                     <div id="share-button" class="notion-topbar-share-menu notion-focusable" role="button" tabindex="0">
                                                         Share
@@ -99,10 +99,15 @@
 
     var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[session["Query", "path"]], "date"]] ?> * 1000);
 
+    const generateThumbnail = () => {
+
+    }
+
     document.getElementById('save-button').addEventListener('click', (e)=> {
         socket.send('NotebookStore;');
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
+        generateThumbnail();
     });
 
     document.getElementById('share-button').addEventListener('click', (e)=> {
@@ -119,6 +124,7 @@
         socket.send('NotebookStore;');
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+        generateThumbnail();
     }, 1000*60*3);
 
     function formatDateDiff(startDate, endDate) {

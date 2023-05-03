@@ -1,1 +1,8 @@
 Nothing to show
+
+<script>
+    core.FrontEndPopUp = (args, env) => {
+    
+    };
+
+</script>

@@ -18,6 +18,13 @@
 	visibility: hidden;
 }
 
+.file-three-hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+
 .notion-sidebar > div {
 	display: none;
 	position: absolute;
@@ -872,3 +879,11 @@
   .any-hidden {
 	display: none;
   }  
+
+  .arrow-activate {
+	transform: rotateZ(0deg);
+}
+
+.arrow-dir {
+	transform: rotateZ(-90deg);
+}

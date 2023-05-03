@@ -21,7 +21,7 @@
                                                             <div class="sidebar-button-label">Open vault</div>
                                                         </div>
                                                     </div>
-                                                    <div class="notion-focusable sidebar-button" id="history-button" role="button" tabindex="0" >
+                                                    <!--<div class="notion-focusable sidebar-button" id="history-button" role="button" tabindex="0" >
                                                         <div class="sidebar-button-inner">
                                                             <div class="sidebar-button-svg">
                                                                 <div style="color: inherit;">
@@ -39,7 +39,7 @@
                                                             </div>
                                                             <div class="sidebar-button-label"><div>Settings</div></div>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                                 <div class="notion-scroller" style="">
                                                     <nav>
@@ -75,50 +75,14 @@
                                                                     
                                                                 </div>                                                                
                                                                 
-                                                            <?wsp Table[ ?>
-                                                                <div class="notion-selectable notion-page-block" id="file-button-<?wsp i//FileNameTake//HashString32 ?>">
-                                                                    <a href="/index.wsp?path=<?wsp URLEncode[i] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
-                                                                    <?wsp With[{pressed = If[session["Query", "path"] === i, " notion-focusable-pressed", ""]}, ?>
-                                                                        <div oncontextmenu="return false;" class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" class="sidebar-focusable-cover">
-                                                                        <?wsp ] ?>
+                                                                <?wsp LoadPage["template/components/filelist.wsp", {dir = session["dir"]}] ?>
 
-                                                                            <div oncontextmenu="return false;" class="sidebar-option" >
-                                                                                <div oncontextmenu="return false;" class="option-holder">
-                                                                                    <div oncontextmenu="return false;" class="notion-focusable focusable-pointer" role="button" tabindex="0" >
-                                                                                        <?wsp If[DirectoryQ[i], ?>
-                                                                                            <img width="15" height="15" src="/svg/chevronDownRoundedThick.svg"/>
-                                                                                        <?wsp , "" ] ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="sidebar-option-button">
-                                                                                    
-                                                                                    <div class="notion-record-icon notranslate notion-focusable" role="button" tabindex="0" >
-                                                                                   
-
-                                                                                        <?wsp If[NotebookQ[i], ?>
-                                                                                            <img width="15" height="15" src="/svg/page.svg"/>
-                                                                                        <?wsp , "" ] ?>
-                                                                                        <?wsp If[ImageFileQ[i],  ?>
-                                                                                            <img width="15" height="15" src="/svg/sidebarTemplates.svg"/>
-                                                                                        <?wsp , ""]  ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="sidebar-label-clearfix">
-                                                                                    <div class="notranslate" class="label-clear"><?wsp FileNameTake[i] ?></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <?wsp LoadPage["template/dropdown/file.wsp", {file = i}] ?>
-                                                                </div>
-                                                            
-                                                            <?wsp , {i, SortBy[FileNames["*", session["dir"] ], DirectoryQ] }] ?>
                                                             <?wsp , "fileslist"]  ?>    
                                                                 
                                                                 
                                                                 
                                                                 
-                                                                <div class="notion-focusable" id="add-notebook-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;">
+                                                                <!--<div class="notion-focusable" id="add-notebook-button" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer;">
                                                                     <div class="focusable-add">
                                                                         <div class="sidebar-option" >
                                                                             <div class="button-body">
@@ -127,13 +91,13 @@
                                                                         </div>
                                                                         <div class="sidebar-button-label">Add a notebook</div>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                             </div>
                                                         </div>
                                                         <div style="margin-top: 18px;"></div>
                                                         <div style="flex-grow: 0; flex-shrink: 0;">
                                                             
-                                                            <div class="notion-focusable sidebar-button" id="import-button" role="button" tabindex="0" >
+                                                            <!--<div class="notion-focusable sidebar-button" id="import-button" role="button" tabindex="0" >
                                                                 <div class="sidebar-button-inner">
                                                                     <div class="sidebar-option">
                                                                         <img width="15" height="15" src="/svg/sidebarImport.svg"/>
@@ -150,7 +114,7 @@
                                                                         <div class="sidebar-button-label">Trash</div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>-->
                                                         </div>
                                                     </nav>
                                                 </div>
@@ -172,10 +136,10 @@
 
 <script>
 {
-    document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
+    /*document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
         const dir = '<?wsp session["dir"] ?>';
         socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[session["Query", "path"]] ?>]');
-    });
+    });*/
 
     document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
         const dir = '<?wsp session["dir"] ?>';
@@ -186,9 +150,9 @@
         callModal('filebrowser', '{path = "<?wsp session["dir"] ?>"}');
     });
 
-    document.getElementById("history-button").addEventListener('click', (e)=>{
+    /*document.getElementById("history-button").addEventListener('click', (e)=>{
         alert('Not implemented');
-    });    
+    }); 
 
     document.getElementById("settings-button").addEventListener('click', (e)=>{
         alert('Not implemented');
@@ -200,7 +164,7 @@
 
     document.getElementById("trash-button").addEventListener('click', (e)=>{
         alert('Not implemented');
-    });    
+    });    */
 
    
 

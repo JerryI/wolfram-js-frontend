@@ -1,12 +1,12 @@
-<?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template","modals","filebrowser","file.wsp"}], {file = FileNameJoin[{path, "../"}]}] ?>
+<?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","file.wsp"}], {file = ParentDirectory[path], prefix="../"}] ?>
 
 <?wsp Table[ ?>
-    <?wsp LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template","modals","filebrowser","file.wsp"}], {file = i}] ?>
+    <?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","file.wsp"}], {file = i, prefix=""}] ?>
 <?wsp , {i, FileNames["*", path]}] ?>
 
 <script>
     {
-        const files = <?wsp ExportString[({"filebrowser-"<>HashString32[#], #})&/@ Join[{FileNameJoin[{path, "../"}]}, Select[FileNames["*", path], DirectoryQ]], "JSON"] ?>;
+        const files = <?wsp ExportString[({"filebrowser-"<>HashString32[#], #})&/@ Join[{ParentDirectory[path]}, Select[FileNames["*", path], DirectoryQ]], "JSON"] ?>;
         console.log(files);
         files.forEach((el)=>{
             document.getElementById(el[0]).addEventListener('click', ()=>{

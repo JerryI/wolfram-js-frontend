@@ -286,6 +286,11 @@ core.FrontEndCreateCell = function (args, env) {
   new CellWrapper(template, input);
 }
 
+core.FrontEndCreatePreviewCell = function (args, env) {
+  //console.log(window.atob(args));
+  core.PreviewCell(env.element, window.atob(args));
+}
+
 
 
 

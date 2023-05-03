@@ -10,10 +10,23 @@
 
 <script>
     function callModal(name, params = '{}') {
-        document.getElementById("modal-container").classList.remove('modal-hidden');
+        const container = document.getElementById("modal-container");
+        container.classList.remove('modal-hidden');
     
         server.ask(`NotebookLoadModal["${name}", ${params}]`).then((data)=>{
             setInnerHTML(document.getElementById("modal-placeholder"), interpretate(data, {}));
+            
+            let close;
+            close = (e) =>{
+                if(e.target !== e.currentTarget) return;
+                container.removeEventListener("mousedown", close);
+                container.classList.add('modal-hidden');
+                setTimeout(()=>{
+                    document.getElementById("modal-placeholder").innerHTML = '';
+                }, 300);
+            };
+            container.addEventListener('click', close);
+            
         });
     }
 </script>

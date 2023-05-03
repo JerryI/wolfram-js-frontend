@@ -104,7 +104,5 @@ function WSPHttpBigQuery(command, promise, type = "String") {
     const request = new XMLHttpRequest();
     request.open("POST", url);
     request.send(formData);
-
-    promise("OK");
 }
 

@@ -498,5 +498,30 @@ class CodeMirrorCell {
       return this;
     }
   }
+
+  core.PreviewCell = (element, data) => {
+      const initialLang = checkDocType(data).lang;
+
+      const editor = new EditorView({
+        doc: data,
+        extensions: [
+          highlightSpecialChars(),
+          bracketMatching(),
+          closeBrackets(),
+          EditorView.lineWrapping,
+          syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+          highlightSelectionMatches(),
+          cellTypesHighlight,
+          languageConf.of(initialLang),
+          autoLanguage, 
+          globalExtensions,
+          editorCustomTheme,
+          EditorState.readOnly.of(true)
+        ],
+        parent: element
+      });
+      
+      return this;
+  }
   
   SupportedCellDisplays['codemirror'] = CodeMirrorCell;
