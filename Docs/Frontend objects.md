@@ -6,10 +6,11 @@ This is one of the key-element of the frontend. In general it can be decribed as
 
 The __general definition__ will be
 > *an isolated container, where the [frontend functions](Frontend%20functions.md) can be executed*
+> > one can also use virtual containers see [[Frontend functions#Virtual containers]]
 
 In this regard all graphics are frontend objects. Any code you want to *store and compute* purely on frontend are frontend objects.
 
-To have an overview of all function - see [Reference](Reference.md)
+To have an overview of all function - see [Reference](Docs/Reference.md)
 
 ## As a decoration
 The direct representation of it is

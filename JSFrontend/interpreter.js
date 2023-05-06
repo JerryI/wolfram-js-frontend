@@ -16,7 +16,8 @@ class Deferred {
 var interpretate = (d, env = {}) => {
 
   if (typeof d === 'undefined') {
-    throw 'undefined type (not an object or string!)';
+    console.log('undefined object');
+    return d;
   }
   if (typeof d === 'string') {
     //if (env.todom === true) env.element.innerHTML = d;

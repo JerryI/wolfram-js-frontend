@@ -258,11 +258,11 @@
     /**
      * @type {Object}
      */  
-    let options = core._getRules(args, env);
+    let options = core._getRules(args, {...env, context: g2d});
     
 
     if (Object.keys(options).length == 0) 
-      options = core._getRules(interpretate(args[1], {...env, hold:true}), env);
+      options = core._getRules(interpretate(args[1], {...env, hold:true}), {...env, context: g2d, hold:true});
 
     console.log(options);
 
@@ -274,9 +274,9 @@
     /**
      * @type {[Number, Number]}
      */
-    let ImageSize = options.ImageSize || [core.DefaultWidth, 0.618034*core.DefaultWidth];
+    let ImageSize = interpretate(options.ImageSize, env) || [core.DefaultWidth, 0.618034*core.DefaultWidth];
 
-    const aspectratio = options.AspectRatio || 0.618034;
+    const aspectratio = interpretate(options.AspectRatio, env) || 0.618034;
 
     //if only the width is specified
     if (!(ImageSize instanceof Array)) ImageSize = [ImageSize, ImageSize*aspectratio];
@@ -297,7 +297,7 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
     
-    const range = options.PlotRange;
+    const range = interpretate(options.PlotRange, env);
 
     console.log(range);
 
@@ -333,7 +333,9 @@
         fill: 'none'
       };   
 
+      interpretate(options.Epilog, envcopy);
       interpretate(args[0], envcopy);
+      interpretate(options.Prolog, envcopy);
   }
 
   g2d.Graphics.update = (args, env) => {}
@@ -393,6 +395,24 @@
         .y(function(d) { return y(d[1]) })
         );
   }
+
+  g2d.Line.update = async (args, env) => {
+    const data = await interpretate(args[0], env);
+    const x = env.xAxis;
+    const y = env.yAxis;
+
+    env.svg.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", env.color)
+      .attr("stroke-width", env.strokeWidth)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d[0]) })
+        .y(function(d) { return y(d[1]) })
+        );
+  }
+
+  g2d.Line.virtual = true
 
   g2d.Point = async (args, env) => {
     const data = await interpretate(args[0], env);

@@ -170,3 +170,4 @@ end
 In principle that's how any styling can be done. The inner Subeditor allows to update the content underneath as well. 
 
 🚧  For now  `TemplateBox` is still under development, that can result in a very buggy representation of some build-in boxes like `Now` or other wrapper.
+

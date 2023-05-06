@@ -1,4 +1,4 @@
-To have an overview of all function - see [Reference](Reference.md)
+To have an overview of all function - see [Reference](Docs/Reference.md)
 Let us start from the simplest stuff
 
 ## Quick and Dirty
@@ -142,7 +142,7 @@ What it does is shown on the gif below, however you can try it by yourself by op
 
 See more about JS cells in [Cell types](Cell%20types.md).
 
-Of cource this is not the best example of making animations, better will be to let js run the animation on its own and wait for a new data or ask for a new data using system of events. See [[Events]] and [Advanced data transfering and visualisation](Advanced%20data%20transfering%20and%20visualisation.md) for the better animation handling. If you are using standart Mathematica's functions - check out also [Request Animation Frame](Request%20Animation%20Frame.md) approach.
+Of cource this is not the best example of making animations, better will be to let js run the animation on its own and wait for a new data or ask for a new data using system of events. See [[Events]] and [Advanced data transfering and visualisation](Advanced%20data%20transfering%20and%20visualisation.md) for the better animation handling. If you are using standart Mathematica's functions - check out also [Animating many and in real-time](Animating%20many%20and%20in%20real-time.md) approach.
 
 #### A remark about sub symbols | Methods
 Sometimes a function or a three of them can be called as a reaction on some event. Then this information is stored in `env.method`.
@@ -500,7 +500,7 @@ Then you will see a nice animation and each instance you copied will be updated 
 Check out [Cell types](Cell%20types.md) and JS section to see the further progress on this example.
 
 #### 🚧 Passing | Injecting arguments
-*This feature is still in development*, I wrote about it in [Frontend objects](Frontend%20objects.md). It would be grate to pass extra information to the instance from the editor
+*This feature is still in development*, I wrote about it in [Frontend objects](Frontend%20objects.md). It would be great to pass extra information to the instance from the editor
 
 ```mathematica
 Apply[FrontEndExecutable["uid"], {"Color"->Red}]

@@ -1,4 +1,4 @@
-![](browser-side.excalidraw.svg)
+
 ## The idea
 
 Originally it was done as a sort of [utility](https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine) to parse Graphics3D objects and recreate them as a set of commands of ThreeJS - a JS graphics library. Have a look at this example
@@ -293,7 +293,6 @@ core.Canvas = (args, env) => {
 }
 ```
 
-To read more about the structure - see [[Structure]].
 
 #### Global and local memory
 It is realted to [Frontend objects](Frontend%20objects.md), where the functions can store the data associated with its instance. 

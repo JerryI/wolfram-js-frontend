@@ -855,6 +855,7 @@
   };
 
   let OrbitControls;
+  let FirstPersonControls = false;
 
   let EffectComposer;
   let RenderPass; 
@@ -916,6 +917,14 @@
       //PathTracingSceneGenerator   = RTX.PathTracingSceneGenerator;
       //PathTracingRenderer         = RTX.PathTracingRenderer;
       //PhysicalPathTracingMaterial = RTX.PhysicalPathTracingMaterial;
+    }
+
+    if (options.Controls) {
+      console.log('controld');
+      console.log(options);
+      if (options.Controls === 'FirstPersonControls') {
+        FirstPersonControls = (await import("three/examples/jsm/controls/FirstPersonControls")).FirstPersonControls;
+      }
     }
 
     /**
@@ -1050,10 +1059,11 @@
         0, 0, 0, 1));
 
       scene.add(group);
-
+      
       controls = new OrbitControls( camera, renderer.domElement );
       controls.target.set( 0, 1, 0 );
       controls.update();
+      
 
     }
 
@@ -1155,7 +1165,7 @@
       Sky           = (await import('three/examples/jsm/objects/Sky')).Sky;  
     }
 
-    let options = core._getRules(args);
+    let options = core._getRules(args, env);
     console.log('options:');
     options.dims = options.dims || [10000, 10000];
     options.skyscale = options.skyscale || 10000;

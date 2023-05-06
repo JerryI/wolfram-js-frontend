@@ -362,6 +362,7 @@ const autoLanguage = EditorState.transactionExtender.of(tr => {
 })
 
 import { defaultKeymap } from "@codemirror/commands";
+import { text } from "d3";
 
 let editorCustomTheme = EditorView.theme({
   "&.cm-focused": {
@@ -497,6 +498,29 @@ class CodeMirrorCell {
       
       return this;
     }
+  }
+
+  //for dynamics
+  core.EditorView = async (args, env) => {
+    //cm6 inline editor (editable or read-only)
+    const textData = await interpretate(args[0], env);
+    const options = core._getRules(args, env);
+
+    let updateFunction = () => {};
+
+    if (options.Event) {
+      //then it means this is like a slider
+
+    } else {
+      //then it is an output thing
+    }
+
+    compactWLEditor({doc: textData, parent: env.element, update: updateFunction});
+  }
+
+  core.EditorView.update = async (args, env) => {
+    const textData = await interpretate(args[0], env);
+    env.local.dispatch(textData);
   }
 
   core.PreviewCell = (element, data) => {

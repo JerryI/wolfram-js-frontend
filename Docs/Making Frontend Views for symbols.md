@@ -50,6 +50,10 @@ It principle it gives you much more flexibillity, but is also harder to do.
 
 #### Example
 
+
+
+
+
 ## High-level | Easy
 Since it is about Wolfram Language we need something better. Therefore you can use build-in helper function
 

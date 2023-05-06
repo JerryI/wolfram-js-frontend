@@ -40,6 +40,10 @@ Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd)
 (* special post-handler, only used for upvalues *)
 CM6Form[e_] := e
 
+
+ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, "\[NoBreak]"->""]
+
+
 (* iconize *)
 Unprotect[Iconize]
 ClearAll[Iconize]
@@ -105,7 +109,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       
       (* truncate the output, if it is too long and create a fake object to represent it *)
-      With[{$string = StringReplace[($result // ToBoxes) /. Global`$CMReplacements // ToString, "\[NoBreak]"->""]},
+      With[{$string = $result // Global`ToCM6Boxes},
         callback[
           If[StringLength[$string] > 5000,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},

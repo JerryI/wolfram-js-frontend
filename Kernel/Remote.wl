@@ -24,6 +24,10 @@ notebook = Null;
 path = Null;
 oldpath = Null;
 
+Unprotect[NotebookDirectory];
+ClearAll[NotebookDirectory];
+NotebookDirectory[]
+
 Options[ConnectToMaster] = {"PingCheck"->False};
 
 AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] ];

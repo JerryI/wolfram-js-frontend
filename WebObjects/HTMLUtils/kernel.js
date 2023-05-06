@@ -25,6 +25,10 @@ core.HTMLForm = async function (args, env) {
     
 }
 
+core.Alert = (args, env) => {
+    alert(interpretate(args[0], env));
+}
+
 core.HTMLForm.update = async (args, env) => {
     console.log('HTMLFrom update');
     console.log(env);

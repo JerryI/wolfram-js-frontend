@@ -12,11 +12,13 @@ class MermaidCell {
     const uid = parent.uid;
     
     elt.classList.add("frontend-object");
+    elt.style.display = "block";
+    
     parent.element.appendChild(elt);
     parent.element.classList.add('padding-fix');
   
     let cotainer = document.createElement("div");
-    cotainer.style.width = "80vw";
+    
 
     if (!mermaidDiagrams) {
       import("mermaid").then(({ default: mermaid }) => {

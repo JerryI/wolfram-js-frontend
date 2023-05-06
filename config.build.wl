@@ -14,6 +14,18 @@
             } -> "Temp/merged.js"
         ];
 
+        MergeFiles[{
+                (* the core of frontened *)
+                "Styles/main.css",
+                "Styles/ui.css",
+                
+                (* all cells types *)
+                FileNames["*.css", "Kernel/Addons", Infinity],
+                (* all webobjects *)
+                FileNames["*.css", "WebObjects", Infinity]
+            } -> "public/___css/merged.css"
+        ];        
+
         (* rolling up using Node *)
         Print[Green<>"rolling up..."]; Print[Reset];
         RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.config.mjs"}]["StandardError"]//Print;

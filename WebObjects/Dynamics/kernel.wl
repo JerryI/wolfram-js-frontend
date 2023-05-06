@@ -1,12 +1,54 @@
-Unprotect[Slider]
-ClearAll[Slider]
 
-Slider[min_, max_, step_:1] := Module[{view, script, id = CreateUUID[]},
-    EventObject[<|"id"->id, "view"->WEBSlider[id, {min, max, step}]|>]
+InputRange[min_, max_, step_:1, OptionsPattern[]] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->((min+max)/2//N), "view"->RangeView[id, {min, max, step, ((min+max)/2//N)}, OptionValue["Label"]]|>]
 ];
 
+Options[InputRange] = {"Label"->""}
+
+InputButton[label_String:"Click"] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->False, "view"->ButtonView[id, label]|>]
+];
+
+InputToggle[initial_:False] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->initial, "view"->ToggleView[id, initial, OptionValue["Label"]]|>]
+];
+
+Options[InputToggle] = {"Label"->""}
+
+
+InputGroup[in_List] := Module[{view}, With[{evid = CreateUUID[]},
+	InputGroup[evid] = #[[1]]["initial"] &/@ in;
+	
+	MapIndexed[With[{n = #2[[1]]},
+		EventBind[#1, Function[data, 
+			InputGroup[evid] = ReplacePart[InputGroup[evid], n->data];
+			EmittedEvent[evid, InputGroup[evid]];
+		]]
+	]&, in]; 
+
+	view = (Table[CreateFrontEndObject[i, "igroup-"<>CreateUUID[]], {i, in}] // Column);
+	EventObject[<|"id"->evid, "initial"->InputGroup[evid], "view"->view|>]
+]];
+
+InputGroup[in_Association] := Module[{view}, With[{evid = CreateUUID[]},
+	InputGroup[evid] = #[[1]]["initial"] &/@ in;
+	
+	Map[With[{},
+		EventBind[in[#], Function[data, 
+			InputGroup[evid] = Join[InputGroup[evid], <|# -> data|>];
+			EmittedEvent[evid, InputGroup[evid]];
+		]]
+	]&, Keys[in]]; 
+
+	view = (Table[CreateFrontEndObject[i, "igroup-"<>CreateUUID[]], {i, in}] // Column);
+	EventObject[<|"id"->evid, "initial"->InputGroup[evid], "view"->view|>]
+]];
+
+InputWolframLanguage[OptionsPattern[]] := Null;
+
+
 (* old alias *)
-HTMLSlider = Slider
+HTMLSlider = InputsRange
 
 Unprotect[InputField]
 ClearAll[InputField]
@@ -15,7 +57,7 @@ InputField[default_] := Module[{view, script, id = CreateUUID[]},
     EventObject[<|"id"->id, "view"->WEBInputField[id, default]|>]
 ];
 
-CM6Form[EventObject[assoc_]] ^:= If[KeyExistsQ[assoc, "view"], CreateFrontEndObject[assoc["view"]],  EventObject[assoc_]];
+CM6Form[EventObject[assoc_]] ^:= If[KeyExistsQ[assoc, "view"], CreateFrontEndObject[assoc["view"]],  EventObject[assoc]];
 
 CreateFrontEndObject[EventObject[assoc_]] ^:= CreateFrontEndObject[assoc["view"]];
 CreateFrontEndObject[EventObject[assoc_], uid_] ^:= CreateFrontEndObject[assoc["view"], uid];
@@ -57,7 +99,7 @@ Module[{
 	firstRun /. {Extract[target,1, Head] -> createObjects} // ReleaseHold;
 	
 	panel := With[{slider = CreateFrontEndObject[slider, "slider-"<>CreateUUID[]], show = CreateFrontEndObject[show, "show-"<>CreateUUID[]]},
-		CreateFrontEndObject[Panel[{slider, show}, "panel-"<>CreateUUID[]]]
+		CreateFrontEndObject[Column[{slider, show}, "column-"<>CreateUUID[]]]
 	];
 	
 	slider = Slider[min, max, step];

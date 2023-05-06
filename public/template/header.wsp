@@ -1,14 +1,12 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/styles.css">
-        <link rel="stylesheet" href="/katex.css">
+        <link rel="stylesheet" href="/___css/merged.css">
         <script>
             <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
             <?wsp Import["JSFrontend/core.js", "String"] ?>
         </script>
-        <script defer type="module" src="/js/merged.js"></script>
-        <script defer src="/js/sockets.js"></script>
+        <script defer type="module" src="/___js/merged.js"></script>
+        <script defer src="/___js/sockets.js"></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

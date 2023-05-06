@@ -13,6 +13,14 @@ core.GarbageCollected = async (args, env) => {
     console.log('garbage collected');
 }
 
+core.True = (args, env) => {
+  return true;
+}
+
+core.False = (args, env) => {
+  return false;
+}
+
 core.FrontEndExecutable = async (args, env) => {
     const key = interpretate(args[0], env);
     //creates an instance with its own separate env
@@ -38,13 +46,24 @@ core.FrontEndExecutable = async (args, env) => {
   
   core._getRules = function(args, env) {
     let rules = {};
-    args.forEach((el)=>{
-      if(el instanceof Array) {
-        if (el[0] === 'Rule') {
-          rules[interpretate(el[1], env)] = interpretate(el[2], env);
+    if (env.hold) {
+      args.forEach((el)=>{
+        if(el instanceof Array) {
+          if (el[0] === 'Rule') {
+            rules[interpretate(el[1], {...env, hold:false})] = el[2];
+          }
         }
-      }
-    });
+      });
+    } else {
+      args.forEach((el)=>{
+        if(el instanceof Array) {
+          if (el[0] === 'Rule') {
+            rules[interpretate(el[1], {...env, hold:false})] = interpretate(el[2], env);
+          }
+        }
+      });
+    }
+
     return rules; 
   }
   
