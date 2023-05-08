@@ -43,6 +43,19 @@ core.FrontEndExecutable = async (args, env) => {
     await env.global.stack[key].dispose();
   };
   
+  core._typeof = function(args, env) {
+    if (typeof args === 'string') {
+      return 'string';
+    }
+    if (typeof args === 'number') {
+      return 'number';
+    }
+    if (args instanceof Array) {
+      return args[0];
+    }
+
+    return 'undefined';
+  }
   
   core._getRules = function(args, env) {
     let rules = {};
@@ -152,7 +165,7 @@ core.FrontEndExecutable = async (args, env) => {
     return ["Times", ...args];
   }
   
-  core.List = function (args, env) {
+  core.List = async function (args, env) {
     var copy, e, i, len, list;
     list = [];
   
@@ -170,7 +183,7 @@ core.FrontEndExecutable = async (args, env) => {
     for (i = 0, len = args.length; i < len; i++) {
       e = args[i];
 
-      list.push(interpretate(e, copy));
+      list.push(await interpretate(e, copy));
     }
 
     return list;
@@ -183,14 +196,14 @@ core.FrontEndExecutable = async (args, env) => {
     }
   };
   
-  core.List.update = (args, env) => {
+  core.List.update = async (args, env) => {
     var copy, e, i, len, list;
     list = [];
   
     copy = Object.assign({}, env);
     for (i = 0, len = args.length; i < len; i++) {
       e = args[i];
-      list.push(interpretate(e, copy));
+      list.push(await interpretate(e, copy));
     }
     return list;
   };

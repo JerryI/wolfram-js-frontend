@@ -44,8 +44,8 @@ you type__ and __serialized to a file on your HDD/SSD every 5 mi ..."},
   {".md\nRadicant", "Graphics3D[{Roughness[0], Reflectivity[1], IOR[2], \
 Clearcoat[0.5], Table[{RGBColor[Normalize[i]], Sphere[i]}, {i, \
 RandomReal[{-5,5}, {40,3}]}], SkyAndWater[]}, Background->None, \
-Lighting->None]", "1/2", "range = InputGroup[<|\"r\"->InputRange[0, 1, 0.1], \
-\"g\"->InputRange[0,1,0.1]|>] ..."}, 
+Lighting->None]", "1/2", 
+   "CreateFrontEndObject[range = InputRange[0, 10, 1], \"slider\"] ..."}, 
  "/Volumes/Data/Github/wolfram-js-frontend/dev/Introduction.wl" -> 
   {".md\n# Introduction\nThis a freeware frontened written in JS for Wolfram \
 Language. Start from the connecting to the Kernel using the button \
@@ -55,5 +55,14 @@ new cell\n- `Backspace` - remove the cell\n- `CMD/Ctrl-Z` - history in the \
 cell is supported\n\nThe notebook is __automatically saved on every symbol \
 you type__ and __serialized to a file on your HDD/SSD every 5 mi ..."}, 
  "/Volumes/Data/Github/wolfram-js-frontend/dev/D3-Graphics.wl" -> 
-  {".md\n## sanbox", ".md\nImporting scripts", 
-   ".html\n<script src=\"https://d3js.org/d3.v4.js\"></script> ..."}|>
+  {".md\n## D3 Graphics Development\n\nPlayground", ".html\n<script \
+src=\"https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.4/d3.min.js\" \
+integrity=\"sha512-nfUlp2ZWPKWlnAH/OsMeAqRSYBxOdPYeBXwceyw6QqqZ7uTT/s5/eS1hMK\
+phjVBouk0jf/JQ8ULVJRnEqSHkXA==\" crossorigin=\"anonymous\" \
+referrerpolicy=\"no-referrer\"></script>", 
+   "CreateFrontEndObject[RandomReal[{-1,1}, {5,2}], \"sample\"]", "ListLinePl\
+ot[RandomReal[{-1,1}, 5], Epilog->{Red, \
+LineE[FrontEndRef[FrontEndExecutable[\"sample\"]]]}] ..."}, 
+ "/Volumes/Data/Github/wolfram-js-frontend/dev/Tweet.wl" -> 
+  {".md\nHello world", "Table[CM6Fraction[i, 2], {i,0,10}]", 
+   "Plotly[x, {x,0,1}, ImageSize->500]", ".js\nreturn 1+1; ..."}|>

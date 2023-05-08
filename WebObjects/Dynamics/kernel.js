@@ -1,11 +1,20 @@
+//as input and output
+core.RangeView = async function(args, env) {
+    const uid =   uuidv4();
 
-core.RangeView = function(args, env) {
-    let uid = interpretate(args[0], env);
-    let range    = interpretate(args[1], env);
+    const type   = core._typeof(args[0][4], env);
+    console.log('data typeof');
+    console.log(type);
+
+    let range    = await interpretate(args[0], env);
+
+    range[3] = await range[3];
+
+    const options = core._getRules(args, env);
 
     let label = '';
-    if (args.length > 2) {
-        label = interpretate(args[2], env);
+    if (options.Label) {
+        label = options.Label;
     }
 
     console.log('range');
@@ -27,28 +36,74 @@ core.RangeView = function(args, env) {
     const enumber = div.children[0];
     const erange = div.children[1];
 
+    env.local.enumber = enumber;
+    env.local.erange = erange;
+
     enumber.addEventListener('input', (e)=>{
-        server.emitt(uid, enumber.value);
         erange.value = enumber.value;
     });
 
     erange.addEventListener('input', (e)=>{
-        server.emitt(uid, erange.value);
         enumber.value = erange.value;
-    });       
+    }); 
+
+    if (options.Event) {
+        const evid = options.Event;
+
+        enumber.addEventListener('input', (e)=>{
+            server.emitt(evid, enumber.value);
+        });
+
+        erange.addEventListener('input', (e)=>{
+            server.emitt(evid, erange.value);
+        });  
+    } 
+    
+    
+    //mutate FE object
+    if (type == 'FrontEndRef') {
+        console.log('mutable expression');
+
+        const key = interpretate(args[0][4][1], env);
+        console.log('key: ');
+        console.log(key);
+
+        enumber.addEventListener('input', (e)=>{
+            ObjectHashMap[key].update(Number(enumber.value));
+        });
+
+        erange.addEventListener('input', (e)=>{
+            ObjectHashMap[key].update(Number(erange.value));
+        });        
+
+        //prevent from updating itself
+        env.local.preventDefault = true;
+    }     
 }
 
 
 
-core.RangeView.update = () => {}
-core.RangeView.destroy = () => {}
+core.RangeView.update = async (args, env) => {
+    if (env.local.preventDefault) return false;
 
+    let range    = await interpretate(args[0], env);
+    console.log('newvalue');
+    console.log(range);
+    
+    env.local.enumber.value = await range[3];
+    env.local.erange.value = await range[3];
+}
 
-core.ButtonView = function(args, env) {
-    let uid = interpretate(args[0], env);
+core.RangeView.destroy = (args, env) => { /* propagate further */ interpretate(args[0], env)}
+
+//just as input
+core.ButtonView = (args, env) => {
+    const options = core._getRules(args, env);
+
+    const uid = options.Event;
 
     let label = `Click me`;
-    if (args.length > 1) label = interpretate(args[1], env);
+    if (options.Label) label = options.Label;
 
     env.element.innerHTML = `<form class="oi-button"><button>${label}</button></form>`;
 
@@ -62,9 +117,11 @@ core.ButtonView = function(args, env) {
 core.ButtonView.update = () => {}
 core.ButtonView.destroy = () => {}
 
-core.ToggleView = function(args, env) {
-    let uid = interpretate(args[0], env);
-    const initial = interpretate(args[1], env);
+//as input and output only
+core.ToggleView = async (args, env) => {
+    const options = core._getRules(args, env);
+    const uid =  uuidv4();
+    const initial = await interpretate(args[0], env);
 
     let checked = '';
     if (initial) checked = 'checked';
@@ -73,7 +130,7 @@ core.ToggleView = function(args, env) {
     console.log(initial);
 
     let label = '';
-    if (args.length > 2) label = interpretate(args[2], env);
+    if (options.Label) label = options.Label;
 
     let str = `<form class="oi-toggle">`;
     if (label.length > 0) str += `<label for="oi-toggle-${uid}">${label}</label>`;
@@ -82,18 +139,91 @@ core.ToggleView = function(args, env) {
     env.element.innerHTML = str;
 
     const box = env.element.children[0].children[env.element.children[0].length - 1];
-    box.addEventListener('change', ()=>{
-        if (this.checked)
-            server.emitt(uid, 'True');
-        else
-            server.emitt(uid, 'False')
-    });
+
+    env.local.box = box;
+
+    if (options.Event) {
+        const evid = options.Event;
+
+        box.addEventListener('change', ()=>{
+            if (this.checked)
+                server.emitt(evid, 'True');
+            else
+                server.emitt(evid, 'False')
+        });
+    }   
 
 }
 
-core.ToggleView.update = () => {}
-core.ToggleView.destroy = () => {}
+core.ToggleView.update = async (args, env) => {
+    const data = await interpretate(args[0], env);
+    env.local.box.checked = data;
+}
 
+core.ToggleView.destroy = (args, env) => { /* propagate further */ interpretate(args[0], env)}
+
+
+core.TextView = async (args, env) => {
+    const options = core._getRules(args, env);
+    const uid =  uuidv4();
+
+    //detect FE
+    const type = core._typeof(args[0], env);
+    console.log('data typeof');
+    console.log(type);
+
+    const text = await interpretate(args[0], env);
+
+    let str = `<form class="oi-text">`;
+    if (options.Title) str += `<div style="font: 700 0.9rem sans-serif; margin-bottom: 3px;">${options.Title}</div>`;
+    str += `<input name="input" value="${text}" type="text" autocomplete="off"`;
+    if (options.Placeholder) str += ` placeholder="${options.Placeholder}"`;
+    str += ` style="font-size: 1em;">`;
+    if (options.Describtion) str += `<div style="font-size: 0.85rem; font-style: italic; margin-top: 3px;">${options.Describtion}</div>`;
+    str += `</form>`;
+
+    env.element.innerHTML = str;
+
+    const input = env.element.getElementsByTagName('input')[0];
+    env.local.input = input;
+
+    if (options.Event) {
+        const evid = options.Event;
+        
+
+        input.addEventListener('input', ()=>{
+            server.emitt(evid, input.value);
+        });
+    }
+
+    //mutate FE object
+    if (type == 'FrontEndRef') {
+        console.log('mutable expression');
+
+
+
+        const key = interpretate(args[0][1], env);
+
+        console.log('key: ');
+        console.log(key);        
+
+        input.addEventListener('input', ()=>{
+            ObjectHashMap[key].update(input.value);
+        });
+
+        //prevent from updating itself
+        env.local.preventDefault = true;
+    }
+}
+
+core.TextView.update = async (args, env) => {
+    if (env.local.preventDefault) return false;
+
+    const text = await interpretate(args[0], env);
+    env.local.input.value = text;
+}
+
+core.TextView.destroy = (args, env) => { interpretate(args[0], env) }
 
 core.WEBInputField = function(args, env) {
     let eventuid = interpretate(args[0], env);

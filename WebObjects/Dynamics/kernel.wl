@@ -1,19 +1,20 @@
 
-InputRange[min_, max_, step_:1, OptionsPattern[]] := Module[{view, script, id = CreateUUID[]},
-    EventObject[<|"id"->id, "initial"->((min+max)/2//N), "view"->RangeView[id, {min, max, step, ((min+max)/2//N)}, OptionValue["Label"]]|>]
+InputRange[min_, max_, step_:1, opts___] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->((min+max)/2//N), "view"->RangeView[{min, max, step, ((min+max)/2//N)}, "Event"->id, opts]|>]
 ];
 
-Options[InputRange] = {"Label"->""}
 
 InputButton[label_String:"Click"] := Module[{view, script, id = CreateUUID[]},
-    EventObject[<|"id"->id, "initial"->False, "view"->ButtonView[id, label]|>]
+    EventObject[<|"id"->id, "initial"->False, "view"->ButtonView["Label"->label, "Event"->id]|>]
 ];
 
-InputToggle[initial_:False] := Module[{view, script, id = CreateUUID[]},
-    EventObject[<|"id"->id, "initial"->initial, "view"->ToggleView[id, initial, OptionValue["Label"]]|>]
+InputToggle[initial_:False, opts___] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->initial, "view"->ToggleView[initial, "Event"->id, opts]|>]
 ];
 
-Options[InputToggle] = {"Label"->""}
+InputText[initial_:"", opts___] := Module[{view, script, id = CreateUUID[]},
+    EventObject[<|"id"->id, "initial"->initial, "view"->TextView[initial, "Event"->id, opts]|>]
+];
 
 
 InputGroup[in_List] := Module[{view}, With[{evid = CreateUUID[]},

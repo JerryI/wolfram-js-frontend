@@ -5,8 +5,13 @@
             <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
             <?wsp Import["JSFrontend/core.js", "String"] ?>
         </script>
-        <script defer type="module" src="/___js/merged.js"></script>
-        <script defer src="/___js/sockets.js"></script>
+        <script type="module" src="/___js/merged.js"></script>
+        <?wsp Table[ ?> 
+        <?wsp Table[ With[{url = FileNameJoin[{Packages[i, "path"], j}]}, ?>
+            <script type="module" src="/<?wsp url ?>"></script>
+        <?wsp ], {j, {Packages[i, "wljs-meta", "jsmodule"]}//Flatten}]?>
+        <?wsp , {i, Select[Packages//Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], "jsmodule"])&]}] ?>
+        <script src="/___js/sockets.js"></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

@@ -3,9 +3,10 @@
 - [x] Fix movements through the subeditors (using arrowup and so on)
 - [x] Make `FrontEndView`
 - [x] Validation of [] before update
-- [ ] Generalize ToggleView, RangeView to be both input and outputs
+- [x] Generalize ToggleView, RangeView to be both input and outputs
 - [ ] Context menu for evaluation in-place
 - [ ] Graphics 2D
+- [ ] EditorView
 - [ ] Graphics 3D path tracing
 - [ ] Excalidraw (graphics integraton, mb using SVG)
 - [x] Fix TCP connection btween master and secondary kernel

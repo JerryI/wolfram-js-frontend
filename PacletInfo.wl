@@ -33,7 +33,9 @@ PacletObject[
           {"JerryI`WolframJSFrontend`WolframLanguageSupport`", "Addons/WolframLanguage/WolframLanguageSupport.wl"},
           {"JerryI`WolframJSFrontend`MagicFileEditor`", "Addons/MagicEditor/MagicFileEditor.wl"},
           {"JerryI`WolframJSFrontend`SVGBobSupport`", "Addons/SVGBob/SVGBobSupport.wl"},
-          {"JerryI`WolframJSFrontend`MermaidSupport`", "Addons/Mermaid/MermaidSupport.wl"}
+          {"JerryI`WolframJSFrontend`MermaidSupport`", "Addons/Mermaid/MermaidSupport.wl"},
+
+          {"JerryI`WolframJSFrontend`Packages`", "Packages.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

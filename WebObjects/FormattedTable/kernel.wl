@@ -1,0 +1,1 @@
+RegisterWebObject[FormatedTable];

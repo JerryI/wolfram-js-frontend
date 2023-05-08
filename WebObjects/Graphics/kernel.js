@@ -381,12 +381,20 @@
 
 
   g2d.Line = async (args, env) => {
+    console.log('drawing a line');
+    console.log(args[0]);
     const data = await interpretate(args[0], env);
     const x = env.xAxis;
     const y = env.yAxis;
 
+    const uid = uuidv4();
+    env.local.uid = uid;
+
+    env.local.uid = uid;
+
     env.svg.append("path")
       .datum(data)
+      .attr("class", 'line-'+uid)
       .attr("fill", "none")
       .attr("stroke", env.color)
       .attr("stroke-width", env.strokeWidth)
@@ -394,22 +402,24 @@
         .x(function(d) { return x(d[0]) })
         .y(function(d) { return y(d[1]) })
         );
+
+ 
+
+    env.local.line = d3.line()
+        .x(function(d) { return env.xAxis(d[0]) })
+        .y(function(d) { return env.yAxis(d[1]) });
   }
 
   g2d.Line.update = async (args, env) => {
     const data = await interpretate(args[0], env);
-    const x = env.xAxis;
-    const y = env.yAxis;
-
-    env.svg.append("path")
+    
+    env.svg.selectAll('.line-'+env.local.uid)
       .datum(data)
-      .attr("fill", "none")
-      .attr("stroke", env.color)
-      .attr("stroke-width", env.strokeWidth)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d[0]) })
-        .y(function(d) { return y(d[1]) })
-        );
+      .join("path")
+      .attr("class",'line-'+env.local.uid)
+      .transition()
+      .duration(300)
+      .attr("d", env.local.line);
   }
 
   g2d.Line.virtual = true

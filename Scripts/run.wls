@@ -17,13 +17,19 @@ Get/@{
   "JerryI`WolframJSFrontend`JSSupport`",
   "JerryI`WolframJSFrontend`MagicFileEditor`",
   "JerryI`WolframJSFrontend`SVGBobSupport`",
-  "JerryI`WolframJSFrontend`MermaidSupport`"
+  "JerryI`WolframJSFrontend`MermaidSupport`",
+
+  "JerryI`WolframJSFrontend`Packages`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
 
 (* assign the handler for ExtendDefiniton command from the kernel to Notebook API *)
 JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
+
+(* plugins *)
+LoadPluginsConfiguration;
+CheckUpdates;
 
 SetUpCron := (
   (* ping-pong with frontend *)
@@ -88,7 +94,7 @@ If[TrueQ[devmode], WSPCache["Off"]];
 
 jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart;
 
-jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, FileNameJoin[{jsf`root, "Assets"}], "/", {"/"}}, "socket-close" -> True];
+jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 
 (*NotificationMethodRegister;*)

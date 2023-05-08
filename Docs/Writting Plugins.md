@@ -2,6 +2,16 @@
 🚧  To be written
 🚧  To be written
 
+```
+Plugins/whatever/dist/index.cjs
+Plugins/whatever/styles/styles.css
+
+```
+
+webserver can see the path `Plugins/*`
+
+store enabled plugins in `.settings`
+
 ## Technical details about evaluation
 #### Pre/Postprocessing on Master Kernel
 Firstly the preprocessing happends on the first master-kernel. It applies all available processors to the input expression listed in `jsfn'Processors` . This is an example with Markdown
