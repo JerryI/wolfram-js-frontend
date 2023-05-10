@@ -1,11 +1,12 @@
-/node_modules
-/Temp/*
-/public/___js/*
-/public/___css/*
+node_modules
+Temp/
+public/dist
 *.DS_STORE
-/public/.DS_STORE
+public/.DS_STORE
 .obsidian
 .lastpath
+.packages
+.thumbnails
 Kernel/.lastpath
 Demo/*.wl
 Demo/*.html

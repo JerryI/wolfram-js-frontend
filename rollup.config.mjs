@@ -7,7 +7,7 @@ export default {
   input: 'Temp/merged.js',
   
   output: {
-    dir: 'public/___js',
+    dir: 'public/dist',
     format: "es",
     strict: false
   },

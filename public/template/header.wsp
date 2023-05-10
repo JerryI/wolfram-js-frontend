@@ -1,17 +1,26 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/___css/merged.css">
-        <script>
-            <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
-            <?wsp Import["JSFrontend/core.js", "String"] ?>
-        </script>
-        <script type="module" src="/___js/merged.js"></script>
+        <link rel="stylesheet" href="/dist/merged.css">
+
+        <!-- any inline js including core library (global) -->
+        <?wsp Table[ ?> 
+        <?wsp Table[ With[{url = FileNameJoin[{Packages[i, "path"], j}]}, ?>
+            <script src="/<?wsp url ?>"></script>
+        <?wsp ], {j, {Packages[i, "wljs-meta", "js"]}//Flatten}]?>
+        <?wsp , {i, Select[Packages//Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], "js"])&]}] ?>
+        
+        <!-- frontend library (module) -->
+        <script type="module" src="/dist/merged.js"></script>
+        
+        <!-- user's plugins (module) -->
         <?wsp Table[ ?> 
         <?wsp Table[ With[{url = FileNameJoin[{Packages[i, "path"], j}]}, ?>
             <script type="module" src="/<?wsp url ?>"></script>
         <?wsp ], {j, {Packages[i, "wljs-meta", "jsmodule"]}//Flatten}]?>
         <?wsp , {i, Select[Packages//Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], "jsmodule"])&]}] ?>
-        <script src="/___js/sockets.js"></script>
+        
+        <!-- connection to the server (global) -->
+        <script src="/dist/sockets.js"></script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

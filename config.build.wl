@@ -1,16 +1,18 @@
 <|
-    "watch" -> {"JSFrontend", "WebObjects", "Kernel/Addons"},
+    "watch" -> {"Src"},
     "recipy" :> (
+        (* remove old *)
+        DeleteFile /@ FileNames["*", "public/dist"];
         (* merge and bundle the files *)
         MergeFiles[{
                 (* the core of frontened *)
-                "JSFrontend/frontend.js",
-                (* all cells types *)
+                "Src/frontend.js",
+                (* all cells types 
                 FileNames["*.js", "Kernel/Addons", Infinity],
                 (* all webobjects *)
-                FileNames["*.js", "WebObjects", Infinity],
+                FileNames["*.js", "WebObjects", Infinity],*)
 
-                "JSFrontend/epilog.js"
+                "Src/epilog.js"
             } -> "Temp/merged.js"
         ];
 
@@ -23,7 +25,7 @@
                 FileNames["*.css", "Kernel/Addons", Infinity],
                 (* all webobjects *)
                 FileNames["*.css", "WebObjects", Infinity]
-            } -> "public/___css/merged.css"
+            } -> "public/dist/merged.css"
         ];        
 
         (* rolling up using Node *)
@@ -33,8 +35,8 @@
 
         (* merge in the right sequence, because core.js is not a ~real JS module~ and needed to be added separately *)
         MergeFiles[{
-                "public/js/merged.js"
-            } -> "public/js/merged.js",
+                "public/dist/merged.js"
+            } -> "public/dist/merged.js",
 
             (* annoying bugs as a consiquence of non-strict compilation using Rollup *)
             (* chromee issue was on Firefox browsers as well as on Vivalldi *)
@@ -48,15 +50,15 @@
 
         (* merge in the right sequence, because core.js is not a ~real JS module~ and needed to be added separately *)
         MergeFiles[{  
-                "JSFrontend/sockets.js"
-            } -> "public/js/sockets.js"
+                "Src/sockets.js"
+            } -> "public/dist/sockets.js"
         ]; 
 
         Print["Bundling for the standalone export app..."];
         (* for standalone app *)
         MergeFiles[{
-                "JSFrontend/fakesockets.js"
-            } -> "public/js/export/fakesockets.js"
+                "Src/fakesockets.js"
+            } -> "public/dist/export/fakesockets.js"
         ];            
 
         Print[Red<>" the process is not done yet... wait..."];

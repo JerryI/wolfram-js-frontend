@@ -28,6 +28,8 @@ ImportJSON[url_String] := Module[{},
 
 getJSON[package_Association] := Module[{new, json},
     new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First];
+    
     json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
     If[AssociationQ[json],
         json,
@@ -36,7 +38,9 @@ getJSON[package_Association] := Module[{new, json},
 ]
 
 getJSON[url_String] := Module[{new, json},
-    new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First;
+    new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    If[!StringQ[new], new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First];
+
     json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
     If[AssociationQ[json],
         json,

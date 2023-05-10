@@ -65,4 +65,7 @@ ot[RandomReal[{-1,1}, 5], Epilog->{Red, \
 LineE[FrontEndRef[FrontEndExecutable[\"sample\"]]]}] ..."}, 
  "/Volumes/Data/Github/wolfram-js-frontend/dev/Tweet.wl" -> 
   {".md\nHello world", "Table[CM6Fraction[i, 2], {i,0,10}]", 
-   "Plotly[x, {x,0,1}, ImageSize->500]", ".js\nreturn 1+1; ..."}|>
+   "Plotly[x, {x,0,1}, ImageSize->500]", ".js\nreturn 1+1; ..."}, 
+ "/Volumes/Data/Github/wolfram-js-frontend/dev/Sociopath.wl" -> 
+  {"dsd\nDdd ", "", ".js\nHello 1+1 \"\" sds \
+CM6Sqrt[CM6Fraction[Derivative[], 2]]\n  var d = dsd", " ..."}|>

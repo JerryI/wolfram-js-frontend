@@ -11,14 +11,6 @@ Get/@{
   "JerryI`WolframJSFrontend`Dev`", 
   "JerryI`WolframJSFrontend`WSPDynamicsExtension`",
 
-  "JerryI`WolframJSFrontend`WolframLanguageSupport`",
-  "JerryI`WolframJSFrontend`HTMLSupport`",
-  "JerryI`WolframJSFrontend`MarkdownSupport`",
-  "JerryI`WolframJSFrontend`JSSupport`",
-  "JerryI`WolframJSFrontend`MagicFileEditor`",
-  "JerryI`WolframJSFrontend`SVGBobSupport`",
-  "JerryI`WolframJSFrontend`MermaidSupport`",
-
   "JerryI`WolframJSFrontend`Packages`"
   };
 

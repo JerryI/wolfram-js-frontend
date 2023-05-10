@@ -3,7 +3,12 @@ function __emptyFalse(a) {
   return a;
 }
 
-var SupportedCellDisplays = {};
+//CELL TYPES / LANGUAGES
+window.SupportedCells = {};
+window.SupportedLanguages = [];
+//GLobals
+window.Extensions = [];
+
 let CellHashStorage = {};
 
 const CellHash = {
@@ -117,7 +122,9 @@ class CellWrapper {
   addCellAfter(uid) {  
     const id = uid || this.uid;
     var q = 'NotebookOperate["'+id+'", CellListAddNewAfter]';
-    forceFocusNext = true;
+
+    this.display?.forceFocusNext();
+
     socket.send(q);  
   }
   
@@ -177,7 +184,7 @@ class CellWrapper {
     this.element = document.getElementById(this.uid+"---"+this.type);
     if (this.type === 'input') this.toolbox();
 
-    this.display = new SupportedCellDisplays[input["display"]](this, input["data"]);    
+    this.display = new window.SupportedCells[input["display"]].view(this, input["data"]);    
     
     return this;
   }
