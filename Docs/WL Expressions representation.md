@@ -48,7 +48,7 @@ In the simples case one could just replace graphic objects with images (svgs) an
 - Jupyter
 - Wolfram Notebook VS Code extension
 
-Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy inside made from other symbols, one need to cook it and display to the user, i.e. ==we need a frontend WL interpreter for sure==. Since the portabillity is great - we should use web-stack, where Javascript rules all computations. See [[WLJS Interpreter]]
+Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy inside made from other symbols, one need to cook it and display to the user, i.e. ==we need a frontend WL interpreter for sure==. Since the portabillity is great - we should use web-stack, where Javascript rules all computations. See [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter)
 
 *The second one* (__mixed__) is rather tricky to implement fully, since it involves mutable WL expressions. 
 

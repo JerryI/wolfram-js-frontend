@@ -12,7 +12,7 @@ For example, you have an object like this
 Mesh[<|"vertices", "polygons"->...|>]
 ```
 
-And you want to make a nice representation of it in the cell. Since to all cell's output expressions the operation `CM6Form` is applied (see [Evaluation](Evaluation.md), [WLJS Interpreter](WLJS%20Interpreter.md)) you can write it directly 
+And you want to make a nice representation of it in the cell. Since to all cell's output expressions the operation `CM6Form` is applied (see [Evaluation](Evaluation.md), [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter)) you can write it directly 
 
 ```mathematica
 CM6Form[Mesh[assoc_]] ^:= CreateFrontEndObject[Mesh[assoc_], "may be an id"]

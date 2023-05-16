@@ -2,23 +2,23 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="/dist/merged.css">
 
+        <?wsp Table[ ?> 
+            <link rel="stylesheet" href="/<?wsp i ?>">
+        <?wsp , {i, Includes["styles"]}]?>
+
         <!-- any inline js including core library (global) -->
         <?wsp Table[ ?> 
-        <?wsp Table[ With[{url = FileNameJoin[{Packages[i, "path"], j}]}, ?>
-            <script src="/<?wsp url ?>"></script>
-        <?wsp ], {j, {Packages[i, "wljs-meta", "js"]}//Flatten}]?>
-        <?wsp , {i, Select[Packages//Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], "js"])&]}] ?>
-        
+            <script src="/<?wsp i ?>"></script>
+        <?wsp , {i, Includes["js"]}]?>
+ 
         <!-- frontend library (module) -->
         <script type="module" src="/dist/merged.js"></script>
         
         <!-- user's plugins (module) -->
         <?wsp Table[ ?> 
-        <?wsp Table[ With[{url = FileNameJoin[{Packages[i, "path"], j}]}, ?>
-            <script type="module" src="/<?wsp url ?>"></script>
-        <?wsp ], {j, {Packages[i, "wljs-meta", "jsmodule"]}//Flatten}]?>
-        <?wsp , {i, Select[Packages//Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], "jsmodule"])&]}] ?>
-        
+            <script type="module" src="/<?wsp i ?>"></script>
+        <?wsp , {i, Includes["jsmodule"]}]?> 
+
         <!-- connection to the server (global) -->
         <script src="/dist/sockets.js"></script>
     </head>

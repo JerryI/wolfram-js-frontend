@@ -145,7 +145,7 @@ where
 "1:XXXX..." = Compress[FrameBox[Background->Yellow]]
 ```
 
-Then, our editor can directly interprete (see how -  [[WLJS Interpreter]]) the content of the decoration and apply in to the subeditor with an expression `1` like this
+Then, our editor can directly interprete (see how -  [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter)) the content of the decoration and apply in to the subeditor with an expression `1` like this
 
 ```mermaid
 flowchart TB 

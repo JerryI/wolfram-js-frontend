@@ -79,7 +79,7 @@ Begin["`Private`"];
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
 
 jsfn`Notebooks = <||>;
-jsfn`Processors = {};
+jsfn`Processors = {{},{},{}};
 
 $NotifyName = $InputFileName;
 
@@ -111,7 +111,9 @@ Options[NotebookCreate] = {
 (* define the default supported evaluators list *)
 NotebookDefineEvaluators["Default", array_] := jsfn`Processors = array;
 
-NotebookAddEvaluator[type_] := jsfn`Processors = Join[{type}, jsfn`Processors];
+NotebookAddEvaluator[type_] := jsfn`Processors[[2]] = Join[{type}, jsfn`Processors[[2]]];
+NotebookAddEvaluator[type_, "HighestPriority"] := jsfn`Processors[[1]] = Join[{type}, jsfn`Processors[[1]]];
+NotebookAddEvaluator[type_, "LowestPriority"] := jsfn`Processors[[3]] = Join[{type}, jsfn`Processors[[3]]];
 
 (* internal command used by the Evaluator from the remote/local kernel to extend the objects storage on notebook *)
 NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
@@ -415,6 +417,7 @@ NotebookCreate[OptionsPattern[]] := (
 
 (* redirect *)
 NotebookEmitt[symbol_] := With[{channel = $AssociationSocket[Global`client]},  jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
+NotebookEmitt[symbol_, notebook_] := With[{channel = notebook},  jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[symbol] ] ];
 SetAttributes[NotebookEmitt, HoldFirst];
 
 NotebookAbort := With[{channel = $AssociationSocket[Global`client]},

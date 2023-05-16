@@ -23,6 +23,20 @@ JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
 LoadPluginsConfiguration;
 CheckUpdates;
 
+Includes["jsmodule"];
+Includes["js"];
+Includes["wlkernel"];
+Includes["wl"];
+Includes["styles"];
+
+Print["getting modules..."];
+
+Get[FileNameJoin[{jsf`root, "Packages", #}]] &/@ Includes["wl"];
+
+Print["order"];
+
+Print /@ PackagesOrder;
+
 SetUpCron := (
   (* ping-pong with frontend *)
   SessionSubmit[ScheduledTask[WebSocketBroadcast[jsf`server, Global`Pong[360.0 Now[[1, -1]] / 60.0 //Round]], Quantity[3, "Seconds"]]];

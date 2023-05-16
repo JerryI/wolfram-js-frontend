@@ -2,7 +2,7 @@ To have an overview of all function - see [Reference](Docs/Reference.md)
 Let us start from the simplest stuff
 
 ## Quick and Dirty
-Create a new cell, then, define a function inside `core` context (see more [WLJS Interpreter](WLJS%20Interpreter.md))
+Create a new cell, then, define a function inside `core` context (see more [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter))
 
 ```js
 .js
@@ -39,7 +39,7 @@ As simple as that
 
 ![](Simple%20call.excalidraw.svg)
 
-A called function has no persistent memory except from the `env` variable, which can share the data with other functions from the subthree - see more in [WLJS Interpreter](WLJS%20Interpreter.md) (Meta Data). For example, it comes very handy working with graphics
+A called function has no persistent memory except from the `env` variable, which can share the data with other functions from the subthree - see more in [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter) (Meta Data). For example, it comes very handy working with graphics
 
 ```js
 core.RGBColor = (args, env) => {
@@ -147,7 +147,7 @@ Of cource this is not the best example of making animations, better will be to l
 #### A remark about sub symbols | Methods
 Sometimes a function or a three of them can be called as a reaction on some event. Then this information is stored in `env.method`.
 
-If there is an update of a data, i.e. `env.method = 'update'`, then interpreter will try to find a sub-symbols or a function (read more about how interpreter handles them [WLJS Interpreter](WLJS%20Interpreter.md)). 
+If there is an update of a data, i.e. `env.method = 'update'`, then interpreter will try to find a sub-symbols or a function (read more about how interpreter handles them [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter)). 
 
 ![](Simple%20call%202dn.excalidraw.svg)
 
@@ -294,7 +294,7 @@ Therefore, ==all frontened objects aka `FrontEndExecutable` are dynamic by the d
 
 This behaviuor is achived by storing the information about parent `FrontEndExecutable` intance and a child as well as all references from the instances to the storage. I.e. if there is a change of the data in the storage it will update all associated instances.
 
-In general there are two main types of events that can happend and fire the evaluation using scepific methods (see [Default methods](#Default%20methods) and [WLJS Interpreter](WLJS%20Interpreter.md))
+In general there are two main types of events that can happend and fire the evaluation using scepific methods (see [Default methods](#Default%20methods) and [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter))
 
 - Editor's widget held Frontend object was destoryed (see [Decorations](Decorations.md))
 > fires the evaluation  of the whole three ==from top to the bottom== using `destroy` method
@@ -360,7 +360,7 @@ core.MyFunction.destroy = (args, env) => {}
 ```
 
 #### Async
-Since our containers are located in the storage, which might not be on the frontend (if one reloads a page), if you are working with a nested frontend objects, you should make your function to be async. [WLJS Interpreter](WLJS%20Interpreter.md) might return a promise object instead of an actual data
+Since our containers are located in the storage, which might not be on the frontend (if one reloads a page), if you are working with a nested frontend objects, you should make your function to be async. [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter) might return a promise object instead of an actual data
 
 ```js
 core.MyFunction = async (args, env) => {

@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`"}]; 
 
 (*
     ::Only for MASTER kernel::
@@ -109,6 +109,13 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     With[{packed = (List["host" -> JerryI`WolframJSFrontend`jtp["host"], "port" -> JerryI`WolframJSFrontend`jtp["port"] ])},
         LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
+    ];
+
+    LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
+
+    (* loading kernels *)
+    With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", #}] &/@ Includes["wlkernel"]},
+        LinkWrite[link, Unevaluated[Get/@list]]; 
     ];
 
     (* i dunno. this is a fucking bug *)

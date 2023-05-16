@@ -41,7 +41,7 @@ Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd)
 CM6Form[e_] := e
 
 
-ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, "\[NoBreak]"->""]
+ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
 
 (* iconize *)

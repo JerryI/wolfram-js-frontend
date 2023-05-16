@@ -370,7 +370,7 @@ In principle, we do not need to make the whole WL expression mutable and interac
 
 In the simples case, where the Graphics and symbols are mixed in the code, one could just replace graphics objects with images and substitute it to some advanced HTML-like editor. For this see [[Frontend Object]].
 
-Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy of our graphs inside made from other symbols, afterwards one need to interprete it and display to the user, i.e. ==we need a frontend WL interpreter==. Our main language in the WEB stack apart from HTML/CSS is JS. See [[WLJS Interpreter]]
+Anyway, since `Plot` and `Plot3D` is a set of `Graphics` and `Graphics3D` symbols with a recipy of our graphs inside made from other symbols, afterwards one need to interprete it and display to the user, i.e. ==we need a frontend WL interpreter==. Our main language in the WEB stack apart from HTML/CSS is JS. See [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter)
 
 *The second one* is rather tricky to implement fully, since it involves mutable WL expressions. 
 

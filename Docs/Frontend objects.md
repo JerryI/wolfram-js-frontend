@@ -19,7 +19,7 @@ The direct representation of it is
 FrontEndExecutable["uid"]
 ```
 
-CodeMirror 6 finds this pattern and replace it with a corresponding frontend object as a [[Decorations]] and executes it immediately using [WLJS Interpreter](WLJS%20Interpreter.md). For example, on the server ==WL Kernel converts before sending to the frontend the result== to
+CodeMirror 6 finds this pattern and replace it with a corresponding frontend object as a [[Decorations]] and executes it immediately using [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter). For example, on the server ==WL Kernel converts before sending to the frontend the result== to
 
 ```mathematica
 Graphics3D[...] <-> FrontEndExecutable["uid"]
@@ -43,7 +43,7 @@ The replaced function is stored separately in objects storage in ExpressionJSON 
 
 It can also hapend in the opposite direction, where the a new kernel is looking for some objects, it will ask the master kernel to provide one.
 
-Our frontened (in a browser) can ask for those object using `NotebookGetObject["uid"]`, that happends automatically, when the [[WLJS Interpreter]] executes `FrontEndExecutable["uid"]` invoked by CodeMirror editor in a cell. Each call returns JS promise object, which makes the whole process fully asynchronious.
+Our frontened (in a browser) can ask for those object using `NotebookGetObject["uid"]`, that happends automatically, when the [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter) executes `FrontEndExecutable["uid"]` invoked by CodeMirror editor in a cell. Each call returns JS promise object, which makes the whole process fully asynchronious.
 
 In general, one has to write a JS representation of any symbol, which appears inside the `FrontEndExecutable["uid"]`, otherwise frontened causes an exception. 
 
@@ -218,7 +218,7 @@ CreateFrontEndObject[FrontEndOnly[
 ], "visualiser"]
 ```
 
-The last cell creates another frontend object `"visualiser"`, which depends on the `"myObject"`. [[WLJS Interpreter]] creates a straightforward "link" between them
+The last cell creates another frontend object `"visualiser"`, which depends on the `"myObject"`. [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter) creates a straightforward "link" between them
 $$myObject \rightarrow visualiser$$
 where any changes to `"myObject"` will lead to internal reavaluation (on frontend's side!) of `FrontEndOnly` function and its content, i.e. call somewhere the following
 
@@ -244,7 +244,7 @@ After than you will see a nice animation of the output of second cell without ac
 
 ![[plotly-dynamic.gif]]
 
-One could argue that this is an actual reevaluation, which might be quite slow. However, during this process ==an additional information to the whole stack of called functions is provided regaring of a type of an update, i.e. restyling, data update, data append and etc==. Therefore, each WLJS function can optimise its behaviour to gain perfomance - see section `Methods` in [WLJS Interpreter](WLJS%20Interpreter.md) and [Frontend functions](Frontend%20functions.md)
+One could argue that this is an actual reevaluation, which might be quite slow. However, during this process ==an additional information to the whole stack of called functions is provided regaring of a type of an update, i.e. restyling, data update, data append and etc==. Therefore, each WLJS function can optimise its behaviour to gain perfomance - see section `Methods` in [WLJS Interpreter](https://github.com/JerryI/wljs-interpreter) and [Frontend functions](Frontend%20functions.md)
 
 This is a just a top of the surface, the things you can do with it are quite bigger...
 

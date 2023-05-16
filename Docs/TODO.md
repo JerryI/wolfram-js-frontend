@@ -5,13 +5,13 @@
 - [x] Validation of [] before update
 - [x] Generalize ToggleView, RangeView to be both input and outputs
 - [ ] Context menu for evaluation in-place
-- [ ] Graphics 2D
+- [x] Graphics 2D
 - [ ] EditorView
 - [ ] Graphics 3D path tracing
 - [ ] Excalidraw (graphics integraton, mb using SVG)
 - [x] Fix TCP connection btween master and secondary kernel
 - [x] Write missing chapters in docs
-- [ ] Make plugins support
+- [x] Make plugins support
 - [x] UI bugfixes (Kernel spawns and etc)
 - [ ] TemplateBox
 - [ ] MakeBoxes support

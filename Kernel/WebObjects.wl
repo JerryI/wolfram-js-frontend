@@ -33,10 +33,6 @@ SetAttributes[FrontEndOnly, HoldFirst]
 RegisterWebObject[sym_] := JerryI`WolframJSFrontend`WebObjects`list = {JerryI`WolframJSFrontend`WebObjects`list, sym}//Flatten;
 
 LoadWebObjects := (
-  JerryI`WolframJSFrontend`WebObjects`list = {};
-
-  Get/@FileNames["*.wl", FileNameJoin[{JerryI`WolframJSFrontend`root, "WebObjects"}], Infinity];
-
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[
     With[{item = i},
       {

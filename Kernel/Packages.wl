@@ -12,9 +12,14 @@ InstallPackage::usage = "install by url"
 
 Packages::usage = "storage for packages"
 
+PackagesOrder::usage = "order sorted by priority"
+
+Includes::usage = "check for fields"
+
 Begin["`Private`"]; 
 
 $ConfigFile = FileNameJoin[{JerryI`WolframJSFrontend`root, ".packages"}];
+$DefaultConfigFile = FileNameJoin[{JerryI`WolframJSFrontend`root, ".defaultpackages"}];
 $PackagesPath = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages"}];
 
 listAllPackages := FileNames["package.json", $PackagesPath, 2]
@@ -48,16 +53,16 @@ getJSON[url_String] := Module[{new, json},
     ]
 ]
 
+PackagesOrder = {};
 Packages = <||>;
 
 UpdateConfiguration := (
     (*Sort;*)
+    PackagesOrder = SortBy[Keys[Packages], If[KeyExistsQ[Packages[#, "wljs-meta"], "priority"], Packages[#, "wljs-meta", "priority"], 1]&];
     Put[Packages, $ConfigFile];
 )
 
-LoadPluginsConfiguration := (
-    If[FileExistsQ[$ConfigFile], Packages = Get[$ConfigFile]];
-    
+UpdateInfo := (
     (* check the folders *)
     With[{json = ImportJSON[#]},
         Print[StringTemplate["checking the package ``..."][#]];
@@ -70,7 +75,16 @@ LoadPluginsConfiguration := (
             Packages[json["name"], "enabled"] = True; 
             Packages[json["name"], "path"] = absolute2Relative[#]; 
         ]
-    ]& /@ listAllPackages;  
+    ]& /@ listAllPackages;
+)
+
+LoadPluginsConfiguration := (
+    If[FileExistsQ[$ConfigFile], Packages = Get[$ConfigFile], Packages = Get[$DefaultConfigFile]];
+    
+    If[!FileExistsQ[$PackagesPath], CreateDirectory[$PackagesPath]];
+    If[!FileExistsQ[$PackagesPath], Print["Failed to create directory"]; Exit[];];
+
+    UpdateInfo;
 
     InstallMissing;  
 
@@ -91,21 +105,24 @@ InstallPackage[url_, cbk_:Null] := Module[{remote},
     cbk[True, "Installed. Reboot is needed"];
 ]
 
-InstallMissing := Module[{},
+InstallMissing := Module[{missing = False},
     Print["Checking missing packages..."];
     With[{},
 
         If[!KeyExistsQ[Packages[#], "path"],
             Print["# needs full installation. looks it was installed by the url"];
-            Packages[#] = Packages[#]["name"];
+            Packages[#, "path"] = Packages[#]["name"];
         ];
 
         If[!FileExistsQ[relative2Absolute[FileNameJoin[{"Packages", Packages[#]["path"], "package.json"}]]],
             Print["# the package "<>Packages[#]["name"]<>" is missing"];
             downloadAndInstall[Packages[#]];
+            missing = True;
         ];
 
     ] &/@ Keys[Packages];
+
+    If[missing, UpdateInfo];
 ]
 
 getVersion[assoc_Association] := ToExpression[StringReplace[assoc["version"], "." -> ""]];
@@ -116,11 +133,11 @@ CheckUpdates := Module[{json},
         json = getJSON[Packages[#]];
         If[!AssociationQ[json], Print["!!! Failed to check updates for "<>Packages[#, "name"]],
             If[getVersion[json] > getVersion[Packages[#]],
-                Print[StringTemplate["`` -> `` to be updated"][Packages[#, "version"], json["version"]]];
+                Print[StringTemplate["`` :: `` -> `` to be updated"][Packages[#, "name"], Packages[#, "version"], json["version"]]];
                 downloadAndInstall[json];
                 Packages[#] = Join[Packages[#], json];
             ,
-                Print[StringTemplate["`` -- `` is up to date"][Packages[#, "version"], json["version"]]];
+                Print[StringTemplate["`` :: `` -- `` is up to date"][Packages[#, "name"], Packages[#, "version"], json["version"]]];
             ];
         ];
     ] &/@ Keys[Packages];
@@ -128,6 +145,8 @@ CheckUpdates := Module[{json},
 
 downloadAndInstall[package_Association] := Module[{},
     new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First;];
+
     If[!StringQ[new], Print["failed to find repo in the package.json!"]; Return[$Failed, Module]];
 
     If[FileExistsQ[relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]],
@@ -136,6 +155,7 @@ downloadAndInstall[package_Association] := Module[{},
     ];
 
     Print["fetching the data..."];    
+    Print["url: "<>"https://github.com/"<>new<>"/zipball/master"];
     URLDownload["https://github.com/"<>new<>"/zipball/master", FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp.zip"}]];
     
     Print["extracting..."];
@@ -144,15 +164,24 @@ downloadAndInstall[package_Association] := Module[{},
     
     Print["fetching the package.json"];
     path = FileNames["package.json", FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp"}], 2] // First;
-    If[!FileExistsQ[path], Print["Failed to fetch by "<>path]; Return[$Failed, Module]];
+    If[!FileExistsQ[path], Print["Failed to fetch by "<>ToString[path]]; Return[$Failed, Module]];
     path = DirectoryName[path];
 
-    Print["copying..."];
+    Print[StringTemplate["path to the packages json is ``"][path]];
+
+    Print[StringTemplate["copying... from `` to ``"][path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]]];
     CopyDirectory[path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]];
     DeleteDirectory[FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp"}], DeleteContents -> True];
     Print["finished!"];
 ];
 
+
+Includes[param_] := Includes[param] = 
+Table[ 
+    Table[ 
+      FileNameJoin[{Packages[i, "path"], j}]
+    , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
+, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten;
 
 End[];
 

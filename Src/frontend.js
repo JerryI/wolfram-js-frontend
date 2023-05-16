@@ -104,7 +104,7 @@ class CellWrapper {
     const uid = this.uid;
 
     addafter.addEventListener("click", function (e) {
-      addCellAfter(uid);
+      addCellAfter(uid, self);
     });
 
     hide.addEventListener("click", function (e) {
@@ -123,7 +123,7 @@ class CellWrapper {
     const id = uid || this.uid;
     var q = 'NotebookOperate["'+id+'", CellListAddNewAfter]';
 
-    this.display?.forceFocusNext();
+    this?.display?.forceFocusNext();
 
     socket.send(q);  
   }
