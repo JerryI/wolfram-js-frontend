@@ -14,7 +14,13 @@ SendToMaster::usage = "Send evaluated the data inside the callback to the master
 AttachNotebook::usage = "add the notebook id"
 SendToFrontEnd::usage = "send to frontend directly, if the notebook id is known"
 
+FrontSubmit::usage = "alias to SendToFrontEnd"
+
 AskMaster::usage = "send expr to master and wait for the result"
+
+MasterResolvePromise::usage = "resolve promise"
+
+$ExtendDefinitions::usage = "extend defs"
 
 Begin["`Private`"]; 
 
@@ -32,6 +38,10 @@ Options[ConnectToMaster] = {"PingCheck"->False};
 
 AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] ];
 
+MasterResolvePromise[expr_][uid_] := With[{res = expr//ReleaseHold},
+  JTPClientEvaluateAsyncNoReply[master, Global`LocalKernelPromiseResolve[uid, res]];
+]
+
 ConnectToMaster[params_List, OptionsPattern[]] := (
 
     master = (JTPClient@@params) // JTPClientStart;
@@ -47,9 +57,16 @@ ConnectToMaster[params_List, OptionsPattern[]] := (
 );
 
 (* might be slow on converting to JSON *)
+(* we neeed to use Compress instead *)
 SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJSON", "Compact" -> -1]}, JTPClientEvaluateAsyncNoReply[master, Global`NotebookFrontEndSend[i][ e ] ] ];
 
+FrontSubmit = SendToFrontEnd
+
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
+
+$ExtendDefinitions[uid_, defs_] := With[{id = notebook}, 
+Print["a query to extend sent for "<>id];
+JTPClientEvaluateAsyncNoReply[master, Global`NExtendSingleDefinition[uid, defs][id] ] ];
 
 AttachNotebook[id_, path_] := ( notebook = id; SetDirectory[path]; Print["Notebook "<>id<>" attached!"];);
 

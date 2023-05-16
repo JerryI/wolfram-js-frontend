@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`"}];
+BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`"}];
 
 (*
   ::Only for SECONDARY kernel::
@@ -14,6 +14,8 @@ LoadWebObjects::usage = "LoadWebObjects loads all objects into memory and makes 
 
 FrontEndOnly::usage = "a wrapper, where the expression will not be processed outside the frontend"
 
+FHold::usage = "alias to FrontEndOnly"
+
 CreateFrontEndObject::usage = "Create an object"
 
 Begin["`Private`"]; 
@@ -24,11 +26,15 @@ JerryI`WolframJSFrontend`WebObjects`list = {};
 (* create and extend the definitionsof the kernel *)
 CreateFrontEndObject[expr_, $iouid_:Null] := 
 With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
-  Global`$NewDefinitions[$ouid] = <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> -1], "date"->Now |>; 
+  Print["obj created!"];
+  $ExtendDefinitions[$ouid, <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> -1], "date"->Now |>]; 
+
   Global`FrontEndExecutableHold[$ouid] 
 ]
 
 SetAttributes[FrontEndOnly, HoldFirst]
+
+SetAttributes[FHold, HoldFirst]
 
 RegisterWebObject[sym_] := JerryI`WolframJSFrontend`WebObjects`list = {JerryI`WolframJSFrontend`WebObjects`list, sym}//Flatten;
 
@@ -36,8 +42,12 @@ LoadWebObjects := (
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[
     With[{item = i},
       {
-        Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; Global`FrontEndExecutable[$ouid] ],
-        item[x__] :> With[{$ouid = CreateUUID[]}, Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; Global`FrontEndExecutable[$ouid] ]
+        Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ],
+        item[x__] :> With[{$ouid = CreateUUID[]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ]
       }
     ]
    , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;

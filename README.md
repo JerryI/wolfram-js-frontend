@@ -4,10 +4,7 @@ This is a minimalistic, opensource, portable and lightweight notebook interface 
 
 ![](imgs/ezgif.com-crop.gif)
 
-
-**This project is still in alpha stage!**
-
-**Documentation/tutorials are on a way**
+**Warning! Early Stage of Development**
 
 To help maintain this project. 
 kirill.vasin@uni-a.de

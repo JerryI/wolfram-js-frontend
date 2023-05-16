@@ -616,23 +616,42 @@ However it solves our problem with `Graphics3D` dynamics flawessly
 
 As you can see, there is no explicitly mentioned `CreateFrontEnObject` for `Sphere`, but its JS representation has `.virtual = true` attribute.
 
-### 🚧 Injection into the container's instance
-Work is in progress...
+### Injection into the container's instance/env
+This feature is still in early development
 
-Can be very handy if one want to modify 3D scene. This is anyway a `env.scene` object, that it principle can be populated with new graphics in realtime. For that one need to attach to some particular instance of Frontend Object and evaluate inside it the desired expression with spheres and etc
+Can be very handy if one want to modify 2D 3D scene without reevauating anything. This is anyway a `env.scene` object, that it principle can be populated with new graphics in realtime. For that one need to attach to some particular instance of Frontend Object and evaluate inside it the desired expression with spheres and etc.
+
+#### 🎡 Example with lines
+Let us define some typical plot and apply a __meta-marker__ on it
 
 ```mathematica
-inst = GetInstances[FrontEndExecutable["myGfx3D"]] // First;
-
-Context[
-	Placed[
-	
-		{Cuboid[], Tetrahedron[]}
-		
-	, {"object"->"myGfx3D", "instance"->inst}]
-, "g3d"] // SendToFrontEnd;
+Plot[x, {x,0,1}, Epilog->{MetaMarker["label"]}]
 ```
 
-something like this...
+This will generate `Graphics` object and place an invisible marker on it, which will store the instance uid of this frontend object.
 
+Now we can apply a selector query and place a new expression (or lets say - evaluate in-place) inside the given container. For now only we have only frontend's side support
 
+```mathematica
+Placed[{Line[{{0.2,0.6},{0.1,0.5}}]}, FindMetaMarker["label"]//First] // FrontEndOnly // FrontSubmit;
+```
+
+A line should appear. Or we can even go further and define a new frontend object and update it afterwards
+
+```mathematica
+CreateFrontEndObject[RandomReal[{0,1},{2, 2}], "fakeline"];
+Placed[{RGBColor[1,0,0], Line[FrontEndRef["fakeline"]]}, FindMetaMarker["label"]//First] // FrontEndOnly // FrontSubmit;
+```
+
+And then, lets update the coordinates of a line
+
+```mathematica
+Do[
+  FrontEndRef["fakeline"] = RandomReal[{0,1},{2, 2}];
+  Pause[0.5];
+, {i, 1, 10}];
+```
+
+![[ezgif.com-optimize-7.gif]]
+
+Viola.

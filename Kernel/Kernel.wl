@@ -13,6 +13,8 @@ BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFront
 
 LocalKernel::usage = "A wrapper for the local evaluator and its commands"
 
+LocalKernelPromiseResolve::usage = "for internal communication"
+
 Begin["`Private`"]; 
 
 link = Null;
@@ -48,6 +50,26 @@ LocalKernel[ev_, cbk_, OptionsPattern[]] := (
         Print["WSTPLink write"];
     ];
 );
+
+promises = <||>;
+
+LocalKernelPromiseResolve[uid_, res_] := (
+    promises[uid] = res;
+);
+
+LocalKernel["Ask"][expr_] := Module[{res}, With[{uid = CreateUUID[]},
+    If[status["signal"] =!= "good", Print["Not running!"]; Return[$Failed]];
+
+    promises[uid] = $Waiting;
+    JTPSend[asyncsocket, Global`MasterResolvePromise[expr][uid]];
+    While[promises[uid] === $Waiting,
+        Pause[0.1];
+    ];
+
+    res = promises[uid];
+    promise[uid] = .;
+    res
+]]
 
 LocalKernel["PongHandler"][cbk_] := pongHandler = cbk;
 

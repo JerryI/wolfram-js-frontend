@@ -225,7 +225,11 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
                                 CellListAddNewOutput[CellObj[cell]["sign"], CellObj[cell], new];
                             ]
                         ]
+                    ,
+                        epilog[CellObj[cell]["sign"]];
                     ];
+
+                    
 
                     If[#2[[1]] === length,
                         CellObj[cell]["state"] = "idle";

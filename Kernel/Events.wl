@@ -56,6 +56,12 @@ EventHandler[expr_, ev_List] := Module[{eventsList = {}},
     EventListener[expr, (Sequence@@eventsList)]
 ]
 
+(* better to use this instead of EventBind *)
+EventHandler[EventObject[assoc_Association], handler_] ^:= (
+    EventHandlers[assoc["id"]] = handler;
+    EventObject[assoc]
+)
+
 End[];
 
 EndPackage[];

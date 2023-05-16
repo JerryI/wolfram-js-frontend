@@ -21,6 +21,12 @@
 
         <!-- connection to the server (global) -->
         <script src="/dist/sockets.js"></script>
+
+
+        <!-- editors autocomplete -->
+        <?wsp Table[ ?> 
+            <script type="module" src="/<?wsp i ?>"></script>
+        <?wsp , {i, Includes["autocomplete"]}]?>         
     </head>
     <body class="notion-body">
         <div id="notion-app">

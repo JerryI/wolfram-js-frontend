@@ -326,16 +326,16 @@ List\",0.8210127634166458,0.6179899845391952],[\"List\",9.39366006080864e-2,0\
 104837,0.6268050645692822],[\"List\",0.5766625637459835,0.8686611228434569]],\
 [\"List\",[\"List\",0.5,0.5]]],[\"Rule\",\"'RequestAnimationFrame'\",[\"List\
 \",\"'hldhaaugtufvvbdjxxxa'\",\"'symhldhaaugtufvvbdjxxxa'\"]]]", 
-       "date" -> DateObject[{2023, 5, 1, 20, 25, 5.972718`7.528746997950082}, 
-         "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 14, 14, 26, 
+          0.403168`6.358061043413558}, "Instant", "Gregorian", 2.]|>, 
      "27b3c498-7675-4363-8efc-7d9da243e37d" -> 
       <|"json" -> "[\"FrontEndTruncated\",\"'{{0.816060258810039`,0.696941270\
-8482463`,0.`},{0.5'\",23177]", "date" -> DateObject[{2023, 5, 1, 20, 25, 
-          5.945378`7.526754459550798}, "Instant", "Gregorian", 2.]|>|>, 
+8482463`,0.`},{0.5'\",23177]", "date" -> DateObject[{2023, 5, 14, 14, 26, 
+          0.39142`6.345218001763817}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Examples/Diffusio\
 n-Limited-Aggregation.wl", "cell" -> 
     "185adda9-66d6-44e7-9760-e22b3b1cad40fa8", 
-   "date" -> DateObject[{2023, 5, 1, 20, 43, 6.299343`7.551870243905011}, 
+   "date" -> DateObject[{2023, 5, 14, 14, 31, 59.398712`8.526352000921493}, 
      "Instant", "Gregorian", 2.]|>, 
  "cells" -> {<|"id" -> "185adda9-66d6-44e7-9760-e22b3b1cad40fa8", 
     "type" -> "input", "data" -> ".md\n## Diffusion-Limited Aggregation: A \

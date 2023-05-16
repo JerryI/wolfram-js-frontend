@@ -28,6 +28,7 @@ Includes["js"];
 Includes["wlkernel"];
 Includes["wl"];
 Includes["styles"];
+Includes["autocomplete"];
 
 Print["getting modules..."];
 
@@ -111,4 +112,4 @@ If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
-While[True, Pause[1]];
+While[True, LoopRun; Pause[0.3]];

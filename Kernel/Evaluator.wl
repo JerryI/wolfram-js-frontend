@@ -8,6 +8,13 @@
   - Template postprocessor
 *)
 
+(* markers and instances *)
+
+Unprotect[Select];
+Select[FrontEndInstances, MetaMarker[label_]] ^:= Module[{},
+  AskMaster[Global`NotebookAskFront[FindMetaMarker[label]]]
+]; 
+
 Global`$out = Null;
 
 (* global scope *)
@@ -82,26 +89,32 @@ WolframEvaluator::usage = "WolframEvaluator[] a basic mathematica kernel, which 
 TemplateEvaluator::usage = "used for custom built cell types. uses WSP engine"
 CellPrologOption::usage = "CellPrologOption[] used for overriding cell's id"
 
+
+InternalGetObject::usage = "internal command"
+
+
 Begin["`Private`"]; 
+
+
 
 (* local copy of the notebook storage, which is extended by WebObjects` indirectly *)
 JerryI`WolframJSFrontend`Evaluator`objects   = <||>;
 
+InternalGetObject[uid_] := (
+  JerryI`WolframJSFrontend`Evaluator`objects[uid]
+)
+
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
   Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated},
-    Block[{
-            
-          },
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
       $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold) /. {Global`IconizeWrapper -> Identity};
       
       (* a shitty analogue of % symbol *)
       Global`$out = $evaluated;
-      
+
       (* blocks the output if the was a command from the procesor *)
-      If[block === True, $evaluated = Null];
-    ];  
+      If[block === True, $evaluated = Null]; 
 
     (* replaces the output with a registered WebObjects/FrontEndObjects and releases created held frontend objects *)
     With[{$result = ($evaluated // Global`CM6Form) /. JerryI`WolframJSFrontend`WebObjects`replacement /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}},
@@ -110,6 +123,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       
       (* truncate the output, if it is too long and create a fake object to represent it *)
       With[{$string = $result // Global`ToCM6Boxes},
+
         callback[
           If[StringLength[$string] > 5000,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},
@@ -118,8 +132,8 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
               JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = $string;
 
               (* create a separate representation for the notebook and frontened using the same id *)
-              Global`$NewDefinitions[dumpid] = <|"json"->ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1], "date"->Now |>;
-              "FrontEndExecutable[\""<>dumpid<>"\"]"
+              Global`$ExtendDefinitions[dumpid, <|"json"->ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1], "date"->Now |>;
+              "FrontEndExecutable[\""<>dumpid<>"\"]"];
             ]
           ,
             $string
@@ -132,7 +146,8 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
           "codemirror",
 
           (* an internal message for the master kernel, which passes the created objects during the evaluation *)
-          JerryI`WolframJSFrontend`ExtendDefinitions[Global`$NewDefinitions]
+          (*JerryI`WolframJSFrontend`ExtendDefinitions[Global`$NewDefinitions]*)
+          Null
 
         ];
       ]

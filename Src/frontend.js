@@ -178,8 +178,6 @@ class CellWrapper {
     }
 
     CellHash.add(this);
-    console.log('cell hashes');
-    console.log(CellHash);
 
     this.element = document.getElementById(this.uid+"---"+this.type);
     if (this.type === 'input') this.toolbox();
@@ -286,9 +284,6 @@ core.FrontEndUpdateCellState = function (args, env) {
 core.FrontEndCreateCell = function (args, env) {
   var template = interpretate(args[0]);
   var input = interpretate(args[1]);
-  console.log('new cell!');
-  console.log(template);
-  console.log(input);
 
   new CellWrapper(template, input);
 }

@@ -47,6 +47,7 @@ NotebookRename::usage = "sanitize the given name, then rename a notebook and upd
 FileOperate::usage = "a wrapper for easy-file operations"
 
 NotebookPromise::usage = "ask a server to do something... and return result as a resolved promise to the frontend"
+NotebookPromiseDeferred::usage = "the same"
 
 NotebookStore::usage = "save (serialise) the notebook to a file using Cells`Pack methods"
 NotebookStoreManually::usage = "altered version of the previous command"
@@ -56,6 +57,8 @@ CreateNewNotebook::usage = "create a serialised notebook and store it on a disk"
 CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
+
+NExtendSingleDefinition::usage = ""
 
 GarbageCollector::usage = "collect garbage form notebook"
 
@@ -129,6 +132,18 @@ NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#]["json"] ], sign] &/@ updated;
 ];
 
+NExtendSingleDefinition[uid_, defs_][notebook_] := Module[{updated = False},
+    Print["Direct definition extension"];
+
+    updated = KeyExistsQ[jsfn`Notebooks[notebook]["objects"], uid];
+
+    jsfn`Notebooks[notebook]["objects"][uid] = defs; 
+
+    If[updated,
+        Print["Will be updated!"];
+        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[uid, defs["json"] ], sign];  
+    ];  
+]
 
 
 (* load a notebook into memory  *)
@@ -396,6 +411,8 @@ NotebookRename[name_] := Module[{channel, newname, newpath},
     (* update UI elements *)
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileName[newname, jsfn`Notebooks[channel]["path"]], channel];
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+
+    NotebookStoreManually[channel];
 ];
 
 NotebookCreate[OptionsPattern[]] := (
@@ -476,12 +493,16 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
 ];
 
 
-NotebookGetObject[uid_] := With[{channel = $AssociationSocket[Global`client]},
-    Print[StringTemplate["getting object `` with data inside \\n `` \\n"][uid, jsfn`Notebooks[channel]["objects"][uid]]];
+NotebookGetObject[uid_] := Module[{obj}, With[{channel = $AssociationSocket[Global`client]},
+    If[!KeyExistsQ[jsfn`Notebooks[channel]["objects"], uid],
+        Print["we did not find an object "<>uid<>" at the master kernel. failed"];
+        Return[$Failed];
+    ];
+    Print[StringTemplate["getting object `` with data inside \n `` \n"][uid, jsfn`Notebooks[channel]["objects"][uid]//Compress]];
 
     jsfn`Notebooks[channel]["objects"][uid]["date"] = Now;
     jsfn`Notebooks[channel]["objects"][uid]["json"]
-];
+]];
 
 NotebookGetObjectForMe[uid_][id_] := (
     Print["getting uid object "<>uid<>" for notebook "<>id];
@@ -489,8 +510,15 @@ NotebookGetObjectForMe[uid_][id_] := (
     jsfn`Notebooks[id]["objects"][uid]
 );
 
+
 NotebookPromise[uid_, params_][expr_] := With[{},
     WebSocketSend[Global`client, Global`PromiseResolve[uid, expr]];
+];
+
+NotebookPromiseDeferred[uid_, params_][helexpr_] := With[{cli = Global`client},
+    LoopSubmit[Hold[Block[{Global`client = cli}, helexpr]], Function[cbk,
+        WebSocketSend[cli, Global`PromiseResolve[uid, cbk]]
+    ]];
 ];
 
 (*NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
