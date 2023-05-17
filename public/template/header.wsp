@@ -34,6 +34,8 @@
                 <div style="">
                     <div class="notion-cursor-listener" style="">
                         <?wsp LoadPage["template/modal.wsp"] ?>
+
+                        <?wsp If[MissingQ[session["Query", "zen"]], ?>
                         <div class="notion-sidebar-container" style="">
                             <div style="">
                                 <div style="">
@@ -41,10 +43,12 @@
                                 </div>
                             </div>
                         </div>
+                        <?wsp , ""] ?>
+
                         <div class="" style="">
                             <div>
                                 <?wsp LoadPage["template/topbar.wsp"] ?>
                             </div>
                                 
                          
-        <div class="notion-frame" style="">
+        <div class="notion-frame <?wsp If[MissingQ[session["Query", "zen"]], "", " notion-frame-extended"] ?>" style="">

@@ -168,8 +168,15 @@ class CellWrapper {
       console.log('plain insertion');
       //inject into the right place
       if (this.type === 'output') {
-
-        document.getElementById(CellList.slice(-1)).insertAdjacentHTML('beforeend', template);
+        const prev = CellHash.get(CellList.slice(-1));
+        if (prev.type === 'input') {
+          //inject into parent's holder
+          document.getElementById(prev.uid).insertAdjacentHTML('beforeend', template);
+        } else {
+          //find the parent's holder and inject into the end
+          document.getElementById(prev.uid+"---output").parentNode.insertAdjacentHTML('beforeend', template);
+        }
+        
       } else {
         document.getElementById("frontend-contenteditable").insertAdjacentHTML('beforeend', template);
       }

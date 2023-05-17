@@ -49,6 +49,8 @@ FileOperate::usage = "a wrapper for easy-file operations"
 NotebookPromise::usage = "ask a server to do something... and return result as a resolved promise to the frontend"
 NotebookPromiseDeferred::usage = "the same"
 
+NotebookPromiseKernel::usage = "ask a computing kernel to do something..."
+
 NotebookStore::usage = "save (serialise) the notebook to a file using Cells`Pack methods"
 NotebookStoreManually::usage = "altered version of the previous command"
 
@@ -57,6 +59,8 @@ CreateNewNotebook::usage = "create a serialised notebook and store it on a disk"
 CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
+
+NotebookEvaluateAll::usage = ""
 
 NExtendSingleDefinition::usage = ""
 
@@ -521,11 +525,15 @@ NotebookPromiseDeferred[uid_, params_][helexpr_] := With[{cli = Global`client},
     ]];
 ];
 
-(*NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
+NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
 
-
-    jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ Global`WebSocketPublish[JerryI`WolframJSFrontend`server, Global`PromiseResolve[uid, expr], channel] ] ]
-];*)
+    jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
+        With[{result = expr // ReleaseHold},
+            Print["side evaluating on the Kernel"];
+            Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
+        ]
+    ] ]
+];
 
 NotebookOperate[cellid_, op_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
@@ -538,6 +546,12 @@ NotebookOperate[cellid_, op_, arg_] := (
         op[CellObj[cellid], arg];
     ];
 );
+
+NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, x["type"] === "input"]];
+    ];
+];
 
 (*
 NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake[CreateUUID[], 3]<>".html"},

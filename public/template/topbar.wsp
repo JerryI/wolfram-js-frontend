@@ -79,7 +79,7 @@
             return;
         }
 
-        alert('not implemented');
+        socket.send('NotebookEvaluateAll');
     });    
 
     core.FrontEndUpdateFileName = function(args, env) {

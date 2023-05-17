@@ -76,6 +76,7 @@
     });
 
     //toggle sidebar
+    <?wsp If[MissingQ[session["Query", "zen"]], ?>
     {
         let sidebarToggle = localStorage.getItem("sidebar-hide");
 
@@ -105,7 +106,13 @@
             localStorage.setItem("sidebar-hide", sidebarToggle);
         });        
             
-    }     
+    }    
+    <?wsp , ""] ?> 
+
+    <?wsp If[!MissingQ[session["Query", "zen"]], ?>
+    //a plug
+        core.FrontEndUpdateFileList = function(args, env) { };
+    <?wsp , ""] ?>
 
  </script>
     

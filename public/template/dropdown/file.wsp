@@ -18,6 +18,19 @@
                                 
                             </div>
                         </div>
+                        <div id="file-open-zen-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/moveTo.svg"/>    
+                                    </div>
+                                </div>
+                                <div class="button-label">
+                                    <div class="label-clear">Open in a new zen window</div>
+                                </div>
+                                
+                            </div>
+                        </div>                        
                         <div id="file-clone-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
@@ -87,6 +100,10 @@
     document.getElementById("file-open-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>', '_blank');
     });  
+
+    document.getElementById("file-open-zen-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+        openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>&zen=true', '_blank');
+    });    
 
     document.getElementById("file-download-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         downloadByURL('<?wsp file ?>', '<?wsp FileNameTake[file] ?>');
