@@ -241,24 +241,24 @@ class CellWrapper {
   }
 }
 
-core.FrontEndRemoveCell = function (args, env) {
-  var input = interpretate(args[0]);
+core.FrontEndRemoveCell = async function (args, env) {
+  var input = await interpretate(args[0]);
   CellHash.get(input["id"]).dispose();
 };
 
-core.FrontEndCellMorphInput = function (args, env) {
+core.FrontEndCellMorphInput = async function (args, env) {
   var template = interpretate(args[0]);
-  var input = interpretate(args[1]);
+  var input = await interpretate(args[1]);
 
   CellHash.get(input["id"]).morph(template, input);
 }; 
 
-core.FrontEndCellError = function (args, env) {
-  alert(interpretate(args[1]));
+core.FrontEndCellError = async function (args, env) {
+  alert(await interpretate(args[1], env));
 };
 
-core.FrontEndTruncated = function (args, env) {
-  env.element.innerHTML = interpretate(args[0]) + " ...";
+core.FrontEndTruncated = async function (args, env) {
+  env.element.innerHTML = (await interpretate(args[0], env) + " ...");
 }
 
 core.IconizeWrapper = function (args, env) {
@@ -280,17 +280,17 @@ core.FrontEndGlobalAbort = function (args, env) {
   });
 }
 
-core.FrontEndUpdateCellState = function (args, env) {
-  const input = interpretate(args[0], env);
+core.FrontEndUpdateCellState = async function (args, env) {
+  const input = await interpretate(args[0], env);
   console.log('update state');
   console.log(input["id"]);
 
   CellHash.get(input["id"]).updateState(input["state"]);
 }
 
-core.FrontEndCreateCell = function (args, env) {
+core.FrontEndCreateCell = async function (args, env) {
   var template = interpretate(args[0]);
-  var input = interpretate(args[1]);
+  var input = await interpretate(args[1]);
 
   new CellWrapper(template, input);
 }

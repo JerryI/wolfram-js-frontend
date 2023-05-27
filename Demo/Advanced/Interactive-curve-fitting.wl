@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Cocoa", "id" -> "socket-3d9f9", 
+<|"notebook" -> <|"name" -> "Cocoa", "id" -> "baptism-5a294", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"356341bc-38df-49e7-b2fe-3865bbe3dc71" -> 
       <|"json" -> "[\"FrontEndTruncated\",\"'{{8,\\\"K\\\"},{0,0.353508`},{0.\
@@ -6,8 +6,8 @@
          {2023, 5, 15, 21, 15, 54.972545`8.492720817889131}, "Instant", 
          "Gregorian", 2.]|>, "exp" -> 
       <|"json" -> "[\"List\",[\"List\",3253,0.1],[\"List\",3851,0.25]]", 
-       "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          19.229686`8.036547176714272}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          7.991256`7.655190030769988}, "Instant", "Gregorian", 2.]|>, 
      "4b41a339-616b-4689-aa5d-c52c88e91284" -> 
       <|"json" -> "[\"Graphics\",[\"Line\",[\"FrontEndRef\",\"'exp'\"]],[\"Ru\
 le\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\"List\",0.1,0.25]]],[\"Ru\
@@ -278,8 +278,8 @@ List\",3.784e3,0.16776265139703905],[\"List\",3.785e3,0.16776265139703905],[\
 5],[\"List\",3.796e3,0.16776265139703905],[\"List\",3.797e3,0.167762651397039\
 05],[\"List\",3.798e3,0.16776265139703905],[\"List\",3.799e3,0.16776265139703\
 905],[\"List\",3.8e3,0.16776265139703905]]", 
-       "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          24.178753`8.136008881322914}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          8.165222`7.6645429840193025}, "Instant", "Gregorian", 2.]|>, 
      "071a0146-0251-47e0-a318-6b6cdd5f5af6" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
 \"]],[\"PointSize\",5.0e-2],[\"RGBColor\",1,0,0],[\"EventListener\",[\"Point\
@@ -432,8 +432,8 @@ more'\"],[\"Rule\",\"'Event'\",\"'962435f5-05db-420e-a6c2-188862b3a0b2'\"]]",
        "date" -> DateObject[{2023, 5, 16, 12, 26, 
           32.655749`8.266534629724053}, "Instant", "Gregorian", 2.]|>, 
      "popop7" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
-       "date" -> DateObject[{2023, 5, 16, 12, 26, 
-          57.287213`8.510632668123721}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          8.482853`7.681116928122942}, "Instant", "Gregorian", 2.]|>, 
      "bef116b4-fd4a-4b7a-a28b-5c0aae99708d" -> 
       <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
 \",\"'af2dca53-ee9b-458e-bc7c-a3950417d09c'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
@@ -713,22 +713,14 @@ ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
      "2276204c-4d9c-4d88-ba04-d92c43afaddb" -> 
       <|"json" -> "[\"FileUploadView\",[\"Rule\",\"'Label'\",\"'Drag And \
 Drop'\"],[\"Rule\",\"'Event'\",\"'795b61ca-c348-4431-8fd5-2a5e8ef2cd83'\"]]", 
-       "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          19.045061`8.032357351991728}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 27, 20, 38, 
+          16.514951`7.9704522742698325}, "Instant", "Gregorian", 2.]|>, 
      "45ac626a-a524-446b-ac68-277427ed2b55" -> 
       <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
 more'\"],[\"Rule\",\"'Event'\",\"'648a7288-8a13-4dc5-917e-b5cbbdf8958a'\"]]", 
        "date" -> DateObject[{2023, 5, 16, 14, 49, 
           31.274272`8.247762189715546}, "Instant", "Gregorian", 2.]|>, 
-     "fcbfbb60-ee98-4f0b-b1fa-7c699e2c24e7" -> 
-      <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
-\"]],[\"RGBColor\",1,0,0],[\"Line\",[\"FrontEndRef\",\"'model'\"]],[\"MetaMar\
-ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
-\"List\",0,0.25]]],[\"Rule\",\"Axes\",true],[\"Rule\",\"'TransitionDuration'\
-\",0],[\"Rule\",\"ImageSize\",1200]]", "date" -> DateObject[
-         {2023, 5, 16, 14, 55, 19.124544`8.034166072736914}, "Instant", 
-         "Gregorian", 2.]|>, "lachrymose" -> 
-      <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+     "lachrymose" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 16, 14, 49, 
           40.107243`8.35579778755038}, "Instant", "Gregorian", 2.]|>, 
      "glasses" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
@@ -737,55 +729,115 @@ ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
      "c5a3774e-5f5e-422f-bb17-aa801d4645de" -> 
       <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
 \",\"'dab09f17-422b-498f-a873-61aaeb8acf8f'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
-psilon'\"]]", "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          27.034873`8.184499315554547}, "Instant", "Gregorian", 2.]|>, 
+psilon'\"]]", "date" -> DateObject[{2023, 5, 27, 20, 38, 
+          16.525796`7.970737372171847}, "Instant", "Gregorian", 2.]|>, 
      "bc04d890-37b2-4202-b777-4508080ee85a" -> 
       <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
 more'\"],[\"Rule\",\"'Event'\",\"'140e0834-fffe-46f8-aa52-af6118fee05e'\"]]", 
-       "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          27.046714`8.184689490485708}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 27, 20, 38, 
+          16.539613`7.971100328347937}, "Instant", "Gregorian", 2.]|>, 
      "tranquillizing" -> 
       <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 16, 14, 55, 
           42.475327`8.38071170871213}, "Instant", "Gregorian", 2.]|>, 
      "dispersive" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 16, 14, 55, 
-          46.502052`8.420047094075617}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/../Demo/Advanced/\
-Interactive-curve-fitting.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 16, 15, 12, 19.457772`8.041668094139105}, 
+          46.502052`8.420047094075617}, "Instant", "Gregorian", 2.]|>, 
+     "e84ef200-4d76-4977-a28e-7cba80810429" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
+more'\"],[\"Rule\",\"'Event'\",\"'7d4396e8-af01-4879-a3c7-e0faacf7d559'\"]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 38, 
+          43.819715`8.394244526048093}, "Instant", "Gregorian", 2.]|>, 
+     "a354a40e-3bd8-406f-a7c8-fa936d19dc8e" -> 
+      <|"json" -> "[\"FileUploadView\",[\"Rule\",\"'Label'\",\"'Drag And \
+Drop'\"],[\"Rule\",\"'Event'\",\"'026411bb-3ca5-4ab8-a365-8d6aaf51ea1d'\"]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          1.040712`6.769905551139645}, "Instant", "Gregorian", 2.]|>, 
+     "c54a5384-2d3f-4f2a-a804-8b23d3f01114" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
+\",\"'80db799f-a6f9-4994-aa1a-6c19b86e5a97'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
+psilon'\"]]", "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          1.050248`6.773866852065772}, "Instant", "Gregorian", 2.]|>, 
+     "93a3fa2f-4873-46ab-ad9d-b07c71e30ec0" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
+more'\"],[\"Rule\",\"'Event'\",\"'e7373a6c-26da-48bb-823c-d25faffd46c5'\"]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          1.066195`6.780411630424954}, "Instant", "Gregorian", 2.]|>, 
+     "0ddf54d2-1e5c-4cf7-b8b2-0565ff0e8482" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
+\"]],[\"RGBColor\",1,0,0],[\"Line\",[\"FrontEndRef\",\"'model'\"]],[\"MetaMar\
+ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
+\"List\",0,0.25]]],[\"Rule\",\"Axes\",true],[\"Rule\",\"'TransitionDuration'\
+\",0],[\"Rule\",\"ImageSize\",1200]]", "date" -> DateObject[
+         {2023, 5, 27, 20, 51, 1.094048`6.791611365434726}, "Instant", 
+         "Gregorian", 2.]|>, "58ed5bce-57df-4a73-97fd-4e07eecd5a84" -> 
+      <|"json" -> "[\"FileUploadView\",[\"Rule\",\"'Label'\",\"'Drag And \
+Drop'\"],[\"Rule\",\"'Event'\",\"'6fbff71c-3fbd-40f5-8eef-3134b29eece6'\"]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          11.147937`7.799769491892574}, "Instant", "Gregorian", 2.]|>, 
+     "5c9f5f8b-8950-42e0-9a0c-ff178191f0eb" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
+\",\"'58d633a0-9939-479f-b1d5-4dc31e5525f0'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
+psilon'\"]]", "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          11.223196`7.8026915335892735}, "Instant", "Gregorian", 2.]|>, 
+     "7f5dc4e8-08fe-46a2-8792-acc4cdfbb9fc" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
+more'\"],[\"Rule\",\"'Event'\",\"'654b970c-219a-4587-969a-f9b564cbf1d1'\"]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          11.236269`7.8031971139673555}, "Instant", "Gregorian", 2.]|>, 
+     "4642a14f-86e3-454a-bfd2-8cdbbe85d00a" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
+\"]],[\"RGBColor\",1,0,0],[\"Line\",[\"FrontEndRef\",\"'model'\"]],[\"MetaMar\
+ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
+\"List\",0,0.25]]],[\"Rule\",\"Axes\",true],[\"Rule\",\"'TransitionDuration'\
+\",0],[\"Rule\",\"ImageSize\",1200]]", "date" -> DateObject[
+         {2023, 5, 27, 20, 51, 11.249303`7.803700600817601}, "Instant", 
+         "Gregorian", 2.]|>, "mulatto" -> 
+      <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 51, 
+          43.152585`8.387581794113382}, "Instant", "Gregorian", 2.]|>, 
+     "rabbinical" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 52, 
+          8.295379`7.671411219875805}, "Instant", "Gregorian", 2.]|>, 
+     "appropriator" -> 
+      <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 27, 20, 52, 
+          22.120557`8.097371041550678}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Advanced/Interact\
+ive-curve-fitting.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 5, 27, 20, 53, 56.530211`8.504855580360669}, 
      "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b", 
+ "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b197", 
     "type" -> "input", "data" -> 
      ".md\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "afa05073-28aa-4951-94e4-bc0588824d9e77b", "type" -> "output", 
+   <|"id" -> "60706ab7-c3c3-4e6d-843c-36adc6f78a08", "type" -> "output", 
     "data" -> "\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "markdown", "sign" -> "socket-3d9f9", 
+    "display" -> "markdown", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b", "type" -> "input", 
+   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b197", "type" -> "input", 
     "data" -> "EventHandler[InputFile[\"Drag And Drop\"], addFile]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4066aeb4-859a-44e2-be6c-131386a3123277b", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"2276204c-4d9c-4d88-ba04-d92c43afaddb\"]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+   <|"id" -> "07c58803-f812-4bf4-a04f-d4c2b6b1f50c", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"58ed5bce-57df-4a73-97fd-4e07eecd5a84\"]", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b", "type" -> "input", 
+   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b197", "type" -> "input", 
     "data" -> ".md\nA file-handler", "display" -> "codemirror", 
-    "sign" -> "socket-3d9f9", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "5486b3b3-ea71-4d39-b9ae-04648ce8c11d77b", "type" -> "output", 
+    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "bf7a1495-d2f6-4022-b67a-0d7b118689a6", "type" -> "output", 
     "data" -> "\nA file-handler", "display" -> "markdown", 
-    "sign" -> "socket-3d9f9", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b", "type" -> "input", 
+    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b197", "type" -> "input", 
     "data" -> "CreateFrontEndObject[{{3253, 0.1},{3851, 0.25}}, \
-\"exp\"];\naddFile[file_] := With[{},\n  test = \
+\"exp\"];\naddFile[file_] := With[{},\n  Print[\"got it\"];\n  test = \
 Drop[ImportString[file[\"data\"] // BaseDecode // ByteArrayToString, \
 \"TSV\"], 3];\n  FrontEndRef[\"exp\"] = test;\n] ", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b", "type" -> "input", 
+   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b197", "type" -> "input", 
     "data" -> "oscillators = <||>;\n\nSet[Oscillator[n_], i_] ^:= \
 (oscillators[n, \"params\"] = i;  FrontEndRef[\"model\"] \
 =getReflection[]);\nAppendTo[Oscillator[n_]] ^:= (oscillators[n] = \
@@ -793,9 +845,9 @@ Drop[ImportString[file[\"data\"] // BaseDecode // ByteArrayToString, \
 CM6Superscript[x0, 2]- CM6Superscript[x, 2]- I width x]], \"params\"->{3552, \
 10.0 , 15.648235634730188`}|>; FrontEndRef[\"model\"]= \
 getReflection[]);\nOscillator[n_] := oscillators[n, \"params\"];\n", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b", "type" -> "input", 
+   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b197", "type" -> "input", 
     "data" -> "eps = \
 5.7;\n\nClearAll[getReflection]\n\ngetReflection[keys_:{}] := (\n  initial = \
 {x0, A, width};\n  Table[\n  With[{lor = Map[oscillators[#, \"model\"] @@ \
@@ -804,9 +856,9 @@ oscillators//Keys, {keys}//Flatten]] // Total},\n  \n    {x, 1 - (4 \
 Re[Sqrt[lor + eps]])/(\n Im[Sqrt[lor + eps]]^2 + (1 + Re[Sqrt[lor + \
 eps]])^2)}\n  ], {x, 3300, 3800,1.0}] //N // \
 Quiet\n);\n\nCreateFrontEndObject[getReflection[], \"model\"];", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b", "type" -> "input", 
+   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b197", "type" -> "input", 
     "data" -> "EventHandler[InputRange[1,6,0.1, 5.7, \"Label\"->\"Epsilon\"], \
 Function[e, eps = e; FrontEndRef[\"model\"]= getReflection[]; \
 ]]\n\nEventHandler[InputButton[\"Add more\"], Function[blank,\nWith[{name = \
@@ -820,46 +872,42 @@ Oscillator[name] = {c[[1]], c[[2]], Oscillator[name][[3]]}; \
 Oscillator[name] = {Oscillator[name][[1]], Oscillator[name][[2]], 10 k}; \
 (*FrontEndRef[name] = getReflection[name] *) ]\n  }]}\n  ]  \n},\n  \
 Placed[dragger, FindMetaMarker[\"window\"]//First] // FrontEndOnly // \
-FrontSubmit;\n]]\n]]", "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+FrontSubmit;\n]]\n]]", "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "99026a71-87a7-49f2-8acc-cca91ddae28c77b", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"c5a3774e-5f5e-422f-bb17-aa801d4645de\"]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+   <|"id" -> "bf8871da-f0e3-440b-9c92-611df828797f", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"5c9f5f8b-8950-42e0-9a0c-ff178191f0eb\"]", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ae7799bb-d05a-4745-84c6-8618bb0f683377b", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"bc04d890-37b2-4202-b777-4508080ee85a\"]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+   <|"id" -> "0dc04968-c28b-4363-ba75-8bad6857f291", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"7f5dc4e8-08fe-46a2-8792-acc4cdfbb9fc\"]", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b", "type" -> "input", 
+   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b197", "type" -> "input", 
     "data" -> "Graphics[{\n  Line[FrontEndRef[\"exp\"]], Red, \
 Line[FrontEndRef[\"model\"]], MetaMarker[\"window\"]\n}, PlotRange->{{3253, \
 3851}, {0, 0.25}}, Axes->True, \"TransitionDuration\"->0, ImageSize->1200]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "33bb8602-7c54-48da-9a87-ba67036c731377b", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"fcbfbb60-ee98-4f0b-b1fa-7c699e2c24e7\"]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
+   <|"id" -> "05694377-8c6e-4e2f-bf97-0b731ffdc480", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"4642a14f-86e3-454a-bfd2-8cdbbe85d00a\"]", 
+    "display" -> "codemirror", "sign" -> "baptism-5a294", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b", "type" -> "input", 
+   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b197", "type" -> "input", 
     "data" -> "oscillators", "display" -> "codemirror", 
-    "sign" -> "socket-3d9f9", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d3113a7e-d148-4a84-bfa9-30f5b0706cbb77b", "type" -> "output", 
-    "data" -> "\[LeftAssociation]\[RightAssociation]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5e4266ae-9740-4f66-b799-c15dee0ed21577b", "type" -> "input", 
-    "data" -> " CM6Fraction[4 Re[ CM6Sqrt[lor + eps] ], CM6Superscript[Im[ \
-CM6Sqrt[lor + eps] ], 2]+ CM6Superscript[(1 + Re[ CM6Sqrt[lor + 3] ]), 2]] /. \
-{lor->0, eps->5.7} //Simplify", "display" -> "codemirror", 
-    "sign" -> "socket-3d9f9", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0e99206e-915b-47f3-8cc5-1aa732306b0077b", "type" -> "output", 
-    "data" -> "1.2794398577965245`", "display" -> "codemirror", 
-    "sign" -> "socket-3d9f9", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5da91fc2-f25d-4285-8300-2b896018608677b", "type" -> "input", 
-    "data" -> "CreateFrontEndObject[{{0,0},{0,0}}, \"popop7\"];", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8e5d28e1-9134-4eef-8fc9-d43e9476290477b", "type" -> "input", 
-    "data" -> "FrontEndExecutable[\"artificialty\"]", 
-    "display" -> "codemirror", "sign" -> "socket-3d9f9", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "491494a0-7824-456a-a6dc-d26f836053ae", "type" -> "output", 
+    "data" -> "\[LeftAssociation]\"mulatto\"\[Rule]\[LeftAssociation]\"model\
+\"\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
+6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
+x]],\"params\"\[Rule]{3393.6108108108106`,0.09713807171787323`,11.61508731925\
+7217`}\[RightAssociation],\"rabbinical\"\[Rule]\[LeftAssociation]\"model\"\
+\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
+6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
+x]],\"params\"\[Rule]{3487.89009009009`,0.10853991722058628`,8.19036697859827\
+7`}\[RightAssociation],\"appropriator\"\[Rule]\[LeftAssociation]\"model\"\
+\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
+6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
+x]],\"params\"\[Rule]{3476.037837837838`,0.04155407489214702`,6.8777090906987\
+19`}\[RightAssociation]\[RightAssociation]", "display" -> "codemirror", 
+    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

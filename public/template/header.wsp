@@ -6,9 +6,11 @@
             <link rel="stylesheet" href="/<?wsp i ?>">
         <?wsp , {i, Includes["styles"]}]?>
 
-        <!-- any inline js including core library (global) -->
+        <!-- any inline js including core library (global) UPD: No longer exists -->
         <?wsp Table[ ?> 
-            <script src="/<?wsp i ?>"></script>
+            <script>
+            <?wsp Import[FileNameJoin[{"Packages", i}], "String"] ?>
+            </script>
         <?wsp , {i, Includes["js"]}]?>
  
         <!-- frontend library (module) -->

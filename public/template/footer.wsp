@@ -56,8 +56,8 @@
 
     window.addEventListener("wsconnected", function() { 
 
-        core.PageModulesUpdate = function(args, env) {
-            const list = interpretate(args[0], env);
+        core.PageModulesUpdate = async function(args, env) {
+            const list = await interpretate(args[0], env);
             console.log("wsp dynamic load");
             console.log(list);
             list.forEach((e) => {

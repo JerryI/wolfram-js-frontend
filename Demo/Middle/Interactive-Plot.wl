@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Sociopath", "id" -> "commonness-6d5d7", 
+<|"notebook" -> <|"name" -> "Sociopath", "id" -> "accused-91bc4", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"c30c04ce-4c95-45f4-b40d-27b4753a204e" -> 
       <|"json" -> "[\"Graphics3D\",[\"List\",[\"List\",[\"GraphicsComplex\",[\
@@ -11738,63 +11738,68 @@ utableHold\",\"'point'\"]]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,1]\
 ,[\"List\",0,1]]],[\"Rule\",\"'TransitionDuration'\",0],[\"Rule\",\"Axes\",[\
 \"List\",true,false]]]", "date" -> DateObject[{2023, 5, 14, 14, 38, 
           36.241342`8.311779250365593}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Advanced/Interact\
-ive-Plot.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 14, 14, 44, 35.84567`8.307011681913655}, 
-     "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "9393ddf3-5afa-4614-90a9-4fb8a5dc5cb5082972", 
+   "path" -> 
+    "/Volumes/Data/Github/wolfram-js-frontend/Demo/Middle/Interactive-Plot.wl\
+", "cell" :> Exit[], "date" -> DateObject[{2023, 5, 27, 20, 36, 
+      26.185205`8.170630960344843}, "Instant", "Gregorian", 2.]|>, 
+ "cells" -> {<|"id" -> "9393ddf3-5afa-4614-90a9-4fb8a5dc5cb50829724cc", 
     "type" -> "input", "data" -> ".md\n# Interactive Plot", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b68e9ab1-324d-42d5-9cd2-0ea7ffaf7649972", "type" -> "output", 
-    "data" -> "\n# Interactive Plot", "display" -> "markdown", 
-    "sign" -> "commonness-6d5d7", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "39574036-295e-40b0-bb58-55961f95c818972", "type" -> "input", 
+   <|"id" -> "b68e9ab1-324d-42d5-9cd2-0ea7ffaf76499724cc", 
+    "type" -> "output", "data" -> "\n# Interactive Plot", 
+    "display" -> "markdown", "sign" -> "accused-91bc4", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "39574036-295e-40b0-bb58-55961f95c8189724cc", "type" -> "input", 
     "data" -> "initial = {0, 1, 0.1};\ngetGauss[x0_, A_, width_] := (\n  \
 initial = {x0, A, width};\n  Table[{x, A CM6Superscript[E, \
 -CM6Fraction[CM6Superscript[(x-x0), 2], 2 CM6Superscript[width, 2]]] }, \
 {x,-1,1,0.01}]//Quiet\n);\ngetGauss[{x0_, A_}, width_] := getGauss[x0, A, \
-width];", "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+width];", "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "10011197-ee0f-4b00-9430-b9cb26a3427d972", "type" -> "input", 
+   <|"id" -> "10011197-ee0f-4b00-9430-b9cb26a3427d9724cc", "type" -> "input", 
     "data" -> ".md\nLet us create sharable object", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "307dc2fd-b1ea-400a-aff5-e1d1a729e87c972", "type" -> "output", 
-    "data" -> "\nLet us create sharable object", "display" -> "markdown", 
-    "sign" -> "commonness-6d5d7", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0ea5dc76-914d-4c8e-a77b-4c32e42d04bb972", "type" -> "input", 
+   <|"id" -> "307dc2fd-b1ea-400a-aff5-e1d1a729e87c9724cc", 
+    "type" -> "output", "data" -> "\nLet us create sharable object", 
+    "display" -> "markdown", "sign" -> "accused-91bc4", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0ea5dc76-914d-4c8e-a77b-4c32e42d04bb9724cc", "type" -> "input", 
     "data" -> "CreateFrontEndObject[getGauss@@initial, \"point\"]", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5e15639b-065a-45b6-b3ca-2b54cf30ce09972", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"point\"]", "display" -> "codemirror", 
-    "sign" -> "commonness-6d5d7", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4118dc97-6e04-43e8-b026-1f4b7078d49f972", "type" -> "input", 
+   <|"id" -> "5e15639b-065a-45b6-b3ca-2b54cf30ce099724cc", 
+    "type" -> "output", "data" -> "FrontEndExecutable[\"point\"]", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4118dc97-6e04-43e8-b026-1f4b7078d49f9724cc", "type" -> "input", 
     "data" -> ".md\nNow lets define our plot with event handlers", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0c091168-5cc6-4ab9-878c-bd9fbb513723972", "type" -> "output", 
-    "data" -> "\nNow lets define our plot with event handlers", 
-    "display" -> "markdown", "sign" -> "commonness-6d5d7", 
+   <|"id" -> "0c091168-5cc6-4ab9-878c-bd9fbb5137239724cc", 
+    "type" -> "output", "data" -> 
+     "\nNow lets define our plot with event handlers", 
+    "display" -> "markdown", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ebe7219e-f900-4fde-8f92-8942db2a8612082972", "type" -> "input", 
-    "data" -> "Graphics[{\n  Red, PointSize[0.1], \n  EventHandler[\n    \
-Point[initial[[1;;2]]]\n  , {\n     \"drag\"->Function[c, \
+   <|"id" -> "ebe7219e-f900-4fde-8f92-8942db2a86120829724cc", 
+    "type" -> "input", "data" -> "Graphics[{\n  Red, PointSize[0.1], \n  \
+EventHandler[\n    Point[initial[[1;;2]]]\n  , {\n     \"drag\"->Function[c, \
 FrontEndExecutable[\"point\"]= getGauss[c, initial//Last]],\n     \
 \"zoom\"->Function[k, FrontEndExecutable[\"point\"]= \
 getGauss[initial[[1;;2]], k/10]]\n    }],\n  \n  Cyan, \
 Line[FrontEndRef[FrontEndExecutable[\"point\"]]]\n}, \
 PlotRange->{{-1,1},{0,1}}, \"TransitionDuration\"->0, Axes->{True, False}]", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ca1f6e53-8238-4750-8ded-1f2a6fdce7a3", "type" -> "output", 
+   <|"id" -> "ca1f6e53-8238-4750-8ded-1f2a6fdce7a34cc", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"3c1140ce-7f77-4c3b-8520-42a25d9b8598\"]", 
-    "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+    "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8ede264c-7f69-4c7d-86d7-979825967d1a972", "type" -> "input", 
-    "data" -> "", "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
+   <|"id" -> "8ede264c-7f69-4c7d-86d7-979825967d1a9724cc", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "accused-91bc4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7127ba4a-f88d-488b-ba7d-6dfd7fac3637082972", "type" -> "input", 
-    "data" -> "", "display" -> "codemirror", "sign" -> "commonness-6d5d7", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+   <|"id" -> "7127ba4a-f88d-488b-ba7d-6dfd7fac36370829724cc", 
+    "type" -> "input", "data" -> "", "display" -> "codemirror", 
+    "sign" -> "accused-91bc4", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

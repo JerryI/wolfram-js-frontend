@@ -7,7 +7,10 @@
 - [ ] Context menu for evaluation in-place
 - [x] Graphics 2D
 - [ ] EditorView
+- [ ] Expand dynamic variables to frontend. Just if someone used `Hold[a]`, then WLJS will fetch this symbol from the server. So use Unsafe mode when there is no arguments. It will happend automatically.
+- [ ] .wljs type of cells allowsyou to run in a wljs sandbox. (mb IFRAME??)
 - [ ] Graphics 3D path tracing
+- [ ] Themes. https://github.com/catppuccin/obsidian
 - [ ] Excalidraw (graphics integraton, mb using SVG)
 - [x] Fix TCP connection btween master and secondary kernel
 - [x] Write missing chapters in docs
@@ -17,3 +20,6 @@
 - [ ] MakeBoxes support
 - [ ] `FrontEndObject` privews for lists
 - [ ] Inline frontend objects
+- [ ] Excel widget (frontendview?) and as a input widget with events generated.
+- [ ] Make presentations, integration with Motion Canvas
+- [ ] Make WebAPPS deploy as a standalone or kernel assisted. No input cells, only output. Add this feature to export button. Initialising cells as well can be implemented.
