@@ -50,6 +50,7 @@ CM6Form[e_] := e
 
 ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
+ToCM6Boxes[NoBoxes[expr_]] ^:= StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
 (* iconize *)
 Unprotect[Iconize]

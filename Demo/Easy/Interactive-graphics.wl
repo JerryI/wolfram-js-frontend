@@ -1,5 +1,5 @@
-<|"notebook" -> <|"name" -> "Rheumatoid", "id" -> "clustered-57f2a", 
-   "kernel" -> LocalKernel, "objects" :> 
+<|"notebook" -> <|"name" -> "Rheumatoid", "id" -> "custody-db58a", 
+   "kernel" -> LocalKernel, "objects" -> 
     <|"7042192c-2c6f-4e93-bc31-a23fa1f4f742" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
@@ -8,8 +8,8 @@
        "date" -> DateObject[{2023, 5, 13, 18, 6, 8.89086`7.701518758655695}, 
          "Instant", "Gregorian", 2.]|>, 
      "dot" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0.5,0.5]]", 
-       "date" -> DateObject[{2023, 5, 27, 22, 8, 24.873492`8.14831174294899}, 
-         "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 29, 14, 33, 
+          50.109493`8.452494984163481}, "Instant", "Gregorian", 2.]|>, 
      "7b2cc566-3290-4c90-aa48-ceed3f0851ba" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
@@ -40,28 +40,28 @@ EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 5, 27, 18, 44,
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
 \",\"'drag'\",\"'16f50f97-6e21-4ba5-b902-340692c9f58f'\"]],[\"Line\",[\"Front\
-EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 5, 27, 22, 8, 
-          25.380036`8.157067216119922}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/dev/Interactive-graphics.wl", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 5, 27, 22, 12, 
-      29.65629`8.224691801128378}, "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "3af700ce-2c89-4a74-bb0f-20eb79c5c7e9", 
+EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 5, 29, 14, 33, 
+          50.000805`8.451551971943196}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Easy/Interactive-\
+graphics.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 5, 29, 14, 36, 49.564148`8.447742620918925}, 
+     "Instant", "Gregorian", 2.]|>, 
+ "cells" -> {<|"id" -> "3af700ce-2c89-4a74-bb0f-20eb79c5c7e9ca0", 
     "type" -> "input", "data" -> ".md\n# Interactive graphics\nSimple \
 event-listener attached to a graphical object", "display" -> "codemirror", 
-    "sign" -> "clustered-57f2a", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "60d2ae20-b4aa-4a5d-8f49-abb00c1fd2d3", "type" -> "output", 
+    "sign" -> "custody-db58a", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "60d2ae20-b4aa-4a5d-8f49-abb00c1fd2d3ca0", "type" -> "output", 
     "data" -> "\n# Interactive graphics\nSimple event-listener attached to a \
-graphical object", "display" -> "markdown", "sign" -> "clustered-57f2a", 
+graphical object", "display" -> "markdown", "sign" -> "custody-db58a", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "98d7f48c-bd71-4da5-b3e4-816a0104515f", "type" -> "input", 
+   <|"id" -> "98d7f48c-bd71-4da5-b3e4-816a0104515fca0", "type" -> "input", 
     "data" -> "\nCreateFrontEndObject[{{0,0}, {0.5,0.5}}, \
 \"dot\"];\nGraphics[{\n  Red, PointSize[0.1], \n  \
 EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[p, \
 FrontEndRef[\"dot\"] = {{0,0}, p}] }],\n  Line[FrontEndRef[\"dot\"]]\n}]", 
-    "display" -> "codemirror", "sign" -> "clustered-57f2a", 
+    "display" -> "codemirror", "sign" -> "custody-db58a", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8c63eb7f-eab7-4714-a066-66c40649e3b7", "type" -> "output", 
+   <|"id" -> "8c63eb7f-eab7-4714-a066-66c40649e3b7ca0", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"2eb3b616-9e1f-4ead-a620-7e354f97d9bb\"]", 
-    "display" -> "codemirror", "sign" -> "clustered-57f2a", 
+    "display" -> "codemirror", "sign" -> "custody-db58a", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

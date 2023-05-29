@@ -17,6 +17,10 @@
         console.log('subscribe and load notebook'); 
         window.Notebook = "<?wsp notebook ?>";
         socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
+
+        window.onfocus = () => {
+            socket.send('NotebookFocus["<?wsp notebook ?>"];'); 
+        }
     });
 
     {

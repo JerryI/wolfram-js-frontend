@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Persuader", "id" -> "taffy-40f69", 
+<|"notebook" -> <|"name" -> "Persuader", "id" -> "nutritive-bb4a8", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"86a75e0f-2d26-49d8-8141-36a530e394b1" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"List\",[\"List\",[\"List\"],[\"\
@@ -967,7 +967,7 @@ ntSize\",5.0e-2],[\"Point\",[\"List\",[\"List\",1.0,0.0],[\"List\",0.30901699\
 256687],[\"List\",-0.9396926207859084,-0.3420201433256687],[\"List\",-0.5,-0.\
 8660254037844386],[\"List\",0.17364817766693033,-0.984807753012208],[\"List\"\
 ,0.7660444431189781,-0.6427876096865393]]", "date" -> 
-        DateObject[{2023, 5, 27, 23, 3, 17.126121`7.986233992610566}, 
+        DateObject[{2023, 5, 29, 14, 40, 59.250983`8.525270532946873}, 
          "Instant", "Gregorian", 2.]|>, 
      "d4d91a0f-996b-4b6a-a108-51b536c36913" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Opacity\",0.7],[\"RGBColor\",1,\
@@ -1269,70 +1269,70 @@ ts'\"]]],[\"Rule\",\"ImageSize\",[\"List\",300,250]]]",
 ly\",[\"Line\",[\"Tuples\",[\"FrontEndRef\",\"'pts'\"],2]]],[\"RGBColor\",0,0\
 ,1],[\"PointSize\",5.0e-2],[\"Opacity\",0.7],[\"Point\",[\"FrontEndRef\",\"'p\
 ts'\"]]],[\"Rule\",\"ImageSize\",[\"List\",300,250]]]", 
-       "date" -> DateObject[{2023, 5, 27, 23, 3, 
-          17.694098`8.000403412835634}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/dev/Simple-Heterogeneo\
-us-computing-example.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 27, 23, 3, 59.040384`8.523724146552883}, 
+       "date" -> DateObject[{2023, 5, 29, 14, 40, 
+          59.164746`8.524637977454908}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Middle/Simple-Het\
+erogeneous-computing-example.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 5, 29, 14, 52, 57.499045`8.512235605177889}, 
      "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "f4a31258-7ca9-43f8-afe5-065b53ba27f8", 
+ "cells" -> {<|"id" -> "f4a31258-7ca9-43f8-afe5-065b53ba27f882d", 
     "type" -> "input", "data" -> ".md\n# Simple Heterogeneous computing \
 example\nThis is a bit more practical example of how one can optimize \
 perfomance. Since in the browser we have a reduced WL kernel running, one can \
 deligate some post-processing computations to it", "display" -> "codemirror", 
-    "sign" -> "taffy-40f69", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "19afdb61-7332-453b-b140-570313807fac", "type" -> "output", 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "19afdb61-7332-453b-b140-570313807fac82d", "type" -> "output", 
     "data" -> "\n# Simple Heterogeneous computing example\nThis is a bit more \
 practical example of how one can optimize perfomance. Since in the browser we \
 have a reduced WL kernel running, one can deligate some post-processing \
-computations to it", "display" -> "markdown", "sign" -> "taffy-40f69", 
+computations to it", "display" -> "markdown", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "afaec9ac-5fba-480d-a5bf-7bc9b12571c8", "type" -> "input", 
-    "data" -> "  ", "display" -> "codemirror", "sign" -> "taffy-40f69", 
+   <|"id" -> "afaec9ac-5fba-480d-a5bf-7bc9b12571c882d", "type" -> "input", 
+    "data" -> "  ", "display" -> "codemirror", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "eceadce8-203c-455b-856a-80fdb8615e97", "type" -> "input", 
+   <|"id" -> "eceadce8-203c-455b-856a-80fdb8615e9782d", "type" -> "input", 
     "data" -> ".md\nLet's make some nice shapes using shared variable", 
-    "display" -> "codemirror", "sign" -> "taffy-40f69", 
+    "display" -> "codemirror", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d84d14ee-385a-4f7d-be36-00edb4f01b0e", "type" -> "output", 
+   <|"id" -> "d84d14ee-385a-4f7d-be36-00edb4f01b0e82d", "type" -> "output", 
     "data" -> "\nLet's make some nice shapes using shared variable", 
-    "display" -> "markdown", "sign" -> "taffy-40f69", 
+    "display" -> "markdown", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c75cf50f-0f72-4797-a3a5-5507aca7099f", "type" -> "input", 
+   <|"id" -> "c75cf50f-0f72-4797-a3a5-5507aca7099f82d", "type" -> "input", 
     "data" -> "steps = 9;\nCreateFrontEndObject[Table[{Cos[2 n $Pi$/steps], \
 Sin[2 n $Pi$/steps]}, {n, 0, steps-1}] //N, \"pts\"];", 
-    "display" -> "codemirror", "sign" -> "taffy-40f69", 
+    "display" -> "codemirror", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cb70b3dc-709c-41ae-b121-c30952ca15f6", "type" -> "input", 
+   <|"id" -> "cb70b3dc-709c-41ae-b121-c30952ca15f682d", "type" -> "input", 
     "data" -> ".md\nThen we can draw it using 2D graphics utils by the \
 reference to our shared variable", "display" -> "codemirror", 
-    "sign" -> "taffy-40f69", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "324191ac-9810-40b2-bc18-f522c9b84300", "type" -> "output", 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "324191ac-9810-40b2-bc18-f522c9b8430082d", "type" -> "output", 
     "data" -> "\nThen we can draw it using 2D graphics utils by the reference \
-to our shared variable", "display" -> "markdown", "sign" -> "taffy-40f69", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7c00d475-fd7b-4787-b74c-b668a6afcd16", "type" -> "input", 
+to our shared variable", "display" -> "markdown", 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7c00d475-fd7b-4787-b74c-b668a6afcd1682d", "type" -> "input", 
     "data" -> "Graphics[{Red, FrontEndOnly[Line[Tuples[FrontEndRef[\"pts\"], \
 2]]], Blue, PointSize[0.05], Opacity[0.7], Point[FrontEndRef[\"pts\"]]}, \
-ImageSize->{300,250}]", "display" -> "codemirror", "sign" -> "taffy-40f69", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "224671e2-98bb-4a41-b78a-688b4ff27686", "type" -> "output", 
+ImageSize->{300,250}]", "display" -> "codemirror", 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "224671e2-98bb-4a41-b78a-688b4ff2768682d", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"8ac70689-e930-4bef-ae7d-70a44b6ceab7\"]", 
-    "display" -> "codemirror", "sign" -> "taffy-40f69", 
+    "display" -> "codemirror", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e9228089-d09d-47df-96d5-29f90be2ca56", "type" -> "input", 
+   <|"id" -> "e9228089-d09d-47df-96d5-29f90be2ca5682d", "type" -> "input", 
     "data" -> ".md\nTake a look `Tuples` is located inside the \
 `FrontEndOnly`, i.e. all calculations happends on the browsers's side.\n\nNow \
 we can easily animate this figure", "display" -> "codemirror", 
-    "sign" -> "taffy-40f69", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "61c19caa-568b-4c45-bc87-ac98d8ba5a57", "type" -> "output", 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "61c19caa-568b-4c45-bc87-ac98d8ba5a5782d", "type" -> "output", 
     "data" -> "\nTake a look `Tuples` is located inside the `FrontEndOnly`, \
 i.e. all calculations happends on the browsers's side.\n\nNow we can easily \
-animate this figure", "display" -> "markdown", "sign" -> "taffy-40f69", 
+animate this figure", "display" -> "markdown", "sign" -> "nutritive-bb4a8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "58a33aa1-744b-44a6-a836-d344b0c0c20f", "type" -> "input", 
+   <|"id" -> "58a33aa1-744b-44a6-a836-d344b0c0c20f82d", "type" -> "input", 
     "data" -> "Do[\n  steps = RandomInteger[{3,9}];\n  FrontEndRef[\"pts\"] = \
 (Table[{Cos[2 n $Pi$/steps], Sin[2 n $Pi$/steps]}, {n, 0, steps-1}] //N); \n  \
 Pause[0.5];\n, {i, 1, 15}];", "display" -> "codemirror", 
-    "sign" -> "taffy-40f69", "props" -> <|"hidden" -> False|>|>}, 
+    "sign" -> "nutritive-bb4a8", "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn3"|>

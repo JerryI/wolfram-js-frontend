@@ -60,6 +60,8 @@ CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
 
+NotebookFocus::usage = "focus on a tab"
+
 NotebookEvaluateAll::usage = ""
 
 NExtendSingleDefinition::usage = ""
@@ -202,7 +204,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
 
-            Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+         
             CellListUnpack[notebook["cells"]];
 
             $AssoticatedPath[path] = notebook["notebook", "id"];
@@ -223,7 +225,7 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
             (* assign the cellid of the first cell to the notebook *)
 
             
-            Print[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"] ]//InputForm//ToString ];
+           
             
             CellListUnpackLegacy[notebook["cells"], notebook["notebook", "cell"]];
 
@@ -495,6 +497,8 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
         jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
     ]];
 ];
+
+NotebookFocus[channel_] := jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
 
 
 NotebookGetObject[uid_] := Module[{obj}, With[{channel = $AssociationSocket[Global`client]},

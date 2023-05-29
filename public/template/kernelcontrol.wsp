@@ -19,10 +19,10 @@
 
 <script>
     
-    core.FrontEndKernelStatus = function(args, env) {
+    core.FrontEndKernelStatus = async function(args, env) {
         console.log("status update");
         
-        let state = interpretate(args[0], env);
+        let state = await interpretate(args[0], env);
         console.log(state);
         $KernelStatus = state['signal'];
         document.getElementById("kernel-text").innerText = state['text'];

@@ -7,9 +7,9 @@
 - [ ] Context menu for evaluation in-place
 - [x] Graphics 2D
 - [ ] EditorView
+- [ ] A button to disable all WIDGETS in WL mode
 - [ ] Expand dynamic variables to frontend. Just if someone used `Hold[a]`, then WLJS will fetch this symbol from the server. So use Unsafe mode when there is no arguments. It will happend automatically.
 - [ ] .wljs type of cells allowsyou to run in a wljs sandbox. (mb IFRAME??)
-- [ ] Graphics 3D path tracing
 - [ ] Themes. https://github.com/catppuccin/obsidian
 - [ ] Excalidraw (graphics integraton, mb using SVG)
 - [x] Fix TCP connection btween master and secondary kernel
@@ -17,6 +17,7 @@
 - [x] Make plugins support
 - [x] UI bugfixes (Kernel spawns and etc)
 - [ ] TemplateBox
+- [ ] InterpretationBox[boxes,expr] interpret boxes as representing the expression expr - replace expressions with a box instead of styling
 - [ ] MakeBoxes support
 - [ ] `FrontEndObject` privews for lists
 - [ ] Inline frontend objects
