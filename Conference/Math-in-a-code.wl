@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Camshaft", "id" -> "sheaf-ea197", 
+<|"notebook" -> <|"name" -> "Camshaft", "id" -> "pelting-55cd0", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"ca536191-4c72-46c4-a93f-729480a47090" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
@@ -210,86 +210,86 @@ ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
 \"ImageSize\",200]]", "date" -> DateObject[{2023, 5, 27, 22, 42, 
           57.524898`8.512430830887194}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/dev/Math-in-a-code.wl", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 5, 27, 22, 51, 
-      42.122691`8.377091085923363}, "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "e40e6f46-92ac-42d1-ad20-4822a349b0a1", 
+    "/Volumes/Data/Github/wolfram-js-frontend/Conference/Math-in-a-code.wl", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 5, 29, 20, 32, 
+      35.463221`8.302353158114746}, "Instant", "Gregorian", 2.]|>, 
+ "cells" -> {<|"id" -> "e40e6f46-92ac-42d1-ad20-4822a349b0a17dc", 
     "type" -> "input", "data" -> ".md\n# Math in a code\nThe most used \
 shortcuts are supported\n- `Ctrl`+`/` fraction\n- `Ctrl`+`^` power\n- \
 `Ctrl`+`2` square root\n- `Ctrl`+`m` spawn matrix\n\nA short demonstration of \
-syntax sugar. ", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+syntax sugar. ", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3496405f-4a55-4382-97e8-fb20d6c7157f", "type" -> "output", 
+   <|"id" -> "3496405f-4a55-4382-97e8-fb20d6c7157f7dc", "type" -> "output", 
     "data" -> "\n# Math in a code\nThe most used shortcuts are supported\n- \
 `Ctrl`+`/` fraction\n- `Ctrl`+`^` power\n- `Ctrl`+`2` square root\n- \
 `Ctrl`+`m` spawn matrix\n\nA short demonstration of syntax sugar. ", 
-    "display" -> "markdown", "sign" -> "sheaf-ea197", 
+    "display" -> "markdown", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1bd019c8-9007-4820-b0e6-40f6cce59837", "type" -> "input", 
+   <|"id" -> "1bd019c8-9007-4820-b0e6-40f6cce598377dc", "type" -> "input", 
     "data" -> "Series[CM6Fraction[Sin[x], x], {x,0,6}]//Normal", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a2b9c47a-0fe7-42f7-978b-6d61e318baab", "type" -> "output", 
+   <|"id" -> "a2b9c47a-0fe7-42f7-978b-6d61e318baab7dc", "type" -> "output", 
     "data" -> "1-CM6Fraction[CM6Superscript[x, 2], \
 6]+CM6Fraction[CM6Superscript[x, 4], 120]-CM6Fraction[CM6Superscript[x, 6], \
-5040]", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+5040]", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "69ad4578-6b28-4093-b189-1f078e4e26c6", "type" -> "input", 
+   <|"id" -> "69ad4578-6b28-4093-b189-1f078e4e26c67dc", "type" -> "input", 
     "data" -> ".md\nTry copy and paste the results into any texeditor and you \
 will the the underlying structure, which is much simplier that Mathmeatica \
-uses.", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+uses.", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "03c1f58e-5141-4fe9-821e-c568244f77ca", "type" -> "output", 
+   <|"id" -> "03c1f58e-5141-4fe9-821e-c568244f77ca7dc", "type" -> "output", 
     "data" -> "\nTry copy and paste the results into any texeditor and you \
 will the the underlying structure, which is much simplier that Mathmeatica \
-uses.", "display" -> "markdown", "sign" -> "sheaf-ea197", 
+uses.", "display" -> "markdown", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "53ec48fd-ee4b-45e3-a518-4e366d0fbbd7", "type" -> "input", 
+   <|"id" -> "53ec48fd-ee4b-45e3-a518-4e366d0fbbd77dc", "type" -> "input", 
     "data" -> "Table[10 A[i -CM6Sqrt[j]], {i, 4}, {j, 3}] // MatrixForm", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "90eac9e9-13c6-4872-bfe1-47acced48c82", "type" -> "output", 
+   <|"id" -> "90eac9e9-13c6-4872-bfe1-47acced48c827dc", "type" -> "output", 
     "data" -> "(CM6Grid[{{10 A[0], 10 A[1-CM6Sqrt[2]], 10 A[1-CM6Sqrt[3]]}, \
 {10 A[1], 10 A[2-CM6Sqrt[2]], 10 A[2-CM6Sqrt[3]]}, {10 A[2], 10 \
 A[3-CM6Sqrt[2]], 10 A[3-CM6Sqrt[3]]}, {10 A[3], 10 A[4-CM6Sqrt[2]], 10 \
 A[4-CM6Sqrt[3]]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> \
 Baseline, ColumnAlignments -> Center])", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1dd6782e-c512-498e-a7a1-6a95e3e1d004", "type" -> "input", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1dd6782e-c512-498e-a7a1-6a95e3e1d0047dc", "type" -> "input", 
     "data" -> ".md\nFor example - matrix multiplication", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ec16b222-d61c-4cd4-ad0d-0e7432603bb8", "type" -> "output", 
+   <|"id" -> "ec16b222-d61c-4cd4-ad0d-0e7432603bb87dc", "type" -> "output", 
     "data" -> "\nFor example - matrix multiplication", 
-    "display" -> "markdown", "sign" -> "sheaf-ea197", 
+    "display" -> "markdown", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "935b8c6d-8033-4e2d-8bd6-e86cf5900c21", "type" -> "input", 
+   <|"id" -> "935b8c6d-8033-4e2d-8bd6-e86cf5900c217dc", "type" -> "input", 
     "data" -> 
      "CM6Grid[{{1,0},{0,-1}}].CM6Grid[{{0,I},{-I,0}}] // MatrixForm", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1265f2a0-0b78-4343-8849-8f2573321dc1", "type" -> "output", 
+   <|"id" -> "1265f2a0-0b78-4343-8849-8f2573321dc17dc", "type" -> "output", 
     "data" -> "(CM6Grid[{{0, \[ImaginaryI]}, {\[ImaginaryI], 0}}, RowSpacings \
 -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> \
-Center])", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+Center])", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4622ade0-614c-4b33-9449-e14f16625033", "type" -> "input", 
+   <|"id" -> "4622ade0-614c-4b33-9449-e14f166250337dc", "type" -> "input", 
     "data" -> ".md\nThe same counts for graphics", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2465785b-d491-4cb8-9a7f-5a773970db08", "type" -> "output", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "2465785b-d491-4cb8-9a7f-5a773970db087dc", "type" -> "output", 
     "data" -> "\nThe same counts for graphics", "display" -> "markdown", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2cd366f4-62a2-4f2d-87a1-8cc2194c6621", "type" -> "input", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2cd366f4-62a2-4f2d-87a1-8cc2194c66217dc", "type" -> "input", 
     "data" -> "Table[Table[{Cos[2 n $Pi$/steps], Sin[2 n $Pi$/steps]}, {n, 0, \
 steps-1}], {steps, 2, 4}]\n{ Table[Framed[Graphics[{Red, Line[Tuples[i, 2]]}, \
 ImageSize->200]], {i, %}] } // TableForm", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7360e22f-fc3f-4509-9c6c-9263a9d5e1df", "type" -> "output", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7360e22f-fc3f-4509-9c6c-9263a9d5e1df7dc", "type" -> "output", 
     "data" -> "{{{1,0},{-1,0}},{{1,0},{-CM6Fraction[1, \
 2],CM6Fraction[CM6Sqrt[3], 2]},{-CM6Fraction[1, 2],-CM6Fraction[CM6Sqrt[3], \
 2]}},{{1,0},{0,1},{-1,0},{0,-1}}}", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "229115c1-810d-4452-8daa-e7618d96464f", "type" -> "output", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "229115c1-810d-4452-8daa-e7618d96464f7dc", "type" -> "output", 
     "data" -> "CM6Grid[{{FrontEndBox[FrontEndExecutable[\"05d091a4-822f-47ef-\
 829b-2ca75471c948\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
@@ -301,20 +301,20 @@ FrontEndBox[FrontEndExecutable[\"0620ebfc-b933-4834-9ef3-e1d45c793dce\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"]}}, RowSpacings -> 1, ColumnSpacings -> 3, \
 RowAlignments -> Baseline, ColumnAlignments -> Left]", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "55d5fa8c-865c-4180-bde9-99d10aa14241", "type" -> "input", 
+   <|"id" -> "55d5fa8c-865c-4180-bde9-99d10aa142417dc", "type" -> "input", 
     "data" -> ".md\nAs well as some typical decorations used in Mathematica", 
-    "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+    "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "a01c14d4-50ef-4e99-9596-047cb09c58e9", "type" -> "output", 
+   <|"id" -> "a01c14d4-50ef-4e99-9596-047cb09c58e97dc", "type" -> "output", 
     "data" -> "\nAs well as some typical decorations used in Mathematica", 
-    "display" -> "markdown", "sign" -> "sheaf-ea197", 
+    "display" -> "markdown", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f501960b-bd1f-44a5-9be9-6bdc32a17e14", "type" -> "input", 
+   <|"id" -> "f501960b-bd1f-44a5-9be9-6bdc32a17e147dc", "type" -> "input", 
     "data" -> "NestList[Framed, x, 6]", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f983068a-e85c-494a-82c8-b5de44eb0b77", "type" -> "output", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f983068a-e85c-494a-82c8-b5de44eb0b777dc", "type" -> "output", 
     "data" -> "{x,FrontEndBox[x, \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[x, \
@@ -361,12 +361,12 @@ vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"]}", "display" -> "codemirror", 
-    "sign" -> "sheaf-ea197", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "02946233-3e05-4726-a625-1dd64507ff6d", "type" -> "input", 
+    "sign" -> "pelting-55cd0", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "02946233-3e05-4726-a625-1dd64507ff6d7dc", "type" -> "input", 
     "data" -> "Table[If[PrimeQ[i], Framed[i, Background -> LightYellow], i], \
-{i, 1, 100}]", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+{i, 1, 100}]", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "dbaab63a-fb9e-413f-b399-751e5a90d567", "type" -> "output", 
+   <|"id" -> "dbaab63a-fb9e-413f-b399-751e5a90d5677dc", "type" -> "output", 
     "data" -> "{1,FrontEndBox[2, \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
 dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
@@ -442,5 +442,5 @@ dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
 Nw\"],90,91,92,93,94,95,96,FrontEndBox[97, \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
 dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],98,99,100}", "display" -> "codemirror", "sign" -> "sheaf-ea197", 
+Nw\"],98,99,100}", "display" -> "codemirror", "sign" -> "pelting-55cd0", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

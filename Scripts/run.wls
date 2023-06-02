@@ -63,6 +63,12 @@ If[MemberQ[$ScriptCommandLine, "dev"],
   Print[Reset];
 ];
 
+If[MemberQ[$ScriptCommandLine, "auto"],
+  autostart = True;
+  Print[Green<>"Autostart mode is activated"];
+  Print[Reset];
+];
+
 (* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault *)
@@ -111,5 +117,7 @@ SetUpCron;
 If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
+
+If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
 
 While[True, LoopRun; Pause[0.3]];

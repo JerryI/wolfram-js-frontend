@@ -13,7 +13,7 @@
      "@codemirror/lang-javascript" -> "6.1.4", "@codemirror/lang-markdown" -> 
       "6.1.1", "codemirror" -> "6.0.1", "parcel-bundler" -> "1.12.5", 
      "rainbowbrackets" -> "^2.0.2", "mma-uncompress" -> "^1.0.1", 
-     "node-balanced" -> "^0.0.14", "priceless-mathematica" -> "^1.1.8", 
+     "node-balanced" -> "^0.0.14", "priceless-mathematica" -> "^1.1.9", 
      "rollup" -> "^3.21.6"|>, "resolutions" -> 
     <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-editor"|>, "wljs-graphics3d-threejs" -> 
@@ -25,8 +25,9 @@
 --config rollup.config.mjs -w", "test" -> 
       "wolframscript -f buildtests.wls"|>, 
    "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wlkernel" -> "src/kernel.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
+     "wlkernel" -> "src/kernel.wl", "autocomplete" -> 
+      "src/autocomplete.js"|>, "repository" -> <|"type" -> "git", 
+     "url" -> 
       "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
@@ -55,7 +56,8 @@
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
      "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
 --config rollup.config.mjs -w"|>, "wljs-meta" -> 
-    <|"jsmodule" -> "dist/kernel.js", "wlkernel" -> "src/kernel.wl"|>, 
+    <|"jsmodule" -> "dist/kernel.js", "wlkernel" -> "src/kernel.wl", 
+     "autocomplete" -> "src/autocomplete.js"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-graphics-d3"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 

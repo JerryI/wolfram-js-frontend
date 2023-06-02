@@ -1,7 +1,7 @@
 <|"notebook" -> <|"name" -> "Play", "id" -> "nonsense-d1419", 
    "kernel" -> LocalKernel, "objects" :> 
-    <|"length" -> <|"json" -> "0", "date" -> DateObject[{2023, 5, 29, 14, 32, 
-          23.694654`8.127225354204905}, "Instant", "Gregorian", 2.]|>, 
+    <|"length" -> <|"json" -> "0", "date" -> DateObject[{2023, 5, 29, 20, 33, 
+          1.639774`6.967358984912734}, "Instant", "Gregorian", 2.]|>, 
      "9acae6e8-4016-4bad-96b1-8b02dad6bc05" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
 \",[\"List\",-1,-1],[\"List\",[\"FrontEndExecutableHold\",\"'length'\"],1]]],\
@@ -43,11 +43,6 @@ ist\",[\"FrontEndExecutableHold\",\"'length'\"],1]]],[\"Rule\",\"PlotRange\",\
 [\"List\",[\"List\",-2,2],[\"List\",-2,2]]]]", 
        "date" -> DateObject[{2023, 5, 29, 13, 57, 
           34.414732`8.289319371780628}, "Instant", "Gregorian", 2.]|>, 
-     "cfb78c0a-77cd-4d54-9d02-461a38373099" -> 
-      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
-\",\"'76a932f3-b14c-460b-aa5f-41a43f399784'\"],[\"Rule\",\"'Label'\",\"'Lengt\
-h'\"]]", "date" -> DateObject[{2023, 5, 29, 14, 32, 
-          23.623977`8.125927994020344}, "Instant", "Gregorian", 2.]|>, 
      "7de8d467-8d5e-4038-8729-7a0e5d5922fc" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Line\",[\"\
 List\",[\"List\",-1,-1],[\"List\",1,1]]],[\"Rectangle\",[\"List\",-1,-1],[\"L\
@@ -123,25 +118,25 @@ st\",[\"FrontEndExecutableHold\",\"'length'\"],-1]]],[\"Rule\",\"PlotRange\",\
      "81706282-1229-4796-9fe4-d86502c7cf44" -> 
       <|"json" -> 
         "[\"RangeView\",[\"List\",-1,1,0.1,[\"FrontEndRef\",\"'length'\"]]]", 
-       "date" -> DateObject[{2023, 5, 29, 14, 32, 
-          23.704534`8.127406404966507}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 29, 20, 33, 
+          1.645818`6.968956796697905}, "Instant", "Gregorian", 2.]|>, 
      "dot" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0.5,0.5]]", 
-       "date" -> DateObject[{2023, 5, 29, 14, 35, 
-          29.925478`8.228616077374657}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 29, 20, 33, 
+          1.827228`7.014367730527559}, "Instant", "Gregorian", 2.]|>, 
      "99881ef6-ccb4-4664-a70c-51a8d0d2cd72" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
 \",\"'drag'\",\"'e646f3d9-a72d-41fd-9ecb-0be1d5aafe19'\"]],[\"Line\",[\"Front\
 EndRef\",\"'dot'\"]]],[\"Rule\",\"'TransitionDuration'\",400],[\"Rule\",\"Ima\
-geSize\",[\"List\",400,400]]]", "date" -> DateObject[{2023, 5, 29, 14, 35, 
-          30.287754`8.23384205023059}, "Instant", "Gregorian", 2.]|>, 
+geSize\",[\"List\",400,400]]]", "date" -> DateObject[{2023, 5, 29, 20, 33, 
+          1.650847`6.970281813734013}, "Instant", "Gregorian", 2.]|>, 
      "pts" -> <|"json" -> "[\"List\",[\"List\",1.0,0.0],[\"List\",0.766044443\
 1189781,0.6427876096865393],[\"List\",0.17364817766693033,0.984807753012208],\
 [\"List\",-0.5,0.8660254037844386],[\"List\",-0.9396926207859084,0.3420201433\
 256687],[\"List\",-0.9396926207859084,-0.3420201433256687],[\"List\",-0.5,-0.\
 8660254037844386],[\"List\",0.17364817766693033,-0.984807753012208],[\"List\"\
 ,0.7660444431189781,-0.6427876096865393]]", "date" -> 
-        DateObject[{2023, 5, 29, 14, 42, 40.998915`8.365347341902549}, 
+        DateObject[{2023, 5, 29, 20, 33, 2.046011`7.063482952900883}, 
          "Instant", "Gregorian", 2.]|>, 
      "17fcf8d0-a88a-4aad-be08-40240e22eef6" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"FrontEndOn\
@@ -162,11 +157,23 @@ ts'\"]]],[\"Rule\",\"ImageSize\",[\"List\",400,420]]]",
 ly\",[\"Line\",[\"Tuples\",[\"FrontEndRef\",\"'pts'\"],2]]],[\"RGBColor\",0,0\
 ,1],[\"PointSize\",5.0e-2],[\"Opacity\",0.7],[\"Point\",[\"FrontEndRef\",\"'p\
 ts'\"]]],[\"Rule\",\"ImageSize\",[\"List\",400,350]]]", 
-       "date" -> DateObject[{2023, 5, 29, 14, 42, 
-          56.558077`8.505069608718365}, "Instant", "Gregorian", 2.]|>|>, 
+       "date" -> DateObject[{2023, 5, 29, 20, 33, 
+          1.656963`6.971887799614779}, "Instant", "Gregorian", 2.]|>, 
+     "19cdaf41-c99a-4524-bbaf-dd03cf58b3a7" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
+\",\"'de93a868-65f2-4894-b35b-1174a30f3487'\"],[\"Rule\",\"'Label'\",\"'Lengt\
+h'\"]]", "date" -> DateObject[{2023, 5, 29, 20, 36, 
+          44.555312`8.401474466334427}, "Instant", "Gregorian", 2.]|>, 
+     "21488612-5735-4cae-95cb-10327017d7b6" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"FrontEndExecutableHold\",\"'length'\"],-1]]],\
+[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\"\
+,\"ImageSize\",[\"List\",400,100]],[\"Rule\",\"'TransitionDuration'\",800]]", 
+       "date" -> DateObject[{2023, 5, 29, 20, 37, 
+          44.359763`8.399564194345883}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Conference/Event-based\
 -approach.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 29, 14, 53, 31.846077`8.255630921545942}, 
+   "date" -> DateObject[{2023, 5, 29, 20, 32, 33.351463`8.275689869652787}, 
      "Instant", "Gregorian", 2.]|>, 
  "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2d", 
     "type" -> "input", "data" -> ".md\n# Event-based approach\nEach input \
@@ -180,8 +187,8 @@ object generator", "display" -> "markdown", "sign" -> "nonsense-d1419",
     "data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
     "display" -> "codemirror", "sign" -> "nonsense-d1419", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "77c78f9c-8bf5-44c4-b3bc-4e07a8d17b15", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"cfb78c0a-77cd-4d54-9d02-461a38373099\"]", 
+   <|"id" -> "d2c3570d-cb85-41c6-a3e5-624f4f5ef9ac", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"19cdaf41-c99a-4524-bbaf-dd03cf58b3a7\"]", 
     "display" -> "codemirror", "sign" -> "nonsense-d1419", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "3b35b35e-42ed-47f3-a089-b265a5f65da4", "type" -> "input", 
@@ -203,8 +210,12 @@ object generator", "display" -> "markdown", "sign" -> "nonsense-d1419",
     "data" -> "Graphics[{Cyan, \
 Rectangle[{-1,1},{FrontEndRef[FrontEndExecutable[\"length\"]], -1}]}, \
 PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
-\"TransitionDuration\"->100] ", "display" -> "codemirror", 
+\"TransitionDuration\"->800] ", "display" -> "codemirror", 
     "sign" -> "nonsense-d1419", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f3651026-943c-4f09-983a-74818d184d4b", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"21488612-5735-4cae-95cb-10327017d7b6\"]", 
+    "display" -> "codemirror", "sign" -> "nonsense-d1419", 
+    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "9aa4fa1f-9488-484f-9b29-345801faa1a0", "type" -> "input", 
     "data" -> "(* sqrt *)", "display" -> "codemirror", 
     "sign" -> "nonsense-d1419", "props" -> <|"hidden" -> False|>|>, 

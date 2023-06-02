@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Untitled", "id" -> "indebted-fe450", 
+<|"notebook" -> <|"name" -> "Untitled", "id" -> "barter-723ae", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"d53018fa-d0a6-44ed-90e8-063affb4953d" -> 
       <|"json" -> "[\"ListPlotly\",[\"List\",[\"List\",[\"List\",0.4692446716\
@@ -982,95 +982,100 @@ st\",0.9179886139356028,0.48197865353168123],[\"List\",0.39459880537720493,0.\
 456916],[\"List\",0.8211896264135987,0.9780322559335004],[\"List\",0.64589557\
 3148437,0.7994278653807729]],[\"List\",[\"List\",0.5,0.5]]],[\"Rule\",\"'Requ\
 estAnimationFrame'\",[\"List\",\"'xwbszsjpnlyukcdgwlqn'\",\"'symxwbszsjpnlyuk\
-cdgwlqn'\"]]]", "date" -> DateObject[{2023, 5, 27, 19, 11, 
-          58.829988`8.522173733141388}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Easy/Diffusion-Li\
-mited-Aggregation.wl", "cell" -> "185adda9-66d6-44e7-9760-e22b3b1cad40fa8", 
-   "date" -> DateObject[{2023, 5, 27, 19, 14, 55.507268`8.496924826571952}, 
+cdgwlqn'\"]]]", "date" -> DateObject[{2023, 5, 29, 19, 21, 
+          12.10708`7.835614397997716}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Conference/Diffusion-L\
+imited-Aggregation.wl", "cell" -> "185adda9-66d6-44e7-9760-e22b3b1cad40fa8", 
+   "date" -> DateObject[{2023, 5, 29, 19, 21, 7.325978`7.617440597389615}, 
      "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "185adda9-66d6-44e7-9760-e22b3b1cad40fa884e", 
+ "cells" -> {<|"id" -> "185adda9-66d6-44e7-9760-e22b3b1cad40fa884ec6c", 
     "type" -> "input", "data" -> ".md\n## Diffusion-Limited Aggregation: A \
 Real-Time Agent-Based Simulation\nAdapted from [Wolfram \
 Demonstation](https://demonstrations.wolfram.com/DiffusionLimitedAggregationA\
 RealTimeAgentBasedSimulation/)\n\n*Hiroki Sayama (March 2011)*", 
-    "display" -> "codemirror", "sign" -> "indebted-fe450", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b038dc3c-e46e-4a64-b267-f7a8323f661bfa884e", 
+   <|"id" -> "b038dc3c-e46e-4a64-b267-f7a8323f661bfa884ec6c", 
     "type" -> "output", "data" -> "\n## Diffusion-Limited Aggregation: A \
 Real-Time Agent-Based Simulation\nAdapted from [Wolfram \
 Demonstation](https://demonstrations.wolfram.com/DiffusionLimitedAggregationA\
 RealTimeAgentBasedSimulation/)\n\n*Hiroki Sayama (March 2011)*", 
-    "display" -> "markdown", "sign" -> "indebted-fe450", 
+    "display" -> "markdown", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "dbf44ae8-8255-43a2-bc3e-e66af314aed3fa884e", "type" -> "input", 
-    "data" -> "initialAgents[n_] := Developer`ToPackedArray[Append[\n   \
-Table[Join[RandomReal[{0, 1}, 2], {0.}], {n - 1}],\n   {0.5, 0.5, \
-1.}]]\n\nvisualize[agents_] := {Select[agents, #[[3]] == 0. &][[All, {1,2}]], \
-Select[agents, #[[3]] =!= 0. &][[All, {1,2}]]}\n\nupdateAgents[agents_, \
-noise_] := Module[\n  {nearestFixedParticles = \n    Nearest[Most /@ \
-Select[agents, #[[3]] == 1. &]], i, nextLocation, \n   halfwayLocation},\n  \
-Developer`ToPackedArray[\n   Table[\n    If[agents[[i, 3]] == 1.,\n     \
-agents[[i]],(* If fixed, nothing changes *)\n     (* Otherwise, \n     \
-simulate random walk *)\n     \n     nextLocation = Most[agents[[i]]] + \
-RandomReal[{-noise, noise}, 2];\n     nextLocation = Clip[nextLocation, {0., \
-1.}];\n     halfwayLocation = (Most[agents[[i]]] + nextLocation)/2.;\n     \
-If[\n      Norm[\n        nearestFixedParticles[halfwayLocation][[1]] - \n    \
-     halfwayLocation] < 0.02,\n      Append[halfwayLocation, 1.],\n      \
-If[\n       Norm[nearestFixedParticles[nextLocation][[1]] - nextLocation] <\n \
-        0.02,\n       Append[nextLocation, 1.],\n       Append[nextLocation, \
-0.]\n       ]\n      ]\n     ]\n    , {i, Length[agents]}\n    ]\n   ]\n  ]", 
-    "display" -> "codemirror", "sign" -> "indebted-fe450", 
+   <|"id" -> "dbf44ae8-8255-43a2-bc3e-e66af314aed3fa884ec6c", 
+    "type" -> "input", "data" -> "initialAgents[n_] := \
+Developer`ToPackedArray[Append[\n   Table[Join[RandomReal[{0, 1}, 2], {0.}], \
+{n - 1}],\n   {0.5, 0.5, 1.}]]\n\nvisualize[agents_] := {Select[agents, \
+#[[3]] == 0. &][[All, {1,2}]], Select[agents, #[[3]] =!= 0. &][[All, \
+{1,2}]]}\n\nupdateAgents[agents_, noise_] := Module[\n  \
+{nearestFixedParticles = \n    Nearest[Most /@ Select[agents, #[[3]] == 1. \
+&]], i, nextLocation, \n   halfwayLocation},\n  Developer`ToPackedArray[\n   \
+Table[\n    If[agents[[i, 3]] == 1.,\n     agents[[i]],(* If fixed, nothing \
+changes *)\n     (* Otherwise, \n     simulate random walk *)\n     \n     \
+nextLocation = Most[agents[[i]]] + RandomReal[{-noise, noise}, 2];\n     \
+nextLocation = Clip[nextLocation, {0., 1.}];\n     halfwayLocation = \
+(Most[agents[[i]]] + nextLocation)/2.;\n     If[\n      Norm[\n        \
+nearestFixedParticles[halfwayLocation][[1]] - \n         halfwayLocation] < \
+0.02,\n      Append[halfwayLocation, 1.],\n      If[\n       \
+Norm[nearestFixedParticles[nextLocation][[1]] - nextLocation] <\n         \
+0.02,\n       Append[nextLocation, 1.],\n       Append[nextLocation, 0.]\n    \
+   ]\n      ]\n     ]\n    , {i, Length[agents]}\n    ]\n   ]\n  ]", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4a9005a2-425e-4e1a-8715-f0ad0459cf4cfa884e", "type" -> "input", 
-    "data" -> ".md\nInitialize the system", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "1215f01f-2d3e-4132-8657-32bc2554df46fa884e", 
+   <|"id" -> "4a9005a2-425e-4e1a-8715-f0ad0459cf4cfa884ec6c", 
+    "type" -> "input", "data" -> ".md\nInitialize the system", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "1215f01f-2d3e-4132-8657-32bc2554df46fa884ec6c", 
     "type" -> "output", "data" -> "\nInitialize the system", 
-    "display" -> "markdown", "sign" -> "indebted-fe450", 
+    "display" -> "markdown", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2657d91e-7dfe-4475-ae36-d6d4c7fc5dd4fa884e", "type" -> "input", 
-    "data" -> "agents = initialAgents[500];\nagents", 
-    "display" -> "codemirror", "sign" -> "indebted-fe450", 
+   <|"id" -> "2657d91e-7dfe-4475-ae36-d6d4c7fc5dd4fa884ec6c", 
+    "type" -> "input", "data" -> "agents = initialAgents[500];\nagents", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "adbf2a09-4c75-4187-acba-3f5d001e858f", "type" -> "input", 
-    "data" -> "agents", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9c1a883e-0511-4037-a1e9-eefd1d7d766ffa884e", "type" -> "input", 
-    "data" -> ".md\nDraw the graph", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ce512325-b040-4da1-8f21-b0384c9f07befa884e", 
+   <|"id" -> "adbf2a09-4c75-4187-acba-3f5d001e858fc6c", "type" -> "input", 
+    "data" -> "agents", "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9c1a883e-0511-4037-a1e9-eefd1d7d766ffa884ec6c", 
+    "type" -> "input", "data" -> ".md\nDraw the graph", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "ce512325-b040-4da1-8f21-b0384c9f07befa884ec6c", 
     "type" -> "output", "data" -> "\nDraw the graph", 
-    "display" -> "markdown", "sign" -> "indebted-fe450", 
+    "display" -> "markdown", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "931cb203-5254-4e10-a099-f292236d29affa884e", "type" -> "input", 
-    "data" -> "RequestAnimationFrame[ListPlotly[visualize[agents]], \
-\"event\"->frame, \"reply\"->reply]", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "84f1ece0-c006-4a7a-874c-10fe2ca12d61", "type" -> "output", 
+   <|"id" -> "931cb203-5254-4e10-a099-f292236d29affa884ec6c", 
+    "type" -> "input", "data" -> "RequestAnimationFrame[ListPlotly[visualize[\
+agents]], \"event\"->frame, \"reply\"->reply]", "display" -> "codemirror", 
+    "sign" -> "barter-723ae", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "84f1ece0-c006-4a7a-874c-10fe2ca12d61c6c", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"24af6d5c-b6d4-4618-92ae-2aaa3439779d\"]", 
-    "display" -> "codemirror", "sign" -> "indebted-fe450", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2faee418-6183-4645-bfe8-5c41d972f37afa884e", "type" -> "input", 
-    "data" -> ".md\nBind to the events and run!", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "c3d86077-ccc4-4286-823a-b5e5d9c60feffa884e", 
+   <|"id" -> "2faee418-6183-4645-bfe8-5c41d972f37afa884ec6c", 
+    "type" -> "input", "data" -> ".md\nBind to the events and run!", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "c3d86077-ccc4-4286-823a-b5e5d9c60feffa884ec6c", 
     "type" -> "output", "data" -> "\nBind to the events and run!", 
-    "display" -> "markdown", "sign" -> "indebted-fe450", 
+    "display" -> "markdown", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a6979765-9a6b-44d0-8083-615a49ea8264fa884e", "type" -> "input", 
-    "data" -> "EventBind[frame, Function[data,\n  agents = \
+   <|"id" -> "a6979765-9a6b-44d0-8083-615a49ea8264fa884ec6c", 
+    "type" -> "input", "data" -> "EventBind[frame, Function[data,\n  agents = \
 updateAgents[agents, 0.02];\n  \
 reply[visualize[agents]];\n]];\n\nreply[visualize[agents]]", 
-    "display" -> "codemirror", "sign" -> "indebted-fe450", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1363853e-690f-4c84-9b43-4349b582ed99fa884e", "type" -> "input", 
-    "data" -> ".md\nStop the modelling", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b38bd1b0-a649-47e8-87d5-2b56e534a600fa884e", 
+   <|"id" -> "1363853e-690f-4c84-9b43-4349b582ed99fa884ec6c", 
+    "type" -> "input", "data" -> ".md\nStop the modelling", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "b38bd1b0-a649-47e8-87d5-2b56e534a600fa884ec6c", 
     "type" -> "output", "data" -> "\nStop the modelling", 
-    "display" -> "markdown", "sign" -> "indebted-fe450", 
+    "display" -> "markdown", "sign" -> "barter-723ae", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6c6b8005-3940-407c-a11c-58aa9e097facfa884e", "type" -> "input", 
-    "data" -> "EventRemove[frame]", "display" -> "codemirror", 
-    "sign" -> "indebted-fe450", "props" -> <|"hidden" -> False|>|>}, 
- "serializer" -> "jsfn3"|>
+   <|"id" -> "6c6b8005-3940-407c-a11c-58aa9e097facfa884ec6c", 
+    "type" -> "input", "data" -> "EventRemove[frame]", 
+    "display" -> "codemirror", "sign" -> "barter-723ae", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Cocoa", "id" -> "baptism-5a294", 
+<|"notebook" -> <|"name" -> "Cocoa", "id" -> "inviolate-3d8c5", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"356341bc-38df-49e7-b2fe-3865bbe3dc71" -> 
       <|"json" -> "[\"FrontEndTruncated\",\"'{{8,\\\"K\\\"},{0,0.353508`},{0.\
@@ -6,8 +6,8 @@
          {2023, 5, 15, 21, 15, 54.972545`8.492720817889131}, "Instant", 
          "Gregorian", 2.]|>, "exp" -> 
       <|"json" -> "[\"List\",[\"List\",3253,0.1],[\"List\",3851,0.25]]", 
-       "date" -> DateObject[{2023, 5, 27, 20, 51, 
-          7.991256`7.655190030769988}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          23.61072`8.125684213813697}, "Instant", "Gregorian", 2.]|>, 
      "4b41a339-616b-4689-aa5d-c52c88e91284" -> 
       <|"json" -> "[\"Graphics\",[\"Line\",[\"FrontEndRef\",\"'exp'\"]],[\"Ru\
 le\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\"List\",0.1,0.25]]],[\"Ru\
@@ -278,8 +278,8 @@ List\",3.784e3,0.16776265139703905],[\"List\",3.785e3,0.16776265139703905],[\
 5],[\"List\",3.796e3,0.16776265139703905],[\"List\",3.797e3,0.167762651397039\
 05],[\"List\",3.798e3,0.16776265139703905],[\"List\",3.799e3,0.16776265139703\
 905],[\"List\",3.8e3,0.16776265139703905]]", 
-       "date" -> DateObject[{2023, 5, 27, 20, 51, 
-          8.165222`7.6645429840193025}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          23.708162`8.127472869036952}, "Instant", "Gregorian", 2.]|>, 
      "071a0146-0251-47e0-a318-6b6cdd5f5af6" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
 \"]],[\"PointSize\",5.0e-2],[\"RGBColor\",1,0,0],[\"EventListener\",[\"Point\
@@ -773,25 +773,25 @@ ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
          "Gregorian", 2.]|>, "58ed5bce-57df-4a73-97fd-4e07eecd5a84" -> 
       <|"json" -> "[\"FileUploadView\",[\"Rule\",\"'Label'\",\"'Drag And \
 Drop'\"],[\"Rule\",\"'Event'\",\"'6fbff71c-3fbd-40f5-8eef-3134b29eece6'\"]]", 
-       "date" -> DateObject[{2023, 5, 27, 20, 51, 
-          11.147937`7.799769491892574}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 30, 13, 43, 
+          44.084374`8.396859655330646}, "Instant", "Gregorian", 2.]|>, 
      "5c9f5f8b-8950-42e0-9a0c-ff178191f0eb" -> 
       <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
 \",\"'58d633a0-9939-479f-b1d5-4dc31e5525f0'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
-psilon'\"]]", "date" -> DateObject[{2023, 5, 27, 20, 51, 
-          11.223196`7.8026915335892735}, "Instant", "Gregorian", 2.]|>, 
+psilon'\"]]", "date" -> DateObject[{2023, 5, 30, 13, 43, 
+          44.24187`8.398408452451791}, "Instant", "Gregorian", 2.]|>, 
      "7f5dc4e8-08fe-46a2-8792-acc4cdfbb9fc" -> 
       <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
 more'\"],[\"Rule\",\"'Event'\",\"'654b970c-219a-4587-969a-f9b564cbf1d1'\"]]", 
-       "date" -> DateObject[{2023, 5, 27, 20, 51, 
-          11.236269`7.8031971139673555}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 5, 30, 13, 43, 
+          44.263411`8.39861985537631}, "Instant", "Gregorian", 2.]|>, 
      "4642a14f-86e3-454a-bfd2-8cdbbe85d00a" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
 \"]],[\"RGBColor\",1,0,0],[\"Line\",[\"FrontEndRef\",\"'model'\"]],[\"MetaMar\
 ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
 \"List\",0,0.25]]],[\"Rule\",\"Axes\",true],[\"Rule\",\"'TransitionDuration'\
 \",0],[\"Rule\",\"ImageSize\",1200]]", "date" -> DateObject[
-         {2023, 5, 27, 20, 51, 11.249303`7.803700600817601}, "Instant", 
+         {2023, 5, 30, 13, 43, 44.273927`8.398723021811994}, "Instant", 
          "Gregorian", 2.]|>, "mulatto" -> 
       <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 27, 20, 51, 
@@ -802,53 +802,104 @@ ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
      "appropriator" -> 
       <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 27, 20, 52, 
-          22.120557`8.097371041550678}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Advanced/Interact\
-ive-curve-fitting.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 27, 20, 53, 56.530211`8.504855580360669}, 
+          22.120557`8.097371041550678}, "Instant", "Gregorian", 2.]|>, 
+     "9187efdf-314d-48ea-a816-c3552b64470d" -> 
+      <|"json" -> "[\"FileUploadView\",[\"Rule\",\"'Label'\",\"'Drag And \
+Drop'\"],[\"Rule\",\"'Event'\",\"'08736a56-45c2-427a-b221-96fcc6a5c87f'\"]]", 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          24.760692`8.14633776058643}, "Instant", "Gregorian", 2.]|>, 
+     "9805f349-da4e-47fe-b049-c8de11b577e3" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,6,0.1,3.5],[\"Rule\",\"'Event'\
+\",\"'590177aa-3651-4d7b-9160-de1ac0f411e0'\"],5.7,[\"Rule\",\"'Label'\",\"'E\
+psilon'\"]]", "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          24.767381`8.146455067625899}, "Instant", "Gregorian", 2.]|>, 
+     "599fb310-5fa5-46d7-9b82-cb9628ef7d29" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Add \
+more'\"],[\"Rule\",\"'Event'\",\"'901de1a6-0306-427c-8850-19cdb9127b23'\"]]", 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          24.774238`8.146575288052343}, "Instant", "Gregorian", 2.]|>, 
+     "6ac988ae-ecac-46ff-893e-e0bbadedc606" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"Line\",[\"FrontEndRef\",\"'exp'\
+\"]],[\"RGBColor\",1,0,0],[\"Line\",[\"FrontEndRef\",\"'model'\"]],[\"MetaMar\
+ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
+\"List\",0,0.25]]],[\"Rule\",\"Axes\",true],[\"Rule\",\"'TransitionDuration'\
+\",0],[\"Rule\",\"ImageSize\",1200]]", "date" -> DateObject[
+         {2023, 5, 30, 13, 44, 24.782862`8.146726441192852}, "Instant", 
+         "Gregorian", 2.]|>, "spring" -> 
+      <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          39.805305`8.352515934483032}, "Instant", "Gregorian", 2.]|>, 
+     "divert" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 30, 13, 44, 
+          49.713549`8.449049743884741}, "Instant", "Gregorian", 2.]|>, 
+     "licitly" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
+       "date" -> DateObject[{2023, 5, 30, 13, 45, 5.559793`7.49763361019996}, 
+         "Instant", "Gregorian", 2.]|>|>, "path" -> "/Volumes/Data/Github/wol\
+fram-js-frontend/Conference/Interactive-curve-fitting.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 5, 30, 13, 46, 25.424094`8.157820467915803}, 
      "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b197", 
+ "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b19787b", 
     "type" -> "input", "data" -> 
      ".md\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "60706ab7-c3c3-4e6d-843c-36adc6f78a08", "type" -> "output", 
+   <|"id" -> "9fb69698-02bf-426d-9f34-b7ecfc9d2169", "type" -> "output", 
     "data" -> "\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "markdown", "sign" -> "baptism-5a294", 
+    "display" -> "markdown", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b197", "type" -> "input", 
-    "data" -> "EventHandler[InputFile[\"Drag And Drop\"], addFile]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b19787b", 
+    "type" -> "input", "data" -> 
+     "EventHandler[InputFile[\"Drag And Drop\"], addFile]", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "07c58803-f812-4bf4-a04f-d4c2b6b1f50c", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"58ed5bce-57df-4a73-97fd-4e07eecd5a84\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "98242bf7-24f2-4a09-a696-eebdd85e0ee3", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"9187efdf-314d-48ea-a816-c3552b64470d\"]", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b197", "type" -> "input", 
-    "data" -> ".md\nA file-handler", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "bf7a1495-d2f6-4022-b67a-0d7b118689a6", "type" -> "output", 
-    "data" -> "\nA file-handler", "display" -> "markdown", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b197", "type" -> "input", 
-    "data" -> "CreateFrontEndObject[{{3253, 0.1},{3851, 0.25}}, \
-\"exp\"];\naddFile[file_] := With[{},\n  Print[\"got it\"];\n  test = \
+   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b19787b", 
+    "type" -> "input", "data" -> 
+     ".md\nA __file-handler__ to load experimental data via POST", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "6d0d4ce8-e147-48a1-9589-e8bee5f39d04", "type" -> "output", 
+    "data" -> "\nA __file-handler__ to load experimental data via POST", 
+    "display" -> "markdown", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b19787b", 
+    "type" -> "input", "data" -> "CreateFrontEndObject[{{3253, 0.1},{3851, \
+0.25}}, \"exp\"];\naddFile[file_] := With[{},\n  Print[\"got it\"];\n  test = \
 Drop[ImportString[file[\"data\"] // BaseDecode // ByteArrayToString, \
 \"TSV\"], 3];\n  FrontEndRef[\"exp\"] = test;\n] ", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b197", "type" -> "input", 
-    "data" -> "oscillators = <||>;\n\nSet[Oscillator[n_], i_] ^:= \
-(oscillators[n, \"params\"] = i;  FrontEndRef[\"model\"] \
+   <|"id" -> "5247aa04-773f-4465-8e84-a2a82e5538b2", "type" -> "input", 
+    "data" -> ".md\n__Reflectivity spectrum__ model. Add some helper \
+functions to add oscillators", "display" -> "codemirror", 
+    "sign" -> "inviolate-3d8c5", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "9a38b6d6-8bf7-48f9-953c-3319eaf38e93", "type" -> "output", 
+    "data" -> "\n__Reflectivity spectrum__ model. Add some helper functions \
+to add oscillators", "display" -> "markdown", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b19787b", 
+    "type" -> "input", "data" -> "oscillators = <||>;\n\nSet[Oscillator[n_], \
+i_] ^:= (oscillators[n, \"params\"] = i;  FrontEndRef[\"model\"] \
 =getReflection[]);\nAppendTo[Oscillator[n_]] ^:= (oscillators[n] = \
 <|\"model\"->Function[{x0, A, width},  CM6Fraction[A CM6Superscript[10, 6], \
 CM6Superscript[x0, 2]- CM6Superscript[x, 2]- I width x]], \"params\"->{3552, \
 10.0 , 15.648235634730188`}|>; FrontEndRef[\"model\"]= \
 getReflection[]);\nOscillator[n_] := oscillators[n, \"params\"];\n", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b197", "type" -> "input", 
-    "data" -> "eps = \
+   <|"id" -> "53912fa8-1b17-485e-9f7e-5b5c12e62538", "type" -> "input", 
+    "data" -> ".md\nFind *dielectric contants* as a function of wavenumber", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "3336b291-cef3-4486-9837-dbe5bec96f62", "type" -> "output", 
+    "data" -> "\nFind *dielectric contants* as a function of wavenumber", 
+    "display" -> "markdown", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b19787b", 
+    "type" -> "input", "data" -> "eps = \
 5.7;\n\nClearAll[getReflection]\n\ngetReflection[keys_:{}] := (\n  initial = \
 {x0, A, width};\n  Table[\n  With[{lor = Map[oscillators[#, \"model\"] @@ \
 (oscillators[#, \"params\"]) &, If[Length[{keys}//Flatten]==0, \
@@ -856,15 +907,24 @@ oscillators//Keys, {keys}//Flatten]] // Total},\n  \n    {x, 1 - (4 \
 Re[Sqrt[lor + eps]])/(\n Im[Sqrt[lor + eps]]^2 + (1 + Re[Sqrt[lor + \
 eps]])^2)}\n  ], {x, 3300, 3800,1.0}] //N // \
 Quiet\n);\n\nCreateFrontEndObject[getReflection[], \"model\"];", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b197", "type" -> "input", 
-    "data" -> "EventHandler[InputRange[1,6,0.1, 5.7, \"Label\"->\"Epsilon\"], \
-Function[e, eps = e; FrontEndRef[\"model\"]= getReflection[]; \
-]]\n\nEventHandler[InputButton[\"Add more\"], Function[blank,\nWith[{name = \
-RandomWord[]}, \n\nCreateFrontEndObject[{{0,0},{0,0}}, \
-name];\n\nWith[{dragger = \n  With[{color = RGBColor@@RandomReal[{0,1},3]},\n \
- AppendTo[Oscillator[name]];\n  \n  {\n    color, (*Opacity[0.2], \
+   <|"id" -> "d7b71d1c-6b19-473d-96a2-be8a18a45aaa", "type" -> "input", 
+    "data" -> ".md\nAdd controls to manipulate the data", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "95695768-509a-470c-a203-29139985ee84", "type" -> "output", 
+    "data" -> "\nAdd controls to manipulate the data", 
+    "display" -> "markdown", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b19787b", 
+    "type" -> "input", "data" -> "EventHandler[InputRange[1,6,0.1, 5.7, \
+\"Label\"->\"Epsilon\"], Function[e, eps = e; FrontEndRef[\"model\"]= \
+getReflection[]; ]]\n\nEventHandler[InputButton[\"Add more\"], \
+Function[blank,\nWith[{name = RandomWord[]}, \
+\n\nCreateFrontEndObject[{{0,0},{0,0}}, name];\n\nWith[{dragger = \n  \
+With[{color = RGBColor@@RandomReal[{0,1},3]},\n  \
+AppendTo[Oscillator[name]];\n  \n  {\n    color, (*Opacity[0.2], \
 Line[FrontEndRef[name]],*)\n    PointSize[0.08], Opacity[0.7], \
 EventHandler[Point[{3450, 0.22}], {\n    \"drag\"->Function[c, \
 Oscillator[name] = {c[[1]], c[[2]], Oscillator[name][[3]]}; \
@@ -872,42 +932,44 @@ Oscillator[name] = {c[[1]], c[[2]], Oscillator[name][[3]]}; \
 Oscillator[name] = {Oscillator[name][[1]], Oscillator[name][[2]], 10 k}; \
 (*FrontEndRef[name] = getReflection[name] *) ]\n  }]}\n  ]  \n},\n  \
 Placed[dragger, FindMetaMarker[\"window\"]//First] // FrontEndOnly // \
-FrontSubmit;\n]]\n]]", "display" -> "codemirror", "sign" -> "baptism-5a294", 
+FrontSubmit;\n]]\n]]", "display" -> "codemirror", 
+    "sign" -> "inviolate-3d8c5", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "fc4d5c17-798b-4889-b110-be31610cf3a4", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"9805f349-da4e-47fe-b049-c8de11b577e3\"]", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "bf8871da-f0e3-440b-9c92-611df828797f", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"5c9f5f8b-8950-42e0-9a0c-ff178191f0eb\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "50a96662-4c66-4fdc-af1e-6ae97dad7de2", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"599fb310-5fa5-46d7-9b82-cb9628ef7d29\"]", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0dc04968-c28b-4363-ba75-8bad6857f291", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"7f5dc4e8-08fe-46a2-8792-acc4cdfbb9fc\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "5b4e98ea-2be2-433e-8962-bf1a9d749f40", "type" -> "input", 
+    "data" -> ".md\nThe fitting window", "display" -> "codemirror", 
+    "sign" -> "inviolate-3d8c5", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "39d10017-3a4c-4acb-8467-6c45deee93aa", "type" -> "output", 
+    "data" -> "\nThe fitting window", "display" -> "markdown", 
+    "sign" -> "inviolate-3d8c5", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b19787b", 
+    "type" -> "input", "data" -> "Graphics[{\n  Line[FrontEndRef[\"exp\"]], \
+Red, Line[FrontEndRef[\"model\"]], MetaMarker[\"window\"]\n}, \
+PlotRange->{{3253, 3851}, {0, 0.25}}, Axes->True, \"TransitionDuration\"->0, \
+ImageSize->1200]", "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b197", "type" -> "input", 
-    "data" -> "Graphics[{\n  Line[FrontEndRef[\"exp\"]], Red, \
-Line[FrontEndRef[\"model\"]], MetaMarker[\"window\"]\n}, PlotRange->{{3253, \
-3851}, {0, 0.25}}, Axes->True, \"TransitionDuration\"->0, ImageSize->1200]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "cda3e0de-d17d-4709-b762-e722f65b5bd4", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"6ac988ae-ecac-46ff-893e-e0bbadedc606\"]", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "05694377-8c6e-4e2f-bf97-0b731ffdc480", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"4642a14f-86e3-454a-bfd2-8cdbbe85d00a\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "bb97cb92-8cb3-4140-9a4b-f6344f53c38d", "type" -> "input", 
+    "data" -> ".md\nExport our parameters as a table", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "c6b0c1ae-e182-4089-900b-ae848d16e357", "type" -> "output", 
+    "data" -> "\nExport our parameters as a table", "display" -> "markdown", 
+    "sign" -> "inviolate-3d8c5", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b19787b", 
+    "type" -> "input", "data" -> 
+     "#[\"params\"]&/@oscillators //Values//TableForm", 
+    "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b197", "type" -> "input", 
-    "data" -> "oscillators", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "491494a0-7824-456a-a6dc-d26f836053ae", "type" -> "output", 
-    "data" -> "\[LeftAssociation]\"mulatto\"\[Rule]\[LeftAssociation]\"model\
-\"\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
-6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
-x]],\"params\"\[Rule]{3393.6108108108106`,0.09713807171787323`,11.61508731925\
-7217`}\[RightAssociation],\"rabbinical\"\[Rule]\[LeftAssociation]\"model\"\
-\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
-6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
-x]],\"params\"\[Rule]{3487.89009009009`,0.10853991722058628`,8.19036697859827\
-7`}\[RightAssociation],\"appropriator\"\[Rule]\[LeftAssociation]\"model\"\
-\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
-6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
-x]],\"params\"\[Rule]{3476.037837837838`,0.04155407489214702`,6.8777090906987\
-19`}\[RightAssociation]\[RightAssociation]", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>}, 
- "serializer" -> "jsfn3"|>
+   <|"id" -> "47940c4c-2176-435b-ac05-29a05f1f790e", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "inviolate-3d8c5", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
