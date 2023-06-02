@@ -1,0 +1,33 @@
+<div class="notion-selectable notion-page-block" id="file-button-<?wsp file//FileNameTake//HashString32 ?>">
+<a href="/index.wsp?path=<?wsp URLEncode[file] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                                                                    <?wsp With[{pressed = If[session["Query", "path"] === file, " notion-focusable-pressed", ""]}, ?>
+                                                                        <div oncontextmenu="return false;" class="notion-focusable <?wsp pressed ?>" role="button" tabindex="0" class="sidebar-focusable-cover">
+                                                                        <?wsp ] ?>
+
+                                                                            <div oncontextmenu="return false;" class="sidebar-option" >
+                                                                                <div oncontextmenu="return false;" class="option-holder">
+                                                                                    <div oncontextmenu="return false;" class="notion-focusable focusable-pointer" role="button" tabindex="0" >
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="sidebar-option-button">
+                                                                                    
+                                                                                    <div class="notion-record-icon notranslate notion-focusable" role="button" tabindex="0" >
+                                                                                   
+
+                                                                                        <?wsp If[NotebookQ[file], ?>
+                                                                                            <img width="15" height="15" src="/svg/page.svg"/>
+                                                                                        <?wsp , "" ] ?>
+                                                                                        <?wsp If[ImageFileQ[file],  ?>
+                                                                                            <img width="15" height="15" src="/svg/sidebarTemplates.svg"/>
+                                                                                        <?wsp , ""]  ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="sidebar-label-clearfix">
+                                                                                    <div class="notranslate" class="label-clear"><?wsp FileNameTake[file] ?></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                    <?wsp LoadPage["template/dropdown/file.wsp"] ?>
+</div>

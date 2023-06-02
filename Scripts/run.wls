@@ -11,19 +11,32 @@ Get/@{
   "JerryI`WolframJSFrontend`Dev`", 
   "JerryI`WolframJSFrontend`WSPDynamicsExtension`",
 
-  "JerryI`WolframJSFrontend`WolframLanguageSupport`",
-  "JerryI`WolframJSFrontend`HTMLSupport`",
-  "JerryI`WolframJSFrontend`MarkdownSupport`",
-  "JerryI`WolframJSFrontend`JSSupport`",
-  "JerryI`WolframJSFrontend`MagicFileEditor`",
-  "JerryI`WolframJSFrontend`SVGBobSupport`",
-  "JerryI`WolframJSFrontend`MermaidSupport`"
+  "JerryI`WolframJSFrontend`Packages`"
   };
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
 
 (* assign the handler for ExtendDefiniton command from the kernel to Notebook API *)
 JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
+
+(* plugins *)
+LoadPluginsConfiguration;
+CheckUpdates;
+
+Includes["jsmodule"];
+Includes["js"];
+Includes["wlkernel"];
+Includes["wl"];
+Includes["styles"];
+Includes["autocomplete"];
+
+Print["getting modules..."];
+
+Get[FileNameJoin[{jsf`root, "Packages", #}]] &/@ Includes["wl"];
+
+Print["order"];
+
+Print /@ PackagesOrder;
 
 SetUpCron := (
   (* ping-pong with frontend *)
@@ -50,10 +63,16 @@ If[MemberQ[$ScriptCommandLine, "dev"],
   Print[Reset];
 ];
 
+If[MemberQ[$ScriptCommandLine, "auto"],
+  autostart = True;
+  Print[Green<>"Autostart mode is activated"];
+  Print[Reset];
+];
+
 (* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault *)
-  jsf`server["path"] = Join[Take[jsf`server["path"], 2], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
+  jsf`server["path"] = Join[Take[jsf`server["path"], Length[jsf`server["path"]]-1], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
 
   (* handlers *)
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]
@@ -88,7 +107,7 @@ If[TrueQ[devmode], WSPCache["Off"]];
 
 jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart;
 
-jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, FileNameJoin[{jsf`root, "Assets"}], "/", {"/"}}, "socket-close" -> True];
+jsf`server = WEBServer["addr" -> address, "path" -> {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], "/", {"/"}}, "socket-close" -> True];
 jsf`server = jsf`server // WEBServerStart;
 
 (*NotificationMethodRegister;*)
@@ -99,4 +118,6 @@ If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 console["log", "Open http://`` in your browser", jsf`server["addr"]];
 
-While[True, Pause[1]];
+If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
+
+While[True, LoopRun; Pause[0.3]];

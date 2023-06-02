@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`"}]; 
 
 (*
     ::Only for MASTER kernel::
@@ -12,6 +12,8 @@ BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`"}];
 *)
 
 LocalKernel::usage = "A wrapper for the local evaluator and its commands"
+
+LocalKernelPromiseResolve::usage = "for internal communication"
 
 Begin["`Private`"]; 
 
@@ -49,13 +51,38 @@ LocalKernel[ev_, cbk_, OptionsPattern[]] := (
     ];
 );
 
+promises = <||>;
+
+LocalKernelPromiseResolve[uid_, res_] := (
+    promises[uid] = res;
+);
+
+LocalKernel["Ask"][expr_] := Module[{res}, With[{uid = CreateUUID[]},
+    If[status["signal"] =!= "good", Print["Not running!"]; Return[$Failed]];
+
+    promises[uid] = $Waiting;
+    JTPSend[asyncsocket, Global`MasterResolvePromise[expr][uid]];
+    While[promises[uid] === $Waiting,
+        Pause[0.1];
+    ];
+
+    res = promises[uid];
+    promise[uid] = .;
+    res
+]]
+
 LocalKernel["PongHandler"][cbk_] := pongHandler = cbk;
 
 LocalKernel["Abort"][cbk_] := ( 
-    LinkInterrupt[link, 3]; 
-    LinkWrite[link, Unevaluated[$Aborted] ]; 
-    status["signal"] = "good"; status["text"] = "Aborted";
-    cbk[LocalKernel["Status"]]; 
+    If[status["signal"] === "good",
+        LinkInterrupt[link, 3]; 
+        LinkWrite[link, Unevaluated[$Aborted] ]; 
+        status["signal"] = "good"; status["text"] = "Aborted";
+         
+    ,
+        status["text"] = "Not possible";
+    ];
+    cbk[LocalKernel["Status"]];
 );
 
 LocalKernel["Exit"][cbk_] := ( 
@@ -67,6 +94,7 @@ LocalKernel["Exit"][cbk_] := (
 (* tell the kernel an id of a notebook for the future fast direct communication *)
 LocalKernel["AttachNotebook"][id_, path_] := ( 
     Print["attaching "<>id];
+    
     If[status["signal"] == "good", 
         (* can be a bug, but it doesnt work if we use a wrapper function *)
         JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
@@ -103,6 +131,13 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     With[{packed = (List["host" -> JerryI`WolframJSFrontend`jtp["host"], "port" -> JerryI`WolframJSFrontend`jtp["port"] ])},
         LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
+    ];
+
+    LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
+
+    (* loading kernels *)
+    With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", #}] &/@ Includes["wlkernel"]},
+        LinkWrite[link, Unevaluated[Get/@list]]; 
     ];
 
     (* i dunno. this is a fucking bug *)

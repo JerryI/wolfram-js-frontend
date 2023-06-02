@@ -1,0 +1,187 @@
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.0.1", 
+   "description" -> "WLJS Code editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js", "src/boxes.js"}, 
+     "wlkernel" -> "src/boxes.wl", "wl" -> "src/processor.wl", 
+     "autocomplete" -> "src/autocomplete.js", "priority" -> -10|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-editor"|>, 
+   "dependencies" -> <|"@codemirror/legacy-modes" -> "6.3.2", 
+     "@codemirror/state" -> "6.2.0", "@codemirror/stream-parser" -> "0.19.9", 
+     "@codemirror/view" -> "6.9.6", "@codemirror/lang-html" -> "6.4.2", 
+     "@codemirror/lang-javascript" -> "6.1.4", "@codemirror/lang-markdown" -> 
+      "6.1.1", "codemirror" -> "6.0.1", "parcel-bundler" -> "1.12.5", 
+     "rainbowbrackets" -> "^2.0.2", "mma-uncompress" -> "^1.0.1", 
+     "node-balanced" -> "^0.0.14", "priceless-mathematica" -> "^1.1.9", 
+     "rollup" -> "^3.21.6"|>, "resolutions" -> 
+    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-editor"|>, "wljs-graphics3d-threejs" -> 
+  <|"name" -> "wljs-graphics3d-threejs", "version" -> "0.0.1", 
+   "description" -> "A ThreeJS inplementation of Mathematica's Graphics3D", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
+--config rollup.config.mjs -w", "test" -> 
+      "wolframscript -f buildtests.wls"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wlkernel" -> "src/kernel.wl", "autocomplete" -> 
+      "src/autocomplete.js"|>, "repository" -> <|"type" -> "git", 
+     "url" -> 
+      "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine"|>, 
+   "author" -> "Kirill Vasin", "license" -> "GPL", 
+   "bugs" -> 
+    <|"url" -> 
+      "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine/issues"|>\
+, "homepage" -> 
+    "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine#readme", 
+   "devDependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
+     "@types/dat.gui" -> "^0.7.7", "dat.gui" -> "^0.7.9", 
+     "purify-css" -> "^1.2.5", "rollup" -> "^3.20.6", 
+     "rollup-plugin-combine" -> "^2.1.1", "serve-static" -> "^1.14.1", 
+     "systemjs" -> "^6.14.1"|>, "dependencies" -> 
+    <|"@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
+      "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", 
+     "@types/dat.gui" -> "^0.7.7", "dat.gui" -> "^0.7.9", 
+     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
+     "rollup-plugin-livereload" -> "^2.0.5", "rollup-plugin-serve" -> 
+      "^2.0.2", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1", 
+     "three" -> "^0.123.0", "three-addons" -> "^1.2.0", 
+     "three-sky" -> "^1.1.3"|>, "enabled" -> True, 
+   "path" -> "wljs-graphics3d-threejs"|>, "wljs-graphics-d3" -> 
+  <|"name" -> "wljs-graphics-d3", "version" -> "0.0.1", 
+   "description" -> 
+    "A D3 & Plotly.js implementation of Mathematica's Graphics", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
+--config rollup.config.mjs -w"|>, "wljs-meta" -> 
+    <|"jsmodule" -> "dist/kernel.js", "wlkernel" -> "src/kernel.wl", 
+     "autocomplete" -> "src/autocomplete.js"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-graphics-d3"|>, 
+   "author" -> "Kirill Vasin", "license" -> "GPL", 
+   "bugs" -> 
+    <|"url" -> "https://github.com/JerryI/wljs-graphics-d3/issues"|>, 
+   "homepage" -> "https://github.com/JerryI/wljs-graphics-d3#readme", 
+   "devDependencies" -> <||>, "dependencies" -> 
+    <|"@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
+      "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", 
+     "@types/dat.gui" -> "^0.7.7", "d3" -> "^7.8.2", 
+     "d3-interpolate-path" -> "^2.3.0", "plotly.js" -> "^2.13.1", 
+     "plotly.js-dist" -> "^2.18.2", "plotly.js-dist-min" -> "^2.18.2", 
+     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
+     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
+   "enabled" -> True, "path" -> "wljs-graphics-d3"|>, 
+ "wljs-html-support" -> <|"name" -> "wljs-html-support", 
+   "version" -> "0.0.1", "description" -> 
+    "HTML/WSP cells support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl", "wlkernel" -> "src/kernel.wl"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-html-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-html-support"|>, "wljs-inputs" -> 
+  <|"name" -> "wljs-inputs", "version" -> "0.0.1", 
+   "description" -> "sliders and other inputs for WLJS", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
+--config rollup.config.mjs -w"|>, "wljs-meta" -> 
+    <|"jsmodule" -> "dist/kernel.js", "wlkernel" -> "src/kernel.wl", 
+     "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-inputs"|>, 
+   "author" -> "Kirill Vasin", "license" -> "GPL", 
+   "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-inputs/issues"|>, 
+   "homepage" -> "https://github.com/JerryI/wljs-inputs#readme", 
+   "devDependencies" -> <||>, "dependencies" -> 
+    <|"@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
+      "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", 
+     "pako" -> "^2.1.0", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> 
+      "^2.1.1", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
+   "enabled" -> True, "path" -> "wljs-inputs"|>, 
+ "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.1.0", 
+   "description" -> "A core library and WL interpreter written in pure JS", 
+   "scripts" -> <|"start" -> "parcel index.html --open", 
+     "build" -> "parcel build index.html --public-url ./"|>, 
+   "wljs-meta" -> <|"js" -> {"src/interpreter.js", "src/core.js", 
+       "src/metamarkers.js"}, "autocomplete" -> "src/autocomplete.js"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-interpreter"|>, 
+   "author" -> "Kirill Vasin", "license" -> "GPL", 
+   "bugs" -> 
+    <|"url" -> "https://github.com/JerryI/wljs-interpreter/issues"|>, 
+   "homepage" -> "https://github.com/JerryI/wljs-interpreter#readme", 
+   "devDependencies" -> <|"@types/node" -> "^16.7.10", "buffer" -> "^5.7.1", 
+     "parcel" -> "^2.8.3", "parcel-bundler" -> "^1.12.5", 
+     "parcel-reporter-static-files-copy" -> "^1.5.0", 
+     "typescript" -> "^4.3.2"|>, "dependencies" -> 
+    <|"@codemirror/lang-javascript" -> "^6.1.8", 
+     "@codemirror/legacy-modes" -> "6.3.2", "@codemirror/state" -> "6.2.0", 
+     "@codemirror/stream-parser" -> "0.19.9", "@codemirror/view" -> "6.9.6", 
+     "cm6-theme-nord" -> "^0.2.0", "json-compress" -> 
+      "github:Alamantus/JSON-Compress", "jsoncrush" -> "^1.1.8", 
+     "priceless-mathematica" -> "^1.1.8", "rainbowbrackets" -> "^2.0.2"|>, 
+   "enabled" -> True, "path" -> "wljs-interpreter", 
+   "staticFiles" -> {<|"staticPath" -> "static"|>, 
+     <|"staticPath" -> "src"|>}|>, "wljs-js-support" -> 
+  <|"name" -> "wljs-js-support", "version" -> "0.0.1", 
+   "description" -> "JS cells support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-js-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-js-support"|>, "wljs-markdown-support" -> 
+  <|"name" -> "wljs-markdown-support", "version" -> "0.0.1", 
+   "description" -> "Markdown cells support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl", "styles" -> "src/katex.css"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-markdown-support"|>, 
+   "dependencies" -> <|"marked" -> "^5.0.1", "marked-katex-extension" -> 
+      "^2.0.2", "rollup" -> "^3.21.6"|>, "resolutions" -> 
+    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-markdown-support"|>, "wljs-magic-support" -> 
+  <|"name" -> "wljs-magic-support", "version" -> "0.0.1", 
+   "description" -> "Some misc commands for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-magic-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-magic-support"|>, "wljs-mermaid-support" -> 
+  <|"name" -> "wljs-mermaid-support", "version" -> "0.0.1", 
+   "description" -> "Mermaid diagrams support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-mermaid-support"|>, 
+   "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-mermaid-support"|>, "wljs-svgbob-support" -> 
+  <|"name" -> "wljs-svgbob-support", "version" -> "0.0.1", 
+   "description" -> "SVGBob ASCII graphics support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-svgbob-support"|>, 
+   "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-svgbob-support"|>|>

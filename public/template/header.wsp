@@ -1,20 +1,43 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="/styles.css">
-        <link rel="stylesheet" href="/katex.css">
-        <script>
-            //avoid errors, when loading the scripts takes too much time
-            var core = {};
-        </script>
-        <script defer type="module" src="/js/bundle.js"></script>
-        <script defer src="/js/core.js"></script>
+        <link rel="stylesheet" href="/dist/merged.css">
+
+        <?wsp Table[ ?> 
+            <link rel="stylesheet" href="/<?wsp i ?>">
+        <?wsp , {i, Includes["styles"]}]?>
+
+        <!-- any inline js including core library (global) UPD: No longer exists -->
+        <?wsp Table[ ?> 
+            <script>
+            <?wsp Import[FileNameJoin[{"Packages", i}], "String"] ?>
+            </script>
+        <?wsp , {i, Includes["js"]}]?>
+ 
+        <!-- frontend library (module) -->
+        <script type="module" src="/dist/merged.js"></script>
+        
+        <!-- user's plugins (module) -->
+        <?wsp Table[ ?> 
+            <script type="module" src="/<?wsp i ?>"></script>
+        <?wsp , {i, Includes["jsmodule"]}]?> 
+
+        <!-- connection to the server (global) -->
+        <script src="/dist/sockets.js"></script>
+
+
+        <!-- editors autocomplete -->
+        <?wsp Table[ ?> 
+            <script type="module" src="/<?wsp i ?>"></script>
+        <?wsp , {i, Includes["autocomplete"]}]?>         
     </head>
     <body class="notion-body">
         <div id="notion-app">
             <div class="notion-app-inner notion-light-theme" style="">
                 <div style="">
                     <div class="notion-cursor-listener" style="">
+                        <?wsp LoadPage["template/modal.wsp"] ?>
+
+                        <?wsp If[MissingQ[session["Query", "zen"]], ?>
                         <div class="notion-sidebar-container" style="">
                             <div style="">
                                 <div style="">
@@ -22,10 +45,12 @@
                                 </div>
                             </div>
                         </div>
+                        <?wsp , ""] ?>
+
                         <div class="" style="">
                             <div>
                                 <?wsp LoadPage["template/topbar.wsp"] ?>
                             </div>
                                 
                          
-        <div class="notion-frame" style="">
+        <div class="notion-frame <?wsp If[MissingQ[session["Query", "zen"]], "", " notion-frame-extended"] ?>" style="">

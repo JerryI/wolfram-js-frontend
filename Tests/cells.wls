@@ -2,7 +2,7 @@
 
 $HistoryLength = 0
 PacletDirectoryLoad[Directory[]]
-Get["https://raw.githubusercontent.com/JerryI/tinyweb-mathematica/master/WSP/WSP.wl"]
+
 Get["JerryI`WolframJSFrontend`Cells`"]
 Get["JerryI`WolframJSFrontend`Evaluator`"]
 
@@ -13,13 +13,65 @@ Get["JerryI`WolframJSFrontend`Colors`"]
 Print[Magenta <> "Cells and Evaluator Tests"];
 Print[Reset];
 
-eventHandler[type_][cell_] := (
+eventHandler[type_][data__] := (
     lastevent = {type, cell};
+    Print[Blue];
+    Print["> "<>type];
     Print[Black];
-    Print[">>> "<>type<>" <<<"];
-    Print["id:\t"<>cell[[1]]];
-    Print["data:\t"<>cell["data"]];
-    Print["type:\t"<>cell["type"]];
+    Print[data//List//InputForm//ToString];
+    Print["- - -"];
+    Print[Reset];
+);
+
+eventHandler["UpdateState"][data_] := (
+    lastevent = {type, cell};
+    Print[Blue];
+    Print["> UpdateState"];
+    Print[Black];
+    Print["id: "<>data[[1]]];
+    Print["state: "<>data["state"]];
+    Print["type: "<>data["type"]];
+    Print["- - -"];
+    Print[Reset];
+);
+
+eventHandler["NewCell"][data_] := (
+    lastevent = {type, cell};
+    Print[Blue];
+    Print["> NewCell"];
+    Print[Black];
+    Print["id: "<>data[[1]]];
+    Print["data: "<>data["data"]];
+    Print["type: "<>data["type"]];
+    Print["- - -"];
+    Print[Reset];
+);
+
+eventHandler["RemovedCell"][data_] := (
+    lastevent = {type, cell};
+    Print[Blue];
+    Print["> RemovedCell"];
+    Print[Black];
+    Print["id: "<>data[[1]]];
+    Print["data: "<>data["data"]];
+    Print["type: "<>data["type"]];
+    Print["- - -"];
+    Print[Reset];
+);
+
+eventHandler["AddCellAfter"][parent_, next_] := (
+    lastevent = {type, cell};
+    Print[Blue];
+    Print["> AddCellAfter"];
+    Print[Black];
+    Print["new id: "<>parent[[1]]];
+    Print["data: "<>parent["data"]];
+    Print["type: "<>parent["type"]];
+    Print["- - -"];
+    Print["prev id: "<>next[[1]]];
+    Print["data: "<>next["data"]];
+    Print["type: "<>next["type"]];
+    Print["- - -"];    
     Print[Reset];
 );
 
@@ -32,13 +84,9 @@ SetAttributes[wrapper, HoldAll];
 
 evaluator = 
   {
-    MarkdownQ ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->MarkdownProcessor  |>,
-    WSPQ      ->  <|"SyntaxChecker"->(True&),               "Epilog"->(#&),             "Prolog"->(#&), "Evaluator"->WSPProcessor       |>,
     (True&)   ->  <|"SyntaxChecker"->WolframCheckSyntax,    "Epilog"->SplitExpression,  "Prolog"->(#&), "Evaluator"->WolframProcessor   |>
   };
 
-MarkdownQ[str_] := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.md$"]]] > 0;
-WSPQ[str_]      := Length[StringCases[StringSplit[str, "\n"] // First, RegularExpression["^\\.(wsp|html|htm)$"]]] > 0;
 
 SplitExpression[astr_] := With[{str = StringReplace[astr, "%"->"$$$out"]},
   StringTake[str, Partition[Join[{1}, #, {StringLength[str]}], 2]] &@
@@ -82,47 +130,79 @@ JerryI`WolframJSFrontend`WebObjects`replacement = {};
 
 (* ************************************  *)
 
-Print["Create cell silently"];
-cell = wrapper[CellObj["sign"->"0xff", "data"->"1+1", "type"->"input"]];
+cell = wrapper[CellObj["sign"->"ref", "data"->"1+1", "type"->"input"]]
+list = wrapper[CellList["ref"]={cell}]
+
+Print[Green];
 Print["Generate tree"];
-wrapper[CellObjGenerateTree[cell ]];
-
-If[lastevent[[1]] === "NewCell" && cell["data"] === "1+1",
-  Print[Green]; Print["Passed"]; 
-  ,
-  Print[Green]; Print["Failed"];
-  Print[lastevent]; 
-  Print[cell["data"]];
-  failed=True;
-];
-
 Print[Reset];
 
+CellListTree["ref"] // wrapper;
 
-Print["Try to evaluate"];
-wrapper[CellObjEvaluate[cell, evaluator]];
-
-If[cell["child"]["data"] === "2",
-  Print[Green]; Print["Passed"];
-,
-  Print[Red]; Print["Failed"];
-  Print[cell["child"]["data"]];
-  failed=True;
-];
+Print[Green];
+Print["Create next"];
 Print[Reset];
 
-Print["Overall"];
-If[failed//TrueQ, Print[Red<>"Failed"], Print[Green<>"Passed"]]; 
+nextcell = wrapper[CellObj["sign"->"ref", "data"->"1+3", "type"->"input"]];
+CellListAddNewInput["ref", cell, nextcell]//wrapper;
+
+Print[Green];
+Print["Generate tree #2"];
 Print[Reset];
 
+CellListTree["ref"] // wrapper;
+
+Print[Green];
+Print["Remove last"];
+Print[Reset];
+
+CellListRemove["ref", nextcell]//wrapper;
+
+Print[Green];
+Print["Generate tree #3"];
+Print[Reset];
+
+CellListTree["ref"] // wrapper;
+
+Print[Red];
+Print["Evaluate"];
+Print[Reset];
+
+CellObjEvaluate[cell, evaluator] // wrapper;
+
+Print[Green];
+Print["Generate tree #4"];
+Print[Reset];
+
+CellListTree["ref"] // wrapper;
+
+
+Print[Green];
+Print["Create next #2"];
+Print[Reset];
+
+nextcell = wrapper[CellObj["sign"->"ref", "data"->"777-1", "type"->"input"]];
+CellListAddNewInput["ref", cell, nextcell]//wrapper;
+
+Print[Green];
+Print["Generate tree #5"];
+Print[Reset];
+
+CellListTree["ref"] // wrapper;
+
+
+Print[Red];
+Print["Evaluate in the middle"];
+Print[Reset];
+
+CellObjEvaluate[CellList["ref"][[2]], evaluator] // wrapper;
+
+Print[Green];
+Print["Generate tree #6"];
+Print[Reset];
+
+CellListTree["ref"] // wrapper;
 
 
 
-
-
-Print[Magneta<>"WSP Test"]; Print[Reset];
-
-cell["data"] = ".wsp\n<div><?wsp Now ?></div>";
-wrapper[CellObjEvaluate[cell, evaluator]];
-Print[cell["child"]["data"]]
 

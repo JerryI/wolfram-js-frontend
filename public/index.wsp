@@ -21,7 +21,6 @@
   <?wsp FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] ?>     
 </div>
 
-
 <?wsp LoadPage["template/footer.wsp"] ?>
 
                           

@@ -1,1 +1,8 @@
 404
+
+<script>
+    core.FrontEndPopUp = (args, env) => {
+    
+    };
+
+</script>

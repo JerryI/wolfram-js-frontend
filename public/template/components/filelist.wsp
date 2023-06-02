@@ -1,0 +1,3 @@
+<?wsp Table[ ?>
+        <?wsp If[DirectoryQ[i], LoadPage["template/components/dir.wsp", {file = i}], LoadPage["template/components/file.wsp", {file = i}]] ?>                                                                                                                   
+<?wsp , {i, SortBy[FileNames["*", dir ], DirectoryQ] }] ?>

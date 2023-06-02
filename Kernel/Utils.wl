@@ -12,6 +12,9 @@ DropHalf::usage = "DropHalf drops a half of a list from the end"
 AssociationToggle::usage = "mutable boolean assoc manipulator"
 HashString32::usage = "Hash the string using CRC32 and represent using Base64"
 
+LoopSubmit::usage = "submit to main loop"
+LoopRun::usage = "execute the loop"
+
 Begin["`Private`"]; 
 
 NullQ[expr_] := expr===Null;
@@ -45,6 +48,23 @@ AssociationToggle[expr_, fl_] := (If[KeyExistsQ[expr, fl],
     ];)
 	
 SetAttributes[AssociationToggle, HoldFirst]
+
+LoopTasks = <||>;
+
+LoopSubmit[expr_, cbk_] := (
+	Print["main loop was updated!"];
+	LoopTasks[CreateUUID[]] = <|"expr" -> Hold[expr], "cbk"->cbk|>;
+)
+
+SetAttributes[LoopSubmit, HoldFirst]
+
+LoopRun := (
+	With[{res = LoopTasks[#, "expr"] // ReleaseHold // ReleaseHold // ReleaseHold},
+	Print["main loop: exec"];
+		LoopTasks[#, "cbk"][res];
+		LoopTasks[#] = .;
+	] &/@ Keys[LoopTasks];
+);
 
 End[];
 

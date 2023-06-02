@@ -1,8 +1,8 @@
 </div>
                         </div>
-                        <div class="notion-help-button notion-focusable" role="button" tabindex="0" style="">
+                        <!--<div class="notion-help-button notion-focusable" role="button" tabindex="0" style="">
                             ?
-                        </div>
+                        </div>-->
                         
                         
                     </div>
@@ -56,8 +56,8 @@
 
     window.addEventListener("wsconnected", function() { 
 
-        core.PageModulesUpdate = function(args, env) {
-            const list = interpretate(args[0], env);
+        core.PageModulesUpdate = async function(args, env) {
+            const list = await interpretate(args[0], env);
             console.log("wsp dynamic load");
             console.log(list);
             list.forEach((e) => {
@@ -76,6 +76,7 @@
     });
 
     //toggle sidebar
+    <?wsp If[MissingQ[session["Query", "zen"]], ?>
     {
         let sidebarToggle = localStorage.getItem("sidebar-hide");
 
@@ -88,12 +89,14 @@
             document.querySelectorAll('.notion-sidebar-container')[0].classList.add('notion-sidebar-container-hide');
             document.querySelectorAll('.notion-frame')[0].classList.add('notion-frame-extended');
             document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
+            document.querySelectorAll('.notion-outliner-private')[0].classList.add('notion-outliner-private-hide');
         }
 
         document.getElementById("toggle-sidebar-button").addEventListener('click', (e)=>{
             document.querySelectorAll('.notion-sidebar-container')[0].classList.toggle('notion-sidebar-container-hide');
             document.querySelectorAll('.doubleChevronLeft')[0].classList.toggle('doubleChevronLeft-rotate');
             document.querySelectorAll('.notion-frame')[0].classList.toggle('notion-frame-extended');
+            document.querySelectorAll('.notion-outliner-private')[0].classList.toggle('notion-outliner-private-hide');
             
             if (sidebarToggle == 'true')
                 sidebarToggle = 'false'
@@ -103,7 +106,13 @@
             localStorage.setItem("sidebar-hide", sidebarToggle);
         });        
             
-    }     
+    }    
+    <?wsp , ""] ?> 
+
+    <?wsp If[!MissingQ[session["Query", "zen"]], ?>
+    //a plug
+        core.FrontEndUpdateFileList = function(args, env) { };
+    <?wsp , ""] ?>
 
  </script>
     

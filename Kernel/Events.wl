@@ -20,6 +20,8 @@ EventsRack::usage = "a union of many events produces a single event object from 
 EmittedEvent::usage = "internal function called by the frontend to fire an event on a kernel"
 EventHandlers::usage = "internal function, which hold the binded function"
 
+EventListener::usage = "internal commnd for frontend"
+
 Begin["`Private`"]; 
 
 
@@ -42,6 +44,23 @@ EventsRack[list_] := With[{uid = CreateUUID[]},
     ]
     EventObject[<|"id"->uid|>]
 ]
+
+Unprotect[EventHandler]
+ClearAll[EventHandler]
+EventHandler[expr_, ev_List] := Module[{eventsList = {}},
+    eventsList = With[{func = #[[2]], type = #[[1]], id = CreateUUID[]},
+        EventBind[EventObject[<|"id"->id|>], func];
+        type -> id
+    ]&/@ ev;
+
+    EventListener[expr, (Sequence@@eventsList)]
+]
+
+(* better to use this instead of EventBind *)
+EventHandler[EventObject[assoc_Association], handler_] ^:= (
+    EventHandlers[assoc["id"]] = handler;
+    EventObject[assoc]
+)
 
 End[];
 
