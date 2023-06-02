@@ -102,6 +102,19 @@ function WSPHttpBigQuery(command, promise, type = "String") {
 
 
     const request = new XMLHttpRequest();
+
+    request.onreadystatechange = ()=>{
+      if (request.readyState === 4) {
+        console.log(request.responseText);
+
+          if (request.responseText == 'Nothing') {
+            promise.resolve();
+          } else {
+            promise.reject();
+          }
+      }    
+      }
+    
     request.open("POST", url);
     request.send(formData);
 }
