@@ -38,6 +38,8 @@ Print["order"];
 
 Print /@ PackagesOrder;
 
+RandomWord[];
+
 SetUpCron := (
   (* ping-pong with frontend *)
   SessionSubmit[ScheduledTask[WebSocketBroadcast[jsf`server, Global`Pong[360.0 Now[[1, -1]] / 60.0 //Round]], Quantity[3, "Seconds"]]];

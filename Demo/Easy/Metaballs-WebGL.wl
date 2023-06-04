@@ -7,14 +7,14 @@
          "Instant", "Gregorian", 2.]|>|>, "path" -> "/Volumes/Data/Github/wol\
 fram-js-frontend/Demo/Easy/Metaballs-WebGL.wl", 
    "cell" -> "c97fcaff-e58a-4bc3-9a6c-9ef5e920fddf711de4", 
-   "date" -> DateObject[{2023, 5, 27, 20, 55, 42.674903`8.382747520341416}, 
-     "Instant", "Gregorian", 2.]|>, 
+   "date" -> DateObject[{2023, 6, 5, 0, 26, 15.786392`7.950857867861022}, 
+     "Instant", "Gregorian", 3.]|>, 
  "cells" -> {<|"id" -> "c97fcaff-e58a-4bc3-9a6c-9ef5e920fddf711de4", 
     "type" -> "input", "data" -> ".md\n# WebGL Metaballs example\nShow some \
 demonstration on how WebGL can interact with WL Kernel using event-based \
 system.\nThe overall diagram is shown here", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3617905c-9eda-407d-baf2-15e4ada2349f", "type" -> "output", 
+   <|"id" -> "6276d240-e1d1-42b2-8b9b-6de70de98a14", "type" -> "output", 
     "data" -> "\n# WebGL Metaballs example\nShow some demonstration on how \
 WebGL can interact with WL Kernel using event-based system.\nThe overall \
 diagram is shown here", "display" -> "markdown", 
@@ -30,7 +30,7 @@ Calculations[/Calculations/]\n    \n\n    end\n    \n    subgraph Browser\n   \
 H--->Calculations[/Calculations/]--WebSockets-->definedFunction", 
     "display" -> "codemirror", "sign" -> "sculptured-95b53", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "c9e386ec-7dbe-45bf-b99a-d679e2431335", "type" -> "output", 
+   <|"id" -> "cf0b797c-17af-421a-a1e1-c7a460fdf9e7", "type" -> "output", 
     "data" -> "\nflowchart LR\n    subgraph Wolfram Kernel\n    subgraph \
 Event\n        H[Handler]\n        \n    end\n    \
 Calculations[/Calculations/]\n    \n\n    end\n    \n    subgraph Browser\n   \
@@ -46,7 +46,7 @@ H--->Calculations[/Calculations/]--WebSockets-->definedFunction",
 operate with the cells. \n\nLet's define some basic 3-bodies system", 
     "display" -> "codemirror", "sign" -> "sculptured-95b53", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2db05a20-3369-4f26-8305-f37497e7899f", "type" -> "output", 
+   <|"id" -> "333cf685-a93e-4024-9b98-44945458f393", "type" -> "output", 
     "data" -> "\nEverything goes asynchronous, therefore, you can still \
 operate with the cells. \n\nLet's define some basic 3-bodies system", 
     "display" -> "markdown", "sign" -> "sculptured-95b53", 
@@ -62,7 +62,7 @@ operate with the cells. \n\nLet's define some basic 3-bodies system",
     "data" -> ".md\nThen define some parameters and create an `EventObject` \
 to be used for the interconnection with JS", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "4fdcf513-e2db-4c4d-93d5-7df31df365ab", "type" -> "output", 
+   <|"id" -> "0c95c75b-d724-45af-88f7-615172c6dbd5", "type" -> "output", 
     "data" -> "\nThen define some parameters and create an `EventObject` to \
 be used for the interconnection with JS", "display" -> "markdown", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
@@ -73,7 +73,7 @@ Max[pos//Flatten] {1,1};\n  min = 1.5 Min[pos//Flatten] {1,1};\n\n  ( {width, \
 height}  (# - min) / (max - min))& /@ pos\n];\nupdate = \
 EventObject[<|\"id\"->\"reCompute\"|>];\nupdate", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "b26eeebb-3248-428e-abc7-a8c6f001a859", "type" -> "output", 
+   <|"id" -> "95520e1f-ef8f-4267-a0f8-d3590f139010", "type" -> "output", 
     "data" -> "EventObject[\[LeftAssociation]\"id\"\[Rule]\"reCompute\"\
 \[RightAssociation]]", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
@@ -81,7 +81,7 @@ EventObject[<|\"id\"->\"reCompute\"|>];\nupdate", "display" -> "codemirror",
     "data" -> ".md\nNow JS part comes with some basic shaders, which returns \
 a DOM element", "display" -> "codemirror", "sign" -> "sculptured-95b53", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "80799720-ae3d-4fc1-ba72-9302e5d62f06", "type" -> "output", 
+   <|"id" -> "21f66cdb-21f6-4dc7-92db-451d46661c8a", "type" -> "output", 
     "data" -> "\nNow JS part comes with some basic shaders, which returns a \
 DOM element", "display" -> "markdown", "sign" -> "sculptured-95b53", 
     "props" -> <|"hidden" -> False|>|>, 
@@ -120,19 +120,19 @@ cornerBuffer = buffer;\n}\n\nvar a_corner = gl.getAttribLocation(program, \
 u_ball2 = gl.getUniformLocation(program, \"u_ball2\")\nvar u_ball3 = \
 gl.getUniformLocation(program, \"u_ball3\")\n\ngl.viewport(0, 0, width, \
 height);\ngl.useProgram(program);\ngl.enableVertexAttribArray(a_corner);\ngl.\
-vertexAttribPointer(a_corner, 2, gl.FLOAT, false, 0, 0);\n\n//Frontend \
-function, which is called by the Wolfram kernel\ncore.UpdateCanvas = \
-function(args, env) {\n  const coords = interpretate(args[0]);\n  \
-gl.uniform2f(\n    u_ball1,\n    coords[0][0],\n    coords[0][1]\n  );\n  \
-gl.uniform2f(\n    u_ball2,\n    coords[1][0],\n    coords[1][1]\n  );\n  \
-gl.uniform2f(\n    u_ball3,\n    coords[2][0],\n    coords[2][1]\n  );\n  \
-gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);  \n\n  \
-requestAnimationFrame(animate);\n}\n\nfunction animate() {\n  \
-core.FireEvent([\"'reCompute'\", 0]);\n}\n\nconst uid = \
-requestAnimationFrame(animate);\nthis.ondestroy = function() \
-{cancelAnimationFrame(uid)};\n\nreturn canvas;", "display" -> "codemirror", 
-    "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7d6a02fa-41fc-4fab-89f8-67cc8f8b9b83", "type" -> "output", 
+vertexAttribPointer(a_corner, 2, gl.FLOAT, false, 0, 0);\n\nlet \
+uid;\n\n//Frontend function, which is called by the Wolfram \
+kernel\ncore.UpdateCanvas = async function(args, env) {\n  const coords = \
+await interpretate(args[0], env);\n  gl.uniform2f(\n    u_ball1,\n    \
+coords[0][0],\n    coords[0][1]\n  );\n  gl.uniform2f(\n    u_ball2,\n    \
+coords[1][0],\n    coords[1][1]\n  );\n  gl.uniform2f(\n    u_ball3,\n    \
+coords[2][0],\n    coords[2][1]\n  );\n  gl.drawArrays(gl.TRIANGLE_FAN, 0, \
+4);  \n\n  uid = await requestAnimationFrame(animate);\n}\n\nfunction \
+animate() {\n  core.FireEvent([\"'reCompute'\", 0]);\n}\n\nthis.ondestroy = \
+function() {cancelAnimationFrame(uid)};\n\nreturn canvas;", 
+    "display" -> "codemirror", "sign" -> "sculptured-95b53", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "767025e0-dca7-44ee-9d09-507cef5b6b9e", "type" -> "output", 
     "data" -> "const canvas = document.createElement('canvas');\nvar gl = \
 canvas.getContext(\"webgl\", {depth: false});\n\nvar height =800;\nvar width \
 =1000;\n\ncanvas.width = width;\ncanvas.height = height;\n\nvar \
@@ -166,22 +166,22 @@ cornerBuffer = buffer;\n}\n\nvar a_corner = gl.getAttribLocation(program, \
 u_ball2 = gl.getUniformLocation(program, \"u_ball2\")\nvar u_ball3 = \
 gl.getUniformLocation(program, \"u_ball3\")\n\ngl.viewport(0, 0, width, \
 height);\ngl.useProgram(program);\ngl.enableVertexAttribArray(a_corner);\ngl.\
-vertexAttribPointer(a_corner, 2, gl.FLOAT, false, 0, 0);\n\n//Frontend \
-function, which is called by the Wolfram kernel\ncore.UpdateCanvas = \
-function(args, env) {\n  const coords = interpretate(args[0]);\n  \
-gl.uniform2f(\n    u_ball1,\n    coords[0][0],\n    coords[0][1]\n  );\n  \
-gl.uniform2f(\n    u_ball2,\n    coords[1][0],\n    coords[1][1]\n  );\n  \
-gl.uniform2f(\n    u_ball3,\n    coords[2][0],\n    coords[2][1]\n  );\n  \
-gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);  \n\n  \
-requestAnimationFrame(animate);\n}\n\nfunction animate() {\n  \
-core.FireEvent([\"'reCompute'\", 0]);\n}\n\nconst uid = \
-requestAnimationFrame(animate);\nthis.ondestroy = function() \
-{cancelAnimationFrame(uid)};\n\nreturn canvas;", "display" -> "js", 
-    "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
+vertexAttribPointer(a_corner, 2, gl.FLOAT, false, 0, 0);\n\nlet \
+uid;\n\n//Frontend function, which is called by the Wolfram \
+kernel\ncore.UpdateCanvas = async function(args, env) {\n  const coords = \
+await interpretate(args[0], env);\n  gl.uniform2f(\n    u_ball1,\n    \
+coords[0][0],\n    coords[0][1]\n  );\n  gl.uniform2f(\n    u_ball2,\n    \
+coords[1][0],\n    coords[1][1]\n  );\n  gl.uniform2f(\n    u_ball3,\n    \
+coords[2][0],\n    coords[2][1]\n  );\n  gl.drawArrays(gl.TRIANGLE_FAN, 0, \
+4);  \n\n  uid = await requestAnimationFrame(animate);\n}\n\nfunction \
+animate() {\n  core.FireEvent([\"'reCompute'\", 0]);\n}\n\nthis.ondestroy = \
+function() {cancelAnimationFrame(uid)};\n\nreturn canvas;", 
+    "display" -> "js", "sign" -> "sculptured-95b53", 
+    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "9d549d1e-2030-4b8f-bc8c-0578c53bb9aa711de4", "type" -> "input", 
     "data" -> ".md\nStop the simulation", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "5bde2720-057a-4cb4-9397-1052ace25af3", "type" -> "output", 
+   <|"id" -> "17ad01d2-e04c-482a-a60b-d7969adcd9a4", "type" -> "output", 
     "data" -> "\nStop the simulation", "display" -> "markdown", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "5e95ca4a-722c-4578-8ab8-3514135ec9ab711de4", "type" -> "input", 
@@ -190,18 +190,18 @@ requestAnimationFrame(animate);\nthis.ondestroy = function() \
    <|"id" -> "18f5b016-d199-4e17-8874-b975b7b09154711de4", "type" -> "input", 
     "data" -> ".md\nStart the simulation", "display" -> "codemirror", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0e320349-8df3-45dc-959d-9666f6493223", "type" -> "output", 
+   <|"id" -> "c1298093-f761-441d-bce9-d25901a4d1c4", "type" -> "output", 
     "data" -> "\nStart the simulation", "display" -> "markdown", 
     "sign" -> "sculptured-95b53", "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "12b8b86d-9687-464d-9c3f-79e50605395e711de4", "type" -> "input", 
     "data" -> "EventBind[update, Function[data,\n \n  \
-SendToFrontEnd[UpdateCanvas[getScaled[t]]];\n  t = t + 0.01;\n  If[t > 1.0, t \
-= 0;\n  (* regenerate it! *)\n  bodies  = NBodySimulation[\n    \
+FrontSubmit[UpdateCanvas[getScaled[t]]];\n  t = t + 0.01;\n  If[t > 1.0, t = \
+0;\n  (* regenerate it! *)\n  bodies  = NBodySimulation[\n    \
 \"InverseSquare\", {\n    <|\"Mass\" -> 1, \"Position\" -> \
 RandomReal[{-3,3},2], \"Velocity\" -> RandomReal[{-3,3},2]|>,\n    <|\"Mass\" \
 -> 1, \"Position\" -> RandomReal[{-3,3},2], \"Velocity\" -> \
 RandomReal[{-3,3},2]|>,\n    <|\"Mass\" -> 1, \"Position\" -> \
 RandomReal[{-3,3},2], \"Velocity\" -> RandomReal[{-3,3},2]|>}, 1]  \n  \
-];\n]];\n\n(* kickstarter *)\nSendToFrontEnd[UpdateCanvas[getScaled[t]]]", 
+];\n]];\n\n(* kickstarter *)\nFrontSubmit[UpdateCanvas[getScaled[t]]]", 
     "display" -> "codemirror", "sign" -> "sculptured-95b53", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
