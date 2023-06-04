@@ -13,6 +13,8 @@ kirill.vasin@uni-a.de
 [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 Thank you 🍺 
 
+__[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles)__
+
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine.
 

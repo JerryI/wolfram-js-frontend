@@ -1,10 +1,10 @@
 <|"notebook" -> <|"name" -> "Bandleader", "id" -> "unvanquished-b64e1", 
    "kernel" -> LocalKernel, "objects" -> 
-    <|"fakeline" -> <|"json" -> "[\"List\",[\"List\",9.837885394873402e-2,0.2\
-3127072461243192],[\"List\",0.703251646683291,0.8600954521845672]]", 
-       "date" -> DateObject[{2023, 5, 15, 10, 13, 
-          32.280845`8.261519874946389}, "Instant", "Gregorian", 2.]|>, 
-     "e5057708-c08d-4af6-ba5e-59a26132bc82" -> 
+    <|"fakeline" -> <|"json" -> "[\"List\",[\"List\",0.6629791310032811,0.149\
+5603472468583],[\"List\",0.4147904895613894,0.12291556803892223]]", 
+       "date" -> DateObject[{2023, 6, 4, 12, 20, 47.535851`8.42959624951651}, 
+         "Instant", "Gregorian", 3.]|>, 
+     "bfa74318-d594-440e-a380-19a59803a5a3" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"List\",[\"List\",[\"List\"],[\"\
 List\"],[\"Annotation\",[\"List\",[\"Directive\",[\"Opacity\",1.0],[\"RGBColo\
 r\",0.368417,0.506779,0.709798],[\"AbsoluteThickness\",1.6]],[\"Line\",[\"Lis\
@@ -58,7 +58,7 @@ ist\",0.26456689268366235,0.26456689268366235],[\"List\",0.2842306782257526,0\
 1422112,0.9986271251422112],[\"List\",0.9989703387546176,0.9989703387546176],\
 [\"List\",0.999313552367024,0.999313552367024],[\"List\",0.9996567659794304,0\
 .9996567659794304],[\"List\",0.9999999795918367,0.9999999795918367]]]],\"'Cha\
-rting`Private`Tag$24553#1'\"]]],[\"List\"]],[\"List\",[\"Rule\",\"DisplayFunc\
+rting`Private`Tag$93180#1'\"]]],[\"List\"]],[\"List\",[\"Rule\",\"DisplayFunc\
 tion\",\"Identity\"],[\"Rule\",\"Ticks\",[\"List\",\"Automatic\",\"Automatic\
 \"]],[\"Rule\",\"AxesOrigin\",[\"List\",0,0]],[\"Rule\",\"FrameTicks\",[\"Lis\
 t\",[\"List\",\"Automatic\",\"Automatic\"],[\"List\",\"Automatic\",\"Automati\
@@ -95,34 +95,43 @@ on\",[\"Identity\",[\"Slot\",1]]],[\"Part\",[\"Slot\",1],2]]]]]]]]],[\"Rule\"\
 \"Rule\",\"PlotRangeClipping\",true],[\"Rule\",\"PlotRangePadding\",[\"List\"\
 ,[\"List\",[\"Scaled\",2.0e-2],[\"Scaled\",2.0e-2]],[\"List\",[\"Scaled\",2.0\
 e-2],[\"Scaled\",2.0e-2]]]],[\"Rule\",\"Ticks\",[\"List\",\"Automatic\",\"Aut\
-omatic\"]]]]", "date" -> DateObject[{2023, 5, 15, 10, 11, 
-          53.879747`8.484000522468397}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Middle/Injecting-\
-into-FO-instances.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 27, 20, 37, 12.794118`7.859585337779839}, 
-     "Instant", "Gregorian", 2.]|>, 
+omatic\"]]]]", "date" -> DateObject[{2023, 6, 4, 12, 6, 
+          0.28971`6.214538475284891}, "Instant", "Gregorian", 3.]|>, 
+     "f45ae0bf-baa5-4992-a2db-015bfdbc3f7a" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"MetaMarker\",\"'label'\"]]]", 
+       "date" -> DateObject[{2023, 6, 4, 12, 20, 1.205856`6.833870437537659}, 
+         "Instant", "Gregorian", 3.]|>, 
+     "f1002c9e-68f4-465e-b259-87d30d3ac694" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"MetaMarker\",\"'label'\"],[\"Li\
+ne\",[\"List\",[\"List\",0,0],[\"List\",1,1]]]],[\"Rule\",\"PlotRange\",[\"Li\
+st\",[\"List\",-1,1],[\"List\",-1,1]]]]", "date" -> 
+        DateObject[{2023, 6, 4, 12, 20, 39.775668`8.352192460525126}, 
+         "Instant", "Gregorian", 3.]|>|>, "path" -> "/Volumes/Data/Github/wol\
+fram-js-frontend/Demo/Middle/Injecting-into-FO-instances.wl", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 6, 4, 12, 21, 
+      14.610598`7.9172429769625845}, "Instant", "Gregorian", 3.]|>, 
  "cells" -> {<|"id" -> "0ee93e4f-0273-4d70-8388-d7d270e55153758", 
     "type" -> "input", "data" -> ".md\n# Injecting into Frontend Objects \
 instances\nLet us define some typical plot and apply a meta-marker on it", 
     "display" -> "codemirror", "sign" -> "unvanquished-b64e1", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b4a6d5cc-ee5e-4828-ae27-60888f14de20758", "type" -> "output", 
+   <|"id" -> "91ed4b69-851b-4760-ac6c-6aca99831693", "type" -> "output", 
     "data" -> "\n# Injecting into Frontend Objects instances\nLet us define \
 some typical plot and apply a meta-marker on it", "display" -> "markdown", 
     "sign" -> "unvanquished-b64e1", "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "27a95b58-012f-4e12-a6a9-c861356bee7e758", "type" -> "input", 
-    "data" -> "Plot[x, {x,0,1}, Epilog->{MetaMarker[\"label\"]}]", 
-    "display" -> "codemirror", "sign" -> "unvanquished-b64e1", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4e45f5de-dd6d-41e9-8dde-f675e4274ec6758", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"e5057708-c08d-4af6-ba5e-59a26132bc82\"]", 
+    "data" -> "Graphics[{MetaMarker[\"label\"], Line[{{0,0},{1,1}}]}, \
+PlotRange->{{-1,1},{-1,1}}]", "display" -> "codemirror", 
+    "sign" -> "unvanquished-b64e1", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "60d32b8e-b397-4b30-af6a-0b06d0919277", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"f1002c9e-68f4-465e-b259-87d30d3ac694\"]", 
     "display" -> "codemirror", "sign" -> "unvanquished-b64e1", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "248c0585-0ed8-4a66-8cde-6537ab827095758", "type" -> "input", 
     "data" -> ".md\nNow we can find it using `FindMetaMarker` selector and \
 inject new objects there", "display" -> "codemirror", 
     "sign" -> "unvanquished-b64e1", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6a837bb1-4823-4a10-8c9c-b942f15d025a758", "type" -> "output", 
+   <|"id" -> "a4a3e194-ee99-4bb1-b1f9-7986b27ce8dc", "type" -> "output", 
     "data" -> "\nNow we can find it using `FindMetaMarker` selector and \
 inject new objects there", "display" -> "markdown", 
     "sign" -> "unvanquished-b64e1", "props" -> <|"hidden" -> False|>|>, 
@@ -135,7 +144,7 @@ FindMetaMarker[\"label\"]//First] // FrontEndOnly // FrontSubmit;",
     "data" -> ".md\nGreat! To make something cool, lets inject another \
 frontend object there", "display" -> "codemirror", 
     "sign" -> "unvanquished-b64e1", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d2321be3-29c0-49e3-a11e-558e73b6ae1c758", "type" -> "output", 
+   <|"id" -> "28f259c0-809f-4a0b-92a0-7f00e94eed47", "type" -> "output", 
     "data" -> "\nGreat! To make something cool, lets inject another frontend \
 object there", "display" -> "markdown", "sign" -> "unvanquished-b64e1", 
     "props" -> <|"hidden" -> False|>|>, 
@@ -149,7 +158,7 @@ FindMetaMarker[\"label\"]//First] // FrontEndOnly // FrontSubmit;",
     "data" -> ".md\nNow we can update this injected object independently", 
     "display" -> "codemirror", "sign" -> "unvanquished-b64e1", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d976dcae-8585-4bb0-9b21-1ef0f1063f31758", "type" -> "output", 
+   <|"id" -> "ef8f2fc9-87c5-475d-8672-0fb71c16029b", "type" -> "output", 
     "data" -> "\nNow we can update this injected object independently", 
     "display" -> "markdown", "sign" -> "unvanquished-b64e1", 
     "props" -> <|"hidden" -> False|>|>, 
