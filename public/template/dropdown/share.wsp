@@ -1,0 +1,68 @@
+<div oncontextmenu="return false;" class="dropdown-file dropdown" id="dropdown-share">
+    <div class="dropdown-frame">
+        <div class="notion-scroller vertical">
+                <div class="notion-shadow">
+                        
+
+
+                        <div id="share-html" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/moveTo.svg"/>    
+                                    </div>
+                                </div>
+                                <div class="button-label">
+                                    <div class="label-clear">HTML</div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div id="share-react" class="notion-focusable" role="button" tabindex="0" >
+                            <div class="focusable-holder">
+                                <div class="focusable-holder-holder">
+                                    <div class="button-body">
+                                        <img width="15" height="15" src="/svg/moveTo.svg"/>    
+                                    </div>
+                                </div>
+                                <div class="button-label">
+                                    <div class="label-clear">React</div>
+                                </div>
+                                
+                            </div>
+                        </div>                                               
+                        
+                    </div>
+                    
+        </div>
+</div>
+</div>
+
+<script>
+{    
+    const dropdownBtn = document.getElementById("share-button");
+    const dropdownMenu = document.getElementById('dropdown-share');
+
+    dropdownBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("dropdown-file-show");
+        return false;
+    });
+
+    document.getElementById('share-html').addEventListener('click', (e)=> {
+        socket.send('NotebookExport["html"];'); 
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("dropdown-file-show");
+        return false;
+    }); 
+
+    document.getElementById('share-react').addEventListener('click', (e)=> {
+        socket.send('NotebookExport["react"];'); 
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("dropdown-file-show");
+        return false;
+    });  
+    
+
+}
+</script>

@@ -58,15 +58,16 @@
         (* for standalone app *)
         MergeFiles[{
                 "Src/fakesockets.js"
-            } -> "public/dist/export/fakesockets.js"
+            } -> "public/dist/fakesockets.js"
         ];            
 
         Print[Red<>" the process is not done yet... wait..."];
         Print[Reset];
-        (* for standalone app 
-        RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.standalone.config.mjs"}]//Print;   
+
+        RunProcess[{"node", "--max-old-space-size=8192", "./node_modules/.bin/rollup", "--config", "rollup.utils.config.mjs"}]["StandardError"]//Print;
         
+
         Print[Red<>"everything is done!"];
-        Print[Reset];*)
+        Print[Reset];
     )
 |>

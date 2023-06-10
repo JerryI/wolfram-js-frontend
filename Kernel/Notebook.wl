@@ -341,14 +341,14 @@ NotebookStoreManually[channel_] := Module[{cells, notebook = <||>},
     Print["SAVED"];
 ];
 
-NotebookExport := Module[{channel = $AssociationSocket[Global`client], path},
+NotebookExport["html"] := Module[{channel = $AssociationSocket[Global`client], path},
     path = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], FileBaseName[jsfn`Notebooks[channel]["path"]]<>".html"}];
     
     tempArray["data"] = {};
     tempArray["Push", data_] := (tempArray["data"] = {tempArray["data"], data} // Flatten);
 
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookFakeEventFire[tempArray]},
-        CellObjGenerateTree[jsfn`Notebooks[channel]["cell"]];
+        CellListTree[channel];
     ];
     
     With[{uid = channel, tempArrayPointer = tempArray},
@@ -358,6 +358,25 @@ NotebookExport := Module[{channel = $AssociationSocket[Global`client], path},
     ];
 
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+];
+
+NotebookExport["react"] := Module[{channel = $AssociationSocket[Global`client], path},
+    path = FileNameJoin[{"public", "temp", "_react.html"}];
+    
+    tempArray["data"] = {};
+    tempArray["Push", data_] := (tempArray["data"] = {tempArray["data"], data} // Flatten);
+
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookFakeEventFire[tempArray]},
+        CellListTree[channel];
+    ];
+    
+    With[{uid = channel, tempArrayPointer = tempArray},
+        Export[path,
+            LoadPage[FileNameJoin[{"public", "template", "export", "react.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "base"->JerryI`WolframJSFrontend`root]
+        , "String"]
+    ];
+
+    WebSocketSend[Global`client, Global`FrontEndJSEval["openawindow('/temp/_react.html', '_blank')" ]];
 ];
 
 (* remove a file and update UI elements via WSPDynamicExtension *)

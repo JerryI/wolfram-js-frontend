@@ -1,14 +1,38 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <style><?wsp Import["public/main.css", "String"] ?></style>
-        <style><?wsp Import["public/styles.css", "String"] ?></style>
-        <style><?wsp Import["public/katex-standalone.css", "String"] ?></style>
+        <style><?wsp Import["public/dist/merged.css", "String"] ?></style>
         <script>
-            <?wsp Import["JSFrontend/interpreter.js", "String"] ?>
-            <?wsp Import["JSFrontend/core.js", "String"] ?>
+            window.OfflineMode = true;
         </script>
-        <script><?wsp Import["public/js/export/merged.js", "String"] ?></script>
-        <script><?wsp Import["public/js/export/fakesockets.js", "String"] ?></script>
+        <?wsp Table[ ?> 
+            <link rel="stylesheet" href="<?wsp i ?>">
+        <?wsp , {i, IncludesDeliver["styles"]}]?>
+
+        <!-- any inline js including core library (global) UPD: No longer exists -->
+        <?wsp Table[ ?> 
+            <script>
+            <?wsp Import[FileNameJoin[{"Packages", i}], "String"] ?>
+            </script>
+        <?wsp , {i, Includes["js"]}]?>
+ 
+        <!-- frontend library (module) -->
+        <script type="module">
+            <?wsp Import[FileNameJoin[{"public", "dist", "merged.js"}], "String"] ?>
+        </script>
+        
+        <!-- user's plugins (module) -->
+        <?wsp Table[ ?> 
+            <script type="module" src="<?wsp i ?>"></script>
+        <?wsp , {i, IncludesDeliver["jsmodule"]}]?> 
+
+        <!-- connection to the server (global) -->
+        <script src="/dist/fakesockets.js"></script>
+
+
+        <!-- editors autocomplete -->
+        <?wsp Table[ ?> 
+            <script type="module" src="<?wsp i ?>"></script>
+        <?wsp , {i, IncludesDeliver["autocomplete"]}]?>          
     </head>
     <body class="notion-body">
         <div id="notion-app">
@@ -23,7 +47,7 @@
             <main id="frontend-editor" aria-hidden="true" class="main-container styles-container-editor">
 
                 <div id="frontend-editor-content" class="group-container" aria-hidden="true">
-                    <div role="textbox" style="padding-bottom:50em;" aria-multiline="true" spellcheck="true" id="frontend-contenteditable" data-slate-editor="true" data-slate-editor-id="0" data-slate-node="value" zindex="-1">
+                    <div role="textbox" style="padding-bottom:50em;" aria-multiline="true" spellcheck="true" id="<?wsp notebook ?>" data-slate-editor="true" data-slate-editor-id="0" data-slate-node="value" zindex="-1">
 
                     
         
@@ -53,13 +77,15 @@
     });
 </script>
     
-<script>
+<script type="module">
     <?wsp Table[ ?>
         { let ob =  new ObjectStorage('<?wsp key ?>'); ob.cached = true; ob.cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>; };
     <?wsp , {key, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"]//Keys}]  ?>
         ;
     <?wsp Table[ ?>
-        interpretate(<?wsp c ?>);
+        {let global = {};
+        const env = {local:{}, global:global};
+        await interpretate(<?wsp c ?>, env);}
     <?wsp , {c, ExportString[#, "ExpressionJSON", "Compact"->-1]&/@cells["data"]}] ?>
 </script>
 

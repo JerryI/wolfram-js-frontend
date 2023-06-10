@@ -1,0 +1,231 @@
+<html>
+    <head lang="en">
+        <meta charset="utf-8">        
+    </head>
+
+    <script type="module">///////////////////////////////////////////////////////////////////////////////// 
+
+var JSONCrush = {
+
+crush: (string, maxSubstringLength=50)=>
+{
+    const delimiter = '\u0001'; // used to split parts of crushed string
+    const JSCrush=(string, replaceCharacters)=>
+    {
+        // JSCrush Algorithm (repleace repeated substrings with single characters)
+        let replaceCharacterPos = replaceCharacters.length;
+        let splitString = '';
+        
+        const ByteLength =(string)=>encodeURI(encodeURIComponent(string)).replace(/%../g,'i').length;
+        const HasUnmatchedSurrogate =(string)=>
+        {
+            // check ends of string for unmatched surrogate pairs
+            let c1 = string.charCodeAt(0);
+            let c2 = string.charCodeAt(string.length-1);
+            return (c1 >= 0xDC00 && c1 <= 0xDFFF) || (c2 >= 0xD800 && c2 <= 0xDBFF);
+        };
+        
+        // count instances of substrings
+        let substringCount = {};
+        for (let substringLength = 2; substringLength < maxSubstringLength; substringLength++)
+        for (let i = 0; i < string.length - substringLength; ++i)
+        {
+            let substring = string.substr(i, substringLength);
+
+            // don't recount if already in list
+            if (substringCount[substring])
+                continue;
+
+            // prevent breaking up unmatched surrogates
+            if (HasUnmatchedSurrogate(substring))
+                continue;
+
+            // count how many times the substring appears
+            let count = 1;
+            for (let substringPos = string.indexOf(substring, i+substringLength); substringPos >= 0; ++count)
+                substringPos = string.indexOf(substring, substringPos + substringLength);
+                
+            // add to list if it appears multiple times
+            if (count > 1)
+                substringCount[substring] = count;
+        }
+        
+        while(true) // loop while string can be crushed more
+        {
+            // get the next character that is not in the string
+            for (;replaceCharacterPos-- && string.includes(replaceCharacters[replaceCharacterPos]);){}
+            if (replaceCharacterPos < 0)
+                break; // ran out of replacement characters
+            let replaceCharacter = replaceCharacters[replaceCharacterPos];
+            
+            // find the longest substring to replace
+            let bestSubstring;  
+            let bestLengthDelta = 0;  
+            let replaceByteLength = ByteLength(replaceCharacter);
+            for (let substring in substringCount) 
+            {
+                // calculate change in length of string if it substring was replaced
+                let count = substringCount[substring];
+                let lengthDelta = (count-1)*ByteLength(substring) - (count+1)*replaceByteLength;
+                if (!splitString.length)
+                    lengthDelta -= ByteLength(delimiter); // include the delimiter length 
+                if (lengthDelta <= 0)
+                    delete substringCount[substring];
+                else if (lengthDelta > bestLengthDelta)
+                {
+                    bestSubstring = substring;
+                    bestLengthDelta = lengthDelta;
+                }
+            }
+            if (!bestSubstring)
+                break; // string can't be compressed further
+                
+            // create new string with the split character
+            string = string.split(bestSubstring).join(replaceCharacter) + replaceCharacter + bestSubstring;
+            splitString = replaceCharacter + splitString;
+            
+            // update substring count list after the replacement
+            let newSubstringCount = {};
+            for (let substring in substringCount)
+            {
+                // make a new substring with the replacement
+                let newSubstring = substring.split(bestSubstring).join(replaceCharacter);
+                
+                // count how many times the new substring appears
+                let count = 0;
+                for (let i = string.indexOf(newSubstring); i >= 0; ++count)
+                    i = string.indexOf(newSubstring, i + newSubstring.length);
+                    
+                // add to list if it appears multiple times
+                if (count > 1)
+                    newSubstringCount[newSubstring] = count;
+                
+            }
+            substringCount = newSubstringCount;
+        }
+
+        return {a:string, b:splitString};
+    };
+    
+    // create a string of replacement characters
+    let characters = [];
+    
+    // prefer replacing with characters that will not be escaped by encodeURIComponent
+    const unescapedCharacters = `-_.!~*'()`;
+    for (let i=127; --i;)
+    {
+        if 
+        (
+            (i>=48 && i<=57) || // 0-9
+            (i>=65 && i<=90) || // A-Z
+            (i>=97 && i<=122)|| // a-z
+            unescapedCharacters.includes(String.fromCharCode(i))
+        )
+            characters.push(String.fromCharCode(i));
+    }
+    
+    // pick from extended set last
+    for (let i=32; i<255; ++i)
+    {
+        let c = String.fromCharCode(i);
+        if (c!='\\' && !characters.includes(c))
+            characters.unshift(c);
+    }
+
+    // remove delimiter if it is found in the string
+    string = string.replace(new RegExp(delimiter,'g'),'');
+    
+    // swap out common json characters
+    string = JSONCrushSwap(string);
+    
+    // crush with JS crush
+    const crushed = JSCrush(string, characters);
+    
+    // insert delimiter between JSCrush parts
+    let crushedString = crushed.a;
+    if (crushed.b.length)
+        crushedString += delimiter + crushed.b;
+    
+    // fix issues with some links not being recognized properly
+    crushedString += '_';
+    
+    // return crushed string
+    return crushedString;
+},
+
+uncrush: (string)=>
+{
+    // remove last character
+    string = string.substring(0, string.length - 1);
+
+    // unsplit the string using the delimiter
+    const stringParts = string.split('\u0001');
+    
+    // JSUncrush algorithm
+    let uncrushedString = stringParts[0];
+    if (stringParts.length > 1)
+    {
+        let splitString = stringParts[1];
+        for (let character of splitString)
+        {
+            // split the string using the current splitCharacter
+            let splitArray = uncrushedString.split(character);
+
+            // rejoin the string with the last element from the split
+            uncrushedString = splitArray.join(splitArray.pop());
+        }
+    }
+    
+    // unswap the json characters in reverse direction
+    return JSONCrushSwap(uncrushedString, 0);
+}
+
+}; // JSONCrush
+
+const JSONCrushSwap = (string, forward=1)=>
+{
+    // swap out characters for lesser used ones that wont get escaped
+    const swapGroups = 
+    [
+        ['"', "'"],
+        ["':", "!"],
+        [",'", "~"],
+        ['}', ")", '\\', '\\'],
+        ['{', "(", '\\', '\\'],
+    ];
+    
+    const swapInternal=(string, g)=>
+    {
+        let regex = new RegExp(`${(g[2]?g[2]:'')+g[0]}|${(g[3]?g[3]:'')+g[1]}`,'g');
+        return string.replace(regex, $1 => ($1 === g[0] ? g[1] : g[0]));
+    };
+
+    // need to be able to swap characters in reverse direction for uncrush
+    if (forward)
+        for (let i = 0; i < swapGroups.length; ++i)
+            string = swapInternal(string, swapGroups[i]);
+    else
+        for (let i = swapGroups.length; i--;)
+            string = swapInternal(string, swapGroups[i]);
+
+    return string;
+};
+
+window.JSONCrush = JSONCrush;
+</script>
+    
+<script type="module">
+    const objects = [];
+    const cells = [];cells.push(["FrontEndCreateCell","'<section class=\"cell-wrapper frontend-node\"  style=\"opacity: 1;\"><div class=\"tool-wrapper node-settings-actions frontend-tools\" contenteditable=\"false\">\n        <div>\n            <div class=\"tool-div\">\n                <button type=\"button\" contenteditable=\"false\" class=\"btn node-settings-add\">\n                    <img width=\"15\" height=\"15\" src=\"\/svg\/add.svg\"\/>\n                <\/button>\n                <button class=\"btn node-settings-hide\" type=\"button\" contenteditable=\"false\">\n                    <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" class=\"\" fill=\"currentColor\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"drag_svg__StyledIconBase-ea9ulj-0 drag_svg__iuNRof\" style=\"width: 18px; height: 18px; color: rgba(55, 53, 47, 0.3);\">\n                        <path style=\"transform: scale(2.0);\" d=\"M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z\"><\/path>\n                   <\/svg>\n                <\/button>\n                <!--<button class=\"btn node-settings-drag\" type=\"button\" contenteditable=\"false\">\n                    <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"drag_svg__StyledIconBase-ea9ulj-0 drag_svg__iuNRof\" style=\"width: 18px; height: 18px; color: rgba(55, 53, 47, 0.3);\">\n                        <path class=\"\" fill=\"none\" d=\"M0 0h24v24H0V0z\"><\/path>\n                        <path class=\"\" d=\"M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\"><\/path>\n                        <path class=\"\" style=\"transform: scale(2.0);\" d=\"M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z\"><\/path>\n                   <\/svg>\n                <\/button>-->\n                <!--<button class=\"btn node-settings-hide\" type=\"button\" contenteditable=\"false\">\n                    <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" class=\"jsx-3846077284\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12.9009 13.0686C12.3333 13.6581 11.5224 14 10.5556 14H9.5V12H10.5556C11.0331 12 11.3056 11.8419 11.4602 11.6814C11.6267 11.5085 11.7222 11.2642 11.7222 11V10.5C11.7222 10.2276 11.7301 9.79053 12.14 9C12.5 8.39782 13.25 8 13.25 8C13.25 8 12.4702 7.69361 12.14 7.05676C11.7301 6.26622 11.7222 5.77243 11.7222 5.5V5C11.7222 4.73583 11.6267 4.49147 11.4602 4.31864C11.3056 4.1581 11.0331 4 10.5556 4H9.5L9.5 2H10.5556C11.5224 2 12.3333 2.3419 12.9009 2.93136C13.4567 3.50853 13.7222 4.26417 13.7222 5V5.5C13.7222 5.72757 13.7421 6.14272 13.9155 6.47718C13.9933 6.6271 14.0935 6.74371 14.2303 6.82779C14.3663 6.91136 14.5987 7 15 7V9C14.5987 9 14.3663 9.08864 14.2303 9.17221C14.0935 9.25629 13.9933 9.3729 13.9155 9.52282C13.7421 9.85728 13.7222 10.2724 13.7222 10.5V11C13.7222 11.7358 13.4567 12.4915 12.9009 13.0686Z\" fill=\"rgba(55, 53, 47, 0.3)\"><\/path><path fill=\"rgba(55, 53, 47, 0.3)\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M3.09912 13.0686C3.66675 13.6581 4.47757 14 5.44444 14H6.5V12H5.44444C4.96688 12 4.69436 11.8419 4.53976 11.6814C4.37334 11.5085 4.27778 11.2642 4.27778 11V10.5C4.27778 10.2276 4.26988 9.79053 3.85998 9C3.5 8.39782 2.75 8 2.75 8C2.75 8 3.52976 7.69361 3.85998 7.05676C4.26988 6.26622 4.27778 5.77243 4.27778 5.5V5C4.27778 4.73583 4.37334 4.49147 4.53976 4.31864C4.69436 4.1581 4.96688 4 5.44444 4H6.5L6.5 2H5.44444C4.47757 2 3.66675 2.3419 3.09912 2.93136C2.54333 3.50853 2.27778 4.26417 2.27778 5V5.5C2.27778 5.72757 2.25789 6.14272 2.08447 6.47718C2.00673 6.6271 1.90646 6.74371 1.7697 6.82779C1.63375 6.91136 1.40134 7 1 7L1 9C1.40134 9 1.63375 9.08864 1.7697 9.17221C1.90646 9.25629 2.00673 9.3729 2.08447 9.52282C2.25789 9.85728 2.27778 10.2724 2.27778 10.5V11C2.27778 11.7358 2.54333 12.4915 3.09912 13.0686Z\"><\/path>\n                    <\/svg>\n                <\/button>-->\n            <\/div>\n        <\/div>\n    <\/div>\n\n<div class=\"content-wrapper\" id=\"c297a1ff-091a-4947-a8b6-d0b55d0b8bc6\"><p class=\"cell-paragraph frontend-paragraph \" draggable=\"false\" id=\"c297a1ff-091a-4947-a8b6-d0b55d0b8bc6---input\"><\/p>\n            <div class=\"loader-line loader-line-idle\"><\/div>\n        \n        \n    <\/div>\n<\/section>'",["Association",["Rule","'id'","'c297a1ff-091a-4947-a8b6-d0b55d0b8bc6'"],["Rule","'sign'","'rand-5d5eb'"],["Rule","'type'","'input'"],["Rule","'data'","'1+1'"],["Rule","'child'","'child'"],["Rule","'parent'","'parent'"],["Rule","'next'","'next'"],["Rule","'prev'","'prev'"],["Rule","'props'",["Association",["Rule","'hidden'",false]]],["Rule","'display'","'codemirror'"],["Rule","'state'","'idle'"]]]);
+    cells.push(["FrontEndCreateCell","'<p class=\"cell-paragraph frontend-paragraph output-cell\" draggable=\"false\" id=\"d85c6e6b-d126-4655-a40c-55c5744cad55---output\"><\/p>\n\n'",["Association",["Rule","'id'","'d85c6e6b-d126-4655-a40c-55c5744cad55'"],["Rule","'sign'","'rand-5d5eb'"],["Rule","'type'","'output'"],["Rule","'data'","'2'"],["Rule","'child'","'child'"],["Rule","'parent'","'parent'"],["Rule","'next'","'next'"],["Rule","'prev'","'prev'"],["Rule","'props'",["Association",["Rule","'hidden'",false]]],["Rule","'display'","'codemirror'"],["Rule","'state'","'idle'"]]]);
+    cells.push(["FrontEndCreateCell","'<section class=\"cell-wrapper frontend-node\"  style=\"opacity: 1;\"><div class=\"tool-wrapper node-settings-actions frontend-tools\" contenteditable=\"false\">\n        <div>\n            <div class=\"tool-div\">\n                <button type=\"button\" contenteditable=\"false\" class=\"btn node-settings-add\">\n                    <img width=\"15\" height=\"15\" src=\"\/svg\/add.svg\"\/>\n                <\/button>\n                <button class=\"btn node-settings-hide\" type=\"button\" contenteditable=\"false\">\n                    <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" class=\"\" fill=\"currentColor\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"drag_svg__StyledIconBase-ea9ulj-0 drag_svg__iuNRof\" style=\"width: 18px; height: 18px; color: rgba(55, 53, 47, 0.3);\">\n                        <path style=\"transform: scale(2.0);\" d=\"M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z\"><\/path>\n                   <\/svg>\n                <\/button>\n                <!--<button class=\"btn node-settings-drag\" type=\"button\" contenteditable=\"false\">\n                    <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"drag_svg__StyledIconBase-ea9ulj-0 drag_svg__iuNRof\" style=\"width: 18px; height: 18px; color: rgba(55, 53, 47, 0.3);\">\n                        <path class=\"\" fill=\"none\" d=\"M0 0h24v24H0V0z\"><\/path>\n                        <path class=\"\" d=\"M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\"><\/path>\n                        <path class=\"\" style=\"transform: scale(2.0);\" d=\"M6.02734 8.80274C6.27148 8.80274 6.47168 8.71484 6.66211 8.51465L10.2803 4.82324C10.4268 4.67676 10.5 4.49609 10.5 4.28125C10.5 3.85156 10.1484 3.5 9.72363 3.5C9.50879 3.5 9.30859 3.58789 9.15234 3.74902L6.03223 6.9668L2.90722 3.74902C2.74609 3.58789 2.55078 3.5 2.33105 3.5C1.90137 3.5 1.55469 3.85156 1.55469 4.28125C1.55469 4.49609 1.62793 4.67676 1.77441 4.82324L5.39258 8.51465C5.58789 8.71973 5.78808 8.80274 6.02734 8.80274Z\"><\/path>\n                   <\/svg>\n                <\/button>-->\n                <!--<button class=\"btn node-settings-hide\" type=\"button\" contenteditable=\"false\">\n                    <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" class=\"jsx-3846077284\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12.9009 13.0686C12.3333 13.6581 11.5224 14 10.5556 14H9.5V12H10.5556C11.0331 12 11.3056 11.8419 11.4602 11.6814C11.6267 11.5085 11.7222 11.2642 11.7222 11V10.5C11.7222 10.2276 11.7301 9.79053 12.14 9C12.5 8.39782 13.25 8 13.25 8C13.25 8 12.4702 7.69361 12.14 7.05676C11.7301 6.26622 11.7222 5.77243 11.7222 5.5V5C11.7222 4.73583 11.6267 4.49147 11.4602 4.31864C11.3056 4.1581 11.0331 4 10.5556 4H9.5L9.5 2H10.5556C11.5224 2 12.3333 2.3419 12.9009 2.93136C13.4567 3.50853 13.7222 4.26417 13.7222 5V5.5C13.7222 5.72757 13.7421 6.14272 13.9155 6.47718C13.9933 6.6271 14.0935 6.74371 14.2303 6.82779C14.3663 6.91136 14.5987 7 15 7V9C14.5987 9 14.3663 9.08864 14.2303 9.17221C14.0935 9.25629 13.9933 9.3729 13.9155 9.52282C13.7421 9.85728 13.7222 10.2724 13.7222 10.5V11C13.7222 11.7358 13.4567 12.4915 12.9009 13.0686Z\" fill=\"rgba(55, 53, 47, 0.3)\"><\/path><path fill=\"rgba(55, 53, 47, 0.3)\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M3.09912 13.0686C3.66675 13.6581 4.47757 14 5.44444 14H6.5V12H5.44444C4.96688 12 4.69436 11.8419 4.53976 11.6814C4.37334 11.5085 4.27778 11.2642 4.27778 11V10.5C4.27778 10.2276 4.26988 9.79053 3.85998 9C3.5 8.39782 2.75 8 2.75 8C2.75 8 3.52976 7.69361 3.85998 7.05676C4.26988 6.26622 4.27778 5.77243 4.27778 5.5V5C4.27778 4.73583 4.37334 4.49147 4.53976 4.31864C4.69436 4.1581 4.96688 4 5.44444 4H6.5L6.5 2H5.44444C4.47757 2 3.66675 2.3419 3.09912 2.93136C2.54333 3.50853 2.27778 4.26417 2.27778 5V5.5C2.27778 5.72757 2.25789 6.14272 2.08447 6.47718C2.00673 6.6271 1.90646 6.74371 1.7697 6.82779C1.63375 6.91136 1.40134 7 1 7L1 9C1.40134 9 1.63375 9.08864 1.7697 9.17221C1.90646 9.25629 2.00673 9.3729 2.08447 9.52282C2.25789 9.85728 2.27778 10.2724 2.27778 10.5V11C2.27778 11.7358 2.54333 12.4915 3.09912 13.0686Z\"><\/path>\n                    <\/svg>\n                <\/button>-->\n            <\/div>\n        <\/div>\n    <\/div>\n\n<div class=\"content-wrapper\" id=\"7a7cb850-9266-4b2d-b5bd-6cbd06cb807b\"><p class=\"cell-paragraph frontend-paragraph \" draggable=\"false\" id=\"7a7cb850-9266-4b2d-b5bd-6cbd06cb807b---input\"><\/p>\n            <div class=\"loader-line loader-line-idle\"><\/div>\n        \n        \n    <\/div>\n<\/section>'",["Association",["Rule","'id'","'7a7cb850-9266-4b2d-b5bd-6cbd06cb807b'"],["Rule","'sign'","'rand-5d5eb'"],["Rule","'type'","'input'"],["Rule","'data'","'.md\nHi'"],["Rule","'child'","'child'"],["Rule","'parent'","'parent'"],["Rule","'next'","'next'"],["Rule","'prev'","'prev'"],["Rule","'props'",["Association",["Rule","'hidden'",false]]],["Rule","'display'","'codemirror'"],["Rule","'state'","'idle'"]]]);
+    cells.push(["FrontEndCreateCell","'<p class=\"cell-paragraph frontend-paragraph output-cell\" draggable=\"false\" id=\"2609b55e-1210-4ef3-86b2-f34197e5c457---output\"><\/p>\n\n'",["Association",["Rule","'id'","'2609b55e-1210-4ef3-86b2-f34197e5c457'"],["Rule","'sign'","'rand-5d5eb'"],["Rule","'type'","'output'"],["Rule","'data'","'\nHi'"],["Rule","'child'","'child'"],["Rule","'parent'","'parent'"],["Rule","'next'","'next'"],["Rule","'prev'","'prev'"],["Rule","'props'",["Association",["Rule","'hidden'",false]]],["Rule","'display'","'markdown'"],["Rule","'state'","'idle'"]]]);
+    const str = JSON.stringify([objects, cells]);
+
+    alert(`<Notebook code="${encodeURIComponent(JSONCrush.crush(str))}" name="rand-5d5eb">rand-5d5eb</Notebook>`);
+
+    
+</script>
+
+
+</body></html>        

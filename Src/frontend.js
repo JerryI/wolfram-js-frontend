@@ -1,3 +1,4 @@
+
 function __emptyFalse(a) {
   if (a === '') return false;
   return a;
@@ -132,6 +133,7 @@ class CellWrapper {
     this.uid = input["id"];
     this.type = input["type"];
     this.state = input["state"];
+    const Notebook = input["sign"];
 
     if ('after' in input) {
       console.log('inserting after something');
@@ -178,7 +180,7 @@ class CellWrapper {
         }
         
       } else {
-        document.getElementById("frontend-contenteditable").insertAdjacentHTML('beforeend', template);
+        document.getElementById(Notebook).insertAdjacentHTML('beforeend', template);
       }
 
       CellList.push(this.uid);

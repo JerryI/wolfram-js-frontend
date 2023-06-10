@@ -1,0 +1,41 @@
+<html>
+    <head lang="en">
+        <meta charset="utf-8">        
+    </head>
+
+    <script type="module">
+        <?wsp Import[FileNameJoin[{"public", "dist", "utils.js"}], "String"] ?>
+    </script>
+
+<body>
+
+<div style="width:auto; height:100%; overflow:scroll; padding:1em; border:none;word-wrap: anywhere;background: #d4ebff;border: dashed 1px;font-family: monospace;" id="txt"></div>
+
+</body>
+
+    <script type="module">
+    const objects = [];
+    const cells = [];
+    <?wsp Table[ ?>
+        { const key = '<?wsp key ?>';
+          const cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>;
+          objects.push([key, cache]);  
+        };
+    <?wsp , {key, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"]//Keys}]  ?>
+        
+    <?wsp Table[ ?>
+        cells.push(<?wsp c ?>);
+    <?wsp , {c, ExportString[#, "ExpressionJSON", "Compact"->-1]&/@cells["data"]}] ?>
+
+    
+    //const orig = Pako.gzip(JSON.stringify([objects, cells]));
+    
+    const buf = fflate.strToU8(JSON.stringify([objects, cells]));
+    const compressed = btoa(fflate.strFromU8(fflate.compressSync(buf, { level: 6, mem: 8 }), true));
+    //const s = btoa(String.fromCharCode.apply(null, new Uint16Array(orig)));
+    document.getElementById('txt').innerText = `<Notebook code="${compressed}" name="<?wsp notebook ?>"><?wsp notebook ?></Notebook>`;
+    
+    
+</script>
+
+</html>        

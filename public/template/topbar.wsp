@@ -41,6 +41,7 @@
                                                     <div id="share-button" class="notion-topbar-share-menu notion-focusable" role="button" tabindex="0">
                                                         Share
                                                     </div>
+                                                    <?wsp LoadPage["template/dropdown/share.wsp"] ?>
                                                 <?wsp , "" ] ?>
                                                 
                                                 
@@ -110,9 +111,7 @@
         generateThumbnail();
     });
 
-    document.getElementById('share-button').addEventListener('click', (e)=> {
-        socket.send('NotebookExport;'); 
-    });    
+       
 
     const datesaved = document.getElementById('date-saved');
     //setInterval(function () {

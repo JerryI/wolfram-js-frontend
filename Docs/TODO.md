@@ -7,6 +7,7 @@
 - [ ] Context menu for evaluation in-place
 - [x] Graphics 2D
 - [ ] EditorView
+- [ ] JSAsk. Ask something on frontend of attached notebook. blocking.
 - [ ] A button to disable all WIDGETS in WL mode
 - [ ] Expand dynamic variables to frontend. Just if someone used `Hold[a]`, then WLJS will fetch this symbol from the server. So use Unsafe mode when there is no arguments. It will happend automatically.
 - [ ] .wljs type of cells allowsyou to run in a wljs sandbox. (mb IFRAME??)

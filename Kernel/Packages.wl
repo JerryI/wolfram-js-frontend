@@ -183,6 +183,14 @@ Table[
     , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
 , {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten;
 
+Includes[param_, param2_] := Includes[param, param2] = 
+Partition[Table[ 
+    Table[ 
+      {FileNameJoin[{Packages[i, "path"], j}], Packages[i, param2]}
+    , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
+, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten, 2];
+
+
 End[];
 
 EndPackage[];

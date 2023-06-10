@@ -8,7 +8,9 @@
                         <div class="thumbnail-label"><?wsp FileBaseName[i] ?></div>
                     </a>
                     <script>
+                        
                         window.addEventListener("bundleloaded", function() { 
+                            return;
                             <?wsp Table[ ?>
                             core.FrontEndCreatePreviewCell(`<?wsp ExportString[str, {"Base64", "Text"}, CharacterEncoding -> "UTF8"] ?>`, {element: document.getElementById('thumb-<?wsp HashString32[i] ?>')});
                             <?wsp , {str, GetThumbnail[i]}] ?>

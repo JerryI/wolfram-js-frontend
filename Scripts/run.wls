@@ -30,6 +30,8 @@ Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];
 
+IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.com/([^/]*)/([^/]*)"]-> (StringTemplate["https://cdn.jsdelivr.net/gh/``/``@master/``"]["$1","$2",StringRiffle[Drop[StringSplit[#[[1]], "/"],1], "/"] ])}]) &/@ Includes[m, "repository"] // Flatten;
+
 Print["getting modules..."];
 
 Get[FileNameJoin[{jsf`root, "Packages", #}]] &/@ Includes["wl"];
