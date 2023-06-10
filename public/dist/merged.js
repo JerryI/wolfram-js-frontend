@@ -21,7 +21,7 @@ const CellHash = {
 
 };
 
-let CellList = [];
+let CellList = {};
 
 core.CellHash = CellHash;
 core.CellList = CellList;
@@ -37,9 +37,9 @@ class CellWrapper {
 
   focusNext(startpoint) {
     console.log('next');
-    const pos = CellList.indexOf(this.uid);
-    if (pos + 1 < CellList.length) {
-      CellHash.get(CellList[pos + 1]).display?.editor?.focus();
+    const pos = CellList[this.sign].indexOf(this.uid);
+    if (pos + 1 < CellList[this.sign].length) {
+      CellHash.get(CellList[this.sign][pos + 1]).display?.editor?.focus();
     } else {
       this.addCellAfter();
     }
@@ -47,9 +47,9 @@ class CellWrapper {
 
   focusPrev(startpoint) {
     console.log('prev');
-    const pos = CellList.indexOf(this.uid);
+    const pos = CellList[this.sign].indexOf(this.uid);
     if (pos - 1 > 0) {
-      CellHash.get(CellList[pos - 1]).display?.editor?.focus();
+      CellHash.get(CellList[this.sign][pos - 1]).display?.editor?.focus();
     }
   }  
 
@@ -127,14 +127,17 @@ class CellWrapper {
     this.uid = input["id"];
     this.type = input["type"];
     this.state = input["state"];
-    const Notebook = input["sign"];
+    this.sign = input["sign"];
+
+    if (!(this.sign in CellList)) CellList[this.sign] = [];
+
 
     if ('after' in input) {
       console.log('inserting after something');
 
       const beforeType = input["after"]["type"];
       const currentType = input["type"];
-      const pos = CellList.indexOf(input["after"]["id"]);
+      const pos = CellList[this.sign].indexOf(input["after"]["id"]);
 
       if (beforeType === 'input' && currentType === 'input') {
         console.log("input cell after inputcell");
@@ -156,7 +159,7 @@ class CellWrapper {
         document.getElementById(input["after"]["id"]+"---output").insertAdjacentHTML('afterend', template);
       }     
       
-      CellList.splice(pos+1, 0, input["id"]);
+      CellList[this.sign].splice(pos+1, 0, input["id"]);
 
 
     } else {
@@ -164,7 +167,7 @@ class CellWrapper {
       console.log('plain insertion');
       //inject into the right place
       if (this.type === 'output') {
-        const prev = CellHash.get(CellList.slice(-1));
+        const prev = CellHash.get(CellList[this.sign].slice(-1));
         if (prev.type === 'input') {
           //inject into parent's holder
           document.getElementById(prev.uid).insertAdjacentHTML('beforeend', template);
@@ -174,10 +177,10 @@ class CellWrapper {
         }
         
       } else {
-        document.getElementById(Notebook).insertAdjacentHTML('beforeend', template);
+        document.getElementById(this.sign).insertAdjacentHTML('beforeend', template);
       }
 
-      CellList.push(this.uid);
+      CellList[this.sign].push(this.uid);
     }
 
     CellHash.add(this);
@@ -197,8 +200,8 @@ class CellWrapper {
     this.display.dispose();
 
     //remove from the list
-    const pos = CellList.indexOf(this.uid);
-    CellList.splice(pos, 1);
+    const pos = CellList[this.sign].indexOf(this.uid);
+    CellList[this.sign].splice(pos, 1);
     //remove hash
     CellHash.remove(this.uid);
 
