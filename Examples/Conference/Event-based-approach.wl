@@ -1,5 +1,5 @@
 <|"notebook" -> <|"name" -> "Play", "id" -> "relaxant-595cc", 
-   "kernel" -> LocalKernel, "objects" :> 
+   "kernel" -> LocalKernel, "objects" -> 
     <|"length" -> <|"json" -> "0", "date" -> DateObject[{2023, 6, 19, 15, 56, 
           24.830926`8.147567898269594}, "Instant", "Gregorian", 3.]|>, 
      "9acae6e8-4016-4bad-96b1-8b02dad6bc05" -> 
@@ -145,36 +145,81 @@ h'\"]]", "date" -> DateObject[{2023, 6, 19, 15, 57,
      "85b456be-a936-43d9-9d1b-a7347065e104" -> 
       <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
 \",\"'48aeecc1-49ad-4834-82fa-babcababf7fe'\"],[\"Rule\",\"'Label'\",\"'Lengt\
-h'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 0, 
-          27.572494`8.193051032683787}, "Instant", "Gregorian", 3.]|>, 
+h'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 26, 
+          53.524434`8.481127058200155}, "Instant", "Gregorian", 3.]|>, 
      "b8f65b98-ff56-4101-983f-fcae2cdbc2fb" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
 \",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
 e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
-nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 0, 
-          27.585622`8.19325776266224}, "Instant", "Gregorian", 3.]|>, 
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 26, 
+          53.537501`8.481233070220641}, "Instant", "Gregorian", 3.]|>, 
      "f593ad52-77fb-4843-8e16-f0d68c9f8fb4" -> 
       <|"json" -> 
         "[\"Hold\",[\"RangeView\",[\"List\",-1,1,0.1,\"length\"]]]", 
-       "date" -> DateObject[{2023, 6, 19, 16, 0, 
-          27.598291`8.193457171388037}, "Instant", "Gregorian", 3.]|>, 
+       "date" -> DateObject[{2023, 6, 19, 16, 26, 
+          53.544809`8.481292348435291}, "Instant", "Gregorian", 3.]|>, 
      "d8d2dba0-8426-442d-af89-00fb419f475c" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
 \",\"'drag'\",\"'ff764883-b80d-4529-a0f7-842115ab51e0'\"]],[\"Line\",[\"Hold\
 \",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",400],[\"Rule\",\"ImageSize\"\
-,[\"List\",400,400]]]", "date" -> DateObject[{2023, 6, 19, 16, 0, 
-          27.614417`8.193710860557358}, "Instant", "Gregorian", 3.]|>|>, 
+,[\"List\",400,400]]]", "date" -> DateObject[{2023, 6, 19, 16, 26, 
+          53.599769`8.481737892713209}, "Instant", "Gregorian", 3.]|>, 
+     "6669017a-b793-460a-b77e-1ddf69edc1a0" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
+e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
+st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 27, 
+          10.173385`7.760040466614009}, "Instant", "Gregorian", 3.]|>, 
+     "21e4b3ea-fb08-4131-ad50-3d929bbfd58d" -> 
+      <|"json" -> 
+        "[\"Hold\",[\"RangeView\",[\"List\",-1,1,0.1,\"length\"]]]", 
+       "date" -> DateObject[{2023, 6, 19, 16, 27, 
+          18.440438`8.018346216517031}, "Instant", "Gregorian", 3.]|>, 
+     "dac1d660-c4b2-4979-a5b8-3d5eeafd8253" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
+\",\"'a8dc8739-9cfb-40cb-b9ef-54d2e123ed41'\"],[\"Rule\",\"'Label'\",\"'Lengt\
+h'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
+          19.410406`8.04060960343173}, "Instant", "Gregorian", 3.]|>, 
+     "c92c3bc9-6863-43c2-8821-e247043ae978" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
+e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
+st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
+          19.430727`8.041064033994916}, "Instant", "Gregorian", 3.]|>, 
+     "d2f51684-211d-46e2-9219-a0e90f05c941" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
+\",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
+\",\"'drag'\",\"'073e6cb9-c5b0-482a-862a-fe18d426296a'\"]],[\"Line\",[\"Hold\
+\",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",400],[\"Rule\",\"ImageSize\"\
+,[\"List\",400,400]]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
+          19.514445`8.042931188231094}, "Instant", "Gregorian", 3.]|>, 
+     "4c046bfa-e82c-4906-bb4e-aa80e65339b1" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
+e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
+st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
+          32.568433`8.2653718438225}, "Instant", "Gregorian", 3.]|>, 
+     "c8a9ffe1-099c-4c6d-80e3-35cbfb2cce50" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
+e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
+st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
+          35.078489`8.2976158575489}, "Instant", "Gregorian", 3.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ev\
 ent-based-approach.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 6, 19, 15, 56, 21.368423`8.082347455635064}, 
+   "date" -> DateObject[{2023, 6, 19, 16, 26, 52.938495`8.476346565465246}, 
      "Instant", "Gregorian", 3.]|>, 
  "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2dab0", 
     "type" -> "input", "data" -> ".md\n# Event-based approach\nEach input \
 element is an event object generator", "display" -> "codemirror", 
     "sign" -> "relaxant-595cc", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2376c8d0-1e4d-4a0e-8dc1-682136e7cb5e", "type" -> "output", 
+   <|"id" -> "2e60268b-9a7d-452c-af3c-f0a71f71d745", "type" -> "output", 
     "data" -> "\n# Event-based approach\nEach input element is an event \
 object generator", "display" -> "markdown", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
@@ -182,66 +227,39 @@ object generator", "display" -> "markdown", "sign" -> "relaxant-595cc",
     "data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5818c7ef-64d9-4f81-bfaf-79b41e2070eb", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"85b456be-a936-43d9-9d1b-a7347065e104\"]", 
+   <|"id" -> "9a9c418d-a223-49ed-83f1-daca64d3e3b6", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"dac1d660-c4b2-4979-a5b8-3d5eeafd8253\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "3b35b35e-42ed-47f3-a089-b265a5f65da4ab0", "type" -> "input", 
     "data" -> ".md\nNow we can make our dynamic rectangle", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2afc5f6e-93a2-434e-aef4-ccf5b4c5e57a", "type" -> "output", 
+   <|"id" -> "bcb58e69-c724-4c61-b451-ae8ff42bc785", "type" -> "output", 
     "data" -> "\nNow we can make our dynamic rectangle", 
     "display" -> "markdown", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "f4692fab-26ba-425c-8a17-10fadb3e0471ab0", "type" -> "input", 
-    "data" -> "Graphics[{Cyan, Rectangle[{-1,1},{length//Hold, -1}]}, \
-PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
+    "data" -> "length = 1;\nGraphics[{Cyan, Rectangle[{-1,1},{length//Hold, \
+-1}]}, PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
 \"TransitionDuration\"->300, \"TransitionType\"->\"Linear\"] ", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "576ba513-27de-48e5-a74f-6fb4234d3e18", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"b8f65b98-ff56-4101-983f-fcae2cdbc2fb\"]", 
+   <|"id" -> "8ac2d472-e865-44f0-9465-dc9e9825b463", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"c8a9ffe1-099c-4c6d-80e3-35cbfb2cce50\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "311b835c-39c0-4659-b8d9-af7d4ecd947eab0", "type" -> "input", 
     "data" -> ".md\nBind our event to update shared variable", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "98f0ec00-bcca-4eff-8d25-f1065fc81dbb", "type" -> "output", 
+   <|"id" -> "c268486b-f4ef-4ee9-818d-aff832babe7c", "type" -> "output", 
     "data" -> "\nBind our event to update shared variable", 
     "display" -> "markdown", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "5afe583a-61c1-46de-b59a-9e7c988f86f7ab0", "type" -> "input", 
     "data" -> "Function[l, length = l] // slider;", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "47979728-c6aa-4f53-bd56-aff138c92976ab0", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c48e4d89-bdf0-43dd-81a0-64c3c32bc3a2ab0", "type" -> "input", 
-    "data" -> ".md\n## You can also mutate expressions purely in the \
-browser\nNo WL kernel involved", "display" -> "codemirror", 
-    "sign" -> "relaxant-595cc", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6f5dbf13-8b02-44a6-9313-2d2142e3193f", "type" -> "output", 
-    "data" -> "\n## You can also mutate expressions purely in the browser\nNo \
-WL kernel involved", "display" -> "markdown", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5193b729-1c33-424d-98a0-9f9826a4681cab0", "type" -> "input", 
-    "data" -> "RangeView[{-1, 1, 0.1, length}]//Hold//CreateFrontEndObject", 
-    "display" -> "codemirror", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ca346319-bf71-4567-9a99-7994a992bf3d", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"f593ad52-77fb-4843-8e16-f0d68c9f8fb4\"]", 
-    "display" -> "codemirror", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c87aaa91-2d8d-40aa-9a93-beb916200246ab0", "type" -> "input", 
-    "data" -> ".md\nprobably there will be less latency", 
-    "display" -> "codemirror", "sign" -> "relaxant-595cc", 
-    "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d6581f49-a431-4e82-b268-0815b8ce82b5", "type" -> "output", 
-    "data" -> "\nprobably there will be less latency", 
-    "display" -> "markdown", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "852a4178-9e72-459f-82c9-aee935eb551eab0", "type" -> "input", 
     "data" -> " ", "display" -> "codemirror", "sign" -> "relaxant-595cc", 
@@ -250,7 +268,7 @@ WL kernel involved", "display" -> "markdown", "sign" -> "relaxant-595cc",
     "data" -> ".md\n## Events handlers on graphics objects\nIt is also \
 possible, like in Mathematica", "display" -> "codemirror", 
     "sign" -> "relaxant-595cc", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "8b471305-2462-4c8b-b608-bf26969708c5", "type" -> "output", 
+   <|"id" -> "8607926d-e068-4df8-9c1e-531b8c9471a6", "type" -> "output", 
     "data" -> "\n## Events handlers on graphics objects\nIt is also possible, \
 like in Mathematica", "display" -> "markdown", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
@@ -260,7 +278,7 @@ like in Mathematica", "display" -> "markdown", "sign" -> "relaxant-595cc",
 p}] }],\n  Line[dot//Hold]\n}, \"TransitionDuration\"->400, \
 ImageSize->{400,400}]", "display" -> "codemirror", 
     "sign" -> "relaxant-595cc", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "297b24f6-71b0-4f63-bcfd-2aba1a2921b1", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"d8d2dba0-8426-442d-af89-00fb419f475c\"]", 
+   <|"id" -> "39437cb2-aa2b-4e0d-ac7b-21e6a1a23406", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"d2f51684-211d-46e2-9219-a0e90f05c941\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
