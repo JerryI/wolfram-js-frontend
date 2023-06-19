@@ -465,8 +465,10 @@ SetAttributes[NotebookEmitt, HoldFirst];
 NotebookAbort := With[{channel = $AssociationSocket[Global`client]},
     NotebookKernelOperate["Abort"];
     WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndGlobalAbort[Null], channel];
-    Print[CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ] ];
-    (#["state"]="idle") &/@ CellObjGetAllNext[ jsfn`Notebooks[channel]["cell"] ];
+
+    With[{list = CellList[$AssociationSocket[Global`client]]},
+            (#["state"] = "idle") &/@ Select[list, Function[x, x["type"] === "input"]];
+    ];    
 ];
 
 
