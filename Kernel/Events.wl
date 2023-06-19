@@ -22,6 +22,9 @@ EventHandlers::usage = "internal function, which hold the binded function"
 
 EventListener::usage = "internal commnd for frontend"
 
+MiddlewareHandler::usage = "internal command"
+MiddlewareListener::usage = "internals"
+
 Begin["`Private`"]; 
 
 
@@ -29,7 +32,9 @@ EventBind[EventObject[assoc_], handler_] ^:= (EventHandlers[assoc["id"] ] = hand
 (* shotcut *)
 EventObject[assoc_][handler_] := (EventHandlers[assoc["id"] ] = handler;);
 
-EmittedEvent[id_, data_] := EventHandlers[id][data];
+EmittedEvent[EventObject[assoc_], data_] := EventHandlers[assoc["id"]][data];
+
+EmittedEvent[id_String, data_] := EventHandlers[id][data];
 
 EventRemove[EventObject[assoc_]] ^:= (With[{id = assoc["id"]}, Unset[ EventHandlers[id] ] ]);
 
@@ -61,6 +66,12 @@ EventHandler[EventObject[assoc_Association], handler_] ^:= (
     EventHandlers[assoc["id"]] = handler;
     EventObject[assoc]
 )
+
+MiddlewareHandler[expr_, ev_Rule, opts___] := With[{id = CreateUUID[], type = ev[[1]], func = ev[[2]]},
+    EventBind[EventObject[<|"id"->id|>], func];
+
+    MiddlewareListener[expr, type, id, opts]
+]
 
 End[];
 

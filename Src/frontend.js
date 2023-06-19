@@ -10,7 +10,7 @@ window.SupportedLanguages = [];
 //GLobals
 window.Extensions = [];
 
-let CellHashStorage = {};
+window.CellHashStorage = {};
 
 const CellHash = {
   add: (obj) => {
@@ -267,7 +267,7 @@ core.FrontEndTruncated = async function (args, env) {
 }
 
 core.IconizeWrapper = function (args, env) {
-  env.element.innerText = "{ }";
+  env.element.innerText = "{ ... }";
 }
 
 core.IconizeWrapper.destroy = (args, env) => {}

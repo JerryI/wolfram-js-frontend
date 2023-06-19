@@ -74,9 +74,13 @@ LocalKernel["Ask"][expr_] := Module[{res}, With[{uid = CreateUUID[]},
 LocalKernel["PongHandler"][cbk_] := pongHandler = cbk;
 
 LocalKernel["Abort"][cbk_] := ( 
+    Print["Local kernel abort"];
     If[status["signal"] === "good",
+        Print["interupt link"];
         LinkInterrupt[link, 3]; 
+        Print["aborted"];
         LinkWrite[link, Unevaluated[$Aborted] ]; 
+        Print["done"];
         status["signal"] = "good"; status["text"] = "Aborted";
          
     ,

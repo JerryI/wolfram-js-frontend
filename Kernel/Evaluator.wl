@@ -32,6 +32,10 @@ FrontEndExecutableWrapper[uid_] :=  (Print["Importing string"]; ImportString[
   ] @ (JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"])
 , "ExpressionJSON"] // ReleaseHold );
 
+FrontEndInlineExecutableWrapper[str_String] := str // Uncompress // ReleaseHold
+
+IconizeWrapper[expr_] := expr
+
 FrontEndRef[FrontEndExecutableWrapper[uid_]] := FrontEndExecutableHold[uid];
 FrontEndRef[FrontEndExecutable[uid_]]        := FrontEndExecutableHold[uid];
 
@@ -68,6 +72,7 @@ $CMReplacements = {RowBox -> RowBoxToCM, SqrtBox -> CM6Sqrt, FractionBox -> CM6F
 (* on-input convertion *)
 $CMExpressions = {
         Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper,
+        Global`FrontEndInlineExecutable -> Global`FrontEndInlineExecutableWrapper,
         Global`CM6Sqrt -> Sqrt,
         Global`CM6Fraction -> Global`CM6FractionWrapper,
         Global`CM6Grid -> Identity,
@@ -76,7 +81,17 @@ $CMExpressions = {
 
 CM6FractionWrapper[x_,y_] := x/y;
 
-Iconize[expr_] := CreateFrontEndObject[IconizeWrapper[expr], CreateUUID[]]
+Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
+  If[StringLength[compressed] > 39400,
+    Message["The given expression is too large even being compressed using gzip"];
+    expr
+  ,
+    Global`$ignoreLongStrings = True; 
+    Global`FrontEndInlineExecutable[compressed]
+  ]
+]
+
+ExprObjectExport[expr_, uid_String] := CreateFrontEndObject[expr, uid]
 
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"WSP`"}];
 
@@ -106,10 +121,10 @@ InternalGetObject[uid_] := (
 )
 
 WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
-  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated},
+  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
-      $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold) /. {Global`IconizeWrapper -> Identity};
+      $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold);
       
       (* a shitty analogue of % symbol *)
       Global`$out = $evaluated;
@@ -126,15 +141,14 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
       With[{$string = $result // Global`ToCM6Boxes},
 
         callback[
-          If[StringLength[$string] > 5000,
-            With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 50]},
+          If[(StringLength[$string] > 5000 && !(Global`$ignoreLongStrings)) || StringLength[$string] > 39400,
+            With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 100]},
+              With[{expr = Global`ExprObjectExport[Global`FrontEndTruncated[short, len], dumpid]},
+                (* keep the real data inside the local storage *)
+                JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = <|"json"->ExportString[$result, "ExpressionJSON"], "date"->Now|>;          
 
-              (* keep the real data inside the local storage *)
-              JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = $string;
-
-              (* create a separate representation for the notebook and frontened using the same id *)
-              Global`$ExtendDefinitions[dumpid, <|"json"->ExportString[Global`FrontEndTruncated[short, len], "ExpressionJSON", "Compact" -> -1], "date"->Now |>;
-              "FrontEndExecutable[\""<>dumpid<>"\"]"];
+                expr /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}    //  Global`ToCM6Boxes
+              ]
             ]
           ,
             $string
