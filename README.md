@@ -5,6 +5,7 @@ This is a minimalistic, opensource, portable and lightweight notebook interface 
 ![](imgs/ezgif.com-crop.gif)
 
 **Warning! Early Stage of Development**
+**Doest work on Windows machines (TCP sockets problem)**
 
 __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
 
