@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Cocoa", "id" -> "baptism-5a294", 
+<|"notebook" -> <|"name" -> "Cocoa", "id" -> "confabulate-3a726", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"356341bc-38df-49e7-b2fe-3865bbe3dc71" -> 
       <|"json" -> "[\"FrontEndTruncated\",\"'{{8,\\\"K\\\"},{0,0.353508`},{0.\
@@ -803,52 +803,54 @@ ker\",\"'window'\"]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",3253,3851],[\
       <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0,0]]", 
        "date" -> DateObject[{2023, 5, 27, 20, 52, 
           22.120557`8.097371041550678}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Advanced/Interact\
-ive-curve-fitting.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 5, 27, 20, 53, 56.530211`8.504855580360669}, 
-     "Instant", "Gregorian", 2.]|>, 
- "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b197", 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Advanced/Inte\
+ractive-curve-fitting.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 6, 22, 23, 37, 13.894137`7.8954065624362695}, 
+     "Instant", "Gregorian", 3.]|>, 
+ "cells" -> {<|"id" -> "d86f2e6c-0194-4ca7-846a-9b5ab08e4f1277b197004", 
     "type" -> "input", "data" -> 
      ".md\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "60706ab7-c3c3-4e6d-843c-36adc6f78a08", "type" -> "output", 
+   <|"id" -> "60706ab7-c3c3-4e6d-843c-36adc6f78a08004", "type" -> "output", 
     "data" -> "\n# Interactive Curve Fitting\nAn editor of a dream", 
-    "display" -> "markdown", "sign" -> "baptism-5a294", 
+    "display" -> "markdown", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b197", "type" -> "input", 
-    "data" -> "EventHandler[InputFile[\"Drag And Drop\"], addFile]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "4d7321ab-b90a-4eb3-84f5-1a1aaaac8b3777b197004", 
+    "type" -> "input", "data" -> 
+     "EventHandler[InputFile[\"Drag And Drop\"], addFile]", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "07c58803-f812-4bf4-a04f-d4c2b6b1f50c", "type" -> "output", 
+   <|"id" -> "07c58803-f812-4bf4-a04f-d4c2b6b1f50c004", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"58ed5bce-57df-4a73-97fd-4e07eecd5a84\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b197", "type" -> "input", 
-    "data" -> ".md\nA file-handler", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "bf7a1495-d2f6-4022-b67a-0d7b118689a6", "type" -> "output", 
+   <|"id" -> "e1196586-5312-44d6-b147-a34e5933ac1977b197004", 
+    "type" -> "input", "data" -> ".md\nA file-handler", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "bf7a1495-d2f6-4022-b67a-0d7b118689a6004", "type" -> "output", 
     "data" -> "\nA file-handler", "display" -> "markdown", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b197", "type" -> "input", 
-    "data" -> "CreateFrontEndObject[{{3253, 0.1},{3851, 0.25}}, \
-\"exp\"];\naddFile[file_] := With[{},\n  Print[\"got it\"];\n  test = \
+    "sign" -> "confabulate-3a726", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ed8f8b18-6271-42fe-9922-93629dc4fb0577b197004", 
+    "type" -> "input", "data" -> "CreateFrontEndObject[{{3253, 0.1},{3851, \
+0.25}}, \"exp\"];\naddFile[file_] := With[{},\n  Print[\"got it\"];\n  test = \
 Drop[ImportString[file[\"data\"] // BaseDecode // ByteArrayToString, \
 \"TSV\"], 3];\n  FrontEndRef[\"exp\"] = test;\n] ", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b197", "type" -> "input", 
-    "data" -> "oscillators = <||>;\n\nSet[Oscillator[n_], i_] ^:= \
-(oscillators[n, \"params\"] = i;  FrontEndRef[\"model\"] \
+   <|"id" -> "e1e0a6f9-bc39-4f1d-909f-335e4eb08d8e77b197004", 
+    "type" -> "input", "data" -> "oscillators = <||>;\n\nSet[Oscillator[n_], \
+i_] ^:= (oscillators[n, \"params\"] = i;  FrontEndRef[\"model\"] \
 =getReflection[]);\nAppendTo[Oscillator[n_]] ^:= (oscillators[n] = \
 <|\"model\"->Function[{x0, A, width},  CM6Fraction[A CM6Superscript[10, 6], \
 CM6Superscript[x0, 2]- CM6Superscript[x, 2]- I width x]], \"params\"->{3552, \
 10.0 , 15.648235634730188`}|>; FrontEndRef[\"model\"]= \
 getReflection[]);\nOscillator[n_] := oscillators[n, \"params\"];\n", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b197", "type" -> "input", 
-    "data" -> "eps = \
+   <|"id" -> "df165bfe-9e1a-457d-87b2-17c47603a63677b197004", 
+    "type" -> "input", "data" -> "eps = \
 5.7;\n\nClearAll[getReflection]\n\ngetReflection[keys_:{}] := (\n  initial = \
 {x0, A, width};\n  Table[\n  With[{lor = Map[oscillators[#, \"model\"] @@ \
 (oscillators[#, \"params\"]) &, If[Length[{keys}//Flatten]==0, \
@@ -856,15 +858,16 @@ oscillators//Keys, {keys}//Flatten]] // Total},\n  \n    {x, 1 - (4 \
 Re[Sqrt[lor + eps]])/(\n Im[Sqrt[lor + eps]]^2 + (1 + Re[Sqrt[lor + \
 eps]])^2)}\n  ], {x, 3300, 3800,1.0}] //N // \
 Quiet\n);\n\nCreateFrontEndObject[getReflection[], \"model\"];", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b197", "type" -> "input", 
-    "data" -> "EventHandler[InputRange[1,6,0.1, 5.7, \"Label\"->\"Epsilon\"], \
-Function[e, eps = e; FrontEndRef[\"model\"]= getReflection[]; \
-]]\n\nEventHandler[InputButton[\"Add more\"], Function[blank,\nWith[{name = \
-RandomWord[]}, \n\nCreateFrontEndObject[{{0,0},{0,0}}, \
-name];\n\nWith[{dragger = \n  With[{color = RGBColor@@RandomReal[{0,1},3]},\n \
- AppendTo[Oscillator[name]];\n  \n  {\n    color, (*Opacity[0.2], \
+   <|"id" -> "22cd3e7d-a21f-423a-80ef-0b3ec19d3e4377b197004", 
+    "type" -> "input", "data" -> "EventHandler[InputRange[1,6,0.1, 5.7, \
+\"Label\"->\"Epsilon\"], Function[e, eps = e; FrontEndRef[\"model\"]= \
+getReflection[]; ]]\n\nEventHandler[InputButton[\"Add more\"], \
+Function[blank,\nWith[{name = RandomWord[]}, \
+\n\nCreateFrontEndObject[{{0,0},{0,0}}, name];\n\nWith[{dragger = \n  \
+With[{color = RGBColor@@RandomReal[{0,1},3]},\n  \
+AppendTo[Oscillator[name]];\n  \n  {\n    color, (*Opacity[0.2], \
 Line[FrontEndRef[name]],*)\n    PointSize[0.08], Opacity[0.7], \
 EventHandler[Point[{3450, 0.22}], {\n    \"drag\"->Function[c, \
 Oscillator[name] = {c[[1]], c[[2]], Oscillator[name][[3]]}; \
@@ -872,30 +875,30 @@ Oscillator[name] = {c[[1]], c[[2]], Oscillator[name][[3]]}; \
 Oscillator[name] = {Oscillator[name][[1]], Oscillator[name][[2]], 10 k}; \
 (*FrontEndRef[name] = getReflection[name] *) ]\n  }]}\n  ]  \n},\n  \
 Placed[dragger, FindMetaMarker[\"window\"]//First] // FrontEndOnly // \
-FrontSubmit;\n]]\n]]", "display" -> "codemirror", "sign" -> "baptism-5a294", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "bf8871da-f0e3-440b-9c92-611df828797f", "type" -> "output", 
+FrontSubmit;\n]]\n]]", "display" -> "codemirror", 
+    "sign" -> "confabulate-3a726", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "bf8871da-f0e3-440b-9c92-611df828797f004", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"5c9f5f8b-8950-42e0-9a0c-ff178191f0eb\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0dc04968-c28b-4363-ba75-8bad6857f291", "type" -> "output", 
+   <|"id" -> "0dc04968-c28b-4363-ba75-8bad6857f291004", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"7f5dc4e8-08fe-46a2-8792-acc4cdfbb9fc\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b197", "type" -> "input", 
-    "data" -> "Graphics[{\n  Line[FrontEndRef[\"exp\"]], Red, \
-Line[FrontEndRef[\"model\"]], MetaMarker[\"window\"]\n}, PlotRange->{{3253, \
-3851}, {0, 0.25}}, Axes->True, \"TransitionDuration\"->0, ImageSize->1200]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+   <|"id" -> "3a5588b0-7f6b-4d07-a1c2-ec2016d7673877b197004", 
+    "type" -> "input", "data" -> "Graphics[{\n  Line[FrontEndRef[\"exp\"]], \
+Red, Line[FrontEndRef[\"model\"]], MetaMarker[\"window\"]\n}, \
+PlotRange->{{3253, 3851}, {0, 0.25}}, Axes->True, \"TransitionDuration\"->0, \
+ImageSize->1200]", "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "05694377-8c6e-4e2f-bf97-0b731ffdc480", "type" -> "output", 
+   <|"id" -> "05694377-8c6e-4e2f-bf97-0b731ffdc480004", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"4642a14f-86e3-454a-bfd2-8cdbbe85d00a\"]", 
-    "display" -> "codemirror", "sign" -> "baptism-5a294", 
+    "display" -> "codemirror", "sign" -> "confabulate-3a726", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b197", "type" -> "input", 
-    "data" -> "oscillators", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "491494a0-7824-456a-a6dc-d26f836053ae", "type" -> "output", 
+   <|"id" -> "a23af510-31e5-4d74-9b39-212556a58e8477b197004", 
+    "type" -> "input", "data" -> "oscillators", "display" -> "codemirror", 
+    "sign" -> "confabulate-3a726", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "491494a0-7824-456a-a6dc-d26f836053ae004", "type" -> "output", 
     "data" -> "\[LeftAssociation]\"mulatto\"\[Rule]\[LeftAssociation]\"model\
 \"\[Rule]Function[{x0,A,width},CM6FractionWrapper[A CM6Superscript[10, \
 6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
@@ -909,5 +912,5 @@ x]],\"params\"\[Rule]{3487.89009009009`,0.10853991722058628`,8.19036697859827\
 6],CM6Superscript[x0, 2]-CM6Superscript[x, 2]-\[ImaginaryI] width \
 x]],\"params\"\[Rule]{3476.037837837838`,0.04155407489214702`,6.8777090906987\
 19`}\[RightAssociation]\[RightAssociation]", "display" -> "codemirror", 
-    "sign" -> "baptism-5a294", "props" -> <|"hidden" -> False|>|>}, 
+    "sign" -> "confabulate-3a726", "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn3"|>

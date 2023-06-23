@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`"}];
+BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Events`"}];
 
 (*
   ::Only for SECONDARY kernel::
@@ -43,14 +43,26 @@ LoadWebObjects := (
     With[{item = i},
       {
         Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
-          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
           $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ],
         item[x__] :> With[{$ouid = CreateUUID[]}, 
-          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> -1], "date"->Now |>; 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
           $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ]
       }
     ]
    , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;
+
+   JerryI`WolframJSFrontend`WebObjects`replacement = {JerryI`WolframJSFrontend`WebObjects`replacement, 
+    EventObject[assoc_] :> With[{$ouid = CreateUUID[]}, 
+            If[KeyExistsQ[assoc, "view"],
+              Global`$NewDefinitions[$ouid] = <|"json"->ExportString[assoc["view"], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
+              $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; 
+              Global`FrontEndExecutable[$ouid]
+            ,
+              EventObject[assoc]
+            ] 
+          ]
+   } // Flatten;
 
   Print[Blue<>"done!"]; Print[Reset];
 );

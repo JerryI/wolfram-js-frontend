@@ -20,6 +20,8 @@ EventsRack::usage = "a union of many events produces a single event object from 
 EmittedEvent::usage = "internal function called by the frontend to fire an event on a kernel"
 EventHandlers::usage = "internal function, which hold the binded function"
 
+EventFire::usage = "manually fire event"
+
 EventListener::usage = "internal commnd for frontend"
 
 MiddlewareHandler::usage = "internal command"
@@ -29,6 +31,10 @@ Begin["`Private`"];
 
 
 EventBind[EventObject[assoc_], handler_] ^:= (EventHandlers[assoc["id"] ] = handler;);
+EventBind[id_String, handler_] := (EventHandlers[id] = handler;);
+
+EventFire[EventObject[assoc_]] ^:= EventHandlers[assoc["id"]][assoc["initial"]]
+
 (* shotcut *)
 EventObject[assoc_][handler_] := (EventHandlers[assoc["id"] ] = handler;);
 

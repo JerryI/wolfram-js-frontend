@@ -185,9 +185,15 @@
    "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-svgbob-support"|>,
-   
-   "wljs-plotly" -> <|"name" -> "wljs-plotly", "repository" -> 
+   "wljs-plotly"-><|"name" -> "wljs-plotly", "version" -> "0.0.1", 
+   "description" -> "SVGBob ASCII graphics support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
     <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-plotly"|>
-    |>
+      "https://github.com/JerryI/wljs-plotly"|>, 
+   "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-plotly"|>
    |>
