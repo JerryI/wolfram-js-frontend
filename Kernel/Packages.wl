@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Packages`"];
+BeginPackage["JerryI`WolframJSFrontend`Packages`", {"KirillBelov`HTTPHandler`Extensions`"}];
 
 (* 
     ::Only for MASTER kernel::
@@ -179,14 +179,14 @@ downloadAndInstall[package_Association] := Module[{},
 Includes[param_] := Includes[param] = 
 Table[ 
     Table[ 
-      FileNameJoin[{Packages[i, "path"], j}]
+      FileNameJoin[{Packages[i, "path"], j // URLPathToFileName}]
     , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
 , {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten;
 
 Includes[param_, param2_] := Includes[param, param2] = 
 Partition[Table[ 
     Table[ 
-      {FileNameJoin[{Packages[i, "path"], j}], Packages[i, param2]}
+      {FileNameJoin[{Packages[i, "path"], j // URLPathToFileName}], Packages[i, param2]}
     , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
 , {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten, 2];
 

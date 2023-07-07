@@ -37,7 +37,7 @@ IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.
 
 Print["getting modules..."];
 
-Get[FileNameJoin[{jsf`root, "Packages", #}]] &/@ Includes["wl"];
+Get[FileNameJoin[{jsf`root, "Packages",  #}]] &/@ Includes["wl"];
 
 Print["order"];
 
@@ -78,8 +78,8 @@ If[MemberQ[$ScriptCommandLine, "auto"],
 
 (* file type handlers for frontened UI *)
 FileTypeHandler[path_, types_] := Module[{},
-  (* add the path to the server PATH variable for loading pictures from the vault *)
-  jsf`server["path"] = Join[Take[jsf`server["path"], Length[jsf`server["path"]]-1], {If[DirectoryQ[path], path, DirectoryName[path] ] }];
+  (* add the path to the server PATH variable for loading pictures from the vault 
+  jsf`server["path"] = Join[Take[jsf`server["path"], Length[jsf`server["path"]]-1], {If[DirectoryQ[path], path, DirectoryName[path] ] }];*)
 
   (* handlers *)
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]

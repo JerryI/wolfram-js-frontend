@@ -106,7 +106,7 @@
     });    
 
     document.getElementById("file-download-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
-        downloadByURL('<?wsp file ?>', '<?wsp FileNameTake[file] ?>');
+        downloadByURL('<?wsp file//FileNameToURLPath ?>', '<?wsp FileNameTake[file] ?>');
     });
 }
 </script>

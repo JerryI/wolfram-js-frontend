@@ -16,8 +16,21 @@
     window.addEventListener("wsconnected", function() { 
         console.log('subscribe and load notebook'); 
         window.Notebook = "<?wsp notebook ?>";
-        window.server.socket.send('NotebookOpen["<?wsp notebook ?>"]'); 
+        let time;
+        let att = 0;
+        const load = () => {
+            att++;
+            console.log('loading attempt '+att);
+            window.server.ask('NotebookOpen["<?wsp notebook ?>"]; True').then((res)=>{
+                clearTimeout(time);
+                console.log('OK!')
+            }); 
+            time = setTimeout(load, 500);
+        }
+        
+        load();
 
+        console.log(window.Notebook);
         window.onfocus = () => {
             window.server.socket.send('NotebookFocus["<?wsp notebook ?>"];'); 
         }
