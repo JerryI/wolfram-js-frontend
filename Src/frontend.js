@@ -116,7 +116,7 @@ class CellWrapper {
       document.getElementById(uid+"---input").classList.toggle("cell-hidden");
       const svg = hide.getElementsByTagName('svg');
       svg[0].classList.toggle("icon-hidden");
-      socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
+      server.socket.send(`CellObj["${uid}"]["props"] = Join[CellObj["${uid}"]["props"], <|"hidden"->!CellObj["${uid}"]["props"]["hidden"]|>]`);
     });    
   }
   
@@ -126,7 +126,7 @@ class CellWrapper {
 
     this?.display?.forceFocusNext();
 
-    socket.send(q);  
+    server.socket.send(q);  
   }
   
   constructor(template, input) {
@@ -220,12 +220,12 @@ class CellWrapper {
   }
   
   remove() {
-    socket.send(`NotebookOperate["${this.uid}", CellListRemoveAccurate];`);
+    server.socket.send(`NotebookOperate["${this.uid}", CellListRemoveAccurate];`);
   }
   
   save(content) {
     //const fixed = content.replaceAll('\\\"', '\\\\\"').replaceAll('\"', '\\"');
-    socket.send(`NotebookOperate["${this.uid}", CellObjSave, "${content}"];`);
+    server.socket.send(`NotebookOperate["${this.uid}", CellObjSave, "${content}"];`);
   }
   
   eval(content) {
@@ -242,8 +242,40 @@ class CellWrapper {
       return;
     }
 
-    socket.send(q);    
+    server.socket.send(q);    
   }
+}
+
+core.FrontEndAssignKernelSocket = async (args, env) => {
+  const port = await interpretate(args[0], env);
+  if (server.kernel.socket.readyState !== 1) {
+    console.log('trying to connect...');
+    server.kernel.socket = new WebSocket("ws://"+window.location.hostname+':'+port);
+    server.kernel.socket.onopen = function(e) {
+      console.log("[open] Соединение установлено c Kernel");
+      server.kernel.socket.send('WSSocketEstablish');
+    }; 
+
+    server.kernel.socket.onmessage = function(event) {
+      //create global context
+      //callid
+      const uid = Date.now() + Math.floor(Math.random() * 100);
+      var global = {call: uid};
+      interpretate(JSON.parse(event.data), {global: global});
+    };
+    
+    server.kernel.socket.onclose = function(event) {
+      console.log("WS connection to kernel server is lost");
+      console.log(event);
+      //alert('Connection lost. Please, update the page to see new changes.');
+    };
+
+    return;
+  }
+
+  server.kernel.socket.send('WSSocketEstablish');
+
+
 }
 
 core.FrontEndRemoveCell = async function (args, env) {

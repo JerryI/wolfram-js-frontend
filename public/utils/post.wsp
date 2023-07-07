@@ -1,4 +1,4 @@
 <?wsp
-    session["Redirect"] = "utils/redir.wsp";
-    session["data", "command"]//ToExpression;
+    $CurrentRequest["Redirect"] = "utils/redir.wsp";
+    $CurrentRequest["data", "command"]//ToExpression;
 ?>

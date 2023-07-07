@@ -50,14 +50,14 @@
     });
 
     document.getElementById('share-html').addEventListener('click', (e)=> {
-        socket.send('NotebookExport["html"];'); 
+        server.socket.send('NotebookExport["html"];'); 
         e.stopPropagation();
         dropdownMenu.classList.toggle("dropdown-file-show");
         return false;
     }); 
 
     document.getElementById('share-react').addEventListener('click', (e)=> {
-        socket.send('NotebookExport["react"];'); 
+        server.socket.send('NotebookExport["react"];'); 
         e.stopPropagation();
         dropdownMenu.classList.toggle("dropdown-file-show");
         return false;

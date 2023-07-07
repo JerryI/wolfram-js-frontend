@@ -73,7 +73,7 @@
 <script>
     window.addEventListener("wsconnected", function() { 
         console.log('subscribe and load notebook'); 
-        socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
+        server.socket.send('NotebookOpen["<?wsp notebook ?>"]'); 
     });
 </script>
     

@@ -45,10 +45,10 @@
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
                                                             <div style="">
-                                                            <?wsp WSPDynamic[ ?>
+                                                            <?wsp PageModule[ ?>
 
                                                                 <div class="notion-selectable notion-page-block">
-                                                                    <a href="/index.wsp?path=<?wsp URLEncode[ParentDirectory[session["dir"]]] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
+                                                                    <a href="/index.wsp?path=<?wsp URLEncode[ParentDirectory[$CurrentRequest["dir"]]] ?>" rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                             
                                                                         <div oncontextmenu="return false;" class="notion-focusable" role="button" tabindex="0" class="sidebar-focusable-cover">
                                                                        
@@ -75,7 +75,7 @@
                                                                     
                                                                 </div>                                                                
                                                                 
-                                                                <?wsp LoadPage["template/components/filelist.wsp", {dir = session["dir"]}] ?>
+                                                                <?wsp LoadPage["template/components/filelist.wsp", {dir = $CurrentRequest["dir"]}] ?>
 
                                                             <?wsp , "fileslist"]  ?>    
                                                                 
@@ -137,17 +137,17 @@
 <script>
 {
     /*document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
-        const dir = '<?wsp session["dir"] ?>';
-        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[session["Query", "path"]] ?>]');
+        const dir = '<?wsp $CurrentRequest["dir"] ?>';
+        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[$CurrentRequest["Query", "path"]] ?>]');
     });*/
 
     document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
-        const dir = '<?wsp session["dir"] ?>';
-        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[session["Query", "path"]] ?>]');
+        const dir = '<?wsp $CurrentRequest["dir"] ?>';
+        server.socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[$CurrentRequest["Query", "path"]] ?>]');
     });
 
     document.getElementById("open-vault-button").addEventListener('click', (e)=>{
-        callModal('filebrowser', '{path = "<?wsp session["dir"] ?>"}');
+        callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"] ?>"}');
     });
 
     /*document.getElementById("history-button").addEventListener('click', (e)=>{
@@ -168,9 +168,9 @@
 
    
 
-    core.FrontEndUpdateFileList = function(args, env) {
-        const path = interpretate(args[0]);
-        socket.send('WSPDynamicGet[{"fileslist"}, <|"dir"->"'+path+'" |>];');
+    core.FrontEndUpdateFileList = async function(args, env) {
+        console.log('HotReload!');
+        server.socket.send('HotReload[{"fileslist"}];');
     }
 
 

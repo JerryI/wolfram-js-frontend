@@ -1,10 +1,11 @@
 
-const wsconnected = new Event("wsconnected");
+window.wsconnected = new Event("wsconnected");
 
-var socket = new WebSocket("ws://"+window.location.hostname+':'+window.location.port);
+var socket = new WebSocket("ws://"+window.location.hostname+':'+(Number(window.location.port)+1));
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
   server.init(socket);
+  server.socket.send('Append[broadcast, Global`client]');
   window.dispatchEvent(wsconnected);
 }; 
 
@@ -21,7 +22,7 @@ socket.onclose = function(event) {
   //alert('Connection lost. Please, update the page to see new changes.');
 };
 
-function WSPHttpQueryQuite(command, promise, type = "String") {
+window.WSPHttpQueryQuite = (command, promise, type = "String") => {
 
   var http = new XMLHttpRequest();
   var url = 'http://'+window.location.hostname+':'+window.location.port+'/utils/query.wsp';
@@ -54,7 +55,7 @@ function WSPHttpQueryQuite(command, promise, type = "String") {
   http.send(null);
 }
 
-function WSPHttpQuery(command, promise, type = "String") {
+window.WSPHttpQuery = (command, promise, type = "String") => {
   var http = new XMLHttpRequest();
   var url = 'http://'+window.location.hostname+':'+window.location.port+'/utils/query.wsp';
   var params = 'command='+encodeURI(command)+'&type='+type;
@@ -93,7 +94,7 @@ function WSPHttpQuery(command, promise, type = "String") {
   http.send(null);
 }
 
-function WSPHttpBigQuery(command, promise, type = "String") {
+window.WSPHttpBigQuery = (command, promise, type = "String") => {
 
     var url = 'http://'+window.location.hostname+':'+window.location.port+'/utils/post.wsp';
 

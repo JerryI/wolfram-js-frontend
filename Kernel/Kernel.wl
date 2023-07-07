@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`", "KirillBelov`WebSocketHandler`"}]; 
 
 (*
     ::Only for MASTER kernel::
@@ -102,6 +102,7 @@ LocalKernel["AttachNotebook"][id_, path_] := (
     If[status["signal"] == "good", 
         (* can be a bug, but it doesnt work if we use a wrapper function *)
         JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
+        WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[8010]];
         Print["Kenrel now is aware about notebook id and the path to it"];
     ,
         Print["Kenrel is not ready yet to attach notebook id"];
@@ -122,15 +123,14 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
-    LinkWrite[link, Unevaluated[Get["Services/JTP/JTP.wl"]]];
-    LinkWrite[link, Unevaluated[Get["Services/WSP/WSP.wl"]]];
-    
+
+    LinkWrite[link, Unevaluated[Get["Scripts/kernel.wl"]]];
+
+    LinkWrite[link, Unevaluated[Global`$WSStart[8010]]];
+
     With[{root = JerryI`WolframJSFrontend`root},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
     ];
-
-    LinkWrite[link, Unevaluated[Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`", "JerryI`WolframJSFrontend`Events`"}]]; 
-    
     
 
     With[{packed = (List["host" -> JerryI`WolframJSFrontend`jtp["host"], "port" -> JerryI`WolframJSFrontend`jtp["port"] ])},
@@ -146,6 +146,8 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     (* i dunno. this is a fucking bug *)
     LinkWrite[link, Unevaluated["LoadWebObjects"//ToExpression]];
+
+
 
     checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[10, "Seconds"], 1},  AutoRemove->True]];
 

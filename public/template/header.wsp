@@ -22,7 +22,7 @@
         <?wsp , {i, Includes["jsmodule"]}]?> 
 
         <!-- connection to the server (global) -->
-        <script src="/dist/sockets.js"></script>
+        <script src="/dist/sockets.js" type="module"></script>
 
 
         <!-- editors autocomplete -->
@@ -37,7 +37,7 @@
                     <div class="notion-cursor-listener" style="">
                         <?wsp LoadPage["template/modal.wsp"] ?>
 
-                        <?wsp If[MissingQ[session["Query", "zen"]], ?>
+                        <?wsp If[MissingQ[$CurrentRequest["Query", "zen"]], ?>
                         <div class="notion-sidebar-container" style="">
                             <div style="">
                                 <div style="">
@@ -53,4 +53,4 @@
                             </div>
                                 
                          
-        <div class="notion-frame <?wsp If[MissingQ[session["Query", "zen"]], "", " notion-frame-extended"] ?>" style="">
+        <div class="notion-frame <?wsp If[MissingQ[$CurrentRequest["Query", "zen"]], "", " notion-frame-extended"] ?>" style="">

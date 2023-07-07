@@ -25,7 +25,7 @@
             location = "/";
         }
         // get the route object from the urlRoutes object
-        socket.send('WSPDynamicGet[' + arrayWSPuids + ', "'+location+'"];');
+        server.socket.send('HotReload[' + arrayWSPuids + '];');
     };
 
     // create document click that watches the nav links only
@@ -51,7 +51,7 @@
         //window.location.pathname = event.target.href;
 
         //locationHandler();
-        socket.send('WSPDynamicGet[' + arrayWSPuids + ', "'+event.target.closest(`a`).href+'"];');
+        server.socket.send('HotReload[' + arrayWSPuids + ', "'+event.target.closest(`a`).href+'"];');
     };
 
     window.addEventListener("wsconnected", function() { 
@@ -76,7 +76,7 @@
     });
 
     //toggle sidebar
-    <?wsp If[MissingQ[session["Query", "zen"]], ?>
+    <?wsp If[MissingQ[$CurrentRequest["Query", "zen"]], ?>
     {
         let sidebarToggle = localStorage.getItem("sidebar-hide");
 
@@ -109,7 +109,7 @@
     }    
     <?wsp , ""] ?> 
 
-    <?wsp If[!MissingQ[session["Query", "zen"]], ?>
+    <?wsp If[!MissingQ[$CurrentRequest["Query", "zen"]], ?>
     //a plug
         core.FrontEndUpdateFileList = function(args, env) { };
     <?wsp , ""] ?>

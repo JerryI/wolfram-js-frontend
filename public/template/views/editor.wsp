@@ -16,7 +16,7 @@
     window.addEventListener("wsconnected", function() { 
         console.log('subscribe and load notebook'); 
         window.Notebook = "<?wsp notebook ?>";
-        window.server.socket.send('NotebookOpen["<?wsp notebook ?>"]; WebSocketSubscribe[JerryI`WolframJSFrontend`server, "<?wsp notebook ?>", Global`client];'); 
+        window.server.socket.send('NotebookOpen["<?wsp notebook ?>"]'); 
 
         window.onfocus = () => {
             window.server.socket.send('NotebookFocus["<?wsp notebook ?>"];'); 

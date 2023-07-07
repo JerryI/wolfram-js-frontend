@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Clausal", "id" -> "chastisement-c678a", 
+<|"notebook" -> <|"name" -> "Clausal", "id" -> "squeezing-9ed00", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"136a5e9a-d034-499f-81b2-3b71ed2671ba" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"List\"],[\"List\",[\"List\",[\"\
@@ -75,17 +75,18 @@ n\",\"Automatic\"],[\"Rule\",\"PreserveImageOptions\",\"Automatic\"],[\"Rule\
 ,\"Automatic\"],[\"Rule\",\"TicksStyle\",[\"List\"]]]]", 
        "date" -> DateObject[{2023, 6, 16, 15, 44, 
           43.237181`8.388432348280512}, "Instant", "Gregorian", 3.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Demo/Experimental/Late\
-ncyTest.wl", "cell" :> Exit[], "date" -> 
-    DateObject[{2023, 6, 16, 15, 44, 27.478279`8.191564510612217}, "Instant", 
-     "Gregorian", 3.]|>, "cells" -> 
-  {<|"id" -> "418a8ecd-afdb-459f-9e83-d2b9e2e774a8", "type" -> "input", 
-    "data" -> ".md\n# Websockets autotest", "display" -> "codemirror", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "f32727f6-4f5b-40f7-ab40-685c2ff9c1b2", "type" -> "output", 
+   "path" -> 
+    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dev/LatencyTest.wl", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 7, 7, 13, 34, 
+      58.907562`8.522746022356074}, "Instant", "Gregorian", 3.]|>, 
+ "cells" -> {<|"id" -> "418a8ecd-afdb-459f-9e83-d2b9e2e774a8183", 
+    "type" -> "input", "data" -> ".md\n# Websockets autotest", 
+    "display" -> "codemirror", "sign" -> "squeezing-9ed00", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "f32727f6-4f5b-40f7-ab40-685c2ff9c1b2183", "type" -> "output", 
     "data" -> "\n# Websockets autotest", "display" -> "markdown", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "bad768cb-f088-4d14-a9ab-19df3e39af6d", "type" -> "input", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "bad768cb-f088-4d14-a9ab-19df3e39af6d183", "type" -> "input", 
     "data" -> ".js\n\nconst d = document.createElement('span');\n\nlet start \
 = performance.now();\nlet acc = [];\n\ncore.ResetTest = () => {\n  start = \
 performance.now();\n  acc = []\n}\n\ncore.AutoTest = async (args, env) => {\n \
@@ -95,8 +96,8 @@ server.emitt('ptest', 'True');\n\n  d.innerText = es;\n}\n\ncore.FinishTest = \
 async (args, env) => {\n  acc.shift();\n  acc.shift();\n  \n  const average = \
 acc.reduce((a, b) => a + b, 0) / acc.length;\n\n  server.emitt('finished', \
 average);\n  acc = [];\n}\n\nreturn d;", "display" -> "codemirror", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "48554f87-a586-426d-979e-1efdaa0af8c5", "type" -> "output", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "48554f87-a586-426d-979e-1efdaa0af8c5183", "type" -> "output", 
     "data" -> "\n\nconst d = document.createElement('span');\n\nlet start = \
 performance.now();\nlet acc = [];\n\ncore.ResetTest = () => {\n  start = \
 performance.now();\n  acc = []\n}\n\ncore.AutoTest = async (args, env) => {\n \
@@ -106,14 +107,14 @@ server.emitt('ptest', 'True');\n\n  d.innerText = es;\n}\n\ncore.FinishTest = \
 async (args, env) => {\n  acc.shift();\n  acc.shift();\n  \n  const average = \
 acc.reduce((a, b) => a + b, 0) / acc.length;\n\n  server.emitt('finished', \
 average);\n  acc = [];\n}\n\nreturn d;", "display" -> "js", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "17fd3171-83ae-4ad9-9506-8a7684f039ac", "type" -> "input", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "17fd3171-83ae-4ad9-9506-8a7684f039ac183", "type" -> "input", 
     "data" -> ".md\nWolfram site", "display" -> "codemirror", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6c9c1435-2b4a-4f3b-ac3d-edede3352049", "type" -> "output", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "6c9c1435-2b4a-4f3b-ac3d-edede3352049183", "type" -> "output", 
     "data" -> "\nWolfram site", "display" -> "markdown", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1d34b6a6-4b01-4db5-b0f2-ab8d158056d6", "type" -> "input", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1d34b6a6-4b01-4db5-b0f2-ab8d158056d6183", "type" -> "input", 
     "data" -> "cnt = 0;\nnTests = 0;\npayLoad = {};\nresults = \
 {};\n\nEventBind[EventObject[<|\"id\"->\"finished\"|>], Function[data, \n  \
 AppendTo[results, {payLoad//Length, data}];\n  nTests = nTests + 1;\n\n  \
@@ -124,15 +125,15 @@ cnt = cnt + 1;\n  If[cnt < 20, With[{pay = payLoad}, AutoTest[pay] // \
 FrontSubmit], FinishTest[] // FrontSubmit ];\n]];\n\nrunTest := (\n  cnt = \
 0;\n  ResetTest[] // FrontSubmit;\n  AutoTest[] // \
 FrontSubmit;\n);\n\nrunTest;", "display" -> "codemirror", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7eb6e4b6-662a-4cff-b884-4723e350c858", "type" -> "input", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7eb6e4b6-662a-4cff-b884-4723e350c858183", "type" -> "input", 
     "data" -> "EventRemove[EventObject[<|\"id\"->\"ptest\"|>]];", 
-    "display" -> "codemirror", "sign" -> "chastisement-c678a", 
+    "display" -> "codemirror", "sign" -> "squeezing-9ed00", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd14179d-a053-46ff-8274-dd81c6593131", "type" -> "input", 
+   <|"id" -> "cd14179d-a053-46ff-8274-dd81c6593131183", "type" -> "input", 
     "data" -> "ListLinePlot[results]", "display" -> "codemirror", 
-    "sign" -> "chastisement-c678a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1063cd28-42d9-4094-b30d-f338079c5cca", "type" -> "output", 
+    "sign" -> "squeezing-9ed00", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1063cd28-42d9-4094-b30d-f338079c5cca183", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"2d985b3f-4ba5-4c89-8f34-067b517edef2\"]", 
-    "display" -> "codemirror", "sign" -> "chastisement-c678a", 
+    "display" -> "codemirror", "sign" -> "squeezing-9ed00", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

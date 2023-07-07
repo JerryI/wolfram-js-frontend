@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Events`"}];
+BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "Jerry`Misc`Events`"}];
 
 (*
   ::Only for SECONDARY kernel::

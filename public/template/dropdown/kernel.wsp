@@ -76,15 +76,15 @@
     });
 
     document.getElementById("kernel-create-link").addEventListener("click", function (e) {
-        socket.send('NotebookKernelOperate["Start"]');
+        server.socket.send('NotebookKernelOperate["Start"]');
     });
 
     document.getElementById("kernel-restart-link").addEventListener("click", function (e) {
-        socket.send('NotebookKernelOperate["Restart"]');
+        server.socket.send('NotebookKernelOperate["Restart"]');
     });   
     
     document.getElementById("kernel-exit-link").addEventListener("click", function (e) {
-        socket.send('NotebookKernelOperate["Exit"]');
+        server.socket.send('NotebookKernelOperate["Exit"]');
     }); 
     
     document.getElementById("kernel-add-link").addEventListener("click", function (e) {

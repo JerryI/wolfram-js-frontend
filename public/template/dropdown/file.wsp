@@ -90,11 +90,11 @@
 
     
     document.getElementById("file-remove-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
-        socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
+        server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
     });  
 
     document.getElementById("file-clone-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
-        socket.send('FileOperate["Clone"]["<?wsp URLEncode[file] ?>"]');
+        server.socket.send('FileOperate["Clone"]["<?wsp URLEncode[file] ?>"]');
     });    
 
     document.getElementById("file-open-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {

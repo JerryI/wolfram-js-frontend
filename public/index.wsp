@@ -1,24 +1,26 @@
 <?wsp 
-      If[!KeyExistsQ[session["Query"], "path"], 
-          session["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
-          session["Query", "path"] = session["Query", "path"]//URLDecode;
-
-
-      ];  
       
-      session["dir"] = If[DirectoryQ[session["Query", "path"]],
-                            session["Query", "path"]
+        If[!KeyExistsQ[$CurrentRequest["Query"], "path"], 
+          $CurrentRequest["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
+          $CurrentRequest["Query", "path"] = $CurrentRequest["Query", "path"]//URLDecode;
+
+
+        ];  
+      
+        $CurrentRequest["dir"] = If[DirectoryQ[$CurrentRequest["Query", "path"]],
+                            $CurrentRequest["Query", "path"]
                           ,
-                            DirectoryName[session["Query", "path"]]
-                          ];      
+                            DirectoryName[$CurrentRequest["Query", "path"]]
+                          ];   
+  
       
-      If[NotebookQ[session["Query", "path"]], PreloadNotebook[session["Query", "path"]] ];
+      If[NotebookQ[$CurrentRequest["Query", "path"]], PreloadNotebook[$CurrentRequest["Query", "path"]] ];
 " "   ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>
 
 <div class="styles-container-body"> 
-  <?wsp FileTypeHandler[session["Query", "path"], SupportedTypes]["view"] ?>     
+  <?wsp FileTypeHandler[$CurrentRequest["Query", "path"], SupportedTypes]["view"] ?>     
 </div>
 
 <?wsp LoadPage["template/footer.wsp"] ?>

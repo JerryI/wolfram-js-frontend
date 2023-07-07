@@ -1,5 +1,5 @@
 
-BeginPackage["JerryI`WolframJSFrontend`Remote`", {"JTP`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Remote`", {"JTP`", "KirillBelov`WebSocketHandler`"}]; 
 
 (* 
     ::Only for SECONDARY kernel::
@@ -20,7 +20,12 @@ AskMaster::usage = "send expr to master and wait for the result"
 
 MasterResolvePromise::usage = "resolve promise"
 
+WSSocketEstablish::usage = "establish connection"
+
 $ExtendDefinitions::usage = "extend defs"
+
+NotebookAddTracking::usage = "add tracking for a symbol"
+
 
 Begin["`Private`"]; 
 
@@ -56,11 +61,31 @@ ConnectToMaster[params_List, OptionsPattern[]] := (
         (* JTPClientEvaluateAsyncNoReply[master, Global`LocalKernel["Pong"]] *), Quantity[1, "Seconds"]]]*)
 );
 
+notebookClient = Null;
+
 (* might be slow on converting to JSON *)
 (* we neeed to use Compress instead *)
-SendToFrontEnd[expr_] := With[{i = notebook, e = ExportString[expr, "ExpressionJSON", "Compact" -> -1]}, JTPClientEvaluateAsyncNoReply[master, Global`NotebookFrontEndSend[i][ e ] ] ];
+SendToFrontEnd[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},  
+  WebSocketSend[notebookClient, e];
+];
 
-FrontSubmit = SendToFrontEnd
+FrontSubmit = SendToFrontEnd;
+
+WSSocketEstablish := (Print["Notebook WS now is attached"]; notebookClient = Global`client);
+
+NotebookAddTracking[symbol_] := With[{cli = Global`client, name = SymbolName[Unevaluated[symbol]]},
+    Print["Add tracking... for "<>name];
+    Experimental`ValueFunction[Unevaluated[symbol]] = Function[{y,x}, 
+      If[FailureQ[
+        WebSocketSend[cli, ExportByteArray[Global`FrontUpdateSymbol[name, x], "ExpressionJSON"]]
+      ],
+        Print["tracking of "<>ToString[Unevaluated[symbol]]<>" was removed for "<>cli[[1]]];
+        Unset[Experimental`ValueFunction[Unevaluated[symbol]]];
+      ]
+    ]
+]
+
+SetAttributes[NotebookAddTracking, HoldFirst];
 
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
 

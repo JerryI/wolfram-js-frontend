@@ -93,7 +93,7 @@ Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
 
 ExprObjectExport[expr_, uid_String] := CreateFrontEndObject[expr, uid]
 
-BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"WSP`"}];
+BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WSP`"}];
 
 (* going to be executed on the remote or local kernels *)
 

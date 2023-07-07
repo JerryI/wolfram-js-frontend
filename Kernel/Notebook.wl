@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "WSP`", "Tinyweb`", "JerryI`WolframJSFrontend`Cells`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Colors`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Notebook`", {"JerryI`WolframJSFrontend`Utils`", "JerryI`WSP`", "JerryI`WolframJSFrontend`Cells`", "KirillBelov`WebSocketHandler`", "JerryI`WolframJSFrontend`Kernel`", "JerryI`WolframJSFrontend`Colors`", "KirillBelov`HTTPHandler`Extensions`"}]; 
 (*
     ::Only for MASTER kernel::
 
@@ -85,7 +85,10 @@ GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
 
+
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
+
+DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 
 jsfn`Notebooks = <||>;
 jsfn`Processors = {{},{},{}};
@@ -135,7 +138,7 @@ NotebookExtendDefinitions[defs_][sign_] := Module[{updated = {}},
 
     (* if some objects were updated -> force to update the cached objects on the associated clients *)
     Print["Will be updated: "<>ToString[Length[updated] ] ];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[#, defs[#]["json"] ], sign] &/@ updated;
+    WebSocketSend[jsfn`Notebooks[sign]["channel"],  Global`UpdateFrontEndExecutable[#, defs[#]["json"] ]] &/@ updated;
 ];
 
 NExtendSingleDefinition[uid_, defs_][notebook_] := Module[{updated = False},
@@ -146,8 +149,8 @@ NExtendSingleDefinition[uid_, defs_][notebook_] := Module[{updated = False},
     jsfn`Notebooks[notebook]["objects"][uid] = defs; 
 
     If[updated,
-        Print["Will be updated!"];
-        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`UpdateFrontEndExecutable[uid, defs["json"] ], sign];  
+        Print["Will be updated! NExtend"];
+        WebSocketSend[jsfn`Notebooks[notebook, "channel"], Global`UpdateFrontEndExecutable[uid, defs["json"] ]];  
     ];  
 ]
 
@@ -256,7 +259,7 @@ CreateNewNotebook[dir_, window_:False] := Module[{uid = RandomWord[]<>"-"<>Strin
   $AssoticatedPath[path] = uid;
   NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
   NotebookStoreManually[uid];
-  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', ``)"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode, If[window, "'_blank'", "'_self'"] ] ] ];
+  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', ``)"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode, If[window, "'_blank'", "'_self'"] ] ] // DefaultSerializer ]; 
 ];
 
 (* create a serialsed notebook and store it as a file *)
@@ -353,11 +356,12 @@ NotebookExport["html"] := Module[{channel = $AssociationSocket[Global`client], p
     
     With[{uid = channel, tempArrayPointer = tempArray},
         Export[path,
-            LoadPage[FileNameJoin[{"public", "template", "export", "notebook.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "base"->JerryI`WolframJSFrontend`root]
+            LoadPage[FileNameJoin[{"template", "export", "notebook.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "Base"->JerryI`WolframJSFrontend`public]
         , "String"]
     ];
 
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ]];
+    
 ];
 
 NotebookExport["react"] := Module[{channel = $AssociationSocket[Global`client], path},
@@ -372,11 +376,11 @@ NotebookExport["react"] := Module[{channel = $AssociationSocket[Global`client], 
     
     With[{uid = channel, tempArrayPointer = tempArray},
         Export[path,
-            LoadPage[FileNameJoin[{"public", "template", "export", "react.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "base"->JerryI`WolframJSFrontend`root]
+            LoadPage[FileNameJoin[{"template", "export", "react.wsp"}], {Global`notebook = uid, Global`cells = tempArrayPointer}, "Base"->JerryI`WolframJSFrontend`public]
         , "String"]
     ];
 
-    WebSocketSend[Global`client, Global`FrontEndJSEval["openawindow('/temp/_react.html', '_blank')" ]];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndJSEval["openawindow('/temp/_react.html', '_blank')" ]];
 ];
 
 (* remove a file and update UI elements via WSPDynamicExtension *)
@@ -386,10 +390,12 @@ FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSo
     DeleteFile[path];
     If[path === jsfn`Notebooks[channel]["path"] ,
         (* if it was a current notebook -> redirect to the landing page *)
-        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndJSEval["openawindow('/index.wsp')" ], channel ];
+        
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndJSEval["openawindow('/index.wsp')" ]];
     ,
         (* just update the UI elements *)
-        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+  
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
     ];
 ]];
 
@@ -402,7 +408,7 @@ FileOperate["Clone"][urlpath_] := Module[{new, path},
     path = URLDecode[urlpath];
 
     If[DirectoryQ[path],
-        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('Cannot clone a directory')" ]];
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('Cannot clone a directory')" ] // DefaultSerializer];
         Return[Null, Module];
     ];
 
@@ -410,7 +416,7 @@ FileOperate["Clone"][urlpath_] := Module[{new, path},
     CopyFile[path, new];
 
     (* open a new page *)
-    WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', '_blank')"][new//URLEncode ] ] ];
+    WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', '_blank')"][new//URLEncode ] ] // DefaultSerializer];
 ];
 
 NotebookRename[name_] := Module[{channel, newname, newpath},
@@ -434,8 +440,8 @@ NotebookRename[name_] := Module[{channel, newname, newpath},
     Global`$AssociationPath[ jsfn`Notebooks[channel]["path"] ] = channel;
     
     (* update UI elements *)
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileName[newname, jsfn`Notebooks[channel]["path"]], channel];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ], channel];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileName[newname, jsfn`Notebooks[channel]["path"]]];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[DirectoryName[jsfn`Notebooks[channel]["path"] ] ]];
 
     NotebookStoreManually[channel];
 ];
@@ -464,7 +470,7 @@ SetAttributes[NotebookEmitt, HoldFirst];
 
 NotebookAbort := With[{channel = $AssociationSocket[Global`client]},
     NotebookKernelOperate["Abort"];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndGlobalAbort[Null], channel];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndGlobalAbort[Null]]
 
     With[{list = CellList[$AssociationSocket[Global`client]]},
             (#["state"] = "idle") &/@ Select[list, Function[x, x["type"] === "input"]];
@@ -487,19 +493,27 @@ GarbageCollector[id_] := Module[{garbage},
 
     garbage = garbage//Keys;
 
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndDispose[garbage], id];
+    WebSocketSend[jsfn`Notebooks[id, "channel"], Global`FrontEndDispose[garbage]];
     Print[StringTemplate["`` were collected"][Length[garbage]] ];
 ];
 
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
     $AssociationSocket[Global`client] = id;
+
+    jsfn`Notebooks[id]["channel"] = WebSocketChannel[];
+    Print[jsfn`Notebooks[id]["channel"]];
+
+    Module[{c = jsfn`Notebooks[id]["channel"]},
+        Append[c, Global`client];
+        c@"Serializer" = ExportByteArray[#, "ExpressionJSON"]&;
+    ];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellListTree[id];
     ];
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 
-    
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 );
 
 
@@ -513,13 +527,15 @@ NotebookEvaluate[cellid_] := (
 NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]},
     jsfn`Notebooks[channel]["kernel"][cmd][Function[state,
         Print[StringTemplate["callback for `` channel"][channel]];
-        WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndKernelStatus[ state ], channel];
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndKernelStatus[ state ]];
         
         jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
     ]];
 ];
 
-NotebookFocus[channel_] := jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
+NotebookFocus[channel_] := (
+    jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]]
+);
 
 
 NotebookGetObject[uid_] := Module[{obj}, With[{channel = $AssociationSocket[Global`client]},
@@ -541,12 +557,12 @@ NotebookGetObjectForMe[uid_][id_] := (
 
 
 NotebookPromise[uid_, params_][expr_] := With[{},
-    WebSocketSend[Global`client, Global`PromiseResolve[uid, expr]];
+    WebSocketSend[Global`client, Global`PromiseResolve[uid, expr] // DefaultSerializer];
 ];
 
 NotebookPromiseDeferred[uid_, params_][helexpr_] := With[{cli = Global`client},
     LoopSubmit[Hold[Block[{Global`client = cli}, helexpr]], Function[cbk,
-        WebSocketSend[cli, Global`PromiseResolve[uid, cbk]]
+        WebSocketSend[Global`client, Global`PromiseResolve[uid, cbk] // DefaultSerializer];
     ]];
 ];
 
@@ -555,6 +571,7 @@ NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocke
     jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
         With[{result = expr // ReleaseHold},
             Print["side evaluating on the Kernel"];
+            Print["promise resolve"];
             Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
         ]
     ] ]
@@ -580,7 +597,7 @@ NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]}
 
 (*
 NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake[CreateUUID[], 3]<>".html"},
-    content = Block[{session = <|"Query"-><|"id"->id|>|>, commandslist = {}},
+    content = Block[{$CurrentRequest = <|"Query"-><|"id"->id|>|>, commandslist = {}},
         Block[{WebSocketSend = Function[{addr, data}, commandslist={commandslist, data};], fireEvent = CellEventFire[""]},
             CellObjGenerateTree[notebooks[id, "cell"]];
         ];
@@ -597,7 +614,8 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 (* redirect *)
 NotebookFrontEndSend[channel_][expr_String] := (
     (*Print["Publish from kernel to the channel "<>channel];*)
-    WebSocketPublishString[JerryI`WolframJSFrontend`server, expr, channel];
+    Print["String ARE NOT Allowed"];
+    Exit[];
 );
 
 
@@ -621,19 +639,19 @@ NotebookEventFire[addr_]["NewCell"][cell_] := (
                         "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
                     |>,
             
-            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]
+            template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
         },
 
-        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ]];
+        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ] // DefaultSerializer];
     ];
 );
 
 NotebookLoadModal[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},
-    LoadPage[FileNameJoin[{"template", "modals", name, "index.wsp"}], params]
+    LoadPage[FileNameJoin[{"template", "modals", name, "index.wsp"}], params, "Base":>JerryI`WolframJSFrontend`public]
 ]
 
 NotebookLoadPage[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},
-    LoadPage[name, params]
+    LoadPage[name, params, "Base":>JerryI`WolframJSFrontend`public]
 ]
 
 SetAttributes[NotebookLoadPage, HoldRest];
@@ -653,7 +671,7 @@ NotebookEventFire[addr_]["RemovedCell"][cell_] := (
                     |>
         },
 
-        WebSocketSend[addr, Global`FrontEndRemoveCell[obj ]];
+        WebSocketSend[addr, Global`FrontEndRemoveCell[obj] // DefaultSerializer];
     ];
 );
 
@@ -668,7 +686,7 @@ NotebookEventFire[addr_]["UpdateState"][cell_] := (
                     |>
         },
 
-        WebSocketSend[addr, Global`FrontEndUpdateCellState[obj ] ];
+        WebSocketSend[addr, Global`FrontEndUpdateCellState[obj ] // DefaultSerializer];
     ];
 );
 
@@ -693,10 +711,11 @@ NotebookEventFire[addr_]["AddCellAfter"][next_, parent_] := (
                         |>
                     |>,
             
-            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", next["type"]<>".wsp"}], {Global`id = next[[1]]}]
+            template = LoadPage[FileNameJoin[{"template", "cells", next["type"]<>".wsp"}], {Global`id = next[[1]]}, "Base":>JerryI`WolframJSFrontend`public]
         },
 
-        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ]];
+
+        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ] // DefaultSerializer];
     ];
 );
 
@@ -711,10 +730,10 @@ NotebookEventFire[addr_]["CellMorphInput"][cell_] := (
                         "type"->cell["type"]
                     |>,
             
-            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", "input.wsp"}], {Global`id = cell[[1]]}]
+            template = LoadPage[FileNameJoin[{"template", "cells", "input.wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
         },
 
-        WebSocketSend[addr, Global`FrontEndCellMorphInput[template, obj ]];
+        WebSocketSend[addr, Global`FrontEndCellMorphInput[template, obj ] // DefaultSerializer];
     ];
 );
 
@@ -723,43 +742,45 @@ NotebookEventFire[addr_]["CellError"][cell_, text_] := Module[{template},
     Print[Reset];
 
     With[{t = text},
-        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "error.wsp"}], {Global`id = cell, Global`from = "Wolfram Evaluator", Global`message = t}];
+        template = LoadPage[FileNameJoin[{"template", "popup", "error.wsp"}], {Global`id = cell, Global`from = "Wolfram Evaluator", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
     ];
 
-    WebSocketSend[addr, Global`FrontEndPopUp[template, text//ToString]];
+    WebSocketSend[addr, Global`FrontEndPopUp[template, text//ToString] // DefaultSerializer];
 ];
 
-NotebookEventFire[addr_]["Warning"][text_] := Module[{template},
+NotebookEventFire[channel_]["Warning"][text_] := Module[{template},
     With[{t = text},
-        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "warning.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}];
+        template = LoadPage[FileNameJoin[{"template", "popup", "warning.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
     ];
     Print[Yellow<>"Warning"];
     Print[Reset];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template, text//ToString], addr];
+
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndPopUp[template, text//ToString]];
 ];
 
 NotebookPopupFire[name_, text_] := Module[{template},
     With[{t = text},
-        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", name<>".wsp"}], {Global`id = CreateUUID[], Global`from = "JS Console", Global`message = t}];
+        template = LoadPage[FileNameJoin[{"template", "popup", name<>".wsp"}], {Global`id = CreateUUID[], Global`from = "JS Console", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
     ];
     Print[Blue<>"loopback"];
     Print[Reset];
-    WebSocketSend[Global`client, Global`FrontEndPopUp[template, text//ToString]];
+ 
+    WebSocketSend[Global`client, Global`FrontEndPopUp[template, text//ToString] // DefaultSerializer];
 ];
 
 
-NotebookEventFire[addr_]["Print"][text_] := Module[{template},
+NotebookEventFire[channel_]["Print"][text_] := Module[{template},
     With[{t = text},
-        template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "popup", "print.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}];
+        template = LoadPage[FileNameJoin[{"template", "popup", "print.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}, "Base":>JerryI`WolframJSFrontend`public];
     ];
     Print[Green<>"Print"];
     Print[Reset];
-    WebSocketPublish[JerryI`WolframJSFrontend`server, Global`FrontEndPopUp[template, text//ToString], addr];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndPopUp[template, text//ToString]];
 ];
 
 NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
     With[
-        {   template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}],
+        {   template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public],
             obj = <|
                     "cell"-> <|
                         "id"->cell[[1]], 
@@ -783,7 +804,7 @@ NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
                 |>
         },
 
-        WebSocketSend[addr, Global`FrontEndMorpCell[template, obj ]];
+        WebSocketSend[addr, Global`FrontEndMorpCell[template, obj ] // DefaultSerializer];
     ];
 );
 
@@ -810,7 +831,7 @@ NotebookFakeEventFire[array_]["NewCell"][cell_] := (
                         "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
                     |>,
             
-            template = LoadPage[FileNameJoin[{JerryI`WolframJSFrontend`public, "template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}]
+            template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
         },
 
         array["Push", Global`FrontEndCreateCell[template, obj ]];

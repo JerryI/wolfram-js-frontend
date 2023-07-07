@@ -16,7 +16,7 @@
                             <?wsp , {str, GetThumbnail[i]}] ?>
                         });
                     </script>
-                    <?wsp ], {i, SortBy[FileNames["*.wl", session["dir"]], FileDate]//Reverse}] ?>
+                    <?wsp ], {i, SortBy[FileNames["*.wl", $CurrentRequest["dir"]], FileDate]//Reverse}] ?>
                 
 
                 
