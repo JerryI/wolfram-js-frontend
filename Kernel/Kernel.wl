@@ -149,7 +149,7 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
 
 
-    checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[10, "Seconds"], 1},  AutoRemove->True]];
+    checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[15, "Seconds"], 1},  AutoRemove->True]];
 
     If[OptionValue["WatchDog"] =!= Infinity,
         With[{timeout = OptionValue["WatchDog"]},

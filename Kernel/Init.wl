@@ -1,7 +1,8 @@
 (* ::Package:: *)
 
 (* default paths *)
-JerryI`WolframJSFrontend`root           = ParentDirectory[DirectoryName[$InputFileName]]
+JerryI`WolframJSFrontend`root           = ParentDirectory[DirectoryName[$InputFileName // AbsoluteFileName]]
+Print[JerryI`WolframJSFrontend`root ];
 JerryI`WolframJSFrontend`public         = FileNameJoin[{JerryI`WolframJSFrontend`root, "public"}]
 JerryI`WolframJSFrontend`defaultvault   = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".lastpath"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".lastpath"}]], FileNameJoin[{JerryI`WolframJSFrontend`root, "Examples"}]]
 
@@ -25,4 +26,4 @@ Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["https:
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/PageModule.wl"]
 Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"]
 
-Get["Services/JTP/JTP.wl"]
+Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","JTP", "JTP.wl"}]]

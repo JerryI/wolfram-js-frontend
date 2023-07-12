@@ -17,7 +17,7 @@ Get/@{
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
 
-WLJSPSetRootFolder[JerryI`WolframJSFrontend`root];
+WLJSPSetRootFolder[jsf`root];
 
 JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[]}
 

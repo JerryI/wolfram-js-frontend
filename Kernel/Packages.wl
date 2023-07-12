@@ -150,7 +150,7 @@ CheckUpdates := Module[{json},
 ]
 
 downloadAndInstall[package_Association] := Module[{},
-    new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First;];
 
     If[!StringQ[new], Print["failed to find repo in the package.json!"]; Return[$Failed, Module]];
