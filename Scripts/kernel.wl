@@ -9,10 +9,11 @@ Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["Kirill
 
 Get["Services/JTP/JTP.wl"];
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/WSP.wl"];
+Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"];
 
 Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}; 
     
-Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"];
+
 
 $WSStart[port_] :=
 Module[{wcp, ws},

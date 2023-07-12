@@ -72,19 +72,27 @@ GarbageCollector::usage = "collect garbage form notebook"
 NotebookExport::usage = "export to standalone html"
 
 
-NotebookPopupFire::usage = "generate pop-up message using templates and send to the frontened"
+
 (*
     Internal commands used by other packages
     must not be PUBLIC!
 *)
-NotebookEventFire::usage = "internal command for cell's operation events, that publish changes via websockets"
-NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel to the frontened with no changes"
-NotebookFakeEventFire::usage = "fake event fire for the standalone"
+NotebookUse::usage = "adds event handlers"
 
+NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel to the frontened with no changes"
 GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
 
+NotebookEventFire = Null
+NotebookFakeEventFire = Null
+NotebookPopupFire = Null
+
+NotebookUse["EventFire", sym_] := NotebookEventFire = sym;
+NotebookUse["FakeEventFire", sym_] := NotebookFakeEventFire = sym;
+NotebookUse["PopupFire", sym_] := NotebookPopupFire = sym;
+
+SetAttributes[NotebookUse, HoldRest]
 
 $ContextAliases["jsfn`"] = "JerryI`WolframJSFrontend`Notebook`";
 
@@ -624,27 +632,7 @@ NotebookFrontEndSend[channel_][expr_String] := (
     events on cells operations
 *)
 
-NotebookEventFire[addr_]["NewCell"][cell_] := (
-    (*looks ugly actually. we do not need so much info*)
-    console["log", "fire event `` for ``", cell, addr];
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"],
-                        "data"->If[cell["data"]//NullQ, "", ExportString[cell["data"], "String", CharacterEncoding -> "UTF8"] ],
-                        "props"->cell["props"],
-                        "display"->cell["display"],
-                        "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
-                    |>,
-            
-            template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
-        },
 
-        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ] // DefaultSerializer];
-    ];
-);
 
 NotebookLoadModal[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},
     LoadPage[FileNameJoin[{"template", "modals", name, "index.wsp"}], params, "Base":>JerryI`WolframJSFrontend`public]
@@ -658,185 +646,6 @@ SetAttributes[NotebookLoadPage, HoldRest];
 SetAttributes[NotebookLoadModal, HoldRest];
 
 
-
-NotebookEventFire[addr_]["RemovedCell"][cell_] := (
-    (*actually frirstly you need to check!*)
-  
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"]
-                    |>
-        },
-
-        WebSocketSend[addr, Global`FrontEndRemoveCell[obj] // DefaultSerializer];
-    ];
-);
-
-NotebookEventFire[addr_]["UpdateState"][cell_] := (
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"],
-                        "state"->cell["state"]
-                    |>
-        },
-
-        WebSocketSend[addr, Global`FrontEndUpdateCellState[obj ] // DefaultSerializer];
-    ];
-);
-
-NotebookEventFire[addr_]["AddCellAfter"][next_, parent_] := (
-    Print["Add cell after"];
-    (*looks ugly actually. we do not need so much info*)
-    console["log", "fire event `` for ``", next, addr];
-    With[
-        {
-            obj = <|
-                        "id"->next[[1]], 
-                        "sign"->next["sign"],
-                        "type"->next["type"],
-                        "data"->If[next["data"]//NullQ, "", ExportString[next["data"], "String", CharacterEncoding -> "UTF8"] ],
-                        "props"->next["props"],
-                        "display"->next["display"],
-                        "state"->If[StringQ[ next["state"] ], next["state"], "idle"],
-                        "after"-> <|
-                            "id"->parent[[1]], 
-                            "sign"->parent["sign"],
-                            "type"->parent["type"]                           
-                        |>
-                    |>,
-            
-            template = LoadPage[FileNameJoin[{"template", "cells", next["type"]<>".wsp"}], {Global`id = next[[1]]}, "Base":>JerryI`WolframJSFrontend`public]
-        },
-
-
-        WebSocketSend[addr, Global`FrontEndCreateCell[template, obj ] // DefaultSerializer];
-    ];
-);
-
-NotebookEventFire[addr_]["CellMorphInput"][cell_] := (
-    (*looks ugly actually. we do not need so much info*)
-    console["log", "fire event `` for ``", cell, addr];
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"]
-                    |>,
-            
-            template = LoadPage[FileNameJoin[{"template", "cells", "input.wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
-        },
-
-        WebSocketSend[addr, Global`FrontEndCellMorphInput[template, obj ] // DefaultSerializer];
-    ];
-);
-
-NotebookEventFire[addr_]["CellError"][cell_, text_] := Module[{template},
-    Print[Red<>"ERROR"];
-    Print[Reset];
-
-    With[{t = text},
-        template = LoadPage[FileNameJoin[{"template", "popup", "error.wsp"}], {Global`id = cell, Global`from = "Wolfram Evaluator", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
-    ];
-
-    WebSocketSend[addr, Global`FrontEndPopUp[template, text//ToString] // DefaultSerializer];
-];
-
-NotebookEventFire[channel_]["Warning"][text_] := Module[{template},
-    With[{t = text},
-        template = LoadPage[FileNameJoin[{"template", "popup", "warning.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
-    ];
-    Print[Yellow<>"Warning"];
-    Print[Reset];
-
-    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndPopUp[template, text//ToString]];
-];
-
-NotebookPopupFire[name_, text_] := Module[{template},
-    With[{t = text},
-        template = LoadPage[FileNameJoin[{"template", "popup", name<>".wsp"}], {Global`id = CreateUUID[], Global`from = "JS Console", Global`message = t}, "Base"->JerryI`WolframJSFrontend`public];
-    ];
-    Print[Blue<>"loopback"];
-    Print[Reset];
- 
-    WebSocketSend[Global`client, Global`FrontEndPopUp[template, text//ToString] // DefaultSerializer];
-];
-
-
-NotebookEventFire[channel_]["Print"][text_] := Module[{template},
-    With[{t = text},
-        template = LoadPage[FileNameJoin[{"template", "popup", "print.wsp"}], {Global`id = CreateUUID[], Global`from = "Wolfram Evaluator", Global`message = t}, "Base":>JerryI`WolframJSFrontend`public];
-    ];
-    Print[Green<>"Print"];
-    Print[Reset];
-    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndPopUp[template, text//ToString]];
-];
-
-NotebookEventFire[addr_]["CellMove"][cell_, parent_] := (
-    With[
-        {   template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public],
-            obj = <|
-                    "cell"-> <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"],
-                        "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
-                        "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
-                        "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]]
-                    |>,
-
-                    "parent"-> <|
-                        "id"->parent[[1]], 
-                        "sign"->parent["sign"],
-                        "type"->parent["type"],
-                        "child"->If[NullQ[ parent["child"] ], "", parent["child"][[1]]],
-                        "parent"->If[NullQ[ parent["parent"] ], "", parent["parent"][[1]]],
-                        "next"->If[NullQ[ parent["next"] ], "", parent["next"][[1]]],
-                        "prev"->If[NullQ[ parent["prev"] ], "", parent["prev"][[1]]]                        
-                    |>
-                |>
-        },
-
-        WebSocketSend[addr, Global`FrontEndMorpCell[template, obj ] // DefaultSerializer];
-    ];
-);
-
-NotebookEventFire[addr_]["CellMorph"][cell_] := (Null);
-
-(* fake events for forming standalone app *)
-
-NotebookFakeEventFire[array_]["NewCell"][cell_] := (
-    (*looks ugly actually. we do not need so much info*)
-    console["log", "fire event `` for ``", cell, array];
-    With[
-        {
-            obj = <|
-                        "id"->cell[[1]], 
-                        "sign"->cell["sign"],
-                        "type"->cell["type"],
-                        "data"->If[cell["data"]//NullQ, "", ExportString[cell["data"], "String", CharacterEncoding -> "UTF8"] ],
-                        "child"->If[NullQ[ cell["child"] ], "", cell["child"][[1]]],
-                        "parent"->If[NullQ[ cell["parent"] ], "", cell["parent"][[1]]],
-                        "next"->If[NullQ[ cell["next"] ], "", cell["next"][[1]]],
-                        "prev"->If[NullQ[ cell["prev"] ], "", cell["prev"][[1]]],
-                        "props"->cell["props"],
-                        "display"->cell["display"],
-                        "state"->If[StringQ[ cell["state"] ], cell["state"], "idle"]
-                    |>,
-            
-            template = LoadPage[FileNameJoin[{"template", "cells", cell["type"]<>".wsp"}], {Global`id = cell[[1]]}, "Base"->JerryI`WolframJSFrontend`public]
-        },
-
-        array["Push", Global`FrontEndCreateCell[template, obj ]];
-    ];
-);
 
 End[];
 EndPackage[];

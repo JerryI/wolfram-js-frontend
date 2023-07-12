@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "Jerry`Misc`Events`"}];
+BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "JerryI`Misc`Events`"}];
 
 (*
   ::Only for SECONDARY kernel::
@@ -51,18 +51,6 @@ LoadWebObjects := (
       }
     ]
    , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;
-
-   JerryI`WolframJSFrontend`WebObjects`replacement = {JerryI`WolframJSFrontend`WebObjects`replacement, 
-    EventObject[assoc_] :> With[{$ouid = CreateUUID[]}, 
-            If[KeyExistsQ[assoc, "view"],
-              Global`$NewDefinitions[$ouid] = <|"json"->ExportString[assoc["view"], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
-              $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; 
-              Global`FrontEndExecutable[$ouid]
-            ,
-              EventObject[assoc]
-            ] 
-          ]
-   } // Flatten;
 
   Print[Blue<>"done!"]; Print[Reset];
 );

@@ -93,6 +93,21 @@ Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
 
 ExprObjectExport[expr_, uid_String] := CreateFrontEndObject[expr, uid]
 
+EventObject /: MakeBoxes[EventObject[assoc_], StandardForm] := 
+ With[{$ouid = CreateUUID[]}, 
+  If[KeyExistsQ[assoc, "view"], 
+   Global`$NewDefinitions[$ouid] = <|
+     "json" -> 
+      ExportString[assoc["view"], "ExpressionJSON", "Compact" -> 0], 
+     "date" -> Now|>;
+
+   $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]];
+   "FrontEndExecutable["<>MakeBoxes[$ouid, StandardForm]<>"]", 
+  (*ELSE*)
+   "EventObject["<>MakeBoxes[assoc, StandardForm]<>"]"
+  ]
+]
+
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WSP`"}];
 
 (* going to be executed on the remote or local kernels *)

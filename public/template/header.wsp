@@ -1,6 +1,5 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/dist/merged.css">
 
         <?wsp Table[ ?> 
             <link rel="stylesheet" href="/<?wsp i // FileNameToURLPath ?>">
@@ -13,8 +12,6 @@
             </script>
         <?wsp , {i, Includes["js"]}]?>
  
-        <!-- frontend library (module) -->
-        <script type="module" src="/dist/merged.js"></script>
         
         <!-- user's plugins (module) -->
         <?wsp Table[ ?> 
