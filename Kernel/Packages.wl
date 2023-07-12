@@ -16,23 +16,29 @@ PackagesOrder::usage = "order sorted by priority"
 
 Includes::usage = "check for fields"
 
+WLJSPSetRootFolder::usage = "set root folder"
+
 Begin["`Private`"]; 
 
-$ConfigFile = FileNameJoin[{JerryI`WolframJSFrontend`root, ".packages"}];
-$DefaultConfigFile = FileNameJoin[{JerryI`WolframJSFrontend`root, ".defaultpackages"}];
-$PackagesPath = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages"}];
+$RootFolder = Directory[]
+
+WLJSPSetRootFolder[path_String] := $RootFolder = path;
+
+$ConfigFile = FileNameJoin[{$RootFolder, ".packages"}];
+$DefaultConfigFile = FileNameJoin[{$RootFolder, ".defaultpackages"}];
+$PackagesPath = FileNameJoin[{$RootFolder, "Packages"}];
 
 listAllPackages := FileNames["package.json", $PackagesPath, 2]
 
 absolute2Relative[path_] := FileNameSplit[DirectoryName[path]][[-1]]
-relative2Absolute[path_] := FileNameJoin[{JerryI`WolframJSFrontend`root, path}]
+relative2Absolute[path_] := FileNameJoin[{$RootFolder, path}]
 
 ImportJSON[url_String] := Module[{},
     Import[url, "RawJSON"]
 ]; 
 
 getJSON[package_Association] := Module[{new, json},
-    new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First];
     
     json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
@@ -43,7 +49,7 @@ getJSON[package_Association] := Module[{new, json},
 ]
 
 getJSON[url_String] := Module[{new, json},
-    new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First;
+    new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First];
 
     json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
@@ -156,14 +162,14 @@ downloadAndInstall[package_Association] := Module[{},
 
     Print["fetching the data..."];    
     Print["url: "<>"https://github.com/"<>new<>"/zipball/master"];
-    URLDownload["https://github.com/"<>new<>"/zipball/master", FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp.zip"}]];
+    URLDownload["https://github.com/"<>new<>"/zipball/master", FileNameJoin[{$RootFolder, "___temp.zip"}]];
     
     Print["extracting..."];
-    ExtractArchive[FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp.zip"}], FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp"}]];
-    DeleteFile[FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp.zip"}]];
+    ExtractArchive[FileNameJoin[{$RootFolder, "___temp.zip"}], FileNameJoin[{$RootFolder, "___temp"}]];
+    DeleteFile[FileNameJoin[{$RootFolder, "___temp.zip"}]];
     
     Print["fetching the package.json"];
-    path = FileNames["package.json", FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp"}], 2] // First;
+    path = FileNames["package.json", FileNameJoin[{$RootFolder, "___temp"}], 2] // First;
     If[!FileExistsQ[path], Print["Failed to fetch by "<>ToString[path]]; Return[$Failed, Module]];
     path = DirectoryName[path];
 
@@ -171,7 +177,7 @@ downloadAndInstall[package_Association] := Module[{},
 
     Print[StringTemplate["copying... from `` to ``"][path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]]];
     CopyDirectory[path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]];
-    DeleteDirectory[FileNameJoin[{JerryI`WolframJSFrontend`root, "___temp"}], DeleteContents -> True];
+    DeleteDirectory[FileNameJoin[{$RootFolder, "___temp"}], DeleteContents -> True];
     Print["finished!"];
 ];
 

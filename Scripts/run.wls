@@ -17,6 +17,8 @@ Get/@{
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
 
+WLJSPSetRootFolder[JerryI`WolframJSFrontend`root];
+
 JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[]}
 
 (* assign the handler for ExtendDefiniton command from the kernel to Notebook API *)
