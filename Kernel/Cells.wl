@@ -20,6 +20,7 @@ CellObjEvaluate::usage = ""
 CellListTree::usage = ""
 
 CellListAddNewAfter::usage = ""
+CellListAddNewAfterAny::usage = ""
 
 CellListUnpack::usage = ""
 CellListUnpackLegacy::usage = ""
@@ -92,7 +93,9 @@ CellListAddNewAfter[cell_] := With[{sign = cell["sign"]},
     CellListAddNewInput[sign, cell, CellObj["data"->"", "type"->"input", "sign"->sign]];
 ];
 
-
+CellListAddNewAfterAny[cell_] := With[{sign = cell["sign"]},
+    CellListAddNewInputAny[sign, cell, CellObj["data"->"", "type"->"input", "sign"->sign]];
+];
 
 CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
@@ -116,6 +119,35 @@ CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     CellList[list] = Insert[CellList[list], CellObj[new], pos];
 
     JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
+];
+
+CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
+    pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
+
+    If[pos === Length[CellList[list]],
+        (* last cell in the list *)
+        CellList[list] = Insert[CellList[list], CellObj[new], pos + 1];
+
+        JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos]] ];
+
+        Return[Null, Module];
+    ];   
+    pos = pos + 1;
+
+    CellList[list] = Insert[CellList[list], CellObj[new], pos];
+    
+    If[CellObj[new]["type"] === "input", 
+        CellObj[new]["type"] = "output";
+        (* a hack to force CM to reuild the structure *)
+        console["log", "rebuilding structure..."];
+        JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
+        JerryI`WolframJSFrontend`fireEvent["CellMorphInput"][CellObj[new]];
+        CellObj[new]["type"] = "input";
+
+        Return[Null, Module];
+    ];
+
+    
 ];
 
 CellListAddNewOutput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
