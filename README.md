@@ -1,10 +1,12 @@
 # Wolfram Language Javascript Frontend
 ![](imgs/logo.png)
 
-*written for the freeware Wolfram Engine*
+*written for the freeware Wolfram Engine using Javascript*
+
+*web-based, fully customizable*
 
 **Warning! Early Stage of Development**
-**Doest work properly on Windows machines (TCP sockets problem)**
+**Was not tested on Windows Machines**
 
 __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
 

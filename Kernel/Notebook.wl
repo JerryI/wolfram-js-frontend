@@ -60,6 +60,9 @@ CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 
 NotebookEmitt::usage = "send anything to the kernel (async)"
 
+NotebookPopupFire::usage = "pop up message"
+NotebookEventFire::usage = "fire"
+
 NotebookFocus::usage = "focus on a tab"
 
 NotebookEvaluateAll::usage = ""
