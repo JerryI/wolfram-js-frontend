@@ -8,6 +8,11 @@ JerryI`WolframJSFrontend`defaultvault   = If[FileExistsQ[FileNameJoin[{JerryI`Wo
 
 JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
+Once[If[PacletFind["KirillBelov/Objects"] === {}, PacletInstall["https://github.com/KirillBelovTest/Objects/releases/download/v1.0.21/KirillBelov__Objects-1.0.21.paclet"]]]; 
+<<KirillBelov`Objects`;
+
+Get["https://raw.githubusercontent.com/KirillBelovTest/TCPServer/main/Kernel/TCPServer.wl"]
+
 Once[If[PacletFind["KirillBelov/Internal"] === {}, PacletInstall["https://github.com/KirillBelovTest/Internal/releases/download/v1.0.5/KirillBelov__Internal-1.0.5.paclet"]]]; 
 <<KirillBelov`Internal`;
 
