@@ -5,6 +5,8 @@
 
 *web-based, fully customizable*
 
+__[Docs](https://jerryi.github.io/wljs-docs/)__
+
 **Warning! Early Stage of Development**
 **Was not tested on Windows Machines**
 
@@ -18,8 +20,6 @@ kirill.vasin@uni-a.de
 Thank you 🍺 
 
 __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles)__
-
-__[Docs](https://jerryi.github.io/wljs-docs/)__
 
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine.
