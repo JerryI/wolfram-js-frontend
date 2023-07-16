@@ -204,7 +204,7 @@
    "path" -> "wljs-plotly", "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme"|>, 
- "wljs-cells" -> <|"name" -> "wljs-cells", "version" -> "0.0.1", 
+ "wljs-cells" -> <|"name" -> "wljs-cells", "version" -> "0.0.2", 
    "description" -> "WLJS Cells manager", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
@@ -217,4 +217,23 @@
      "systemjs" -> "^6.14.1"|>, "dependencies" -> 
     <|"@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
       "15.0.1", "pako" -> "^2.1.0"|>, "enabled" -> True, 
-   "path" -> "wljs-cells"|>|>
+   "path" -> "wljs-cells"|>, "wljs-hydrator" -> 
+  <|"name" -> "wljs-hydrator", "version" -> "0.0.1", 
+   "description" -> 
+    "An extension pack that allows to print cells into an HTML template", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
+--config rollup.config.mjs -w"|>, "wljs-meta" -> 
+    <|"css" -> "dist/styles.css", "jsmodule" -> "src/kernel.js", 
+     "wlkernel" -> "src/kernel.wl", "autocomplete" -> 
+      "src/autocomplete.js"|>, "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-hydrator"|>, 
+   "author" -> "Kirill Vasin", "license" -> "GPL", 
+   "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-hydrator/issues"|>, 
+   "homepage" -> "https://github.com/JerryI/wljs-hydrator#readme", 
+   "dependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
+     "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
+      "15.0.1", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
+     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
+   "enabled" -> True, "path" -> "wljs-hydrator"|>|>

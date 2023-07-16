@@ -19,6 +19,8 @@ NotebookGarbagePut::usage = "collect garbage"
 NotebookLoadPage::usage = "load modal windows"
 NotebookLoadModal::usage = "load modal windows"
 NotebookUpdateThumbnail::usage = "provide html thumbnail"
+
+NotebookStoreKernelSymbol::usage = "populate symbols from kernel"
 (* 
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
@@ -48,6 +50,7 @@ FileOperate::usage = "a wrapper for easy-file operations"
 
 NotebookPromise::usage = "ask a server to do something... and return result as a resolved promise to the frontend"
 NotebookPromiseDeferred::usage = "the same"
+NotebookGetSymbol::usage = "get the symbol fromm kernel"
 
 NotebookPromiseKernel::usage = "ask a computing kernel to do something..."
 
@@ -218,6 +221,12 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "path"] = path;
             JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "date"] = Now;
 
+            If[!KeyExistsQ[notebook["notebook"], "symbols"],
+                Print["Old format. Adding symbols storage"];
+                JerryI`WolframJSFrontend`Notebook`Notebooks[notebook["notebook", "id"], "symbols"] = <||>;
+            ];
+            
+
          
             CellListUnpack[notebook["cells"]];
 
@@ -320,9 +329,39 @@ AddThumbnail[id_] := Module[{list = CellList[id], pos = 1, data = {}, back},
     jsfn`Thumbnails[jsfn`Notebooks[id]["path"]] = data[[All,2]];
 ];
 
+NotebookStoreKernelSymbol[name_, notebookid_][data_] := (
+    Print["Obtained the copy of "<>name];
+    Print[data];
+
+    jsfn`Notebooks[notebookid]["symbols", name, "data"] = data;
+    jsfn`Notebooks[notebookid]["symbols", name, "date"] = Now;
+);
+
 (* serialise the notebook to a file *)
 NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, notebook = <||>},
     Print[StringTemplate["`` objects to save"][Length[cells] ] ];
+
+    Print["Checking the unstored symbols..."];
+    With[{name = #, body = jsfn`Notebooks[channel]["symbols", #]},
+        If[True,
+            Print["update data for the symbol "<>name];
+            Print["getting it from the kernel"];
+
+            With[{c = channel},
+                LinkWrite[jsfn`Notebooks[channel]["kernel"]["WSTPLink"], Unevaluated[
+                    With[{d = ToExpression[name]},
+                        Print["got the request"];
+                        Global`SendToMaster[
+                            Function[x,
+                                Global`NotebookStoreKernelSymbol[name, c][d]
+                            ]
+                        ][Null];
+                    ];
+                ] ];
+            ];
+        ]
+    ] &/@ Keys[jsfn`Notebooks[channel]["symbols"]];
+
     notebook["notebook"] = jsfn`Notebooks[channel];
     notebook["cells"] = CellListPack[channel];
     notebook["serializer"] = "jsfn3";
@@ -520,6 +559,13 @@ NotebookOpen[id_String] := (
         c@"Serializer" = ExportByteArray[#, "ExpressionJSON"]&;
     ];
 
+    Print["Poppulating with a stored symbols..."];
+    
+    If[KeyExistsQ[jsfn`Notebooks[id]["symbols", #], "data"], 
+        Print["restoring... "<>#];
+        WebSocketSend[Global`client, Global`FrontEndRestoreSymbol[#, jsfn`Notebooks[id]["symbols", #, "data"]] // DefaultSerializer];
+    ] &/@ Keys[jsfn`Notebooks[id]["symbols"]];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellListTree[id];
     ];
@@ -552,6 +598,7 @@ NotebookFocus[channel_] := (
 NotebookGetObject[uid_] := Module[{obj}, With[{channel = $AssociationSocket[Global`client]},
     If[!KeyExistsQ[jsfn`Notebooks[channel]["objects"], uid],
         Print["we did not find an object "<>uid<>" at the master kernel. failed"];
+        
         Return[$Failed];
     ];
     Print[StringTemplate["getting object `` with data inside \n `` \n"][uid, jsfn`Notebooks[channel]["objects"][uid]//Compress]];
@@ -577,8 +624,31 @@ NotebookPromiseDeferred[uid_, params_][helexpr_] := With[{cli = Global`client},
     ]];
 ];
 
-NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocket[Global`client]},
+NotebookGetSymbol[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client]},
+    If[jsfn`Notebooks[channel]["kernel"]["Status"]["signal"] =!= "good",
+        Print["Oh. Kernel is not attached. Cannot do get the symbol"];
+        WebSocketSend[Global`client, Global`PromiseResolve[uid, Global`ImSorryIJustCannotDoThat] // DefaultSerializer];
+        Return[$Failed, Module];
+    ];
 
+    jsfn`Notebooks[channel]["symbols"][Extract[expr, 1, ToString]] = <|"date"->Now|>;
+    
+    jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
+        With[{result = expr // ReleaseHold},
+            Print["evaluating the desired symbol on the Kernel"];
+            Print["promise resolve"];
+            Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
+        ]
+    ] ]
+]];
+
+NotebookPromiseKernel[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client]},
+    If[jsfn`Notebooks[channel]["kernel"]["Status"]["signal"] =!= "good",
+        Print["Oh. Kernel is not attached. Cannot do the promise"];
+        WebSocketSend[Global`client, Global`PromiseResolve[uid, Global`ImSorryIJustCannotDoThat] // DefaultSerializer];
+        Return[$Failed, Module];
+    ];
+    
     jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
         With[{result = expr // ReleaseHold},
             Print["side evaluating on the Kernel"];
@@ -586,7 +656,7 @@ NotebookPromiseKernel[uid_, params_][expr_] := With[{channel = $AssociationSocke
             Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
         ]
     ] ]
-];
+]];
 
 NotebookOperate[cellid_, op_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
