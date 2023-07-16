@@ -16,6 +16,7 @@
     <script type="module">
     const objects = [];
     const cells = [];
+    const symbols = [];
     <?wsp Table[ ?>
         { const key = '<?wsp key ?>';
           const cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>;
@@ -25,12 +26,15 @@
         
     <?wsp Table[ ?>
         cells.push(<?wsp c ?>);
-    <?wsp , {c, ExportString[#, "ExpressionJSON", "Compact"->-1]&/@cells["data"]}] ?>
+    <?wsp , {c, ExportString[#, "ExpressionJSON", "Compact"->0]&/@cells["data"]}] ?>
 
+    <?wsp Table[ ?>
+        symbols['<?wsp s ?>'] = <?wsp ExportString[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["symbols", s, "data"], "ExpressionJSON", "Compact"->0] ?>;
+    <?wsp , {s, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["symbols"]//Keys}] ?>   
     
     //const orig = Pako.gzip(JSON.stringify([objects, cells]));
     
-    const buf = fflate.strToU8(JSON.stringify([objects, cells]));
+    const buf = fflate.strToU8(JSON.stringify([objects, cells, symbols]));
     const compressed = btoa(fflate.strFromU8(fflate.compressSync(buf, { level: 6, mem: 8 }), true));
     //const s = btoa(String.fromCharCode.apply(null, new Uint16Array(orig)));
     document.getElementById('txt').innerText = `<Notebook code="${compressed}" name="<?wsp notebook ?>"><?wsp notebook ?></Notebook>`;

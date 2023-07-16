@@ -82,6 +82,11 @@
         { let ob =  new ObjectStorage('<?wsp key ?>'); ob.cached = true; ob.cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>; };
     <?wsp , {key, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"]//Keys}]  ?>
         ;
+    
+    <?wsp Table[ ?>
+        interpretate.packedSymbols['<?wsp s ?>'] = <?wsp ExportString[JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["symbols", s, "data"], "ExpressionJSON", "Compact"->0] ?>;
+    <?wsp , {s, JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["symbols"]//Keys}] ?>
+
     <?wsp Table[ ?>
         {let global = {};
         const env = {local:{}, global:global};

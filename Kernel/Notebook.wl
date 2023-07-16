@@ -331,7 +331,6 @@ AddThumbnail[id_] := Module[{list = CellList[id], pos = 1, data = {}, back},
 
 NotebookStoreKernelSymbol[name_, notebookid_][data_] := (
     Print["Obtained the copy of "<>name];
-    Print[data];
 
     jsfn`Notebooks[notebookid]["symbols", name, "data"] = data;
     jsfn`Notebooks[notebookid]["symbols", name, "date"] = Now;

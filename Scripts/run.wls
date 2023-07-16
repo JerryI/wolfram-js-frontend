@@ -123,7 +123,7 @@ http = HTTPHandler[];
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Path" -> "/"|>] -> (HypertextProcess[#, "index.wsp", "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 http["MessageHandler", "WSP"] = GetFileRequestQ[{"wsp"}] -> (HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 
-http["MessageHandler", "File"]  = GetFileRequestQ[{"html", "css", "js", "png", "jpg", "svg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "png", "jpg", "svg"}] -> (
   ImportFileAsText[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
 )
 
@@ -161,7 +161,9 @@ SetUpCron;
 (* dev mode on *)
 If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
+console["log", "http://``:`` is used for WebSockets", ip, 8010];
 console["log", "Open http://``:`` in your browser", ip, port];
+
 
 If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
 
