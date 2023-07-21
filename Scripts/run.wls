@@ -31,6 +31,7 @@ CheckUpdates;
 Includes["jsmodule"];
 Includes["js"];
 Includes["wlkernel"];
+Includes["wlkernelstartup"];
 Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];

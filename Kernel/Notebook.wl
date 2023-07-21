@@ -663,6 +663,7 @@ NotebookOperate[cellid_, op_] := (
     ];
 );
 
+
 NotebookOperate[cellid_, op_, arg_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         op[CellObj[cellid], arg];
