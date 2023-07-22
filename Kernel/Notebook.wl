@@ -332,10 +332,18 @@ AddThumbnail[id_] := Module[{list = CellList[id], pos = 1, data = {}, back},
 ];
 
 NotebookStoreKernelSymbol[name_, notebookid_][data_] := (
-    Print["Obtained the copy of "<>name];
+    Print[Green<>"Obtained the copy of "<>name<>" from the kernel"];
+    Print[Reset];
 
-    jsfn`Notebooks[notebookid]["symbols", name, "data"] = data;
-    jsfn`Notebooks[notebookid]["symbols", name, "date"] = Now;
+    If[StringQ[data] || ListQ[data] || NumberQ[data] || BooleanQ[data],
+
+        jsfn`Notebooks[notebookid]["symbols", name, "data"] = data;
+        jsfn`Notebooks[notebookid]["symbols", name, "date"] = Now;
+    ,
+        Print[Red<>"symbols are not allowed... Cannot store "<>name];
+        Print[Reset];
+        jsfn`Notebooks[notebookid]["symbols", name] = . ;
+    ];
 );
 
 (* serialise the notebook to a file *)
