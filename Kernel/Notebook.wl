@@ -107,6 +107,8 @@ DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 jsfn`Notebooks = <||>;
 jsfn`Processors = {{},{},{}};
 
+
+
 $NotifyName = $InputFileName;
 
 (* list of rules socket id -> notebook id *)
@@ -446,6 +448,15 @@ FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSo
   
         WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
     ];
+]];
+
+FileOperate["Upload"][data_, notebook_] := Module[{path}, With[{channel = notebook},
+    If[!AssociationQ[jsfn`Notebooks[channel]], Print["Notebook not found! Not possible to upload files at the root"]; Return[$Failed, Module]];
+    
+
+    BinaryWrite[FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], data["name"]}], BaseDecode[data["data"]]];
+
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
 ]];
 
 NotebookUpdateThumbnail[data_] := With[{channel = $AssociationSocket[Global`client]},

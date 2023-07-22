@@ -168,4 +168,6 @@ console["log", "Open http://``:`` in your browser", ip, port];
 
 If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
 
+Print[JerryI`WolframJSFrontend`Notebook`Processors ];
+
 While[True, LoopRun; Pause[0.3]];

@@ -114,19 +114,19 @@
        
 
     const datesaved = document.getElementById('date-saved');
-    //setInterval(function () {
-    //    datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
-    //}, 5000);
+    setInterval(function () {
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+    }, 5000);
 
-    /*setInterval(function () {
+    setInterval(function () {
         console.log('autosave');
         server.socket.send('NotebookStore;');
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
         //generateThumbnail();
-    }, 1000*60*3);*/
+    }, 1000*60*3);
 
-    console.warn('autosave is disabled');
+    //console.warn('autosave is disabled');
 
     function formatDateDiff(startDate, endDate) {
       const diff = Math.abs(endDate - startDate);

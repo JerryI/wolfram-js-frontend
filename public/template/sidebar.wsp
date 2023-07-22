@@ -134,7 +134,7 @@
                                         </div>
                                     </div>
 
-<script>
+<script type="module">
 {
     /*document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
         const dir = '<?wsp $CurrentRequest["dir"] ?>';
@@ -172,6 +172,66 @@
         console.log('HotReload!');
         server.socket.send('HotReload[{"fileslist"}];');
     }
+
+    let sidebar = document.getElementsByClassName('notion-sidebar-container')[0];
+    console.log(sidebar);
+
+    sidebar.addEventListener('dragenter', (ev)=>{
+        console.log('Print["File(s) in a zone"]');
+
+
+    });
+
+    sidebar.addEventListener('dragover', (ev)=>{
+        console.log('Print["File(s) dragover"]');
+        sidebar.classList.add('sidebar-file-drop-enter');
+        ev.preventDefault();
+
+    });    
+
+    sidebar.addEventListener('dragleave', (ev)=>{
+        console.log('Print["File(s) out"]');
+        sidebar.classList.remove('sidebar-file-drop-enter');
+
+    });    
+
+    const uploader = (file, name) => {
+        if (!window.Notebook) {
+            alert('not possible to upload without notebook attached!');
+            return false;
+        }
+        const query = `FileOperate["Upload"][<|"name"->"${name}", "data"->"${file}"|>, "${window.Notebook}"]`;
+
+        return server.post.send(query)
+    }
+
+    sidebar.addEventListener('drop', (ev)=>{
+        console.log('Print["File(s) dropped"]');
+        sidebar.classList.remove('sidebar-file-drop-enter');
+
+        // Prevent default behavior (Prevent file from being opened)
+        ev.preventDefault();
+
+        if (ev.dataTransfer.items) {
+          // Use DataTransferItemList interface to access the file(s)
+          [...ev.dataTransfer.items].forEach((item, i) => {
+            // If dropped items aren't files, reject them
+            if (item.kind === "file") {
+              const file = item.getAsFile();
+              console.log(file);
+              fileCompressor(file, uploader);
+              console.log(`… file[${i}].name = ${file.name}`);
+            }
+          }); 
+        } else {
+          // Use DataTransfer interface to access the file(s)
+          [...ev.dataTransfer.files].forEach((file, i) => {
+            fileCompressor(file, uploader);
+            console.log(`… file[${i}].name = ${file.name}`);
+          });
+        }
+
+    });     
 
 
 }
