@@ -124,7 +124,14 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
 
+
+
     LinkWrite[link, Unevaluated[Get["Scripts/kernel.wl"]]];
+
+    (* loading urgent kernels *)
+    With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", #}] &/@ Includes["wlkernelstartup"]},
+        LinkWrite[link, Unevaluated[Get/@list]]; 
+    ];    
 
     LinkWrite[link, Unevaluated[Global`$WSStart[8010]]];
 

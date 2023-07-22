@@ -31,6 +31,7 @@ CheckUpdates;
 Includes["jsmodule"];
 Includes["js"];
 Includes["wlkernel"];
+Includes["wlkernelstartup"];
 Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];
@@ -166,5 +167,7 @@ console["log", "Open http://``:`` in your browser", ip, port];
 
 
 If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
+
+Print[JerryI`WolframJSFrontend`Notebook`Processors ];
 
 While[True, LoopRun; Pause[0.3]];

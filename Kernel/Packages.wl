@@ -155,9 +155,9 @@ downloadAndInstall[package_Association] := Module[{},
 
     If[!StringQ[new], Print["failed to find repo in the package.json!"]; Return[$Failed, Module]];
 
-    If[FileExistsQ[relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]],
+    If[FileExistsQ[relative2Absolute[FileNameJoin[{"Packages", package["name"]}]]],
         Print["purging an old dir"];
-        DeleteDirectory[relative2Absolute[FileNameJoin[{"Packages", package["path"]}]], DeleteContents -> True];
+        DeleteDirectory[relative2Absolute[FileNameJoin[{"Packages", package["name"]}]], DeleteContents -> True];
     ];
 
     Print["fetching the data..."];    
@@ -175,8 +175,9 @@ downloadAndInstall[package_Association] := Module[{},
 
     Print[StringTemplate["path to the packages json is ``"][path]];
 
-    Print[StringTemplate["copying... from `` to ``"][path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]]];
-    CopyDirectory[path, relative2Absolute[FileNameJoin[{"Packages", package["path"]}]]];
+    Print[StringTemplate["copying... from `` to ``"][path, relative2Absolute[FileNameJoin[{"Packages", package["name"]}]]]];
+ 
+    CopyDirectory[path, relative2Absolute[FileNameJoin[{"Packages", package["name"]}]]];
     DeleteDirectory[FileNameJoin[{$RootFolder, "___temp"}], DeleteContents -> True];
     Print["finished!"];
 ];

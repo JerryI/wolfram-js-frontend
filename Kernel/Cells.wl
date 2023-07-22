@@ -72,13 +72,15 @@ CellListPush[list_, CellObj[cell_]] := (
     CellList[list] = {CellList[list], CellObj[cell]} // Flatten;
 );
 
-CellListRemoveAllNextOutput[list_, CellObj[cell_]] := Module[{pos},
+CellListRemoveAllNextOutput[CellObj[cell_], list_] := Module[{pos},
+    Print["removing all outputs of a cell"];
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
     pos = pos + 1;
 
     While[True,
         If[pos <= Length[CellList[list]],
             If[CellList[list][[pos]]["type"] =!= "input",
+                Print["removed!"];
                 CellListRemove[list, CellList[list][[pos]]];
             ,
                 Break[];
@@ -178,7 +180,7 @@ CellListAddNewOutput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
 ];
 
 CellListRemoveAccurate[CellObj[cell_]] := With[{sign = CellObj[cell]["sign"]},
-    CellListRemoveAllNextOutput[sign, CellObj[cell]];
+    CellListRemoveAllNextOutput[CellObj[cell], sign];
     CellListRemove[sign, CellObj[cell]];
 ]
 
@@ -229,7 +231,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
     ];
 
     Module[{parent},
-        CellListRemoveAllNextOutput[CellObj[cell]["sign"], CellObj[cell]];
+        CellListRemoveAllNextOutput[CellObj[cell], CellObj[cell]["sign"]];
 
         (*will break the chain if we try to evaluate a child cell*)
         If[CellObj[cell]["type"] === "output",

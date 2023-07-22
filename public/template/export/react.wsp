@@ -16,7 +16,7 @@
     <script type="module">
     const objects = [];
     const cells = [];
-    const symbols = [];
+    const symbols = {};
     <?wsp Table[ ?>
         { const key = '<?wsp key ?>';
           const cache = <?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[notebook]["objects"][key]["json"] ?>;
