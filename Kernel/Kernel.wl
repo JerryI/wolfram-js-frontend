@@ -133,7 +133,9 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[Get/@list]]; 
     ];    
 
-    LinkWrite[link, Unevaluated[Global`$WSStart[8010]]];
+    With[{p = JerryI`WolframJSFrontend`WSKernelAddr },
+        LinkWrite[link, Unevaluated[Global`$WSStart[8010, p]]]
+    ];
 
     With[{root = JerryI`WolframJSFrontend`root},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];

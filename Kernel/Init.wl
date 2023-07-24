@@ -8,6 +8,8 @@ JerryI`WolframJSFrontend`defaultvault   = If[FileExistsQ[FileNameJoin[{JerryI`Wo
 
 JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
+JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
+
 Once[If[PacletFind["KirillBelov/Objects"] === {}, PacletInstall["https://github.com/KirillBelovTest/Objects/releases/download/v1.0.21/KirillBelov__Objects-1.0.21.paclet"]]]; 
 <<KirillBelov`Objects`;
 
