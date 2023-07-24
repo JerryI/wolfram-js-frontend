@@ -21,6 +21,8 @@ NotebookLoadModal::usage = "load modal windows"
 NotebookUpdateThumbnail::usage = "provide html thumbnail"
 
 NotebookStoreKernelSymbol::usage = "populate symbols from kernel"
+
+NotebookDisposeSymbol::usage = "dispose the unused symbol"
 (* 
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
@@ -584,6 +586,8 @@ NotebookOpen[id_String] := (
         WebSocketSend[Global`client, Global`FrontEndRestoreSymbol[#, jsfn`Notebooks[id]["symbols", #, "data"]] // DefaultSerializer];
     ] &/@ Keys[jsfn`Notebooks[id]["symbols"]];
 
+    WebSocketSend[Global`client, Global`FrontEndSetTimerForGarbageSymbols[15000] // DefaultSerializer];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellListTree[id];
     ];
@@ -591,7 +595,11 @@ NotebookOpen[id_String] := (
     jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
 );
 
-
+NotebookDisposeSymbol[name_] := With[{channel = $AssociationSocket[Global`client]},
+    jsfn`Notebooks[channel]["symbols", name] = .;
+    Print[Magenta<>"symbol "<>name<>" got disposed, since there was no need in it anymore"];
+    Print[Reset];
+]
 
 NotebookEvaluate[cellid_] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},

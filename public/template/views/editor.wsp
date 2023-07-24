@@ -25,7 +25,7 @@
                 clearTimeout(time);
                 console.log('OK!')
             }); 
-            time = setTimeout(load, 1500);
+            time = setTimeout(load, 5500);
         }
         
         load();
