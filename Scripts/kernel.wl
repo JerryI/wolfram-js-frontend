@@ -8,6 +8,11 @@ Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["Kirill
 <<KirillBelov`WebSocketHandler`;
 
 Get["Services/JTP/JTP.wl"];
+
+With[{dir = Directory[]},
+    FrontEndDirectory[] := dir;
+];
+
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/WSP.wl"];
 Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"];
 
