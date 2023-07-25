@@ -150,6 +150,8 @@ evaluate[cl_SocketObject, data_ByteArray] := Block[{Global`client = cl},
 
 SocketListen[ip<>":"<>ToString[ToExpression@port + 1], wcp@#&]
 
+JerryI`WolframJSFrontend`WSKernelAddr  = ip
+
 SetOptions[WSPEngine, "Cache"->True];
 
 broadcast = WebSocketChannel[];

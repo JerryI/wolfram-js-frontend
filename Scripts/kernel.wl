@@ -20,7 +20,7 @@ Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","J
     
 
 
-$WSStart[port_] :=
+$WSStart[port_, addr_:"127.0.0.1"] :=
 Module[{wcp, ws},
     wcp = TCPServer[];
     wcp["CompleteHandler", "WebSocket"] = WebSocketPacketQ -> WebSocketPacketLength;
@@ -34,5 +34,5 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    SocketListen[port, wcp@#&]
+    SocketListen[addr<>":"<>ToString[port], wcp@#&]
 ]
