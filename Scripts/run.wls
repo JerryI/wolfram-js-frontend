@@ -125,7 +125,7 @@ http["MessageHandler", "Index"] = AssocMatchQ[<|"Path" -> "/"|>] -> (HypertextPr
 http["MessageHandler", "WSP"] = GetFileRequestQ[{"wsp"}] -> (HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 
 http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "png", "jpg", "svg"}] -> (
-  ImportFileAsText[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
+  ImportFile[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
 )
 
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
