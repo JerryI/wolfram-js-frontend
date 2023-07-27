@@ -11,6 +11,7 @@
     #include <unistd.h>
     #include <errno.h>
     #include <fcntl.h> // for open
+    #include <wchar.h>
 
     #define INVALID_SOCKET -1
     #define NO_ERROR 0
@@ -18,6 +19,9 @@
     #define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
 
     inline void nopp() {}
+
+    #define SLEEP sleep
+
 #elif _WIN32
     #define WIN32_LEAN_AND_MEAN
     #include <windows.h>
@@ -104,6 +108,7 @@ typedef struct SocketTaskArgs_st {
     SOCKET listentSocket; 
 }* SocketTaskArgs; 
 
+
 static void ListenSocketTask(mint asyncObjID, void* vtarg)
 {
     SOCKET *clients = (SOCKET*)malloc(2 * sizeof(SOCKET)); 
@@ -129,17 +134,30 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
     
     #ifdef _WIN32 
     iResult = ioctlsocket(listenSocket, FIONBIO, &iMode); 
-    #else
-    iResult = fcntl(listenSocket, O_NONBLOCK, &iMode); 
-    #endif
     if (iResult != NO_ERROR) {
         printf("ioctlsocket failed with error: %d\n", iResult);
     }
+    #else
+    //iResult = fcntl(listenSocket, SOCK_NONBLOCK | SOCK_CLOEXEC, &iMode);
+    fcntl(listenSocket, F_SETFL, O_NONBLOCK);
+
+    
+
+    #endif
+
+
+    
 	
 	while(ioLibrary->asynchronousTaskAliveQ(asyncObjID))
 	{
-        SLEEP(1);
+        SLEEP(0.01);
+        //printf("TICK!");
+      
         clientSocket = accept(listenSocket, NULL, NULL);
+
+        //printf("TICK!Ж %d\n", clientSocket);    
+
+
         if (clientSocket != INVALID_SOCKET) {
             printf("NEW CLIENT: %d\n", clientSocket);
             clients[clientsLength++] = clientSocket; 
@@ -217,7 +235,11 @@ DLLEXPORT int create_server(WolframLibraryData libData, mint Argc, MArgument *Ar
         return 1;
     }
     
+    #ifdef _WIN32
     listenSocket = socket(address->ai_family, address->ai_socktype, address->ai_protocol);
+    #else
+    listenSocket = socket(address->ai_family, address->ai_socktype | SOCK_NONBLOCK | SOCK_CLOEXEC, address->ai_protocol);
+    #endif
     if (!ISVALIDSOCKET(listenSocket)) {
         printf("socket failed with error: %d\n", GETSOCKETERRNO());
         freeaddrinfo(address);
@@ -235,8 +257,13 @@ DLLEXPORT int create_server(WolframLibraryData libData, mint Argc, MArgument *Ar
     }
 
     freeaddrinfo(address);
-
+    #ifdef _WIN32
     iResult = listen(listenSocket, SOMAXCONN);
+    #else
+    iResult = listen(listenSocket, 16);
+    #endif
+
+    
     if (iResult == SOCKET_ERROR) {
         printf("listen failed with error: %d\n", GETSOCKETERRNO());
         CLOSESOCKET(listenSocket);
@@ -264,7 +291,7 @@ DLLEXPORT int socket_write(WolframLibraryData libData, mint Argc, MArgument *Arg
     BYTE *bytes = numericLibrary->MNumericArray_getData(MArgument_getMNumericArray(Args[1]));      
     int bytesLen = MArgument_getInteger(Args[2]); 
 
-    iResult = send(clientId, bytes, bytesLen, 0); 
+    iResult = send(clientId, bytes, bytesLen, MSG_NOSIGNAL); 
     if (iResult == SOCKET_ERROR) {
         wprintf(L"send failed with error: %d\n", GETSOCKETERRNO());
         CLOSESOCKET(clientId);
