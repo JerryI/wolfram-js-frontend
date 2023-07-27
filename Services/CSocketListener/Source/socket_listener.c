@@ -1,8 +1,10 @@
 #undef UNICODE
 
 #ifdef __linux__ 
-    #include <string.h>
+     #include <string.h>
     #include <stdio.h>
+    #include <stdlib.h>
+
     #include <sys/types.h>
     #include <sys/socket.h>
     #include <netinet/in.h>
@@ -12,16 +14,17 @@
     #include <errno.h>
     #include <fcntl.h> // for open
     #include <wchar.h>
+ 
 
     #define INVALID_SOCKET -1
     #define NO_ERROR 0
     #define SOCKET_ERROR -1
     #define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
 
-    inline void nopp() {}
-
     #define SLEEPFUN usleep
     #define SLEEPTIME 0.01
+
+    inline void nopp() {}
 
 #elif _WIN32
     #define WIN32_LEAN_AND_MEAN
@@ -441,7 +444,7 @@ DLLEXPORT int socket_write(WolframLibraryData libData, mint Argc, MArgument *Arg
 
 
     //iResult = send(clientId, bytes, bytesLen, MSG_NOSIGNAL); 
-    iResult =send_full_msg(clientId, bytes, bytesLen, 16000);
+    iResult =send_full_msg(clientId, bytes, bytesLen, 8000);
     if (iResult == SOCKET_ERROR) {
         wprintf(L"send failed with error: %d\n", GETSOCKETERRNO());
         CLOSESOCKET(clientId);
@@ -466,7 +469,7 @@ DLLEXPORT int socket_write_string(WolframLibraryData libData, mint Argc, MArgume
     int textLen = MArgument_getInteger(Args[2]); 
 
     //iResult = send(clientId, text, textLen, 0); 
-    iResult = send_full_msg(clientId, text, textLen, 16000);
+    iResult = send_full_msg(clientId, text, textLen, 8000);
     if (iResult == SOCKET_ERROR) {
         wprintf(L"send failed with error: %d\n", GETSOCKETERRNO());
         CLOSESOCKET(clientId);
