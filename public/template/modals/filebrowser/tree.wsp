@@ -1,12 +1,13 @@
-<?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","file.wsp"}], {file = ParentDirectory[path], prefix="../"}] ?>
+
+<?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","file.wsp"}], {file = ParentDirectory[path // URLDecode], prefix="../"}] ?>
 
 <?wsp Table[ ?>
     <?wsp LoadPage[FileNameJoin[{"template","modals","filebrowser","file.wsp"}], {file = i, prefix=""}] ?>
-<?wsp , {i, FileNames["*", path]}] ?>
+<?wsp , {i, FileNames["*", path // URLDecode]}] ?>
 
 <script>
     {
-        const files = <?wsp ExportString[({"filebrowser-"<>HashString32[#], #})&/@ Join[{ParentDirectory[path]}, Select[FileNames["*", path], DirectoryQ]], "JSON"] ?>;
+        const files = <?wsp ExportString[({"filebrowser-"<>HashString32[#], #})&/@ Join[{ParentDirectory[path // URLDecode]}, Select[FileNames["*", path // URLDecode], DirectoryQ]], "JSON"] ?>;
         console.log(files);
         files.forEach((el)=>{
             document.getElementById(el[0]).addEventListener('click', ()=>{
@@ -14,6 +15,6 @@
             })
         })
 
-        core.BrowserURLVault = '<?wsp URLEncode[path] ?>';
+        core.BrowserURLVault = '<?wsp path // URLEncode ?>';
     }
 </script>

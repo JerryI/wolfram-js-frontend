@@ -75,7 +75,7 @@
                                                                     
                                                                 </div>                                                                
                                                                 
-                                                                <?wsp LoadPage["template/components/filelist.wsp", {dir = $CurrentRequest["dir"]}] ?>
+                                                                <?wsp LoadPage["template/components/filelist.wsp", {dir = $CurrentRequest["dir"] // URLEncode}] ?>
 
                                                             <?wsp , "fileslist"]  ?>    
                                                                 
@@ -137,17 +137,17 @@
 <script type="module">
 {
     /*document.getElementById("add-notebook-button").addEventListener('click', (e)=>{
-        const dir = '<?wsp $CurrentRequest["dir"] ?>';
-        socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[$CurrentRequest["Query", "path"]] ?>]');
+        const dir = '<?wsp $CurrentRequest["dir"] // URLEncode ?>';
+        socket.send('CreateNewNotebook[URLDecode["'+dir+'"], <?wsp NotebookQ[$CurrentRequest["Query", "path_decoded"]] ?>]');
     });*/
 
     document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
-        const dir = '<?wsp $CurrentRequest["dir"] ?>';
-        server.socket.send('CreateNewNotebook["'+dir+'", <?wsp NotebookQ[$CurrentRequest["Query", "path"]] ?>]');
+        const dir = '<?wsp $CurrentRequest["dir"] // URLEncode ?>';
+        server.socket.send('CreateNewNotebook[URLDecode["'+dir+'"], <?wsp NotebookQ[$CurrentRequest["Query", "path_decoded"]] ?>]');
     });
 
     document.getElementById("open-vault-button").addEventListener('click', (e)=>{
-        callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"] ?>"}');
+        callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"]//URLEncode ?>"}');
     });
 
     /*document.getElementById("history-button").addEventListener('click', (e)=>{

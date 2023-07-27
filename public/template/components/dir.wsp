@@ -47,7 +47,7 @@
     const holder = document.getElementById("file-expand-<?wsp file//FileNameTake//HashString32 ?>");
     document.getElementById('file-button-<?wsp file//FileNameTake//HashString32 ?>').addEventListener('click', ()=>{
         if (!state) {
-            server.ask(`NotebookLoadPage["template/components/filelist.wsp", {dir="<?wsp file ?>"}]`).then((data)=>{
+            server.ask(`NotebookLoadPage["template/components/filelist.wsp", {dir="<?wsp file // URLEncode ?>"}]`).then((data)=>{
                 setInnerHTML(holder, interpretate(data, {}));
                 state = true;
             });

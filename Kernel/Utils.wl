@@ -15,6 +15,8 @@ HashString32::usage = "Hash the string using CRC32 and represent using Base64"
 LoopSubmit::usage = "submit to main loop"
 LoopRun::usage = "execute the loop"
 
+UniversalPathConverter::usage = "converts UNIX to win and vise versa"
+
 Begin["`Private`"]; 
 
 NullQ[expr_] := expr===Null;
@@ -65,6 +67,27 @@ LoopRun := (
 		LoopTasks[#] = .;
 	] &/@ Keys[LoopTasks];
 );
+
+
+If[$OperatingSystem === "Windows",
+
+	UniversalPathConverter[path_String] := If[StringContainsQ[path, "/"],
+
+		StringRiffle[StringSplit[path, "/"], "\\"]
+	,	
+
+		path
+	]
+
+,
+
+	UniversalPathConverter[path_String] := If[StringContainsQ[path, "/"],
+		path
+	,
+		StringRiffle[StringSplit[path, "\\"], "/"]
+	]
+
+]
 
 End[];
 

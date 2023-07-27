@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`", "KirillBelov`WebSocketHandler`"}]; 
+BeginPackage["JerryI`WolframJSFrontend`Kernel`", {"JTP`", "JerryI`WolframJSFrontend`Packages`", "KirillBelov`WebSocketHandler`", "JerryI`WolframJSFrontend`Utils`"}]; 
 
 (*
     ::Only for MASTER kernel::
@@ -149,7 +149,8 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
     LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
 
     (* loading kernels *)
-    With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", #}] &/@ Includes["wlkernel"]},
+    With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", UniversalPathConverter[#]}] &/@ Includes["wlkernel"]},
+        Echo[list];
         LinkWrite[link, Unevaluated[Get/@list]]; 
     ];
 

@@ -99,9 +99,9 @@
             document.querySelectorAll('.notion-outliner-private')[0].classList.toggle('notion-outliner-private-hide');
             
             if (sidebarToggle == 'true')
-                sidebarToggle = 'false'
+                sidebarToggle = 'false';
             else
-                sidebarToggle = 'true'
+                sidebarToggle = 'true';
             
             localStorage.setItem("sidebar-hide", sidebarToggle);
         });        

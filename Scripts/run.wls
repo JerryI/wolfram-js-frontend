@@ -40,7 +40,7 @@ IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.
 
 Print["getting modules..."];
 
-Get[FileNameJoin[{jsf`root, "Packages",  #}]] &/@ Includes["wl"];
+Get[FileNameJoin[{jsf`root, "Packages",  UniversalPathConverter[#]}]] &/@ Includes["wl"];
 
 Print["order"];
 
@@ -132,7 +132,7 @@ http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(Hypert
 
 (* ::End:: *)
 
-SocketListen[ip<>":"<>port, tcp@#&]
+CSocketListen[port//ToExpression, tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -144,11 +144,11 @@ ws = WebSocketHandler[]
 
 ws["MessageHandler", "Evaluate"]  = Function[True] -> evaluate
 
-evaluate[cl_SocketObject, data_ByteArray] := Block[{Global`client = cl},
+evaluate[cl: _SocketObject | _CSocket, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-SocketListen[ip<>":"<>ToString[ToExpression@port + 1], wcp@#&]
+CSocketListen[(ToExpression@port) + 1, wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 

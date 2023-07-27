@@ -1,19 +1,27 @@
+Once[If[PacletFind["KirillBelov/Objects"] === {}, PacletInstall["KirillBelov/Objects"]]]; 
+<<KirillBelov`Objects`;
+
+Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","CSocketListener", "Kernel", "CSocketListener.wl"}]]
+
+(*Once[If[PacletFind["KirillBelov/TCPServer"] === {}, PacletInstall["KirillBelov/TCPServer"]]]; 
+<<KirillBelov`TCPServer`;*)
+Get["https://raw.githubusercontent.com/KirillBelovTest/TCPServer/main/Kernel/TCPServer.wl"]
+
 Once[If[PacletFind["KirillBelov/Internal"] === {}, PacletInstall["KirillBelov/Internal"]]]; 
 <<KirillBelov`Internal`;
 
-Get["https://raw.githubusercontent.com/KirillBelovTest/TCPServer/main/Kernel/TCPServer.wl"]
+(* did not update yet *)
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/WSP.wl"]
 
 Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["KirillBelov/WebSocketHandler"]]]; 
 <<KirillBelov`WebSocketHandler`;
 
-Get["Services/JTP/JTP.wl"];
+Get[FileNameJoin[{"Services", "JTP", "JTP.wl"}]];
 
 With[{dir = Directory[]},
     FrontEndDirectory[] := dir;
 ];
 
-Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/WSP.wl"];
 Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"];
 
 Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}; 
@@ -30,9 +38,10 @@ Module[{wcp, ws},
 
     ws["MessageHandler", "Evaluate"]  = Function[True] -> evaluate;
 
-    evaluate[cl_SocketObject, data_ByteArray] := Block[{Global`client = cl},
+    evaluate[cl: _SocketObject | _CSocket, data_ByteArray] := Block[{Global`client = cl},
         ToExpression[data//ByteArrayToString];
     ];
 
-    SocketListen[addr<>":"<>ToString[port], wcp@#&]
+    (*CSocketListen[ToExpression[port], wcp@#&]*)
+    SocketListen[ToExpression[port], wcp@#&]
 ]

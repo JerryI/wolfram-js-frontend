@@ -10,21 +10,27 @@ JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
 JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 
-Once[If[PacletFind["KirillBelov/Objects"] === {}, PacletInstall["https://github.com/KirillBelovTest/Objects/releases/download/v1.0.21/KirillBelov__Objects-1.0.21.paclet"]]]; 
+Once[If[PacletFind["KirillBelov/Objects"] === {}, PacletInstall["KirillBelov/Objects"]]]; 
 <<KirillBelov`Objects`;
 
+Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","CSocketListener", "Kernel", "CSocketListener.wl"}]]
+
+(*Once[If[PacletFind["KirillBelov/TCPServer"] === {}, PacletInstall["KirillBelov/TCPServer"]]]; 
+<<KirillBelov`TCPServer`;*)
 Get["https://raw.githubusercontent.com/KirillBelovTest/TCPServer/main/Kernel/TCPServer.wl"]
 
-Once[If[PacletFind["KirillBelov/Internal"] === {}, PacletInstall["https://github.com/KirillBelovTest/Internal/releases/download/v1.0.5/KirillBelov__Internal-1.0.5.paclet"]]]; 
+Once[If[PacletFind["KirillBelov/Internal"] === {}, PacletInstall["KirillBelov/Internal"]]]; 
 <<KirillBelov`Internal`;
 
+(* did not update yet *)
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/WSP.wl"]
 
-Get["https://raw.githubusercontent.com/JerryI/HTTPHandler/main/Kernel/HTTPHandler.wl"]
-Get["https://raw.githubusercontent.com/JerryI/HTTPHandler/main/Kernel/Extensions.wl"]
+(*Once[If[PacletFind["KirillBelov/HTTPHandler"] === {}, PacletInstall["KirillBelov/HTTPHandler"]]]; 
+<<KirillBelov`HTTPHandler`;*)
+Get["https://raw.githubusercontent.com/KirillBelovTest/HTTPHandler/main/Kernel/HTTPHandler.wl"]
+Get["https://raw.githubusercontent.com/KirillBelovTest/HTTPHandler/main/Kernel/Extensions.wl"]
 
-
-Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["https://github.com/KirillBelovTest/WebSocketHandler/releases/download/v1.0.10/KirillBelov__WebSocketHandler-1.0.10.paclet"]]]; 
+Once[If[PacletFind["KirillBelov/WebSocketHandler"] === {}, PacletInstall["KirillBelov/WebSocketHandler"]]]; 
 <<KirillBelov`WebSocketHandler`;
 
 

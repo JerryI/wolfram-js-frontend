@@ -1,26 +1,28 @@
 <?wsp 
       
         If[!KeyExistsQ[$CurrentRequest["Query"], "path"], 
-          $CurrentRequest["Query", "path"] = JerryI`WolframJSFrontend`defaultvault, 
-          $CurrentRequest["Query", "path"] = $CurrentRequest["Query", "path"]//URLDecode;
-
-
+          $CurrentRequest["Query", "path"] = JerryI`WolframJSFrontend`defaultvault//URLEncode
         ];  
+
+        $CurrentRequest["Query", "path_decoded"] = $CurrentRequest["Query", "path"] // URLDecode;
+
+        Echo[$CurrentRequest["Query", "path_decoded"] // FileNameSplit];
+  
       
-        $CurrentRequest["dir"] = If[DirectoryQ[$CurrentRequest["Query", "path"]],
-                            $CurrentRequest["Query", "path"]
+        $CurrentRequest["dir"] = If[DirectoryQ[$CurrentRequest["Query", "path_decoded"]],
+                            $CurrentRequest["Query", "path_decoded"] 
                           ,
-                            DirectoryName[$CurrentRequest["Query", "path"]]
+                            DirectoryName[$CurrentRequest["Query", "path_decoded"] ]
                           ];   
   
       
-      If[NotebookQ[$CurrentRequest["Query", "path"]], PreloadNotebook[$CurrentRequest["Query", "path"]] ];
+      If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], PreloadNotebook[$CurrentRequest["Query", "path_decoded"] ] ];
 " "   ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>
 
 <div class="styles-container-body"> 
-  <?wsp FileTypeHandler[$CurrentRequest["Query", "path"], SupportedTypes]["view"] ?>     
+  <?wsp FileTypeHandler[$CurrentRequest["Query", "path_decoded"], SupportedTypes]["view"] ?>     
 </div>
 
 <?wsp LoadPage["template/footer.wsp"] ?>
