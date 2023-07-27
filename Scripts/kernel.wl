@@ -42,6 +42,6 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    (*CSocketListen[ToExpression[port], wcp@#&]*)
     SocketListen[ToExpression[port], wcp@#&]
+    (*SocketListen[ToExpression[port], wcp@#&]*)
 ]
