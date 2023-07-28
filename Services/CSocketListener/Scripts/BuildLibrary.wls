@@ -11,6 +11,9 @@ Get["CCompilerDriver`"];
  "CompilerName"->"gcc.exe",
  "ShellOutputFunction"->Print}*)
 
+OSFolder = If[$OperatingSystem === "Windows", "Windows", "Unix"];
+OSLibs = If[$OperatingSystem === "Windows", {"ws2_32"}, {}];
+
 Block[{$directory, $libSrc, $libDir}, 
 	$directory = DirectoryName[If[$InputFileName == "", 
 		NotebookFileName[], 
@@ -21,6 +24,7 @@ Block[{$directory, $libSrc, $libDir},
 	$libSrc = File[FileNameJoin[{
 		$directory, 
 		"Source", 
+		OSFolder,
 		"socket_listener.c"
 	}]]; 
 
@@ -37,6 +41,5 @@ Block[{$directory, $libSrc, $libDir},
 
 	Get["CCompilerDriver`"]; 
 
-	
-	CreateLibrary[$libSrc, "socket_listener", "TargetDirectory" -> $libDir, "Debug"->True, 	"Libraries"->If[$OperatingSystem === "Windows", {"ws2_32"}, {}]]; 
+	CreateLibrary[$libSrc, "socket_listener" , "TargetDirectory" -> $libDir, "Debug"->True, 	"Libraries"->OSLibs]
 ]; 

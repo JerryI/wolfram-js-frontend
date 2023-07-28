@@ -5,8 +5,14 @@ var socket = new WebSocket("ws://"+window.location.hostname+':'+(Number(window.l
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
   server.init(socket);
-  server.socket.send('Append[broadcast, Global`client]');
-  window.dispatchEvent(wsconnected);
+
+  setTimeout(()=>{
+    server.socket.send('Append[broadcast, Global`client]');
+    setTimeout(()=>{
+      window.dispatchEvent(wsconnected);
+    }, 100);
+  }, 200);
+
 
   window.onerror = function (message, file, line, col, error) {
     socket.send('NotebookPopupFire["error", "'+error.message+'"]');

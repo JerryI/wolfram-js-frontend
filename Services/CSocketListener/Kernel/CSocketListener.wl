@@ -16,7 +16,7 @@ BeginPackage["KirillBelov`CSocketListener`"];
 
 
 CSocketListen::usage = 
-"CSocketListen[port, func] creates listener."; 
+"CSocketListen[port|addr, func] creates listener."; 
 
 
 CSocketListener::usage = 
@@ -53,9 +53,18 @@ closeSocket[socketId];
 CSocketListen[port_Integer, handler_] := 
 CSocketListener[<|
 	"Port" -> port, 
+	"Host" -> "127.0.0.1",
 	"Handler" -> handler, 
-	"Task" -> Internal`CreateAsynchronousTask[createServer, {ToString[port]}, handler[toPacket[##]]&]
+	"Task" -> Internal`CreateAsynchronousTask[createServer, {"127.0.0.1", ToString[port]}, handler[toPacket[##]]&]
 |>]; 
+
+CSocketListen[addr_String, handler_] := With[{port = StringSplit[addr,":"]//Last, host = StringSplit[addr,":"]//First},
+CSocketListener[<|
+	"Port" -> ToExpression[port], 
+	"Host" -> host,
+	"Handler" -> handler, 
+	"Task" -> Internal`CreateAsynchronousTask[createServer, {host, port}, handler[toPacket[##]]&]
+|>]]; 
 
 
 CSocketListener /: DeleteObject[CSocketListener[assoc_Association]] := 
@@ -82,7 +91,7 @@ If[!FileExistsQ[$libFile],
 ]; 
 
 
-createServer = LibraryFunctionLoad[$libFile, "create_server", {String}, Integer]; 
+createServer = LibraryFunctionLoad[$libFile, "create_server", {String, String}, Integer]; 
 
 
 stopServer::usage = "stopServer[asyncObjId]"; 
