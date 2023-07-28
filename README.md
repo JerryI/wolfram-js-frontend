@@ -8,7 +8,7 @@
 __[Docs](https://jerryi.github.io/wljs-docs/)__
 
 **Warning! Early Stage of Development**
-**Was not tested on Windows Machines**
+**TCP Sockets are not stable**
 
 __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
 
