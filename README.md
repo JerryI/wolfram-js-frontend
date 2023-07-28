@@ -1,16 +1,18 @@
-# Wolfram Language Javascript Frontend
+# WLJS Frontend (Wolfram Language Javascript Frontend)
 ![](imgs/logo.png)
 
 *written for the freeware Wolfram Engine using Javascript*
+*web-based, fully customizable and free*
 
-*web-based, fully customizable*
-
-__[Docs](https://jerryi.github.io/wljs-docs/)__
+__[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 **Warning! Early Stage of Development**
-**TCP Sockets are not stable**
+**TCP Sockets might not be stable**
+**please use `wolframscript -f Scripts/run.wls legacySockets` in a case of troubles**
 
 __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
+
+__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram HTTP/WS Server developer & and a nice guy)__
 
 To help maintain this project. 
 
@@ -47,6 +49,11 @@ wolframscript -f Scripts/run.wls
 ```
 and open your browser with `http://127.0.0.1:8090`
 
+in a case of troubles with page loading use
+```shell
+wolframscript -f Scripts/run.wls legacySockets
+```
+
 ## Package system
 Frontend uses its own package/plugin system. It doent require any software installed except *wolframscript*. Precompiled plugins are downloaded via `URLFetch` from github repositories and imported to the system. They can extend core WL, autocomplete, JS and UI. The following packages are available (already included as a default plugins)
 
@@ -61,6 +68,7 @@ Frontend uses its own package/plugin system. It doent require any software insta
 - [wljs-magic-support](https://github.com/JerryI/wljs-magic-support) misc useful features for the editor
 - [wljs-js-support](https://github.com/JerryI/wljs-js-support) support for JS cells in the editor with data-binding between WL and JS
 - [wljs-html-support](https://github.com/JerryI/wljs-html-support) support for HTML language in the cells with a template engine [WSP](https://github.com/JerryI/tinyweb-mathematica/tree/master/Tinyweb)
+- and some of yours plugins should be here!
 
 # Technology stack
 ## Backend
