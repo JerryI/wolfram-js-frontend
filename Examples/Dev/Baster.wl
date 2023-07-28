@@ -1,5 +1,5 @@
-<|"notebook" -> <|"name" -> "Baster", "id" -> "quinsy-b6236", 
-   "kernel" -> LocalKernel, "objects" -> 
+<|"notebook" -> <|"name" -> "Baster", "id" -> "yonder-dd965", 
+   "kernel" -> LocalKernel, "objects" :> 
     <|"f2b9aee5-805b-49a8-92c0-8c96f57c8828" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Rectangle\",[\"List\",-3,0],[\"\
 List\",3,-1]]]]", "date" -> DateObject[{2023, 6, 14, 11, 16, 
@@ -3782,7 +3782,7 @@ tener\",[\"Point\",[\"List\",0,0]],[\"Rule\",\"'dragall'\",\"'24b7970b-5c78-4\
 .2],[\"List\",-1,3]]],[\"Rule\",\"'TransitionType'\",\"'Linear'\"],[\"Rule\",\
 \"'TransitionDuration'\",100]]", "date" -> DateObject[{2023, 7, 15, 18, 13, 
           20.229084`8.058551201485482}, "Instant", "Gregorian", 2.]|>, 
-     "9aa96d9d-a5ae-49ad-a13b-7f241291b0b8" -> 
+     "2bbee7a7-631e-4733-ad46-aa9aa89a8e4e" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"Translate\",[\"List\",[\"RGBCol\
 or\",[\"Rational\",79,85],1,1],[\"Rectangle\",[\"List\",-10,10],[\"List\",10,\
 -10]],[\"RGBColor\",[\"Rational\",67,85],[\"Rational\",44,51],[\"Rational\",7\
@@ -3797,29 +3797,61 @@ RGBColor\",[\"Rational\",128,255],[\"Rational\",127,255],[\"Rational\",25,51]\
 \"List\",[\"Set\",\"x\",\"aimAngle\"]],[\"List\",[\"Cos\",\"x\"],[\"Times\",-\
 1,[\"Sin\",\"x\"]]]]]]],[\"Opacity\",0.5],[\"RGBColor\",[\"Rational\",77,255]\
 ,[\"Rational\",82,255],[\"Rational\",83,255]],[\"PointSize\",0.1],[\"EventLis\
-tener\",[\"Point\",[\"List\",0,0]],[\"Rule\",\"'dragall'\",\"'65e7031e-72c5-4\
-875-8015-09191f7b3822'\"]]]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,5\
+tener\",[\"Point\",[\"List\",0,0]],[\"Rule\",\"'dragall'\",\"'cef1d6db-661a-4\
+96c-86fa-7c026a882b58'\"]]]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,5\
 .2],[\"List\",-1,3]]],[\"Rule\",\"'TransitionType'\",\"'Linear'\"],[\"Rule\",\
-\"'TransitionDuration'\",100]]", "date" -> DateObject[{2023, 7, 15, 18, 13, 
-          34.56421`8.29120161497833}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dev/Baster.wl", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 7, 15, 18, 17, 
-      37.037622`8.321218074101987}, "Instant", "Gregorian", 2.], 
-   "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$67]|>, 
- "cells" -> {<|"id" -> "deddfca4-8881-426e-902e-8590a9edf787c3539a", 
+\"'TransitionDuration'\",100]]", "date" -> DateObject[{2023, 7, 28, 11, 27, 
+          53.2891068`9.479213285519561}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "C:\\Users\\vasinkir\\Desktop\\wolfram-js-frontend\\Examples\\De\
+v\\Baster.wl", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 7, 28, 11, 27, 4.0927447`8.364589633024766}, 
+     "Instant", "Gregorian", 2.], "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$18], 
+   "symbols" -> <|"aimAngle" -> 
+      <|"date" -> DateObject[{2023, 7, 28, 11, 27, 
+          53.3380795`9.479612218954971}, "Instant", "Gregorian", 2.]|>, 
+     "vain37" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          1.3730494`7.890261149132734}, "Instant", "Gregorian", 2.]|>, 
+     "nonviolence76" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          1.4939793`7.926919566536936}, "Instant", "Gregorian", 2.]|>, 
+     "nevus79" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          1.6119116`7.959916207099442}, "Instant", "Gregorian", 2.]|>, 
+     "overpass193" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          10.0129035`8.75313499252926}, "Instant", "Gregorian", 2.]|>, 
+     "tenpin126" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          10.123097`8.757888360183623}, "Instant", "Gregorian", 2.]|>, 
+     "grapeshot192" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          10.2600175`8.763723063415517}, "Instant", "Gregorian", 2.]|>, 
+     "meticulousness13" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          11.9467967`8.829826432474295}, "Instant", "Gregorian", 2.]|>, 
+     "dourly162" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          12.0567341`8.833804639488084}, "Instant", "Gregorian", 2.]|>, 
+     "saturate27" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          12.1956529`8.838780011860571}, "Instant", "Gregorian", 2.]|>, 
+     "uncritically171" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          27.0442427`9.184649740236647}, "Instant", "Gregorian", 2.]|>, 
+     "concurrent101" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          27.1471836`9.186299695650552}, "Instant", "Gregorian", 2.]|>, 
+     "slaphappy32" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          27.2701127`9.188261848283618}, "Instant", "Gregorian", 2.]|>, 
+     "remembering109" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          29.9349846`9.228753949121323}, "Instant", "Gregorian", 2.]|>, 
+     "comfortingly100" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          30.0429778`9.230317884201956}, "Instant", "Gregorian", 2.]|>, 
+     "booth34" -> <|"date" -> DateObject[{2023, 7, 28, 11, 28, 
+          30.1709034`9.232163221677462}, "Instant", "Gregorian", 2.]|>|>|>, 
+ "cells" -> {<|"id" -> "deddfca4-8881-426e-902e-8590a9edf787c3539a673", 
     "type" -> "input", "data" -> ".md\nFirstly, define all necessary \
 functions to generate projectile variables and aim our cannon", 
-    "display" -> "codemirror", "sign" -> "quinsy-b6236", 
+    "display" -> "codemirror", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3f27ac2e-db30-4a9c-a537-358826682b0f", "type" -> "output", 
+   <|"id" -> "3f27ac2e-db30-4a9c-a537-358826682b0f673", "type" -> "output", 
     "data" -> "\nFirstly, define all necessary functions to generate \
 projectile variables and aim our cannon", "display" -> "markdown", 
-    "sign" -> "quinsy-b6236", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6ecd6235-91a2-4000-ba67-92830fd03722c3539a", "type" -> "input", 
-    "data" -> "aimAngle = 0;\nMoveAim[xy_] := Switch[xy[[1]], \"dragged\", \
-aimAngle = -ArcTan@@(xy[[2]]), \"dragended\", \
+    "sign" -> "yonder-dd965", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6ecd6235-91a2-4000-ba67-92830fd03722c3539a673", 
+    "type" -> "input", "data" -> "aimAngle = 0;\nMoveAim[xy_] := \
+Switch[xy[[1]], \"dragged\", aimAngle = -ArcTan@@(xy[[2]]), \"dragended\", \
 fire[Norm[xy//Last]]];\n\nfire[power_] := With[{tag = \
 Symbol[RandomWord[]<>ToString[RandomInteger[200]]], bullet = \
 Symbol[RandomWord[]<>ToString[RandomInteger[200]]], vel =  \
@@ -3833,21 +3865,21 @@ Brown, Point[{0,0}], Line[{{0,0},{0,0.2}}]}, Hold[vel]],\n    \
 vel//Unevaluated, a, power, trace[tag//Unevaluated, \"time\"]]; ], \
 \"Threshold\"->0.5 ], Hold[bullet]]  \n  }},\n  \n    Placed[holder, \
 FindMetaMarker[\"field\"]//First] // Hold // FrontSubmit\n  ];\n\n]", 
-    "display" -> "codemirror", "sign" -> "quinsy-b6236", 
+    "display" -> "codemirror", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8d756f93-8758-4dd2-8da1-9726f4b1c973", "type" -> "input", 
+   <|"id" -> "8d756f93-8758-4dd2-8da1-9726f4b1c973673", "type" -> "input", 
     "data" -> ".md\nOne can use `GeometricTransformation` together with drag \
-to aim our cannon", "display" -> "codemirror", "sign" -> "quinsy-b6236", 
+to aim our cannon", "display" -> "codemirror", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0b7dca51-fed7-4376-8947-7f9d89b4e50d", "type" -> "input", 
+   <|"id" -> "0b7dca51-fed7-4376-8947-7f9d89b4e50d673", "type" -> "input", 
     "data" -> ".md\nA function to calculate the trajectory", 
-    "display" -> "codemirror", "sign" -> "quinsy-b6236", 
+    "display" -> "codemirror", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "720a45ac-cd0d-4335-9d9d-d95a42415f8f", "type" -> "output", 
+   <|"id" -> "720a45ac-cd0d-4335-9d9d-d95a42415f8f673", "type" -> "output", 
     "data" -> "\nA function to calculate the trajectory", 
-    "display" -> "markdown", "sign" -> "quinsy-b6236", 
+    "display" -> "markdown", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ab98edb8-c780-441b-bdae-36802616b8c9", "type" -> "input", 
+   <|"id" -> "ab98edb8-c780-441b-bdae-36802616b8c9673", "type" -> "input", 
     "data" -> "ClearAll[trace];\n\ntrace[tag_, bullet_, vel_, aimAngle_, \
 power_, tMax_] := Module[{},\n  If[- tMax power Sin[aimAngle]  - tMax tMax < \
 -0.5,  Return[]];\n\n  \n  tag = Table[ {(t power + 0.2) Cos[aimAngle], (- t \
@@ -3856,19 +3888,19 @@ power + 0.2) Cos[aimAngle], (- tMax power - 0.2) Sin[aimAngle] - tMax \
 tMax};\n  vel = ArcTan@@{( power) Cos[aimAngle], (-  power ) Sin[aimAngle] - \
 2 tMax} + 1.570 + RandomReal[{-0.1,0.1}];\n\n  trace[tag//Unevaluated, \
 \"time\"] = tMax + 0.1;\n]", "display" -> "codemirror", 
-    "sign" -> "quinsy-b6236", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8c081c04-609d-42b7-97dc-b3561c14dbe0", "type" -> "input", 
+    "sign" -> "yonder-dd965", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8c081c04-609d-42b7-97dc-b3561c14dbe0673", "type" -> "input", 
     "data" -> ".md\nGraphics output", "display" -> "codemirror", 
-    "sign" -> "quinsy-b6236", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "63f56e94-dc08-4f5f-ad60-1d9343c4abe4", "type" -> "output", 
+    "sign" -> "yonder-dd965", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "63f56e94-dc08-4f5f-ad60-1d9343c4abe4673", "type" -> "output", 
     "data" -> "\nGraphics output", "display" -> "markdown", 
-    "sign" -> "quinsy-b6236", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f2a34323-2071-41ab-8f13-641e0a605a21c3539a", "type" -> "input", 
-    "data" -> "Graphics[{\n    Translate[{\n      RGBColor@@({237, 255, \
-255}/255),\n      Rectangle[{-10,10},{10,-10}],\n      RGBColor@@({201, 220, \
-76}/255),\n      Rectangle[{-3,0}, {15,-3}]\n    }, {0,0}],\n    \
-Translate[MetaMarker[\"field\"], {0,0}],\n    RGBColor[1/3, 1/5, 1/3],\n    \
-Rotate[{\n      RGBColor@@({128, 127, 125}/255),\n      \
+    "sign" -> "yonder-dd965", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f2a34323-2071-41ab-8f13-641e0a605a21c3539a673", 
+    "type" -> "input", "data" -> "Graphics[{\n    Translate[{\n      \
+RGBColor@@({237, 255, 255}/255),\n      Rectangle[{-10,10},{10,-10}],\n      \
+RGBColor@@({201, 220, 76}/255),\n      Rectangle[{-3,0}, {15,-3}]\n    }, \
+{0,0}],\n    Translate[MetaMarker[\"field\"], {0,0}],\n    RGBColor[1/3, 1/5, \
+1/3],\n    Rotate[{\n      RGBColor@@({128, 127, 125}/255),\n      \
 Rectangle[{-0.2,0.7}/2, {0.2,-0.7}/2],\n      Rectangle[{-0.5,0.1}/3 + \
 {0,0.3}, {0.5,-0.1}/3 + {0,0.3}]\n    }, Hold[aimAngle + 1.570]],\n  \n    \
 {Gray, Line[{{0,0},With[{x = aimAngle}, {Cos[x], -Sin[x]}]//Hold}], \
@@ -3876,8 +3908,8 @@ Opacity[0.5], RGBColor@@({77, 82, 83}/255), PointSize[0.1], \
 EventHandler[Point[{0,0}], {\"dragall\" -> MoveAim}]}\n  }, \
 PlotRange->{{-1,5.2},{-1,3}}, \"TransitionType\"->\"Linear\", \
 \"TransitionDuration\"->100]", "display" -> "codemirror", 
-    "sign" -> "quinsy-b6236", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c4da6170-4096-4c6b-9c14-5b211b927bb6", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"9aa96d9d-a5ae-49ad-a13b-7f241291b0b8\"]", 
-    "display" -> "codemirror", "sign" -> "quinsy-b6236", 
+    "sign" -> "yonder-dd965", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5edc7c43-abd5-45c1-88c2-09826f7379f3", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"2bbee7a7-631e-4733-ad46-aa9aa89a8e4e\"]", 
+    "display" -> "codemirror", "sign" -> "yonder-dd965", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

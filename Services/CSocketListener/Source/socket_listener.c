@@ -185,7 +185,10 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
                 clientsMaxLength *= 2; 
                 clients = (SOCKET*)realloc(clients, clientsMaxLength * sizeof(SOCKET)); 
             }
-        } else {
+        
+        } 
+        #ifndef _WIN32
+        else {
              if (errno == EWOULDBLOCK) {
                 //printf("No pending connections; sleeping for one second.\n");
                 //sleep(1);
@@ -195,6 +198,9 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
                 exit(1);
               }  
         }
+        #else
+            SLEEPFUN(1);
+        #endif
 
         for (size_t i = 0; i < clientsLength; i++)
         {
