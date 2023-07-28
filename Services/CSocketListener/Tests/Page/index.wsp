@@ -1,0 +1,18 @@
+<?wsp LoadPage["components/header.wsp"] ?>
+  <body>
+    <div class="container">
+        <h2>Playground</h2>
+        <br/>
+        <?wsp 
+                RangeView[{0,1,0.1, 0.5}, "Event"->"update"] // Plant
+        ?>   
+        <br/>
+        <?wsp 
+                ListLinePlotly[data // Hold] // Plant
+        ?>
+        <br/>
+     
+    </div>
+    
+  </body>
+<?wsp LoadPage["components/footer.wsp"] ?>

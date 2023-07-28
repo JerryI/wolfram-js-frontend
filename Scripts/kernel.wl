@@ -42,6 +42,6 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    SocketListen[ToExpression[port], wcp@#&]
+    SocketListen[StringTemplate["``:``"][addr, port], wcp@#&]
     (*SocketListen[ToExpression[port], wcp@#&]*)
 ]

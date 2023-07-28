@@ -1,58 +1,8 @@
 #undef UNICODE
 
-#ifdef __linux__ 
-     #include <string.h>
-    #include <stdio.h>
-    #include <stdlib.h>
 
-    #include <sys/types.h>
-    #include <sys/socket.h>
-    #include <netinet/in.h>
-    #include <arpa/inet.h>
-    #include <netdb.h>
-    #include <unistd.h>
-    #include <errno.h>
-    #include <fcntl.h> // for open
-    #include <wchar.h>
- 
-
-    #define INVALID_SOCKET -1
-    #define NO_ERROR 0
-    #define SOCKET_ERROR -1
-    #define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
-
-    #define SLEEPFUN usleep
-    #define SLEEPTIME 0.01
-
-    inline void nopp() {}
-
-#elif _WIN32
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
-    #include <winsock2.h>
-    #include <ws2tcpip.h>
-
-    #define SLEEPFUN Sleep
-    #define SLEEPTIME 1
-
-    #ifdef __cplusplus
-    extern "C" {
-    #endif
-       void WSAAPI freeaddrinfo( struct addrinfo* );
-    
-       int WSAAPI getaddrinfo( const char*, const char*, const struct addrinfo*,
-                     struct addrinfo** );
-    
-       int WSAAPI getnameinfo( const struct sockaddr*, socklen_t, char*, DWORD,
-                    char*, DWORD, int );
-    #ifdef __cplusplus
-    }
-    #endif    
-#else
     #include <string.h>
     #include <stdio.h>
-    #include <stdlib.h>
-
     #include <sys/types.h>
     #include <sys/socket.h>
     #include <netinet/in.h>
@@ -62,33 +12,25 @@
     #include <errno.h>
     #include <fcntl.h> // for open
     #include <wchar.h>
- 
 
     #define INVALID_SOCKET -1
     #define NO_ERROR 0
     #define SOCKET_ERROR -1
     #define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
 
-    #define SLEEPFUN usleep
-    #define SLEEPTIME 0.01
+    #define SLEEP usleep
 
     inline void nopp() {}
-#endif
 
-#if defined(_WIN32)
-//Windows already defines SOCKET
-#define ISVALIDSOCKET(s) ((s) != INVALID_SOCKET)
-#define CLOSESOCKET(s) closesocket(s)
-#define GETSOCKETERRNO() (WSAGetLastError())
-#define WSACLEANUP (WSACleanup())
-#else
+
+
 #define SOCKET int
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define CLOSESOCKET(s) close(s)
 #define GETSOCKETERRNO() (errno)
 #define WSACLEANUP 
 #define BYTE uint8_t
-#endif
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -99,15 +41,11 @@
 #include "WolframIOLibraryFunctions.h"
 #include "WolframNumericArrayLibrary.h"
 
-int garbageLength = 0;
-int* garbageSockets;
-
 DLLEXPORT mint WolframLibrary_getVersion( ) {
     return WolframLibraryVersion;
 }
 
 DLLEXPORT int WolframLibrary_initialize(WolframLibraryData libData) {
-
     return 0;
 }
 
@@ -121,8 +59,6 @@ typedef struct SocketTaskArgs_st {
     SOCKET listentSocket; 
 }* SocketTaskArgs; 
 
-
-
 static void ListenSocketTask(mint asyncObjID, void* vtarg)
 {
     SOCKET *clients = (SOCKET*)malloc(2 * sizeof(SOCKET)); 
@@ -130,7 +66,7 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
     int clientsMaxLength = 2; 
 
     int iResult; 
-    unsigned long int iMode = 1; 
+    int iMode = 1; 
 
     size_t buflen = 8192; 
     BYTE *buf = malloc(8192 * sizeof(BYTE)); 
@@ -146,66 +82,28 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
 	DataStore ds;
     free(targ); 
     
-    #ifdef _WIN32 
-    iResult = ioctlsocket(listenSocket, FIONBIO, &iMode); 
-    if (iResult != NO_ERROR) {
-        printf("ioctlsocket failed with error: %d\n", iResult);
-    }
-    #else
-    //iResult = fcntl(listenSocket, SOCK_NONBLOCK | SOCK_CLOEXEC, &iMode);
-    //fcntl(listenSocket, F_SETFL, O_NONBLOCK);
+
     int flags = fcntl(listenSocket, F_GETFL);
     fcntl(listenSocket, F_SETFL, flags | O_NONBLOCK);
 
-    
 
-    #endif
-
-
-    
 	
 	while(ioLibrary->asynchronousTaskAliveQ(asyncObjID))
 	{
-        //SLEEPFUN(1);
-        //printf("TICK!");
-        //if (blocked == 1) continue;
-      
+        SLEEP(1);
         clientSocket = accept(listenSocket, NULL, NULL);
-
-        //if (blocked == 1) continue;
-
-        //printf("TICK!\n %d\n", clientSocket);   
-
         if (clientSocket != INVALID_SOCKET) {
-          
             printf("NEW CLIENT: %d\n", clientSocket);
             clients[clientsLength++] = clientSocket; 
 
-            if (clientsLength == clientsMaxLength) {
+            if (clientsLength == clientsMaxLength){
                 clientsMaxLength *= 2; 
                 clients = (SOCKET*)realloc(clients, clientsMaxLength * sizeof(SOCKET)); 
             }
-        
-        } 
-        #ifndef _WIN32
-        else {
-             if (errno == EWOULDBLOCK) {
-                //printf("No pending connections; sleeping for one second.\n");
-                //sleep(1);
-                SLEEPFUN(1);
-              } else {
-                perror("error when accepting connection");
-                exit(1);
-              }  
         }
-        #else
-            SLEEPFUN(1);
-        #endif
 
         for (size_t i = 0; i < clientsLength; i++)
         {
-            if (clients[i] == INVALID_SOCKET) continue;
-
             iResult = recv(clients[i], buf, buflen, 0); 
             if (iResult > 0){            
                 printf("CURRENT NUMBER OF CLIENTS: %d\n", clientsLength);
@@ -221,7 +119,6 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
                 ioLibrary->DataStore_addMNumericArray(ds, data);
 
                 ioLibrary->raiseAsyncEvent(asyncObjID, "RECEIVED_BYTES", ds);
-                printf("Done!!!\n");
             }
         }
 	}
@@ -240,21 +137,12 @@ static void ListenSocketTask(mint asyncObjID, void* vtarg)
 DLLEXPORT int create_server(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) 
 {
     int iResult; 
-    char* listenPortName = MArgument_getUTF8String(Args[0]); 
+    char* listenAddrName = MArgument_getUTF8String(Args[0]); 
+    char* listenPortName = MArgument_getUTF8String(Args[1]); 
     SOCKET listenSocket = INVALID_SOCKET; 
     WolframIOLibrary_Functions ioLibrary = libData->ioLibraryFunctions; 
     WolframNumericArrayLibrary_Functions numericLibrary = libData->numericarrayLibraryFunctions;
-    
-    #ifdef __linux__ 
-    #elif _WIN32
-    WSADATA wsaData; 
-    iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
-    if (iResult != 0) {
-        printf("WSAStartup failed with error: %d\n", iResult);
-        return 1;
-    }
-    #else
-    #endif
+
     
     struct addrinfo *address = NULL; 
     struct addrinfo addressHints; 
@@ -264,25 +152,25 @@ DLLEXPORT int create_server(WolframLibraryData libData, mint Argc, MArgument *Ar
     addressHints.ai_socktype = SOCK_STREAM;
     addressHints.ai_protocol = IPPROTO_TCP;
     addressHints.ai_flags = AI_PASSIVE;
-
-    iResult = getaddrinfo(NULL, listenPortName, &addressHints, &address); 
+    
+    iResult = getaddrinfo(listenAddrName, listenPortName, &addressHints, &address); 
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACLEANUP;
         return 1;
     }
     
-    #ifdef _WIN32
     listenSocket = socket(address->ai_family, address->ai_socktype, address->ai_protocol);
-    #else
-    listenSocket = socket(address->ai_family, address->ai_socktype, address->ai_protocol);
-    #endif
     if (!ISVALIDSOCKET(listenSocket)) {
         printf("socket failed with error: %d\n", GETSOCKETERRNO());
         freeaddrinfo(address);
         WSACLEANUP;
         return 1;
     }
+
+    const int enable = 1;
+    if (setsockopt(listenSocket, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+        printf("setsockopt(SO_REUSEADDR) failed");
 
     iResult = bind(listenSocket, address->ai_addr, (int)address->ai_addrlen);
     if (iResult == SOCKET_ERROR) {
@@ -294,13 +182,8 @@ DLLEXPORT int create_server(WolframLibraryData libData, mint Argc, MArgument *Ar
     }
 
     freeaddrinfo(address);
-    #ifdef _WIN32
-    iResult = listen(listenSocket, SOMAXCONN);
-    #else
-    iResult = listen(listenSocket, SOMAXCONN);
-    #endif
 
-    
+    iResult = listen(listenSocket, SOMAXCONN);
     if (iResult == SOCKET_ERROR) {
         printf("listen failed with error: %d\n", GETSOCKETERRNO());
         CLOSESOCKET(listenSocket);
