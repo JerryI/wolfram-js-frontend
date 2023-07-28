@@ -73,6 +73,13 @@ If[MemberQ[$ScriptCommandLine, "dev"],
   Print[Reset];
 ];
 
+If[MemberQ[$ScriptCommandLine, "legacySockets"],
+  ClearAll[CSocketListen];
+  CSocketListen = SocketListen;
+  Print[Red<>"legacySockets mode is activated"];
+  Print[Reset];
+];
+
 If[MemberQ[$ScriptCommandLine, "auto"],
   autostart = True;
   Print[Green<>"Autostart mode is activated"];
@@ -164,7 +171,7 @@ SetUpCron;
 If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 console["log", "http://``:`` is used for WebSockets 2", ip, 8010];
-console["log", "Open http://``:`` is used for WebSockets 1", ip, port+1];
+console["log", "Open http://``:`` is used for WebSockets 1", ip, ToExpression[port]+1];
 console["log", "Open http://``:`` in your browser", ip, port];
 
 
