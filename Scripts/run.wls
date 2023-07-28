@@ -131,8 +131,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "p
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-
-CSocketListen[port//ToExpression, tcp@#&]
+Check[CSocketListen[port//ToExpression, tcp@#&], Print["FUCK LibraryLink and Sockets! Using shitty ZMQ..."]; SocketListen[port//ToExpression, tcp@#&]];
 
 Print["Staring WS/HTTP server..."];
 
@@ -148,7 +147,7 @@ evaluate[cl: _SocketObject | _CSocket, data_ByteArray] := Block[{Global`client =
     ToExpression[data//ByteArrayToString];
 ]
 
-CSocketListen[(ToExpression@port) + 1, wcp@#&]
+Check[CSocketListen[(ToExpression@port) + 1, wcp@#&], Print["FUCK LibraryLink and Sockets! Using shitty ZMQ..."]; SocketListen[(ToExpression@port) + 1, wcp@#&]];
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 
@@ -164,12 +163,11 @@ SetUpCron;
 (* dev mode on *)
 If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
-console["log", "http://``:`` is used for WebSockets", ip, 8010];
+console["log", "http://``:`` is used for WebSockets 2", ip, 8010];
+console["log", "Open http://``:`` is used for WebSockets 1", ip, port+1];
 console["log", "Open http://``:`` in your browser", ip, port];
 
 
 If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
-
-Print[JerryI`WolframJSFrontend`Notebook`Processors ];
 
 While[True, LoopRun; Pause[0.3]];

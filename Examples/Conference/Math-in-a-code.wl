@@ -172,8 +172,8 @@ ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
 ist\",-1,0]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"List\",[\"List\",-1\
 ,0],[\"List\",-1,0]]]]],[\"Rule\",\"ImageSize\",200]]", 
-       "date" -> DateObject[{2023, 5, 27, 22, 42, 
-          57.491209`8.51217641526488}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 7, 28, 12, 11, 
+          45.649438`8.412010412096993}, "Instant", "Gregorian", 2.]|>, 
      "a8a9c5ea-3565-43f3-a244-426b23868c12" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
@@ -194,8 +194,8 @@ Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"L\
 ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rati\
 onal\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\
 \"Power\",3,[\"Rational\",1,2]]]]]]]],[\"Rule\",\"ImageSize\",200]]", 
-       "date" -> DateObject[{2023, 5, 27, 22, 42, 
-          57.508312`8.512305593865177}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 7, 28, 12, 11, 
+          45.670964`8.412215155461803}, "Instant", "Gregorian", 2.]|>, 
      "0620ebfc-b933-4834-9ef3-e1d45c793dce" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
@@ -207,12 +207,58 @@ ist\",[\"List\",-1,0],[\"List\",0,1]],[\"List\",[\"List\",-1,0],[\"List\",-1,\
 0]],[\"List\",[\"List\",-1,0],[\"List\",0,-1]],[\"List\",[\"List\",0,-1],[\"L\
 ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
 1],[\"List\",-1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,-1]]]]],[\"Rule\",\
-\"ImageSize\",200]]", "date" -> DateObject[{2023, 5, 27, 22, 42, 
-          57.524898`8.512430830887194}, "Instant", "Gregorian", 2.]|>|>, 
+\"ImageSize\",200]]", "date" -> DateObject[{2023, 7, 28, 12, 11, 
+          45.691088`8.412406476521342}, "Instant", "Gregorian", 2.]|>, 
+     "e30ebddd-3719-4995-bda6-025ce38f091a" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",-1,0]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"List\",[\"List\",-1\
+,0],[\"List\",-1,0]]]]],[\"Rule\",\"ImageSize\",200]]", 
+       "date" -> DateObject[{2023, 7, 28, 12, 12, 
+          0.450752`6.406512651536175}, "Instant", "Gregorian", 2.]|>, 
+     "2ebf28fc-bc42-49f1-a5da-c794bf776077" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Ratio\
+nal\",1,2]]]]],[\"List\",[\"List\",1,0],[\"List\",[\"Rational\",-1,2],[\"Time\
+s\",[\"Rational\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"List\
+\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\
+\",1,2]]]],[\"List\",1,0]],[\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\"\
+,[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\
+\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\
+\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\
+\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Ration\
+al\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"List\",[\"Rationa\
+l\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\
+\"List\",1,0]],[\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\
+\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"\
+Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"L\
+ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rati\
+onal\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\
+\"Power\",3,[\"Rational\",1,2]]]]]]]],[\"Rule\",\"ImageSize\",200]]", 
+       "date" -> DateObject[{2023, 7, 28, 12, 12, 
+          0.468325`6.423122330952816}, "Instant", "Gregorian", 2.]|>, 
+     "1fce5945-76d5-4621-a3a3-f209c59c187d" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",0,1]],[\"List\",[\"List\",1,0],[\"List\",-1,0]],[\"List\",[\"List\",1,0\
+],[\"List\",0,-1]],[\"List\",[\"List\",0,1],[\"List\",1,0]],[\"List\",[\"List\
+\",0,1],[\"List\",0,1]],[\"List\",[\"List\",0,1],[\"List\",-1,0]],[\"List\",[\
+\"List\",0,1],[\"List\",0,-1]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"L\
+ist\",[\"List\",-1,0],[\"List\",0,1]],[\"List\",[\"List\",-1,0],[\"List\",-1,\
+0]],[\"List\",[\"List\",-1,0],[\"List\",0,-1]],[\"List\",[\"List\",0,-1],[\"L\
+ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
+1],[\"List\",-1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,-1]]]]],[\"Rule\",\
+\"ImageSize\",200]]", "date" -> DateObject[{2023, 7, 28, 12, 12, 
+          0.487354`6.4404195240846756}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ma\
 th-in-a-code.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 6, 19, 16, 1, 17.375737`7.992518218979261}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 11, 44.497593`8.40091149656469}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"StripOnInput" -> <|"date" -> DateObject[{2023, 7, 28, 12, 11, 
+          47.195402`8.426474666006479}, "Instant", "Gregorian", 2.]|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$18]|>, 
  "cells" -> {<|"id" -> "e40e6f46-92ac-42d1-ad20-4822a349b0a17dc92d", 
     "type" -> "input", "data" -> ".md\n# Math in a code\nThe most used \
 shortcuts are supported\n- `Ctrl`+`/` fraction\n- `Ctrl`+`^` power\n- \
@@ -285,20 +331,20 @@ Baseline, ColumnAlignments -> Center])", "display" -> "codemirror",
 steps-1}], {steps, 2, 4}]\n{ Table[Framed[Graphics[{Red, Line[Tuples[i, 2]]}, \
 ImageSize->200]], {i, %}] } // TableForm", "display" -> "codemirror", 
     "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7360e22f-fc3f-4509-9c6c-9263a9d5e1df7dc92d", 
-    "type" -> "output", "data" -> "{{{1,0},{-1,0}},{{1,0},{-CM6Fraction[1, \
+   <|"id" -> "4000c428-b88a-499f-a63a-8eac6034c840", "type" -> "output", 
+    "data" -> "{{{1,0},{-1,0}},{{1,0},{-CM6Fraction[1, \
 2],CM6Fraction[CM6Sqrt[3], 2]},{-CM6Fraction[1, 2],-CM6Fraction[CM6Sqrt[3], \
 2]}},{{1,0},{0,1},{-1,0},{0,-1}}}", "display" -> "codemirror", 
     "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "229115c1-810d-4452-8daa-e7618d96464f7dc92d", 
-    "type" -> "output", "data" -> "CM6Grid[{{FrontEndBox[FrontEndExecutable[\
-\"05d091a4-822f-47ef-829b-2ca75471c948\"], \
+   <|"id" -> "c4119332-e13d-40ec-bdcd-684fb9092f81", "type" -> "output", 
+    "data" -> "CM6Grid[{{FrontEndBox[FrontEndExecutable[\"e30ebddd-3719-4995-\
+bda6-025ce38f091a\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-FrontEndBox[FrontEndExecutable[\"a8a9c5ea-3565-43f3-a244-426b23868c12\"], \
+FrontEndBox[FrontEndExecutable[\"2ebf28fc-bc42-49f1-a5da-c794bf776077\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-FrontEndBox[FrontEndExecutable[\"0620ebfc-b933-4834-9ef3-e1d45c793dce\"], \
+FrontEndBox[FrontEndExecutable[\"1fce5945-76d5-4621-a3a3-f209c59c187d\"], \
 \"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
 vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"]}}, RowSpacings -> 1, ColumnSpacings -> 3, \
 RowAlignments -> Baseline, ColumnAlignments -> Left]", 

@@ -1,5 +1,5 @@
 <|"notebook" -> <|"name" -> "Untitled", "id" -> "gaze-3f746", 
-   "kernel" -> LocalKernel, "objects" :> 
+   "kernel" -> LocalKernel, "objects" -> 
     <|"board" -> <|"json" -> "[\"List\",[\"List\",0,1,0,0,0,1,1,1,0,1,0,1,1,1\
 ,0,0,0,1,1,1,0,0,0,0,0,0,1,0,1,0,0,1,0,1,1,1,1,1,1,1],[\"List\",0,0,1,1,1,0,1\
 ,0,0,1,1,1,0,1,1,1,0,1,0,1,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,1,0,0,0,1],[\"List\"\
@@ -50,14 +50,18 @@
 0,0,0,1,1,1,0,0,0,1,0,0,1,1,0,0,1,1,1,0,1,1,1,1,1,1,0,1,1,0,1]]", 
        "date" -> DateObject[{2023, 6, 19, 15, 33, 
           53.069497`8.477419946050041}, "Instant", "Gregorian", 3.]|>, 
-     "d9cf4639-f876-40dc-bfa6-06d3cb705c1d" -> 
+     "8b02562a-29d0-491f-9b38-30db5af0ac94" -> 
       <|"json" -> "[\"MyFunction\",[\"Hold\",\"board\"]]", 
-       "date" -> DateObject[{2023, 6, 19, 15, 37, 
-          4.916873`7.444263978927433}, "Instant", "Gregorian", 3.]|>|>, 
+       "date" -> DateObject[{2023, 7, 28, 12, 13, 
+          54.005485`8.485012845073918}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Advanced/GOL-\
 Containers.wl", "cell" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c40d1a4769eff", 
-   "date" -> DateObject[{2023, 6, 19, 15, 31, 41.032818`8.365706321895598}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 13, 18.322053`8.01554911933643}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"board" -> <|"date" -> DateObject[{2023, 7, 28, 12, 13, 
+          54.106309`8.48582288286753}, "Instant", "Gregorian", 2.]|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$23]|>, 
  "cells" -> {<|"id" -> "bfbcf204-3c6e-43bf-a089-cb87d516e79c40d1a4769eff", 
     "type" -> "input", "data" -> ".md\n# GOL: Example with containers\nUsing \
 the advanced frontend functions definition", "display" -> "codemirror", 
@@ -129,8 +133,8 @@ data;\n}\n\ncore.MyFunction.destroy = (args, env) => {}\n\nreturn null;",
 40}];\n\nCreateFrontEndObject[MyFunction[board//Hold]]", 
     "display" -> "codemirror", "sign" -> "gaze-3f746", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "60344fb4-6a40-48fa-a1c2-4848f3a5cc17", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"d9cf4639-f876-40dc-bfa6-06d3cb705c1d\"]", 
+   <|"id" -> "19f8c827-15b9-4c0d-9a4b-f445e0bfad35", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"8b02562a-29d0-491f-9b38-30db5af0ac94\"]", 
     "display" -> "codemirror", "sign" -> "gaze-3f746", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "aa43a734-9e0a-45d9-a32f-e4ef2db5ab0b769eff", "type" -> "input", 

@@ -1,5 +1,5 @@
 <|"notebook" -> <|"name" -> "Rheumatoid", "id" -> "acceptor-5a8e4", 
-   "kernel" -> LocalKernel, "objects" -> 
+   "kernel" -> LocalKernel, "objects" :> 
     <|"7042192c-2c6f-4e93-bc31-a23fa1f4f742" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
@@ -8,8 +8,8 @@
        "date" -> DateObject[{2023, 5, 13, 18, 6, 8.89086`7.701518758655695}, 
          "Instant", "Gregorian", 2.]|>, 
      "dot" -> <|"json" -> "[\"List\",[\"List\",0,0],[\"List\",0.5,0.5]]", 
-       "date" -> DateObject[{2023, 6, 4, 23, 58, 0.131467`5.871391741860409}, 
-         "Instant", "Gregorian", 3.]|>, 
+       "date" -> DateObject[{2023, 7, 28, 12, 34, 
+          15.565674`7.944742915621619}, "Instant", "Gregorian", 2.]|>, 
      "7b2cc566-3290-4c90-aa48-ceed3f0851ba" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
@@ -42,23 +42,28 @@ EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 5, 27, 18, 44,
 \",\"'drag'\",\"'a7a28d0c-b9ec-4d1d-84e5-9392172825ba'\"]],[\"Line\",[\"Front\
 EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 6, 4, 23, 56, 
           16.979926`7.982510778014694}, "Instant", "Gregorian", 3.]|>, 
-     "20842703-01b6-43f2-a7fa-5ef25a8b9d02" -> 
+     "032b99a3-99ee-4f01-87ce-22684052309e" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
-\",\"'drag'\",\"'74e10e8f-0dd6-4fad-981e-b7db4af6c870'\"]],[\"Line\",[\"List\
+\",\"'drag'\",\"'9ca445d9-d8a7-4ef4-9c8a-bdeead303fba'\"]],[\"Line\",[\"List\
 \",[\"List\",0,0],[\"Hold\",\"p\"]]]]]", "date" -> 
-        DateObject[{2023, 6, 4, 23, 57, 12.367511`7.844857291196609}, 
-         "Instant", "Gregorian", 3.]|>, 
-     "4e560464-6f45-4bfb-8184-e2265cc4337c" -> 
+        DateObject[{2023, 7, 28, 12, 34, 9.832188`7.745225160751802}, 
+         "Instant", "Gregorian", 2.]|>, 
+     "42df4cb5-b329-494f-aa56-67c6ee25a0a8" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,0,1],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
-\",\"'drag'\",\"'7557cd34-e242-45b8-a20a-6556f90df777'\"]],[\"Line\",[\"Front\
-EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 6, 4, 23, 58, 
-          0.293874`6.220736153469994}, "Instant", "Gregorian", 3.]|>|>, 
+\",\"'drag'\",\"'3cda3ee0-9c19-44c0-8baa-674672a6224c'\"]],[\"Line\",[\"Front\
+EndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 7, 28, 12, 34, 
+          16.00458`7.9568192664578286}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Tutorial/Inte\
 ractiveGraphics.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 6, 19, 16, 5, 15.572744`7.944940129368305}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 34, 23.085898`8.115921755378283}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"p" -> <|"date" -> DateObject[{2023, 7, 28, 12, 34, 
+          23.150424`8.117133932416587}, "Instant", "Gregorian", 2.], 
+       "data" -> {-0.7348823756797641, -0.30527825999842934}|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$17]|>, 
  "cells" -> {<|"id" -> "3af700ce-2c89-4a74-bb0f-20eb79c5c7e9ca0795", 
     "type" -> "input", "data" -> ".md\n# Interactive graphics\nSimple \
 event-listener attached to a graphical object", "display" -> "codemirror", 
@@ -82,8 +87,8 @@ event-listener attached to a graphical object", "display" -> "markdown",
 EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[x, p = x] }],\n  \
 Line[{{0,0}, Hold[p]}]\n}]", "display" -> "codemirror", 
     "sign" -> "acceptor-5a8e4", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "30f7fd8e-f141-44e9-b7b5-ac2879c22f10795", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"20842703-01b6-43f2-a7fa-5ef25a8b9d02\"]", 
+   <|"id" -> "c95cb193-7ae1-45ff-8375-66fc9e72e0ed", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"032b99a3-99ee-4f01-87ce-22684052309e\"]", 
     "display" -> "codemirror", "sign" -> "acceptor-5a8e4", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "6a440740-baad-476b-8ed7-cec48cf46fc6795", "type" -> "input", 
@@ -101,7 +106,7 @@ EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[p, \
 FrontEndRef[\"dot\"] = {{0,0}, p}] }],\n  Line[FrontEndRef[\"dot\"]]\n}]", 
     "display" -> "codemirror", "sign" -> "acceptor-5a8e4", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "bd2a7cfd-121a-4265-b77c-944957428f30795", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"4e560464-6f45-4bfb-8184-e2265cc4337c\"]", 
+   <|"id" -> "d46a5f65-df3e-482f-b0dd-b34bce047fc0", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"42df4cb5-b329-494f-aa56-67c6ee25a0a8\"]", 
     "display" -> "codemirror", "sign" -> "acceptor-5a8e4", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
