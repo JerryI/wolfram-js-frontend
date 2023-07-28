@@ -1,5 +1,5 @@
 <|"notebook" -> <|"name" -> "Play", "id" -> "relaxant-595cc", 
-   "kernel" -> LocalKernel, "objects" -> 
+   "kernel" -> LocalKernel, "objects" :> 
     <|"length" -> <|"json" -> "0", "date" -> DateObject[{2023, 6, 19, 15, 56, 
           24.830926`8.147567898269594}, "Instant", "Gregorian", 3.]|>, 
      "9acae6e8-4016-4bad-96b1-8b02dad6bc05" -> 
@@ -178,11 +178,6 @@ nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 27,
         "[\"Hold\",[\"RangeView\",[\"List\",-1,1,0.1,\"length\"]]]", 
        "date" -> DateObject[{2023, 6, 19, 16, 27, 
           18.440438`8.018346216517031}, "Instant", "Gregorian", 3.]|>, 
-     "dac1d660-c4b2-4979-a5b8-3d5eeafd8253" -> 
-      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
-\",\"'a8dc8739-9cfb-40cb-b9ef-54d2e123ed41'\"],[\"Rule\",\"'Label'\",\"'Lengt\
-h'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
-          19.410406`8.04060960343173}, "Instant", "Gregorian", 3.]|>, 
      "c92c3bc9-6863-43c2-8821-e247043ae978" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
 \",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
@@ -190,13 +185,6 @@ e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
 nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
           19.430727`8.041064033994916}, "Instant", "Gregorian", 3.]|>, 
-     "d2f51684-211d-46e2-9219-a0e90f05c941" -> 
-      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
-\",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
-\",\"'drag'\",\"'073e6cb9-c5b0-482a-862a-fe18d426296a'\"]],[\"Line\",[\"Hold\
-\",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",400],[\"Rule\",\"ImageSize\"\
-,[\"List\",400,400]]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
-          19.514445`8.042931188231094}, "Instant", "Gregorian", 3.]|>, 
      "4c046bfa-e82c-4906-bb4e-aa80e65339b1" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
 \",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
@@ -204,17 +192,36 @@ e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
 nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
           32.568433`8.2653718438225}, "Instant", "Gregorian", 3.]|>, 
-     "c8a9ffe1-099c-4c6d-80e3-35cbfb2cce50" -> 
+     "1eeeb465-81f4-4d21-a386-f978ccd7e753" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
+\",\"'247762c9-b3e7-4c27-a4d0-3127df8f64fe'\"],[\"Rule\",\"'Label'\",\"'Lengt\
+h'\"]]", "date" -> DateObject[{2023, 7, 28, 12, 10, 
+          26.404744`8.174256943329501}, "Instant", "Gregorian", 2.]|>, 
+     "8e17622b-765b-4aa7-995d-1ef89a82896d" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
 \",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
 e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
-nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
-          35.078489`8.2976158575489}, "Instant", "Gregorian", 3.]|>|>, 
+nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 7, 28, 12, 10, 
+          29.49194`8.222278322929858}, "Instant", "Gregorian", 2.]|>, 
+     "549a9286-e45e-4f58-ad0a-5924f26bb560" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
+\",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
+\",\"'drag'\",\"'7d45f158-a85b-4055-9e2d-f085072c3cc7'\"]],[\"Line\",[\"Hold\
+\",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",400],[\"Rule\",\"ImageSize\"\
+,[\"List\",400,400]]]", "date" -> DateObject[{2023, 7, 28, 12, 10, 
+          38.165145`8.33424189552161}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ev\
 ent-based-approach.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 6, 19, 16, 26, 52.938495`8.476346565465246}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 10, 46.092764`8.416207728433994}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"length" -> <|"date" -> DateObject[{2023, 7, 28, 12, 10, 
+          46.173607`8.416968778801635}, "Instant", "Gregorian", 2.], 
+       "data" -> 0|>, "dot" -> <|"date" -> DateObject[{2023, 7, 28, 12, 10, 
+          46.238437`8.417578121797675}, "Instant", "Gregorian", 2.], 
+       "data" -> {{0, 0}, {-0.8306129406344505, 0.494433865017361}}|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$16]|>, 
  "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2dab0", 
     "type" -> "input", "data" -> ".md\n# Event-based approach\nEach input \
 element is an event object generator", "display" -> "codemirror", 
@@ -227,8 +234,8 @@ object generator", "display" -> "markdown", "sign" -> "relaxant-595cc",
     "data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9a9c418d-a223-49ed-83f1-daca64d3e3b6", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"dac1d660-c4b2-4979-a5b8-3d5eeafd8253\"]", 
+   <|"id" -> "008c4f3e-84ff-4f3b-90ab-07dfe6266fd8", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"1eeeb465-81f4-4d21-a386-f978ccd7e753\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "3b35b35e-42ed-47f3-a089-b265a5f65da4ab0", "type" -> "input", 
@@ -245,8 +252,8 @@ object generator", "display" -> "markdown", "sign" -> "relaxant-595cc",
 \"TransitionDuration\"->300, \"TransitionType\"->\"Linear\"] ", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8ac2d472-e865-44f0-9465-dc9e9825b463", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"c8a9ffe1-099c-4c6d-80e3-35cbfb2cce50\"]", 
+   <|"id" -> "eb479228-9a0a-4602-a7b2-68b2fc226667", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"8e17622b-765b-4aa7-995d-1ef89a82896d\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "311b835c-39c0-4659-b8d9-af7d4ecd947eab0", "type" -> "input", 
@@ -278,7 +285,7 @@ like in Mathematica", "display" -> "markdown", "sign" -> "relaxant-595cc",
 p}] }],\n  Line[dot//Hold]\n}, \"TransitionDuration\"->400, \
 ImageSize->{400,400}]", "display" -> "codemirror", 
     "sign" -> "relaxant-595cc", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "39437cb2-aa2b-4e0d-ac7b-21e6a1a23406", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"d2f51684-211d-46e2-9219-a0e90f05c941\"]", 
+   <|"id" -> "8910e222-03d4-4064-9850-2507fb8fef64", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"549a9286-e45e-4f58-ad0a-5924f26bb560\"]", 
     "display" -> "codemirror", "sign" -> "relaxant-595cc", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

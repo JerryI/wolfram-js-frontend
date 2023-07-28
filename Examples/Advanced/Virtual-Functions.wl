@@ -15,19 +15,23 @@
       <|"json" -> "[\"Graphics3D\",[\"Sphere\",[\"Hold\",\"coords\"]]]", 
        "date" -> DateObject[{2023, 6, 19, 15, 55, 
           9.912815`7.748771987846795}, "Instant", "Gregorian", 3.]|>, 
-     "3ce69a52-72fa-4c90-8155-4111ca955d4f" -> 
-      <|"json" -> "[\"RangeView\",[\"List\",0,4,0.1,2.0],[\"Rule\",\"'Event'\
-\",\"'ac94f0d9-d431-4ba0-aee6-6ceff401f3f1'\"]]", 
-       "date" -> DateObject[{2023, 6, 19, 15, 55, 
-          12.634713`7.854140367170004}, "Instant", "Gregorian", 3.]|>, 
-     "455d3963-7b2c-40f8-beb2-131c0b420a3d" -> 
+     "a4042cfc-a2bf-4c9b-9fb1-f62f119882f6" -> 
       <|"json" -> "[\"Graphics3D\",[\"Sphere\",[\"Hold\",\"coords\"]],[\"Rule\
-\",\"'Lerp'\",true]]", "date" -> DateObject[{2023, 6, 19, 15, 55, 
-          24.238304`8.137077210764481}, "Instant", "Gregorian", 3.]|>|>, 
+\",\"'Lerp'\",true]]", "date" -> DateObject[{2023, 7, 28, 12, 27, 
+          27.881291`8.197887861020567}, "Instant", "Gregorian", 2.]|>, 
+     "18b4d767-c51f-499c-b1e5-9081310a9922" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",0,4,0.1,2.0],[\"Rule\",\"'Event'\
+\",\"'af25cbfe-34b4-4623-af2e-1e84eeff7f02'\"]]", 
+       "date" -> DateObject[{2023, 7, 28, 12, 27, 
+          34.323358`8.288164750016664}, "Instant", "Gregorian", 2.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Advanced/Virt\
 ual-Functions.wl", "cell" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd4175", 
-   "date" -> DateObject[{2023, 6, 19, 15, 54, 23.007891`8.114451794121994}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 27, 43.003866`8.38608247735989}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"coords" -> <|"date" -> DateObject[{2023, 7, 28, 12, 27, 
+          43.082802`8.38687891842626}, "Instant", "Gregorian", 2.], 
+       "data" -> {0, 0, 0}|>|>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$18]|>, 
  "cells" -> {<|"id" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd417566e", 
     "type" -> "input", "data" -> ".md\nTest with virtual functions", 
     "display" -> "codemirror", "sign" -> "abasement-39449", 
@@ -45,8 +49,8 @@ ual-Functions.wl", "cell" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd4175",
      "Graphics3D[Sphere[coords//Hold], \"Lerp\"->True]", 
     "display" -> "codemirror", "sign" -> "abasement-39449", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "84dd3f37-af22-47e0-b9b3-7844ad69af39", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"455d3963-7b2c-40f8-beb2-131c0b420a3d\"]", 
+   <|"id" -> "73355207-6c18-46e5-979f-c13b83b643f6", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"a4042cfc-a2bf-4c9b-9fb1-f62f119882f6\"]", 
     "display" -> "codemirror", "sign" -> "abasement-39449", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "912430de-0c74-40a2-b6a8-b04761d1d7d1cd417566e", 
@@ -54,7 +58,7 @@ ual-Functions.wl", "cell" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd4175",
 InputRange[0,4,0.1];\nFunction[x,coords={0,0,x};] // slider;\nslider", 
     "display" -> "codemirror", "sign" -> "abasement-39449", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e2ac03a5-742b-4a34-8e1e-5f1f48af12b7", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"3ce69a52-72fa-4c90-8155-4111ca955d4f\"]", 
+   <|"id" -> "68f38c01-f64a-43ef-94f3-f24cead8a5ac", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"18b4d767-c51f-499c-b1e5-9081310a9922\"]", 
     "display" -> "codemirror", "sign" -> "abasement-39449", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

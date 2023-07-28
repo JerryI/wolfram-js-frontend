@@ -105,11 +105,18 @@ omatic\"]]]]", "date" -> DateObject[{2023, 6, 4, 12, 6,
       <|"json" -> "[\"Graphics\",[\"List\",[\"MetaMarker\",\"'label'\"],[\"Li\
 ne\",[\"List\",[\"List\",0,0],[\"List\",1,1]]]],[\"Rule\",\"PlotRange\",[\"Li\
 st\",[\"List\",-1,1],[\"List\",-1,1]]]]", "date" -> 
-        DateObject[{2023, 6, 19, 15, 48, 13.289494`7.876083431027071}, 
-         "Instant", "Gregorian", 3.]|>|>, "path" -> "/Volumes/Data/Github/wol\
+        DateObject[{2023, 7, 28, 12, 14, 18.738229`8.02530352641193}, 
+         "Instant", "Gregorian", 2.]|>|>, "path" -> "/Volumes/Data/Github/wol\
 fram-js-frontend/Examples/Advanced/Injecting-into-FO-instances.wl", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 6, 19, 15, 48, 
-      12.547528`7.851133159376851}, "Instant", "Gregorian", 3.]|>, 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 7, 28, 12, 15, 
+      15.65557`7.947243869436039}, "Instant", "Gregorian", 2.], 
+   "symbols" -> <|"fakeline" -> 
+      <|"date" -> DateObject[{2023, 7, 28, 12, 15, 
+          15.737944`7.949522980704348}, "Instant", "Gregorian", 2.], 
+       "data" -> {{0.19301268067716904, 0.14908277845165085}, 
+        {0.10301500342644121, 0.7506473235437316}}|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$24]|>, 
  "cells" -> {<|"id" -> "0ee93e4f-0273-4d70-8388-d7d270e551537585ff", 
     "type" -> "input", "data" -> ".md\n# Injecting into Frontend Objects \
 instances\nLet us define some typical plot and apply a meta-marker on it", 
@@ -123,10 +130,6 @@ some typical plot and apply a meta-marker on it", "display" -> "markdown",
     "data" -> "Graphics[{MetaMarker[\"label\"], Line[{{0,0},{1,1}}]}, \
 PlotRange->{{-1,1},{-1,1}}]", "display" -> "codemirror", 
     "sign" -> "utilitarian-502ca", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "60d32b8e-b397-4b30-af6a-0b06d09192775ff", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"f1002c9e-68f4-465e-b259-87d30d3ac694\"]", 
-    "display" -> "codemirror", "sign" -> "utilitarian-502ca", 
-    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "248c0585-0ed8-4a66-8cde-6537ab8270957585ff", "type" -> "input", 
     "data" -> ".md\nNow we can find it using `FindMetaMarker` selector and \
 inject new objects there", "display" -> "codemirror", 
@@ -136,8 +139,8 @@ inject new objects there", "display" -> "codemirror",
 inject new objects there", "display" -> "markdown", 
     "sign" -> "utilitarian-502ca", "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "53e5cfbc-ce79-4c88-8a27-13011c96c7bd7585ff", "type" -> "input", 
-    "data" -> "Placed[{Line[{{0.2,0.6},{0.1,0.5}}]}, \
-FindMetaMarker[\"label\"]//First] // FrontEndOnly // FrontSubmit;", 
+    "data" -> "Placed[{Line[{{0.2,0.6},RandomReal[{-1,1}, 2]}]}, \
+FindMetaMarker[\"label\"]//First] // Hold // FrontSubmit;", 
     "display" -> "codemirror", "sign" -> "utilitarian-502ca", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "334b6558-f9b2-463f-80be-c9c83f6a3c657585ff", "type" -> "input", 
@@ -150,8 +153,8 @@ object there", "display" -> "markdown", "sign" -> "utilitarian-502ca",
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "2b8db5e9-865d-471e-9c8c-2cb2df11b8a07585ff", "type" -> "input", 
     "data" -> "fakeline = RandomReal[{0,1},{2, 2}];\nPlaced[{RGBColor[1,0,0], \
-Line[fakeline]}, FindMetaMarker[\"label\"]//First] // FrontEndOnly // \
-FrontSubmit;", "display" -> "codemirror", "sign" -> "utilitarian-502ca", 
+Line[fakeline]}, FindMetaMarker[\"label\"]//First] // Hold // FrontSubmit;", 
+    "display" -> "codemirror", "sign" -> "utilitarian-502ca", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "ca127056-1813-45c6-a8b6-d12159b575907585ff", "type" -> "input", 
     "data" -> ".md\nNow we can update this injected object independently", 

@@ -2,8 +2,10 @@
    "kernel" -> LocalKernel, "objects" -> <||>, 
    "path" -> 
     "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Confetti.wl\
-", "cell" :> Exit[], "date" -> DateObject[{2023, 6, 19, 15, 55, 
-      56.381528`8.503711815428039}, "Instant", "Gregorian", 3.]|>, 
+", "cell" :> Exit[], "date" -> DateObject[{2023, 7, 28, 12, 3, 
+      52.051619`8.469009217215882}, "Instant", "Gregorian", 2.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$16]|>, 
  "cells" -> {<|"id" -> "ea01eeeb-63ee-4606-9d63-c24f80b0f2342dcb9a", 
     "type" -> "input", "data" -> 
      ".md\n# Advanced boxes\nA custom representation", 

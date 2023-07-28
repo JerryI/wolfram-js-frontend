@@ -2,8 +2,10 @@
    "kernel" -> LocalKernel, "objects" :> Association[], 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Tutorial/Canv\
 asStepByStep.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 6, 19, 16, 4, 8.841193`7.699085858140227}, 
-     "Instant", "Gregorian", 3.]|>, 
+   "date" -> DateObject[{2023, 7, 28, 12, 28, 49.080075`8.443480193502452}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$20]|>, 
  "cells" -> {<|"id" -> "e30400c1-b720-4bb2-9fc2-77baf9d4744bb5b", 
     "type" -> "input", "data" -> 
      ".md\nFirstly one need to create an empty canvas", 
