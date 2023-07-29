@@ -170,6 +170,8 @@ SetUpCron;
 (* dev mode on *)
 If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
+CEventLoopRun[0];
+
 console["log", "http://``:`` is used for WebSockets 2", ip, 8010];
 console["log", "Open http://``:`` is used for WebSockets 1", ip, ToExpression[port]+1];
 console["log", "Open http://``:`` in your browser", ip, port];

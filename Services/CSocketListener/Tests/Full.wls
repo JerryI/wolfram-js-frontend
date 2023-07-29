@@ -18,7 +18,7 @@ PacletInstall["KirillBelov/WebSocketHandler", ForceVersionInstall->True]
 Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"]
 Get["https://raw.githubusercontent.com/JerryI/wl-wsp/main/Kernel/Hydrator.wl"]
 
-$PublicDirectory = FileNameJoin[{Directory[], "Page"}]
+$PublicDirectory = FileNameJoin[{Directory[], "Full"}]
 
 
 Print["Staring HTTP server..."];
@@ -84,6 +84,9 @@ EventHandler["update", Function[d,
   Print["updating data!"];
   data = Table[{x, Sin[x 100 d]}, {x, 0, 2Pi, 0.01}];
 ]]
+
+Pause[1];
+CEventLoopRun[0]
 
 StringTemplate["open http://``:``/"][httplistener[[1]]["Host"], httplistener[[1]]["Port"]] // Print;
 While[True, Pause[1]];

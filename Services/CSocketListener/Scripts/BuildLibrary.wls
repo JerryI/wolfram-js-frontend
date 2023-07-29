@@ -14,6 +14,8 @@ Get["CCompilerDriver`"];
 OSFolder = If[$OperatingSystem === "Windows", "Windows", "Unix"];
 OSLibs = If[$OperatingSystem === "Windows", {"ws2_32"}, {}];
 
+OSLinker = If[$OperatingSystem === "Windows", {"ws2_32"}, {"/usr/local/lib/libuv.a -pthread"}];
+
 Block[{$directory, $libSrc, $libDir}, 
 	$directory = DirectoryName[If[$InputFileName == "", 
 		NotebookFileName[], 
@@ -41,5 +43,5 @@ Block[{$directory, $libSrc, $libDir},
 
 	Get["CCompilerDriver`"]; 
 
-	CreateLibrary[$libSrc, "socket_listener" , "TargetDirectory" -> $libDir, "Debug"->True, 	"Libraries"->OSLibs]
+	CreateLibrary[$libSrc, "socket_listener" , "TargetDirectory" -> $libDir, "Debug"->True, "LinkerOptions"->OSLinker,	"Libraries"->OSLibs]
 ]; 
