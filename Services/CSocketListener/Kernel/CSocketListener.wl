@@ -28,7 +28,7 @@ CSocket::usage =
 
 
 CEventLoopRun::usage =
-"CEventLoopRun[] starts event loop"
+"CEventLoopRun[0] starts event loop. RUN IT AT THE VERY LAST MOMENT ONCE"
 
 (* ::Section:: *)
 (*Private context*)

@@ -11,7 +11,6 @@ Get["CCompilerDriver`"];
  "CompilerName"->"gcc.exe",
  "ShellOutputFunction"->Print}*)
 
-OSFolder = If[$OperatingSystem === "Windows", "Windows", "Unix"];
 OSLibs = If[$OperatingSystem === "Windows", {"ws2_32"}, {}];
 
 OSLinker = If[$OperatingSystem === "Windows", {}, If[$OperatingSystem === "MacOSX", {"/usr/local/lib/libuv.a -pthread"}, {"/PATHTOLIBUVSRC/build/libuv.so -pthread"}]];
@@ -26,7 +25,6 @@ Block[{$directory, $libSrc, $libDir},
 	$libSrc = File[FileNameJoin[{
 		$directory, 
 		"Source", 
-		OSFolder,
 		"socket_listener.c"
 	}]]; 
 
