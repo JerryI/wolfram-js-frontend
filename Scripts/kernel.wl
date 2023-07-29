@@ -42,8 +42,7 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    CSocketListen[StringTemplate["``:``"][addr, port], wcp@#&];
+    SocketListen[StringTemplate["``:``"][addr, port], wcp@#&];
 
-    CEventLoopRun[0];
-    (*SocketListen[ToExpression[port], wcp@#&]*)
+    (*CEventLoopRun[0];*)
 ]

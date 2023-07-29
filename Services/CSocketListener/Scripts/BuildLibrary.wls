@@ -14,7 +14,7 @@ Get["CCompilerDriver`"];
 OSFolder = If[$OperatingSystem === "Windows", "Windows", "Unix"];
 OSLibs = If[$OperatingSystem === "Windows", {"ws2_32"}, {}];
 
-OSLinker = If[$OperatingSystem === "Windows", {"ws2_32"}, {"/usr/local/lib/libuv.a -pthread"}];
+OSLinker = If[$OperatingSystem === "Windows", {}, If[$OperatingSystem === "MacOSX", {"/usr/local/lib/libuv.a -pthread"}, {"/PATHTOLIBUVSRC/build/libuv.so -pthread"}]];
 
 Block[{$directory, $libSrc, $libDir}, 
 	$directory = DirectoryName[If[$InputFileName == "", 
