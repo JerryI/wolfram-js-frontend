@@ -10,10 +10,15 @@ JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
 JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 
+PacletInstall["JerryI/LPM"];
+<<JerryI`LPM`
+
+PacletRepositories[{
+  Github -> "https://github.com/JerryI/CSocketListener"
+}, "Directory"->JerryI`WolframJSFrontend`root]
+
 PacletInstall["KirillBelov/Objects"]
 <<KirillBelov`Objects`;
-
-Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","CSocketListener", "Kernel", "CSocketListener.wl"}]]
 
 PacletInstall["KirillBelov/TCPServer"]
 <<KirillBelov`TCPServer`

@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "*.wsp": "php",
-        "*.wls": "wolfram",
-        "*.wl": "wolfram",
-        "random": "c"
-    }
-}
