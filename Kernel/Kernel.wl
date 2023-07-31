@@ -124,7 +124,9 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
     LinkWrite[link, Unevaluated[$HistoryLength = 0]];
     LinkWrite[link, Unevaluated[PacletDirectoryLoad[Directory[]]]];
 
-
+    With[{root = JerryI`WolframJSFrontend`root},
+        LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
+    ];
 
     LinkWrite[link, Unevaluated[Get["Scripts/kernel.wl"]]];
 
@@ -133,18 +135,16 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[Get/@list]]; 
     ];    
 
-    With[{p = JerryI`WolframJSFrontend`WSKernelAddr },
-        LinkWrite[link, Unevaluated[Global`$WSStart[8010, p]]]
-    ];
-
-    With[{root = JerryI`WolframJSFrontend`root},
-        LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
-    ];
-    
-
     With[{packed = (List["host" -> JerryI`WolframJSFrontend`jtp["host"], "port" -> JerryI`WolframJSFrontend`jtp["port"] ])},
         LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
     ];
+
+    With[{p = JerryI`WolframJSFrontend`WSKernelAddr },
+        LinkWrite[link, Unevaluated[Global`$WSStart[8010, p]]]
+    ];
+    
+
+
 
     LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
 
