@@ -93,4 +93,7 @@ Frontend uses its own package/plugin system. It doent require any software insta
 - [Mathics](https://mathics.org)
 - [Markdown Decoration extension](https://github.com/fuermosi777) 
 
+## License
+GNU GPLv3
+
 
