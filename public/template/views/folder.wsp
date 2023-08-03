@@ -1,25 +1,39 @@
 
 
-    <main id="frontend-editor" aria-hidden="true" class="main-container styles-container-editor thumbnails-container">
+<main id="frontend-editor" aria-hidden="true" style="position: absolute;right: 0;top: 0;">
+    <div id="canvas" style="right:0; top: 0; position: fixed; width: 100vw; height: 100vh;"></div>
+                    <!--<a href="/index.wsp?path= " class="thumbnails-item" id="thumb- ">
+                        <div class="thumbnail-label"> </div>
+                    </a>-->
+    <script type="module">
+        const code = <?wsp 
+                            ExportString[Hold[time = 0.14;
+                            dt = 0.1;
+                            pts = Partition[Table[With[{t = If[time - delay < 0.1, 0.1, time-delay]}, 
+                            {{Cos[t], Sin[t]}/Sqrt[t], {-Sin[t], Cos[t]}/Sqrt[t],
+                            -{Cos[t], Sin[t]}/Sqrt[t], -{-Sin[t], Cos[t]}/Sqrt[t]}], {delay, 0, 8, 0.11}] // Flatten, 2];
 
-    
-                    <?wsp Table[ With[{file = Get[i]}, ?>    
-                    <a href="/index.wsp?path=<?wsp i//URLEncode ?>" class="thumbnails-item" id="thumb-<?wsp HashString32[i] ?>">
-                        <div class="thumbnail-label"><?wsp FileBaseName[i] ?></div>
-                    </a>
-                    <script>
-                        
-                        window.addEventListener("bundleloaded", function() { 
-                            return;
-                            <?wsp Table[ ?>
-                            core.FrontEndCreatePreviewCell(`<?wsp ExportString[str, {"Base64", "Text"}, CharacterEncoding -> "UTF8"] ?>`, {element: document.getElementById('thumb-<?wsp HashString32[i] ?>')});
-                            <?wsp , {str, GetThumbnail[i]}] ?>
-                        });
-                    </script>
-                    <?wsp ], {i, SortBy[FileNames["*.wl", $CurrentRequest["dir"]], FileDate]//Reverse}] ?>
-                
+                            FrontEndVirtual[{
+                            AttachDOM["canvas"],
+                            Graphics[{RGBColor[0.8,0.8,0.8],
+                            Opacity[0.8], Line[pts]}, "TransitionType"->"Linear", "ViewBox"->{0,0,600,350},
+                            "TransitionDuration"->(40000 (1/2))]}]; 
+                            
+                            While[True,
+                            time = time + dt;
+                            If[time > 8, dt = -0.1]; 
+                            If[time < 0, dt = 0.1]; 
+                            pts = Partition[Table[With[{t = If[time - delay < 0.1, 0.1, time-delay]}, 
+                            {{Cos[t], Sin[t]}/Sqrt[t], {-Sin[t], Cos[t]}/Sqrt[t],
+                            -{Cos[t], Sin[t]}/Sqrt[t], -{-Sin[t], Cos[t]}/Sqrt[t]}], {delay, 0, 8, 0.11}] // Flatten, 2];
+                            Pause[1.6 (1/2)];  
+                           ];], "ExpressionJSON", "Compact"->0]        
+        ?>;
 
-                
+        const global = {};
+        const env = {global: {}, local: {}};
+        interpretate(code, env);
+    </script>         
 </main>
 
 <script>

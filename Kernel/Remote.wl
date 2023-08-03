@@ -16,6 +16,8 @@ SendToFrontEnd::usage = "send to frontend directly, if the notebook id is known"
 
 FrontSubmit::usage = "alias to SendToFrontEnd"
 
+MetaMarker::usage = ""
+
 AskMaster::usage = "send expr to master and wait for the result"
 
 MasterResolvePromise::usage = "resolve promise"
@@ -69,7 +71,15 @@ SendToFrontEnd[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},
   WebSocketSend[notebookClient, e];
 ];
 
-FrontSubmit = SendToFrontEnd;
+FrontSubmit[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},  
+  WebSocketSend[notebookClient, e];
+];
+
+FrontSubmit[expr_, mark_MetaMarker] := With[{e = ExportByteArray[Global`FrontSubmitAlias[expr, mark], "ExpressionJSON"]},  
+  WebSocketSend[notebookClient, e];
+];
+
+(*SetAttributes[FrontSubmit, HoldFirst]*)
 
 WSSocketEstablish := (Print["Notebook WS now is attached"]; notebookClient = Global`client);
 
@@ -111,6 +121,7 @@ DefineOutputStreamMethod[
 
         With[{text =ByteArrayToString[out // ByteArray], uid = notebook},
             JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Warning"][text] ];
+            text >>> "log.txt";
         ];
 
         {Length@bytes, state}]]]]}
@@ -132,6 +143,7 @@ DefineOutputStreamMethod[
 
         With[{text =ToString[out], uid = notebook},
             JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Print"][text] ];
+            text >>> "log.txt";
         ];
 
         {Length@bytes, state}]]]]}

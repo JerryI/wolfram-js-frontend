@@ -51,6 +51,9 @@ Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd)
 (* special post-handler, only used for upvalues *)
 CM6Form[e_] := e
 
+Unprotect[TemplateBox]
+ClearAll[TemplateBox]
+TemplateBox[list_List, "RowDefault"] := CM6Grid[{list}]
 
 ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
@@ -65,8 +68,11 @@ RowBoxToCM[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
 CMGrid[x_List, y__] := CMGrid[x]
 TagBoxToCM[x_, y__] := x
 
+
+
+
 (* on-output convertion *)
-$CMReplacements = {RowBox -> RowBoxToCM, SqrtBox -> CM6Sqrt, FractionBox -> CM6Fraction, 
+$CMReplacements = {TemplateBox[list_, RowDefault] :> CM6Grid[{list}], RowBox -> RowBoxToCM, SqrtBox -> CM6Sqrt, FractionBox -> CM6Fraction, 
  GridBox -> CM6Grid, TagBox -> TagBoxToCM, SubscriptBox -> CM6Subscript, SuperscriptBox -> CM6Superscript}
 
 (* on-input convertion *)
@@ -84,7 +90,10 @@ CM6FractionWrapper[x_,y_] := x/y;
 Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
   If[StringLength[compressed] > 39400,
     Message["The given expression is too large even being compressed using gzip"];
-    expr
+    With[{name = "iconized-"<>StringTake[CreateUUID[], 5]<>".wl"},
+      Export[name, expr];
+      Hold[Get[name]]
+    ]
   ,
     Global`$ignoreLongStrings = True; 
     Global`FrontEndInlineExecutable[compressed]
