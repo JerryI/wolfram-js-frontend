@@ -16,6 +16,10 @@ SendToFrontEnd::usage = "send to frontend directly, if the notebook id is known"
 
 FrontSubmit::usage = "alias to SendToFrontEnd"
 
+MetaObject::usage = "Meta object represents objects created using FrontSubmit with MetaMarkers"
+
+ExecutableInstanceObject::usage = "Represents all executables found by MetaMarkers"
+
 MetaMarker::usage = ""
 
 AskMaster::usage = "send expr to master and wait for the result"
@@ -78,6 +82,22 @@ FrontSubmit[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},
 FrontSubmit[expr_, mark_MetaMarker] := With[{e = ExportByteArray[Global`FrontSubmitAlias[expr, mark], "ExpressionJSON"]},  
   WebSocketSend[notebookClient, e];
 ];
+
+(* for meta Markers *)
+FrontSubmit[expr_, mark_MetaMarker, "Reference"->True] := With[{uid = CreateUUID[]},
+With[{e = ExportByteArray[Global`FrontSubmitExtended[expr, mark, uid], "ExpressionJSON"]},  
+  WebSocketSend[notebookClient, e];
+];
+  MetaObject[uid]
+];
+
+Delete[MetaObject[uid_]] ^:= With[{e = ExportByteArray[Global`DeleteExecutablesBox[uid], "ExpressionJSON"]},  
+  WebSocketSend[notebookClient, e];
+];
+
+(* for regular expressions *)
+(* automatic containerization? no make it as spearate option *)
+FrontSubmit[expr_, "Reference"->True] := With[{uid = CreateUUID[]}, NotImplemented];
 
 (*SetAttributes[FrontSubmit, HoldFirst]*)
 

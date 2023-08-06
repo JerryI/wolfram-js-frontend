@@ -41,7 +41,7 @@
                                                         </div>
                                                     </div>-->
                                                 </div>
-                                                <div class="notion-scroller" style="">
+                                                <div class="notion-scroller" style="overflow: scroll;">
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
                                                             <div style="">

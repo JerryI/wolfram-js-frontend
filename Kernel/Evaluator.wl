@@ -8,7 +8,15 @@
   - Template postprocessor
 *)
 
+(* dynamic ovveride *)
+Unprotect[Dynamic]
+ClearAll[Dynamic]
+
+SetAttributes[Dynamic, HoldFirst]
+
 (* markers and instances *)
+
+$NumberMarks = False
 
 Unprotect[Select];
 Select[FrontEndInstances, MetaMarker[label_]] ^:= Module[{},
