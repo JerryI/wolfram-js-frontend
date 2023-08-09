@@ -460,6 +460,44 @@ FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSo
     ];
 ]];
 
+FileOperate["NewDirectory"][urlpath_, name_] := Module[{path, newname}, With[{channel = $AssociationSocket[Global`client]},
+    path = URLDecode[urlpath];
+    Print[path];
+
+
+    newname = StringReplace[name, {","->"-", "."->"-", " "->"-", "/"->"-"}];
+
+    While[FileExistsQ[FileNameJoin[{path, newname}]],
+        newname = newname <> "-New";
+    ];
+
+    CreateDirectory[FileNameJoin[{path, newname}]];
+
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+]];
+
+FileOperate["NewDirectory"][urlpath_, name_, cb_] := Module[{path, newname}, With[{channel = $AssociationSocket[Global`client]},
+    path = URLDecode[urlpath];
+    Print[path];
+
+
+    newname = StringReplace[name, {","->"-", "."->"-", " "->"-", "/"->"-"}];
+
+    While[FileExistsQ[FileNameJoin[{path, newname}]],
+        newname = newname <> "-New";
+    ];
+
+    CreateDirectory[FileNameJoin[{path, newname}]];
+
+    Print["Update tree with "<>ToString[cb]];
+
+    WebSocketSend[Global`client, Global`PromiseResolve[cb, Null] // DefaultSerializer] // Print;
+    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    
+]];
+
+
+
 FileOperate["Upload"][data_, notebook_] := Module[{path}, With[{channel = notebook},
     If[!AssociationQ[jsfn`Notebooks[channel]], Print["Notebook not found! Not possible to upload files at the root"]; Return[$Failed, Module]];
     
