@@ -65,7 +65,7 @@ With[{dir = Directory[]},
     FrontEndDirectory[] := dir;
 ];
 
-Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"];
+<<JerryI`Misc`Events`
 
 Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}; 
 

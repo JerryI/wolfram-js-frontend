@@ -20,7 +20,8 @@ PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/TCPServer",
   Github -> "https://github.com/KirillBelovTest/HTTPHandler",
   Github -> "https://github.com/JerryI/WebSocketHandler",
-  Github -> "https://github.com/JerryI/wl-wsp"
+  Github -> "https://github.com/JerryI/wl-wsp",
+  Github -> "https://github.com/JerryI/wl-misc"
 }, "Directory"->JerryI`WolframJSFrontend`root]
 
 <<KirillBelov`Objects`;
@@ -34,6 +35,6 @@ PacletRepositories[{
 <<JerryI`WSP`
 <<JerryI`WSP`PageModule`
 
-Get["https://raw.githubusercontent.com/JerryI/wl-misc/main/Kernel/Events.wl"]
+<<KirillBelov`CSocketListener`;
 
 Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","JTP", "JTP.wl"}]]
