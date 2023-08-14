@@ -5,10 +5,11 @@
 *web-based, fully customizable and free*
 
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
+__[See Docs](https://jerryi.github.io/wljs-docs/)__
+__[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 **Warning! Early Stage of Development**
-**TCP Sockets might not be stable**
-**please use `wolframscript -f Scripts/run.wls legacySockets` in a case of troubles**
+**please use `wolframscript -f Scripts/run.wls legacySockets` in a case of troubles with Sockets library**
 
 __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
 
