@@ -14,6 +14,8 @@ ClearAll[Dynamic]
 
 SetAttributes[Dynamic, HoldFirst]
 
+SetAttributes[Offload, HoldFirst]
+
 (* markers and instances *)
 
 $NumberMarks = False
