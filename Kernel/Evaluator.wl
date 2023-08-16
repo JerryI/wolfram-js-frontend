@@ -20,6 +20,11 @@ SetAttributes[Offload, HoldFirst]
 
 $NumberMarks = False
 
+NotebookStore[key_] := AskMaster[Global`NotebookStoreOperate["Get", key]] // ReleaseHold
+NotebookStore /: Set[NotebookStore[key_], data_] := AskMaster[Global`NotebookStoreOperate["Set", key, data // Hold]];
+
+Protect[NotebookStore]
+
 Unprotect[Select];
 Select[FrontEndInstances, MetaMarker[label_]] ^:= Module[{},
   AskMaster[Global`NotebookAskFront[FindMetaMarker[label]]]

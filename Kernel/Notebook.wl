@@ -76,6 +76,7 @@ NExtendSingleDefinition::usage = ""
 
 GarbageCollector::usage = "collect garbage form notebook"
 
+NotebookStoreOperate::usage = ""
 
 NotebookExport::usage = "export to standalone html"
 
@@ -604,6 +605,18 @@ GarbageCollector[id_] := Module[{garbage},
     WebSocketSend[jsfn`Notebooks[id, "channel"], Global`FrontEndDispose[garbage]];
     Print[StringTemplate["`` were collected"][Length[garbage]] ];
 ];
+
+NotebookStoreOperate["Set", key_, data_][id_String] := (
+    If[!KeyExistsQ[jsfn`Notebooks[id], "store"], jsfn`Notebooks[id]["store"] = <||>];
+    jsfn`Notebooks[id]["store"][key] = data;
+    "Stored"
+)
+
+NotebookStoreOperate["Get", key_][id_String] := (
+    If[!KeyExistsQ[jsfn`Notebooks[id], "store"], $Failed,
+        jsfn`Notebooks[id]["store"][key]
+    ]
+)
 
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];

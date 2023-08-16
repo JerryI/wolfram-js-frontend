@@ -41,9 +41,15 @@ notebook = Null;
 path = Null;
 oldpath = Null;
 
+
 Unprotect[NotebookDirectory];
 ClearAll[NotebookDirectory];
 NotebookDirectory[]
+
+
+Unprotect[EvaluationNotebook];
+ClearAll[EvaluationNotebook];
+EvaluationNotebook[args___] := notebook
 
 Options[ConnectToMaster] = {"PingCheck"->False};
 
