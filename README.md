@@ -5,7 +5,9 @@
 *web-based, fully customizable and free*
 
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
+
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
+
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 **Warning! Early Stage of Development**
@@ -16,13 +18,11 @@ __The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter)
 __Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram HTTP/WS Server developer & and a nice guy)__
 
 To help maintain this project. 
-
-kirill.vasin@uni-a.de
-
-[__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
+- [GitHub Sponsors](https://github.com/sponsors/JerryI)
+- [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 Thank you 🍺 
 
-__[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles)__
+__[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles; also it is quite outdated)__
 
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine.
