@@ -16,8 +16,18 @@
     </div>
     <?wsp LoadPage["template/dropdown/kernel.wsp", {notebookID = nid}] ?>  
 </div>
+<div id="notebook-attached" class="no-kernel" style="display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0px; height: 20px; border-radius: 3px; padding-left: 6px; padding-right: 6px; font-size: 14px; line-height: 120%;  margin: 0px; margin-left: 0.5em;">
+    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex;">
+        <div style="display: block;"></div>
+    </div>    
+</div>
+<div id="ws-link" class="no-kernel" style="display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0px; height: 20px; border-radius: 3px; padding-left: 6px; padding-right: 6px; font-size: 14px; line-height: 120%;  margin: 0px; margin-left: 0.5em;">
+    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex;">
+        <div style="display: block;"></div>
+    </div>    
+</div>
 
-<script>
+<script type="module">
     
     core.FrontEndKernelStatus = async function(args, env) {
         console.log("status update");
@@ -27,6 +37,27 @@
         $KernelStatus = state['signal'];
         document.getElementById("kernel-text").innerText = state['text'];
         document.getElementById("kernel-button").className = state['signal']+'-kernel';
+        if (state['signal'] != 'good') {
+            server.kernelControl.wsReset();
+            server.kernelControl.notebookReset();
+        }
+    }
+
+    core.FrontEndWSAttached = async function(args, env) {
+        document.getElementById("ws-link").className = 'good-kernel';
+    } 
+    core.FrontEndNotebookAttached = async function(args, env) {
+        document.getElementById("notebook-attached").className = 'good-kernel';
+    }
+    
+    server.kernelControl = {};
+    server.kernelControl.wsReset = (state) => {
+        document.getElementById("ws-link").className = 'load-kernel';
+        if (state === 'bad') document.getElementById("ws-link").className = 'bad-kernel';
+    }
+    server.kernelControl.notebookReset = (state) => {
+        document.getElementById("notebook-attached").className = 'load-kernel';
+        if (state === 'bad') document.getElementById("notebook-attached").className = 'bad-kernel';
     }
 </script>
 

@@ -1,9 +1,11 @@
 
 window.wsconnected = new Event("wsconnected");
+server.kernelControl = {};
 
 var socket = new WebSocket("ws://"+window.location.hostname+':'+(Number(window.location.port)+1));
 socket.onopen = function(e) {
   console.log("[open] Соединение установлено");
+  
   server.init(socket);
   setTimeout(()=>{
     server.socket.send('Append[broadcast, Global`client]');
@@ -44,8 +46,15 @@ socket.onmessage = function(event) {
 
 socket.onclose = function(event) {
   console.log(event);
+  server.kernelControl.wsReset('bad');
+  server.kernelControl.notebookReset('bad');
   //alert('Connection lost. Please, update the page to see new changes.');
 };
+
+window.addEventListener("blur", ()=>{
+  server.kernelControl.wsReset();
+  server.kernelControl.notebookReset();
+});
 
 window.WSPHttpQueryQuite = (command, promise, type = "String") => {
 

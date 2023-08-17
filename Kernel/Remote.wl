@@ -107,7 +107,10 @@ FrontSubmit[expr_, "Reference"->True] := With[{uid = CreateUUID[]}, NotImplement
 
 (*SetAttributes[FrontSubmit, HoldFirst]*)
 
-WSSocketEstablish := (Print["Notebook WS now is attached"]; notebookClient = Global`client);
+WSSocketEstablish := (
+  notebookClient = Global`client;
+  WebSocketSend[notebookClient, ExportByteArray[Global`FrontEndWSAttached[Null], "ExpressionJSON"]];
+);
 
 NotebookAddTracking[symbol_] := With[{cli = Global`client, name = SymbolName[Unevaluated[symbol]]},
     Print["Add tracking... for "<>name];
@@ -129,7 +132,11 @@ $ExtendDefinitions[uid_, defs_] := With[{id = notebook},
 Print["a query to extend sent for "<>id];
 JTPClientEvaluateAsyncNoReply[master, Global`NExtendSingleDefinition[uid, defs][id] ] ];
 
-AttachNotebook[id_, path_] := ( notebook = id; SetDirectory[path]; Print["Notebook "<>id<>" attached!"];);
+AttachNotebook[id_, path_] := ( 
+  notebook = id; SetDirectory[path]; 
+  
+  JTPClientEvaluateAsyncNoReply[master, Global`NotebookFrontEndSend[id][Global`FrontEndNotebookAttached[Null]] ];
+);
 
 DefineOutputStreamMethod[
   "ToastWarning", {"ConstructorFunction" -> 

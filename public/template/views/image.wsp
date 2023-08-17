@@ -1,1 +1,30 @@
-<img src="<?wsp url ?>" style="width: 70%; height: 100%; aspect-ratio: 1; object-fit: contain;">
+<img src="<?wsp url //FileNameToURLPath  ?>" style="width: 70%; height: 100%; aspect-ratio: 1; object-fit: contain;">
+
+<div class="pop-up-container"></div>
+
+<script type="module">
+{
+        const popholder = document.getElementsByClassName("pop-up-container")[0];
+
+        core.FrontEndPopUp = (args, env) => {
+            const message = document.createElement('div');
+            message.innerHTML = interpretate(args[0], env);
+            popholder.appendChild(message);
+
+            core.ConsoleLog.push(interpretate(args[1], env));
+
+            const inner = message.getElementsByClassName('pop-up')[0];
+            setTimeout(()=>{
+                inner.classList.toggle('pop-up-show');
+            }, 100);
+
+            setTimeout(()=>{
+                //message.remove();
+                inner.classList.toggle('pop-up-show');
+                setTimeout(()=>{
+                    message.remove();    
+                }, 300);
+            }, 6500);
+        }
+    }
+</script>

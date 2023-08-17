@@ -771,10 +771,10 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 *)
 
 (* redirect *)
-NotebookFrontEndSend[channel_][expr_String] := (
+NotebookFrontEndSend[channel_String][expr_] := (
     (*Print["Publish from kernel to the channel "<>channel];*)
-    Print["String ARE NOT Allowed"];
-    Exit[];
+    Print["FWD : JTP >> WS"];
+    WebSocketSend[jsfn`Notebooks[channel]["channel"], expr // DefaultSerializer];
 );
 
 
