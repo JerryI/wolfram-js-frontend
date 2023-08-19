@@ -16,10 +16,10 @@
                                             <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
                                             
                                             <div id="abort-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
-                                                <img width="15" height="15" src="/svg/del.svg"/>
+                                                <img width="15" height="15" src="/svg/topbarUpdate.svg"/>
                                             </div> 
                                             <div id="evaluateall-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
-                                                <img width="15" height="15" src="/svg/topbarUpdate.svg"/>
+                                                <img width="15" height="15" src="/svg/del.svg"/>
                                             </div>
 
                                             <?wsp , "" ] ?>                                           
