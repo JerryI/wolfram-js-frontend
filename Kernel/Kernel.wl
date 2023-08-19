@@ -119,14 +119,14 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
     Print[First[$CommandLine]];
 
     (* oh God, Wolfram what did you do... *)
-    link = LinkLaunch[First[$CommandLine] <> " -wstp"];
+    link = LinkLaunch["\""<>First[$CommandLine] <> "\" -wstp"];
     
     If[FailureQ[link], Print[">> Failed! Trying legacy math process..."]; link = LinkLaunch["math -mathlink"]];
     If[FailureQ[link], Print[">> Failed! Trying math process..."]; link = LinkLaunch["math -wstp"]];
     If[FailureQ[link], Print[">> Failed! Trying wolfram process..."]; link = LinkLaunch["wolfram -wstp"]];
-    If[FailureQ[link], Print[">> Failed! Trying second args of the command line..."]; link = LinkLaunch[$CommandLine[[2]] <> " -wstp"]];
+    If[FailureQ[link], Print[">> Failed! Trying second args of the command line..."]; link = LinkLaunch["\""<> $CommandLine[[2]] <> "\" -wstp"]];
     If[FailureQ[link], Print[">> Failed! Assumming MacOS shitty paths..."]; link = LinkLaunch["/Applications/Mathematica.app/Contents/MacOS/WolframKernel -wstp"]];
-    If[FailureQ[link], Print[">> Failed! Assumming MacOS shitty paths... mb it is a wolfram engine"]; link = LinkLaunch["/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel -wstp"]];
+    If[FailureQ[link], Print[">> Failed! Assumming MacOS shitty paths... mb it is a wolfram engine"]; link = LinkLaunch["\"/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel\" -wstp"]];
     If[FailureQ[link], 
         Print[">> Failed! ;() It might be that the path to wolfram kernel is not correctly written in your OS"];
         status["signal"] = "bad"; status["text"] = "Failed";
