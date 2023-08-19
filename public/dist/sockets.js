@@ -46,8 +46,8 @@ socket.onmessage = function(event) {
 
 socket.onclose = function(event) {
   console.log(event);
-  server.kernelControl.wsReset();
-  server.kernelControl.notebookReset();
+  server.kernelControl.wsReset('bad');
+  server.kernelControl.notebookReset('bad');
   //alert('Connection lost. Please, update the page to see new changes.');
 };
 

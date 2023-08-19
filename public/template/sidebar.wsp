@@ -21,6 +21,14 @@
                                                             <div class="sidebar-button-label">Open vault</div>
                                                         </div>
                                                     </div>
+                                                    <div style="display:none" class="notion-focusable sidebar-button" id="settings-button" role="button" tabindex="0" >
+                                                        <div class="sidebar-button-inner">
+                                                            <div class="sidebar-button-svg">
+                                                                <img width="15" height="15" src="/svg/sidebarSettings.svg"/>
+                                                            </div>
+                                                            <div class="sidebar-button-label"><div>Settings</div></div>
+                                                        </div>
+                                                    </div>
                                                     <!--<div class="notion-focusable sidebar-button" id="history-button" role="button" tabindex="0" >
                                                         <div class="sidebar-button-inner">
                                                             <div class="sidebar-button-svg">
@@ -32,14 +40,7 @@
                                                             <div class="sidebar-button-delim"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="notion-focusable sidebar-button" id="settings-button" role="button" tabindex="0" >
-                                                        <div class="sidebar-button-inner">
-                                                            <div class="sidebar-button-svg">
-                                                                <img width="15" height="15" src="/svg/sidebarSettings.svg"/>
-                                                            </div>
-                                                            <div class="sidebar-button-label"><div>Settings</div></div>
-                                                        </div>
-                                                    </div>-->
+                                                    -->
                                                 </div>
                                                 <div class="notion-scroller" style="overflow: scroll;">
                                                     <nav>
@@ -150,13 +151,15 @@
         callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"]//URLEncode ?>"}');
     });
 
+    document.getElementById("settings-button").addEventListener('click', (e)=>{
+        callModal('settings', `{notebook = "${window.Notebook}"}`);
+    }); 
+
     /*document.getElementById("history-button").addEventListener('click', (e)=>{
         alert('Not implemented');
     }); 
 
-    document.getElementById("settings-button").addEventListener('click', (e)=>{
-        alert('Not implemented');
-    }); 
+    
     
     document.getElementById("import-button").addEventListener('click', (e)=>{
         alert('Not implemented');

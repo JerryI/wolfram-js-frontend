@@ -84,29 +84,34 @@
 
     dropdownBtn.addEventListener("contextmenu", function (e) {
         e.stopPropagation();
-        dropdownMenu.classList.toggle("dropdown-file-show");
+        dropdownMenu.classList.add("dropdown-file-show");
         return false;
     });
 
     
     document.getElementById("file-remove-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
+        dropdownMenu.classList.remove("dropdown-file-show");
     });  
 
     document.getElementById("file-clone-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Clone"]["<?wsp URLEncode[file] ?>"]');
+        dropdownMenu.classList.remove("dropdown-file-show");
     });    
 
     document.getElementById("file-open-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>', '_blank');
+        dropdownMenu.classList.remove("dropdown-file-show");
     });  
 
     document.getElementById("file-open-zen-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>&zen=true', '_blank');
+        dropdownMenu.classList.remove("dropdown-file-show");
     });    
 
     document.getElementById("file-download-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         downloadByURL('<?wsp file//FileNameToURLPath ?>', '<?wsp FileNameTake[file] ?>');
+        dropdownMenu.classList.remove("dropdown-file-show");
     });
 }
 </script>

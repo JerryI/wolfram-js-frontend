@@ -1,0 +1,45 @@
+
+<div style="position: absolute; top: 0px; left: 0px;">
+   <div></div>
+</div>
+<div style="/*! padding-left: calc(96px + env(safe-area-inset-left)); */ /*! padding-right: calc(96px + env(safe-area-inset-right)); */"></div>
+<div data-content-editable-void="true" style="min-height: 40px; padding-left: 2em; padding-right: 2em; flex-shrink: 0;" contenteditable="false">
+   <div data-block-id="d7e8ced4-80aa-4257-8868-ae0b42b173c7" class="notion-selectable notion-collection_view_page-block" style="position: relative;">
+      <div style="display: flex; align-items: center; height: 40px; z-index: 1; position: sticky; left: 96px; width: 100%; box-shadow: rgb(233, 233, 231) 0px -1px 0px inset;">
+         <div style="display: flex; align-items: center; height: 100%; flex-grow: 1;">
+            <div style="display: inline-flex; margin: 0px; height: 100%;">
+               <div style="display: flex; flex-direction: row;">
+                  <div class="notion-collection-view-tab-button" style="display: flex; align-items: center; background-image: none; height: 100%; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: rgb(55, 53, 47); padding-top: 2px;">
+                     <div role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; height: 28px; border-radius: 4px; font-size: 14px; line-height: 1.2; min-width: 0px; padding-left: 8px; padding-right: 8px; color: rgb(55, 53, 47); font-weight: 500; max-width: 220px;">
+                        <svg viewBox="0 0 16 16" class="collectionList" style="width: 16px; height: 16px; display: block; fill: rgb(55, 53, 47); flex-shrink: 0; margin-right: 6px;">
+                           <path d="M2.08716 5.15576C2.64087 5.15576 3.08911 4.70752 3.08911 4.15381C3.08911 3.6001 2.64087 3.15186 2.08716 3.15186C1.53345 3.15186 1.08521 3.6001 1.08521 4.15381C1.08521 4.70752 1.53345 5.15576 2.08716 5.15576ZM5.29736 4.85254H14.2161C14.605 4.85254 14.9148 4.54272 14.9148 4.15381C14.9148 3.76489 14.605 3.45508 14.2161 3.45508H5.29736C4.90845 3.45508 4.59863 3.7583 4.59863 4.15381C4.59863 4.54272 4.90186 4.85254 5.29736 4.85254ZM2.08716 9.24927C2.64087 9.24927 3.08911 8.80103 3.08911 8.24731C3.08911 7.6936 2.64087 7.24536 2.08716 7.24536C1.53345 7.24536 1.08521 7.6936 1.08521 8.24731C1.08521 8.80103 1.53345 9.24927 2.08716 9.24927ZM5.29736 8.94604H14.2161C14.605 8.94604 14.9148 8.64282 14.9148 8.24731C14.9148 7.8584 14.605 7.54858 14.2161 7.54858H5.29736C4.90845 7.54858 4.59863 7.8584 4.59863 8.24731C4.59863 8.63623 4.90186 8.94604 5.29736 8.94604ZM2.08716 13.3428C2.64087 13.3428 3.08911 12.8945 3.08911 12.3408C3.08911 11.7937 2.64087 11.3389 2.08716 11.3389C1.53345 11.3389 1.08521 11.7937 1.08521 12.3408C1.08521 12.8945 1.53345 13.3428 2.08716 13.3428ZM5.29736 13.0396H14.2161C14.605 13.0396 14.9148 12.7363 14.9148 12.3408C14.9148 11.9519 14.605 11.6487 14.2161 11.6487H5.29736C4.90845 11.6487 4.59863 11.9519 4.59863 12.3408C4.59863 12.7297 4.90186 13.0396 5.29736 13.0396Z"></path>
+                        </svg>
+                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;">List view</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div style="display: flex; align-items: center; row-gap: 2px; column-gap: 2px; opacity: 1;">
+            <div class="notion-collection-view-item-add" style="position: relative; display: inline-flex; flex-shrink: 0; border-radius: 3px; overflow: hidden; height: 28px; margin-left: 8px; font-size: 14px;">
+                    <div id="filebrowser-open" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; white-space: nowrap; border-top-left-radius: 3px; border-bottom-left-radius: 3px; line-height: 1.1; padding-left: 8px; padding-right: 8px; font-weight: 500; background-color: rgba(0, 10, 39, 0.41); color: white;">Open</div>
+                    
+                    <div style="position: absolute; pointer-events: none; border-radius: 3px; inset: 0px; box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.1) 0px 1px 2px;"></div>
+            </div>            
+         </div>
+      </div>
+   </div>
+   <div style="position: sticky; left: 96px; width: 100%;"></div>
+</div>
+<div style="position: sticky; height: 0px; left: 0px; z-index: 87;"></div>
+<div data-content-editable-void="true" style="flex-grow: 1; flex-shrink: 0; display: flex; flex-direction: column; position: relative;" contenteditable="false">
+   <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
+      <div class="notion-list-view" style="overflow: scroll; padding-bottom: 3em; padding-left: 2em; padding-right: 2em; /*! min-width: calc(100% - 192px); */">
+         <div data-block-id="d7e8ced4-80aa-4257-8868-ae0b42b173c7" class="notion-selectable notion-collection_view_page-block" style="display: flex; flex-direction: column; padding-top: 8px; padding-bottom: 4px;">
+         </div>
+      </div>
+   </div>
+</div>
+<div class="notion-presence-container" style="position: absolute; top: 0px; left: 0px; z-index: 89;">
+   <div></div>
+</div>

@@ -618,6 +618,12 @@ NotebookStoreOperate["Get", key_][id_String] := (
     ]
 )
 
+NotebookStoreOperate["Keys"][id_String] := (
+    If[!KeyExistsQ[jsfn`Notebooks[id], "store"], $Failed,
+        jsfn`Notebooks[id]["store"] // Keys
+    ]
+)
+
 NotebookOpen[id_String] := (
     console["log", "generating the three of `` for ``", id, Global`client];
     $AssociationSocket[Global`client] = id;
