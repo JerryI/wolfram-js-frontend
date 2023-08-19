@@ -55,7 +55,7 @@ LoadWebObjects := (
    , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;
 
   Print[Blue<>"done!"]; Print[Reset];
-);
+) // Quiet;
 
 End[];
 EndPackage[];

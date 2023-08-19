@@ -91,6 +91,8 @@ LocalKernel["Abort"][cbk_] := (
 
 LocalKernel["Exit"][cbk_] := ( 
     LinkClose[link]; 
+    TaskRemove[checker];
+    link = Null;
     status["signal"] = "no"; status["text"] = "Closed";
     cbk[LocalKernel["Status"]]; 
 );
@@ -116,6 +118,7 @@ LocalKernel["Restart"][cbk_] := (
 LocalKernel["Status"] := status;
 
 LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
+    If[link =!= Null, LocalKernel["Exit"][Null]];
     Print[First[$CommandLine]];
 
     (* oh God, Wolfram what did you do... *)
@@ -193,7 +196,9 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 LocalLinkRestart := (
     Print["Timeout"];
     status = <|"signal"->"load", "text"->"Restarting..."|>;
+    TaskRemove[checker];
     LinkClose[link];
+    link = Null;
     callback[LocalKernel["Status"]];
     SessionSubmit[ScheduledTask[LocalKernel["Start"][callback], {Quantity[2, "Seconds"], 1},  AutoRemove->True]];
 );
