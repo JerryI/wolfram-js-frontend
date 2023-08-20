@@ -160,8 +160,12 @@ InternalGetObject[uid_] := (
   JerryI`WolframJSFrontend`Evaluator`objects[uid]
 )
 
-WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
-  Block[{Global`$NewDefinitions = <||>, $CellUid = CreateUUID[], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
+Unprotect[EvaluationCell];
+ClearAll[EvaluationCell];
+
+
+WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = CreateUUID[]},
+  Block[{Global`$NewDefinitions = <||>, EvaluationCell = Function[Null, $CellUid], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
       $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold);
@@ -194,7 +198,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := Module[{},
             $string
           ],
 
-          (* !not used anymore... consider to remove *)
+          (* used to track event of a cell *)
           $CellUid, 
 
           (* specify the frontened renderer *)

@@ -18,7 +18,12 @@
                                             <div id="abort-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
                                                 <img width="15" height="15" src="/svg/topbarUpdate.svg"/>
                                             </div> 
-                                            <div id="evaluateall-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
+
+                                            <div id="evaluateinit-button" class="notion-topbar-updates-button notion-focusable" style="width: 15px;" role="button" aria-label="Init" tabindex="0" >
+                                                <span style="font-size: 14px;color: rgba(119, 119, 119, 0.5);white-space: nowrap;line-height: 1;width: 1em;text-align: center;/*! background: white; */font-weight: 800;">i</span>
+                                            </div>
+                                            
+                                            <div id="evaluateall-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Evaluateall" tabindex="0" >
                                                 <img width="15" height="15" src="/svg/del.svg"/>
                                             </div>
 
@@ -86,6 +91,15 @@
 
         server.socket.send('NotebookEvaluateAll');
     });    
+
+    document.getElementById("evaluateinit-button").addEventListener('click', (e)=>{
+        if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
+            alert("No active kernel is attached");
+            return;
+        }
+
+        server.socket.send('NotebookEvaluateInit');
+    });
 
     core.FrontEndUpdateFileName = function(args, env) {
         const name = interpretate(args[0])+".wl";

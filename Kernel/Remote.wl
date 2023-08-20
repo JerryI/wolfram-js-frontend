@@ -51,6 +51,7 @@ Unprotect[EvaluationNotebook];
 ClearAll[EvaluationNotebook];
 EvaluationNotebook[args___] := notebook
 
+
 Options[ConnectToMaster] = {"PingCheck"->False};
 
 AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] ];

@@ -217,6 +217,8 @@ CellObjSave[CellObj[cell_], content_] := (
 
 CellObj /: 
 CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},  
+    JerryI`WolframJSFrontend`fireEvent["CellEvaluate"][CellObj[cell]];
+
     expr = CellObj[cell]["data"];
     evaluator = Which@@Flatten[ReplaceAll[evaluators, Rule[x_,y_] :> List[x[expr],y]]];
     
@@ -248,7 +250,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
 
                 evaluator["Evaluator"][#1, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
                     If[result =!= "Null" && StringLength[result] > 0,
-                        With[{new = CellObj["sign"->CellObj[cell]["sign"]]},
+                        With[{new = CellObj["sign"->CellObj[cell]["sign"], "id"->uid]},
 
                             new["data"]     = result;
                             new["type"]     = "output";

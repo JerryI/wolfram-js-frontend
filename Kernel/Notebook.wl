@@ -71,6 +71,7 @@ NotebookEventFire::usage = "fire"
 NotebookFocus::usage = "focus on a tab"
 
 NotebookEvaluateAll::usage = ""
+NotebookEvaluateInit::usage = ""
 
 NExtendSingleDefinition::usage = ""
 
@@ -93,11 +94,14 @@ GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
 
-NotebookEventFire = Null
+NotebookEventFire[addr_][args__][args2__] :=  ((#[addr][args][args2]) &/@ (NotebookEventFire["Handlers"]))
+NotebookEventFire["Handlers"] = {}
+
+
 NotebookFakeEventFire = Null
 NotebookPopupFire = Null
 
-NotebookUse["EventFire", sym_] := NotebookEventFire = sym;
+NotebookUse["EventFire", sym_] := NotebookEventFire["Handlers"] = Append[NotebookEventFire["Handlers"], sym];
 NotebookUse["FakeEventFire", sym_] := NotebookFakeEventFire = sym;
 NotebookUse["PopupFire", sym_] := NotebookPopupFire = sym;
 
@@ -760,6 +764,12 @@ NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]}
     ];
 ];
 
+NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, (x["type"] === "input" && TrueQ[x["props"]["init"]])]];
+    ];
+];
+
 (*
 NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake[CreateUUID[], 3]<>".html"},
     content = Block[{$CurrentRequest = <|"Query"-><|"id"->id|>|>, commandslist = {}},
@@ -788,6 +798,23 @@ NotebookFrontEndSend[channel_String][expr_] := (
     Internal commands
     events on cells operations
 *)
+
+NotebookUse["EventFire", InternalEventRouter];
+
+InternalEventRouter[addr_]["RemovedCell"][cell_] := (
+    (*actually frirstly you need to check!*)
+    With[{channel = cell["sign"], uid = cell[[1]]<>"-destroy"},  
+        jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[Global`EmittedEvent[uid, True]] ] 
+    ];
+);
+
+InternalEventRouter[addr_]["CellEvaluate"][cell_] := (
+    (*actually frirstly you need to check!*)
+    With[{channel = cell["sign"], uid = cell[[1]]<>"-evaluate"},  
+        jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[Global`EmittedEvent[uid, True]] ] 
+    ];
+);
+
 
 
 
