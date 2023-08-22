@@ -2,10 +2,12 @@
   "name": "wolfram-js-frontend",
   "version": "0.0.1",
   "description": "",
+  "main": "main.js",
   "scripts": {
     "start": "wolframscript -f Scripts/run.wls",
     "dev": "wolframscript -f Scripts/run.wls dev",
-    "build": "wolframscript -f Scripts/build.wls"
+    "build": "wolframscript -f Scripts/build.wls",
+    "el": "electron ."
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
+    "electron": "^26.0.0",
     "rollup": "^3.20.6",
     "rollup-plugin-combine": "^2.1.1",
     "serve-static": "^1.14.1",

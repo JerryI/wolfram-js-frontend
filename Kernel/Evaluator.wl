@@ -185,7 +185,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = 
       With[{$string = $result // Global`ToCM6Boxes},
 
         callback[
-          If[(StringLength[$string] > 5000 && !(Global`$ignoreLongStrings)) || StringLength[$string] > 39400,
+          If[(StringLength[$string] > 2^14 && !(Global`$ignoreLongStrings)) || StringLength[$string] > 2^16,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 100]},
               With[{expr = Global`ExprObjectExport[Global`FrontEndTruncated[short, len], dumpid]},
                 (* keep the real data inside the local storage *)

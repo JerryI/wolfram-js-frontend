@@ -66,12 +66,17 @@ CreateNewNotebookByPath::usage = "alternamtive version of the prev."
 NotebookEmitt::usage = "send anything to the kernel (async)"
 
 NotebookPopupFire::usage = "pop up message"
+WindowEventFire::usage = "fire"
 NotebookEventFire::usage = "fire"
+WindowDelayedEventFire::usage = "fire"
 
 NotebookFocus::usage = "focus on a tab"
 
 NotebookEvaluateAll::usage = ""
 NotebookEvaluateInit::usage = ""
+
+NotebookEvaluateProjected::usage = ""
+NotebookWindowReady::usage = ""
 
 NExtendSingleDefinition::usage = ""
 
@@ -97,11 +102,14 @@ Begin["`Private`"];
 NotebookEventFire[addr_][args__][args2__] :=  ((#[addr][args][args2]) &/@ (NotebookEventFire["Handlers"]))
 NotebookEventFire["Handlers"] = {}
 
+WindowEventFire[addr_, origin_][args__][args2__] :=  ((Print[Green<>"gone"]; Print[Reset]; #[addr, origin][args][args2];) &/@ (WindowEventFire["Handlers"]))
+WindowEventFire["Handlers"] = {}
 
 NotebookFakeEventFire = Null
 NotebookPopupFire = Null
 
 NotebookUse["EventFire", sym_] := NotebookEventFire["Handlers"] = Append[NotebookEventFire["Handlers"], sym];
+NotebookUse["WindowEventFire", sym_] := WindowEventFire["Handlers"] = Append[WindowEventFire["Handlers"], sym];
 NotebookUse["FakeEventFire", sym_] := NotebookFakeEventFire = sym;
 NotebookUse["PopupFire", sym_] := NotebookPopupFire = sym;
 
@@ -668,6 +676,7 @@ NotebookEvaluate[cellid_] := (
     ];
 );
 
+
 NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]},
     jsfn`Notebooks[channel]["kernel"][cmd][Function[state,
         Print[StringTemplate["callback for `` channel"][channel]];
@@ -769,6 +778,51 @@ NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]
         CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, (x["type"] === "input" && TrueQ[x["props"]["init"]])]];
     ];
 ];
+
+jsfn`Windows = <||>;
+
+NotebookEvaluateProjected[cellid_] := (
+    (* check if window is open already *)
+
+    If[KeyExistsQ[jsfn`Windows, cellid],
+        If[FailureQ[WebSocketSend[jsfn`Windows[cellid]["socket"], Global`Ping[Null] // DefaultSerializer]],
+            jsfn`Windows[cellid]  = .;
+        ];
+    ];
+
+    If[KeyExistsQ[jsfn`Windows, cellid],
+
+        (* sends directly *)
+        Block[{JerryI`WolframJSFrontend`fireEvent = WindowEventFire[jsfn`Windows[cellid]["socket"], Global`client]},
+            CellObjEvaluate[CellObj[cellid], jsfn`Processors];
+        ],
+
+        jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client|>;
+        WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
+
+        (* just accumulates to jsfn delayed *)
+        Block[{JerryI`WolframJSFrontend`fireEvent = WindowDelayedEventFire[cellid]},
+            CellObjEvaluate[CellObj[cellid], jsfn`Processors];
+        ]        
+    ];
+);
+
+NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`client]},
+    jsfn`Windows[id]["socket"] = Global`client;
+    (* register notebook *)
+    $AssociationSocket[Global`client] = CellObj[id]["sign"];
+
+    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
+    
+
+
+    (Print[Red<>"boom!"];  Print[#[WindowEventFire[Global`client, jsfn`Windows[id]["origin"]]]]; Print[Reset];) &/@ jsfn`Windows[id]["delayed"];
+]
+
+WindowDelayedEventFire[windowid_String][ev_][cell__] := (
+    console["log", "delayed event fire"];
+    jsfn`Windows[windowid]["delayed"] = Append[jsfn`Windows[windowid]["delayed"], Function[x, x[ev][cell], HoldFirst]];
+)
 
 (*
 NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake[CreateUUID[], 3]<>".html"},

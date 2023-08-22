@@ -1,0 +1,62 @@
+<html><head lang="en">
+        <meta charset="utf-8">
+
+        <?wsp Table[ ?> 
+            <link rel="stylesheet" href="/<?wsp i // FileNameToURLPath ?>">
+        <?wsp , {i, Includes["styles"]}]?>
+
+        <!-- any inline js including core library (global) UPD: No longer exists -->
+        <?wsp Table[ ?> 
+            <script>
+            <?wsp Import[FileNameJoin[{"Packages", i}], "String"] ?>
+            </script>
+        <?wsp , {i, Includes["js"]}]?>
+ 
+        
+        <!-- user's plugins (module) -->
+        <?wsp Table[ ?> 
+            <script type="module" src="/<?wsp i // FileNameToURLPath ?>"></script>
+        <?wsp , {i, Includes["jsmodule"]}]?> 
+
+        <!-- connection to the server (global) -->
+        <script src="/dist/sockets.js" type="module"></script>
+
+
+        <!-- editors autocomplete -->
+        <?wsp Table[ ?> 
+            <script type="module" src="/<?wsp i // FileNameToURLPath ?>"></script>
+        <?wsp , {i, Includes["autocomplete"]}]?>         
+    </head>
+    <body class="notion-body">
+        <div id="notion-app">
+            <div class="notion-app-inner notion-light-theme" style="">
+                <div style="">
+                    <div class="notion-cursor-listener" id="<?wsp $CurrentRequest["Query", "notebook"] ?>">
+
+
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <script type="module">
+            window.Notebook = "<?wsp $CurrentRequest["Query", "notebook"] ?>";
+
+            core.FrontEndPopUp = async (args, env) => {
+                const mess = await interpretate(args[0]);
+                console.warn(mess);
+            }
+
+            core.Pong = function(args, env) {
+                console.log('pong');
+            }
+
+            core.FrontEndWSAttached = () => {
+                console.log('attached');
+            }
+
+            server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
+        </script>
+</body></html>

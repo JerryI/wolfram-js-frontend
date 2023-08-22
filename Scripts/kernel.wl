@@ -66,6 +66,8 @@ With[{dir = Directory[]},
 ];
 
 <<JerryI`Misc`Events`
+<<JerryI`Misc`Async`
+<<JerryI`Misc`Language`
 
 Needs/@{"JerryI`WolframJSFrontend`Remote`", "JerryI`WolframJSFrontend`Utils`","JerryI`WolframJSFrontend`WebObjects`", "JerryI`WolframJSFrontend`Evaluator`"}; 
 
