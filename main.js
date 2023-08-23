@@ -89,6 +89,10 @@ app.whenReady().then(() => {
 
   sender('--- Starting Wolfram Engine ---');
   server = spawn('wolframscript', ['-f', runPath]);
+  server.on('error', function( err ){ setTimeout(()=>{
+    app.exit();
+  }, 3000); throw err;  });
+
   server.stdout.on('data', (data) => {
     const s = data.toString();
     if (!running) {
