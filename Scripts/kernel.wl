@@ -1,3 +1,5 @@
+SetDirectory[DirectoryName[$InputFileName] // ParentDirectory]
+
 DeleteFile["log.txt"];
 
 DefineOutputStreamMethod[

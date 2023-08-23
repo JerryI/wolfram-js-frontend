@@ -1,6 +1,8 @@
 #!/usr/bin/env wolframscript
 
-PacletSiteUpdate/@ PacletSites[]
+ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
+
+FileNames[]//Print;
 
 $HistoryLength = 0
 PacletDirectoryLoad[Directory[]]

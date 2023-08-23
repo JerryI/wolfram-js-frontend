@@ -3,6 +3,7 @@ const path = require('path')
 const { platform } = require('node:process');
 
 const runPath = path.join(__dirname, 'Scripts', 'run.wls');
+const workingDir = path.join(__dirname);
 
 const { exec } = require('node:child_process');
 const controller = new AbortController();
@@ -116,7 +117,7 @@ const nofile = new RegExp('No such file or directory');
 const nolicense = new RegExp('Wolfram product is not activated');
 
 const activateWL = (server_, path, callback) => {
-  subscribe(exec(`"${path}" -activate`));
+  subscribe(exec(`"${path}" -activate`, {cwd: workingDir}));
   setTimeout(callback, 3000);
 }
 
@@ -125,7 +126,7 @@ const askForPath = (server_, window) => {
   sender('and then - press ENTER being in the field');
 
   makePromt((path) => {
-    server = exec(`"${path}"`);
+    server = exec(`"${path}"`, {cwd: workingDir});
 
     subscribe(server, (log)=>{
       if (noscript.exec(log) || nofile.exec(log)) {
@@ -137,7 +138,7 @@ const askForPath = (server_, window) => {
 
       if (nolicense.exec(log)) {
         activateWL(server, path, () => {
-          server = exec(`"${path}"`);
+          server = exec(`"${path}"`, {cwd: workingDir});
 
           subscribe(server, (log)=>{
             if (nolicense.exec(log)) {
@@ -175,7 +176,9 @@ app.whenReady().then(() => {
     });
 
     sender('--- Starting Wolfram Engine ---\n');
-    server = exec('wolframscript', ['-f', runPath]);
+    server = exec('wolframscript', {cwd: workingDir});
+    server.stdin.write(`Get["${runPath}"]\n`);
+    server.stdin.end(); // EOF
 
     subscribe(server, (log) => {
         if (noscript.exec(log) || nofile.exec(log)) {
@@ -184,7 +187,7 @@ app.whenReady().then(() => {
 
           switch(platform) {
             case 'darwin':
-              server = exec('"/Applications/WolframScript.app/Contents/MacOS/wolframscript"');
+              server = exec('"/Applications/WolframScript.app/Contents/MacOS/wolframscript"', {cwd: workingDir});
               server.stdin.write(`Get["${runPath}"]\n`);
               server.stdin.end(); // EOF
     
