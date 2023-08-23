@@ -53,6 +53,10 @@
                 console.log('pong');
             }
 
+            core.Ping = function(args, env) {
+                console.log('ping');
+            }
+
             core.FrontEndWSAttached = () => {
                 console.log('attached');
             }

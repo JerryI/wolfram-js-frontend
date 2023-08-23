@@ -374,7 +374,7 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
             With[{c = channel},
                 LinkWrite[jsfn`Notebooks[channel]["kernel"]["WSTPLink"], Unevaluated[
                     With[{d = ToExpression[name]},
-                        Print["got the request"];
+                      
                         Global`SendToMaster[
                             Function[x,
                                 Global`NotebookStoreKernelSymbol[name, c][d]

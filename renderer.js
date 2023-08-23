@@ -11,6 +11,14 @@ window.electronAPI.handleLogs((event, value) => {
 });
 
 window.electronAPI.addPromt((event, id) => {
+    if (logger.childNodes.length > 500) {
+        let i = 0;
+        while (logger.firstChild && i < 200) {
+            i++;
+            logger.removeChild(logger.firstChild);
+        }
+    }
+
     const el = document.createElement('input');
     el.type = "text";
     el.style.width = "80vw";
