@@ -1,0 +1,36 @@
+body {
+    -webkit-app-region: drag;
+    padding-top:2em;
+}
+
+.logs {
+    text-rendering: optimizeSpeed;
+    overflow-y:scroll;
+    font-family: monospace;
+    -webkit-app-region: no-drag;
+    height: 80vh;
+}
+
+.logs {
+    scrollbar-width: 2px;
+    scrollbar-color: rgba(15, 15, 15, 0.2) transparent;
+  }
+  
+  .logs::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  
+  .logs::-webkit-scrollbar-thumb {
+    background: rgba(15, 15, 15, 0.2);
+    border-radius: 5px;
+  }
+  
+  .logs::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .logs::-webkit-scrollbar-button {
+    background-color: transparent;
+    border-radius: 5px;
+  }

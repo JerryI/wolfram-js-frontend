@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+
+    <title>Logs</title>
+    <link rel="stylesheet" href="electron.css">
+  </head>
+  <body>
+    <div id="log" class="logs">
+        <span>Starting Wolfram Engine...</span><br/>
+    </div>
+  </body>
+  <script src="./renderer.js"></script>
+</html>
