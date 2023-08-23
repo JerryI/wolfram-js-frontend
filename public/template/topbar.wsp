@@ -11,7 +11,7 @@
                                         <!--<div style=""></div>-->
                                         <div class="notion-topbar-action-buttons" style="">
 
-                                            <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], LoadPage["template/kernelcontrol.wsp", {path = $CurrentRequest["Query", "path_decoded"]}], ""] ?>
+                                            <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], LoadPage["template/kernelcontrol.wsp", {path = $CurrentRequest["Query", "path_decoded"]}], " "] ?>
                                             
                                             <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
                                             

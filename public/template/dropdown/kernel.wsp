@@ -13,7 +13,7 @@
                                 <div class="button-label">
                                     <div class="label-clear">Create Link</div>
                                 </div>
-                                <div style="margin-left: auto; margin-right: 12px; min-width: 0px; flex-shrink: 0;"><span style="color: rgba(55, 53, 47, 0.5); font-size: 12px; white-space: nowrap;">⌘+⌥+L</span></div>
+                                <div style="margin-left: auto; margin-right: 12px; min-width: 0px; flex-shrink: 0;"><span style="color: rgba(55, 53, 47, 0.5); font-size: 12px; white-space: nowrap;">launch</span></div>
                             </div>
                         </div>
                         <div id="kernel-restart-link" class="notion-focusable" role="button" tabindex="0" >

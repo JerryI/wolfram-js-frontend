@@ -797,7 +797,7 @@ NotebookEvaluateProjected[cellid_] := (
             CellObjEvaluate[CellObj[cellid], jsfn`Processors];
         ],
 
-        jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client|>;
+        jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
         WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
 
         (* just accumulates to jsfn delayed *)
@@ -811,6 +811,19 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
     jsfn`Windows[id]["socket"] = Global`client;
     (* register notebook *)
     $AssociationSocket[Global`client] = CellObj[id]["sign"];
+
+    If[jsfn`Windows[id]["timer"] === Null,
+      Module[{timer},
+        jsfn`Windows[id]["timer"] = timer = SessionSubmit[ScheduledTask[
+            If[FailureQ[WebSocketSend[jsfn`Windows[id]["socket"], Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
+                Print["window is dead"];
+                jsfn`Windows[id] = .;
+                TaskRemove[timer];
+                ClearAll[timer];
+            ];
+        , Quantity[1, "Seconds"]]];
+      ];
+    ];
 
     WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
     

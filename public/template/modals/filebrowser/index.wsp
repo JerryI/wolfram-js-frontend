@@ -62,11 +62,11 @@
                   </g>
                </svg>
             </div>-->
-            <div class="notion-collection-view-item-add" style="position: relative; display: inline-flex; flex-shrink: 0; border-radius: 3px; overflow: hidden; height: 28px; margin-left: 8px; font-size: 14px;">
-                    <div id="filebrowser-open" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; white-space: nowrap; border-top-left-radius: 3px; border-bottom-left-radius: 3px; line-height: 1.1; padding-left: 8px; padding-right: 8px; font-weight: 500; background-color: rgba(0, 10, 39, 0.41); color: white;">Open</div>
+            <div class="notion-collection-view-item-add" style="position: relative;display: inline-flex;flex-shrink: 0;border-radius: 3px;overflow: hidden;height: 28px;margin-left: 8px;font-size: 14px;">
+                    <div id="filebrowser-open" role="button" tabindex="0" style="-webkit-user-select: none;transition: background 20ms ease-in 0s;cursor: pointer;display: flex;align-items: center;justify-content: center;white-space: nowrap;/* border-top-left-radius: 3px; *//* border-bottom-left-radius: 3px; *//* line-height: 1.1; */padding-left: 8px;padding-right: 8px;/* font-weight: 500; */background-color: rgba(55, 53, 47, 0.08);color: #111;border: solid 1px rgba(15, 15, 15, 0.05);">Open</div>
                     
-                    <div style="position: absolute; pointer-events: none; border-radius: 3px; inset: 0px; box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.1) 0px 1px 2px;"></div>
-            </div>            
+                    <div style="position: absolute;pointer-events: none;border-radius: 3px;inset: 0px;/* box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.1) 0px 1px 2px; */"></div>
+            </div>         
          </div>
       </div>
    </div>
