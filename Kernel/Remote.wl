@@ -114,7 +114,7 @@ WSSocketEstablish := (
 );
 
 NotebookAddTracking[symbol_] := With[{cli = Global`client, name = SymbolName[Unevaluated[symbol]]},
-    Print["Add tracking... for "<>name];
+    
     Experimental`ValueFunction[Unevaluated[symbol]] = Function[{y,x}, 
       If[FailureQ[
         WebSocketSend[cli, ExportByteArray[Global`FrontUpdateSymbol[name, x], "ExpressionJSON"]]
@@ -130,7 +130,7 @@ SetAttributes[NotebookAddTracking, HoldFirst];
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
 
 $ExtendDefinitions[uid_, defs_] := With[{id = notebook}, 
-Print["a query to extend sent for "<>id];
+
 JTPClientEvaluateAsyncNoReply[master, Global`NExtendSingleDefinition[uid, defs][id] ] ];
 
 AttachNotebook[id_, path_] := ( 

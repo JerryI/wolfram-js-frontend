@@ -28,7 +28,7 @@ JerryI`WolframJSFrontend`WebObjects`list = {};
 (* create and extend the definitionsof the kernel *)
 CreateFrontEndObject[expr_, $iouid_:Null] := 
 With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
-  Print["obj created!"];
+
   $ExtendDefinitions[$ouid, <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> -1], "date"->Now |>]; 
 
   Global`FrontEndExecutableHold[$ouid] 

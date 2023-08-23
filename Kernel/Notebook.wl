@@ -790,20 +790,24 @@ NotebookEvaluateProjected[cellid_] := (
         ];
     ];
 
-    If[KeyExistsQ[jsfn`Windows, cellid],
+    If[KeyExistsQ[jsfn`Windows, cellid] && !MissingQ[jsfn`Windows[cellid]["socket"]],
 
         (* sends directly *)
         Block[{JerryI`WolframJSFrontend`fireEvent = WindowEventFire[jsfn`Windows[cellid]["socket"], Global`client]},
             CellObjEvaluate[CellObj[cellid], jsfn`Processors];
-        ],
+        ]
+        
+        ,
 
         jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
-        WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
 
         (* just accumulates to jsfn delayed *)
         Block[{JerryI`WolframJSFrontend`fireEvent = WindowDelayedEventFire[cellid]},
             CellObjEvaluate[CellObj[cellid], jsfn`Processors];
-        ]        
+        ];
+
+        WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
+      
     ];
 );
 
@@ -825,16 +829,22 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
       ];
     ];
 
-    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
+    
     
 
 
     (Print[Red<>"boom!"];  Print[#[WindowEventFire[Global`client, jsfn`Windows[id]["origin"]]]]; Print[Reset];) &/@ jsfn`Windows[id]["delayed"];
+    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
 ]
 
 WindowDelayedEventFire[windowid_String][ev_][cell__] := (
     console["log", "delayed event fire"];
-    jsfn`Windows[windowid]["delayed"] = Append[jsfn`Windows[windowid]["delayed"], Function[x, x[ev][cell], HoldFirst]];
+
+    If[!MissingQ[jsfn`Windows[windowid]["socket"]],
+        WindowEventFire[jsfn`Windows[windowid]["socket"], jsfn`Windows[windowid]["origin"]][ev][cell];
+    ,
+        jsfn`Windows[windowid]["delayed"] = Append[jsfn`Windows[windowid]["delayed"], Function[x, x[ev][cell], HoldFirst]];
+    ];
 )
 
 (*

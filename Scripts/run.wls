@@ -82,7 +82,7 @@ If[MemberQ[$ScriptCommandLine, "legacySockets"],
   Print[Reset];
 ];
 
-If[MemberQ[$ScriptCommandLine, "auto"],
+If[MemberQ[$ScriptCommandLine, "auto"] || True,
   autostart = True;
   Print[Green<>"Autostart mode is activated"];
   Print[Reset];

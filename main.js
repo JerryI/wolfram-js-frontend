@@ -43,6 +43,22 @@ const createWindow = (url) => {
 
 const showMainWindow = (url) => {
   const win = createWindow(url);
+  const contents = win.webContents;
+
+  contents.setWindowOpenHandler(({ url }) => {
+    console.log(url);
+
+    return { action: 'allow', overrideBrowserWindowOptions: {
+      vibrancy: "sidebar", // in my case...
+      frame: true,
+      titleBarStyle: 'hiddenInset',
+      width: 800,
+      height: 600,
+
+    } };
+  });
+  
+
   win.once('ready-to-show', () => {
     win.show()
   });
@@ -198,6 +214,22 @@ app.whenReady().then(() => {
 
                   askForPath(server, win);
                 }
+
+                if (nolicense.exec(log)) {
+                  activateWL(server, "/Applications/WolframScript.app/Contents/MacOS/wolframscript", () => {
+                    server = exec("/Applications/WolframScript.app/Contents/MacOS/wolframscript", {cwd: workingDir});
+          
+                    subscribe(server, (log)=>{
+                      if (nolicense.exec(log)) {
+                        sender('\nThere is some problems with your license... We are sorry ;(\n');
+                        setTimeout(app.exit, 4000);
+                      }
+                    });
+          
+                    server.stdin.write(`Get["${runPath}"]\n`);
+                    server.stdin.end(); // EOF
+                  });
+                }
               });
 
             break;
@@ -205,6 +237,22 @@ app.whenReady().then(() => {
             default:
               askForPath(server, win);
           }
+        }
+
+        if (nolicense.exec(log)) {
+          activateWL(server, `wolframscript`, () => {
+            server = exec(`wolframscript`, {cwd: workingDir});
+  
+            subscribe(server, (log)=>{
+              if (nolicense.exec(log)) {
+                sender('\nThere is some problems with your license... We are sorry ;(\n');
+                setTimeout(app.exit, 4000);
+              }
+            });
+  
+            server.stdin.write(`Get["${runPath}"]\n`);
+            server.stdin.end(); // EOF
+          });
         }
     });
 
