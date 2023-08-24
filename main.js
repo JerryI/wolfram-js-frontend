@@ -2,11 +2,13 @@ const { app, BrowserWindow, dialog, ipcMain } = require('electron')
 const path = require('path')
 const { platform } = require('node:process');
 
+const zlib = require('zlib');
+
 const { net } = require('electron')
 const fs = require('fs');
 
-const runPath = path.join(__dirname, 'Scripts', 'start.wls');
-const workingDir = path.join(__dirname);
+const runPath = path.join(app.getAppPath('appData'), 'Scripts', 'start.wls');
+const workingDir = app.getAppPath('appData');
 
 const { exec } = require('node:child_process');
 const controller = new AbortController();
@@ -223,7 +225,7 @@ app.whenReady().then(() => {
 
   const startServer = () => {
     sender('--- Starting Wolfram Engine ---\n', 'red');
-    server = exec('woldframscript', {cwd: workingDir});
+    server = exec('wolframscript', {cwd: workingDir});
     server.stdin.write(`Get["${runPath}"]\n`);
     // server.stdin.end(); // EOF
 
@@ -361,4 +363,109 @@ const checkInstalled = (cbk) => {
     sender('looks like it is not installed...', 'red');
     installFrontend(cbk);
   }
+}
+
+
+
+const installFrontend = (cbk) => {
+  sender('downloading zip to '+app.getAppPath('temp')+'...', 'red');
+
+  const pathToFile = path.join(app.getAppPath('temp'), 'pkg.zip');
+
+  downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/master', pathToFile, (file) => {
+    sender('unzipping...', 'red');
+
+    
+    const extracted = path.join(app.getAppPath('temp'), 'extracted');
+   
+    if (!fs.existsSync(extracted)) {
+      fs.mkdirSync(extracted);
+    } else {
+      fs.rmSync(extracted, { recursive: true, force: true });
+      fs.mkdirSync(extracted);
+    }
+
+    const StreamZip = require('node-stream-zip');
+    const zip = new StreamZip.async({ file: file });
+
+    const count = zip.extract(null, extracted).then((res)=>{
+      console.log(res);
+      sender('extracted!', 'red');
+
+      zip.close();
+      fs.unlinkSync(file);
+
+      const sub = fs.readdirSync(extracted)[0];
+
+      fs.unlinkSync(path.join(extracted, sub, 'main.js'));
+
+      const fse = require('fs-extra');
+      fse.copySync(path.join(extracted, sub), app.getAppPath('appData'), { overwrite: true });
+
+      const toremove = ['.packages', 'wl_packages_lock.wl'];
+      const dirtoremove = ['Packages', 'wl_packages'];
+
+      toremove.forEach((p) => {
+          if(fs.existsSync(path.join(app.getAppPath('appData'), p))) {
+            fs.unlinkSync(path.join(app.getAppPath('appData'), p));
+          }
+      });
+
+      dirtoremove.forEach((p) => {
+        if(fs.existsSync(path.join(app.getAppPath('appData'), p))) {
+          fs.rmSync(path.join(app.getAppPath('appData'), p), { recursive: true, force: true });
+        }
+      });      
+
+      fs.rmSync(extracted, { recursive: true, force: true });
+
+      cbk();
+
+    })
+ 
+  });
+
+}
+
+function downloadFile(file_url , targetPath, cbk){
+  // Save variable to know progress
+  var received_bytes = 0;
+  var total_bytes = 0;
+
+  const ft = net.request(file_url);
+
+  var out = fs.createWriteStream(targetPath);
+  //req.pipe(out);
+
+  ft.on('response', (responce) => {
+      // Change the total bytes value to get progress later.
+      console.log(responce.headers);
+      total_bytes = parseInt(responce.headers['content-length' ]);
+      console.log(total_bytes);
+
+      responce.pipe(out);
+
+      responce.on('data', function(chunk) {
+        // Update the received bytes
+        received_bytes += chunk.length;
+  
+        showProgress(received_bytes, total_bytes);
+      });
+  
+      responce.on('end', function() {
+        sender("File succesfully downloaded", 'green');
+        
+
+        cbk(targetPath);
+      });      
+  });
+
+
+
+  ft.end()
+}
+
+function showProgress(received,total){
+  var percentage = (received * 100) / total;
+  sender(percentage + "% | " + received + " bytes out of " + total + " bytes.", 'red');
 }
