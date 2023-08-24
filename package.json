@@ -32,6 +32,7 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "fflate": "^0.8.0",
     "jsoncrush": "^1.1.8",
+    "node-fetch": "^3.3.2",
     "pako": "^2.1.0"
   }
 }

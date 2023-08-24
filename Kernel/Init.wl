@@ -13,7 +13,11 @@ JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 Once[If[PacletFind["JerryI/LPM"] === {}, PacletInstall["JerryI/LPM"]]]; 
 <<JerryI`LPM`
 
-PacletRepositories[{
+If[TimeConstrained[URLFetch["https://github.com"], 5] === $Aborted,
+  Print["No internet connection. Passive mode..."];
+  PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]  
+,
+ PacletRepositories[{
   Github -> "https://github.com/JerryI/CSocketListener",
   Github -> "https://github.com/KirillBelovTest/Objects",
   Github -> "https://github.com/KirillBelovTest/Internal",
@@ -23,6 +27,8 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/wl-wsp",
   Github -> "https://github.com/JerryI/wl-misc"
 }, "Directory"->JerryI`WolframJSFrontend`root]
+];
+
 
 <<KirillBelov`Objects`;
 <<KirillBelov`Internal`;
