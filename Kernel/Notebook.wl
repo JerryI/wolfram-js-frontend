@@ -697,7 +697,6 @@ NotebookGetObject[uid_] := Module[{obj}, With[{channel = $AssociationSocket[Glob
         
         Return[$Failed];
     ];
-    Print[StringTemplate["getting object `` with data inside \n `` \n"][uid, jsfn`Notebooks[channel]["objects"][uid]//Compress]];
 
     jsfn`Notebooks[channel]["objects"][uid]["date"] = Now;
     jsfn`Notebooks[channel]["objects"][uid]["json"]

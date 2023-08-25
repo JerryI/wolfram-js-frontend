@@ -6,9 +6,20 @@ const zlib = require('zlib');
 
 const { net } = require('electron')
 const fs = require('fs');
+const fse = require('fs-extra');
 
-const runPath = path.join(app.getAppPath('userData'), 'Scripts', 'start.wls');
-const workingDir = app.getAppPath('userData');
+
+let installationFolder;
+
+if (app.isPackaged) {
+  installationFolder = path.join(app.getPath('appData'), 'wljs-frontend');
+} else {
+  installationFolder = app.getAppPath();
+}
+
+const runPath = path.join(installationFolder, 'Scripts', 'start.wls');
+
+const workingDir = app.getPath('home');
 
 const { exec } = require('node:child_process');
 const controller = new AbortController();
@@ -17,6 +28,26 @@ const { signal } = controller;
 const { shell } = require('electron')
 
 let globalURL;
+
+console.log(app.isPackaged);
+
+const getAppBasePath = () => {
+  //dev
+if (process.env.RUN_ENV === 'development') return './'
+
+if (!process.platform || !['win32', 'darwin'].includes(process.platform)) {
+  console.error(`Unsupported OS: ${process.platform}`)
+  return './'
+}
+  //prod
+if (process.platform === 'darwin') {
+  console.log('Mac OS detected')
+  return `/Users/${process.env.USER}/Library/Application\ Support/wolfram-js-frontend/`
+} else if (process.platform === 'win32') {
+  console.log('Windows OS detected')
+  return `${process.env.LOCALAPPDATA}\\wolfram-js-frontend\\`
+}
+}
 
 const createLogWindow = () => {
   const win = new BrowserWindow({
@@ -231,6 +262,8 @@ app.whenReady().then(() => {
   }, 500);
 
   const startServer = () => {
+    sender(getAppBasePath());
+
     sender('--- Starting Wolfram Engine ---\n', 'red');
     server = exec('wolframscript', {cwd: workingDir});
     server.stdin.write(`Get["${runPath}"]\n`);
@@ -308,10 +341,11 @@ app.whenReady().then(() => {
 
 const checkInstalled = (cbk, window) => {
   sender('checking the installation folder...', 'red');
-  sender(app.getAppPath('userData'), 'green');
+  sender(app.getPath('appData'), 'green');
 
-  const p = path.join(app.getAppPath('userData'), 'package.json');
-  if (fs.existsSync(p)) {
+  const p = path.join(installationFolder, 'package.json');
+  const script = path.join(installationFolder, 'Scripts', 'run.wls');
+  if (fs.existsSync(script)) {
     fs.readFile(p, (err, raw) => {
       if (err) throw err;
       let data = JSON.parse(raw);
@@ -389,15 +423,15 @@ const checkInstalled = (cbk, window) => {
 
 
 const installFrontend = (cbk) => {
-  sender('downloading zip to '+app.getAppPath('temp')+'...', 'red');
+  sender('downloading zip to '+installationFolder+'...', 'red');
 
-  const pathToFile = path.join(app.getAppPath('temp'), 'pkg.zip');
+  const pathToFile = path.join(installationFolder, 'pkg.zip');
 
   downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/master', pathToFile, (file) => {
     sender('unzipping...', 'red');
 
     
-    const extracted = path.join(app.getAppPath('temp'), 'extracted');
+    const extracted = path.join(installationFolder, 'extracted');
    
     if (!fs.existsSync(extracted)) {
       fs.mkdirSync(extracted);
@@ -417,29 +451,40 @@ const installFrontend = (cbk) => {
       fs.unlinkSync(file);
 
       const sub = fs.readdirSync(extracted)[0];
-
+      sender(sub);
       //fs.unlinkSync(path.join(extracted, sub, 'main.js'));
       if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
+      sender('.git was removed');
 
-      const fse = require('fs-extra');
-      fse.copySync(path.join(extracted, sub), app.getAppPath('userData'), { overwrite: true });
+
+      
+      sender('copying to asar folder...');
+      fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
+      sender('done!');
 
       const toremove = ['.packages', 'wl_packages_lock.wl'];
       const dirtoremove = ['Packages', 'wl_packages'];
 
+      sender('removing Packages...');
+      sender('removing wl_packages...');
+
       toremove.forEach((p) => {
-          if(fs.existsSync(path.join(app.getAppPath('userData'), p))) {
-            fs.unlinkSync(path.join(app.getAppPath('userData'), p));
+          if(fs.existsSync(path.join(installationFolder, p))) {
+            fs.unlinkSync(path.join(installationFolder, p));
           }
       });
 
       dirtoremove.forEach((p) => {
-        if(fs.existsSync(path.join(app.getAppPath('userData'), p))) {
-          fs.rmSync(path.join(app.getAppPath('userData'), p), { recursive: true, force: true });
+        if(fs.existsSync(path.join(installationFolder, p))) {
+          fs.rmSync(path.join(installationFolder, p), { recursive: true, force: true });
         }
       });      
 
+      sender('done!');
+
       fs.rmSync(extracted, { recursive: true, force: true });
+
+      sender('temp folder was removed!');
 
       cbk();
 
@@ -517,9 +562,9 @@ const template = [
     label: 'File',
     submenu: [
       {
-        label: 'Open file',
+        label: 'Open File',
         click: async () => {
-          const promise = dialog.showOpenDialog({title: 'Open file', properties: ['openFile']});
+          const promise = dialog.showOpenDialog({title: 'Open File', properties: ['openFile']});
           promise.then((res) => {
             if (!res.canceled) {
               showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
@@ -528,9 +573,9 @@ const template = [
         }
       },      
       {
-        label: 'Open folder',
+        label: 'Open Folder',
         click: async () => {
-          const promise = dialog.showOpenDialog({title: 'Open vault', properties: ['openDirectory']});
+          const promise = dialog.showOpenDialog({title: 'Open Vault', properties: ['openDirectory']});
           promise.then((res) => {
             if (!res.canceled) {
               showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
