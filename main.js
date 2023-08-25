@@ -220,7 +220,7 @@ app.whenReady().then(() => {
       sender = (data) => {console.log(data)}
     });
 
-    checkInstalled(startServer);
+    checkInstalled(startServer, win);
   }, 500);
 
   const startServer = () => {
@@ -295,7 +295,7 @@ app.whenReady().then(() => {
 })
 
 
-const checkInstalled = (cbk) => {
+const checkInstalled = (cbk, window) => {
   sender('checking the installation folder...', 'red');
   sender(app.getAppPath('appData'), 'green');
 
@@ -329,8 +329,18 @@ const checkInstalled = (cbk) => {
                 if (remote["version"]) {
                   const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
                   if (rersion > version) {
-                    sender('updating...', 'red');
-                    installFrontend(cbk);
+                    sender('\nDo you want me to install a new version?', 'blue');
+                    sender('-- WARNING: it will purge wl_packages and Package folders!      --', 'red');
+                    sender('-- please, make a backup of your local packages if you have one --', 'red');
+                    dialogYesNo((answer)=>{
+                      if (answer === true) {
+                        installFrontend(cbk);
+                      } else {
+                        cbk();
+                      }
+                    }, window);
+                    
+                    
                   } else {
                     sender('You are using the most recent one!', 'red');
                     cbk();
@@ -397,7 +407,8 @@ const installFrontend = (cbk) => {
 
       const sub = fs.readdirSync(extracted)[0];
 
-      fs.unlinkSync(path.join(extracted, sub, 'main.js'));
+      //fs.unlinkSync(path.join(extracted, sub, 'main.js'));
+      if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
 
       const fse = require('fs-extra');
       fse.copySync(path.join(extracted, sub), app.getAppPath('appData'), { overwrite: true });
