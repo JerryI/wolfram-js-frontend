@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain } = require('electron')
+const { app, Menu, BrowserWindow, dialog, ipcMain } = require('electron')
 const path = require('path')
 const { platform } = require('node:process');
 
@@ -7,14 +7,16 @@ const zlib = require('zlib');
 const { net } = require('electron')
 const fs = require('fs');
 
-const runPath = path.join(app.getAppPath('appData'), 'Scripts', 'start.wls');
-const workingDir = app.getAppPath('appData');
+const runPath = path.join(app.getAppPath('userData'), 'Scripts', 'start.wls');
+const workingDir = app.getAppPath('userData');
 
 const { exec } = require('node:child_process');
 const controller = new AbortController();
 const { signal } = controller;
 
 const { shell } = require('electron')
+
+let globalURL;
 
 const createLogWindow = () => {
   const win = new BrowserWindow({
@@ -49,8 +51,9 @@ const createWindow = (url) => {
     return win;
 }
 
-const showMainWindow = (url) => {
+const showMainWindow = (url, title = "Root") => {
   const win = createWindow(url);
+  win.title = title;
   const contents = win.webContents;
 
   contents.setWindowOpenHandler(({ url }) => {
@@ -71,17 +74,6 @@ const showMainWindow = (url) => {
   win.once('ready-to-show', () => {
     win.show()
   });
-
-  app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) {
-      const o = createWindow(url);
-      o.once('ready-to-show', () => {
-        o.show()
-      });
-    }
-  })
 }
 
 let server;
@@ -95,6 +87,17 @@ app.on('quit', () => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
+})
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) {
+    const o = createWindow(url);
+    o.once('ready-to-show', () => {
+      o.show()
+    });
+  }
 })
 
 let sender;
@@ -117,7 +120,8 @@ const subscribe = (server, handler = ()=>{}) => {
       handler(s);
       const match = reg.exec(s);
       if (match) {
-        showMainWindow(`http://${match.groups.ip}:${match.groups.port}`);
+        globalURL = `http://${match.groups.ip}:${match.groups.port}`
+        showMainWindow(globalURL);
         running = true;
       }
     }
@@ -204,6 +208,9 @@ const askForPath = (server_, window) => {
 }
 
 app.whenReady().then(() => {
+
+
+
   const win = createLogWindow();
 
   ipcMain.on('promt-resolve', (e, id, val) => {
@@ -228,6 +235,10 @@ app.whenReady().then(() => {
     server = exec('wolframscript', {cwd: workingDir});
     server.stdin.write(`Get["${runPath}"]\n`);
     // server.stdin.end(); // EOF
+    sender('waiting for th responce...');
+    server.on("error", (err)=>{
+      sender(err);
+    });
 
     subscribe(server, (log) => {
         if (noscript.exec(log) || nofile.exec(log)) {
@@ -297,9 +308,9 @@ app.whenReady().then(() => {
 
 const checkInstalled = (cbk, window) => {
   sender('checking the installation folder...', 'red');
-  sender(app.getAppPath('appData'), 'green');
+  sender(app.getAppPath('userData'), 'green');
 
-  const p = path.join(app.getAppPath('appData'), 'package.json');
+  const p = path.join(app.getAppPath('userData'), 'package.json');
   if (fs.existsSync(p)) {
     fs.readFile(p, (err, raw) => {
       if (err) throw err;
@@ -411,20 +422,20 @@ const installFrontend = (cbk) => {
       if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
 
       const fse = require('fs-extra');
-      fse.copySync(path.join(extracted, sub), app.getAppPath('appData'), { overwrite: true });
+      fse.copySync(path.join(extracted, sub), app.getAppPath('userData'), { overwrite: true });
 
       const toremove = ['.packages', 'wl_packages_lock.wl'];
       const dirtoremove = ['Packages', 'wl_packages'];
 
       toremove.forEach((p) => {
-          if(fs.existsSync(path.join(app.getAppPath('appData'), p))) {
-            fs.unlinkSync(path.join(app.getAppPath('appData'), p));
+          if(fs.existsSync(path.join(app.getAppPath('userData'), p))) {
+            fs.unlinkSync(path.join(app.getAppPath('userData'), p));
           }
       });
 
       dirtoremove.forEach((p) => {
-        if(fs.existsSync(path.join(app.getAppPath('appData'), p))) {
-          fs.rmSync(path.join(app.getAppPath('appData'), p), { recursive: true, force: true });
+        if(fs.existsSync(path.join(app.getAppPath('userData'), p))) {
+          fs.rmSync(path.join(app.getAppPath('userData'), p), { recursive: true, force: true });
         }
       });      
 
@@ -480,3 +491,133 @@ function showProgress(received,total){
   var percentage = (received * 100) / total;
   sender(percentage + "% | " + received + " bytes out of " + total + " bytes.", 'red');
 }
+
+const isMac = process.platform === 'darwin'
+
+const template = [
+  // { role: 'appMenu' }
+  ...(isMac
+    ? [{
+        label: app.name,
+        submenu: [
+          { role: 'about' },
+          { type: 'separator' },
+          { role: 'services' },
+          { type: 'separator' },
+          { role: 'hide' },
+          { role: 'hideOthers' },
+          { role: 'unhide' },
+          { type: 'separator' },
+          { role: 'quit' }
+        ]
+      }]
+    : []),
+  // { role: 'fileMenu' }
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Open file',
+        click: async () => {
+          const promise = dialog.showOpenDialog({title: 'Open file', properties: ['openFile']});
+          promise.then((res) => {
+            if (!res.canceled) {
+              showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
+            }
+          });
+        }
+      },      
+      {
+        label: 'Open folder',
+        click: async () => {
+          const promise = dialog.showOpenDialog({title: 'Open vault', properties: ['openDirectory']});
+          promise.then((res) => {
+            if (!res.canceled) {
+              showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
+            }
+          });
+        }
+      },
+      isMac ? { role: 'close' } : { role: 'quit' }
+    ]
+  },
+  // { role: 'editMenu' }
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      ...(isMac
+        ? [
+            { role: 'pasteAndMatchStyle' },
+            { role: 'delete' },
+            { role: 'selectAll' },
+            { type: 'separator' },
+            {
+              label: 'Speech',
+              submenu: [
+                { role: 'startSpeaking' },
+                { role: 'stopSpeaking' }
+              ]
+            }
+          ]
+        : [
+            { role: 'delete' },
+            { type: 'separator' },
+            { role: 'selectAll' }
+          ])
+    ]
+  },
+  // { role: 'viewMenu' }
+  {
+    label: 'View',
+    submenu: [
+      { role: 'reload' },
+      { role: 'forceReload' },
+      { role: 'toggleDevTools' },
+      { type: 'separator' },
+      { role: 'resetZoom' },
+      { role: 'zoomIn' },
+      { role: 'zoomOut' },
+      { type: 'separator' },
+      { role: 'togglefullscreen' }
+    ]
+  },
+  // { role: 'windowMenu' }
+  {
+    label: 'Window',
+    submenu: [
+      { role: 'minimize' },
+      { role: 'zoom' },
+      ...(isMac
+        ? [
+            { type: 'separator' },
+            { role: 'front' },
+            { type: 'separator' },
+            { role: 'window' }
+          ]
+        : [
+            { role: 'close' }
+          ])
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Learn More',
+        click: async () => {
+          const { shell } = require('electron')
+          await shell.openExternal('https://electronjs.org')
+        }
+      }
+    ]
+  }
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)

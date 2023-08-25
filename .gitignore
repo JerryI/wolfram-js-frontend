@@ -12,5 +12,6 @@ Kernel/.lastpath
 Demo/*.wl
 Demo/*.html
 Packages/*
+dist
 null
 log.txt

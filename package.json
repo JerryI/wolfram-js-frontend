@@ -1,13 +1,30 @@
 {
   "name": "wolfram-js-frontend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "wolframscript -f Scripts/run.wls",
     "dev": "wolframscript -f Scripts/run.wls dev",
     "build": "wolframscript -f Scripts/build.wls",
-    "el": "electron ."
+    "el": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "wolfram-engine-frontend",
+    "dmg": {
+      "title": "${productName} ${version}"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
@@ -22,6 +39,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "electron": "^26.0.0",
+    "electron-builder": "^24.6.3",
     "rollup": "^3.20.6",
     "rollup-plugin-combine": "^2.1.1",
     "serve-static": "^1.14.1",
