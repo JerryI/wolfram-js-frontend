@@ -46,9 +46,16 @@
             
                 return false;
             }  
+
+            function ifLinux() {
+                if (navigator.appVersion.indexOf("X11") != -1) return true;
+                if (navigator.appVersion.indexOf("Linux") != -1) return true;
+
+                return false;
+            }
             
-            if (!isElectron()) {
-                document.body.style.background = "black";
+            if (!isElectron() || ifLinux()) {
+                document.body.style.background = "var(--topbar-background)";
             }
         </script>
 

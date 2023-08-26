@@ -65,6 +65,37 @@
                 -webkit-app-region: drag;
             }
         </style>
+                <script type="module">
+            function isElectron() {
+                // Renderer process
+                if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
+                    return true;
+                }
+            
+                // Main process
+                if (typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron) {
+                    return true;
+                }
+            
+                // Detect the user agent when the `nodeIntegration` option is set to true
+                if (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('Electron') >= 0) {
+                    return true;
+                }
+            
+                return false;
+            }  
+
+            function ifLinux() {
+                if (navigator.appVersion.indexOf("X11") != -1) return true;
+                if (navigator.appVersion.indexOf("Linux") != -1) return true;
+
+                return false;
+            }
+            
+            if (!isElectron() || ifLinux()) {
+                document.body.style.background = "var(--topbar-background)";
+            }
+        </script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

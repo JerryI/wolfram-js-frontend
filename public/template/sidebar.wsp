@@ -2,10 +2,7 @@
                                         <div style="">
                                             <div class="sidebar-flex">
                                                 <div class="sidebar-holder">
-                                                    <div class="notion-sidebar-switcher notion-focusable sidebar-container" role="button" tabindex="0" >                                                        
-                                                        <div class="notion-fadein">
-
-                                                        </div>
+                                                    <div class="notion-sidebar-switcher  sidebar-container" role="" tabindex="0">                                                         
                                                     </div>
                                                 </div>
                                                 <div style="flex-grow: 0;flex-shrink: 0;border-bottom: 1px solid var(--borders-color);padding-bottom: 0.5em;margin-bottom: 0.5em;">

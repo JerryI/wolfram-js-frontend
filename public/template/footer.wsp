@@ -14,8 +14,8 @@
         
         
         
- <script>
-    $wsppages = {};
+ <script type="module">
+    window.$wsppages = {};
     let arrayWSPuids = "";
 
     const locationHandler = async () => {
@@ -25,7 +25,7 @@
             location = "/";
         }
         // get the route object from the urlRoutes object
-        server.socket.send('HotReload[' + arrayWSPuids + '];');
+        window.server.socket.send('HotReload[' + arrayWSPuids + '];');
     };
 
     // create document click that watches the nav links only
@@ -51,7 +51,7 @@
         //window.location.pathname = event.target.href;
 
         //locationHandler();
-        server.socket.send('HotReload[' + arrayWSPuids + ', "'+event.target.closest(`a`).href+'"];');
+        window.server.socket.send('HotReload[' + arrayWSPuids + ', "'+event.target.closest(`a`).href+'"];');
     };
 
     window.addEventListener("wsconnected", function() { 
@@ -66,10 +66,10 @@
         };
 
         document.querySelectorAll('[data-wsp]').forEach((e)=>{
-            $wsppages[e.getAttribute('data-wsp')] = e;
+            window.$wsppages[e.getAttribute('data-wsp')] = e;
         });
 
-        arrayWSPuids = '{'+JSON.stringify(Object.keys($wsppages)).slice(1, -1)+"}";
+        arrayWSPuids = '{'+JSON.stringify(Object.keys(window.$wsppages)).slice(1, -1)+"}";
 
 
  
@@ -91,7 +91,10 @@
             document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
             document.querySelectorAll('.notion-outliner-private')[0].classList.add('notion-outliner-private-hide');
             const tm = document.getElementById('time-wrapper');
-            if (tm) tm.classList.add('hidden');
+            if (tm) {
+                tm.classList.add('hidden');
+                document.getElementById('kernel-stat').getElementsByTagName('span')[0].classList.add('opac');
+            }
             //document.querySelectorAll('.notion-topbar')[0].classList.add('notion-topbar-show');
         }
 
@@ -102,7 +105,10 @@
             document.querySelectorAll('.notion-outliner-private')[0].classList.toggle('notion-outliner-private-hide');
 
             const tm = document.getElementById('time-wrapper');
-            if (tm) tm.classList.toggle('hidden');
+            if (tm) {
+                tm.classList.toggle('hidden');
+                document.getElementById('kernel-stat').getElementsByTagName('span')[0].classList.toggle('opac');
+            }
             //document.querySelectorAll('.notion-topbar')[0].classList.toggle('notion-topbar-show');
             
             if (sidebarToggle == 'true')
