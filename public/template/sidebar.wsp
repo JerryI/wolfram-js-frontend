@@ -8,7 +8,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div style="flex-grow: 0;flex-shrink: 0;border-bottom: 1px solid rgba(55, 53, 47, 0.08);padding-bottom: 0.5em;margin-bottom: 0.5em;">
+                                                <div style="flex-grow: 0;flex-shrink: 0;border-bottom: 1px solid var(--borders-color);padding-bottom: 0.5em;margin-bottom: 0.5em;">
                                                     <div style="display:none" class="notion-focusable sidebar-button" id="settings-button" role="button" tabindex="0" >
                                                         <div class="sidebar-button-inner">
                                                             <div class="sidebar-button-svg">
@@ -72,6 +72,48 @@
                                                     </div>
                                                     -->
                                                 </div>
+
+                                            <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>    
+                                                <div style="
+    border-bottom: 1px solid var(--borders-color);
+    display: inline-block;
+">
+                                                    <div style="margin-bottom: 0.5em;
+    margin-left: 1em;
+    justify-content: center;
+    /* text-align: center; */
+    display: block;
+    vertical-align: baseline;
+">
+                                                        <div class="sidebar-button-inner-inline">
+                                                            <?wsp LoadPage["template/kernelcontrol.wsp", {path = $CurrentRequest["Query", "path_decoded"]}] ?>
+                                                        </div>    
+                                                        <div class="sidebar-button-inner-inline"> 
+                                                                <div id="abort-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
+                                                                    <img width="15" height="15" src="/svg/topbarUpdate.svg"/>
+                                                                </div> 
+                                                        </div>        
+
+                                                        <div class="sidebar-button-inner-inline">    
+                                                            <div id="evaluateinit-button" class="notion-topbar-updates-button notion-focusable"  role="button" aria-label="Init" tabindex="0" style="border-radius: 4px;text-align: center;">
+                                                                <span style="/* font-size: 14px; */color: rgb(255 255 255 / 50%);white-space: nowrap;line-height: 1.1;/* padding: 5px; */width: 15px;height: 15px;/* padding-bottom: -16px; *//* margin-bottom: 3px; */display: block;text-align: center;/*! background: white; */font-weight: 800;">i</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sidebar-button-inner-inline">
+                                                            <div id="evaluateall-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Evaluateall" tabindex="0" >
+                                                                <img width="15" height="15" src="/svg/del.svg"/>
+                                                            </div>  
+                                                        </div>   
+
+                                                        <div class="sidebar-button-inner-inline">
+                                                            <div id="time-wrapper" style="flex-flow: wrap;padding-left: 0.5em;"><div>Saved<span> </span><span id="date-saved"><?wsp TextString[(Now - JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]], "date"])//Round] ?></span><span> </span>ago</div></div>
+                                                        </div>
+
+                                                    </div>                                                  
+                                                </div>
+
+                                                <?wsp , ""] ?>
+
                                                 <div class="notion-scroller" style="overflow-y: scroll;">
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
@@ -181,7 +223,12 @@
         alert('Not implemented');
     });    */
 
-   
+
+    //const clocks = document.getElementById('clocks');
+    core.Pong = function(args, env) {
+        //clocks.style.transform = 'rotate('+args[0]+'deg)';
+    }
+
 
     core.FrontEndUpdateFileList = async function(args, env) {
         console.log('HotReload!');
@@ -247,4 +294,104 @@
         }
 
     });     
+
+    <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
+
+
+    document.getElementById("abort-button").addEventListener('click', (e)=>{
+        server.socket.send('NotebookAbort');
+    });
+
+    document.getElementById("evaluateall-button").addEventListener('click', (e)=>{
+        if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
+            alert("No active kernel is attached");
+            return;
+        }
+
+        server.socket.send('NotebookEvaluateAll');
+    });    
+
+    document.getElementById("evaluateinit-button").addEventListener('click', (e)=>{
+        if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
+            alert("No active kernel is attached");
+            return;
+        }
+
+        server.socket.send('NotebookEvaluateInit');
+    });
+
+    core.FrontEndUpdateFileName = function(args, env) {
+        const name = interpretate(args[0])+".wl";
+        const path = interpretate(args[1]);
+
+        document.getElementById("path-path").innerText = path;
+    };
+
+    /*document.getElementById("path-filename").addEventListener("blur", (e)=>{
+        document.getElementById("path-path").classList.remove('any-hidden');
+        const field = document.getElementById("path-filename");
+        field.classList.add('any-hidden');
+
+        server.socket.send('NotebookRename["'+field.value+'"]');
+    }, true);*/
+
+    var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]], "date"]] ?> * 1000);
+
+    const generateThumbnail = () => {
+
+    };
+
+    /*document.getElementById('save-button').addEventListener('click', (e)=> {
+        server.socket.send('NotebookStore;');
+        lastTimeSaved = new Date();
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
+        //generateThumbnail();
+    });*/
+
+       
+
+    const datesaved = document.getElementById('date-saved');
+    setInterval(function () {
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+    }, 5000);
+
+    setInterval(function () {
+        console.log('autosave');
+        server.socket.send('NotebookStore;');
+        lastTimeSaved = new Date();
+        datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
+        /*generateThumbnail();*/
+    }, 1000*60*3);
+
+
+
+    function formatDateDiff(startDate, endDate) {
+      const diff = Math.abs(endDate - startDate);
+      const diffInSeconds = Math.round(diff / 1000);
+      const diffInMinutes = Math.round(diff / (1000 * 60));
+      const diffInHours = Math.round(diff / (1000 * 60 * 60));
+      const diffInDays = Math.round(diff / (1000 * 60 * 60 * 24));
+      const diffInWeeks = Math.round(diff / (1000 * 60 * 60 * 24 * 7));
+      const diffInMonths = Math.round(diff / (1000 * 60 * 60 * 24 * 30));
+      const diffInYears = Math.round(diff / (1000 * 60 * 60 * 24 * 365));
+    
+      if (diffInSeconds < 60) {
+        return `${diffInSeconds} secs`;
+      } else if (diffInMinutes < 60) {
+        return `${diffInMinutes} mins`;
+      } else if (diffInHours < 24) {
+        return `${diffInHours} hrs`;
+      } else if (diffInDays < 7) {
+        return `${diffInDays} days`;
+      } else if (diffInWeeks < 4) {
+        return `${diffInWeeks} weeks`;
+      } else if (diffInMonths < 12) {
+        return `${diffInMonths} months`;
+      } else {
+        return `${diffInYears} years`;
+      }
+    };
+
+    <?wsp , ""] ?>
+
 </script>

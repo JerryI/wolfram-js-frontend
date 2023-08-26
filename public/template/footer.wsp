@@ -90,7 +90,9 @@
             document.querySelectorAll('.notion-frame')[0].classList.add('notion-frame-extended');
             document.querySelectorAll('.doubleChevronLeft')[0].classList.add('doubleChevronLeft-rotate');
             document.querySelectorAll('.notion-outliner-private')[0].classList.add('notion-outliner-private-hide');
-            document.querySelectorAll('.notion-topbar')[0].classList.add('notion-topbar-show');
+            const tm = document.getElementById('time-wrapper');
+            if (tm) tm.classList.add('hidden');
+            //document.querySelectorAll('.notion-topbar')[0].classList.add('notion-topbar-show');
         }
 
         document.getElementById("toggle-sidebar-button").addEventListener('click', (e)=>{
@@ -98,7 +100,10 @@
             document.querySelectorAll('.doubleChevronLeft')[0].classList.toggle('doubleChevronLeft-rotate');
             document.querySelectorAll('.notion-frame')[0].classList.toggle('notion-frame-extended');
             document.querySelectorAll('.notion-outliner-private')[0].classList.toggle('notion-outliner-private-hide');
-            document.querySelectorAll('.notion-topbar')[0].classList.toggle('notion-topbar-show');
+
+            const tm = document.getElementById('time-wrapper');
+            if (tm) tm.classList.toggle('hidden');
+            //document.querySelectorAll('.notion-topbar')[0].classList.toggle('notion-topbar-show');
             
             if (sidebarToggle == 'true')
                 sidebarToggle = 'false';

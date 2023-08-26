@@ -33,10 +33,12 @@
             }
 
             section.cell-wrapper.frontend-node {
-                padding: 0.5em;
-                margin-top: 2em;
-                width: 100%;
-                position: relative;
+                padding: 0.4em;
+    /* padding-top: 0.5em; */
+    margin-top: 2em;
+    width: 100%;
+    filter: var(--filter-frame);
+    position: relative;
             }
 
             .content-wrapper {
