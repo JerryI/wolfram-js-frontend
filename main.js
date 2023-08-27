@@ -9,6 +9,8 @@ const fs = require('fs');
 const fse = require('fs-extra');
 
 
+let wasUpdated = false;
+
 let installationFolder;
 
 if (app.isPackaged) {
@@ -26,8 +28,6 @@ const controller = new AbortController();
 const { signal } = controller;
 
 const { shell } = require('electron')
-
-let globalURL;
 
 console.log(app.isPackaged);
 
@@ -60,7 +60,7 @@ const createLogWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
-  })
+  });
 
   win.loadFile('log.html');
 
@@ -80,6 +80,12 @@ const createWindow = (url) => {
     })
   
     win.loadURL(url);
+
+    if (wasUpdated) {
+      win.webContents.session.clearCache();
+      wasUpdated = false;
+    }
+
     return win;
 }
 
@@ -425,6 +431,7 @@ const checkInstalled = (cbk, window) => {
 
 
 const installFrontend = (cbk) => {
+  wasUpdated = true;
   sender('downloading zip to '+installationFolder+'...', 'red');
 
   const pathToFile = path.join(installationFolder, 'pkg.zip');
