@@ -45,19 +45,25 @@
 
     core.FrontEndWSAttached = async function(args, env) {
         //document.getElementById("ws-link").className = 'good-kernel';
+        document.getElementById("kernel-stat").className = 'best-kernel';
+        document.getElementById("kernel-text").innerText = "WS Link";
     } 
     core.FrontEndNotebookAttached = async function(args, env) {
-        //document.getElementById("notebook-attached").className = 'good-kernel';
+       console.warn('Notebook attached');
     }
     
     server.kernelControl = {};
     server.kernelControl.wsReset = (state) => {
-        document.getElementById("ws-link").className = 'load-kernel';
-        if (state === 'bad') document.getElementById("ws-link").className = 'bad-kernel';
+        document.getElementById("kernel-stat").className = $KernelStatus+'-kernel';
+        document.getElementById("kernel-text").innerText = "No WS link";
+        if (state === 'bad') {
+            document.getElementById("kernel-stat").className = 'bad-kernel';
+            console.warn('WS Link failed!');
+            document.getElementById("kernel-text").innerText = "WS Link Failed";
+        }
     }
     server.kernelControl.notebookReset = (state) => {
-        document.getElementById("notebook-attached").className = 'load-kernel';
-        if (state === 'bad') document.getElementById("notebook-attached").className = 'bad-kernel';
+        console.warn('Notebook was deattached');
     }
 </script>
 
