@@ -2,4 +2,4 @@
 
 Get[FileNameJoin[DirectoryName[$InputFileName], "start.wls"]];
 
-While[True, LoopRun; Pause[0.3]];
+While[True, LoopRun; Pause[1]];
