@@ -93,7 +93,7 @@
 
                                                         <div class="sidebar-button-inner-inline">    
                                                             <div id="evaluateinit-button" class="notion-topbar-updates-button notion-focusable"  role="button" aria-label="Init" tabindex="0" style="border-radius: 4px;text-align: center;">
-                                                                <span style="/* font-size: 14px; */color: rgb(255 255 255 / 50%);white-space: nowrap;line-height: 1.1;/* padding: 5px; */width: 15px;height: 15px;/* padding-bottom: -16px; *//* margin-bottom: 3px; */display: block;text-align: center;/*! background: white; */font-weight: 800;">i</span>
+                                                                <span style="/* font-size: 14px; */color: var(--topbar-text-color);opacity: 0.5;white-space: nowrap;line-height: 1.1;/* padding: 5px; */width: 15px;height: 15px;/* padding-bottom: -16px; *//* margin-bottom: 3px; */display: block;text-align: center;/*! background: white; */font-weight: 800;">i</span>
                                                             </div>
                                                         </div>
                                                         <div class="sidebar-button-inner-inline">

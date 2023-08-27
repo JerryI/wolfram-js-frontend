@@ -1,14 +1,14 @@
 # WLJS Frontend (Wolfram Language Javascript Frontend)
-![](imgs/logo.png)
+![](imgs/Screenshot%202023-08-27%20at%2010.47.41.png)
+
+![](imgs/Screenshot%202023-08-27%20at%2010.49.06.png)
+
 
 *written for the freeware Wolfram Engine using Javascript*
 *web-based, fully customizable and free*
 
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
 
-__[See Docs](https://jerryi.github.io/wljs-docs/)__
-
-__[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 **Warning! Early Stage of Development**
 
@@ -35,7 +35,9 @@ The target community can probably divided by two groups
 
 Web technologies nowadays are aimed to be extremely efficient in order to compete with a native desktop applications. Therfore we are using classical HTML5 + JS stack to brind life to UI and all graphical objects by __recreating some of Mathematica's function__ using `plotly.js`, `d3.js` and `Three.js` (add your own one! this is easy) libraries. 
 
-## How to run (testdrive)
+
+## How to run
+### From console
 This is quite simple. All that you need is
 
 - Freeware WolframEngine
@@ -53,6 +55,14 @@ in a case of troubles with page loading use
 ```shell
 wolframscript -f Scripts/run.wls legacySockets
 ```
+
+### Electron wrapper
+Use __[prebuilt binaries](https://github.com/JerryI/wolfram-js-frontend/releases) from `Releases` section__ or locally
+```shell
+npm i
+npm run el
+```
+
 
 ## Package system
 Frontend uses its own package/plugin system. It doent require any software installed except *wolframscript*. Precompiled plugins are downloaded via `URLFetch` from github repositories and imported to the system. They can extend core WL, autocomplete, JS and UI. The following packages are available (already included as a default plugins)
