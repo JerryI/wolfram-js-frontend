@@ -671,6 +671,11 @@ NotebookDisposeSymbol[name_] := With[{channel = $AssociationSocket[Global`client
 ]
 
 NotebookEvaluate[cellid_] := (
+    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found')"] // DefaultSerializer];
+        Return[$Failed];
+    ];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[CellObj[cellid], jsfn`Processors];
     ];
@@ -767,12 +772,22 @@ NotebookOperate[cellid_, op_, arg_] := (
 );
 
 NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]},
+    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate all cells')"] // DefaultSerializer];
+        Return[$Failed];
+    ];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, x["type"] === "input"]];
     ];
 ];
 
 NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]},
+    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate group of cells')"] // DefaultSerializer];
+        Return[$Failed];
+    ];
+
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, (x["type"] === "input" && TrueQ[x["props"]["init"]])]];
     ];
@@ -782,6 +797,10 @@ jsfn`Windows = <||>;
 
 NotebookEvaluateProjected[cellid_] := (
     (* check if window is open already *)
+    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+        WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate in a new window')"] // DefaultSerializer];
+        Return[$Failed];
+    ];    
 
     If[KeyExistsQ[jsfn`Windows, cellid],
         If[FailureQ[WebSocketSend[jsfn`Windows[cellid]["socket"], Global`Ping[Null] // DefaultSerializer]],
