@@ -75,7 +75,8 @@ const createWindow = (url) => {
       width: 800,
       height: 600,
       title: 'Root',
-      show: false
+      show: false,
+      
     })
   
     win.loadURL(url);
@@ -97,6 +98,7 @@ const showMainWindow = (url, title = "Root") => {
       width: 600,
       height: 500,
       title: 'Projector'
+      
 
     } };
   });

@@ -28,7 +28,7 @@
         <?wsp , {i, Includes["autocomplete"]}]?>   
         
         <script type="module">
-            function isElectron() {
+            window.isElectron = () => {
                 // Renderer process
                 if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
                     return true;
@@ -47,14 +47,20 @@
                 return false;
             }  
 
-            function ifLinux() {
+            window.ifLinux = () => {
                 if (navigator.appVersion.indexOf("X11") != -1) return true;
                 if (navigator.appVersion.indexOf("Linux") != -1) return true;
 
                 return false;
             }
+
+            window.ifWin = () => {
+                console.warn(navigator.appVersion);
+                if (navigator.appVersion.indexOf('Win') != -1) return true;
+                return false;
+            }
             
-            const runColorMode = (fn) => {
+            window.runColorMode = (fn) => {
               if (!window.matchMedia) {
                 return;
               }
@@ -66,17 +72,39 @@
               query.addEventListener('change', (event) => fn(event.matches));
             }
 
-            if (!isElectron() || ifLinux()) {
-                document.body.style.background = "var(--topbar-background)";
+            window.resetBackground = () => {
+                if (!isElectron() || ifLinux() || ifWin()) {
+                    document.body.style.background = "var(--topbar-background)";
+                } else {
+                    document.body.style.background = "";
+                }
             }
 
-            runColorMode((isDarkMode) => {
-              if (isDarkMode) {
-                document.body.setAttribute('data-theme', 'dark');
-              } else {
-                document.body.removeAttribute('data-theme');
-              }
-            });
+            resetBackground();
+
+            let darkmode = localStorage.getItem("darkmode");
+
+            if (typeof darkmode === 'undefined' || darkmode === null) {
+                    localStorage.setItem("darkmode", 'system');
+                    darkmode = 'system';
+            }            
+
+            if (darkmode === 'system') {
+                runColorMode((isDarkMode) => {
+                  if (isDarkMode) {
+                    document.body.setAttribute('data-theme', 'dark');
+                  } else {
+                    document.body.removeAttribute('data-theme');
+                  }
+                });
+            } else {
+                resetBackground();
+                if (darkmode === 'disabled') {
+                    document.body.setAttribute('data-theme', 'dark');
+                } else {
+                    document.body.removeAttribute('data-theme', 'dark');
+                }
+            }
             
             
         </script>

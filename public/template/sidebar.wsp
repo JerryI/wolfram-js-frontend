@@ -188,6 +188,32 @@
                                                         </div>
                                                     </nav>
                                                 </div>
+                                                <div class="sidebar-bottom" style="">
+                                                    
+                                                <div style="flex-grow: 0; flex-shrink: 0;">
+                                                        <div class="notion-focusable" role="button" tabindex="0">
+                                                            <div class="">
+                                                                <div class="sidebar-option">
+                                                                    <div id="toggle-theme" class="button-body">
+                                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                                    viewBox="0 0 16 16" style="width: 15px;opacity: 0.4;" xml:space="preserve">
+                                                               <style type="text/css">
+                                                                   .st0{fill:#212121;}
+                                                               </style>
+                                                               <g id="_xD83D__xDD0D_-Product-Icons">
+                                                                   <g id="ic_fluent_dark_theme_24_regular">
+                                                                       <path id="_xD83C__xDFA8_-Color" class="st0" d="M8,16c4.4,0,8-3.6,8-8s-3.6-8-8-8S0,3.6,0,8S3.6,16,8,16z M8,14.8V1.2
+                                                                           c3.8,0,6.8,3,6.8,6.8S11.8,14.8,8,14.8z"/>
+                                                                   </g>
+                                                               </g>
+                                                               </svg>
+                                                                    </div>
+                                                                    <div class="sidebar-button-label" style="padding-left:1em;" id="toggle-theme-label"></div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div></div>
                                             </div>
                                         </div>
                                     </div>
@@ -208,10 +234,64 @@
 
     /*document.getElementById("history-button").addEventListener('click', (e)=>{
         alert('Not implemented');
-    }); 
+    }); */
 
+    let darkmode = localStorage.getItem("darkmode");
+
+    if (typeof darkmode === 'undefined' || darkmode === null) {
+            localStorage.setItem("darkmode", 'system');
+            darkmode = 'system';
+    }
+
+    console.warn('Darkmode state: '+darkmode);
+
+    const textTheme = document.getElementById('toggle-theme-label');
+
+    document.getElementById("toggle-theme").addEventListener('click', (e)=>{
+        console.log(darkmode);
+        window.resetBackground();
+
+        if (darkmode === 'system') {
+            localStorage.setItem("darkmode", 'disabled');
+            darkmode = 'disabled';
+            document.body.removeAttribute('data-theme');
+            document.body.style.background = "var(--topbar-background)";
+            
+            textTheme.innerText = "  Light";
+            setTimeout(()=>{
+                textTheme.innerText = ""
+            }, 500);
+
+        } else if (darkmode === 'disabled') {
+            localStorage.setItem("darkmode", 'enabled');
+            darkmode = 'enabled';
+            document.body.setAttribute('data-theme', 'dark');
+            document.body.style.background = "var(--topbar-background)";
+            textTheme.innerText = "  Dark";
+            setTimeout(()=>{
+                textTheme.innerText = ""
+            }, 500);
+
+        } else if (darkmode === 'enabled') {
+            localStorage.setItem("darkmode", 'system');
+            darkmode = 'system';
+            textTheme.innerText = "  System";
+            setTimeout(()=>{
+                textTheme.innerText = ""
+            }, 500);
+            
+            
+            runColorMode((isDarkMode) => {
+                if (isDarkMode) {
+                  document.body.setAttribute('data-theme', 'dark');
+                } else {
+                  document.body.removeAttribute('data-theme');
+                }
+              });            
+        }
+    }); 
     
-    
+    /*
     document.getElementById("import-button").addEventListener('click', (e)=>{
         alert('Not implemented');
     });     

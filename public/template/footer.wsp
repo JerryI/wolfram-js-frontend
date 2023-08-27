@@ -78,6 +78,7 @@
     //toggle sidebar
     <?wsp If[MissingQ[$CurrentRequest["Query", "zen"]], ?>
     {
+
         let sidebarToggle = localStorage.getItem("sidebar-hide");
 
         if (typeof sidebarToggle === 'undefined') {
