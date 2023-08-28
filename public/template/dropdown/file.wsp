@@ -82,9 +82,18 @@
     const dropdownBtn = document.getElementById("file-button-<?wsp file//FileNameTake//HashString32 ?>");
     const dropdownMenu = document.getElementById("dropdown-file-<?wsp file//FileNameTake//HashString32 ?>");
 
+    const close = (e) => {
+        if (e.target !== dropdownBtn) {
+            window.removeEventListener('click', close);
+            dropdownMenu.classList.remove("dropdown-file-show");
+        }
+        console.log(e);
+    }
+
     dropdownBtn.addEventListener("contextmenu", function (e) {
         e.stopPropagation();
         dropdownMenu.classList.add("dropdown-file-show");
+        window.addEventListener('click', close);
         return false;
     });
 

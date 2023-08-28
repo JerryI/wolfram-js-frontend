@@ -8,6 +8,7 @@ const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
 
+const contextMenu = require('electron-context-menu');
 
 let wasUpdated = false;
 
@@ -76,8 +77,50 @@ const createWindow = (url) => {
       height: 600,
       title: 'Root',
       show: false,
+      webPreferences: {
+        preload: path.join(__dirname, 'preloadMain.js')
+      }
       
-    })
+    });
+
+    contextMenu({
+      window: win,
+      prepend: (defaultActions, parameters, browserWindow) => [
+        {
+          label: 'Evaluate in place',
+          // Only show it when right-clicking images
+          visible: parameters.selectionText.trim().length > 0,
+          click: (e) => {
+            win.webContents.send('context', 'Evaluate');  
+            
+          }
+        },        
+        {
+          label: 'Iconize',
+          // Only show it when right-clicking images
+          visible: parameters.selectionText.trim().length > 0,
+          click: () => {
+            win.webContents.send('context', 'Iconize');  
+          }
+        },
+        {
+          label: 'Simplify',
+          // Only show it when right-clicking images
+          visible: parameters.selectionText.trim().length > 0,
+          click: () => {
+            win.webContents.send('context', 'Simplify');  
+          }
+        }        
+      ],
+
+      menu: (actions, props, browserWindow, dictionarySuggestions) => [
+        ...dictionarySuggestions,
+        actions.separator(),
+        actions.cut(),
+		    actions.copy(),
+		    actions.paste()
+      ]
+    });    
   
     win.loadURL(url);
 
@@ -96,17 +139,26 @@ const showMainWindow = (url, title = "Root") => {
 
   contents.setWindowOpenHandler(({ url }) => {
     console.log(url);
+    const u = new URL(url);
+    let path = u.searchParams.get('path');
+    if (!path) path = 'Projector';
 
-    return { action: 'allow', overrideBrowserWindowOptions: {
-      vibrancy: "sidebar", // in my case...
-      frame: true,
-      titleBarStyle: 'hiddenInset',
-      width: 600,
-      height: 500,
-      title: 'Projector'
-      
+    showMainWindow(url, path);
+    /*return { action: 'allow', overrideBrowserWindowOptions: {
+        vibrancy: "sidebar", // in my case...
+        frame: true,
+        titleBarStyle: 'hiddenInset',
+        width: 600,
+        height: 500,
+        title: 'Projector',
+        webPreferences: {
+          preload: path.join(__dirname, 'preloadMain.js')
+        }
+      } 
+    };*/
 
-    } };
+
+    return { action: 'deny' };
   });
   
 
@@ -472,7 +524,7 @@ const installFrontend = (cbk) => {
       sender('done!');
 
       const toremove = ['.packages', 'wl_packages_lock.wl'];
-      const dirtoremove = ['Packages', 'wl_packages'];
+      const dirtoremove = ['Packages', 'wl_packages', 'Cache'];
 
       sender('removing Packages...');
       sender('removing wl_packages...');

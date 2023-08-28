@@ -82,12 +82,7 @@
 
             resetBackground();
 
-            let darkmode = localStorage.getItem("darkmode");
-
-            if (typeof darkmode === 'undefined' || darkmode === null) {
-                    localStorage.setItem("darkmode", 'system');
-                    darkmode = 'system';
-            }            
+            let darkmode = '<?wsp NotebookTheme ?>';      
 
             if (darkmode === 'system') {
                 runColorMode((isDarkMode) => {
@@ -98,8 +93,8 @@
                   }
                 });
             } else {
-                resetBackground();
-                if (darkmode === 'disabled') {
+                document.body.style.background = "var(--topbar-background)";
+                if (darkmode === 'enabled') {
                     document.body.setAttribute('data-theme', 'dark');
                 } else {
                     document.body.removeAttribute('data-theme', 'dark');

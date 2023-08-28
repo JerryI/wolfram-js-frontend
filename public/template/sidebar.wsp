@@ -251,10 +251,9 @@
         alert('Not implemented');
     }); */
 
-    let darkmode = localStorage.getItem("darkmode");
+    let darkmode = '<?wsp NotebookTheme ?>';
 
     if (typeof darkmode === 'undefined' || darkmode === null) {
-            localStorage.setItem("darkmode", 'system');
             darkmode = 'system';
     }
 
@@ -264,10 +263,10 @@
 
     document.getElementById("toggle-theme").addEventListener('click', (e)=>{
         console.log(darkmode);
-        window.resetBackground();
+        
 
         if (darkmode === 'system') {
-            localStorage.setItem("darkmode", 'disabled');
+            server.socket.send('NotebookTheme = "disabled"');
             darkmode = 'disabled';
             document.body.removeAttribute('data-theme');
             document.body.style.background = "var(--topbar-background)";
@@ -278,7 +277,7 @@
             }, 500);
 
         } else if (darkmode === 'disabled') {
-            localStorage.setItem("darkmode", 'enabled');
+            server.socket.send('NotebookTheme = "enabled"');
             darkmode = 'enabled';
             document.body.setAttribute('data-theme', 'dark');
             document.body.style.background = "var(--topbar-background)";
@@ -288,13 +287,13 @@
             }, 500);
 
         } else if (darkmode === 'enabled') {
-            localStorage.setItem("darkmode", 'system');
+            server.socket.send('NotebookTheme = "system"');
             darkmode = 'system';
             textTheme.innerText = "  System";
             setTimeout(()=>{
                 textTheme.innerText = ""
             }, 500);
-            
+            window.resetBackground();
             
             runColorMode((isDarkMode) => {
                 if (isDarkMode) {

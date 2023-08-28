@@ -1,10 +1,10 @@
 {
   "name": "wljs-frontend",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
-    "name" : "Kirill Vasin",
-    "email" : "krikus.ms@gmail.com"
+    "name": "Kirill Vasin",
+    "email": "krikus.ms@gmail.com"
   },
   "main": "main.js",
   "scripts": {
@@ -66,6 +66,7 @@
   "dependencies": {
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
+    "electron-context-menu": "^3.6.1",
     "fflate": "^0.8.0",
     "fs-extra": "^11.1.1",
     "jsoncrush": "^1.1.8",

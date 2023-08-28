@@ -1,5 +1,6 @@
 const logger = document.getElementById('log');
 
+
 window.electronAPI.handleLogs((event, value, color) => {
     if (logger.childNodes.length > 500) {
         let i = 0;

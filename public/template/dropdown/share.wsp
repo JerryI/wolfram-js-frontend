@@ -43,9 +43,22 @@
     const dropdownBtn = document.getElementById("share-button");
     const dropdownMenu = document.getElementById('dropdown-share');
 
+    const close = (e) => {
+        if (e.target !== dropdownBtn) {
+            window.removeEventListener('click', close);
+            dropdownMenu.classList.remove("dropdown-file-show");
+        }
+        console.log(e);
+    }
+
     dropdownBtn.addEventListener("click", function (e) {
         e.stopPropagation();
         dropdownMenu.classList.toggle("dropdown-file-show");
+
+        
+
+        window.addEventListener('click', close);
+
         return false;
     });
 

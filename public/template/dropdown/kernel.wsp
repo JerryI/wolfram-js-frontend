@@ -67,11 +67,21 @@
 {    
     const dropdownBtn = document.getElementById("kernel-button");
     const dropdownMenu = document.getElementById("dropdown-kernel");
+
+    const close = (e) => {
+        if (e.target !== dropdownBtn) {
+            window.removeEventListener('click', close);
+            dropdownMenu.classList.remove("dropdown-kernel-show");
+        }
+        console.log(e);
+    }
+
     const toggleDropdown = function () {
         dropdownMenu.classList.toggle("dropdown-kernel-show");
     };
     dropdownBtn.addEventListener("click", function (e) {
         e.stopPropagation();
+        window.addEventListener('click', close);
         toggleDropdown();
     });
 

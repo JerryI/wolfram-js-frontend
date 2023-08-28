@@ -86,7 +86,7 @@ NotebookStoreOperate::usage = ""
 
 NotebookExport::usage = "export to standalone html"
 
-
+NotebookTheme::usage = "set the mode dark/light"
 
 (*
     Internal commands used by other packages
@@ -98,6 +98,9 @@ NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel t
 GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
+
+NotebookTheme := JerryI`WolframJSFrontend`defaulttheme
+NotebookTheme /: Set[NotebookTheme, mode_String] := (NotebookTheme := mode; Put[mode, FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]])
 
 NotebookEventFire[addr_][args__][args2__] :=  ((#[addr][args][args2]) &/@ (NotebookEventFire["Handlers"]))
 NotebookEventFire["Handlers"] = {}
@@ -671,7 +674,7 @@ NotebookDisposeSymbol[name_] := With[{channel = $AssociationSocket[Global`client
 ]
 
 NotebookEvaluate[cellid_] := (
-    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+    If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found')"] // DefaultSerializer];
         Return[$Failed];
     ];
@@ -772,7 +775,7 @@ NotebookOperate[cellid_, op_, arg_] := (
 );
 
 NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]},
-    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+    If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate all cells')"] // DefaultSerializer];
         Return[$Failed];
     ];
@@ -783,7 +786,7 @@ NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]}
 ];
 
 NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]},
-    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+    If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate group of cells')"] // DefaultSerializer];
         Return[$Failed];
     ];
@@ -797,7 +800,7 @@ jsfn`Windows = <||>;
 
 NotebookEvaluateProjected[cellid_] := (
     (* check if window is open already *)
-    If[jsfn`Notebooks[Global`client]["kernel"]["Status"]["signal"] =!= "good",
+    If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate in a new window')"] // DefaultSerializer];
         Return[$Failed];
     ];    
