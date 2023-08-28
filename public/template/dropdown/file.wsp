@@ -92,7 +92,7 @@
 
     dropdownBtn.addEventListener("contextmenu", function (e) {
         e.stopPropagation();
-        dropdownMenu.classList.add("dropdown-file-show");
+        dropdownMenu.classList.toggle("dropdown-file-show");
         window.addEventListener('click', close);
         return false;
     });

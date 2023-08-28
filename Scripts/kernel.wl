@@ -84,7 +84,7 @@ Module[{wcp, ws},
 
     ws["MessageHandler", "Evaluate"]  = Function[True] -> evaluate;
 
-    evaluate[cl: _SocketObject | _CSocket, data_ByteArray] := Block[{Global`client = cl},
+    evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
         ToExpression[data//ByteArrayToString];
     ];
 
