@@ -1,4 +1,4 @@
-const { app, Menu, BrowserWindow, dialog, ipcMain } = require('electron')
+const { session, app, Menu, BrowserWindow, dialog, ipcMain } = require('electron')
 const path = require('path')
 const { platform } = require('node:process');
 
@@ -524,7 +524,7 @@ const installFrontend = (cbk) => {
       sender('done!');
 
       const toremove = ['.packages', 'wl_packages_lock.wl'];
-      const dirtoremove = ['Packages', 'wl_packages', 'Cache'];
+      const dirtoremove = ['Packages', 'wl_packages'];
 
       sender('removing Packages...');
       sender('removing wl_packages...');
@@ -539,7 +539,10 @@ const installFrontend = (cbk) => {
         if(fs.existsSync(path.join(installationFolder, p))) {
           fs.rmSync(path.join(installationFolder, p), { recursive: true, force: true });
         }
-      });      
+      });     
+      
+      session.defaultSession.clearStorageData();
+      session.defaultSession.clearCache();
 
       sender('done!');
 
