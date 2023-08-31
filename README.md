@@ -1,7 +1,7 @@
 # WLJS Frontend (Wolfram Language Javascript Frontend)
-![](imgs/Screenshot%202023-08-27%20at%2010.47.41.png)
+![](imgs/light.png)
 
-![](imgs/Screenshot%202023-08-27%20at%2010.49.06.png)
+![](imgs/dark.png)
 
 
 *written for the freeware Wolfram Engine using Javascript*
