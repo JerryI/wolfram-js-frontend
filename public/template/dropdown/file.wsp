@@ -17,20 +17,20 @@
                                 </div>
                                 
                             </div>
-                        </div>
-                        <div id="file-open-zen-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        </div>  
+                        <div id="file-rename-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
-                                        <img width="15" height="15" src="/svg/moveTo.svg"/>    
+                                        <img width="15" height="15" src="/svg/rename.svg"/>    
                                     </div>
                                 </div>
                                 <div class="button-label">
-                                    <div class="label-clear">Open in a new zen window</div>
+                                    <div class="label-clear">Rename</div>
                                 </div>
                                 
                             </div>
-                        </div>                        
+                        </div>                                              
                         <div id="file-clone-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
@@ -97,6 +97,18 @@
         return false;
     });
 
+    document.getElementById("file-rename-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+        //server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
+        dropdownMenu.classList.remove("dropdown-file-show");
+        document.getElementById("file-button-link-<?wsp file//FileNameTake//HashString32 ?>").classList.add('hidden');
+        const field = document.getElementById("file-button-field-<?wsp file//FileNameTake//HashString32 ?>");
+        field.classList.remove('hidden');
+        const input = document.getElementById("file-button-inputfield-<?wsp file//FileNameTake//HashString32 ?>");
+        input.focus();
+        input.addEventListener('blur', ()=>{
+            server.socket.send(`FileOperate["Rename"]["<?wsp URLEncode[file] ?>", "${input.value}"]`);
+        })
+    });   
     
     document.getElementById("file-remove-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
@@ -112,11 +124,6 @@
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>', '_blank');
         dropdownMenu.classList.remove("dropdown-file-show");
     });  
-
-    document.getElementById("file-open-zen-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
-        openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>&zen=true', '_blank');
-        dropdownMenu.classList.remove("dropdown-file-show");
-    });    
 
     document.getElementById("file-download-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         downloadByURL('<?wsp file//FileNameToURLPath ?>', '<?wsp FileNameTake[file] ?>');

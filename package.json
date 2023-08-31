@@ -1,6 +1,6 @@
 {
   "name": "wljs-frontend",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
     "name": "Kirill Vasin",
@@ -17,6 +17,17 @@
   },
   "build": {
     "appId": "wljs-frontend",
+    "productName": "WLJS Notebook",
+    "copyright": "WLJS © 2023 ${author}",
+    "fileAssociations": [
+      {
+        "ext": "wln",
+        "name": "WLJS Notebook",
+        "describtion": "A portable notebook format for WLJS Frontend",
+        "role": "Editor",
+        "perMachine": true
+      }
+    ],
     "dmg": {
       "title": "${productName} ${version}",
       "icon": "./build/512x512.icns"
@@ -33,7 +44,8 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "./build/256x256.ico"
+      "icon": "./build/256x256.ico",
+      "perMachine": true
     },
     "files": [
       "main.js",

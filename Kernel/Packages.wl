@@ -1,4 +1,4 @@
-BeginPackage["JerryI`WolframJSFrontend`Packages`", {"KirillBelov`HTTPHandler`Extensions`"}];
+BeginPackage["JerryI`WolframJSFrontend`Packages`", {"KirillBelov`HTTPHandler`Extensions`", "JerryI`WolframJSFrontend`Utils`"}];
 
 (* 
     ::Only for MASTER kernel::
@@ -9,6 +9,8 @@ BeginPackage["JerryI`WolframJSFrontend`Packages`", {"KirillBelov`HTTPHandler`Ext
 LoadPluginsConfiguration::usage = "load the system"
 CheckUpdates::usage = "check updates"
 InstallPackage::usage = "install by url"
+
+UpdateConfiguration::usage = "save the configuration file"
 
 Packages::usage = "storage for packages"
 
@@ -27,6 +29,8 @@ WLJSPSetRootFolder[path_String] := $RootFolder = path;
 $ConfigFile = FileNameJoin[{$RootFolder, ".packages"}];
 $DefaultConfigFile = FileNameJoin[{$RootFolder, ".defaultpackages"}];
 $PackagesPath = FileNameJoin[{$RootFolder, "Packages"}];
+
+
 
 listAllPackages := FileNames["package.json", $PackagesPath, 2]
 
@@ -183,19 +187,19 @@ downloadAndInstall[package_Association] := Module[{},
 ];
 
 
-Includes[param_] := Includes[param] = 
+Includes[param_] := Cached[
 Table[ 
     Table[ 
       FileNameJoin[{Packages[i, "path"], j // URLPathToFileName}]
     , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
-, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten;
+, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten];
 
-Includes[param_, param2_] := Includes[param, param2] = 
+Includes[param_, param2_] := Cached[
 Partition[Table[ 
     Table[ 
       {FileNameJoin[{Packages[i, "path"], j // URLPathToFileName}], Packages[i, param2]}
     , {j, {Packages[i, "wljs-meta", param]}//Flatten}]
-, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten, 2];
+, {i, Select[PackagesOrder, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten, 2]];
 
 
 End[];

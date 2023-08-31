@@ -169,8 +169,6 @@ broadcast@"Serializer" = (ExportByteArray[#, "ExpressionJSON"]&);
 (*NotificationMethodRegister;*)
 SetUpCron;
 
-(* dev mode on *)
-If[TrueQ[devmode], LoadBuildFile["config.build.wl"] ];
 
 CEventLoopRun[0];
 

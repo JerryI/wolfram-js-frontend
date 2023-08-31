@@ -6,15 +6,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="flex-grow: 0;flex-shrink: 0;border-bottom: 1px solid var(--borders-color);padding-bottom: 0.5em;margin-bottom: 0.5em;">
-                                                    <div style="display:none" class="notion-focusable sidebar-button" id="settings-button" role="button" tabindex="0" >
-                                                        <div class="sidebar-button-inner">
-                                                            <div class="sidebar-button-svg">
-                                                                <img width="15" height="15" src="/svg/sidebarSettings.svg"/>
-                                                            </div>
-                                                            <div class="sidebar-button-label"><div>Settings</div></div>
-                                                        </div>
-                                                    </div>
-
+                                                  
 
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div class="notion-focusable" role="button" tabindex="0">
@@ -31,6 +23,19 @@
                                                         </div>
                                                     </div>
 
+                                                    <div style="flex-grow: 0; flex-shrink: 0;">
+                                                        <div id="settings-button" class="notion-focusable" role="button" tabindex="0">
+                                                            <div class="sidebar-new-class">
+                                                                <div class="sidebar-option" class="sidebar-button-svg">
+                                                                    <div class="button-body">
+                                                                        <img width="15" height="15" src="/svg/sidebarSettings.svg"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="sidebar-button-label">Settings</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+                                                    
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="open-vault-button" class="notion-focusable" role="button" tabindex="0">
                                                             <div class="sidebar-new-class">
@@ -459,7 +464,7 @@
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
         /*generateThumbnail();*/
-    }, 1000*60*3);
+    }, <?wsp JerryI`WolframJSFrontend`settings["autosave"] ?>);
 
 
 

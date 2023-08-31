@@ -130,8 +130,8 @@ SetAttributes[NotebookAddTracking, HoldFirst];
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
 
 $ExtendDefinitions[uid_, defs_] := With[{id = notebook}, 
-
-JTPClientEvaluateAsyncNoReply[master, Global`NExtendSingleDefinition[uid, defs][id] ] ];
+  JTPClientEvaluateAsyncNoReply[master, Global`NExtendSingleDefinition[uid, defs][id] ] 
+];
 
 AttachNotebook[id_, path_] := ( 
   notebook = id; SetDirectory[path]; 

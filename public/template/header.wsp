@@ -78,7 +78,14 @@
                 } else {
                     document.body.style.background = "";
                 }
+
+
             }
+
+            <?wsp If[!TrueQ[JerryI`WolframJSFrontend`settings["background"]], ?>
+                    document.body.style.setProperty('--topbar-background', 'transparent');
+                    document.body.style.setProperty('--background-frame-color', 'transparent');
+            <?wsp , "" ] ?>
 
             resetBackground();
 

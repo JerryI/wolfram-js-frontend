@@ -149,6 +149,10 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`root = root]];
     ];
 
+    With[{settings = JerryI`WolframJSFrontend`settings},
+        LinkWrite[link, Unevaluated[JerryI`WolframJSFrontend`settings = settings]];
+    ];
+
     LinkWrite[link, Unevaluated[Get["Scripts/kernel.wl"]]];
 
     (* loading urgent kernels *)

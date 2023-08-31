@@ -87,7 +87,8 @@ NotebookStoreOperate::usage = ""
 NotebookExport::usage = "export to standalone html"
 
 NotebookTheme::usage = "set the mode dark/light"
-
+NotebookSettings::usage = ""
+NotebookState::usage = ""
 (*
     Internal commands used by other packages
     must not be PUBLIC!
@@ -98,6 +99,16 @@ NotebookFrontEndSend::usage = "redirects the output of the remote/local kernel t
 GetThumbnail::usage = "get prov"
 
 Begin["`Private`"]; 
+
+NotebookSettings = JerryI`WolframJSFrontend`settings
+NotebookSettings /: Set[NotebookSettings[key_], data_] := (NotebookSettings = Append[NotebookSettings, <|key -> data|>]; 
+    Print["New configuration"];
+    Print[NotebookSettings];
+    JerryI`WolframJSFrontend`settings = NotebookSettings;
+    Put[NotebookSettings, FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]]
+)
+
+NotebookState;
 
 NotebookTheme := JerryI`WolframJSFrontend`defaulttheme
 NotebookTheme /: Set[NotebookTheme, mode_String] := (NotebookTheme := mode; Put[mode, FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]])
@@ -476,6 +487,22 @@ FileOperate["Remove"][urlpath_] := Module[{path}, With[{channel = $AssociationSo
     ];
 ]];
 
+FileOperate["Rename"][urlpath_, new_] := Module[{path}, With[{channel = $AssociationSocket[Global`client]},
+    path = URLDecode[urlpath];
+    Print["Rename"];
+    Print[path];
+    Print["To"];
+    Print[new];
+
+    RenameFile[path, FileNameJoin[{DirectoryName[path], new}]];
+
+    If[MissingQ[channel],
+        WebSocketSend[Global`client,  Global`FrontEndUpdateFileList[Null] // DefaultSerializer]
+    ,
+        WebSocketSend[jsfn`Notebooks[channel]["channel"], Global`FrontEndUpdateFileList[Null]]
+    ];
+]];
+
 FileOperate["NewDirectory"][urlpath_, name_] := Module[{path, newname}, With[{channel = $AssociationSocket[Global`client]},
     path = URLDecode[urlpath];
     Print[path];
@@ -489,7 +516,11 @@ FileOperate["NewDirectory"][urlpath_, name_] := Module[{path, newname}, With[{ch
 
     CreateDirectory[FileNameJoin[{path, newname}]];
 
-    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    If[MissingQ[channel],
+        WebSocketSend[Global`client,  Global`FrontEndUpdateFileList[Null] // DefaultSerializer];
+    ,
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    ]
 ]];
 
 FileOperate["NewDirectory"][urlpath_, name_, cb_] := Module[{path, newname}, With[{channel = $AssociationSocket[Global`client]},
@@ -508,7 +539,11 @@ FileOperate["NewDirectory"][urlpath_, name_, cb_] := Module[{path, newname}, Wit
     Print["Update tree with "<>ToString[cb]];
 
     WebSocketSend[Global`client, Global`PromiseResolve[cb, Null] // DefaultSerializer] // Print;
-    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    If[MissingQ[channel],
+        WebSocketSend[Global`client,  Global`FrontEndUpdateFileList[Null] // DefaultSerializer];
+    ,
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    ]
     
 ]];
 
@@ -520,7 +555,11 @@ FileOperate["Upload"][data_, notebook_] := Module[{path}, With[{channel = notebo
 
     BinaryWrite[FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], data["name"]}], BaseDecode[data["data"]]];
 
-    WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    If[MissingQ[channel],
+        WebSocketSend[Global`client,  Global`FrontEndUpdateFileList[Null] // DefaultSerializer];
+    ,
+        WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndUpdateFileList[Null]];
+    ]
 ]];
 
 NotebookUpdateThumbnail[data_] := With[{channel = $AssociationSocket[Global`client]},

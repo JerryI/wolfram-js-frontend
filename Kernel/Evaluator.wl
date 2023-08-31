@@ -75,6 +75,10 @@ ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements /
 
 ToCM6Boxes[NoBoxes[expr_]] ^:= StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
+If[!TrueQ[JerryI`WolframJSFrontend`settings["displayForm"]],
+  ToCM6Boxes[expr_] := StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
+];
+
 (* iconize *)
 Unprotect[Iconize]
 ClearAll[Iconize]

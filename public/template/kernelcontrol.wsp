@@ -10,7 +10,7 @@
 <div id="kernel-text" style="display:none; opacity: 1;transition: opacity 150ms linear 0s;/* display: flex; */display: none;align-items: center;/* font-size: 14px; *//* color: rgba(55, 53, 47, 0.5); *//* height: 25px; *//* margin-right:10px; */white-space: nowrap;line-height: 1.2;vertical-align: sub;">
     <?wsp text ?>
 </div>
-<div id="kernel-button"  style="cursor: pointer;display: inline-block;align-items: center;flex-shrink: 1;min-width: 0px;border-radius: 3px;padding-left: 6px;padding-right: 6px;padding: 4px;padding-left: 6px;padding-right: 6px;font-size: 14px;line-height: 120%;display: inline-grid;margin: 0px;vertical-align: sub;">
+<div id="kernel-button"  style="cursor: pointer;display: inline-block;align-items: center;flex-shrink: 1;min-width: 0px;border-radius: 3px;padding-left: 6px;padding-right: 6px;padding: 4px;padding-left: 6px;padding-right: 6px;font-size: 14px;line-height: 120%;display: inline-grid;margin: 0px;vertical-align: sub; position:relative">
     <div id="kernel-stat" class="<?wsp signal ?>-kernel" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: block;padding-left: 0.35em;padding-right: 0.35em;border-radius: 2px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
         <span style="width: auto;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><?wsp kernel ?></span>
     </div>

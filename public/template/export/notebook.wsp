@@ -1,6 +1,5 @@
 <html><head lang="en">
         <meta charset="utf-8">
-        <style><?wsp Import["public/dist/merged.css", "String"] ?></style>
         <script>
             window.OfflineMode = true;
         </script>
@@ -26,8 +25,6 @@
         <?wsp , {i, IncludesDeliver["jsmodule"]}]?> 
 
         <!-- connection to the server (global) -->
-        <script src="/dist/fakesockets.js"></script>
-
 
         <!-- editors autocomplete -->
         <?wsp Table[ ?> 
@@ -68,14 +65,6 @@
             </div>
         </div>
         
-        
-        
-<script>
-    window.addEventListener("wsconnected", function() { 
-        console.log('subscribe and load notebook'); 
-        server.socket.send('NotebookOpen["<?wsp notebook ?>"]'); 
-    });
-</script>
     
 <script type="module">
     <?wsp Table[ ?>

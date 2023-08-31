@@ -140,10 +140,16 @@ const showMainWindow = (url, title = "Root") => {
   contents.setWindowOpenHandler(({ url }) => {
     console.log(url);
     const u = new URL(url);
-    let path = u.searchParams.get('path');
-    if (!path) path = 'Projector';
 
-    showMainWindow(url, path);
+    if (u.hostname === (new URL(globalURL)).hostname) {
+      let path = u.searchParams.get('path');
+      if (!path) path = 'Projector';
+
+      showMainWindow(url, path);
+
+    } else {
+      shell.openExternal(url);
+    }
     /*return { action: 'allow', overrideBrowserWindowOptions: {
         vibrancy: "sidebar", // in my case...
         frame: true,

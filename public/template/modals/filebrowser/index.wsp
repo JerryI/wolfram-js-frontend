@@ -5,7 +5,7 @@
       background-color: rgba(35, 131, 226, 0.14);
    }
    #filethree-holder {
-      max-height: 70vh;
+      height: 32vw;
    }
 
    .list-open-button {

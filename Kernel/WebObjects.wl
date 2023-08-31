@@ -26,13 +26,23 @@ JerryI`WolframJSFrontend`WebObjects`list = {};
 
 
 (* create and extend the definitionsof the kernel *)
-CreateFrontEndObject[expr_, $iouid_:Null] := 
+CreateFrontEndObject[expr_, $iouid_String:Null, OptionsPattern[]] := Module[{},
 With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
+  With[{sym = <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> 0], "date"->Now |>},
 
-  $ExtendDefinitions[$ouid, <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> -1], "date"->Now |>]; 
+    If[OptionValue["Override"],
+      JerryI`WolframJSFrontend`Evaluator`objects[$ouid] = sym;
+    ,
+      $ExtendDefinitions[$ouid, sym]; 
+    ];
+    
+    Global`FrontEndExecutableHold[$ouid] 
+  ]
+]]
 
-  Global`FrontEndExecutableHold[$ouid] 
-]
+Options[CreateFrontEndObject] = {"Override"->False}
+
+SetAttributes[CreateFrontEndObject, HoldFirst]
 
 SetAttributes[FrontEndOnly, HoldFirst]
 
