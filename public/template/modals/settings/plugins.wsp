@@ -4,3 +4,5 @@
             LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {link = Packages[key, "repository", "url"], desc = Packages[key, "description"], name = key, disabled = Packages[key, "wljs-meta", "important"], default = Packages[key, "enabled"], update = Function[data, Packages[key, "enabled"] = data; UpdateConfiguration;]}] 
         ]?>
     <?wsp , {key, SortBy[Packages//Keys, Packages[#, "wljs-meta", "priority"]&]}] ?>
+
+  <?wsp  LoadPage[FileNameJoin[{"template","modals","settings","install.wsp"}]] ?>

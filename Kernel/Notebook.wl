@@ -89,6 +89,8 @@ NotebookExport::usage = "export to standalone html"
 NotebookTheme::usage = "set the mode dark/light"
 NotebookSettings::usage = ""
 NotebookState::usage = ""
+
+NotebookAlert::usage = ""
 (*
     Internal commands used by other packages
     must not be PUBLIC!
@@ -732,6 +734,11 @@ NotebookEvaluate[cellid_] := (
         CellObjEvaluate[CellObj[cellid], jsfn`Processors];
     ];
 );
+
+NotebookAlert[text_String] := With[{},
+    Print[text];
+    WebSocketSend[Global`client, Global`FrontEndJSEval["alert(`"<>text<>"`)"] // DefaultSerializer];
+]
 
 
 NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]},
