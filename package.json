@@ -23,9 +23,7 @@
       {
         "ext": "wln",
         "name": "WLJS Notebook",
-        "describtion": "A portable notebook format for WLJS Frontend",
-        "role": "Editor",
-        "perMachine": true
+        "role": "Editor"
       }
     ],
     "dmg": {
@@ -44,8 +42,7 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "./build/256x256.ico",
-      "perMachine": true
+      "icon": "./build/256x256.ico"
     },
     "files": [
       "main.js",
