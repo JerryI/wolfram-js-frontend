@@ -494,6 +494,12 @@ FileOperate["Rename"][urlpath_, new_] := Module[{path}, With[{channel = $Associa
     Print["To"];
     Print[new];
 
+    If[path === jsfn`Notebooks[channel]["path"],
+        Print["Notebook detected!"];
+        NotebookRename[FileBaseName[new]];
+        Return[Null. Module];
+    ]
+
     RenameFile[path, FileNameJoin[{DirectoryName[path], new}]];
 
     If[MissingQ[channel],
