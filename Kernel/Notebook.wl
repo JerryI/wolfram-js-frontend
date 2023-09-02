@@ -703,7 +703,11 @@ NotebookOpen[id_String] := (
         CellListTree[id];
     ];
 
-    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]]];
+    jsfn`Notebooks[id]["kernel"]["AttachNotebook"][id, DirectoryName[jsfn`Notebooks[id]["path"]],
+        Function[state,
+            WebSocketSend[jsfn`Notebooks[id]["channel"],  Global`FrontEndKernelStatus[ state ]];
+        ]
+    ];
 );
 
 NotebookDisposeSymbol[name_] := With[{channel = $AssociationSocket[Global`client]},
@@ -729,12 +733,20 @@ NotebookKernelOperate[cmd_] := With[{channel = $AssociationSocket[Global`client]
         Print[StringTemplate["callback for `` channel"][channel]];
         WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndKernelStatus[ state ]];
         
-        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]];
+        jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]],
+            Function[state,
+                WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndKernelStatus[ state ]];
+            ]
+        ];
     ]];
 ];
 
 NotebookFocus[channel_] := (
-    jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]]]
+    jsfn`Notebooks[channel]["kernel"]["AttachNotebook"][channel, DirectoryName[jsfn`Notebooks[channel]["path"]],
+        Function[state,
+            WebSocketSend[jsfn`Notebooks[channel]["channel"],  Global`FrontEndKernelStatus[ state ]];
+        ]
+    ]
 );
 
 

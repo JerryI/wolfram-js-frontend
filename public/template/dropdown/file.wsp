@@ -56,7 +56,22 @@
                                 </div>
                                 
                             </div>
-                        </div>  
+                        </div> 
+                        <?wsp If[ElectronQ // TrueQ, ?> 
+                            <div id="file-finder-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                                <div class="focusable-holder">
+                                    <div class="focusable-holder-holder">
+                                        <div class="button-body">
+                                        <img width="15" height="15" src="/svg/sidebarSearch.svg"/>
+                                        </div>
+                                    </div>
+                                    <div class="button-label">
+                                        <div class="label-clear">Reveal in file manager</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?wsp , ""] ?>
                     
                         <div id="file-remove-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
@@ -109,6 +124,13 @@
             server.socket.send(`FileOperate["Rename"]["<?wsp URLEncode[file] ?>", "${input.value}"]`);
         })
     });   
+
+    <?wsp If[ElectronQ // TrueQ, ?> 
+        document.getElementById("file-finder-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+            window.electronAPI.openFinder("<?wsp URLEncode[file] ?>");
+            dropdownMenu.classList.remove("dropdown-file-show");
+        });
+    <?wsp , ""] ?>
     
     document.getElementById("file-remove-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');

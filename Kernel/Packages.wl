@@ -68,7 +68,7 @@ Packages = <||>;
 
 UpdateConfiguration := (
     (*Sort;*)
-    PackagesOrder = SortBy[Keys[Packages], If[KeyExistsQ[Packages[#, "wljs-meta"], "priority"], Packages[#, "wljs-meta", "priority"], 1]&];
+    PackagesOrder = SortBy[Keys[Packages], If[KeyExistsQ[Packages[#, "wljs-meta"], "priority"], Packages[#, "wljs-meta", "priority"], If[KeyExistsQ[Packages[#, "wljs-meta"], "important"], -1000, 1]]&];
     Put[Packages, $ConfigFile];
 )
 

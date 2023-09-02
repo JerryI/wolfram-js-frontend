@@ -20,6 +20,8 @@ if (app.isPackaged) {
   installationFolder = app.getAppPath();
 }
 
+const params = ["ElectronQ = True;"]
+
 const runPath = path.join(installationFolder, 'Scripts', 'start.wls');
 
 const workingDir = app.getPath('home');
@@ -50,6 +52,11 @@ if (process.platform === 'darwin') {
 }
 }
 
+const currentWindow = {};
+currentWindow.call = (type) => {
+  currentWindow.window.webContents.send('call', 'Save'); 
+}
+
 const createLogWindow = () => {
   const win = new BrowserWindow({
     vibrancy: "sidebar", // in my case...
@@ -68,7 +75,7 @@ const createLogWindow = () => {
   return win;
 }
 
-const createWindow = (url) => {
+const createWindow = (url, focus = true) => {
     const win = new BrowserWindow({
       vibrancy: "sidebar", // in my case...
       frame: true,
@@ -81,6 +88,12 @@ const createWindow = (url) => {
         preload: path.join(__dirname, 'preloadMain.js')
       }
       
+    });
+
+    if (focus) currentWindow.window = win;
+    win.on('focus', ()=>{
+      currentWindow.window = win;
+      console.log('focus');
     });
 
     contextMenu({
@@ -132,8 +145,8 @@ const createWindow = (url) => {
     return win;
 }
 
-const showMainWindow = (url, title = "Root") => {
-  const win = createWindow(url);
+const showMainWindow = (url, title = "Root", focusWin = true) => {
+  const win = createWindow(url, focusWin);
   win.title = title;
   const contents = win.webContents;
 
@@ -143,9 +156,14 @@ const showMainWindow = (url, title = "Root") => {
 
     if (u.hostname === (new URL(globalURL)).hostname) {
       let path = u.searchParams.get('path');
-      if (!path) path = 'Projector';
+      if (!path) {
+        path = 'Projector';
+        showMainWindow(url, path, false);
+      } else {
+        showMainWindow(url, path, true);
+      }
 
-      showMainWindow(url, path);
+      
 
     } else {
       shell.openExternal(url);
@@ -292,13 +310,18 @@ const askForPath = (server_, window) => {
               setTimeout(app.exit, 4000);
             }
           });
-
+          params.forEach((line)=>{
+            server.stdin.write(line+'\n');
+          });
           server.stdin.write(`Get["${runPath}"]\n`);
           // server.stdin.end(); // EOF
         });
       }
     });    
 
+    params.forEach((line)=>{
+      server.stdin.write(line+'\n');
+    });
     server.stdin.write(`Get["${runPath}"]\n`);
     // server.stdin.end(); // EOF
   }, window);
@@ -309,6 +332,10 @@ app.whenReady().then(() => {
 
 
   const win = createLogWindow();
+
+  ipcMain.on('system-open', (e, path) => {
+    shell.showItemInFolder(path);
+  });
 
   ipcMain.on('promt-resolve', (e, id, val) => {
     promts[id](val);
@@ -332,6 +359,10 @@ app.whenReady().then(() => {
 
     sender('--- Starting Wolfram Engine ---\n', 'red');
     server = exec('wolframscript', {cwd: workingDir});
+
+    params.forEach((line)=>{
+      server.stdin.write(line+'\n');
+    });
     server.stdin.write(`Get["${runPath}"]\n`);
     // server.stdin.end(); // EOF
     sender('waiting for th responce...');
@@ -348,6 +379,10 @@ app.whenReady().then(() => {
             switch(platform) {
               case 'darwin':
                 server = exec('"/Applications/WolframScript.app/Contents/MacOS/wolframscript"', {cwd: workingDir});
+
+                params.forEach((line)=>{
+                  server.stdin.write(line+'\n');
+                });
                 server.stdin.write(`Get["${runPath}"]\n`);
                 // server.stdin.end(); // EOF
             
@@ -368,6 +403,10 @@ app.whenReady().then(() => {
                           sender('\nThere is some problems with your license... We are sorry ;(\n', 'red');
                           setTimeout(app.exit, 4000);
                         }
+                      });
+
+                      params.forEach((line)=>{
+                        server.stdin.write(line+'\n');
                       });
                     
                       server.stdin.write(`Get["${runPath}"]\n`);
@@ -393,6 +432,10 @@ app.whenReady().then(() => {
                 sender('\nThere is some problems with your license... We are sorry ;(\n', 'red');
                 setTimeout(app.exit, 4000);
               }
+            });
+
+            params.forEach((line)=>{
+              server.stdin.write(line+'\n');
             });
   
             server.stdin.write(`Get["${runPath}"]\n`);
@@ -609,130 +652,139 @@ function showProgress(received,total){
 
 const isMac = process.platform === 'darwin'
 
-const template = [
-  // { role: 'appMenu' }
-  ...(isMac
-    ? [{
-        label: app.name,
-        submenu: [
-          { role: 'about' },
-          { type: 'separator' },
-          { role: 'services' },
-          { type: 'separator' },
-          { role: 'hide' },
-          { role: 'hideOthers' },
-          { role: 'unhide' },
-          { type: 'separator' },
-          { role: 'quit' }
-        ]
-      }]
-    : []),
-  // { role: 'fileMenu' }
-  {
-    label: 'File',
-    submenu: [
-      {
-        label: 'Open File',
-        click: async () => {
-          const promise = dialog.showOpenDialog({title: 'Open File', properties: ['openFile']});
-          promise.then((res) => {
-            if (!res.canceled) {
-              showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
-            }
-          });
-        }
-      },      
-      {
-        label: 'Open Folder',
-        click: async () => {
-          const promise = dialog.showOpenDialog({title: 'Open Vault', properties: ['openDirectory']});
-          promise.then((res) => {
-            if (!res.canceled) {
-              showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
-            }
-          });
-        }
-      },
-      isMac ? { role: 'close' } : { role: 'quit' }
-    ]
-  },
-  // { role: 'editMenu' }
-  {
-    label: 'Edit',
-    submenu: [
-      { role: 'undo' },
-      { role: 'redo' },
-      { type: 'separator' },
-      { role: 'cut' },
-      { role: 'copy' },
-      { role: 'paste' },
-      ...(isMac
-        ? [
-            { role: 'pasteAndMatchStyle' },
-            { role: 'delete' },
-            { role: 'selectAll' },
+  const template = [
+    // { role: 'appMenu' }
+    ...(isMac
+      ? [{
+          label: app.name,
+          submenu: [
+            { role: 'about' },
             { type: 'separator' },
-            {
-              label: 'Speech',
-              submenu: [
-                { role: 'startSpeaking' },
-                { role: 'stopSpeaking' }
-              ]
-            }
+            { role: 'services' },
+            { type: 'separator' },
+            { role: 'hide' },
+            { role: 'hideOthers' },
+            { role: 'unhide' },
+            { type: 'separator' },
+            { role: 'quit' }
           ]
-        : [
-            { role: 'delete' },
-            { type: 'separator' },
-            { role: 'selectAll' }
-          ])
-    ]
-  },
-  // { role: 'viewMenu' }
-  {
-    label: 'View',
-    submenu: [
-      { role: 'reload' },
-      { role: 'forceReload' },
-      { role: 'toggleDevTools' },
-      { type: 'separator' },
-      { role: 'resetZoom' },
-      { role: 'zoomIn' },
-      { role: 'zoomOut' },
-      { type: 'separator' },
-      { role: 'togglefullscreen' }
-    ]
-  },
-  // { role: 'windowMenu' }
-  {
-    label: 'Window',
-    submenu: [
-      { role: 'minimize' },
-      { role: 'zoom' },
-      ...(isMac
-        ? [
-            { type: 'separator' },
-            { role: 'front' },
-            { type: 'separator' },
-            { role: 'window' }
-          ]
-        : [
-            { role: 'close' }
-          ])
-    ]
-  },
-  {
-    role: 'help',
-    submenu: [
-      {
-        label: 'Learn More',
-        click: async () => {
-          const { shell } = require('electron')
-          await shell.openExternal('https://electronjs.org')
+        }]
+      : []),
+    // { role: 'fileMenu' }
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open File',
+          click: async () => {
+            const promise = dialog.showOpenDialog({title: 'Open File', properties: ['openFile']});
+            promise.then((res) => {
+              if (!res.canceled) {
+                showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
+              }
+            });
+          }
+        },      
+        {
+          label: 'Open Folder',
+          click: async () => {
+            const promise = dialog.showOpenDialog({title: 'Open Vault', properties: ['openDirectory']});
+            promise.then((res) => {
+              if (!res.canceled) {
+                showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
+              }
+            });
+          }
+        },
+        {
+          label: 'Save',
+          accelerator: process.platform === 'darwin' ? 'Cmd+S' : 'Ctrl+S',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('Save'); 
+          }
+        },
+        //win.webContents.send('context', 'Iconize');  
+        isMac ? { role: 'close' } : { role: 'quit' }
+      ]
+    },
+    // { role: 'editMenu' }
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        ...(isMac
+          ? [
+              { role: 'pasteAndMatchStyle' },
+              { role: 'delete' },
+              { role: 'selectAll' },
+              { type: 'separator' },
+              {
+                label: 'Speech',
+                submenu: [
+                  { role: 'startSpeaking' },
+                  { role: 'stopSpeaking' }
+                ]
+              }
+            ]
+          : [
+              { role: 'delete' },
+              { type: 'separator' },
+              { role: 'selectAll' }
+            ])
+      ]
+    },
+    // { role: 'viewMenu' }
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    // { role: 'windowMenu' }
+    {
+      label: 'Window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'zoom' },
+        ...(isMac
+          ? [
+              { type: 'separator' },
+              { role: 'front' },
+              { type: 'separator' },
+              { role: 'window' }
+            ]
+          : [
+              { role: 'close' }
+            ])
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click: async () => {
+            const { shell } = require('electron')
+            await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+          }
         }
-      }
-    ]
-  }
-]
+      ]
+    }
+  ];
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);

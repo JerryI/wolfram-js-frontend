@@ -47,6 +47,7 @@
         //document.getElementById("ws-link").className = 'good-kernel';
         document.getElementById("kernel-stat").className = 'best-kernel';
         document.getElementById("kernel-text").innerText = "WS Link";
+        $KernelStatus = "good";
     } 
     core.FrontEndNotebookAttached = async function(args, env) {
        console.warn('Notebook attached');

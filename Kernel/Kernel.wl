@@ -98,7 +98,7 @@ LocalKernel["Exit"][cbk_] := (
 );
 
 (* tell the kernel an id of a notebook for the future fast direct communication *)
-LocalKernel["AttachNotebook"][id_, path_] := ( 
+LocalKernel["AttachNotebook"][id_, path_, cbk_:Null] := ( 
     Print["attaching "<>id];
     
     If[status["signal"] == "good", 
@@ -109,6 +109,7 @@ LocalKernel["AttachNotebook"][id_, path_] := (
     ,
         Print["Kenrel is not ready yet to attach notebook id"];
     ];
+    If[cbk =!= Null, callback = cbk];
 );
 
 LocalKernel["Restart"][cbk_] := ( 

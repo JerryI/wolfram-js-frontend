@@ -61,6 +61,12 @@ SetUpCron := (
 port = "8090";
 ip = "127.0.0.1";
 
+If[!BooleanQ[ElectronQ], ElectronQ = False];
+
+If[MemberQ[$ScriptCommandLine, "electron"],
+  ElectronQ = True;
+];
+
 If[MemberQ[$ScriptCommandLine, "port"],
   port = $ScriptCommandLine[[(Position[$ScriptCommandLine, "port"]//First//First) + 1]];
 ];

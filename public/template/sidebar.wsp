@@ -131,7 +131,7 @@
 
                                                 <?wsp , ""] ?>
 
-                                                <div class="notion-scroller" style="overflow-y: scroll;">
+                                                <div class="notion-scroller" style="overflow-y: scroll; height:100%">
                                                     <nav>
                                                         <div class="notion-outliner-private" style="display: block;">
                                                             <div style="">
@@ -452,7 +452,19 @@
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
         //generateThumbnail();
+        if (server.socket.readyState != 1) alert('Connection to the server was lost!');
     });
+
+    if (window.electronAPI) {
+        window.electronAPI.call((event, id) => {
+            if (id === 'Save') {
+                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
+                server.socket.send('NotebookStore;');
+                lastTimeSaved = new Date();
+                datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());                 
+            }
+        });
+    }
 
     setInterval(function () {
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
