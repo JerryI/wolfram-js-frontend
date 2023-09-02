@@ -42,8 +42,6 @@ With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
 
 Options[CreateFrontEndObject] = {"Override"->False}
 
-SetAttributes[CreateFrontEndObject, HoldFirst]
-
 SetAttributes[FrontEndOnly, HoldFirst]
 
 SetAttributes[FHold, HoldFirst]
