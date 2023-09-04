@@ -108,6 +108,12 @@ LocalKernel["AttachNotebook"][id_, path_, cbk_:Null] := (
         Print["Kenrel now is aware about notebook id and the path to it"];
     ,
         Print["Kenrel is not ready yet to attach notebook id"];
+        promiseToConnect := (
+            JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
+            WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[8010]];
+            Print["Promise to connect was resolved"];    
+            promiseToConnect = Null;        
+        );
     ];
     If[cbk =!= Null, callback = cbk];
 );
@@ -227,6 +233,7 @@ LocalKernel["Started"] := (
     Print["asyncsocket id: "<>jsocket];
     status = <|"signal"->"good", "text"->"Connected"|>;
     callback[LocalKernel["Status"]];
+    promiseToConnect;
 ); 
 
 

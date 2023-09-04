@@ -131,7 +131,9 @@ const createWindow = (url, focus = true) => {
         actions.separator(),
         actions.cut(),
 		    actions.copy(),
-		    actions.paste()
+		    actions.paste(),
+        actions.separator(),
+        actions.inspect()
       ]
     });    
   
