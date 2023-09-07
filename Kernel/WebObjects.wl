@@ -50,10 +50,6 @@ RegisterWebObject[sym_] := (
   JerryI`WolframJSFrontend`WebObjects`list = {
     JerryI`WolframJSFrontend`WebObjects`list, sym
   } // Flatten;
-  Unprotect[sym];
-  ToString[sym[args___]] ^:= With[{$ouid = CreateUUID[]}, 
-    Global`$NewDefinitions[$ouid] = <|"json"->ExportString[sym[args], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
-    $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; "FrontEndExecutable[\""<>$ouid<>"\"]" ]
 )
 
 LoadWebObjects := (

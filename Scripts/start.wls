@@ -98,6 +98,7 @@ If[MemberQ[$ScriptCommandLine, "auto"] || True,
 FileTypeHandler[path_, types_] := Module[{},
   (* add the path to the server PATH variable for loading pictures from the vault 
   jsf`server["path"] = Join[Take[jsf`server["path"], Length[jsf`server["path"]]-1], {If[DirectoryQ[path], path, DirectoryName[path] ] }];*)
+  JerryI`WolframJSFrontend`$PublicDirectory[[Length[JerryI`WolframJSFrontend`$PublicDirectory]]] = If[DirectoryQ[path], path, DirectoryName[path]];
 
   (* handlers *)
   (Which@@Flatten[types/.{Rule[a_,b_]:>{path//a, b}}])[path]
@@ -108,7 +109,8 @@ NotFound[path_] := <|"view" :> LoadPage["template/views/404.wsp"] |>;
 FolderWindow[wpath_] := <|"view" :> LoadPage["template/views/folder.wsp", {path = wpath}] |>;
 
 (* association file_path -> notebook id *)
-NotebookQ[path_] := (StringTake[path, -2] === "wl");
+NotebookQ[path_] := (StringTake[path, -3] === "wln");
+NotebookQLegacy[path_] := (StringTake[path, -2] === "wl");
 
 LoadNotebook[path_] := Module[{},
   <|"view":> LoadPage["template/views/editor.wsp", {notebook = $AssoticatedPath[path]}] |>
@@ -121,6 +123,7 @@ ImageViewer[path_] := <|"view" :> LoadPage["template/views/image.wsp", {url = pa
 SupportedTypes = {
   DirectoryQ  ->  FolderWindow,
   NotebookQ   ->  LoadNotebook,
+  NotebookQLegacy   ->  LoadNotebook,
   ImageFileQ  ->  ImageViewer,
   (True&)     ->  NotFound
 }
@@ -139,7 +142,7 @@ http = HTTPHandler[];
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Path" -> "/"|>] -> (HypertextProcess[#, "index.wsp", "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 http["MessageHandler", "WSP"] = GetFileRequestQ[{"wsp"}] -> (HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "png", "jpg", "svg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif"}] -> (
   ImportFile[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
 )
 

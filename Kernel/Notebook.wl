@@ -305,14 +305,14 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
 
 (* create a serialsed notebook and store it as a file *)
 CreateNewNotebook[dir_, window_:False] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = (RandomWord[]//Capitalize)},
-  While[FileExistsQ[FileNameJoin[{dir, filename<>".wl"}]],
+  While[FileExistsQ[FileNameJoin[{dir, filename<>".wln"}]],
     filename = StringJoin[filename, "-New"];
   ];
 
   $AssoticatedPath[path] = uid;
-  NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wl"}] ];
+  NotebookCreate["id"->uid, "name"->filename, "path"->FileNameJoin[{dir, filename<>".wln"}] ];
   NotebookStoreManually[uid];
-  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', ``)"][FileNameJoin[{dir, filename<>".wl"}]//URLEncode, If[window, "'_blank'", "'_self'"] ] ] // DefaultSerializer ]; 
+  WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/index.wsp?path=``', ``)"][FileNameJoin[{dir, filename<>".wln"}]//URLEncode, If[window, "'_blank'", "'_self'"] ] ] // DefaultSerializer ]; 
 ];
 
 (* create a serialsed notebook and store it as a file *)
@@ -597,11 +597,11 @@ NotebookRename[name_] := Module[{channel, newname, newpath},
 
     If[FileBaseName[jsfn`Notebooks[channel]["path"] ] === newname, Return[Null, Module] ];
 
-    newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wl"}];
+    newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wln"}];
 
     While[FileExistsQ[ newpath ],
         newname = newname <> "-One";
-        newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wl"}];
+        newpath = FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"] ], newname<>".wln"}];
     ];
 
     RenameFile[jsfn`Notebooks[channel]["path"], newpath];
@@ -672,6 +672,12 @@ NotebookStoreOperate["Set", key_, data_][id_String] := (
     If[!KeyExistsQ[jsfn`Notebooks[id], "store"], jsfn`Notebooks[id]["store"] = <||>];
     jsfn`Notebooks[id]["store"][key] = data;
     "Stored"
+)
+
+NotebookStoreOperate["Unset", key_][id_String] := (
+    If[!KeyExistsQ[jsfn`Notebooks[id], "store"], jsfn`Notebooks[id]["store"] = <||>];
+    jsfn`Notebooks[id]["store"][key] = .;
+    "Removed"
 )
 
 NotebookStoreOperate["Get", key_][id_String] := (

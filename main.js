@@ -54,7 +54,27 @@ if (process.platform === 'darwin') {
 
 const currentWindow = {};
 currentWindow.call = (type) => {
-  currentWindow.window.webContents.send('call', 'Save'); 
+  if (type === 'New' || type === 'Settings') {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      const o = createWindow(globalURL);
+      o.once('ready-to-show', () => {
+        currentWindow.window.webContents.send('call', type); 
+        console.log('send request: '+type);
+      });
+    } else {
+      currentWindow.window.webContents.send('call', type); 
+      console.log('send request: '+type);
+    }
+  } else {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      dialog.showMessageBox({message: 'There is no window opened to save something'})
+      return;
+    }
+    currentWindow.window.webContents.send('call', type); 
+    console.log('send request: '+type);
+  }
+
+  
 }
 
 const createLogWindow = () => {
@@ -148,7 +168,18 @@ const createWindow = (url, focus = true) => {
 }
 
 const showMainWindow = (url, title = "Root", focusWin = true) => {
-  const win = createWindow(url, focusWin);
+  let win;
+
+  if (firstTime && !isMac) {
+    win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin);
+    firstTime = false;
+  } else if (firstTime && isMac && requested) {
+    win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin);
+    firstTime = false;
+  } else {
+    win = createWindow(url, focusWin);
+  }
+  
   win.title = title;
   const contents = win.webContents;
 
@@ -204,6 +235,15 @@ app.on('quit', () => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
+})
+
+app.on('open-file', (ev, path) => {
+  ev.preventDefault();
+  if (firstTime) {
+    requested = path;
+    return;
+  }
+  showMainWindow(globalURL + `?path=`+ encodeURIComponent(path), path);
 })
 
 app.on('activate', () => {
@@ -329,10 +369,22 @@ const askForPath = (server_, window) => {
   }, window);
 }
 
+// Behaviour on the second instance for the parent process
+const gotSingleInstanceLock = app.requestSingleInstanceLock();
+if (!gotSingleInstanceLock) app.quit();
+else {
+  app.on('second-instance', (_, argv) => {
+    //User requested a second instance of the app.
+    //argv has the process.argv arguments of the second instance.
+    if (app.hasSingleInstanceLock()) {
+      showMainWindow(globalURL + `?path=`+ encodeURIComponent(argv[1]), argv[1]);
+    }
+  });
+}
+
+let firstTime = true;
+
 app.whenReady().then(() => {
-
-
-
   const win = createLogWindow();
 
   ipcMain.on('system-open', (e, path) => {
@@ -677,9 +729,20 @@ const isMac = process.platform === 'darwin'
       label: 'File',
       submenu: [
         {
+          label: 'New',
+          accelerator: process.platform === 'darwin' ? 'Cmd+N' : 'Ctrl+N',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('New'); 
+          }
+        },
+        {
           label: 'Open File',
+          accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
           click: async () => {
-            const promise = dialog.showOpenDialog({title: 'Open File', properties: ['openFile']});
+            const promise = dialog.showOpenDialog({title: 'Open File', filters: [
+              { name: 'Notebooks', extensions: ['wln'] }
+            ], properties: ['openFile']});
             promise.then((res) => {
               if (!res.canceled) {
                 showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
@@ -689,6 +752,7 @@ const isMac = process.platform === 'darwin'
         },      
         {
           label: 'Open Folder',
+          
           click: async () => {
             const promise = dialog.showOpenDialog({title: 'Open Vault', properties: ['openDirectory']});
             promise.then((res) => {
@@ -774,6 +838,20 @@ const isMac = process.platform === 'darwin'
             ])
       ]
     },
+
+    {
+      label: 'Preferences',
+      submenu: [
+      {
+        label: 'Settings',
+        click: async (ev) => {
+          console.log(ev);
+          currentWindow.call('Settings'); 
+        }
+      },
+      ]
+    },
+
     {
       role: 'help',
       submenu: [

@@ -102,7 +102,7 @@
     });
 
     core.FrontEndUpdateFileName = function(args, env) {
-        const name = interpretate(args[0])+".wl";
+        const name = interpretate(args[0])+".wln";
         const path = interpretate(args[1]);
 
         document.getElementById("path-path").innerText = path;

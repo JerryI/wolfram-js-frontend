@@ -23,6 +23,8 @@
                                                         </div>
                                                     </div>
 
+                                                <?wsp If[!TrueQ[ElectronQ], ?>   
+
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="settings-button" class="notion-focusable" role="button" tabindex="0">
                                                             <div class="sidebar-new-class">
@@ -61,6 +63,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                <?wsp , ""] ?>    
                                                     <!--<div class="notion-focusable sidebar-button" id="history-button" role="button" tabindex="0" >
                                                         <div class="sidebar-button-inner">
                                                             <div class="sidebar-button-svg">
@@ -239,16 +243,16 @@
                                     </div>
 
 <script type="module">
-    document.getElementById("new-notebook-button").addEventListener('click', (e)=>{
+    document.getElementById("new-notebook-button")?.addEventListener('click', (e)=>{
         const dir = '<?wsp $CurrentRequest["dir"] // URLEncode ?>';
         server.socket.send('CreateNewNotebook[URLDecode["'+dir+'"], <?wsp NotebookQ[$CurrentRequest["Query", "path_decoded"]] ?>]');
     });
 
-    document.getElementById("open-vault-button").addEventListener('click', (e)=>{
+    document.getElementById("open-vault-button")?.addEventListener('click', (e)=>{
         callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"]//URLEncode ?>"}');
     });
 
-    document.getElementById("settings-button").addEventListener('click', (e)=>{
+    document.getElementById("settings-button")?.addEventListener('click', (e)=>{
         callModal('settings', `{notebook = "${window.Notebook}"}`);
     }); 
 
@@ -298,6 +302,7 @@
             setTimeout(()=>{
                 textTheme.innerText = ""
             }, 500);
+            document.body.style.background = "transparent";
             window.resetBackground();
             
             runColorMode((isDarkMode) => {
@@ -389,7 +394,30 @@
           });
         }
 
-    });     
+    });    
+    
+    if (window.electronAPI) {
+        window.electronAPI.call((event, id) => {
+            console.log(id);
+            if (id === 'Save') {
+                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
+                server.socket.send('NotebookStore;');
+                lastTimeSaved = new Date();
+                datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());                 
+            }
+
+            if (id === 'New') {
+                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
+                const dir = '<?wsp $CurrentRequest["dir"] // URLEncode ?>';
+                server.socket.send('CreateNewNotebook[URLDecode["'+dir+'"], <?wsp NotebookQ[$CurrentRequest["Query", "path_decoded"]] ?>]');
+            }
+
+            if (id === 'Settings') {
+                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
+                callModal('settings', `{notebook = "${window.Notebook}"}`);
+            }            
+        });
+    }
 
     <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
     
@@ -421,7 +449,7 @@
     });
 
     core.FrontEndUpdateFileName = function(args, env) {
-        const name = interpretate(args[0])+".wl";
+        const name = interpretate(args[0])+".wln";
         const path = interpretate(args[1]);
 
         document.getElementById("path-path").innerText = path;
@@ -455,16 +483,7 @@
         if (server.socket.readyState != 1) alert('Connection to the server was lost!');
     });
 
-    if (window.electronAPI) {
-        window.electronAPI.call((event, id) => {
-            if (id === 'Save') {
-                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
-                server.socket.send('NotebookStore;');
-                lastTimeSaved = new Date();
-                datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());                 
-            }
-        });
-    }
+
 
     setInterval(function () {
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        

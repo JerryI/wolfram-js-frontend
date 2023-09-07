@@ -24,6 +24,8 @@ NotebookStore[key_] := AskMaster[Global`NotebookStoreOperate["Get", key]] // Rel
 NotebookStore /: Set[NotebookStore[key_], data_] := AskMaster[Global`NotebookStoreOperate["Set", key, data // Hold]];
 NotebookStore /: Keys[NotebookStore] := AskMaster[Global`NotebookStoreOperate["Keys"]];
 
+NotebookStore /: Unset[NotebookStore[key_]] := AskMaster[Global`NotebookStoreOperate["Unset", key]];
+
 Protect[NotebookStore]
 
 Unprotect[Select];
