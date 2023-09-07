@@ -53,20 +53,29 @@ if (process.platform === 'darwin') {
 }
 
 const currentWindow = {};
+currentWindow.window = undefined
+currentWindow.register = (win) => {
+  currentWindow.window = win;
+  const ref = win;
+  win.on('close', () => {
+    if (currentWindow.window == ref) currentWindow.window = undefined
+  });
+}
 currentWindow.call = (type) => {
   if (type === 'New' || type === 'Settings') {
-    if (BrowserWindow.getAllWindows().length === 0) {
+    if (!currentWindow.window) {
       const o = createWindow(globalURL);
       o.once('ready-to-show', () => {
         currentWindow.window.webContents.send('call', type); 
-        console.log('send request: '+type);
+        console.log('send request to a new: '+type);
+        o.show();
       });
     } else {
       currentWindow.window.webContents.send('call', type); 
       console.log('send request: '+type);
     }
   } else {
-    if (BrowserWindow.getAllWindows().length === 0) {
+    if (!currentWindow.window) {
       dialog.showMessageBox({message: 'There is no window opened to save something'})
       return;
     }
@@ -110,11 +119,13 @@ const createWindow = (url, focus = true) => {
       
     });
 
-    if (focus) currentWindow.window = win;
+    if (focus) {
+      currentWindow.register(win);
     win.on('focus', ()=>{
-      currentWindow.window = win;
+      currentWindow.register(win)
       console.log('focus');
     });
+  }
 
     contextMenu({
       window: win,
