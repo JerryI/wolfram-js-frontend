@@ -167,6 +167,8 @@ const createWindow = (url, focus = true) => {
     return win;
 }
 
+let requested = false
+
 const showMainWindow = (url, title = "Root", focusWin = true) => {
   let win;
 
