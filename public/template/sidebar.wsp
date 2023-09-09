@@ -373,7 +373,7 @@
         }
         const query = `FileOperate["Upload"][<|"name"->"${name}", "data"->"${file}"|>, "${window.Notebook}"]`;
 
-        return server.post.send(query)
+        return server.send(query)
     }
 
     sidebar.addEventListener('drop', (ev)=>{
