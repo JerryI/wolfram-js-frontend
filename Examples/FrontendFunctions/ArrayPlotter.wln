@@ -1,0 +1,323 @@
+<|"notebook" -> <|"name" -> "Ashtray", "id" -> "chorale-7f2a2", 
+   "kernel" -> LocalKernel, "objects" :> 
+    Association["0fbc17cd-4cd3-46ec-878e-0693f6e96684" -> 
+      Association["json" -> "[\"ArrayDraw\",[\"Hold\",\"board\"]]", 
+       "date" -> DateObject[{2023, 9, 8, 19, 8, 57.680735`8.51360575938145}, 
+         "Instant", "Gregorian", 3.]], 
+     "1ef36331-7ae9-494b-bcb6-f8761cf401ba" -> 
+      Association["json" -> "[\"ArrayDraw\",[\"List\",[\"List\",1,1,1,1,0,0,0\
+,1,0,0,0,0,1,0,0,0,1,0,1,0],[\"List\",0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0\
+],[\"List\",0,1,0,0,1,1,1,1,1,0,0,0,1,1,0,1,0,0,0,0],[\"List\",0,0,0,0,1,0,0,\
+0,0,0,0,0,0,1,1,0,0,1,0,0],[\"List\",0,1,0,1,0,1,1,1,0,0,0,0,0,1,0,0,1,1,0,0]\
+,[\"List\",0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,0\
+,0,0,0,0,0,1,1,0,0,0,1,0],[\"List\",0,0,0,0,1,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0],\
+[\"List\",0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0],[\"List\",0,0,0,1,1,1,0,0,\
+0,0,0,0,0,0,0,1,0,1,0,0],[\"List\",0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0,1,0,0],[\
+\"List\",0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0,0\
+,0,0,0,1,1,0,1,1,0,0,0],[\"List\",0,1,1,1,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0],[\
+\"List\",0,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0],[\"List\",1,0,1,1,0,1,1,1,0\
+,0,0,0,0,0,0,0,0,0,0,0],[\"List\",0,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,1],[\
+\"List\",0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1],[\"List\",0,0,0,0,0,0,1,1,0\
+,0,0,0,0,0,0,1,1,0,0,0],[\"List\",1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1]]]"\
+, "date" -> DateObject[{2023, 9, 8, 19, 10, 41.481445`8.37042885454162}, 
+         "Instant", "Gregorian", 3.]], 
+     "53be8f76-d16c-4c63-8a9a-6b6c04e74494" -> 
+      Association["json" -> "[\"ArrayDraw\",[\"List\",[\"List\",0,0,1,0,1,0,1\
+,0,1,0,0,0,0,0,0,0,1,1,0,1],[\"List\",1,0,0,0,0,0,1,1,0,0,0,1,0,0,0,1,1,0,0,1\
+],[\"List\",1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,1],[\"List\",0,1,0,0,1,0,1,\
+0,0,0,1,1,1,1,0,1,1,1,1,1],[\"List\",1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0]\
+,[\"List\",1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,1,0,1,0],[\"List\",0,0,0,0,0,0,0,0\
+,0,0,1,0,0,0,0,0,0,0,1,0],[\"List\",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1],\
+[\"List\",0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,1,0,1,0,0],[\"List\",0,0,1,1,1,0,0,1,\
+1,0,0,0,0,0,1,1,0,1,1,1],[\"List\",1,0,1,1,1,0,0,0,1,0,0,0,1,1,0,0,0,1,1,1],[\
+\"List\",0,0,1,0,1,0,0,1,1,1,1,0,0,0,1,0,0,0,0,1],[\"List\",1,0,0,0,1,0,0,0,0\
+,0,0,0,0,0,1,0,0,0,0,0],[\"List\",1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[\
+\"List\",1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1],[\"List\",0,1,0,0,0,1,0,1,0\
+,0,0,1,1,1,1,0,1,0,0,0],[\"List\",0,0,0,0,1,1,0,1,0,0,0,1,1,1,1,0,0,0,0,0],[\
+\"List\",0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0],[\"List\",0,0,0,0,1,1,0,0,0\
+,0,0,0,0,1,0,0,0,0,0,0],[\"List\",0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]]"\
+, "date" -> DateObject[{2023, 9, 8, 20, 14, 9.408548`7.726097591615493}, 
+         "Instant", "Gregorian", 3.]], 
+     "f3a90625-f8b1-44b6-8920-0988aea3b4e9" -> 
+      Association["json" -> "[\"ArrayDraw\",[\"List\",[\"List\",0,0,0,0,1,0,0\
+,0,0,0,0,1,0,0,0,1,1,1,1,0],[\"List\",0,0,0,0,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0,0\
+],[\"List\",1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1],[\"List\",0,0,0,0,1,0,0,\
+0,0,0,0,0,0,1,1,0,0,0,0,0],[\"List\",0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1]\
+,[\"List\",0,0,0,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0],[\"List\",0,0,0,0,0,1,1,1\
+,0,1,0,0,0,0,0,0,0,0,1,0],[\"List\",1,1,0,1,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0],\
+[\"List\",0,1,0,0,0,0,1,1,1,0,1,0,1,0,1,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0,\
+0,0,0,0,1,0,0,0,0,0,0,1],[\"List\",0,1,0,0,0,1,1,0,1,1,1,0,1,1,0,0,0,1,1,1],[\
+\"List\",0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,1,1,0,0,0],[\"List\",0,0,0,0,0,1,1,1,0\
+,1,0,1,0,1,0,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,1],[\
+\"List\",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],[\"List\",1,0,1,0,1,0,0,0,0\
+,1,1,1,1,0,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1],[\
+\"List\",1,0,0,0,1,0,0,0,0,1,1,0,1,1,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,1,1\
+,0,1,0,0,0,1,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0]]]"\
+, "date" -> DateObject[{2023, 9, 8, 21, 28, 13.855095`7.894184493562392}, 
+         "Instant", "Gregorian", 3.]], 
+     "0d765fb5-63e3-4806-8acc-51cab0744426" -> 
+      Association["json" -> "[\"ArrayDraw\",[\"Offload\",\"sboard\"]]", 
+       "date" -> DateObject[{2023, 9, 8, 21, 33, 5.587532`7.499795011163677}, 
+         "Instant", "Gregorian", 3.]]], "path" -> "/Volumes/Data/Github/wolfr\
+am-js-frontend/Examples/FrontendFunctions/ArrayPlotter.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 9, 11, 55, 
+      43.696431`8.393020943914493}, "Instant", "Gregorian", 2.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$16]|>, 
+ "cells" -> {<|"id" -> "b3279548-7ebe-4b55-ac8c-71faba194098df94368ae", 
+    "type" -> "input", "data" -> ".md\n# Frontend functions\n## Animated \
+array plotter\nIn this small session we will show how to write our own raw \
+function for the frontend, that allows to visualize an array of data in a \
+unique way.\n\n<br/>\n\nIt is important to note, that here it does not rely \
+on `Graphics` object or anyhting else. Just a plain HTML and Javascript \
+coupled to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of \
+handling the data from WL to a browser's screen__. Most in-build components \
+are made in this way.", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "a9963870-2141-48bb-885b-2968fcb9ba868ae", "type" -> "output", 
+    "data" -> "\n# Frontend functions\n## Animated array plotter\nIn this \
+small session we will show how to write our own raw function for the \
+frontend, that allows to visualize an array of data in a unique \
+way.\n\n<br/>\n\nIt is important to note, that here it does not rely on \
+`Graphics` object or anyhting else. Just a plain HTML and Javascript coupled \
+to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of handling \
+the data from WL to a browser's screen__. Most in-build components are made \
+in this way.", "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f6648b94-4216-469a-8443-739b616ce8998ae", "type" -> "input", 
+    "data" -> ".md\nLet's sketch a plan!\n1. The size of an array is \
+determined in a runtime.\n2. It should use `canvas` element of HTML5.\n3. It \
+will be animated independently from the incomming data with a nice fading \
+effect.\n4. It should be synced to the framerate of the browser.\n\nIt sound \
+complicated, however using a modern Javascript thing are going much easier", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "7b32fe03-7a55-4d24-a417-68242c54839e8ae", "type" -> "output", 
+    "data" -> "\nLet's sketch a plan!\n1. The size of an array is determined \
+in a runtime.\n2. It should use `canvas` element of HTML5.\n3. It will be \
+animated independently from the incomming data with a nice fading effect.\n4. \
+It should be synced to the framerate of the browser.\n\nIt sound complicated, \
+however using a modern Javascript thing are going much easier", 
+    "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2a05d533-818d-4424-b513-3d392f2b0e12df94368ae", 
+    "type" -> "input", "data" -> ".js\ncore.ArrayDraw = async (args, env) => \
+{\n  const canvas = document.createElement('canvas');\n  \n  //fixed, but one \
+can use core._getRules(args, env) to derive the ImageSize option\n  \
+canvas.width = 300;\n  canvas.height = 300;\n  \n  //append our canvas to the \
+provided DOM element\n  env.element.appendChild(canvas);\n  \n  let context = \
+canvas.getContext(\"2d\");\n  \n  //use local memory to store the canvas\n  \
+env.local.ctx = context;\n\n  //get the provided data from WL\n  const array \
+= await interpretate(args[0], env);\n\n  //copy by the reference to the \
+instance of a frontend object\n  env.local.array = array;  \n\n  //check the \
+width/height\n  const width = array.length;\n  const height = \
+array[0].length;\n\n  //some helpers to determine the sizes\n  \
+env.local.width = width;\n  env.local.height = height;\n\n  const sizex = \
+Math.floor((300/width)-1);\n  const sizey = Math.floor((300/height)-1);\n\n  \
+env.local.sizex = sizex;\n  env.local.sizey = sizey;\n\n  \
+env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  //animation \
+function\n  //this will be executed asynchroniously\n\n  function random \
+(min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  //our \
+heros\n  const particles = [];\n  \n  function animate() {\n    //randomly \
+select 60 potitions from the array\n    for (let i=0; i<60; ++i) {\n      if \
+(particles.length > 30*30*5) particles.shift();\n      \n      const ri = \
+Math.floor(random(0, env.local.width - 1));\n      const rj = \
+Math.floor(random(0, env.local.height - 1));\n      const val = \
+env.local.array[ri][rj];\n\n      //create a projectile\n      \
+particles.push({\n        r: 127+127*Math.sin(2048*val), \n        g: \
+127+127*Math.sin(1048*val), \n        b: 0,\n        lifetime: 1,\n        x: \
+ri * env.local.arr2screen.x,\n        y: rj * env.local.arr2screen.y,\n       \
+ xvel: random(-1,1),\n        yvel: random(1,-1)\n      });\n    }\n\n    \
+//clearscreen\n    context.fillStyle = \"white\";\n    context.fillRect(0, 0, \
+300, 300);\n\n\n    //draw all projectiles\n    for (let i=0; \
+i<particles.length; ++i) {\n      //age of a projectile\n      const age = \
+1/particles[i].lifetime;\n\n      //draw a projectile\n      \
+context.fillStyle = `rgba(${particles[i].r}, ${particles[i].g}, \
+${particles[i].b}, ${age}`;\n      context.fillRect(particles[i].x + sizex/2, \
+particles[i].y + sizey/2, sizex, sizey);\n      \n      //a projectile gets \
+older\n      particles[i].lifetime = particles[i].lifetime + 0.2;\n\n      \
+//move it a bit\n      particles[i].x = particles[i].x + \
+0.1*particles[i].xvel;\n      particles[i].y = particles[i].y + \
+0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
+//and store the ID of a request to cancel it later if needed\n    \
+env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
+requestAnimationFrame(animate);\n}", "display" -> "codemirror", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "93e32f83-b06b-40df-a87b-f4ae2bdb234b8ae", "type" -> "output", 
+    "data" -> "\ncore.ArrayDraw = async (args, env) => {\n  const canvas = \
+document.createElement('canvas');\n  \n  //fixed, but one can use \
+core._getRules(args, env) to derive the ImageSize option\n  canvas.width = \
+300;\n  canvas.height = 300;\n  \n  //append our canvas to the provided DOM \
+element\n  env.element.appendChild(canvas);\n  \n  let context = \
+canvas.getContext(\"2d\");\n  \n  //use local memory to store the canvas\n  \
+env.local.ctx = context;\n\n  //store the current data on browser's side for \
+the animation purposes\n  //we need it to make it possibl\n\n\n  //get the \
+provided data from WL\n  const array = await interpretate(args[0], env);\n\n  \
+//store in to this instance of a frontend object\n  env.local.array = array;  \
+\n\n  //check the width/height\n  const width = array.length;\n  const height \
+= array[0].length;\n\n  env.local.width = width;\n  env.local.height = \
+height;\n\n  const sizex = Math.floor((300/width)-1);\n  const sizey = \
+Math.floor((300/height)-1);\n\n  env.local.sizex = sizex;\n  env.local.sizey \
+= sizey;\n\n  env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  \
+//animation function\n  //this will be executed asynchroniously\n\n  function \
+random (min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  \
+const particles = [];\n  \n  function animate() {\n    for (let i=0; i<60; \
+++i) {\n      if (particles.length > 30*30*5) particles.shift();\n      \n    \
+  const ri = Math.floor(random(0, env.local.width - 1));\n      const rj = \
+Math.floor(random(0, env.local.height - 1));\n      const val = \
+env.local.array[ri][rj];\n      \n      particles.push({\n        r: \
+127+127*Math.sin(2048*val), \n        g: 127+127*Math.sin(1048*val), \n       \
+ b: 0,\n        lifetime: 1,\n        x: ri * env.local.arr2screen.x,\n       \
+ y: rj * env.local.arr2screen.y,\n        xvel: random(-1,1),\n        yvel: \
+random(1,-1)\n      });\n    }\n    \n    context.fillStyle = \"white\";\n    \
+context.fillRect(0, 0, 300, 300);\n\n\n    //draw all data from the local \
+store and fade it based on a lifetime\n    for (let i=0; i<particles.length; \
+++i) {\n      const age = 1/particles[i].lifetime;\n      context.fillStyle = \
+`rgba(${particles[i].r}, ${particles[i].g}, ${particles[i].b}, ${age}`;\n     \
+ context.fillRect(particles[i].x + sizex/2, particles[i].y + sizey/2, sizex, \
+sizey);\n      \n      //a rectangle gets older\n      particles[i].lifetime \
+= particles[i].lifetime + 0.2;\n\n      particles[i].x = particles[i].x + \
+0.1*particles[i].xvel;\n      particles[i].y = particles[i].y + \
+0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
+//and store the ID of a request to cancel it later if needed\n    \
+env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
+requestAnimationFrame(animate);\n}", "display" -> "js", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "adde46e1-9d29-4e25-bb56-ce874a98ac22df94368ae", 
+    "type" -> "input", "data" -> " ", "display" -> "codemirror", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6f060451-6916-43e5-b6ab-bec6c1cf205fdf94368ae", 
+    "type" -> "input", "data" -> ".md\n## Cleanning up method\nOnce you \
+delete this widget or object (i dunno how to call it), __we should take care \
+about animation loop__, otherwise it will continue to run in the background", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "589ca2dc-72c4-4e13-bd2e-abba5d503f7e8ae", "type" -> "output", 
+    "data" -> "\n## Cleanning up method\nOnce you delete this widget or \
+object (i dunno how to call it), __we should take care about animation \
+loop__, otherwise it will continue to run in the background", 
+    "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4eb22dfb-2272-413b-b9cc-42a6988ac906df94368ae", 
+    "type" -> "input", "data" -> ".js\ncore.ArrayDraw.destroy = async (args, \
+env) => {\n  //remove animation loop\n  \
+cancelAnimationFrame(env.local.uid);\n  //make shure that all other nested \
+object will do the same\n  await interpretate(args[0], env);\n}", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ccb6914d-d811-4991-a3cf-025977fd78468ae", "type" -> "output", 
+    "data" -> "\ncore.ArrayDraw.destroy = async (args, env) => {\n  //remove \
+animation loop\n  cancelAnimationFrame(env.local.uid);\n  //make shure that \
+all other nested object will do the same\n  await interpretate(args[0], \
+env);\n}", "display" -> "js", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "458d72da-a91e-423f-8d0f-94660dfd7e798ae", "type" -> "input", 
+    "data" -> ".md\nNow the second important method", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "d45c7610-b941-4f33-a7a7-5ae84ca5d5b28ae", "type" -> "output", 
+    "data" -> "\nNow the second important method", "display" -> "markdown", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "817ef267-a5e3-4db8-a677-761f9393f831df94368ae", 
+    "type" -> "input", "data" -> ".md\n## Update method\nWhen the dependent \
+variables changes, we should update the canvas without reevaluating cells", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "7fe5dc7e-d81a-4872-a462-09bf72725d028ae", "type" -> "output", 
+    "data" -> "\n## Update method\nWhen the dependent variables changes, we \
+should update the canvas without reevaluating cells", 
+    "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9a9f8c26-d27d-40d2-b6a3-6b42a959b690df94368ae", 
+    "type" -> "input", "data" -> ".js\ncore.ArrayDraw.update = async (args, \
+env) => {\n  const innerData = env.local.innerData;\n\n  //get the provided \
+data from WL\n  const array = await interpretate(args[0], env);\n  if \
+(array.length != env.local.array.length) return;\n  if (array[0].length != \
+env.local.array[0].length) return;\n  env.local.array = array;\n}", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8a9e1702-85c7-4a0f-b093-ba829c00abc78ae", "type" -> "output", 
+    "data" -> "\ncore.ArrayDraw.update = async (args, env) => {\n  const \
+innerData = env.local.innerData;\n\n  //get the provided data from WL\n  \
+const array = await interpretate(args[0], env);\n  if (array.length != \
+env.local.array.length) return;\n  if (array[0].length != \
+env.local.array[0].length) return;\n  env.local.array = array;\n}", 
+    "display" -> "js", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "629efae4-3900-452f-9349-20904f1f04a58ae", "type" -> "input", 
+    "data" -> ".md\nNow all data is stored inside the `env.local` variable, \
+which is unique for each instance.\n\nThen to call it like a proper Wolfram \
+Function, we need to wrap it into", "display" -> "codemirror", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "cd747d9b-5a73-4fe2-a6f8-e574130e987c8ae", "type" -> "output", 
+    "data" -> "\nNow all data is stored inside the `env.local` variable, \
+which is unique for each instance.\n\nThen to call it like a proper Wolfram \
+Function, we need to wrap it into", "display" -> "markdown", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "105a463b-a08a-47b9-8134-dca610bf9a168ae", "type" -> "input", 
+    "data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, {1, \
+1}};\nbboard = RandomInteger[1, {20, \
+20}];\nCreateFrontEndObject[ArrayDraw[bboard = \
+Last[CellularAutomaton[gameOfLife, bboard, {{0, 1}}]]]]", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "b725e42f-e1f8-4dac-a5e9-6cf1b371765a8ae", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"f3a90625-f8b1-44b6-8920-0988aea3b4e9\"]", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "bbe13874-10c2-4796-9a0b-969993aafcc28ae", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "400833ad-0095-4cf6-bbdd-b3a9c85066068ae", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "c1c919bc-4a66-464d-89c7-a7ebbc72f1ad8ae", "type" -> "input", 
+    "data" -> ".md\nYou __can copy and paste__, since this is a proper \
+frontend object.\n\nHowever, there is much more we need to do as well. ", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "6974f717-a27a-4423-b522-d1edd59e6df88ae", "type" -> "output", 
+    "data" -> "\nYou __can copy and paste__, since this is a proper frontend \
+object.\n\nHowever, there is much more we need to do as well. ", 
+    "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f66849c9-1e77-41d4-8830-813949cf81438ae", "type" -> "input", 
+    "data" -> ".md\n### Animation", "display" -> "codemirror", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "11038ad8-9321-467c-b0df-e060e56745198ae", "type" -> "output", 
+    "data" -> "\n### Animation", "display" -> "markdown", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f4b89f7e-edca-4a12-b011-6982bf5c230fdf94368ae", 
+    "type" -> "input", "data" -> ".md\nNow we can check the result by \
+rewritting the update cycle in WL in a much shorter way", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "4d927703-f5b1-41ae-aca9-ce28cb6b69234368ae", 
+    "type" -> "output", "data" -> "\nNow we can check the result by \
+rewritting the update cycle in WL in a much shorter way", 
+    "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6adf6c30-2040-4442-bc02-14a2ec0513f7df94368ae", 
+    "type" -> "input", "data" -> "\ngameOfLife = {224, {2, {{2, 2, 2}, {2, 1, \
+2}, {2, 2, 2}}}, {1, 1}};\nsboard = RandomInteger[1, {20, \
+20}];\nCreateFrontEndObject[ArrayDraw[sboard // Offload]]\n\nDo[\n  sboard = \
+Last[CellularAutomaton[gameOfLife, sboard, {{0, 1}}]];\n  Pause[0.2];\n, {i, \
+1, 30}]", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "b14b11ee-0472-4bc3-b1d4-cb0a10127e108ae", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"0d765fb5-63e3-4806-8acc-51cab0744426\"]", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "955d6278-f856-4b1c-94d0-21ac8f02e9bddf94368ae", 
+    "type" -> "input", "data" -> ".md\nSo it just updates our variable \
+`sboard` without thinking of redrawing the canvas", 
+    "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "72d247af-0e48-4026-9374-cac98b2b66a38ae", "type" -> "output", 
+    "data" -> "\nSo it just updates our variable `sboard` without thinking of \
+redrawing the canvas", "display" -> "markdown", "sign" -> "chorale-7f2a2", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d24debcf-1c3b-4e9d-98d8-8a844074263edf94368ae", 
+    "type" -> "input", "data" -> " ", "display" -> "codemirror", 
+    "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

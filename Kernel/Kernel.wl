@@ -119,13 +119,13 @@ LocalKernel["AttachNotebook"][id_, path_, cbk_:Null] := (
 );
 
 LocalKernel["Restart"][cbk_] := ( 
-    LocalLinkRestart;
+    LocalKernel["Start"][cbk];
 );
 
 LocalKernel["Status"] := status;
 
 LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
-    If[link =!= Null, LocalKernel["Exit"][Null]];
+    If[link =!= Null, LocalKernel["Exit"][Null]; Pause[1]];
     Print[First[$CommandLine]];
 
     (* oh God, Wolfram what did you do... *)

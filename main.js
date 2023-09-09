@@ -104,7 +104,7 @@ const createLogWindow = () => {
   return win;
 }
 
-const createWindow = (url, focus = true) => {
+const createWindow = (url, focus = true, hidefirst = true) => {
     const win = new BrowserWindow({
       vibrancy: "sidebar", // in my case...
       frame: true,
@@ -112,7 +112,7 @@ const createWindow = (url, focus = true) => {
       width: 800,
       height: 600,
       title: 'Root',
-      show: false,
+      show: !hidefirst,
       webPreferences: {
         preload: path.join(__dirname, 'preloadMain.js')
       }
@@ -180,17 +180,17 @@ const createWindow = (url, focus = true) => {
 
 let requested = false
 
-const showMainWindow = (url, title = "Root", focusWin = true) => {
+const showMainWindow = (url, title = "Root", focusWin = true, hidefirst = true) => {
   let win;
 
   if (firstTime && !isMac) {
-    win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin);
+    win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin, hidefirst);
     firstTime = false;
   } else if (firstTime && isMac && requested) {
-    win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin);
+    win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin, hidefirst);
     firstTime = false;
   } else {
-    win = createWindow(url, focusWin);
+    win = createWindow(url, focusWin, hidefirst);
   }
   
   win.title = title;
@@ -204,9 +204,9 @@ const showMainWindow = (url, title = "Root", focusWin = true) => {
       let path = u.searchParams.get('path');
       if (!path) {
         path = 'Projector';
-        showMainWindow(url, path, false);
+        showMainWindow(url, path, false, false);
       } else {
-        showMainWindow(url, path, true);
+        showMainWindow(url, path, true, false);
       }
 
       
@@ -231,10 +231,11 @@ const showMainWindow = (url, title = "Root", focusWin = true) => {
     return { action: 'deny' };
   });
   
-
-  win.once('ready-to-show', () => {
-    win.show()
-  });
+  if (hidefirst) {
+    win.once('ready-to-show', () => {
+      win.show()
+    });
+  }
 }
 
 let server;
@@ -256,7 +257,7 @@ app.on('open-file', (ev, path) => {
     requested = path;
     return;
   }
-  showMainWindow(globalURL + `?path=`+ encodeURIComponent(path), path);
+  showMainWindow(globalURL + `?path=`+ encodeURIComponent(path), path, true, false);
 })
 
 app.on('activate', () => {
@@ -756,6 +757,7 @@ const isMac = process.platform === 'darwin'
             const promise = dialog.showOpenDialog({title: 'Open File', filters: [
               { name: 'Notebooks', extensions: ['wln'] }
             ], properties: ['openFile']});
+            
             promise.then((res) => {
               if (!res.canceled) {
                 showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
@@ -783,6 +785,39 @@ const isMac = process.platform === 'darwin'
             currentWindow.call('Save'); 
           }
         },
+        { type: 'separator' },
+        {
+          label: 'Share',
+          submenu: [
+            {
+              label: 'HTML',
+              click: async (ev) => {
+                currentWindow.call('ShareHTML'); 
+              }
+            },
+
+            {
+              label: 'React',
+              click: async (ev) => {
+                currentWindow.call('ShareReact'); 
+              }
+            }
+          ]
+        },
+        { type: 'separator' },        
+        {
+          label: 'Open Examples',
+          click: async (ev) => {
+            showMainWindow(globalURL + `?path=`+ encodeURIComponent(path.join(installationFolder, 'Examples')), 'Examples');
+          }
+        },    
+        {
+          label: 'Locate AppData',
+          click: async (ev) => {
+            console.log(ev);
+            shell.showItemInFolder(installationFolder);
+          }
+        },             
         //win.webContents.send('context', 'Iconize');  
         isMac ? { role: 'close' } : { role: 'quit' }
       ]
@@ -818,25 +853,14 @@ const isMac = process.platform === 'darwin'
             ])
       ]
     },
-    // { role: 'viewMenu' }
-    {
-      label: 'View',
-      submenu: [
-        { role: 'reload' },
-        { role: 'forceReload' },
-        { role: 'toggleDevTools' },
-        { type: 'separator' },
-        { role: 'resetZoom' },
-        { role: 'zoomIn' },
-        { role: 'zoomOut' },
-        { type: 'separator' },
-        { role: 'togglefullscreen' }
-      ]
-    },
     // { role: 'windowMenu' }
     {
       label: 'Window',
       submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },        
         { role: 'minimize' },
         { role: 'zoom' },
         ...(isMac
@@ -853,7 +877,68 @@ const isMac = process.platform === 'darwin'
     },
 
     {
-      label: 'Preferences',
+      label: 'Evaluation',
+      submenu: [
+        {
+          label: 'Abort',
+          accelerator: process.platform === 'darwin' ? 'Alt+.' : 'Alt+.',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('Abort'); 
+          }
+        }, 
+        
+        {
+          label: 'Evaluate Initializing Cells',
+          accelerator: process.platform === 'darwin' ? 'Alt+i' : 'Alt+i',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('EIC'); 
+          }
+        },    
+
+        {
+          label: 'Evaluate All Cells',
+          accelerator: process.platform === 'darwin' ? 'Alt+a' : 'Alt+a',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('EAC'); 
+          }
+        },    
+
+        { type: 'separator' }, 
+
+        {
+          label: 'Kernel',
+          submenu: [
+            {
+              label: 'Start',
+              click: async (ev) => {
+                console.log(ev);
+                currentWindow.call('LocalKernelStart'); 
+              }
+            },   
+            {
+              label: 'Stop',
+              click: async (ev) => {
+                console.log(ev);
+                currentWindow.call('LocalKernelExit'); 
+              }
+            }, 
+            {
+              label: 'Restart',
+              click: async (ev) => {
+                console.log(ev);
+                currentWindow.call('LocalKernelRestart'); 
+              }
+            }                                  
+          ]
+        }
+      ]
+    },    
+
+    {
+      label: 'Misc',
       submenu: [
       {
         label: 'Settings',
@@ -862,19 +947,14 @@ const isMac = process.platform === 'darwin'
           currentWindow.call('Settings'); 
         }
       },
-      ]
-    },
-
-    {
-      role: 'help',
-      submenu: [
-        {
-          label: 'Learn More',
-          click: async () => {
-            const { shell } = require('electron')
-            await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
-          }
+      {
+        role: 'help',
+        label: 'Learn More',
+        click: async () => {
+          const { shell } = require('electron')
+          await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
         }
+      }
       ]
     }
   ];

@@ -3,6 +3,7 @@
         With[{signal = kernel["Status"]["signal"], text = kernel["Status"]["text"]}, 
 ?>
 
+
 <script>
     var $KernelStatus = '<?wsp signal ?>';
 </script>

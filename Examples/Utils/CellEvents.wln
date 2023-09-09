@@ -1,0 +1,24 @@
+<|"notebook" -> <|"name" -> "Loaning", "id" -> "daunted-ca382", 
+   "kernel" -> LocalKernel, "objects" -> <||>, 
+   "path" -> 
+    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Utils/CellEvents.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 9, 17, 41, 
+      12.701549`7.856431673861014}, "Instant", "Gregorian", 2.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$39]|>, 
+ "cells" -> {<|"id" -> "3f1bf506-9347-41dd-af31-acf385d05c02", 
+    "type" -> "input", "data" -> ".md\nTry to reevaluate this cell", 
+    "display" -> "codemirror", "sign" -> "daunted-ca382", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "be7cb665-fe8d-4338-bdf0-b046e0876397", "type" -> "output", 
+    "data" -> "\nTry to reevaluate this cell", "display" -> "markdown", 
+    "sign" -> "daunted-ca382", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "c7367763-b377-4362-afa6-9ebb38035e57", "type" -> "input", 
+    "data" -> "With[{},\n  EventHandler[EvaluationCell[], {\"destroy\" -> \
+(Print[\"Destroyed!\"] &)}];\n  \"Lovely day\"\n]", 
+    "display" -> "codemirror", "sign" -> "daunted-ca382", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7388046b-5b61-4bde-bd9f-7e9990b3d7a7", "type" -> "output", 
+    "data" -> "\"Lovely day\"", "display" -> "codemirror", 
+    "sign" -> "daunted-ca382", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

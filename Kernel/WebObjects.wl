@@ -1,3 +1,5 @@
+SetAttributes[FrontEndOnly, HoldFirst]
+
 BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`Colors`", "JerryI`WolframJSFrontend`Remote`", "JerryI`Misc`Events`"}];
 
 (*
@@ -11,8 +13,6 @@ BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`
 
 RegisterWebObject::usage = "RegisterWebObject register objects, which are FrontEndExecutables by the default (have JS representation)"
 LoadWebObjects::usage = "LoadWebObjects loads all objects into memory and makes a replacement table"
-
-FrontEndOnly::usage = "a wrapper, where the expression will not be processed outside the frontend"
 
 FHold::usage = "alias to FrontEndOnly"
 
@@ -42,7 +42,7 @@ With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
 
 Options[CreateFrontEndObject] = {"Override"->False}
 
-SetAttributes[FrontEndOnly, HoldFirst]
+
 
 SetAttributes[FHold, HoldFirst]
 

@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Play", "id" -> "bustard-28043", 
+<|"notebook" -> <|"name" -> "Play", "id" -> "continent-75de5", 
    "kernel" -> LocalKernel, "objects" :> 
     <|"length" -> <|"json" -> "0", "date" -> DateObject[{2023, 6, 19, 15, 56, 
           24.830926`8.147567898269594}, "Instant", "Gregorian", 3.]|>, 
@@ -192,95 +192,83 @@ e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
 nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
           32.568433`8.2653718438225}, "Instant", "Gregorian", 3.]|>, 
-     "9bdbc7ad-5eb9-4223-928a-fb25e3bac3e7" -> 
-      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
-\",\"'93abd491-9ce0-4da1-948d-224870424a53'\"],[\"Rule\",\"'Label'\",\"'Lengt\
-h'\"]]", "date" -> DateObject[{2023, 9, 8, 18, 7, 
-          14.094057`7.901611008905059}, "Instant", "Gregorian", 3.]|>, 
-     "c6a0f94b-c4c6-415a-989a-d05dc992a083" -> 
-      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
-\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
-e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
-st\",400,100]],[\"Rule\",\"'TransitionDuration'\",30],[\"Rule\",\"'Transition\
-Type'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 9, 8, 18, 9, 
-          31.732972`8.254085729223428}, "Instant", "Gregorian", 3.]|>, 
      "eb5f52c3-de6e-4d69-b24b-e02bb71be356" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
 \",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
 \",\"'drag'\",\"'84ae2378-064f-40b8-b523-90925ba2eedd'\"]],[\"Line\",[\"Offlo\
 ad\",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",20],[\"Rule\",\"ImageSize\
-\",[\"List\",400,400]]]", "date" -> DateObject[{2023, 9, 8, 18, 11, 
-          26.913361`8.182542918873635}, "Instant", "Gregorian", 3.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ev\
-ent-based-approach.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 9, 8, 18, 11, 42.480794`8.380767603164651}, 
-     "Instant", "Gregorian", 3.], "symbols" -> <||>, 
-   "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$19]|>, 
- "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2dab0cb3", 
+\",[\"List\",400,400]]]", "date" -> DateObject[{2023, 9, 8, 21, 51, 
+          56.133196`8.501794743802765}, "Instant", "Gregorian", 3.]|>, 
+     "b4d8c35f-6edc-4044-b3a9-e6b7d6d7c29c" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
+\",\"'1d7557dd-113a-4651-8a31-96ad60781e2d'\"],[\"Rule\",\"'Label'\",\"'Lengt\
+h'\"]]", "date" -> DateObject[{2023, 9, 8, 21, 52, 
+          7.059232`7.601332442366952}, "Instant", "Gregorian", 3.]|>, 
+     "d08c4f27-4349-4e83-8aad-ecea915b2af1" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
+\",[\"List\",-1,1],[\"List\",[\"Offload\",\"length\"],-1]]],[\"Rule\",\"PlotR\
+ange\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\
+\"List\",400,100]],[\"Rule\",\"'TransitionDuration'\",30],[\"Rule\",\"'Transi\
+tionType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 9, 8, 21, 52, 
+          10.660186`7.780339768802986}, "Instant", "Gregorian", 3.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Slid\
+erExample1.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 9, 8, 21, 52, 32.510164`8.264594140765123}, 
+     "Instant", "Gregorian", 3.], "symbols" -> 
+    <|"length" -> <|"date" -> DateObject[{2023, 9, 8, 21, 52, 
+          32.550995`8.265139248801658}, "Instant", "Gregorian", 3.], 
+       "data" -> -0.2|>|>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$24]|>, 
+ "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2dab0cb385a", 
     "type" -> "input", "data" -> ".md\n# Event-based approach\nEach input \
 element is an event object generator", "display" -> "codemirror", 
-    "sign" -> "bustard-28043", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2e60268b-9a7d-452c-af3c-f0a71f71d745cb3", "type" -> "output", 
-    "data" -> "\n# Event-based approach\nEach input element is an event \
-object generator", "display" -> "markdown", "sign" -> "bustard-28043", 
+    "sign" -> "continent-75de5", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "2e60268b-9a7d-452c-af3c-f0a71f71d745cb385a", 
+    "type" -> "output", "data" -> "\n# Event-based approach\nEach input \
+element is an event object generator", "display" -> "markdown", 
+    "sign" -> "continent-75de5", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "49ee0b4c-babc-43e8-9d3c-b9bff41864f3ab0cb385a", 
+    "type" -> "input", "data" -> 
+     "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "49ee0b4c-babc-43e8-9d3c-b9bff41864f3ab0cb3", "type" -> "input", 
-    "data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
+   <|"id" -> "69844d9c-7b11-4838-a564-b70895797fda", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"b4d8c35f-6edc-4044-b3a9-e6b7d6d7c29c\"]", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "432f3958-3fbd-47ce-bb47-e601c6c90ab6", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"9bdbc7ad-5eb9-4223-928a-fb25e3bac3e7\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "311b835c-39c0-4659-b8d9-af7d4ecd947eab0cb3", "type" -> "input", 
-    "data" -> ".md\nBind our event to update shared variable", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
+   <|"id" -> "311b835c-39c0-4659-b8d9-af7d4ecd947eab0cb385a", 
+    "type" -> "input", "data" -> 
+     ".md\nBind our event to update shared variable", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "c268486b-f4ef-4ee9-818d-aff832babe7ccb3", "type" -> "output", 
-    "data" -> "\nBind our event to update shared variable", 
-    "display" -> "markdown", "sign" -> "bustard-28043", 
+   <|"id" -> "c268486b-f4ef-4ee9-818d-aff832babe7ccb385a", 
+    "type" -> "output", "data" -> 
+     "\nBind our event to update shared variable", "display" -> "markdown", 
+    "sign" -> "continent-75de5", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5afe583a-61c1-46de-b59a-9e7c988f86f7ab0cb385a", 
+    "type" -> "input", "data" -> 
+     "Function[l, length = l] // slider;\nEventFire[slider, 0];", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5afe583a-61c1-46de-b59a-9e7c988f86f7ab0cb3", "type" -> "input", 
-    "data" -> "Function[l, length = l] // slider;\nEventFire[slider, 0];", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a4d1374f-3542-4e47-9007-f2a8e2394d1c", "type" -> "input", 
+   <|"id" -> "a4d1374f-3542-4e47-9007-f2a8e2394d1c85a", "type" -> "input", 
     "data" -> ".md\nNow we can make our dynamic rectangle", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "7a19ccf0-2db8-4aba-9816-b53e7c53f48d", "type" -> "output", 
+   <|"id" -> "7a19ccf0-2db8-4aba-9816-b53e7c53f48d85a", "type" -> "output", 
     "data" -> "\nNow we can make our dynamic rectangle", 
-    "display" -> "markdown", "sign" -> "bustard-28043", 
+    "display" -> "markdown", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d3f2dd58-d618-441b-a7ad-1da3a391aa0e", "type" -> "input", 
+   <|"id" -> "d3f2dd58-d618-441b-a7ad-1da3a391aa0e85a", "type" -> "input", 
     "data" -> "length = 1;\nGraphics[{Cyan, Rectangle[{-1,1}, {length // \
 Offload, -1}]}, PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
 \"TransitionDuration\"->30, \"TransitionType\"->\"Linear\"] ", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "b4204ccc-2b9c-4159-913a-fa12905957df", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"c6a0f94b-c4c6-415a-989a-d05dc992a083\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
+   <|"id" -> "6166acda-4aa4-464a-88ec-99f943c1cbe7", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"d08c4f27-4349-4e83-8aad-ecea915b2af1\"]", 
+    "display" -> "codemirror", "sign" -> "continent-75de5", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "852a4178-9e72-459f-82c9-aee935eb551eab0cb3", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0edb8af8-ff67-4b18-829d-5c3d1769e476ab0cb3", "type" -> "input", 
-    "data" -> ".md\n## Events handlers on graphics objects\nIt is also \
-possible, like in Mathematica", "display" -> "codemirror", 
-    "sign" -> "bustard-28043", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "8607926d-e068-4df8-9c1e-531b8c9471a6cb3", "type" -> "output", 
-    "data" -> "\n## Events handlers on graphics objects\nIt is also possible, \
-like in Mathematica", "display" -> "markdown", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0f50a013-3db8-4b2f-85b7-9ea2db0d8028ab0cb3", "type" -> "input", 
-    "data" -> "dot = {{0,0}, {0.5,0.5}};\nGraphics[{\n  Red, PointSize[0.1], \
-\n  EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[p, dot = {{0,0}, \
-p}] }],\n  Line[dot // Offload]\n}, \"TransitionDuration\"->20, \
-ImageSize->{400,400}]", "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f40b0c32-2f65-4689-8850-a2994649cb1c", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"eb5f52c3-de6e-4d69-b24b-e02bb71be356\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+   <|"id" -> "852a4178-9e72-459f-82c9-aee935eb551eab0cb385a", 
+    "type" -> "input", "data" -> " ", "display" -> "codemirror", 
+    "sign" -> "continent-75de5", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

@@ -94,8 +94,8 @@
             const tm = document.getElementById('time-wrapper');
             if (tm) {
                 tm.classList.add('hidden');
-                document.getElementById("share-button-wrapper").classList.add('hidden');
-                document.getElementById('kernel-stat').getElementsByTagName('span')[0].classList.add('opac');
+                document.getElementById("share-button-wrapper")?.classList.add('hidden');
+                document.getElementById('kernel-stat')?.getElementsByTagName('span')[0].classList.add('opac');
             }
             //document.querySelectorAll('.notion-topbar')[0].classList.add('notion-topbar-show');
         }
@@ -109,8 +109,8 @@
             const tm = document.getElementById('time-wrapper');
             if (tm) {
                 tm.classList.toggle('hidden');
-                document.getElementById("share-button-wrapper").classList.toggle('hidden');
-                document.getElementById('kernel-stat').getElementsByTagName('span')[0].classList.toggle('opac');
+                document.getElementById("share-button-wrapper")?.classList.toggle('hidden');
+                document.getElementById('kernel-stat')?.getElementsByTagName('span')[0].classList.toggle('opac');
             }
             //document.querySelectorAll('.notion-topbar')[0].classList.toggle('notion-topbar-show');
             

@@ -120,7 +120,7 @@
                         <?wsp LoadPage["template/modal.wsp"] ?>
 
                         <?wsp If[MissingQ[$CurrentRequest["Query", "zen"]], ?>
-                        <div class="notion-sidebar-container" style="">
+                        <div class="notion-sidebar-container kernel-border" style="">
                             <div style="">
                                 <div style="">
                                     <?wsp LoadPage["template/sidebar.wsp"] ?>

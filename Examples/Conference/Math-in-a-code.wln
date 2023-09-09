@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Camshaft", "id" -> "freestone-2c098", 
+<|"notebook" -> <|"name" -> "Camshaft", "id" -> "indefensible-41e17", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"ca536191-4c72-46c4-a93f-729480a47090" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
@@ -214,8 +214,8 @@ ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
 ist\",-1,0]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"List\",[\"List\",-1\
 ,0],[\"List\",-1,0]]]]],[\"Rule\",\"ImageSize\",200]]", 
-       "date" -> DateObject[{2023, 7, 28, 12, 12, 
-          0.450752`6.406512651536175}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 9, 8, 18, 11, 
+          57.631622`8.513235816268077}, "Instant", "Gregorian", 3.]|>, 
      "2ebf28fc-bc42-49f1-a5da-c794bf776077" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
@@ -236,8 +236,8 @@ Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"L\
 ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rati\
 onal\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\
 \"Power\",3,[\"Rational\",1,2]]]]]]]],[\"Rule\",\"ImageSize\",200]]", 
-       "date" -> DateObject[{2023, 7, 28, 12, 12, 
-          0.468325`6.423122330952816}, "Instant", "Gregorian", 2.]|>, 
+       "date" -> DateObject[{2023, 9, 8, 18, 11, 57.67843`8.51358840404118}, 
+         "Instant", "Gregorian", 3.]|>, 
      "1fce5945-76d5-4621-a3a3-f209c59c187d" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
 List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
@@ -249,246 +249,293 @@ ist\",[\"List\",-1,0],[\"List\",0,1]],[\"List\",[\"List\",-1,0],[\"List\",-1,\
 0]],[\"List\",[\"List\",-1,0],[\"List\",0,-1]],[\"List\",[\"List\",0,-1],[\"L\
 ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
 1],[\"List\",-1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,-1]]]]],[\"Rule\",\
-\"ImageSize\",200]]", "date" -> DateObject[{2023, 7, 28, 12, 12, 
-          0.487354`6.4404195240846756}, "Instant", "Gregorian", 2.]|>|>, 
+\"ImageSize\",200]]", "date" -> DateObject[{2023, 9, 8, 18, 11, 
+          57.76857`8.514266590785814}, "Instant", "Gregorian", 3.]|>, 
+     "ba7ad5b8-35d0-4bf2-8e0c-4fb597c2339a" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",-1,0]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"List\",[\"List\",-1\
+,0],[\"List\",-1,0]]]]],[\"Rule\",\"ImageSize\",200]]", 
+       "date" -> DateObject[{2023, 9, 8, 18, 12, 56.572034`8.50517676760049}, 
+         "Instant", "Gregorian", 3.]|>, 
+     "7b529aa4-e331-42c0-a3fb-731d3f8a8608" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Ratio\
+nal\",1,2]]]]],[\"List\",[\"List\",1,0],[\"List\",[\"Rational\",-1,2],[\"Time\
+s\",[\"Rational\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"List\
+\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\
+\",1,2]]]],[\"List\",1,0]],[\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\"\
+,[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\
+\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\
+\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",1,2],[\"Power\
+\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Ration\
+al\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"List\",[\"Rationa\
+l\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\
+\"List\",1,0]],[\"List\",[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\
+\",-1,2],[\"Power\",3,[\"Rational\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"\
+Times\",[\"Rational\",1,2],[\"Power\",3,[\"Rational\",1,2]]]]],[\"List\",[\"L\
+ist\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\"Power\",3,[\"Rati\
+onal\",1,2]]]],[\"List\",[\"Rational\",-1,2],[\"Times\",[\"Rational\",-1,2],[\
+\"Power\",3,[\"Rational\",1,2]]]]]]]],[\"Rule\",\"ImageSize\",200]]", 
+       "date" -> DateObject[{2023, 9, 8, 18, 12, 
+          56.605157`8.505430973176853}, "Instant", "Gregorian", 3.]|>, 
+     "a9f5ca1e-2e2a-4661-b64b-f53094e98910" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"Line\",[\"\
+List\",[\"List\",[\"List\",1,0],[\"List\",1,0]],[\"List\",[\"List\",1,0],[\"L\
+ist\",0,1]],[\"List\",[\"List\",1,0],[\"List\",-1,0]],[\"List\",[\"List\",1,0\
+],[\"List\",0,-1]],[\"List\",[\"List\",0,1],[\"List\",1,0]],[\"List\",[\"List\
+\",0,1],[\"List\",0,1]],[\"List\",[\"List\",0,1],[\"List\",-1,0]],[\"List\",[\
+\"List\",0,1],[\"List\",0,-1]],[\"List\",[\"List\",-1,0],[\"List\",1,0]],[\"L\
+ist\",[\"List\",-1,0],[\"List\",0,1]],[\"List\",[\"List\",-1,0],[\"List\",-1,\
+0]],[\"List\",[\"List\",-1,0],[\"List\",0,-1]],[\"List\",[\"List\",0,-1],[\"L\
+ist\",1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,1]],[\"List\",[\"List\",0,-\
+1],[\"List\",-1,0]],[\"List\",[\"List\",0,-1],[\"List\",0,-1]]]]],[\"Rule\",\
+\"ImageSize\",200]]", "date" -> DateObject[{2023, 9, 8, 18, 12, 
+          56.612944`8.505490713644255}, "Instant", "Gregorian", 3.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ma\
-th-in-a-code.wl", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 7, 28, 12, 11, 44.497593`8.40091149656469}, 
-     "Instant", "Gregorian", 2.], "symbols" -> 
-    <|"StripOnInput" -> <|"date" -> DateObject[{2023, 7, 28, 12, 11, 
-          47.195402`8.426474666006479}, "Instant", "Gregorian", 2.]|>|>, 
+th-in-a-code.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 9, 8, 18, 11, 52.134158`8.469697338776683}, 
+     "Instant", "Gregorian", 3.], "symbols" -> 
+    <|"StripOnInput" -> <|"date" -> DateObject[{2023, 9, 8, 18, 13, 
+          23.134`8.116825714132611}, "Instant", "Gregorian", 3.]|>|>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$18]|>, 
- "cells" -> {<|"id" -> "e40e6f46-92ac-42d1-ad20-4822a349b0a17dc92d", 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$20]|>, 
+ "cells" -> {<|"id" -> "e40e6f46-92ac-42d1-ad20-4822a349b0a17dc92dc8b", 
     "type" -> "input", "data" -> ".md\n# Math in a code\nThe most used \
 shortcuts are supported\n- `Ctrl`+`/` fraction\n- `Ctrl`+`^` power\n- \
 `Ctrl`+`2` square root\n- `Ctrl`+`m` spawn matrix\n\nA short demonstration of \
-syntax sugar. ", "display" -> "codemirror", "sign" -> "freestone-2c098", 
+syntax sugar. ", "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3496405f-4a55-4382-97e8-fb20d6c7157f7dc92d", 
+   <|"id" -> "3496405f-4a55-4382-97e8-fb20d6c7157f7dc92dc8b", 
     "type" -> "output", "data" -> "\n# Math in a code\nThe most used \
 shortcuts are supported\n- `Ctrl`+`/` fraction\n- `Ctrl`+`^` power\n- \
 `Ctrl`+`2` square root\n- `Ctrl`+`m` spawn matrix\n\nA short demonstration of \
-syntax sugar. ", "display" -> "markdown", "sign" -> "freestone-2c098", 
+syntax sugar. ", "display" -> "markdown", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1bd019c8-9007-4820-b0e6-40f6cce598377dc92d", "type" -> "input", 
-    "data" -> "Series[CM6Fraction[Sin[x], x], {x,0,6}]//Normal", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+   <|"id" -> "1bd019c8-9007-4820-b0e6-40f6cce598377dc92dc8b", 
+    "type" -> "input", "data" -> 
+     "Series[CM6Fraction[Sin[x], x], {x,0,6}]//Normal", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a2b9c47a-0fe7-42f7-978b-6d61e318baab7dc92d", 
-    "type" -> "output", "data" -> "1-CM6Fraction[CM6Superscript[x, 2], \
+   <|"id" -> "f640388a-d9f0-4b94-826b-74b2d9d9b25a", "type" -> "output", 
+    "data" -> "1-CM6Fraction[CM6Superscript[x, 2], \
 6]+CM6Fraction[CM6Superscript[x, 4], 120]-CM6Fraction[CM6Superscript[x, 6], \
-5040]", "display" -> "codemirror", "sign" -> "freestone-2c098", 
+5040]", "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "69ad4578-6b28-4093-b189-1f078e4e26c67dc92d", "type" -> "input", 
-    "data" -> ".md\nTry copy and paste the results into any texeditor and you \
-will the the underlying structure, which is much simplier that Mathmeatica \
-uses.", "display" -> "codemirror", "sign" -> "freestone-2c098", 
-    "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "03c1f58e-5141-4fe9-821e-c568244f77ca7dc92d", 
+   <|"id" -> "69ad4578-6b28-4093-b189-1f078e4e26c67dc92dc8b", 
+    "type" -> "input", "data" -> ".md\nTry copy and paste the results into \
+any texeditor and you will the the underlying structure, which is much \
+simplier that Mathmeatica uses.", "display" -> "codemirror", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "03c1f58e-5141-4fe9-821e-c568244f77ca7dc92dc8b", 
     "type" -> "output", "data" -> "\nTry copy and paste the results into any \
 texeditor and you will the the underlying structure, which is much simplier \
 that Mathmeatica uses.", "display" -> "markdown", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "53ec48fd-ee4b-45e3-a518-4e366d0fbbd77dc92d", "type" -> "input", 
-    "data" -> "Table[10 A[i -CM6Sqrt[j]], {i, 4}, {j, 3}] // MatrixForm", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "53ec48fd-ee4b-45e3-a518-4e366d0fbbd77dc92dc8b", 
+    "type" -> "input", "data" -> 
+     "Table[10 A[i -CM6Sqrt[j]], {i, 4}, {j, 3}] // MatrixForm", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "90eac9e9-13c6-4872-bfe1-47acced48c827dc92d", 
-    "type" -> "output", "data" -> "(CM6Grid[{{10 A[0], 10 A[1-CM6Sqrt[2]], 10 \
-A[1-CM6Sqrt[3]]}, {10 A[1], 10 A[2-CM6Sqrt[2]], 10 A[2-CM6Sqrt[3]]}, {10 \
-A[2], 10 A[3-CM6Sqrt[2]], 10 A[3-CM6Sqrt[3]]}, {10 A[3], 10 A[4-CM6Sqrt[2]], \
-10 A[4-CM6Sqrt[3]]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> \
+   <|"id" -> "ea650ff7-419c-4bf4-8821-85f4131d3a13", "type" -> "output", 
+    "data" -> "(CM6Grid[{{10 A[0], 10 A[1-CM6Sqrt[2]], 10 A[1-CM6Sqrt[3]]}, \
+{10 A[1], 10 A[2-CM6Sqrt[2]], 10 A[2-CM6Sqrt[3]]}, {10 A[2], 10 \
+A[3-CM6Sqrt[2]], 10 A[3-CM6Sqrt[3]]}, {10 A[3], 10 A[4-CM6Sqrt[2]], 10 \
+A[4-CM6Sqrt[3]]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> \
 Baseline, ColumnAlignments -> Center])", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1dd6782e-c512-498e-a7a1-6a95e3e1d0047dc92d", "type" -> "input", 
-    "data" -> ".md\nFor example - matrix multiplication", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1dd6782e-c512-498e-a7a1-6a95e3e1d0047dc92dc8b", 
+    "type" -> "input", "data" -> ".md\nFor example - matrix multiplication", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ec16b222-d61c-4cd4-ad0d-0e7432603bb87dc92d", 
+   <|"id" -> "ec16b222-d61c-4cd4-ad0d-0e7432603bb87dc92dc8b", 
     "type" -> "output", "data" -> "\nFor example - matrix multiplication", 
-    "display" -> "markdown", "sign" -> "freestone-2c098", 
+    "display" -> "markdown", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "935b8c6d-8033-4e2d-8bd6-e86cf5900c217dc92d", "type" -> "input", 
-    "data" -> 
+   <|"id" -> "935b8c6d-8033-4e2d-8bd6-e86cf5900c217dc92dc8b", 
+    "type" -> "input", "data" -> 
      "CM6Grid[{{1,0},{0,-1}}].CM6Grid[{{0,I},{-I,0}}] // MatrixForm", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1265f2a0-0b78-4343-8849-8f2573321dc17dc92d", 
+   <|"id" -> "1265f2a0-0b78-4343-8849-8f2573321dc17dc92dc8b", 
     "type" -> "output", "data" -> "(CM6Grid[{{0, \[ImaginaryI]}, \
 {\[ImaginaryI], 0}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> \
 Baseline, ColumnAlignments -> Center])", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4622ade0-614c-4b33-9449-e14f166250337dc92d", "type" -> "input", 
-    "data" -> ".md\nThe same counts for graphics", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "2465785b-d491-4cb8-9a7f-5a773970db087dc92d", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4622ade0-614c-4b33-9449-e14f166250337dc92dc8b", 
+    "type" -> "input", "data" -> ".md\nThe same counts for graphics", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "2465785b-d491-4cb8-9a7f-5a773970db087dc92dc8b", 
     "type" -> "output", "data" -> "\nThe same counts for graphics", 
-    "display" -> "markdown", "sign" -> "freestone-2c098", 
+    "display" -> "markdown", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2cd366f4-62a2-4f2d-87a1-8cc2194c66217dc92d", "type" -> "input", 
-    "data" -> "Table[Table[{Cos[2 n $Pi$/steps], Sin[2 n $Pi$/steps]}, {n, 0, \
-steps-1}], {steps, 2, 4}]\n{ Table[Framed[Graphics[{Red, Line[Tuples[i, 2]]}, \
-ImageSize->200]], {i, %}] } // TableForm", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4000c428-b88a-499f-a63a-8eac6034c840", "type" -> "output", 
+   <|"id" -> "2cd366f4-62a2-4f2d-87a1-8cc2194c66217dc92dc8b", 
+    "type" -> "input", "data" -> "Table[Table[{Cos[2 n $Pi$/steps], Sin[2 n \
+$Pi$/steps]}, {n, 0, steps-1}], {steps, 2, 4}]\n{ Table[Framed[Graphics[{Red, \
+Line[Tuples[i, 2]]}, ImageSize->200]], {i, %}] } // TableForm", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f0471d4d-2a54-4c9d-95c0-1df982bb7352", "type" -> "output", 
     "data" -> "{{{1,0},{-1,0}},{{1,0},{-CM6Fraction[1, \
 2],CM6Fraction[CM6Sqrt[3], 2]},{-CM6Fraction[1, 2],-CM6Fraction[CM6Sqrt[3], \
 2]}},{{1,0},{0,1},{-1,0},{0,-1}}}", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c4119332-e13d-40ec-bdcd-684fb9092f81", "type" -> "output", 
-    "data" -> "CM6Grid[{{FrontEndBox[FrontEndExecutable[\"e30ebddd-3719-4995-\
-bda6-025ce38f091a\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-FrontEndBox[FrontEndExecutable[\"2ebf28fc-bc42-49f1-a5da-c794bf776077\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-FrontEndBox[FrontEndExecutable[\"1fce5945-76d5-4621-a3a3-f209c59c187d\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"]}}, RowSpacings -> 1, ColumnSpacings -> 3, \
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f058944f-3bdb-4a4c-87e8-abf4e5041131", "type" -> "output", 
+    "data" -> "CM6Grid[{{FrontEndBox[FrontEndExecutable[\"ba7ad5b8-35d0-4bf2-\
+8e0c-4fb597c2339a\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+FrontEndBox[FrontEndExecutable[\"7b529aa4-e331-42c0-a3fb-731d3f8a8608\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+FrontEndBox[FrontEndExecutable[\"a9f5ca1e-2e2a-4661-b64b-f53094e98910\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"]}}, RowSpacings -> 1, ColumnSpacings -> 3, \
 RowAlignments -> Baseline, ColumnAlignments -> Left]", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "55d5fa8c-865c-4180-bde9-99d10aa142417dc92d", "type" -> "input", 
-    "data" -> ".md\nAs well as some typical decorations used in Mathematica", 
-    "display" -> "codemirror", "sign" -> "freestone-2c098", 
+   <|"id" -> "55d5fa8c-865c-4180-bde9-99d10aa142417dc92dc8b", 
+    "type" -> "input", "data" -> 
+     ".md\nAs well as some typical decorations used in Mathematica", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "a01c14d4-50ef-4e99-9596-047cb09c58e97dc92d", 
+   <|"id" -> "a01c14d4-50ef-4e99-9596-047cb09c58e97dc92dc8b", 
     "type" -> "output", "data" -> 
      "\nAs well as some typical decorations used in Mathematica", 
-    "display" -> "markdown", "sign" -> "freestone-2c098", 
+    "display" -> "markdown", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f501960b-bd1f-44a5-9be9-6bdc32a17e147dc92d", "type" -> "input", 
-    "data" -> "NestList[Framed, x, 6]", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f983068a-e85c-494a-82c8-b5de44eb0b777dc92d", 
-    "type" -> "output", "data" -> "{x,FrontEndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[FrontEndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontE\
+   <|"id" -> "f501960b-bd1f-44a5-9be9-6bdc32a17e147dc92dc8b", 
+    "type" -> "input", "data" -> "NestList[Framed, x, 6]", 
+    "display" -> "codemirror", "sign" -> "indefensible-41e17", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1823c235-dbcb-4138-8c78-440761312490", "type" -> "output", 
+    "data" -> "{x,FrontEndBox[x, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"],FrontEndBox[FrontEndBox[x, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"],FrontEndBox[FrontEndBox[FrontEndBox[x, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontEndBox[x, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontEndBox[FrontE\
 ndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontE\
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontEndBox[FrontE\
 ndBox[FrontEndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"],FrontEndBox[FrontEndBox[FrontEndBox[FrontE\
-ndBox[FrontEndBox[FrontEndBox[x, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"], \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVEFEOsGhibqpTfkUaE0iEBUgEleakgjUElxRlF\
-vjneeYVlJYUs4LUJuYUpwIAW+EVGw==\"]}", "display" -> "codemirror", 
-    "sign" -> "freestone-2c098", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "02946233-3e05-4726-a625-1dd64507ff6d7dc92d", "type" -> "input", 
-    "data" -> "Table[If[PrimeQ[i], Framed[i, Background -> LightYellow], i], \
-{i, 1, 100}]", "display" -> "codemirror", "sign" -> "freestone-2c098", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "dbaab63a-fb9e-413f-b399-751e5a90d5677dc92d", 
-    "type" -> "output", "data" -> "{1,FrontEndBox[2, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],FrontEndBox[3, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],4,FrontEndBox[5, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],6,FrontEndBox[7, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],8,9,10,FrontEndBox[11, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],12,FrontEndBox[13, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],14,15,16,FrontEndBox[17, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],18,FrontEndBox[19, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],20,21,22,FrontEndBox[23, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],24,25,26,27,28,FrontEndBox[29, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],30,FrontEndBox[31, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],32,33,34,35,36,FrontEndBox[37, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],38,39,40,FrontEndBox[41, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],42,FrontEndBox[43, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],44,45,46,FrontEndBox[47, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],48,49,50,51,52,FrontEndBox[53, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],54,55,56,57,58,FrontEndBox[59, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],60,FrontEndBox[61, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],62,63,64,65,66,FrontEndBox[67, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],68,69,70,FrontEndBox[71, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],72,FrontEndBox[73, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],74,75,76,77,78,FrontEndBox[79, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],80,81,82,FrontEndBox[83, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],84,85,86,87,88,FrontEndBox[89, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],90,91,92,93,94,95,96,FrontEndBox[97, \
-\"1:eJxTTMoPSmNkYGAo5gESbkX5eSWueSn+eTmVaUwgUQ6waGJuqlN+BUSEBUgEleakFnMBGU6Jy\
-dnpRfmleSlpzDDlQe5Ozvk5+UWZIGPBRJExGLy2RzMBZGVwSVFmgX+eZ15BaUkxK8i2xJziVABBsi\
-Nw\"],98,99,100}", "display" -> "codemirror", "sign" -> "freestone-2c098", 
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"], \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJ\
+cWsILWJOcWpAG8uEdg=\"]}", "display" -> "codemirror", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "02946233-3e05-4726-a625-1dd64507ff6d7dc92dc8b", 
+    "type" -> "input", "data" -> "Table[If[PrimeQ[i], Framed[i, Background -> \
+LightYellow], i], {i, 1, 100}]", "display" -> "codemirror", 
+    "sign" -> "indefensible-41e17", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d311e613-d4c4-4f94-8c6c-6cb5f9a4dd9b", "type" -> "output", 
+    "data" -> "{1,FrontEndBox[2, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],Fr\
+ontEndBox[3, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],4,\
+FrontEndBox[5, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],6,\
+FrontEndBox[7, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],8,\
+9,10,FrontEndBox[11, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],12\
+,FrontEndBox[13, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],14\
+,15,16,FrontEndBox[17, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],18\
+,FrontEndBox[19, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],20\
+,21,22,FrontEndBox[23, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],24\
+,25,26,27,28,FrontEndBox[29, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],30\
+,FrontEndBox[31, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],32\
+,33,34,35,36,FrontEndBox[37, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],38\
+,39,40,FrontEndBox[41, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],42\
+,FrontEndBox[43, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],44\
+,45,46,FrontEndBox[47, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],48\
+,49,50,51,52,FrontEndBox[53, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],54\
+,55,56,57,58,FrontEndBox[59, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],60\
+,FrontEndBox[61, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],62\
+,63,64,65,66,FrontEndBox[67, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],68\
+,69,70,FrontEndBox[71, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],72\
+,FrontEndBox[73, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],74\
+,75,76,77,78,FrontEndBox[79, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],80\
+,81,82,FrontEndBox[83, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],84\
+,85,86,87,88,FrontEndBox[89, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],90\
+,91,92,93,94,95,96,FrontEndBox[97, \
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcWCiyBgMXtujmcADZASXFGUW+Od55hWUlhSzgmxLzClOBQB9qiAt\"],98\
+,99,100}", "display" -> "codemirror", "sign" -> "indefensible-41e17", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

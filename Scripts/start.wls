@@ -169,7 +169,7 @@ Check[CSocketListen[StringTemplate["``:``"][ip, (ToExpression@port) + 1], wcp@#&
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 
-If[!TrueQ[devmode], SetOptions[WSPEngine, "Cache"->True], SetOptions[WSPEngine, "Cache"->False]];
+If[!TrueQ[devmode], SetOptions[WSPEngine, "Cache"->"Hour"], SetOptions[WSPEngine, "Cache"->False]];
 
 broadcast = WebSocketChannel[];
 broadcast@"Serializer" = (ExportByteArray[#, "ExpressionJSON"]&);

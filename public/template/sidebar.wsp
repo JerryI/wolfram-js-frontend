@@ -89,11 +89,15 @@
     justify-content: center;
     /* text-align: center; */
     display: block;
-    vertical-align: baseline;
-">
+    vertical-align: middle;
+">                                                      
+
+                                                        <?wsp If[!ElectronQ, ?>
                                                         <div class="sidebar-button-inner-inline">
                                                             <?wsp LoadPage["template/kernelcontrol.wsp", {path = $CurrentRequest["Query", "path_decoded"]}] ?>
                                                         </div>    
+
+                                                        
                                                         <div class="sidebar-button-inner-inline"> 
                                                                 <div id="abort-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Abort" tabindex="0" >
                                                                     <img width="15" height="15" src="/svg/topbarUpdate.svg"/>
@@ -109,7 +113,9 @@
                                                             <div id="evaluateall-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Evaluateall" tabindex="0" >
                                                                 <img width="15" height="15" src="/svg/del.svg"/>
                                                             </div>  
-                                                        </div>   
+                                                        </div>  
+                                                        
+                                                        <?wsp, ""] ?>
 
                                                         <div class="sidebar-button-inner-inline">
                                                         <div id="save-button" class="notion-topbar-updates-button notion-focusable" role="button" aria-label="Evaluateall" tabindex="0" style="padding: 3px;opacity: 0.7;">
@@ -120,15 +126,17 @@
                                                         </div> 
 
                                                         <div class="sidebar-button-inner-inline">
-                                                            <div id="time-wrapper" style="flex-flow: wrap;padding-left: 0.5em;padding: 0.1em;padding-left: 0.8em;"><div>Saved<span> </span><span id="date-saved"><?wsp TextString[(Now - JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]], "date"])//Round] ?></span><span> </span>ago</div></div>
+                                                            <div id="time-wrapper" style="flex-flow: wrap;padding-left: 0.5em;padding: 0.1em;/* padding-left: 0.8em; */transform: translateY(1px);"><div>Saved<span> </span><span id="date-saved"><?wsp TextString[(Now - JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]], "date"])//Round] ?></span><span> </span>ago</div></div>
                                                         </div>
 
+                                                        <?wsp If[!ElectronQ, ?>
                                                         <div id="share-button-wrapper" class="sidebar-button-inner-inline">
                                                             <div id="share-button" class="notion-topbar-updates-button notion-focusable" role="button" style="flex-flow: wrap;padding: 0.25em;display: initial;border-radius: 4px;/* margin-right: auto; */">
                                                                 Share
                                                             </div>
                                                             <?wsp LoadPage["template/dropdown/share.wsp"] ?>
                                                         </div>
+                                                        <?wsp , ""] ?>
 
                                                     </div>                                                  
                                                 </div>
@@ -415,8 +423,83 @@
             if (id === 'Settings') {
                 if (server.socket.readyState != 1) alert('Connection to the server was lost!');
                 callModal('settings', `{notebook = "${window.Notebook}"}`);
-            }            
+            }     
+            
+            if (id === 'Abort')
+                server.socket.send('NotebookAbort');
+
+            if (id === 'EAC')
+                server.socket.send('NotebookEvaluateAll');
+
+            if (id === 'EIC')
+                server.socket.send('NotebookEvaluateInit');                
+
+            if (id === 'ShareHTML')
+                server.socket.send('NotebookExport["html"];'); 
+
+            if (id === 'ShareReact')
+                server.socket.send('NotebookExport["react"];');     
+            
+                
+            if (id === 'LocalKernelStart')
+                server.socket.send('NotebookKernelOperate["Start"]');
+
+            if (id === 'LocalKernelRestart')
+                server.socket.send('NotebookKernelOperate["Restart"]');     
+            
+            if (id === 'LocalKernelExit')
+                server.socket.send('NotebookKernelOperate["Exit"]');                 
         });
+    
+
+        window.$KernelStatus = '<?wsp JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]]]["kernel"]["Status"]["signal"]?>';
+        
+        let root = document.documentElement;
+
+        root.style.setProperty('--kernel-state', 'var(--kernel-'+window.$KernelStatus+')');
+        root.style.setProperty('--kernel-animation', 'var(--kernel-animation-'+window.$KernelStatus+')');
+
+
+        core.FrontEndKernelStatus = async function(args, env) {
+            console.log("status update");
+            let state = await interpretate(args[0], env);
+            console.log(state);
+            window.$KernelStatus = state['signal'];
+            root.style.setProperty('--kernel-state', 'var(--kernel-'+window.$KernelStatus+')');
+            root.style.setProperty('--kernel-animation', 'var(--kernel-animation-'+window.$KernelStatus+')');
+
+            if (state['signal'] != 'good') {
+                server.kernelControl.wsReset();
+                server.kernelControl.notebookReset();
+            }
+        }
+    
+        core.FrontEndWSAttached = async function(args, env) {
+            //document.getElementById("ws-link").className = 'good-kernel';
+            root.style.setProperty('--kernel-state', 'var(--kernel-best)');
+            root.style.setProperty('--kernel-animation', 'var(--kernel-animation-best)');
+            $KernelStatus = "good";
+        } 
+        core.FrontEndNotebookAttached = async function(args, env) {
+           console.warn('Notebook attached');
+
+        }
+        server.kernelControl = {};
+        server.kernelControl.wsReset = (state) => {
+            console.warn('wsreset');
+
+            if (state === 'bad') {
+                console.error('WS Link failed!');
+                root.style.setProperty('--kernel-state', 'var(--kernel-bad)');
+                root.style.setProperty('--kernel-animation', 'var(--kernel-animation-bad)');
+            }
+        }
+        server.kernelControl.notebookReset = (state) => {
+            console.warn('Notebook was deattached');
+            root.style.setProperty('--kernel-state', 'var(--kernel-no)');
+            root.style.setProperty('--kernel-animation', 'var(--kernel-animation-no)');            
+        }
+
     }
 
     <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
@@ -426,11 +509,11 @@
         clocks.style.transform = 'rotate('+args[0]+'deg)';
     }
 
-    document.getElementById("abort-button").addEventListener('click', (e)=>{
+    document.getElementById("abort-button")?.addEventListener('click', (e)=>{
         server.socket.send('NotebookAbort');
     });
 
-    document.getElementById("evaluateall-button").addEventListener('click', (e)=>{
+    document.getElementById("evaluateall-button")?.addEventListener('click', (e)=>{
         if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
             alert("No active kernel is attached");
             return;
@@ -439,7 +522,7 @@
         server.socket.send('NotebookEvaluateAll');
     });    
 
-    document.getElementById("evaluateinit-button").addEventListener('click', (e)=>{
+    document.getElementById("evaluateinit-button")?.addEventListener('click', (e)=>{
         if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
             alert("No active kernel is attached");
             return;

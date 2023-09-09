@@ -1,0 +1,45 @@
+<?wsp With[{uid = CreateUUID[]}, ?>
+<div class="notion-selectable notion-collection_view_page-block" style="display: flex; flex-direction: column; padding-top: 8px; padding-bottom: 4px;">
+            <div class="notion-selectable notion-page-block notion-collection-item" style="margin-top: 1px; margin-bottom: 1px; border-radius: 3px;">
+        <span style="display: flex; color: inherit; text-decoration: none; flex-grow: 1; overflow: hidden; border-radius: 3px; height: 30px;">
+                        <div class="filebrowser-strip" role="button" tabindex="0" style="<?wsp If[TrueQ[disabled], "opacity: 0.5;", ""]?>-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%; display: flex; align-items: center; padding-right: 4px;">
+                           <div class="notion-record-icon notranslate" role="button" tabindex="0" style="-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 22px; width: 22px; border-radius: 0.25em; flex-shrink: 0; margin-left: 2px; margin-right: 6px;">
+                            
+                                <button id="<?wsp uid ?>" style="
+    border: none;
+    font-size: small;
+    cursor: pointer;
+    font-weight: normal;
+    font-family: system-ui;
+    color: var(--sidebar-text-color);
+    background: var(--buttons-hover);
+" ><?wsp name ?></button>
+                                
+                           
+                           </div>
+                           <div style="display: flex; margin-right: auto; min-width: 240px; align-items: center;">
+                                
+                                <div spellcheck="true" placeholder="Untitled" data-content-editable-leaf="true" style="font-size: small; max-width: 100%; width: auto; white-space: nowrap; word-break: break-word; caret-color: rgb(55, 53, 47); line-height: 1.3; pointer-events: none; overflow: hidden; text-overflow: ellipsis;" contenteditable="false">
+                                    <?wsp desc ?>
+                                </div>
+                               
+                              
+                           </div>
+                        </div>
+                        
+                     </span>      
+  </div>
+         
+      </div>
+
+<script>
+    {
+        const btn = document.getElementById("<?wsp uid ?>");
+
+        btn.addEventListener('click', (val) => {
+            server.socket.send('Uncompress["<?wsp Compress[click] ?>"] @ True');
+        })
+    }
+</script>
+
+<?wsp ] ?>
