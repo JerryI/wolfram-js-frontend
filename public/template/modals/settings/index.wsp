@@ -54,7 +54,7 @@
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","button.wsp"}], {name = "Purge", desc = "Clear frontend objects storage (if for some reason notebook got puffy)", click = Function[Null, 
                   With[{channel = $AssociationSocket[Global`client]},
                      JerryI`WolframJSFrontend`Notebook`Notebooks[channel]["objects"] = <||>;
-                     WebSocketSend[Global`client, Global`FrontEndJSEval["alert(`Storage was cleared`)"] // DefaultSerializer];
+                     WebSocketSend[Global`client, ExportByteArray[Global`FrontEndJSEval["alert(`Storage was cleared`)"], "ExpressionJSON"]];
                   ]
             ]}] ?>
          </div>

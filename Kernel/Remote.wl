@@ -155,7 +155,7 @@ DefineOutputStreamMethod[
 
         With[{text =ByteArrayToString[out // ByteArray], uid = notebook},
             JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Warning"][text] ];
-            text >>> "log.txt";
+           
         ];
 
         {Length@bytes, state}]]]]}
@@ -177,7 +177,7 @@ DefineOutputStreamMethod[
 
         With[{text =ToString[out], uid = notebook},
             JTPClientEvaluateAsyncNoReply[master, Global`NotebookEventFire[uid]["Print"][text] ];
-            text >>> "log.txt";
+       
         ];
 
         {Length@bytes, state}]]]]}

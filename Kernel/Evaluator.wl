@@ -171,7 +171,7 @@ ClearAll[EvaluationCell];
 
 
 WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = CreateUUID[]},
-  Block[{Global`$NewDefinitions = <||>, EvaluationCell = Function[Null, $CellUid], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
+  Block[{Global`$NewDefinitions = <||>, Global`$PostEval = Null, EvaluationCell = Function[Null, $CellUid], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
       $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold);
@@ -212,7 +212,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = 
 
           (* an internal message for the master kernel, which passes the created objects during the evaluation *)
           (*JerryI`WolframJSFrontend`ExtendDefinitions[Global`$NewDefinitions]*)
-          Null
+          Global`$PostEval
 
         ];
       ]
