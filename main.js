@@ -396,10 +396,26 @@ else {
   });
 }
 
+const checkCacheReset = () => {
+  if (fs.existsSync(path.join(installationFolder, '.wasupdated'))) {
+    fs.unlinkSync(path.join(installationFolder, '.wasupdated'));
+    session.defaultSession.clearStorageData();
+    session.defaultSession.clearCache();
+  
+    sender('cache reset!', "red");
+  }
+} 
+
 let firstTime = true;
 
 app.whenReady().then(() => {
   const win = createLogWindow();
+
+  //if there was an update to a frontend, it will remove cache.
+  const cinterval = setInterval(checkCacheReset, 15000);
+  setTimeout(()=>{
+    clearInterval(cinterval);
+  }, 60*1000*3)
 
   ipcMain.on('system-open', (e, path) => {
     shell.showItemInFolder(path);

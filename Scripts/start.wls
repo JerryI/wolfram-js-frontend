@@ -30,6 +30,8 @@ JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
 LoadPluginsConfiguration;
 CheckUpdates;
 
+If[JerryI`WolframJSFrontend`Packages`Private`WasUpdated // TrueQ, Put[FileNameJoin[{jsf`root, ".wasupdated"}]]];
+
 Includes["jsmodule"];
 Includes["js"];
 Includes["wlkernel"];

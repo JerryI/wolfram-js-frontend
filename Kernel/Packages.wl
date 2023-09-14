@@ -41,6 +41,8 @@ ImportJSON[url_String] := Module[{},
     Import[url, "RawJSON"]
 ]; 
 
+WasUpdated = False;
+
 getJSON[package_Association] := Module[{new, json},
     new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First];
@@ -145,6 +147,7 @@ CheckUpdates := Module[{json},
             If[getVersion[json] > getVersion[Packages[#]],
                 Print[StringTemplate["`` :: `` -> `` to be updated"][Packages[#, "name"], Packages[#, "version"], json["version"]]];
                 downloadAndInstall[json];
+                WasUpdated = True;
                 Packages[#] = Join[Packages[#], json];
             ,
                 Print[StringTemplate["`` :: `` -- `` is up to date"][Packages[#, "name"], Packages[#, "version"], json["version"]]];
