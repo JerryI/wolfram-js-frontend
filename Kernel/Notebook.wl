@@ -23,6 +23,8 @@ NotebookUpdateThumbnail::usage = "provide html thumbnail"
 NotebookStoreKernelSymbol::usage = "populate symbols from kernel"
 
 NotebookDisposeSymbol::usage = "dispose the unused symbol"
+
+NotebookSelectCell::usage = "select cell"
 (* 
     Functions used by the frontened, aka API 
     - they do not use the notebook id directly, but takes it from the associated websocket client's id
@@ -843,6 +845,8 @@ NotebookOperate[cellid_, op_, arg_] := (
         op[CellObj[cellid], arg];
     ];
 );
+
+NotebookSelectCell[cellid_] := jsfn`Notebooks[Global`client // $AssociationSocket]["SelectedCell"] = cellid;
 
 NotebookEvaluateAll := With[{list = CellList[$AssociationSocket[Global`client]]},
     If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",

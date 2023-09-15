@@ -407,6 +407,10 @@
     if (window.electronAPI) {
         window.electronAPI.call((event, id) => {
             console.log(id);
+            if (id === 'Find') {
+                openSearch();
+            }
+
             if (id === 'Save') {
                 if (server.socket.readyState != 1) alert('Connection to the server was lost!');
                 server.socket.send('NotebookStore;');

@@ -1,0 +1,62 @@
+<style>
+    .search-field {
+        background: transparent;
+        color: var(--sidebar-text-color);
+        font-size: small;
+        border: none;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        border-radius: 2px;
+    }
+    .search-field:focus {
+        background: var(--topbar-background);
+    }
+
+    .search-field:focus-visible {
+        outline: none;
+    }
+</style>
+<div id="search-bar" class="hidden" style="position: absolute;z-index: 125;box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 5px 10px, rgba(15, 15, 15, 0.2) 0px 15px 40px;border-radius: 8px;margin: 0px;width: 30%;max-width: 15em;/* height: 80vh; */right: 0;">
+        <div style="display: flex;flex-direction: row;border-radius: 8px;overflow: hidden;height: 100%;width: 100%;">
+            <div style="overflow: auto;flex: 1 1 0%;display: flex;flex-direction: column;align-items: stretch;background-color: var(--background-menu);backdrop-filter: blur(10px);color: var(--sidebar-text-color);padding: 0.5em;">
+                <input id="search-field" class="search-field" type="text" value="Searh field">
+            </div>
+        </div>
+    </div>
+
+<script type="module">
+    const bar = document.getElementById("search-bar");
+    const field = document.getElementById("search-field");
+    window.openSearch = () => {
+        bar.classList.remove('hidden');
+        let timer;
+
+        const search = () => {
+            if (field.value.length < 3) return;
+            if (timer) cancelTimeout(timer);
+            timer = setTimeout(() => {
+                window.electronAPI.searchText(field.value, 'next');
+                timer = undefined;
+            }, 300); 
+        }
+
+        const blur = (event) => {
+            if (event.key === 'Escape') {
+            //if esc key was not pressed in combination with ctrl or alt or shift
+                const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+                if (isNotCombinedKey) {
+                    field.removeEventListener('input', search);
+                    window.removeEventListener('keydown', blur);
+                    bar.classList.add('hidden');
+                    window.electronAPI.stopSearch();
+                }
+            }            
+
+        }
+
+        field.addEventListener('input', search);
+        window.addEventListener('keydown', blur);
+
+        field.focus();
+    }
+</script>

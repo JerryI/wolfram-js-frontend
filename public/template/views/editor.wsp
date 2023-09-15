@@ -1,3 +1,4 @@
+<?wsp LoadPage["template/components/search.wsp"] ?>
 <main id="frontend-editor" aria-hidden="true" class="main-container styles-container-editor notion-scroller">
 
             <div id="frontend-editor-content" class="group-container" aria-hidden="true">

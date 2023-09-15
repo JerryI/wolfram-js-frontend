@@ -91,6 +91,9 @@ currentWindow.cellop = (type) => {
   console.log('send request cells: '+type);
 }
 
+
+
+
 const createLogWindow = () => {
   const win = new BrowserWindow({
     vibrancy: "sidebar", // in my case...
@@ -122,6 +125,10 @@ const createWindow = (url, focus = true, hidefirst = true) => {
         preload: path.join(__dirname, 'preloadMain.js')
       }
       
+    });
+
+    win.webContents.on('found-in-page', (event, result) => {
+      console.log(result)
     });
 
     if (focus) {
@@ -417,6 +424,19 @@ let firstTime = true;
 
 app.whenReady().then(() => {
   const win = createLogWindow();
+
+  ipcMain.on('search-text', (event, arg) => {
+    let nextRes = arg.direction == 'next' ? true : false
+    const requestId = currentWindow.window.webContents.findInPage(arg.searchText, {
+        forward: true,
+        findNext: nextRes,
+        matchCase: false
+    });
+  });
+  
+  ipcMain.on('stop-search', (event, arg) => {
+    currentWindow.window.webContents.stopFindInPage('clearSelection');
+  });  
 
   //if there was an update to a frontend, it will remove cache.
   const cinterval = setInterval(checkCacheReset, 15000);
@@ -867,6 +887,14 @@ const isMac = process.platform === 'darwin'
         { role: 'cut' },
         { role: 'copy' },
         { role: 'paste' },
+        { type: 'separator' },
+        {
+          label: 'Find',
+          accelerator: process.platform === 'darwin' ? 'Cmd+F' : 'Ctrl+F',
+          click: (ev) => {
+            currentWindow.call('Find'); 
+          }
+        }, 
         { type: 'separator' },
         {
           label: 'Hide/Unhide cell',

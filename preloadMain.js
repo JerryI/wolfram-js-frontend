@@ -7,6 +7,17 @@ contextBridge.exposeInMainWorld('electronAPI', {
   
   openFinder: (path) => {
     ipcRenderer.send('system-open',  decodeURIComponent(path));
-  }
+  },
+  
+  searchText: (searchText, direction) => ipcRenderer.send('search-text', { searchText, direction }),
+  stopSearch: () => ipcRenderer.send('stop-search')
 })
+
+function search(direction) {
+  let searched = document.getElementById("searchInput").value.trim();
+  if(searched.length > 0){
+      window.electronAPI.searchText(searched,direction)
+  }                
+  document.getElementById("searchInput").focus()
+}
 
