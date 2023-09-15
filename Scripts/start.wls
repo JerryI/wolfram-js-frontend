@@ -28,7 +28,7 @@ JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
 
 (* plugins *)
 LoadPluginsConfiguration;
-CheckUpdates;
+If[!TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]], CheckUpdates];
 
 If[JerryI`WolframJSFrontend`Packages`Private`WasUpdated // TrueQ, Put[FileNameJoin[{jsf`root, ".wasupdated"}]]];
 

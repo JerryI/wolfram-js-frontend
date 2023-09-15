@@ -50,13 +50,20 @@
          <div class="notion-list-view" style="">
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Set DisplayForm as a default output format", default = NotebookSettings["displayForm"], update = Function[res, NotebookSettings["displayForm"] = res]}] ?>
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Non-transparent background (MacOS)", default = NotebookSettings["background"], update = Function[res, NotebookSettings["background"] = res]}] ?>
+            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Fast boot (bypass updates check)", default = NotebookSettings["fastboot"], update = Function[res, NotebookSettings["fastboot"] = res]}] ?>
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","number.wsp"}], {name = "Autosave interval (sec)", default = (NotebookSettings["autosave"]/1000), update = Function[res, NotebookSettings["autosave"] = 1000 res]}] ?>
-            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","button.wsp"}], {name = "Purge", desc = "Clear frontend objects storage (if for some reason notebook got puffy)", click = Function[Null, 
+            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","button.wsp"}], {name = "Purge OS", desc = "Clear frontend objects storage (if for some reason notebook got puffy)", click = Function[Null, 
                   With[{channel = $AssociationSocket[Global`client]},
                      JerryI`WolframJSFrontend`Notebook`Notebooks[channel]["objects"] = <||>;
                      WebSocketSend[Global`client, ExportByteArray[Global`FrontEndJSEval["alert(`Storage was cleared`)"], "ExpressionJSON"]];
                   ]
             ]}] ?>
+            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","button.wsp"}], {name = "Purge SS", desc = "Clear frontend symbols storage (if for some reason notebook got puffy)", click = Function[Null, 
+                  With[{channel = $AssociationSocket[Global`client]},
+                     JerryI`WolframJSFrontend`Notebook`Notebooks[channel]["symbols"] = <||>;
+                     WebSocketSend[Global`client, ExportByteArray[Global`FrontEndJSEval["alert(`Symbols storage was cleared`)"], "ExpressionJSON"]];
+                  ]
+            ]}] ?>            
          </div>
       </div>
 

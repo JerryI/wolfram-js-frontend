@@ -130,7 +130,7 @@ window.WSPHttpQuery = (command, promise, type = "String") => {
 
 window.WSPHttpBigQuery = (command, promise, type = "String") => {
 
-    var url = window.location.origin+'/utils/post.wsp';
+    var url = 'http://'+window.location.hostname+':'+window.location.port+'/utils/post.wsp';
 
     const formData = new FormData();
     formData.append('command', command);

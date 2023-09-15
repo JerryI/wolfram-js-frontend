@@ -8,7 +8,7 @@ JerryI`WolframJSFrontend`defaultvault   = If[FileExistsQ[FileNameJoin[{JerryI`Wo
 
 JerryI`WolframJSFrontend`defaulttheme = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]], "system"]
 
-JerryI`WolframJSFrontend`settings = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], <|"displayForm"->True, "background"->True, "autosave"->1000*60*3|>]
+JerryI`WolframJSFrontend`settings = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], <|"displayForm"->True, "background"->True, "autosave"->1000*60*3, "fastboot"->False|>]
 
 JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
@@ -17,8 +17,8 @@ JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 Once[If[PacletFind["JerryI/LPM"] === {}, PacletInstall["JerryI/LPM"]]]; 
 <<JerryI`LPM`
 
-If[TimeConstrained[URLFetch["https://github.com"], 5] === $Aborted,
-  Print["No internet connection. Passive mode..."];
+If[TimeConstrained[URLFetch["https://github.com"], 5] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
+  Print["No internet connection or fastboot..."];
   PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]  
 ,
  PacletRepositories[{

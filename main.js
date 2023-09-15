@@ -86,6 +86,11 @@ currentWindow.call = (type) => {
   
 }
 
+currentWindow.cellop = (type) => {
+  currentWindow.window.webContents.send('cellop', type); 
+  console.log('send request cells: '+type);
+}
+
 const createLogWindow = () => {
   const win = new BrowserWindow({
     vibrancy: "sidebar", // in my case...
@@ -184,14 +189,15 @@ const showMainWindow = (url, title = "Root", focusWin = true, hidefirst = true) 
   let win;
 
   if (firstTime && !isMac) {
+    app.addRecentDocument(process.argv[1]);
     win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin, hidefirst);
-    firstTime = false;
   } else if (firstTime && isMac && requested) {
-    win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin, hidefirst);
-    firstTime = false;
+    win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin, hidefirst); 
   } else {
     win = createWindow(url, focusWin, hidefirst);
   }
+
+  firstTime = false;
   
   win.title = title;
   const contents = win.webContents;
@@ -253,6 +259,7 @@ app.on('window-all-closed', () => {
 
 app.on('open-file', (ev, path) => {
   ev.preventDefault();
+  app.addRecentDocument(path);
   if (firstTime) {
     requested = path;
     return;
@@ -776,6 +783,7 @@ const isMac = process.platform === 'darwin'
             
             promise.then((res) => {
               if (!res.canceled) {
+                app.addRecentDocument(res.filePaths[0]);
                 showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
               }
             });
@@ -788,10 +796,21 @@ const isMac = process.platform === 'darwin'
             const promise = dialog.showOpenDialog({title: 'Open Vault', properties: ['openDirectory']});
             promise.then((res) => {
               if (!res.canceled) {
+                app.addRecentDocument(res.filePaths[0]);
                 showMainWindow(globalURL + `?path=`+ encodeURIComponent(res.filePaths[0]), res.filePaths[0]);
               }
             });
           }
+        },
+        {
+          label: "Open Recent",
+          role: "recentdocuments",
+          submenu:[
+            {
+              label: "Clear Recent",
+              role: "clearrecentdocuments"
+            }
+          ]
         },
         {
           label: 'Save',
@@ -848,6 +867,32 @@ const isMac = process.platform === 'darwin'
         { role: 'cut' },
         { role: 'copy' },
         { role: 'paste' },
+        { type: 'separator' },
+        {
+          label: 'Hide/Unhide cell',
+          accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Win+2',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.cellop('HC'); 
+          }
+        }, 
+        {
+          label: 'Hide/Unhide upper cell',
+          accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Win+1',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.cellop('HUC'); 
+          }
+        },  
+        {
+          label: 'Hide/Unhide down cell',
+          accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Win+3',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.cellop('HLC'); 
+          }
+        },               
+        { type: 'separator' },       
         ...(isMac
           ? [
               { role: 'pasteAndMatchStyle' },
@@ -897,7 +942,7 @@ const isMac = process.platform === 'darwin'
       submenu: [
         {
           label: 'Abort',
-          accelerator: process.platform === 'darwin' ? 'Alt+.' : 'Alt+.',
+          accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Win+.',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('Abort'); 
@@ -906,7 +951,7 @@ const isMac = process.platform === 'darwin'
         
         {
           label: 'Evaluate Initializing Cells',
-          accelerator: process.platform === 'darwin' ? 'Alt+i' : 'Alt+i',
+          accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Win+i',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EIC'); 
@@ -915,7 +960,7 @@ const isMac = process.platform === 'darwin'
 
         {
           label: 'Evaluate All Cells',
-          accelerator: process.platform === 'darwin' ? 'Alt+a' : 'Alt+a',
+          accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Win+a',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EAC'); 
