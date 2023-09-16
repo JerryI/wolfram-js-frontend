@@ -930,7 +930,7 @@ const isMac = process.platform === 'darwin'
         { type: 'separator' },
         {
           label: 'Hide/Unhide cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Win+2',
+          accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Super+2',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HC'); 
@@ -938,7 +938,7 @@ const isMac = process.platform === 'darwin'
         }, 
         {
           label: 'Hide/Unhide upper cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Win+1',
+          accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Super+1',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HUC'); 
@@ -946,7 +946,7 @@ const isMac = process.platform === 'darwin'
         },  
         {
           label: 'Hide/Unhide down cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Win+3',
+          accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Super+3',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HLC'); 
@@ -1002,7 +1002,7 @@ const isMac = process.platform === 'darwin'
       submenu: [
         {
           label: 'Abort',
-          accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Win+.',
+          accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Super+.',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('Abort'); 
@@ -1011,7 +1011,7 @@ const isMac = process.platform === 'darwin'
         
         {
           label: 'Evaluate Initializing Cells',
-          accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Win+i',
+          accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Super+i',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EIC'); 
@@ -1020,7 +1020,7 @@ const isMac = process.platform === 'darwin'
 
         {
           label: 'Evaluate All Cells',
-          accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Win+a',
+          accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Super+a',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EAC'); 
