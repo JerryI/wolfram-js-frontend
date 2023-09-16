@@ -286,7 +286,7 @@ let server;
 
 app.on('quit', () => {
   console.log('exiting the server...');
-  server.stdin.write(`Exit[]\n`);
+  if (server) server?.stdin?.write(`Exit[]\n`);
   // server.stdin.end(); // EOF
   //server.kill();
 })
@@ -435,8 +435,9 @@ else {
   app.on('second-instance', (_, argv) => {
     //User requested a second instance of the app.
     //argv has the process.argv arguments of the second instance.
+    //on windows IT SENDS --allow-file-access-from-files as a second argument.!!!
     if (app.hasSingleInstanceLock()) {
-      showMainWindow(globalURL + `?path=`+ encodeURIComponent(argv[1]), argv[1]);
+      showMainWindow(globalURL + `?path=`+ encodeURIComponent(argv[2]), argv[2]);
     }
   });
 }
