@@ -1,6 +1,6 @@
 {
   "name": "wljs-frontend",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
     "name": "Kirill Vasin",
@@ -38,6 +38,12 @@
         "AppImage",
         "deb"
       ],
+      "fileAssociations": [{
+        "mimeType": "application/wln",
+        "ext": "wln",
+        "name": "WLJS Notebook",
+        "role": "Editor"        
+      }],
       "icon": "./build/512x512.png"
     },
     "win": {

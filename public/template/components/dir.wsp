@@ -1,4 +1,4 @@
-<div class="notion-selectable notion-page-block" id="file-button-<?wsp file//FileNameTake//HashString32 ?>">
+<div class="notion-selectable notion-page-block" id="file-button-<?wsp file//HashString32 ?>">
 <span rel="noopener noreferrer" style="display: block; color: inherit; text-decoration: none; width: 100%;">
                                                                     
                                                                         <div oncontextmenu="return false;" class="notion-focusable" role="button" tabindex="0" class="sidebar-focusable-cover">
@@ -7,7 +7,7 @@
                                                                             <div oncontextmenu="return false;" class="sidebar-option" >
                                                                                 <div oncontextmenu="return false;" class="option-holder">
                                                                                     <div oncontextmenu="return false;" class="notion-focusable focusable-pointer" role="button" tabindex="0" >
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 12 12" id="svg-ico-<?wsp file//FileNameTake//HashString32 ?>" class="chevronDownRoundedThick" style="
+                                                                                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 12 12" id="svg-ico-<?wsp file//HashString32 ?>" class="chevronDownRoundedThick" style="
                                                                                                 width: 15px;
                                                                                                 height: 15px;
                                                                                                 display: block;
@@ -38,14 +38,14 @@
 </span>
                                                                     
 </div>  
-<div id="file-expand-<?wsp file//FileNameTake//HashString32 ?>" class="file-three-hidden"></div>  
+<div id="file-expand-<?wsp file//HashString32 ?>" class="file-three-hidden"></div>  
 
 <script>
 {
     let state = false;
-    const ico = document.getElementById('svg-ico-<?wsp file//FileNameTake//HashString32 ?>');
-    const holder = document.getElementById("file-expand-<?wsp file//FileNameTake//HashString32 ?>");
-    document.getElementById('file-button-<?wsp file//FileNameTake//HashString32 ?>').addEventListener('click', ()=>{
+    const ico = document.getElementById('svg-ico-<?wsp file//HashString32 ?>');
+    const holder = document.getElementById("file-expand-<?wsp file//HashString32 ?>");
+    document.getElementById('file-button-<?wsp file//HashString32 ?>').addEventListener('click', ()=>{
         if (!state) {
             server.ask(`NotebookLoadPage["template/components/filelist.wsp", {dir="<?wsp file // URLEncode ?>"}]`).then((data)=>{
                 setInnerHTML(holder, interpretate(data, {}));

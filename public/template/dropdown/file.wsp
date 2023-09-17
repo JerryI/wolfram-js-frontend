@@ -1,11 +1,11 @@
-<div oncontextmenu="return false;" class="dropdown-file dropdown" id="dropdown-file-<?wsp file//FileNameTake//HashString32 ?>">
+<div oncontextmenu="return false;" class="dropdown-file dropdown" id="dropdown-file-<?wsp file//HashString32 ?>">
     <div class="dropdown-frame">
         <div class="notion-scroller vertical">
                 <div class="notion-shadow">
                         
 
 
-                        <div id="file-open-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        <div id="file-open-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
@@ -18,7 +18,7 @@
                                 
                             </div>
                         </div>  
-                        <div id="file-rename-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        <div id="file-rename-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
@@ -31,7 +31,7 @@
                                 
                             </div>
                         </div>                                              
-                        <div id="file-clone-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        <div id="file-clone-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
@@ -44,7 +44,7 @@
                                 
                             </div>
                         </div>  
-                        <div id="file-download-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        <div id="file-download-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
@@ -58,7 +58,7 @@
                             </div>
                         </div> 
                         <?wsp If[ElectronQ // TrueQ, ?> 
-                            <div id="file-finder-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                            <div id="file-finder-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                                 <div class="focusable-holder">
                                     <div class="focusable-holder-holder">
                                         <div class="button-body">
@@ -73,7 +73,7 @@
                             </div>
                         <?wsp , ""] ?>
                     
-                        <div id="file-remove-<?wsp file//FileNameTake//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
+                        <div id="file-remove-<?wsp file//HashString32 ?>" class="notion-focusable" role="button" tabindex="0" >
                             <div class="focusable-holder">
                                 <div class="focusable-holder-holder">
                                     <div class="button-body">
@@ -94,8 +94,8 @@
 
 <script>
 {    
-    const dropdownBtn = document.getElementById("file-button-<?wsp file//FileNameTake//HashString32 ?>");
-    const dropdownMenu = document.getElementById("dropdown-file-<?wsp file//FileNameTake//HashString32 ?>");
+    const dropdownBtn = document.getElementById("file-button-<?wsp file//HashString32 ?>");
+    const dropdownMenu = document.getElementById("dropdown-file-<?wsp file//HashString32 ?>");
 
     const close = (e) => {
         if (e.target !== dropdownBtn) {
@@ -112,13 +112,13 @@
         return false;
     });
 
-    document.getElementById("file-rename-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+    document.getElementById("file-rename-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
         //server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
         dropdownMenu.classList.remove("dropdown-file-show");
-        document.getElementById("file-button-link-<?wsp file//FileNameTake//HashString32 ?>").classList.add('hidden');
-        const field = document.getElementById("file-button-field-<?wsp file//FileNameTake//HashString32 ?>");
+        document.getElementById("file-button-link-<?wsp file//HashString32 ?>").classList.add('hidden');
+        const field = document.getElementById("file-button-field-<?wsp file//HashString32 ?>");
         field.classList.remove('hidden');
-        const input = document.getElementById("file-button-inputfield-<?wsp file//FileNameTake//HashString32 ?>");
+        const input = document.getElementById("file-button-inputfield-<?wsp file//HashString32 ?>");
         input.focus();
         input.addEventListener('blur', ()=>{
             server.socket.send(`FileOperate["Rename"]["<?wsp URLEncode[file] ?>", "${input.value}"]`);
@@ -126,28 +126,28 @@
     });   
 
     <?wsp If[ElectronQ // TrueQ, ?> 
-        document.getElementById("file-finder-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+        document.getElementById("file-finder-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
             window.electronAPI.openFinder("<?wsp URLEncode[file] ?>");
             dropdownMenu.classList.remove("dropdown-file-show");
         });
     <?wsp , ""] ?>
     
-    document.getElementById("file-remove-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+    document.getElementById("file-remove-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Remove"]["<?wsp URLEncode[file] ?>"]');
         dropdownMenu.classList.remove("dropdown-file-show");
     });  
 
-    document.getElementById("file-clone-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+    document.getElementById("file-clone-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
         server.socket.send('FileOperate["Clone"]["<?wsp URLEncode[file] ?>"]');
         dropdownMenu.classList.remove("dropdown-file-show");
     });    
 
-    document.getElementById("file-open-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+    document.getElementById("file-open-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
         openawindow('/index.wsp?path=<?wsp URLEncode[file] ?>', '_blank');
         dropdownMenu.classList.remove("dropdown-file-show");
     });  
 
-    document.getElementById("file-download-<?wsp file//FileNameTake//HashString32 ?>").addEventListener("click", function (e) {
+    document.getElementById("file-download-<?wsp file//HashString32 ?>").addEventListener("click", function (e) {
         downloadByURL('<?wsp file//FileNameToURLPath ?>', '<?wsp FileNameTake[file] ?>');
         dropdownMenu.classList.remove("dropdown-file-show");
     });

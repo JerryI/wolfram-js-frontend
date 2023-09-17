@@ -36,20 +36,6 @@ console.log(app.isPackaged);
 
 const getAppBasePath = () => {
   //dev
-if (process.env.RUN_ENV === 'development') return './'
-
-if (!process.platform || !['win32', 'darwin'].includes(process.platform)) {
-  console.error(`Unsupported OS: ${process.platform}`)
-  return './'
-}
-  //prod
-if (process.platform === 'darwin') {
-  console.log('Mac OS detected')
-  return `/Users/${process.env.USER}/Library/Application\ Support/wolfram-js-frontend/`
-} else if (process.platform === 'win32') {
-  console.log('Windows OS detected')
-  return `${process.env.LOCALAPPDATA}\\wolfram-js-frontend\\`
-}
 }
 
 const currentWindow = {};
@@ -226,9 +212,13 @@ let requested = false
 const showMainWindow = (url, title = "Root", focusWin = true, hidefirst = true) => {
   let win;
 
-  if (firstTime && !isMac) {
-    app.addRecentDocument(process.argv[1]);
-    win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin, hidefirst);
+  if (firstTime && !isMac && process.argv[1]) {
+    if (process.argv[1].length > 3) {
+      app.addRecentDocument(process.argv[1]);
+      win = createWindow(url + '?path='+encodeURIComponent(process.argv[1]), focusWin, hidefirst);
+    } else {
+      win = createWindow(url, focusWin, hidefirst);
+    }
   } else if (firstTime && isMac && requested) {
     win = createWindow(url + '?path='+encodeURIComponent(requested), focusWin, hidefirst); 
   } else {
@@ -709,13 +699,16 @@ const installFrontend = (cbk) => {
       if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
       sender('.git was removed');
 
-
+      if(fs.existsSync(path.join(installationFolder, 'Examples'))) {
+        fs.rmSync(path.join(installationFolder, 'Examples'), { recursive: true, force: true });
+      }
+      sender('Examples was removed');
       
       sender('copying to asar folder...');
       fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
       sender('done!');
 
-      const toremove = ['.packages', 'wl_packages_lock.wl'];
+      const toremove = ['.packages', '.settings', 'wl_packages_lock.wl'];
       const dirtoremove = ['Packages', 'wl_packages'];
 
       sender('removing Packages...');
