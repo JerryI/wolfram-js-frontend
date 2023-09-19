@@ -99,6 +99,10 @@ CellListAddNewAfterAny[cell_] := With[{sign = cell["sign"]},
     CellListAddNewInputAny[sign, cell, CellObj["data"->"", "type"->"input", "sign"->sign]];
 ];
 
+CellListAddNewAfterAny[cell_, data_String] := With[{sign = cell["sign"]},
+    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign]];
+];
+
 CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
 

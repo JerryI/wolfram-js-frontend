@@ -13,6 +13,7 @@ NotebookAddEvaluator::usage = "add new supported lang/tool to the cell's evaluat
 
 NotebookExtendDefinitions::usage = "extends the JSON objects of the notebook storage. internal command of the Evaluator"
 
+NotebookMenu::usage = ""
 
 NotebookGarbagePut::usage = "collect garbage"
 
@@ -140,6 +141,8 @@ DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 jsfn`Notebooks = <||>;
 jsfn`Processors = {{},{},{}};
 
+
+NotebookMenu["Open", id_String] := JerryI`WolframJSFrontend`Extensions`Handlers["Menu"][id][<|"Client"->Global`client, "Notebook"->$AssociationSocket[Global`client]|>]
 
 
 $NotifyName = $InputFileName;
@@ -840,7 +843,7 @@ NotebookOperate[cellid_, op_] := (
 );
 
 
-NotebookOperate[cellid_, op_, arg_] := (
+NotebookOperate[cellid_, op_, arg__] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         op[CellObj[cellid], arg];
     ];
@@ -986,8 +989,6 @@ InternalEventRouter[addr_]["CellEvaluate"][cell_] := (
         jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[Global`EmittedEvent[uid, True]] ] 
     ];
 );
-
-
 
 
 NotebookLoadModal[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJSFrontend`public},

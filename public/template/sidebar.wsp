@@ -510,6 +510,11 @@
     }
 
     <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
+
+    if (window.electronAPI) {
+        if (window.electronAPI.pluginsMenu)
+            window.electronAPI.pluginsMenu((event, id) => {server.socket.send('NotebookMenu["Open", "'+id+'"]'); console.log('send a request for menu');});
+    }
     
     const clocks = document.getElementById('clocks');
     core.Pong = function(args, env) {

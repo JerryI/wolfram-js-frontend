@@ -4,6 +4,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   contextMenu: (callback) => ipcRenderer.on('context', callback),
   call: (callback) => ipcRenderer.on('call', callback),
   cellop: (callback) => ipcRenderer.on('cellop', callback),
+
+  pluginsMenu: (callback) => ipcRenderer.on('pluginsMenu', callback),
   
   openFinder: (path) => {
     ipcRenderer.send('system-open',  decodeURIComponent(path));

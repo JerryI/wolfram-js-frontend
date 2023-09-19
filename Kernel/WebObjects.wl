@@ -30,7 +30,7 @@ CreateFrontEndObject[expr_, $iouid_String:Null, OptionsPattern[]] := Module[{},
 With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
   With[{sym = <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> 0], "date"->Now |>},
 
-    If[OptionValue["Override"],
+    If[OptionValue["Override"] || OptionValue["Type"] === "Private",
       JerryI`WolframJSFrontend`Evaluator`objects[$ouid] = sym;
     ,
       $ExtendDefinitions[$ouid, sym]; 
@@ -40,7 +40,7 @@ With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
   ]
 ]]
 
-Options[CreateFrontEndObject] = {"Override"->False}
+Options[CreateFrontEndObject] = {"Override"->False, "Type"->"Shared"}
 
 
 
@@ -51,6 +51,9 @@ RegisterWebObject[sym_] := (
     JerryI`WolframJSFrontend`WebObjects`list, sym
   } // Flatten;
 )
+
+JerryI`WolframJSFrontend`Extensions`RegisterFrontEndObject = RegisterWebObject;
+JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete = Print["Not implemented!"];;
 
 LoadWebObjects := (
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[

@@ -20,6 +20,7 @@ if (app.isPackaged) {
   installationFolder = app.getAppPath();
 }
 
+
 const params = ["ElectronQ = True;"]
 
 const runPath = path.join(installationFolder, 'Scripts', 'start.wls');
@@ -97,6 +98,41 @@ const createLogWindow = () => {
 
   return win;
 }
+
+const pluginsMenu = {};
+
+pluginsMenu.items = [];
+pluginsMenu.fetch = () => {
+  if (!fs.existsSync(path.join(installationFolder, 'Packages'))) return;
+
+  fs.readdirSync(path.join(installationFolder, 'Packages'), {withFileTypes: true}).filter(item => item.isDirectory()).map(item => {
+    const p = path.join(installationFolder, 'Packages', item.name, 'package.json');
+    if (fs.existsSync(p)) {
+      const package = JSON.parse(fs.readFileSync(p, 'utf8'));
+      if (package["wljs-meta"]["menu"]) {
+        package["wljs-meta"]["menu"].forEach(mi => {
+          const mitem = {
+            label: mi["label"],
+            click: async (ev) => {
+              console.log(ev);
+              currentWindow.window.webContents.send('pluginsMenu', mi["internalHandler"])
+            }
+          };
+
+          if (mi["accelerator"]) {
+            mitem.accelerator = isMac ? mi["accelerator"][0] :  mi["accelerator"][1];
+          }
+
+          pluginsMenu.items.push(mitem);
+        });
+      }
+    }
+  })
+
+
+
+}
+
 
 const setHID = (mainWindow) => {
   mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
@@ -445,6 +481,10 @@ const checkCacheReset = () => {
 let firstTime = true;
 
 app.whenReady().then(() => {
+  pluginsMenu.fetch();
+  buildMenu();
+
+
   const win = createLogWindow();
 
   ipcMain.on('search-text', (event, arg) => {
@@ -788,7 +828,8 @@ function showProgress(received,total){
 
 const isMac = process.platform === 'darwin'
 
-  const template = [
+const buildMenu = () => {
+const template = [
     // { role: 'appMenu' }
     ...(isMac
       ? [{
@@ -1061,6 +1102,10 @@ const isMac = process.platform === 'darwin'
           currentWindow.call('Settings'); 
         }
       },
+
+      { type: 'separator' },
+
+      ...pluginsMenu.items,
       {
         role: 'help',
         label: 'Learn More',
@@ -1075,3 +1120,4 @@ const isMac = process.platform === 'darwin'
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
+}
