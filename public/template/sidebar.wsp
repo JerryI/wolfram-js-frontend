@@ -463,14 +463,17 @@
         root.style.setProperty('--kernel-state', 'var(--kernel-'+window.$KernelStatus+')');
         root.style.setProperty('--kernel-animation', 'var(--kernel-animation-'+window.$KernelStatus+')');
 
-
         core.FrontEndKernelStatus = async function(args, env) {
             console.log("status update");
             let state = await interpretate(args[0], env);
             console.log(state);
-            window.$KernelStatus = state['signal'];
-            root.style.setProperty('--kernel-state', 'var(--kernel-'+window.$KernelStatus+')');
-            root.style.setProperty('--kernel-animation', 'var(--kernel-animation-'+window.$KernelStatus+')');
+            
+
+            if (!(window.$KernelStatus === state['signal']))  {
+                root.style.setProperty('--kernel-state', 'var(--kernel-'+window.$KernelStatus+')');
+                root.style.setProperty('--kernel-animation', 'var(--kernel-animation-'+window.$KernelStatus+')');
+                window.$KernelStatus = state['signal'];
+            }
 
             if (state['signal'] != 'good') {
                 server.kernelControl.wsReset();

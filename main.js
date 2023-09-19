@@ -708,7 +708,7 @@ const installFrontend = (cbk) => {
       fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
       sender('done!');
 
-      const toremove = ['.packages', '.settings', 'wl_packages_lock.wl'];
+      const toremove = ['.thumbnails', '.settings', 'wl_packages_lock.wl'];
       const dirtoremove = ['Packages', 'wl_packages'];
 
       sender('removing Packages...');

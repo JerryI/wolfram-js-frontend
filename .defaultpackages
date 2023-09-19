@@ -160,29 +160,7 @@
       "https://github.com/JerryI/wljs-magic-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-magic-support"|>, "wljs-mermaid-support" -> 
-  <|"name" -> "wljs-mermaid-support", "version" -> "0.0.1", 
-   "description" -> "Mermaid diagrams support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-mermaid-support"|>, 
-   "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-mermaid-support"|>, "wljs-svgbob-support" -> 
-  <|"name" -> "wljs-svgbob-support", "version" -> "0.0.1", 
-   "description" -> "SVGBob ASCII graphics support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-svgbob-support"|>, 
-   "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-svgbob-support"|>, "wljs-plotly" -> 
+   "path" -> "wljs-magic-support"|>, "wljs-plotly" -> 
   <|"name" -> "wljs-plotly", "version" -> "0.0.1", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \

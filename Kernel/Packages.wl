@@ -71,7 +71,8 @@ Packages = <||>;
 UpdateConfiguration := (
     (*Sort;*)
     PackagesOrder = SortBy[Keys[Packages], If[KeyExistsQ[Packages[#, "wljs-meta"], "priority"], Packages[#, "wljs-meta", "priority"], If[KeyExistsQ[Packages[#, "wljs-meta"], "important"], -1000, 1]]&];
-    Put[Packages, $ConfigFile];
+    Put[Select[Packages, TrueQ[#["usersone"]]&], $ConfigFile];
+    Put[Select[Packages, (!TrueQ[#["usersone"]])&], $DefaultConfigFile];
 )
 
 UpdateInfo := (
@@ -91,7 +92,8 @@ UpdateInfo := (
 )
 
 LoadPluginsConfiguration := (
-    If[FileExistsQ[$ConfigFile], Packages = Get[$ConfigFile], Packages = Get[$DefaultConfigFile]];
+    Packages = Get[$DefaultConfigFile];
+    If[FileExistsQ[$ConfigFile], Packages = Join[Packages, Get[$ConfigFile]]];
     
     If[!FileExistsQ[$PackagesPath], CreateDirectory[$PackagesPath]];
     If[!FileExistsQ[$PackagesPath], Print["Failed to create directory"]; Exit[];];
@@ -110,6 +112,7 @@ InstallPackage[url_, cbk_:Null] := Module[{remote},
     If[KeyExistsQ[Packages, remote["name"]], cbk[False, "Already installed"]; Return[$Failed, Module]];
     Packages[remote["name"]] = remote;
     Packages[remote["name"]]["enabled"] = True; 
+    Packages[remote["name"]]["usersone"] = True; 
 
     InstallMissing;
 
