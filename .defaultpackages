@@ -225,19 +225,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
       "15.0.1", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
      "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
    "enabled" -> True, "path" -> "wljs-hydrator"|>, 
- "wljs-wlx-support" -> <|"name" -> "wljs-wlx-support", "version" -> "0.0.5", 
-   "description" -> "WLX cells support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl", "wlkernel" -> "src/evaluator.wl", 
-     "css" -> "src/styles.css", "priority" -> 500|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-wlx-support"|>, 
-   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-wlx-support"|>, "wljs-revealjs" -> 
-  <|"name" -> "wljs-revealjs", "version" -> "0.0.7", 
+ "wljs-revealjs" -> <|"name" -> "wljs-revealjs", "version" -> "0.0.7", 
    "description" -> "Presentation support based on RevealJS and WLX", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
@@ -250,77 +238,4 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "dependencies" -> <|"reveal.js" -> "^4.5.0", "reveal.js-math" -> "^1.0.0", 
      "rollup" -> "^3.21.6"|>, "resolutions" -> 
     <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-revealjs"|>, "wljs-mermaid-support" -> 
-  <|"name" -> "wljs-mermaid-support", "version" -> "0.0.1", 
-   "description" -> "Mermaid diagrams support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-mermaid-support"|>, 
-   "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-mermaid-support"|>, "wljs-svgbob-support" -> 
-  <|"name" -> "wljs-svgbob-support", "version" -> "0.0.1", 
-   "description" -> "SVGBob ASCII graphics support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-svgbob-support"|>, 
-   "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
-   "path" -> "wljs-svgbob-support"|>, "wljs-vimmode" -> 
-  <|"name" -> "wljs-vimmode", "version" -> "0.0.1", 
-   "description" -> "A draft for VIM mode", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs", 
-     "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
---config rollup.config.mjs -w"|>, "wljs-meta" -> 
-    <|"jsmodule" -> "dist/kernel.js"|>, "repository" -> 
-    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-vimmode"|>, 
-   "author" -> "Kirill Vasin", "license" -> "GPL", 
-   "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-vimmode/issues"|>, 
-   "homepage" -> "https://github.com/JerryI/wljs-vimmode#readme", 
-   "dependencies" -> <|"@replit/codemirror-vim" -> "^6.0.14", 
-     "@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
-      "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", 
-     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
-     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
-   "enabled" -> False, "path" -> "wljs-vimmode"|>, 
- "wljs-dev-tools" -> <|"name" -> "wljs-dev-tools", "version" -> "0.0.1", 
-   "description" -> "Dev tools for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"wl" -> "src/processor.wl", 
-     "wlkernel" -> "src/kernel.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-dev-tools"|>, 
-   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-dev-tools"|>, "wljs-snippets" -> 
-  <|"name" -> "wljs-snippets", "version" -> "0.0.1", 
-   "description" -> "Snippets for WLJS editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"wl" -> "src/manager.wl", "jsmodule" -> "src/kernel.js", 
-     "priority" -> 9999999, "menu" -> {<|"label" -> "Snippets", 
-        "accelerator" -> {"Cmd+p", "Ctrl+p"}, "internalHandler" -> 
-         "snippets", "spawnWindow" -> False, "type" -> "button"|>}|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
-   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-snippets"|>, "wljs-esm-support" -> 
-  <|"name" -> "wljs-esm-support", "version" -> "0.0.1", 
-   "description" -> "Allows to build and execute ESM modules in WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"wl" -> "src/processor.wl", 
-     "wlkernel" -> "src/kernel.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-esm-support"|>, 
-   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-esm-support"|>|>
+   "path" -> "wljs-revealjs"|>|>
