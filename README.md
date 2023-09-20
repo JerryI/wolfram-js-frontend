@@ -37,12 +37,17 @@ Web technologies nowadays are aimed to be extremely efficient in order to compet
 
 
 ## How to run
-### From console
 This is quite simple. All that you need is
 
 - Freeware WolframEngine
 
-the rest will be downloaded via the internet. Then `cd` to the project folder and
+the rest will be downloaded via the internet. 
+
+### Electron wrapper (easy)
+Use __[prebuilt binaries](https://github.com/JerryI/wolfram-js-frontend/releases) from `Releases` section__ 
+
+### From console (as a secondary option)
+Then `cd` to the project folder and
 
 ```shell
 git clone https://github.com/JerryI/wolfram-js-frontend
@@ -55,14 +60,6 @@ in a case of troubles with page loading use
 ```shell
 wolframscript -f Scripts/run.wls legacySockets
 ```
-
-### Electron wrapper
-Use __[prebuilt binaries](https://github.com/JerryI/wolfram-js-frontend/releases) from `Releases` section__ or locally
-```shell
-npm i
-npm run el
-```
-
 
 ## Package system
 Frontend uses its own package/plugin system. It doent require any software installed except *wolframscript*. Precompiled plugins are downloaded via `URLFetch` from github repositories and imported to the system. They can extend core WL, autocomplete, JS and UI. The following packages are available (already included as a default plugins)
