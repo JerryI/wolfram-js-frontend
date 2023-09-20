@@ -104,6 +104,7 @@ $CMReplacements = {TemplateBox[list_, RowDefault] :> CM6Grid[{list}], RowBox -> 
 $CMExpressions = {
         Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper,
         Global`FrontEndView -> Global`FrontEndViewWrapper,
+        Global`FrontEndBoxTemporal -> Global`FrontEndBoxTemporalWrapper,
         Global`FrontEndInlineExecutable -> Global`FrontEndInlineExecutableWrapper,
         Global`CM6Sqrt -> Sqrt,
         Global`CM6Fraction -> Global`CM6FractionWrapper,

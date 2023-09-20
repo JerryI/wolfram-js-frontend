@@ -219,7 +219,15 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           click: () => {
             win.webContents.send('context', 'Simplify');  
           }
-        }        
+        },
+        {
+          label: 'Highlight',
+          // Only show it when right-clicking images
+          visible: parameters.selectionText.trim().length > 0,
+          click: () => {
+            win.webContents.send('context', 'iHighlight');  
+          }
+        }                 
       ],
 
       menu: (actions, props, browserWindow, dictionarySuggestions) => [
