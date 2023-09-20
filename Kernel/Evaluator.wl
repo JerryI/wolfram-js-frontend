@@ -39,6 +39,9 @@ Global`$out = Null;
 SetAttributes[SetFrontEndObject, HoldFirst];
 SetAttributes[FrontEndRef, HoldFirst];
 
+
+FrontEndViewWrapper[expr_, _] := expr;
+
 (* autoconvertion of the frontend object back to the original expressions *)
 FrontEndExecutableWrapper[uid_] :=  (Print["Importing string"]; ImportString[
   Function[res, If[!StringQ[res], 
@@ -100,6 +103,7 @@ $CMReplacements = {TemplateBox[list_, RowDefault] :> CM6Grid[{list}], RowBox -> 
 (* on-input convertion *)
 $CMExpressions = {
         Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper,
+        Global`FrontEndView -> Global`FrontEndViewWrapper,
         Global`FrontEndInlineExecutable -> Global`FrontEndInlineExecutableWrapper,
         Global`CM6Sqrt -> Sqrt,
         Global`CM6Fraction -> Global`CM6FractionWrapper,

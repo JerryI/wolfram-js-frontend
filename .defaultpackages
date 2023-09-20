@@ -1,11 +1,12 @@
-<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.1", 
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.3", 
    "description" -> "WLJS Code editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js", "src/boxes.js"}, 
      "wlkernel" -> "src/boxes.wl", "wl" -> "src/processor.wl", 
-     "autocomplete" -> "src/autocomplete.js", "priority" -> -10, 
-     "important" -> True|>, "repository" -> <|"type" -> "git", 
+     "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js", 
+     "priority" -> -10, "important" -> True|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
    "dependencies" -> <|"@codemirror/lang-html" -> "6.4.2", 
      "@codemirror/lang-javascript" -> "6.1.4", "@codemirror/lang-markdown" -> 
@@ -300,7 +301,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-dev-tools"|>, "wljs-snippets" -> 
   <|"name" -> "wljs-snippets", "version" -> "0.0.1", 
-   "description" -> "snippets for WLJS editor", 
+   "description" -> "Snippets for WLJS editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"wl" -> "src/manager.wl", "jsmodule" -> "src/kernel.js", 
