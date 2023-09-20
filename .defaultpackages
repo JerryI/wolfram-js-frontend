@@ -238,4 +238,16 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "dependencies" -> <|"reveal.js" -> "^4.5.0", "reveal.js-math" -> "^1.0.0", 
      "rollup" -> "^3.21.6"|>, "resolutions" -> 
     <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-revealjs"|>|>
+   "path" -> "wljs-revealjs"|>,
+    "wljs-wlx-support" -> <|"name" -> "wljs-wlx-support", "version" -> "0.0.5", 
+   "description" -> "WLX cells support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
+     "wl" -> "src/processor.wl", "wlkernel" -> "src/evaluator.wl", 
+     "css" -> "src/styles.css", "priority" -> 500|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-wlx-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-wlx-support"|>|>
