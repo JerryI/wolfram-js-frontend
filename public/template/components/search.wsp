@@ -43,6 +43,9 @@
         const blur = (event) => {
             if (event.key === 'Escape') {
             //if esc key was not pressed in combination with ctrl or alt or shift
+                event.preventDefault();
+                event.stopPropagation();
+
                 const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
                 if (isNotCombinedKey) {
                     field.removeEventListener('input', search);

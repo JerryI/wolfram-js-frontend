@@ -71,8 +71,8 @@ Packages = <||>;
 UpdateConfiguration := (
     (*Sort;*)
     PackagesOrder = SortBy[Keys[Packages], If[KeyExistsQ[Packages[#, "wljs-meta"], "priority"], Packages[#, "wljs-meta", "priority"], If[KeyExistsQ[Packages[#, "wljs-meta"], "important"], -1000, 1]]&];
-    Put[Select[Packages, (TrueQ[#["usersone"]] && !TrueQ["corePackage"]) &], $ConfigFile];
-    Put[Select[Packages, ((!TrueQ[#["usersone"]]) || TrueQ["corePackage"])&], $DefaultConfigFile];
+    Put[Select[Packages, (TrueQ[#["usersone"]] && !TrueQ["defaultPackage"]) &], $ConfigFile];
+    Put[Select[Packages, ((!TrueQ[#["usersone"]]) || TrueQ["defaultPackage"])&], $DefaultConfigFile];
 )
 
 UpdateInfo := (
