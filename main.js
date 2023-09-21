@@ -845,8 +845,6 @@ const template = [
           submenu: [
             { role: 'about' },
             { type: 'separator' },
-            { role: 'services' },
-            { type: 'separator' },
             { role: 'hide' },
             { role: 'hideOthers' },
             { role: 'unhide' },
@@ -1026,6 +1024,12 @@ const template = [
         { type: 'separator' },        
         { role: 'minimize' },
         { role: 'zoom' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' },
         ...(isMac
           ? [
               { type: 'separator' },
