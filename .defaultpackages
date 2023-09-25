@@ -61,7 +61,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "path" -> "wljs-graphics3d-threejs", "peerDependencies" -> 
     <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>, 
    "defaultPackage" -> True|>, "wljs-graphics-d3" -> 
-  <|"name" -> "wljs-graphics-d3", "version" -> "0.3.7", 
+  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.2", 
    "description" -> "D3 implementation of Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -78,13 +78,13 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "devDependencies" -> <||>, "dependencies" -> 
     <|"@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
       "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", "d3" -> "^7.8.2", 
-     "d3-interpolate-path" -> "^2.3.0", "rollup" -> "^3.20.6", 
-     "rollup-plugin-combine" -> "^2.1.1", "serve-static" -> "^1.14.1", 
-     "systemjs" -> "^6.14.1"|>, "enabled" -> True, 
-   "path" -> "wljs-graphics-d3", "defaultPackage" -> True|>, 
- "wljs-html-support" -> <|"name" -> "wljs-html-support", 
-   "version" -> "0.0.1", "description" -> 
-    "HTML/WSP cells support for WLJS Editor", 
+     "d3-arrow" -> "^0.0.25", "d3-interpolate-path" -> "^2.3.0", 
+     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
+     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
+   "enabled" -> True, "path" -> "wljs-graphics-d3", 
+   "defaultPackage" -> True|>, "wljs-html-support" -> 
+  <|"name" -> "wljs-html-support", "version" -> "0.0.1", 
+   "description" -> "HTML/WSP cells support for WLJS Editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
@@ -113,7 +113,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
      "pako" -> "^2.1.0", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> 
       "^2.1.1", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
    "enabled" -> True, "path" -> "wljs-inputs", "defaultPackage" -> True|>, 
- "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.3.4", 
+ "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.3.5", 
    "description" -> "A core library and WL interpreter written in pure JS", 
    "scripts" -> <|"start" -> "parcel index.html --open", 
      "build" -> "parcel build index.html --public-url ./"|>, 
@@ -175,7 +175,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-magic-support", "defaultPackage" -> True|>, 
- "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.1", 
+ "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.2", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -187,17 +187,14 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
      "url" -> "https://github.com/JerryI/wljs-plotly"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
      "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
-      "15.0.1", "@types/dat.gui" -> "^0.7.7", "d3" -> "^7.8.2", 
-     "d3-interpolate-path" -> "^2.3.0", "plotly.js" -> "^2.13.1", 
-     "plotly.js-dist" -> "^2.18.2", "plotly.js-dist-min" -> "^2.18.2", 
-     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
-     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+      "15.0.1", "plotly.js-dist-min" -> "^2.18.2", "rollup" -> "^3.20.6", 
+     "rollup-plugin-combine" -> "^2.1.1"|>, "resolutions" -> 
+    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-plotly", "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme", 
    "defaultPackage" -> True|>, "wljs-cells" -> <|"name" -> "wljs-cells", 
-   "version" -> "0.2.8", "description" -> "WLJS Cells manager", 
+   "version" -> "0.2.9", "description" -> "WLJS Cells manager", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js"}, 
@@ -230,7 +227,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
       "15.0.1", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
      "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
    "enabled" -> True, "path" -> "wljs-hydrator"|>, 
- "wljs-revealjs" -> <|"name" -> "wljs-revealjs", "version" -> "0.0.7", 
+ "wljs-revealjs" -> <|"name" -> "wljs-revealjs", "version" -> "0.0.9", 
    "description" -> "Presentation support based on RevealJS and WLX", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 

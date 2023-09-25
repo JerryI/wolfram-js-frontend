@@ -151,7 +151,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-Check[CSocketListen[StringTemplate["``:``"][ip, (ToExpression@port)], tcp@#&], Print["FUCK LibraryLink and Sockets! Using shitty ZMQ..."]; SocketListen[StringTemplate["``:``"][ip, (ToExpression@port)], tcp@#&]];
+SocketListen[CSocketOpen[(ToExpression@port)], tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -167,7 +167,7 @@ evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-Check[CSocketListen[StringTemplate["``:``"][ip, (ToExpression@port) + 1], wcp@#&], Print["FUCK LibraryLink and Sockets! Using shitty ZMQ..."]; SocketListen[StringTemplate["``:``"][ip, (ToExpression@port) + 1], wcp@#&]];
+SocketListen[CSocketOpen[(ToExpression@port) + 1], wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 
