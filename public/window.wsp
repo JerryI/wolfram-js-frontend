@@ -19,13 +19,15 @@
         <?wsp , {i, Includes["jsmodule"]}]?> 
 
         <!-- connection to the server (global) -->
-        <script src="/dist/sockets.js" type="module"></script>
+
 
 
         <!-- editors autocomplete -->
         <?wsp Table[ ?> 
             <script type="module" src="/<?wsp i // FileNameToURLPath ?>"></script>
-        <?wsp , {i, Includes["autocomplete"]}]?>     
+        <?wsp , {i, Includes["autocomplete"]}]?>  
+        
+        
         
         <style>
             .notion-app-inner.notion-light-theme {
@@ -175,6 +177,17 @@
                 console.log('attached');
             }
 
+            
+
             server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
         </script>
+
+        <script type="module">
+            <?wsp LoadPage["template/components/sockets.wsp"] ?>
+        </script>
+
+        <script type="module">
+            console.log('checck!');
+        </script>
+
 </body></html>

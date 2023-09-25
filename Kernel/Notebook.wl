@@ -877,6 +877,8 @@ jsfn`Windows = <||>;
 
 NotebookEvaluateProjected[cellid_] := (
     (* check if window is open already *)
+    WebSocketSend[Global`client, Global`FrontEndJSEval["alert('The feature was temporary removed due to instabillity')"] // DefaultSerializer];
+    Return[$Failed];
     If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate in a new window')"] // DefaultSerializer];
         Return[$Failed];

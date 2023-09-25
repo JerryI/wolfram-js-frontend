@@ -19,7 +19,7 @@
         <?wsp , {i, Includes["jsmodule"]}]?> 
 
         <!-- connection to the server (global) -->
-        <script src="/dist/sockets.js" type="module"></script>
+        <script type="module"><?wsp LoadPage["template/components/sockets.wsp"] ?></script>
 
 
         <!-- editors autocomplete -->

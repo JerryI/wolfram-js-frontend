@@ -104,13 +104,13 @@ LocalKernel["AttachNotebook"][id_, path_, cbk_:Null] := (
     If[status["signal"] == "good", 
         (* can be a bug, but it doesnt work if we use a wrapper function *)
         JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
-        WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[8010]];
+        WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]]];
         Print["Kenrel now is aware about notebook id and the path to it"];
     ,
         Print["Kenrel is not ready yet to attach notebook id"];
         promiseToConnect := (
             JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
-            WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[8010]];
+            WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]]];
             Print["Promise to connect was resolved"];    
             promiseToConnect = Null;        
         );
@@ -171,8 +171,8 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
         LinkWrite[link, Unevaluated[Global`ConnectToMaster[packed]]]; 
     ];
 
-    With[{p = JerryI`WolframJSFrontend`WSKernelAddr },
-        LinkWrite[link, Unevaluated[Global`$WSStart[8010, p]]]
+    With[{p = JerryI`WolframJSFrontend`$env["ws2"], h = JerryI`WolframJSFrontend`$env["host"]},
+        LinkWrite[link, Unevaluated[Global`$WSStart[p, h]]]
     ];
     
 

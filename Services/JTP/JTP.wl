@@ -216,9 +216,19 @@ If[!server["nohup"],
 
 
 openFreeSocket[host_String, port_Integer] := 
-Block[{$port = port, $socket = SocketOpen[{host, port}, "TCP"]}, 
+Block[{$port = port, $socket = SocketOpen[{host, port}, "TCP"], $trials = 0}, 
+	Print["Looking for a free socket..."];
     While[FailureQ[$socket], 
-        $socket = SocketOpen[{host, $port++}, "TCP"]
+        $socket = SocketOpen[{host, $port++}, "TCP"];
+		Print[">> port: "<>ToString[$port]];
+		$trials++;
+		If[$trials === 10,
+			$port = $port - 100;
+		];
+		If[$trials > 100,
+			Print["Failed to open a port"];
+			Abort[];
+		];
     ]; 
     Return[<|"port" -> $port, "socket"  -> $socket|>]
 ]
@@ -381,6 +391,7 @@ JTPServerStart[JTPServer[server_Symbol?AssociationQ]] := (
 	server[[{"port", "socket"}]] = Values[openFreeSocket[server]]; 
 	server["listener"] = SocketListen[server["socket"], server["handler"]]; 
 	server["status"] = "listening..";
+	Echo["JTP: "<>server["status"]];
 	writeLog[server, "[<*Now*>] JTPServer started listening"]; 
 	JTPServer[server]
 )
