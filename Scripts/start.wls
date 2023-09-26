@@ -19,6 +19,14 @@ Get/@{
 
 $ContextAliases["jsf`"] = "JerryI`WolframJSFrontend`";
 
+jsf`$env = <|
+  "host" -> "127.0.0.1",
+  "http" -> RandomInteger[{20560, 61000}],
+  "ws"   -> RandomInteger[{20560, 61000}],
+  "jtp"  -> RandomInteger[{20560, 61000}],
+  "ws2"  -> RandomInteger[{20560, 61000}]
+|>;
+
 WLJSPSetRootFolder[jsf`root];
 
 JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[], ""}
@@ -60,22 +68,34 @@ SetUpCron := (
 );
 
 
-port = "8090";
-ip = "127.0.0.1";
-
 If[!BooleanQ[ElectronQ], ElectronQ = False];
 
 If[MemberQ[$ScriptCommandLine, "electron"],
   ElectronQ = True;
 ];
 
-If[MemberQ[$ScriptCommandLine, "port"],
-  port = $ScriptCommandLine[[(Position[$ScriptCommandLine, "port"]//First//First) + 1]];
+If[FileExistsQ[FileNameJoin[{jsf`root, ".env"}] && !MemberQ[$ScriptCommandLine, "randomPort"]],
+  jsf`$env = Get[FileNameJoin[{jsf`root, ".env"}]];
 ];
 
-If[MemberQ[$ScriptCommandLine, "ip"],
-  ip =  $ScriptCommandLine[[(Position[$ScriptCommandLine, "ip"]//First//First) + 1]]
+If[MemberQ[$ScriptCommandLine, "http"],
+  jsf`$env["http"] = $ScriptCommandLine[[(Position[$ScriptCommandLine, "http"]//First//First) + 1]] // ToExpression;
 ];
+
+If[MemberQ[$ScriptCommandLine, "ws"],
+  jsf`$env["ws"] = $ScriptCommandLine[[(Position[$ScriptCommandLine, "ws"]//First//First) + 1]] // ToExpression;
+];
+
+If[MemberQ[$ScriptCommandLine, "ws2"],
+  jsf`$env["ws2"] = $ScriptCommandLine[[(Position[$ScriptCommandLine, "ws2"]//First//First) + 1]] // ToExpression;
+];
+
+If[MemberQ[$ScriptCommandLine, "host"],
+  jsf`$env["host"] =  $ScriptCommandLine[[(Position[$ScriptCommandLine, "host"]//First//First) + 1]]
+];
+
+Put[jsf`$env, FileNameJoin[{jsf`root, ".env"}]];
+
 
 If[MemberQ[$ScriptCommandLine, "dev"],
   devmode = True;
@@ -133,7 +153,11 @@ SupportedTypes = {
 (* no cache, we are developers *)
 If[TrueQ[devmode], WSPCache["Off"]];
 
-jsf`jtp   =  JTPServer["host" -> ip, "port" -> 8092, "nohup"->True] // JTPServerStart;
+Print["Staring JTP server..."];
+
+jsf`jtp   =  JTPServer["host" -> "127.0.0.1", "port" -> jsf`$env["jtp"], "nohup"->True] // JTPServerStart;
+
+Print["Staring HTTP server..."];
 
 tcp = TCPServer[];
 tcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
@@ -151,7 +175,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-SocketListen[CSocketOpen[(ToExpression@port)], tcp@#&]
+SocketListen[CSocketOpen[jsf`$env["http"]], tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -167,7 +191,7 @@ evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-SocketListen[CSocketOpen[(ToExpression@port) + 1], wcp@#&]
+SocketListen[CSocketOpen[jsf`$env["ws"]], wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 
@@ -183,9 +207,11 @@ SetUpCron;
 
 CEventLoopRun[0];
 
-console["log", "http://``:`` is used for WebSockets 2", ip, 8010];
-console["log", "Open http://``:`` is used for WebSockets 1", ip, ToExpression[port]+1];
-console["log", "Open http://``:`` in your browser", ip, port];
+console["log", "ws://``:`` is used for WebSockets 2", jsf`$env["host"], jsf`$env["ws2"]];
+console["log", "ws://``:`` is used for WebSockets 1", jsf`$env["host"], jsf`$env["ws"]];
+console["log", "Open http://``:`` in your browser", jsf`$env["host"], jsf`$env["http"]];
 
 
 If[TrueQ[autostart], LocalKernel["Start"][Function[x, Print["Started"];]]];
+
+
