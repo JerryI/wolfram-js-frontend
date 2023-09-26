@@ -79,7 +79,7 @@ currentWindow.cellop = (type) => {
 }
 
 
-
+let logWindow = undefined
 
 const createLogWindow = () => {
   const win = new BrowserWindow({
@@ -87,14 +87,24 @@ const createLogWindow = () => {
     frame: true,
     titleBarStyle: 'hiddenInset',
     width: 600,
-    height: 300,
+    height: 400,
+    resizable: false,
     title: 'Logger',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      //webSecurity: false,
+      //nodeIntegration: true
     }
   });
 
+  /*win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({ responseHeaders: Object.assign({
+        "Content-Security-Policy": [ "default-src 'self' 'unsafe-inline'"]
+    }, details.responseHeaders)})});*/
+
   win.loadFile('log.html');
+
+  logWindow = win;
 
   return win;
 }
@@ -356,6 +366,13 @@ let sender;
 
 const reg = new RegExp(/Open http:\/\/(?<ip>[0-9|.]*):(?<port>[0-9]*) in your browser/);
 
+const stdAsk = (win, server) => {
+  makePromt((ans) => {
+     server.stdin.write(ans+'\n');
+     setTimeout(() => stdAsk(win, server), 200);     
+  }, win);
+} 
+
 const subscribe = (server, handler = ()=>{}) => {
   let running = false;
 
@@ -365,7 +382,7 @@ const subscribe = (server, handler = ()=>{}) => {
 
   server.stdout.on('data', (data) => {
     const s = data.toString();
-    sender(s);
+    sender(s + '\x1b[0m');
     if (!running) {
       handler(s);
       const match = reg.exec(s);
@@ -373,14 +390,18 @@ const subscribe = (server, handler = ()=>{}) => {
         globalURL = `http://${match.groups.ip}:${match.groups.port}`
         showMainWindow(globalURL);
         running = true;
+        if (logWindow) {
+          stdAsk(logWindow, server);
+        }
+
       }
     }
     
   });
   server.stderr.on('data', (data) => {
     console.log(data.toString());
-    
-    sender(data.toString());
+
+    sender(data.toString(), '\x1b[46m');
     handler(data.toString());
   });  
 }
@@ -409,7 +430,7 @@ const activateWL = (server_, path, callback) => {
 }
 
 const askForInstallation = (server_, window, cbk) => {
-  sender('\n\n Do you have wolframscript installed?', 'magenta');
+  sender('Do you have wolframscript installed?', '\x1b[42m');
   dialogYesNo((answer) => {
     if (answer) {
       cbk()
@@ -421,15 +442,15 @@ const askForInstallation = (server_, window, cbk) => {
 }
 
 const askForPath = (server_, window) => {
-  sender('Please type the path to the Wolframscript manually in the box below', 'red');
-  sender('and then - press ENTER being in the field', 'red');
+  sender('Please type the path to the Wolframscript manually in the box below', '\x1b[32m');
+  sender('and then - press ENTER being in the field', '\x1b[32m');
 
   makePromt((path) => {
     server = exec(`"${path}"`, {cwd: workingDir});
 
     subscribe(server, (log)=>{
       if (noscript.exec(log) || nofile.exec(log)) {
-        sender('FAILED Again!\n\n', 'red');
+        sender('FAILED Again!\n\n', '\x1b[32m');
         
 
         askForPath(server, window);
@@ -441,7 +462,7 @@ const askForPath = (server_, window) => {
 
           subscribe(server, (log)=>{
             if (nolicense.exec(log)) {
-              sender('\nThere is some problems with your license... We are sorry ;(\n', 'red');
+              sender('\nThere is some problems with your license... We are sorry ;(\n', '\x1b[32m');
               setTimeout(app.exit, 4000);
             }
           });
@@ -482,13 +503,18 @@ const checkCacheReset = () => {
     session.defaultSession.clearStorageData();
     session.defaultSession.clearCache();
   
-    sender('cache reset!', "red");
+    sender('cache reset!', "\x1b[32m");
   }
 } 
 
 let firstTime = true;
 
+const cors = () => {
+
+}
+
 app.whenReady().then(() => {
+  cors();
   pluginsMenu.fetch();
   buildMenu();
 
@@ -525,10 +551,11 @@ app.whenReady().then(() => {
 
   setTimeout(() => {
     sender = (data, color) => {
-      win.webContents.send('push-logs', data+'\n', color);
+      win.webContents.send('push-logs', data, color);
     }
 
     win.on('close', () => {
+      logWindow = undefined;
       sender = (data) => {console.log(data)}
     });
 
@@ -538,7 +565,7 @@ app.whenReady().then(() => {
   const startServer = () => {
     sender(getAppBasePath());
 
-    sender('--- Starting Wolfram Engine ---\n', 'red');
+    sender('--- Starting Wolfram Engine ---', '\x1b[32m');
     server = exec('wolframscript', {cwd: workingDir});
 
     params.forEach((line)=>{
@@ -553,8 +580,8 @@ app.whenReady().then(() => {
 
     subscribe(server, (log) => {
         if (noscript.exec(log) || nofile.exec(log)) {
-          sender('FAILED!\n\n', 'red');
-          sender('trying different combination...\n\n', 'red');
+          sender('FAILED!', '\x1b[32m');
+          sender('trying different combination...', '\x1b[32m');
 
           askForInstallation(server, win, () => {
             switch(platform) {
@@ -569,7 +596,7 @@ app.whenReady().then(() => {
             
                 subscribe(server, (log)=>{
                   if (noscript.exec(log) || nofile.exec(log)) {
-                    sender('FAILED Again!\n\n', 'red');
+                    sender('FAILED Again!', '\x1b[32m');
 
 
                     askForPath(server, win);
@@ -581,7 +608,7 @@ app.whenReady().then(() => {
                     
                       subscribe(server, (log)=>{
                         if (nolicense.exec(log)) {
-                          sender('\nThere is some problems with your license... We are sorry ;(\n', 'red');
+                          sender('\nThere is some problems with your license... We are sorry ;(', '\x1b[32m');
                           setTimeout(app.exit, 4000);
                         }
                       });
@@ -610,7 +637,7 @@ app.whenReady().then(() => {
   
             subscribe(server, (log)=>{
               if (nolicense.exec(log)) {
-                sender('\nThere is some problems with your license... We are sorry ;(\n', 'red');
+                sender('There is some problems with your license... We are sorry ;(', '\x1b[32m');
                 setTimeout(app.exit, 4000);
               }
             });
@@ -630,8 +657,8 @@ app.whenReady().then(() => {
 
 
 const checkInstalled = (cbk, window) => {
-  sender('checking the installation folder...', 'red');
-  sender(app.getPath('appData'), 'green');
+  sender('checking the installation folder...', '\x1b[32m');
+  sender(app.getPath('appData'), '\x1b[34m');
 
   const p = path.join(installationFolder, 'package.json');
   const script = path.join(installationFolder, 'Scripts', 'run.wls');
@@ -639,12 +666,12 @@ const checkInstalled = (cbk, window) => {
     fs.readFile(p, (err, raw) => {
       if (err) throw err;
       let data = JSON.parse(raw);
-      sender('current version: ' + data["version"], 'green');
+      sender('current version: ' + data["version"], '\x1b[34m');
 
       const version = parseInt(data["version"].replaceAll(/\./gm, ''));
 
       const timer = setTimeout(() => {
-        sender('No internet. Passive mode', 'red');
+        sender('No internet. Passive mode', '\x1b[32m');
         cbk();
       }, 5000);
 
@@ -664,9 +691,9 @@ const checkInstalled = (cbk, window) => {
                 if (remote["version"]) {
                   const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
                   if (rersion > version) {
-                    sender('\nDo you want me to install a new version?', 'blue');
-                    sender('-- WARNING: it will purge wl_packages and Package folders!      --', 'red');
-                    sender('-- please, make a backup of your local packages if you have one --', 'red');
+                    sender('Do you want me to install a new version?', '\x1b[44m');
+                    sender('-- WARNING: it will purge wl_packages and Package folders!      --', '\x1b[32m');
+                    sender('-- please, make a backup of your local packages if you have one --', '\x1b[32m');
                     dialogYesNo((answer)=>{
                       if (answer === true) {
                         installFrontend(cbk);
@@ -677,23 +704,23 @@ const checkInstalled = (cbk, window) => {
                     
                     
                   } else {
-                    sender('You are using the most recent one!', 'red');
+                    sender('You are using the most recent one!', '\x1b[32m');
                     cbk();
                   }
                 } else {
-                  sender('note possible to check updates', 'magenta');
+                  sender('note possible to check updates', '\x1b[42m');
                   cbk();
                 }
               })
             } else {
-              sender('Unable to check updates! Reason:', 'red');
-              sender('status code '+result.status, 'green');
+              sender('Unable to check updates! Reason:', '\x1b[32m');
+              sender('status code '+result.status, '\x1b[34m');
               cbk();          
             }
           },
             (rejection) => {
-              sender('Unable to check updates! Reason:', 'red');
-              sender(JSON.stringify(rejection), 'green');
+              sender('Unable to check updates! Reason:', '\x1b[32m');
+              sender(JSON.stringify(rejection), '\x1b[34m');
               cbk();
             }
     
@@ -705,7 +732,7 @@ const checkInstalled = (cbk, window) => {
 
   });
   } else {
-    sender('looks like it is not installed...', 'red');
+    sender('looks like it is not installed...', '\x1b[32m');
     installFrontend(cbk);
   }
 }
@@ -714,12 +741,12 @@ const checkInstalled = (cbk, window) => {
 
 const installFrontend = (cbk) => {
   wasUpdated = true;
-  sender('downloading zip to '+installationFolder+'...', 'red');
+  sender('downloading zip to '+installationFolder+'...', '\x1b[32m');
 
   const pathToFile = path.join(installationFolder, 'pkg.zip');
 
   downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/master', pathToFile, (file) => {
-    sender('unzipping...', 'red');
+    sender('unzipping...', '\x1b[32m');
 
     
     const extracted = path.join(installationFolder, 'extracted');
@@ -736,7 +763,7 @@ const installFrontend = (cbk) => {
 
     const count = zip.extract(null, extracted).then((res)=>{
       console.log(res);
-      sender('extracted!', 'red');
+      sender('extracted!', '\x1b[32m');
 
       zip.close();
       fs.unlinkSync(file);
@@ -817,7 +844,7 @@ function downloadFile(file_url , targetPath, cbk){
       });
   
       responce.on('end', function() {
-        sender("File succesfully downloaded", 'green');
+        sender("File succesfully downloaded", '\x1b[34m');
         
 
         cbk(targetPath);
@@ -831,7 +858,7 @@ function downloadFile(file_url , targetPath, cbk){
 
 function showProgress(received,total){
   var percentage = (received * 100) / total;
-  sender(percentage + "% | " + received + " bytes out of " + total + " bytes.", 'red');
+  sender(percentage + "% | " + received + " bytes out of " + total + " bytes.", '\x1b[32m');
 }
 
 const isMac = process.platform === 'darwin'
@@ -954,7 +981,7 @@ const template = [
       label: 'Edit',
       submenu: [
         { role: 'undo' },
-        { role: 'redo' },
+        { role: '\x1b[32mo' },
         { type: 'separator' },
         { role: 'cut' },
         { role: 'copy' },

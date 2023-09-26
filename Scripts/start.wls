@@ -175,7 +175,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-CSocketListen[StringTemplate["``:``"][jsf`$env["host"], jsf`$env["http"]], tcp@#&];
+SocketListen[CSocketOpen[jsf`$env["http"]], tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -191,7 +191,7 @@ evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-CSocketListen[StringTemplate["``:``"][jsf`$env["host"], jsf`$env["ws"]], wcp@#&];
+SocketListen[CSocketOpen[jsf`$env["ws"]], wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 

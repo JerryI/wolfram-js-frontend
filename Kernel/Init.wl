@@ -17,23 +17,23 @@ JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 Once[If[PacletFind["JerryI/LPM"] === {}, PacletInstall["JerryI/LPM"]]]; 
 <<JerryI`LPM`
 
-If[TimeConstrained[URLFetch["https://github.com"], 5] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
+If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
   Print["No internet connection or fastboot..."];
   PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]  
 ,
  PacletRepositories[{
-  Github -> "https://github.com/JerryI/CSocketListener",
+  Github -> "https://github.com/KirillBelovTest/CSockets",
   Github -> "https://github.com/KirillBelovTest/Objects",
   Github -> "https://github.com/KirillBelovTest/Internal",
-  Github -> "https://github.com/JerryI/TCPServer",
-  Github -> "https://github.com/JerryI/HTTPHandler",
-  Github -> "https://github.com/JerryI/WebSocketHandler",
+  Github -> "https://github.com/KirillBelovTest/TCPServer",
+  Github -> "https://github.com/KirillBelovTest/HTTPHandler",
+  Github -> "https://github.com/KirillBelovTest/WebSocketHandler",
   Github -> "https://github.com/JerryI/wl-wsp",
   Github -> "https://github.com/JerryI/wl-misc"
 }, "Directory"->JerryI`WolframJSFrontend`root]
 ];
 
-
+<<KirillBelov`CSockets`
 <<KirillBelov`Objects`;
 <<KirillBelov`Internal`;
 <<KirillBelov`TCPServer`
