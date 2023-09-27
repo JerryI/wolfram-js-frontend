@@ -1,68 +1,68 @@
-<|"notebook" -> <|"name" -> "Greyness", "id" -> "woven-2933a", 
+<|"notebook" -> <|"name" -> "Greyness", "id" -> "focused-8c238", 
    "kernel" -> LocalKernel, "objects" :> 
-    <|"93693502-920a-4b42-aefb-f1c9efac6246" -> 
-      <|"json" -> "[\"CustomButtonView\",[\"Rule\",\"'Label'\",\"'Woo'\"],[\"\
-Rule\",\"'Event'\",\"'7c13c08e-4189-488a-925b-63ec42eac98b'\"]]", 
+    Association["93693502-920a-4b42-aefb-f1c9efac6246" -> 
+      Association["json" -> "[\"CustomButtonView\",[\"Rule\",\"'Label'\",\"'W\
+oo'\"],[\"Rule\",\"'Event'\",\"'7c13c08e-4189-488a-925b-63ec42eac98b'\"]]", 
        "date" -> DateObject[{2023, 9, 9, 13, 12, 22.030434`8.0955980360046}, 
-         "Instant", "Gregorian", 2.]|>, 
+         "Instant", "Gregorian", 2.]], 
      "ea5683e7-24a5-4d79-8c1b-e7d393d0590b" -> 
-      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
-\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
-\"'51e5a3c7-b5ca-4be7-a5b3-44c4fb600aeb'\"]],[\"PointSize\",5.0e-2],[\"RGBCol\
-or\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"TransitionDuration\"\
-,40]]", "date" -> DateObject[{2023, 9, 9, 13, 13, 
-          8.865067`7.700257009218347}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Adva\
-nced/Greyness.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 9, 9, 13, 12, 18.445549`8.018466570032917}, 
+      Association["json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"Eve\
+ntListener\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mou\
+semove'\",\"'51e5a3c7-b5ca-4be7-a5b3-44c4fb600aeb'\"]],[\"PointSize\",5.0e-2]\
+,[\"RGBColor\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"Transition\
+Duration\",40]]", "date" -> DateObject[{2023, 9, 9, 13, 13, 
+          8.865067`7.700257009218347}, "Instant", "Gregorian", 2.]]], 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Basi\
+c/EventHandler.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 9, 27, 10, 29, 1.834391`7.016066899852475}, 
      "Instant", "Gregorian", 2.], "symbols" -> <||>, 
    "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$17]|>, 
- "cells" -> {<|"id" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b2", 
+ "cells" -> {<|"id" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b26ab", 
     "type" -> "input", "data" -> "p = \
 {0,0};\nGraphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,2}, \
 {2,-2}],\n\t\t{\"mousemove\"->Function[xy, p = xy]}\n\t],\n\tPointSize[0.05], \
 Cyan,\n\tPoint[p // Offload]\n}, TransitionDuration->40]", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "b9ad1ed0-56e9-4ea5-97ae-63d3cd0fa13b", "type" -> "output", 
+   <|"id" -> "b9ad1ed0-56e9-4ea5-97ae-63d3cd0fa13b6ab", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"ea5683e7-24a5-4d79-8c1b-e7d393d0590b\"]", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1f8328f2-4336-404d-97aa-3a60ee3043589b2", "type" -> "input", 
+   <|"id" -> "1f8328f2-4336-404d-97aa-3a60ee3043589b26ab", "type" -> "input", 
     "data" -> ".md\nCustom Button example", "display" -> "codemirror", 
-    "sign" -> "woven-2933a", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ea236a4c-7251-4805-9c5e-560a58bf32c2", "type" -> "output", 
+    "sign" -> "focused-8c238", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "ea236a4c-7251-4805-9c5e-560a58bf32c26ab", "type" -> "output", 
     "data" -> "\nCustom Button example", "display" -> "markdown", 
-    "sign" -> "woven-2933a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd353cce-13be-4a53-ae48-a8bbe8709afb9b2", "type" -> "input", 
+    "sign" -> "focused-8c238", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "cd353cce-13be-4a53-ae48-a8bbe8709afb9b26ab", "type" -> "input", 
     "data" -> ".js\n\ncore.CustomButtonView = async (args, env) => {\n  const \
 options = await core._getRules(args, env);\n  const button = \
 document.createElement('input');\n  button.type = \"button\";\n  button.value \
 = options.Label;\n  button.addEventListener('click', ()=>{\n    \
 server.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
 env.element.appendChild(button);\n}\n\nreturn null;", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2d95d5b1-4d57-4b2f-b42a-09ddf287cf6f9b2", "type" -> "output", 
-    "data" -> "\n\ncore.CustomButtonView = async (args, env) => {\n  const \
-options = await core._getRules(args, env);\n  const button = \
-document.createElement('input');\n  button.type = \"button\";\n  button.value \
-= options.Label;\n  button.addEventListener('click', ()=>{\n    \
+   <|"id" -> "2d95d5b1-4d57-4b2f-b42a-09ddf287cf6f9b26ab", 
+    "type" -> "output", "data" -> "\n\ncore.CustomButtonView = async (args, \
+env) => {\n  const options = await core._getRules(args, env);\n  const button \
+= document.createElement('input');\n  button.type = \"button\";\n  \
+button.value = options.Label;\n  button.addEventListener('click', ()=>{\n    \
 server.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
 env.element.appendChild(button);\n}\n\nreturn null;", "display" -> "js", 
-    "sign" -> "woven-2933a", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a6de4ded-6f21-4260-b0b9-8aeac46ffe469b2", "type" -> "input", 
+    "sign" -> "focused-8c238", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a6de4ded-6f21-4260-b0b9-8aeac46ffe469b26ab", "type" -> "input", 
     "data" -> "CustomButton[label_] := With[{uid = CreateUUID[]},\n  \
 EventObject[<|\"id\"->uid, \"initial\"->False, \
 \"view\"->CustomButtonView[\"Label\"->label, \"Event\"->uid]|>]\n]", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "ccfa88a0-b1e3-4532-9e77-1a80308f71b19b2", "type" -> "input", 
+   <|"id" -> "ccfa88a0-b1e3-4532-9e77-1a80308f71b19b26ab", "type" -> "input", 
     "data" -> "EventHandler[CustomButton[\"Woo\"], Print]", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9c8e9320-0186-4ff2-b068-e0f8b421a13f", "type" -> "output", 
+   <|"id" -> "9c8e9320-0186-4ff2-b068-e0f8b421a13f6ab", "type" -> "output", 
     "data" -> "FrontEndExecutable[\"93693502-920a-4b42-aefb-f1c9efac6246\"]", 
-    "display" -> "codemirror", "sign" -> "woven-2933a", 
+    "display" -> "codemirror", "sign" -> "focused-8c238", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

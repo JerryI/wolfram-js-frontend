@@ -382,7 +382,7 @@ const subscribe = (server, handler = ()=>{}) => {
 
   server.stdout.on('data', (data) => {
     const s = data.toString();
-    sender(s + '\x1b[0m');
+    sender(s);
     if (!running) {
       handler(s);
       const match = reg.exec(s);
@@ -551,6 +551,10 @@ app.whenReady().then(() => {
 
   setTimeout(() => {
     sender = (data, color) => {
+      /*fs.appendFile(path.join(installationFolder, 'message.txt'), data + "\r\n", function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });*/
       win.webContents.send('push-logs', data, color);
     }
 
