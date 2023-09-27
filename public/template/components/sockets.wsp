@@ -48,7 +48,10 @@ socket.onclose = function(event) {
   console.log(event);
   server.kernelControl.wsReset('bad');
   server.kernelControl.notebookReset('bad');
-  //alert('Connection lost. Please, update the page to see new changes.');
+  //alert('WS connection lost. Please, update the page to see new changes.');
+  if (window.confirm("Connection lost. Should we reload this page?")) {
+    window.location.reload()
+  }
 };
 
 window.addEventListener("blur", ()=>{

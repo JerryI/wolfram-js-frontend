@@ -4,8 +4,16 @@ body {
     overflow: hidden;
 }
 
+:root {
+  --filter : invert(1);
+}
+
+body[data-theme='dark'] {
+  --filter : invert(0);
+}
+
 .xterm .xterm-screen {
-  filter: invert(1);
+  filter: var(--filter);
 }
 
 .logs {

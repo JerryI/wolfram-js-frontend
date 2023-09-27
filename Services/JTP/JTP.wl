@@ -216,10 +216,10 @@ If[!server["nohup"],
 
 
 openFreeSocket[host_String, port_Integer] := 
-Block[{$port = port, $socket = SocketOpen[{host, port}, "TCP"], $trials = 0}, 
+Block[{$port = port, $socket = SocketOpen[port], $trials = 0}, 
 	Print["Looking for a free socket..."];
     While[FailureQ[$socket], 
-        $socket = SocketOpen[{host, $port++}, "TCP"];
+        $socket = SocketOpen[$port++];
 		Print[">> port: "<>ToString[$port]];
 		$trials++;
 		If[$trials === 10,
