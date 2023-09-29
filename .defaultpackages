@@ -1,8 +1,11 @@
-<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.4", 
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.5", 
    "description" -> "WLJS Code editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js", "src/boxes.js"}, 
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "restore" -> "mkdir _temp && cd _temp && git clone \
+https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
+&& rm -rf _temp"|>, "wljs-meta" -> 
+    <|"jsmodule" -> {"dist/kernel.js", "src/boxes.js"}, 
      "wlkernel" -> "src/boxes.wl", "wl" -> "src/processor.wl", 
      "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js", 
      "priority" -> -10, "important" -> True|>, 
@@ -61,12 +64,14 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "path" -> "wljs-graphics3d-threejs", "peerDependencies" -> 
     <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>, 
    "defaultPackage" -> True|>, "wljs-graphics-d3" -> 
-  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.2", 
+  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.3", 
    "description" -> "D3 implementation of Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
      "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
---config rollup.config.mjs -w"|>, "wljs-meta" -> 
+--config rollup.config.mjs -w", "restore" -> "mkdir _temp && cd _temp && git \
+clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
+../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"jsmodule" -> "dist/kernel.js", "wlkernel" -> "src/kernel.wl", 
      "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js"|>, 
    "repository" -> <|"type" -> "git", 
