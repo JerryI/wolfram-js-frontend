@@ -3097,9 +3097,9 @@ logger.addEventListener("resize", (event) => {
 
 window.electronAPI.handleLogs((event, value, color) => {
     if (color) {
-        term.writeln(color+value.replace(/(\n)/gm,"\r\n")+'\x1b[0m');
+        term.writeln(color+value.replace(/(\n)/gm,"\r\n").trim()+'\x1b[0m');
     } else {
-        term.writeln(value.replace(/(\n)/gm,"\r\n")+'\x1b[0m');
+        term.writeln(value.replace(/(\n)/gm,"\r\n").trim()+'\x1b[0m');
     }
     
 });

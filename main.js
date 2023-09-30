@@ -446,7 +446,7 @@ const askForPath = (server_, window) => {
   sender('and then - press ENTER being in the field', '\x1b[32m');
 
   makePromt((path) => {
-    server = exec(`"${path}"`, {cwd: workingDir});
+    server = exec(`"${path.replace(/(\n|\r|\r\n)/gm, "")}"`, {cwd: workingDir});
 
     subscribe(server, (log)=>{
       if (noscript.exec(log) || nofile.exec(log)) {

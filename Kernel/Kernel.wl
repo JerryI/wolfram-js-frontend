@@ -182,14 +182,19 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     (* loading kernels *)
     With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", UniversalPathConverter[#]}] &/@ Includes["wlkernel"]},
-        Echo[list];
         LinkWrite[link, Unevaluated[Get/@list]]; 
     ];
 
     (* i dunno. this is a fucking bug *)
     LinkWrite[link, Unevaluated["LoadWebObjects"//ToExpression]];
 
-
+    Print["-- Link read --"];
+    With[{dt = LinkRead[link]},
+        Echo[dt];
+        If[ToString[dt] == "$Failed",
+            Print[Red<>"There is a problem related to your license. Try to close other Wolfram Kernel executables."];
+        ]
+    ];
 
     checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[15, "Seconds"], 1},  AutoRemove->True]];
 

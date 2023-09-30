@@ -814,7 +814,6 @@ NotebookGetSymbol[uid_, params_][expr_] := Module[{}, With[{channel = $Associati
     jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
         With[{result = expr // ReleaseHold},
             Print["evaluating the desired symbol on the Kernel"];
-            Print["promise resolve"];
             Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
         ]
     ] ]
@@ -981,7 +980,7 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 (* redirect *)
 NotebookFrontEndSend[channel_String][expr_] := (
     (*Print["Publish from kernel to the channel "<>channel];*)
-    Print["FWD : JTP >> WS"];
+    Print["using old fwd channel..."];
     WebSocketSend[jsfn`Notebooks[channel]["channel"], expr // DefaultSerializer];
 );
 
