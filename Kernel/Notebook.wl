@@ -884,6 +884,10 @@ NotebookEvaluateProjected[cellid_] := (
         Return[$Failed];
     ];    
 
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellListRemoveAllNextOutput[CellObj[cellid]];
+    ];    
+
     If[KeyExistsQ[jsfn`Windows, cellid],
         If[FailureQ[WebSocketSend[jsfn`Windows[cellid]["socket"], Global`Ping[Null] // DefaultSerializer]],
             jsfn`Windows[cellid]  = .;
@@ -892,13 +896,22 @@ NotebookEvaluateProjected[cellid_] := (
 
     If[KeyExistsQ[jsfn`Windows, cellid] && !MissingQ[jsfn`Windows[cellid]["socket"]],
 
-        (* sends directly *)
-        Block[{JerryI`WolframJSFrontend`fireEvent = WindowEventFire[jsfn`Windows[cellid]["socket"], Global`client]},
+        (* remove and open a new one *)
+
+        WebSocketSend[jsfn`Windows[cellid]["socket"], Global`Suicide[Null] // DefaultSerializer];
+        TaskRemove[jsfn`Windows[cellid]["timer"]];
+
+        (* a new one *)
+        jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
+        (* just accumulates to jsfn delayed *)
+        Block[{JerryI`WolframJSFrontend`fireEvent = WindowDelayedEventFire[cellid]},
             CellObjEvaluate[CellObj[cellid], jsfn`Processors];
-        ]
-        
+        ];
+        WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
+               
         ,
 
+        (* a new one *)
         jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
 
         (* just accumulates to jsfn delayed *)
@@ -911,7 +924,7 @@ NotebookEvaluateProjected[cellid_] := (
     ];
 );
 
-NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`client]},
+NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`client], cli = Global`client},
     jsfn`Windows[id]["socket"] = Global`client;
     (* register notebook *)
     $AssociationSocket[Global`client] = CellObj[id]["sign"];
@@ -919,9 +932,11 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
     If[jsfn`Windows[id]["timer"] === Null,
       Module[{timer},
         jsfn`Windows[id]["timer"] = timer = SessionSubmit[ScheduledTask[
-            If[FailureQ[WebSocketSend[jsfn`Windows[id]["socket"], Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
+            If[FailureQ[WebSocketSend[cli, Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
                 Print["window is dead"];
                 jsfn`Windows[id] = .;
+                CellListRemoveAllNextOutput[CellObj[id]];
+                
                 TaskRemove[timer];
                 ClearAll[timer];
             ];

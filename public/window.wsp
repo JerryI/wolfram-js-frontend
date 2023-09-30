@@ -40,6 +40,10 @@
                 console.log('attached');
             }
 
+            core.Suicide = () => {
+                window.close();
+            }
+
             
             
             
@@ -124,6 +128,12 @@
 
                 return false;
             }
+
+            window.ifWin = () => {
+                console.warn(navigator.appVersion);
+                if (navigator.appVersion.indexOf('Win') != -1) return true;
+                return false;
+            }
             
             window.runColorMode = (fn) => {
               if (!window.matchMedia) {
@@ -138,21 +148,23 @@
             }
 
             window.resetBackground = () => {
-                if (!isElectron() || ifLinux()) {
+                if (!isElectron() || ifLinux() || ifWin()) {
                     document.body.style.background = "var(--topbar-background)";
                 } else {
                     document.body.style.background = "";
                 }
+
+
             }
+
+            <?wsp If[!TrueQ[JerryI`WolframJSFrontend`settings["background"]], ?>
+                    document.body.style.setProperty('--topbar-background', 'transparent');
+                    document.body.style.setProperty('--background-frame-color', 'transparent');
+            <?wsp , "" ] ?>
 
             resetBackground();
 
-            let darkmode = localStorage.getItem("darkmode");
-
-            if (typeof darkmode === 'undefined' || darkmode === null) {
-                    localStorage.setItem("darkmode", 'system');
-                    darkmode = 'system';
-            }            
+            let darkmode = '<?wsp NotebookTheme ?>';      
 
             if (darkmode === 'system') {
                 runColorMode((isDarkMode) => {
@@ -163,15 +175,13 @@
                   }
                 });
             } else {
-                resetBackground();
-                if (darkmode === 'disabled') {
+                document.body.style.background = "var(--topbar-background)";
+                if (darkmode === 'enabled') {
                     document.body.setAttribute('data-theme', 'dark');
                 } else {
                     document.body.removeAttribute('data-theme', 'dark');
                 }
             }
-            
-            
         </script>
     </head>
     <body class="notion-body">
