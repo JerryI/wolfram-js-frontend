@@ -20,7 +20,38 @@
 
         <!-- connection to the server (global) -->
 
+        <script type="module">
+            window.Notebook = "<?wsp $CurrentRequest["Query", "notebook"] ?>";
 
+            core.FrontEndPopUp = async (args, env) => {
+                const mess = await interpretate(args[0]);
+                console.warn(mess);
+            }
+
+            core.Pong = function(args, env) {
+                console.log('pong');
+            }
+
+            core.Ping = function(args, env) {
+                console.log('ping');
+            }
+
+            core.FrontEndWSAttached = () => {
+                console.log('attached');
+            }
+
+            
+            
+            
+        </script>
+
+        <script type="module">
+            <?wsp LoadPage["template/components/sockets.wsp"] ?>
+        </script>
+
+        <script type="module">
+            window.addEventListener("wsconnected", () => server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`));
+        </script>
 
         <!-- editors autocomplete -->
         <?wsp Table[ ?> 
@@ -157,37 +188,8 @@
             </div>
         </div>
 
-        <script type="module">
-            window.Notebook = "<?wsp $CurrentRequest["Query", "notebook"] ?>";
 
-            core.FrontEndPopUp = async (args, env) => {
-                const mess = await interpretate(args[0]);
-                console.warn(mess);
-            }
 
-            core.Pong = function(args, env) {
-                console.log('pong');
-            }
 
-            core.Ping = function(args, env) {
-                console.log('ping');
-            }
-
-            core.FrontEndWSAttached = () => {
-                console.log('attached');
-            }
-
-            
-
-            server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
-        </script>
-
-        <script type="module">
-            <?wsp LoadPage["template/components/sockets.wsp"] ?>
-        </script>
-
-        <script type="module">
-            console.log('checck!');
-        </script>
 
 </body></html>

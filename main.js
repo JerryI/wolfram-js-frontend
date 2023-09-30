@@ -835,7 +835,7 @@ function downloadFile(file_url , targetPath, cbk){
   ft.on('response', (responce) => {
       // Change the total bytes value to get progress later.
       console.log(responce.headers);
-      total_bytes = parseInt(responce.headers['content-length' ]);
+      total_bytes = parseInt(responce.headers.get('Content-Length'));
       console.log(total_bytes);
 
       responce.pipe(out);
@@ -861,8 +861,7 @@ function downloadFile(file_url , targetPath, cbk){
 }
 
 function showProgress(received,total){
-  var percentage = (received * 100) / total;
-  sender(percentage + "% | " + received + " bytes out of " + total + " bytes.", '\x1b[32m');
+  sender("+ | " + received, '\x1b[32m');
 }
 
 const isMac = process.platform === 'darwin'

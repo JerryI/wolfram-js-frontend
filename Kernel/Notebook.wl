@@ -934,7 +934,7 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
 
 
     (Print[Red<>"boom!"];  Print[#[WindowEventFire[Global`client, jsfn`Windows[id]["origin"]]]]; Print[Reset];) &/@ jsfn`Windows[id]["delayed"];
-    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
+    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]] // DefaultSerializer];
 ]
 
 WindowDelayedEventFire[windowid_String][ev_][cell__] := (
