@@ -268,5 +268,14 @@ window.ifWin = () => {
 }
 
   if (ifLinux() || ifWin()) {
-    document.body.style.background = "rgb(41, 45, 62)";
+    document.body.style.paddingTop = "0";
+    logger.style.height = "auto";
+    runColorMode((isDarkMode) => {
+        if (isDarkMode) {
+            document.body.style.background = "rgb(41, 45, 62)";
+        } else {
+            document.body.style.background = "rgb(255, 255, 245)";
+        }
+      }); 
+    
   }

@@ -7,7 +7,7 @@ export default {
   input: 'rendererSrc.js',
   
   output: {
-    dir: 'build/',
+    dir: 'build',
     format: "es",
     strict: false
   },

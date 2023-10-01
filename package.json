@@ -11,7 +11,7 @@
     "start": "wolframscript -f Scripts/run.wls",
     "dev": "wolframscript -f Scripts/run.wls dev",
     "build": "wolframscript -f Scripts/build.wls",
-    "buildR": "node --max-old-space-size=8192 ./node_modules/.bin/rollup --config rollup.config2.mjs",
+    "buildR": "rollup --config rollup.config2.mjs",
     "el": "electron .",
     "dist": "electron-builder",
     "dist-all": "electron-builder -mwl"

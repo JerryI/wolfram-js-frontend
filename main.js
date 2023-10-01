@@ -469,7 +469,7 @@ const askForPath = (server_, window) => {
           params.forEach((line)=>{
             server.stdin.write(line+'\n');
           });
-          server.stdin.write(`Get["${runPath}"]\n`);
+          server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
           // server.stdin.end(); // EOF
         });
       }
@@ -478,7 +478,7 @@ const askForPath = (server_, window) => {
     params.forEach((line)=>{
       server.stdin.write(line+'\n');
     });
-    server.stdin.write(`Get["${runPath}"]\n`);
+    server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
     // server.stdin.end(); // EOF
   }, window);
 }
@@ -575,7 +575,9 @@ app.whenReady().then(() => {
     params.forEach((line)=>{
       server.stdin.write(line+'\n');
     });
-    server.stdin.write(`Get["${runPath}"]\n`);
+
+    sender(runPath.replace(/\\/g, "\\\\"));
+    server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
     // server.stdin.end(); // EOF
     sender('waiting for th responce...');
     server.on("error", (err)=>{
@@ -595,7 +597,7 @@ app.whenReady().then(() => {
                 params.forEach((line)=>{
                   server.stdin.write(line+'\n');
                 });
-                server.stdin.write(`Get["${runPath}"]\n`);
+                server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
                 // server.stdin.end(); // EOF
             
                 subscribe(server, (log)=>{
@@ -621,7 +623,7 @@ app.whenReady().then(() => {
                         server.stdin.write(line+'\n');
                       });
                     
-                      server.stdin.write(`Get["${runPath}"]\n`);
+                      server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
                       // server.stdin.end(); // EOF
                     });
                   }
@@ -650,7 +652,7 @@ app.whenReady().then(() => {
               server.stdin.write(line+'\n');
             });
   
-            server.stdin.write(`Get["${runPath}"]\n`);
+            server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
             // server.stdin.end(); // EOF
           });
         }

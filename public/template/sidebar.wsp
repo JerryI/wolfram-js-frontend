@@ -507,19 +507,19 @@
             root.style.setProperty('--kernel-animation', 'var(--kernel-animation-no)');            
         }
 
-    }
+    };
 
     <?wsp If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], ?>
 
     if (window.electronAPI) {
         if (window.electronAPI.pluginsMenu)
             window.electronAPI.pluginsMenu((event, id) => {server.socket.send('NotebookMenu["Open", "'+id+'"]'); console.log('send a request for menu');});
-    }
+    };
     
     const clocks = document.getElementById('clocks');
     core.Pong = function(args, env) {
         clocks.style.transform = 'rotate('+args[0]+'deg)';
-    }
+    };
 
     document.getElementById("abort-button")?.addEventListener('click', (e)=>{
         server.socket.send('NotebookAbort');
@@ -529,7 +529,7 @@
         if($KernelStatus !== 'good' && $KernelStatus !== 'working') {
             alert("No active kernel is attached");
             return;
-        }
+        };
 
         server.socket.send('NotebookEvaluateAll');
     });    
@@ -550,13 +550,7 @@
         document.getElementById("path-path").innerText = path;
     };
 
-    /*document.getElementById("path-filename").addEventListener("blur", (e)=>{
-        document.getElementById("path-path").classList.remove('any-hidden');
-        const field = document.getElementById("path-filename");
-        field.classList.add('any-hidden');
 
-        server.socket.send('NotebookRename["'+field.value+'"]');
-    }, true);*/
 
     var lastTimeSaved = new Date(<?wsp UnixTime[JerryI`WolframJSFrontend`Notebook`Notebooks[$AssoticatedPath[$CurrentRequest["Query", "path_decoded"]], "date"]] ?> * 1000);
 
@@ -574,7 +568,7 @@
         server.socket.send('NotebookStore;');
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());  
-        //generateThumbnail();
+      
         if (server.socket.readyState != 1) alert('Connection to the server was lost!');
     });
 
@@ -589,7 +583,7 @@
         server.socket.send('NotebookStore;');
         lastTimeSaved = new Date();
         datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());        
-        /*generateThumbnail();*/
+     
     }, <?wsp JerryI`WolframJSFrontend`settings["autosave"] ?>);
 
 
