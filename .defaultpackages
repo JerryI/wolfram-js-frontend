@@ -270,7 +270,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-mermaid-support"|>, "wljs-snippets" -> 
-  <|"name" -> "wljs-snippets", "version" -> "0.0.1", 
+  <|"name" -> "wljs-snippets", "version" -> "0.0.2", 
    "description" -> "Snippets for WLJS editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 

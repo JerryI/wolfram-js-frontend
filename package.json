@@ -56,7 +56,7 @@
     "files": [
       "main.js",
       "preload.js",
-      "renderer.js",
+      "build/rendererSrc.js",
       "electron.css",
       "log.html",
       "preloadMain.js",
