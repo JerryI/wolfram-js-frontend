@@ -14,13 +14,17 @@ JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
 JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 
-Once[If[PacletFind["JerryI/LPM"] === {}, PacletInstall["JerryI/LPM"]]]; 
+PacletInstall["JerryI/LPM"]
+
 <<JerryI`LPM`
 
+
 If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
+
   Print["No internet connection or fastboot..."];
   PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]  
 ,
+
  PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/CSockets",
   Github -> "https://github.com/KirillBelovTest/Objects",
@@ -34,8 +38,8 @@ If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[Jer
 ];
 
 <<KirillBelov`CSockets`
-<<KirillBelov`Objects`;
-<<KirillBelov`Internal`;
+<<KirillBelov`Objects`
+<<KirillBelov`Internal`
 <<KirillBelov`TCPServer`
 
 <<KirillBelov`HTTPHandler`
@@ -44,7 +48,5 @@ If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[Jer
 
 <<JerryI`WSP`
 <<JerryI`WSP`PageModule`
-
-<<KirillBelov`CSocketListener`;
 
 Get[FileNameJoin[{JerryI`WolframJSFrontend`root, "Services","JTP", "JTP.wl"}]]

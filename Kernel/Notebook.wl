@@ -933,8 +933,13 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
         jsfn`Windows[id]["timer"] = timer = SessionSubmit[ScheduledTask[
             If[FailureQ[WebSocketSend[cli, Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
                 Print["window is dead"];
+                
+
+                Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[jsfn`Windows[id]["origin"]]},
+                    CellListRemoveAllNextOutput[CellObj[id]];
+                ];  
+
                 jsfn`Windows[id] = .;
-                CellListRemoveAllNextOutput[CellObj[id]];
                 
                 TaskRemove[timer];
                 ClearAll[timer];

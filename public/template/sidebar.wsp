@@ -1,7 +1,7 @@
 <div  style="">
                                         <div style="">
                                             <div class="sidebar-flex">
-                                                <div class="sidebar-holder">
+                                                <div class="sidebar-holder" <?wsp If[isWindows || isLinux, "style=\"height: 0.5em;\"", ""] ?>>
                                                     <div class="notion-sidebar-switcher  sidebar-container" role="" tabindex="0">                                                         
                                                     </div>
                                                 </div>
