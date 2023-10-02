@@ -858,8 +858,8 @@ function downloadFile(file_url , targetPath, cbk){
   ft.on('response', (responce) => {
       // Change the total bytes value to get progress later.
       console.log(responce.headers);
-      total_bytes = parseInt(responce.headers.get('Content-Length'));
-      console.log(total_bytes);
+      //total_bytes = parseInt(responce.headers.get('Content-Length'));
+      //console.log(total_bytes);
 
       responce.pipe(out);
 
@@ -867,7 +867,7 @@ function downloadFile(file_url , targetPath, cbk){
         // Update the received bytes
         received_bytes += chunk.length;
   
-        showProgress(received_bytes, total_bytes);
+        showProgress(received_bytes);
       });
   
       responce.on('end', function() {
