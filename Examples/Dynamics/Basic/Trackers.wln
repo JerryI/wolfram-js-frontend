@@ -1,0 +1,152 @@
+<|"notebook" -> <|"name" -> "Downhearted", "id" -> "unforced-7a756", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"0ba07137-755a-4827-832c-be76695b496d" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'d77e5582-08b5-4ca4-8d3b-f8e7219992d0'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\"Trans\
+itionType\",\"'Linear'\"]]", "date" -> DateObject[{2023, 10, 2, 1, 56, 
+          5.9552902`8.527477904932676}, "Instant", "Gregorian", -7.]|>, 
+     "02f17c76-f5d5-4646-b082-e8a121769f4f" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'82f1dbd8-e013-47eb-ae96-f027819a5b42'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$134712\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 1, 58, 34.9066842`9.295483493389495}, "Instant", 
+         "Gregorian", -7.]|>, "8d942a4a-06a6-4d5e-b9bc-f532203d6de0" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'f4083c44-f78e-4498-96c3-acd5ae514b33'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$140262\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 1, 58, 54.4417445`9.488506874910627}, "Instant", 
+         "Gregorian", -7.]|>, "72ec37a5-8065-49a9-99f6-e962a7734147" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'5b818a04-c70c-4d8a-9d67-2b50730b3cc8'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$142422\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 1, 59, 21.0131174`9.075065418804027}, "Instant", 
+         "Gregorian", -7.]|>, "068fecfa-8414-4909-a80c-47c720b62caf" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'ad0f7ce5-5523-4b24-90d3-a910680043f8'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$143652\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 1, 59, 38.3548025`9.33639463629338}, "Instant", 
+         "Gregorian", -7.]|>, "187bd099-d97a-4d88-80fb-84aaaa595af8" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'ae4d7115-821c-470d-9932-7986163b2371'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$145189\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 1, 59, 57.1085103`9.509275665245358}, "Instant", 
+         "Gregorian", -7.]|>, "a1863f35-24db-4f2f-9d97-0d8ca4509feb" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'30c14944-e0c0-49b0-9e47-c2619790f4ef'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$147063\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 1, 0.01996`6.052735526111302}, "Instant", 
+         "Gregorian", -7.]|>, "f973afd6-5206-48e6-954a-cb65360a14b4" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'e8e1f3d8-f610-44ad-8182-f695d015debb'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$9093\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\"\
+TransitionType\",\"'Linear'\"]]", "date" -> DateObject[{2023, 10, 2, 2, 15, 
+          17.366735`8.992293120204701}, "Instant", "Gregorian", -7.]|>, 
+     "8cf8fded-a8c8-419e-9ae3-22045aed14ef" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'849ae36f-241f-4ac6-9aab-7e1b95797fab'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$10189\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 25, 17.6904169`9.000313010593477}, "Instant", 
+         "Gregorian", -7.]|>, "e559d1f3-289a-46f1-bc43-96fe74904c52" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'9d357b14-8910-41f7-a862-f86ed9d54f03'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$11397\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 25, 40.1750625`9.356531441122875}, "Instant", 
+         "Gregorian", -7.]|>, "4b9fe1e6-bb7f-409d-a9fd-b5959828cfaa" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'556828ac-4c12-4786-8419-e87927a693bc'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$10040\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 37, 19.4411006`9.041295784911544}, "Instant", 
+         "Gregorian", -7.]|>, "3e376231-2ebc-43cd-8c86-5432f406e5c3" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'f7630b2c-5e10-4bc4-b41f-bb938df2bacc'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$11964\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 45, 11.2133553`8.80231054233558}, "Instant", 
+         "Gregorian", -7.]|>, "f569c42f-a228-4b74-b137-78c19b22ae63" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'25aff95c-9bf0-4409-9d07-6f7b175fc5bd'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$10476\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 45, 28.4354992`9.206435769710078}, "Instant", 
+         "Gregorian", -7.]|>, "d91eea2b-13bb-4ac5-8914-7c43775afff0" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'261d1070-6ac7-4b0f-bd58-5acd5ad4b568'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$13277\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 45, 37.7672718`9.32969050200721}, "Instant", 
+         "Gregorian", -7.]|>, "07fda45b-ba7e-4488-8eae-1d49fdf7da9a" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'e53f01b4-ce19-4791-a779-30f7e1c9f555'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$22367\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 2, 46, 57.4462939`9.511836849470566}, "Instant", 
+         "Gregorian", -7.]|>, "e7f7eb46-c4de-4e02-8437-004c6ad06277" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
+\"'1e2691f5-1da5-494a-b130-501a9c2cff50'\"]],[\"GrayLevel\",0],[\"Line\",[\"O\
+ffload\",\"lines$25496\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
+\"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
+         {2023, 10, 2, 3, 21, 58.3092119`9.518312002554168}, "Instant", 
+         "Gregorian", -7.]|>|>, "path" -> "C:\\Users\\kirill\\source\\repos\\\
+JerryI\\wolfram-js-frontend\\Examples\\Dynamics\\Basic\\Trackers.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 2, 3, 21, 
+      42.5836962`9.381818229441942}, "Instant", "Gregorian", -7.], 
+   "symbols" -> <|"lines$11964" -> 
+      <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
+          21.7580481`9.09019486438677}, "Instant", "Gregorian", -7.]|>, 
+     "lines$10476" -> <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
+          28.497908`9.207387892888757}, "Instant", "Gregorian", -7.]|>, 
+     "lines$13277" -> <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
+          37.8314515`9.330427892667787}, "Instant", "Gregorian", -7.]|>, 
+     "lines$19448" -> <|"date" -> DateObject[{2023, 10, 2, 2, 46, 
+          48.1823088`9.435462464923601}, "Instant", "Gregorian", -7.]|>, 
+     "lines$22367" -> <|"date" -> DateObject[{2023, 10, 2, 2, 46, 
+          57.5102885`9.512320379929497}, "Instant", "Gregorian", -7.]|>, 
+     "lines$25496" -> <|"date" -> DateObject[{2023, 10, 2, 3, 21, 
+          58.3342171`9.518498204565518}, "Instant", "Gregorian", -7.]|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
+   "SelectedCell" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa"|>, 
+ "cells" -> {<|"id" -> "caf18496-6dc5-4791-9eca-403cd3c354c9", 
+    "type" -> "input", "data" -> "generate[xy_, symbol_] := With[{dir = 0.05 \
+Normalize[xy]},\n  symbol = (Table[W[{{i,j}, {i,j} + dir / (Norm[{i,j}-xy]^2 \
++ 0.1)}], {i, -1,1,0.2}, {j, -1,1,0.2}] // Flatten) /. \
+{W->Identity}\n];\nSetAttributes[generate, HoldRest]", 
+    "display" -> "codemirror", "sign" -> "unforced-7a756", 
+    "props" -> <|"hidden" -> False, "init" -> True|>|>, 
+   <|"id" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa", "type" -> "input", 
+    "data" -> "LeakyModule[{lines}, \n  generate[{0,0}, lines];\n  \
+Graphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,2}, \
+{2,-2}],\n\t\t{\"mousemove\"->Function[xy, generate[xy, \
+lines]]}\n\t],\n\tBlack,\n   Line[lines // Offload]\n  }, \
+TransitionDuration->270, TransitionType->\"Linear\"]\n]", 
+    "display" -> "codemirror", "sign" -> "unforced-7a756", 
+    "props" -> <|"hidden" -> False, "projected" -> False|>|>, 
+   <|"id" -> "eea79ca5-d31f-4425-8902-600a7dcc8804", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "unforced-7a756", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

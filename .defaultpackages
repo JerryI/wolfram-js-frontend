@@ -64,7 +64,7 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
    "path" -> "wljs-graphics3d-threejs", "peerDependencies" -> 
     <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>, 
    "defaultPackage" -> True|>, "wljs-graphics-d3" -> 
-  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.3", 
+  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.4", 
    "description" -> "D3 implementation of Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 

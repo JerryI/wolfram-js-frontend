@@ -513,6 +513,26 @@ const cors = () => {
 
 }
 
+const collectLog = {}
+
+collectLog.push = (data, color) => {
+  collectLog.log = [];
+  setTimeout(()=>{
+    collectLog.push = () => {};
+    fs.writeFile(path.join(installationFolder, '2minutesLog.txt'), collectLog.log.join('\r\n'), function (err) {
+      if (err) throw err;
+
+      sender('Logs were dumped', "\x1b[32m");
+    });    
+  }, 1000*60*2);
+
+  collectLog.push = (d, c) => {
+    collectLog.log.push(d);
+  }
+
+  collectLog.push(data);
+}
+
 app.whenReady().then(() => {
   cors();
   pluginsMenu.fetch();
@@ -555,6 +575,7 @@ app.whenReady().then(() => {
         if (err) throw err;
         console.log('Saved!');
       });*/
+      collectLog.push(data);
       win.webContents.send('push-logs', data, color);
     }
 

@@ -54,7 +54,12 @@
         </script>
 
         <script type="module">
-            window.addEventListener("wsconnected", () => server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`));
+            window.addEventListener("wsconnected", () => {
+                server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`).then((res)=>{
+                    server.ask(`NotebookWindowReady2["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
+                });
+
+            });
         </script>
 
         <!-- editors autocomplete -->
