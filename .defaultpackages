@@ -62,8 +62,9 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
      "node-sass" -> "^9.0.0", "three-gpu-pathtracer" -> "^0.0.15", 
      "three-mesh-bvh" -> "^0.5.19"|>, "enabled" -> True, 
    "path" -> "wljs-graphics3d-threejs", "peerDependencies" -> 
-    <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>|>, 
- "wljs-graphics-d3" -> <|"name" -> "wljs-graphics-d3", "version" -> "0.4.4", 
+    <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>, 
+   "defaultPackage" -> True|>, "wljs-graphics-d3" -> 
+  <|"name" -> "wljs-graphics-d3", "version" -> "0.4.4", 
    "description" -> "D3 implementation of Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -97,8 +98,8 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "url" -> "https://github.com/JerryI/wljs-html-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-html-support"|>, "wljs-inputs" -> 
-  <|"name" -> "wljs-inputs", "version" -> "0.1.4", 
+   "path" -> "wljs-html-support", "defaultPackage" -> True|>, 
+ "wljs-inputs" -> <|"name" -> "wljs-inputs", "version" -> "0.1.4", 
    "description" -> "sliders and other inputs for WLJS", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -116,7 +117,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
       "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", 
      "pako" -> "^2.1.0", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> 
       "^2.1.1", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
-   "enabled" -> True, "path" -> "wljs-inputs"|>, 
+   "enabled" -> True, "path" -> "wljs-inputs", "defaultPackage" -> True|>, 
  "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.3.5", 
    "description" -> "A core library and WL interpreter written in pure JS", 
    "scripts" -> <|"start" -> "parcel index.html --open", 
@@ -153,9 +154,10 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
       "https://github.com/JerryI/wljs-js-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-js-support"|>, "wljs-markdown-support" -> 
-  <|"name" -> "wljs-markdown-support", "version" -> "0.0.1", 
-   "description" -> "Markdown cells support for WLJS Editor", 
+   "path" -> "wljs-js-support", "defaultPackage" -> True|>, 
+ "wljs-markdown-support" -> <|"name" -> "wljs-markdown-support", 
+   "version" -> "0.0.1", "description" -> 
+    "Markdown cells support for WLJS Editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
@@ -165,9 +167,10 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "dependencies" -> <|"marked" -> "^5.0.1", "marked-katex-extension" -> 
       "^2.0.2", "rollup" -> "^3.21.6"|>, "resolutions" -> 
     <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-markdown-support"|>, "wljs-magic-support" -> 
-  <|"name" -> "wljs-magic-support", "version" -> "0.0.2", 
-   "description" -> "Some misc commands for WLJS Editor", 
+   "path" -> "wljs-markdown-support", "defaultPackage" -> True|>, 
+ "wljs-magic-support" -> <|"name" -> "wljs-magic-support", 
+   "version" -> "0.0.2", "description" -> 
+    "Some misc commands for WLJS Editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
@@ -176,8 +179,8 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
       "https://github.com/JerryI/wljs-magic-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-magic-support"|>, "wljs-plotly" -> 
-  <|"name" -> "wljs-plotly", "version" -> "0.0.2", 
+   "path" -> "wljs-magic-support", "defaultPackage" -> True|>, 
+ "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.2", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -266,8 +269,8 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
       "https://github.com/JerryI/wljs-mermaid-support"|>, 
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-mermaid-support"|>, "wljs-snippets" -> 
-  <|"name" -> "wljs-snippets", "version" -> "0.0.2", 
+   "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
+ "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.0.2", 
    "description" -> "Snippets for WLJS editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
@@ -280,15 +283,4 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-snippets"|>, "wljs-svgbob-support" -> 
-  <|"name" -> "wljs-svgbob-support", "version" -> "0.0.1", 
-   "description" -> "SVGBob ASCII graphics support for WLJS Editor", 
-   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js", 
-     "wl" -> "src/processor.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-svgbob-support"|>, 
-   "dependencies" -> <|"bob-wasm" -> "^1.0.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-svgbob-support"|>|>
+   "path" -> "wljs-snippets"|>|>
