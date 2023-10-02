@@ -48,9 +48,14 @@ Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];
 
-IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.com/([^/]*)/([^/]*)"]-> (StringTemplate["https://cdn.jsdelivr.net/gh/``/``@master/``"]["$1","$2",StringRiffle[Drop[StringSplit[#[[1]], "/"],1], "/"] ])}]) &/@ Includes[m, "repository"] // Flatten;
+isWindows = $OperatingSystem === "Windows";
+isLinux = $OperatingSystem === "Unix";
+
+IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.com/([^/]*)/([^/]*)"]-> (StringTemplate["https://cdn.jsdelivr.net/gh/``/``@master/``"]["$1","$2",StringRiffle[Drop[StringSplit[#[[1]], If[isWindows, "\\", "/"] ],1], "/"] ])}]) &/@ Includes[m, "repository"] // Flatten;
 
 Print["getting modules..."];
+
+
 
 Get[FileNameJoin[{jsf`root, "Packages",  UniversalPathConverter[#]}]] &/@ Includes["wl"];
 
@@ -168,14 +173,14 @@ http = HTTPHandler[];
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Path" -> "/"|>] -> (HypertextProcess[#, "index.wsp", "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 http["MessageHandler", "WSP"] = GetFileRequestQ[{"wsp"}] -> (HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&)
 
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
 )
 
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-CSocketListen[StringTemplate["``:``"][jsf`$env["host"], jsf`$env["http"]], tcp@#&];
+SocketListen[CSocketOpen[jsf`$env["http"]], tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -191,7 +196,7 @@ evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-CSocketListen[StringTemplate["``:``"][jsf`$env["host"], jsf`$env["ws"]], wcp@#&];
+SocketListen[CSocketOpen[jsf`$env["ws"]], wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 

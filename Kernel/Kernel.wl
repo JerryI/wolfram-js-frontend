@@ -108,12 +108,16 @@ LocalKernel["AttachNotebook"][id_, path_, cbk_:Null] := (
         Print["Kenrel now is aware about notebook id and the path to it"];
     ,
         Print["Kenrel is not ready yet to attach notebook id"];
-        promiseToConnect := (
-            JTPSend[asyncsocket, Global`AttachNotebook[id, path]];
-            WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[id, "channel"], Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]]];
-            Print["Promise to connect was resolved"];    
-            promiseToConnect = Null;        
-        );
+        With[{nid = id, npath = path},
+            promiseToConnect := (
+                Print["promise to attach "<>nid<>"...."];
+                JTPSend[asyncsocket, Global`AttachNotebook[nid, npath]];
+                Print["ws send "<>nid<>"...."];
+                WebSocketSend[JerryI`WolframJSFrontend`Notebook`Notebooks[nid, "channel"], Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]]];
+                Print["Promise to connect was resolved"];    
+                promiseToConnect = Null;        
+            );
+        ];
     ];
     If[cbk =!= Null, callback = cbk];
 );
@@ -182,14 +186,23 @@ LocalKernel["Start"][cbk_, OptionsPattern[]] := Module[{},
 
     (* loading kernels *)
     With[{list = FileNameJoin[{JerryI`WolframJSFrontend`root, "Packages", UniversalPathConverter[#]}] &/@ Includes["wlkernel"]},
-        Echo[list];
         LinkWrite[link, Unevaluated[Get/@list]]; 
     ];
 
     (* i dunno. this is a fucking bug *)
     LinkWrite[link, Unevaluated["LoadWebObjects"//ToExpression]];
 
-
+    Print["-- Link read --"];
+    With[{dt = LinkRead[link]},
+        Echo[dt];
+        If[ToString[dt] == "$Failed",
+            status["signal"] = "bad"; status["text"] = "License issue";
+            LinkClose[link];
+            TaskRemove[checker];
+            Print[Red<>"There is a problem related to your license. Try to close other Wolfram Kernel executables."];
+            Return[LocalKernel["Status"], Module];
+        ];
+    ];
 
     checker = SessionSubmit[ScheduledTask[LocalLinkRestart, {Quantity[15, "Seconds"], 1},  AutoRemove->True]];
 
@@ -224,8 +237,9 @@ LocalLinkTimeoutCheck[timeout_] := (
     ]
 );
 
+ptask = Null;
 (* internal functions!!! called by secodnary kernel *)
-LocalKernel["Started"] := (
+LocalKernel["Started"] := Module[{},
     Print["Connected"];
     TaskRemove[checker];
     lastPong = Now;
@@ -233,8 +247,10 @@ LocalKernel["Started"] := (
     Print["asyncsocket id: "<>jsocket];
     status = <|"signal"->"good", "text"->"Connected"|>;
     callback[LocalKernel["Status"]];
-    promiseToConnect;
-); 
+    
+    ptask = SessionSubmit[ScheduledTask[promiseToConnect; TaskRemove[ptask], {Quantity[3, "Seconds"], 1},  AutoRemove->True]];
+
+]; 
 
 
 LocalKernel["Pong"] := (

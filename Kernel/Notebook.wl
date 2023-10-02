@@ -80,6 +80,7 @@ NotebookEvaluateInit::usage = ""
 
 NotebookEvaluateProjected::usage = ""
 NotebookWindowReady::usage = ""
+NotebookWindowReady2::usage = ""
 
 NExtendSingleDefinition::usage = ""
 
@@ -793,6 +794,7 @@ NotebookGetObjectForMe[uid_][id_] := (
 
 
 NotebookPromise[uid_, params_][expr_] := With[{},
+    Print["notebook promise >> get with id "<>uid];
     WebSocketSend[Global`client, Global`PromiseResolve[uid, expr] // DefaultSerializer];
 ];
 
@@ -802,7 +804,7 @@ NotebookPromiseDeferred[uid_, params_][helexpr_] := With[{cli = Global`client},
     ]];
 ];
 
-NotebookGetSymbol[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client]},
+NotebookGetSymbol[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client], cli = Global`client},
     If[jsfn`Notebooks[channel]["kernel"]["Status"]["signal"] =!= "good",
         Print["Oh. Kernel is not attached. Cannot do get the symbol"];
         WebSocketSend[Global`client, Global`PromiseResolve[uid, Global`ImSorryIJustCannotDoThat] // DefaultSerializer];
@@ -814,13 +816,15 @@ NotebookGetSymbol[uid_, params_][expr_] := Module[{}, With[{channel = $Associati
     jsfn`Notebooks[channel]["kernel"]["Emitt"][Hold[ 
         With[{result = expr // ReleaseHold},
             Print["evaluating the desired symbol on the Kernel"];
-            Print["promise resolve"];
             Global`SendToFrontEnd[Global`PromiseResolve[uid, result]] 
         ]
     ] ]
 ]];
 
-NotebookPromiseKernel[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client]},
+NotebookPromiseKernel[uid_, params_][expr_] := Module[{}, With[{channel = $AssociationSocket[Global`client], cli = Global`client},
+    Print[Red<>"Warining. An unsafe NotebookPromiseKernel was used"];
+    Print[Reset];
+ 
     If[jsfn`Notebooks[channel]["kernel"]["Status"]["signal"] =!= "good",
         Print["Oh. Kernel is not attached. Cannot do the promise"];
         WebSocketSend[Global`client, Global`PromiseResolve[uid, Global`ImSorryIJustCannotDoThat] // DefaultSerializer];
@@ -876,12 +880,16 @@ NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]
 jsfn`Windows = <||>;
 
 NotebookEvaluateProjected[cellid_] := (
-    (* check if window is open already *)
+    (* check if window is open already 
     WebSocketSend[Global`client, Global`FrontEndJSEval["alert('The feature was temporary removed due to instabillity')"] // DefaultSerializer];
-    Return[$Failed];
+    Return[$Failed];*)
     If[jsfn`Notebooks[Global`client // $AssociationSocket]["kernel"]["Status"]["signal"] =!= "good",
         WebSocketSend[Global`client, Global`FrontEndJSEval["alert('No working kernels found. Not possible to evaluate in a new window')"] // DefaultSerializer];
         Return[$Failed];
+    ];    
+
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellListRemoveAllNextOutput[CellObj[cellid], CellObj[cellid]["sign"]];
     ];    
 
     If[KeyExistsQ[jsfn`Windows, cellid],
@@ -892,13 +900,22 @@ NotebookEvaluateProjected[cellid_] := (
 
     If[KeyExistsQ[jsfn`Windows, cellid] && !MissingQ[jsfn`Windows[cellid]["socket"]],
 
-        (* sends directly *)
-        Block[{JerryI`WolframJSFrontend`fireEvent = WindowEventFire[jsfn`Windows[cellid]["socket"], Global`client]},
+        (* remove and open a new one *)
+
+        WebSocketSend[jsfn`Windows[cellid]["socket"], Global`Suicide[Null] // DefaultSerializer];
+        TaskRemove[jsfn`Windows[cellid]["timer"]];
+
+        (* a new one *)
+        jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
+        (* just accumulates to jsfn delayed *)
+        Block[{JerryI`WolframJSFrontend`fireEvent = WindowDelayedEventFire[cellid]},
             CellObjEvaluate[CellObj[cellid], jsfn`Processors];
-        ]
-        
+        ];
+        WebSocketSend[Global`client, Global`FrontEndJSEval[StringTemplate["openawindow('/window.wsp?id=``&notebook=``', '_blank')"][cellid, $AssociationSocket[Global`client] ] ] // DefaultSerializer];
+               
         ,
 
+        (* a new one *)
         jsfn`Windows[cellid] = <|"delayed"->{}, "origin"->Global`client, "timer"->Null|>;
 
         (* just accumulates to jsfn delayed *)
@@ -911,7 +928,8 @@ NotebookEvaluateProjected[cellid_] := (
     ];
 );
 
-NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`client]},
+NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`client], cli = Global`client, origin = jsfn`Windows[id]["origin"]},
+    Print["window >> is connecting...."];
     jsfn`Windows[id]["socket"] = Global`client;
     (* register notebook *)
     $AssociationSocket[Global`client] = CellObj[id]["sign"];
@@ -919,9 +937,17 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
     If[jsfn`Windows[id]["timer"] === Null,
       Module[{timer},
         jsfn`Windows[id]["timer"] = timer = SessionSubmit[ScheduledTask[
-            If[FailureQ[WebSocketSend[jsfn`Windows[id]["socket"], Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
-                Print["window is dead"];
+            If[FailureQ[WebSocketSend[cli, Global`Ping[Null] // DefaultSerializer] || !KeyExistsQ[jsfn`Windows, id]],
+                Print[Red<>"window "<>id<>" is dead"]; Print[Reset];
+                
+
+                Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[origin]},
+                    Print["Remove dead cells for"]; Print[origin];
+                    CellListRemoveAllNextOutput[CellObj[id], CellObj[id]["sign"]];
+                ];  
+
                 jsfn`Windows[id] = .;
+                
                 TaskRemove[timer];
                 ClearAll[timer];
             ];
@@ -929,20 +955,23 @@ NotebookWindowReady[id_String] := With[{notebook = $AssociationSocket[Global`cli
       ];
     ];
 
-    
-    
 
-
-    (Print[Red<>"boom!"];  Print[#[WindowEventFire[Global`client, jsfn`Windows[id]["origin"]]]]; Print[Reset];) &/@ jsfn`Windows[id]["delayed"];
-    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[8010] // DefaultSerializer];
+    WebSocketSend[Global`client, Global`FrontEndAssignKernelSocket[JerryI`WolframJSFrontend`$env["ws2"]] // DefaultSerializer];
 ]
 
-WindowDelayedEventFire[windowid_String][ev_][cell__] := (
-    console["log", "delayed event fire"];
+NotebookWindowReady2[id_String] := With[{notebook = $AssociationSocket[Global`client], cli = Global`client},
+    jsfn`Windows[id]["loaded"] = True;
+    (Print[Red<>"window >> boom!"];  Print[#[WindowEventFire[Global`client, jsfn`Windows[id]["origin"]]]]; Print[Reset];) &/@ jsfn`Windows[id]["delayed"];
+];
 
-    If[!MissingQ[jsfn`Windows[windowid]["socket"]],
+WindowDelayedEventFire[windowid_String][ev_][cell__] := (
+    
+
+   If[TrueQ[jsfn`Windows[windowid]["loaded"]],
+        console["log", "window >> direct evaluation"];
         WindowEventFire[jsfn`Windows[windowid]["socket"], jsfn`Windows[windowid]["origin"]][ev][cell];
     ,
+        console["log", "window >> delayed evaluation"];
         jsfn`Windows[windowid]["delayed"] = Append[jsfn`Windows[windowid]["delayed"], Function[x, x[ev][cell], HoldFirst]];
     ];
 )
@@ -966,7 +995,7 @@ NotebookExport[id_] := Module[{content, file = notebooks[id, "name"]<>StringTake
 (* redirect *)
 NotebookFrontEndSend[channel_String][expr_] := (
     (*Print["Publish from kernel to the channel "<>channel];*)
-    Print["FWD : JTP >> WS"];
+    Print["using old fwd channel..."];
     WebSocketSend[jsfn`Notebooks[channel]["channel"], expr // DefaultSerializer];
 );
 

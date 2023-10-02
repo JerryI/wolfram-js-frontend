@@ -82,6 +82,10 @@ SendToFrontEnd[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},
   WebSocketSend[notebookClient, e];
 ];
 
+SendToFrontEnd[expr_, cli_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},  
+  WebSocketSend[cli, e];
+];
+
 FrontSubmit[expr_] := With[{e = ExportByteArray[expr, "ExpressionJSON"]},  
   WebSocketSend[notebookClient, e];
 ];
