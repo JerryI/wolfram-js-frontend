@@ -26,7 +26,7 @@ If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[Jer
 ,
 
  PacletRepositories[{
-  Github -> "https://github.com/KirillBelovTest/CSockets",
+  Github -> "https://github.com/JerryI/CSocketListener",
   Github -> "https://github.com/KirillBelovTest/Objects",
   Github -> "https://github.com/KirillBelovTest/Internal",
   Github -> "https://github.com/KirillBelovTest/TCPServer",
