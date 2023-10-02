@@ -18,7 +18,7 @@ PacletInstall["JerryI/LPM"]
 
 <<JerryI`LPM`
 
-If[!TrueQ[JerryI`LPM`Private`Version > 8], Get["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl"]];
+If[!TrueQ[JerryI`LPM`Private`Version > 9], Get["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl"]];
 
 If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
 
