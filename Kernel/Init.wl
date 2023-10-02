@@ -20,8 +20,6 @@ PacletInstall["JerryI/LPM"]
 
 Echo["LPM version: "<>ToString[JerryI`LPM`Private`Version]];
 
-If[!TrueQ[JerryI`LPM`Private`Version > 9], Get["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl"]];
-
 If[TimeConstrained[URLFetch["https://github.com"], 10] === $Aborted || TrueQ[JerryI`WolframJSFrontend`settings["fastboot"]],
 
   Print["No internet connection or fastboot..."];
