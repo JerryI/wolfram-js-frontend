@@ -274,7 +274,7 @@ window.ifWin = () => {
         if (isDarkMode) {
             document.body.style.background = "rgb(41, 45, 62)";
         } else {
-            document.body.style.background = "rgb(255, 255, 245)";
+            document.body.style.background = "rgb(255, 255, 250)";
         }
       }); 
     

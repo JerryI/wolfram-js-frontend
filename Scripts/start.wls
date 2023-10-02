@@ -49,7 +49,7 @@ Includes["styles"];
 Includes["autocomplete"];
 
 isWindows = $OperatingSystem === "Windows";
-isLinux = $OperatingSystem === "Linux";
+isLinux = $OperatingSystem === "Unix";
 
 IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.com/([^/]*)/([^/]*)"]-> (StringTemplate["https://cdn.jsdelivr.net/gh/``/``@master/``"]["$1","$2",StringRiffle[Drop[StringSplit[#[[1]], If[isWindows, "\\", "/"] ],1], "/"] ])}]) &/@ Includes[m, "repository"] // Flatten;
 
