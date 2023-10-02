@@ -11,10 +11,11 @@ __[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
-**Warning! Early Stage of Development**
+**Early Stage of Development**
+
 **Recommended Wolfram Engine 13.0 or above**
 
-__The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)__
+The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)
 
 __Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram HTTP/WS Server developer & and a nice guy)__
 
