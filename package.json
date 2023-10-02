@@ -1,6 +1,6 @@
 {
   "name": "wljs-frontend",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
     "name": "Kirill Vasin",
