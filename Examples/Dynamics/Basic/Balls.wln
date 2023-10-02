@@ -1,12 +1,11 @@
-<|"notebook" -> <|"name" -> "Corded", "id" -> "pronto-27c2e", 
-   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "C:\\Users\\vasinkir\
-\\AppData\\Roaming\\wljs-frontend\\Examples\\Dynamics\\Basic\\Balls.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 16, 15, 48, 
-      35.9192653`9.30790233863436}, "Instant", "Gregorian", 2.], 
-   "channel" -> WebSocketChannel[
+<|"notebook" -> <|"name" -> "Corded", "id" -> "strider-d41e4", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
+b/wolfram-js-frontend/Examples/Dynamics/Basic/Balls.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 9, 27, 10, 29, 39.779259`8.352231667436488}, 
+     "Instant", "Gregorian", 2.], "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$32], "symbols" -> <||>, 
    "SelectedCell" -> "367750ee-91b2-4a6c-ac66-ec0a0c52807d1ed"|>, 
- "cells" -> {<|"id" -> "367750ee-91b2-4a6c-ac66-ec0a0c52807d1ed", 
+ "cells" -> {<|"id" -> "367750ee-91b2-4a6c-ac66-ec0a0c52807d1ed985", 
     "type" -> "input", "data" -> "points = {{0,0}};\nvel = \
 {RandomReal[{-1,1}]};\n\naddPoint[xy_] := (points = Append[points, xy]; vel = \
 Append[vel, RandomReal[{-1,1},2]]);\nanimate[i_] := points = \
@@ -17,5 +16,5 @@ RGBColor[0,0,0],\n    PointSize[0.1], \n    \
 Point[MiddlewareHandler[points//Hold, \"end\"->animate, \
 \"Threshold\"->0.2]]\n  }\n, \"TransitionType\"->\"Linear\", \
 \"TransitionDuration\"->40]", "display" -> "codemirror", 
-    "sign" -> "pronto-27c2e", "props" -> <|"hidden" -> False|>|>}, 
+    "sign" -> "strider-d41e4", "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn3"|>

@@ -20,7 +20,47 @@
 
         <!-- connection to the server (global) -->
 
+        <script type="module">
+            window.Notebook = "<?wsp $CurrentRequest["Query", "notebook"] ?>";
 
+            core.FrontEndPopUp = async (args, env) => {
+                const mess = await interpretate(args[0]);
+                console.warn(mess);
+            }
+
+            core.Pong = function(args, env) {
+                console.log('pong');
+            }
+
+            core.Ping = function(args, env) {
+                console.log('ping');
+            }
+
+            core.FrontEndWSAttached = () => {
+                console.log('attached');
+            }
+
+            core.Suicide = () => {
+                window.close();
+            }
+
+            
+            
+            
+        </script>
+
+        <script type="module">
+            <?wsp LoadPage["template/components/sockets.wsp"] ?>
+        </script>
+
+        <script type="module">
+            window.addEventListener("wsconnected", () => {
+                server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`).then((res)=>{
+                    server.ask(`NotebookWindowReady2["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
+                });
+
+            });
+        </script>
 
         <!-- editors autocomplete -->
         <?wsp Table[ ?> 
@@ -37,7 +77,7 @@
             section.cell-wrapper.frontend-node {
                 padding: 0.4em;
     /* padding-top: 0.5em; */
-    margin-top: 2em;
+    <?wsp If[isWindows || isLinux, "margin-top: 0;", "margin-top: 2em;"] ?>
     width: 100%;
     filter: var(--filter-frame);
     position: relative;
@@ -93,6 +133,12 @@
 
                 return false;
             }
+
+            window.ifWin = () => {
+                console.warn(navigator.appVersion);
+                if (navigator.appVersion.indexOf('Win') != -1) return true;
+                return false;
+            }
             
             window.runColorMode = (fn) => {
               if (!window.matchMedia) {
@@ -107,21 +153,23 @@
             }
 
             window.resetBackground = () => {
-                if (!isElectron() || ifLinux()) {
+                if (!isElectron() || ifLinux() || ifWin()) {
                     document.body.style.background = "var(--topbar-background)";
                 } else {
                     document.body.style.background = "";
                 }
+
+
             }
+
+            <?wsp If[!TrueQ[JerryI`WolframJSFrontend`settings["background"]], ?>
+                    document.body.style.setProperty('--topbar-background', 'transparent');
+                    document.body.style.setProperty('--background-frame-color', 'transparent');
+            <?wsp , "" ] ?>
 
             resetBackground();
 
-            let darkmode = localStorage.getItem("darkmode");
-
-            if (typeof darkmode === 'undefined' || darkmode === null) {
-                    localStorage.setItem("darkmode", 'system');
-                    darkmode = 'system';
-            }            
+            let darkmode = '<?wsp NotebookTheme ?>';      
 
             if (darkmode === 'system') {
                 runColorMode((isDarkMode) => {
@@ -132,15 +180,13 @@
                   }
                 });
             } else {
-                resetBackground();
-                if (darkmode === 'disabled') {
+                document.body.style.background = "var(--topbar-background)";
+                if (darkmode === 'enabled') {
                     document.body.setAttribute('data-theme', 'dark');
                 } else {
                     document.body.removeAttribute('data-theme', 'dark');
                 }
             }
-            
-            
         </script>
     </head>
     <body class="notion-body">
@@ -157,37 +203,8 @@
             </div>
         </div>
 
-        <script type="module">
-            window.Notebook = "<?wsp $CurrentRequest["Query", "notebook"] ?>";
 
-            core.FrontEndPopUp = async (args, env) => {
-                const mess = await interpretate(args[0]);
-                console.warn(mess);
-            }
 
-            core.Pong = function(args, env) {
-                console.log('pong');
-            }
 
-            core.Ping = function(args, env) {
-                console.log('ping');
-            }
-
-            core.FrontEndWSAttached = () => {
-                console.log('attached');
-            }
-
-            
-
-            server.ask(`NotebookWindowReady["<?wsp $CurrentRequest["Query", "id"] ?>"]`);
-        </script>
-
-        <script type="module">
-            <?wsp LoadPage["template/components/sockets.wsp"] ?>
-        </script>
-
-        <script type="module">
-            console.log('checck!');
-        </script>
 
 </body></html>

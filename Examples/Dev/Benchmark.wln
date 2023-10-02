@@ -1,25 +1,33 @@
-<|"notebook" -> <|"name" -> "Sari", "id" -> "schedule-79441", 
-   "kernel" -> LocalKernel, "objects" -> <||>, 
-   "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dev/Benchmark.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 10, 23, 25, 
-      18.50806`8.019935882989792}, "Instant", "Gregorian", 2.], 
-   "symbols" -> <||>, "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$16]|>, 
- "cells" -> {<|"id" -> "2373364f-a803-4c11-bd0a-1a4e78486c6a94f", 
+<|"notebook" -> <|"name" -> "Sari", "id" -> "paragon-8f8bb", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"0646692d-33a0-4c26-bea7-7aa9770e2d32" -> 
+      <|"json" -> "[\"TextView\",[\"Offload\",\"status\"]]", 
+       "date" -> DateObject[{2023, 10, 1, 0, 41, 
+          23.0450259`9.115152126985413}, "Instant", "Gregorian", -7.]|>|>, 
+   "path" -> "C:\\Users\\kirill\\source\\repos\\JerryI\\wolfram-js-frontend\\\
+Examples\\Dev\\Benchmark.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 1, 0, 40, 40.5404631`9.360463585457344}, 
+     "Instant", "Gregorian", -7.], "symbols" -> 
+    <|"status" -> <|"date" -> DateObject[{2023, 10, 1, 0, 40, 
+          40.5579568`9.360650948355541}, "Instant", "Gregorian", -7.], 
+       "data" -> "Finished!"|>|>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
+   "SelectedCell" -> "7e8948be-93aa-4c60-8351-e5a0e82b1a8f94ff50"|>, 
+ "cells" -> {<|"id" -> "2373364f-a803-4c11-bd0a-1a4e78486c6a94ff50", 
     "type" -> "input", "data" -> 
      ".md\n# Full system benchmark\nWLJS, Sockets and etc", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "23b11e97-176f-4dc1-b8c8-a2981b39219794f", "type" -> "output", 
-    "data" -> "\n# Full system benchmark\nWLJS, Sockets and etc", 
-    "display" -> "markdown", "sign" -> "schedule-79441", 
+   <|"id" -> "23b11e97-176f-4dc1-b8c8-a2981b39219794ff50", 
+    "type" -> "output", "data" -> 
+     "\n# Full system benchmark\nWLJS, Sockets and etc", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7e8948be-93aa-4c60-8351-e5a0e82b1a8f94f", "type" -> "input", 
+   <|"id" -> "7e8948be-93aa-4c60-8351-e5a0e82b1a8f94ff50", "type" -> "input", 
     "data" -> "ClearAll[timing];\ntiming = <||>;", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>, 
-   <|"id" -> "d72f676a-c3fd-4b0b-ab0d-e60fff4a191a94f", "type" -> "input", 
+   <|"id" -> "d72f676a-c3fd-4b0b-ab0d-e60fff4a191a94ff50", "type" -> "input", 
     "data" -> ".md\nspecs defined\n- <span \
 style=\"color:red\">serverRead</span> a download speed for the raw data \
 __Server -> WK__ via `curl` in `MegaBytes/Sec`\n- <span \
@@ -33,13 +41,14 @@ style=\"color:red\">outputLag</span> time, that takes for __WLJS -> WK__ to \
 send a single atom in `Milliseconds`\n- <span style=\"color:red\">b1</span> \
 stupid benchmark test with simple math\n- <span style=\"color:red\">b2</span> \
 stupid benchmark test with vector multiplications", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d058ec5b-65a7-4dc2-8513-417da857f7e694f", "type" -> "output", 
-    "data" -> "\nspecs defined\n- <span style=\"color:red\">serverRead</span> \
-a download speed for the raw data __Server -> WK__ via `curl` in \
-`MegaBytes/Sec`\n- <span style=\"color:red\">inputLag</span> time, that takes \
-for sending a single atom __WK -> WLJS__ in `Milliseconds`\n- <span \
+   <|"id" -> "d058ec5b-65a7-4dc2-8513-417da857f7e694ff50", 
+    "type" -> "output", "data" -> "\nspecs defined\n- <span \
+style=\"color:red\">serverRead</span> a download speed for the raw data \
+__Server -> WK__ via `curl` in `MegaBytes/Sec`\n- <span \
+style=\"color:red\">inputLag</span> time, that takes for sending a single \
+atom __WK -> WLJS__ in `Milliseconds`\n- <span \
 style=\"color:red\">wtransfer</span> a time spent for transfering a large \
 list of data __WL -> WLJS__ in `KiloAtoms/Sec`\n- <span \
 style=\"color:red\">wread</span> the same as `wtransfer`, but __WL -> WLJS + \
@@ -48,23 +57,192 @@ style=\"color:red\">outputLag</span> time, that takes for __WLJS -> WK__ to \
 send a single atom in `Milliseconds`\n- <span style=\"color:red\">b1</span> \
 stupid benchmark test with simple math\n- <span style=\"color:red\">b2</span> \
 stupid benchmark test with vector multiplications", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "df37a46d-3111-4063-ad95-2d9a4570005894f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "df37a46d-3111-4063-ad95-2d9a4570005894ff50", "type" -> "input", 
     "data" -> ".md\nStatus", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "8a58fbc7-18a9-4773-a3f1-8c075b09bf1794f", "type" -> "output", 
-    "data" -> "\nStatus", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4c238518-0992-4e8b-8c5b-d07b6c98877d94f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "8a58fbc7-18a9-4773-a3f1-8c075b09bf1794ff50", 
+    "type" -> "output", "data" -> "\nStatus", "display" -> "markdown", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4c238518-0992-4e8b-8c5b-d07b6c98877d94ff50", "type" -> "input", 
     "data" -> 
      "status = 0;\nTextView[status // Offload] // CreateFrontEndObject", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
-    "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0d1c9032-758f-42a8-8d19-f1f3af0b832894f", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"bd37627b-a9cd-4add-8200-56a00b104060\"]", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "022202e6-85a7-433e-add3-57898fbfe5ee94f", "type" -> "input", 
+   <|"id" -> "9c9203c5-d5a3-49a1-a75d-1b7f107986a6", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"0646692d-33a0-4c26-bea7-7aa9770e2d32\"]", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "b4b003b3-1ad1-4bfc-ae86-736edae46ae9f50", "type" -> "input", 
+    "data" -> ".html\nUpdate 27 Sep\n\n<b>New CSocket \
+library</b><br/>\n<b>Kernel</b> <?wsp $Version ?>\n<table>\n  <thead>\n    \
+<th>Test</th>\n    <th>Timing</th>\n    <th>Timing (WLJS)</th>\n    \
+<th>Timing (Wolfram Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n \
+   <tr>\n      <td>serverRead</td>\n      <td><?wsp timing[\"serverRead\"] \
+?></td>\n      <td></td>\n      <td></td>\n      <td>megaBytes/sec</td>\n    \
+</tr>\n    <tr>\n      <td>inputLag</td>\n      <td><?wsp \
+timing[\"inputLag\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>ms</td>\n    </tr>  \n    <tr>\n      <td>wtransfer</td>\n      <td><?wsp \
+timing[\"wtransfer\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr> \n    <tr>\n      <td>wread</td>\n      <td><?wsp \
+timing[\"wread\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td><?wsp timing[\"outputLag\"] ?></td>\n      <td></td>\n      <td></td>\n   \
+   <td>ms</td>\n    </tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n \
+     <td><?wsp timing[\"bwljs1\"] ?></td>\n      <td><?wsp timing[\"bwk1\"] \
+?></td>\n      <td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      \
+<td></td>\n      <td><?wsp timing[\"bwljs2\"] ?></td>\n      <td><?wsp \
+timing[\"bwk2\"] ?></td>\n      <td>ms</td>\n    </tr>     \n  \
+</tbody>\n</table>", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "e5023740-a6f9-4676-8b1c-99e317dcbad7", "type" -> "input", 
+    "data" -> ".html\nUpdate 1 Oct\n\n<b>Modified CSocket \
+library</b><br/>\n<b>Kernel</b> <?wsp $Version ?>\n<table>\n  <thead>\n    \
+<th>Test</th>\n    <th>Timing</th>\n    <th>Timing (WLJS)</th>\n    \
+<th>Timing (Wolfram Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n \
+   <tr>\n      <td>serverRead</td>\n      <td><?wsp timing[\"serverRead\"] \
+?></td>\n      <td></td>\n      <td></td>\n      <td>megaBytes/sec</td>\n    \
+</tr>\n    <tr>\n      <td>inputLag</td>\n      <td><?wsp \
+timing[\"inputLag\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>ms</td>\n    </tr>  \n    <tr>\n      <td>wtransfer</td>\n      <td><?wsp \
+timing[\"wtransfer\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr> \n    <tr>\n      <td>wread</td>\n      <td><?wsp \
+timing[\"wread\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td><?wsp timing[\"outputLag\"] ?></td>\n      <td></td>\n      <td></td>\n   \
+   <td>ms</td>\n    </tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n \
+     <td><?wsp timing[\"bwljs1\"] ?></td>\n      <td><?wsp timing[\"bwk1\"] \
+?></td>\n      <td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      \
+<td></td>\n      <td><?wsp timing[\"bwljs2\"] ?></td>\n      <td><?wsp \
+timing[\"bwk2\"] ?></td>\n      <td>ms</td>\n    </tr>     \n  \
+</tbody>\n</table>", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "e2951706-9edc-4772-8196-0ad329ebbbae", "type" -> "output", 
+    "data" -> "\nUpdate 1 Oct\n\n<b>Modified CSocket \
+library</b><br/>\n<b>Kernel</b> 13.3.0 for Microsoft Windows (64-bit) (June \
+12, 2023)\n<table>\n  <thead>\n    <th>Test</th>\n    <th>Timing</th>\n    \
+<th>Timing (WLJS)</th>\n    <th>Timing (Wolfram Kernel)</th>\n    \
+<th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>serverRead</td>\n  \
+    <td>168.1</td>\n      <td></td>\n      <td></td>\n      \
+<td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      <td>inputLag</td>\n      \
+<td>1.54</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    </tr> \
+ \n    <tr>\n      <td>wtransfer</td>\n      <td>484.967</td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr> \n    <tr>\n     \
+ <td>wread</td>\n      <td>75.0105</td>\n      <td></td>\n      <td></td>\n   \
+   <td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td>28.1778</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    \
+</tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n      \
+<td>51.885</td>\n      <td>19.7686</td>\n      <td>ms</td>\n    </tr>   \n    \
+<tr>\n      <td>b2</td>\n      <td></td>\n      <td>0.915</td>\n      \
+<td>1.7762</td>\n      <td>ms</td>\n    </tr>     \n  </tbody>\n</table>", 
+    "display" -> "html", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8560d012-8d70-4207-8b4e-8a4789ca52f7f50", "type" -> "input", 
+    "data" -> ".html\nUpdate 29 Sep\n\n<b>New CUVSocket \
+library</b><br/>\n<b>Kernel</b> <?wsp $Version ?>\n<table>\n  <thead>\n    \
+<th>Test</th>\n    <th>Timing</th>\n    <th>Timing (WLJS)</th>\n    \
+<th>Timing (Wolfram Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n \
+   <tr>\n      <td>serverRead</td>\n      <td><?wsp timing[\"serverRead\"] \
+?></td>\n      <td></td>\n      <td></td>\n      <td>megaBytes/sec</td>\n    \
+</tr>\n    <tr>\n      <td>inputLag</td>\n      <td><?wsp \
+timing[\"inputLag\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>ms</td>\n    </tr>  \n    <tr>\n      <td>wtransfer</td>\n      <td><?wsp \
+timing[\"wtransfer\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr> \n    <tr>\n      <td>wread</td>\n      <td><?wsp \
+timing[\"wread\"] ?></td>\n      <td></td>\n      <td></td>\n      \
+<td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td><?wsp timing[\"outputLag\"] ?></td>\n      <td></td>\n      <td></td>\n   \
+   <td>ms</td>\n    </tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n \
+     <td><?wsp timing[\"bwljs1\"] ?></td>\n      <td><?wsp timing[\"bwk1\"] \
+?></td>\n      <td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      \
+<td></td>\n      <td><?wsp timing[\"bwljs2\"] ?></td>\n      <td><?wsp \
+timing[\"bwk2\"] ?></td>\n      <td>ms</td>\n    </tr>     \n  \
+</tbody>\n</table>", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "d1f0d526-f147-4ac2-9bd7-c0d5aebd2fd9f50", "type" -> "output", 
+    "data" -> "\nUpdate 29 Sep\n\n<b>New CUVSocket \
+library</b><br/>\n<b>Kernel</b> 13.0.1 for Mac OS X x86 (64-bit) (January 28, \
+2022)\n<table>\n  <thead>\n    <th>Test</th>\n    <th>Timing</th>\n    \
+<th>Timing (WLJS)</th>\n    <th>Timing (Wolfram Kernel)</th>\n    \
+<th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>serverRead</td>\n  \
+    <td>168.1</td>\n      <td></td>\n      <td></td>\n      \
+<td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      <td>inputLag</td>\n      \
+<td>1.14</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    </tr> \
+ \n    <tr>\n      <td>wtransfer</td>\n      <td>386.642</td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr> \n    <tr>\n     \
+ <td>wread</td>\n      <td>299.586</td>\n      <td></td>\n      <td></td>\n   \
+   <td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td>15.0045</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    \
+</tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n      \
+<td>64.07</td>\n      <td>21.427</td>\n      <td>ms</td>\n    </tr>   \n    \
+<tr>\n      <td>b2</td>\n      <td></td>\n      <td>1.41</td>\n      \
+<td>2.121</td>\n      <td>ms</td>\n    </tr>     \n  </tbody>\n</table>", 
+    "display" -> "html", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a0771647-c578-46ae-82cf-c0d75f8da606f50", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9e0cdc3f-33f5-44f0-b28b-b7b490b52dbff50", "type" -> "output", 
+    "data" -> "\nUpdate 27 Sep\n\n<b>New CSocket \
+library</b><br/>\n<b>Kernel</b> 13.0.1 for Mac OS X x86 (64-bit) (January 28, \
+2022)\n<table>\n  <thead>\n    <th>Test</th>\n    <th>Timing</th>\n    \
+<th>Timing (WLJS)</th>\n    <th>Timing (Wolfram Kernel)</th>\n    \
+<th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>serverRead</td>\n  \
+    <td>20.3891</td>\n      <td></td>\n      <td></td>\n      \
+<td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      <td>inputLag</td>\n      \
+<td>1.83</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    </tr> \
+ \n    <tr>\n      <td>wtransfer</td>\n      <td>399.488</td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr> \n    <tr>\n     \
+ <td>wread</td>\n      <td>252.481</td>\n      <td></td>\n      <td></td>\n   \
+   <td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
+<td>16.4625</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    \
+</tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n      \
+<td>66.925</td>\n      <td>23.338</td>\n      <td>ms</td>\n    </tr>   \n    \
+<tr>\n      <td>b2</td>\n      <td></td>\n      <td>1.41</td>\n      \
+<td>0.865</td>\n      <td>ms</td>\n    </tr>     \n  </tbody>\n</table>", 
+    "display" -> "html", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "61a84f56-0f9e-41a4-b629-cbdd088ae0d3f50", "type" -> "input", 
+    "data" -> ".html\n<b>New CSocket library</b><br/>\n<b>Kernel</b> <?wsp \
+$Version ?>\n<table>\n  <thead>\n    <th>Test</th>\n    <th>Timing</th>\n    \
+<th>Timing (WLJS)</th>\n    <th>Timing (Wolfram Kernel)</th>\n    \
+<th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>serverRead</td>\n  \
+    <td><?wsp timing[\"serverRead\"] ?></td>\n      <td></td>\n      \
+<td></td>\n      <td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      \
+<td>inputLag</td>\n      <td><?wsp timing[\"inputLag\"] ?></td>\n      \
+<td></td>\n      <td></td>\n      <td>ms</td>\n    </tr>  \n    <tr>\n      \
+<td>wtransfer</td>\n      <td><?wsp timing[\"wtransfer\"] ?></td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr> \n    <tr>\n     \
+ <td>wread</td>\n      <td><?wsp timing[\"wread\"] ?></td>\n      <td></td>\n \
+     <td></td>\n      <td>kA/sec</td>\n    </tr>\n    <tr>\n      \
+<td>outputLag</td>\n      <td><?wsp timing[\"outputLag\"] ?></td>\n      \
+<td></td>\n      <td></td>\n      <td>ms</td>\n    </tr>    \n    <tr>\n      \
+<td>b1</td>\n      <td></td>\n      <td><?wsp timing[\"bwljs1\"] ?></td>\n    \
+  <td><?wsp timing[\"bwk1\"] ?></td>\n      <td>ms</td>\n    </tr>   \n    \
+<tr>\n      <td>b2</td>\n      <td></td>\n      <td><?wsp timing[\"bwljs2\"] \
+?></td>\n      <td><?wsp timing[\"bwk2\"] ?></td>\n      <td>ms</td>\n    \
+</tr>     \n  </tbody>\n</table>", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "d37108b3-17ba-4db2-a230-a5deb7db9898f50", "type" -> "output", 
+    "data" -> "\n<b>New CSocket library</b><br/>\n<b>Kernel</b> 13.0.1 for \
+Mac OS X x86 (64-bit) (January 28, 2022)\n<table>\n  <thead>\n    \
+<th>Test</th>\n    <th>Timing</th>\n    <th>Timing (WLJS)</th>\n    \
+<th>Timing (Wolfram Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n \
+   <tr>\n      <td>serverRead</td>\n      <td>14.4926</td>\n      <td></td>\n \
+     <td></td>\n      <td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      \
+<td>inputLag</td>\n      <td>1.</td>\n      <td></td>\n      <td></td>\n      \
+<td>ms</td>\n    </tr>  \n    <tr>\n      <td>wtransfer</td>\n      \
+<td>224.077</td>\n      <td></td>\n      <td></td>\n      <td>kA/sec</td>\n   \
+ </tr> \n    <tr>\n      <td>wread</td>\n      <td>189.239</td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr>\n    <tr>\n      \
+<td>outputLag</td>\n      <td>15.5243</td>\n      <td></td>\n      \
+<td></td>\n      <td>ms</td>\n    </tr>    \n    <tr>\n      <td>b1</td>\n    \
+  <td></td>\n      <td>151.45</td>\n      <td>60.102</td>\n      \
+<td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      <td></td>\n     \
+ <td>2.2</td>\n      <td>3.585</td>\n      <td>ms</td>\n    </tr>     \n  \
+</tbody>\n</table>", "display" -> "html", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "022202e6-85a7-433e-add3-57898fbfe5ee94ff50", "type" -> "input", 
     "data" -> ".html\n\n<b>Kernel</b> <?wsp $Version ?>\n<table>\n  <thead>\n \
    <th>Test</th>\n    <th>Timing</th>\n    <th>Timing (WLJS)</th>\n    \
 <th>Timing (Wolfram Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n \
@@ -83,61 +261,94 @@ timing[\"wread\"] ?></td>\n      <td></td>\n      <td></td>\n      \
 ?></td>\n      <td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      \
 <td></td>\n      <td><?wsp timing[\"bwljs2\"] ?></td>\n      <td><?wsp \
 timing[\"bwk2\"] ?></td>\n      <td>ms</td>\n    </tr>     \n  \
-</tbody>\n</table>", "display" -> "codemirror", "sign" -> "schedule-79441", 
+</tbody>\n</table>", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ca773fd6-670a-4dab-8f29-0ccd352a000594f", "type" -> "output", 
-    "data" -> "\n\n<b>Kernel</b> 13.0.1 for Mac OS X x86 (64-bit) (January \
-28, 2022)\n<table>\n  <thead>\n    <th>Test</th>\n    <th>Timing</th>\n    \
-<th>Timing (WLJS)</th>\n    <th>Timing (Wolfram Kernel)</th>\n    \
-<th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      <td>serverRead</td>\n  \
-    <td>12.4672</td>\n      <td></td>\n      <td></td>\n      \
-<td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      <td>inputLag</td>\n      \
-<td>1.75</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    </tr> \
- \n    <tr>\n      <td>wtransfer</td>\n      <td>46.9964</td>\n      \
-<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr> \n    <tr>\n     \
- <td>wread</td>\n      <td>48.3469</td>\n      <td></td>\n      <td></td>\n   \
-   <td>kA/sec</td>\n    </tr>\n    <tr>\n      <td>outputLag</td>\n      \
-<td>18.3954</td>\n      <td></td>\n      <td></td>\n      <td>ms</td>\n    \
-</tr>    \n    <tr>\n      <td>b1</td>\n      <td></td>\n      \
-<td>71.635</td>\n      <td>20.807</td>\n      <td>ms</td>\n    </tr>   \n    \
-<tr>\n      <td>b2</td>\n      <td></td>\n      <td>1.465</td>\n      \
-<td>0.243</td>\n      <td>ms</td>\n    </tr>     \n  </tbody>\n</table>", 
-    "display" -> "html", "sign" -> "schedule-79441", 
+   <|"id" -> "e3a4954d-01aa-48e5-9cb0-8015a79f067cf50", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ac26671c-3a04-4849-8bb5-b54fd518f93294f", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "schedule-79441", 
+   <|"id" -> "ca773fd6-670a-4dab-8f29-0ccd352a000594ff50", 
+    "type" -> "output", "data" -> "\n\n<b>Kernel</b> 13.0.1 for Mac OS X x86 \
+(64-bit) (January 28, 2022)\n<table>\n  <thead>\n    <th>Test</th>\n    \
+<th>Timing</th>\n    <th>Timing (WLJS)</th>\n    <th>Timing (Wolfram \
+Kernel)</th>\n    <th>Units</th>\n  </thead>\n  <tbody>\n    <tr>\n      \
+<td>serverRead</td>\n      <td>12.4672</td>\n      <td></td>\n      \
+<td></td>\n      <td>megaBytes/sec</td>\n    </tr>\n    <tr>\n      \
+<td>inputLag</td>\n      <td>1.75</td>\n      <td></td>\n      <td></td>\n    \
+  <td>ms</td>\n    </tr>  \n    <tr>\n      <td>wtransfer</td>\n      \
+<td>46.9964</td>\n      <td></td>\n      <td></td>\n      <td>kA/sec</td>\n   \
+ </tr> \n    <tr>\n      <td>wread</td>\n      <td>48.3469</td>\n      \
+<td></td>\n      <td></td>\n      <td>kA/sec</td>\n    </tr>\n    <tr>\n      \
+<td>outputLag</td>\n      <td>18.3954</td>\n      <td></td>\n      \
+<td></td>\n      <td>ms</td>\n    </tr>    \n    <tr>\n      <td>b1</td>\n    \
+  <td></td>\n      <td>71.635</td>\n      <td>20.807</td>\n      \
+<td>ms</td>\n    </tr>   \n    <tr>\n      <td>b2</td>\n      <td></td>\n     \
+ <td>1.465</td>\n      <td>0.243</td>\n      <td>ms</td>\n    </tr>     \n  \
+</tbody>\n</table>", "display" -> "html", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "85e114f0-4589-4ea3-a96b-c2af48988a8394f", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "schedule-79441", 
+   <|"id" -> "ac26671c-3a04-4849-8bb5-b54fd518f93294ff50", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "edca7fbb-4314-48ae-907c-f4301d1fa6e894f", "type" -> "input", 
+   <|"id" -> "85e114f0-4589-4ea3-a96b-c2af48988a8394ff50", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1bb043a8-de2e-4ca0-9e1c-b24f72a142dcf50", "type" -> "input", 
+    "data" -> ".js\n\nreturn window.location;", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1310c96d-5461-40f6-913f-a2b88522d224", "type" -> "output", 
+    "data" -> "\n\nreturn window.location;", "display" -> "js", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "edca7fbb-4314-48ae-907c-f4301d1fa6e894ff50", "type" -> "input", 
     "data" -> ".md\n## Webserver\nTesting a webserver running on the master \
 kernel via secondary running fetch command", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "9a48b7f6-c5b9-45d3-897a-4b34953d99a994f", "type" -> "output", 
-    "data" -> "\n## Webserver\nTesting a webserver running on the master \
-kernel via secondary running fetch command", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a44a0009-f667-4ce1-8ac1-f9284c0f893a94f", "type" -> "input", 
-    "data" -> "status = \"Testing webserver...\";\nPause[1];\nWith[{time = \
-RepeatedTiming[\n  img = URLExecute[\"http://127.0.0.1:8090/woods.jpg\"];\n] \
-// First},\n  (ByteCount[img] / time)/1024/1024 \n]; \ntiming[\"serverRead\"] \
-= %;\n% \"MegaBytes/sec\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
-      "init" -> True|>|>, 
-   <|"id" -> "a5477d20-34e8-4e09-8078-9aebe54bb34294f", "type" -> "output", 
-    "data" -> "12.467240736846149` \"MegaBytes/sec\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "9a48b7f6-c5b9-45d3-897a-4b34953d99a994ff50", 
+    "type" -> "output", "data" -> "\n## Webserver\nTesting a webserver \
+running on the master kernel via secondary running fetch command", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d6b2b2de-bc05-4ea8-8f71-8f8a117d2e5194f", "type" -> "input", 
+   <|"id" -> "a44a0009-f667-4ce1-8ac1-f9284c0f893a94ff50", "type" -> "input", 
+    "data" -> "status = \"Testing webserver...\";\n\ntiming[\"serverRead\"] = \
+168.1;\n% \"MegaBytes/sec\"", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, <|"id" -> "a61c9dda-b569-4b3c-8c6b-231fc5bf0418", 
+    "type" -> "output", "data" -> "168.1` \"MegaBytes/sec\"", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "93659176-f5b8-423d-bf2a-98b0822d121bf50", "type" -> "input", 
+    "data" -> ".js\n\nasync function readData(url, cbk) {\n  const response = \
+await fetch(url);\n  const size = response.headers.get('Content-Length');\n  \
+const reader = response.body.getReader();\n  while (true) {\n    const { \
+done, value } = await reader.read();\n    if (done) {\n      // Do something \
+with last chunk of data then exit reader\n      cbk(size);\n      return;\n   \
+ }\n    // Otherwise do something here to process current chunk\n  \
+}\n}\n\nconst speed = document.createElement('span');\n\nconst now = \
+performance.now();\nreadData(\"http://127.0.0.1:36576/test2.dmg\", \
+(size)=>{\n  const later = performance.now() - now;\n  console.log(later);\n  \
+speed.innerText = `${1000 * (size / later) / 1024 / 1024} \
+MegaBytes/sec`;\n});\n\nreturn speed;", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e533137b-fd0d-44e0-b333-9754a29439bc", "type" -> "output", 
+    "data" -> "\n\nasync function readData(url, cbk) {\n  const response = \
+await fetch(url);\n  const size = response.headers.get('Content-Length');\n  \
+const reader = response.body.getReader();\n  while (true) {\n    const { \
+done, value } = await reader.read();\n    if (done) {\n      // Do something \
+with last chunk of data then exit reader\n      cbk(size);\n      return;\n   \
+ }\n    // Otherwise do something here to process current chunk\n  \
+}\n}\n\nconst speed = document.createElement('span');\n\nconst now = \
+performance.now();\nreadData(\"http://127.0.0.1:36576/test2.dmg\", \
+(size)=>{\n  const later = performance.now() - now;\n  console.log(later);\n  \
+speed.innerText = `${1000 * (size / later) / 1024 / 1024} \
+MegaBytes/sec`;\n});\n\nreturn speed;", "display" -> "js", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d6b2b2de-bc05-4ea8-8f71-8f8a117d2e5194ff50", "type" -> "input", 
     "data" -> ".md\n## Websockets & WLJS Interperter\nTesing the direct link \
-between WL and WLJS", "display" -> "codemirror", "sign" -> "schedule-79441", 
+between WL and WLJS", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "63626da3-c4a2-415c-9a75-a41d167de90894f", "type" -> "output", 
-    "data" -> "\n## Websockets & WLJS Interperter\nTesing the direct link \
-between WL and WLJS", "display" -> "markdown", "sign" -> "schedule-79441", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a485d73d-3186-4929-be0c-4009b7853e0294f", "type" -> "input", 
+   <|"id" -> "63626da3-c4a2-415c-9a75-a41d167de90894ff50", 
+    "type" -> "output", "data" -> "\n## Websockets & WLJS Interperter\nTesing \
+the direct link between WL and WLJS", "display" -> "markdown", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a485d73d-3186-4929-be0c-4009b7853e0294ff50", "type" -> "input", 
     "data" -> ".js\n\nconst timers = {};\n\ncore.ResetTimers = async (args, \
 env) => {\n  timers.read = performance.now();\n  timers.input = \
 performance.now();\n}\n\ncore.InputTiming = async (args, env) => {\n  //do \
@@ -146,26 +357,27 @@ server.emitt('input-time', mills);\n}\n\ncore.ReadTiming = async (args, env) \
 => {\n  //parse\n  await interpretate(args[0], env);\n  \n  const mills = \
 performance.now() - timers.input;\n  server.emitt('read-time', \
 mills);\n}\n\n\nreturn;", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0dcc2b65-1ee9-4e74-bcc5-3c9c710b32e194f", "type" -> "output", 
-    "data" -> "\n\nconst timers = {};\n\ncore.ResetTimers = async (args, env) \
-=> {\n  timers.read = performance.now();\n  timers.input = \
-performance.now();\n}\n\ncore.InputTiming = async (args, env) => {\n  //do \
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0dcc2b65-1ee9-4e74-bcc5-3c9c710b32e194ff50", 
+    "type" -> "output", "data" -> "\n\nconst timers = {};\n\ncore.ResetTimers \
+= async (args, env) => {\n  timers.read = performance.now();\n  timers.input \
+= performance.now();\n}\n\ncore.InputTiming = async (args, env) => {\n  //do \
 nothing\n  const mills = performance.now() - timers.input;\n  \
 server.emitt('input-time', mills);\n}\n\ncore.ReadTiming = async (args, env) \
 => {\n  //parse\n  await interpretate(args[0], env);\n  \n  const mills = \
 performance.now() - timers.input;\n  server.emitt('read-time', \
-mills);\n}\n\n\nreturn;", "display" -> "js", "sign" -> "schedule-79441", 
+mills);\n}\n\n\nreturn;", "display" -> "js", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "237a21c3-8d0e-4d91-8d03-7e7319ff052594f", "type" -> "input", 
+   <|"id" -> "237a21c3-8d0e-4d91-8d03-7e7319ff052594ff50", "type" -> "input", 
     "data" -> ".md\nNow we can measure the input lag and many more", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "f6b52b60-c644-42a9-b460-f558bcc0152494f", "type" -> "output", 
-    "data" -> "\nNow we can measure the input lag and many more", 
-    "display" -> "markdown", "sign" -> "schedule-79441", 
+   <|"id" -> "f6b52b60-c644-42a9-b460-f558bcc0152494ff50", 
+    "type" -> "output", "data" -> 
+     "\nNow we can measure the input lag and many more", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7362dd86-0b0a-4d59-984e-1f29a5b759ac94f", "type" -> "input", 
+   <|"id" -> "7362dd86-0b0a-4d59-984e-1f29a5b759ac94ff50", "type" -> "input", 
     "data" -> "status = \"Testing WK -> WLJS input lag...\";\nPause[1];\ndone \
 = False;\ninputLag = {};\nEventHandler[\"input-time\", Function[mills, \n  \
 AppendTo[inputLag, mills];\n  Pause[0.1];\n  If[Length[inputLag] < 10, \n    \
@@ -173,18 +385,20 @@ FrontSubmit[ResetTimers[]];\n    FrontSubmit[InputTiming[]];\n  ,\n    done = \
 True;\n  \
 ];\n]];\nFrontSubmit[ResetTimers[]];\nFrontSubmit[InputTiming[]];\nWhile[done \
 === False, Pause[2]];\ntiming[\"inputLag\"] = inputLag//Mean;\n% \
-\"Milliseconds\"", "display" -> "codemirror", "sign" -> "schedule-79441", 
+\"Milliseconds\"", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "b15068a9-ac56-46a4-b895-04bfedcbf02494f", "type" -> "output", 
-    "data" -> "1.75` \"Milliseconds\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "fbbe82cc-2516-4f76-a258-802e3d0cfd7f94f", "type" -> "input", 
+   <|"id" -> "cce390f7-44d1-4192-bad1-05cdd374655d", "type" -> "output", 
+    "data" -> "1.5400000013411046` \"Milliseconds\"", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "fbbe82cc-2516-4f76-a258-802e3d0cfd7f94ff50", "type" -> "input", 
     "data" -> ".md\nNow the bandwidth", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b84d4c7b-c6f6-4e76-a09b-97bb79f8f6bf94f", "type" -> "output", 
-    "data" -> "\nNow the bandwidth", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "623475e5-a4dc-4c10-a2fd-6d63d316cbf394f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "b84d4c7b-c6f6-4e76-a09b-97bb79f8f6bf94ff50", 
+    "type" -> "output", "data" -> "\nNow the bandwidth", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "623475e5-a4dc-4c10-a2fd-6d63d316cbf394ff50", "type" -> "input", 
     "data" -> "status = \"Testing WK -> WLJS transfer \
 speed...\";\nPause[1];\ndone = False;\ntransferLag = {};\nsample = \
 RandomReal[{-1,1}, 5048];\nEventHandler[\"input-time\", Function[mills, \n  \
@@ -194,24 +408,24 @@ AppendTo[transferLag, mills];\n  Pause[0.1];\n  If[Length[transferLag] < 20, \
 ];\n]];\nFrontSubmit[ResetTimers[]];\nFrontSubmit[InputTiming[sample]];\nWhil\
 e[done === False, Pause[2]];\n1000 Length[sample] / (transferLag//Mean) / \
 1024;\ntiming[\"wtransfer\"] = % \n% \"KAtoms/Sec\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "010e2bf4-2e4d-4685-a775-e2efa99a07a094f", "type" -> "output", 
-    "data" -> "46.996401162934305`", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "de551866-ae3b-4d15-80ac-992cb523519f94f", "type" -> "output", 
-    "data" -> "46.996401162934305` \"KAtoms/Sec\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2806ff4e-b2b7-4d16-88ec-de49a75c3ccc94f", "type" -> "input", 
+   <|"id" -> "589defb8-519b-4cb5-aeb0-325295c3a089", "type" -> "output", 
+    "data" -> "484.9667978605932`", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9fd6af3f-0f5b-477e-ae6c-457c4cd30a02", "type" -> "output", 
+    "data" -> "484.9667978605932` \"KAtoms/Sec\"", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2806ff4e-b2b7-4d16-88ec-de49a75c3ccc94ff50", "type" -> "input", 
     "data" -> ".md\nNow the same, but together with interpreting", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "d42d7469-4569-4c62-a9b9-002c8773131a94f", "type" -> "output", 
-    "data" -> "\nNow the same, but together with interpreting", 
-    "display" -> "markdown", "sign" -> "schedule-79441", 
+   <|"id" -> "d42d7469-4569-4c62-a9b9-002c8773131a94ff50", 
+    "type" -> "output", "data" -> 
+     "\nNow the same, but together with interpreting", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ad63deb7-cea8-4498-9724-dd3276c9c87c94f", "type" -> "input", 
+   <|"id" -> "ad63deb7-cea8-4498-9724-dd3276c9c87c94ff50", "type" -> "input", 
     "data" -> "status = \"Testing WK -> WLJS reading \
 speed...\";\nPause[1];\ndone = False;\nreadLag = {};\nsample = \
 RandomReal[{-1,1}, 5048];\nEventHandler[\"read-time\", Function[mills, \n  \
@@ -221,22 +435,23 @@ done = True;\n  \
 ];\n]];\nFrontSubmit[ResetTimers[]];\nFrontSubmit[ReadTiming[sample]];\nWhile\
 [done === False, Pause[2]];\n1000 Length[sample] / (readLag//Mean) / \
 1024;\ntiming[\"wread\"] = % \n% \"KAtoms/Sec\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
-      "init" -> True|>|>, 
-   <|"id" -> "3ba5f172-c325-4d50-a681-207f1335c95594f", "type" -> "output", 
-    "data" -> "48.34685921646844`", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a753a02a-8c6d-4372-a7a7-e8a505c789cf94f", "type" -> "output", 
-    "data" -> "48.34685921646844` \"KAtoms/Sec\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "fd16ab20-f0bd-4b30-8e79-5139d37d803094f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, <|"id" -> "846ecf95-fb52-4d08-8bfa-6cd271d09337", 
+    "type" -> "output", "data" -> "75.0104610482261`", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a0031600-de84-4084-8d6b-487f3b4d0e97", "type" -> "output", 
+    "data" -> "75.0104610482261` \"KAtoms/Sec\"", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "fd16ab20-f0bd-4b30-8e79-5139d37d803094ff50", "type" -> "input", 
     "data" -> ".md\nNow just an output lag, WLJS->WK", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0bba2630-ef13-459c-99d9-2dd7deda584b94f", "type" -> "output", 
-    "data" -> "\nNow just an output lag, WLJS->WK", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "57e9ebf2-6489-4603-a319-24177e00492e94f", "type" -> "input", 
+   <|"id" -> "0bba2630-ef13-459c-99d9-2dd7deda584b94ff50", 
+    "type" -> "output", "data" -> "\nNow just an output lag, WLJS->WK", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "57e9ebf2-6489-4603-a319-24177e00492e94ff50", "type" -> "input", 
     "data" -> "status = \"Testing WLJS -> WK input lag...\";\nPause[1];\ndone \
 = False;\noutputLag = {};\nclk = \
 AbsoluteTime[];\nEventHandler[\"input-time\", Function[mills, \n  \
@@ -245,45 +460,45 @@ If[Length[outputLag] < 20, \n    clk = AbsoluteTime[];\n    \
 FrontSubmit[InputTiming[]];\n  ,\n    done = True;\n  ];\n]];\nclk = \
 AbsoluteTime[];\nFrontSubmit[InputTiming[]];\nWhile[done === False, \
 Pause[2]];\ntiming[\"outputLag\"] = 1000.0 outputLag//Mean;\n% \
-\"Milliseconds\"", "display" -> "codemirror", "sign" -> "schedule-79441", 
+\"Milliseconds\"", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "4dd7fafa-be71-4ee0-8ced-f9072fc7be5b94f", "type" -> "output", 
-    "data" -> "18.39535` \"Milliseconds\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "dd0edbb2-6300-4a92-9a05-64cd74a209ca94f", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "schedule-79441", 
+   <|"id" -> "8fc07343-92ab-4287-bf19-80792ec3809d", "type" -> "output", 
+    "data" -> "28.1778` \"Milliseconds\"", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "dd0edbb2-6300-4a92-9a05-64cd74a209ca94ff50", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "65b72b3c-9b52-4f9c-ac61-77c80d27cc9e94f", "type" -> "input", 
+   <|"id" -> "65b72b3c-9b52-4f9c-ac61-77c80d27cc9e94ff50", "type" -> "input", 
     "data" -> ".md\n### Performance of a WL & WLJS core\nPeforming a quite \
-simple operations", "display" -> "codemirror", "sign" -> "schedule-79441", 
+simple operations", "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "3df0ad65-bda2-4f14-a1f0-27e81b8da6f494f", "type" -> "output", 
-    "data" -> "\n### Performance of a WL & WLJS core\nPeforming a quite \
-simple operations", "display" -> "markdown", "sign" -> "schedule-79441", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "aa7ef947-24ac-4b65-986b-ba0e69318c9d94f", "type" -> "input", 
+   <|"id" -> "3df0ad65-bda2-4f14-a1f0-27e81b8da6f494ff50", 
+    "type" -> "output", "data" -> "\n### Performance of a WL & WLJS \
+core\nPeforming a quite simple operations", "display" -> "markdown", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "aa7ef947-24ac-4b65-986b-ba0e69318c9d94ff50", "type" -> "input", 
     "data" -> ".js\n\ncore.WLJSBenchmark = async (args, env) => {\n  let \
 mills = performance.now();\n  await interpretate(args[0], env);\n  mills = \
 performance.now() - mills;\n  server.emitt('benchmark-time', mills);\n}", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c282ab5b-30e2-4c13-bf3c-769ad8667de094f", "type" -> "output", 
-    "data" -> "\n\ncore.WLJSBenchmark = async (args, env) => {\n  let mills = \
-performance.now();\n  await interpretate(args[0], env);\n  mills = \
-performance.now() - mills;\n  server.emitt('benchmark-time', mills);\n}", 
-    "display" -> "js", "sign" -> "schedule-79441", 
+   <|"id" -> "c282ab5b-30e2-4c13-bf3c-769ad8667de094ff50", 
+    "type" -> "output", "data" -> "\n\ncore.WLJSBenchmark = async (args, env) \
+=> {\n  let mills = performance.now();\n  await interpretate(args[0], env);\n \
+ mills = performance.now() - mills;\n  server.emitt('benchmark-time', \
+mills);\n}", "display" -> "js", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd1aa24e-3a87-4d80-941a-d7d41830861094f", "type" -> "input", 
+   <|"id" -> "cd1aa24e-3a87-4d80-941a-d7d41830861094ff50", "type" -> "input", 
     "data" -> 
      ".md\nNow it comes to testing some simple table generation with math", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "5ad2673d-bc3d-4254-982f-b09ed06312a994f", "type" -> "output", 
-    "data" -> 
+   <|"id" -> "5ad2673d-bc3d-4254-982f-b09ed06312a994ff50", 
+    "type" -> "output", "data" -> 
      "\nNow it comes to testing some simple table generation with math", 
-    "display" -> "markdown", "sign" -> "schedule-79441", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ee02760d-dd71-46e5-a216-0d8f6f6db47794f", "type" -> "input", 
+   <|"id" -> "ee02760d-dd71-46e5-a216-0d8f6f6db47794ff50", "type" -> "input", 
     "data" -> "status = \"Benchmarking WLJS: stupid math \
 test...\";\nPause[1];\ndone = False;\nbenchmark1 = \
 {};\nEventHandler[\"benchmark-time\", Function[mills, \n  \
@@ -293,19 +508,19 @@ Offload];\n  ,\n    done = True;\n  \
 ];\n]];\nFrontSubmit[WLJSBenchmark[Table[{Sin[i], Cos[i]}, {i, 2 9000}]] // \
 Offload];\nWhile[done === False, Pause[2]];\ntiming[\"bwljs1\"] = \
 benchmark1//Mean;\n% \"Milliseconds\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
-      "init" -> True|>|>, 
-   <|"id" -> "78a51387-0d8f-408c-b5be-d6c38f3cd30d94f", "type" -> "output", 
-    "data" -> "71.63499999977648` \"Milliseconds\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, <|"id" -> "4978d1ac-6e3d-48c9-8826-8082a56e65d4", 
+    "type" -> "output", "data" -> "51.8850000012666` \"Milliseconds\"", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1506a918-e4da-449e-a7fa-6e0f694aae8594f", "type" -> "input", 
+   <|"id" -> "1506a918-e4da-449e-a7fa-6e0f694aae8594ff50", "type" -> "input", 
     "data" -> ".md\nMatrix multiplication", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "db4a21bb-8c99-45ab-baf9-43faa864cc4094f", "type" -> "output", 
-    "data" -> "\nMatrix multiplication", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7b1f0b63-456f-447d-906d-4b060f79613794f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "db4a21bb-8c99-45ab-baf9-43faa864cc4094ff50", 
+    "type" -> "output", "data" -> "\nMatrix multiplication", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7b1f0b63-456f-447d-906d-4b060f79613794ff50", "type" -> "input", 
     "data" -> "With[{m1 = Table[RandomReal[], {i, 1024}], m2 = \
 Table[RandomReal[], {i, 1024}]},\nstatus = \"Benchmarking WLJS: stupid vector \
 multiplication...\";\nPause[1];\ndone = False;\nbenchmark2 = \
@@ -316,38 +531,38 @@ AppendTo[benchmark2, mills];\n  Pause[0.1];\n  If[Length[benchmark2] < 20, \n \
 Offload];\n  ,\n    done = True;\n  ];\n]];\nFrontSubmit[WLJSBenchmark[edat = \
 Table[(k1.k2) i, {i,  90}]] // Offload];\n]\nWhile[done === False, \
 Pause[2]];\ntiming[\"bwljs2\"] = benchmark2//Mean;\n% \"Milliseconds\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "2dbec8a7-7c24-4753-ade3-36dc323e33b794f", "type" -> "output", 
-    "data" -> "1.4649999996647238` \"Milliseconds\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+   <|"id" -> "ab1a5ed0-63cb-4bd2-9a98-a7b3f2100845", "type" -> "output", 
+    "data" -> "0.9150000002235175` \"Milliseconds\"", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "13b7fd36-deb4-4201-9426-aecfcb8e825c94f", "type" -> "input", 
+   <|"id" -> "13b7fd36-deb4-4201-9426-aecfcb8e825c94ff50", "type" -> "input", 
     "data" -> ".md\nDo the same, but using WL", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6d3a6a9f-5019-4e19-b6aa-1e9fa5d64ace94f", "type" -> "output", 
-    "data" -> "\nDo the same, but using WL", "display" -> "markdown", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "17e20381-2056-455e-a108-a05d12ff63fb94f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "6d3a6a9f-5019-4e19-b6aa-1e9fa5d64ace94ff50", 
+    "type" -> "output", "data" -> "\nDo the same, but using WL", 
+    "display" -> "markdown", "sign" -> "paragon-8f8bb", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "17e20381-2056-455e-a108-a05d12ff63fb94ff50", "type" -> "input", 
     "data" -> "status = \"Benchmarking WK: the same \
 1...\";\nPause[1];\nTable[{Sin[i], Cos[i]}, {i, 2 9000}] // AbsoluteTiming // \
 First;\ntiming[\"bwk1\"] = 1000 %", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
-      "init" -> True|>|>, 
-   <|"id" -> "a699891c-b40e-413e-8bc9-6def7d53d30794f", "type" -> "output", 
-    "data" -> "20.807`", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "639b285a-54bf-4ceb-8b66-0ba630102a4e94f", "type" -> "input", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, <|"id" -> "c399b959-ff77-42f6-8b5b-9978b27c3a23", 
+    "type" -> "output", "data" -> "19.7686`", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "639b285a-54bf-4ceb-8b66-0ba630102a4e94ff50", "type" -> "input", 
     "data" -> "status = \"Benchmarking WK: the same 2...\";\nPause[1];\nm1 = \
 Table[RandomReal[], {i, 1024}]; \nm2 = Table[RandomReal[], {i, \
 1024}];\nPause[1];\nAbsoluteTiming[m3 = Table[(m1.m2) i, {i,  90}]] // \
 First;\ntiming[\"bwk2\"] = 1000 %;\n% \"Milliseconds\"", 
-    "display" -> "codemirror", "sign" -> "schedule-79441", 
+    "display" -> "codemirror", "sign" -> "paragon-8f8bb", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "bc36e46e-2a1b-4949-879b-6aa255fb8e1294f", "type" -> "output", 
-    "data" -> "0.243` \"Milliseconds\"", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a90a8dea-f60c-437f-aa30-1fec1904bd7794f", "type" -> "input", 
+   <|"id" -> "57de1f48-8614-4106-b879-780830c8279d", "type" -> "output", 
+    "data" -> "1.7762` \"Milliseconds\"", "display" -> "codemirror", 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a90a8dea-f60c-437f-aa30-1fec1904bd7794ff50", "type" -> "input", 
     "data" -> "status = \"Finished!\";", "display" -> "codemirror", 
-    "sign" -> "schedule-79441", "props" -> <|"hidden" -> False, 
+    "sign" -> "paragon-8f8bb", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>}, "serializer" -> "jsfn3"|>

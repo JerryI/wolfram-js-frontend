@@ -5,6 +5,7 @@ Once[If[PacletFind["JerryI/LPM"] === {}, PacletInstall["JerryI/LPM"]]];
 
 PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]
 
+<<KirillBelov`CSockets`
 <<KirillBelov`Objects`
 <<KirillBelov`Internal`
 <<KirillBelov`TCPServer`
@@ -40,7 +41,7 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    SocketListen[StringTemplate["``:``"][addr, port], wcp@#&];
+    SocketListen[CSocketOpen[port], wcp@#&];
 
     (*CEventLoopRun[0];*)
 ]

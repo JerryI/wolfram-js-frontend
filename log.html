@@ -3,21 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
 
     <title>Logs</title>
+    <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
     <link rel="stylesheet" href="electron.css">
   </head>
   <body>
     <div id="log" class="logs">
     </div>
   </body>
-  <script src="./renderer.js"></script>
+  <script src="./build/rendererSrc.js"></script>
 </html>

@@ -9,6 +9,7 @@
 
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
 
+__[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
 **Warning! Early Stage of Development**
 

@@ -250,7 +250,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
             fireLocalEvent["UpdateState"][CellObj[cell] ];
 
             MapIndexed[(   
-                Print[StringTemplate["Eval: ``"][#1]];
+              (*  Print[StringTemplate["Eval: ``"][#1]];*)
 
                 evaluator["Evaluator"][#1, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
                     If[result =!= "Null" && StringLength[result] > 0,
