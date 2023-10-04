@@ -103,6 +103,10 @@ CellListAddNewAfterAny[cell_, data_String] := With[{sign = cell["sign"]},
     CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign]];
 ];
 
+CellListAddNewAfterAny[cell_, data_String, props_Association] := With[{sign = cell["sign"]},
+    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign, "props"->props]];
+];
+
 CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
 
@@ -181,6 +185,7 @@ CellListAddNewOutput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     CellList[list] = Insert[CellList[list], CellObj[new], pos];
 
     JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
+    CellObj[new]
 ];
 
 CellListRemoveAccurate[CellObj[cell_]] := With[{sign = CellObj[cell]["sign"]},
@@ -220,7 +225,7 @@ CellObjSave[CellObj[cell_], content_] := (
 )
 
 CellObj /: 
-CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},  
+CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluator},  
     JerryI`WolframJSFrontend`fireEvent["CellEvaluate"][CellObj[cell]];
 
     expr = CellObj[cell]["data"];
@@ -262,8 +267,9 @@ CellObjEvaluate[CellObj[cell_], evaluators_] := Module[{expr, evaluator},
 
                             epilog[new["sign"]];
                             Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewOutput[CellObj[cell]["sign"], CellObj[cell], new];
-                            ]
+                                CellListAddNewOutput[CellObj[cell]["sign"], CellObj[cell], new] // cbk;
+                            ];
+                            
                         ]
                     ,
                         epilog[CellObj[cell]["sign"]];

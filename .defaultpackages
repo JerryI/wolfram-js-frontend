@@ -1,4 +1,4 @@
-<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.5", 
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.6", 
    "description" -> "WLJS Code editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -180,7 +180,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-magic-support", "defaultPackage" -> True|>, 
- "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.2", 
+ "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.3", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -283,4 +283,15 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-snippets"|>|>
+   "path" -> "wljs-snippets"|>, "wljs-chatbook-support" -> 
+  <|"name" -> "wljs-chatbook-support", "version" -> "1.0.0", 
+   "description" -> "Chatbook cells support for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "defaultPackage" -> True, "wljs-meta" -> <|"jsmodule" -> "src/kernel.js", 
+     "wl" -> "src/processor.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/KirillBelovTest/wljs-chatbook-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-chatbook-support"|>|>
