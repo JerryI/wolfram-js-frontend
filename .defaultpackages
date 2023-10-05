@@ -1,4 +1,4 @@
-<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.1.6", 
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.2.0", 
    "description" -> "WLJS Code editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -11,13 +11,14 @@ https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
      "priority" -> -10, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
-   "dependencies" -> <|"@codemirror/lang-html" -> "6.4.2", 
-     "@codemirror/lang-javascript" -> "6.1.4", "@codemirror/lang-markdown" -> 
-      "6.1.1", "@codemirror/legacy-modes" -> "6.3.2", 
-     "@codemirror/state" -> "6.2.0", "@codemirror/stream-parser" -> "0.19.9", 
-     "@codemirror/view" -> "6.9.6", "@rollup/plugin-commonjs" -> "^25.0.0", 
-     "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
-      "^15.1.0", "codemirror" -> "6.0.1", "crypto-js" -> "^4.1.1", 
+   "dependencies" -> <|"@codemirror/lang-css" -> "^6.2.1", 
+     "@codemirror/lang-html" -> "6.4.2", "@codemirror/lang-javascript" -> 
+      "6.1.4", "@codemirror/lang-markdown" -> "6.1.1", 
+     "@codemirror/legacy-modes" -> "6.3.2", "@codemirror/state" -> "6.2.0", 
+     "@codemirror/stream-parser" -> "0.19.9", "@codemirror/view" -> "6.9.6", 
+     "@rollup/plugin-commonjs" -> "^25.0.0", "@rollup/plugin-json" -> 
+      "^6.0.0", "@rollup/plugin-node-resolve" -> "^15.1.0", 
+     "codemirror" -> "6.0.1", "crypto-js" -> "^4.1.1", 
      "mma-uncompress" -> "^1.0.1", "node-balanced" -> "^0.0.14", 
      "parcel-bundler" -> "1.12.5", "priceless-mathematica" -> "^1.1.9", 
      "rainbowbrackets" -> "^2.0.2", "rollup" -> "^3.21.6"|>, 
@@ -118,7 +119,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "pako" -> "^2.1.0", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> 
       "^2.1.1", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
    "enabled" -> True, "path" -> "wljs-inputs", "defaultPackage" -> True|>, 
- "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.3.5", 
+ "wljs-interpreter" -> <|"name" -> "wljs-interpreter", "version" -> "0.3.6", 
    "description" -> "A core library and WL interpreter written in pure JS", 
    "scripts" -> <|"start" -> "parcel index.html --open", 
      "build" -> "parcel build index.html --public-url ./"|>, 
@@ -156,7 +157,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-js-support", "defaultPackage" -> True|>, 
  "wljs-markdown-support" -> <|"name" -> "wljs-markdown-support", 
-   "version" -> "0.0.1", "description" -> 
+   "version" -> "0.0.2", "description" -> 
     "Markdown cells support for WLJS Editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
@@ -164,8 +165,10 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "wl" -> "src/processor.wl", "styles" -> "src/katex.css"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-markdown-support"|>, 
-   "dependencies" -> <|"marked" -> "^5.0.1", "marked-katex-extension" -> 
-      "^2.0.2", "rollup" -> "^3.21.6"|>, "resolutions" -> 
+   "dependencies" -> <|"@rollup/plugin-commonjs" -> "^25.0.4", 
+     "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
+      "^15.2.1", "marked" -> "^5.0.1", "marked-katex-extension" -> "^2.0.2", 
+     "rollup" -> "^3.21.6"|>, "resolutions" -> 
     <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-markdown-support", "defaultPackage" -> True|>, 
  "wljs-magic-support" -> <|"name" -> "wljs-magic-support", 
@@ -199,7 +202,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme", 
    "defaultPackage" -> True|>, "wljs-cells" -> <|"name" -> "wljs-cells", 
-   "version" -> "0.3.0", "description" -> "WLJS Cells manager", 
+   "version" -> "0.3.3", "description" -> "WLJS Cells manager", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js"}, 
@@ -270,15 +273,17 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
- "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.0.2", 
+ "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.0.3", 
    "description" -> "Snippets for WLJS editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
-./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
-   "defaultPackage" -> True, "wljs-meta" -> <|"wl" -> "src/manager.wl", 
-     "jsmodule" -> "src/kernel.js", "priority" -> 9999999, 
-     "menu" -> {<|"label" -> "Snippets", "accelerator" -> 
-         {"Cmd+p", "Ctrl+p"}, "internalHandler" -> "snippets", 
-        "spawnWindow" -> False, "type" -> "button"|>}|>, 
+./node_modules/.bin/rollup --config rollup.config.mjs", 
+     "restore" -> "mkdir _temp && cd _temp && git clone \
+https://github.com/JerryI/wljs-snippets && mv wljs-snippets/.git ../.git && \
+cd .. && rm -rf _temp"|>, "defaultPackage" -> True, 
+   "wljs-meta" -> <|"wl" -> "src/manager.wl", "jsmodule" -> "src/kernel.js", 
+     "priority" -> 9999999, "menu" -> {<|"label" -> "Snippets", 
+        "accelerator" -> {"Cmd+p", "Ctrl+p"}, "internalHandler" -> 
+         "snippets", "spawnWindow" -> False, "type" -> "button"|>}|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 

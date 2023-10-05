@@ -6,6 +6,7 @@ public/.DS_STORE
 .lastpath
 .settings
 .theme
+.gcss
 .env
 wl_packages
 wl_packages_lock.wl

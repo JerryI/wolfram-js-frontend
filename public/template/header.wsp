@@ -113,7 +113,7 @@
 
     </head>
     <body class="notion-body">
-        <div id="notion-app">
+        <div id="notion-app" style="<?wsp NotebookCSS ?>">
             <div class="notion-app-inner notion-light-theme" style="">
                 <div style="">
                     <div class="notion-cursor-listener" style="">

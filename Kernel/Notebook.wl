@@ -90,6 +90,8 @@ NotebookStoreOperate::usage = ""
 
 NotebookExport::usage = "export to standalone html"
 
+NotebookCSS::usage = ""
+
 NotebookTheme::usage = "set the mode dark/light"
 NotebookSettings::usage = ""
 NotebookState::usage = ""
@@ -115,6 +117,9 @@ NotebookSettings /: Set[NotebookSettings[key_], data_] := (NotebookSettings = Ap
 )
 
 NotebookState;
+
+NotebookCSS := JerryI`WolframJSFrontend`css
+NotebookCSS /: Set[NotebookCSS, css_String] := (NotebookCSS := css; Put[css, FileNameJoin[{JerryI`WolframJSFrontend`root, ".gcss"}]])
 
 NotebookTheme := JerryI`WolframJSFrontend`defaulttheme
 NotebookTheme /: Set[NotebookTheme, mode_String] := (NotebookTheme := mode; Put[mode, FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]])

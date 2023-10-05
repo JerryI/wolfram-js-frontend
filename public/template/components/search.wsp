@@ -2,7 +2,7 @@
     .search-field {
         background: transparent;
         color: var(--sidebar-text-color);
-        font-size: small;
+        font-size: var(--font-size-small);
         border: none;
         padding-left: 0.5em;
         padding-right: 0.5em;

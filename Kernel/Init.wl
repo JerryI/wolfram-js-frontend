@@ -8,6 +8,32 @@ JerryI`WolframJSFrontend`defaultvault   = If[FileExistsQ[FileNameJoin[{JerryI`Wo
 
 JerryI`WolframJSFrontend`defaulttheme = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]], "system"]
 
+JerryI`WolframJSFrontend`css = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".gcss"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".gcss"}]], "
+  --font-size-small: small;
+  --font-size-medium: medium;
+  --font-size-large: large;
+  --font-size-x-large: x-large;
+  --font-size-xx-large: xx-large;
+  --font-size-x-small: x-small;
+  
+  --editor-key-meta: #404740;
+  --editor-key-keyword: #708;
+  --editor-key-atom: #219;
+  --editor-key-literal: #164;
+  --editor-key-string: #a11;
+  --editor-key-escape: #e40;
+  --editor-key-variable: #00f;
+  --editor-local-variable: #30a;
+  --editor-key-type: #085;
+  --editor-key-class: #167;
+  --editor-special-variable: #256;
+  --editor-key-property: #00c;
+  --editor-key-comment: #940;
+  --editor-key-invalid: #f00;
+  
+  --editor-outline: #696969;  
+  "]
+
 JerryI`WolframJSFrontend`settings = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], <|"displayForm"->True, "background"->True, "autosave"->1000*60*3, "fastboot"->False|>]
 
 JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
