@@ -20,6 +20,8 @@ SetAttributes[Offload, HoldFirst]
 
 $NumberMarks = False
 
+
+
 NotebookStore[key_] := AskMaster[Global`NotebookStoreOperate["Get", key]] // ReleaseHold
 NotebookStore /: Set[NotebookStore[key_], data_] := AskMaster[Global`NotebookStoreOperate["Set", key, data // Hold]];
 NotebookStore /: Keys[NotebookStore] := AskMaster[Global`NotebookStoreOperate["Keys"]];

@@ -129,6 +129,9 @@ NotebookAddTracking[symbol_] := With[{cli = Global`client, name = SymbolName[Une
     ]
 ]
 
+$DefinedUserSymbols = {};
+
+
 SetAttributes[NotebookAddTracking, HoldFirst];
 
 SendToMaster[cbk_][args__] := JTPClientEvaluateAsyncNoReply[master, cbk[args]];
@@ -189,6 +192,31 @@ DefineOutputStreamMethod[
 
 $Messages = {OpenWrite[Method -> "ToastWarning"]};
 $Output = {OpenWrite[Method -> "ToastPrint"]};
+
+$DefinedUserSymbols = {};
+$AccosicatedClients = <||>;
+
+GetDefinedSymbols := With[{cli = Global`client},
+   
+    $AccosicatedClients[cli] = Function[{name, context}, 
+      If[FailureQ[
+        WebSocketSend[cli, ExportByteArray[Global`FrontAddDefinition[{{name, context}}], "ExpressionJSON"]]
+      ],
+        Print["definitions tracker was removed for "<>cli[[1]]];
+        Unset[$AccosicatedClients[cli]];
+      ]
+    ];
+
+    WebSocketSend[cli, ExportByteArray[Global`FrontAddDefinition[$DefinedUserSymbols], "ExpressionJSON"]];
+];
+
+ShareSymbolDefinition[{name_, context_}] := $AccosicatedClients[#][name, context] &/@ Keys[$AccosicatedClients];
+
+SessionSubmit[ScheduledTask[
+  $NewSymbol = (AppendTo[$DefinedUserSymbols, {#1, #2}]; ShareSymbolDefinition[{#1, #2}]; )&;
+  Print["Definitons tracking is activated!"];  
+, {Quantity[15, "Seconds"], 1}]];
+
 
 End[];
 EndPackage[];
