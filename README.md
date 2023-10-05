@@ -31,9 +31,9 @@ __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the
 - No __SVG__ - like static graphs. Each Graphics2D/3D primitives were recreated from scratch using d3.js and THREE.js libraries. Most native plotting function of Mathematica are supported. 
 - dynamics, GUI building blocks
 - native integration of HTML, Markdown, Javascript, LLM, Wolfram Language XML... cell types
-- notebooks export to a standalone `.html` file feature
-- infinite extensibility via external libraries, plugins even within the notebook (keeps some part of interactivity still possible)
-- runs locally or on a server and belongs to You
+- notebooks export to a standalone `.html` file feature (keeps some part of interactivity still possible)
+- infinite extensibility via external libraries, plugins even within the notebook 
+- runs locally or on a server and belongs to You (no cloud-based stuff involved)
 - autocomplete (for all languages used) and snippets
 - tools for making in-code slides (presentations)
 
