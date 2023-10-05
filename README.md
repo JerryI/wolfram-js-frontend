@@ -41,7 +41,7 @@ __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the
 - autocomplete (for all languages used) and snippets
 - tools for making in-code slides (presentations)
 
-*The learning curve is quite steep to master all features listed above*
+*The learning curve is quite steep to master all features listed above compared to Mathematica*
 
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine.
