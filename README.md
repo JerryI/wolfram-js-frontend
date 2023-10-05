@@ -1,23 +1,21 @@
-# WLJS Frontend (Wolfram Language Javascript Frontend)
+# Wolfram Language Javascript Frontend
 ![](imgs/light.png)
 
 ![](imgs/dark.png)
 
 
 *written for the freeware Wolfram Engine using Javascript*
-*web-based, fully customizable and free*
+*web-based, fully customizable and freeware*
 
 __[See Docs](https://jerryi.github.io/wljs-docs/)__
 
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
-**Early Stage of Development**
-
 **Recommended Wolfram Engine 13.0 or above**
 
 The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)
 
-__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram HTTP/WS Server developer & and a nice guy)__
+__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Server developer & a nice guy 🧡)__
 
 To help maintain this project. 
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
@@ -25,6 +23,19 @@ To help maintain this project.
 Thank you 🍺 
 
 __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles; also it is quite outdated)__
+
+## Highlights
+
+- __true 100% Wolfram Language__
+- better than typical REPL system
+- No __SVG__ - like static graphs. Each Graphics2D/3D primitives were recreated from scratch using d3.js and THREE.js libraries. Most native plotting function of Mathematica are supported. 
+- dynamics, GUI building blocks
+- native integration of HTML, Markdown, Javascript, LLM, Wolfram Language XML... cell types
+- notebooks export to a standalone `.html` file feature
+- infinite extensibility via external libraries, plugins even within the notebook (keeps some part of interactivity still possible)
+- runs locally or on a server and belongs to You
+- autocomplete (for all languages used) and snippets
+- tools for making in-code slides (presentations)
 
 ## Motivation
 The idea is to implement a minimalistic, opensource, portable and lightweight notebook interface with syntax sugar, interactive objects for freeware Wolfram Engine.
@@ -42,27 +53,23 @@ Web technologies nowadays are aimed to be extremely efficient in order to compet
 ## How to run
 This is quite simple. All that you need is
 
-- Freeware WolframEngine
+- [Freeware WolframEngine](https://www.wolfram.com/engine/)
 
 the rest will be downloaded via the internet. 
 
-### Electron wrapper (easy)
+### As a desktop app (Electron wrapper)
 Use __[prebuilt binaries](https://github.com/JerryI/wolfram-js-frontend/releases) from `Releases` section__ 
 
-### From console (as a secondary option)
-Then `cd` to the project folder and
+### From a console (as a secondary option)
+Using GIT
 
 ```shell
 git clone https://github.com/JerryI/wolfram-js-frontend
 cd wolfram-js-frontend
 wolframscript -f Scripts/run.wls
 ```
-and open your browser with `http://127.0.0.1:8090`
+and open your browser with `http://127.0.0.1:XXXX`
 
-in a case of troubles with page loading use
-```shell
-wolframscript -f Scripts/run.wls legacySockets
-```
 
 ## Package system
 Frontend uses its own package/plugin system. It doent require any software installed except *wolframscript*. Precompiled plugins are downloaded via `URLFetch` from github repositories and imported to the system. They can extend core WL, autocomplete, JS and UI. The following packages are available (already included as a default plugins)
@@ -80,6 +87,9 @@ Frontend uses its own package/plugin system. It doent require any software insta
 - [wljs-html-support](https://github.com/JerryI/wljs-html-support) support for HTML language in the cells with a template engine [WSP](https://github.com/JerryI/tinyweb-mathematica/tree/master/Tinyweb)
 - and some of yours plugins should be here!
 
+# Sponsors 
+- [@MitsuhaMiyamizu](https://github.com/MitsuhaMiyamizu) 🤍
+
 # Technology stack
 ## Backend
 - Wolfram Engine
@@ -90,10 +100,12 @@ Frontend uses its own package/plugin system. It doent require any software insta
 - d3.js, plotly.js *for 2D Graphics*
 - three.js *for 3D Graphics*
 - mermaid.js, svgbob *for diagrams*
+- reveal.js *for slides*
 - svgbob.js *for svg drawings*
 - marked.js *for markdown exprs. processing*
 - katex.js *as $\LaTeX$ renderer*
 - styles and layout from Notion
+- many more...
 
 
 ## Inspired by
@@ -105,5 +117,7 @@ Frontend uses its own package/plugin system. It doent require any software insta
 
 ## License
 GNU GPLv3
+
+__NON-COMMERCIAL__
 
 
