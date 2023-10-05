@@ -202,7 +202,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme", 
    "defaultPackage" -> True|>, "wljs-cells" -> <|"name" -> "wljs-cells", 
-   "version" -> "0.3.3", "description" -> "WLJS Cells manager", 
+   "version" -> "0.3.4", "description" -> "WLJS Cells manager", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
      "restore" -> "mkdir _temp && cd _temp && git clone \

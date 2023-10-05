@@ -115,6 +115,7 @@ FrontSubmit[expr_, "Reference"->True] := With[{uid = CreateUUID[]}, NotImplement
 WSSocketEstablish := (
   notebookClient = Global`client;
   WebSocketSend[notebookClient, ExportByteArray[Global`FrontEndWSAttached[Null], "ExpressionJSON"]];
+  activateSymbolDef;
 );
 
 NotebookAddTracking[symbol_] := With[{cli = Global`client, name = SymbolName[Unevaluated[symbol]]},
@@ -212,11 +213,15 @@ GetDefinedSymbols := With[{cli = Global`client},
 
 ShareSymbolDefinition[{name_, context_}] := $AccosicatedClients[#][name, context] &/@ Keys[$AccosicatedClients];
 
-SessionSubmit[ScheduledTask[
-  $NewSymbol = (AppendTo[$DefinedUserSymbols, {#1, #2}]; ShareSymbolDefinition[{#1, #2}]; )&;
-  Print["Definitons tracking is activated!"];  
-, {Quantity[15, "Seconds"], 1}]];
 
+activateSymbolDef := (
+  SessionSubmit[ScheduledTask[
+    $NewSymbol = If[#2 === "Global`", (AppendTo[$DefinedUserSymbols, {#1, #2}]; ShareSymbolDefinition[{#1, #2}]; )]&;
+    Print["Definitons tracking is activated!"];  
+  , {Quantity[5, "Seconds"], 1}]];
+
+  activateSymbolDef = Null;
+)
 
 End[];
 EndPackage[];
