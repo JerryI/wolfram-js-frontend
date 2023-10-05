@@ -5,7 +5,7 @@
                         <div class="filebrowser-strip" role="button" tabindex="0" style="<?wsp If[TrueQ[disabled], "opacity: 0.5;", ""]?>-webkit-user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; width: 100%; display: flex; align-items: center; padding-right: 4px;">
                            <div class="notion-record-icon notranslate" role="button" tabindex="0" style="-webkit-user-select: none;transition: background 20ms ease-in 0s;cursor: pointer;display: flex;align-items: center;justify-content: center;border: none;/*  */border-radius: 0.25em;flex-shrink: 0;margin-left: 2px;margin-right: 6px;">
                             
-                                <div id="<?wsp uid ?>" style="font-size: var(--font-size-small)"></div>
+                                <div id="<?wsp uid ?>" style="font-size: small"></div>
                            
                            </div>
                            <div style="display: flex; margin-right: auto; min-width: 240px; align-items: center;">
