@@ -102,7 +102,9 @@
          </div>
       </div>
 
-      <div data-content-editable-void="true" style="min-height: 40px; padding-left: 2em; padding-right: 2em; flex-shrink: 0;" contenteditable="false">
+      <?wsp Table[ With[{i = item}, LoadPage[FileNameJoin[{"template","modals","settings","plugin-item.wsp"}], {DataProvider = i}]  ], {item, JerryI`WolframJSFrontend`Extensions`SettingsPool}] ?>
+
+   <div data-content-editable-void="true" style="min-height: 40px; padding-left: 2em; padding-right: 2em; flex-shrink: 0;" contenteditable="false">
       <div data-block-id="d7e8ced4-80aa-4257-8868-ae0b42b173c7" class="notion-selectable notion-collection_view_page-block" style="position: relative;">
          <div style="display: flex; align-items: center; height: 40px; z-index: 1; position: sticky; left: 96px; width: 100%; /*! box-shadow: rgb(233, 233, 231) 0px -2px 10px inset; */border-bottom: 1px solid var(--sidebar-text-color);">
             <div style="display: flex; align-items: center; height: 100%; flex-grow: 1;">
@@ -121,10 +123,10 @@
 
          </div>
       </div>
-      <div style="position: sticky; left: 96px; width: 100%;"></div>
+      
    </div>
 
-      <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
+   <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
          <div class="notion-list-view" style="">
          <?wsp LoadPage[FileNameJoin[{"template","modals","settings","css.wsp"}], {update = Function[css,
                NotebookCSS = css;
@@ -133,7 +135,9 @@
                <div style="font-size:small">live editing</div>
             </div>
          </div>
-      </div>
+   </div>
+   
+
 
    </div>
    

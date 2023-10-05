@@ -1038,6 +1038,11 @@ NotebookLoadPage[name_, params_List] := Block[{WSP`$publicpath = JerryI`WolframJ
 SetAttributes[NotebookLoadPage, HoldRest];
 SetAttributes[NotebookLoadModal, HoldRest];
 
+JerryI`WolframJSFrontend`Extensions`SettingsPool = {};
+JerryI`WolframJSFrontend`Extensions`ExtendSettings[function_, title_String] := AppendTo[JerryI`WolframJSFrontend`Extensions`SettingsPool, <|"title"->title, "handler"->function|>]
+JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete = Print["Not implemented!"];;
+
+
 
 
 End[];

@@ -1,0 +1,37 @@
+<div data-content-editable-void="true" style="min-height: 40px; padding-left: 2em; padding-right: 2em; flex-shrink: 0;" contenteditable="false">
+      <div data-block-id="d7e8ced4-80aa-4257-8868-ae0b42b173c7" class="notion-selectable notion-collection_view_page-block" style="position: relative;">
+         <div style="display: flex; align-items: center; height: 40px; z-index: 1; position: sticky; left: 96px; width: 100%; /*! box-shadow: rgb(233, 233, 231) 0px -2px 10px inset; */border-bottom: 1px solid var(--sidebar-text-color);">
+            <div style="display: flex; align-items: center; height: 100%; flex-grow: 1;">
+               <div style="display: inline-flex; margin: 0px; height: 100%;">
+                  <div style="display: flex; flex-direction: row;">
+                     <div class="notion-collection-view-tab-button" style="display: flex; align-items: center; background-image: none; height: 100%; border-bottom-width: 2px; /*! border-bottom-style: solid; */ border-bottom-color: rgb(55, 53, 47); padding-top: 2px;">
+                        <div role="button" tabindex="0" style="-webkit-user-select: none;transition: background 20ms ease-in 0s;cursor: pointer;display: flex;align-items: center;flex-shrink: 0;white-space: nowrap;height: 28px;border-radius: 4px;line-height: 1.2;min-width: 0px;padding-left: 8px;padding-right: 8px;/* color: rgb(55, 53, 47); */max-width: 220px;font-size: var(--font-size-small);">
+
+                           <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;"><?wsp DataProvider["title"] ?></span>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+         </div>
+      </div>
+      
+   </div>
+
+   <?wsp If[!ListQ[DataProvider["handler"]], ?>
+        <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
+              <div class="notion-list-view" style="">
+                <?wsp DataProvider["handler"][Null] ?>
+              </div>
+        </div>
+   <?wsp , "" ] ?>
+
+   <?wsp If[ListQ[DataProvider["handler"]], Table[ ?>
+        <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
+              <div class="notion-list-view" style="">
+                <?wsp u[Null] ?>
+              </div>
+        </div>
+   <?wsp , {u, DataProvider["handler"]}], ""] ?>   

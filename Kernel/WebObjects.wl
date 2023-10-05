@@ -52,8 +52,9 @@ RegisterWebObject[sym_] := (
   } // Flatten;
 )
 
+
 JerryI`WolframJSFrontend`Extensions`RegisterFrontEndObject = RegisterWebObject;
-JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete = Print["Not implemented!"];;
+
 
 LoadWebObjects := (
   JerryI`WolframJSFrontend`WebObjects`replacement = Table[
