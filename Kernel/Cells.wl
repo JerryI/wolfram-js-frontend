@@ -61,7 +61,7 @@ CellObj[OptionsPattern[]] := With[{cell = OptionValue["id"]},
 	CellObj[cell]["type"    ] = OptionValue["type"    ];
     CellObj[cell]["display" ] = OptionValue["display" ];
     CellObj[cell]["data"    ] = OptionValue["data"    ];
-    CellObj[cell]["props"   ] = OptionValue["props"   ];
+    CellObj[cell]["props"   ] = Join[<|"hidden"->False|>, OptionValue["props"   ]];
     CellObj[cell]["sign"    ]  = OptionValue["sign"    ];
     CellObj[cell]["state"    ] = OptionValue["state"    ];
 
@@ -257,36 +257,70 @@ CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluat
             MapIndexed[(   
               (*  Print[StringTemplate["Eval: ``"][#1]];*)
 
-                evaluator["Evaluator"][#1, CellObj[cell]["sign"], Function[{result, uid, display, epilog},
-                    If[result =!= "Null" && StringLength[result] > 0,
-                        With[{new = CellObj["sign"->CellObj[cell]["sign"], "id"->uid]},
+              evaluator["Evaluator"][#1, CellObj[cell]["sign"], standartCallback[cell, #2[[1]], cell, "output", <||>, fireLocalEvent, length]];
 
-                            new["data"]     = result;
-                            new["type"]     = "output";
-                            new["display"]  = display;
-
-                            epilog[new["sign"]];
-                            Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewOutput[CellObj[cell]["sign"], CellObj[cell], new] // cbk;
-                            ];
-                            
-                        ]
-                    ,
-                        epilog[CellObj[cell]["sign"]];
-                    ];
-
-                    
-
-                    If[#2[[1]] === length,
-                        CellObj[cell]["state"] = "idle";
-                        fireLocalEvent["UpdateState"][CellObj[cell]];
-                    ];
-
-                ]];
             )& , list];
         ];
     ];  
 ];
+
+standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props},
+                Print[{result, uid, display, epilog, opts}];
+                options = Flatten[List[opts]] // Association;
+                Print[options];
+
+                type = If[KeyExistsQ[options, "Type"],
+                    options["Type"]
+                ,
+                    stype
+                ];
+
+                props = If[KeyExistsQ[options, "Props"],
+                    options["Props"]
+                ,
+                    sprop
+                ];
+
+                after = If[KeyExistsQ[options, "After"],
+                    options["After"]
+                ,
+                    scell
+                ];                                
+
+                If[result =!= "Null" && StringLength[result] > 0,
+                    If[type === "output",
+                        Print["OUTPUCELL"];
+                        With[{new = CellObj["sign"->CellObj[after]["sign"], "id"->uid, "props"->props]},
+                            new["data"]     = result;
+                            new["type"]     = "output";
+                            new["display"]  = display;
+                            epilog[new["sign"]];
+                            Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
+                                CellListAddNewOutput[CellObj[after]["sign"], CellObj[after], new] // cbk;
+                            ];
+                        ];
+                    ,
+                        Print["INPUTCELL"];
+                        (* if input cell *)
+                        With[{new = CellObj["sign"->CellObj[after]["sign"], "id"->uid, "props"->props]},
+                            new["data"]     = result;
+                            new["type"]     = "input";
+                            new["display"]  = display;
+                            epilog[new["sign"]];
+                            Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
+                                CellListAddNewInput[CellObj[after]["sign"], CellObj[after], new] // cbk;
+                            ];
+                        ];                            
+                    ];
+                ,
+                    epilog[CellObj[after]["sign"]];
+                ];
+                
+                If[number === length,
+                    CellObj[origin]["state"] = "idle";
+                    fireLocalEvent["UpdateState"][CellObj[origin]];
+                ];
+]
 
 CellListPack[uid_String] := Module[{},
     <|

@@ -96,6 +96,8 @@ NotebookTheme::usage = "set the mode dark/light"
 NotebookSettings::usage = ""
 NotebookState::usage = ""
 
+NotebookPrint::usage =""
+
 NotebookAlert::usage = ""
 (*
     Internal commands used by other packages
@@ -146,6 +148,7 @@ DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 
 jsfn`Notebooks = <||>;
 jsfn`Processors = {{},{},{}};
+
 
 
 NotebookMenu["Open", id_String] := JerryI`WolframJSFrontend`Extensions`Handlers["Menu"][id][<|"Client"->Global`client, "Notebook"->$AssociationSocket[Global`client]|>]
@@ -1042,7 +1045,9 @@ JerryI`WolframJSFrontend`Extensions`SettingsPool = {};
 JerryI`WolframJSFrontend`Extensions`ExtendSettings[function_, title_String] := AppendTo[JerryI`WolframJSFrontend`Extensions`SettingsPool, <|"title"->title, "handler"->function|>]
 JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete = Print["Not implemented!"];;
 
-
+Unprotect[NotebookPrint]
+ClearAll[NotebookPrint]
+NotebookPrint[message_, args___] := NotebookPopupFire["error", StringTemplate[message][args]]
 
 
 End[];
