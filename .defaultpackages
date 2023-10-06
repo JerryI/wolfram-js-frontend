@@ -1,4 +1,4 @@
-<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.2.0", 
+<|"wljs-editor" -> <|"name" -> "wljs-editor", "version" -> "0.2.2", 
    "description" -> "WLJS Code editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -202,7 +202,7 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme", 
    "defaultPackage" -> True|>, "wljs-cells" -> <|"name" -> "wljs-cells", 
-   "version" -> "0.3.4", "description" -> "WLJS Cells manager", 
+   "version" -> "0.3.6", "description" -> "WLJS Cells manager", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
      "restore" -> "mkdir _temp && cd _temp && git clone \
@@ -275,7 +275,7 @@ https://github.com/JerryI/wljs-cells && mv wljs-cells/.git ../.git && cd .. \
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
- "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.0.3", 
+ "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.0.5", 
    "description" -> "Snippets for WLJS editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 

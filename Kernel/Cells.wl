@@ -21,6 +21,7 @@ CellListTree::usage = ""
 
 CellListAddNewAfter::usage = ""
 CellListAddNewAfterAny::usage = ""
+CellListAddNewLast::usage = ""
 
 CellListUnpack::usage = ""
 CellListUnpackLegacy::usage = ""
@@ -96,15 +97,19 @@ CellListAddNewAfter[cell_] := With[{sign = cell["sign"]},
 ];
 
 CellListAddNewAfterAny[cell_] := With[{sign = cell["sign"]},
-    CellListAddNewInputAny[sign, cell, CellObj["data"->"", "type"->"input", "sign"->sign]];
+    CellListAddNewInputAny[sign, cell, CellObj["data"->"", "type"->"input", "sign"->sign]]
 ];
 
 CellListAddNewAfterAny[cell_, data_String] := With[{sign = cell["sign"]},
-    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign]];
+    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign]]
 ];
 
 CellListAddNewAfterAny[cell_, data_String, props_Association] := With[{sign = cell["sign"]},
-    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign, "props"->props]];
+    CellListAddNewInputAny[sign, cell, CellObj["data"->data, "type"->"input", "sign"->sign, "props"->props]]
+];
+
+CellListAddNewLast[sign_, data_String, props_Association] := With[{},
+    CellListAddNewInputAny[sign, Last, CellObj["data"->data, "type"->"input", "sign"->sign, "props"->props]]
 ];
 
 CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
@@ -140,7 +145,7 @@ CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
 
         JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos]] ];
 
-        Return[Null, Module];
+        Return[CellObj[new], Module];
     ];   
     pos = pos + 1;
 
@@ -154,10 +159,24 @@ CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
         JerryI`WolframJSFrontend`fireEvent["CellMorphInput"][CellObj[new]];
         CellObj[new]["type"] = "input";
 
-        Return[Null, Module];
+        Return[CellObj[new], Module];
     ];
 
+    CellObj[new]
     
+];
+
+CellListAddNewInputAny[list_, Last, CellObj[new_]] := Module[{pos},
+    pos = Length[CellList[list]];
+
+    If[pos === Length[CellList[list]],
+        (* last cell in the list *)
+        CellList[list] = Insert[CellList[list], CellObj[new], pos + 1];
+
+        JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos]] ];
+
+        Return[CellObj[new], Module];
+    ];   
 ];
 
 CellListAddNewOutput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
@@ -296,7 +315,8 @@ standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, leng
                             new["display"]  = display;
                             epilog[new["sign"]];
                             Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewOutput[CellObj[after]["sign"], CellObj[after], new] // cbk;
+                                CellListAddNewOutput[CellObj[after]["sign"], CellObj[after], new];
+                                new // cbk;
                             ];
                         ];
                     ,
@@ -308,7 +328,8 @@ standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, leng
                             new["display"]  = display;
                             epilog[new["sign"]];
                             Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewInput[CellObj[after]["sign"], CellObj[after], new] // cbk;
+                                CellListAddNewInput[CellObj[after]["sign"], CellObj[after], new];
+                                new // cbk;
                             ];
                         ];                            
                     ];
