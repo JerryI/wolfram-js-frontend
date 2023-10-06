@@ -257,14 +257,14 @@ CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluat
             MapIndexed[(   
               (*  Print[StringTemplate["Eval: ``"][#1]];*)
 
-              evaluator["Evaluator"][#1, CellObj[cell]["sign"], standartCallback[cell, #2[[1]], cell, "output", <||>, fireLocalEvent, length]];
+              evaluator["Evaluator"][#1, CellObj[cell]["sign"], standartCallback[cell, #2[[1]], cell, "output", <||>, fireLocalEvent, length, cbk]];
 
             )& , list];
         ];
     ];  
 ];
 
-standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props},
+standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_, cbk_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props},
                 Print[{result, uid, display, epilog, opts}];
                 options = Flatten[List[opts]] // Association;
                 Print[options];
