@@ -136,6 +136,24 @@ CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
 ];
 
+CellListAddNewInputBefore[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
+    pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
+
+    If[pos === 1,
+        (* last cell in the list *)
+        CellList[list] = Insert[CellList[list], CellObj[new], pos];
+
+        JerryI`WolframJSFrontend`fireEvent["AddCellBefore"][ CellObj[new], CellList[list][[pos + 1]] ];
+
+        Return[Null, Module];
+    ];   
+    pos = pos - 1;
+
+    CellList[list] = Insert[CellList[list], CellObj[new], pos];
+
+    JerryI`WolframJSFrontend`fireEvent["AddCellBefore"][ CellObj[new], CellList[list][[pos + 1]] ];
+];
+
 CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
 
@@ -283,7 +301,7 @@ CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluat
     ];  
 ];
 
-standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_, cbk_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props},
+standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_, cbk_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props, before},
                 Print[{result, uid, display, epilog, opts}];
                 options = Flatten[List[opts]] // Association;
                 Print[options];
@@ -300,8 +318,16 @@ standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, leng
                     sprop
                 ];
 
+                before = False;
+
                 after = If[KeyExistsQ[options, "After"],
-                    options["After"]
+                    If[options["After"] === "Before",
+                        before = True;
+                        scell
+                    ,
+                        options["After"]
+                    ]
+                    
                 ,
                     scell
                 ];                                
@@ -315,7 +341,12 @@ standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, leng
                             new["display"]  = display;
                             epilog[new["sign"]];
                             Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewOutput[CellObj[after]["sign"], CellObj[after], new];
+                                If[before // TrueQ,
+                                    CellListAddNewOutputBefore[CellObj[after]["sign"], CellObj[after], new];
+                                ,
+                                    CellListAddNewOutput[CellObj[after]["sign"], CellObj[after], new];
+                                ];
+                                
                                 new // cbk;
                             ];
                         ];
@@ -328,7 +359,11 @@ standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, leng
                             new["display"]  = display;
                             epilog[new["sign"]];
                             Block[{JerryI`WolframJSFrontend`fireEvent = fireLocalEvent},
-                                CellListAddNewInput[CellObj[after]["sign"], CellObj[after], new];
+                                If[before // TrueQ,
+                                    CellListAddNewInputBefore[CellObj[after]["sign"], CellObj[after], new];
+                                ,
+                                    CellListAddNewInput[CellObj[after]["sign"], CellObj[after], new];
+                                ];
                                 new // cbk;
                             ];
                         ];                            

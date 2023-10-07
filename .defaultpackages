@@ -291,7 +291,7 @@ cd .. && rm -rf _temp"|>, "defaultPackage" -> True,
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-snippets"|>, "wljs-chatbook-support" -> 
-  <|"name" -> "wljs-chatbook-support", "version" -> "1.0.1", 
+  <|"name" -> "wljs-chatbook-support", "version" -> "0.0.3", 
    "description" -> "Chatbook cells support for WLJS Editor", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
@@ -304,4 +304,15 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
       "https://github.com/KirillBelovTest/wljs-chatbook-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
-   "path" -> "wljs-chatbook-support"|>|>
+   "path" -> "wljs-chatbook-support"|>,
+   "wljs-dev-tools" -> <|"name" -> "wljs-dev-tools", "version" -> "0.0.3", 
+   "description" -> "Dev tools for WLJS Editor", 
+   "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
+./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
+   "wljs-meta" -> <|"wl" -> "src/processor.wl", 
+     "jsmodule" -> "src/kernel.js"|>,  
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-dev-tools"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "path" -> "wljs-dev-tools", "defaultPackage" -> True|>|>
