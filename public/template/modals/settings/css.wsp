@@ -10,7 +10,6 @@
                            </div>
                            <div style="display: flex; margin-right: auto; min-width: 240px; align-items: center;">
                                 
-
                              
                            </div>
                            
@@ -22,43 +21,44 @@
       </div>
 
 <script>
-    {
+    (async () => {
         const i = document.getElementById("<?wsp uid ?>");
         let wait = false;
 
-        const notion = document.getElementById("notion-app");
 
-        server.ask('NotebookCSS').then((res) => {
-            console.log('current styles');
-            console.log(res);
-            const editor = new window.EditorView({
-                doc: res.slice(1,-1),
-                extensions: [
-                    window.EditorExtensionsMinimal.map(e => e()),
-                    window.css(),
-                    EditorView.updateListener.of((v) => {
-                        if (v.docChanged && !wait) {
-                          wait = true;
-                          setTimeout(() => {
-                            wait = false;
-                          }, 300);
+        let res = await server.ask('NotebookCSS');
 
-                          const data = v.state.doc.toString();
-                          console.log(data);
+        console.log('current styles');
+        console.log(res);
+        
+        if (res.trim().slice(1,-1).length < 7) {
+            res = await server.ask('DefaultUICSS');
+        }
+
+        const editor = new window.EditorView({
+            doc: res.slice(1,-1),
+            extensions: [
+                window.EditorExtensionsMinimal.map(e => e()),
+                window.css(),
+                EditorView.updateListener.of((v) => {
+                    if (v.docChanged && !wait) {
+                      wait = true;
+                      setTimeout(() => {
+                        wait = false;
+                      }, 300);
+                      const data = v.state.doc.toString();
+                      console.log(data);
+                      window.GlobalCSSOverride.innerHTML = data;
+                      server.socket.send('Uncompress["<?wsp Compress[update] ?>"] @ ("'+data+'")');
+                      
+                    }
+                })
+            ],
+            parent: i
+        });
 
 
-                          notion.setAttribute("style", data);
-
-                          server.socket.send('Uncompress["<?wsp Compress[update] ?>"] @ ("'+data+'")');
-                          
-                        }
-                    })
-                ],
-                parent: i
-            });
-        })
-
-    }
+    })()
 </script>
 
 <?wsp ] ?>

@@ -111,9 +111,18 @@
             
         </script>
 
+        <script>
+                const styles = `<?wsp NotebookCSS ?>`;
+            
+                const el = document.createElement('style');
+                el.innerHTML = styles;
+                window.GlobalCSSOverride = el;
+                document.head.appendChild(el);            
+        </script>
+
     </head>
     <body class="notion-body">
-        <div id="notion-app" style="<?wsp NotebookCSS ?>">
+        <div id="notion-app">
             <div class="notion-app-inner notion-light-theme" style="">
                 <div style="">
                     <div class="notion-cursor-listener" style="">

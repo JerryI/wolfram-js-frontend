@@ -188,6 +188,15 @@
                 }
             }
         </script>
+
+<script>
+                const styles = `<?wsp NotebookCSS ?>`;
+            
+                const el = document.createElement('style');
+                el.innerHTML = styles;
+                window.GlobalCSSOverride = el;
+                document.head.appendChild(el);            
+        </script>
     </head>
     <body class="notion-body">
         <div id="notion-app">

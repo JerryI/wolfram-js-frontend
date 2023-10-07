@@ -121,7 +121,7 @@ NotebookSettings /: Set[NotebookSettings[key_], data_] := (NotebookSettings = Ap
 NotebookState;
 
 NotebookCSS := JerryI`WolframJSFrontend`css
-NotebookCSS /: Set[NotebookCSS, css_String] := (NotebookCSS := css; Put[css, FileNameJoin[{JerryI`WolframJSFrontend`root, ".gcss"}]])
+NotebookCSS /: Set[NotebookCSS, css_String] := (NotebookCSS := css; Put[css, FileNameJoin[{JerryI`WolframJSFrontend`root, ".scss"}]])
 
 NotebookTheme := JerryI`WolframJSFrontend`defaulttheme
 NotebookTheme /: Set[NotebookTheme, mode_String] := (NotebookTheme := mode; Put[mode, FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]])

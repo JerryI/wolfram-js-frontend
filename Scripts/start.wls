@@ -48,6 +48,10 @@ Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];
 
+DefaultUICSS := With[{},
+  Import[FileNameJoin[{"Packages", Select[Includes["styles"]//Flatten, StringMatchQ[#, ___~~"wljs-cells"~~___~~"defaults.css"~~___]&] // First}], "String"]
+];
+
 isWindows = $OperatingSystem === "Windows";
 isLinux = $OperatingSystem === "Unix";
 
