@@ -302,9 +302,9 @@ CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluat
 ];
 
 standartCallback[origin_, number_, scell_, stype_, sprop_, fireLocalEvent_, length_, cbk_][result_, uid_, display_, epilog_:Null, opts___] := Module[{options, after, type, props, before},
-                Print[{result, uid, display, epilog, opts}];
+                
                 options = Flatten[List[opts]] // Association;
-                Print[options];
+                
 
                 type = If[KeyExistsQ[options, "Type"],
                     options["Type"]
