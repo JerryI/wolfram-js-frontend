@@ -139,19 +139,8 @@ CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
 CellListAddNewInputBefore[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
 
-    If[pos === 1,
-        (* last cell in the list *)
-        CellList[list] = Insert[CellList[list], CellObj[new], pos];
-
-        JerryI`WolframJSFrontend`fireEvent["AddCellBefore"][ CellObj[new], CellList[list][[pos + 1]] ];
-
-        Return[Null, Module];
-    ];   
-    pos = pos - 1;
-
     CellList[list] = Insert[CellList[list], CellObj[new], pos];
-
-    JerryI`WolframJSFrontend`fireEvent["AddCellBefore"][ CellObj[new], CellList[list][[pos + 1]] ];
+    JerryI`WolframJSFrontend`fireEvent["AddCellBefore"][ CellObj[new], CellObj[cell] ];
 ];
 
 CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
