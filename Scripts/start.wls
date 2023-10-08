@@ -4,6 +4,16 @@ ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 
 FileNames[]//Print;
 
+If[$VersionNumber < 12.3,
+  Print["Sorry. It will not work properly for sure on WL < 12.3"];
+  Exit[-1];
+];
+
+If[$VersionNumber < 13.0,
+  Print["A legacy version of WL Kernel was detected. It might not work properly..."];
+  Print["But we will try our best"];
+];
+
 $HistoryLength = 0
 PacletDirectoryLoad[Directory[]]
 
