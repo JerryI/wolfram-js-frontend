@@ -30,6 +30,7 @@ __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the
 ## Short demos
 - [dynamic plots example](https://youtu.be/e6B1LKES_Og?si=kxg0wgbEj7F1uVW-)
 - [dynamic plots example 2](https://youtu.be/9ON7BseR0Jw?si=zPPAXh_rnMDGc3KQ)
+- [ocr xml APP example](https://youtu.be/4ERM46btUHc)
 - [parametric curve animation](https://youtu.be/Q7GBqxpn3Is?si=_S_AVwNIADNk7aH8)
 - [webGl example](https://youtu.be/eM86NDaXV3g?si=p9Hp_swtqQaW3UbH)
 - [voxel automata](https://youtu.be/ka3FFy3X_W8?si=ixyIgo0fZyroYuoT)
