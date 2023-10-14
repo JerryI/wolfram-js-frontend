@@ -27,6 +27,20 @@ Thank you 🍺
 
 __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles; also it is quite outdated)__
 
+## Short demos
+- [dynamic plots example](https://youtu.be/e6B1LKES_Og?si=kxg0wgbEj7F1uVW-)
+- [dynamic plots example 2](https://youtu.be/9ON7BseR0Jw?si=zPPAXh_rnMDGc3KQ)
+- [ocr xml APP example](https://youtu.be/4ERM46btUHc)
+- [parametric curve animation](https://youtu.be/Q7GBqxpn3Is?si=_S_AVwNIADNk7aH8)
+- [webGl example](https://youtu.be/eM86NDaXV3g?si=p9Hp_swtqQaW3UbH)
+- [voxel automata](https://youtu.be/ka3FFy3X_W8?si=ixyIgo0fZyroYuoT)
+- [javascript cells](https://youtu.be/894fye8hZEw?si=iJEz3Anl2Uvuwa4V)
+- [opencl demo](https://youtu.be/3-am2UOJgqc?si=0Ikziehpj--3q1Ss)
+- [math in code](https://youtu.be/zRv1qhMtCms?si=iVWxfXTRPFI55sQq)
+- [interactive curve fitting](https://youtu.be/HueV9Aag05s?si=BLwzCnr2qmh11Lt8)
+- [making slides](https://youtu.be/7cEYJG7nk7U?si=5IztrSO4cAzjGtod)
+
+
 ## Highlights
 
 - __true 100% Wolfram Language__
