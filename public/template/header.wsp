@@ -16,7 +16,7 @@
         <!-- user's plugins (module) -->
         <?wsp Table[ ?> 
             <script type="module" src="/<?wsp i // FileNameToURLPath ?>"></script>
-        <?wsp , {i, Includes["jsmodule"]}]?> 
+        <?wsp , {i, Includes["jsmodule"]}]?>         
 
         <!-- connection to the server (global) -->
         <script type="module"><?wsp LoadPage["template/components/sockets.wsp"] ?></script>
@@ -124,6 +124,10 @@
     <body class="notion-body">
         <div id="notion-app">
             <div class="notion-app-inner notion-light-theme" style="">
+
+                <!-- any headers from libs -->
+                <?wsp Table[ LoadPage[FileNameToURLPath[FileNameJoin[{"Packages", i}]], {}, "Base"->JerryI`WolframJSFrontend`root], {i, Includes["header"]}]?>   
+
                 <div style="">
                     <div class="notion-cursor-listener" style="">
                         <?wsp LoadPage["template/modal.wsp"] ?>

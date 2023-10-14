@@ -1,10 +1,11 @@
 <|"notebook" -> <|"name" -> "Campus", "id" -> "elicited-27740", 
    "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
 b/wolfram-js-frontend/Examples/Conference/Confetti.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 9, 8, 18, 3, 29.212913`8.218149846568348}, 
-     "Instant", "Gregorian", 3.], "symbols" -> <||>, 
+   "date" -> DateObject[{2023, 10, 14, 15, 4, 7.08967`7.60320100797473}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$17]|>, 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
+   "SelectedCell" -> "b502890f-08a1-4b4e-a76d-23cd21529fd22dcb9ae9c"|>, 
  "cells" -> {<|"id" -> "ea01eeeb-63ee-4606-9d63-c24f80b0f2342dcb9ae9c", 
     "type" -> "input", "data" -> 
      ".md\n# Advanced boxes\n*The way how we can customize the output*\n", 
@@ -51,20 +52,21 @@ ript>", "display" -> "html", "sign" -> "elicited-27740",
     "display" -> "markdown", "sign" -> "elicited-27740", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "b502890f-08a1-4b4e-a76d-23cd21529fd22dcb9ae9c", 
-    "type" -> "input", "data" -> ".js\nlet times = 0;\ncore.Confetti = async \
+    "type" -> "input", "data" -> ".js\ncore.times = 0;\ncore.Confetti = async \
 (args, env) => {\n  setTimeout(()=>\n  party.confetti(env.element, \
 {\n\tcount: party.variation.range(0, 30),\n    speed: 200,\n\tsize: \
-party.variation.range(0.6, 1.4),\n  }), 500 + core.times * 200);\n  //add \
-extra delay\n  times = times + 1;\n}\n\nreturn '';", 
+party.variation.range(0.6, 1.4),\n  }), 500 + core.times * 400);\n  //add \
+extra delay\n  core.times = core.times + 1;\n}\n\nreturn '';", 
     "display" -> "codemirror", "sign" -> "elicited-27740", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "591405fc-4418-4ddd-bfc2-966c92af569e", "type" -> "output", 
-    "data" -> "\nlet times = 0;\ncore.Confetti = async (args, env) => {\n  \
+   <|"id" -> "1aae1926-3296-4c37-aa7c-308142d15055", "type" -> "output", 
+    "data" -> "\ncore.times = 0;\ncore.Confetti = async (args, env) => {\n  \
 setTimeout(()=>\n  party.confetti(env.element, {\n\tcount: \
 party.variation.range(0, 30),\n    speed: 200,\n\tsize: \
 party.variation.range(0.6, 1.4),\n  }), 500 + core.times * 200);\n  //add \
-extra delay\n  times = times + 1;\n}\n\nreturn '';", "display" -> "js", 
-    "sign" -> "elicited-27740", "props" -> <|"hidden" -> False|>|>, 
+extra delay\n  core.times = core.times + 1;\n}\n\nreturn '';", 
+    "display" -> "js", "sign" -> "elicited-27740", 
+    "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "d5ffa110-ee2a-4181-a24f-1f9845308a442dcb9ae9c", 
     "type" -> "input", "data" -> ".md\nRegister the decorations", 
     "display" -> "codemirror", "sign" -> "elicited-27740", 

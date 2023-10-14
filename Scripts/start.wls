@@ -57,6 +57,7 @@ Includes["wlkernelstartup"];
 Includes["wl"];
 Includes["styles"];
 Includes["autocomplete"];
+Includes["header"];
 
 DefaultUICSS := With[{},
   Import[FileNameJoin[{"Packages", Select[Includes["styles"]//Flatten, StringMatchQ[#, ___~~"wljs-cells"~~___~~"defaults.css"~~___]&] // First}], "String"]
