@@ -1,0 +1,39 @@
+<|"notebook" -> <|"name" -> "Oxidation", "id" -> "listener-4682d", 
+   "kernel" -> LocalKernel, "objects" :> 
+    <|"058faf03-5daa-487e-b232-0d43aade6ae1" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,10,1,1],[\"Rule\",\"'Event'\",\
+\"'264f52c9-0a91-49b2-ad0c-a1166bc1ce72'\"],1]", 
+       "date" -> DateObject[{2023, 10, 15, 20, 22, 
+          26.557324`8.176759294082743}, "Instant", "Gregorian", 2.]|>, 
+     "88a82086-ad2f-4577-83be-19c073bf81c2" -> 
+      <|"json" -> "[\"EditorView\",[\"Offload\",\"series\"]]", 
+       "date" -> DateObject[{2023, 10, 15, 20, 22, 
+          26.566998`8.176917465131565}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Users/kirill/Library/Application \
+Support/wljs-frontend/Examples/Dev/SymbolicDynamics.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 15, 20, 21, 41.075812`8.366161135443491}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"series" -> <|"date" -> DateObject[{2023, 10, 15, 20, 21, 
+          41.114586`8.3665708995011}, "Instant", "Gregorian", 2.], 
+       "data" -> "FrontEndView[SeriesData[x, 0, {1}, 1, 3, \
+1],\"1:eJxNzE1Pg0AQBmD8iAfj1R9grz0UkmqMiQdA5GvBlqHU9oYUyJbK4O62BX+JP9eFxsTLk8\
+zMO+/dB0bFmaIo/FLi4G5zmm4lbi1y1rBcpIJibWCb0PxYXPyFCeUC+nA7OC7O+8uN5JVhLax6M+S\
+v+u21BHJGc/6SipQPX1SiFMr/OtqXn+gj8CMZaU+518ZxgDP4DKuVreO6tMA5VPf+che4xvS9coyw\
+g2+PHBmJTXUWllFXqpwscO9XU96Z6lf2SPe0nBAyT0Cr2Bi26EHoUtQNuwW2bOdBs/KjNbX4NsPQz\
+zTbfbPMQAuyxYQ8ZECMBhIPfV03PVcvn0e/kl5TiQ==\"]"|>|>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
+   "SelectedCell" -> "24651447-2cb8-441c-a9c3-c6a974cf585d"|>, 
+ "cells" -> {<|"id" -> "24651447-2cb8-441c-a9c3-c6a974cf585d", 
+    "type" -> "input", "data" -> ".md\nSymbolic dynamics", 
+    "display" -> "codemirror", "sign" -> "listener-4682d", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "d2bb2827-8d42-4aae-af59-ffe8beb1d583", "type" -> "output", 
+    "data" -> "\nSymbolic dynamics", "display" -> "markdown", 
+    "sign" -> "listener-4682d", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e67a06da-cda7-47ad-b591-cbd888e62cc0", "type" -> "input", 
+    "data" -> "EventHandler[InputRange[1,10,1,1], Function[n,\n  series = \
+Series[Sin[x], {x,0,n}] //Normal // ToCM6Boxes;\n]]\nEventFire[%, \
+1];\n\nEditorView[series // Offload] // CreateFrontEndObject", 
+    "display" -> "codemirror", "sign" -> "listener-4682d", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
