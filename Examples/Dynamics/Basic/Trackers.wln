@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Downhearted", "id" -> "unforced-7a756", 
+<|"notebook" -> <|"name" -> "Downhearted", "id" -> "arteriosclerosis-330db", 
    "kernel" -> LocalKernel, "objects" -> 
     <|"0ba07137-755a-4827-832c-be76695b496d" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
@@ -112,12 +112,11 @@ ffload\",\"lines$22367\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
 ffload\",\"lines$25496\"]]],[\"Rule\",\"TransitionDuration\",270],[\"Rule\",\
 \"TransitionType\",\"'Linear'\"]]", "date" -> DateObject[
          {2023, 10, 2, 3, 21, 58.3092119`9.518312002554168}, "Instant", 
-         "Gregorian", -7.]|>|>, "path" -> "C:\\Users\\kirill\\source\\repos\\\
-JerryI\\wolfram-js-frontend\\Examples\\Dynamics\\Basic\\Trackers.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 2, 3, 21, 
-      42.5836962`9.381818229441942}, "Instant", "Gregorian", -7.], 
-   "symbols" -> <|"lines$11964" -> 
-      <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
+         "Gregorian", -7.]|>|>, "path" -> "/media/kirill/Daten/KirillTemp/wol\
+fram-js-frontend/Examples/Dynamics/Basic/Trackers.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 15, 17, 43, 51.103047`8.461021770801782}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"lines$11964" -> <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
           21.7580481`9.09019486438677}, "Instant", "Gregorian", -7.]|>, 
      "lines$10476" -> <|"date" -> DateObject[{2023, 10, 2, 2, 45, 
           28.497908`9.207387892888757}, "Instant", "Gregorian", -7.]|>, 
@@ -130,23 +129,24 @@ JerryI\\wolfram-js-frontend\\Examples\\Dynamics\\Basic\\Trackers.wln",
      "lines$25496" -> <|"date" -> DateObject[{2023, 10, 2, 3, 21, 
           58.3342171`9.518498204565518}, "Instant", "Gregorian", -7.]|>|>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
-   "SelectedCell" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa"|>, 
- "cells" -> {<|"id" -> "caf18496-6dc5-4791-9eca-403cd3c354c9", 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$27], 
+   "SelectedCell" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa82d"|>, 
+ "cells" -> {<|"id" -> "caf18496-6dc5-4791-9eca-403cd3c354c982d", 
     "type" -> "input", "data" -> "generate[xy_, symbol_] := With[{dir = 0.05 \
 Normalize[xy]},\n  symbol = (Table[W[{{i,j}, {i,j} + dir / (Norm[{i,j}-xy]^2 \
 + 0.1)}], {i, -1,1,0.2}, {j, -1,1,0.2}] // Flatten) /. \
 {W->Identity}\n];\nSetAttributes[generate, HoldRest]", 
-    "display" -> "codemirror", "sign" -> "unforced-7a756", 
+    "display" -> "codemirror", "sign" -> "arteriosclerosis-330db", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa", "type" -> "input", 
+   <|"id" -> "e308e619-38d1-402d-a9b7-6c07c6bafaaa82d", "type" -> "input", 
     "data" -> "LeakyModule[{lines}, \n  generate[{0,0}, lines];\n  \
-Graphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,2}, \
-{2,-2}],\n\t\t{\"mousemove\"->Function[xy, generate[xy, \
+Graphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,-2}, \
+{2,2}],\n\t\t{\"mousemove\"->Function[xy, generate[xy, \
 lines]]}\n\t],\n\tBlack,\n   Line[lines // Offload]\n  }, \
 TransitionDuration->270, TransitionType->\"Linear\"]\n]", 
-    "display" -> "codemirror", "sign" -> "unforced-7a756", 
+    "display" -> "codemirror", "sign" -> "arteriosclerosis-330db", 
     "props" -> <|"hidden" -> False, "projected" -> False|>|>, 
-   <|"id" -> "eea79ca5-d31f-4425-8902-600a7dcc8804", "type" -> "input", 
-    "data" -> "", "display" -> "codemirror", "sign" -> "unforced-7a756", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+   <|"id" -> "eea79ca5-d31f-4425-8902-600a7dcc880482d", "type" -> "input", 
+    "data" -> "", "display" -> "codemirror", 
+    "sign" -> "arteriosclerosis-330db", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

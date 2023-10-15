@@ -1,31 +1,45 @@
-<|"notebook" -> <|"name" -> "Assistant", "id" -> "monkey-9f9d5", 
-   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "C:\\Users\\vasinkir\
-\\AppData\\Roaming\\wljs-frontend\\Examples\\Dynamics\\Basic\\CurvesFit.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 16, 15, 48, 
-      1.3783392`7.891931094105952}, "Instant", "Gregorian", 2.], 
-   "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$31], "symbols" -> <||>, 
-   "SelectedCell" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9"|>, 
- "cells" -> {<|"id" -> "adeeed92-296a-42e7-a8b6-ea7a02c73bacbb9", 
+<|"notebook" -> <|"name" -> "Assistant", "id" -> "rely-fee1e", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"d665eb03-c736-4fe6-8fb8-3779f0d2db22" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0.95,0.9],[\"Event\
+Listener\",[\"Rectangle\",[\"List\",-10,-10],[\"List\",10,10]],[\"Rule\",\"'c\
+lick'\",\"'e87c7eb1-f5a2-4f5f-b9c4-4a9a38d3e98d'\"]],[\"PointSize\",0.1],[\"R\
+GBColor\",1,0,0],[\"Point\",[\"Hold\",\"points\"]],[\"RGBColor\",0,1,1],[\"Li\
+ne\",[\"Hold\",\"fit\"]]],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,1],[\
+\"List\",-1,1]]]]", "date" -> DateObject[{2023, 10, 15, 17, 43, 
+          7.483848`7.626699945470473}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/media/kirill/Daten/KirillTemp/wolfram-js-frontend/Examples/Dyn\
+amics/Basic/CurvesFit.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 15, 17, 42, 53.253653`8.478924378802201}, 
+     "Instant", "Gregorian", 2.], "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$22], 
+   "symbols" -> <|"points" -> <|"date" -> DateObject[{2023, 10, 15, 17, 43, 
+          7.529949`7.62936702200469}, "Instant", "Gregorian", 2.]|>, 
+     "fit" -> <|"date" -> DateObject[{2023, 10, 15, 17, 43, 
+          7.581617`7.632336828672164}, "Instant", "Gregorian", 2.]|>|>, 
+   "SelectedCell" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9fc7"|>, 
+ "cells" -> {<|"id" -> "adeeed92-296a-42e7-a8b6-ea7a02c73bacbb9fc7", 
     "type" -> "input", "data" -> ".md\n# Fitting curves\nexample", 
-    "display" -> "codemirror", "sign" -> "monkey-9f9d5", 
+    "display" -> "codemirror", "sign" -> "rely-fee1e", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "756e9769-2a32-4b3e-8490-114988ca62dabb9", "type" -> "output", 
-    "data" -> "\n# Fitting curves\nexample", "display" -> "markdown", 
-    "sign" -> "monkey-9f9d5", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9", "type" -> "input", 
+   <|"id" -> "756e9769-2a32-4b3e-8490-114988ca62dabb9fc7", 
+    "type" -> "output", "data" -> "\n# Fitting curves\nexample", 
+    "display" -> "markdown", "sign" -> "rely-fee1e", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9fc7", "type" -> "input", 
     "data" -> "fit = {};\npoints = {};\norder = 1;\n\nlineFit[points_] := \
 With[{o = Table[CM6Superscript[x, i], {i, 0, order}]},\n  With[{f = \
 Fit[points, o, x]}, \n    Table[{x, f}, {x, -1,1, 0.025}]\n  \
-]\n]\n\nGraphics[{\n  RGBColor[1,1,1],\n  EventHandler[Rectangle[{-10,10}, \
-{10,-10}], {\"click\"->Function[xy, \n    points = Append[points, xy]; \n    \
-fit = lineFit[points]\n  ]}],\n  PointSize[0.1],\n  Red, Point[points//Hold], \
-Cyan, Line[fit//Hold]\n}, PlotRange->{{-1,1}, {-1,1}}]", 
-    "display" -> "codemirror", "sign" -> "monkey-9f9d5", 
-    "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "dd22b1c5-fe23-45b4-b9e2-b5d9f569152ebb9", "type" -> "input", 
+]\n]\n\nGraphics[{\n  RGBColor[1,0.95,0.9],\n  \
+EventHandler[Rectangle[{-10,-10}, {10,10}], {\"click\"->Function[xy, \n    \
+points = Append[points, xy]; \n    fit = lineFit[points]\n  ]}],\n  \
+PointSize[0.1],\n  Red, Point[points//Hold], Cyan, Line[fit//Hold]\n}, \
+PlotRange->{{-1,1}, {-1,1}}]", "display" -> "codemirror", 
+    "sign" -> "rely-fee1e", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, 
+   <|"id" -> "dd22b1c5-fe23-45b4-b9e2-b5d9f569152ebb9fc7", "type" -> "input", 
     "data" -> "Function[data, points = {}; fit = {};] // \
 InputButton[\"Clear\"]\nFunction[data, order = data; fit = lineFit[points]] \
-// InputRange[1, 5, 1]", "display" -> "codemirror", "sign" -> "monkey-9f9d5", 
+// InputRange[1, 5, 1]", "display" -> "codemirror", "sign" -> "rely-fee1e", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>}, 
  "serializer" -> "jsfn3"|>
