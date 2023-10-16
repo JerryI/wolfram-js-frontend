@@ -1,0 +1,16 @@
+<|"notebook" -> <|"name" -> "Continence", "id" -> "unerring-45f88", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
+b/wolfram-js-frontend/Examples/UsersInput/TableDemo.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 16, 18, 28, 46.03524`8.41566538825644}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$31], 
+   "SelectedCell" -> "51df27d4-d923-4971-91cc-e7ee8f70f27a"|>, 
+ "cells" -> {<|"id" -> "51df27d4-d923-4971-91cc-e7ee8f70f27a54d", 
+    "type" -> "input", "data" -> "list = Table[i j, {i,5}, {j,5}];\nhandler = \
+InputTable`EventHelper[list];\ntextstr = \"\";\nEventHandler[InputTable[list, \
+\"Height\"->150], Function[data, \n  handler[data];\n  textstr = list \
+//MatrixForm // ToCM6Boxes;\n]]\n\nEditorView[textstr // Offload] // \
+CreateFrontEndObject\n", "display" -> "codemirror", 
+    "sign" -> "unerring-45f88", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>
