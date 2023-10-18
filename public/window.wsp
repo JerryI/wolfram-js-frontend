@@ -201,9 +201,13 @@
     <body class="notion-body">
         <div id="notion-app">
             <div class="notion-app-inner notion-light-theme" style="">
-            <?wsp Table[ LoadPage[FileNameToURLPath[FileNameJoin[{"Packages", i}]], {}, "Base"->JerryI`WolframJSFrontend`root], {i, Includes["header"]}]?>   
 
                 <div style="">
+                    <div id="custom-header-injection"><?wsp NotebookHEAD ?></div>
+                    <script> window.GlobalHEADOverride = document.getElementById('custom-header-injection'); </script>                
+                                    
+                    <?wsp Table[ LoadPage[FileNameToURLPath[FileNameJoin[{"Packages", i}]], {}, "Base"->JerryI`WolframJSFrontend`root], {i, Includes["header"]}]?>   
+
                     <div class="notion-cursor-listener" id="<?wsp $CurrentRequest["Query", "notebook"] ?>">
 
 

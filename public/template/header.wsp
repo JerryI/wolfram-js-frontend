@@ -111,13 +111,14 @@
             
         </script>
 
-        <script>
+        <script> {
                 const styles = `<?wsp NotebookCSS ?>`;
             
                 const el = document.createElement('style');
                 el.innerHTML = styles;
                 window.GlobalCSSOverride = el;
-                document.head.appendChild(el);            
+                document.head.appendChild(el);    
+            }
         </script>
 
     </head>
@@ -125,10 +126,12 @@
         <div id="notion-app">
             <div class="notion-app-inner notion-light-theme" style="">
 
-                <!-- any headers from libs -->
-                <?wsp Table[ LoadPage[FileNameToURLPath[FileNameJoin[{"Packages", i}]], {}, "Base"->JerryI`WolframJSFrontend`root], {i, Includes["header"]}]?>   
-
                 <div style="">
+                    <div id="custom-header-injection"><?wsp NotebookHEAD ?></div>
+                    <script> window.GlobalHEADOverride = document.getElementById('custom-header-injection'); </script>                
+                    <!-- any headers from libs -->
+                    <?wsp Table[ LoadPage[FileNameToURLPath[FileNameJoin[{"Packages", i}]], {}, "Base"->JerryI`WolframJSFrontend`root], {i, Includes["header"]}]?>   
+
                     <div class="notion-cursor-listener" style="">
                         <?wsp LoadPage["template/modal.wsp"] ?>
 

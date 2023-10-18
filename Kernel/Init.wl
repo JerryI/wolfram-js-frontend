@@ -10,6 +10,8 @@ JerryI`WolframJSFrontend`defaulttheme = If[FileExistsQ[FileNameJoin[{JerryI`Wolf
 
 JerryI`WolframJSFrontend`css = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".scss"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".scss"}]], ""]
 
+JerryI`WolframJSFrontend`head = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".shead"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".shead"}]], ""]
+
 JerryI`WolframJSFrontend`settings = If[FileExistsQ[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], Get[FileNameJoin[{JerryI`WolframJSFrontend`root, ".settings"}]], <|"displayForm"->True, "background"->True, "autosave"->1000*60*3, "fastboot"->False|>]
 
 JerryI`WolframJSFrontend`$PublicDirectory = Directory[]

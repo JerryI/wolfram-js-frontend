@@ -91,6 +91,7 @@ NotebookStoreOperate::usage = ""
 NotebookExport::usage = "export to standalone html"
 
 NotebookCSS::usage = ""
+NotebookHEAD::usage = ""
 
 NotebookTheme::usage = "set the mode dark/light"
 NotebookSettings::usage = ""
@@ -122,6 +123,10 @@ NotebookState;
 
 NotebookCSS := JerryI`WolframJSFrontend`css
 NotebookCSS /: Set[NotebookCSS, css_String] := (NotebookCSS := css; Put[css, FileNameJoin[{JerryI`WolframJSFrontend`root, ".scss"}]])
+
+NotebookHEAD := JerryI`WolframJSFrontend`head
+NotebookHEAD /: Set[NotebookHEAD, HEAD_String] := (NotebookHEAD := HEAD; Put[HEAD, FileNameJoin[{JerryI`WolframJSFrontend`root, ".shead"}]])
+
 
 NotebookTheme := JerryI`WolframJSFrontend`defaulttheme
 NotebookTheme /: Set[NotebookTheme, mode_String] := (NotebookTheme := mode; Put[mode, FileNameJoin[{JerryI`WolframJSFrontend`root, ".theme"}]])
