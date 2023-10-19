@@ -73,7 +73,7 @@
             }
 
             window.resetBackground = () => {
-                if (!isElectron() || ifLinux() || ifWin()) {
+                if (!isElectron() || ifLinux()) {
                     document.body.style.background = "var(--topbar-background)";
                 } else {
                     document.body.style.background = "";

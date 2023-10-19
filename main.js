@@ -173,20 +173,52 @@ const setHID = (mainWindow) => {
   })
 }
 
+const { PARAMS, VALUE,  MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica-electron');
+
+const isWindows = process.platform === 'win32'
+
 const createWindow = (url, focus = true, hidefirst = true) => {
-    const win = new BrowserWindow({
-      vibrancy: "sidebar", // in my case...
-      frame: true,
-      titleBarStyle: 'hiddenInset',
-      width: 800,
-      height: 600,
-      title: 'Root',
-      show: !hidefirst,
-      webPreferences: {
-        preload: path.join(__dirname, 'preloadMain.js')
+    let win;
+
+    if (isWindows && IS_WINDOWS_11) {
+      win = new MicaBrowserWindow({
+        frame: true,
+        titleBarStyle: 'hiddenInset',
+        width: 800,
+        height: 600,
+        title: 'Root',
+        show: !hidefirst,
+        webPreferences: {
+          preload: path.join(__dirname, 'preloadMain.js')
+        }
+        
+      });
+
+      //acryllic
+      if (IS_WINDOWS_11) {
+        win.setMicaAcrylicEffect();
+        win.setAutoTheme();
+      } else {
+        win.setAcrylic();
       }
-      
-    });
+
+      win.setRoundedCorner();	
+
+    } else {
+      win = new BrowserWindow({
+        vibrancy: "sidebar", // in my case...
+        frame: true,
+        titleBarStyle: 'hiddenInset',
+        width: 800,
+        height: 600,
+        title: 'Root',
+        show: !hidefirst,
+        webPreferences: {
+          preload: path.join(__dirname, 'preloadMain.js')
+        }
+        
+      });
+    }
 
     win.webContents.on('found-in-page', (event, result) => {
       console.log(result)
