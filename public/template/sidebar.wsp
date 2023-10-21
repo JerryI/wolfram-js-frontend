@@ -310,7 +310,7 @@
             setTimeout(()=>{
                 textTheme.innerText = ""
             }, 500);
-            document.body.style.background = "transparent";
+            document.body.style.background = "var(--topbar-background)";
             window.resetBackground();
             
             runColorMode((isDarkMode) => {
