@@ -30,10 +30,13 @@ NotebookStore /: Unset[NotebookStore[key_]] := AskMaster[Global`NotebookStoreOpe
 
 Protect[NotebookStore]
 
-Unprotect[Select];
+
+
+
+(*Unprotect[Select];
 Select[FrontEndInstances, MetaMarker[label_]] ^:= Module[{},
   AskMaster[Global`NotebookAskFront[FindMetaMarker[label]]]
-]; 
+]; *)
 
 Global`$out = Null;
 
@@ -45,15 +48,6 @@ SetAttributes[FrontEndRef, HoldFirst];
 FrontEndViewWrapper[expr_, _] := expr;
 
 (* autoconvertion of the frontend object back to the original expressions *)
-FrontEndExecutableWrapper[uid_] :=  (Print["Importing string"]; ImportString[
-  Function[res, If[!StringQ[res], 
-                  JerryI`WolframJSFrontend`Evaluator`objects[uid] = AskMaster[Global`NotebookGetObjectForMe[uid]];
-                  JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"]
-                  ,
-                  res
-    ]
-  ] @ (JerryI`WolframJSFrontend`Evaluator`objects[uid]["json"])
-, "ExpressionJSON"] // ReleaseHold );
 
 FrontEndInlineExecutableWrapper[str_String] := str // Uncompress // ReleaseHold
 
@@ -62,8 +56,6 @@ IconizeWrapper[expr_] := expr
 FrontEndRef[FrontEndExecutableWrapper[uid_]] := FrontEndExecutableHold[uid];
 FrontEndRef[FrontEndExecutable[uid_]]        := FrontEndExecutableHold[uid];
 
-
-
 (* exceptional case, when the frontened object is set *)
 SetFrontEndObject[FrontEndExecutableWrapper[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd);
@@ -71,53 +63,55 @@ Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//S
 SetFrontEndObject[FrontEndRef[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd);
 
-(* special post-handler, only used for upvalues *)
-CM6Form[e_] := e
-
-Unprotect[TemplateBox]
-ClearAll[TemplateBox]
-TemplateBox[list_List, "RowDefault"] := CM6Grid[{list}]
-
-ToCM6Boxes[expr_] := StringReplace[(expr // ToBoxes) /. Global`$CMReplacements // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
-
+ToCM6Boxes[expr_] := ToString[expr, StandardForm];
 ToCM6Boxes[NoBoxes[expr_]] ^:= StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
 If[!TrueQ[JerryI`WolframJSFrontend`settings["displayForm"]],
   ToCM6Boxes[expr_] := StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 ];
 
+(* some buggy replacements, that cannot be threated differently *)
+JerryI`WolframJSFrontend`Evaluator`replacements = {};
+
+JerryI`WolframJSFrontend`Evaluator`KeepExpression[item_] := With[{},
+    JerryI`WolframJSFrontend`Evaluator`replacements = {JerryI`WolframJSFrontend`Evaluator`replacements,
+      {
+        Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ],
+        item[x__] :> With[{$ouid = CreateUUID[]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ]
+      }} // Flatten
+    ]
+
+
+RowBoxFlatten[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
+
+
+Unprotect[ToString]
+ToString[expr_, StandardForm] := StringReplace[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements // ToBoxes) /. {RowBox->RowBoxFlatten} // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
+
+
+(*CMCrawler[a_[args__], StandardForm] := With[{args = (CMCrawler[#, StandardForm] &/@ List[args])}, CMCrawler[a, StandardForm]@@x]
+CMCrawler[a_, StandardForm] := a
+CMCrawler[a_] := CMCrawler[a, StandardForm]*)
+
+
+
+
+JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements = {}
+
+ExpressionMaker[rule_Rule, StandardForm] := JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements = {JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements, rule} // Flatten;
+
+SetAttributes[CMCrawler, HoldFirst]
+
 (* iconize *)
 Unprotect[Iconize]
 ClearAll[Iconize]
 
-(* unsupported tagbox *)
-RowBoxToCM[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
-CMGrid[x_List, y__] := CMGrid[x]
-TagBoxToCM[x_, y__] := x
-
-
-
-
-(* on-output convertion *)
-$CMReplacements = {TemplateBox[list_, RowDefault] :> CM6Grid[{list}], RowBox -> RowBoxToCM, SqrtBox -> CM6Sqrt, FractionBox -> CM6Fraction, 
- GridBox -> CM6Grid, TagBox -> TagBoxToCM, SubscriptBox -> CM6Subscript, SuperscriptBox -> CM6Superscript}
-
-(* on-input convertion *)
-$CMExpressions = {
-        Global`FrontEndExecutable -> Global`FrontEndExecutableWrapper,
-        Global`FrontEndView -> Global`FrontEndViewWrapper,
-        Global`FrontEndBoxTemporal -> Global`FrontEndBoxTemporalWrapper,
-        Global`FrontEndInlineExecutable -> Global`FrontEndInlineExecutableWrapper,
-        Global`CM6Sqrt -> Sqrt,
-        Global`CM6Fraction -> Global`CM6FractionWrapper,
-        Global`CM6Grid -> Identity,
-        Global`CM6Subscript -> Subscript,
-        Global`CM6Superscript -> Power}
-
-CM6FractionWrapper[x_,y_] := x/y;
-
 Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
-  If[StringLength[compressed] > 39400,
+  If[StringLength[compressed] > 3,
     Message["The given expression is too large even being compressed using gzip"];
     With[{name = "iconized-"<>StringTake[CreateUUID[], 5]<>".wl"},
       Export[name, expr];
@@ -130,21 +124,6 @@ Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
 ]
 
 ExprObjectExport[expr_, uid_String] := CreateFrontEndObject[expr, uid]
-
-EventObject /: MakeBoxes[EventObject[assoc_], StandardForm] := 
- With[{$ouid = CreateUUID[]}, 
-  If[KeyExistsQ[assoc, "view"], 
-   Global`$NewDefinitions[$ouid] = <|
-     "json" -> 
-      ExportString[assoc["view"], "ExpressionJSON", "Compact" -> 0], 
-     "date" -> Now|>;
-
-   $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]];
-   "FrontEndExecutable["<>MakeBoxes[$ouid, StandardForm]<>"]", 
-  (*ELSE*)
-   "EventObject["<>MakeBoxes[assoc, StandardForm]<>"]"
-  ]
-]
 
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WSP`"}];
 
@@ -178,11 +157,17 @@ ClearAll[EvaluationCell];
 
 
 WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = CreateUUID[]},
+ 
   Block[{Global`$NewDefinitions = <||>, Global`$PostEval = Null, EvaluationCell = Function[Null, $CellUid], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
-      $evaluated = (ToExpression[str, InputForm, Hold] /. Global`$CMExpressions // ReleaseHold);
-      
+     
+      $evaluated = ToExpression[str, InputForm, Hold] ;
+     
+      $evaluated = $evaluated /. JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements;
+   
+      $evaluated = $evaluated // ReleaseHold;
+
       (* a shitty analogue of % symbol *)
       Global`$out = $evaluated;
 
@@ -190,21 +175,22 @@ WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = 
       If[block === True, $evaluated = Null]; 
 
     (* replaces the output with a registered WebObjects/FrontEndObjects and releases created held frontend objects *)
-    With[{$result = ($evaluated // Global`CM6Form) /. JerryI`WolframJSFrontend`WebObjects`replacement /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}},
+    With[{$string = ToString[$evaluated, StandardForm]},
+
       (* each creation of FrontEndExecutable extends the objects to $NewDefinitiions, now me merge it with the local storage *)
       JerryI`WolframJSFrontend`Evaluator`objects = Join[JerryI`WolframJSFrontend`Evaluator`objects, Global`$NewDefinitions];
       
       (* truncate the output, if it is too long and create a fake object to represent it *)
-      With[{$string = $result // Global`ToCM6Boxes},
+      With[{},
 
         callback[
           If[(StringLength[$string] > 2^14 && !(Global`$ignoreLongStrings)) || StringLength[$string] > 2^16,
             With[{dumpid = CreateUUID[], len = StringLength[$string], short = StringTake[$string, 100]},
               With[{expr = Global`ExprObjectExport[Global`FrontEndTruncated[short, len], dumpid]},
                 (* keep the real data inside the local storage *)
-                JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = <|"json"->ExportString[$result, "ExpressionJSON"], "date"->Now|>;          
+                JerryI`WolframJSFrontend`Evaluator`objects[dumpid] = <|"json"->ExportString[$evaluated, "ExpressionJSON"], "date"->Now|>;          
 
-                expr /. {Global`FrontEndExecutableHold -> Global`FrontEndExecutable}    //  Global`ToCM6Boxes
+                "FrontEndExecutable[\""<>dumpid<>"\"]"
               ]
             ]
           ,

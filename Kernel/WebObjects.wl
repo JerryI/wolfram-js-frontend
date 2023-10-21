@@ -11,19 +11,12 @@ BeginPackage["JerryI`WolframJSFrontend`WebObjects`", {"JerryI`WolframJSFrontend`
     - provides a direct link to communicate with frontened
 *)
 
-RegisterWebObject::usage = "RegisterWebObject register objects, which are FrontEndExecutables by the default (have JS representation)"
-LoadWebObjects::usage = "LoadWebObjects loads all objects into memory and makes a replacement table"
 
 FHold::usage = "alias to FrontEndOnly"
 
 CreateFrontEndObject::usage = "Create an object"
 
 Begin["`Private`"]; 
-
-JerryI`WolframJSFrontend`WebObjects`replacement = {};
-JerryI`WolframJSFrontend`WebObjects`list = {};
-
-
 
 (* create and extend the definitionsof the kernel *)
 CreateFrontEndObject[expr_, $iouid_String:Null, OptionsPattern[]] := Module[{},
@@ -36,42 +29,20 @@ With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
       $ExtendDefinitions[$ouid, sym]; 
     ];
     
-    Global`FrontEndExecutableHold[$ouid] 
+    Global`FrontEndExecutable[$ouid] 
   ]
 ]]
 
 Options[CreateFrontEndObject] = {"Override"->False, "Type"->"Shared"}
 
-
-
-SetAttributes[FHold, HoldFirst]
-
-RegisterWebObject[sym_] := (
-  JerryI`WolframJSFrontend`WebObjects`list = {
-    JerryI`WolframJSFrontend`WebObjects`list, sym
-  } // Flatten;
+JerryI`WolframJSFrontend`Extensions`RegisterFrontEndObject[sym_] := (
+  Unprotect[sym];
+  sym /: MakeBoxes[sym[agrs__], StandardForm] := With[{o = CreateFrontEndObject[sym[agrs]]},
+    MakeBoxes[o, StandardForm]
+  ];
 )
 
 
-JerryI`WolframJSFrontend`Extensions`RegisterFrontEndObject = RegisterWebObject;
-
-
-LoadWebObjects := (
-  JerryI`WolframJSFrontend`WebObjects`replacement = Table[
-    With[{item = i},
-      {
-        Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
-          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
-          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ],
-        item[x__] :> With[{$ouid = CreateUUID[]}, 
-          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
-          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ]
-      }
-    ]
-   , {i, JerryI`WolframJSFrontend`WebObjects`list}] // Flatten;
-
-  Print[Blue<>"done!"]; Print[Reset];
-) // Quiet;
 
 End[];
 EndPackage[];

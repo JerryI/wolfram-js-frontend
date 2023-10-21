@@ -1,10 +1,10 @@
 <|"notebook" -> <|"name" -> "Assistant", "id" -> "creamer-ca1dd", 
    "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
 b/wolfram-js-frontend/Examples/Dynamics/Basic/CurvesFit.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 16, 18, 33, 
-      39.59212`8.3501837356335}, "Instant", "Gregorian", 2.], 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 21, 16, 28, 
+      3.14415`7.250078245371381}, "Instant", "Gregorian", 2.], 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$23], "symbols" -> <||>, 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$33], "symbols" -> <||>, 
    "SelectedCell" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9fc7a79"|>, 
  "cells" -> {<|"id" -> "adeeed92-296a-42e7-a8b6-ea7a02c73bacbb9fc7a79", 
     "type" -> "input", "data" -> ".md\n# Fitting curves\nexample", 
@@ -17,12 +17,13 @@ b/wolfram-js-frontend/Examples/Dynamics/Basic/CurvesFit.wln",
    <|"id" -> "df81c674-082a-4a7b-b521-9e71d081270bbb9fc7a79", 
     "type" -> "input", "data" -> "fit = {};\npoints = {};\norder = \
 1;\nequation = \"\";\n\nlineFit[points_] := With[{o = Table[CM6Superscript[x, \
-i], {i, 0, order}]},\n  With[{f = Fit[points, o, x]}, \n    equation = f // \
-ToCM6Boxes;\n    Table[{x, f}, {x, -1,1, 0.025}]\n  ]\n]\n\nGraphics[{\n  \
-RGBColor[1,0.95,0.9],\n  EventHandler[Rectangle[{-10,-10}, {10,10}], \
-{\"click\"->Function[xy, \n    points = Append[points, xy]; \n    fit = \
-lineFit[points]\n  ]}],\n  PointSize[0.1],\n  Red, Point[points//Hold], Cyan, \
-Line[fit//Hold]\n}, PlotRange->{{-1,1}, {-1,1}}]", "display" -> "codemirror", 
+i], {i, 0, order}]},\n  With[{f = Fit[points, o, x]}, \n    equation = \
+ToString[f, StandardForm];\n    Table[{x, f}, {x, -1,1, 0.025}]\n  \
+]\n]\n\nGraphics[{\n  RGBColor[1,0.95,0.9],\n  \
+EventHandler[Rectangle[{-10,-10}, {10,10}], {\"click\"->Function[xy, \n    \
+points = Append[points, xy]; \n    fit = lineFit[points]\n  ]}],\n  \
+PointSize[0.1],\n  Red, Point[points//Hold], Cyan, Line[fit//Hold]\n}, \
+PlotRange->{{-1,1}, {-1,1}}]", "display" -> "codemirror", 
     "sign" -> "creamer-ca1dd", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>, 
    <|"id" -> "dd22b1c5-fe23-45b4-b9e2-b5d9f569152ebb9fc7a79", 

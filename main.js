@@ -242,7 +242,7 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           // Only show it when right-clicking images
           visible: parameters.selectionText.trim().length > 0,
           click: (e) => {
-            win.webContents.send('context', 'Evaluate');  
+            win.webContents.send('context', 'Identity');  
             
           }
         },        

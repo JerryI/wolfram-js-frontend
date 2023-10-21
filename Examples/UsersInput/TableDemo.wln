@@ -1,16 +1,18 @@
 <|"notebook" -> <|"name" -> "Continence", "id" -> "unerring-45f88", 
-   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
+   "kernel" -> LocalKernel, "objects" :> <||>, "path" -> "/Volumes/Data/Githu\
 b/wolfram-js-frontend/Examples/UsersInput/TableDemo.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 10, 16, 18, 28, 46.03524`8.41566538825644}, 
-     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "date" -> DateObject[{2023, 10, 21, 16, 32, 40.020996`8.354862870943867}, 
+     "Instant", "Gregorian", 2.], "symbols" -> 
+    <|"textstr" -> <|"date" -> DateObject[{2023, 10, 21, 16, 33, 
+          8.827885`7.698431653992383}, "Instant", "Gregorian", 2.]|>|>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$31], 
-   "SelectedCell" -> "51df27d4-d923-4971-91cc-e7ee8f70f27a"|>, 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$49], 
+   "SelectedCell" -> "51df27d4-d923-4971-91cc-e7ee8f70f27a54d"|>, 
  "cells" -> {<|"id" -> "51df27d4-d923-4971-91cc-e7ee8f70f27a54d", 
     "type" -> "input", "data" -> "list = Table[i j, {i,5}, {j,5}];\nhandler = \
 InputTable`EventHelper[list];\ntextstr = \"\";\nEventHandler[InputTable[list, \
-\"Height\"->150], Function[data, \n  handler[data];\n  textstr = list \
-//MatrixForm // ToCM6Boxes;\n]]\n\nEditorView[textstr // Offload] // \
-CreateFrontEndObject\n", "display" -> "codemirror", 
+\"Height\"->150], Function[data, \n  handler[data];\n  textstr = \
+ToString[list //MatrixForm, StandardForm];\n]]\n\nEditorView[textstr // \
+Offload] // CreateFrontEndObject\n", "display" -> "codemirror", 
     "sign" -> "unerring-45f88", "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn3"|>
