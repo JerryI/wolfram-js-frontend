@@ -22,18 +22,21 @@ Begin["`Private`"];
 CreateFrontEndObject[expr_, $iouid_String:Null, OptionsPattern[]] := Module[{},
 With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
   With[{sym = <|"json"->ExportString[expr, "ExpressionJSON", "Compact" -> 0], "date"->Now |>},
-
-    If[OptionValue["Override"] || OptionValue["Type"] === "Private",
-      JerryI`WolframJSFrontend`Evaluator`objects[$ouid] = sym;
-    ,
-      $ExtendDefinitions[$ouid, sym]; 
-    ];
     
-    Global`FrontEndExecutable[$ouid] 
+    If[OptionValue["Inline"],
+      Global`FrontEndExecutableInline[Compress[expr]] 
+    ,
+      If[OptionValue["Override"] || OptionValue["Type"] === "Private",
+        JerryI`WolframJSFrontend`Evaluator`objects[$ouid] = sym;
+      ,
+        $ExtendDefinitions[$ouid, sym]; 
+      ] 
+    ]
+    
   ]
 ]]
 
-Options[CreateFrontEndObject] = {"Override"->False, "Type"->"Shared"}
+Options[CreateFrontEndObject] = {"Override"->False, "Type"->"Shared", "Inline"->False}
 
 JerryI`WolframJSFrontend`Extensions`RegisterFrontEndObject[sym_] := (
   Unprotect[sym];

@@ -63,6 +63,7 @@ Set[FrontEndExecutableWrapper[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//S
 SetFrontEndObject[FrontEndRef[uid_], expr_] ^:= SetFrontEndObject[uid, expr];
 Set[FrontEndRef[uid_], expr_] ^:= (SetFrontEndObject[uid, expr]//SendToFrontEnd);
 
+(* just for the backward compatibillity *)
 ToCM6Boxes[expr_] := ToString[expr, StandardForm];
 ToCM6Boxes[NoBoxes[expr_]] ^:= StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
@@ -70,7 +71,7 @@ If[!TrueQ[JerryI`WolframJSFrontend`settings["displayForm"]],
   ToCM6Boxes[expr_] := StringReplace[ToString[expr, InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 ];
 
-(* some buggy replacements, that cannot be threated differently *)
+(* some buggy replacements, that cannot be threated differently. FUCK WOLFRAM cuz you cannot control Boxes on Graphics and Image *)
 JerryI`WolframJSFrontend`Evaluator`replacements = {};
 
 JerryI`WolframJSFrontend`Evaluator`KeepExpression[item_] := With[{},
