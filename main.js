@@ -209,7 +209,7 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           height: 600,
           show: false,
           title: 'Root',
-          //transparent:true,
+          transparent:true,
           show: !hidefirst,
           webPreferences: {
             preload: path.join(__dirname, 'preloadMain.js')
