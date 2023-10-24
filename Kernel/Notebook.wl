@@ -78,6 +78,9 @@ NotebookFocus::usage = "focus on a tab"
 NotebookEvaluateAll::usage = ""
 NotebookEvaluateInit::usage = ""
 
+NotebookDeleteSelected::usage = ""
+NotebookClearAllOutput::usage = ""
+
 NotebookEvaluateProjected::usage = ""
 NotebookWindowReady::usage = ""
 NotebookWindowReady2::usage = ""
@@ -860,6 +863,8 @@ NotebookOperate[cellid_, op_] := (
 );
 
 
+
+
 NotebookOperate[cellid_, op_, arg__] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         op[CellObj[cellid], arg];
@@ -887,6 +892,18 @@ NotebookEvaluateInit := With[{list = CellList[$AssociationSocket[Global`client]]
 
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
         CellObjEvaluate[#, jsfn`Processors] &/@ Select[list, Function[x, (x["type"] === "input" && TrueQ[x["props"]["init"]])]];
+    ];
+];
+
+NotebookDeleteSelected := With[{},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellListRemoveAccurate[jsfn`Notebooks[Global`client // $AssociationSocket]["SelectedCell"] // CellObj] 
+    ];
+];
+
+NotebookClearAllOutput := With[{list = CellList[$AssociationSocket[Global`client]]},
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        CellListRemoveAccurate[#] &/@ Select[list, Function[x, (x["type"] === "output")]];
     ];
 ];
 

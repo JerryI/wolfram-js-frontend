@@ -30,7 +30,8 @@ With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]},
         JerryI`WolframJSFrontend`Evaluator`objects[$ouid] = sym;
       ,
         $ExtendDefinitions[$ouid, sym]; 
-      ] 
+      ];
+      Global`FrontEndExecutable[$ouid] 
     ]
     
   ]

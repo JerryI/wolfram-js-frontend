@@ -436,7 +436,13 @@
                 server.socket.send('NotebookEvaluateAll');
 
             if (id === 'EIC')
-                server.socket.send('NotebookEvaluateInit');                
+                server.socket.send('NotebookEvaluateInit');   
+            
+            if (id === 'COC')
+                server.socket.send('NotebookClearAllOutput');    
+            
+            if (id === 'DS')
+                server.socket.send('NotebookDeleteSelected');                
 
             if (id === 'ShareHTML')
                 server.socket.send('NotebookExport["html"];'); 

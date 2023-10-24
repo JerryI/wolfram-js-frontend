@@ -173,7 +173,7 @@ const setHID = (mainWindow) => {
   })
 }
 
-const { PARAMS, VALUE,  MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica-electron');
+const {IS_WINDOWS_11, WIN10 } = require('mica-electron');
 
 const isWindows = process.platform === 'win32'
 
@@ -1051,7 +1051,16 @@ const template = [
             console.log(ev);
             currentWindow.cellop('HLC'); 
           }
-        },               
+        }, 
+        { type: 'separator' }, 
+        {
+          label: 'Delete current cell',
+          accelerator: process.platform === 'darwin' ? "Cmd+'" : "Super+'",
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('EIC'); 
+          }
+        },          
         { type: 'separator' },       
         ...(isMac
           ? [
@@ -1123,6 +1132,15 @@ const template = [
             currentWindow.call('EIC'); 
           }
         },    
+
+        {
+          label: 'Clear Output Cells',
+          accelerator: process.platform === 'darwin' ? 'Cmd+u' : 'Super+u',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('COC'); 
+          }
+        },        
 
         {
           label: 'Evaluate All Cells',
