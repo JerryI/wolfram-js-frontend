@@ -1,10 +1,11 @@
-<|"notebook" -> <|"name" -> "Hairsplitting", "id" -> "ceremonious-fe685", 
-   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
-b/wolfram-js-frontend/Examples/Presentations/Advanced/ScientificReport.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 9, 18, 39, 
-      50.687981`8.457479968303769}, "Instant", "Gregorian", 2.], 
+<|"notebook" -> <|"name" -> "Hairsplitting", "id" -> "polymath-606b8", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Users/kirill/Libra\
+ry/Application \
+Support/wljs-frontend/Examples/Presentations/Advanced/ScientificReport.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 24, 19, 2, 
+      41.703662`8.372749170038722}, "Instant", "Gregorian", 2.], 
    "symbols" -> <||>, "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$16], 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$40], 
    "store" -> <|"structure" -> Hold[{Thickness[20], 
         Line[{{0, 0, 0.5}, {-5.4673624547375885, -3.156583185, 0.5}, 
           {-5.4673624547375885, -3.156583185, 9.923988}, {0., 0., 9.923988}, 
@@ -9903,122 +9904,126 @@ sExTmUCTr3jTlbGEMuvyCJbdnJd+McihiK16gw1f/0R4AyjwiGQ=="],
      "THZ ab model b" -> 
       Hold[
        "1:eJxTTMoPSmNkYGAoZgESPpnFJWlMyLyiAzMDk06yxzgUGblyfxP1z3YAABywDR0="], 
-     "fdata" -> Hold[""], "fmodel" -> Hold[""]|>|>, 
- "cells" -> {<|"id" -> "78d03a6c-856c-4f4f-94c8-8f8c20f09532116b898a8ebc", 
+     "fdata" -> Hold[""], "fmodel" -> Hold[""]|>, 
+   "SelectedCell" -> "2ccd6a04-fc8a-4688-bc15-1a1599ab3af9116b898a8ebc3b1"|>, 
+ "cells" -> {<|"id" -> "78d03a6c-856c-4f4f-94c8-8f8c20f09532116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n## Writting Scientific report\nA real \
 case scenario, where Wolfram Language together with RevealJS and WLX were \
 used to make a presentation for the scientific report at \n- [Grandmaster's \
 Workshop on \
 Physics](http://comodi.phys.ubbcluj.ro:8087/GEWP2023/program.html) (GEWP2023 \
 - September 2023)\n- Cluj (Romania)", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "beaefd48-7ad5-41b6-b40a-ad16a234f994ebc", "type" -> "output", 
-    "data" -> "\n## Writting Scientific report\nA real case scenario, where \
-Wolfram Language together with RevealJS and WLX were used to make a \
-presentation for the scientific report at \n- [Grandmaster's Workshop on \
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "beaefd48-7ad5-41b6-b40a-ad16a234f994ebc3b1", 
+    "type" -> "output", "data" -> "\n## Writting Scientific report\nA real \
+case scenario, where Wolfram Language together with RevealJS and WLX were \
+used to make a presentation for the scientific report at \n- [Grandmaster's \
+Workshop on \
 Physics](http://comodi.phys.ubbcluj.ro:8087/GEWP2023/program.html) (GEWP2023 \
 - September 2023)\n- Cluj (Romania)", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "178043db-b40a-44cf-9734-bed673d7228febc", "type" -> "input", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "178043db-b40a-44cf-9734-bed673d7228febc3b1", "type" -> "input", 
     "data" -> ".md\n**Evaluate initialization cells first!**", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "207001c8-18a8-4241-ba76-7f0c0b7fd167ebc", "type" -> "output", 
-    "data" -> "\n**Evaluate initialization cells first!**", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "319d261e-fb97-4bf5-9a03-df6a446c97cb116b898a8ebc", 
+   <|"id" -> "207001c8-18a8-4241-ba76-7f0c0b7fd167ebc3b1", 
+    "type" -> "output", "data" -> 
+     "\n**Evaluate initialization cells first!**", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "319d261e-fb97-4bf5-9a03-df6a446c97cb116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\nTo start the presentation, run this cell in *a separate window*", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b23fe944-5a56-4c30-a46a-7ea39681601debc", "type" -> "output", 
-    "data" -> 
+   <|"id" -> "b23fe944-5a56-4c30-a46a-7ea39681601debc3b1", 
+    "type" -> "output", "data" -> 
      "\nTo start the presentation, run this cell in *a separate window*", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2ccd6a04-fc8a-4688-bc15-1a1599ab3af9116b898a8ebc", 
+   <|"id" -> "2ccd6a04-fc8a-4688-bc15-1a1599ab3af9116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slides\n\n## More about \
 CFT\n<br/>\n<BarcodeImage>\n  \
 <Identity>https://www.mdpi.com/1996-1944/15/22/8229</Identity>\n  \
 <Identity>QR</Identity>\n</BarcodeImage>", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False, 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False, 
       "projected" -> False|>|>, 
-   <|"id" -> "6e067e84-9c73-4cf5-915a-771f9a37a38eebc", "type" -> "input", 
+   <|"id" -> "6e067e84-9c73-4cf5-915a-771f9a37a38eebc3b1", "type" -> "input", 
     "data" -> ".md\nTips for the speaker\n- *use* __q__ *for a laser \
 pointer*\n- __t__ *for a drawing board*", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "056f20a6-cdff-46e8-8ce5-6e9093ca41e1ebc", "type" -> "output", 
-    "data" -> "\nTips for the speaker\n- *use* __q__ *for a laser pointer*\n- \
-__t__ *for a drawing board*", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "55629145-2aec-4161-8701-7637ab17d0f6ebc", "type" -> "input", 
-    "data" -> " ", "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "056f20a6-cdff-46e8-8ce5-6e9093ca41e1ebc3b1", 
+    "type" -> "output", "data" -> "\nTips for the speaker\n- *use* __q__ *for \
+a laser pointer*\n- __t__ *for a drawing board*", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "55629145-2aec-4161-8701-7637ab17d0f6ebc3b1", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3de126e3-c010-459a-a5e0-da8d7be6ca78116b898a8ebc", 
+   <|"id" -> "3de126e3-c010-459a-a5e0-da8d7be6ca78116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n## Layout helpers\nColumns maker", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6d4c17b6-ed9e-4ea7-a33e-80d463d58ab6ebc", "type" -> "output", 
-    "data" -> "\n## Layout helpers\nColumns maker", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "8c3ffdd5-6ae2-4eee-bfaa-aca5ba547f05116b898a8ebc", 
+   <|"id" -> "6d4c17b6-ed9e-4ea7-a33e-80d463d58ab6ebc3b1", 
+    "type" -> "output", "data" -> "\n## Layout helpers\nColumns maker", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8c3ffdd5-6ae2-4eee-bfaa-aca5ba547f05116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".wlx\nColumns[C1_, C2_] := With[{SR = \
 If[NumberQ[Ratio], 100.0 Ratio, 50]},\n  <div>\n    <div style=\"width: \
-{SR}%; float:left;\">\n      <C1/>\n    </div>\n    <div style=\"width: \
-{100-SR}%; float:right;\">\n      <C2/>\n    </div>    \n  </div>\n]\n", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+{Round[SR]}%; float:left;\">\n      <C1/>\n    </div>\n    <div \
+style=\"width: {Round[100-SR]}%; float:right;\">\n      <C2/>\n    </div>    \
+\n  </div>\n]\n", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "9dd16ecb-2c1f-458a-80ec-df3958935ada116b898a8ebc", 
+   <|"id" -> "9dd16ecb-2c1f-458a-80ec-df3958935ada116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\nColors and a simple marker plot function", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "02ff60e5-87f2-47f2-9e1e-339f99705e7eebc", "type" -> "output", 
-    "data" -> "\nColors and a simple marker plot function", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "db62e565-be42-4480-bcd6-283d3a848496116b898a8ebc", 
+   <|"id" -> "02ff60e5-87f2-47f2-9e1e-339f99705e7eebc3b1", 
+    "type" -> "output", "data" -> 
+     "\nColors and a simple marker plot function", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "db62e565-be42-4480-bcd6-283d3a848496116b898a8ebc3b1", 
     "type" -> "input", "data" -> "pal[\"accent\", 1] = RGBColor[{240, 102, \
 107}/255];\npal[\"accent\", 2] = RGBColor[{77, 191, 207}/255];", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "23ccbfb3-2afa-456f-8109-5c7654b1ddaa116b898a8ebc", 
+   <|"id" -> "23ccbfb3-2afa-456f-8109-5c7654b1ddaa116b898a8ebc3b1", 
     "type" -> "input", "data" -> "Rects[pts_, size_:{1,1}] := Rectangle[# - \
 0.5size, # + 0.5size] &/@ pts;", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False, 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>, 
-   <|"id" -> "1011a992-a0e7-4925-9c46-0cdb60681fe9116b898a8ebc", 
+   <|"id" -> "1011a992-a0e7-4925-9c46-0cdb60681fe9116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\n## Introduction\nTalk about crystal structure and etc", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0b68854b-ba81-4234-b01b-574942b896f9116b898a8ebc", 
+   <|"id" -> "0b68854b-ba81-4234-b01b-574942b896f9116b898a8ebc3b1", 
     "type" -> "output", "data" -> 
      "\n## Introduction\nTalk about crystal structure and etc", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "28f99b45-2d1c-47a7-9dd0-f116378fc9d6ebc", "type" -> "input", 
+   <|"id" -> "28f99b45-2d1c-47a7-9dd0-f116378fc9d6ebc3b1", "type" -> "input", 
     "data" -> ".md\n3D model", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "359343d1-f2c8-4f7f-ae8a-e80e3f76f4cdebc", "type" -> "output", 
-    "data" -> "\n3D model", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0cb8a0b5-496c-4015-a2ff-c692e9229435ebc", "type" -> "input", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "359343d1-f2c8-4f7f-ae8a-e80e3f76f4cdebc3b1", 
+    "type" -> "output", "data" -> "\n3D model", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0cb8a0b5-496c-4015-a2ff-c692e9229435ebc3b1", "type" -> "input", 
     "data" -> "CrystalStructure := With[{size = If[ListQ[Size] || \
 NumberQ[Size], Size, {400,500}]},\n Graphics3D[{\n  \
 MeshMaterial[MeshToonMaterial[]],\n  PointLight[Red, \"Position\"-> \
 {-1.5710175010432605`,9.112993141920818`,13.26594771416417`}],\n  \
 NotebookStore[\"structure\"]\n }, ImageSize->size, \"Lighting\"->None]\n];", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "abf862bf-1e03-4141-8610-5fdc12080f35ebc", "type" -> "input", 
+   <|"id" -> "abf862bf-1e03-4141-8610-5fdc12080f35ebc3b1", "type" -> "input", 
     "data" -> ".md\nAn actual slide layout", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "5793a272-61b9-4955-a390-853655a2cf8bebc", "type" -> "output", 
-    "data" -> "\nAn actual slide layout", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9c6ab6c0-f4a7-43c1-be08-8b683273798d116b898a8ebc", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "5793a272-61b9-4955-a390-853655a2cf8bebc3b1", 
+    "type" -> "output", "data" -> "\nAn actual slide layout", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9c6ab6c0-f4a7-43c1-be08-8b683273798d116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slide\n\n# Crystal Field Theory for \
 zoomers <!-- .element: class=\"fragment fade-in\" data-fragment-index=\"2\" \
 -->\n\n# Modelling low-frequecy exitations of $Fe_2Mo_3O_8$ antiferromagnet \
@@ -10033,9 +10038,9 @@ Physics, Kazan (Volga region) Federal University, 420008, Kremlevskaya 18\n- \
 Institute of Physics, Augsburg University, 86159, \
 Universit\[ADoubleDot]tsstra\[SZ]e 1\n- Institute of Applied Physics, MD-2028 \
 Chisinau, Republic of Moldova\n  \nkrikus.ms@gmail.com", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "projected" -> True|>|>, 
-   <|"id" -> "2aa9f2d7-196c-4706-b1d5-68fff5183a75116b898a8ebc", 
+   <|"id" -> "2aa9f2d7-196c-4706-b1d5-68fff5183a75116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\n__Hi to everyone! \
 I am Kirill - a PHD student from University of Augsburg__.\nI'd like to thank \
 the organizers for making such a nice, small workshop with a warm and cozy \
@@ -10044,24 +10049,24 @@ spectriscopy of a this guy and the way how you can apply a good old crystal \
 field theory to it squizing the story it into a 15mins talk__, just an \
 analythical approach no DFT or ab-initio involved.\n\nI did not decide, what \
 would be the final title of it. So, consider this...", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3051a950-56b3-484a-bd10-5512b14050f9116b898a8ebc", 
+   <|"id" -> "3051a950-56b3-484a-bd10-5512b14050f9116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nThis is going to \
 be a bit weired, since have a simple PPT file in 2023 is not fancy and not \
-complicated enough.", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "93192042-73cd-4030-8add-30914c5da8c3116b898a8ebc", 
+complicated enough.", "display" -> "codemirror", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "93192042-73cd-4030-8add-30914c5da8c3116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\n## Crystal structure\nShow parameters of the lattice and etc", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ecc9af01-6b30-4559-a1cd-741e0b4c247b116b898a8ebc", 
+   <|"id" -> "ecc9af01-6b30-4559-a1cd-741e0b4c247b116b898a8ebc3b1", 
     "type" -> "output", "data" -> 
      "\n## Crystal structure\nShow parameters of the lattice and etc", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f0fb6665-1552-45bc-b0a4-0585c314e383116b898a8ebc", 
+   <|"id" -> "f0fb6665-1552-45bc-b0a4-0585c314e383116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slide\n\n<Columns>\n <CrystalStructure/>\n \
 <div style=\"text-align: left; font-size: medium;\">\n      \n  ## Crystal \
 structure\n\n  - $Fe_2 Mo_3 O_8$\n  - Hexagonal structure (polar) $P6_{3mc}$ \
@@ -10076,9 +10081,9 @@ translateX(10%)\">\n  \n  $Fe^{2+} (3d^6)$ <!-- .element: class=\"fragment\" \
 data-fragment-index=\"2\" -->\n  \n  </div>\n  \n  - A-site $FeO_4$ <!-- \
 .element: class=\"fragment\" data-fragment-index=\"2\" -->\n  - B-site \
 $FeO_6$ <!-- .element: class=\"fragment\" data-fragment-index=\"2\" -->\n \n \
-</div>\n</Columns>\n", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f981ac90-15ec-4da4-a043-fc524db9ffa9116b898a8ebc", 
+</div>\n</Columns>\n", "display" -> "codemirror", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f981ac90-15ec-4da4-a043-fc524db9ffa9116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nWhy is it so \
 interesting to waste time on this.\n\nSo, this is a hexagonal __polar \
 crystal__, that shown __afterromagnetic ordering below 60K__. And __most \
@@ -10087,73 +10092,76 @@ applying magnetic field, one can control an electric polarization. This \
 effect turned out to be quite massive (according to a Nature paper \
 published)\n\nTwo sites are standing for the magnetoelectric \
 coupling\n\nCrystals were grown in Augsburg Uni", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2f833866-a253-4368-a6e6-87d4b8c02cdb116b898a8ebc", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2f833866-a253-4368-a6e6-87d4b8c02cdb116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n\n## Optical data\nShow the previous \
 data on reflectivity and transmission. Also add `Theory On/Off` button", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ce542fee-f41e-4314-988b-d65191d4d890116b898a8ebc", 
+   <|"id" -> "ce542fee-f41e-4314-988b-d65191d4d890116b898a8ebc3b1", 
     "type" -> "output", "data" -> "\n\n## Optical data\nShow the previous \
 data on reflectivity and transmission. Also add `Theory On/Off` button", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7190e411-fd34-43b9-bba9-d2cc4a860ba9116b898a8ebc", 
+   <|"id" -> "7190e411-fd34-43b9-bba9-d2cc4a860ba9116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\nActual slides", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ceb282bd-c265-4f58-9612-c8bfc9a29588116b898a8ebc", 
+   <|"id" -> "ceb282bd-c265-4f58-9612-c8bfc9a29588116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\n### Helper functions\nA checkbox container", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "83695c1b-52ae-43ad-a762-86de27b1cdb9ebc", "type" -> "output", 
-    "data" -> "\n### Helper functions\nA checkbox container", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "90d8019b-677a-43eb-92ed-279d996f1ea7116b898a8ebc", 
+   <|"id" -> "83695c1b-52ae-43ad-a762-86de27b1cdb9ebc3b1", 
+    "type" -> "output", "data" -> 
+     "\n### Helper functions\nA checkbox container", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "90d8019b-677a-43eb-92ed-279d996f1ea7116b898a8ebc3b1", 
     "type" -> "input", "data" -> "ClearAll[PlaceButton]\nPlaceButton \
 :=\nWith[{e = InputToggle[False, \"Label\"->\"Model\"], ev = Event},\n  \
 EventHandler[e, Function[data, Print[\"Fire!\"]; EventFire[ev, data]]];\n  \
-e\n]", "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+e\n]", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "89fdbd17-93f6-4ccd-b8e4-4c266cf022e4ebc", "type" -> "input", 
+   <|"id" -> "89fdbd17-93f6-4ccd-b8e4-4c266cf022e4ebc3b1", "type" -> "input", 
     "data" -> ".md\n### Data manipulation helpers\nmake it easier", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "6794f81a-2eaf-474f-aa7d-ab0523b30fdeebc", "type" -> "output", 
-    "data" -> "\n### Data manipulation helpers\nmake it easier", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+   <|"id" -> "6794f81a-2eaf-474f-aa7d-ab0523b30fdeebc3b1", 
+    "type" -> "output", "data" -> 
+     "\n### Data manipulation helpers\nmake it easier", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "46e73d13-f4f4-4fe9-bea5-de2b2fbf6c6eebc", "type" -> "input", 
+   <|"id" -> "46e73d13-f4f4-4fe9-bea5-de2b2fbf6c6eebc3b1", "type" -> "input", 
     "data" -> "Crop[min_, max_][data_] := Select[data, (#[[1]] >= min && \
 #[[1]] <= max)&]\nClipY[min_, max_][data_] := Map[{#[[1]], If[(#[[2]] < min), \
 min, If[#[[2]] > max, max, #[[2]]]]}&, data]\nRects[pts_, size_:{1,1}] := \
 Rectangle[# - 0.5size, # + 0.5size] &/@ pts;\nAddBack[level_, \
 scale_:1][data_] := {#[[1]], scale #[[2]] + level} &/@ data;", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "b08bac27-134d-48e3-80b3-f199a5ce1091ebc", "type" -> "input", 
+   <|"id" -> "b08bac27-134d-48e3-80b3-f199a5ce1091ebc3b1", "type" -> "input", 
     "data" -> ".md\nLabels and etc", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "e77e958c-2641-4ced-90be-d6cc1e7ebf11ebc", "type" -> "output", 
-    "data" -> "\nLabels and etc", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6b4f63aa-0a83-40cc-b5b4-092940825afaebc", "type" -> "input", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "e77e958c-2641-4ced-90be-d6cc1e7ebf11ebc3b1", 
+    "type" -> "output", "data" -> "\nLabels and etc", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6b4f63aa-0a83-40cc-b5b4-092940825afaebc3b1", "type" -> "input", 
     "data" -> "THZColors = <|\"AB\"->RGBColor[0.368417, 0.506779, 0.709798], \
 \"ACE\"->RGBColor[0.880722, 0.611041, 0.142051], \"ACH\"->RGBColor[0.560181, \
 0.691569, 0.194885]|>;\nTHZLabels = <|\"AB\"-> \"E^{\\omega} &#10178; c, \
 H^{\\omega} &#10178; c\",\n              \"ACE\"->\"E^{\\omega} &#10178; c, \
 H^{\\omega} || c\",\n              \"ACH\"->\"E^{\\omega} || c, H^{\\omega} \
-&#10178; c\"|>;", "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+&#10178; c\"|>;", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "c753ee74-4bd5-4dce-b00e-2d160bf548b3ebc", "type" -> "input", 
+   <|"id" -> "c753ee74-4bd5-4dce-b00e-2d160bf548b3ebc3b1", "type" -> "input", 
     "data" -> ".md\nPlotting functions", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b2b7b303-bea3-480b-846f-53ca3c922c2eebc", "type" -> "output", 
-    "data" -> "\nPlotting functions", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5036b470-9b47-42d5-99ab-a895e4f580b6116b898a8ebc", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "b2b7b303-bea3-480b-846f-53ca3c922c2eebc3b1", 
+    "type" -> "output", "data" -> "\nPlotting functions", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5036b470-9b47-42d5-99ab-a895e4f580b6116b898a8ebc3b1", 
     "type" -> "input", "data" -> "THZPlot[str_] := LeakyModule[{data, ev = \
 Event // EventClone, mod = Mth // EventClone, theoryA, theoryB},\n    \n    \
 EventHandler[EvaluationCell[], {\"destroy\"->Function[Null, \
@@ -10186,17 +10194,17 @@ FrameLabel->{{Offset[\"\\alpha (cm^{-1})\", {-1,0}], None}, \
 {Offset[\"wavenumber (cm^{-1})\", {0,0}], None}},\n      \
 FrameStyle->Directive[FontSize->14],\n      ImageSize->{350,250},\n      \
 FrameTicksStyle->Directive[FontSize->14]\n    , TransitionDuration->1000]\n]"\
-, "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+, "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "b47734c6-dadc-4ff2-800a-a9e741c8f688ebc", "type" -> "input", 
+   <|"id" -> "b47734c6-dadc-4ff2-800a-a9e741c8f688ebc3b1", "type" -> "input", 
     "data" -> ".md\nAn actual slide with THz data comes", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "1e3ab06c-5ef1-40a4-a326-6458f9cd4f0aebc", "type" -> "output", 
-    "data" -> "\nAn actual slide with THz data comes", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+   <|"id" -> "1e3ab06c-5ef1-40a4-a326-6458f9cd4f0aebc3b1", 
+    "type" -> "output", "data" -> "\nAn actual slide with THz data comes", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1053928c-5026-4fca-84b0-a63a48a72d18116b898a8ebc", 
+   <|"id" -> "1053928c-5026-4fca-84b0-a63a48a72d18116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slide\n\n## Published low-frequency \
 excitations data <!-- .element: class=\"fragment fade-out\" \
 data-fragment-index=\"1\" -->\n## UnPublished low-frequency excitations data \
@@ -10214,8 +10222,8 @@ utton Event={\"show-thz-model\"}/>\n\n__T. KURUMAJI et al. PHYSICAL REVIEW B \
 data-fragment-index=\"1\" -->\n\n__TDS-THz Toptica setup @ Augsburg \
 University (Germany)__ <!-- .element: class=\"fragment fade-in\" \
 data-fragment-index=\"1\" -->", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9884d274-8a49-47e0-8482-253daa50e4ea116b898a8ebc", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9884d274-8a49-47e0-8482-253daa50e4ea116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nOr course, \
 __studing an optical properties of this material can give us an idea of what \
 the origins of megetoelectric coupling__ is as well as general interest on \
@@ -10229,27 +10237,27 @@ using our Time resolved THz setup. And found one more mode. But the __origin \
 of them are unclear and not explicitly metioned in the literature__.\n\n__In \
 general looking at it won't give us much, we need to look from above and \
 scratch our heads regarding the energy strusture__", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd743d95-04be-45c1-bce0-f77920e621ff116b898a8ebc", 
+   <|"id" -> "cd743d95-04be-45c1-bce0-f77920e621ff116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nOne can see that \
 selection rules are ok, but the the internsity is overestimated. As a \
 half-theoretician I would blame the experiment. Since when there is strong \
 absorption, we start to count as passed photons a background noise or some \
 parasitic light the penetrates the setup or the heat from our hands... \
-whatever.", "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+whatever.", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "d91d1065-92c0-40c5-8038-f0398fb2a3cf116b898a8ebc", 
+   <|"id" -> "d91d1065-92c0-40c5-8038-f0398fb2a3cf116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\n### Mid-infrared data\nA wild guess on the origin of those modes", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "46711c30-b957-48a2-ac3f-19a117f6172aebc", "type" -> "output", 
-    "data" -> 
+   <|"id" -> "46711c30-b957-48a2-ac3f-19a117f6172aebc3b1", 
+    "type" -> "output", "data" -> 
      "\n### Mid-infrared data\nA wild guess on the origin of those modes", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3e125fd2-7f22-4c3b-a42b-0755eeef4bfb116b898a8ebc", 
+   <|"id" -> "3e125fd2-7f22-4c3b-a42b-0755eeef4bfb116b898a8ebc3b1", 
     "type" -> "input", "data" -> "TIRPlot := LeakyModule[{model, cloned = Mth \
 // EventClone},\n  model = {#[[1]], {#[[2,1]], #[[1,2]]}} &/@ \
 (NotebookStore[\"MIR-Transm model\"]//Uncompress);\n  \
@@ -10296,18 +10304,18 @@ c\", FontSize->14], {3555,0.075}],\n\n        Darker[RGBColor[0.368417, \
 Darker[RGBColor[0.880722, 0.611041, 0.142051]], Line[model2 // Offload],\n    \
     Darker[RGBColor[0.560181, 0.691569, 0.194885]], Line[model3 // Offload]\n \
      }\n    ],\n    Controls->True, {2,-1}]\n]", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False, 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>, 
-   <|"id" -> "5a906c9b-40e6-4cb0-8477-253520a2b38c116b898a8ebc", 
+   <|"id" -> "5a906c9b-40e6-4cb0-8477-253520a2b38c116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\nA beautiful slide with a model checkbox", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "e7346b9d-afb5-4824-aa4f-5be0379ad0bdebc", "type" -> "output", 
-    "data" -> "\nA beautiful slide with a model checkbox", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "5070c5b6-04fb-48a2-b5dc-e4cca908a992116b898a8ebc", 
+   <|"id" -> "e7346b9d-afb5-4824-aa4f-5be0379ad0bdebc3b1", 
+    "type" -> "output", "data" -> 
+     "\nA beautiful slide with a model checkbox", "display" -> "markdown", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5070c5b6-04fb-48a2-b5dc-e4cca908a992116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slide\n\n## Published optical excitations \
 data\nTransmission and reflectivity data measured in mid-infrared \
 range\n\n<Columns>\n  <TIRPlot Mth={\"show-mir-model\"} />\n  <MIRPlot \
@@ -10319,9 +10327,9 @@ Stanislavchuk et al. Phys. Rev. B\[NonBreakingSpace]102 (2019) <!-- .element: \
 class=\"fragment fade-in\" data-fragment-index=\"1\" -->\n- Y. M. Sheu et al. \
 Phys. Rev. X 9, 031038 (2019)  <!-- .element: class=\"fragment fade-in\" \
 data-fragment-index=\"1\" -->\n\n<PlaceButton Event={\"show-mir-model\"}/>\n"\
-, "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+, "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "dc7c735e-359a-4151-829a-e40fd8d33d56116b898a8ebc", 
+   <|"id" -> "dc7c735e-359a-4151-829a-e40fd8d33d56116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nBut then we also \
 remeasured in more details the mid infrared range. \n\n__The transmission in \
 on the right and reflectivity is on the left__. \nHere people have already \
@@ -10329,25 +10337,27 @@ __said something about the origin of those peaks__.\n\nThose high frequnecy \
 exitations were assigned to have an origin of the transitions of __that \
 happes within the individial Fe2+ ions__. Especially peope using Moke \
 spectrospocy figured out that thaty must be connected with thoe two \
-sites.\n\n", "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+sites.\n\n", "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "66513c58-6766-4ec1-8ddf-d3404ffcede2116b898a8ebc", 
+   <|"id" -> "66513c58-6766-4ec1-8ddf-d3404ffcede2116b898a8ebc3b1", 
     "type" -> "input", "data" -> 
      ".md\n## Model / Theory\nDescribe shortly how to work with CF", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "4148565b-270a-4065-b8e7-413ab4e5e2fbebc", "type" -> "output", 
-    "data" -> "\n## Model / Theory\nDescribe shortly how to work with CF", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+   <|"id" -> "4148565b-270a-4065-b8e7-413ab4e5e2fbebc3b1", 
+    "type" -> "output", "data" -> 
+     "\n## Model / Theory\nDescribe shortly how to work with CF", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3f6fa0c9-f0bb-49d7-943f-4d9ded763748116b898a8ebc", 
+   <|"id" -> "3f6fa0c9-f0bb-49d7-943f-4d9ded763748116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\ndiagram helper", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "657107b4-3a26-467b-9074-16fd623371fdebc", "type" -> "output", 
-    "data" -> "\ndiagram helper", "display" -> "markdown", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "12d1bf10-43a5-4b53-9f80-d781e0ee0080116b898a8ebc", 
+   <|"id" -> "657107b4-3a26-467b-9074-16fd623371fdebc3b1", 
+    "type" -> "output", "data" -> "\ndiagram helper", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "12d1bf10-43a5-4b53-9f80-d781e0ee0080116b898a8ebc3b1", 
     "type" -> "input", "data" -> "EnergyDiagram := LeakyModule[{ev = Event // \
 EventClone, offsetT = 0},\n  EventHandler[EvaluationCell[], {\"destroy\" -> \
 Function[Null, Delete[ev]]}];\n  EventHandler[ev, Function[Null, offsetT = \
@@ -10359,17 +10369,18 @@ Text[Style[\"E_{g}\", FontSize->14], {1.1, 0}]\n  }, PlotRange->{{0,1}, \
 {0,1.05}}, \n    ImageSize->{200,300}, \n    Axes->True, \n    \
 AxesStyle->Directive[FontSize->14],\n    Ticks->{{0}, {0}, False, False},\n   \
  AxesLabel->{None, \"Energy\"}\n  ]\n]", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False, 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False, 
       "init" -> True|>|>, 
-   <|"id" -> "2925c49b-85ff-47e8-9200-702eeea7f595ebc", "type" -> "input", 
+   <|"id" -> "2925c49b-85ff-47e8-9200-702eeea7f595ebc3b1", "type" -> "input", 
     "data" -> ".md\nAn actual slide with a diagram and a few eqs", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0509fe5a-be3f-452b-aff1-a49ce56fb170ebc", "type" -> "output", 
-    "data" -> "\nAn actual slide with a diagram and a few eqs", 
-    "display" -> "markdown", "sign" -> "ceremonious-fe685", 
+   <|"id" -> "0509fe5a-be3f-452b-aff1-a49ce56fb170ebc3b1", 
+    "type" -> "output", "data" -> 
+     "\nAn actual slide with a diagram and a few eqs", 
+    "display" -> "markdown", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "11342338-67d2-4cac-8b84-f434f9dc66d1116b898a8ebc", 
+   <|"id" -> "11342338-67d2-4cac-8b84-f434f9dc66d1116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".slide\n\n# Single ion approach\nLet us \
 threat both $Fe^{2+}$ ions independently\n\n<SlideEvent \
 id={\"model-progress\"} />\n\n<div style=\"padding: 4em\">\n<Columns \
@@ -10385,9 +10396,9 @@ data-fragment-index=\"1\" -->\n\n  Spin-orbit coupling + symmetry lowering \
 B_{0}^{(2)} C_{0}^{(2)} + B_{eff} S_{z}$$ <!-- .element: class=\"fragment\" \
 data-fragment-index=\"2\" -->\n\n  Magnetic ordering <!-- .element: \
 class=\"fragment\" data-fragment-index=\"2\" -->\n\n</Columns>\n</div>\n", 
-    "display" -> "codemirror", "sign" -> "ceremonious-fe685", 
+    "display" -> "codemirror", "sign" -> "polymath-606b8", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "88939caa-2cd2-4908-aa2e-3aaddd719a24116b898a8ebc", 
+   <|"id" -> "88939caa-2cd2-4908-aa2e-3aaddd719a24116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\n__Since they say \
 it is connected with individual Fe2+ clusters, let's threat each Fe2+ site \
 individually, i.e. if they were isolated systems__.\n\nProbably __most of you \
@@ -10407,8 +10418,8 @@ Triplet and doublet as a ground one__. It is valid for perfect __tetrahedron, \
 on our case it is distored. And we also have a spin-robit coupling__. Both \
 contributes and split the triplet\n\nIf we substitute numbers from neutron \
 scattering data, we get -> __go back to prev__", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "e471b644-208f-48df-871e-740feda8d1f8116b898a8ebc", 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e471b644-208f-48df-871e-740feda8d1f8116b898a8ebc3b1", 
     "type" -> "input", "data" -> ".md\n### Speakers notes\nOk then. Let us \
 extend it, __if we reproduced the optical properties in the visible range, \
 would it be possible just have a look at low-frequency exitations and see if \
@@ -10416,5 +10427,5 @@ they will match our expemrimetal redsults?__\n\n__But one thing__ We also \
 have an __AFM order, since dealing with many body problem is taugh, let us \
 replace it with some effective internal field__, like most guy do in \
 magnetism. -> __go back__", "display" -> "codemirror", 
-    "sign" -> "ceremonious-fe685", "props" -> <|"hidden" -> False|>|>}, 
+    "sign" -> "polymath-606b8", "props" -> <|"hidden" -> False|>|>}, 
  "serializer" -> "jsfn3"|>
