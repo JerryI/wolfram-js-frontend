@@ -173,44 +173,20 @@ const setHID = (mainWindow) => {
   })
 }
 
-const { PARAMS, VALUE,  MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica-electron');
+const {IS_WINDOWS_11, WIN10 } = require('mica-electron');
 
 const isWindows = process.platform === 'win32'
 
 const createWindow = (url, focus = true, hidefirst = true) => {
     let win;
 
-    if (isWindows && IS_WINDOWS_11) {
-      win = new MicaBrowserWindow({
-        frame: true,
-        titleBarStyle: 'hiddenInset',
-        width: 800,
-        height: 600,
-        title: 'Root',
-        show: !hidefirst,
-        webPreferences: {
-          preload: path.join(__dirname, 'preloadMain.js')
-        }
-        
-      });
-
-      //acryllic
-      if (IS_WINDOWS_11) {
-        win.setMicaAcrylicEffect();
-        win.setAutoTheme();
-      } else {
-        win.setAcrylic();
-      }
-
-      win.setRoundedCorner();	
-
-    } else {
       win = new BrowserWindow({
         vibrancy: "sidebar", // in my case...
         frame: true,
         titleBarStyle: 'hiddenInset',
         width: 800,
         height: 600,
+        backgroundMaterial: 'acrylic',
         title: 'Root',
         show: !hidefirst,
         webPreferences: {
@@ -218,7 +194,6 @@ const createWindow = (url, focus = true, hidefirst = true) => {
         }
         
       });
-    }
 
     win.webContents.on('found-in-page', (event, result) => {
       console.log(result)
@@ -242,7 +217,7 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           // Only show it when right-clicking images
           visible: parameters.selectionText.trim().length > 0,
           click: (e) => {
-            win.webContents.send('context', 'Evaluate');  
+            win.webContents.send('context', 'Identity');  
             
           }
         },        
@@ -1076,7 +1051,16 @@ const template = [
             console.log(ev);
             currentWindow.cellop('HLC'); 
           }
-        },               
+        }, 
+        { type: 'separator' }, 
+        {
+          label: 'Delete current cell',
+          accelerator: process.platform === 'darwin' ? "Cmd+'" : "Super+'",
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('EIC'); 
+          }
+        },          
         { type: 'separator' },       
         ...(isMac
           ? [
@@ -1148,6 +1132,15 @@ const template = [
             currentWindow.call('EIC'); 
           }
         },    
+
+        {
+          label: 'Clear Output Cells',
+          accelerator: process.platform === 'darwin' ? 'Cmd+u' : 'Super+u',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('COC'); 
+          }
+        },        
 
         {
           label: 'Evaluate All Cells',
