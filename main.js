@@ -180,20 +180,46 @@ const isWindows = process.platform === 'win32'
 const createWindow = (url, focus = true, hidefirst = true) => {
     let win;
 
-      win = new BrowserWindow({
-        vibrancy: "sidebar", // in my case...
-        frame: true,
-        titleBarStyle: 'hiddenInset',
-        width: 800,
-        height: 600,
-        backgroundMaterial: 'acrylic',
-        title: 'Root',
-        show: !hidefirst,
-        webPreferences: {
-          preload: path.join(__dirname, 'preloadMain.js')
-        }
-        
-      });
+
+
+      if (isMac) {
+        win = new BrowserWindow({
+          vibrancy: "sidebar", // in my case...
+          frame: true,
+          titleBarStyle: 'hiddenInset',
+          width: 800,
+          height: 600,
+          //backgroundMaterial: 'acrylic',
+          title: 'Root',
+          //transparent:true,
+          show: !hidefirst,
+          webPreferences: {
+            preload: path.join(__dirname, 'preloadMain.js')
+          }
+          
+        });        
+      } else {
+        let mat;
+        if (IS_WINDOWS_11) mat = 'mica'; else mat = 'acrylic';
+
+        win = new BrowserWindow({
+          //vibrancy: "sidebar", // in my case...
+          //frame: true,
+          titleBarStyle: 'hiddenInset',
+          width: 800,
+          height: 600,
+          backgroundMaterial: mat,
+          title: 'Root',
+          transparent:true,
+          show: !hidefirst,
+          webPreferences: {
+            preload: path.join(__dirname, 'preloadMain.js')
+          }
+          
+        });
+
+      }
+      //win.setVibrancy('appearance-based');
 
     win.webContents.on('found-in-page', (event, result) => {
       console.log(result)
