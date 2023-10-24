@@ -1014,7 +1014,7 @@ const template = [
       label: 'Edit',
       submenu: [
         { role: 'undo' },
-        { role: '\x1b[32mo' },
+        { role: 'redo' },
         { type: 'separator' },
         { role: 'cut' },
         { role: 'copy' },
@@ -1058,7 +1058,7 @@ const template = [
           accelerator: process.platform === 'darwin' ? "Cmd+'" : "Super+'",
           click: async (ev) => {
             console.log(ev);
-            currentWindow.call('EIC'); 
+            currentWindow.call('DS'); 
           }
         },          
         { type: 'separator' },       
