@@ -1,4 +1,4 @@
-const { session, app, Menu, BrowserWindow, dialog, ipcMain } = require('electron')
+const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
 const path = require('path')
 const { platform } = require('node:process');
 
@@ -205,13 +205,12 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           
         });        
       } else {
-        let mat;
-   
+      
         win = new MicaBrowserWindow({
           width: 800,
           height: 600,
           title: 'Root',
-          transparent:true,
+          transparent:IS_WINDOWS_11,
           show: !hidefirst,
           webPreferences: {
             preload: path.join(__dirname, 'preloadMain.js')
@@ -224,6 +223,17 @@ const createWindow = (url, focus = true, hidefirst = true) => {
              win.setAutoTheme();
            } else {
              //win.setAcrylic();
+             const checkTheme = () => {
+              if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff"); else win.setBackgroundColor("#000");
+             }
+
+             nativeTheme.on("updated", checkTheme);
+             win.on('closed', () => {
+                nativeTheme.removeListener("updated", checkTheme);
+             });
+
+             checkTheme();
+
        
              //win.setRoundedCorner();
           }
