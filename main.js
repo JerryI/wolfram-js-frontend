@@ -414,6 +414,8 @@ const stdAsk = (win, server) => {
   }, win);
 } 
 
+let noGUI = false
+
 const subscribe = (server, handler = ()=>{}) => {
   let running = false;
 
@@ -428,6 +430,7 @@ const subscribe = (server, handler = ()=>{}) => {
     sender(s);
     if (!running) {
       handler(s);
+      if (noGUI) return;
       const match = reg.exec(s);
       if (match) {
         globalURL = `http://${match.groups.ip}:${match.groups.port}`
@@ -975,9 +978,13 @@ const template = [
                 sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
 
                 makePromt((hostname) => {
-                  sender('fine! now enter a port number', '\x1b[32m');
+                  sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
                   makePromt((port) => {
+                    sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
                     sender('creating a server...');
+                    noGUI = true;
+                    params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
+                    startServer();
                     
                   }, logWindow);
                   //globalURL = data;

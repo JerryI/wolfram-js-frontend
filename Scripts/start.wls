@@ -37,6 +37,8 @@ jsf`$env = <|
   "ws2"  -> RandomInteger[{20560, 61000}]
 |>;
 
+If[AssociationQ[$envOverride], Print["Overriding ENV variable..."]; jsf`$env = Join[jsf`$env, $envOverride]];
+
 WLJSPSetRootFolder[jsf`root];
 
 JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[], ""}
