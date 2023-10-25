@@ -216,7 +216,9 @@ const createWindow = (url, focus = true, hidefirst = true) => {
           }});
 
           if (IS_WINDOWS_11) {
-            win.setMicaEffect();
+            //win.setMicaEffect();
+            win.setMicaAcrylicEffect();
+            win.setAutoTheme();
           } else {
             //win.setCustomEffect(WIN10.ACRYLIC, '#34ebc0', 0.4);
             //win.setRoundedCorner();
