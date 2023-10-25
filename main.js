@@ -174,8 +174,15 @@ const setHID = (mainWindow) => {
     return true
   })
 
+  let currentOS;
+    if (isWindows) currentOS = 'Windows';
+    if (isMac) currentOS = 'OSX';
+    if (!isMac && !isWindows) currentOS = 'Unix';
+
+
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
-    details.requestHeaders['Electron'] = 'True'
+    details.requestHeaders['Electron'] = 'True';
+    details.requestHeaders['AppOS'] = currentOS;
     callback({ requestHeaders: details.requestHeaders })
   });
 }

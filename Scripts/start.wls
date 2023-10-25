@@ -69,8 +69,7 @@ DefaultUICSS := With[{},
   Import[FileNameJoin[{"Packages", Select[Includes["styles"]//Flatten, StringMatchQ[#, ___~~"wljs-cells"~~___~~"defaults.css"~~___]&] // First}], "String"]
 ];
 
-isWindows = $OperatingSystem === "Windows";
-isLinux = $OperatingSystem === "Unix";
+
 
 IncludesDeliver[m_] := (StringCases[#[[2]]["url"], {RegularExpression["github\\.com/([^/]*)/([^/]*)"]-> (StringTemplate["https://cdn.jsdelivr.net/gh/``/``@master/``"]["$1","$2",StringRiffle[Drop[StringSplit[#[[1]], If[isWindows, "\\", "/"] ],1], "/"] ])}]) &/@ Includes[m, "repository"] // Flatten;
 
@@ -99,6 +98,9 @@ If[!BooleanQ[ElectronQ],
 
   ElectronQ := (KeyExistsQ[$CurrentRequest["Headers"], "Electron"]);
 ];
+
+isWindows := (If[KeyExistsQ[$CurrentRequest["Headers"], "AppOS"], $CurrentRequest["Headers","AppOS"], $OperatingSystem] === "Windows");
+isLinux := (If[KeyExistsQ[$CurrentRequest["Headers"], "AppOS"], $CurrentRequest["Headers","AppOS"], $OperatingSystem] === "Unix");
 
 If[MemberQ[$ScriptCommandLine, "electron"],
   ElectronQ = True;
