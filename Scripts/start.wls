@@ -14,6 +14,10 @@ If[$VersionNumber < 13.0,
   Print["But we will try our best"];
 ];
 
+
+Print[$Version];
+Print[$SystemID];
+
 $HistoryLength = 0
 PacletDirectoryLoad[Directory[]]
 

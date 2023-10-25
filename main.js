@@ -223,7 +223,8 @@ const createWindow = (url, focus = true, hidefirst = true) => {
              win.setMicaAcrylicEffect();
              win.setAutoTheme();
            } else {
-             //win.setCustomEffect(WIN10.ACRYLIC, '#34ebc0', 0.4);
+             //win.setAcrylic();
+       
              //win.setRoundedCorner();
           }
 
@@ -966,6 +967,7 @@ const serverMenu = [
       logWindow.focus();
 
       setTimeout(() => {
+        sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
         makePromt((hostname) => {
           sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
           makePromt((port) => {
@@ -979,9 +981,9 @@ const serverMenu = [
           //globalURL = data;
           //showMainWindow(globalURL, 'Remote', true, false);
         }, logWindow);
-      }, 1000);
+      }, 2000);
 
-      sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
+      
 
     }
   },     
