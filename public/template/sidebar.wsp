@@ -37,7 +37,10 @@
                                                             </div>
                                                         </div>
                                                     </div>  
-                                                    
+
+                                                <?wsp , ""] ?> 
+                                                <?wsp If[!TrueQ[ElectronQ] || TrueQ[RemoteQ], ?>    
+
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="open-vault-button" class="notion-focusable" role="button" tabindex="0">
                                                             <div class="sidebar-new-class">
@@ -50,6 +53,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                 
+
+                                                <?wsp , ""] ?> 
+                                                <?wsp If[!TrueQ[ElectronQ], ?> 
 
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="new-notebook-button" class="notion-focusable" role="button" tabindex="0">

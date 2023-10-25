@@ -991,6 +991,7 @@ const serverMenu = [
             sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
             sender('creating a server...');
             noGUI = true;
+            params.push(`RemoteQ = True`);
             params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
             startServer(logWindow);
             
