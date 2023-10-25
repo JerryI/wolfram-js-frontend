@@ -41,7 +41,7 @@ Module[{wcp, ws},
         ToExpression[data//ByteArrayToString];
     ];
 
-    SocketListen[CSocketOpen[port], wcp@#&];
+    SocketListen[CSocketOpen[addr, port], wcp@#&];
 
     (*CEventLoopRun[0];*)
 ]

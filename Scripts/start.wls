@@ -126,7 +126,7 @@ If[MemberQ[$ScriptCommandLine, "host"],
   jsf`$env["host"] =  $ScriptCommandLine[[(Position[$ScriptCommandLine, "host"]//First//First) + 1]]
 ];
 
-Put[jsf`$env, FileNameJoin[{jsf`root, ".env"}]];
+If[!AssociationQ[$envOverride], Put[jsf`$env, FileNameJoin[{jsf`root, ".env"}]]];
 
 
 If[MemberQ[$ScriptCommandLine, "dev"],
@@ -210,7 +210,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "
 http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
-SocketListen[CSocketOpen[jsf`$env["http"]], tcp@#&]
+SocketListen[CSocketOpen[jsf`$env["host"], jsf`$env["http"]], tcp@#&]
 
 Print["Staring WS/HTTP server..."];
 
@@ -226,7 +226,7 @@ evaluate[cl_, data_ByteArray] := Block[{Global`client = cl},
     ToExpression[data//ByteArrayToString];
 ]
 
-SocketListen[CSocketOpen[jsf`$env["ws"]], wcp@#&]
+SocketListen[CSocketOpen[jsf`$env["host"], jsf`$env["ws"]], wcp@#&]
 
 JerryI`WolframJSFrontend`WSKernelAddr  = ip
 
