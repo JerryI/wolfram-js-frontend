@@ -579,6 +579,100 @@ collectLog.push = (data, color) => {
   collectLog.push(data);
 }
 
+const startServer = (win) => {
+  sender(getAppBasePath());
+
+  sender('--- Starting Wolfram Engine ---', '\x1b[32m');
+  server = exec('wolframscript', {cwd: workingDir});
+
+  params.forEach((line)=>{
+    server.stdin.write(line+'\n');
+  });
+
+  sender(runPath.replace(/\\/g, "\\\\"));
+  server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
+  // server.stdin.end(); // EOF
+  sender('waiting for th responce...');
+  server.on("error", (err)=>{
+    sender(err);
+  });
+
+  subscribe(server, (log) => {
+      if (noscript.exec(log) || nofile.exec(log)) {
+        sender('FAILED!', '\x1b[32m');
+        sender('trying different combination...', '\x1b[32m');
+
+        askForInstallation(server, win, () => {
+          switch(platform) {
+            case 'darwin':
+              server = exec('"/Applications/WolframScript.app/Contents/MacOS/wolframscript"', {cwd: workingDir});
+
+              params.forEach((line)=>{
+                server.stdin.write(line+'\n');
+              });
+              server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
+              // server.stdin.end(); // EOF
+          
+              subscribe(server, (log)=>{
+                if (noscript.exec(log) || nofile.exec(log)) {
+                  sender('FAILED Again!', '\x1b[32m');
+
+
+                  askForPath(server, win);
+                }
+
+                if (nolicense.exec(log)) {
+                  activateWL(server, "/Applications/WolframScript.app/Contents/MacOS/wolframscript", () => {
+                    server = exec("/Applications/WolframScript.app/Contents/MacOS/wolframscript", {cwd: workingDir});
+                  
+                    subscribe(server, (log)=>{
+                      if (nolicense.exec(log)) {
+                        sender('\nThere is some problems with your license... We are sorry ;(', '\x1b[32m');
+                        setTimeout(app.exit, 4000);
+                      }
+                    });
+
+                    params.forEach((line)=>{
+                      server.stdin.write(line+'\n');
+                    });
+                  
+                    server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
+                    // server.stdin.end(); // EOF
+                  });
+                }
+              });
+
+            break;
+
+            default:
+              askForPath(server, win);
+          }
+        });
+      }
+
+      if (nolicense.exec(log)) {
+        activateWL(server, `wolframscript`, () => {
+          server = exec(`wolframscript`, {cwd: workingDir});
+
+          subscribe(server, (log)=>{
+            if (nolicense.exec(log)) {
+              sender('There is some problems with your license... We are sorry ;(', '\x1b[32m');
+              setTimeout(app.exit, 4000);
+            }
+          });
+
+          params.forEach((line)=>{
+            server.stdin.write(line+'\n');
+          });
+
+          server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
+          // server.stdin.end(); // EOF
+        });
+      }
+  });
+
+};
+
 app.whenReady().then(() => {
   cors();
   pluginsMenu.fetch();
@@ -630,102 +724,9 @@ app.whenReady().then(() => {
       sender = (data) => {console.log(data)}
     });
 
-    checkInstalled(startServer, win);
+    checkInstalled(() => startServer(win), win);
   }, 500);
 
-  const startServer = () => {
-    sender(getAppBasePath());
-
-    sender('--- Starting Wolfram Engine ---', '\x1b[32m');
-    server = exec('wolframscript', {cwd: workingDir});
-
-    params.forEach((line)=>{
-      server.stdin.write(line+'\n');
-    });
-
-    sender(runPath.replace(/\\/g, "\\\\"));
-    server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
-    // server.stdin.end(); // EOF
-    sender('waiting for th responce...');
-    server.on("error", (err)=>{
-      sender(err);
-    });
-
-    subscribe(server, (log) => {
-        if (noscript.exec(log) || nofile.exec(log)) {
-          sender('FAILED!', '\x1b[32m');
-          sender('trying different combination...', '\x1b[32m');
-
-          askForInstallation(server, win, () => {
-            switch(platform) {
-              case 'darwin':
-                server = exec('"/Applications/WolframScript.app/Contents/MacOS/wolframscript"', {cwd: workingDir});
-
-                params.forEach((line)=>{
-                  server.stdin.write(line+'\n');
-                });
-                server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
-                // server.stdin.end(); // EOF
-            
-                subscribe(server, (log)=>{
-                  if (noscript.exec(log) || nofile.exec(log)) {
-                    sender('FAILED Again!', '\x1b[32m');
-
-
-                    askForPath(server, win);
-                  }
-
-                  if (nolicense.exec(log)) {
-                    activateWL(server, "/Applications/WolframScript.app/Contents/MacOS/wolframscript", () => {
-                      server = exec("/Applications/WolframScript.app/Contents/MacOS/wolframscript", {cwd: workingDir});
-                    
-                      subscribe(server, (log)=>{
-                        if (nolicense.exec(log)) {
-                          sender('\nThere is some problems with your license... We are sorry ;(', '\x1b[32m');
-                          setTimeout(app.exit, 4000);
-                        }
-                      });
-
-                      params.forEach((line)=>{
-                        server.stdin.write(line+'\n');
-                      });
-                    
-                      server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
-                      // server.stdin.end(); // EOF
-                    });
-                  }
-                });
-
-              break;
-
-              default:
-                askForPath(server, win);
-            }
-          });
-        }
-
-        if (nolicense.exec(log)) {
-          activateWL(server, `wolframscript`, () => {
-            server = exec(`wolframscript`, {cwd: workingDir});
-  
-            subscribe(server, (log)=>{
-              if (nolicense.exec(log)) {
-                sender('There is some problems with your license... We are sorry ;(', '\x1b[32m');
-                setTimeout(app.exit, 4000);
-              }
-            });
-
-            params.forEach((line)=>{
-              server.stdin.write(line+'\n');
-            });
-  
-            server.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
-            // server.stdin.end(); // EOF
-          });
-        }
-    });
-
-  };
 })
 
 
@@ -975,21 +976,23 @@ const template = [
 
                 logWindow.focus();
 
-                sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
-
-                makePromt((hostname) => {
-                  sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
-                  makePromt((port) => {
-                    sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
-                    sender('creating a server...');
-                    noGUI = true;
-                    params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
-                    startServer();
-                    
+                setTimeout(() => {
+                  makePromt((hostname) => {
+                    sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
+                    makePromt((port) => {
+                      sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
+                      sender('creating a server...');
+                      noGUI = true;
+                      params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
+                      startServer(logWindow);
+                      
+                    }, logWindow);
+                    //globalURL = data;
+                    //showMainWindow(globalURL, 'Remote', true, false);
                   }, logWindow);
-                  //globalURL = data;
-                  //showMainWindow(globalURL, 'Remote', true, false);
-                }, logWindow);
+                }, 1000);
+
+                sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
 
               }
             },     
@@ -1020,14 +1023,16 @@ const template = [
 
                 logWindow.focus();
 
-                sender('Please, type an address of the server in a form', '\x1b[32m');
-                sender('protocol://hostname:port', '\x1b[32m');
+                setTimeout(() => {
+                  sender('Please, type an address of the server in a form', '\x1b[32m');
+                  sender('protocol://hostname:port', '\x1b[32m');
 
-                makePromt((data) => {
-                  sender('oki! trying to connect...', '\x1b[32m');
-                  globalURL = data;
-                  showMainWindow(globalURL, 'Remote', true, false);
-                }, logWindow);
+                  makePromt((data) => {
+                    sender('oki! trying to connect...', '\x1b[32m');
+                    globalURL = data;
+                    showMainWindow(globalURL, 'Remote', true, false);
+                  }, logWindow);
+                }, 1000);
 
               }
             },                     

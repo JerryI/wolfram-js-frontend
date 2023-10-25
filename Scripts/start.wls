@@ -37,7 +37,7 @@ jsf`$env = <|
   "ws2"  -> RandomInteger[{20560, 61000}]
 |>;
 
-If[AssociationQ[$envOverride], Print["Overriding ENV variable..."]; jsf`$env = Join[jsf`$env, $envOverride]];
+
 
 WLJSPSetRootFolder[jsf`root];
 
@@ -103,6 +103,8 @@ If[MemberQ[$ScriptCommandLine, "electron"],
 If[FileExistsQ[FileNameJoin[{jsf`root, ".env"}] && !MemberQ[$ScriptCommandLine, "randomPort"]],
   jsf`$env = Get[FileNameJoin[{jsf`root, ".env"}]];
 ];
+
+If[AssociationQ[$envOverride], Print["Overriding ENV variable..."]; jsf`$env = Join[jsf`$env, $envOverride]];
 
 If[MemberQ[$ScriptCommandLine, "http"],
   jsf`$env["http"] = $ScriptCommandLine[[(Position[$ScriptCommandLine, "http"]//First//First) + 1]] // ToExpression;
