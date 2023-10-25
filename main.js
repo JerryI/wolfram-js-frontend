@@ -936,6 +936,98 @@ function showProgress(received,total){
 
 const isMac = process.platform === 'darwin'
 
+
+const serverMenu = [
+  {
+    label: 'Reopen as a server',
+    click: async () => {
+      console.log('exiting the server...');
+      if (server) {
+        server?.stdin?.write(`Exit[]\n`);
+        server?.stdout?.removeAllListeners('data');
+      }
+      BrowserWindow.getAllWindows().forEach((w) => {
+        if (w.title != 'Logger') w.close();
+      });
+
+      if (!logWindow) {
+        const win = createLogWindow();
+        logWindow = win;
+        sender = (data, color) => {
+          win.webContents.send('push-logs', data, color);
+        }
+    
+        win.on('close', () => {
+          logWindow = undefined;
+          sender = (data) => {console.log(data)}
+        });
+      }
+
+      logWindow.focus();
+
+      setTimeout(() => {
+        makePromt((hostname) => {
+          sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
+          makePromt((port) => {
+            sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
+            sender('creating a server...');
+            noGUI = true;
+            params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
+            startServer(logWindow);
+            
+          }, logWindow);
+          //globalURL = data;
+          //showMainWindow(globalURL, 'Remote', true, false);
+        }, logWindow);
+      }, 1000);
+
+      sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
+
+    }
+  },     
+  {
+    label: 'Connect to a server',
+    click: async () => {
+      console.log('exiting the server...');
+      if (server) {
+        server?.stdin?.write(`Exit[]\n`);
+        server?.stdout?.removeAllListeners('data');
+      }
+      BrowserWindow.getAllWindows().forEach((w) => {
+        if (w.title != 'Logger') w.close(); 
+      });
+      
+      if (!logWindow) {
+        const win = createLogWindow();
+        logWindow = win;
+        sender = (data, color) => {
+          win.webContents.send('push-logs', data, color);
+        }
+    
+        win.on('close', () => {
+          logWindow = undefined;
+          sender = (data) => {console.log(data)}
+        });
+      }
+
+      logWindow.focus();
+
+      setTimeout(() => {
+        sender('Please, type an address of the server in a form', '\x1b[32m');
+        sender('protocol://hostname:port', '\x1b[32m');
+
+        makePromt((data) => {
+          sender('oki! trying to connect...', '\x1b[32m');
+          globalURL = data;
+          showMainWindow(globalURL, 'Remote', true, false);
+        }, logWindow);
+      }, 1000);
+
+    }
+  },                     
+  { type: 'separator' }
+]
+
 const buildMenu = () => {
 const template = [
     // { role: 'appMenu' }
@@ -949,94 +1041,7 @@ const template = [
             { role: 'hideOthers' },
             { role: 'unhide' },
             { type: 'separator' },
-            {
-              label: 'Reopen as a server',
-              click: async () => {
-                console.log('exiting the server...');
-                if (server) {
-                  server?.stdin?.write(`Exit[]\n`);
-                  server?.stdout?.removeAllListeners('data');
-                }
-                BrowserWindow.getAllWindows().forEach((w) => {
-                  if (w.title != 'Logger') w.close();
-                });
-
-                if (!logWindow) {
-                  const win = createLogWindow();
-                  logWindow = win;
-                  sender = (data, color) => {
-                    win.webContents.send('push-logs', data, color);
-                  }
-              
-                  win.on('close', () => {
-                    logWindow = undefined;
-                    sender = (data) => {console.log(data)}
-                  });
-                }
-
-                logWindow.focus();
-
-                setTimeout(() => {
-                  makePromt((hostname) => {
-                    sender('fine! now enter a port number for HTTP connection', '\x1b[32m');
-                    makePromt((port) => {
-                      sender(`port ${parseInt(port)}, as well as ${parseInt(port) + 1} and ${parseInt(port) + 2} will be used for communication`, '\x1b[33m');
-                      sender('creating a server...');
-                      noGUI = true;
-                      params.push(`$envOverride = <|"host"->"${hostname}", "http"->${parseInt(port)}, "ws"->${parseInt(port)+1}, "ws2"->${parseInt(port)+2}|>`);
-                      startServer(logWindow);
-                      
-                    }, logWindow);
-                    //globalURL = data;
-                    //showMainWindow(globalURL, 'Remote', true, false);
-                  }, logWindow);
-                }, 1000);
-
-                sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
-
-              }
-            },     
-            {
-              label: 'Connect to a server',
-              click: async () => {
-                console.log('exiting the server...');
-                if (server) {
-                  server?.stdin?.write(`Exit[]\n`);
-                  server?.stdout?.removeAllListeners('data');
-                }
-                BrowserWindow.getAllWindows().forEach((w) => {
-                  if (w.title != 'Logger') w.close(); 
-                });
-                
-                if (!logWindow) {
-                  const win = createLogWindow();
-                  logWindow = win;
-                  sender = (data, color) => {
-                    win.webContents.send('push-logs', data, color);
-                  }
-              
-                  win.on('close', () => {
-                    logWindow = undefined;
-                    sender = (data) => {console.log(data)}
-                  });
-                }
-
-                logWindow.focus();
-
-                setTimeout(() => {
-                  sender('Please, type an address of the server in a form', '\x1b[32m');
-                  sender('protocol://hostname:port', '\x1b[32m');
-
-                  makePromt((data) => {
-                    sender('oki! trying to connect...', '\x1b[32m');
-                    globalURL = data;
-                    showMainWindow(globalURL, 'Remote', true, false);
-                  }, logWindow);
-                }, 1000);
-
-              }
-            },                     
-            { type: 'separator' }, 
+            ...serverMenu,
             { role: 'quit' }
           ]
         }]
@@ -1134,7 +1139,7 @@ const template = [
           }
         },             
         //win.webContents.send('context', 'Iconize');  
-        isMac ? { role: 'close' } : { role: 'quit' }
+        ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...serverMenu, { role: 'quit' }])
       ]
     },
     // { role: 'editMenu' }
