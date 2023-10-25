@@ -49,7 +49,7 @@
       <div class="notion-scroller horizontal notion-collection-view-body" style="flex-grow: 1; flex-shrink: 0; z-index: 1; overflow: auto hidden; margin-right: 0px; margin-bottom: 0px;">
          <div class="notion-list-view" style="">
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Set DisplayForm as a default output format", default = NotebookSettings["displayForm"], update = Function[res, NotebookSettings["displayForm"] = res]}] ?>
-            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Non-transparent background (MacOS)", default = NotebookSettings["background"], update = Function[res, NotebookSettings["background"] = res]}] ?>
+            <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Non-transparent background (MacOS & Win11)", default = NotebookSettings["background"], update = Function[res, NotebookSettings["background"] = res]}] ?>
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","toggle.wsp"}], {name = "Fast boot (bypass updates check)", default = NotebookSettings["fastboot"], update = Function[res, NotebookSettings["fastboot"] = res]}] ?>
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","number.wsp"}], {name = "Autosave interval (sec)", default = (NotebookSettings["autosave"]/1000), update = Function[res, NotebookSettings["autosave"] = 1000 res]}] ?>
             <?wsp LoadPage[FileNameJoin[{"template","modals","settings","button.wsp"}], {name = "Purge OS", desc = "Clear frontend objects storage (if for some reason notebook got puffy)", click = Function[Null, 

@@ -21,7 +21,7 @@ if (app.isPackaged) {
 }
 
 
-const params = ["ElectronQ = True;"]
+const params = ["1 + 1 === 2"]
 
 const runPath = path.join(installationFolder, 'Scripts', 'start.wls');
 
@@ -153,6 +153,8 @@ const setHID = (mainWindow) => {
       // Optionally update details.deviceList
     })
 
+
+
     mainWindow.webContents.session.on('hid-device-removed', (event, device) => {
       console.log('hid-device-removed FIRED WITH', device)
       // Optionally update details.deviceList
@@ -171,6 +173,11 @@ const setHID = (mainWindow) => {
   mainWindow.webContents.session.setDevicePermissionHandler((details) => {
     return true
   })
+
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders['Electron'] = 'True'
+    callback({ requestHeaders: details.requestHeaders })
+  });
 }
 
 const { PARAMS, VALUE,  MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica-electron');
@@ -200,26 +207,24 @@ const createWindow = (url, focus = true, hidefirst = true) => {
       } else {
         let mat;
    
-        //if (isWindows) trans = true;
-        if (IS_WINDOWS_11) mat = 'mica'; else mat = 'acrylic';
-
-
         win = new MicaBrowserWindow({
           width: 800,
           height: 600,
-          show: false,
           title: 'Root',
           transparent:true,
           show: !hidefirst,
           webPreferences: {
             preload: path.join(__dirname, 'preloadMain.js')
-          }});
+           }});
 
-          if (IS_WINDOWS_11) {
-            win.setMicaEffect();
-          } else {
-            //win.setCustomEffect(WIN10.ACRYLIC, '#34ebc0', 0.4);
-            //win.setRoundedCorner();
+           if (IS_WINDOWS_11) {
+             win.setMicaEffect();
+             //win.setMicaEffect();
+             win.setMicaAcrylicEffect();
+             win.setAutoTheme();
+           } else {
+             //win.setCustomEffect(WIN10.ACRYLIC, '#34ebc0', 0.4);
+             //win.setRoundedCorner();
           }
 
       }
@@ -415,6 +420,8 @@ const subscribe = (server, handler = ()=>{}) => {
   server.on('error', function( err ){ setTimeout(()=>{
     app.exit();
   }, 3000); throw err;  });
+
+
 
   server.stdout.on('data', (data) => {
     const s = data.toString();
@@ -938,6 +945,86 @@ const template = [
             { role: 'hideOthers' },
             { role: 'unhide' },
             { type: 'separator' },
+            {
+              label: 'Reopen as a server',
+              click: async () => {
+                console.log('exiting the server...');
+                if (server) {
+                  server?.stdin?.write(`Exit[]\n`);
+                  server?.stdout?.removeAllListeners('data');
+                }
+                BrowserWindow.getAllWindows().forEach((w) => {
+                  if (w.title != 'Logger') w.close();
+                });
+
+                if (!logWindow) {
+                  const win = createLogWindow();
+                  logWindow = win;
+                  sender = (data, color) => {
+                    win.webContents.send('push-logs', data, color);
+                  }
+              
+                  win.on('close', () => {
+                    logWindow = undefined;
+                    sender = (data) => {console.log(data)}
+                  });
+                }
+
+                logWindow.focus();
+
+                sender('Please, type a hostname/ip for a listerner', '\x1b[32m');
+
+                makePromt((hostname) => {
+                  sender('fine! now enter a port number', '\x1b[32m');
+                  makePromt((port) => {
+                    sender('creating a server...');
+                    
+                  }, logWindow);
+                  //globalURL = data;
+                  //showMainWindow(globalURL, 'Remote', true, false);
+                }, logWindow);
+
+              }
+            },     
+            {
+              label: 'Connect to a server',
+              click: async () => {
+                console.log('exiting the server...');
+                if (server) {
+                  server?.stdin?.write(`Exit[]\n`);
+                  server?.stdout?.removeAllListeners('data');
+                }
+                BrowserWindow.getAllWindows().forEach((w) => {
+                  if (w.title != 'Logger') w.close(); 
+                });
+                
+                if (!logWindow) {
+                  const win = createLogWindow();
+                  logWindow = win;
+                  sender = (data, color) => {
+                    win.webContents.send('push-logs', data, color);
+                  }
+              
+                  win.on('close', () => {
+                    logWindow = undefined;
+                    sender = (data) => {console.log(data)}
+                  });
+                }
+
+                logWindow.focus();
+
+                sender('Please, type an address of the server in a form', '\x1b[32m');
+                sender('protocol://hostname:port', '\x1b[32m');
+
+                makePromt((data) => {
+                  sender('oki! trying to connect...', '\x1b[32m');
+                  globalURL = data;
+                  showMainWindow(globalURL, 'Remote', true, false);
+                }, logWindow);
+
+              }
+            },                     
+            { type: 'separator' }, 
             { role: 'quit' }
           ]
         }]

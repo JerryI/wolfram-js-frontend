@@ -88,7 +88,11 @@ SetUpCron := (
 );
 
 
-If[!BooleanQ[ElectronQ], ElectronQ = False];
+If[!BooleanQ[ElectronQ], 
+  ElectronQ = False;
+
+  ElectronQ := (KeyExistsQ[$CurrentRequest["Headers"], "Electron"]);
+];
 
 If[MemberQ[$ScriptCommandLine, "electron"],
   ElectronQ = True;
