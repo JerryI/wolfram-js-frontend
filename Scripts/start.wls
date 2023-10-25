@@ -185,6 +185,9 @@ SupportedTypes = {
 (* no cache, we are developers *)
 If[TrueQ[devmode], WSPCache["Off"]];
 
+Print["ENV:"];
+Print[jsf`$env];
+
 Print["Staring JTP server..."];
 
 jsf`jtp   =  JTPServer["host" -> "127.0.0.1", "port" -> jsf`$env["jtp"], "nohup"->True] // JTPServerStart;
