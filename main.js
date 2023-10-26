@@ -1183,7 +1183,7 @@ const template = [
         { type: 'separator' },
         {
           label: 'Hide/Unhide cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Super+2',
+          accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Ctrl+w',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HC'); 
@@ -1191,7 +1191,7 @@ const template = [
         }, 
         {
           label: 'Hide/Unhide upper cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Super+1',
+          accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Ctrl+q',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HUC'); 
@@ -1199,7 +1199,7 @@ const template = [
         },  
         {
           label: 'Hide/Unhide down cell',
-          accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Super+3',
+          accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Ctrl+e',
           click: async (ev) => {
             console.log(ev);
             currentWindow.cellop('HLC'); 
@@ -1208,7 +1208,7 @@ const template = [
         { type: 'separator' }, 
         {
           label: 'Delete current cell',
-          accelerator: process.platform === 'darwin' ? "Cmd+'" : "Super+'",
+          accelerator: process.platform === 'darwin' ? "Cmd+'" : "Ctrl+d'",
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('DS'); 
@@ -1270,7 +1270,7 @@ const template = [
       submenu: [
         {
           label: 'Abort',
-          accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Super+.',
+          accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Alt+.',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('Abort'); 
@@ -1279,7 +1279,7 @@ const template = [
         
         {
           label: 'Evaluate Initializing Cells',
-          accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Super+i',
+          accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Alt+i',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EIC'); 
@@ -1288,7 +1288,7 @@ const template = [
 
         {
           label: 'Clear Output Cells',
-          accelerator: process.platform === 'darwin' ? 'Cmd+u' : 'Super+u',
+          accelerator: process.platform === 'darwin' ? 'Cmd+u' : 'Alt+u',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('COC'); 
@@ -1297,7 +1297,7 @@ const template = [
 
         {
           label: 'Evaluate All Cells',
-          accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Super+a',
+          accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Alt+a',
           click: async (ev) => {
             console.log(ev);
             currentWindow.call('EAC'); 
