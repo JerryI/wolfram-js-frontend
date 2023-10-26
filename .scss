@@ -38,4 +38,8 @@ none;\n    --kernel-undefined: none;\n    --kernel-bad: rgba(255, 17, 17, \
     --borders-color: black;\n      --topbar-background: rgb(52,51,52);\n      \
 --buttons-hover: rgb(255 206 59 / 53%);\n      --filter-frame: invert(1);\n   \
    --buttons-hover-inverted: #0031c487; \n      --background-menu: \
-#1a1a1ae0;\n  }\n"
+#1a1a1ae0;\n  }\n\n/* cell block wrapper (multiple in/out cells + toolbox) \
+*/\n.cell-wrapper {\n    height: auto;\n}\n\n/* cell wrapper (multiple in/out \
+cells) */\n.content-wrapper {\n    position: relative; \n    width: \
+auto;\n}\n \n/* inner cells container (in or out cells) */ \
+\n.styles-container-editor .frontend-paragraph {\n  background: auto;\n} \n"
