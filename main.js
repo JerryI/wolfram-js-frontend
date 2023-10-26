@@ -954,6 +954,7 @@ function showProgress(received,total){
 
 const isMac = process.platform === 'darwin'
 
+let remoteGUI = false
 
 const serverMenu = [
   {
@@ -1013,6 +1014,10 @@ const serverMenu = [
         server?.stdin?.write(`Exit[]\n`);
         server?.stdout?.removeAllListeners('data');
       }
+
+      remoteGUI = true;
+      buildMenu();
+
       BrowserWindow.getAllWindows().forEach((w) => {
         if (w.title != 'Logger') w.close(); 
       });
@@ -1078,7 +1083,7 @@ const template = [
             currentWindow.call('New'); 
           }
         },
-        {
+        ...((!remoteGUI)? [{
           label: 'Open File',
           accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
           click: async () => {
@@ -1116,7 +1121,16 @@ const template = [
               role: "clearrecentdocuments"
             }
           ]
-        },
+        }] : [
+          {
+            label: 'Open Vault',
+            accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
+            click: async (ev) => {
+              console.log(ev);
+              currentWindow.call('OpenVault'); 
+            }
+          }
+        ]),
         {
           label: 'Save',
           accelerator: process.platform === 'darwin' ? 'Cmd+S' : 'Ctrl+S',
@@ -1144,7 +1158,7 @@ const template = [
             }
           ]
         },
-        { type: 'separator' },        
+        ...(!(remoteGUI)? [{ type: 'separator' },        
         {
           label: 'Open Examples',
           click: async (ev) => {
@@ -1157,7 +1171,7 @@ const template = [
             console.log(ev);
             shell.showItemInFolder(installationFolder);
           }
-        },             
+        }] : []),             
         //win.webContents.send('context', 'Iconize');  
         ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...serverMenu, { role: 'quit' }])
       ]

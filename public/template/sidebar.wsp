@@ -38,8 +38,7 @@
                                                         </div>
                                                     </div>  
 
-                                                <?wsp , ""] ?> 
-                                                <?wsp If[!TrueQ[ElectronQ] || TrueQ[RemoteQ], ?>    
+                                                  
 
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="open-vault-button" class="notion-focusable" role="button" tabindex="0">
@@ -55,8 +54,7 @@
                                                     </div>
                                                  
 
-                                                <?wsp , ""] ?> 
-                                                <?wsp If[!TrueQ[ElectronQ], ?> 
+                                               
 
                                                     <div style="flex-grow: 0; flex-shrink: 0;">
                                                         <div id="new-notebook-button" class="notion-focusable" role="button" tabindex="0">
@@ -423,6 +421,11 @@
                 server.socket.send('NotebookStore;');
                 lastTimeSaved = new Date();
                 datesaved.innerText = formatDateDiff(lastTimeSaved, new Date());                 
+            }
+
+            if (id === 'OpenVault') {
+                if (server.socket.readyState != 1) alert('Connection to the server was lost!');
+                callModal('filebrowser', '{path = "<?wsp $CurrentRequest["dir"]//URLEncode ?>"}');               
             }
 
             if (id === 'New') {
