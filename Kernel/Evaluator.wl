@@ -93,6 +93,11 @@ RowBoxFlatten[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
 Unprotect[ToString]
 ToString[expr_, StandardForm] := StringReplace[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements // ToBoxes) /. {RowBox->RowBoxFlatten} // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
 
+(*disable standard form*)
+If[!JerryI`WolframJSFrontend`settings["displayForm"],
+  Print["StandardForm is disabled!"];
+  ToString[expr_, StandardForm] := StringReplace[ToString[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements), InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
+];
 
 (*CMCrawler[a_[args__], StandardForm] := With[{args = (CMCrawler[#, StandardForm] &/@ List[args])}, CMCrawler[a, StandardForm]@@x]
 CMCrawler[a_, StandardForm] := a
