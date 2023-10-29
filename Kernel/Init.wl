@@ -18,9 +18,20 @@ JerryI`WolframJSFrontend`$PublicDirectory = Directory[]
 
 JerryI`WolframJSFrontend`WSKernelAddr = "127.0.0.1"
 
-PacletInstall["JerryI/LPM"]
+If[PacletFind["JerryI/LPM"] === {},
+    If[FailureQ[
+      PacletInstall["JerryI/LPM"]
+    ], 
+      Print["Oh AGAIN you WOLFRAM! We wil try to use Github"];
+      Get["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl"];
+    ,
+      <<JerryI`LPM`;
+    ];
+,
+    <<JerryI`LPM`;
+];
 
-<<JerryI`LPM`
+
 
 Echo["LPM version: "<>ToString[JerryI`LPM`Private`Version]];
 
