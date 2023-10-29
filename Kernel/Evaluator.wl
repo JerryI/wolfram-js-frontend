@@ -131,6 +131,36 @@ Iconize[expr_] := Module[{compressed = Hold[IconizeWrapper[expr]]//Compress},
 
 ExprObjectExport[expr_, uid_String] := CreateFrontEndObject[expr, uid]
 
+Unprotect[EvaluationCell];
+ClearAll[EvaluationCell];
+
+Unprotect[ParentCell];
+ClearAll[ParentCell];
+
+Unprotect[CellPrint];
+ClearAll[CellPrint];
+
+CellPrintInContext[callback_][expr_String, OptionsPattern[]] := With[{uid = CreateUUID[]}, Module[{parent},
+  callback[
+    expr, 
+    uid, 
+    "codemirror", 
+    Null
+  ];
+
+  Return[CellObj[uid], Module];
+]]
+
+
+
+CellObj /: ParentCell[CellObj[uid_String]] := With[{nid = JerryI`WolframJSFrontend`Remote`Private`notebook},
+  JerryI`WolframJSFrontend`Remote`Private`MasterSubmit[CellListFindFirstInputBefore[nid, CellObj[uid]]]
+]
+
+CellObj /: Delete[CellObj[uid_String]] := With[{nid = JerryI`WolframJSFrontend`Remote`Private`notebook}, 
+  JerryI`WolframJSFrontend`Remote`Private`MasterSubmit[NotebookOperate[nid][uid, CellListRemoveAccurate]]
+]
+
 BeginPackage["JerryI`WolframJSFrontend`Evaluator`", {"JerryI`WSP`"}];
 
 (* going to be executed on the remote or local kernels *)
@@ -158,19 +188,24 @@ InternalGetObject[uid_] := (
   JerryI`WolframJSFrontend`Evaluator`objects[uid]
 )
 
-Unprotect[EvaluationCell];
-ClearAll[EvaluationCell];
+
 
 
 WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = CreateUUID[]},
  
-  Block[{Global`$NewDefinitions = <||>, Global`$PostEval = Null, EvaluationCell = Function[Null, $CellUid], $NotebookID = signature, $evaluated, Global`$ignoreLongStrings = False},
+  Block[{
+        Global`$NewDefinitions = <||>, 
+        Global`$PostEval = Null, 
+        EvaluationCell = Function[Null, Global`CellObj[$CellUid]], 
+        Global`$NotebookID = signature, $evaluated, 
+        Global`$ignoreLongStrings = False
+      },
 
       (* convert, and replace all frontend objects with its representations (except Set) and evaluate the result *)
      
       $evaluated = ToExpression[str, InputForm, Hold] ;
      
-      $evaluated = $evaluated /. JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements;
+      $evaluated = $evaluated /. JerryI`WolframJSFrontend`Evaluator`legacyFixReplacements /. {CellPrint -> Global`CellPrintInContext[callback]};
    
       $evaluated = $evaluated // ReleaseHold;
 

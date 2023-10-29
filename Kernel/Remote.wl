@@ -35,6 +35,8 @@ NotebookAddTracking::usage = "add tracking for a symbol"
 
 Begin["`Private`"]; 
 
+
+
 master = Null;
 mastersync = Null;
 notebook = Null;
@@ -55,6 +57,8 @@ EvaluationNotebook[args___] := notebook
 Options[ConnectToMaster] = {"PingCheck"->False};
 
 AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] ];
+
+MasterSubmit[expr_] := JTPClientEvaluate[mastersync, expr];
 
 MasterResolvePromise[expr_][uid_] := With[{res = expr//ReleaseHold},
   JTPClientEvaluateAsyncNoReply[master, Global`LocalKernelPromiseResolve[uid, res]];

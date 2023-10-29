@@ -862,11 +862,21 @@ NotebookOperate[cellid_, op_] := (
     ];
 );
 
-
+NotebookOperate[nid_String][cellid_, op_] := (
+    Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[jsfn`Notebooks[nid]["channel"]]},
+        op[CellObj[cellid]];
+    ] 
+);
 
 
 NotebookOperate[cellid_, op_, arg__] := (
     Block[{JerryI`WolframJSFrontend`fireEvent = NotebookEventFire[Global`client]},
+        op[CellObj[cellid], arg];
+    ];
+);
+
+NotebookOperate[nid_String][cellid_, op_, arg__] := (
+    Block[{JerryI`WolframJSFrontend`fireEvent =  NotebookEventFire[jsfn`Notebooks[nid]["channel"]]},
         op[CellObj[cellid], arg];
     ];
 );

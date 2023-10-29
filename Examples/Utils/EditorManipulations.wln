@@ -1,0 +1,76 @@
+<|"notebook" -> <|"name" -> "Ironworks", "id" -> "precipice-5c903", 
+   "kernel" -> LocalKernel, "objects" :> <||>, "path" -> "/Volumes/Data/Githu\
+b/wolfram-js-frontend/Examples/Utils/EditorManipulations.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 29, 11, 39, 
+      56.435568`8.504127874277792}, "Instant", "Gregorian", 1.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$24], 
+   "SelectedCell" -> "4a15fabd-9c9c-4719-9ec7-57a6cdc3988c"|>, 
+ "cells" -> {<|"id" -> "dd9e054b-0ae9-45ce-9d41-76f1f6d8e914", 
+    "type" -> "input", "data" -> ".md\n## Editor manupilation", 
+    "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "2df016f3-32b0-4b32-a682-8ab03bb0e27b", "type" -> "output", 
+    "data" -> "\n## Editor manupilation", "display" -> "markdown", 
+    "sign" -> "precipice-5c903", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "99588b8d-ea65-4abf-9248-3a481a2a5be9", "type" -> "input", 
+    "data" -> ".md\n### Replace selected / insert text to the \
+editor\nEvaluate *the cell below* first, then, select a text in the cell and \
+press the button.", "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "3d625e2a-7fcf-4bc7-a580-bad9def776e1", "type" -> "output", 
+    "data" -> "\n### Replace selected / insert text to the editor\nEvaluate \
+*the cell below* first, then, select a text in the cell and press the \
+button.", "display" -> "markdown", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5787ec72-0309-4880-a7f3-187f2e7b93c7", "type" -> "input", 
+    "data" -> "EventHandler[InputButton[\"Replace selected text\"], \
+Function[Null, \n  FrontEditorSelected[\"Set\", \"Yo\"] // FrontSubmit;\n]]", 
+    "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "19664252-0cd0-4367-b858-d16bfbdc76c6", "type" -> "input", 
+    "data" -> ".md\nExample cell", "display" -> "codemirror", 
+    "sign" -> "precipice-5c903", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "25526030-09c2-4235-88de-955e87172fbd", "type" -> "output", 
+    "data" -> "\nExample cell", "display" -> "markdown", 
+    "sign" -> "precipice-5c903", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9fb1f460-8523-4600-b628-3968cadd5bbf", "type" -> "input", 
+    "data" -> "Select some text here", "display" -> "codemirror", 
+    "sign" -> "precipice-5c903", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "bda05cf5-6d21-4e1f-ac3e-49fe1ca8fc72", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9a9a4d99-016e-4f7b-b96e-e2ce69dfa6aa", "type" -> "input", 
+    "data" -> ".md\n### Reading selected text\nThis is a bit more \
+complicated, since it involves communication back to the Wolfram Kernel", 
+    "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "fc8894ea-5372-43b6-a44e-d26b189740ac", "type" -> "output", 
+    "data" -> "\n### Reading selected text\nThis is a bit more complicated, \
+since it involves communication back to the Wolfram Kernel", 
+    "display" -> "markdown", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "755c2aea-31a5-4009-8893-eab0c069e64b", "type" -> "input", 
+    "data" -> "textHandler[str_] := \
+CellPrint[str];\n\nEventHandler[InputButton[\"Read selected text\"], \
+Function[Null, \n  TalkKernel[FrontEditorSelected[\"Get\"], \"textHandler\"] \
+// FrontSubmit\n]]", "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9873a648-ed84-411c-a191-d2d31bc14b55", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4a15fabd-9c9c-4719-9ec7-57a6cdc3988c", "type" -> "input", 
+    "data" -> ".md\n### Read cliboard\nThis is sort of an experimental \
+feature, that allows to read the content of a clipboard", 
+    "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "bea13ab6-37b7-49fb-8683-c8edec817c97", "type" -> "output", 
+    "data" -> "\n### Read cliboard\nThis is sort of an experimental feature, \
+that allows to read the content of a clipboard", "display" -> "markdown", 
+    "sign" -> "precipice-5c903", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7ee7f9f5-77bb-45c2-83b2-9f4dc74728f0", "type" -> "input", 
+    "data" -> "textHandler[str_] := \
+CellPrint[str];\n\nEventHandler[InputButton[\"Read selected text\"], \
+Function[Null, \n  TalkKernel[Global`ReadClipboard[], \"textHandler\"] // \
+FrontSubmit\n]]", "display" -> "codemirror", "sign" -> "precipice-5c903", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

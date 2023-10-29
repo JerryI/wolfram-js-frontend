@@ -11,6 +11,8 @@ CellList::usage = "list"
 
 CellObjSave::usage = ""
 
+CellListFindFirstInputBefore::usage = ""
+
 CellListRemoveAllNextOutput::usage = ""
 CellListAddNewInput::usage = ""
 CellListAddNewOutput::usage = ""
@@ -134,6 +136,23 @@ CellListAddNewInput[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     CellList[list] = Insert[CellList[list], CellObj[new], pos];
 
     JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
+];
+
+CellListFindFirstInputBefore[list_, CellObj[cell_]] := Module[{pos},
+    pos = Position[CellList[list], CellObj[cell]] // Flatten // First;
+
+    If[!NumericQ[pos], Return[Null, Module]];
+    If[pos === 1, Return[Null, Module]];   
+
+    pos = pos - 1;
+
+    While[CellList[list][[pos]]["type"] === "output",
+        Print["looking for the first input..., pos: "<>ToString[pos]];
+        If [pos === 1, Break[]];
+        pos = pos - 1;
+    ];
+
+    CellList[list][[pos]]
 ];
 
 CellListAddNewInputBefore[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
