@@ -45,7 +45,7 @@ jsf`$env = <|
 
 WLJSPSetRootFolder[jsf`root];
 
-JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[], ""}
+JerryI`WolframJSFrontend`$PublicDirectory = {jsf`public, FileNameJoin[{jsf`root, "Packages"}], FileNameJoin[{jsf`root, "Assets"}], Directory[], "/", ""}
 
 (* assign the handler for ExtendDefiniton command from the kernel to Notebook API *)
 JerryI`WolframJSFrontend`ExtendDefinitions = NotebookExtendDefinitions;
@@ -209,7 +209,7 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "
   ImportFile[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory] &
 )
 
-http["MessageHandler", "Post"] = GetPOSTRequestQ[{"wsp"}] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
+http["MessageHandler", "Post"] = GetPOSTRequestQ["wsp"] -> Composition[(HypertextProcess[#, "Base":>JerryI`WolframJSFrontend`$PublicDirectory]&), ProcessMultipart]
 
 (* ::End:: *)
 SocketListen[CSocketOpen[jsf`$env["host"], jsf`$env["http"]], tcp@#&]

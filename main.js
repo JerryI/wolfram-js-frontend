@@ -455,7 +455,7 @@ const subscribe = (server, handler = ()=>{}) => {
         showMainWindow(globalURL);
         running = true;
         if (logWindow) {
-          stdAsk(logWindow, server);
+          //stdAsk(logWindow, server);
         }
 
       }
@@ -1009,19 +1009,12 @@ const serverMenu = [
   {
     label: 'Connect to a server',
     click: async () => {
-      console.log('exiting the server...');
-      if (server) {
-        server?.stdin?.write(`Exit[]\n`);
-        server?.stdout?.removeAllListeners('data');
-      }
-
-      remoteGUI = true;
-      buildMenu();
+      let localRun = false;
 
       BrowserWindow.getAllWindows().forEach((w) => {
-        if (w.title != 'Logger') w.close(); 
+        if (w.title != 'Logger') {localRun = true;}
       });
-      
+
       if (!logWindow) {
         const win = createLogWindow();
         logWindow = win;
@@ -1035,18 +1028,54 @@ const serverMenu = [
         });
       }
 
-      logWindow.focus();
 
-      setTimeout(() => {
-        sender('Please, type an address of the server in a form', '\x1b[32m');
-        sender('protocol://hostname:port', '\x1b[32m');
+      logWindow.focus();    
+      
+      const connectToANew = () => {
 
-        makePromt((data) => {
-          sender('oki! trying to connect...', '\x1b[32m');
-          globalURL = data;
-          showMainWindow(globalURL, 'Remote', true, false);
+        if (!localRun) {
+          console.log('exiting the server...');
+          if (server) {
+            server?.stdin?.write(`Exit[]\n`);
+            server?.stdout?.removeAllListeners('data');
+          }
+        }
+      
+        if (!localRun) {
+          remoteGUI = true;
+          buildMenu();
+        }
+      
+        setTimeout(() => {
+          sender('Please, type an address of the server in a form', '\x1b[32m');
+          sender('protocol://hostname:port', '\x1b[32m');
+        
+          makePromt((data) => {
+            sender('oki! trying to connect...', '\x1b[32m');
+            if (!localRun) globalURL = data;
+            showMainWindow(data, 'Remote', true, false);
+          }, logWindow);
+        }, 1000);
+
+      }      
+
+      if (localRun) {
+      sender('Keep current session?', '\x1b[32m');
+        dialogYesNo((data) => {
+          if (data) {
+            connectToANew();
+          } else {
+            BrowserWindow.getAllWindows().forEach((w) => {
+              if (w.title != 'Logger') w.close();
+            });
+            localRun = false;
+
+            connectToANew();
+          }
         }, logWindow);
-      }, 1000);
+      } else {
+        connectToANew();
+      }
 
     }
   },                     
@@ -1111,7 +1140,7 @@ const template = [
               }
             });
           }
-        },
+        },        
         {
           label: "Open Recent",
           role: "recentdocuments",
@@ -1121,7 +1150,15 @@ const template = [
               role: "clearrecentdocuments"
             }
           ]
-        }] : [
+        },     
+        {
+          label: 'Open Vault',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.call('OpenVault'); 
+          }
+        }       
+      ] : [
           {
             label: 'Open Vault',
             accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',

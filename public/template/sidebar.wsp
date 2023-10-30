@@ -378,7 +378,10 @@
         }
         const query = `FileOperate["Upload"][<|"name"->"${name}", "data"->"${file}"|>, "${window.Notebook}"]`;
 
-        return server.send(query)
+        server.post.send(query);
+        //FIME
+        //TODO make a normal promise
+        return new Promise(()=>{});
     }
 
     sidebar.addEventListener('drop', (ev)=>{
