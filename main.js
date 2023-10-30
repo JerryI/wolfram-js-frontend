@@ -1012,7 +1012,7 @@ const serverMenu = [
       let localRun = false;
 
       BrowserWindow.getAllWindows().forEach((w) => {
-        if (w.title != 'Logger') {localRun = true;}
+        if (w.title != 'Logger' && w != logWindow) {localRun = true;}
       });
 
       if (!logWindow) {
@@ -1066,7 +1066,7 @@ const serverMenu = [
             connectToANew();
           } else {
             BrowserWindow.getAllWindows().forEach((w) => {
-              if (w.title != 'Logger') w.close();
+              if (w.title != 'Logger' && w != logWindow) w.close();
             });
             localRun = false;
 
