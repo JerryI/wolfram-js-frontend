@@ -1053,7 +1053,7 @@ const serverMenu = [
           makePromt((data) => {
             sender('oki! trying to connect...', '\x1b[32m');
             if (!localRun) globalURL = data;
-            showMainWindow(data, 'Remote', true, false);
+            showMainWindow(data, data, true, false);
           }, logWindow);
         }, 1000);
 
