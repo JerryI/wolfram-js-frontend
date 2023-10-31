@@ -26,6 +26,10 @@
         <?wsp Table[ ?> 
             <script type="module" src="/<?wsp i // FileNameToURLPath ?>"></script>
         <?wsp , {i, Includes["autocomplete"]}]?>   
+
+        <script type="module">
+            window.EditorAutocomplete.extend(<?wsp ExportString[JerryI`WolframJSFrontend`Extensions`AutocompletePool, "JSON"] ?>);          
+        </script>
         
         <script type="module">
             window.isElectron = () => {

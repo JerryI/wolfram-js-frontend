@@ -73,8 +73,20 @@ If[!TrueQ[JerryI`WolframJSFrontend`settings["displayForm"]],
 
 (* some buggy replacements, that cannot be threated differently. FUCK WOLFRAM cuz you cannot control Boxes on Graphics and Image *)
 JerryI`WolframJSFrontend`Evaluator`replacements = {};
+JerryI`WolframJSFrontend`Evaluator`replacementsAfter = {};
 
-JerryI`WolframJSFrontend`Evaluator`KeepExpression[item_] := With[{},
+JerryI`WolframJSFrontend`Evaluator`KeepExpression[item_, OptionsPattern[]] := With[{},
+  If[OptionValue["Epilog"],
+    JerryI`WolframJSFrontend`Evaluator`replacementsAfter = {JerryI`WolframJSFrontend`Evaluator`replacementsAfter,
+      {
+        Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; MakeBoxes[Global`FrontEndExecutable[$ouid], StandardForm] ],
+        item[x__] :> With[{$ouid = CreateUUID[]}, 
+          Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
+          $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; MakeBoxes[Global`FrontEndExecutable[$ouid], StandardForm] ]
+      }} // Flatten
+  ,
     JerryI`WolframJSFrontend`Evaluator`replacements = {JerryI`WolframJSFrontend`Evaluator`replacements,
       {
         Global`CreateFrontEndObject[item[x__], $iouid_:Null] :> With[{$ouid = If[$iouid === Null, CreateUUID[], $iouid]}, 
@@ -84,19 +96,22 @@ JerryI`WolframJSFrontend`Evaluator`KeepExpression[item_] := With[{},
           Global`$NewDefinitions[$ouid] = <|"json"->ExportString[item[x], "ExpressionJSON", "Compact" -> 0], "date"->Now |>; 
           $ExtendDefinitions[$ouid, Global`$NewDefinitions[$ouid]]; Global`FrontEndExecutable[$ouid] ]
       }} // Flatten
-    ]
+  ]
+]
+
+Options[JerryI`WolframJSFrontend`Evaluator`KeepExpression] = {"Epilog"->False}
 
 
 RowBoxFlatten[x_List, y___] := StringJoin @@ (ToString[#] & /@ x)
 
 
 Unprotect[ToString]
-ToString[expr_, StandardForm] := StringReplace[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements // ToBoxes) /. {RowBox->RowBoxFlatten} // ToString, {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
+ToString[expr_, StandardForm] := StringReplace[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements // ToBoxes) /. JerryI`WolframJSFrontend`Evaluator`replacementsAfter /. {RowBox->RowBoxFlatten} // ToString, {"\[NoBreak]"->""}]
 
 (*disable standard form*)
 If[!JerryI`WolframJSFrontend`settings["displayForm"],
   Print["StandardForm is disabled!"];
-  ToString[expr_, StandardForm] := StringReplace[ToString[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements), InputForm], {"\[NoBreak]"->"", "\[Pi]"->"$Pi$"}]
+  ToString[expr_, StandardForm] := StringReplace[ToString[(expr /. JerryI`WolframJSFrontend`Evaluator`replacements), InputForm], {"\[NoBreak]"->""}]
 ];
 
 (*CMCrawler[a_[args__], StandardForm] := With[{args = (CMCrawler[#, StandardForm] &/@ List[args])}, CMCrawler[a, StandardForm]@@x]

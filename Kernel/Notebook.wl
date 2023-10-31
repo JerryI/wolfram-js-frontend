@@ -1074,8 +1074,13 @@ SetAttributes[NotebookLoadPage, HoldRest];
 SetAttributes[NotebookLoadModal, HoldRest];
 
 JerryI`WolframJSFrontend`Extensions`SettingsPool = {};
+JerryI`WolframJSFrontend`Extensions`AutocompletePool = {};
 JerryI`WolframJSFrontend`Extensions`ExtendSettings[function_, title_String] := AppendTo[JerryI`WolframJSFrontend`Extensions`SettingsPool, <|"title"->title, "handler"->function|>]
-JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete = Print["Not implemented!"];;
+JerryI`WolframJSFrontend`Extensions`RegisterAutocomplete[assoc_] := With[{},
+    JerryI`WolframJSFrontend`Extensions`AutocompletePool = {JerryI`WolframJSFrontend`Extensions`AutocompletePool, assoc} // Flatten;
+]
+
+JerryI`WolframJSFrontend`Extensions`ExtendAutocomplete[assoc_] := JerryI`WolframJSFrontend`Extensions`AutocompletePool = {JerryI`WolframJSFrontend`Extensions`AutocompletePool, assoc} // Flatten // DeleteDuplicates;
 
 Unprotect[NotebookPrint]
 ClearAll[NotebookPrint]
