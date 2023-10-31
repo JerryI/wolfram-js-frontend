@@ -435,9 +435,9 @@ NotebookStore := Module[{channel = $AssociationSocket[Global`client], cells, not
     Clear[notebook];
     Print["SAVED"];
 
-    (* generate privew *)
+    (* generate privew 
     AddThumbnail[channel];
-    SaveThumbnails;
+    SaveThumbnails;*)
 
 ];
 
