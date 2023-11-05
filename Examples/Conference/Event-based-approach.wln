@@ -192,31 +192,29 @@ e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
 st\",400,100]],[\"Rule\",\"'TransitionDuration'\",300],[\"Rule\",\"'Transitio\
 nType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 6, 19, 16, 28, 
           32.568433`8.2653718438225}, "Instant", "Gregorian", 3.]|>, 
-     "9bdbc7ad-5eb9-4223-928a-fb25e3bac3e7" -> 
+     "db4588b4-f9c6-4b7c-a45b-33f06fdfedea" -> 
       <|"json" -> "[\"RangeView\",[\"List\",-1,1,0.1,0.0],[\"Rule\",\"'Event'\
-\",\"'93abd491-9ce0-4da1-948d-224870424a53'\"],[\"Rule\",\"'Label'\",\"'Lengt\
-h'\"]]", "date" -> DateObject[{2023, 9, 8, 18, 7, 
-          14.094057`7.901611008905059}, "Instant", "Gregorian", 3.]|>, 
-     "c6a0f94b-c4c6-415a-989a-d05dc992a083" -> 
+\",\"'16af2cd4-fa6c-4a66-b413-cc7e086598a4'\"],[\"Rule\",\"'Label'\",\"'Lengt\
+h'\"]]", "date" -> DateObject[{2023, 11, 5, 22, 35, 
+          43.678808`8.392845755340566}, "Instant", "Gregorian", 1.]|>, 
+     "2f08e941-a115-4f83-bd93-7e6d3b10ead5" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Rectangle\
-\",[\"List\",-1,1],[\"List\",[\"Hold\",\"length\"],-1]]],[\"Rule\",\"PlotRang\
-e\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\"Li\
-st\",400,100]],[\"Rule\",\"'TransitionDuration'\",30],[\"Rule\",\"'Transition\
-Type'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 9, 8, 18, 9, 
-          31.732972`8.254085729223428}, "Instant", "Gregorian", 3.]|>, 
-     "eb5f52c3-de6e-4d69-b24b-e02bb71be356" -> 
-      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
-\",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]],[\"Rule\
-\",\"'drag'\",\"'84ae2378-064f-40b8-b523-90925ba2eedd'\"]],[\"Line\",[\"Offlo\
-ad\",\"dot\"]]],[\"Rule\",\"'TransitionDuration'\",20],[\"Rule\",\"ImageSize\
-\",[\"List\",400,400]]]", "date" -> DateObject[{2023, 9, 8, 18, 11, 
-          26.913361`8.182542918873635}, "Instant", "Gregorian", 3.]|>|>, 
+\",[\"List\",-1,-1],[\"List\",[\"Offload\",\"length\"],1]]],[\"Rule\",\"PlotR\
+ange\",[\"List\",[\"List\",-1,1],[\"List\",-1,1]]],[\"Rule\",\"ImageSize\",[\
+\"List\",400,100]],[\"Rule\",\"'TransitionDuration'\",30],[\"Rule\",\"'Transi\
+tionType'\",\"'Linear'\"]]", "date" -> DateObject[{2023, 11, 5, 22, 36, 
+          0.657546`6.57050112935957}, "Instant", "Gregorian", 1.]|>|>, 
    "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Conference/Ev\
 ent-based-approach.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 9, 8, 18, 11, 42.480794`8.380767603164651}, 
-     "Instant", "Gregorian", 3.], "symbols" -> <||>, 
+   "date" -> DateObject[{2023, 11, 5, 22, 35, 35.135036`8.298315382473127}, 
+     "Instant", "Gregorian", 1.], "symbols" -> 
+    <|"dot" -> <|"date" -> DateObject[{2023, 11, 5, 22, 36, 
+          7.134956`7.605966286493061}, "Instant", "Gregorian", 1.]|>, 
+     "length" -> <|"date" -> DateObject[{2023, 11, 5, 22, 35, 
+          47.55931`8.429810521501551}, "Instant", "Gregorian", 1.]|>|>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$19]|>, 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$39], 
+   "SelectedCell" -> "5afe583a-61c1-46de-b59a-9e7c988f86f7ab0cb3"|>, 
  "cells" -> {<|"id" -> "bc2824ed-94b7-46cf-806e-08b57bb4cf2dab0cb3", 
     "type" -> "input", "data" -> ".md\n# Event-based approach\nEach input \
 element is an event object generator", "display" -> "codemirror", 
@@ -227,10 +225,6 @@ object generator", "display" -> "markdown", "sign" -> "bustard-28043",
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "49ee0b4c-babc-43e8-9d3c-b9bff41864f3ab0cb3", "type" -> "input", 
     "data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "432f3958-3fbd-47ce-bb47-e601c6c90ab6", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"9bdbc7ad-5eb9-4223-928a-fb25e3bac3e7\"]", 
     "display" -> "codemirror", "sign" -> "bustard-28043", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "311b835c-39c0-4659-b8d9-af7d4ecd947eab0cb3", "type" -> "input", 
@@ -254,13 +248,9 @@ object generator", "display" -> "markdown", "sign" -> "bustard-28043",
     "display" -> "markdown", "sign" -> "bustard-28043", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "d3f2dd58-d618-441b-a7ad-1da3a391aa0e", "type" -> "input", 
-    "data" -> "length = 1;\nGraphics[{Cyan, Rectangle[{-1,1}, {length // \
-Offload, -1}]}, PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
+    "data" -> "length = 1;\nGraphics[{Cyan, Rectangle[{-1,-1}, {length // \
+Offload, 1}]}, PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
 \"TransitionDuration\"->30, \"TransitionType\"->\"Linear\"] ", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "b4204ccc-2b9c-4159-913a-fa12905957df", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"c6a0f94b-c4c6-415a-989a-d05dc992a083\"]", 
     "display" -> "codemirror", "sign" -> "bustard-28043", 
     "props" -> <|"hidden" -> False|>|>, 
    <|"id" -> "852a4178-9e72-459f-82c9-aee935eb551eab0cb3", "type" -> "input", 
@@ -279,8 +269,4 @@ like in Mathematica", "display" -> "markdown", "sign" -> "bustard-28043",
 \n  EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[p, dot = {{0,0}, \
 p}] }],\n  Line[dot // Offload]\n}, \"TransitionDuration\"->20, \
 ImageSize->{400,400}]", "display" -> "codemirror", "sign" -> "bustard-28043", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f40b0c32-2f65-4689-8850-a2994649cb1c", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"eb5f52c3-de6e-4d69-b24b-e02bb71be356\"]", 
-    "display" -> "codemirror", "sign" -> "bustard-28043", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
