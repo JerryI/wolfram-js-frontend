@@ -1,0 +1,307 @@
+<|"notebook" -> <|"name" -> "Askew", "id" -> "muscatel-c9b7f", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"igroup-4c3842d6-65ef-4410-90cb-5ba44ba00460" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,10,1,2],[\"Rule\",\"'Event'\",\
+\"'ee210f91-f7dc-4c87-85b8-f7747754d318'\"],2,[\"Rule\",\"'Label'\",\"'Rows'\
+\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          21.64244`8.087881205615227}, "Instant", "Gregorian", 1.]|>, 
+     "igroup-243b4300-1cc1-43cf-9e52-2866a0b162fa" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,10,1,2],[\"Rule\",\"'Event'\",\
+\"'089a9588-ba37-4bd1-906e-460ab17629a9'\"],2,[\"Rule\",\"'Label'\",\"'Cols'\
+\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          21.644587`8.087924286894678}, "Instant", "Gregorian", 1.]|>, 
+     "igroup-63affb3a-ca1e-48b0-8d14-9e18222e4b0f" -> 
+      <|"json" -> "[\"ToggleView\",false,[\"Rule\",\"'Event'\",\"'c6c82c4a-13\
+38-4ca2-ae28-a647b8bf3367'\"],[\"Rule\",\"'Label'\",\"'Fill diagonal with \
+1'\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          21.647204`8.087976793323001}, "Instant", "Gregorian", 1.]|>, 
+     "f7df8d28-eebc-497f-a484-be6b5e05f95e" -> 
+      <|"json" -> "[\"EditorView\",[\"Offload\",\"matrix$28272\"],[\"Rule\",\
+\"'ReadOnly'\",true]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          22.016347`8.095320244691079}, "Instant", "Gregorian", 1.]|>, 
+     "df46baa2-d22f-460f-a262-67fc818c4224" -> 
+      <|"json" -> "[\"Column\",[\"List\",[\"FrontEndExecutable\",\"'igroup-4c\
+3842d6-65ef-4410-90cb-5ba44ba00460'\"],[\"FrontEndExecutable\",\"'igroup-243b\
+4300-1cc1-43cf-9e52-2866a0b162fa'\"],[\"FrontEndExecutable\",\"'igroup-63affb\
+3a-ca1e-48b0-8d14-9e18222e4b0f'\"]]]", "date" -> DateObject[
+         {2023, 11, 6, 23, 31, 21.614665`8.087323492338179}, "Instant", 
+         "Gregorian", 1.]|>, "124a01e3-8c16-4e95-9205-d846d2548736" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Insert'\"],[\"Rul\
+e\",\"'Event'\",\"'57b6bc8d-5b8f-4424-aba0-96ebaebc5fb5'\"]]", 
+       "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          21.829435`8.091617478666805}, "Instant", "Gregorian", 1.]|>, 
+     "igroup-5b74e6a7-a745-465d-bbb5-8d0891acd227" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,10,1,2],[\"Rule\",\"'Event'\",\
+\"'f5f330f8-fcb6-459d-85e6-ae39b1fc550e'\"],2,[\"Rule\",\"'Label'\",\"'Rows'\
+\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          50.523892`8.45607177364112}, "Instant", "Gregorian", 1.]|>, 
+     "igroup-ce2625f4-4fe5-4c84-bd5e-a2012cdbce15" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",1,10,1,2],[\"Rule\",\"'Event'\",\
+\"'ff2e62d6-ac9b-4d43-9b28-434c0fe543c0'\"],2,[\"Rule\",\"'Label'\",\"'Cols'\
+\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          50.527851`8.456105803174975}, "Instant", "Gregorian", 1.]|>, 
+     "igroup-ac444234-11ed-4388-b4bb-c5919972eaa1" -> 
+      <|"json" -> "[\"ToggleView\",false,[\"Rule\",\"'Event'\",\"'72387745-ad\
+2b-4313-8bd7-6376e5a34dac'\"],[\"Rule\",\"'Label'\",\"'Fill diagonal with \
+1'\"]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          50.531195`8.456134544407067}, "Instant", "Gregorian", 1.]|>, 
+     "f488ff66-f1c9-4e51-b997-d9f9b904f8a4" -> 
+      <|"json" -> "[\"EditorView\",[\"Offload\",\"matrix$30538\"],[\"Rule\",\
+\"'ReadOnly'\",true]]", "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          50.908381`8.459364261246611}, "Instant", "Gregorian", 1.]|>, 
+     "ae907ffe-cc6e-48d4-9ef8-1430b2af3ab6" -> 
+      <|"json" -> "[\"Column\",[\"List\",[\"FrontEndExecutable\",\"'igroup-5b\
+74e6a7-a745-465d-bbb5-8d0891acd227'\"],[\"FrontEndExecutable\",\"'igroup-ce26\
+25f4-4fe5-4c84-bd5e-a2012cdbce15'\"],[\"FrontEndExecutable\",\"'igroup-ac4442\
+34-11ed-4388-b4bb-c5919972eaa1'\"]]]", "date" -> DateObject[
+         {2023, 11, 6, 23, 31, 50.496724`8.455838179485077}, "Instant", 
+         "Gregorian", 1.]|>, "19a1f49f-94bb-47fe-ae7c-f6c8a6f38348" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Insert'\"],[\"Rul\
+e\",\"'Event'\",\"'5b56e815-fb70-4eed-b965-f3b521b8f963'\"]]", 
+       "date" -> DateObject[{2023, 11, 6, 23, 31, 
+          50.697319`8.457559968893271}, "Instant", "Gregorian", 1.]|>|>, 
+   "path" -> 
+    "/Volumes/Data/Github/wolfram-js-frontend/Examples/MathInput/Overview.wln\
+", "cell" :> Exit[], "date" -> DateObject[{2023, 11, 6, 23, 38, 
+      36.222394`8.311552129532888}, "Instant", "Gregorian", 1.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$27], 
+   "SelectedCell" -> "c6b0de4a-b363-4ae9-a915-43ac34aba6cc"|>, 
+ "cells" -> {<|"id" -> "32040c01-ee63-41f2-bf31-f9c60cbca85b", 
+    "type" -> "input", "data" -> ".md\n## 2D Math input\nThis is a syntax \
+sugar borrowed from Mathematica, but in a much simpler way", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "40ef742e-1586-4280-b33b-c17674c85d62", "type" -> "output", 
+    "data" -> "\n## 2D Math input\nThis is a syntax sugar borrowed from \
+Mathematica, but in a much simpler way", "display" -> "markdown", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4d4eb06a-d032-40f3-9420-1b0c4b5b88bf", "type" -> "input", 
+    "data" -> "(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "3c807494-dd59-45de-b603-4821ad1c0877", "type" -> "input", 
+    "data" -> ".md\nPress `Ctrl+/` on  the selection __to make a fraction__. \
+Underheath in the code it is still a valid Wolfram Language expression \
+wrapped by some special comments", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "1d35c16a-8692-4dc8-b2a7-61ec953179b4", "type" -> "output", 
+    "data" -> "\nPress `Ctrl+/` on  the selection __to make a fraction__. \
+Underheath in the code it is still a valid Wolfram Language expression \
+wrapped by some special comments", "display" -> "markdown", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "96277c30-a9c5-476e-9d38-ff3e87473134", "type" -> "input", 
+    "data" -> "(*FractionBox[*)((1)(*,*)/(*,*)(2))(*]FractionBox*)", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2c746aa6-6d11-47b2-a76d-c9d195dcdf4d", "type" -> "input", 
+    "data" -> ".md\nYou can navigate thorugh them using arrows (one has to \
+click on it firstly)", "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "78b8b6d3-c952-43c7-871c-d96e56ef4a2f", "type" -> "output", 
+    "data" -> "\nYou can navigate thorugh them using arrows (one has to click \
+on it firstly)", "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "87284bfa-13e0-4d3c-9d1f-c744ce09462c", "type" -> "input", 
+    "data" -> ".md\nWolfram Kernel can generate them as well like you can \
+expect in Mathematica", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "62f6144b-1d06-4b66-9ff5-3d32d8a1da50", "type" -> "output", 
+    "data" -> "\nWolfram Kernel can generate them as well like you can expect \
+in Mathematica", "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "fb2f0a6a-b873-4145-b5a3-3e87b5952978", "type" -> "input", 
+    "data" -> "Series[Sinc[(*SqB[*)Sqrt[x](*]SqB*)], {x,0,4}] // Normal ", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0381d1cd-a9f4-466b-82c7-999aecd6f881", "type" -> "output", 
+    "data" -> "1-(*FB[*)((x)(*,*)/(*,*)(6))(*]FB*)+((*FB[*)((1)(*,*)/(*,*)(12\
+0))(*]FB*)) \
+((*SpB[*)Power[x(*|*),(*|*)2](*]SpB*))-(*FB[*)(((*SpB[*)Power[x(*|*),(*|*)3](\
+*]SpB*))(*,*)/(*,*)(5040))(*]FB*)+(*FB[*)(((*SpB[*)Power[x(*|*),(*|*)4](*]SpB\
+*))(*,*)/(*,*)(362880))(*]FB*)", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "65657074-dbb5-4ea8-baae-c8d8593d13b4", "type" -> "input", 
+    "data" -> ".md\nPress `Ctrl+^` __to make superscripts__ and `Ctrl+_` __to \
+make subscripts__", "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "3fa45390-7845-4a58-b640-b04f0113a85d", "type" -> "output", 
+    "data" -> "\nPress `Ctrl+^` __to make superscripts__ and `Ctrl+_` __to \
+make subscripts__", "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "201f8774-f191-411d-b890-a2cb81222d31", "type" -> "input", 
+    "data" -> "(*SbB[*)Subscript[(*SpB[*)Power[x(*|*),(*|*)2](*]SpB*)(*|*),(*\
+|*)y_](*]SbB*)", "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5e8cb1a3-b3a6-4f55-b0dc-b19a588e68fa", "type" -> "input", 
+    "data" -> ".md\nPress `Ctrl+2` __to make a square root__", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "89607ae2-92cb-4aa4-90ed-ed844c3f6da7", "type" -> "output", 
+    "data" -> "\nPress `Ctrl+2` __to make a square root__", 
+    "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "af58e380-965e-4665-bf90-fe8d7737aee8", "type" -> "input", 
+    "data" -> "1/(*SqB[*)Sqrt[2](*]SqB*)", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9ee26394-64d9-47be-a342-c767886e70b0", "type" -> "output", 
+    "data" -> "(*FB[*)((1)(*,*)/(*,*)((*SqB[*)Sqrt[2](*]SqB*)))(*]FB*)", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0edef66e-22cc-430b-bef6-5336bf934ce7", "type" -> "input", 
+    "data" -> ".md\nOne can also operate with matrixes and multiply them like \
+normal. __Use `MatrixForm`__ or use a snippet tool `Super+P` __and locate \
+`Insert Matrix` helper widget__", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "8792fb57-d493-4168-af6a-c2eaad5bdd1f", "type" -> "output", 
+    "data" -> "\nOne can also operate with matrixes and multiply them like \
+normal. __Use `MatrixForm`__ or use a snippet tool `Super+P` __and locate \
+`Insert Matrix` helper widget__", "display" -> "markdown", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5378aee1-8b59-4c52-b4c0-65b0f40ec85d", "type" -> "input", 
+    "data" -> "((*GB[*){{1(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)\
+a(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)1}}(*]GB*)).((*GB[*){{0(*\
+|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){1(*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){\
+1(*|*),(*|*)0(*|*),(*|*)0}}(*]GB*)) // MatrixForm", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "44119fdb-0e76-4e07-990d-f51b00e593cc", "type" -> "output", 
+    "data" -> "((*GB[*){{0(*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){a(*|*),(*|*)\
+0(*|*),(*|*)a}(*||*),(*||*){1(*|*),(*|*)0(*|*),(*|*)0}}(*]GB*))", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6a2a2729-b153-4260-99d7-ec73d3e4ab7a", "type" -> "input", 
+    "data" -> ".md\nTo enter Greek's symbols __use `ESC` key__ and type the \
+first letter. The autocomplete will suggest the corresponding letter", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "19819b15-c04c-4f8e-b181-fb8917e55bbc", "type" -> "output", 
+    "data" -> "\nTo enter Greek's symbols __use `ESC` key__ and type the \
+first letter. The autocomplete will suggest the corresponding letter", 
+    "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "de58c6ef-0c03-4003-a311-3b024526b7e2", "type" -> "input", 
+    "data" -> "\[Alpha], \[Beta], \[Gamma]", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d78ef02b-6e11-498a-9bca-8984c1728f09", "type" -> "input", 
+    "data" -> ".md\nFor colors and dates the decorations are also supported. \
+For example", "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "f5dfe70e-44ab-40b0-92fd-52e5a2e1a24c", "type" -> "output", 
+    "data" -> 
+     "\nFor colors and dates the decorations are also supported. For example"\
+, "display" -> "markdown", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "c6b0de4a-b363-4ae9-a915-43ac34aba6cc", "type" -> "input", 
+    "data" -> 
+     "Table[RGBColor[i,j,1], {i,0,1,0.2}, {j,0,1,0.2}] // TableForm  ", 
+    "display" -> "codemirror", "sign" -> "muscatel-c9b7f", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "930cbeb8-e9f6-4740-b333-667cffc6945a", "type" -> "output", 
+    "data" -> "(*GB[*){{(*VB[*)(RGBColor[0., 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAE644M9APZHE10=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., 0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkgcNIeKvLBHgA1fxf8\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkgcNMeKvLBHgA2LxgM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEGRiTEIPLaHinywBwAT8xWy\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkg8NIeKvLBHgA23xgc\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0.2, \
+0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LGKAAyvhgDwBfFhf8\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.2, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+0RDAYw+GAPAJ4/HJs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.2, \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2hjJv2RQxg8MEeAJ7vHKs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.2, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LTIxB4LF9EQMYfLAHAHyzGlE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.2, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2hjJf2RQxg8MEeAJ+fHLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.2, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LGMDgA4IBAGvcGSs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.4, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LGKAAyvhgDwBgVhgM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.4, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2hjJP2RQxg8MEeAJ9/HKs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.4, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+0RDAYw+GAPAKAvHLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.4, \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LTIxB4LF9EQMYfLAHAH3zGmE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.4, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2hjJf2RQxg8MEeAKDfHMs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.4, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LGMDgA4IBAG0cGTs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.6, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/siBiiAMj7YAwAo8BWy\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.6, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KR9EQMYfLAHAGgZGlE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KZ9EQMYfLAHAGjJGmE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY3sEgwEMPtgDAEaNGAc=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.6, \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KV9EQMYfLAHAGl5GnE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/siBjD4gGAAADW2FuE=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.8, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LGKAAyvhgDwBhlhgc\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.8, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2hjJP2RQxg8MEeAKC/HLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.8, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2hjJv2RQxg8MEeAKFvHMs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.8, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LTIxB4LF9EQMYfLAHAH8zGnE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.8, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+0RDAYw+GAPAKIfHNs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.8, \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LGMDgA4IBAG5cGUs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[1\
+., 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHeyiDgQEuAgANwxSM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., 0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0HgpD1cBABM7Bkr\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0Hgpj1cBABNnBk7\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+yITYxB4bA8XAQArYBbh\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0HgpT1cBABOTBlL\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHe0wGABqJFbs=\"*)(*]VB*)}}(*]GB*)", "display" -> "codemirror", 
+    "sign" -> "muscatel-c9b7f", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>
