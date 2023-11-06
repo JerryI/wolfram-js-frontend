@@ -1,0 +1,27 @@
+<|"notebook" -> <|"name" -> "Endangered", "id" -> "adjuster-2a2d4", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"137f28cf-abf4-4f89-ad96-f613f764c800" -> 
+      <|"json" -> "[\"Graphics3D\",[\"Cuboid\",[\"List\",0,0,0]],[\"Rule\",\"\
+ImageSize\",100]]", "date" -> DateObject[{2023, 11, 5, 22, 34, 
+          40.051826`8.355197299010825}, "Instant", "Gregorian", 1.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/UsersInput/In\
+terpretation.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 5, 22, 34, 57.373823`8.511288762879946}, 
+     "Instant", "Gregorian", 1.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$36], 
+   "SelectedCell" -> "0d96bcca-d0ea-403f-974d-d6546b7f100a"|>, 
+ "cells" -> {<|"id" -> "0d96bcca-d0ea-403f-974d-d6546b7f100a", 
+    "type" -> "input", "data" -> 
+     "Interpretation[Graphics3D[Cuboid[], ImageSize->100], 1]", 
+    "display" -> "codemirror", "sign" -> "adjuster-2a2d4", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "baaf16fb-d3d7-45c6-9d37-59ece8224a5e", "type" -> "input", 
+    "data" -> "(*VB[*)(1)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4XkHBNySzJL\
+wrLTC0PtgJy3Yry80pc81JcK1KTS0sSk3JSo5UMjc3TjCyS03QTk9JMdE3SLCx1E1MszXTTzAyN08\
+zNTJItDAyUYiFGgiwIKs1JLeYAMVITU/zzcirBoiFFpakATk0i6Q==\"*)(*]VB*) - 1", 
+    "display" -> "codemirror", "sign" -> "adjuster-2a2d4", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "85229cda-0cac-4788-ae88-897b5d7c351c", "type" -> "output", 
+    "data" -> "0", "display" -> "codemirror", "sign" -> "adjuster-2a2d4", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

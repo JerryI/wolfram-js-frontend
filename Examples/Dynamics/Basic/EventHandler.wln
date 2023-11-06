@@ -1,11 +1,6 @@
-<|"notebook" -> <|"name" -> "Greyness", "id" -> "contraindicate-8937d", 
+<|"notebook" -> <|"name" -> "Greyness", "id" -> "uncorroborated-65d09", 
    "kernel" -> LocalKernel, "objects" -> 
-    <|"93693502-920a-4b42-aefb-f1c9efac6246" -> 
-      <|"json" -> "[\"CustomButtonView\",[\"Rule\",\"'Label'\",\"'Woo'\"],[\"\
-Rule\",\"'Event'\",\"'7c13c08e-4189-488a-925b-63ec42eac98b'\"]]", 
-       "date" -> DateObject[{2023, 10, 15, 17, 43, 
-          23.067523`8.115575945193306}, "Instant", "Gregorian", 2.]|>, 
-     "ea5683e7-24a5-4d79-8c1b-e7d393d0590b" -> 
+    <|"ea5683e7-24a5-4d79-8c1b-e7d393d0590b" -> 
       <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
 \",[\"Rectangle\",[\"List\",-2,2],[\"List\",2,-2]],[\"Rule\",\"'mousemove'\",\
 \"'51e5a3c7-b5ca-4be7-a5b3-44c4fb600aeb'\"]],[\"PointSize\",5.0e-2],[\"RGBCol\
@@ -18,60 +13,79 @@ or\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"TransitionDuration\"\
 \"'c1d4b47e-6047-40aa-b86f-47f0a56f2656'\"]],[\"PointSize\",5.0e-2],[\"RGBCol\
 or\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"TransitionDuration\"\
 ,40]]", "date" -> DateObject[{2023, 10, 15, 17, 43, 
-          29.1481`8.217185232063542}, "Instant", "Gregorian", 2.]|>|>, 
-   "path" -> "/media/kirill/Daten/KirillTemp/wolfram-js-frontend/Examples/Dyn\
-amics/Basic/EventHandler.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 10, 15, 17, 43, 22.349243`8.10183780071725}, 
-     "Instant", "Gregorian", 2.], "symbols" -> 
-    <|"p" -> <|"date" -> DateObject[{2023, 10, 15, 17, 43, 
-          29.169999`8.21751139548345}, "Instant", "Gregorian", 2.]|>|>, 
+          29.1481`8.217185232063542}, "Instant", "Gregorian", 2.]|>, 
+     "9dcff880-9cac-4fef-806b-ed8e7b71d714" -> 
+      <|"json" -> "[\"CustomButtonView\",[\"Rule\",\"'Label'\",\"'Woo'\"],[\"\
+Rule\",\"'Event'\",\"'3812ae9d-f7b8-4abb-9bd0-33bee5845785'\"]]", 
+       "date" -> DateObject[{2023, 11, 5, 22, 41, 
+          30.216045`8.232812599581223}, "Instant", "Gregorian", 1.]|>, 
+     "d5e9690a-a5d2-47cd-bb06-3a8ac9b71b8e" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,-2],[\"List\",2,2]],[\"Rule\",\"'mousemove'\",\
+\"'7b9beaa1-2233-45d8-ada1-8cb7875bebb2'\"]],[\"PointSize\",5.0e-2],[\"RGBCol\
+or\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"TransitionDuration\"\
+,40]]", "date" -> DateObject[{2023, 11, 5, 22, 41, 
+          36.933784`8.319998784314654}, "Instant", "Gregorian", 1.]|>, 
+     "b82784c8-9661-4435-82fa-5420af5bfe87" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"GrayLevel\",1],[\"EventListener\
+\",[\"Rectangle\",[\"List\",-2,-2],[\"List\",2,2]],[\"Rule\",\"'mousemove'\",\
+\"'76eff582-016f-4652-91c6-372aa41bf79a'\"]],[\"PointSize\",5.0e-2],[\"RGBCol\
+or\",0,1,1],[\"Point\",[\"Offload\",\"p\"]]],[\"Rule\",\"TransitionDuration\"\
+,40],[\"Rule\",\"TransitionType\",\"'Linear'\"]]", 
+       "date" -> DateObject[{2023, 11, 5, 22, 41, 
+          53.989418`8.484883620553678}, "Instant", "Gregorian", 1.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Basi\
+c/EventHandler.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 5, 22, 41, 20.467115`8.063631613476243}, 
+     "Instant", "Gregorian", 1.], "symbols" -> 
+    <|"p" -> <|"date" -> DateObject[{2023, 11, 5, 22, 41, 
+          36.981949`8.320564774688625}, "Instant", "Gregorian", 1.]|>|>, 
    "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$23], 
-   "SelectedCell" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b26aba42"|>, 
- "cells" -> {<|"id" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b26aba42", 
+     KirillBelov`WebSocketHandler`WebSocketChannel`$44], 
+   "SelectedCell" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b26aba42ade"|>, 
+ "cells" -> {<|"id" -> "362dca3a-d235-40b1-bd45-2edc40bf53e69b26aba42ade", 
     "type" -> "input", "data" -> "p = \
 {0,0};\nGraphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,-2}, \
 {2,2}],\n\t\t{\"mousemove\"->Function[xy, p = xy]}\n\t],\n\tPointSize[0.05], \
-Cyan,\n\tPoint[p // Offload]\n}, TransitionDuration->40]", 
-    "display" -> "codemirror", "sign" -> "contraindicate-8937d", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "1f8328f2-4336-404d-97aa-3a60ee3043589b26aba42", 
+Cyan,\n\tPoint[p // Offload]\n}, TransitionDuration->40, \
+TransitionType->\"Linear\"]", "display" -> "codemirror", 
+    "sign" -> "uncorroborated-65d09", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1f8328f2-4336-404d-97aa-3a60ee3043589b26aba42ade", 
     "type" -> "input", "data" -> ".md\nCustom Button example", 
-    "display" -> "codemirror", "sign" -> "contraindicate-8937d", 
+    "display" -> "codemirror", "sign" -> "uncorroborated-65d09", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ea236a4c-7251-4805-9c5e-560a58bf32c26aba42", 
+   <|"id" -> "ea236a4c-7251-4805-9c5e-560a58bf32c26aba42ade", 
     "type" -> "output", "data" -> "\nCustom Button example", 
-    "display" -> "markdown", "sign" -> "contraindicate-8937d", 
+    "display" -> "markdown", "sign" -> "uncorroborated-65d09", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd353cce-13be-4a53-ae48-a8bbe8709afb9b26aba42", 
+   <|"id" -> "cd353cce-13be-4a53-ae48-a8bbe8709afb9b26aba42ade", 
     "type" -> "input", "data" -> ".js\n\ncore.CustomButtonView = async (args, \
 env) => {\n  const options = await core._getRules(args, env);\n  const button \
 = document.createElement('input');\n  button.type = \"button\";\n  \
 button.value = options.Label;\n  button.addEventListener('click', ()=>{\n    \
 server.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
 env.element.appendChild(button);\n}\n\nreturn null;", 
-    "display" -> "codemirror", "sign" -> "contraindicate-8937d", 
+    "display" -> "codemirror", "sign" -> "uncorroborated-65d09", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2d95d5b1-4d57-4b2f-b42a-09ddf287cf6f9b26aba42", 
+   <|"id" -> "2d95d5b1-4d57-4b2f-b42a-09ddf287cf6f9b26aba42ade", 
     "type" -> "output", "data" -> "\n\ncore.CustomButtonView = async (args, \
 env) => {\n  const options = await core._getRules(args, env);\n  const button \
 = document.createElement('input');\n  button.type = \"button\";\n  \
 button.value = options.Label;\n  button.addEventListener('click', ()=>{\n    \
 server.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
 env.element.appendChild(button);\n}\n\nreturn null;", "display" -> "js", 
-    "sign" -> "contraindicate-8937d", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "a6de4ded-6f21-4260-b0b9-8aeac46ffe469b26aba42", 
+    "sign" -> "uncorroborated-65d09", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "a6de4ded-6f21-4260-b0b9-8aeac46ffe469b26aba42ade", 
     "type" -> "input", "data" -> "CustomButton[label_] := With[{uid = \
 CreateUUID[]},\n  EventObject[<|\"id\"->uid, \"initial\"->False, \
 \"view\"->CustomButtonView[\"Label\"->label, \"Event\"->uid]|>]\n]", 
-    "display" -> "codemirror", "sign" -> "contraindicate-8937d", 
+    "display" -> "codemirror", "sign" -> "uncorroborated-65d09", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "ccfa88a0-b1e3-4532-9e77-1a80308f71b19b26aba42", 
+   <|"id" -> "ccfa88a0-b1e3-4532-9e77-1a80308f71b19b26aba42ade", 
     "type" -> "input", "data" -> 
      "EventHandler[CustomButton[\"Woo\"], Print]", "display" -> "codemirror", 
-    "sign" -> "contraindicate-8937d", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "9c8e9320-0186-4ff2-b068-e0f8b421a13f6aba42", 
-    "type" -> "output", "data" -> 
-     "FrontEndExecutable[\"93693502-920a-4b42-aefb-f1c9efac6246\"]", 
-    "display" -> "codemirror", "sign" -> "contraindicate-8937d", 
+    "sign" -> "uncorroborated-65d09", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e6ec4dba-a8f0-4216-88a6-0154306fc294", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"9dcff880-9cac-4fef-806b-ed8e7b71d714\"]", 
+    "display" -> "codemirror", "sign" -> "uncorroborated-65d09", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

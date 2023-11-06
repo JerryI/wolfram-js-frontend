@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Splendid", "id" -> "ruined-89674", 
+<|"notebook" -> <|"name" -> "Splendid", "id" -> "quintillion-d34d1", 
    "kernel" -> LocalKernel, "objects" :> 
     Association["6977640b-4ada-4098-b87f-583dacd2a8f8" -> 
       Association["json" -> "[\"RangeView\",[\"List\",0,1,0.1,0.5],[\"Rule\",\
@@ -161,11 +161,11 @@
 \"'Event'\",\"'7078c196-a220-4b84-8918-4ca643bcbc2c'\"]]", 
        "date" -> DateObject[{2023, 7, 28, 12, 30, 
           15.432649`7.941015463778622}, "Instant", "Gregorian", 2.]]], 
-   "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Tutorial/Column.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 8, 21, 50, 
-      12.267893`7.841344965317337}, "Instant", "Gregorian", 3.], 
-   "symbols" -> <|"data" -> <|"date" -> DateObject[{2023, 7, 28, 12, 30, 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Basi\
+c/KindaManipulate.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 5, 22, 42, 9.911623`7.748719761496364}, 
+     "Instant", "Gregorian", 1.], "symbols" -> 
+    <|"data" -> <|"date" -> DateObject[{2023, 7, 28, 12, 30, 
           32.557081`8.265220440456732}, "Instant", "Gregorian", 2.], 
        "data" -> {1.1605102552523597*^-26, 2.0514759147427186*^-12, 
          5.304163617506199*^-12, 1.0236720561693098*^-11, 
@@ -325,17 +325,18 @@
          -5.268689631587375*^-12, -2.0285805832023486*^-12}|>|>, 
    "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$21]|>, 
- "cells" -> {<|"id" -> "aad96fc8-2ae0-4231-8fa5-96d6e12c3bb811837b", 
+ "cells" -> {<|"id" -> "aad96fc8-2ae0-4231-8fa5-96d6e12c3bb811837b0d6", 
     "type" -> "input", "data" -> "slider = InputRange[0,1,0.1];\nFunction[d, \
 data = Table[Sin[x]Exp[-CM6Fraction[(d CM6Superscript[x, 2]), 10]], \
 {x,-6Pi,6Pi,0.1}]] // slider;\nEmittedEvent[slider, 1];\n\nplot = \
 ListLinePlotly[data // Hold];\n\nColumn[{\n  slider,\n  plot\n}]", 
-    "display" -> "codemirror", "sign" -> "ruined-89674", 
+    "display" -> "codemirror", "sign" -> "quintillion-d34d1", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "537b8113-2581-4b82-bf67-3c0cc209f2fa37b", "type" -> "output", 
-    "data" -> "CM6Grid[{{FrontEndExecutable[\"dcdb1323-ec8a-4b37-bca5-6175679\
-8ed98\"]}, {FrontEndExecutable[\"46b28ad7-f484-48ff-8a4b-f0e958f962a9\"]}}, \
+   <|"id" -> "537b8113-2581-4b82-bf67-3c0cc209f2fa37b0d6", 
+    "type" -> "output", "data" -> "CM6Grid[{{FrontEndExecutable[\"dcdb1323-ec\
+8a-4b37-bca5-61756798ed98\"]}, \
+{FrontEndExecutable[\"46b28ad7-f484-48ff-8a4b-f0e958f962a9\"]}}, \
 GridBoxAlignment -> {Columns -> {{Left}}}, DefaultBaseStyle -> Column, \
 GridBoxItemSize -> {Columns -> {{Automatic}}, Rows -> {{Automatic}}}]", 
-    "display" -> "codemirror", "sign" -> "ruined-89674", 
+    "display" -> "codemirror", "sign" -> "quintillion-d34d1", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

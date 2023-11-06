@@ -1,4 +1,4 @@
-<|"notebook" -> <|"name" -> "Rheumatoid", "id" -> "unexpired-ea993", 
+<|"notebook" -> <|"name" -> "Rheumatoid", "id" -> "paddler-30c98", 
    "kernel" -> LocalKernel, "objects" :> 
     Association["7042192c-2c6f-4e93-bc31-a23fa1f4f742" -> 
       Association["json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"\
@@ -57,63 +57,65 @@ PointSize\",0.1],[\"EventListener\",[\"Point\",[\"List\",[\"List\",0.5,0.5]]]\
 ,[\"Rule\",\"'drag'\",\"'525b9a30-876b-466f-8042-f6823dd77dcc'\"]],[\"Line\",\
 [\"FrontEndRef\",\"'dot'\"]]]]", "date" -> DateObject[{2023, 9, 8, 21, 48, 
           58.145086`8.517087990542981}, "Instant", "Gregorian", 3.]]], 
-   "path" -> "/media/kirill/Daten/KirillTemp/wolfram-js-frontend/Examples/Dyn\
-amics/Basic/InteractiveGraphics.wln", "cell" :> Exit[], 
-   "date" -> DateObject[{2023, 10, 15, 17, 43, 37.57314`8.327452469784653}, 
-     "Instant", "Gregorian", 2.], "symbols" -> 
+   "path" -> "/Volumes/Data/Github/wolfram-js-frontend/Examples/Dynamics/Basi\
+c/InteractiveGraphics.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 5, 22, 42, 0.792528`6.651589603937035}, 
+     "Instant", "Gregorian", 1.], "symbols" -> 
     <|"p" -> <|"date" -> DateObject[{2023, 9, 8, 21, 48, 
           47.670385`8.430823635771283}, "Instant", "Gregorian", 3.], 
        "data" -> {-0.43294117647058816, 0.2633500987242625}|>|>, 
    "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$21]|>, 
- "cells" -> {<|"id" -> "3af700ce-2c89-4a74-bb0f-20eb79c5c7e9ca0795c2a7ee", 
+ "cells" -> {<|"id" -> "3af700ce-2c89-4a74-bb0f-20eb79c5c7e9ca0795c2a7ee43e", 
     "type" -> "input", "data" -> ".md\n# Interactive graphics\nSimple \
 event-listener attached to a graphical object", "display" -> "codemirror", 
-    "sign" -> "unexpired-ea993", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "60d2ae20-b4aa-4a5d-8f49-abb00c1fd2d3ca0795c2a7ee", 
+    "sign" -> "paddler-30c98", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "60d2ae20-b4aa-4a5d-8f49-abb00c1fd2d3ca0795c2a7ee43e", 
     "type" -> "output", "data" -> "\n# Interactive graphics\nSimple \
 event-listener attached to a graphical object", "display" -> "markdown", 
-    "sign" -> "unexpired-ea993", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "7988df20-024e-485d-a369-abb20a73a08d795c2a7ee", 
+    "sign" -> "paddler-30c98", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7988df20-024e-485d-a369-abb20a73a08d795c2a7ee43e", 
     "type" -> "input", "data" -> 
      ".md\n__High-level implementation__\n\nAs it is. When a symbol is held", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "faf18f43-86f3-4233-b458-85e4141039cb795c2a7ee", 
+   <|"id" -> "faf18f43-86f3-4233-b458-85e4141039cb795c2a7ee43e", 
     "type" -> "output", "data" -> 
      "\n__High-level implementation__\n\nAs it is. When a symbol is held", 
-    "display" -> "markdown", "sign" -> "unexpired-ea993", 
+    "display" -> "markdown", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "98d7f48c-bd71-4da5-b3e4-816a0104515fca0795c2a7ee", 
+   <|"id" -> "98d7f48c-bd71-4da5-b3e4-816a0104515fca0795c2a7ee43e", 
     "type" -> "input", "data" -> "p = {0.5,0.5};\n\nGraphics[{\n  Red, \
 PointSize[0.1], \n  EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> \
 Function[x, p = x] }],\n  Line[{{0,0}, p // Offload}]\n}, \
 TransitionDuration->30, TransitionType->\"Linear\"]", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "480a63ae-a7c0-43c5-9e8f-57489f5b99607ee", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"0d3d3f6e-8a0c-4707-84c2-009aeaa5686a\"]", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+   <|"id" -> "480a63ae-a7c0-43c5-9e8f-57489f5b99607ee43e", 
+    "type" -> "output", "data" -> 
+     "FrontEndExecutable[\"0d3d3f6e-8a0c-4707-84c2-009aeaa5686a\"]", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "6a440740-baad-476b-8ed7-cec48cf46fc6795c2a7ee", 
+   <|"id" -> "6a440740-baad-476b-8ed7-cec48cf46fc6795c2a7ee43e", 
     "type" -> "input", "data" -> 
      ".md\n__Low-level implementation__\n\nUsing frontend objects", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "ca9e684a-661a-422c-839e-370ba63d3270795c2a7ee", 
+   <|"id" -> "ca9e684a-661a-422c-839e-370ba63d3270795c2a7ee43e", 
     "type" -> "output", "data" -> 
      "\n__Low-level implementation__\n\nUsing frontend objects", 
-    "display" -> "markdown", "sign" -> "unexpired-ea993", 
+    "display" -> "markdown", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "2c3e7b5f-7cd5-4804-b9c1-20612376bee4795c2a7ee", 
+   <|"id" -> "2c3e7b5f-7cd5-4804-b9c1-20612376bee4795c2a7ee43e", 
     "type" -> "input", "data" -> "CreateFrontEndObject[{{0,0}, {0.5,0.5}}, \
 \"dot\"];\n\nGraphics[{\n  Blue, PointSize[0.1], \n  \
 EventHandler[Point[{{0.5,0.5}}], { \"drag\" -> Function[p, \
 FrontEndRef[\"dot\"] = {{0,0}, p}] }],\n  Line[FrontEndRef[\"dot\"]]\n}, \
 TransitionDuration->30, TransitionType->\"Linear\"]", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "fc81eab6-16ea-4ecf-b5a3-34a2fc5d00d27ee", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"3e50ea4f-e351-4855-a292-c0096a783718\"]", 
-    "display" -> "codemirror", "sign" -> "unexpired-ea993", 
+   <|"id" -> "fc81eab6-16ea-4ecf-b5a3-34a2fc5d00d27ee43e", 
+    "type" -> "output", "data" -> 
+     "FrontEndExecutable[\"3e50ea4f-e351-4855-a292-c0096a783718\"]", 
+    "display" -> "codemirror", "sign" -> "paddler-30c98", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
