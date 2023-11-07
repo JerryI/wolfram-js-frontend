@@ -14,7 +14,6 @@ __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
 **Recommended Wolfram Engine 13.0 or above**
 
-**Project is still in active development**
 
 The heart of the project is [WLJS](https://github.com/JerryI/wljs-interpreter) (Wolfram Language interpreter written in Javascript)
 
@@ -24,8 +23,6 @@ To help maintain this project.
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 Thank you 🍺 
-
-__[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the Wolfram Conference in Saint-Petersburg 2023 (available only in Russian, please, use automatic subtitles; also it is quite outdated)__
 
 ## Short demos
 - [dynamic plots example](https://youtu.be/e6B1LKES_Og?si=kxg0wgbEj7F1uVW-)
@@ -46,7 +43,15 @@ __[Recorded webinar](https://www.youtube.com/watch?v=2QNu7FOdYus&t=537) from the
 - __true 100% Wolfram Language__
 - better than typical REPL system
 - No __SVG__ - like static graphs. Each Graphics2D/3D primitives were recreated from scratch using d3.js and THREE.js libraries. Most native plotting function of Mathematica are supported.
-- syntax sugar from Matheamtica, partical support of `Boxes`, 2D math input (still in dev)
+
+![](imgs/Screenshot%202023-11-07%20at%2022.19.30.png)
+
+- __math-in-code__, syntax sugar for date, colors and etc
+
+![](imgs/Screenshot%202023-11-07%20at%2022.19.14.png)
+
+![](imgs/Screenshot%202023-11-07%20at%2022.19.22.png)
+
 - dynamics, GUI building blocks
 - native integration of HTML, Markdown, Javascript, LLM, Wolfram Language XML... cell types
 - notebooks export to a standalone `.html` file feature (keeps some part of interactivity still possible)
