@@ -62,8 +62,8 @@ e\",\"'Event'\",\"'5b56e815-fb70-4eed-b965-f3b521b8f963'\"]]",
           50.697319`8.457559968893271}, "Instant", "Gregorian", 1.]|>|>, 
    "path" -> 
     "/Volumes/Data/Github/wolfram-js-frontend/Examples/MathInput/Overview.wln\
-", "cell" :> Exit[], "date" -> DateObject[{2023, 11, 6, 23, 38, 
-      36.222394`8.311552129532888}, "Instant", "Gregorian", 1.], 
+", "cell" :> Exit[], "date" -> DateObject[{2023, 11, 6, 23, 48, 
+      28.260652`8.203757158735897}, "Instant", "Gregorian", 1.], 
    "symbols" -> <||>, "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$27], 
    "SelectedCell" -> "c6b0de4a-b363-4ae9-a915-43ac34aba6cc"|>, 
