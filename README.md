@@ -1,8 +1,7 @@
 # Wolfram Language Javascript Frontend
 ![](imgs/light.png)
 
-![](imgs/dark.png)
-
+![demo2](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/374982a5-f127-4fcd-89de-cb285cfb313b)
 
 *written for the freeware Wolfram Engine using Javascript*
 
@@ -40,9 +39,16 @@ Thank you 🍺
 
 ## Highlights
 
+
+
 - __true 100% Wolfram Language__
 - better than typical REPL system
 - No __SVG__ - like static graphs. Each Graphics2D/3D primitives were recreated from scratch using d3.js and THREE.js libraries. Most native plotting function of Mathematica are supported.
+
+- autocomplete for user's defined symbols
+
+![Screenshot 2023-10-26 at 13 53 31](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/58cc553c-cae6-4ece-8816-265277fe4dc2)
+
 
 ![](imgs/Screenshot%202023-11-07%20at%2022.19.30.png)
 
@@ -50,9 +56,15 @@ Thank you 🍺
 
 ![](imgs/Screenshot%202023-11-07%20at%2022.19.14.png)
 
-![](imgs/Screenshot%202023-11-07%20at%2022.19.22.png)
+![Screenshot 2023-10-26 at 13 57 15](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/966baa06-e56d-4830-963d-e80f170b4ae9)
 
 - dynamics, GUI building blocks
+
+![ezgif com-optimize-7-2 1-5c73ff8f0c5594a3a635b0638561abc9](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/2a624fca-0edd-47f7-a4f9-23235ffceacd)
+
+![ezgif com-video-to-gif-6](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/b24951ca-fb89-430b-a8c1-340ddb5263cc)
+
+
 - native integration of HTML, Markdown, Javascript, LLM, Wolfram Language XML... cell types
 - notebooks export to a standalone `.html` file feature (keeps some part of interactivity still possible)
 - infinite extensibility via external libraries, plugins even within the notebook 
