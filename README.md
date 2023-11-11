@@ -68,6 +68,9 @@ Thank you 🍺
 - native integration of HTML, Markdown, Javascript, LLM, Wolfram Language XML... cell types
 - notebooks export to a standalone `.html` file feature (keeps some part of interactivity still possible)
 - infinite extensibility via external libraries, plugins even within the notebook 
+
+![slides](imgs/ezgif.com-optimize-15.gif)
+
 - runs locally or on a server and belongs to You (no cloud-based stuff involved)
 - autocomplete (for all languages used) and snippets
 - tools for making in-code slides (presentations)
