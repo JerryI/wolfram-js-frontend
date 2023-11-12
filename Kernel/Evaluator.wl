@@ -150,13 +150,23 @@ ClearAll[ParentCell];
 Unprotect[CellPrint];
 ClearAll[CellPrint];
 
-CellPrintInContext[callback_][expr_String, OptionsPattern[]] := With[{uid = CreateUUID[]}, Module[{parent},
-  callback[
-    expr, 
-    uid, 
-    "codemirror", 
-    Null
-  ];
+CellPrintInContext[callback_][expr_String, opts___] := With[{uid = CreateUUID[], options = Flatten[List[opts]] // Association}, Module[{parent},
+  If[KeyExistsQ[options, "Type"] // TrueQ,
+    callback[
+      expr, 
+      uid, 
+      "codemirror", 
+      Null,
+      "Type" -> ToLowerCase[options["Type"]]
+    ];  
+  ,
+    callback[
+      expr, 
+      uid, 
+      "codemirror", 
+      Null
+    ];  
+  ]
 
   Return[CellObj[uid], Module];
 ]]
