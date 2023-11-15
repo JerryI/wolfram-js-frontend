@@ -583,7 +583,7 @@ FileOperate["Upload"][data_, notebook_] := Module[{path}, With[{channel = notebo
     If[!AssociationQ[jsfn`Notebooks[channel]], Print["Notebook not found! Not possible to upload files at the root"]; Return[$Failed, Module]];
     
 
-    BinaryWrite[FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], data["name"]}], BaseDecode[data["data"]]];
+    BinaryWrite[FileNameJoin[{DirectoryName[jsfn`Notebooks[channel]["path"]], data["name"]}], BaseDecode[data["data"]]] // Close;
 
     If[MissingQ[channel],
         WebSocketSend[Global`client,  Global`FrontEndUpdateFileList[Null] // DefaultSerializer];

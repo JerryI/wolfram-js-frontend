@@ -825,11 +825,38 @@ const checkInstalled = (cbk, window) => {
   });
   } else {
     sender('looks like it is not installed...', '\x1b[32m');
-    installFrontend(cbk);
+
+    const timer = setTimeout(() => {
+      sender('No internet... using shipped version', '\x1b[32m');
+
+      useShippedVersion(cbk);
+    }, 5000);
+
+    const test = net.fetch('https://github.com')
+    test.then((result)=>{
+      if (result.status === 200) {
+        clearTimeout(timer);
+        installFrontend(cbk);
+      } else {
+        sender('No internet... using shipped version', '\x1b[32m');
+        clearTimeout(timer);
+
+        useShippedVersion(cbk);
+      }
+    });
+ 
   }
 }
 
+const useShippedVersion = (cbk) => {
+  sender('copying to installation folder shipped package...');
+  const sub = path.join(app.getAppPath(), 'shipped');
+  sender(sub);
 
+  fse.copySync(sub, installationFolder, { overwrite: true });
+  sender('done!');
+  cbk();
+}
 
 const installFrontend = (cbk) => {
   wasUpdated = true;

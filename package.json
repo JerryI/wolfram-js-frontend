@@ -1,6 +1,6 @@
 {
   "name": "wljs-frontend",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
     "name": "White Russians",
@@ -60,7 +60,8 @@
       "electron.css",
       "log.html",
       "preloadMain.js",
-      "build/**/*"
+      "build/**/*",
+      "shipped/**"
     ],
     "asar": false
   },

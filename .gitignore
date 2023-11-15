@@ -1,5 +1,6 @@
 node_modules
 Temp/
+shipped/*
 *.DS_STORE
 public/.DS_STORE
 .obsidian
