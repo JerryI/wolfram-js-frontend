@@ -1,17 +1,6 @@
 SetDirectory[DirectoryName[$InputFileName] // ParentDirectory]
 
-If[PacletFind["JerryI/LPM"] === {},
-    If[FailureQ[
-      PacletInstall["JerryI/LPM"]
-    ], 
-      Print["Oh AGAIN you WOLFRAM! We wil try to use Github"];
-      Get["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl"];
-    ,
-      <<JerryI`LPM`;
-    ];
-,
-    <<JerryI`LPM`;
-];
+Get[FileNameJoin[{"Services", "LPM.wl"}]];
 
 
 PacletRepositories[{}, "Directory"->JerryI`WolframJSFrontend`root, "Passive"->True]
