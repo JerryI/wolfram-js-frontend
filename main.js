@@ -1283,6 +1283,15 @@ const template = [
             currentWindow.cellop('HLC'); 
           }
         }, 
+
+        {
+          label: 'Unhide All Cells',
+          click: async (ev) => {
+            console.log(ev);
+            currentWindow.cellop('UAC'); 
+          }
+        }, 
+
         { type: 'separator' }, 
         {
           label: 'Delete current cell',
@@ -1371,7 +1380,7 @@ const template = [
             console.log(ev);
             currentWindow.call('COC'); 
           }
-        },        
+        },            
 
         {
           label: 'Evaluate All Cells',
