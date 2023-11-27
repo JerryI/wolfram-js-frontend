@@ -1,20 +1,21 @@
-<|"notebook" -> <|"name" -> "Drainboard", "id" -> "sanitary-8bebf", 
-   "kernel" -> LocalKernel, "objects" :> <||>, "path" -> "/Volumes/Data/Githu\
-b/wolfram-js-frontend/Examples/Presentations/Drainboard.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 9, 9, 14, 13, 
-      55.15546`8.494163485141438}, "Instant", "Gregorian", 2.], 
-   "symbols" -> <||>, "channel" -> WebSocketChannel[
+<|"notebook" -> <|"name" -> "Drainboard", "id" -> "allergy-689ba", 
+   "kernel" -> LocalKernel, "objects" :> Association[], 
+   "path" -> "/Users/kirill/Documents/Github/wolfram-js-frontend/Examples/Pre\
+sentations/Basic/Examples.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 27, 14, 1, 0.243222`6.138577844491226}, 
+     "Instant", "Gregorian", 1.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
      KirillBelov`WebSocketHandler`WebSocketChannel`$24]|>, 
- "cells" -> {<|"id" -> "194e9cb2-5917-419a-b41b-18169dc9b818", 
+ "cells" -> {<|"id" -> "194e9cb2-5917-419a-b41b-18169dc9b81819f", 
     "type" -> "input", "data" -> ".md\n## Basic example of a \
 presentation\n*using Markdown, HTML/CSS and Wolfram Language*", 
-    "display" -> "codemirror", "sign" -> "sanitary-8bebf", 
+    "display" -> "codemirror", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "0bb93561-d85f-4585-8d82-725109617672", "type" -> "output", 
+   <|"id" -> "0bb93561-d85f-4585-8d82-72510961767219f", "type" -> "output", 
     "data" -> "\n## Basic example of a presentation\n*using Markdown, \
 HTML/CSS and Wolfram Language*", "display" -> "markdown", 
-    "sign" -> "sanitary-8bebf", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "18dffe54-95b6-4cd1-8f9d-3bd53d4dd2eb", "type" -> "input", 
+    "sign" -> "allergy-689ba", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "18dffe54-95b6-4cd1-8f9d-3bd53d4dd2eb19f", "type" -> "input", 
     "data" -> ".slide\n\n# RevealJS\nHere we will try some basic stuff \
 related to slides\n\nFragment 1 <!-- .element: class=\"fragment\" \
 data-fragment-index=\"1\" -->\n\n<span style=\"color:red\">Fragment 2 (CSS \
@@ -23,42 +24,42 @@ styled)</span> <!-- .element: class=\"fragment\" data-fragment-index=\"2\" \
 picture\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_\
 was_here_%28re-drawn%29.gif) <!-- .element: class=\"fragment fade-out\" \
 data-fragment-index=\"1\" -->", "display" -> "codemirror", 
-    "sign" -> "sanitary-8bebf", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "cd963b81-ea24-4c6e-8ef5-7ffd23d4f7c0", "type" -> "input", 
+    "sign" -> "allergy-689ba", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "cd963b81-ea24-4c6e-8ef5-7ffd23d4f7c019f", "type" -> "input", 
     "data" -> 
      ".md\nOr one can make it more complicated using Wolfram Language XML", 
-    "display" -> "codemirror", "sign" -> "sanitary-8bebf", 
+    "display" -> "codemirror", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "b295b7cb-bf76-4bc0-a578-1afe85d094fe", "type" -> "output", 
+   <|"id" -> "b295b7cb-bf76-4bc0-a578-1afe85d094fe19f", "type" -> "output", 
     "data" -> 
      "\nOr one can make it more complicated using Wolfram Language XML", 
-    "display" -> "markdown", "sign" -> "sanitary-8bebf", 
+    "display" -> "markdown", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4122d3de-ddfb-4cdb-90a3-3b702ab2ec0d", "type" -> "input", 
+   <|"id" -> "4122d3de-ddfb-4cdb-90a3-3b702ab2ec0d19f", "type" -> "input", 
     "data" -> "Plt3D = Graphics3D[Cuboid[]];", "display" -> "codemirror", 
-    "sign" -> "sanitary-8bebf", "props" -> <|"hidden" -> False, 
-      "init" -> True|>|>, <|"id" -> "6204b743-d1ee-402f-8ae1-1f222fc5f4ca", 
-    "type" -> "input", "data" -> ".slide\n\n# Using WLX\nAllow you to do some \
-cool stuff\n\nYour local time is \
-__<TextString><Now/></TextString>__\n\n---\n\n# Embed some figures\nEven \
-3D\n\n<div style=\"text-align: center; display: inline-flex;\">\n  \
-<Plt3D/>\n</div>\n\nTry to move it using your mouse\n", 
-    "display" -> "codemirror", "sign" -> "sanitary-8bebf", 
+    "sign" -> "allergy-689ba", "props" -> <|"hidden" -> False, 
+      "init" -> True|>|>, 
+   <|"id" -> "6204b743-d1ee-402f-8ae1-1f222fc5f4ca19f", "type" -> "input", 
+    "data" -> ".slide\n\n# Using WLX\nAllow you to do some cool stuff\n\nYour \
+local time is __<TextString><Now/></TextString>__\n\n---\n\n# Embed some \
+figures\nEven 3D\n\n<div style=\"text-align: center; display: \
+inline-flex;\">\n  <Plt3D/>\n</div>\n\nTry to move it using your mouse\n", 
+    "display" -> "codemirror", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "ce9f82ef-4b02-41f9-908d-0f623abaf6c7", "type" -> "input", 
+   <|"id" -> "ce9f82ef-4b02-41f9-908d-0f623abaf6c719f", "type" -> "input", 
     "data" -> ".md\nAdding events to it", "display" -> "codemirror", 
-    "sign" -> "sanitary-8bebf", "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "4bfd2621-97b4-4fef-92e7-baa1e2c08d4f", "type" -> "output", 
+    "sign" -> "allergy-689ba", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "4bfd2621-97b4-4fef-92e7-baa1e2c08d4f19f", "type" -> "output", 
     "data" -> "\nAdding events to it", "display" -> "markdown", 
-    "sign" -> "sanitary-8bebf", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "4abad286-5a9c-4018-9f51-930d35e5a9ac", "type" -> "input", 
+    "sign" -> "allergy-689ba", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4abad286-5a9c-4018-9f51-930d35e5a9ac19f", "type" -> "input", 
     "data" -> "EventHandler[\"myEvent\", Print[\"Hey \
 there!\"]&]\nEventHandler[\"myEvent-fragment-1\", Print[\"Hey there from \
-fragment!\"]&]", "display" -> "codemirror", "sign" -> "sanitary-8bebf", 
+fragment!\"]&]", "display" -> "codemirror", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "e9e7a693-0b41-410a-b7be-bd0362aba042", "type" -> "input", 
+   <|"id" -> "e9e7a693-0b41-410a-b7be-bd0362aba04219f", "type" -> "input", 
     "data" -> ".slide\n\n# 1st Slide\nNothing\n\n---\n\n# 2nd Slide\nA \
 message pops up\n\nAnother message <!-- .element: class=\"fragment\" \
 data-fragment-index=\"1\" -->\n\n<SlideEvent id={\"myEvent\"}/>", 
-    "display" -> "codemirror", "sign" -> "sanitary-8bebf", 
+    "display" -> "codemirror", "sign" -> "allergy-689ba", 
     "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
