@@ -8,9 +8,9 @@ rgb(52,51,52);\n    --filter-buttons-svg: brightness(0.5);\n    \
 --font-size-small: small;\n    --font-size-medium: medium;\n    \
 --font-size-large: large;\n    --font-size-x-large: x-large;\n    \
 --font-size-xx-large: xx-large;\n    --font-size-x-small: x-small;\n\n    \
---font-paragraph-family: 'JetBrains Mono', system-ui;\n    \
+--font-paragraph-family: system-ui;\n    \
 --font-paragraph-size: var(--font-size-small); \n\n    --font-code-family: \
-'JetBrains Mono', Menlo;\n    --font-code-size: var(--font-size-small);\n  \n \
+'JetBrains Mono', Menlo, monospace;\n    --font-code-size: var(--font-size-small);\n  \n \
  \n    --kernel-best: rgb(17 255 60 / 25%);\n    --kernel-good: rgba(17, 184, \
 255, 0.35);\n    --kernel-load: rgba(255, 231, 17, 0.35);\n    --kernel-no: \
 none;\n    --kernel-undefined: none;\n    --kernel-bad: rgba(255, 17, 17, \
