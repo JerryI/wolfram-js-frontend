@@ -1,4 +1,4 @@
-# Wolfram Language Javascript Frontend
+# Freeware Wolfram Language Notebook
 
 ![demo2](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/374982a5-f127-4fcd-89de-cb285cfb313b)
 
