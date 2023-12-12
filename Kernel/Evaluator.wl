@@ -164,7 +164,7 @@ CellPrintInContext[callback_][expr_String, opts___] := With[{uid = CreateUUID[],
   Return[CellObj[uid], Module];
 ]]
 
-
+ParentCell[] := CellObj[Global`$ParentCell]
 
 CellObj /: ParentCell[CellObj[uid_String]] := With[{nid = JerryI`WolframJSFrontend`Remote`Private`notebook},
   JerryI`WolframJSFrontend`Remote`Private`MasterSubmit[CellListFindFirstInputBefore[nid, CellObj[uid]]]
@@ -201,14 +201,12 @@ InternalGetObject[uid_] := (
   JerryI`WolframJSFrontend`Evaluator`objects[uid]
 )
 
-
-
-
-WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = CreateUUID[]},
+WolframEvaluator[str_String, block_, signature_, inputcell_][callback_] := With[{$CellUid = CreateUUID[]},
  
   Block[{
         Global`$NewDefinitions = <||>, 
         Global`$PostEval = Null, 
+        Global`$ParentCell = inputcell,
         EvaluationCell = Function[Null, Global`CellObj[$CellUid]], 
         Global`$NotebookID = signature, $evaluated, 
         Global`$ignoreLongStrings = False
@@ -269,7 +267,7 @@ WolframEvaluator[str_String, block_, signature_][callback_] := With[{$CellUid = 
   ]
 ];
 
-TemplateEvaluator[str_String, signature_, type_:String][callback_] := Module[{},
+TemplateEvaluator[str_String, signature_, type_:String, parent_String][callback_] := Module[{},
   Block[{$CellUid = CreateUUID[]},
         
     callback[

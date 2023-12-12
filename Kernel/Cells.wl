@@ -302,8 +302,9 @@ CellObjEvaluate[CellObj[cell_], evaluators_, cbk_:Null] := Module[{expr, evaluat
             MapIndexed[(   
               (*  Print[StringTemplate["Eval: ``"][#1]];*)
 
-              evaluator["Evaluator"][#1, CellObj[cell]["sign"], standartCallback[cell, #2[[1]], cell, "output", <||>, fireLocalEvent, length, cbk]];
-
+       
+              evaluator["Evaluator"][#1, CellObj[cell]["sign"], cell, standartCallback[cell, #2[[1]], cell, "output", <||>, fireLocalEvent, length, cbk]];
+            
             )& , list];
         ];
     ];  
