@@ -151,22 +151,15 @@ Unprotect[CellPrint];
 ClearAll[CellPrint];
 
 CellPrintInContext[callback_][expr_String, opts___] := With[{uid = CreateUUID[], options = Flatten[List[opts]] // Association}, Module[{parent},
-  If[KeyExistsQ[options, "Type"] // TrueQ,
+
     callback[
       expr, 
       uid, 
       "codemirror", 
       Null,
-      "Type" -> ToLowerCase[options["Type"]]
+      "Type" -> If[KeyExistsQ[options, "Type"] // TrueQ, ToLowerCase[options["Type"]], "output"],
+      If[KeyExistsQ[options, "After"] // TrueQ, "After" -> (options["After"]//First), "Dummy"->Null]
     ];  
-  ,
-    callback[
-      expr, 
-      uid, 
-      "codemirror", 
-      Null
-    ];  
-  ]
 
   Return[CellObj[uid], Module];
 ]]
