@@ -1,17 +1,17 @@
 {
   "name": "wljs-frontend",
-  "version": "0.6.7",
+  "version": "0.7.0",
   "description": "Web-based frontend for Wolfram Engine",
   "author": {
     "name": "White Russians",
     "email": "krikus.ms@gmail.com"
   },
-  "main": "main.js",
+  "main": "Electron/main.js",
   "scripts": {
     "start": "wolframscript -f Scripts/run.wls",
     "dev": "wolframscript -f Scripts/run.wls dev",
     "build": "wolframscript -f Scripts/build.wls",
-    "buildR": "rollup --config rollup.config2.mjs",
+    "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "el": "electron .",
     "dist": "electron-builder",
     "dist-all": "electron-builder -mwl"
@@ -29,10 +29,10 @@
     ],
     "dmg": {
       "title": "${productName} ${version}",
-      "icon": "./build/512x512.icns"
+      "icon": "./Electron/build/512x512.icns"
     },
     "mac": {
-      "icon": "./build/512x512.icns"
+      "icon": "./Electron/build/512x512.icns"
     },
     "linux": {
       "target": [
@@ -47,21 +47,21 @@
           "role": "Editor"
         }
       ],
-      "icon": "./build/512x512.icns"
+      "icon": "./Electron/build/512x512.icns"
     },
     "win": {
       "target": "NSIS",
-      "icon": "./build/256x256.ico"
+      "icon": "./Electron/build/256x256.ico"
     },
     "files": [
-      "main.js",
-      "preload.js",
-      "build/rendererSrc.js",
-      "electron.css",
-      "log.html",
-      "preloadMain.js",
-      "build/**/*",
-      "shipped/**"
+      "./Electron/main.js",
+      "./Electron/preload_main.js",
+      "./Electron/bundle/log.js",
+      "./Electron/electron.css",
+      "./Electron/log.html",
+      "./Electron/preload_log.js",
+      "./Electron/build/**/*",
+      "./shipped/**"
     ],
     "asar": false
   },
@@ -91,6 +91,7 @@
     "electron-context-menu": "^3.6.1",
     "electron-find": "^1.0.7",
     "fflate": "^0.8.0",
+    "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",
     "jsoncrush": "^1.1.8",
     "mica-electron": "^1.5.2",

@@ -4,6 +4,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   handleLogs: (callback) => ipcRenderer.on('push-logs', callback),
   addPromt: (callback) => ipcRenderer.on('promt', callback),
   addDialog: (callback) => ipcRenderer.on('yesorno', callback),
+  clear: (callback) => ipcRenderer.on('clear', callback),
   resolveInput: (id, data) => {
     // Send IPC event to main process to read the file.
     ipcRenderer.send('promt-resolve', id, data)

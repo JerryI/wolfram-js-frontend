@@ -27,6 +27,11 @@ logger.addEventListener("resize", (event) => {
 });
 
 
+window.electronAPI.clear(() => {
+    term.clear();
+    alert('clear');
+});
+
 
 window.electronAPI.handleLogs((event, value, color) => {
     if (color) {
@@ -150,13 +155,13 @@ function prompt(term) {
 window.electronAPI.addPromt((event, id) => {
     let d;
     
-    d = pinit(function (term, command) {
-        if (command.length > 0) {
-            clearInput(command);
-            window.electronAPI.resolveInput(id, command) + '\n';
-            d.dispose();
-            return;
-        }
+    d = pinit((term, command) => {
+        
+        clearInput(command);
+        window.electronAPI.resolveInput(id, command);
+        d.dispose();
+        return;
+        
     });
 
 });

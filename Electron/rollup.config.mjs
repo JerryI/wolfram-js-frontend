@@ -4,10 +4,10 @@ import json from "@rollup/plugin-json";
 
 export default {
 
-  input: 'rendererSrc.js',
+  input: 'log.js',
   
   output: {
-    dir: 'build',
+    dir: 'bundle',
     format: "es",
     strict: false
   },

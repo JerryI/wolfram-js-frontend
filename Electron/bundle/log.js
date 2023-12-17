@@ -3211,17 +3211,24 @@ function prompt(term) {
     }
 }*/
 
+window.electronAPI.clear(() => {
+  term.clear();
+  //alert('clear');
+});
+
 
 window.electronAPI.addPromt((event, id) => {
     let d;
     
     d = pinit(function (term, command) {
-        if (command.length > 0) {
+        //if (command.length > 0) {
             clearInput(command);
-            window.electronAPI.resolveInput(id, command) + '\n';
+            term.write('\x1b[2K\r');
+            window.electronAPI.resolveInput(id, command);
             d.dispose();
+            
             return;
-        }
+      
     });
 
 });

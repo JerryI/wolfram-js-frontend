@@ -19,5 +19,7 @@ Demo/*.html
 Packages/*
 2minutesLog.txt
 dist
+shipped
 null
 log.txt
+configuration.ini

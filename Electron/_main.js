@@ -81,33 +81,6 @@ currentWindow.cellop = (type) => {
 
 let logWindow = undefined
 
-const createLogWindow = () => {
-    const win = new BrowserWindow({
-        vibrancy: "sidebar", // in my case...
-        frame: true,
-        titleBarStyle: 'hiddenInset',
-        width: 600,
-        height: 400,
-        resizable: false,
-        title: 'Logger',
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            //webSecurity: false,
-            //nodeIntegration: true
-        }
-    });
-
-    /*win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
-      callback({ responseHeaders: Object.assign({
-          "Content-Security-Policy": [ "default-src 'self' 'unsafe-inline'"]
-      }, details.responseHeaders)})});*/
-
-    win.loadFile('log.html');
-
-    logWindow = win;
-
-    return win;
-}
 
 const pluginsMenu = {};
 
