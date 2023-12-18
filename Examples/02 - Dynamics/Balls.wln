@@ -1,0 +1,43 @@
+<|"notebook" -> <|"name" -> "Corded", "id" -> "affinity-89d2c", 
+   "kernel" -> LocalKernel, "objects" :> 
+    Association["2acc7650-737e-470d-8ef9-c63f32548c31" -> 
+      Association["json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,1,1],[\"\
+EventListener\",[\"Rectangle\",[\"List\",-10,-10],[\"List\",10,10]],[\"Rule\"\
+,\"'click'\",\"'0364c71e-62da-4007-8bbd-0f46168ac78b'\"]],[\"RGBColor\",0,0,0\
+],[\"PointSize\",0.1],[\"Point\",[\"MiddlewareListener\",[\"Hold\",\"points\"\
+],\"'end'\",\"'073b957c-ff5b-4e74-b104-ecb994e4237b'\",[\"Rule\",\"'Threshold\
+'\",0.5]]]],[\"Rule\",\"'TransitionType'\",\"'Linear'\"],[\"Rule\",\"'Transit\
+ionDuration'\",40],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,1],[\"List\
+\",-1,1]]]]", "date" -> DateObject[{2023, 10, 15, 17, 41, 
+          11.005252`7.794174977706597}, "Instant", "Gregorian", 2.]], 
+     "161383d6-e3f1-46a5-aa85-e82aa0fccd17" -> 
+      Association["json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0.9,1],[\
+\"EventListener\",[\"Rectangle\",[\"List\",-10,-10],[\"List\",10,10]],[\"Rule\
+\",\"'click'\",\"'903f1090-b953-4916-8f43-5299fd9bb761'\"]],[\"RGBColor\",0,0\
+,0],[\"PointSize\",0.1],[\"Point\",[\"MiddlewareListener\",[\"Hold\",\"points\
+\"],\"'end'\",\"'33f3538f-a03d-4f9c-b980-fad2685a0191'\",[\"Rule\",\"'Thresho\
+ld'\",0.5]]]],[\"Rule\",\"'TransitionType'\",\"'Linear'\"],[\"Rule\",\"'Trans\
+itionDuration'\",40],[\"Rule\",\"PlotRange\",[\"List\",[\"List\",-1,1],[\"Lis\
+t\",-1,1]]]]", "date" -> DateObject[{2023, 10, 15, 17, 42, 
+          21.712722`8.0892892553194}, "Instant", "Gregorian", 2.]]], 
+   "path" -> "/Users/kirill/Documents/Github/wolfram-js-frontend/Examples/Dyn\
+amics/Basic/Balls.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 11, 29, 21, 4, 46.658716`8.421507759896864}, 
+     "Instant", "Gregorian", 1.], "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$21], 
+   "symbols" -> <|"points" -> <|"date" -> DateObject[{2023, 10, 15, 17, 42, 
+          14.67764`7.9192312168498065}, "Instant", "Gregorian", 2.]|>|>, 
+   "SelectedCell" -> "367750ee-91b2-4a6c-ac66-ec0a0c52807d1ed985fed"|>, 
+ "cells" -> {<|"id" -> "367750ee-91b2-4a6c-ac66-ec0a0c52807d1ed985fed52b", 
+    "type" -> "input", "data" -> "points = {{0,0}};\nvel = \
+{RandomReal[{-1,1}]};\n\naddPoint[xy_] := (points = Append[points, xy]; vel = \
+Append[vel, RandomReal[{-1,1},2]]);\nanimate[i_] := points = \
+MapIndexed[(If[Max[#1//Abs] > 1.2, vel[[#2//First]] = - vel[[#2//First]]]; #1 \
++ 0.05 vel[[#2//First]])&, points];\nGraphics[\n  {\n    RGBColor[1,0.9,1],\n \
+   EventHandler[Rectangle[{-10,-10},{10,10}], {\"click\"->addPoint}],\n    \
+RGBColor[0,0,0],\n    PointSize[0.1], \n    \
+Point[MiddlewareHandler[points//Hold, \"end\"->animate, \
+\"Threshold\"->0.5]]\n  }\n, \"TransitionType\"->\"Linear\", \
+\"TransitionDuration\"->40, PlotRange->{{-1,1},{-1,1}}]", 
+    "display" -> "codemirror", "sign" -> "affinity-89d2c", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

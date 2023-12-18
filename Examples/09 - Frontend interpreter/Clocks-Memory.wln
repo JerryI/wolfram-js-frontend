@@ -1,0 +1,42 @@
+<|"notebook" -> <|"name" -> "Incongruousness", "id" -> "unalike-f8d1e", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"20f246d7-f66c-45de-abbb-a19a040d02e0" -> 
+      <|"json" -> "[\"PlaceholderClock\"]", "date" -> 
+        DateObject[{2023, 9, 9, 12, 45, 18.53165`8.02048907350955}, 
+         "Instant", "Gregorian", 2.]|>|>, "path" -> "/Volumes/Data/Github/wol\
+fram-js-frontend/Examples/FrontendFunctions/Clocks-Memory.wln", 
+   "cell" -> "fd5a0793-c71a-43c2-91a2-1011a4bdb5c640b", 
+   "date" -> DateObject[{2023, 9, 9, 12, 44, 7.52401`7.629024351340869}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$17]|>, 
+ "cells" -> {<|"id" -> "fd5a0793-c71a-43c2-91a2-1011a4bdb5c640b45224d", 
+    "type" -> "input", "data" -> ".js\ncore.PlaceholderClock = async (args, \
+env) => {\n\t//store the handler object in the local \
+memory\n\tenv.local.start = new Date();\n\tenv.local.clock = \
+setInterval(()=>{\n\t\tconst d = (new Date() - \
+env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
+instance is about to be destoryed - clear \
+timer\ncore.PlaceholderClock.destroy = (args, env) => \
+{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
+env.local.start);\n\talert(passed+' passed');\n}", "display" -> "codemirror", 
+    "sign" -> "unalike-f8d1e", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0c929185-77f1-4fff-806f-e3221f2926ee40b45224d", 
+    "type" -> "output", "data" -> "\ncore.PlaceholderClock = (args, env) => \
+{\n\t//store the handler object in the local memory\n\tenv.local.start = new \
+Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
+env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
+instance is about to be destoryed - clear \
+timer\ncore.PlaceholderClock.destroy = (args, env) => \
+{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
+env.local.start);\n\talert(passed+' passed');\n}", "display" -> "js", 
+    "sign" -> "unalike-f8d1e", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "3525d659-e49d-4ecb-89ad-f31e5fe9f4e740b45224d", 
+    "type" -> "input", "data" -> "CreateFrontEndObject[PlaceholderClock[]]", 
+    "display" -> "codemirror", "sign" -> "unalike-f8d1e", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f85ede1e-fae4-4661-a16d-a0b70b2e388240b45224d", 
+    "type" -> "output", "data" -> 
+     "FrontEndExecutable[\"20f246d7-f66c-45de-abbb-a19a040d02e0\"]", 
+    "display" -> "codemirror", "sign" -> "unalike-f8d1e", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

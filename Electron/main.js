@@ -71,6 +71,14 @@ pluginsMenu.fetch = () => {
 }
 
 
+//load shortcuts
+const shortcuts_table = require("./shortcuts.json");
+const shortcut = (id) => {
+    console.log('shortcut required');
+    if (process.platform === 'darwin') return shortcuts_table[id][0]
+    return shortcuts_table[id][1]
+}
+
 
 //build TOP MENU
 
@@ -104,7 +112,7 @@ const buildMenu = (opts) => {
             label: 'File',
             submenu: [{
                     label: 'New',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+N' : 'Ctrl+N',
+                    accelerator: shortcut('new_file'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('New');
@@ -112,7 +120,7 @@ const buildMenu = (opts) => {
                 },
                 ...((options.localmenu) ? [{
                         label: 'Open File',
-                        accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
+                        accelerator: shortcut('open_file'),
                         click: async() => {
                             const promise = dialog.showOpenDialog({
                                 title: 'Open File',
@@ -160,7 +168,7 @@ const buildMenu = (opts) => {
                     }
                 ] : [{
                     label: 'Open Vault',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
+                    accelerator: shortcut('open_file'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('OpenVault');
@@ -168,7 +176,7 @@ const buildMenu = (opts) => {
                 }]),
                 {
                     label: 'Save',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+S' : 'Ctrl+S',
+                    accelerator: shortcut('save'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('Save');
@@ -224,7 +232,7 @@ const buildMenu = (opts) => {
                 { type: 'separator' },
                 {
                     label: 'Find',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+F' : 'Ctrl+F',
+                    accelerator: shortcut('find'),
                     click: (ev) => {
                         windows.focused.call('Find');
                     }
@@ -232,29 +240,12 @@ const buildMenu = (opts) => {
                 { type: 'separator' },
                 {
                     label: 'Hide/Unhide cell',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+2' : 'Ctrl+w',
+                    accelerator: shortcut('toggle_cell'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.operate('HC');
                     }
                 },
-                {
-                    label: 'Hide/Unhide upper cell',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+1' : 'Ctrl+q',
-                    click: async(ev) => {
-                        console.log(ev);
-                        windows.focused.operate('HUC');
-                    }
-                },
-                {
-                    label: 'Hide/Unhide down cell',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+3' : 'Ctrl+e',
-                    click: async(ev) => {
-                        console.log(ev);
-                        windows.focused.operate('HLC');
-                    }
-                },
-
                 {
                     label: 'Unhide All Cells',
                     click: async(ev) => {
@@ -266,10 +257,10 @@ const buildMenu = (opts) => {
                 { type: 'separator' },
                 {
                     label: 'Delete current cell',
-                    accelerator: process.platform === 'darwin' ? "Cmd+'" : "Ctrl+d'",
+                    accelerator: shortcut('delete_cell'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('DS');
+                        windows.focused.operate('CCD');
                     }
                 },
                 { type: 'separator' },
@@ -323,7 +314,7 @@ const buildMenu = (opts) => {
             label: 'Evaluation',
             submenu: [{
                     label: 'Abort',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+.' : 'Alt+.',
+                    accelerator: shortcut('abort'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('Abort');
@@ -332,7 +323,7 @@ const buildMenu = (opts) => {
 
                 {
                     label: 'Evaluate Initializing Cells',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+i' : 'Alt+i',
+                    accelerator: shortcut('evaluate_init'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('EIC');
@@ -341,7 +332,7 @@ const buildMenu = (opts) => {
 
                 {
                     label: 'Clear Output Cells',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+u' : 'Alt+u',
+                    accelerator: shortcut('clear_outputs'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('COC');
@@ -350,7 +341,7 @@ const buildMenu = (opts) => {
 
                 {
                     label: 'Evaluate All Cells',
-                    accelerator: process.platform === 'darwin' ? 'Cmd+a' : 'Alt+a',
+                    accelerator: shortcut('evaluate_all'),
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('EAC');
@@ -655,7 +646,7 @@ function create_window(opts, cbk = () => {}) {
                 transparent: IS_WINDOWS_11,
                 show: options.show,
                 webPreferences: {
-                    preload: path.join(__dirname, 'preloadMain.js')
+                    preload: path.join(__dirname, 'preload_main.js')
                 }
             });
 
@@ -857,7 +848,16 @@ else {
         //argv has the process.argv arguments of the second instance.
         //on windows IT SENDS --allow-file-access-from-files as a second argument.!!!
         if (app.hasSingleInstanceLock()) {
-            create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(argv[2]), title: argv[2], focus: true, show: false});
+            windows.log.print('second instance was blocked');
+            windows.log.print(argv[0]);
+            windows.log.print(argv[1]);
+            windows.log.print(argv[2]);
+
+            let pos = 1;
+            if (new RegExp('--').exec(argv[pos])) pos++;
+            if (new RegExp('--').exec(argv[pos])) pos++;
+
+            create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
         }
     });
 }
@@ -1110,7 +1110,7 @@ function check_wl (configuration, cbk, window) {
             new promt('binary', (answer) => {
                 if (answer) {
                     windows.log.print("");
-                    windows.log.print('Please, locate an executable called `wolframscript`', '\x1b[43m');
+                    windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[43m');
 
                     setTimeout(() => {
                         const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
@@ -1547,7 +1547,7 @@ function install_frontend(cbk, window) {
                 windows.log.print('Done');
                 
                 //remove specific files
-                const toremove = ['.thumbnails', '.settings', 'wl_packages_lock.wl'];
+                const toremove = ['.thumbnails', 'main.js', 'wl_packages_lock.wl'];
                 const dirtoremove = ['Packages', 'wl_packages'];
     
                 //windows.log.print('removing Packages...');

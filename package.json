@@ -14,7 +14,7 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "el": "electron .",
     "dist": "electron-builder",
-    "dist-all": "electron-builder -mwl"
+    "dist-all": "electron-builder -mwl --x64"
   },
   "build": {
     "appId": "wljs-frontend",
@@ -59,6 +59,7 @@
       "./Electron/bundle/log.js",
       "./Electron/electron.css",
       "./Electron/log.html",
+      "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
       "./shipped/**"

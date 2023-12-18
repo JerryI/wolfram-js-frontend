@@ -1,0 +1,65 @@
+<|"notebook" -> <|"name" -> "Bandleader", "id" -> "granulate-464b3", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Volumes/Data/Githu\
+b/wolfram-js-frontend/Examples/Dynamics/Advanced/Injecting-into-FO-instances.\
+wln", "cell" :> Exit[], "date" -> DateObject[{2023, 10, 1, 20, 53, 
+      56.080973`8.501390513881216}, "Instant", "Gregorian", 2.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$21], 
+   "SelectedCell" -> "53e5cfbc-ce79-4c88-8a27-13011c96c7bd7585ff3a4611"|>, 
+ "cells" -> {<|"id" -> "0ee93e4f-0273-4d70-8388-d7d270e551537585ff3a4611", 
+    "type" -> "input", "data" -> ".md\n# Injecting into Frontend Objects \
+instances\nLet us define some typical plot and apply a meta-marker on it", 
+    "display" -> "codemirror", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "91ed4b69-851b-4760-ac6c-6aca998316935ff3a4611", 
+    "type" -> "output", "data" -> "\n# Injecting into Frontend Objects \
+instances\nLet us define some typical plot and apply a meta-marker on it", 
+    "display" -> "markdown", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "27a95b58-012f-4e12-a6a9-c861356bee7e7585ff3a4611", 
+    "type" -> "input", "data" -> "Graphics[{MetaMarker[\"label\"], \
+Line[{{0,0},{1,1}}]}, PlotRange->{{-1,1},{-1,1}}]", 
+    "display" -> "codemirror", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "248c0585-0ed8-4a66-8cde-6537ab8270957585ff3a4611", 
+    "type" -> "input", "data" -> ".md\nNow we can find it using \
+`FindMetaMarker` selector and inject new objects there", 
+    "display" -> "codemirror", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "a4a3e194-ee99-4bb1-b1f9-7986b27ce8dc5ff3a4611", 
+    "type" -> "output", "data" -> "\nNow we can find it using \
+`FindMetaMarker` selector and inject new objects there", 
+    "display" -> "markdown", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "53e5cfbc-ce79-4c88-8a27-13011c96c7bd7585ff3a4611", 
+    "type" -> "input", "data" -> "FrontSubmit[{Line[{{0.2,0.6},RandomReal[{-1\
+,1}, 2]}]}, MetaMarker[\"label\"]];", "display" -> "codemirror", 
+    "sign" -> "granulate-464b3", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "334b6558-f9b2-463f-80be-c9c83f6a3c657585ff3a4611", 
+    "type" -> "input", "data" -> ".md\nGreat! To make something cool, lets \
+inject another frontend object there", "display" -> "codemirror", 
+    "sign" -> "granulate-464b3", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "28f259c0-809f-4a0b-92a0-7f00e94eed475ff3a4611", 
+    "type" -> "output", "data" -> "\nGreat! To make something cool, lets \
+inject another frontend object there", "display" -> "markdown", 
+    "sign" -> "granulate-464b3", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2b8db5e9-865d-471e-9c8c-2cb2df11b8a07585ff3a4611", 
+    "type" -> "input", "data" -> "fakeline = RandomReal[{0,1},{2, \
+2}];\nFrontSubmit[{RGBColor[1,0,0], Line[fakeline // Offload]}, \
+MetaMarker[\"label\"]];", "display" -> "codemirror", 
+    "sign" -> "granulate-464b3", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ca127056-1813-45c6-a8b6-d12159b575907585ff3a4611", 
+    "type" -> "input", "data" -> 
+     ".md\nNow we can update this injected object independently", 
+    "display" -> "codemirror", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "ef8f2fc9-87c5-475d-8672-0fb71c16029b5ff3a4611", 
+    "type" -> "output", "data" -> 
+     "\nNow we can update this injected object independently", 
+    "display" -> "markdown", "sign" -> "granulate-464b3", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "5b2af240-7828-4d7b-a849-55472726d7fa7585ff3a4611", 
+    "type" -> "input", "data" -> "Do[\n  fakeline = RandomReal[{0,1},{2, \
+2}];\n  Pause[0.5];\n, {i, 1, 10}];", "display" -> "codemirror", 
+    "sign" -> "granulate-464b3", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

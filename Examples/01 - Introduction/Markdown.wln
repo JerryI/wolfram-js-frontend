@@ -1,0 +1,88 @@
+<|"notebook" -> <|"name" -> "Discombobulated", "id" -> "bleakly-c5b95", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend/Examples/01 - Introduction/Markdown.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 12, 18, 13, 45, 
+      18.681964`8.023997515112681}, "Instant", "Gregorian", 1.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$25]|>, 
+ "cells" -> {<|"id" -> "d3fc603b-1faf-4eec-8f75-1c4644fe5d89c75", 
+    "type" -> "input", "data" -> ".md\n# Markdown\nBy typing `.md` in the \
+beginning of a cell, it switches to Markdown mode. Markdown mode supports an \
+HTML insets as well", "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "820e54a2-0da7-4feb-a0d9-702728b7921bc75", "type" -> "output", 
+    "data" -> "\n# Markdown\nBy typing `.md` in the beginning of a cell, it \
+switches to Markdown mode. Markdown mode supports an HTML insets as well", 
+    "display" -> "markdown", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6ee1662c-b3b9-44dd-a620-ceaca3689ab0c75", "type" -> "input", 
+    "data" -> 
+     ".md\n<span style=\"color:red\">\n\n__Different color__\n\n</span>", 
+    "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e30d2e27-2713-4869-93a3-b1b36a92708fc75", "type" -> "output", 
+    "data" -> 
+     "\n<span style=\"color:red\">\n\n__Different color__\n\n</span>", 
+    "display" -> "markdown", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "7cc06e1c-0f9c-4cea-a061-ddadc856802dc75", "type" -> "input", 
+    "data" -> ".md\nBut in general, markdown is quite rich, when it comes to \
+the basic text formatting like", "display" -> "codemirror", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "fd3764ff-dbbb-47a2-a954-eb3b7f8b4975c75", "type" -> "output", 
+    "data" -> "\nBut in general, markdown is quite rich, when it comes to the \
+basic text formatting like", "display" -> "markdown", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4730eab1-9636-4c9f-8a10-43fc21428938c75", "type" -> "input", 
+    "data" -> ".md\nlists\n- 1\n- 2\n- 3", "display" -> "codemirror", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8a0965fe-a1d8-4e2c-851d-3425b1c0e247c75", "type" -> "output", 
+    "data" -> "\nlists\n- 1\n- 2\n- 3", "display" -> "markdown", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "3c59f2f1-45d6-4e5d-86f4-ed3074ea3108c75", "type" -> "input", 
+    "data" -> ".md\nor emphasis\n\n*italic*\n\n__bold__", 
+    "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "bd636d64-d5ef-4505-8149-8ae73c8f225cc75", "type" -> "output", 
+    "data" -> "\nor emphasis\n\n*italic*\n\n__bold__", 
+    "display" -> "markdown", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6b376b04-5dc5-4a94-bf58-04e29680de00c75", "type" -> "input", 
+    "data" -> ".md\nit also does support $\\TeX$ equations\n\n$$m\\mathbf{a} \
+= \\mathbf{F}$$", "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "493b48f1-7c43-4306-b2e4-870dc356daecc75", "type" -> "output", 
+    "data" -> "\nit also does support $\\TeX$ equations\n\n$$m\\mathbf{a} = \
+\\mathbf{F}$$", "display" -> "markdown", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "1f62bf71-748c-4a08-ad36-c22d979e5fbdc75", "type" -> "input", 
+    "data" -> ".md\nor images as \
+well\n\n![alt](https://thechive.com/wp-content/uploads/2019/12/person-hilario\
+usly-photoshops-animals-onto-random-things-xx-photos-25.jpg?attachment_cache_\
+bust=3136487&quality=85&strip=info&w=400)", "display" -> "codemirror", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "dc9727f4-1875-4dcc-8571-2e562dcad7b0c75", "type" -> "output", 
+    "data" -> "\nor images as \
+well\n\n![alt](https://thechive.com/wp-content/uploads/2019/12/person-hilario\
+usly-photoshops-animals-onto-random-things-xx-photos-25.jpg?attachment_cache_\
+bust=3136487&quality=85&strip=info&w=400)", "display" -> "markdown", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e3488643-eec8-4d44-b831-81302114afbfc75", "type" -> "input", 
+    "data" -> " ", "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "8de01fe5-eda1-40ce-a40d-88a8ca51b3ddc75", "type" -> "input", 
+    "data" -> ".md\n## Mixing with Wolfram Language\nUsing a special tag one \
+can embed WL expression to it", "display" -> "codemirror", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d9d0595b-71e3-47a7-ad71-c1395a9484d0c75", "type" -> "output", 
+    "data" -> "\n## Mixing with Wolfram Language\nUsing a special tag one can \
+embed WL expression to it", "display" -> "markdown", 
+    "sign" -> "bleakly-c5b95", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9501b81c-2cf1-47d7-8a8c-253e1bf57450c75", "type" -> "input", 
+    "data" -> ".md\nToday is __<?wsp TextString[Now] ?>__", 
+    "display" -> "codemirror", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d80d1521-a085-415a-99f2-e8adc8ce2d0dc75", "type" -> "output", 
+    "data" -> "\nToday is __Sat 9 Sep 2023 15:14:20__", 
+    "display" -> "markdown", "sign" -> "bleakly-c5b95", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

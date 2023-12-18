@@ -1,0 +1,12 @@
+{
+    "new_file"      : ["Cmd+N", "Ctrl+N"],
+    "open_file"     : ["Cmd+O", "Ctrl+O"],
+    "save"          : ["Cmd+S", "Ctrl+S"],
+    "find"          : ["Cmm+F", "Ctrl+F"],
+    "toggle_cell"   : ["Cmd+2", "Ctrl+w"],
+    "delete_cell"   : ["Cmd+'", "Ctrl+d"],
+    "abort"         : ["Cmd+.", "Alt+."],
+    "evaluate_init" : ["Cmd+i", "Alt+i"],
+    "clear_outputs" : ["Cmd+u", "Alt+u"],
+    "evaluate_all"  : ["Cmd+a", "Alt+a"]
+}

@@ -1,0 +1,23 @@
+<|"notebook" -> <|"name" -> "Deterrence", "id" -> "jingle-cdd89", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend/Examples/03 - User input/DATPlotter.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 12, 18, 13, 55, 
+      25.567821`8.160268699495353}, "Instant", "Gregorian", 1.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$30], 
+   "SelectedCell" -> "b0fc2d1f-37cd-4540-bc50-d668a127c9d3"|>, 
+ "cells" -> {<|"id" -> "74c3f7ab-3caf-4002-beb1-a0b564ebe6cb", 
+    "type" -> "input", "data" -> ".md\n## Data plotter\nEvaluate the cell and \
+drag a `.dat` TSV file with a list of 2D curve", "display" -> "codemirror", 
+    "sign" -> "jingle-cdd89", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "3bc8bdb1-fcf1-4621-a299-8f2fd91f7b71", "type" -> "output", 
+    "data" -> "\n## Data plotter\nEvaluate the cell and drag a `.dat` TSV \
+file with a list of 2D curve", "display" -> "markdown", 
+    "sign" -> "jingle-cdd89", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "b0fc2d1f-37cd-4540-bc50-d668a127c9d3", "type" -> "input", 
+    "data" -> "datap = {{0,0}, {0,0}};\nEventHandler[InputFile[\"Drag and \
+Drop\"], Function[file,\n  datap = \
+Drop[ImportString[file[\"data\"]//BaseDecode//ByteArrayToString, \"TSV\"], \
+1]\n]]\nListLinePlotly[datap // Offload]", "display" -> "codemirror", 
+    "sign" -> "jingle-cdd89", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

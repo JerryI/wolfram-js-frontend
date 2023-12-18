@@ -1,0 +1,107 @@
+<|"notebook" -> <|"name" -> "Pathological", "id" -> "loom-aaa2a", 
+   "kernel" -> LocalKernel, "objects" -> <||>, "path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend/Examples/05 - Decorations/MutableViewBox.wln", 
+   "cell" :> Exit[], "date" -> DateObject[{2023, 12, 18, 13, 59, 
+      15.718356`7.948982105813717}, "Instant", "Gregorian", 1.], 
+   "symbols" -> <||>, "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$32], 
+   "SelectedCell" -> "97a34cf0-502c-4871-adf2-5da09c7d5cb3"|>, 
+ "cells" -> {<|"id" -> "94cfef2d-d832-42fd-b56d-082e59d5ccd9", 
+    "type" -> "input", "data" -> ".md\n## Mutable view-box\nA decoration that \
+can responce on clicks and change its content", "display" -> "codemirror", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "152c57ac-6827-403d-a04e-49991c5d0719", "type" -> "output", 
+    "data" -> "\n## Mutable view-box\nA decoration that can responce on \
+clicks and change its content", "display" -> "markdown", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "356ab76c-fac6-4c37-bd05-c95d45bb4184", "type" -> "input", 
+    "data" -> ".md\n__here we use Javascript__ but later it will be possible \
+using pure WL", "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "5fe9517f-0c27-4392-aac7-b30ef6aba3a4", "type" -> "input", 
+    "data" -> "CheckObject /: MakeBoxes[CheckObject[state_:(True | False)], \
+StandardForm] := With[{},\n  ViewBox[CheckObject[state], \
+CheckBoxDecorator[]]\n]", "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "6c9ebdf6-6a8b-4510-b2c4-506cd492136c", "type" -> "input", 
+    "data" -> ".md\n__here we use javascript__ but later it will be possible \
+using pure WL", "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "9eedf0f2-c010-4b18-ad4d-195630bb01f3", "type" -> "output", 
+    "data" -> "\n__here we use javascript__ but later it will be possible \
+using pure WL", "display" -> "markdown", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "67934284-d4c5-4756-8a9c-8950e45a9311", "type" -> "input", 
+    "data" -> ".js\n\ncore.CheckBoxDecorator = async (args, env) => {\n  let \
+state = false;\n\n  //check the raw data from the viewbox to determine the \
+state\n  if (env.global.EditorWidget.getDoc() == 'CheckObject[True]') state = \
+true;\n\n  //make a rectangle\n  env.element.style.width = \"1em\";\n  \
+env.element.style.height = \"1em\";\n\n  const update = (s) => \
+env.element.style.background = s ? 'red' : 'blue';\n\n  //color it depending \
+on state\n  update(state);\n\n  //logic for updates when a user click on it\n \
+ env.element.addEventListener(\"click\", () => {\n    state = !state;\n    \
+update(state);\n    \n    const stringState = state ? 'True' : 'False';\n    \
+env.global.EditorWidget.applyChanges('CheckObject['+stringState+']');\n  \
+});\n}", "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "52be138f-0328-43c8-a35c-0e1d8c6ff174", "type" -> "output", 
+    "data" -> "\n\ncore.CheckBoxDecorator = async (args, env) => {\n  let \
+state = false;\n\n  //check the raw data from the viewbox to determine the \
+state\n  if (env.global.EditorWidget.getDoc() == 'CheckObject[True]') state = \
+true;\n\n  //make a rectangle\n  env.element.style.width = \"1em\";\n  \
+env.element.style.height = \"1em\";\n\n  const update = (s) => \
+env.element.style.background = s ? 'red' : 'blue';\n\n  //color it depending \
+on state\n  update(state);\n\n  //logic for updates when a user click on it\n \
+ env.element.addEventListener(\"click\", () => {\n    state = !state;\n    \
+update(state);\n    \n    const stringState = state ? 'True' : 'False';\n    \
+env.global.EditorWidget.applyChanges('CheckObject['+stringState+']');\n  \
+});\n}", "display" -> "js", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0b2f3fa9-c996-4624-94d0-12d5ba6ab153", "type" -> "input", 
+    "data" -> ".md\nActual testing!", "display" -> "codemirror", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "35df58d7-c684-4ab7-b341-422ac3d2aece", "type" -> "output", 
+    "data" -> "\nActual testing!", "display" -> "markdown", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "9a1bc5f8-ce09-408b-a895-7f24502449ba", "type" -> "input", 
+    "data" -> "CheckObject[True]", "display" -> "codemirror", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0b2c46f1-b34e-459f-af3f-6728e544e966", "type" -> "output", 
+    "data" -> "(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5K\
+WkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)", 
+    "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "86fafe0b-a742-4bdc-8f1e-8eb7c0ea1175", "type" -> "input", 
+    "data" -> "(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5K\
+WkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*) \
+(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3\
+OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)", "display" -> "codemirror", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "41d4be79-039f-450f-b603-2f8897119d96", "type" -> "input", 
+    "data" -> ".md\nTry to click on it", "display" -> "codemirror", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "73e93440-2015-439e-ad37-9ff034c38fb8", "type" -> "output", 
+    "data" -> "\nTry to click on it", "display" -> "markdown", 
+    "sign" -> "loom-aaa2a", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4b43a8e5-0620-43c2-b6ab-3637cbc0c2d8", "type" -> "input", 
+    "data" -> "Table[CheckObject[True], {i, 3}, {j, 3}] // MatrixForm ", 
+    "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "97a34cf0-502c-4871-adf2-5da09c7d5cb3", "type" -> "input", 
+    "data" -> "((*GB[*){{(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYG\
+AoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[\
+*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3Odsqvc\
+ElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True])(*,*)(*\"1\
+:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)}\
+(*||*),(*||*){(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KW\
+kMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObje\
+ct[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkv\
+AgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPS\
+mNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)}(*||*),(*|\
+|*){(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHD\
+OSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True])\
+(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"\
+*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgES\
+Hvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)}}(*]GB*)) ", 
+    "display" -> "codemirror", "sign" -> "loom-aaa2a", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

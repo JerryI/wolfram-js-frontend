@@ -179,7 +179,7 @@ CellListAddNewInputAny[list_, CellObj[cell_], CellObj[new_]] := Module[{pos},
     
     If[CellObj[new]["type"] === "input", 
         CellObj[new]["type"] = "output";
-        (* a hack to force CM to reuild the structure *)
+        (* a hack to force CM to reuild the structure of cells *)
         console["log", "rebuilding structure..."];
         JerryI`WolframJSFrontend`fireEvent["AddCellAfter"][ CellObj[new], CellList[list][[pos - 1]] ];
         JerryI`WolframJSFrontend`fireEvent["CellMorphInput"][CellObj[new]];
