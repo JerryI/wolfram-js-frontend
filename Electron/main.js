@@ -229,14 +229,14 @@ const buildMenu = (opts) => {
                 { role: 'cut' },
                 { role: 'copy' },
                 { role: 'paste' },
-                { type: 'separator' },
+                /*{ type: 'separator' },
                 {
                     label: 'Find',
                     accelerator: shortcut('find'),
                     click: (ev) => {
                         windows.focused.call('Find');
                     }
-                },
+                },*/
                 { type: 'separator' },
                 {
                     label: 'Hide/Unhide cell',
