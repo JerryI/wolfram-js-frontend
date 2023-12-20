@@ -61,6 +61,7 @@ AskMaster[expr_] := With[{n = notebook}, JTPClientEvaluate[mastersync, expr[n]] 
 MasterSubmit[expr_] := JTPClientEvaluate[mastersync, expr];
 
 MasterResolvePromise[expr_][uid_] := With[{res = expr//ReleaseHold},
+  Print["MasterResolvePromise  with "<>uid];
   JTPClientEvaluateAsyncNoReply[master, Global`LocalKernelPromiseResolve[uid, res]];
 ]
 

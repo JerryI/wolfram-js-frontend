@@ -166,6 +166,7 @@ FolderWindow[wpath_] := <|"view" :> LoadPage["template/views/folder.wsp", {path 
 
 (* association file_path -> notebook id *)
 NotebookQ[path_] := (StringTake[path, -3] === "wln");
+NotebookQ`Mathematica[path_] := (StringTake[path, -2] === "nb");
 NotebookQLegacy[path_] := (StringTake[path, -2] === "wl");
 
 LoadNotebook[path_] := Module[{},

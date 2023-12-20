@@ -227,6 +227,8 @@ NExtendSingleDefinition[uid_, defs_][notebook_] := Module[{updated = False},
 (* load a notebook into memory  *)
 PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = False, postfix},
 
+  If[FileExtension[path] === "nb", PreloadNotebook`ConvertAndReopen[path]; Return[Null, Module]];
+
   notebook = Get[path]; 
 
   (* remember the last path *)
@@ -324,6 +326,45 @@ PreloadNotebook[path_] := Module[{notebook, oldsign, newsign, regenerated = Fals
   ]
 ]
 
+PreloadNotebook`ConvertAndReopen[path_String] := Module[{notebook, uid = CreateUUID[], newpath},
+    Print["Converting Mathematica's notebook to WLJS..."];
+
+    notebook = Import[path];
+
+    newpath = FileNameJoin[{DirectoryName[path], FileBaseName[path]<>".wln"}];
+    If[FileExistsQ[newpath], DeleteFile[newpath]];
+
+    $AssoticatedPath[newpath] = uid;
+    NotebookCreate["id"->uid, "name"->FileBaseName[path], "path"->newpath, "data"->".md\nConverted from "<>FileBaseName[path]];
+
+
+
+    PreloadNotebook`Crawler[Notebook[cls_List, opts___]] := Module[{cells = cls},
+      PreloadNotebook`Crawler/@cells
+    ];
+
+    PreloadNotebook`Crawler[Cell[data_String, "Text", opts___]] := With[{},
+        CellListAddNewLast[uid, ".md\n"<>data, <|"hidden"->True|>] // First // NotebookEvaluate;
+    ];  
+
+    PreloadNotebook`Crawler[Cell[BoxData[""], "Input", opts___]] := Nothing;
+
+    PreloadNotebook`Crawler[Cell[CellGroupData[list_List, opts___], cellopts___]] := PreloadNotebook`Crawler /@ list;
+
+    PreloadNotebook`Crawler[Cell[BoxData[boxes_], "Input", opts___]] := With[{b = boxes},
+        With[{data = jsfn`Notebooks[uid]["kernel"]["Ask"][ Hold[b /. {Global`RowBox->Global`RowBoxFlatten} // ToString] ]},
+            If[data === $Failed, Print["Failed to transform an expression!"]; Return[Null]];
+            CellListAddNewLast[uid, data]
+        ]
+    ]
+
+    PreloadNotebook`Crawler[any_] := Nothing;  
+
+    StringTake[notebook // PreloadNotebook`Crawler // ToString, 100] // Print;
+
+    NotebookStoreManually[uid];
+    Print["Done!"];
+]
 
 (* create a serialsed notebook and store it as a file *)
 CreateNewNotebook[dir_, window_:False] := Module[{uid = RandomWord[]<>"-"<>StringTake[CreateUUID[], 5], filename = (RandomWord[]//Capitalize)},

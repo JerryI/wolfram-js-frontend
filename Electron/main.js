@@ -1165,6 +1165,7 @@ function check_wl (configuration, cbk, window) {
         //If OK
         //Wolframscript started
         if (new RegExp('Wolfram Language').exec(s)) {
+            windows.log.print(s);
             server.wolfram.process = program;
             server.running = false;
             server.startedQ = true;
@@ -1182,6 +1183,7 @@ function check_wl (configuration, cbk, window) {
             //If OK
             //Wolframscript started
             if (new RegExp('Wolfram Language').exec(data.toString())) {
+                windows.log.print(data.toString());
                 server.wolfram.process = program;
                 server.running = false;
                 server.startedQ = true;

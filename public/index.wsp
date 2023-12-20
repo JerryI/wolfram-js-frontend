@@ -16,7 +16,7 @@
                           ];   
   
       
-      If[NotebookQ[$CurrentRequest["Query", "path_decoded"]], PreloadNotebook[$CurrentRequest["Query", "path_decoded"] ] ];
+      If[NotebookQ[$CurrentRequest["Query", "path_decoded"]] || NotebookQ`Mathematica[$CurrentRequest["Query", "path_decoded"]], PreloadNotebook[$CurrentRequest["Query", "path_decoded"] ] ];
 " "   ?>
 
 <?wsp LoadPage["template/header.wsp"] ?>

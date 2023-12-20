@@ -54,6 +54,7 @@ LocalKernel[ev_, cbk_, OptionsPattern[]] := (
 promises = <||>;
 
 LocalKernelPromiseResolve[uid_, res_] := (
+    Print["LocalKernelPromiseRelove! with "<>uid];
     promises[uid] = res;
 );
 
@@ -61,7 +62,9 @@ LocalKernel["Ask"][expr_] := Module[{res}, With[{uid = CreateUUID[]},
     If[status["signal"] =!= "good", Print["Not running!"]; Return[$Failed]];
 
     promises[uid] = $Waiting;
-    JTPSend[asyncsocket, Global`MasterResolvePromise[expr][uid]];
+    (*JTPSend[asyncsocket, Global`MasterResolvePromise[expr][uid]];*)
+    LinkWrite[link, Unevaluated[Global`MasterResolvePromise[expr][uid] ] ];
+    Print["LocalKernelPromise Ask with "<>uid];
     While[promises[uid] === $Waiting,
         Pause[0.1];
     ];
