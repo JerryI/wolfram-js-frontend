@@ -1,0 +1,33 @@
+http = $Server["HTTPHandler"];
+uid = CreateUUID[];
+
+Head  := ImportComponent["Components/Head.wlx"];
+
+App[request_] := With[{uid = CreateUUID[]},
+    <html>
+        <Head Secret={uid}/>
+        <body> 
+        <div class="min-h-full">
+            <header class="bg-white shadow">
+                <div class="flex items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    <div class="px-4 sm:px-6 lg:px-8">
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">File explorer</h1>
+                        Crumbs
+                    </div> 
+                </div>
+            </header>
+            <main>
+                <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                    <Views Request={request}/>
+                </div>
+            </main>
+        </div>
+    </body>
+    </html>
+];
+
+http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+
+
+
+
