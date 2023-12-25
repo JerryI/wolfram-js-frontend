@@ -1,7 +1,0 @@
-
-Viewer[any_String, opts___]      := Views`UnknownFile`["Type"->FileExtension[any], opts]
-Viewer[path_?Views`NotebookQ, opts___] := Views`NotebookView[path, opts]
-Viewer[path_?Views`PictureQ, opts___]  := Views`PictureView[path, opts]
-Viewer[path_?Views`PictureQ, opts___]  := Views`PictureView[path, opts]
-
-(* must be exendable *)

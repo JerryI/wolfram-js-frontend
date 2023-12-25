@@ -1,0 +1,64 @@
+ItemList := ImportComponent["ItemList.wlx"];
+File  = $Options["File"];
+
+(*/* uids for events */*)
+ButtonId    = CreateUUID[];
+Controller  = CreateUUID[];
+
+(*/* state of a widget */*)
+State = "Empty";
+
+(*/* handling clicks */*)
+EventHandler[ButtonId, Function[Null,
+    Print[State];
+    Switch[State,
+      "Empty",
+        State = "Open";
+        With[{client = $Client},
+            EventFire[Controller, "Load", <|"Client"->client|>];
+        ],
+      
+      "Open",
+        State = "Hidden";
+        With[{client = $Client},
+          EventFire[Controller, "Hide", <|"Client"->client|>];
+        ], 
+      
+      "Hidden",
+        State = "Open";
+        With[{client = $Client},
+          EventFire[Controller, "Show", <|"Client"->client|>];
+        ]       
+    ];
+]];
+
+<div>
+    <button id="{ButtonId}" type="button" class="hover:bg-gray-50 flex items-center w-full text-left rounded-md pl-1 gap-x-3 text-sm leading-6 font-semibold text-gray-700" aria-controls="sub-menu-1" aria-expanded="false">
+    
+      <svg id="svg-{ButtonId}" class="text-gray-400 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+      </svg>
+      <FileBaseName><File/></FileBaseName>
+    </button>
+
+    <WebUIEventListener Type={"click"} Id={ButtonId} Event={ButtonId} />
+
+    <WebUIJSBind Event={Controller}>
+      const button = document.getElementById('svg-<ButtonId/>');
+      this.on('Load', (data) => {
+        button.classList.add('rotate-90', 'text-gray-500');
+      });
+
+      this.on('Show', (data) => {
+        button.classList.add('rotate-90', 'text-gray-500');
+      });        
+
+      this.on('Hide', (data) => {
+        button.classList.remove('rotate-90', 'text-gray-500');
+      });      
+    </WebUIJSBind>
+
+    <WebUILazyLoad Event={Controller}>
+        <ItemList Class={"mt-1"} Path={File} />
+    </WebUILazyLoad>
+</div>

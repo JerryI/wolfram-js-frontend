@@ -1,33 +1,52 @@
-http = $Server["HTTPHandler"];
-uid = CreateUUID[];
+http        =  $Server["HTTPHandler"];
 
-Head  := ImportComponent["Components/Head.wlx"];
+Head        := ImportComponent["Components/Head.wlx"];
+Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
-App[request_] := With[{uid = CreateUUID[]},
-    <html>
-        <Head Secret={uid}/>
-        <body> 
-        <div class="min-h-full">
-            <header class="bg-white shadow">
-                <div class="flex items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                    <div class="px-4 sm:px-6 lg:px-8">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">File explorer</h1>
-                        Crumbs
-                    </div> 
-                </div>
-            </header>
-            <main>
-                <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-                    <Views Request={request}/>
-                </div>
+Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
+Views        = Get[FileNameJoin[{"Frontend", "Views.wl"}]];
+
+App[request_] := With[{
+        Secret = CreateUUID[], 
+        Path = Function[url, If[StringLength[url] === 0, ".", url]]@URLPathToFileName[URLDecode@(request["Path"])]
+    },
+
+    <html class="h-full bg-white"> 
+        <Head>
+            <WLJSHeader>
+                /wljs-interpreter/src/interpreter.js
+                /wljs-interpreter/src/core.js
+                https://cdn.statically.io/gh/JerryI/wljs-graphics-d3/main/dist/kernel.js
+                https://cdn.statically.io/gh/JerryI/wljs-plotly/main/dist/kernel.js
+                https://cdn.statically.io/gh/JerryI/wljs-inputs/main/dist/kernel.js
+            </WLJSHeader>   
+            <WLJSTransportScript Regime={"Standalone"} Port={$Env["ws"]}/>     
+            <WebUIInitializationScript/>
+        </Head>  
+        <body class="h-full"> 
+        <div>
+          
+          
+          <Sidebar Secret={Secret} Path={Path}/>
+
+          <div class="lg:pl-72">
+            <div class="hidden sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+                Sticky stuff
+            </div>
+
+            <main class="py-10">
+              <div class="px-4 sm:px-6 lg:px-8">
+                <Views Path={Path}/>
+              </div>
             </main>
+          </div>
         </div>
-    </body>
+        </body>
     </html>
 ];
 
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
-
+Print["Loaded!!!"];
 
 
 

@@ -1,0 +1,48 @@
+http        = $Server["HTTPHandler"];
+(*
+Head   := ImportComponent["Frontend/Head.wlx"];
+Views   = ImportComponent["Frontend/Views.wlx"];
+
+Breadcrumbs := ImportComponent["Frontend/Breadcrumbs.wlx"];*)
+
+App[request_] := With[{
+        Secret = CreateUUID[], 
+        Path = Function[url, If[StringLength[url] === 0, ".", url]]@URLPathToFileName[URLDecode@(request["Path"])]
+    },
+
+    <html> 
+        <Head>
+            <WLJSHeader>
+                https://cdn.statically.io/gh/JerryI/wljs-interpreter/main/src/interpreter.js
+                https://cdn.statically.io/gh/JerryI/wljs-interpreter/main/src/core.js
+                https://cdn.statically.io/gh/JerryI/wljs-graphics-d3/main/dist/kernel.js
+                https://cdn.statically.io/gh/JerryI/wljs-plotly/main/dist/kernel.js
+                https://cdn.statically.io/gh/JerryI/wljs-inputs/main/dist/kernel.js
+            </WLJSHeader>        
+        </Head>  
+        <body> 
+            <div class="min-h-full">
+                <header class="bg-white shadow">
+                    <div class="flex items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                        <Logo Width={"5em"}/>
+                        <div class="px-4 sm:px-6 lg:px-8">
+                            <h1 class="text-3xl font-bold tracking-tight text-gray-900">File explorer</h1>
+                            <Breadcrumbs FileName={Path} />
+                        </div> 
+                    </div>
+                </header>
+                <main>
+                    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                        <View Path={Path} />
+                    </div>
+                </main>
+            </div>
+        </body>
+    </html>
+];
+
+http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+
+
+
+

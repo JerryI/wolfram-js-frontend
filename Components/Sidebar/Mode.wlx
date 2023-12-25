@@ -1,0 +1,4 @@
+<div class="px-2 flex h-16 shrink-0 items-center"><a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 rounded-md">
+  <span class="sr-only">Theme</span>
+  <span aria-hidden="true">Light</span>
+</a></div>

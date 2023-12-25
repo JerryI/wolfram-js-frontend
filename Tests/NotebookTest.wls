@@ -5,6 +5,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 << JerryI`Notebook`;
 << JerryI`Notebook`Evaluator`;
+<< JerryI`Misc`Events`;
 
 stat := With[{},
     Print["-----------------------"];
@@ -20,6 +21,11 @@ stat;
 cell = CellObj["Notebook" -> notebook, "Data" -> "1+1"];
 
 stat;
+
+EventHandler[notebook, {"New Cell" -> Function[data,
+    Print["*********"];
+    Print[data];
+]}]
 
 evaluator = StaticEvaluator[];
 StaticEvaluator /: StandardEvaluator`ReadyQ[evaluator, kernel_] := (

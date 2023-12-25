@@ -1,0 +1,109 @@
+WebUILazyLoad[content_, OptionsPattern[]] := With[{event = EventClone[OptionValue["Event"]], uid = CreateUUID[]},
+    EventHandler[event, {
+        
+    "Load" -> Function[data,
+        If[KeyExistsQ[data, "Downvalues"],
+            With[{data = content @@ (data["Downvalues"])},
+                WebSocketSend[data["Client"], $DefaultSerializer @ UILazyLoad["Load", uid, ToString[data] ] ];
+            ]
+        ,
+            WebSocketSend[data["Client"], $DefaultSerializer @ UILazyLoad["Load", uid, ToString[content] ] ];
+        ];
+    ],
+
+
+    "Hide" -> Function[data,
+        WebSocketSend[data["Client"], $DefaultSerializer @ UILazyLoad["Hide", uid] ];
+    ],
+
+    "Show" -> Function[data,
+        WebSocketSend[data["Client"], $DefaultSerializer @ UILazyLoad["Show", uid] ];
+    ]
+
+    }];
+
+
+    <div id="{uid}"></div>
+];
+
+Options[WebUILazyLoad] = {"Event" -> ""};
+
+SetAttributes[WebUILazyLoad, HoldFirst];
+
+WebUIJSBind[Script__String, OptionsPattern[]] := With[{Event = OptionValue["Event"], Uid = CreateUUID[], Str = StringJoin[Script]},
+    EventHandler[EventClone[Event], {any_ :> Function[data,
+        WebSocketSend[data["Client"], $DefaultSerializer @ UILazyEventDispatch[Uid, any, data]];
+    ]}];
+
+    Print[Str];
+
+    <script type="module">
+        new UIJSScript({target: async function() {<Str/>}, uid: '<Uid/>'})
+    </script>
+]
+
+Options[WebUIJSBind] = {"Event" -> ""};
+
+WebUIEventListener[OptionsPattern[]] := With[{Event = OptionValue["Event"], Type = OptionValue["Type"], Id = OptionValue["Id"]},
+    <script type="module">
+        const el = document.getElementById('<Id/>');
+        el.addEventListener('<Type/>', function (e) {
+            server.emitt_('<Event/>', '"'+el.value+'"');
+        });
+    </script>
+];
+
+Options[WebUIEventListener] = {"Event"->"", "Type"->"click", "Id"->""};
+
+WebUIInitializationScript = With[{},
+    <script type="module">
+        core.UILazyLoad = async (args, env) => {
+            const type = await interpretate(args[0], env);
+            await core.UILazyLoad[type](args.slice(1), env);
+        }
+
+        core.UILazyLoad.Load = async (args, env) => {
+            const uid = await interpretate(args[0], env);
+            const data = await interpretate(args[1], env);
+
+            setInnerHTML(document.getElementById(uid), data);
+        }
+
+        core.UILazyLoad.Hide = async (args, env) => {
+            const uid = await interpretate(args[0], env);
+            document.getElementById(uid).classList.add("hidden");
+        } 
+
+        core.UILazyLoad.Show = async (args, env) => {
+            const uid = await interpretate(args[0], env);
+            document.getElementById(uid).classList.remove("hidden");
+        }     
+
+        core.UILazyEventDispatch = async (args, env) => {
+            const uid = await interpretate(args[0], env);
+            const type = await interpretate(args[1], env);
+
+            core.UILazyEventDispatch[uid](type, args[2], env);
+        }     
+
+        window.UIJSScript = class {
+            event = undefined;
+            listeners = {};
+            constructor(opts) {
+                this.event = opts.uid
+                const self = this;
+                core.UILazyEventDispatch[this.event] = function (type, data, env) {
+                    self.listeners[type](data, env);
+                };
+
+                const scoped = opts.target.bind(self);
+                scoped();
+            }
+
+            on(type, handler) {
+                this.listeners[type] = handler;
+            }
+        }      
+
+    </script>
+];

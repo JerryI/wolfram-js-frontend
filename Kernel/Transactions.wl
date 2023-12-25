@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Transactions`", {"KirillBelov`Objects`"}]
+BeginPackage["JerryI`Notebook`Transactions`", {"KirillBelov`Objects`", "JerryI`Misc`Events`"}]
 
 Transaction::usage = "creates transaction for Notebook <-> Kernel / Evaluator communication"
 
