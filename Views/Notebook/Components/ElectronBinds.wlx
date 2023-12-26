@@ -1,0 +1,4 @@
+Event = $Options["Event"];
+<script type="module">
+    server.emitt();
+</script>

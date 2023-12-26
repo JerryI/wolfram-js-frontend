@@ -1,16 +1,19 @@
 Class = $Options["Class"];
-Path  = $Options["Path"];
+Path     = $Options["Path"];
+Current  = $Options["Current"];
 
 Dir  := ImportComponent["ItemDirectory.wlx"];
 Fl   := ImportComponent["ItemFile.wlx"];
+
+If[!DirectoryQ[Path], Path = DirectoryName[Path]];
 
 Print[StringJoin["ItemList ", Path]];
 
 With[{
   Ul = Table[
     If[DirectoryQ[i],  
-      <li><Dir File={i}/></li>,
-      <li><Fl  File={i}/></li>
+      <li><Dir File={i} Selected={SameQ[Current, i]}/></li>,
+      <li><Fl  File={i} Selected={SameQ[Current, i]}/></li>
     ]
   , {i, FileNames["*", Path]}]
 },

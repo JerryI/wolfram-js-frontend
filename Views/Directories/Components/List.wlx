@@ -4,7 +4,7 @@
     @Data - a list of files
 */ *)
 
-Label := ImportComponent["Components/Misc/Label.wlx"];
+Label := ImportComponent["Label.wlx"];
 (* /* This is ok to import components everytime, since it is cached and there is no need in parsing */ *)
 
 Elements = Table[

@@ -62,6 +62,12 @@ Notebook /: EventFire[n_Notebook, opts__] := EventFire[n["Hash"], opts]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
 
+Notebook`Sockets = <||>;
+Notebook /: Notebook`Sockets`Assign[n_Notebook, value_] := (
+    Notebook`Sockets[value] = n;
+    n["Client"] = value;
+)
+
 (*
     (Notebook <-> Cells) merged
     Notebook -> Evaluator --> Processors
@@ -113,6 +119,14 @@ CreateType[CellObj, initCell, {"Notebook"->Null, "UID"->Null, "Data"->"", "State
 CellObj /: EventHandler[n_CellObj, opts__] := EventHandler[n["Hash"], opts] 
 CellObj /: EventFire[n_CellObj, opts__] := EventFire[n["Hash"], opts]
 CellObj /: EventRemove[n_CellObj, opts__] := EventRemove[n["Hash"], opts] 
+
+CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
+    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init"}]];
+    props = Join[props, {"Notebook" -> n["Notebook"]["Hash"]}];
+    props // Flatten // Association
+]
+
+Options[CellObj`Serialize] = {"OnlyMeta" -> False}
 
 OutputCellQ[o_CellObj] := o["Type"] === "Output"
 InputCellQ[o_CellObj] := o["Type"] === "Input"

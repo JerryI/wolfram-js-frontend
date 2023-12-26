@@ -43,6 +43,8 @@ notebook["Evaluator"] = StandardEvaluator[Null];
 
 cell // CellObj`Evaluate;
 
+cell // CellObj`Serialize // Print;
+
 stat;
 
 

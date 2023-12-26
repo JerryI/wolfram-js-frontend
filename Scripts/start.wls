@@ -5,6 +5,7 @@ PacletDirectoryLoad[Directory[]];
 
 PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
+(* web-server *)
 <<KirillBelov`CSockets`
 <<KirillBelov`Objects`
 <<KirillBelov`Internal`
@@ -14,22 +15,30 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<KirillBelov`HTTPHandler`Extensions`
 <<KirillBelov`WebSocketHandler`
 
+(* notebook abstraction *)
 <<JerryI`Notebook`Packages`
 <<JerryI`Notebook`Utils`
 
 <<JerryI`Notebook`;
 <<JerryI`Notebook`Evaluator`;
 
+(* event system & WLJS transport *)
 <<JerryI`Misc`Events`
 <<JerryI`Misc`WLJS`Transport`
 
+(* WLX template engine *)
 <<JerryI`WLX`
 <<JerryI`WLX`Importer`
 <<JerryI`WLX`WLJS`
 
-App := ImportComponent["Frontend/App.wlx"];
+(* WebUI Toolkit *)
 ImportComponent["Frontend/WebUI.wlx", "Localize"->False];
 
+(* Entrypoint of an app *)
+App := ImportComponent["Frontend/App.wlx"];
+
+
+(* Global variables *)
 
 $ExposedDirectories = {FileNameJoin[{Directory[], "Packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
 
@@ -89,10 +98,8 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"]], wcp@#&];
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
+(* start an app *)
 App[Null];
-
-(* ::End:: *)
-
 
 StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
 

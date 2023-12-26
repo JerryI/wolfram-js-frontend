@@ -6,9 +6,13 @@ Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
 Views        = Get[FileNameJoin[{"Frontend", "Views.wl"}]];
 
+Notifications  := ImportComponent["Components/Notifications.wlx"];
+
 App[request_] := With[{
         Secret = CreateUUID[], 
-        Path = Function[url, If[StringLength[url] === 0, ".", url]]@URLPathToFileName[URLDecode@(request["Path"])]
+        SidebarId = CreateUUID[],
+        GlobalMessanger = CreateUUID[],
+        Path = Function[url, If[StringLength[url] === 0, ".", url]] @ URLPathToFileName[URLDecode @ (request["Path"])]
     },
 
     <html class="h-full bg-white"> 
@@ -20,25 +24,24 @@ App[request_] := With[{
                 https://cdn.statically.io/gh/JerryI/wljs-plotly/main/dist/kernel.js
                 https://cdn.statically.io/gh/JerryI/wljs-inputs/main/dist/kernel.js
             </WLJSHeader>   
-            <WLJSTransportScript Regime={"Standalone"} Port={$Env["ws"]}/>     
+            <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
         </Head>  
         <body class="h-full"> 
         <div>
-          
-          
-          <Sidebar Secret={Secret} Path={Path}/>
 
+          <WebUIRefresh Event={SidebarId}>
+            <Sidebar Secret={Secret} Path={Path}/>
+          </WebUIRefresh>
+          
           <div class="lg:pl-72">
             <div class="hidden sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
                 Sticky stuff
             </div>
 
-            <main class="py-10">
-              <div class="px-4 sm:px-6 lg:px-8">
-                <Views Path={Path}/>
-              </div>
-            </main>
+            <Views Path={Path} Messager={GlobalMessanger}/>
+            <Notifications MessagePort={GlobalMessanger}/>
+
           </div>
         </div>
         </body>
@@ -46,7 +49,7 @@ App[request_] := With[{
 ];
 
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
-Print["Loaded!!!"];
+Print["App Loaded!"];
 
 
 

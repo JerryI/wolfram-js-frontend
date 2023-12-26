@@ -1,0 +1,14 @@
+notebook = $Options["Notebook"];
+
+If[!KernelQ[notebook["Kernel"]],
+    Print[">> notebook >> kernel is not ready yet"];
+    EventHandler[EventClone[notebook], {
+        "Kernel State" -> Function[kernel,
+            Print[kernel];
+        ]
+    }];
+,
+    //subscribe to updates
+];
+
+<div></div>
