@@ -79,36 +79,30 @@ Notebook /: Notebook`Sockets`Assign[n_Notebook, value_] := (
 
 initCell[o_] := Module[{uid = CreateUUID[]},
     Print["Init cellobj"];
-    If[!NullQ[o["UID"]], uid = o["UID"]];
 
     o["Hash"] = uid;
-    Print["Init hash of cellobj"];
     CellObj`HashMap[uid] = o;
 
     (* if notebook is specified -> insert it into the cells list and fire event *)
 
     (* After or Before can be a sequence pattern ! *)
-    Print["Init"];
+
     If[!NullQ[ o["Notebook"] ],
-        Print["Notebook"];
-        If[!NullQ[ o["After"] ],
+        If[!TrueQ[NullQ[ o["After"]] ],
             With[{position = SequencePosition[o["Notebook", "Cells"], {o["After"]} ] // First // Last},
                 o["Notebook", "Cells"] = Insert[o["Notebook", "Cells"],  o, position + 1];
-            ]
+            ];
         ,
-            If[!NullQ[ o["Before"] ],
+            If[!TrueQ[NullQ[ o["Before"] ]],
                 With[{position = SequencePosition[o["Notebook", "Cells"], {o["Before"]} ] // First // First},
                     o["Notebook", "Cells"] = Insert[o["Notebook", "Cells"],  o, position];
-                ]
+                ];
             ,
                 (* as the last one *)
-                Print["Last one"];
-                Print[o["Notebook"]["Cells"]];
-                o["Notebook", "Cells"] = Append[o["Notebook"]["Cells"],  o];
+                o["Notebook", "Cells"] = Append[o["Notebook", "Cells"],  o];
             ];
         ];
 
-        Print["ev fire"];
         EventFire[o["Notebook"], "New Cell", o]; 
     ];
     o
@@ -121,8 +115,14 @@ CellObj /: EventHandler[n_CellObj, opts__] := EventHandler[n["Hash"], opts]
 CellObj /: EventFire[n_CellObj, opts__] := EventFire[n["Hash"], opts]
 CellObj /: EventRemove[n_CellObj, opts__] := EventRemove[n["Hash"], opts] 
 
+Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{
+    position = SequencePosition[n["Cells"], {pattern} ] // First // First
+},
+    n["Cells"][[position]]
+]
+
 CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init"}]];
+    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}]];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]
@@ -146,7 +146,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)
             
-            CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, __?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
+            CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
         ],
             "Finish" -> Function[Null,
                 o["State"] = "Idle";

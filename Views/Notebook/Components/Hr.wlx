@@ -1,1 +1,25 @@
-<div>Separator</div>
+Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"]}, 
+    <button id="separator-{uid}">-----</button>
+]
+
+Options[Element] = {"Cell"->""}
+
+Script = With[{},
+    <Placebo>
+    {       const controls = (opts) => {
+            const cell = opts.cell;
+            const event = opts.event;
+        
+            const button = document.getElementById('separator-'+cell.uid);
+            button.addEventListener('click', () => {
+                server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+            });
+        }
+
+        //add it to the constructor
+        CellWrapper.epilog.push(controls);    }
+    </Placebo>
+]
+
+
+{Element, Script}

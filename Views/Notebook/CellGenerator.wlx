@@ -3,7 +3,7 @@ CellFrame      := ImportComponent["Components/CellFrame.wlx"];
 Children       := ImportComponent["Components/Children.wlx"];
 
 CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
-Hr             := ImportComponent["Components/Hr.wlx"];
+{Hr, HrScript}  = ImportComponent["Components/Hr.wlx"];
 
 {Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
 

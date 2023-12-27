@@ -1,12 +1,32 @@
 Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"]}, 
-    <div></div>
+    <div>
+        Controls
+        <button class="add">+</button>
+    </div>
 ]
 
 Options[Element] = {"Cell"->""}
 
 Script = With[{},
     <Placebo>
-        ;;
+        const controls = (opts) => {
+            const cell = opts.cell;
+            const event = opts.event;
+            
+            if (cell.type != 'Input') return;
+            const group = document.getElementById('group-'+cell.uid);
+            const button = group.getElementsByClassName('add')[0];
+            console.log('new cell');
+            console.log(button);
+            console.log(group);
+            button.addEventListener('click', () => {
+
+                server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+            });
+        }
+
+        //add it to the constructor
+        CellWrapper.epilog.push(controls);
     </Placebo>
 ]
 

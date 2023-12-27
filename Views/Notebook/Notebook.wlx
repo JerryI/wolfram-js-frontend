@@ -5,7 +5,7 @@ Console        := ImportComponent["Components/Console.wlx"];
 CellGenerator   = ImportComponent["CellGenerator.wlx"];
 
 {Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
-
+{Hr, HrScript}                        = ImportComponent["Components/Hr.wlx"];
 {EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
 
 KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
@@ -16,7 +16,7 @@ addListeners[notebook_, secret_, client_, extensions_] := Module[{},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[notebook, {
         "New Cell" -> Function[cell,
-            With[{list = #["Hash"] &/@ (cell["Notebook"]["Cells"])},
+            With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
                 WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret]]
             ];
         ]
@@ -26,7 +26,7 @@ addListeners[notebook_, secret_, client_, extensions_] := Module[{},
 restoreCells[notebook_, secret_, client_, extensions_] := Module[{},
     Map[
         Function[cell,
-            With[{list = #["Hash"] &/@ (cell["Notebook"]["Cells"])},
+            With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
                 WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] (*-`*), list, secret]];
             ]
         ]   
@@ -35,7 +35,7 @@ restoreCells[notebook_, secret_, client_, extensions_] := Module[{},
     ]
 ];
 
-Script = With[{JSLibrary = Import[FileNameJoin[{$WLXInputPath, "Assets", "JSCells.js"}], "String"]},
+Script = With[{},
     <script type="module">
         core.UINotebook = async (args, env) => {
             const type = await interpretate(args[0], env);
@@ -50,13 +50,16 @@ Script = With[{JSLibrary = Import[FileNameJoin[{$WLXInputPath, "Assets", "JSCell
             const ev     = await interpretate(args[3], env);
 
             new CellWrapper(template, store, list, ev);
-        }
+        };;
 
-        <JSLibrary/>
-        <EvaluationBarScript/>
-        <ControlsScript/>
+        <EvaluationBarScript/>;;
+        <ControlsScript/>;;
+        <HrScript/>;;
     </script>
 ] 
+
+(* /*  Exstension API */  *)
+(* /*  Prolog, Epilog, Mesis, EventHandler */  *)
 
 Component[OptionsPattern[]] := Module[{
     secret = OptionValue["Secret"], 
@@ -100,15 +103,19 @@ Component[OptionsPattern[]] := Module[{
         
         ],
 
-        "Save" -> Function[uid,
+        "Save" -> Function[payload,
             (* /* Notebook`Loader`Save[notebook];
             "Saved" >> log; */ *)
         ],    
 
         "SetProps" -> Null,
         
-        "NewCellAfter" -> Function[uid,
+        "AddAfter" -> Function[uid,
             (*/* request from the client with event provided */*)
+
+            With[{o = CellObj`HashMap[uid] (*`*)},
+                CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
+            ]
         ],
 
         "Evaluate" -> Function[celluid,
@@ -118,7 +125,9 @@ Component[OptionsPattern[]] := Module[{
 
         "New" -> Function[uid,
         
-        ]
+        ],
+
+        else_String -> extensions["EventHandlers"][else]
     }];
 
     With[{nid = notebook["Hash"]},
@@ -134,6 +143,7 @@ Component[OptionsPattern[]] := Module[{
             <Console Notebook={notebook}/>
 
             <ElectronBinds Event={secret}/>
+            <EpilogExtension Template={"Scripts"} />
             <WebUIOnLoad Event={secret} Type={"Load"}/>
         </main>
 
