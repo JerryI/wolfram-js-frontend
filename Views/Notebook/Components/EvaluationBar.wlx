@@ -1,5 +1,29 @@
-cellObj.extendHandler() => {}
-//once added
+Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionValue["Client"]},
+    With[{uid = cell["Hash"], State = cell["State"]},
+        EventHandler[cell,
+            {
+                "State" -> Function[state,
+                    Print["State update"];
+                    WebSocketSend[client, $DefaultSerializer @ UINotebook["CellState", uid, state]];
+                ]
+            }
+        ];
+
+        <div id="bar-{uid}"><State/></div>
+    ]
+];
+
+Options[Element] = {"Cell"->Null, "Client"->""};
+
+Script = With[{},
+    <Placebo>
+        core.UINotebook.CellState = async (args, env) => {
+            const uid      = await interpretate(args[0], env);
+            const state    = await interpretate(args[1], env);
+            document.getElementById('bar-'+uid).innerText = state;
+        }
+    </Placebo>
+]
 
 
-{EvaluationBarScript, EvaluationBar}
+{Element, Script}

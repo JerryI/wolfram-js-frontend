@@ -32,7 +32,12 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<JerryI`WLX`WLJS`
 
 (* WebUI Toolkit *)
-ImportComponent["Frontend/WebUI.wlx", "Localize"->False];
+<<JerryI`WLX`WebUI`
+
+LoadPluginsConfiguration["Root" -> Directory[]];
+
+Includes["jsmodule"];
+Includes["js"];
 
 (* Entrypoint of an app *)
 App := ImportComponent["Frontend/App.wlx"];

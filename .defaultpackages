@@ -226,7 +226,7 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"jsmodule" -> "dist/kernel.js",
 ./node_modules/.bin/rollup --config rollup.config.mjs", 
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-cells && mv wljs-cells/.git ../.git && cd .. \
-&& rm -rf _temp"|>, "wljs-meta" -> <|"jsmodule" -> {"dist/kernel.js"}, 
+&& rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "src/module.js", 
      "wl" -> "src/events.wl", "styles" -> {"styles/defaults.css", 
        "styles/ui.css"}, "priority" -> -100, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 

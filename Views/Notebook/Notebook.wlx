@@ -1,0 +1,149 @@
+CellsContainer := ImportComponent["Components/CellsContainer.wlx"];
+TopBar         := ImportComponent["Components/TopBar.wlx"];
+Console        := ImportComponent["Components/Console.wlx"];
+
+CellGenerator   = ImportComponent["CellGenerator.wlx"];
+
+{Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
+
+{EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
+
+KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
+
+ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
+
+addListeners[notebook_, secret_, client_, extensions_] := Module[{},
+    (* /* don't clone Notebook event, must be one ! */ *)
+    EventHandler[notebook, {
+        "New Cell" -> Function[cell,
+            With[{list = #["Hash"] &/@ (cell["Notebook"]["Cells"])},
+                WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret]]
+            ];
+        ]
+    }];
+];
+
+restoreCells[notebook_, secret_, client_, extensions_] := Module[{},
+    Map[
+        Function[cell,
+            With[{list = #["Hash"] &/@ (cell["Notebook"]["Cells"])},
+                WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] (*-`*), list, secret]];
+            ]
+        ]   
+    ,    
+        notebook["Cells"]
+    ]
+];
+
+Script = With[{JSLibrary = Import[FileNameJoin[{$WLXInputPath, "Assets", "JSCells.js"}], "String"]},
+    <script type="module">
+        core.UINotebook = async (args, env) => {
+            const type = await interpretate(args[0], env);
+            core.UINotebook[type](args.slice(1), env);
+        }
+
+        core.UINotebook.NewCell = async (args, env) => {
+            const template = await interpretate(args[0], env);
+            const store    = await interpretate(args[1], env);
+            const list     = await interpretate(args[2], env);
+
+            const ev     = await interpretate(args[3], env);
+
+            new CellWrapper(template, store, list, ev);
+        }
+
+        <JSLibrary/>
+        <EvaluationBarScript/>
+        <ControlsScript/>
+    </script>
+] 
+
+Component[OptionsPattern[]] := Module[{
+    secret = OptionValue["Secret"], 
+    notebook = OptionValue["Notebook"], 
+    event = OptionValue["Event"],
+    controller = OptionValue["Controller"],
+    log = OptionValue["Messanger"],
+
+    PrologExtension = OptionValue["Extension"]["Prolog"],  
+    MesisExtension = OptionValue["Extension"]["Mesis"], 
+    EpilogExtension = OptionValue["Extension"]["Epilog"],
+    extensions = OptionValue["Extension"]
+},
+
+    
+    EventHandler[secret, {
+        (* /* Add listeners and load cells */ *)
+        "Load" -> Function[Null,
+            Print["Notebook is about to be shown"];
+            (* /* Assign socket to a notebook 
+            Notebook`Sockets`Assign[notebook, $Client]; */ *)
+
+            (* /* Add all listeners to a **notebook** */ *)
+            addListeners[notebook, secret, $Client, extensions];
+            restoreCells[notebook, secret, $Client, extensions];
+
+            (*/* finish */*)
+            EventFire[event, "Loaded", notebook];
+        ],
+
+        (* /* When a user focuses on a notebook */ *)
+        "Activate" -> Function[Null,
+        
+        ],
+
+        "RequestObject" -> Function[uid,
+            (* /* Automatically reply with an object using $Client variable */ *)
+        ],
+
+        "RequestCachedSymbol" -> Function[uid,
+        
+        ],
+
+        "Save" -> Function[uid,
+            (* /* Notebook`Loader`Save[notebook];
+            "Saved" >> log; */ *)
+        ],    
+
+        "SetProps" -> Null,
+        
+        "NewCellAfter" -> Function[uid,
+            (*/* request from the client with event provided */*)
+        ],
+
+        "Evaluate" -> Function[celluid,
+            (*/* evalaute arbitary cell 
+            EventHandler[cell, "State" -> WebSocketSend[UIUpdate[cell,  state]]] */*)
+        ],
+
+        "New" -> Function[uid,
+        
+        ]
+    }];
+
+    With[{nid = notebook["Hash"]},
+
+        <main class="py-8 h-full">
+            <KernelIndicator Notebook={notebook}/>
+            <PrologExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
+            <TopBar Notebook={notebook}/>
+            <MesisExtension Template={"CellsContainer"} Notebook={notebook} Event={secret}>
+                <CellsContainer Notebook={notebook}>Here our Notebook</CellsContainer>
+            </MesisExtension>
+            <EpilogExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
+            <Console Notebook={notebook}/>
+
+            <ElectronBinds Event={secret}/>
+            <WebUIOnLoad Event={secret} Type={"Load"}/>
+        </main>
+
+    ]
+]
+
+Options[Component] = {"Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
+
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+{Component, Script}
+

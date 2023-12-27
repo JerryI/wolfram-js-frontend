@@ -92,18 +92,19 @@ initCell[o_] := Module[{uid = CreateUUID[]},
     If[!NullQ[ o["Notebook"] ],
         Print["Notebook"];
         If[!NullQ[ o["After"] ],
-            With[{position = SequencePosition[o["Notebook"]["Cells"], {o["After"]} ] // First // Last},
-                o["Notebook"]["Cells"] = Insert[o["Notebook"]["Cells"],  o, position + 1];
+            With[{position = SequencePosition[o["Notebook", "Cells"], {o["After"]} ] // First // Last},
+                o["Notebook", "Cells"] = Insert[o["Notebook", "Cells"],  o, position + 1];
             ]
         ,
             If[!NullQ[ o["Before"] ],
-                With[{position = SequencePosition[o["Notebook"]["Cells"], {o["Before"]} ] // First // First},
-                    o["Notebook"]["Cells"] = Insert[o["Notebook"]["Cells"],  o, position];
+                With[{position = SequencePosition[o["Notebook", "Cells"], {o["Before"]} ] // First // First},
+                    o["Notebook", "Cells"] = Insert[o["Notebook", "Cells"],  o, position];
                 ]
             ,
                 (* as the last one *)
                 Print["Last one"];
-                o["Notebook"]["Cells"] = Append[o["Notebook"]["Cells"],  o];
+                Print[o["Notebook"]["Cells"]];
+                o["Notebook", "Cells"] = Append[o["Notebook"]["Cells"],  o];
             ];
         ];
 
@@ -122,7 +123,7 @@ CellObj /: EventRemove[n_CellObj, opts__] := EventRemove[n["Hash"], opts]
 
 CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
     props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init"}]];
-    props = Join[props, {"Notebook" -> n["Notebook"]["Hash"]}];
+    props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]
 
@@ -166,7 +167,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
         }];
 
         (* submit *)
-        o["Notebook"]["Evaluator"][transaction];
+        o["Notebook", "Evaluator"][transaction];
 
     ];
     o

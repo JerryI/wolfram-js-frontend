@@ -20,15 +20,6 @@ Includes::usage = "check for fields"
 
 Begin["`Private`"]; 
 
-$RootFolder = Directory[]
-
-$ConfigFile = FileNameJoin[{$RootFolder, ".packages"}];
-$DefaultConfigFile = FileNameJoin[{$RootFolder, ".defaultpackages"}];
-$PackagesPath = FileNameJoin[{$RootFolder, "Packages"}];
-
-
-
-listAllPackages := FileNames["package.json", $PackagesPath, 2]
 
 absolute2Relative[path_] := FileNameSplit[DirectoryName[path]][[-1]]
 relative2Absolute[path_] := FileNameJoin[{$RootFolder, path}]
@@ -87,7 +78,17 @@ UpdateInfo := (
     ]& /@ listAllPackages;
 )
 
-LoadPluginsConfiguration := (
+LoadPluginsConfiguration[OptionsPattern[]] := (
+    $RootFolder = OptionValue["Root"];
+
+    $ConfigFile = FileNameJoin[{$RootFolder, ".packages"}];
+    $DefaultConfigFile = FileNameJoin[{$RootFolder, ".defaultpackages"}];
+    $PackagesPath = FileNameJoin[{$RootFolder, "Packages"}];
+
+
+
+    listAllPackages := FileNames["package.json", $PackagesPath, 2];
+
     Packages = Get[$DefaultConfigFile];
     If[FileExistsQ[$ConfigFile], Packages = Join[Packages, Get[$ConfigFile]]];
     
@@ -100,6 +101,8 @@ LoadPluginsConfiguration := (
 
     UpdateConfiguration;
 )
+
+Options[LoadPluginsConfiguration] = {"Root" -> Directory[]}
 
 InstallPackage[url_, cbk_:Null] := Module[{remote},
     remote = getJSON[url];

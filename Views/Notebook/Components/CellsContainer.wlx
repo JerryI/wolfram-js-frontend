@@ -1,5 +1,5 @@
 id = $Options["Notebook"]["Hash"];
 
-<div class="px-4 sm:px-6 lg:px-8 overflow-y-auto sc-b h-full" id="{id}">
+<div class="px-4 sm:px-6 lg:px-8 overflow-y-auto sc-b h-full" id="container-{id}">
     <$Children/>
 </div>

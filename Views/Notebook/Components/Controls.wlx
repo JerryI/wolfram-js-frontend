@@ -1,1 +1,14 @@
-<div></div>
+Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"]}, 
+    <div></div>
+]
+
+Options[Element] = {"Cell"->""}
+
+Script = With[{},
+    <Placebo>
+        ;;
+    </Placebo>
+]
+
+
+{Element, Script}

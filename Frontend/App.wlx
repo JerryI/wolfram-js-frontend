@@ -4,9 +4,15 @@ Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
 Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
-Views        = Get[FileNameJoin[{"Frontend", "Views.wl"}]];
 
 Notifications  := ImportComponent["Components/Notifications.wlx"];
+
+{NotebookComponent, NotebookScript}  = ImportComponent["Views/Notebook/Notebook.wlx"];
+
+test = Notebook[];
+cell = CellObj["Notebook" -> test, "Data" -> "1+1"];
+
+JSScripts = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
 
 App[request_] := With[{
         Secret = CreateUUID[], 
@@ -17,13 +23,7 @@ App[request_] := With[{
 
     <html class="h-full bg-white"> 
         <Head>
-            <WLJSHeader>
-                /wljs-interpreter/src/interpreter.js
-                /wljs-interpreter/src/core.js
-                https://cdn.statically.io/gh/JerryI/wljs-graphics-d3/main/dist/kernel.js
-                https://cdn.statically.io/gh/JerryI/wljs-plotly/main/dist/kernel.js
-                https://cdn.statically.io/gh/JerryI/wljs-inputs/main/dist/kernel.js
-            </WLJSHeader>   
+            <WLJSHeader List={JSScripts}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
         </Head>  
@@ -39,7 +39,9 @@ App[request_] := With[{
                 Sticky stuff
             </div>
 
-            <Views Path={Path} Messager={GlobalMessanger}/>
+            <NotebookComponent Notebook={test} Messager={GlobalMessanger}/>
+            <NotebookScript/>
+
             <Notifications MessagePort={GlobalMessanger}/>
 
           </div>
