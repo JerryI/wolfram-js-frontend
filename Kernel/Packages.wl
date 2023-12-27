@@ -16,6 +16,8 @@ Packages::usage = "storage for packages"
 
 PackagesOrder::usage = "order sorted by priority"
 
+Swizzle::usage = "use on path to replace the templates of ImportComponents"
+
 Includes::usage = "check for fields"
 
 Begin["`Private`"]; 

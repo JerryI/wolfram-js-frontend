@@ -12,7 +12,7 @@ KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
 
 ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
 
-addListeners[notebook_, secret_, client_, extensions_] := Module[{},
+addListeners[notebook_Notebook, secret_String, client_, extensions_] := Module[{},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[notebook, {
         "New Cell" -> Function[cell,
@@ -23,7 +23,7 @@ addListeners[notebook_, secret_, client_, extensions_] := Module[{},
     }];
 ];
 
-restoreCells[notebook_, secret_, client_, extensions_] := Module[{},
+restoreCells[notebook_Notebook, secret_String, client_, extensions_] := Module[{},
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
@@ -108,7 +108,16 @@ Component[OptionsPattern[]] := Module[{
             "Saved" >> log; */ *)
         ],    
 
-        "SetProps" -> Null,
+        "SetProperty" -> Function[json,
+            Print["Prop set..."];
+            With[{obj = ImportString[json, "JSON"] // Association},
+                If[AssociationQ[obj],
+                    With[{c = CellObj`HashMap[obj["Cell"]], key = obj["Key"]},
+                        c["Props", key] = obj["Value"];
+                    ];
+                ];
+            ]
+        ],
         
         "AddAfter" -> Function[uid,
             (*/* request from the client with event provided */*)
@@ -127,7 +136,7 @@ Component[OptionsPattern[]] := Module[{
         
         ],
 
-        else_String -> extensions["EventHandlers"][else]
+        else_String :> extensions["EventHandlers"][else]
     }];
 
     With[{nid = notebook["Hash"]},

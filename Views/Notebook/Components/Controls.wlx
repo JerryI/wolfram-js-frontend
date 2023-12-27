@@ -2,6 +2,7 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"]},
     <div>
         Controls
         <button class="add">+</button>
+        <button class="hide">hide</button>
     </div>
 ]
 
@@ -15,14 +16,25 @@ Script = With[{},
             
             if (cell.type != 'Input') return;
             const group = document.getElementById('group-'+cell.uid);
-            const button = group.getElementsByClassName('add')[0];
-            console.log('new cell');
-            console.log(button);
-            console.log(group);
-            button.addEventListener('click', () => {
 
-                server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
-            });
+            {
+                const button = group.getElementsByClassName('add')[0];
+                console.log('new cell');
+                console.log(button);
+                console.log(group);
+                button.addEventListener('click', () => {
+
+                    server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+                });
+            };
+
+            {
+                const button = group.getElementsByClassName('hide')[0];
+                console.log('hide cell');
+                button.addEventListener('click', () => {
+                    cell.toggle();
+                });
+            }            
         }
 
         //add it to the constructor
