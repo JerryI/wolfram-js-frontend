@@ -16,5 +16,10 @@ Transaction /: EventHandler[n_Transaction, opts__] := EventHandler[n["Hash"], op
 Transaction /: EventFire[n_Transaction, opts__] := EventFire[n["Hash"], opts]
 Transaction /: EventRemove[n_Transaction, opts__] := EventRemove[n["Hash"], opts] 
 
+Transaction /: Transaction`Serialize[n_Transaction, OptionsPattern[] ] := Module[{props},
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Properties","Icon","Self","Init"}];
+    props // Flatten // Association
+]
+
 End[]
 EndPackage[]

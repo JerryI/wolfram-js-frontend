@@ -1,0 +1,33 @@
+
+Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
+    With[{template = 
+      <div id="{Uid}" class="pointer-events-auto flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div class="flex w-0 flex-1 items-center p-4">
+              <div class="w-full">
+                <p class="text-sm font-medium text-gray-900"><Name/></p>
+                <p class="mt-1 text-sm text-gray-500"><Message/></p>
+              </div>
+            </div>
+       </div>
+    },
+        <|"Data" -> template, "ID" -> Uid|>
+    ]
+];
+
+Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]},
+    <WebUIJSBind Event={Controller}>
+      class GenericNotification {
+        constructor(data) {
+            console.warn(data);
+        }
+      };
+
+      this.on('Append', (data) => {
+        new GenericNotification(data);
+      });     
+    </WebUIJSBind>    
+];
+
+Options[Script] = {"Controller"->Null};
+
+{Component, Script}

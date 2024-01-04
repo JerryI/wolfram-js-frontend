@@ -5,8 +5,8 @@
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"jsmodule" -> {"dist/kernel.js", "src/boxes.js"}, 
-     "wlkernel" -> "src/boxes.wl", "wl" -> "src/processor.wl", 
+    <|"js" -> {"dist/kernel.js", "src/boxes.js"}, 
+     "frontend" -> {"src/Frontend.wl"}, "kernel" -> {"src/Boxes.wl"}, 
      "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js", 
      "header" -> "src/header.wsp", "priority" -> -10, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 

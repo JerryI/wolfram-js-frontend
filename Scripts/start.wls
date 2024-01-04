@@ -21,6 +21,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Notebook`;
 <<JerryI`Notebook`Evaluator`;
+<<JerryI`Notebook`FrontendObject`;
 
 (* event system & WLJS transport *)
 <<JerryI`Misc`Events`

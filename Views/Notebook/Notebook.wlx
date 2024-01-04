@@ -108,6 +108,12 @@ Component[OptionsPattern[]] := Module[{
             "Saved" >> log; */ *)
         ],    
 
+        "UpdateCell" -> Function[payload,
+            With[{cell = CellObj`HashMap[payload // First], content = payload // Last},
+                cell["Data"] = content;
+            ]
+        ],
+
         "SetProperty" -> Function[json,
             Print["Prop set..."];
             With[{obj = ImportString[json, "JSON"] // Association},

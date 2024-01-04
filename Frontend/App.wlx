@@ -5,9 +5,11 @@ Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
 Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
 
-Notifications  := ImportComponent["Components/Notifications.wlx"];
+Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
-{NotebookComponent, NotebookScript}  = ImportComponent["Views/Notebook/Notebook.wlx"];
+Alert           = ImportComponent["Components/Modals/Alert.wlx"];
+
+{EmptyComponent,    EmptyScript}     = ImportComponent["Views/Empty.wlx"];
 
 test = Notebook[];
 cell = CellObj["Notebook" -> test, "Data" -> "1+1"];
@@ -29,6 +31,7 @@ App[request_] := With[{
         </Head>  
         <body class="h-full"> 
         <div>
+          <Alert/>
 
           <WebUIRefresh Event={SidebarId}>
             <Sidebar Secret={Secret} Path={Path}/>
@@ -39,8 +42,7 @@ App[request_] := With[{
                 Sticky stuff
             </div>
 
-            <NotebookComponent Notebook={test} Messager={GlobalMessanger}/>
-            <NotebookScript/>
+            <EmptyComponent Notebook={test} Messager={GlobalMessanger}/>
 
             <Notifications MessagePort={GlobalMessanger}/>
 

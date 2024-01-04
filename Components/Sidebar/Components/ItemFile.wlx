@@ -1,11 +1,22 @@
+Dropdown := ImportComponent["Dropdown.wlx"];
+
 File = $Options["File"];
 Print["Selected"];
 Print[$Options["Selected"]];
 
 Selected = If[TrueQ[$Options["Selected"]], "bg-yellow-300", "hover:bg-gray-50"];
 
-<a href="{FileNameToURLPath[File]}" class="{Selected} block rounded-md py-0 pr-0 pl-9 text-sm leading-6 text-gray-700">
-    <FileBaseName>
-        <File/>
-    </FileBaseName>
-</a>
+Event = CreateUUID[];
+EventHandler[Event, {
+    any_ :> Function[data, Print["fileoperation: ", any, data]]
+}];
+
+<div>
+    <a href="{FileNameToURLPath[File]}" class="{Selected} block rounded-md py-0 pr-0 pl-9 text-sm leading-6 text-gray-700">
+        <FileBaseName>
+            <File/>
+        </FileBaseName>
+        
+    </a>
+    <Dropdown Filename={File} Event={Event}/>
+</div>

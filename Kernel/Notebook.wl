@@ -55,7 +55,7 @@ initNotebook[o_] := With[{uid = CreateUUID[]},
 ]
 
 Notebook`HashMap = <||>;
-CreateType[Notebook, initNotebook, {"Evaluator"->Nothing, "Objects"-><||>, "Cells"->{}}]
+CreateType[Notebook, initNotebook, {"Evaluator"->Nothing, "FrontendObjects"-><||>, "Cells"->{}}]
 
 Notebook /: EventHandler[n_Notebook, opts__] := EventHandler[n["Hash"], opts] 
 Notebook /: EventFire[n_Notebook, opts__] := EventFire[n["Hash"], opts]
@@ -148,7 +148,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
             
             CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
         ],
-            "Finish" -> Function[Null,
+            "Finished" -> Function[Null,
                 o["State"] = "Idle";
                 EventFire[o, "State", "Idle"];
             ],
