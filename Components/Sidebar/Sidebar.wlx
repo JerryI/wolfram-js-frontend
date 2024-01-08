@@ -1,20 +1,51 @@
-Mode := ImportComponent["Mode.wlx"];
-KernelState := ImportComponent["KernelState.wlx"];
-ItemList := ImportComponent["Components/ItemList.wlx"];
+Sidebar := ImportComponent["Body.wlx"];
 
-<div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-  <div class="flex h-16 shrink-0 items-center">
-    <KernelState Title={"None"}/>
-  </div>
-  <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 sc-b">
-    <nav class="flex flex-1 flex-col">
-      <ul role="list" class="flex flex-1 flex-col gap-y-7">
-        <li>
-          <ItemList Class={"-mx-2 space-y-0"} Path={$Options["Path"]} Current={$Options["Path"]} />
-        </li>
-        
-      </ul>
-    </nav>
-  </div>
-  <Mode Default={""}/>
-</div>
+With[{
+    SidebarId = CreateUUID[], 
+    Secret = $Options["Secret"], 
+    Path = $Options["Path"], 
+    Controls = $Options["Controls"],
+    Button1Id = CreateUUID[],
+    Button2Id = CreateUUID[]
+  },
+
+  EventHandler[Button1Id, Function[Null,
+    EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> Path|>];
+  ]];
+
+  EventHandler[Button2Id, Function[Null,
+    WebUISubmit[Alert["Not implemented!"], $Client];
+  ]];
+
+  {
+    <div class="text-xs group items-center font-semibold px-4 leading-8 text-gray-454 flex">
+      File browser
+      <div class="ml-auto gap-x-1 flex group-hover:opacity-100 opacity-0">
+        <button id="{Button1Id}">
+          <svg  fill="currentColor" class="h-4 w-4" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
+            <g>
+              <g>
+                <path d="M256,11C120.9,11,11,120.9,11,256s109.9,245,245,245s245-109.9,245-245S391.1,11,256,11z M256,460.2    c-112.6,0-204.2-91.6-204.2-204.2S143.4,51.8,256,51.8S460.2,143.4,460.2,256S368.6,460.2,256,460.2z"/>
+                <path d="m357.6,235.6h-81.2v-81.2c0-11.3-9.1-20.4-20.4-20.4-11.3,0-20.4,9.1-20.4,20.4v81.2h-81.2c-11.3,0-20.4,9.1-20.4,20.4s9.1,20.4 20.4,20.4h81.2v81.2c0,11.3 9.1,20.4 20.4,20.4 11.3,0 20.4-9.1 20.4-20.4v-81.2h81.2c11.3,0 20.4-9.1 20.4-20.4s-9.1-20.4-20.4-20.4z"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <button id="{Button2Id}">
+        <svg stroke="currentColor" class="h-5 w-5" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19H6.931A1.922 1.922 0 015 17.087V8h12.069C18.135 8 19 8.857 19 9.913V11"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7.64L13.042 6c-.36-.616-1.053-1-1.806-1H7.057C5.921 5 5 5.86 5 6.92V11M17 15v4M19 17h-4"></path>
+        </svg>
+        </button>
+      </div>
+    </div>
+  ,
+    <WebUIEventListener Type={"click"} Id={Button1Id} Event={Button1Id} />
+  ,
+    <WebUIEventListener Type={"click"} Id={Button2Id} Event={Button2Id} />
+  ,
+    <WebUIRefresh Event={SidebarId} Class={"flex grow flex-col gap-y-5 overflow-y-auto px-4 sc-b"}>
+      <Sidebar Secret={Secret} Path={Path} />
+    </WebUIRefresh>
+  }
+]

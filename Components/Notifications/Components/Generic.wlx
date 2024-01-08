@@ -1,12 +1,18 @@
 
 Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="pointer-events-auto flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-            <div class="flex w-0 flex-1 items-center p-4">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div class="flex w-0 flex-1 items-center p-3">
               <div class="w-full">
                 <p class="text-sm font-medium text-gray-900"><Name/></p>
                 <p class="mt-1 text-sm text-gray-500"><Message/></p>
               </div>
+              <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <span class="sr-only">Close</span>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
+            </button>   
             </div>
        </div>
     },
@@ -14,11 +20,117 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     ]
 ];
 
+Component["Save", Message_, opts___] := With[{Uid = CreateUUID[]},
+    With[{template = 
+       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div class="p-3">
+         <div class="flex items-start">
+           <div class="flex-shrink-0">
+             <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+             </svg>
+           </div>
+           <div class="ml-3 w-0 flex-1 pt-0.5">
+             <p class="text-sm font-medium text-gray-900">Successfully saved!</p>
+             <p class="mt-1 text-sm text-gray-500"><Message/></p>
+           </div>
+           <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+           <span class="sr-only">Close</span>
+           <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+           </svg>
+         </button>           
+         </div>
+       </div>
+       </div>       
+    },
+        <|"Data" -> template, "ID" -> Uid|>
+    ]
+];
+
+Component["Error", Message_, opts___] := With[{Uid = CreateUUID[]},
+    With[{template = 
+       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div class="p-3">
+         <div class="flex items-start">
+           <div class="flex-shrink-0">
+             <svg class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+             </svg>
+           </div>
+           <div class="ml-3 w-0 flex-1 pt-0.5">
+             <p class="text-sm font-medium text-gray-900">Error</p>
+             <p class="mt-1 text-sm text-gray-500"><Message/></p>
+           </div>
+           <div class="ml-4 flex flex-shrink-0">
+            <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <span class="sr-only">Close</span>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
+            </button>
+          </div>
+         </div>
+       </div>
+       </div>       
+    },
+        <|"Data" -> template, "ID" -> Uid, "Timeout" -> False|>
+    ]
+];
+
 Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]},
     <WebUIJSBind Event={Controller}>
+      let acc_count = 0;
       class GenericNotification {
         constructor(data) {
-            console.warn(data);
+            const init = async (data) => {
+                //console.warn(data);
+                const self = this;
+                const assoc = await interpretate(data, {hold: true});
+                const uid = await interpretate(assoc["ID"], {});
+                const element = document.getElementById(uid);
+                self.element = element;
+
+                const button = document.getElementById('close-'+uid);
+
+                button.addEventListener('click', () => self.dispose());
+
+                element.classList.add('transform', 'ease-out', 'duration-300', 'transition');
+                setTimeout(() => {
+                    element.classList.remove('translate-y-2', 'opacity-0', 'sm:translate-y-0', 'sm:translate-x-2');
+                    element.classList.add('translate-y-0', 'opacity-100', 'sm:translate-x-0');                    
+                }, 30);
+
+                
+                self.immortal = true;
+
+                if (!("Timeout" in assoc)) {
+                  acc_count += 1;
+                  setTimeout(() => {
+                      self.dispose();
+                  }, acc_count * 1800);
+                }
+
+                
+            }
+
+            init(data);
+        }
+
+        dispose() {
+            if (this.disposed) return;
+            this.disposed = true;
+
+            if (!this.immortal) acc_count -= 1;
+            
+            this.element.classList.remove('ease-out', 'duration-300');
+            this.element.classList.add('ease-in', 'duration-100');
+            this.element.classList.remove('opacity-100');
+            this.element.classList.add('opacity-0');
+            const self = this;
+            setTimeout(() => {
+                self.element.remove();
+            }, 100);
         }
       };
 

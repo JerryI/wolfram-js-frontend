@@ -65,8 +65,10 @@ Component[OptionsPattern[]] := Module[{
     secret = OptionValue["Secret"], 
     notebook = OptionValue["Notebook"], 
     event = OptionValue["Event"],
-    controller = OptionValue["Controller"],
+    controllerPort = OptionValue["ControlsPort"],
+    controller     = OptionValue["Controls"],
     log = OptionValue["Messanger"],
+    kernels = OptionValue["Kernels"],
 
     PrologExtension = OptionValue["Extension"]["Prolog"],  
     MesisExtension = OptionValue["Extension"]["Mesis"], 
@@ -109,7 +111,7 @@ Component[OptionsPattern[]] := Module[{
         ],    
 
         "UpdateCell" -> Function[payload,
-            With[{cell = CellObj`HashMap[payload // First], content = payload // Last},
+            With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},
                 cell["Data"] = content;
             ]
         ],
@@ -118,7 +120,7 @@ Component[OptionsPattern[]] := Module[{
             Print["Prop set..."];
             With[{obj = ImportString[json, "JSON"] // Association},
                 If[AssociationQ[obj],
-                    With[{c = CellObj`HashMap[obj["Cell"]], key = obj["Key"]},
+                    With[{c = CellObj`HashMap[obj["Cell"]]  (*`*), key = obj["Key"]},
                         c["Props", key] = obj["Value"];
                     ];
                 ];
@@ -165,7 +167,7 @@ Component[OptionsPattern[]] := Module[{
     ]
 ]
 
-Options[Component] = {"Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
+Options[Component] = {"Kernels"->{}, "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
 
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 

@@ -1,30 +1,24 @@
+Begin["JerryI`Notebook`Views`"];
 
-dir         = ImportComponent["Views/Directories/Main.wlx"];
-text       := ImportComponent["Views/Text.wlx"];
-image      := ImportComponent["Views/Image.wlx"];
-plot       := ImportComponent["Views/Plot.wlx"];
-none       := ImportComponent["Views/None.wlx"];
-
+{EmptyComponent,       EmptyScript}        = ImportComponent["Views/Empty.wlx"];
+{NotebookComponent,    NotebookScript}     = ImportComponent["Views/Notebook/Notebook.wlx"];
 
 (* /* view router */ *)
-
-ImageQQ[path_String]   := FileExistsQ[path] && StringMatchQ[path, RegularExpression[".*\\.(png|jpg|svg|bmp|jpeg)$"]]
-
-DatQ[path_String]      := FileExistsQ[path] && StringMatchQ[path, RegularExpression[".*\\.(dat|csv)$"]]
-
-AnyQ[path_String]      := FileExistsQ[path]
-
-With[{Q = dir["Q"], view = dir["View"]},
-    View[path_?Q] := (Print["Directory!"];     view[path]   ); 
+View[opts__] := With[{list = Association[ List[opts] ]},
+    Router[ list["Path"] ][opts]
 ];
 
-View[path_?ImageQQ]    := (Print["Image!"];         image[path] );
-View[path_?DatQ]       := (Print["Data!"];          plot[path]  );
-View[path_?AnyQ]       := (Print["Editor!"];        text[path]  );
-View[path_]            := (Print["None!"];          none[path]  );
+Router[any_] := With[{},
+    Print["Generic router"];
+    ({EmptyComponent[##], EmptyScript[##]} &)
+];
 
-Wrapper[OptionsPattern[]] := View[OptionValue["Path"]];
+NotebookQ[path_] := FileExtension[path] === "wln";
+Router[any_?NotebookQ] := With[{n = JerryI`Notebook`Loader`Load[any]},
+    Print["Notebook router"];
+    ({NotebookComponent[##, "Notebook"->n], NotebookScript[##]} &)
+];
 
-Options[Wrapper] = {"Path" -> "", "Messager"->"blackout"};
+End[];
 
-Wrapper
+JerryI`Notebook`Views`View

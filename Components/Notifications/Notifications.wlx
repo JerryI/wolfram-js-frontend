@@ -11,8 +11,6 @@ CreateType[NotificationsDialog, initDialog, {"Message"->"Dummy", "Event"->Null}]
 
 Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
     EventHandler[Event, {
-        (*/*"Save" -> (lazyAppend[#, SaveTemplate, Controller]&),*/*)
-
         (*/*dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&),*/*)
         any_   :> Function[data,
             With[{client = $Client},
@@ -22,8 +20,8 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
     }];
 
     <WebUIContainer Event={Controller}>
-        <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
-            <div class="flex w-full flex-col items-center space-y-4 sm:items-end">      
+        <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 mt-10 sm:items-start sm:p-2">
+            <div class="flex w-full flex-col items-center space-y-0 sm:items-end">      
                 <WebUIContainerChild/>
             </div>  
         </div>  

@@ -3,27 +3,47 @@ http        =  $Server["HTTPHandler"];
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
+Mode := ImportComponent["Components/Mode.wlx"];
+SettingsButton  = ImportComponent["Components/Settings.wlx"];
+Kernels  = ImportComponent["Components/Kernel/Kernel.wlx"];
 Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
 
 Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
-Alert           = ImportComponent["Components/Modals/Alert.wlx"];
+Alert           = ImportComponent["Components/Alert.wlx"];
 
-{EmptyComponent,    EmptyScript}     = ImportComponent["Views/Empty.wlx"];
+Views           = ImportComponent["Views.wl"];
 
 test = Notebook[];
 cell = CellObj["Notebook" -> test, "Data" -> "1+1"];
+
+KernelList = {};
 
 JSScripts = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
 
 App[request_] := With[{
         Secret = CreateUUID[], 
         SidebarId = CreateUUID[],
+        GlobalControls  = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         Path = Function[url, If[StringLength[url] === 0, ".", url]] @ URLPathToFileName[URLDecode @ (request["Path"])]
     },
 
-    <html class="h-full bg-white"> 
+    (*/* Hard logic */*)
+    EventHandler[GlobalControls, {
+      "NewNotebook" -> Function[path,
+        With[{result = JerryI`Notebook`Loader`Save[path](*`*)},
+          If[FailureQ[result],
+            EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+          ,
+            EventFire[GlobalMessanger, "Log", "Created! Please wait"];
+            WebUILocation[ FileNameToURLPath[ result["Path"] ], $Client ];
+          ]
+        ]
+      ]
+    }];
+
+    <html class="h-full"> 
         <Head>
             <WLJSHeader List={JSScripts}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
@@ -33,19 +53,24 @@ App[request_] := With[{
         <div>
           <Alert/>
 
-          <WebUIRefresh Event={SidebarId}>
-            <Sidebar Secret={Secret} Path={Path}/>
-          </WebUIRefresh>
-          
-          <div class="lg:pl-72">
-            <div class="hidden sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-                Sticky stuff
+          <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col lg:w-70 border-r border-gray-300">
+            <div style="-webkit-app-region: drag" class="h-16"></div>
+            <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]}/>
+            <Sidebar Secret={Secret} Path={Path} Controls={GlobalControls}/>
+            <div class="border-b border-gray-300"></div>
+            <div class="px-4 pb-2 pt-1 flex flex-row">
+              <SettingsButton/>
+              <Mode Default={""}/>
             </div>
-
-            <EmptyComponent Notebook={test} Messager={GlobalMessanger}/>
-
-            <Notifications MessagePort={GlobalMessanger}/>
-
+          </div>
+          
+          <div class="lg:pl-70">
+            <div class="h-full flex flex-col bg-white">
+              <div style="-webkit-app-region: drag; background: rgb(239,239,239)" class="sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 bg-white px-4 sm:gap-x-6 sm:px-6 lg:px-8">
+              </div>
+              <Notifications MessagePort={GlobalMessanger}/>
+              <Views Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={Controls}/>
+            </div> 
           </div>
         </div>
         </body>

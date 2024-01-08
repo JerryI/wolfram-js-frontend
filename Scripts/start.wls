@@ -14,6 +14,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<KirillBelov`HTTPHandler`
 <<KirillBelov`HTTPHandler`Extensions`
 <<KirillBelov`WebSocketHandler`
+<<KirillBelov`LTP`
 
 (* notebook abstraction *)
 <<JerryI`Notebook`Packages`
@@ -22,6 +23,11 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<JerryI`Notebook`;
 <<JerryI`Notebook`Evaluator`;
 <<JerryI`Notebook`FrontendObject`;
+
+<<JerryI`Notebook`Kernel`
+<<JerryI`Notebook`LocalKernel`
+<<JerryI`Misc`Async`
+<<JerryI`Notebook`Transactions`
 
 (* event system & WLJS transport *)
 <<JerryI`Misc`Events`
@@ -36,6 +42,9 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<JerryI`WLX`WebUI`
 
 LoadPluginsConfiguration["Root" -> Directory[]];
+LocalKernel`LTPServerStart[];
+
+RandomWord[];
 
 Includes["jsmodule"];
 Includes["js"];
