@@ -10,7 +10,14 @@ Component[OptionsPattern[]] := With[{Controller = CreateUUID[], ButtonId = Creat
     With[{client = $Client, m = Messager, kernel = LocalKernel["Name"->RandomWord[]]},
         Print["Working!"];
         appendHeld[KernelList, kernel];
-        EventHandler[EventClone[kernel], {"Exit" -> Function[Null, removeHeld[KernelList, kernel] ]}];
+        EventHandler[EventClone[kernel], {
+          "Exit" -> Function[Null, removeHeld[KernelList, kernel] ],
+          "Connected" -> Function[Null, 
+            kernel["Container"] = StandardEvaluator`Container[kernel](*`*);
+            kernel["ContainerReadyQ"] = True;
+            EventFire[kernel, "Initialization", "Complete"];
+          ]
+        }];
 
         EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->m, "Kernel"->kernel, "Client"->client] |> ];
         kernel // Kernel`Start;

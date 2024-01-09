@@ -4,7 +4,7 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
             {
                 "State" -> Function[state,
                     Print["State update"];
-                    WebSocketSend[client, $DefaultSerializer @ UINotebook["CellState", uid, state]];
+                    WebUISubmit[Global`UINotebook["CellState", uid, state] (*`*), client];
                 ]
             }
         ];

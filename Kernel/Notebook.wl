@@ -46,21 +46,27 @@ Unprotect[CellObj]
 ClearAll[CellObj]
 
 initNotebook[o_] := With[{uid = CreateUUID[]},
-    Print["Init"];
     o["Hash"] = uid;
-    Print["Hash"];
     Notebook`HashMap[uid] = o;
-    Print["CellObj"];
     o
 ]
 
 Notebook`HashMap = <||>;
-CreateType[Notebook, initNotebook, {"Evaluator"->Nothing, "FrontendObjects"-><||>, "Cells"->{}}]
+CreateType[Notebook, initNotebook, {"FrontendObjects"-><||>, "Cells"->{}}]
 
 Notebook /: EventHandler[n_Notebook, opts__] := EventHandler[n["Hash"], opts] 
 Notebook /: EventFire[n_Notebook, opts__] := EventFire[n["Hash"], opts]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
+Notebook`Serialize[n_Notebook] := Module[{props},
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
+    props // Flatten // Association
+]
+
+Notebook`Deserialize[n_Association] := With[{notebook = Notebook[]},
+    (notebook[#] = n[#]) &/@ Complement[Keys[n], {"Hash"}]; 
+    notebook
+]
 
 Notebook`Sockets = <||>;
 Notebook /: Notebook`Sockets`Assign[n_Notebook, value_] := (
@@ -122,9 +128,15 @@ Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{
 ]
 
 CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}]];
+    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
+]
+
+CellObj`Deserialize[assoc_Association, opts___] := With[{cell = CellObj[], list = Association[opts]},
+    (cell[#] = assoc[#]) &/@ Complement[Keys[assoc], {"Hash"}];
+    (cell[#] = list[#])  &/@ Keys[list];
+    cell
 ]
 
 Options[CellObj`Serialize] = {"OnlyMeta" -> False}

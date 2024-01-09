@@ -12,10 +12,22 @@ Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
 Alert           = ImportComponent["Components/Alert.wlx"];
 
-Views           = ImportComponent["Views.wl"];
+Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 
-test = Notebook[];
-cell = CellObj["Notebook" -> test, "Data" -> "1+1"];
+Views            = ImportComponent["Views.wl"];
+Loader           = ImportComponent["Loader.wl"];
+
+createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = assoc["BaseDirectory"]},
+  With[{result = JerryI`Notebook`Loader`Save[path](*`*)},
+    If[FailureQ[result],
+      EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+    ,
+      Print[result];
+      EventFire[GlobalMessanger, "Log", "Created! Please wait"];
+      WebUILocation[ FileNameToURLPath[ result["Path"] ], client ];
+    ]
+  ]
+]
 
 KernelList = {};
 
@@ -25,22 +37,14 @@ App[request_] := With[{
         Secret = CreateUUID[], 
         SidebarId = CreateUUID[],
         GlobalControls  = CreateUUID[],
+        ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         Path = Function[url, If[StringLength[url] === 0, ".", url]] @ URLPathToFileName[URLDecode @ (request["Path"])]
     },
 
     (*/* Hard logic */*)
-    EventHandler[GlobalControls, {
-      "NewNotebook" -> Function[path,
-        With[{result = JerryI`Notebook`Loader`Save[path](*`*)},
-          If[FailureQ[result],
-            EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
-          ,
-            EventFire[GlobalMessanger, "Log", "Created! Please wait"];
-            WebUILocation[ FileNameToURLPath[ result["Path"] ], $Client ];
-          ]
-        ]
-      ]
+    EventHandler[EventClone[GlobalControls], {
+      "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&)
     }];
 
     <html class="h-full"> 
@@ -52,6 +56,7 @@ App[request_] := With[{
         <body class="h-full"> 
         <div>
           <Alert/>
+          <Modals ModalsPort={ModalController}/>
 
           <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col lg:w-70 border-r border-gray-300">
             <div style="-webkit-app-region: drag" class="h-16"></div>
@@ -69,7 +74,7 @@ App[request_] := With[{
               <div style="-webkit-app-region: drag; background: rgb(239,239,239)" class="sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 bg-white px-4 sm:gap-x-6 sm:px-6 lg:px-8">
               </div>
               <Notifications MessagePort={GlobalMessanger}/>
-              <Views Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={Controls}/>
+              <Views Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={GlobalControls}/>
             </div> 
           </div>
         </div>

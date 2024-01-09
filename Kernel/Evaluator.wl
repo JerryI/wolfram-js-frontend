@@ -50,7 +50,7 @@ StandardEvaluator /: StandardEvaluator`Print[evaluator_StandardEvaluator, msg_, 
 (* Primitive Evaluator *)
 
 primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKernel" -> initPrimitiveEvaluator, "Priority"->(- Infinity)];
-With[{primitive = primitive},
+
     StandardEvaluator`ReadyQ[primitive, kernel_] := (
         StandardEvaluator`Print[primitive, "I am always ready"];
         True
@@ -62,7 +62,6 @@ With[{primitive = primitive},
         StandardEvaluator`Print[primitive, "Kernel`Submit!"];
         Kernel`Submit[kernel, t];
     );
-]
 
 initPrimitiveEvaluator[k_] := Module[{},
     Print["Kernel init..."];

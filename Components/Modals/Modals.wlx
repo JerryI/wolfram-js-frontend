@@ -1,0 +1,11 @@
+SuggestKernel = ImportComponent["Components/SuggestKernel.wlx"];
+
+Component[OptionsPattern[]] := With[{port = OptionValue["ModalsPort"]},
+    <div>
+        <SuggestKernel Events={port}/>
+    </div>
+]
+
+Options[Component] = {"ModalsPort" -> ""}
+
+Component

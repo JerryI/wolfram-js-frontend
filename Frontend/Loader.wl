@@ -1,7 +1,7 @@
 Begin["JerryI`Notebook`Loader`"];
     cache = <||>;
 
-    Save[path_String, notebook_Notebook] := Module[{dir = path},
+    JerryI`Notebook`Loader`Save[path_String, notebook_Notebook] := Module[{dir = path},
         If[DirectoryQ[dir],
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
@@ -9,30 +9,31 @@ Begin["JerryI`Notebook`Loader`"];
         cache[dir] = notebook;
         notebook["Path"] = dir;
 
-
+        Print[dir];
+        
         Put[<| 
             "Notebook" -> Notebook`Serialize[notebook], 
             "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
             "serializer" -> "jsfn4" 
-        |>, dir];
+        |>, dir] // Print;
 
         notebook
     ];
 
-    Save[notebook_Notebook] := With[{},
+    JerryI`Notebook`Loader`Save[notebook_Notebook] := With[{},
         If[ StringQ[notebook["Path"] ],
-            Save[notebook["Path"], notebook]
+            JerryI`Notebook`Loader`Save[notebook["Path"], notebook]
         ,
             Echo["Loader >> Provide PATH!"];
             $Failed
         ]
-    ]
+    ];
 
-    Save[path_String] := With[{notebook = Notebook[]},
+    JerryI`Notebook`Loader`Save[path_String] := With[{notebook = Notebook[]},
         Echo["Loader >> Created new notebook"];
         CellObj["Notebook" -> notebook, "Data" -> ""];
-        Save[path, notebook ]
-    ]
+        JerryI`Notebook`Loader`Save[path, notebook ]
+    ];
 
     Load[path_String] := Module[{data},
         If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed] ];
@@ -46,13 +47,19 @@ Begin["JerryI`Notebook`Loader`"];
 
         If[data["serializer"] =!= "jsfn4", Echo["Loader >> Unknown serializer"]; Print[data["serializer"] ]; Return[$Failed] ];
 
-        Exit[0];
+  
         
-        notebook = Notebook`Deserialize[ data["Notebook"] ];
-        notebook["Cells"] = CellObj`Deserialize[#, notebook] &/@ data["Cells"];
-        Echo["Loader >> Done!"];
+        With[{notebook = Notebook`Deserialize[ data["Notebook"] ]},
+            notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ data["Cells"];
+            notebook["Path"] = path;
+            cache[path] = notebook;
 
-        notebook
+            Echo["Loader >> Done!"];
+
+
+
+            notebook
+        ]
     ];
 
 

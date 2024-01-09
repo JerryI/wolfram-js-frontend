@@ -25,7 +25,7 @@ start[o_MasterKernel] := Module[{link},
 ]
 
 MasterKernel /: Kernel`Submit[k_MasterKernel, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
-    ev[s]
+    ev[s];
 ]
 
 

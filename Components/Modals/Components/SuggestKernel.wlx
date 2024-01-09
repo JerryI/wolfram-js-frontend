@@ -1,0 +1,31 @@
+Window[OptionsPattern[]] := With[{},
+    Print[OptionValue["Channel"]];
+    <h1>Boogagagagagaga</h1>
+];
+
+Options[Window] = {"Channel" -> ""};
+
+Component[OptionsPattern[]] := With[{Event = OptionValue["Events"], Channel = CreateUUID[], LazyLoad = CreateUUID[]}, Module[{loaded = False},
+    EventHandler[Event, {
+        "SuggestKernel" -> Function[data,
+            Switch[loaded, 
+              False,
+                EventFire[LazyLoad, "Load", <|"Client" -> data["Client"]|>];
+                EventFire[Channel, Join[data, <|"LazyLoad" -> LazyLoad|>]];
+                loaded = True;
+            ,
+              _,
+                EventFire[LazyLoad, "Show", <|"Client" -> data["Client"]|>];
+                EventFire[Channel, Join[data, <|"LazyLoad" -> LazyLoad|>]];
+            ]
+        ]
+    }];
+
+    <WebUILazyLoad Event={LazyLoad}>
+        <Window Channel={Channel}/>
+    </WebUILazyLoad>
+]];
+
+Options[Component] = {"Events" -> ""}
+
+Component

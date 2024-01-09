@@ -78,7 +78,7 @@ http = HTTPHandler[];
 $Server["HTTPHandler"] = http;
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wln", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
@@ -96,7 +96,7 @@ $Server["WebSocketHandler"] = ws;
 (* configure the handler for WLJS communications *)
 ws["MessageHandler", "Evaluate"]  = Function[True] -> WLJSTransportHandler
 
-(* symbols tracking *)
+(* symbols tracking 
 WLJSTransportHandler["AddTracking"] = Function[{symbol, name, cli, callback},
     Print["Add tracking... for "<>name];
     Experimental`ValueFunction[Unevaluated[symbol]] = Function[{y,x}, callback[cli, x]];
@@ -106,7 +106,7 @@ WLJSTransportHandler["GetSymbol"] = Function[{expr, client, callback},
     Print["evaluating the desired symbol on the Kernel"];
     callback[expr // ReleaseHold];
 ]
-
+*)
 
 SocketListen[CSocketOpen[$Env["host"], $Env["ws"]], wcp@#&];
 

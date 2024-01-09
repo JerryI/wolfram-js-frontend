@@ -17,7 +17,7 @@ addListeners[notebook_Notebook, secret_String, client_, extensions_] := Module[{
     EventHandler[notebook, {
         "New Cell" -> Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret]]
+                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret], client]
             ];
         ]
     }];
@@ -27,7 +27,7 @@ restoreCells[notebook_Notebook, secret_String, client_, extensions_] := Module[{
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebSocketSend[client, $DefaultSerializer @ UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] (*-`*), list, secret]];
+                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell], list, secret], client];
             ]
         ]   
     ,    
@@ -35,7 +35,7 @@ restoreCells[notebook_Notebook, secret_String, client_, extensions_] := Module[{
     ]
 ];
 
-Script = With[{},
+Script[opts__] := With[{},
     <script type="module">
         core.UINotebook = async (args, env) => {
             const type = await interpretate(args[0], env);
@@ -67,6 +67,7 @@ Component[OptionsPattern[]] := Module[{
     event = OptionValue["Event"],
     controllerPort = OptionValue["ControlsPort"],
     controller     = OptionValue["Controls"],
+    modals         = OptionValue["Modals"],
     log = OptionValue["Messanger"],
     kernels = OptionValue["Kernels"],
 
@@ -135,14 +136,40 @@ Component[OptionsPattern[]] := Module[{
             ]
         ],
 
-        "Evaluate" -> Function[celluid,
-            (*/* evalaute arbitary cell 
-            EventHandler[cell, "State" -> WebSocketSend[UIUpdate[cell,  state]]] */*)
-        ],
-
-        "New" -> Function[uid,
-        
-        ],
+        "Evaluate" -> Function[celluid, With[{client = $Client},
+            Print["Evaluate"];
+            If[MissingQ[notebook["Evaluator"]],
+              If[Length[ReleaseHold @ kernels] == 0,
+                    WebUISubmit[Global`Alert["No Kernels are available"](*`*), client];
+                ,
+                    Print["requesting modal...."];
+                    With[{request = CreateUUID[]},
+                        EventHandler[request, {
+                            "Success" -> Function[data,
+                                notebook["Evaluator"] = data["Container"];
+                                If[TrueQ[data["ContainerReadyQ"]],
+                                    WebUISubmit[Global`Alert["Evaluate!"](*`*), client];
+                                ,
+                                    WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
+                                ];
+                            ],
+                            "Error" -> Function[error,
+                                WebUISubmit[Global`Alert[error](*`*), client];
+                            ],
+                            _ -> Function[Null,
+                                Print["Cancelled"];
+                            ]
+                        }];
+                        Print["fire!"];
+                        EventFire[modals, "SuggestKernel", <|"Client"->client, "Callback"->request, "Notebook"->notebook, "Kernels"->kernels|>];
+                    ];
+                ]
+            ,
+                Print["ok!"];
+                Print[notebook["Evaluator"]];
+                WebUISubmit[Global`Alert["Evaluate!"](*`*), client];
+            ];
+        ]],
 
         else_String :> extensions["EventHandlers"][else]
     }];
@@ -167,7 +194,7 @@ Component[OptionsPattern[]] := Module[{
     ]
 ]
 
-Options[Component] = {"Kernels"->{}, "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
+Options[Component] = {"Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
 
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 

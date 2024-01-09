@@ -102,13 +102,15 @@ Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]},
                 }, 30);
 
                 
-                self.immortal = true;
+                
 
                 if (!("Timeout" in assoc)) {
                   acc_count += 1;
                   setTimeout(() => {
                       self.dispose();
-                  }, acc_count * 1800);
+                  }, acc_count * 1300);
+                } else {
+                  self.immortal = true;
                 }
 
                 
