@@ -1,5 +1,5 @@
 Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"]}, 
-    <button id="separator-{uid}">-----</button>
+    <button class="h-2 w-full cursor-vertical-text" id="separator-{uid}"></button>
 ]
 
 Options[Element] = {"Cell"->""}

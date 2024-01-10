@@ -55,7 +55,7 @@ Component["Error", Message_, opts___] := With[{Uid = CreateUUID[]},
          <div class="flex items-start">
            <div class="flex-shrink-0">
              <svg class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+               <path stroke-linecap="round" stroke-linejoin="round" d="M 9 9 L 9 9 L 15 15 M 15 9 L 9 15 M 21 12 a 9 9 0 1 1 -18 0 a 9 9 0 0 1 18 0 z" />
              </svg>
            </div>
            <div class="ml-3 w-0 flex-1 pt-0.5">

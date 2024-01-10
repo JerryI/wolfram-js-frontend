@@ -33,6 +33,8 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<JerryI`Misc`Events`
 <<JerryI`Misc`WLJS`Transport`
 
+<<KirillBelov`CSockets`EventsExtension`
+
 (* WLX template engine *)
 <<JerryI`WLX`
 <<JerryI`WLX`Importer`
@@ -78,7 +80,7 @@ http = HTTPHandler[];
 $Server["HTTPHandler"] = http;
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 

@@ -9,7 +9,13 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
             }
         ];
 
-        <div id="bar-{uid}"><State/></div>
+        With[{Style = If[State == "Idle", "opacity: 0", "opacity: 1"]},
+          <div style="position:absolute; width:100%; bottom:0" class="-mb-4">
+            <div class="w-full bg-gray-200 rounded-full h-1 mt-1 mb-1 dark:bg-gray-700" style="{Style}">
+                <div id="bar-{uid}" style="transition: width 5s" class="bg-teal-600 h-1.5 rounded-full dark:bg-teal-500 w-2/4"></div>
+            </div>
+          </div>
+        ]
     ]
 ];
 
@@ -20,7 +26,27 @@ Script = With[{},
         core.UINotebook.CellState = async (args, env) => {
             const uid      = await interpretate(args[0], env);
             const state    = await interpretate(args[1], env);
-            document.getElementById('bar-'+uid).innerText = state;
+            const bar = document.getElementById('bar-'+uid);
+
+            bar.style.width = "0%";
+
+            if (state != 'Idle') {
+                //bar.parentNode.classList.remove('opacity-0');
+                setTimeout(() => {
+                    bar.parentNode.style.opacity = 1;
+                    bar.style.transition = "width 3s";
+                    bar.style.width = "70%";
+                }, 100);
+            } else {
+                //bar.parentNode.classList.add('opacity-0');
+                bar.style.transition = "width 200ms";
+                bar.style.width = "100%";
+                setTimeout(() => {
+                    bar.style.transition = "width 3s";
+                    bar.style.width = "0%";
+                    bar.parentNode.style.opacity = 0;
+                }, 100);
+            }
         }
     </Placebo>
 ]

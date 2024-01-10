@@ -1,8 +1,16 @@
 Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"]}, 
-    <div>
-        Controls
-        <button class="add">+</button>
-        <button class="hide">hide</button>
+    <div class="grow-0 self-end pr-1 mb-1 group-hover:opacity-100 opacity-0">
+        <button class="button-cadd">
+            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M5 12H19"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5L12 19"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="button-chide">
+            <svg class="text-gray-500 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+            </svg>
+        </button>
     </div>
 ]
 
@@ -18,7 +26,7 @@ Script = With[{},
             const group = document.getElementById('group-'+cell.uid);
 
             {
-                const button = group.getElementsByClassName('add')[0];
+                const button = group.getElementsByClassName('button-cadd')[0];
                 console.log('new cell');
                 console.log(button);
                 console.log(group);
@@ -29,7 +37,7 @@ Script = With[{},
             };
 
             {
-                const button = group.getElementsByClassName('hide')[0];
+                const button = group.getElementsByClassName('button-chide')[0];
                 console.log('hide cell');
                 button.addEventListener('click', () => {
                     cell.toggle();

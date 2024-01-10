@@ -1,6 +1,7 @@
 CellsGroup     := ImportComponent["Components/CellGroup.wlx"];
 CellFrame      := ImportComponent["Components/CellFrame.wlx"];
 Children       := ImportComponent["Components/Children.wlx"];
+CellsSubgroup  := ImportComponent["Components/CellSubgroup.wlx"]
 
 CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
 {Hr, HrScript}  = ImportComponent["Components/Hr.wlx"];
@@ -11,22 +12,27 @@ CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
 
 Component[cell_CellObj, cli_, OptionsPattern[]] := With[{PrologExtension = OptionValue["Extension"]["Prolog"],  MesisExtension = OptionValue["Extension"]["Mesis"], EpilogExtension = OptionValue["Extension"]["Epilog"]},
     If[InputCellQ @ cell,
-        EventHandler[cell, {"Focus" -> Function[Null, Print["Focus!"]; cell["Notebook", "FocusedCell"] = cell]}];
+        EventHandler[cell, {
+            "Focus" -> Function[Null, Print["Focus!"]; cell["Notebook", "FocusedCell"] = cell]
+        }];
+        
 
         <CellsGroup Cell={cell}>
             <PrologExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
-            <Controls Cell={cell}/>
-            <CellFrame Cell={cell}>
-                <PrologExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
-                <MesisExtension Template={"CellWrapper"} Cell={cell} Client={cli}>
-                    <CellWrapper Cell={cell}/>
-                </MesisExtension>
-                <EpilogExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
-            </CellFrame>
-            <EvaluationBar Cell={cell} Client={cli}/>
-            <MesisExtension Template={"Children"} Cell={cell} Client={cli}>
-                <Children Cell={cell}></Children>
-            </MesisExtension>
+            <CellsSubgroup Cell={cell}>
+                <Controls Cell={cell}/>
+                <CellFrame Cell={cell}>
+                    <PrologExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
+                    <MesisExtension Template={"CellWrapper"} Cell={cell} Client={cli}>
+                        <CellWrapper Cell={cell}/>
+                    </MesisExtension>
+                    <EvaluationBar Cell={cell} Client={cli}/>
+                    <MesisExtension Template={"Children"} Cell={cell} Client={cli}>
+                        <Children Cell={cell}></Children>
+                    </MesisExtension>
+                    <EpilogExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
+                </CellFrame>
+            </CellsSubgroup>
             <Hr Cell={cell}/>
             <EpilogExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
         </CellsGroup>
@@ -48,4 +54,8 @@ Component[cell_CellObj, cli_, OptionsPattern[]] := With[{PrologExtension = Optio
 
 Options[Component] = {"Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
 
-Component
+Script = With[{},
+    ""
+]
+
+{Component, Script}

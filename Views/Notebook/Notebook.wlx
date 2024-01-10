@@ -2,7 +2,7 @@ CellsContainer := ImportComponent["Components/CellsContainer.wlx"];
 TopBar         := ImportComponent["Components/TopBar.wlx"];
 Console        := ImportComponent["Components/Console.wlx"];
 
-CellGenerator   = ImportComponent["CellGenerator.wlx"];
+{CellGenerator, CellGeneratorScript}   = ImportComponent["CellGenerator.wlx"];
 
 {Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
 {Hr, HrScript}                        = ImportComponent["Components/Hr.wlx"];
@@ -19,6 +19,12 @@ addListeners[notebook_Notebook, secret_String, client_, extensions_] := Module[{
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
                 WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret], client]
             ];
+        ],
+
+        "Remove Cell" -> Function[cell,
+            With[{},
+                WebUISubmit[Global`UINotebook["RemoveCell", cell["Hash"], secret], client](*`*)
+            ];            
         ]
     }];
 ];
@@ -35,12 +41,70 @@ restoreCells[notebook_Notebook, secret_String, client_, extensions_] := Module[{
     ]
 ];
 
+evaluateCell[celluid_, notebook_, kernels_, client_, modals_] := With[{},
+    Print["Evaluate"];
+        If[MissingQ[notebook["Evaluator"]] || (Length[ReleaseHold @ kernels] == 0),
+              If[Length[ReleaseHold @ kernels] == 0,
+                    WebUISubmit[Global`Alert["No Kernels are available"](*`*), client];
+                ,
+                    Print["requesting modal...."];
+                    With[{request = CreateUUID[]},
+                        EventHandler[request, {
+                            "Success" -> Function[data,
+                                notebook["Evaluator"] = data["Container"];
+                                Echo[data];
+                                If[TrueQ[data["ContainerReadyQ"]],
+                                    With[{cell = CellObj`HashMap[celluid] (*`*)},
+                                        If[cell["State"] != "Idle",
+                                            WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                                        ,
+                                            cell // CellObj`Evaluate;
+                                        ]
+                                    ];
+                                ,
+                                    WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
+                                ];
+                                EventRemove[request];
+                            ],
+                            "Error" -> Function[error,
+                                WebUISubmit[Global`Alert[error](*`*), client];
+                                EventRemove[request];
+                            ],
+                            _ -> Function[Null,
+                                Print["Cancelled"];
+                                EventRemove[request];
+                            ]
+                        }];
+                        Print["fire!"];
+                        EventFire[modals, "SuggestKernel", <|"Client"->client, "Callback"->request, "Notebook"->notebook, "Kernels"->kernels|>];
+                    ];
+                ]
+            ,
+                Print["ok!"];
+                With[{cell = CellObj`HashMap[celluid] (*`*)},
+                    If[cell["State"] != "Idle",
+                        WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                    ,
+                        cell // CellObj`Evaluate;
+                    ]
+                ];
+                 
+        ]
+];
+
 Script[opts__] := With[{},
     <script type="module">
         core.UINotebook = async (args, env) => {
             const type = await interpretate(args[0], env);
             core.UINotebook[type](args.slice(1), env);
         }
+
+        core.UINotebook.RemoveCell = async (args, env) => {
+            const uid = await interpretate(args[0], env);
+            const ev = await interpretate(args[1], env);
+
+            CellWrapper.remove(uid, ev);
+        }        
 
         core.UINotebook.NewCell = async (args, env) => {
             const template = await interpretate(args[0], env);
@@ -51,7 +115,7 @@ Script[opts__] := With[{},
 
             new CellWrapper(template, store, list, ev);
         };;
-
+        <CellGeneratorScript/>;;
         <EvaluationBarScript/>;;
         <ControlsScript/>;;
         <HrScript/>;;
@@ -136,52 +200,19 @@ Component[OptionsPattern[]] := Module[{
             ]
         ],
 
-        "Evaluate" -> Function[celluid, With[{client = $Client},
-            Print["Evaluate"];
-            If[MissingQ[notebook["Evaluator"]],
-              If[Length[ReleaseHold @ kernels] == 0,
-                    WebUISubmit[Global`Alert["No Kernels are available"](*`*), client];
-                ,
-                    Print["requesting modal...."];
-                    With[{request = CreateUUID[]},
-                        EventHandler[request, {
-                            "Success" -> Function[data,
-                                notebook["Evaluator"] = data["Container"];
-                                If[TrueQ[data["ContainerReadyQ"]],
-                                    WebUISubmit[Global`Alert["Evaluate!"](*`*), client];
-                                ,
-                                    WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
-                                ];
-                            ],
-                            "Error" -> Function[error,
-                                WebUISubmit[Global`Alert[error](*`*), client];
-                            ],
-                            _ -> Function[Null,
-                                Print["Cancelled"];
-                            ]
-                        }];
-                        Print["fire!"];
-                        EventFire[modals, "SuggestKernel", <|"Client"->client, "Callback"->request, "Notebook"->notebook, "Kernels"->kernels|>];
-                    ];
-                ]
-            ,
-                Print["ok!"];
-                Print[notebook["Evaluator"]];
-                WebUISubmit[Global`Alert["Evaluate!"](*`*), client];
-            ];
-        ]],
+        "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, kernels, $Client, modals]],
 
         else_String :> extensions["EventHandlers"][else]
     }];
 
     With[{nid = notebook["Hash"]},
 
-        <main class="py-8 h-full">
+        <main class="grow flex flex-col">
             <KernelIndicator Notebook={notebook}/>
             <PrologExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
             <TopBar Notebook={notebook}/>
             <MesisExtension Template={"CellsContainer"} Notebook={notebook} Event={secret}>
-                <CellsContainer Notebook={notebook}>Here our Notebook</CellsContainer>
+                <CellsContainer Notebook={notebook}></CellsContainer>
             </MesisExtension>
             <EpilogExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
             <Console Notebook={notebook}/>

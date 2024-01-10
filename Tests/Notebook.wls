@@ -36,7 +36,11 @@ notebook["Evaluator"] = StandardEvaluator`Container[kernel];
 
 cell // CellObj`Evaluate;
 
-stat;
+Print[notebook["Cells"]];
+
+cell // CellObj`Evaluate;
+
+Print[notebook["Cells"]];
 
 Echo["Serialization test"];
 Print[notebook];

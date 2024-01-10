@@ -155,6 +155,15 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
         transaction["Data"] = o["Data"];
         transaction["Ref"] = o;
 
+        (* find any output cell after *)
+        With[{seq = SequencePosition[o["Notebook", "Cells"], {Sequence[o, __?OutputCellQ]}] // Flatten},
+            If[Length[seq] =!= 0,
+                Delete /@ (o["Notebook", "Cells"][[ seq[[1]]+1 ;; seq[[2]] ]])
+            ];
+        ];
+
+
+
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)
             
@@ -162,6 +171,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
         ],
             "Finished" -> Function[Null,
                 o["State"] = "Idle";
+                Echo["Finished!"];
                 EventFire[o, "State", "Idle"];
             ],
 
@@ -186,22 +196,24 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 ]
 
 CellObj /: Delete[o_CellObj] := Module[{},
+    Print[">> delete cell"];
     If[!NullQ[ o["Notebook"] ],
         If[o["Type"] === "Output", 
             (* delete just this one *)
             EventFire[o, "Destroy", o];
-            EventFire[o["Notebook"], "Destroy Cell", o];
-
-            o["Notebook"]["Cells"] = o["Notebook"]["Cells"] /. {o -> Nothing}; 
+            EventFire[o["Notebook"], "Remove Cell", o];
+            With[{n = o["Notebook"]},
+                n["Cells"] = n["Cells"] /. {o -> Nothing};
+            ];
             CellObj`HashMap[o["Hash"] ] = .; 
         ,
             (* else if Input -> remove all next output cells *)
-            With[{list = SequenceCases[o["Notebook"]["Cells"], {o, ___?OutputCellQ}] // First},
+            With[{list = SequenceCases[o["Notebook"]["Cells"], {o, ___?OutputCellQ}] // First, n = o["Notebook"]},
                 Delete /@ (Drop[list, 1] // Reverse);
                 EventFire[o, "Destroy", o];
-                EventFire[o["Notebook"], "Destroy Cell", o];
+                EventFire[o["Notebook"], "Remove Cell", o];
 
-                o["Notebook"]["Cells"] = o["Notebook"]["Cells"] /. {o -> Nothing};
+                n["Cells"] = n["Cells"] /. {o -> Nothing};
                 CellObj`HashMap[o["Hash"] ] = .; 
             ]
         ]

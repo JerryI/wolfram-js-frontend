@@ -4,16 +4,31 @@ Client      = $Options["Client"];
 Controller  = CreateUUID[];
 Uid  = CreateUUID[];
 
+assignedEvent1 = EventClone[kernel];
+assignedEvent2 = EventClone[kernel];
+assignedEvent3 = EventClone[kernel];
+
+detector = EventClone[Client];
+EventHandler[detector, {"Closed" -> Function[Null, destoryWidget]}];
+
+destoryWidget := With[{},
+   Echo["Kernel >> Item.wlx >> destroyed!"];
+   EventRemove[detector];
+   EventRemove[assignedEvent1];
+   EventRemove[assignedEvent2];
+   EventRemove[assignedEvent3];
+];
+
 With[{m = $Options["Messager"], client = Client},
-   EventHandler[EventClone[kernel], {any_ :> Function[data, 
+   EventHandler[assignedEvent1, {any_ :> Function[data, 
       Block[{$Client = client},
-          Print[StringJoin["redirect >> ", m]];
-          EventFire[m, any, data];
-      ]
+         Print[StringJoin["redirect >> ", m]];
+         EventFire[m, any, data];
+      ]  
    ]}]
 ];
 
-EventHandler[EventClone[kernel], {
+EventHandler[assignedEvent2, {
    "State" -> Function[new,
       With[{client = Client},
          EventFire[Controller, "State", <|"Client" -> client, "Data" -> new|> ];
@@ -27,14 +42,17 @@ EventHandler[EventClone[kernel], {
    ]   
 }];
 
-EventHandler[EventClone[kernel], {
+EventHandler[assignedEvent3, {
    any_ :> Function[data, Echo[StringJoin["Kernel: ", any, ": ", ToString[data] ] ] ]
 }];
 
 With[{kernel = kernel},
    EventHandler[Uid, {
       "Restart" -> Function[Null, kernel // Kernel`Restart],
-      "Unlink" -> Function[Null, kernel // Kernel`Unlink]
+      "Unlink" -> Function[Null, 
+         kernel // Kernel`Unlink;
+         destoryWidget;
+      ]
    }]
 ];
 
@@ -53,8 +71,8 @@ Status = Switch[
 
 <|
   "HTML" -> 
-  <div class="mx-4 py-0" id="{Uid}">
-      <div class="relative mt-0">
+  <div class="px-4 py-0 w-full" id="{Uid}">
+      <div class="relative mt-0 w-full">
          <button type="button" class="relative w-full cursor-default rounded-md 0 h-7 pl-3 bg-gray-300 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" style="background: #d9d9d9;">
          <span class="flex items-center">
            <span id="state-{Uid}" class="inline-block h-2 w-2 flex-shrink-0 rounded-full" style="background: {Status}">
