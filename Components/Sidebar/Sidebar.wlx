@@ -10,7 +10,7 @@ With[{
   },
 
   EventHandler[Button1Id, Function[Null,
-    EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> Path|>];
+    EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>];
   ]];
 
   EventHandler[Button2Id, Function[Null,

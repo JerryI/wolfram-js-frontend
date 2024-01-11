@@ -1,6 +1,6 @@
 Component[OptionsPattern[]] := With[{Uid = CreateUUID[], Path = OptionValue["Path"], Messager = OptionValue["Messager"], Controls = OptionValue["Controls"]},  
 EventHandler[Uid, Function[Null,
-  EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> Path|>];
+  EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>];
 ]];
 
 <div class="text-center my-auto mx-auto max-w-lg">

@@ -6,11 +6,11 @@ CellsSubgroup  := ImportComponent["Components/CellSubgroup.wlx"]
 CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
 {Hr, HrScript}  = ImportComponent["Components/Hr.wlx"];
 
-{Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
+{ControlsLeft, ControlsRight, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
 
 {EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
 
-Component[cell_CellObj, cli_, OptionsPattern[]] := With[{PrologExtension = OptionValue["Extension"]["Prolog"],  MesisExtension = OptionValue["Extension"]["Mesis"], EpilogExtension = OptionValue["Extension"]["Epilog"]},
+Component[cell_CellObj, cli_, OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"]},
     If[InputCellQ @ cell,
         EventHandler[cell, {
             "Focus" -> Function[Null, Print["Focus!"]; cell["Notebook", "FocusedCell"] = cell]
@@ -18,41 +18,45 @@ Component[cell_CellObj, cli_, OptionsPattern[]] := With[{PrologExtension = Optio
         
 
         <CellsGroup Cell={cell}>
-            <PrologExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
+            <ExtensionTemplateInjection Template={"CellGroup-Prolog"} Cell={cell} Client={cli}/>
             <CellsSubgroup Cell={cell}>
-                <Controls Cell={cell}/>
+                <ControlsLeft Cell={cell}/>
                 <CellFrame Cell={cell}>
-                    <PrologExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
-                    <MesisExtension Template={"CellWrapper"} Cell={cell} Client={cli}>
+                    <ExtensionTemplateInjection Template={"CellFrame-Prolog"} Cell={cell} Client={cli}/>
+                    <ExtensionTemplateWrapper Template={"CellWrapper"} Cell={cell} Client={cli}>
                         <CellWrapper Cell={cell}/>
-                    </MesisExtension>
+                    </ExtensionTemplateWrapper>
                     <EvaluationBar Cell={cell} Client={cli}/>
-                    <MesisExtension Template={"Children"} Cell={cell} Client={cli}>
+                    <Hr Cell={cell}/> 
+                    <ExtensionTemplateWrapper Template={"Children"} Cell={cell} Client={cli}>
                         <Children Cell={cell}></Children>
-                    </MesisExtension>
-                    <EpilogExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
+                    </ExtensionTemplateWrapper>
+                    <ExtensionTemplateInjection Template={"CellFrame-Epilog"} Cell={cell} Client={cli}/>
                 </CellFrame>
+                <ControlsRight Cell={cell}/>
             </CellsSubgroup>
-            <Hr Cell={cell}/>
-            <EpilogExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
+            <ExtensionTemplateInjection Template={"CellGroup-Epilog"} Cell={cell} Client={cli}/>
         </CellsGroup>
     ,
         <CellsGroup Cell={cell}>
-            <PrologExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
-            <Hr Cell={cell}/> 
+            <ExtensionTemplateInjection Template={"CellGroup-Prolog"} Cell={cell} Client={cli}/>
             <CellFrame Cell={cell}>
-                <PrologExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
-                <MesisExtension Template={"CellWrapper"} Cell={cell} Client={cli}>
+                <ExtensionTemplateInjection Template={"CellFrame-Prolog"} Cell={cell} Client={cli}/>
+                <ExtensionTemplateWrapper Template={"CellWrapper"} Cell={cell} Client={cli}>
                     <CellWrapper Cell={cell}/>
-                </MesisExtension>
-                <EpilogExtension Template={"CellFrame"} Cell={cell} Client={cli}/>
+                </ExtensionTemplateWrapper>
+                <ExtensionTemplateInjection Template={"CellFrame-Epilog"} Cell={cell} Client={cli}/>
             </CellFrame>   
-            <EpilogExtension Template={"CellGroup"} Cell={cell} Client={cli}/>
+            <Hr Cell={cell}/> 
+            <ExtensionTemplateInjection Template={"CellGroup-Epilog"} Cell={cell} Client={cli}/>
         </CellsGroup>  
     ]
 ]
 
-Options[Component] = {"Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+Options[Component] = {"ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction}
 
 Script = With[{},
     ""

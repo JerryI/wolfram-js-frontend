@@ -1,19 +1,27 @@
-Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"]}, 
-    <button class="h-2 w-full cursor-vertical-text" id="separator-{uid}"></button>
+Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"], Class = If[OptionValue["Cell"]["Type"] == "Input" && TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "hidden", ""]}, 
+    <button class="h-2 w-full cursor-vertical-text {Class}" id="separator-{uid}"></button>
 ]
 
 Options[Element] = {"Cell"->""}
 
 Script = With[{},
     <Placebo>
-    {       const controls = (opts) => {
-            const cell = opts.cell;
-            const event = opts.event;
+    {       
+        const controls = (opts) => {
+                const cell = opts.cell;
+                const event = opts.event;
         
-            const button = document.getElementById('separator-'+cell.uid);
-            button.addEventListener('click', () => {
-                server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
-            });
+                const button = document.getElementById('separator-'+cell.uid);
+                
+                button.addEventListener('click', () => {
+                    server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+                    return;
+                    if (cell.type == "Output") {
+                        server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+                    } else {
+                        server.emitt(event, '"'+cell.uid+'"', 'AddAfterOutputs');
+                    }
+                });
         }
 
         //add it to the constructor

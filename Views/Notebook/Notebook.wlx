@@ -4,20 +4,23 @@ Console        := ImportComponent["Components/Console.wlx"];
 
 {CellGenerator, CellGeneratorScript}   = ImportComponent["CellGenerator.wlx"];
 
-{Controls, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
+{ControlsL, ControlsR, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
 {Hr, HrScript}                        = ImportComponent["Components/Hr.wlx"];
 {EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
+
+{CellDropdown, DropdownScript} = ImportComponent["Components/Dropdown.wlx"];
+
 
 KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
 
 ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
 
-addListeners[notebook_Notebook, secret_String, client_, extensions_] := Module[{},
+addListeners[notebook_Notebook, secret_String, client_, extensions__] := Module[{},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[notebook, {
         "New Cell" -> Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell] , list, secret], client]
+                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, extensions], CellObj`Serialize[cell] , list, secret], client]
             ];
         ],
 
@@ -29,11 +32,11 @@ addListeners[notebook_Notebook, secret_String, client_, extensions_] := Module[{
     }];
 ];
 
-restoreCells[notebook_Notebook, secret_String, client_, extensions_] := Module[{},
+restoreCells[notebook_Notebook, secret_String, client_, extensions__] := Module[{},
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, "Extension"->extensions], CellObj`Serialize[cell], list, secret], client];
+                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, extensions], CellObj`Serialize[cell], list, secret], client];
             ]
         ]   
     ,    
@@ -119,6 +122,7 @@ Script[opts__] := With[{},
         <EvaluationBarScript/>;;
         <ControlsScript/>;;
         <HrScript/>;;
+        <DropdownScript/>;;
     </script>
 ] 
 
@@ -135,10 +139,14 @@ Component[OptionsPattern[]] := Module[{
     log = OptionValue["Messanger"],
     kernels = OptionValue["Kernels"],
 
-    PrologExtension = OptionValue["Extension"]["Prolog"],  
-    MesisExtension = OptionValue["Extension"]["Mesis"], 
-    EpilogExtension = OptionValue["Extension"]["Epilog"],
-    extensions = OptionValue["Extension"]
+    ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],  
+    ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
+    ExternalEventHandlers = OptionValue["ExternalEventHandlers"],
+
+    extensions = Sequence[
+        "ExtensionTemplateWrapper" -> OptionValue["ExtensionTemplateWrapper"], 
+        "ExtensionTemplateInjection" -> OptionValue["ExtensionTemplateInjection"]
+    ]
 },
 
     
@@ -162,6 +170,10 @@ Component[OptionsPattern[]] := Module[{
         
         ],
 
+        "CallDropdown" -> Function[data,
+            Echo[data];
+        ],
+
         "RequestObject" -> Function[uid,
             (* /* Automatically reply with an object using $Client variable */ *)
         ],
@@ -175,10 +187,21 @@ Component[OptionsPattern[]] := Module[{
             "Saved" >> log; */ *)
         ],    
 
+        "ClearOutputs" -> Function[uid,
+            With[{cell = CellObj`HashMap[uid](*`*)},
+                Delete /@ CellObj`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?OutputCellQ]](*`*);
+            ]
+        ],
+
         "UpdateCell" -> Function[payload,
             With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},
                 cell["Data"] = content;
             ]
+        ],
+
+        "RemoveCell" -> Function[uid,
+            CellObj`HashMap[uid] (*`*) //Delete;
+            If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
         ],
 
         "SetProperty" -> Function[json,
@@ -200,32 +223,49 @@ Component[OptionsPattern[]] := Module[{
             ]
         ],
 
+        "AddAfterOutputs" -> Function[uid,
+            (*/* request from the client with event provided */*)
+
+            With[{o = CellObj`HashMap[uid] (*`*)},
+                CellObj["Notebook"->notebook, "Data"->"", "After"-> Sequence[o, ___?OutputCellQ]];   
+            ]
+        ],        
+
+        "AddBefore" -> Function[uid,
+            (*/* request from the client with event provided */*)
+
+            With[{o = CellObj`HashMap[uid] (*`*)},
+                CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
+            ]
+        ],        
+
         "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, kernels, $Client, modals]],
 
-        else_String :> extensions["EventHandlers"][else]
+        else_String :> ExternalEventHandlers[else]
     }];
 
     With[{nid = notebook["Hash"]},
 
-        <main class="grow flex flex-col">
+        <main class="grow flex flex-col overflow-hidden">
             <KernelIndicator Notebook={notebook}/>
-            <PrologExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
+            <ExtensionTemplateInjection Template={"Notebook-Prolog"} Notebook={notebook} Event={secret} />
             <TopBar Notebook={notebook}/>
-            <MesisExtension Template={"CellsContainer"} Notebook={notebook} Event={secret}>
-                <CellsContainer Notebook={notebook}></CellsContainer>
-            </MesisExtension>
-            <EpilogExtension Template={"Notebook"} Notebook={notebook} Event={secret} />
-            <Console Notebook={notebook}/>
+            <ExtensionTemplateWrapper Template={"CellsContainer"} Notebook={notebook} Event={secret}>
+                <CellsContainer Notebook={notebook} Event={secret}></CellsContainer>
+            </ExtensionTemplateWrapper>
+            <ExtensionTemplateInjection Template={"Notebook-Epilog"} Notebook={notebook} Event={secret} />
 
+            <CellDropdown Event={secret}/>
             <ElectronBinds Event={secret}/>
-            <EpilogExtension Template={"Scripts"} />
+            <ExtensionTemplateInjection Template={"Scripts"} />
+            
             <WebUIOnLoad Event={secret} Type={"Load"}/>
         </main>
 
     ]
 ]
 
-Options[Component] = {"Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "Extension"-><|"Prolog"->emptyStringFunction, "Mesis"->sequenceIdentity, "Epilog"->emptyStringFunction|>}
+Options[Component] = {"Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
 
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 

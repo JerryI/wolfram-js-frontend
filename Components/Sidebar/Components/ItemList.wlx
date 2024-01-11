@@ -5,6 +5,7 @@ Level    = $Options["Level"];
 
 Dir  := ImportComponent["ItemDirectory.wlx"];
 Fl   := ImportComponent["ItemFile.wlx"];
+Pl   := ImportComponent["ItemParent.wlx"];
 
 If[!DirectoryQ[Path], Path = DirectoryName[Path]];
 
@@ -13,12 +14,21 @@ Print[StringJoin["ItemList ", Path]];
 With[{
   Ul = Table[
     If[DirectoryQ[i],  
+      Print[{Current, i}];
+      
       <li><Dir Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
       <li><Fl  File={i} Selected={SameQ[Current, i]}/></li>
     ]
-  , {i, FileNames["*", Path]}]
+  , {i, FileNames["*", Path]}],
+
+  Extra =   If[Level == 0,
+    <li><Pl  File={ParentDirectory[Path]}/></li>
+  ,
+    ""
+  ]
 },
   <ul class="{Class} pl-{Level*2}">
+    <Extra/>
     <Ul/>
   </ul>
 ]

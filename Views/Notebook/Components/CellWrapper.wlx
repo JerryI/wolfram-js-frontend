@@ -1,3 +1,4 @@
 id = $Options["Cell"]["Hash"];
+Class = If[TrueQ[$Options["Cell"]["Props"]["Hidden"]], "hidden", ""];
 
-<div id="{id}"></div>
+<div class="{Class}" id="{id}"></div>

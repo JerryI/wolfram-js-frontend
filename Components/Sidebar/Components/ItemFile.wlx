@@ -23,7 +23,7 @@ Icon = Switch[FileExtension[File],
 
 <div style="position: relative" class="{Selected} text-gray-700 flex flex-start items-center pl-7 gap-x-1 rounded-md">
     <Icon/>
-    <a href="{FileNameToURLPath[File]}" class="block rounded-md py-0 pr-0 text-sm leading-6">
+    <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm leading-6">
         <FileNameTake>
             <File/>
         </FileNameTake>

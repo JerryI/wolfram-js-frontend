@@ -144,6 +144,14 @@ Options[CellObj`Serialize] = {"OnlyMeta" -> False}
 OutputCellQ[o_CellObj] := o["Type"] === "Output"
 InputCellQ[o_CellObj] := o["Type"] === "Input"
 
+CellObj`SelectCells[list_List, pattern__] := With[{seq = SequencePosition[list, List[pattern] ] // Flatten},
+    If[Length[seq] =!= 0,
+        list[[ seq[[1]]+1 ;; seq[[2]] ]]
+    ,
+        {}
+    ]
+];
+
 CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
     Print["Submit cellobj"];
     If[!NullQ[ o["Notebook"] ],

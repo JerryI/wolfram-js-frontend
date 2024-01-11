@@ -10,9 +10,9 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
         ];
 
         With[{Style = If[State == "Idle", "opacity: 0", "opacity: 1"]},
-          <div style="position:absolute; width:100%; bottom:0" class="-mb-4">
-            <div class="w-full bg-gray-200 rounded-full h-1 mt-1 mb-1 dark:bg-gray-700" style="{Style}">
-                <div id="bar-{uid}" style="transition: width 5s" class="bg-teal-600 h-1.5 rounded-full dark:bg-teal-500 w-2/4"></div>
+          <div style="position:fixed;width:80%;height:0;overflow: visible">
+            <div class="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700" style="{Style}">
+                <div id="bar-{uid}" style="transition: width 5s" class="bg-teal-600 h-1 rounded-full dark:bg-teal-500 w-2/4"></div>
             </div>
           </div>
         ]

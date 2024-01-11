@@ -80,6 +80,18 @@
   }
 }
 
+@media (min-width: 768px) {
+ .md\:pl-70 {
+    padding-left: 16rem;
+ }
+}
+
+@media (min-width: 768px) {
+  .md\:w-70 {
+    width:16rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:w-70 {
     width:16rem;

@@ -9,7 +9,9 @@ Begin["JerryI`Notebook`Loader`"];
         cache[dir] = notebook;
         notebook["Path"] = dir;
 
+        Print["filepath:"]
         Print[dir];
+        Print["end"];
         
         Put[<| 
             "Notebook" -> Notebook`Serialize[notebook], 

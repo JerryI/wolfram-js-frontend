@@ -8,11 +8,13 @@ View[opts__] := With[{list = Association[ List[opts] ]},
     Router[ list["Path"] ][opts]
 ];
 
+(* /* Default */ *)
 Router[any_] := With[{},
     Print["Generic router"];
     ({EmptyComponent[##], EmptyScript[##]} &)
 ];
 
+(* /* Notebook */ *)
 NotebookQ[path_] := FileExtension[path] === "wln";
 Router[any_?NotebookQ] := With[{n = JerryI`Notebook`Loader`Load[any]},
     Print["Notebook router"];
