@@ -1,7 +1,7 @@
 
 Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-md divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div class="flex w-0 flex-1 items-center p-3">
               <div class="w-full">
                 <p class="text-sm font-medium text-gray-900"><Name/></p>
@@ -22,7 +22,7 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Save", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -50,7 +50,7 @@ Component["Save", Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Error", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">

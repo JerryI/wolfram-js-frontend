@@ -32,7 +32,8 @@ RightElement[OptionsPattern[]] := With[{cell = OptionValue["Cell"], Uid = Option
     </div>
 ]
 
-Options[Element] = {"Cell"->""}
+Options[RightElement] = {"Cell"->""}
+Options[LeftElement] = {"Cell"->""}
 
 Script = With[{},
     <Placebo>

@@ -31,6 +31,8 @@ StandardEvaluator`Container[k_(*Kernel*)] := Module[{},
     StandardEvaluator`InitializedContainer[k]
 ]
 
+StandardEvaluator`InitializedContainer[k_]["Kernel"] := k;
+
 StandardEvaluator`InitializedContainer[k_(*Kernel*)][t_Transaction] := Module[{evaluator, state},
     Print["Standard Eval"];
     evaluator = t /. Flatten[{#["Pattern"] -> #} &/@ eList]; (* apply patterns like t /. {_ -> evaluator 1, _?watever -> evaluator 2} *)
@@ -49,7 +51,7 @@ StandardEvaluator /: StandardEvaluator`Print[evaluator_StandardEvaluator, msg_, 
 
 (* Primitive Evaluator *)
 
-primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKernel" -> initPrimitiveEvaluator, "Priority"->(- Infinity)];
+primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKernel" -> initPrimitiveEvaluator, "Priority"->(Infinity)];
 
     StandardEvaluator`ReadyQ[primitive, kernel_] := (
         StandardEvaluator`Print[primitive, "I am always ready"];

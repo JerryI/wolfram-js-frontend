@@ -6,7 +6,7 @@ Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 Mode := ImportComponent["Components/Mode.wlx"];
 SettingsButton  = ImportComponent["Components/Settings.wlx"];
 Kernels  = ImportComponent["Components/Kernel/Kernel.wlx"];
-Sidebar     := ImportComponent["Components/Sidebar/Sidebar.wlx"];
+Sidebar     = ImportComponent["Components/Sidebar/Sidebar.wlx"];
 
 Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
@@ -32,8 +32,8 @@ createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = ass
   ]
 ]
 
-toggleSidebar[_, client_] := With[{},
-  WebUISubmit[Global`UIToggleSidebar[True](*`*), client];
+toggleWindowSize[_, client_] := With[{},
+  WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
 ]
 
 KernelList = {};
@@ -46,13 +46,14 @@ App[request_] := With[{
         GlobalControls  = CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
+        GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
         Path = If[StringTrim[request["Path"]] == "/", Directory[], URLDecode @ StringDrop[request["Path"],1] ]
     },
    
     (*/* Hard logic */*)
     EventHandler[GlobalControls, {
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
-      "SidebarToggle" -> (toggleSidebar[#, $Client]&)
+      "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];
 
     <html class="h-full"> 
@@ -71,7 +72,7 @@ App[request_] := With[{
               <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>  
             </div>
             <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]}/>
-            <Sidebar Secret={Secret} Path={Path} Controls={GlobalControls}/>
+            <Sidebar Parameters={GlobalParameters} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300"></div>
             <div class="px-4 pb-2 pt-1 flex flex-row">
               <SettingsButton/>
@@ -93,7 +94,7 @@ App[request_] := With[{
                 <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={GlobalControls} />         
               </div>
               <Notifications MessagePort={GlobalMessanger}/>
-              <Views Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={GlobalControls}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={GlobalControls}/>
             </div> 
           </div>
         </div>
@@ -104,9 +105,10 @@ App[request_] := With[{
 
 Script = With[{},
   <script type="module">
-    const isHidden = elem => {
-      const styles = window.getComputedStyle(elem)
-      return styles.display === 'none' || styles.visibility === 'hidden'
+    core.UIToggleWindowBonds = async (args, env) => {
+      if (window.electronAPI) {
+        window.electronAPI.toggleWindowSize();
+      }
     }
   </script>
 ];

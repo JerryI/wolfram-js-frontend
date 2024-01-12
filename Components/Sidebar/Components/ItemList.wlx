@@ -2,6 +2,9 @@ Class = $Options["Class"];
 Path     = $Options["Path"];
 Current  = $Options["Current"];
 Level    = $Options["Level"];
+Parameters = $Options["Parameters"];
+
+Port = $Options["Port"];
 
 Dir  := ImportComponent["ItemDirectory.wlx"];
 Fl   := ImportComponent["ItemFile.wlx"];
@@ -16,8 +19,8 @@ With[{
     If[DirectoryQ[i],  
       Print[{Current, i}];
       
-      <li><Dir Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
-      <li><Fl  File={i} Selected={SameQ[Current, i]}/></li>
+      <li><Dir Port={Port} Parameters={Parameters} Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
+      <li><Fl  Port={Port} Parameters={Parameters} File={i} Selected={SameQ[Current, i]}/></li>
     ]
   , {i, FileNames["*", Path]}],
 

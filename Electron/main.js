@@ -887,6 +887,23 @@ app.whenReady().then(() => {
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });
 
+    ipcMain.on('system-window-toggle', (e, p) => {
+        const bonds = windows.focused.win.getBounds();
+        if (bonds.width < 800) {
+            windows.focused.win.setBounds({ width: 800 , animate: true});
+        } else {
+            windows.focused.win.setBounds({ width: 600 , animate: true});
+        }
+    });
+
+    ipcMain.on('system-window-expand', (e, p) => {
+        windows.focused.win.setBounds({ width: 800 , animate: true});
+    });
+ 
+    ipcMain.on('system-window-shrink', (e, p) => {
+        windows.focused.win.setBounds({ width: 600 , animate: true});
+    });   
+
     //set up search on-page (any focused windows)
     ipcMain.on('search-text', (event, arg) => {
         let nextRes = arg.direction == 'next' ? true : false
@@ -901,8 +918,13 @@ app.whenReady().then(() => {
     });
 
     //system commands to open file explorers and etc
-    ipcMain.on('system-open', (e, path) => {
-        shell.showItemInFolder(path);
+    ipcMain.on('system-open', (e, p) => {
+        const dir = JSON.parse(p);
+        if (dir[0].length == 0) {
+            shell.showItemInFolder('/'+path.join(...dir));
+        } else {
+            shell.showItemInFolder(path.join(...dir));
+        }
     });
 
 

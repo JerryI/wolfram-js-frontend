@@ -58,8 +58,10 @@ tcpConnect[port_, o_LocalKernelObject] := With[{uid = o["Hash"], p = o["Port"], 
     ) // HoldRemotePacket
 ]
 
-decryptor[ Hold[TextPacket[s_] ], handler_] := handler[s];
-decryptor[ any_ , a_] := Print[any];
+decryptor[ Hold[TextPacket[s_] ], print_, error_] := print[s];
+decryptor[ any_ , a__] := Print[any];
+
+decryptor[ Hold[MessagePacket[symbol_, type_] ], print_, error_ ] := error[StringTemplate["``::``"][symbol, type] ]
 
 (* launch kernel *)
 restart[k_LocalKernelObject] := With[{},
@@ -139,9 +141,14 @@ start[k_LocalKernelObject] := Module[{link},
     
     k["PrintTask"] = With[{kernel = k}, Looper`Submit[
         If[LinkReadyQ[kernel["Link"] ],
-            decryptor[ LinkRead[kernel["Link"], Hold], Function[data,
-                EventFire[k, "Print", data]
-            ] ]
+            decryptor[ LinkRead[kernel["Link"], Hold], 
+                Function[data,
+                    EventFire[k, "Print", data]
+                ],
+                Function[data,
+                    EventFire[k, "Message", data]
+                ]
+            ]
         ]
     , "Continuous" -> True] ];
 

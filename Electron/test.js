@@ -885,6 +885,32 @@ app.whenReady().then(() => {
     //make a log window and start WL
     create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 
+    ipcMain.on('system-open', (e, p) => {
+        const dir = JSON.parse(p);
+        if (dir[0].length == 0) {
+            shell.showItemInFolder('/'+path.join(...dir));
+        } else {
+            shell.showItemInFolder(path.join(...dir));
+        }
+    });
+
+    ipcMain.on('system-window-toggle', (e, p) => {
+        const bonds = windows.focused.win.getBounds();
+        if (bonds.width < 800) {
+            windows.focused.win.setBounds({ width: 800 , animate: true}, true);
+        } else {
+            windows.focused.win.setBounds({ width: 600 , animate: true}, true);
+        }
+    });
+
+    ipcMain.on('system-window-expand', (e, p) => {
+        windows.focused.win.setBounds({ width: 800 , animate: true}, true);
+    });
+ 
+    ipcMain.on('system-window-shrink', (e, p) => {
+        windows.focused.win.setBounds({ width: 600 , animate: true}, true);
+    });    
+
     //set up search on-page (any focused windows)
     ipcMain.on('search-text', (event, arg) => {
         let nextRes = arg.direction == 'next' ? true : false

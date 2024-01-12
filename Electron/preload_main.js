@@ -8,8 +8,23 @@ contextBridge.exposeInMainWorld('electronAPI', {
   pluginsMenu: (callback) => ipcRenderer.on('pluginsMenu', callback),
   
   openFinder: (path) => {
-    ipcRenderer.send('system-open',  decodeURIComponent(path));
+    console.log(path);
+    ipcRenderer.send('system-open',  path);
   },
+
+  toggleWindowSize: () => {
+    ipcRenderer.send('system-window-toggle',  {});
+  },
+
+  windowExpand: (path) => {
+    console.log(path);
+    ipcRenderer.send('system-window-expand',  {});
+  },
+
+  windowShrink: (path) => {
+    console.log(path);
+    ipcRenderer.send('system-window-shrink',  {});
+  },   
   
   searchText: (searchText, direction) => ipcRenderer.send('search-text', { searchText, direction }),
   stopSearch: () => ipcRenderer.send('stop-search')

@@ -750,8 +750,8 @@ app.whenReady().then(() => {
         clearInterval(cinterval);
     }, 60 * 1000 * 3)
 
-    ipcMain.on('system-open', (e, path) => {
-        shell.showItemInFolder(path);
+    ipcMain.on('system-open', (e, p) => {
+        shell.showItemInFolder(path.join(...JSON.parse(p)));
     });
 
     ipcMain.on('promt-resolve', (e, id, val) => {

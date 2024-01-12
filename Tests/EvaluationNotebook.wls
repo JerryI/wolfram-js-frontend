@@ -18,25 +18,22 @@ Includes["kernel"];
 
 LocalKernel`LTPServerStart[];
 
-Get[FileNameJoin[{"Packages", #}] ] &/@ Includes["frontend"];
-
 kernel = LocalKernel[];
 EventHandler[kernel, {
     "Connected" -> next, 
     any_ :> Function[data, Echo["Kernel: " <> any <> ": " <> ToString[data] ] ]
 }];
 
+Echo[Includes["kernel"]];
+
 kernel // Kernel`Start // Print;
 
 next[_] := With[{},
-    (*  load scripts *)
-    With[{p = Import[FileNameJoin[{"Packages", #}], {"Package", "HeldExpressions"}]},
-        Kernel`Init[kernel,  ReleaseHold /@ p; ];
-    ] &/@ Includes["kernel"];
+
 
     (* create transaction *)
     transaction = Transaction[];
-    transaction["Data"] = "1+1";
+    transaction["Data"] = "1/0";
 
     (* subscript to events of transaction *)
     EventHandler[transaction, {any_ :> Function[data, Echo["Transaction: " <> any <> ": " <> ToString[data] ] ]}];

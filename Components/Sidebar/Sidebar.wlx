@@ -1,13 +1,28 @@
 Sidebar := ImportComponent["Body.wlx"];
 
+Controller["Delete", sidebarId_] := Function[name,
+  DeleteFile[URLDecode[name]];
+  EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
+];
+
+Controller["Reveal", _] := Function[name,
+  WebUISubmit[Global`UIOpenExplorer[FileNameSplit[URLDecode[name]]] (*`*), $Client];
+];
+
+Component[OptionsPattern[]] := 
 With[{
     SidebarId = CreateUUID[], 
-    Secret = $Options["Secret"], 
-    Path = $Options["Path"], 
-    Controls = $Options["Controls"],
+    Secret = OptionValue["Secret"], 
+    Path = OptionValue["Path"], 
+    Controls = OptionValue["Controls"],
+    Parameters = OptionValue["Parameters"],
     Button1Id = CreateUUID[],
     Button2Id = CreateUUID[]
   },
+
+  EventHandler[Secret, {
+    FileOperate[any_] :> Controller[any, SidebarId]
+  }];
 
   EventHandler[Button1Id, Function[Null,
     EventFire[Controls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>];
@@ -45,7 +60,22 @@ With[{
     <WebUIEventListener Type={"click"} Id={Button2Id} Event={Button2Id} />
   ,
     <WebUIRefresh Event={SidebarId} Class={"flex grow flex-col gap-y-5 overflow-y-auto px-4 sc-b"}>
-      <Sidebar Secret={Secret} Path={Path} />
+      <Sidebar Port={Secret} Parameters={Parameters} Secret={"blackhole"} Path={Path} />
     </WebUIRefresh>
+  ,
+    <script type="module">
+      core.UIOpenExplorer = async (args, env) => {
+        const filename = await interpretate(args[0], env);
+        console.warn(filename);
+        
+        if (window.electronAPI) {
+          window.electronAPI.openFinder(JSON.stringify(filename));
+        }   
+      }
+    </script>
   }
 ]
+
+Options[Component] = {"Secret"->"", "Path"->"", "Controls"->"", "Parameters"->""}
+
+Component

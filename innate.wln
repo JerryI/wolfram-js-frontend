@@ -1,8 +1,0 @@
-<|"Notebook" -> <|"FrontendObjects" -> <||>, 
-   "Hash" -> "19f6730b-69b0-4669-a300-9d71b4e04157", 
-   "Path" -> "./innate.wln"|>, 
- "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "917dda4a-ffd9-4a4a-b1b5-999af34f6745", "Props" -> <||>, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "19f6730b-69b0-4669-a300-9d71b4e04157"|>}, 
- "serializer" -> "jsfn4"|>

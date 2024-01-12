@@ -6,9 +6,10 @@
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> {"dist/kernel.js", "src/boxes.js"}, 
-     "frontend" -> {"src/Frontend.wl"}, "kernel" -> {"src/Boxes.wl"}, 
-     "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js", 
-     "header" -> "src/header.wsp", "priority" -> -10, "important" -> True|>, 
+     "frontend" -> {"src/Frontend.wl"}, "kernel" -> 
+      {"src/Boxes.wl", "src/StandardForm.wl"}, "styles" -> "src/styles.css", 
+     "autocomplete" -> "src/autocomplete.js", "header" -> "src/header.wsp", 
+     "priority" -> -10, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
    "dependencies" -> <|"@codemirror/lang-css" -> "^6.2.1", 

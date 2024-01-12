@@ -50,6 +50,16 @@ RandomWord[];
 
 Includes["jsmodule"];
 Includes["js"];
+Includes["frontend"];
+
+(* load stuff into frontend *)
+Echo["Loading packages: FRONTEND"];
+Check[
+  Get[FileNameJoin[{Directory[], "Packages",  UniversalPathConverter[#]}]] &/@ Includes["frontend"]
+, 
+  Echo["Failed to load some of the packages (see logs)"];
+  Exit[0]
+];  
 
 (* Entrypoint of an app *)
 App := ImportComponent["Frontend/App.wlx"];
@@ -78,6 +88,8 @@ tcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> http;
 
 http = HTTPHandler[];
 $Server["HTTPHandler"] = http;
+
+ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
 http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (

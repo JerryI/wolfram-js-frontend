@@ -128,7 +128,7 @@ Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{
 ]
 
 CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["OnlyMeta"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
+    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]
@@ -139,7 +139,7 @@ CellObj`Deserialize[assoc_Association, opts___] := With[{cell = CellObj[], list 
     cell
 ]
 
-Options[CellObj`Serialize] = {"OnlyMeta" -> False}
+Options[CellObj`Serialize] = {"MetaOnly" -> False}
 
 OutputCellQ[o_CellObj] := o["Type"] === "Output"
 InputCellQ[o_CellObj] := o["Type"] === "Input"
@@ -174,8 +174,15 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)
-            
-            CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
+            Echo["Creating cell from transaction..."];
+            Echo[data];
+            If[data["Data"] != "Null",
+                If[KeyExistsQ[data, "Meta"],
+                    CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], data["Meta"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
+                ,
+                    CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
+                ]
+            ];
         ],
             "Finished" -> Function[Null,
                 o["State"] = "Idle";
@@ -186,6 +193,8 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
             "Error" -> Function[error,
                 o["State"] = "Idle";
                 EventFire[o, "State", "Idle"];
+                Echo["Error in evalaution... check syntax"];
+                EventFire[o["Notebook"], "CellError", {o, error}];
                 EventFire[o, "Error", error];
             ],
 
