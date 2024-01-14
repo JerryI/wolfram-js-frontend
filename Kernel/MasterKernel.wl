@@ -15,6 +15,7 @@ decryptor[ any_ , a_] := Print[any];
 (* launch kernel *)
 start[o_MasterKernel] := Module[{link},
     Print["Starting kernel...."];
+    o["Dead"] = False;
     o["ReadyQ"] = True;
     o["State"]  = "Connected";
 

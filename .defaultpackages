@@ -27,7 +27,7 @@ https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-editor", "defaultPackage" -> True|>, 
  "wljs-graphics3d-threejs" -> <|"name" -> "wljs-graphics3d-threejs", 
-   "version" -> "0.3.0", "description" -> 
+   "version" -> "0.3.1", "description" -> 
     "A ThreeJS implementation of Mathematica's Graphics3D", 
    "scripts" -> <|"start" -> "cd example && parcel serve ./*.html --dist-dir \
 ./dev-bundle/ --no-cache --no-hmr", "build-examples" -> "cd example && parcel \

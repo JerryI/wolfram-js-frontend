@@ -6,21 +6,21 @@ SetAttributes[appendHeld, HoldFirst];
 SetAttributes[removeHeld, HoldFirst];
 
 
-addListeners[kernel_, KernelList_, initKernel_] := Module[{},
+addListeners[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
   appendHeld[KernelList, kernel];
   EventHandler[EventClone[kernel], {
-    "Exit" -> Function[Null, removeHeld[KernelList, kernel] ],
+    "Exit" -> Function[Null, removeHeld[KernelList, kernel]; deinitKernel[kernel] ],
     "Connected" -> Function[Null, initKernel[kernel]]
   }];
 ];
 
-Component[OptionsPattern[]] := With[{initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
   EventHandler[ButtonId, Function[Null,
     With[{client = $Client, m = Messager, kernel = LocalKernel["Name"->RandomWord[]]},
         Print["Working!"];
         Print[initKernel];
       
-        addListeners[kernel, KernelList, initKernel];
+        addListeners[kernel, KernelList, initKernel, deinitKernel];
 
         EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->m, "Kernel"->kernel, "Client"->client] |> ];
         kernel // Kernel`Start;
@@ -76,6 +76,6 @@ Component[OptionsPattern[]] := With[{initKernel = OptionValue["OnConnected"], Co
   }
 ];
 
-Options[Component] = {"Messager"->"", "KernelList"->{}, "OnConnected"->Print, "OnStart"->Print}
+Options[Component] = {"Messager"->"", "OnExit"->Print, "KernelList"->{}, "OnConnected"->Print, "OnStart"->Print}
 
 Component

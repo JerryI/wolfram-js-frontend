@@ -97,6 +97,8 @@ start[k_LocalKernelObject] := Module[{link},
     Echo[">> Starting using path: "<>k["wolframscript"] ];
     link = LinkLaunch[ k["wolframscript"] ];
 
+    k["Dead"] = False;
+
     Print[k];
 
     EventFire[k, "State", "Checking the link"];

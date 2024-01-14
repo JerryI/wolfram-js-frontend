@@ -44,20 +44,70 @@ restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions_
     ]
 ];
 
-establishWSLink[notebook_, client_] := With[{},
-    If[TrueQ[notebook["Evaluator"]["Kernel"]["ContainerReadyQ"]] && TrueQ[notebook["Evaluator"]["Kernel"]["ReadyQ"]],
-        Echo["establishWSLink >> connecting ..."];
-        WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"] ] (*`*), client];
+checkWSLink[notebook_, client_, event_String] := Module[{},
+    (*/* check if connected already */*)
+    Echo["checkWSLink >> "];
+
+    If[notebook["WebSocketQ"] === True, 
+        Echo["checkWSLink >> Already connected"];
+        Return[];
+    ];
+
+    (*/* check if has working kernel */*)
+    If[notebook["Evaluator"]["Kernel"]["Dead"] === False,
+        (*/* check if it was initialized succesfully */*)
+
+        If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
+            Echo["checkWSLink >> Asking to connect"];
+
+            WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"], event ] (*`*), client];
+            
+            (*/* subscribe to event when Kernel dies */*)
+            With[{cloned = EventClone[notebook["Evaluator"]["Kernel"]]},
+                EventHandler[cloned, {
+                    "Exit" -> Function[Null,
+                        EventRemove[cloned];
+                        Echo["checkWSLink >> Kernel connection lost >> removing..."];
+                        notebook["WebSocketQ"] = False;
+                    ]
+                }];
+
+                (*/* destructor if connection lost */*)
+                With[{socket = EventClone[client]},
+                    EventHandler[socket, {
+                        "Closed" -> Function[Null,
+                            EventRemove[socket];
+                            EventRemove[cloned];
+                            Echo["checkWSLink >> Socket connection lost >> removing handlers"];
+                        ]
+                    }];
+                ];
+            ];
+        ,
+            (*/* subscribe when ready */*)
+            Echo["checkWSLink >> subscribing when ready"];
+
+            With[{clone = EventClone[notebook["Evaluator"]["Kernel"]]},
+                EventHandler[clone, {"State" -> Function[Null,
+                    EventRemove[clone];
+                    checkWSLink[notebook, client, event];
+                ]}]
+            ];
+
+        ]
     ,
-        Echo["establishWSLink >> No Kernel available... subscribing to it"];
+        (*/* subscribe when it will be attached */*)
+
+        Echo["checkWSLink >> no Kernel available... >> subscribing"];
+
         EventHandler[notebook, {"AquairedKernel" -> Function[Null,
-            WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"] ] (*`*), client];
             EventRemove[notebook, "AquairedKernel"];
-        ]}];
+            checkWSLink[notebook, client, event];
+        ]}];        
     ];
 ];
 
-checkKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
+requestKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
     Print["requesting modal...."];
     With[{request = CreateUUID[]},
         EventHandler[request, {
@@ -90,7 +140,7 @@ checkKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
     ];
 ];
 
-evaluateCell[celluid_, notebook_, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
+evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
     With[{cell = CellObj`HashMap[celluid] (*`*)},
         If[cell["Type"] == "Output",
             Echo["Morphing..."];
@@ -105,20 +155,9 @@ evaluateCell[celluid_, notebook_, kernels_, client_, modals_, parameters_, exten
     Print["Evaluate"];
 
     (*/* Check kernel and evaluator */*)
-    If[MissingQ[notebook["Evaluator"]] || (Length[ReleaseHold @ kernels] == 0) || !TrueQ[notebook["Evaluator"]["Kernel"]["ContainerReadyQ"]] || !TrueQ[notebook["Evaluator"]["Kernel"]["ReadyQ"]],
+    If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
         If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
-        
-        checkKernel[notebook, kernels, modals, client, Function[Null,
-            With[{cell = CellObj`HashMap[celluid] (*`*)},
-                        If[cell["State"] != "Idle",
-                            WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
-                        ,
-                            Echo["Success!"];
-                            cell // CellObj`Evaluate;
-                        ]
-            ];
-        ]];
-    ,
+
         (*/* Kernel looks conected and etc */*)
         Print["ok!"];
 
@@ -127,11 +166,25 @@ evaluateCell[celluid_, notebook_, kernels_, client_, modals_, parameters_, exten
             If[cell["State"] != "Idle",
                 WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
             ,
+                checkWSLink[notebook, client, secret];
                 cell // CellObj`Evaluate;
-            ]
+            ];
         ];
-                 
-    ]
+    ,
+        If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+        
+        requestKernel[notebook, kernels, modals, client, Function[Null,
+            With[{cell = CellObj`HashMap[celluid] (*`*)},
+                        If[cell["State"] != "Idle",
+                            WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                        ,
+                            Echo["Success!"];
+                            checkWSLink[notebook, client, secret];
+                            cell // CellObj`Evaluate;
+                        ]
+            ];
+        ]];
+    ];
 ];
 
 Script[opts__] := With[{},
@@ -148,12 +201,20 @@ Script[opts__] := With[{},
 
         core.UINotebook.WSConnect = async (args, env) => {
             const port = await interpretate(args[0], env);
+            const ev = await interpretate(args[1], env);
 
+            if (server.kernel.connected) {
+                console.warn('A request to connect was rejected, since socket is still alive');
+                return;
+            }
+
+            server.kernel.connected = true;
             const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
-
+            
             socket.onopen = function(e) {
               console.log("[open]");
               server.kernel.init({socket: socket});
+              server.emitt(ev, 'True', 'WebSocketConnected');
             }; 
 
             socket.onmessage = function(event) {
@@ -166,7 +227,11 @@ Script[opts__] := With[{},
 
             socket.onclose = function(event) {
               console.log(event);
-              alert('Connection lost to a Evaluation Kernel');
+              console.warn('Connection lost to a Evaluation Kernel');
+              //server.kernel = undefined;
+              server.kernel.connected = false;
+
+              server.emitt(ev, 'True', 'WebSocketLost');
             }; 
         }
 
@@ -204,10 +269,19 @@ Script[opts__] := With[{},
     </script>
 ] 
 
+destructor[notebook_, secret_, __] := With[{},
+    Echo["Notebook.wlx >> Destroy"];
+    
+    (* /* clean up secret and all handlers created */ *)
+    EventRemove[secret];
+    (* /* make sure that WebSocketQ flag is removed */ *)
+    notebook["WebSocketQ"] = False;
+];
+
 (* /*  Exstension API */  *)
 (* /*  Prolog, Epilog, Mesis, EventHandler */  *)
 
-Component[OptionsPattern[]] := Module[{
+Component[OptionsPattern[]] := With[{
     secret = OptionValue["Secret"], 
     notebook = OptionValue["Notebook"], 
     event = OptionValue["Event"],
@@ -235,7 +309,13 @@ Component[OptionsPattern[]] := Module[{
         "Load" -> Function[Null,
             Print["Notebook is about to be shown"];
 
-            (* /* Check if Kernel is connected */ *)
+            (* /* Destructor */ *)
+            With[{socket = EventClone[$Client]},
+                EventHandler[socket, {"Closed" -> Function[Null,
+                    EventRemove[socket];
+                    destructor[notebook, secret, parameters, extensions];
+                ]}];
+            ];
 
             (* /* Add all listeners to a **notebook** */ *)
             addListeners[notebook, secret, $Client, parameters, extensions];
@@ -244,13 +324,26 @@ Component[OptionsPattern[]] := Module[{
             WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
 
             (* /* Establish WS Connection to a Kernel (if available) */ *)
-            establishWSLink[notebook, $Client];
+            checkWSLink[notebook, $Client, secret];
 
             (* /* Restore cells */ *)
             restoreCells[notebook, secret, $Client, parameters, extensions];
 
             (*/* finish */*)
             EventFire[event, "Loaded", notebook];
+        ],
+
+        "WebSocketConnected" -> Function[Null,
+            Echo["Notebook.wlx >> WebSocket link to evaluation Kernel was established"];
+            notebook["WebSocketQ"] = True;
+        ],
+
+        "WebSocketLost" -> Function[Null,
+            Echo["Notebook.wlx >> WebSocket link to evaluation Kernel was LOST"];
+            notebook["WebSocketQ"] = False;
+
+            (* /* reset a preliminary link */ *)
+            WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
         ],
 
         (* /* When a user focuses on a notebook */ *)
@@ -335,7 +428,7 @@ Component[OptionsPattern[]] := Module[{
             ]
         ],        
 
-        "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, kernels, $Client, modals, parameters, extensions]],
+        "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
         else_String :> ExternalEventHandlers[else]
     }];

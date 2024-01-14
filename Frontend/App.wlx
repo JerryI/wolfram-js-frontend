@@ -17,7 +17,7 @@ Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 Views            = ImportComponent["Views.wl"];
 Loader           = ImportComponent["Loader.wl"];
 
-{loadKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
+{deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
 createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
@@ -73,7 +73,7 @@ App[request_] := With[{
             <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 flex">
               <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>  
             </div>
-            <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel}/>
+            <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel} OnExit={deinitKernel}/>
             <Sidebar Parameters={GlobalParameters} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300"></div>
             <div class="px-4 pb-2 pt-1 flex flex-row">

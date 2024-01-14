@@ -15,9 +15,18 @@ initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}]},
   kernel["Container"] = StandardEvaluator`Container[kernel](*`*);
   kernel["ContainerReadyQ"] = True;
 
+  kernel["State"] = "Initialized";
+
   With[{hash = kernel["Hash"]},
-    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "Initialization", "Complete" ]; ];
+    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
   ];
+]
+
+deinitializeKernel[kernel_] := With[{},
+  Echo["Cleaning up..."];
+
+  kernel["ContainerReadyQ"] = False;
+  kernel["WebSocket"] = .;
 ]
 
 wsStartListerning[kernel_, port_] := With[{},
@@ -53,4 +62,4 @@ wsStartListerning[kernel_, port_] := With[{},
 
 End[];
 
-{Null, JerryI`Notebook`KernelUtils`initializeKernel}
+{JerryI`Notebook`KernelUtils`deinitializeKernel, JerryI`Notebook`KernelUtils`initializeKernel}

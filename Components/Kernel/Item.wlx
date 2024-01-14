@@ -59,7 +59,7 @@ With[{kernel = kernel},
 Status = Switch[
    kernel["State"],
 
-   "Connected",
+   "Initialized",
       "rgb(74 222 128)",
    "Starting",
       "rgb(250 204 21)",
@@ -130,7 +130,7 @@ Status = Switch[
                state_field.style.backgroundColor = 'rgb(248 113 113)';
                break;
 
-            case 'Connected':
+            case 'Initialized':
                state_field.style.backgroundColor = 'rgb(74 222 128)'; 
                break;               
          

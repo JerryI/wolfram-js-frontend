@@ -1,7 +1,7 @@
 Status2Color[s_] := Switch[
     s,
  
-    "Connected",
+    "Initialized",
        "rgb(74 222 128)",
     "Starting",
        "rgb(250 204 21)",
