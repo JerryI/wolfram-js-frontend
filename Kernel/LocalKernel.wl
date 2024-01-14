@@ -33,7 +33,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Print["Ok!"];
 ]
 
-CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "Port"->RandomInteger[{25400, 66000}], "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "Host"->"127.0.0.1", "Port"->RandomInteger[{25400, 66000}], "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p},
     LinkWrite[lnk, Unevaluated[ pp // Uncompress // ReleaseHold ] ]
@@ -42,9 +42,10 @@ HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p
 HoldRemotePacket[any_] := any // Hold // Compress // HeldRemotePacket
 SetAttributes[HoldRemotePacket, HoldFirst]
 
-tcpConnect[port_, o_LocalKernelObject] := With[{uid = o["Hash"], p = o["Port"], addr = "127.0.0.1:"<>ToString[port]},
+tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"], p = o["Port"], addr = "127.0.0.1:"<>ToString[port]},
     (  
         Print["Establishing LTP link..."];
+        Internal`Kernel`Host = host;
         Internal`Kernel`Stdout = SocketConnect[addr] // LTPTransport;
         Module[{tcp},
             tcp = TCPServer[];
@@ -72,7 +73,7 @@ restart[k_LocalKernelObject] := With[{},
     k["State"] = "Stopped";
     EventFire[k, "State", k["State"] ];
     
-    start[k];
+    SetTimeout[start[k], 1500];
 ]
 
 setProp[any_[sym_], assoc_] := (
@@ -135,6 +136,9 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`TCPServer`"] ];
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Events`"] ];
+        LinkWrite[link, EnterTextPacket["<<KirillBelov`WebSocketHandler`"] ];
+        LinkWrite[link, EnterTextPacket["<<JerryI`Misc`WLJS`Transport`"] ];
+        LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
     ];
 
@@ -169,7 +173,7 @@ LocalKernelObject /: Kernel`Submit[k_LocalKernelObject, t_] := With[{ev = t["Eva
 
 LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_] := With[{},
     With[{
-        value = expr // Once // Hold // Compress // HeldRemotePacket
+        value = expr // Hold // Compress // HeldRemotePacket
     },
         LinkWrite[k["Link"], value]
     ]

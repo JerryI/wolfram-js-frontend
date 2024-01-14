@@ -26,6 +26,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Notebook`Kernel`
 <<JerryI`Notebook`LocalKernel`
+<<JerryI`Notebook`MasterKernel`
 <<JerryI`Misc`Async`
 <<JerryI`Notebook`Transactions`
 
@@ -60,6 +61,8 @@ Check[
   Echo["Failed to load some of the packages (see logs)"];
   Exit[0]
 ];  
+
+JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
 (* Entrypoint of an app *)
 App := ImportComponent["Frontend/App.wlx"];

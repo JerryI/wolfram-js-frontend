@@ -5,9 +5,10 @@
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> {"dist/kernel.js", "src/boxes.js"}, 
-     "frontend" -> {"src/Frontend.wl"}, "kernel" -> 
-      {"src/Boxes.wl", "src/StandardForm.wl"}, "styles" -> "src/styles.css", 
+    <|"js" -> {"dist/kernel.js", "src/boxes.js", "src/objects.js"}, 
+     "frontend" -> {"src/Frontend.wl", "src/FrontendObject.wl"}, 
+     "kernel" -> {"src/StandardForm.wl", "src/FrontendObject.wl", 
+       "src/Boxes.wl"}, "styles" -> "src/styles.css", 
      "autocomplete" -> "src/autocomplete.js", "header" -> "src/header.wsp", 
      "priority" -> -10, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 
@@ -26,7 +27,7 @@ https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-editor", "defaultPackage" -> True|>, 
  "wljs-graphics3d-threejs" -> <|"name" -> "wljs-graphics3d-threejs", 
-   "version" -> "0.2.8", "description" -> 
+   "version" -> "0.3.0", "description" -> 
     "A ThreeJS implementation of Mathematica's Graphics3D", 
    "scripts" -> <|"start" -> "cd example && parcel serve ./*.html --dist-dir \
 ./dev-bundle/ --no-cache --no-hmr", "build-examples" -> "cd example && parcel \
@@ -62,14 +63,13 @@ Mathematica-ThreeJS-graphics-engine/.git ../.git && cd .. && rm -rf _temp"|>,
      "process" -> "^0.11.10", "puppeteer" -> "^15.4.0", 
      "rollup" -> "^2.70.0", "rollup-plugin-combine" -> "^2.1.1", 
      "rollup-plugin-livereload" -> "^2.0.5", "rollup-plugin-serve" -> 
-      "^2.0.2", "simple-git" -> "^3.10.0", "three" -> "^0.148.0", 
-     "yargs" -> "^17.5.1"|>, "dependencies" -> <|"dat.gui" -> "^0.7.9", 
-     "node-sass" -> "^9.0.0", "three-gpu-pathtracer" -> "^0.0.16", 
-     "three-mesh-bvh" -> "^0.6.8"|>, "enabled" -> True, 
-   "path" -> "wljs-graphics3d-threejs", "peerDependencies" -> 
-    <|"three" -> ">=0.139.2", "xatlas-web" -> "^0.1.0"|>, 
-   "defaultPackage" -> True|>, "wljs-graphics-d3" -> 
-  <|"name" -> "wljs-graphics-d3", "version" -> "0.5.8", 
+      "^2.0.2", "simple-git" -> "^3.10.0", "yargs" -> "^17.5.1"|>, 
+   "dependencies" -> <|"dat.gui" -> "^0.7.9", "node-sass" -> "^9.0.0", 
+     "three-gpu-pathtracer" -> "^0.0.16", "three-mesh-bvh" -> "^0.6.8"|>, 
+   "enabled" -> True, "path" -> "wljs-graphics3d-threejs", 
+   "peerDependencies" -> <|"three" -> ">=0.139.2", 
+     "xatlas-web" -> "^0.1.0"|>, "defaultPackage" -> True|>, 
+ "wljs-graphics-d3" -> <|"name" -> "wljs-graphics-d3", "version" -> "0.6.1", 
    "description" -> "D3 implementation of Mathematica's Graphics", 
    "scripts" -> <|"build" -> "node --max-old-space-size=8192 \
 ./node_modules/.bin/rollup --config rollup.config.mjs", 

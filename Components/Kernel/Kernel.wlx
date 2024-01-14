@@ -5,30 +5,22 @@ removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
 SetAttributes[appendHeld, HoldFirst];
 SetAttributes[removeHeld, HoldFirst];
 
-startKernel[kernel_, KernelList_] := Module[{},
+
+addListeners[kernel_, KernelList_, initKernel_] := Module[{},
   appendHeld[KernelList, kernel];
   EventHandler[EventClone[kernel], {
     "Exit" -> Function[Null, removeHeld[KernelList, kernel] ],
-    "Connected" -> Function[Null, 
-
-      With[{p = Import[FileNameJoin[{"Packages", #}], {"Package", "HeldExpressions"}]},
-        Echo[StringJoin["Loading into Kernel... ", #] ];
-        Kernel`Init[kernel,  ReleaseHold /@ p; ](*`*);
-      ] &/@ Includes["kernel"];
-
-      kernel["Container"] = StandardEvaluator`Container[kernel](*`*);
-      kernel["ContainerReadyQ"] = True;
-      EventFire[kernel, "Initialization", "Complete"];
-    ]
+    "Connected" -> Function[Null, initKernel[kernel]]
   }];
 ];
 
-Component[OptionsPattern[]] := With[{Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+Component[OptionsPattern[]] := With[{initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
   EventHandler[ButtonId, Function[Null,
     With[{client = $Client, m = Messager, kernel = LocalKernel["Name"->RandomWord[]]},
         Print["Working!"];
+        Print[initKernel];
       
-        startKernel[kernel, KernelList];
+        addListeners[kernel, KernelList, initKernel];
 
         EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->m, "Kernel"->kernel, "Client"->client] |> ];
         kernel // Kernel`Start;
@@ -84,6 +76,6 @@ Component[OptionsPattern[]] := With[{Controller = CreateUUID[], ButtonId = Creat
   }
 ];
 
-Options[Component] = {"Messager"->""}
+Options[Component] = {"Messager"->"", "KernelList"->{}, "OnConnected"->Print, "OnStart"->Print}
 
 Component

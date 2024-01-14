@@ -890,9 +890,14 @@ app.whenReady().then(() => {
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
         if (bonds.width < 800) {
-            windows.focused.win.setBounds({ width: 800 , animate: true});
+            if (windows.focused.win.previousWidth) {
+                windows.focused.win.setBounds({ width: windows.focused.win.previousWidth , animate: true}, true);
+            } else {
+                windows.focused.win.setBounds({ width: 800 , animate: true}, true);
+            }
         } else {
-            windows.focused.win.setBounds({ width: 600 , animate: true});
+            windows.focused.win.previousWidth = bonds.width;
+            windows.focused.win.setBounds({ width: 600 , animate: true}, true);
         }
     });
 

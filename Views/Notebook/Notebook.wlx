@@ -44,6 +44,52 @@ restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions_
     ]
 ];
 
+establishWSLink[notebook_, client_] := With[{},
+    If[TrueQ[notebook["Evaluator"]["Kernel"]["ContainerReadyQ"]] && TrueQ[notebook["Evaluator"]["Kernel"]["ReadyQ"]],
+        Echo["establishWSLink >> connecting ..."];
+        WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"] ] (*`*), client];
+    ,
+        Echo["establishWSLink >> No Kernel available... subscribing to it"];
+        EventHandler[notebook, {"AquairedKernel" -> Function[Null,
+            WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"] ] (*`*), client];
+            EventRemove[notebook, "AquairedKernel"];
+        ]}];
+    ];
+];
+
+checkKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
+    Print["requesting modal...."];
+    With[{request = CreateUUID[]},
+        EventHandler[request, {
+            "Success" -> Function[data,
+                notebook["Evaluator"] = data["Container"];
+
+                If[TrueQ[data["ContainerReadyQ"]],
+                    EventFire[notebook, "AquairedKernel", True];
+                    Success[Null];
+                ,
+                    WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
+                ];
+                
+                EventRemove[request];
+            ],
+            
+            "Error" -> Function[error,
+                        WebUISubmit[Global`Alert[error](*`*), client];
+                        EventRemove[request];
+            ],
+            
+            _ -> Function[Null,
+                        Print["Cancelled"];
+                        EventRemove[request];
+            ]
+        }];
+        
+        Print["fire!"];
+        EventFire[modals, "SuggestKernel", <|"Client"->client, "Callback"->request, "Notebook"->notebook, "Kernels"->kernels|>];
+    ];
+];
+
 evaluateCell[celluid_, notebook_, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
     With[{cell = CellObj`HashMap[celluid] (*`*)},
         If[cell["Type"] == "Output",
@@ -59,44 +105,19 @@ evaluateCell[celluid_, notebook_, kernels_, client_, modals_, parameters_, exten
     Print["Evaluate"];
 
     (*/* Check kernel and evaluator */*)
-    If[MissingQ[notebook["Evaluator"]] || (Length[ReleaseHold @ kernels] == 0) || !TrueQ[notebook["Evaluator"]["Kernel"]["ContainerReadyQ"]],
+    If[MissingQ[notebook["Evaluator"]] || (Length[ReleaseHold @ kernels] == 0) || !TrueQ[notebook["Evaluator"]["Kernel"]["ContainerReadyQ"]] || !TrueQ[notebook["Evaluator"]["Kernel"]["ReadyQ"]],
         If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
         
-        Print["requesting modal...."];
-        With[{request = CreateUUID[]},
-            EventHandler[request, {
-                "Success" -> Function[data,
-                    notebook["Evaluator"] = data["Container"];
-               
-                    If[TrueQ[data["ContainerReadyQ"]],
-                        With[{cell = CellObj`HashMap[celluid] (*`*)},
-                            If[cell["State"] != "Idle",
-                                WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
-                            ,
-                                cell // CellObj`Evaluate;
-                            ]
-                        ];
-                    ,
-                        WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
-                    ];
-                    
-                    EventRemove[request];
-                ],
-                
-                "Error" -> Function[error,
-                            WebUISubmit[Global`Alert[error](*`*), client];
-                            EventRemove[request];
-                ],
-                
-                _ -> Function[Null,
-                            Print["Cancelled"];
-                            EventRemove[request];
-                ]
-            }];
-            
-            Print["fire!"];
-            EventFire[modals, "SuggestKernel", <|"Client"->client, "Callback"->request, "Notebook"->notebook, "Kernels"->kernels|>];
-        ];
+        checkKernel[notebook, kernels, modals, client, Function[Null,
+            With[{cell = CellObj`HashMap[celluid] (*`*)},
+                        If[cell["State"] != "Idle",
+                            WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                        ,
+                            Echo["Success!"];
+                            cell // CellObj`Evaluate;
+                        ]
+            ];
+        ]];
     ,
         (*/* Kernel looks conected and etc */*)
         Print["ok!"];
@@ -118,6 +139,35 @@ Script[opts__] := With[{},
         core.UINotebook = async (args, env) => {
             const type = await interpretate(args[0], env);
             core.UINotebook[type](args.slice(1), env);
+        }
+
+        core.UINotebook.CreateServer = async (args, env) => {
+            server.kernel = new Server('Evaluation Kernel');
+            console.warn("server.kernel :: created, waiting for initialization...");
+        }
+
+        core.UINotebook.WSConnect = async (args, env) => {
+            const port = await interpretate(args[0], env);
+
+            const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
+
+            socket.onopen = function(e) {
+              console.log("[open]");
+              server.kernel.init({socket: socket});
+            }; 
+
+            socket.onmessage = function(event) {
+              //create global context
+              //callid
+              const uid = Math.floor(Math.random() * 100);
+              var global = {call: uid};
+              interpretate(JSON.parse(event.data), {global: global});
+            };
+
+            socket.onclose = function(event) {
+              console.log(event);
+              alert('Connection lost to a Evaluation Kernel');
+            }; 
         }
 
         core.UINotebook.Morph = async (args, env) => {
@@ -181,13 +231,22 @@ Component[OptionsPattern[]] := Module[{
     
     EventHandler[secret, {
         (* /* Add listeners and load cells */ *)
+
         "Load" -> Function[Null,
             Print["Notebook is about to be shown"];
-            (* /* Assign socket to a notebook 
-            Notebook`Sockets`Assign[notebook, $Client]; */ *)
+
+            (* /* Check if Kernel is connected */ *)
 
             (* /* Add all listeners to a **notebook** */ *)
             addListeners[notebook, secret, $Client, parameters, extensions];
+
+            (* /* Create a preliminary link to a Kernel */ *)
+            WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+
+            (* /* Establish WS Connection to a Kernel (if available) */ *)
+            establishWSLink[notebook, $Client];
+
+            (* /* Restore cells */ *)
             restoreCells[notebook, secret, $Client, parameters, extensions];
 
             (*/* finish */*)
