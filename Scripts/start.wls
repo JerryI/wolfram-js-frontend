@@ -22,17 +22,23 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Notebook`;
 <<JerryI`Notebook`Evaluator`;
-<<JerryI`Notebook`FrontendObject`;
+
+<<JerryI`Notebook`AppExtensions`;
+
+(* WLJS transport *)
+<<JerryI`Misc`WLJS`Transport`
+
+(* event system  *)
+<<JerryI`Misc`Events`
+<<JerryI`Misc`Events`Promise`
+
+<<JerryI`Misc`Async`
 
 <<JerryI`Notebook`Kernel`
 <<JerryI`Notebook`LocalKernel`
 <<JerryI`Notebook`MasterKernel`
-<<JerryI`Misc`Async`
 <<JerryI`Notebook`Transactions`
 
-(* event system & WLJS transport *)
-<<JerryI`Misc`Events`
-<<JerryI`Misc`WLJS`Transport`
 
 <<KirillBelov`CSockets`EventsExtension`
 
@@ -44,6 +50,8 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 (* WebUI Toolkit *)
 <<JerryI`WLX`WebUI`
 
+<<CodeParser`
+
 LoadPluginsConfiguration["Root" -> Directory[]];
 LocalKernel`LTPServerStart[];
 
@@ -53,14 +61,17 @@ Includes["jsmodule"];
 Includes["js"];
 Includes["frontend"];
 
+EventHandler[AppExtensions`AppEvents // EventClone, {
+ any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
+}];
+
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
-Check[
-  Get[FileNameJoin[{Directory[], "Packages",  UniversalPathConverter[#]}]] &/@ Includes["frontend"]
-, 
-  Echo["Failed to load some of the packages (see logs)"];
-  Exit[0]
-];  
+
+  If[FailureQ[Get[FileNameJoin[{Directory[], "Packages",  UniversalPathConverter[#]}] ] ],
+    Echo["Failed to load some of the packages (see logs)"];
+    Exit[0]
+  ] &/@ Includes["frontend"]; 
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
@@ -131,7 +142,7 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"]], wcp@#&];
 SetAttributes[Offload, HoldFirst];
 
 (* start an app *)
-App[Null];
+App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 
 StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
 

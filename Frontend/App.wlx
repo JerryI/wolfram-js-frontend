@@ -1,4 +1,6 @@
-http        =  $Server["HTTPHandler"];
+http                      =  $Options["HTTPHandler"];
+AppEvent                  =  $Options["AppEvent"];
+ExtensionTemplates        =  $Options["ExtensionTemplates"];
 
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
@@ -15,17 +17,18 @@ Alert           = ImportComponent["Components/Alert.wlx"];
 Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 
 Views            = ImportComponent["Views.wl"];
-Loader           = ImportComponent["Loader.wl"];
 
+{saveNotebook, loadNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
 createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
-  With[{result = JerryI`Notebook`Loader`Save[path](*`*)},
+  With[{result = saveNotebook[path, "Events"->AppEvent]},
     If[FailureQ[result],
       EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
     ,
       Print[result];
+      EventFire[AppEvent, Notebook["OnCreate"], result];
       EventFire[GlobalMessanger, "Log", "Created! Please wait"];
       Print["Redirect"];
       Print[result["Path"]];
@@ -51,9 +54,24 @@ App[request_] := With[{
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
         Path = If[StringTrim[request["Path"]] == "/", Directory[], URLDecode @ StringDrop[request["Path"],1] ]
     },
+
+    (* /* destructor */ *)
+    With[{socket = Null},
+    
+    ];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalMessanger], {
+      any_ :> (EventFire[AppEvent, Messanger[any], #]&)
+    }];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalControls], {
+      any_ :> (EventFire[AppEvent, any, #]&)
+    }];
    
     (*/* Hard logic */*)
-    EventHandler[GlobalControls, {
+    EventHandler[EventClone[GlobalControls], {
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];
@@ -96,7 +114,7 @@ App[request_] := With[{
                 <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={GlobalControls} />         
               </div>
               <Notifications MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} Messager={GlobalMessanger} Controls={GlobalControls}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messager={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
             </div> 
           </div>
         </div>

@@ -56,6 +56,7 @@ CreateType[Notebook, initNotebook, {"FrontendObjects"-><||>, "Cells"->{}}]
 
 Notebook /: EventHandler[n_Notebook, opts__] := EventHandler[n["Hash"], opts] 
 Notebook /: EventFire[n_Notebook, opts__] := EventFire[n["Hash"], opts]
+Notebook /: EventClone[n_Notebook] := EventClone[n["Hash"]]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
 Notebook`Serialize[n_Notebook] := Module[{props},
@@ -119,6 +120,7 @@ CreateType[CellObj, initCell, {"Notebook"->Null, "UID"->Null, "Data"->"", "State
 
 CellObj /: EventHandler[n_CellObj, opts__] := EventHandler[n["Hash"], opts] 
 CellObj /: EventFire[n_CellObj, opts__] := EventFire[n["Hash"], opts]
+CellObj /: EventClone[n_CellObj] := EventClone[n["Hash"] ]
 CellObj /: EventRemove[n_CellObj, opts__] := EventRemove[n["Hash"], opts] 
 
 Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{

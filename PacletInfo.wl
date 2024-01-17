@@ -27,7 +27,9 @@ PacletObject[
           {"KirillBelov`LTP`", "LTP.wl"},
           {"KirillBelov`LTP`JerryI`Events`", "LTPEvents.wl"},
           {"JerryI`Notebook`FrontendObject`", "FrontendObject.wl"},
-          {"JerryI`Notebook`MasterKernel`", "MasterKernel.wl"}
+          {"JerryI`Notebook`MasterKernel`", "MasterKernel.wl"},
+
+          {"JerryI`Notebook`AppExtensions`", "AppExtensions.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

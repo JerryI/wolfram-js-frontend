@@ -1,4 +1,16 @@
-Begin["JerryI`Notebook`KernelUtils`"];
+BeginPackage["JerryI`Notebook`KernelUtils`", {
+  "JerryI`Notebook`Evaluator`", 
+  "JerryI`Notebook`Packages`", 
+  "JerryI`Notebook`Kernel`", 
+  "JerryI`Misc`Events`",
+  "KirillBelov`CSockets`",
+  "KirillBelov`Internal`",
+  "KirillBelov`TCPServer`",
+  "KirillBelov`WebSocketHandler`",
+  "JerryI`Misc`WLJS`Transport`"
+}];
+
+Begin["`Internal`"];
 
 initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}]},
   Print["Init Kernel!!!"];
@@ -32,7 +44,7 @@ deinitializeKernel[kernel_] := With[{},
 wsStartListerning[kernel_, port_] := With[{},
     Kernel`Init[kernel,  (  
         Print["Establishing WS link..."];
-        $DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
+        Global`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
         Module[{wcp, ws},
           wcp = TCPServer[];
           wcp["CompleteHandler", "WebSocket"] = WebSocketPacketQ -> WebSocketPacketLength;
@@ -62,4 +74,6 @@ wsStartListerning[kernel_, port_] := With[{},
 
 End[];
 
-{JerryI`Notebook`KernelUtils`deinitializeKernel, JerryI`Notebook`KernelUtils`initializeKernel}
+EndPackage[];
+
+{JerryI`Notebook`KernelUtils`Internal`deinitializeKernel, JerryI`Notebook`KernelUtils`Internal`initializeKernel}

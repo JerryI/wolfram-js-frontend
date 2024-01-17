@@ -187,86 +187,89 @@ evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, par
     ];
 ];
 
-Script[opts__] := With[{},
-    <script type="module">
-        core.UINotebook = async (args, env) => {
-            const type = await interpretate(args[0], env);
-            core.UINotebook[type](args.slice(1), env);
-        }
-
-        core.UINotebook.CreateServer = async (args, env) => {
-            server.kernel = new Server('Evaluation Kernel');
-            console.warn("server.kernel :: created, waiting for initialization...");
-        }
-
-        core.UINotebook.WSConnect = async (args, env) => {
-            const port = await interpretate(args[0], env);
-            const ev = await interpretate(args[1], env);
-
-            if (server.kernel.connected) {
-                console.warn('A request to connect was rejected, since socket is still alive');
-                return;
+Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
+    <div>
+        <script type="module">
+            core.UINotebook = async (args, env) => {
+                const type = await interpretate(args[0], env);
+                core.UINotebook[type](args.slice(1), env);
             }
 
-            server.kernel.connected = true;
-            const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
-            
-            socket.onopen = function(e) {
-              console.log("[open]");
-              server.kernel.init({socket: socket});
-              server.emitt(ev, 'True', 'WebSocketConnected');
-            }; 
+            core.UINotebook.CreateServer = async (args, env) => {
+                server.kernel = new Server('Evaluation Kernel');
+                console.warn("server.kernel :: created, waiting for initialization...");
+            }
 
-            socket.onmessage = function(event) {
-              //create global context
-              //callid
-              const uid = Math.floor(Math.random() * 100);
-              var global = {call: uid};
-              interpretate(JSON.parse(event.data), {global: global});
-            };
+            core.UINotebook.WSConnect = async (args, env) => {
+                const port = await interpretate(args[0], env);
+                const ev = await interpretate(args[1], env);
 
-            socket.onclose = function(event) {
-              console.log(event);
-              console.warn('Connection lost to a Evaluation Kernel');
-              //server.kernel = undefined;
-              server.kernel.connected = false;
+                if (server.kernel.connected) {
+                    console.warn('A request to connect was rejected, since socket is still alive');
+                    return;
+                }
 
-              server.emitt(ev, 'True', 'WebSocketLost');
-            }; 
-        }
+                server.kernel.connected = true;
+                const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
 
-        core.UINotebook.Morph = async (args, env) => {
-            const uid = await interpretate(args[0], env);
-            const template = await interpretate(args[1], env);
-            const props = await interpretate(args[2], env);
+                socket.onopen = function(e) {
+                  console.log("[open]");
+                  server.kernel.init({socket: socket});
+                  server.emitt(ev, 'True', 'WebSocketConnected');
+                }; 
 
-            CellWrapper.morph(uid, template, props);
-        }  
+                socket.onmessage = function(event) {
+                  //create global context
+                  //callid
+                  const uid = Math.floor(Math.random() * 100);
+                  var global = {call: uid};
+                  interpretate(JSON.parse(event.data), {global: global});
+                };
 
-        core.UINotebook.RemoveCell = async (args, env) => {
-            const uid = await interpretate(args[0], env);
-            const ev = await interpretate(args[1], env);
+                socket.onclose = function(event) {
+                  console.log(event);
+                  console.warn('Connection lost to a Evaluation Kernel');
+                  //server.kernel = undefined;
+                  server.kernel.connected = false;
 
-            CellWrapper.remove(uid, ev);
-        }        
+                  server.emitt(ev, 'True', 'WebSocketLost');
+                }; 
+            }
 
-        core.UINotebook.NewCell = async (args, env) => {
-            const template = await interpretate(args[0], env);
-            const store    = await interpretate(args[1], env);
-            const list     = await interpretate(args[2], env);
+            core.UINotebook.Morph = async (args, env) => {
+                const uid = await interpretate(args[0], env);
+                const template = await interpretate(args[1], env);
+                const props = await interpretate(args[2], env);
 
-            const ev     = await interpretate(args[3], env);
+                CellWrapper.morph(uid, template, props);
+            }  
 
-            const opts   = await core._getRules(args, env);
+            core.UINotebook.RemoveCell = async (args, env) => {
+                const uid = await interpretate(args[0], env);
+                const ev = await interpretate(args[1], env);
 
-            new CellWrapper(template, store, list, ev, opts);
-        };;
-        <CellGeneratorScript/>;;
-        <EvaluationBarScript/>;;
-        <ControlsScript/>;;
-        <HrScript/>;;
-        <DropdownScript/>;;
-    </script>
+                CellWrapper.remove(uid, ev);
+            }        
+
+            core.UINotebook.NewCell = async (args, env) => {
+                const template = await interpretate(args[0], env);
+                const store    = await interpretate(args[1], env);
+                const list     = await interpretate(args[2], env);
+
+                const ev     = await interpretate(args[3], env);
+
+                const opts   = await core._getRules(args, env);
+
+                new CellWrapper(template, store, list, ev, opts);
+            };;
+            <CellGeneratorScript/>;;
+            <EvaluationBarScript/>;;
+            <ControlsScript/>;;
+            <HrScript/>;;
+            <DropdownScript/>;;
+        </script>
+        <ExtensionTemplateInjection Template={"NotebookScript"}/>
+    </div>
 ] 
 
 destructor[notebook_, secret_, __] := With[{},
@@ -310,8 +313,9 @@ Component[OptionsPattern[]] := With[{
             Print["Notebook is about to be shown"];
 
             (* /* Destructor */ *)
-            With[{socket = EventClone[$Client]},
+            With[{socket = EventClone[Global`$Client(*`*)]},
                 EventHandler[socket, {"Closed" -> Function[Null,
+                    Echo[">> SOCKET CLOSED!!!"];
                     EventRemove[socket];
                     destructor[notebook, secret, parameters, extensions];
                 ]}];
@@ -320,17 +324,21 @@ Component[OptionsPattern[]] := With[{
             (* /* Add all listeners to a **notebook** */ *)
             addListeners[notebook, secret, $Client, parameters, extensions];
 
-            (* /* Create a preliminary link to a Kernel */ *)
-            WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+            (* /* controllers events */ *)
+            Then[EventFire[notebook, "OnBeforeLoad", <|"Client" -> $Client|>], Function[Null,
+                (* /* Create a preliminary link to a Kernel */ *)
+                WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+    
+                (* /* Establish WS Connection to a Kernel (if available) */ *)
+                checkWSLink[notebook, $Client, secret];
+    
+                (* /* Restore cells */ *)
+                restoreCells[notebook, secret, $Client, parameters, extensions];
+    
+                (*/* finish */*)
+                EventFire[event, "Loaded", notebook];
+            ]];
 
-            (* /* Establish WS Connection to a Kernel (if available) */ *)
-            checkWSLink[notebook, $Client, secret];
-
-            (* /* Restore cells */ *)
-            restoreCells[notebook, secret, $Client, parameters, extensions];
-
-            (*/* finish */*)
-            EventFire[event, "Loaded", notebook];
         ],
 
         "WebSocketConnected" -> Function[Null,
@@ -364,6 +372,14 @@ Component[OptionsPattern[]] := With[{
         ],
 
         "Save" -> Function[payload,
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
+                Print[tt];
+                
+                Then[tt, Function[Null,
+                    Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                ]];
+            ];
+
             (* /* Notebook`Loader`Save[notebook];
             "Saved" >> log; */ *)
         ],    
@@ -430,7 +446,7 @@ Component[OptionsPattern[]] := With[{
 
         "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
-        else_String :> ExternalEventHandlers[else]
+        else_String :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
     }];
 
     With[{nid = notebook["Hash"]},
@@ -455,6 +471,7 @@ Component[OptionsPattern[]] := With[{
 ]
 
 Options[Component] = {"Parameters"->Null, "Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
+Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
 
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 

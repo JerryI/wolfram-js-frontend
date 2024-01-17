@@ -1,7 +1,11 @@
-Begin["JerryI`Notebook`Loader`"];
+BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook`"}];
+    
+    Begin["`Internal`"];
+
     cache = <||>;
 
-    JerryI`Notebook`Loader`Save[path_String, notebook_Notebook] := Module[{dir = path},
+    (* Sucks. Save is in System context, I cannot use it here without specifying the context *)
+    save[path_String, notebook_Notebook, opts: OptionsPattern[] ] := Module[{dir = path},
         If[DirectoryQ[dir],
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
@@ -22,22 +26,24 @@ Begin["JerryI`Notebook`Loader`"];
         notebook
     ];
 
-    JerryI`Notebook`Loader`Save[notebook_Notebook] := With[{},
+    save[notebook_Notebook, opts: OptionsPattern[] ] := With[{},
         If[ StringQ[notebook["Path"] ],
-            JerryI`Notebook`Loader`Save[notebook["Path"], notebook]
+            save[notebook["Path"], notebook]
         ,
             Echo["Loader >> Provide PATH!"];
             $Failed
         ]
     ];
 
-    JerryI`Notebook`Loader`Save[path_String] := With[{notebook = Notebook[]},
+    save[path_String, opts: OptionsPattern[] ] := With[{notebook = Notebook[]},
         Echo["Loader >> Created new notebook"];
+        EventFire[OptionValue["Events"], "Loader:NewNotebook", notebook];
+
         CellObj["Notebook" -> notebook, "Data" -> ""];
-        JerryI`Notebook`Loader`Save[path, notebook ]
+        save[path, notebook, opts]
     ];
 
-    Load[path_String] := Module[{data},
+    load[path_String, opts: OptionsPattern[] ] := Module[{data},
         If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed] ];
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
@@ -57,6 +63,7 @@ Begin["JerryI`Notebook`Loader`"];
             cache[path] = notebook;
 
             Echo["Loader >> Done!"];
+            EventFire[OptionValue["Events"], "Loader:LoadNotebook", notebook];
 
 
 
@@ -64,5 +71,11 @@ Begin["JerryI`Notebook`Loader`"];
         ]
     ];
 
+    Options[load] = {"Events"->"Blackhole"}
+    Options[save] = {"Events"->"Blackhole"}
 
-End[];
+    End[];
+    
+EndPackage[];
+
+{JerryI`Notebook`Loader`Internal`save, JerryI`Notebook`Loader`Internal`load}
