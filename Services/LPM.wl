@@ -65,7 +65,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
       Return[Null, Module];
     ];
 
-    If[!(NumericQ[PingTime["github.com"][[1]]] // TrueQ),
+    If[FailureQ[ URLResponseTime["https://github.com"] ],
       Echo["LPM >> PASSIVE MODE. Github is not available"];
       Map[pacletDirectoryLoad] @  Map[DirectoryName] @  FileNames["PacletInfo.wl", {#}, {2}]& @ FileNameJoin[{projectDir, "wl_packages"}];
       Return[Null, Module];  
@@ -78,7 +78,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
     Echo["LPM >> checking cached"];
     cache = CacheLoad[projectDir];
 
-    If[FailureQ[PingTime["github.com"]],
+    If[FailureQ[ URLResponseTime["https://github.com"] ] ,
       Echo["LPM >> ERROR! no internet connection to github.com!"];
       
       If[!MissingQ[cache], 
