@@ -125,6 +125,4 @@ Frontend uses its own package/plugin system. It doent require any software insta
 ## License
 GNU GPLv3
 
-__NON-COMMERCIAL__
-
 
