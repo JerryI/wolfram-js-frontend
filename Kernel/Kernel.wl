@@ -36,6 +36,7 @@ Kernel`Start[k_] := Print["Dummy start"];
 Kernel`Restart[k_] := Print["Restart start"];
 Kernel`Unlink[k_] := Print["Unlink start"];
 
+Kernel`Abort[k_] := Print["Dymmu abort"];
 
 End[]
 EndPackage[]

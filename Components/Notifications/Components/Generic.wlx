@@ -20,7 +20,7 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     ]
 ];
 
-Component["Save", Message_, opts___] := With[{Uid = CreateUUID[]},
+Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
        <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
        <div class="p-3">

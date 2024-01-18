@@ -15,9 +15,9 @@ KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
 
 ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
 
-addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
+addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
-    EventHandler[notebook, {
+    EventHandler[clonedEvent, {
         "New Cell" -> Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
                 WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell] , list, secret], client]
@@ -30,6 +30,14 @@ addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions_
             ];            
         ]
     }];
+
+    With[{socket = EventClone[client]},
+        EventHandler[socket, {"Closed" -> Function[Null,
+            EventRemove[socket];
+            EventRemove[clonedEvent];
+            Echo["addListeners >> destroed listeners"];        
+        ]}];
+    ];
 ];
 
 restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
@@ -100,10 +108,20 @@ checkWSLink[notebook_, client_, event_String] := Module[{},
 
         Echo["checkWSLink >> no Kernel available... >> subscribing"];
 
-        EventHandler[notebook, {"AquairedKernel" -> Function[Null,
-            EventRemove[notebook, "AquairedKernel"];
-            checkWSLink[notebook, client, event];
-        ]}];        
+        With[{cloned = EventClone[notebook]},
+            EventHandler[cloned, {"AquairedKernel" -> Function[Null,
+                EventRemove[cloned];
+                checkWSLink[notebook, client, event];
+            ]}]; 
+            
+            With[{socket = EventClone[client]},
+                EventHandler[socket, {"Closed" -> Function[Null,
+                    EventRemove[socket];
+                    Echo["checkWSLink >> destroy"];
+                    EventRemove[cloned];
+                ]}];
+            ];
+        ];    
     ];
 ];
 
@@ -289,7 +307,6 @@ Component[OptionsPattern[]] := With[{
     notebook = OptionValue["Notebook"], 
     event = OptionValue["Event"],
     parameters = OptionValue["Parameters"],
-    controllerPort = OptionValue["ControlsPort"],
     controller     = OptionValue["Controls"],
     modals         = OptionValue["Modals"],
     log = OptionValue["Messanger"],
@@ -305,6 +322,37 @@ Component[OptionsPattern[]] := With[{
     ]
 },
 
+    EventHandler[controller // EventClone, {
+        "Save" -> Function[Null,
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
+                Print[tt];
+            
+                Then[tt, Function[Null,
+                    Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    EventFire[log, "Saved", ""];
+                ]];
+
+                (* send to GlobalMessager! *)
+            ];            
+        ],
+
+        "ChangeKernel" -> Function[Null,
+            notebook["Evaluator"] = .;
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), $Client]; Return[] ];
+            requestKernel[notebook, kernels, modals, $Client, Echo];
+        ],
+
+        "Abort" -> Function[Null,
+            If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
+                Kernel`Abort[notebook["Evaluator"]["Kernel"]] (*`*);
+                Map[Function[cell,
+                    cell["State"] = "Idle";
+                    EventFire[cell, "State", "Idle"];
+                    EventFire[log, "Aborted", ""];
+                ], Select[notebook["Cells"], (#["State"] =!= "Idle") &]];
+            ];
+        ]
+    }];
     
     EventHandler[secret, {
         (* /* Add listeners and load cells */ *)
@@ -361,28 +409,7 @@ Component[OptionsPattern[]] := With[{
 
         "CallDropdown" -> Function[data,
             Echo[data];
-        ],
-
-        "RequestObject" -> Function[uid,
-            (* /* Automatically reply with an object using $Client variable */ *)
-        ],
-
-        "RequestCachedSymbol" -> Function[uid,
-        
-        ],
-
-        "Save" -> Function[payload,
-            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
-                Print[tt];
-                
-                Then[tt, Function[Null,
-                    Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-                ]];
-            ];
-
-            (* /* Notebook`Loader`Save[notebook];
-            "Saved" >> log; */ *)
-        ],    
+        ], 
 
         "ClearOutputs" -> Function[uid,
             With[{cell = CellObj`HashMap[uid](*`*)},

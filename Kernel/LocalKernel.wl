@@ -187,5 +187,11 @@ LocalKernelObject /: Kernel`Start[k_LocalKernelObject] := start[k];
 LocalKernelObject /: Kernel`Unlink[k_LocalKernelObject] := unlink[k];
 LocalKernelObject /: Kernel`Restart[k_LocalKernelObject] := restart[k];
 
+LocalKernelObject /: Kernel`Abort[k_LocalKernelObject] := With[{},
+    LinkInterrupt[k["Link"], 3]; 
+    Print["localkernel >> aborted"];
+    LinkWrite[k["Link"], Unevaluated[$Aborted] ];     
+];
+
 End[]
 EndPackage[]

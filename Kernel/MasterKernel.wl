@@ -61,5 +61,7 @@ unlink[k_MasterKernel] := With[{},
     EventFire[k, "Exit", True ];
 ]
 
+MasterKernel /: Kernel`Abort[k_MasterKernel] := EventFire[k, "Warning", "Master Kernel cannot be aborted!"]
+
 End[]
 EndPackage[]
