@@ -9,6 +9,10 @@ Controller["Reveal", _] := Function[name,
   WebUISubmit[Global`UIOpenExplorer[FileNameSplit[URLDecode[name]]] (*`*), $Client];
 ];
 
+Controller["Window", _] := Function[name,
+  WebUISubmit[Global`UIOpenWindow[name] (*`*), $Client];
+];
+
 Component[OptionsPattern[]] := 
 With[{
     SidebarId = CreateUUID[], 
@@ -71,6 +75,14 @@ With[{
         if (window.electronAPI) {
           window.electronAPI.openFinder(JSON.stringify(filename));
         }   
+      }
+
+      core.UIOpenWindow = async (args, env) => {
+        const url = await interpretate(args[0], env);
+        const  link = document.createElement("a")
+        link.href = url;
+        link.target = "_blank"
+        link.click();
       }
     </script>
   }

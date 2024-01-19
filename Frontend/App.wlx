@@ -39,6 +39,16 @@ createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = ass
   ]
 ]
 
+dumpNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
+  With[{result = saveNotebook[notebook, "Events"->AppEvent]},
+    If[FailureQ[result],
+      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+    ,
+      Print[result];
+    ]
+  ]
+]
+
 toggleWindowSize[_, client_] := With[{},
   WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
 ]
@@ -75,6 +85,7 @@ App[request_] := With[{
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
+      "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];
 

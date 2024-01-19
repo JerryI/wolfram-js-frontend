@@ -10,7 +10,6 @@ Console        := ImportComponent["Components/Console.wlx"];
 
 {CellDropdown, DropdownScript} = ImportComponent["Components/Dropdown.wlx"];
 
-
 KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
 
 ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
@@ -329,10 +328,11 @@ Component[OptionsPattern[]] := With[{
             
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    EventFire[controller, "DumpSave", notebook];
                     EventFire[log, "Saved", ""];
                 ]];
 
-                (* send to GlobalMessager! *)
+            
             ];            
         ],
 
