@@ -29,7 +29,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     TaskRemove[o["WatchDog"] ];
 
     EventFire[o, "State", o["State"] ];
-    EventFire[o, "Connected", True];
+    EventFire[o, "Connected", "Please wait until initialization is complete!"];
     Print["Ok!"];
 ]
 
@@ -142,6 +142,8 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`WLJS`Transport`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
+
+        LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ] ] ];
     ];
 
     

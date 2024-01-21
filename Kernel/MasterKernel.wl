@@ -22,8 +22,10 @@ start[o_MasterKernel] := Module[{link},
     Internal`Kernel`Stdout = Identity;
     Internal`Kernel`Host = "127.0.0.1";
 
+    Pause[0.5];
     EventFire[o, "State", o["State"] ];
-    EventFire[o, "Connected", True];
+    EventFire[o, "Connected", "Please wait until initialization is complete!"];
+    
     o
 ]
 

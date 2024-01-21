@@ -324,15 +324,11 @@ Component[OptionsPattern[]] := With[{
     EventHandler[controller // EventClone, {
         "Save" -> Function[Null,
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
-                Print[tt];
-            
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
                     EventFire[controller, "DumpSave", notebook];
                     EventFire[log, "Saved", ""];
                 ]];
-
-            
             ];            
         ],
 
@@ -340,6 +336,11 @@ Component[OptionsPattern[]] := With[{
             notebook["Evaluator"] = .;
             If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), $Client]; Return[] ];
             requestKernel[notebook, kernels, modals, $Client, Echo];
+        ],
+
+        "RestartKernel" -> Function[Null,
+            Echo["Manual Kernel restart"];
+            notebook["Evaluator"]["Kernel"] // Kernel`Restart;
         ],
 
         "Abort" -> Function[Null,
@@ -488,7 +489,7 @@ Component[OptionsPattern[]] := With[{
             <ExtensionTemplateInjection Template={"Notebook-Epilog"} Notebook={notebook} Event={secret} />
 
             <CellDropdown Parameters={parameters} Event={secret} ExtesionInjector={ExtensionTemplateInjection}/>
-            <ElectronBinds Event={secret}/>
+            <ElectronBinds Event={secret} Controls={controller}/>
             <ExtensionTemplateInjection Template={"Scripts"} />
             
             <WebUIOnLoad Event={secret} Type={"Load"}/>

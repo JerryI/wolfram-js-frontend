@@ -4,6 +4,9 @@
   font-weight: normal;
   src: url("/Fonts/SFMonoRegular.woff");
 }
+.margin-bottom-fix {
+  margin-bottom: 0.15em;
+}
   
 .cm-line {
   font-family: 'SF Mono Regular' !important;

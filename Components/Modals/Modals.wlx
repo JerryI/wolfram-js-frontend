@@ -1,8 +1,10 @@
 SuggestKernel = ImportComponent["Components/SuggestKernel.wlx"];
+TextField     = ImportComponent["Components/TextField.wlx"];
 
 Component[OptionsPattern[]] := With[{port = OptionValue["ModalsPort"]},
     <div>
         <SuggestKernel Events={port}/>
+        <TextField Events={port}/>
     </div>
 ]
 

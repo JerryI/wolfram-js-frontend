@@ -3,6 +3,10 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('electronAPI', {
   contextMenu: (callback) => ipcRenderer.on('context', callback),
   call: (callback) => ipcRenderer.on('call', callback),
+
+  listener: (name, callback) => ipcRenderer.on(name, callback),
+
+  
   cellop: (callback) => ipcRenderer.on('cellop', callback),
 
   pluginsMenu: (callback) => ipcRenderer.on('pluginsMenu', callback),

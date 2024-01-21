@@ -6,7 +6,7 @@
     "name": "White Russians",
     "email": "krikus.ms@gmail.com"
   },
-  "main": "Electron/test.js",
+  "main": "Electron/main.js",
   "scripts": {
     "start": "wolframscript -f Scripts/run.wls",
     "dev": "wolframscript -f Scripts/run.wls dev",

@@ -115,7 +115,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('new_file'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('New');
+                        windows.focused.call('newnotebook', true);
                     }
                 },
                 ...((options.localmenu) ? [{
@@ -158,28 +158,14 @@ const buildMenu = (opts) => {
                             label: "Clear Recent",
                             role: "clearrecentdocuments"
                         }]
-                    },
-                    {
-                        label: 'Open Vault',
-                        click: async(ev) => {
-                            console.log(ev);
-                            windows.focused.call('OpenVault');
-                        }
                     }
-                ] : [{
-                    label: 'Open Vault',
-                    accelerator: shortcut('open_file'),
-                    click: async(ev) => {
-                        console.log(ev);
-                        windows.focused.call('OpenVault');
-                    }
-                }]),
+                ] : []),
                 {
                     label: 'Save',
                     accelerator: shortcut('save'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('Save');
+                        windows.focused.call('save', true);
                     }
                 },
                 { type: 'separator' },
@@ -188,14 +174,14 @@ const buildMenu = (opts) => {
                     submenu: [{
                             label: 'HTML',
                             click: async(ev) => {
-                                windows.focused.call('ShareHTML');
+                                windows.focused.call('share', 'HTML');
                             }
                         },
 
                         {
                             label: 'React',
                             click: async(ev) => {
-                                windows.focused.call('ShareReact');
+                                windows.focused.call('share', 'React');
                             }
                         }
                     ]
@@ -243,24 +229,24 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('toggle_cell'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.operate('HC');
+                        //windows.focused.operate('HC');
                     }
                 },
                 {
                     label: 'Unhide All Cells',
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.operate('UAC');
+                        //windows.focused.call('unhideall', true);
                     }
                 },
 
                 { type: 'separator' },
                 {
-                    label: 'Delete current cell',
+                    label: 'Delete cell',
                     accelerator: shortcut('delete_cell'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.operate('CCD');
+                        windows.focused.call('deletecell', true);
                     }
                 },
                 { type: 'separator' },
@@ -293,6 +279,17 @@ const buildMenu = (opts) => {
                 { type: 'separator' },
                 { role: 'minimize' },
                 { role: 'zoom' },
+                {
+                    label: 'Always on top',
+                    click: async(ev) => {
+                        console.log(ev);
+                        if (windows.focused.win.isAlwaysOnTop()) {
+                            windows.focused.win.setAlwaysOnTop(false);
+                        } else {
+                            windows.focused.win.setAlwaysOnTop(true);
+                        }
+                    }
+                },
                 { type: 'separator' },
                 { role: 'resetZoom' },
                 { role: 'zoomIn' },
@@ -317,7 +314,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('abort'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('Abort');
+                        windows.focused.call('abort', true);
                     }
                 },
 
@@ -326,7 +323,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('evaluate_init'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('EIC');
+                        //windows.focused.call('EIC');
                     }
                 },
 
@@ -335,42 +332,41 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('clear_outputs'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('COC');
+                        windows.focused.call('clearoutputs', true);
                     }
                 },
 
                 {
-                    label: 'Evaluate All Cells',
-                    accelerator: shortcut('evaluate_all'),
+                    label: 'Change Kernel',
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('EAC');
+                        windows.focused.call('changekernel', true);
                     }
-                },
+                },                
 
                 { type: 'separator' },
 
                 {
                     label: 'Kernel',
                     submenu: [{
-                            label: 'Start',
+                            label: 'New Local Kernel',
                             click: async(ev) => {
                                 console.log(ev);
-                                windows.focused.call('LocalKernelStart');
+                                windows.focused.call('newlocalkernel', true);
                             }
                         },
                         {
-                            label: 'Stop',
+                            label: 'New Master Kernel',
                             click: async(ev) => {
                                 console.log(ev);
-                                windows.focused.call('LocalKernelExit');
+                                windows.focused.call('newmasterkernel', true);
                             }
-                        },
+                        },                       
                         {
                             label: 'Restart',
                             click: async(ev) => {
                                 console.log(ev);
-                                windows.focused.call('LocalKernelRestart');
+                                windows.focused.call('restartkernel', true);
                             }
                         }
                     ]
@@ -384,7 +380,7 @@ const buildMenu = (opts) => {
                     label: 'Settings',
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('Settings');
+                        windows.focused.call('settings', true);
                     }
                 },
 
@@ -585,12 +581,12 @@ const windows = {
             if (this.win == window) this.win = false;
         },
 
-        call (type) {
+        call (type, args) {
             const self = this;
             if (!self.win) {
 
                 //special cases - open window if not shown
-                if (type === 'New' || type === 'Settings') {
+                if (type === 'newnotebook' || type === 'settings') {
                     new notebookWindow({url: server.url.default(), focus: true}, (window) => {
                         window.webContents.send('call', type);
                     });
@@ -601,7 +597,7 @@ const windows = {
                 return;
             }
 
-            self.win.webContents.send('call', type);
+            self.win.webContents.send(type, args);
         },
         operate (type) {
             if (!this.win) return;
@@ -883,9 +879,11 @@ app.whenReady().then(() => {
     buildMenu({plugins: pluginsMenu.items});    
 
     //make a log window and start WL
-    windows.log.construct((log_window) => {
+    /*windows.log.construct((log_window) => {
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
-    });
+    });*/
+    
+    create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
@@ -939,10 +937,12 @@ app.whenReady().then(() => {
     });    
 
     //purge cache if an update was detected (using a special file created by WL)
-    const cinterval = setInterval(checkCacheReset, 15000);
+    
+    
+    /*const cinterval = setInterval(checkCacheReset, 15000);
     setTimeout(() => {
         clearInterval(cinterval);
-    }, 60 * 1000 * 3)    
+    }, 60 * 1000 * 3)  */  
 });
 
 

@@ -1,4 +1,21 @@
-Event = $Options["Event"];
+Event    = $Options["Event"];
+Controls = $Options["Controls"];
+
 <script type="module">
-    server.emitt();
+    if (window.electronAPI) {
+        window.electronAPI.listener('abort', () => {
+            server.emitt('<Controls/>', 'True', 'Abort');
+        });
+        window.electronAPI.listener('changekernel', () => {
+            server.emitt('<Controls/>', 'True', 'ChangeKernel');
+        });
+        window.electronAPI.listener('save', () => {
+            server.emitt('<Controls/>', 'True', 'Save');
+        });
+
+        window.electronAPI.listener('restartkernel', () => {
+            server.emitt('<Controls/>', 'True', 'RestartKernel');
+        });
+        
+    }
 </script>

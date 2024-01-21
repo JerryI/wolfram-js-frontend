@@ -1,0 +1,21 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$23], 
+   "FrontendObjects" -> <||>, "Objects" -> 
+    <|"bf07285e-49d5-44e9-aee8-ff1352e27e69" -> 
+      <|"Public" -> Hold[Graphics3D[Sphere[{0, 0, 0}]]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/flatlet.wln"|>, 
+ "Cells" -> {<|"Data" -> "Graphics3D[Sphere[]]", "Display" -> "codemirror", 
+    "Hash" -> "0205a110-2fd4-422a-a3b1-e073851429ec", "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d9eb2ff4-6a86-4aea-bbbd-0a6871850fcf"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"bf07285e-49d5-44e9-aee8-ff1352e27e69\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ6UZm\
+BtZmKbqmlimmOqamKRa6iamplropqUZGpsapRqZp5pZAgCHEhW+\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "923fe261-ce75-4432-a536-616a94bbbb87", "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "d9eb2ff4-6a86-4aea-bbbd-0a6871850fcf"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "0bdcbb8d-33cd-4f75-8ee0-cfb17586939e", "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d9eb2ff4-6a86-4aea-bbbd-0a6871850fcf"|>}, 
+ "serializer" -> "jsfn4"|>

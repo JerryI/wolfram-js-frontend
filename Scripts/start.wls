@@ -52,6 +52,9 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<CodeParser`
 
+(* LocalPackage Manager *)
+Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ]
+
 LoadPluginsConfiguration["Root" -> Directory[]];
 LocalKernel`LTPServerStart[];
 

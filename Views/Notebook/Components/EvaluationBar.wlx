@@ -5,6 +5,12 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
                 "State" -> Function[state,
                     Print["State update"];
                     WebUISubmit[Global`UINotebook["CellState", uid, state] (*`*), client];
+                ],
+                "Info" -> Function[state,
+                    WebUISubmit[Global`UINotebook["CellInfo", uid, state] (*`*), client];
+                ],
+                "Error" -> Function[state,
+                    WebUISubmit[Global`UINotebook["CellError", uid, ToString[state]] (*`*), client];
                 ]
             }
         ];
@@ -14,6 +20,7 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
             <div class="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700" style="{Style}">
                 <div id="bar-{uid}" style="transition: width 5s" class="bg-teal-600 h-1 rounded-full dark:bg-teal-500 w-2/4"></div>
             </div>
+            <div id="info-{uid}" class="hidden text-xs"></div>
           </div>
         ]
     ]
@@ -23,10 +30,22 @@ Options[Element] = {"Cell"->Null, "Client"->""};
 
 Script = With[{},
     <Placebo>
+        core.UINotebook.CellError = async (args, env) => {
+            const uid      = await interpretate(args[0], env);
+            const state    = await interpretate(args[1], env);
+            const info = document.getElementById('info-'+uid);
+            info.innerText = state; 
+            console.log('cell error '+state);
+            info.classList.remove('hidden');
+            info.classList.add('text-red-600');
+        }
         core.UINotebook.CellState = async (args, env) => {
             const uid      = await interpretate(args[0], env);
             const state    = await interpretate(args[1], env);
             const bar = document.getElementById('bar-'+uid);
+            const info = document.getElementById('info-'+uid);
+            console.log('state update '+state);
+            if (!info.classList.contains('hidden') ) info.classList.add('hidden');
 
             bar.style.width = "0%";
 

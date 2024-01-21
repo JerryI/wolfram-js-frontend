@@ -17,8 +17,13 @@ addListeners[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
 ];
 
 Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
-  EventHandler[ButtonId, Function[Null,
-    With[{client = $Client, m = Messager, kernel = LocalKernel["Name"->RandomWord[]]},
+  EventHandler[ButtonId, Function[Type,
+    Echo[Type];
+    With[{client = $Client, m = Messager, kernel = Switch[Type,
+                                                    "Master", MasterKernel["Name"->RandomWord[]],
+                                                    _, LocalKernel["Name"->RandomWord[]]
+                                                  ]
+    },
         Print["Working!"];
         Print[initKernel];
       
@@ -74,7 +79,15 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initK
           <WebUIOnLoad Event={LazyLoad} Type={"Load"}/>
       </div>  
     </WebUIContainer>
-   ]
+   ],
+
+   <script type="module">
+    if (window.electronAPI) {
+      //window.electronAPI.openFinder(JSON.stringify(filename));
+      window.electronAPI.listener('newmasterkernel', () => server.emitt('<ButtonId/>', '"Master"'));
+      window.electronAPI.listener('newlocalkernel', () => server.emitt('<ButtonId/>', '"Local"'));
+    }   
+   </script>
   }
 ];
 

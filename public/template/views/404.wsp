@@ -1,8 +1,0 @@
-<div style="padding:1em; width:100%; text-align:center">No view component is available</div>
-
-<script>
-    core.FrontEndPopUp = (args, env) => {
-    
-    };
-
-</script>

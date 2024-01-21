@@ -2,7 +2,5 @@
     <title>WLX Template</title>
     <script src="/Styles/Tailwind.js"></script>
     <link rel="stylesheet" href="/Styles/Custom.css"/>
-    
-    <link rel="stylesheet" href="/wljs-editor/src/styles.css"/>
     <$Children/>
 </head>

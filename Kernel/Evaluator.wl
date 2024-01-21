@@ -35,6 +35,7 @@ StandardEvaluator`InitializedContainer[k_]["Kernel"] := k;
 
 StandardEvaluator`InitializedContainer[k_(*Kernel*)][t_Transaction] := Module[{evaluator, state},
     Print["Standard Eval"];
+
     evaluator = t /. Flatten[{#["Pattern"] -> #} &/@ eList]; (* apply patterns like t /. {_ -> evaluator 1, _?watever -> evaluator 2} *)
 
     state = (StandardEvaluator`ReadyQ[evaluator, k]);

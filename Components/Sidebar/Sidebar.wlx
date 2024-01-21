@@ -1,15 +1,56 @@
 Sidebar := ImportComponent["Body.wlx"];
 
-Controller["Delete", sidebarId_] := Function[name,
+Controller["Delete", sidebarId_, ___] := Function[name,
   DeleteFile[URLDecode[name]];
   EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
 ];
 
-Controller["Reveal", _] := Function[name,
+Controller["Duplicate", sidebarId_, ___] := Function[name,
+  With[{decoded = URLDecode[name]},
+    CopyFile[decoded, FileNameJoin[{DirectoryName[decoded], StringJoin[FileBaseName[decoded], "-dup", ".", FileExtension[decoded]]}]];
+  ];
+  EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
+];
+
+Controller["Reveal", __] := Function[name,
   WebUISubmit[Global`UIOpenExplorer[FileNameSplit[URLDecode[name]]] (*`*), $Client];
 ];
 
-Controller["Window", _] := Function[name,
+Controller["Rename", sidebarId_, modals_] := Function[name,
+  With[{decoded = URLDecode[name], request = CreateUUID[]},
+    With[{splitted = FileNameSplit[decoded]},
+      EventHandler[request, {
+        "Success" -> Function[name,
+          EventRemove[request];
+          If[Length[splitted] == 1,
+            If[DirectoryQ[decoded],
+              RenameDirectory[decoded, name];
+            ,
+              RenameFile[decoded, name];
+            ];
+            EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
+          ,
+            If[DirectoryQ[decoded],
+              RenameDirectory[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
+            ,
+              RenameFile[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
+            ];
+            EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];        
+          ];
+        ],
+
+        _ -> Function[Null,
+          Echo["Cancelled or did not managed to perform"];
+          EventRemove[request];
+        ]
+      }];
+
+      EventFire[modals, "TextField", <|"Client"->$Client, "Callback"->request, "Title"->"Enter new name", "String"-> Last[splitted]|>];
+    ];
+  ];
+];
+
+Controller["Window", __] := Function[name,
   WebUISubmit[Global`UIOpenWindow[name] (*`*), $Client];
 ];
 
@@ -19,13 +60,14 @@ With[{
     Secret = OptionValue["Secret"], 
     Path = OptionValue["Path"], 
     Controls = OptionValue["Controls"],
+    modals = OptionValue["Modals"],
     Parameters = OptionValue["Parameters"],
     Button1Id = CreateUUID[],
     Button2Id = CreateUUID[]
   },
 
   EventHandler[Secret, {
-    FileOperate[any_] :> Controller[any, SidebarId]
+    FileOperate[any_] :> Controller[any, SidebarId, modals]
   }];
 
   EventHandler[Button1Id, Function[Null,
@@ -88,6 +130,6 @@ With[{
   }
 ]
 
-Options[Component] = {"Secret"->"", "Path"->"", "Controls"->"", "Parameters"->""}
+Options[Component] = {"Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
 
 Component

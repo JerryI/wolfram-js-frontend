@@ -110,17 +110,16 @@
            PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
              Automatic}}]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/anatomize.wln", 
-   "WebSocketQ" -> True|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/anatomize.wln"|>, 
  "Cells" -> {<|"Data" -> "Plot[x, {x,0,1}]", "Display" -> "codemirror", 
-    "Hash" -> "386c1306-43e2-45f9-adbd-aeada5d2c185", "Props" -> <||>, 
+    "Hash" -> "d86d0d8c-6210-4605-b062-2f1d07b8f11e", "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "74ec1021-497f-4cf8-957b-5bd430b111a5"|>, 
+    "Notebook" -> "c2d890b1-858b-4ac5-b9a0-5d5c004592bb"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e40df46f-6104-4db7-9644-a2ad302b9501\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5oYp\
 KSZmKXpmhkamOiapCSZ61qamZjoJholphgbGCVZmhoYAgCB8hU3\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "688dcfcd-b303-4bb3-94d0-c5dd588e7e3d", "Props" -> <||>, 
+     "191a2f70-194c-4b8d-ba5f-2edcb56bbd78", "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "74ec1021-497f-4cf8-957b-5bd430b111a5"|>}, 
+    "Notebook" -> "c2d890b1-858b-4ac5-b9a0-5d5c004592bb"|>}, 
  "serializer" -> "jsfn4"|>
