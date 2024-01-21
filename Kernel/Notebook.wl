@@ -176,8 +176,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)
-            Echo["Creating cell from transaction..."];
-            Echo[data];
+
             If[data["Data"] != "Null",
                 If[KeyExistsQ[data, "Meta"],
                     CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], data["Meta"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]

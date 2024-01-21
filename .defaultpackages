@@ -89,8 +89,8 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
     <|"@rollup/plugin-commonjs" -> "^24.0.1", "@rollup/plugin-json" -> 
       "^6.0.0", "@rollup/plugin-node-resolve" -> "15.0.1", "d3" -> "^7.8.2", 
      "d3-arrow" -> "^0.0.25", "d3-interpolate-path" -> "^2.3.0", 
-     "rollup" -> "^3.20.6", "rollup-plugin-combine" -> "^2.1.1", 
-     "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
+     "dat.gui" -> "^0.7.9", "rollup" -> "^3.20.6", "rollup-plugin-combine" -> 
+      "^2.1.1", "serve-static" -> "^1.14.1", "systemjs" -> "^6.14.1"|>, 
    "enabled" -> True, "path" -> "wljs-graphics-d3", 
    "defaultPackage" -> True|>, "wljs-html-support" -> 
   <|"name" -> "wljs-html-support", "version" -> "0.0.4", 

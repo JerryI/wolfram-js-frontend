@@ -75,7 +75,28 @@ With[{
   ]];
 
   EventHandler[Button2Id, Function[Null,
-    WebUISubmit[Alert["Not implemented!"], $Client];
+    With[{request = CreateUUID[]},
+      With[{},
+        EventHandler[request, {
+          "Success" -> Function[name,
+            EventRemove[request];
+            If[StringLength[StringTrim[name]] =!= 0,
+              With[{path = If[DirectoryQ[Path], Path, DirectoryName[Path]]},
+                CreateDirectory[FileNameJoin[{path, StringTrim[name]}]];
+              ];
+              EventFire[SidebarId, "Refresh", <|"Client"->$Client|>]; 
+            ];
+          ],
+
+          _ -> Function[Null,
+            Echo["Cancelled or did not managed to perform"];
+            EventRemove[request];
+          ]
+        }];
+
+        EventFire[modals, "TextField", <|"Client"->$Client, "Callback"->request, "Title"->"Enter new name", "String"-> ""|>];
+      ];
+    ];
   ]];
 
   {

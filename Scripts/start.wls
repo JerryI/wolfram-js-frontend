@@ -149,4 +149,4 @@ App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplate
 
 StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
 
-While[True, Pause[0.5]];
+Looper[];
