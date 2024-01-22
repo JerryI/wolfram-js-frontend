@@ -100,8 +100,8 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"frontend" -> "src/Frontend.wl", "kernel" -> "src/Kernel.wl", 
-     "js" -> "src/kernel.js"|>, "repository" -> <|"type" -> "git", 
+    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js"|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-html-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
@@ -257,8 +257,9 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"frontend" -> "src/Frontend.wl",
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-wlx-support && mv wljs-wlx-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> "dist/kernel.js", "styles" -> "src/styles.css", 
-     "priority" -> 500|>, "repository" -> <|"type" -> "git", 
+    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
+     "styles" -> "src/styles.css", "priority" -> 500|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-wlx-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 

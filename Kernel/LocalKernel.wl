@@ -33,7 +33,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Print["Ok!"];
 ]
 
-CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "Host"->"127.0.0.1", "Port"->RandomInteger[{25400, 66000}], "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->RandomInteger[{25400, 66000}], "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p},
     LinkWrite[lnk, Unevaluated[ pp // Uncompress // ReleaseHold ] ]
@@ -66,6 +66,8 @@ decryptor[ Hold[MessagePacket[symbol_, type_] ], print_, error_ ] := error[Strin
 
 (* launch kernel *)
 restart[k_LocalKernelObject] := With[{},
+    k["InitList"] = {};
+
     LinkClose[k["Link"] ];
     k["ReadyQ"] = False;
     Close[k["LTPSocket"][[1]]];
@@ -83,6 +85,7 @@ setProp[any_[sym_], assoc_] := (
 SetAttributes[setProp, HoldFirst];
 
 unlink[k_LocalKernelObject] := With[{},
+    k["InitList"] = {};
     LinkClose[k["Link"] ];
     k["ReadyQ"] = False;
     Close[k["LTPSocket"][[1]]];
@@ -178,15 +181,33 @@ LocalKernelObject /: Kernel`Submit[k_LocalKernelObject, t_] := With[{ev = t["Eva
     LinkWrite[k["Link"], Internal`Kernel`Apply[ ev, s ] ]
 ]
 
-LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_] := With[{},
-    With[{
-        value = expr // Hold // Compress // HeldRemotePacket
-    },
-        LinkWrite[k["Link"], value]
-    ]
+LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"]},
+    If[!once,
+        With[{
+                value = expr // Hold // Compress // HeldRemotePacket
+            },
+                LinkWrite[k["Link"], value]
+        ];    
+    , 
+        If[!MemberQ[k["InitList"], Hash[expr // Hold] ] ,
+            Echo["LocalKernel Init >> Once"];
+            EventFire[k, "Info", "Initialization has started. Please, wait a bit..."];
+            With[{
+                value = expr // Hold // Compress // HeldRemotePacket
+            },
+                LinkWrite[k["Link"], value]
+            ];
+
+            k["InitList"] = Append[k["InitList"], Hash[expr // Hold] ];
+        ,
+            Echo["LocalKernel Init >> Already initialized..."];
+        ];
+    ];
 ]
 
-SetAttributes[Kernel`Initialize, HoldRest]
+Options[Kernel`Init] = {"Once" -> False}
+
+SetAttributes[Kernel`Init, HoldRest]
 
 LocalKernelObject /: Kernel`Start[k_LocalKernelObject] := start[k];
 LocalKernelObject /: Kernel`Unlink[k_LocalKernelObject] := unlink[k];

@@ -28,7 +28,7 @@ Kernel /: EventRemove[n_Kernel, opts__] := EventRemove[n["Hash"], opts]
 
 Kernel`Submit[k_, t_] := Print["Dummy Kernel`Submit"]
 
-Kernel`Init[k_, expr_] := Print["Dummy Kernel`Init"]
+Kernel`Init[k_, expr_, OptionsPattern[]] := Print["Dummy Kernel`Init"]
 
 SetAttributes[Kernel`Init, HoldRest]
 

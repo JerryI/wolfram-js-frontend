@@ -15,9 +15,9 @@ Begin["`Internal`"];
 initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}]},
   Print["Init Kernel!!!"];
 
-  With[{p = Import[FileNameJoin[{"Packages", #}], {"Package", "HeldExpressions"}]},
+  With[{p = Import[FileNameJoin[{"Packages", #}], "String"]},
     Echo[StringJoin["Loading into Kernel... ", #] ];
-    Kernel`Init[kernel,  ReleaseHold /@ p; ](*`*);
+    Kernel`Init[kernel,  ToExpression[p, InputForm]; ](*`*);
   ] &/@ Includes["kernel"];
 
   Echo["Starting WS link"];

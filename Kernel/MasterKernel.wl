@@ -7,7 +7,7 @@ Kernel`Submit::usage = ""
 
 Begin["`Private`"]
 
-CreateType[MasterKernel, Kernel, {}];
+CreateType[MasterKernel, Kernel, {"InitList"-> {}}];
 
 decryptor[ Hold[TextPacket[s_] ], handler_] := handler[s];
 decryptor[ any_ , a_] := Print[any];
@@ -34,9 +34,22 @@ MasterKernel /: Kernel`Submit[k_MasterKernel, t_] := With[{ev = t["Evaluator"], 
 ]
 
 
-MasterKernel /: Kernel`Init[k_MasterKernel, expr_] := With[{},
-    expr // ReleaseHold
+MasterKernel /: Kernel`Init[k_MasterKernel, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"]},
+    If[once,
+        If[MemberQ[ k["InitList"], Hash[expr // Hold] ], 
+            Echo["MasterKernel Init >> Already initialized..."];
+        ,
+            Echo["MasterKernel Init >> Once"];
+            EventFire[k, "Info", "Initialization has started. Please, wait a bit..."];
+            expr // ReleaseHold;
+            k["InitList"] = Append[k["InitList"], Hash[expr // Hold] ];
+        ]    
+    ,
+        expr // ReleaseHold;
+    ]
 ]
+
+Options[Kernel`Init] = {"Once" -> False}
 
 SetAttributes[Kernel`Init, HoldRest]
 
@@ -44,6 +57,7 @@ MasterKernel /: Kernel`Start[k_MasterKernel] := start[k];
 
 restart[k_MasterKernel] := With[{},
     k["ReadyQ"] = False;
+    k["InitList"] = {};
 
     k["State"] = "Stopped";
     EventFire[k, "State", k["State"] ];
