@@ -79,8 +79,8 @@ Echo["Loading packages: FRONTEND"];
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
 (* Entrypoint of an app *)
-App := ImportComponent["Frontend/App.wlx"];
-
+App      := ImportComponent["Frontend/App.wlx"];
+AutoTest := ImportComponent["Frontend/Test.wlx"];
 
 (* Global variables *)
 
@@ -145,7 +145,24 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"]], wcp@#&];
 SetAttributes[Offload, HoldFirst];
 
 (* start an app *)
+AutoTest["HTTPHandler"->http];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
+
+(* autotest *)
+With[{secret = CreateUUID[]},
+  With[{
+          result = URLFetch[StringTemplate["http://``:``/test?token=``"][$Env["host"], $Env["http"], URLEncode[ secret ] ] ]
+      },
+
+    If[result === ToString[ Hash[secret] ],
+      Echo["Autotest passed!"];
+    ,
+      Echo["Autotest failed!"];
+      Echo[result];
+      Exit[-1];
+    ];
+  ];
+];
 
 StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
 

@@ -7,27 +7,50 @@
 CreateType[NotificationsDialog, initDialog, {"Message"->"Dummy", "Event"->Null}];
 */*)
 
+ImportComponent["Components/Types.wl"];
+
+{SpinnerTemplate, SpinnerScript}  = ImportComponent["Components/Spinner.wlx"]; 
 {GenericTemplate, GenericScript}  = ImportComponent["Components/Generic.wlx"]; 
+
+
+Filter[_]               = False
+Filter["Exit"]          = True
+Filter["Saved"]         = True
+Filter["Warning"]       = True
+Filter["Error"]         = True
+
+Filter[_NotificationMessage]   = True
 
 Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
     EventHandler[Event, {
         (*/*dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&),*/*)
-        any_   :> Function[data,
+        n_NotificationSpinner   :> Function[Null,
+
             With[{client = $Client},
-                EventFire[Controller, "Append", Join[<|"Client"->client|>, GenericTemplate[any, data]] ]
+                EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Spinner"|>, SpinnerTemplate[n, client, Controller]] ]
+            ]
+        ],       
+
+        any_?Filter   :> Function[data,
+            With[{client = $Client},
+                EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Generic"|>, GenericTemplate[any, data]] ]
             ]
         ]
     }];
 
-    <WebUIContainer Event={Controller}>
-        <div aria-live="assertive" style="z-index:100" class="pointer-events-none fixed inset-0 flex items-end px-4 mt-10 sm:items-start sm:p-2">
-            <div class="flex w-full flex-col items-center space-y-0 sm:items-end">      
-                <WebUIContainerChild/>
+    {
+        <WebUIContainer Event={Controller}>
+            <div aria-live="assertive" style="z-index:100" class="pointer-events-none fixed inset-0 flex items-end px-4 mt-10 sm:items-start sm:p-2">
+                <div class="flex w-full flex-col items-center space-y-0 sm:items-end">      
+                    <WebUIContainerChild/>
+                </div>  
             </div>  
-        </div>  
-    </WebUIContainer>
-
-    <GenericScript Controller={Controller}/>
+        </WebUIContainer>
+    ,
+        <GenericScript Controller={Controller}/>
+    ,
+        <SpinnerScript Controller={Controller}/>
+    }
 ];
 
 Component

@@ -49,7 +49,7 @@ MasterKernel /: Kernel`Init[k_MasterKernel, expr_, OptionsPattern[] ] := With[{o
     ]
 ]
 
-Options[Kernel`Init] = {"Once" -> False}
+Options[Kernel`Init] = {"Once" -> False, "TrackingProgress"->Null}
 
 SetAttributes[Kernel`Init, HoldRest]
 

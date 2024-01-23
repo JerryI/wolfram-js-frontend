@@ -3,6 +3,7 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
   "JerryI`Notebook`Packages`", 
   "JerryI`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
+  "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
   "KirillBelov`Internal`",
   "KirillBelov`TCPServer`",
@@ -12,8 +13,9 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
 
 Begin["`Internal`"];
 
-initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}]},
+initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}], spinner = Global`NotificationSpinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]},
   Print["Init Kernel!!!"];
+  EventFire[kernel, spinner, Null];
 
   With[{p = Import[FileNameJoin[{"Packages", #}], "String"]},
     Echo[StringJoin["Loading into Kernel... ", #] ];
@@ -29,8 +31,9 @@ initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}]},
 
   kernel["State"] = "Initialized";
 
-  With[{hash = kernel["Hash"]},
+  With[{hash = kernel["Hash"], s = spinner["Promise"] // First},
     Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
+    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, "Ok" ]; ];
   ];
 ]
 
@@ -42,6 +45,7 @@ deinitializeKernel[kernel_] := With[{},
 ]
 
 wsStartListerning[kernel_, port_] := With[{},
+    
     Kernel`Init[kernel,  (  
         Print["Establishing WS link..."];
         Global`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;

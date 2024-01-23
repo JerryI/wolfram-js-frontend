@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`"}]
+BeginPackage["JerryI`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`"}]
 
 LocalKernel::usage = ""
 
@@ -149,6 +149,8 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
 
+        LinkWrite[link, EnterTextPacket["$HistoryLength = 3"] ];
+
         LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ] ] ];
     ];
 
@@ -160,7 +162,7 @@ start[k_LocalKernelObject] := Module[{link},
                     EventFire[k, "Print", data]
                 ],
                 Function[data,
-                    EventFire[k, "Message", data]
+                    EventFire[k, "Warning", data]
                 ]
             ]
         ]
@@ -178,15 +180,26 @@ checkState[k_LocalKernelObject] := Module[{},
 ]
 
 LocalKernelObject /: Kernel`Submit[k_LocalKernelObject, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
-    LinkWrite[k["Link"], Internal`Kernel`Apply[ ev, s ] ]
+    LinkWrite[k["Link"], EnterExpressionPacket[ Internal`Kernel`Apply[ ev, s ] ] // Unevaluated  ]
 ]
 
-LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"]},
+LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"], tracker = OptionValue["TrackingProgress"]},
     If[!once,
         With[{
                 value = expr // Hold // Compress // HeldRemotePacket
             },
-                LinkWrite[k["Link"], value]
+                tracker["Start"];
+                LinkWrite[k["Link"], value];
+                With[{promise = Promise[]},
+                    Then[promise, Function[Null,
+                        tracker["End"];
+                    ] ];
+
+                    With[{s = promise // First},
+                        LinkWrite[k["Link"], Unevaluated[EventFire[Internal`Kernel`Stdout[ s ], Resolve, "Ok" ];] ];
+                    ];
+                ];
+                
         ];    
     , 
         If[!MemberQ[k["InitList"], Hash[expr // Hold] ] ,
@@ -195,7 +208,17 @@ LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] 
             With[{
                 value = expr // Hold // Compress // HeldRemotePacket
             },
-                LinkWrite[k["Link"], value]
+                tracker["Start"];
+                LinkWrite[k["Link"], value];
+                With[{promise = Promise[]},
+                    Then[promise, Function[Null,
+                        tracker["End"];
+                    ] ];
+
+                    With[{s = promise // First},
+                        LinkWrite[k["Link"], Unevaluated[EventFire[Internal`Kernel`Stdout[ s ], Resolve, "Ok" ];] ];
+                    ];
+                ];
             ];
 
             k["InitList"] = Append[k["InitList"], Hash[expr // Hold] ];
@@ -205,7 +228,7 @@ LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] 
     ];
 ]
 
-Options[Kernel`Init] = {"Once" -> False}
+Options[Kernel`Init] = {"Once" -> False, "TrackingProgress"->Null}
 
 SetAttributes[Kernel`Init, HoldRest]
 

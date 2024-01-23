@@ -1,0 +1,17 @@
+http                      =  $Options["HTTPHandler"];
+
+App[request_] := With[{
+        SecretString = Hash[URLDecode[ request["Query", "token"] ] ]
+    },
+
+    <ToString>
+        <SecretString/>
+    </ToString>
+];
+
+http["MessageHandler", "Autotest"] = AssocMatchQ[<|"Path" -> "/test"|>] -> App;
+Print["Test Loaded!"];
+
+
+
+
