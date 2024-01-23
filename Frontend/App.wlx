@@ -123,10 +123,12 @@ App[request_] := With[{
               <TopBar Controls={GlobalControls} Path={Path}/>
               <Notifications MessagePort={GlobalMessanger}/>
               <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <ExtensionTemplates Template={"AppFooter"} MessagePort={GlobalMessanger}/>
             </div> 
           </div>
         </div>
         <Script/>
+        <ExtensionTemplates Template={"AppScripts"} />
         </body>
     </html>
 ];

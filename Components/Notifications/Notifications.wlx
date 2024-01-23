@@ -22,7 +22,7 @@ Filter["Error"]         = True
 Filter[_NotificationMessage]   = True
 
 Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
-    EventHandler[Event, {
+    EventHandler[EventClone[Event], {
         (*/*dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&),*/*)
         n_NotificationSpinner   :> Function[Null,
 
