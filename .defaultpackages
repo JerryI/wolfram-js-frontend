@@ -5,11 +5,15 @@
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> {"dist/kernel.js", "src/boxes.js", "src/objects.js"}, 
+    <|"js" -> {"dist/kernel.js", "src/boxes.js", "src/objects.js", 
+       "src/autocomplete.js", "src/frontsubmit.js"}, 
      "frontend" -> {"src/Frontend.wl", "src/FrontendObject.wl", 
-       "src/FrontendObjectSync.wl"}, "kernel" -> {"src/StandardForm.wl", 
-       "src/FrontendObject.wl", "src/Boxes.wl"}, 
-     "styles" -> "src/styles.css", "autocomplete" -> "src/autocomplete.js", 
+       "src/FrontendObjectSync.wl", "src/Autocomplete.wl", 
+       "src/SetDirectory.wl", "src/RemoteCells.wl", "src/FrontSubmit.wl"}, 
+     "kernel" -> {"src/StandardForm.wl", "src/FrontendObject.wl", 
+       "src/Boxes.wl", "src/AutocompleteKernel.wl", 
+       "src/SetDirectoryKernel.wl", "src/RemoteCellsKernel.wl", 
+       "src/FrontSubmitKernel.wl"}, "styles" -> "src/styles.css", 
      "priority" -> -10, "important" -> True|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
@@ -100,9 +104,10 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-html-support"|>, 
+    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
+     "styles" -> "src/style.css"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-html-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-html-support", "defaultPackage" -> True|>, 
@@ -162,9 +167,10 @@ https://github.com/JerryI/wljs-interpreter && mv wljs-interpreter/.git \
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-js-support && mv wljs-js-support/.git ../.git \
 && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-js-support"|>, 
+    <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
+     "styles" -> "src/style.css"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-js-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-js-support", "defaultPackage" -> True|>, 
@@ -318,6 +324,6 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-xterm"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6", "xterm" -> "^5.3.0", 
-     "xterm-addon-fit" -> "^0.8.0"|>, "resolutions" -> 
-    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+     "xterm-addon-fit" -> "^0.8.0", "xterm-webfont" -> "^2.0.0"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-xterm"|>|>

@@ -57,9 +57,8 @@ KernelList = {};
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
-  <link rel="stylesheet" href="{Path}"/>
+  <link rel="stylesheet" href="{Path}"/> 
 ] &/@ Includes["styles"] // ToStringRiffle;
-
 
 App[request_] := With[{
         Secret = CreateUUID[], 
@@ -98,6 +97,7 @@ App[request_] := With[{
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
+            <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
         <body class="h-full"> 
@@ -112,7 +112,7 @@ App[request_] := With[{
             <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel} OnExit={deinitKernel}/>
             <Sidebar Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300"></div>
-            <div class="px-4 pb-2 pt-1 flex flex-row">
+            <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
               <SettingsButton/>
               <Mode Default={""}/>
             </div>
@@ -123,7 +123,7 @@ App[request_] := With[{
               <TopBar Controls={GlobalControls} Path={Path}/>
               <Notifications MessagePort={GlobalMessanger}/>
               <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
-              <ExtensionTemplates Template={"AppFooter"} MessagePort={GlobalMessanger}/>
+              <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>
         </div>

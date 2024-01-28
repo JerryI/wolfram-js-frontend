@@ -21,7 +21,7 @@ LocalKernel`LTPServerStart[port_:36800] := With[{},
 (*  internal function that will be called by other kernel remotely *)
 LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Echo["LocalKernel >> local kernel link connected!"];
-    o["LTPSocket"] = SocketConnect["127.0.0.1:" <> ToString[ o["Port"] ] ] // LTPTransport;
+    o["LTPSocket"] = SocketConnect[ "127.0.0.1:"<>ToString[o["Port"] ] ] // LTPTransport;
 
     o["ReadyQ"] = True;
     o["State"]  = "Connected";
@@ -33,7 +33,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Print["Ok!"];
 ]
 
-CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->RandomInteger[{25400, 66000}], "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p},
     LinkWrite[lnk, Unevaluated[ pp // Uncompress // ReleaseHold ] ]
@@ -44,17 +44,29 @@ SetAttributes[HoldRemotePacket, HoldFirst]
 
 tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"], p = o["Port"], addr = "127.0.0.1:"<>ToString[port]},
     (  
-        Print["Establishing LTP link..."];
+        Print["Establishing LTP link... using "<>addr];
         Internal`Kernel`Host = host;
+        
         Internal`Kernel`Stdout = SocketConnect[addr] // LTPTransport;
+        Print["Establishing starting LTP server for backlink... using "<>(StringTemplate["127.0.0.1:``"][p])];
         Module[{tcp},
             tcp = TCPServer[];
+     
             tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
             tcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
 
-            SocketListen[CSocketOpen["127.0.0.1", p], tcp@#&];
+            SocketListen["127.0.0.1:"<>ToString[p], tcp@#&];
+            
         ];
+
         Internal`Kernel`Apply[e_, t_] := e[t];
+        Internal`Kernel`Type = "LocalKernel";
+        Internal`Kernel`Hash = uid;
+
+        Internal`Test := Echo["!!!!!!!!!!!!!!!!!!!!"];
+
+        
+
         LTPEvaluate[Internal`Kernel`Stdout, LocalKernel`LTPConnected[uid] ];
     ) // HoldRemotePacket
 ]
@@ -132,6 +144,7 @@ start[k_LocalKernelObject] := Module[{link},
     With[{path = k["RootDirectory"]},
 
         LinkWrite[link, Unevaluated[ SetDirectory[path] ] ] ;
+        LinkWrite[link, Unevaluated[ Set[Internal`Kernel`RootDirectory, path] ] ];
         LinkWrite[link, Unevaluated[ PacletDirectoryLoad[Directory[] ] ] ];
         LinkWrite[link, Unevaluated[ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}] ] ] ];
 
@@ -148,8 +161,6 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`WLJS`Transport`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
-
-        LinkWrite[link, EnterTextPacket["$HistoryLength = 3"] ];
 
         LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ] ] ];
     ];
@@ -182,6 +193,14 @@ checkState[k_LocalKernelObject] := Module[{},
 LocalKernelObject /: Kernel`Submit[k_LocalKernelObject, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
     LinkWrite[k["Link"], EnterExpressionPacket[ Internal`Kernel`Apply[ ev, s ] ] // Unevaluated  ]
 ]
+
+LocalKernelObject /: Kernel`Async[k_LocalKernelObject, expr_] := With[{},
+    LTPEvaluate[k["LTPSocket"], expr]
+]
+
+Kernel`Stdout[k_LocalKernelObject][any_] := k["LTPSocket"][any]
+
+SetAttributes[Kernel`Async, HoldRest]
 
 LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"], tracker = OptionValue["TrackingProgress"]},
     If[!once,

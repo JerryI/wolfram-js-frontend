@@ -20,9 +20,9 @@ LTPLength[client_, message_ByteArray] := (
     First[ImportByteArray[message[[4 ;; 7]], "UnsignedInteger32"]] + 4 + 3
 )
 
-LTPHandler[client_, message_ByteArray] := (
+LTPHandler[client_, message_ByteArray] := Block[{Global`$LTPClient = client},
     ReleaseHold[ BinaryDeserialize[message[[8 ;; ]] ] ];
-)
+]
 
 LTPTransport /: WriteString[s_LTPTransport, message_String] := BinaryWrite[s, StringToByteArray[message] ]
 LTPTransport /: BinaryWrite[LTPTransport[client_], message_ByteArray] := With[{length = Length[message]},

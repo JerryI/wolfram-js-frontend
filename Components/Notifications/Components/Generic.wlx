@@ -22,7 +22,7 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -42,7 +42,7 @@ Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
          </button>           
          </div>
        </div>
-       </div>       
+      </div>       
     },
         <|"Data" -> template, "ID" -> Uid|>
     ]
@@ -50,7 +50,7 @@ Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Warning", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-       <div id="{Uid}" class="mb-1 translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="mb-1 translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 absolute">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -70,7 +70,7 @@ Component["Warning", Message_, opts___] := With[{Uid = CreateUUID[]},
          </button>           
          </div>
        </div>
-       </div>       
+      </div>       
     },
         <|"Data" -> template, "ID" -> Uid|>
     ]

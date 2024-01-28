@@ -6,6 +6,8 @@ KernelQ::usage = ""
 Kernel`Start::usage = ""
 Kernel`Init::usage = ""
 Kernel`Submit::usage = ""
+Kernel`Async::usage = ""
+Kernel`Stdout::usage = ""
 
 Begin["`Private`"]
 
@@ -27,6 +29,11 @@ Kernel /: EventClone[n_Kernel] := EventClone[n["Hash"] ]
 Kernel /: EventRemove[n_Kernel, opts__] := EventRemove[n["Hash"], opts] 
 
 Kernel`Submit[k_, t_] := Print["Dummy Kernel`Submit"]
+
+Kernel`Async[k_, e_] := Print["Dummy Kernel`Async"]
+SetAttributes[Kernel`Async, HoldRest]
+
+Kernel`Stdout[k_][any_] := Print["Dummy Kernel`Stdout"]
 
 Kernel`Init[k_, expr_, OptionsPattern[]] := Print["Dummy Kernel`Init"]
 

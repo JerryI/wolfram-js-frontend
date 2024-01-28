@@ -32,11 +32,13 @@ ImportJSON[url_String] := Module[{},
 
 WasUpdated = False;
 
+$Branch = "master";
+
 getJSON[package_Association] := Module[{new, json},
     new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First];
     
-    json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
+    json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/"<>$Branch<>"/package.json"];
     If[AssociationQ[json],
         json,
         $Failed
@@ -47,7 +49,7 @@ getJSON[url_String] := Module[{new, json},
     new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First];
 
-    json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/master/package.json"];
+    json = ImportJSON["https://raw.githubusercontent.com/"<>new<>"/"<>$Branch<>"/package.json"];
     If[AssociationQ[json],
         json,
         $Failed
@@ -87,7 +89,7 @@ LoadPluginsConfiguration[OptionsPattern[]] := (
     $DefaultConfigFile = FileNameJoin[{$RootFolder, ".defaultpackages"}];
     $PackagesPath = FileNameJoin[{$RootFolder, "Packages"}];
 
-
+    $Branch = OptionValue["Branch"];
 
     listAllPackages := FileNames["package.json", $PackagesPath, 2];
 
@@ -104,7 +106,7 @@ LoadPluginsConfiguration[OptionsPattern[]] := (
     UpdateConfiguration;
 )
 
-Options[LoadPluginsConfiguration] = {"Root" -> Directory[]}
+Options[LoadPluginsConfiguration] = {"Root" -> Directory[], "Branch"->"master"}
 
 InstallPackage[url_, cbk_:Null] := Module[{remote},
     remote = getJSON[url];
@@ -172,8 +174,8 @@ downloadAndInstall[package_Association] := Module[{},
     ];
 
     Print["fetching the data..."];    
-    Print["url: "<>"https://github.com/"<>new<>"/zipball/master"];
-    URLDownload["https://github.com/"<>new<>"/zipball/master", FileNameJoin[{$RootFolder, "___temp.zip"}]];
+    Print["url: "<>"https://github.com/"<>new<>"/zipball/"<>$Branch];
+    URLDownload["https://github.com/"<>new<>"/zipball/"<>$Branch, FileNameJoin[{$RootFolder, "___temp.zip"}]];
     
     Print["extracting..."];
     ExtractArchive[FileNameJoin[{$RootFolder, "___temp.zip"}], FileNameJoin[{$RootFolder, "___temp"}]];

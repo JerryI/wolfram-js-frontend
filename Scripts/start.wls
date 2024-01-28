@@ -68,6 +68,7 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
 }];
 
+
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
 
@@ -94,6 +95,22 @@ $Env = <|
   "ws2"  -> 20563
 |>;
 
+
+
+EventHandler[AppExtensions`AppEvents // EventClone, {
+ "Notebook:Close" -> Function[notebook,
+
+  $ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] ] -> Nothing];
+ ],
+ "Loader:NewNotebook" -> Function[notebook,
+  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] ];
+ ],
+ "Loader:LoadNotebook" -> Function[notebook,
+  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] ];
+ ],
+}];
+
+
 $Server = <||>;
 $DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 
@@ -109,7 +126,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 

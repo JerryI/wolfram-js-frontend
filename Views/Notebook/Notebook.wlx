@@ -296,6 +296,7 @@ destructor[notebook_, secret_, __] := With[{},
     EventRemove[secret];
     (* /* make sure that WebSocketQ flag is removed */ *)
     notebook["WebSocketQ"] = False;
+    notebook["Opened"] = False;
 ];
 
 (* /*  Exstension API */  *)
@@ -310,6 +311,8 @@ Component[OptionsPattern[]] := With[{
     modals         = OptionValue["Modals"],
     log = OptionValue["Messanger"],
     kernels = OptionValue["Kernels"],
+
+    appEvents = OptionValue["AppEvents"],
 
     ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],  
     ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
@@ -372,12 +375,15 @@ Component[OptionsPattern[]] := With[{
 
             (* /* reset WS connection for sure, in a case of incorrect closed socket */*)
             notebook["WebSocketQ"] = False; 
+            notebook["Opened"] = True;
 
             (* /* Destructor */ *)
             With[{socket = EventClone[Global`$Client(*`*)]},
                 EventHandler[socket, {"Closed" -> Function[Null,
                     Echo[">> SOCKET CLOSED!!!"];
                     EventRemove[socket];
+                    EventFire[appEvents, "Notebook:Close", notebook];
+                    
                     destructor[notebook, secret, parameters, extensions];
                 ]}];
             ];
@@ -405,6 +411,7 @@ Component[OptionsPattern[]] := With[{
         "WebSocketConnected" -> Function[Null,
             Echo["Notebook.wlx >> WebSocket link to evaluation Kernel was established"];
             notebook["WebSocketQ"] = True;
+            EventFire[notebook, "OnWebSocketConnected", <|"Client" -> $Client|>];
         ],
 
         "WebSocketLost" -> Function[Null,
@@ -510,7 +517,7 @@ Component[OptionsPattern[]] := With[{
     ]
 ]
 
-Options[Component] = {"Parameters"->Null, "Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
+Options[Component] = {"Parameters"->Null, "AppEvents"->"blacksheep", "Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
 Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
 
 emptyStringFunction[x__] := ""

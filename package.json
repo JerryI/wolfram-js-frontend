@@ -1,7 +1,7 @@
 {
-  "name": "wljs-frontend",
-  "version": "0.7.0",
-  "description": "Web-based frontend for Wolfram Engine",
+  "name": "wljs-notebook",
+  "version": "2.0.0",
+  "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "White Russians",
     "email": "krikus.ms@gmail.com"
@@ -17,9 +17,9 @@
     "dist-all": "electron-builder -mwl --x64"
   },
   "build": {
-    "appId": "wljs-frontend",
+    "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
-    "copyright": "WLJS © 2023 ${author}",
+    "copyright": "WLJS © 2024 ${author}",
     "fileAssociations": [
       {
         "ext": "wln",

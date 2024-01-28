@@ -52,7 +52,7 @@ initNotebook[o_] := With[{uid = CreateUUID[]},
 ]
 
 Notebook`HashMap = <||>;
-CreateType[Notebook, initNotebook, {"FrontendObjects"-><||>, "Cells"->{}}]
+CreateType[Notebook, initNotebook, {"EvaluationContext"-><||>, "Cells"->{}}]
 
 Notebook /: EventHandler[n_Notebook, opts__] := EventHandler[n["Hash"], opts] 
 Notebook /: EventFire[n_Notebook, opts__] := EventFire[n["Hash"], opts]
@@ -60,7 +60,7 @@ Notebook /: EventClone[n_Notebook] := EventClone[n["Hash"]]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
 Notebook`Serialize[n_Notebook] := Module[{props},
-    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "EvaluationContext", "Opened","WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
     props // Flatten // Association
 ]
 
@@ -87,8 +87,16 @@ Notebook /: Notebook`Sockets`Assign[n_Notebook, value_] := (
 initCell[o_] := Module[{uid = CreateUUID[]},
     Print["Init cellobj"];
 
-    o["Hash"] = uid;
-    CellObj`HashMap[uid] = o;
+    If[o["Hash"] === Null, 
+        o["Hash"] = uid;
+        CellObj`HashMap[uid] = o;
+    ,
+        With[{hash = o["Hash"]},
+            CellObj`HashMap[hash] = o;
+        ]
+    ];
+
+    
 
     (* if notebook is specified -> insert it into the cells list and fire event *)
 
@@ -116,7 +124,7 @@ initCell[o_] := Module[{uid = CreateUUID[]},
 ]
 
 CellObj`HashMap = <||>;
-CreateType[CellObj, initCell, {"Notebook"->Null, "UID"->Null, "Data"->"", "State"->"Idle", "Props"-><||>, "Display"->"codemirror", "Type"->"Input", "After"->Null, "Before"->Null}]
+CreateType[CellObj, initCell, {"Notebook"->Null, "Hash"->Null, "UID"->Null, "Data"->"", "State"->"Idle", "Props"-><||>, "Display"->"codemirror", "Type"->"Input", "After"->Null, "Before"->Null}]
 
 CellObj /: EventHandler[n_CellObj, opts__] := EventHandler[n["Hash"], opts] 
 CellObj /: EventFire[n_CellObj, opts__] := EventFire[n["Hash"], opts]
@@ -163,7 +171,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
         transaction = Transaction[];
         transaction["Data"] = o["Data"];
-        transaction["Ref"] = o;
+        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Hash"]|> ];
 
         (* find any output cell after *)
         With[{seq = SequencePosition[o["Notebook", "Cells"], {Sequence[o, __?OutputCellQ]}] // Flatten},

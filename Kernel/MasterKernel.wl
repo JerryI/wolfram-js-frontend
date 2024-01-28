@@ -21,6 +21,7 @@ start[o_MasterKernel] := Module[{link},
 
     Internal`Kernel`Stdout = Identity;
     Internal`Kernel`Host = "127.0.0.1";
+    Internal`Kernel`Hash = o["Hash"];
 
     Pause[0.5];
     EventFire[o, "State", o["State"] ];
@@ -32,6 +33,14 @@ start[o_MasterKernel] := Module[{link},
 MasterKernel /: Kernel`Submit[k_MasterKernel, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
     ev[s];
 ]
+
+MasterKernel /: Kernel`Async[k_MasterKernel, expr_] := With[{},
+    expr
+]
+
+Kernel`Stdout[k_MasterKernel][any_] := any
+
+SetAttributes[Kernel`Async, HoldRest]
 
 
 MasterKernel /: Kernel`Init[k_MasterKernel, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"]},

@@ -13,6 +13,8 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         cache[dir] = notebook;
         notebook["Path"] = dir;
 
+        EventFire[OptionValue["Events"], "Loader:NewNotebook", notebook];
+
         Print["filepath:"]
         Print[dir];
         Print["end"];
@@ -37,7 +39,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
 
     save[path_String, opts: OptionsPattern[] ] := With[{notebook = Notebook[]},
         Echo["Loader >> Created new notebook"];
-        EventFire[OptionValue["Events"], "Loader:NewNotebook", notebook];
+        
 
         CellObj["Notebook" -> notebook, "Data" -> ""];
         save[path, notebook, opts]
@@ -47,6 +49,11 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed] ];
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
+            If[TrueQ[ cache[path]["Opened"] ],
+                EventFire[OptionValue["Events"], "Loader:Error", "Notebook is already opened!"];
+                Return[ $Failed ];
+            ];
+
             Return[ cache[path] ];
         ];
 
