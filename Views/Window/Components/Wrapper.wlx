@@ -1,0 +1,3 @@
+id = $Options["Window"]["Hash"];
+
+<div id="{id}"></div>

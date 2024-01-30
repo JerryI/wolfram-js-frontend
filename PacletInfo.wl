@@ -29,7 +29,10 @@ PacletObject[
           {"JerryI`Notebook`FrontendObject`", "FrontendObject.wl"},
           {"JerryI`Notebook`MasterKernel`", "MasterKernel.wl"},
 
-          {"JerryI`Notebook`AppExtensions`", "AppExtensions.wl"}
+          {"JerryI`Notebook`AppExtensions`", "AppExtensions.wl"},
+
+
+          {"JerryI`Notebook`Windows`", "Windows.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

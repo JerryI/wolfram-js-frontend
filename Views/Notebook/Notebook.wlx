@@ -157,6 +157,49 @@ requestKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
     ];
 ];
 
+projectCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := With[{},
+    
+    With[{project := (
+        With[{win = WindowObj["Notebook" -> cell["Notebook"], "Data" -> cell["Data"], "Ref" -> cell["Hash"] ]},
+            EventFire[notebook, "NewWindow", win];
+            WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
+        ]
+    )},
+
+        (*/* Check kernel and evaluator */*)
+        If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+
+            (*/* Kernel looks conected and etc */*)
+            Print["ok!"];
+
+            (*/* the last check */*)
+            With[{},
+                If[cell["State"] != "Idle",
+                    WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                ,
+                    checkWSLink[notebook, client, secret];
+                    project;
+                ];
+            ];
+        ,
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+
+            requestKernel[notebook, kernels, modals, client, Function[Null,
+                With[{},
+                            If[cell["State"] != "Idle",
+                                WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                            ,
+                                Echo["Success!"];
+                                checkWSLink[notebook, client, secret];
+                                project;
+                            ]
+                ];
+            ]];
+        ];
+    ];
+] 
+
 evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
     With[{cell = CellObj`HashMap[celluid] (*`*)},
         If[cell["Type"] == "Output",
@@ -376,6 +419,7 @@ Component[OptionsPattern[]] := With[{
             (* /* reset WS connection for sure, in a case of incorrect closed socket */*)
             notebook["WebSocketQ"] = False; 
             notebook["Opened"] = True;
+            notebook["Socket"] = $Client;
 
             (* /* Destructor */ *)
             With[{socket = EventClone[Global`$Client(*`*)]},
@@ -436,6 +480,8 @@ Component[OptionsPattern[]] := With[{
                 Delete /@ CellObj`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?OutputCellQ]](*`*);
             ]
         ],
+
+        "Project" -> Function[uid, projectCell[CellObj`HashMap[uid](*`*), notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
         "UpdateCell" -> Function[payload,
             With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},

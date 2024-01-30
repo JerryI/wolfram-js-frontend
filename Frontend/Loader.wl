@@ -50,8 +50,14 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
             If[TrueQ[ cache[path]["Opened"] ],
-                EventFire[OptionValue["Events"], "Loader:Error", "Notebook is already opened!"];
-                Return[ $Failed ];
+                EventFire[OptionValue["Events"], "Loader:Error", "Notebook was already opened!"];
+                While[TrueQ[ cache[path]["Opened"] ],
+                    (* wow such a hack... we have to rely on sockets in order to detect if window was closed... *)
+                    EventFire[OptionValue["Events"], "Loader:Error", "Closing previous connection..."];
+                    EventFire[cache[path]["Socket"], "Closed", True];
+                    EventRemove[ cache[path]["Socket"] ];
+                ];
+                
             ];
 
             Return[ cache[path] ];

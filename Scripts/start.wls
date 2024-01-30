@@ -22,6 +22,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Notebook`;
 <<JerryI`Notebook`Evaluator`;
+<<JerryI`Notebook`Windows`;
 
 <<JerryI`Notebook`AppExtensions`;
 
@@ -80,7 +81,8 @@ Echo["Loading packages: FRONTEND"];
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
 (* Entrypoint of an app *)
-App      := ImportComponent["Frontend/App.wlx"];
+App         := ImportComponent["Frontend/App.wlx"];
+Window      := ImportComponent["Frontend/Window.wlx"];
 AutoTest := ImportComponent["Frontend/Test.wlx"];
 
 (* Global variables *)
@@ -107,7 +109,7 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
  ],
  "Loader:LoadNotebook" -> Function[notebook,
   $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] ];
- ],
+ ]
 }];
 
 
@@ -163,7 +165,9 @@ SetAttributes[Offload, HoldFirst];
 
 (* start an app *)
 AutoTest["HTTPHandler"->http];
+Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
+
 
 (* autotest *)
 With[{secret = CreateUUID[]},
