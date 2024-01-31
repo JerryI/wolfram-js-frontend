@@ -71,7 +71,7 @@ Notebook`Deserialize[n_Association] := With[{notebook = Notebook[]},
 Notebook`Deserialize[any_, n_Association, notebook_Notebook] := With[{},
     Echo["Notebook.wl >> Unknown Serializer: "];
     Echo[any];
-    $Failed
+    $Failed["Unknown Serializer: "<>ToString[any] ]
 ]
 
 Notebook`Deserialize["jsfn4", n_Association, notebook_Notebook] := With[{},

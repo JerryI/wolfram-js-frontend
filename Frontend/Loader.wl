@@ -24,8 +24,8 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
                 "Notebook" -> Notebook`Serialize[notebook], 
                 "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
                 "serializer" -> "jsfn4" 
-            |>, FileNameJoin[{Directory[], "__backups", StringTemplate["``.wln"][dir // Hash]}] ]},
-                If[!StringQ[r], Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
+            |>, makeHashPath[dir] ]},
+                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
             ];
         ,
             With[{h = checkbackups[notebook]}, If[h =!= False, DeleteFile[h] ] ];
@@ -43,17 +43,19 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
 
     checkbackups[notebook_Notebook] := notebook["Path"] // checkbackups
     checkbackups[p_String] := With[{
-        path = FileNameJoin[{Directory[], "__backups", StringTemplate["``.wln"][p // Hash]}]
+        path = makeHashPath[p]
     },
         If[FileExistsQ[path], path, False]
     ];
+
+    makeHashPath[path_String, secret_String:""] := FileNameJoin[{Directory[], "__backups", StringTemplate["``.wln"][{path, secret} // Hash]}]
 
     save[notebook_Notebook, opts: OptionsPattern[] ] := With[{},
         If[ StringQ[notebook["Path"] ],
             save[notebook["Path"], notebook, opts]
         ,
             Echo["Loader >> Provide PATH!"];
-            $Failed
+            $Failed["PATH is not provided"]
         ]
     ];
 
@@ -66,7 +68,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
     ];
 
     load[path_String, opts: OptionsPattern[] ] := Module[{},
-        If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed] ];
+        If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed["File does not exists"] ] ];
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
             If[TrueQ[ cache[path]["Opened"] ],
@@ -105,7 +107,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
                         }];
 
                         Return[<|
-                            "Type" -> "PickAFile", "Callback" -> request, "Date" -> FileDate[h, "Modification"]
+                            "Type" -> "PickAFile", "Callback" -> request, "Original"->FileDate[path, 	"Modification"], "Date" -> FileDate[h, "Modification"]
                         |>];
                     ];
                 ,
@@ -129,7 +131,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         Echo["Loading to cache..."];
         
         With[{notebook = Notebook`Deserialize[ data ]},
-            If[FailureQ[notebook], Return[$Failed] ];
+            If[!MatchQ[notebook, _Notebook], Return[notebook] ];
 
             
             notebook["Path"] = pathnotebook;

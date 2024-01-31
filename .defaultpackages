@@ -119,8 +119,8 @@ https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 --config rollup.config.mjs -w", "restore" -> "mkdir _temp && cd _temp && git \
 clone https://github.com/JerryI/wljs-inputs && mv wljs-inputs/.git ../.git && \
 cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js", 
-     "styles" -> {"src/handsontable.min.css"}, "autocomplete" -> 
-      "src/autocomplete.js"|>, "repository" -> <|"type" -> "git", 
+     "styles" -> {"src/handsontable.min.css"}, "kernel" -> "src/Kernel.wl"|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-inputs"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-inputs/issues"|>, 

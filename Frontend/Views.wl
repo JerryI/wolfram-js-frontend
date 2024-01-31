@@ -5,7 +5,7 @@ Begin["JerryI`Notebook`Views`"];
 {NotebookComponent,    NotebookScript}     = ImportComponent["Views/Notebook/Notebook.wlx"];
 
 {NotebookMessage, NotebookMessageScript}   = ImportComponent["Views/Notebook/Message.wlx"];
-{NotebookFailure, NotebookFailureScript}   = ImportComponent["Views/Notebook/Failure.wlx"];
+{NotebookFailure}                          = ImportComponent["Views/Notebook/Failure.wlx"];
 
 (* /* view router */ *)
 View[opts__] := With[{list = Association[ List[opts] ]},

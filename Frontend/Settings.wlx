@@ -1,0 +1,77 @@
+http                      =  $Options["HTTPHandler"];
+AppEvent                  =  $Options["AppEvent"];
+ExtensionTemplates        =  $Options["ExtensionTemplates"];
+
+Head        := ImportComponent["Components/Head.wlx"];
+
+Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
+
+Alert           = ImportComponent["Components/Alert.wlx"];
+Modals           = ImportComponent["Components/Modals/Modals.wlx"];
+
+{Settings, SettingsScript}           = ImportComponent["Views/Settings/Settings.wlx"];
+
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
+ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
+  <link rel="stylesheet" href="{Path}"/> 
+] &/@ Includes["styles"] // ToStringRiffle;
+
+
+App[request_] := With[{
+        Secret = CreateUUID[], 
+        GlobalControls  = CreateUUID[],
+        ModalController = CreateUUID[],
+        GlobalMessanger = CreateUUID[],
+        GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>
+    },
+
+    (* /* destructor */ *)
+    With[{socket = Null},
+    
+    ];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalMessanger], {
+      any_ :> (EventFire[AppEvent, Messanger[any], #]&)
+    }];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalControls], {
+      any_ :> (EventFire[AppEvent, any, #]&)
+    }]; 
+
+    <html class="h-full"> 
+        <Head>
+            <WLJSHeader List={ExtensionsJS}/>  
+            <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
+            <WebUIInitializationScript/>
+            <ExtensionTemplates Template={"AppHead"} />
+            <ExtensionsStyles/>
+        </Head>  
+        <body class="h-full"> 
+        <div>
+          <Alert/>
+          <Modals ModalsPort={ModalController}/>
+          
+          <div id="frame">
+            <div class="h-full flex flex-col">
+              <div style="z-index: 100; background: rgb(239,239,239)" class="flex sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 bg-white px-2 pl-20 md:pl-2">
+                <div class="grow h-full" style="-webkit-app-region: drag"></div>       
+              </div>              
+              <Notifications MessagePort={GlobalMessanger}/>
+              <SettingsScript Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+            </div> 
+          </div>
+        </div>
+        <SettingsScript Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+        <ExtensionTemplates Template={"AppScripts"} />
+        </body>
+    </html>
+];
+
+
+http["MessageHandler", "Settings"] = AssocMatchQ[<|"Path" -> "/settings"|>] -> App;
+Print["Window Loaded!"];
+
+
+
