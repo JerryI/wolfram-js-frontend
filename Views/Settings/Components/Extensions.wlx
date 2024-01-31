@@ -1,0 +1,14 @@
+Checkbox = ImportComponent["UI/Checkbox.wlx"];
+
+{
+    <div class="px-4 sm:px-0 pb-3 border-b border-gray-100">
+        <h3 class="text-base font-semibold leading-7 text-gray-900">Extensions</h3>
+        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Manage or install new</p>
+    </div>
+,
+    <div class="mt-6">   
+        <Checkbox Label={"Title label"} Description={"Describe the check box"}/>
+        <Checkbox Label={"Title label"} Description={"Describe the check box"}/>
+        <Checkbox Label={"Title label"} Description={"Describe the check box"}/>
+    </div> 
+}

@@ -9,7 +9,7 @@ Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 Alert           = ImportComponent["Components/Alert.wlx"];
 Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 
-{Settings, SettingsScript}           = ImportComponent["Views/Settings/Settings.wlx"];
+{Settings, SettingsScript, Initialization}           = ImportComponent["Views/Settings/Settings.wlx"];
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
@@ -54,12 +54,9 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           
           <div id="frame">
-            <div class="h-full flex flex-col">
-              <div style="z-index: 100; background: rgb(239,239,239)" class="flex sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 bg-white px-2 pl-20 md:pl-2">
-                <div class="grow h-full" style="-webkit-app-region: drag"></div>       
-              </div>              
+            <div class="h-full flex flex-col">          
               <Notifications MessagePort={GlobalMessanger}/>
-              <SettingsScript Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Settings Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
             </div> 
           </div>
         </div>
@@ -71,7 +68,7 @@ App[request_] := With[{
 
 
 http["MessageHandler", "Settings"] = AssocMatchQ[<|"Path" -> "/settings"|>] -> App;
-Print["Window Loaded!"];
+Print["Settings Loaded!"];
 
 
 

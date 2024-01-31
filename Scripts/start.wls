@@ -83,7 +83,8 @@ JerryI`WLX`Importer`Private`CacheControl["Hour"];
 (* Entrypoint of an app *)
 App         := ImportComponent["Frontend/App.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
-AutoTest := ImportComponent["Frontend/Test.wlx"];
+Settings    := ImportComponent["Frontend/Settings.wlx"];
+AutoTest    := ImportComponent["Frontend/Test.wlx"];
 
 (* Global variables *)
 
@@ -165,6 +166,7 @@ SetAttributes[Offload, HoldFirst];
 
 (* start an app *)
 AutoTest["HTTPHandler"->http];
+Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 
