@@ -39,6 +39,16 @@ createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = ass
   ]
 ]
 
+backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
+  With[{result = saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True]},
+    If[FailureQ[result],
+      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+    ,
+      Print[result];
+    ]
+  ]
+]
+
 dumpNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   With[{result = saveNotebook[notebook, "Events"->AppEvent]},
     If[FailureQ[result],
@@ -89,6 +99,7 @@ App[request_] := With[{
     EventHandler[EventClone[GlobalControls], {
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
+      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];
 
@@ -120,7 +131,7 @@ App[request_] := With[{
           
           <div class="md:pl-70" id="frame">
             <div class="h-full flex flex-col">
-              <TopBar Controls={GlobalControls} Path={Path}/>
+              <TopBar Parameters={GlobalParameters} Controls={GlobalControls} Path={Path}/>
               <Notifications MessagePort={GlobalMessanger}/>
               <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>

@@ -65,9 +65,50 @@ Notebook`Serialize[n_Notebook] := Module[{props},
 ]
 
 Notebook`Deserialize[n_Association] := With[{notebook = Notebook[]},
-    (notebook[#] = n[#]) &/@ Complement[Keys[n], {"Hash"}]; 
+    Notebook`Deserialize[n["serializer"], n, notebook]
+]
+
+Notebook`Deserialize[any_, n_Association, notebook_Notebook] := With[{},
+    Echo["Notebook.wl >> Unknown Serializer: "];
+    Echo[any];
+    $Failed
+]
+
+Notebook`Deserialize["jsfn4", n_Association, notebook_Notebook] := With[{},
+    (notebook[#] = n["Notebook", #]) &/@ Complement[Keys[n["Notebook"] ], {"Hash"}]; 
+    notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["Cells"];
+
     notebook
 ]
+
+Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
+    notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["cells"];
+    With[{cell = #},
+        cell["Data"] = StringReplace[cell["data"], {
+            RegularExpression["FrontEndExecutable\\[\\\"([\w|\d|-]+)\\\"\\]"]:> With[{s = "$1"},    
+                StringRiffle[{"(*VB[*)(FrontEndRef[\"", s, "\"])(*,*)(*", ToString[Compress[Hold[Global`FrontEndExecutable[s] ] ], InputForm], "*)(*]VB*)"}, ""]
+        ]}];
+
+        cell["data"] = .;
+        cell["Type"] = cell["type"] /. {"input" -> "Input", "output" -> "Output"};
+        cell["type"] = .;
+        cell["Display"] = cell["display"];
+        cell["display"] = .;
+        cell["Props"] = (cell["props"] // Normal) /. {"hidden" -> "Hidden"} // Association;
+        cell["props"] = .;
+        cell["sign"] = .;
+        cell["id"] = .;
+    ]& /@ notebook["Cells"];
+
+    notebook["Objects"] = With[{key = #, value = n["notebook", "objects", #]},
+        # -> <|"Public" -> ImportString["[\"Hold\", "<>value["json"]<>"]", "ExpressionJSON"] |>
+    ] &/@ Keys[n["notebook", "objects"] ] // Association;
+
+    notebook["path"] = .;
+    notebook
+
+]
+
 
 Notebook`Sockets = <||>;
 Notebook /: Notebook`Sockets`Assign[n_Notebook, value_] := (

@@ -31,7 +31,7 @@ Component[cell_CellObj, cli_, parameters_, OptionsPattern[]] := With[{
                 <CellFrame Cell={cell}>
                     <ExtensionTemplateInjection Template={"CellFrame-Prolog"} Cell={cell} Client={cli}/>
                     <ExtensionTemplateWrapper Template={"CellWrapper"} Cell={cell} Client={cli}>
-                        <CellWrapper Cell={cell}/>
+                        <CellWrapper Parameters={parameters} Cell={cell}/>
                     </ExtensionTemplateWrapper>
                     <EvaluationBar Cell={cell} Client={cli}/>
                     <Hr Cell={cell}/> 

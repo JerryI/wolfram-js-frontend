@@ -1,7 +1,52 @@
 NotebookOnly[exprs_, OptionsPattern[]]  := If[FileExtension[OptionValue["Path"]] === "wln", exprs, ""];
 Options[NotebookOnly] = {"Path" -> Null};
 
-Component[OptionsPattern[]] := With[{Path = OptionValue["Path"], Controls = OptionValue["Controls"], Title = FileNameTake[OptionValue["Path"]]},
+timedSaveButton[client_, localController_, controls_, parameters_] := With[{clonedControls = EventClone[controls], socket = EventClone[client]},
+  Module[{task, reset, alive = True},
+    reset := With[{},
+      If[MatchQ[task, _TaskObject], TaskRemove[task]];
+      task = SetTimeout[(
+        Echo["Boom!"];
+        EventFire[localController, "Color", <|"Client"->client, "Color"->(If[StringQ[#],#,"teal"]&) @ parameters["AccentColor"] |> ];
+        EventFire[controls, "Backup", <|"Client"->client|>];
+        If[alive, reset];
+      ), 3 60 1000];
+    ];
+
+    reset;
+
+    EventHandler[clonedControls, {"Save" -> Function[Null,
+      EventFire[localController, "Reset", <|"Client"->client|>];
+      reset;
+    ]}];
+
+    (*/* destructor */*)
+    EventHandler[socket, {"Closed" -> Function[Null,
+      Echo["Destroy save button..."];
+      alive = False;
+      EventRemove[clonedControls];
+      EventRemove[localController];
+      TaskRemove[task];
+      ClearAll[reset];
+      EventRemove[socket];
+    ]}];
+  ]
+]
+
+Component[OptionsPattern[]] := With[{
+  Path = OptionValue["Path"], 
+  Controls = OptionValue["Controls"], 
+  Title = FileNameTake[OptionValue["Path"]],
+  localController = CreateUUID[],
+  localState = CreateUUID[],
+  parameters = OptionsValue["Parameters"],
+  cloned = EventClone[OptionValue["Controls"]]
+},
+
+  EventHandler[localState, Function[Null,
+    timedSaveButton[Global`$Client(*`*), localController, Controls, parameters]
+  ]];
+
     <div style="z-index: 100; background: rgb(239,239,239)" class="flex sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 bg-white px-2 pl-20 md:pl-2">
         <div class="my-auto mr-auto border-r border-gray-300 pr-1" style="padding-top: 0.2em">
           <button id="sidebar-toggle" class="md:-ml-14 text-gray-500 hover:bg-gray-50 rounded-md w-8 h-6">
@@ -54,8 +99,30 @@ Component[OptionsPattern[]] := With[{Path = OptionValue["Path"], Controls = Opti
         <NotebookOnly Path={Path}>
             <List>
                 <WebUIEventListener Type={"click"} Id={"sidebar-save"} Pattern={"Save"} Event={Controls} /> 
+
                 <WebUIEventListener Type={"click"} Id={"sidebar-abort"} Pattern={"Abort"} Event={Controls} /> 
-                <WebUIEventListener Type={"click"} Id={"sidebar-kernel"} Pattern={"ChangeKernel"} Event={Controls} /> 
+                <WebUIEventListener Type={"click"} Id={"sidebar-kernel"} Pattern={"ChangeKernel"} Event={Controls} />
+
+                <WebUIOnLoad Event={localState} Type={"Load"}/>
+                <WebUIJSBind Event={localController}>
+                  const saveBtn = document.getElementById('sidebar-save');
+                  let name;
+
+                  this.on('Reset', (data) => {
+                    if (name) saveBtn.classList.remove(name);
+                    saveBtn.classList.add('text-gray-500'); 
+                  });
+
+                  this.on('Load', () => {});
+
+                  this.on('Color', async (data) => {
+                    const args = await interpretate(data, {hold:true});
+                    const color = await interpretate(args.Color, {});
+                    name = 'text-' + color +'-500';
+                    saveBtn.classList.remove('text-gray-500');
+                    saveBtn.classList.add(name);
+                  });            
+                </WebUIJSBind>                
             </List>
         </NotebookOnly>
         <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />         

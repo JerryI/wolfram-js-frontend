@@ -4,6 +4,9 @@ Begin["JerryI`Notebook`Views`"];
 {EmptyComponent,       EmptyScript}        = ImportComponent["Views/Empty.wlx"];
 {NotebookComponent,    NotebookScript}     = ImportComponent["Views/Notebook/Notebook.wlx"];
 
+{NotebookMessage, NotebookMessageScript}   = ImportComponent["Views/Notebook/Message.wlx"];
+{NotebookFailure, NotebookFailureScript}   = ImportComponent["Views/Notebook/Failure.wlx"];
+
 (* /* view router */ *)
 View[opts__] := With[{list = Association[ List[opts] ]},
     Router[ list["Path"] , list["AppEvents"] ][opts]
@@ -19,7 +22,15 @@ Router[any_, _] := With[{},
 NotebookQ[path_] := FileExtension[path] === "wln";
 Router[any_?NotebookQ, appevents_String] := With[{n = loadNotebook[any, "Events"->appevents]},
     Print["Notebook router"];
-    ({NotebookComponent[##, "Notebook"->n], NotebookScript[##]} &)
+    Switch[n
+        ,_Notebook
+        ,    ({NotebookComponent[##, "Notebook"->n], NotebookScript[##]} &)
+        ,_Association
+        ,    ({NotebookMessage[##, "Data"->n], NotebookMessageScript[##]} &)
+        ,_
+        ,    (NotebookFailure[##, "Data"->n] &)
+    
+    ] 
 ];
 
 End[];

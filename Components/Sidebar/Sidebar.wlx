@@ -16,7 +16,7 @@ Controller["Reveal", __] := Function[name,
   WebUISubmit[Global`UIOpenExplorer[FileNameSplit[URLDecode[name]]] (*`*), $Client];
 ];
 
-Controller["Rename", sidebarId_, modals_] := Function[name,
+Controller["Rename", sidebarId_, modals_, path_] := Function[name,
   With[{decoded = URLDecode[name], request = CreateUUID[]},
     With[{splitted = FileNameSplit[decoded]},
       EventHandler[request, {
@@ -27,6 +27,9 @@ Controller["Rename", sidebarId_, modals_] := Function[name,
               RenameDirectory[decoded, name];
             ,
               RenameFile[decoded, name];
+              If[decoded == path,
+                WebUISubmit[UILocation[name // URLEncode], $Client];
+              ];
             ];
             EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
           ,
@@ -34,6 +37,9 @@ Controller["Rename", sidebarId_, modals_] := Function[name,
               RenameDirectory[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
             ,
               RenameFile[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
+              If[decoded == path,
+                WebUISubmit[UILocation[FileNameJoin[Flatten @ {Drop[splitted,-1], name} ] // URLEncode], $Client];
+              ];
             ];
             EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];        
           ];
@@ -67,7 +73,7 @@ With[{
   },
 
   EventHandler[Secret, {
-    FileOperate[any_] :> Controller[any, SidebarId, modals]
+    FileOperate[any_] :> Controller[any, SidebarId, modals, Path]
   }];
 
   EventHandler[Button1Id, Function[Null,

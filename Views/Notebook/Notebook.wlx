@@ -380,6 +380,14 @@ Component[OptionsPattern[]] := With[{
             ];            
         ],
 
+        "Backup" -> Function[data,
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
+                Then[tt, Function[Null,
+                    EventFire[controller, "DumpSaveTemporal", notebook];
+                ]];
+            ];            
+        ],        
+
         "ChangeKernel" -> Function[Null,
         
             If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), $Client]; Return[] ];

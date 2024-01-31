@@ -1,4 +1,10 @@
 id = $Options["Cell"]["Hash"];
+parameters = $Options["Parameters"];
+
 Class = If[TrueQ[$Options["Cell"]["Props"]["Hidden"]], "hidden", ""];
+(*
+InitializationClass = StringJoin["ring-offset-1 ring-", (If[StringQ[#], #, "teal"]&) @ parameters["AccentColor"], "-300"];
+If[TrueQ[$Options["Cell"]["Props"]["Initialization"]], InitializationClass = StringJoin[InitializationClass, " ring-2 rounded"]];
+*)
 
 <div class="{Class}" id="{id}"></div>
