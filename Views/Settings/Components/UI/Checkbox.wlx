@@ -1,4 +1,4 @@
-Component[OptionsPattern[]] := With[{Event = OptionValue["Event"], Uid = CreateUUID[], Label = OptionValue["Label"], Description = OptionValue["Description"], Checked = OptionValue["Checked"]},
+Component[OptionsPattern[]] := With[{Event = OptionValue["Event"], Topic = ToString[OptionValue["Topic"], InputForm], Uid = CreateUUID[], Label = OptionValue["Label"], Description = OptionValue["Description"], Checked = OptionValue["Checked"]},
     {
         <div class="relative flex items-start">
             <div class="flex h-6 items-center">
@@ -13,18 +13,18 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["Event"], Uid = CreateU
         <script type="module">
             const el = document.getElementById('<Uid/>');
             const checked = '<Checked/>' == 'True';
-            el.setAttribute();
+            el.checked = checked;
 
             el.addEventListener('change', (event)=>{
                 if (event.currentTarget.checked) 
-                    server.kernel.emitt('<Event/>', 'True');
+                    server.kernel._emitt('<Event/>', 'True', '<Topic/>');
                 else
-                    server.kernel.emitt('<Event/>', 'False');       
-            )};
+                    server.kernel._emitt('<Event/>', 'False', '<Topic/>');       
+            });
         </script>
     }
 ]
 
-Options[Component] = {"Event"->"blackhole", "Label"->"", "Description"->"", "Checked"->False}
+Options[Component] = {"Event"->"blackhole", "Label"->"", "Description"->"", "Checked"->False, "Topic"->"Default"}
 
 Component

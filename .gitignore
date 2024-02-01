@@ -1,6 +1,7 @@
 node_modules
 Temp/
-__localkernel
+__backups/*
+__localkernel/*
 shipped/*
 *.DS_STORE
 public/.DS_STORE

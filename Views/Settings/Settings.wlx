@@ -42,7 +42,7 @@ Component[OptionsPattern[]] := With[{
     ]
 },
     
-    EventHandler[secret, {
+    EventHandler[EventClone[secret], {
         (* /* Add listeners and load cells */ *)
 
         "Load" -> Function[Null,
@@ -71,10 +71,10 @@ Component[OptionsPattern[]] := With[{
               <div class="px-4 py-2 text-center text-sm font-semibold" style="-webkit-app-region: drag">
                 Settings
               </div>
-              <div class="px-4 py-0">
+              <div class="px-4 py-0 h-full overflow-y-auto">
                 <ul role="list" class="divide-y divide-gray-200">
                     <li class="px-4 py-4 sm:px-0">
-                        <Extensions Parameters={parameters} Secret={secret}/>
+                        <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
                     </li>
                 </ul>                
               </div>
