@@ -129,7 +129,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wlx", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
@@ -159,7 +159,7 @@ WLJSTransportHandler["GetSymbol"] = Function[{expr, client, callback},
 ]
 *)
 
-SocketListen[CSocketOpen[$Env["host"], $Env["ws"]], wcp@#&];
+SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&];
 
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
@@ -168,7 +168,7 @@ SetAttributes[Offload, HoldFirst];
 AutoTest["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
-App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
+App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "Env"->$Env];
 
 
 (* autotest *)

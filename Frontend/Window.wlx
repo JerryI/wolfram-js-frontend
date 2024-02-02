@@ -71,6 +71,9 @@ App[request_] := With[{
             </div> 
           </div>
         </div>
+        <script type="module">
+          core._isWindow = true; 
+        </script>
         <WindowScript Parameters={GlobalParameters} Modals={ModalController} Window={window} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
         <ExtensionTemplates Template={"AppScripts"} />
         </body>

@@ -13,13 +13,24 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
 
 Begin["`Internal`"];
 
-initializeKernel[kernel_] := With[{wsPort = RandomInteger[{20500, 3900}], spinner = Global`NotificationSpinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]},
+initializeKernel[parameters_][kernel_] := With[{
+  wsPort = RandomInteger[{20500, 3900}], 
+  spinner = Global`NotificationSpinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]
+},
   Print["Init Kernel!!!"];
   EventFire[kernel, spinner, Null];
 
-  With[{p = Import[FileNameJoin[{"Packages", #}], "String"]},
+  
+
+  (* load kernels and provide remote path *)
+  With[{
+    p = Import[FileNameJoin[{"Packages", #}], "String"], 
+    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][parameters["env", "host"], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm]
+  },
     Echo[StringJoin["Loading into Kernel... ", #] ];
-    Kernel`Init[kernel,  ToExpression[p, InputForm]; ](*`*);
+    With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
+      Kernel`Init[kernel,  ToExpression[processed, InputForm]; ](*`*);
+    ];
   ] &/@ Includes["kernel"];
 
   Echo["Starting WS link"];

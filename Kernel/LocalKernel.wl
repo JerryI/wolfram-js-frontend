@@ -65,7 +65,15 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
 
         Internal`Test := Echo["!!!!!!!!!!!!!!!!!!!!"];
 
-        
+        Unprotect[FileNameJoin];
+        FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{split = FileNameJoin[{any}] // FileNameSplit},
+          URLBuild[{url, split} // Flatten] // Internal`RemoteFS
+        ];
+        Protect[FileNameJoin];      
+
+        Internal`RemoteFS /: Get[Internal`RemoteFS[url_] ] := Get[url];   
+        Internal`RemoteFS /: StringTake[Internal`RemoteFS[url_], n_] := StringTake[url,n]; 
+        Internal`RemoteFS /: Import[Internal`RemoteFS[url_], w_] := Import[url, w];
 
         LTPEvaluate[Internal`Kernel`Stdout, LocalKernel`LTPConnected[uid] ];
     ) // HoldRemotePacket

@@ -118,8 +118,9 @@ https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
      "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
 --config rollup.config.mjs -w", "restore" -> "mkdir _temp && cd _temp && git \
 clone https://github.com/JerryI/wljs-inputs && mv wljs-inputs/.git ../.git && \
-cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js", 
-     "styles" -> {"src/handsontable.min.css"}, "kernel" -> "src/Kernel.wl"|>, 
+cd .. && rm -rf _temp"|>, "wljs-meta" -> 
+    <|"styles" -> {"src/handsontable.min.css", "src/styles.css"}, 
+     "kernel" -> "src/Kernel.wl", "expose" -> "templates"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-inputs"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
@@ -203,7 +204,7 @@ https://github.com/JerryI/wljs-magic-support && mv wljs-magic-support/.git \
     <|"js" -> "dist/kernel.js"|>, "repository" -> 
     <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-magic-support\
 "|>, "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
    "path" -> "wljs-magic-support", "defaultPackage" -> True|>, 
  "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.5", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
@@ -219,7 +220,7 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js"|>,
      "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
       "15.0.1", "plotly.js-dist-min" -> "^2.18.2", "rollup" -> "^3.20.6", 
      "rollup-plugin-combine" -> "^2.1.1"|>, "resolutions" -> 
-    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+    <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
    "path" -> "wljs-plotly", "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> <|"url" -> "https://github.com/JerryI/wljs-plotly/issues"|>, 
    "homepage" -> "https://github.com/JerryI/wljs-plotly#readme", 
@@ -283,7 +284,7 @@ wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"|>,
     <|"type" -> "git", "url" -> 
       "https://github.com/JerryI/wljs-mermaid-support"|>, 
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
    "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
  "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.1.4", 
    "description" -> "Snippets for WLJS editor", 
@@ -299,7 +300,7 @@ cd .. && rm -rf _temp"|>, "defaultPackage" -> True,
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
    "path" -> "wljs-snippets"|>, "wljs-chatbook-support" -> 
   <|"name" -> "wljs-chatbook-support", "version" -> "0.0.5", 
    "description" -> "Chatbook cells support for WLJS Editor", 
@@ -312,7 +313,7 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/KirillBelovTest/wljs-chatbook-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
    "path" -> "wljs-chatbook-support"|>, 
  "wljs-xterm" -> <|"name" -> "wljs-xterm", "version" -> "0.0.1", 
    "description" -> "Xterm extension for WLJS Notebook", 

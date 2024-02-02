@@ -23,7 +23,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Ori
                      <h2 class="mb-2 mt-2 text-xs font-semibold text-gray-900">We found a backup of your notebook</h2>
                      <ul class="text-sm text-gray-700 flex flex-col gap-y-1">
                         <li class="group w-full flex flex-start cursor-default select-none rounded-md">
-                            <button id="ok-<Uid/>" type="button" class="relative w-full cursor-default rounded-md 0 h-7 pl-3 bg-gray-300 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" style="background: #d9d9d9;">
+                            <button id="ok-{Uid}" type="button" class="relative w-full cursor-default rounded-md 0 h-7 pl-3 bg-gray-300 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" style="background: #d9d9d9;">
                                 <span class="flex items-center gap-x-2">
                                     <svg class="h-4 w-4 text-gray-500" viewBox="0 0 24 24">
                                         <g>
@@ -38,7 +38,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Ori
                      </ul>
                      <script type="module">
                         const element = document.getElementById('ok-<Uid/>');
-                        
+                        let close;
 
                         const keyListener = (e) => {
                                 switch(e.keyCode) {                                    
@@ -62,7 +62,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Ori
                             ev.stopPropagation();
                         });
 
-                        window.addEventListener('click', close);   
+                        
 
                         document.addEventListener('keydown', keyListener);
                         const submit = (el) => {
@@ -72,12 +72,14 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Ori
                             server.emitt('<Uid/>', 'True', 'Success');
                         };
 
-                        const close = () => {
+                        close = () => {
                             document.removeEventListener('keydown', keyListener);
                             element.removeEventListener('click', submit);
                             window.removeEventListener('click', close);  
                             server.emitt('<Uid/>', 'True', 'Cancelled');
                         };
+
+                        window.addEventListener('click', close);   
 
                     
                        </script>
