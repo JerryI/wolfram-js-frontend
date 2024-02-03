@@ -21,7 +21,7 @@ Views            = ImportComponent["Views.wl"];
 
 TopBar           = ImportComponent["Components/Topbar.wlx"];
 
-{saveNotebook, loadNotebook, renameNotebook}         = ImportComponent["Loader.wl"];
+{saveNotebook, loadNotebook, renameNotebook, cloneNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
 serverParams = <|"env" -> env|>;
@@ -69,6 +69,16 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   ]
 ]
 
+dumpNotebookAs[assoc_Association, GlobalMessanger_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
+  With[{result = cloneNotebook[notebook, path]},
+    If[FailureQ[result],
+      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+    ,
+      WebUILocation[ URLEncode[ path ], client ];
+    ]
+  ]
+]
+
 toggleWindowSize[_, client_] := With[{},
   WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
 ]
@@ -110,6 +120,7 @@ App[request_] := With[{
       "RenameFile" -> (renameFile@@# &),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
+      "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];

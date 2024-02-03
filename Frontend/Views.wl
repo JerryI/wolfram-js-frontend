@@ -1,6 +1,6 @@
 Begin["JerryI`Notebook`Views`"];
 
-{saveNotebook, loadNotebook, renameXXX}               = ImportComponent["Loader.wl"];
+{saveNotebook, loadNotebook, renameXXX, cloneXXX}               = ImportComponent["Loader.wl"];
 {EmptyComponent,       EmptyScript}        = ImportComponent["Views/Empty.wlx"];
 {NotebookComponent,    NotebookScript}     = ImportComponent["Views/Notebook/Notebook.wlx"];
 

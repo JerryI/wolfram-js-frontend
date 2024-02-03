@@ -133,7 +133,7 @@ const buildMenu = (opts) => {
                             promise.then((res) => {
                                 if (!res.canceled) {
                                     app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
                                 }
                             });
                         }
@@ -146,7 +146,7 @@ const buildMenu = (opts) => {
                             promise.then((res) => {
                                 if (!res.canceled) {
                                     app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
                                 }
                             });
                         }
@@ -160,6 +160,7 @@ const buildMenu = (opts) => {
                         }]
                     }
                 ] : []),
+                { type: 'separator' },
                 {
                     label: 'Save',
                     accelerator: shortcut('save'),
@@ -168,6 +169,21 @@ const buildMenu = (opts) => {
                         windows.focused.call('save', true);
                     }
                 },
+                {
+                    label: 'Save As',
+                    click: async() => {
+                        const promise = dialog.showSaveDialog({ title: 'Save as', properties: ['createDirectory'], filters: [
+                            { name: 'Notebooks', extensions: ['wln'] }
+                        ],});
+                        promise.then((res) => {
+                            if (!res.canceled) {
+                                app.addRecentDocument(res.filePath);
+                                console.log(res.filePath);
+                                windows.focused.call('saveas', encodeURIComponent(res.filePath) );
+                            }
+                        });
+                    }
+                },                
                 /*{ type: 'separator' },
                 {
                     label: 'Share',
@@ -190,7 +206,7 @@ const buildMenu = (opts) => {
                     {
                         label: 'Open Examples',
                         click: async(ev) => {
-                            create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
+                            create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
                         }
                     },
                     {
@@ -561,6 +577,7 @@ const windows = {
         },
 
         destroy() {
+            this.win.close();
             this.readyQ = false;
             this.aliveQ = false;
             this.win = false;
@@ -818,7 +835,7 @@ app.on('open-file', (ev, path) => {
         return;
     }
 
-    create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(path), title: path, show: true, focus: true});
+    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path), title: path, show: true, focus: true});
 })
 
 app.on('activate', () => {
@@ -849,7 +866,7 @@ else {
             if (new RegExp('--').exec(argv[pos])) pos++;
             if (new RegExp('--').exec(argv[pos])) pos++;
 
-            create_window({url: server.url.default('local') + `?path=` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+            create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
         }
     });
 }
@@ -878,7 +895,7 @@ app.whenReady().then(() => {
     /*windows.log.construct((log_window) => {
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });*/
-    
+    server.url.local = `http://127.0.0.1:20560`;
     create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 
     ipcMain.on('system-window-toggle', (e, p) => {
@@ -967,6 +984,8 @@ function start_server (window) {
             //open a window, means server has started
             server.url.local = `http://${url_match.groups.ip}:${url_match.groups.port}`;
             
+            windows.log.destroy()
+
             //open a first window. coudl be a file or second instance
             create_first_window();
             server.running = true;
@@ -996,7 +1015,7 @@ function create_first_window() {
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
         if (process.argv[1].length > 3) {
             app.addRecentDocument(process.argv[1]);
-            create_window({url: server.url.default() + '?path=' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
+            create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
         } else  {
             create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false, cacheClear: server.wasUpdated});
         }
@@ -1008,7 +1027,7 @@ function create_first_window() {
     //Mac
     if (isMac && server.startedQ && !server.running && server.path.requested) {
         app.addRecentDocument(server.path.requested);
-        create_window({url: server.url.default() + '?path=' + encodeURIComponent(server.path.requested), title: server.path.requested, show: false, focus: true, cacheClear: server.wasUpdated});
+        create_window({url: server.url.default() + '/' + encodeURIComponent(server.path.requested), title: server.path.requested, show: false, focus: true, cacheClear: server.wasUpdated});
         server.path.requested = undefined;
 
         server.wasUpdated = false;

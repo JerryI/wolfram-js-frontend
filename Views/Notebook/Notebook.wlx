@@ -398,6 +398,15 @@ Component[OptionsPattern[]] := With[{
             ];            
         ],
 
+        "SaveAs" -> Function[path,
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
+                Then[tt, Function[Null,
+                    Echo["ASSAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>];
+                ]];
+            ];
+        ],
+
         "Backup" -> Function[data,
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
                 Then[tt, Function[Null,

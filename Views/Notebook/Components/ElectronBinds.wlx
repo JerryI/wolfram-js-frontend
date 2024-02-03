@@ -9,8 +9,13 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('changekernel', () => {
             server.emitt('<Controls/>', 'True', 'ChangeKernel');
         });
+
         window.electronAPI.listener('save', () => {
             server.emitt('<Controls/>', 'True', 'Save');
+        });
+
+        window.electronAPI.listener('saveas', (ev, path) => {
+            server.emitt('<Controls/>', `"${path}"`, 'SaveAs');
         });
 
         window.electronAPI.listener('restartkernel', () => {

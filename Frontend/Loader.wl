@@ -10,6 +10,13 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         cache[old] = .;
         Echo["Loader >> renamed."];
     ];
+
+    clone[notebook_Notebook, newPath_String] := With[{oldPath = notebook["Path"]},
+        cache[oldPath] = .;
+        cache[newPath] = notebook;
+        notebook["Path"] = newPath;
+        save[notebook]
+    ];
     
     save[path_String, notebook_Notebook, opts: OptionsPattern[] ] := Module[{dir = path},
         If[DirectoryQ[dir],
@@ -154,4 +161,4 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
     
 EndPackage[];
 
-{JerryI`Notebook`Loader`Internal`save, JerryI`Notebook`Loader`Internal`load, JerryI`Notebook`Loader`Internal`rename}
+{JerryI`Notebook`Loader`Internal`save, JerryI`Notebook`Loader`Internal`load, JerryI`Notebook`Loader`Internal`rename, JerryI`Notebook`Loader`Internal`clone}
