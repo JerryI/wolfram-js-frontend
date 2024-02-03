@@ -1,8 +1,6 @@
 Dropdown := ImportComponent["Dropdown.wlx"];
 
 File = $Options["File"];
-Print["Selected"];
-Print[$Options["Selected"]];
 
 Selected = If[TrueQ[$Options["Selected"]], "bg-gray-454-half", ""];
 

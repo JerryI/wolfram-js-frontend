@@ -129,7 +129,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "wlx", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 

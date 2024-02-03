@@ -21,10 +21,17 @@ Views            = ImportComponent["Views.wl"];
 
 TopBar           = ImportComponent["Components/Topbar.wlx"];
 
-{saveNotebook, loadNotebook}         = ImportComponent["Loader.wl"];
+{saveNotebook, loadNotebook, renameNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
 serverParams = <|"env" -> env|>;
+
+renameFile[old_String, new_String] := With[{},
+  If[FileExtension[old] === "wln",
+    Echo["A notebook was renamed!"];
+    renameNotebook[old, new];
+  ];
+]
 
 createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
@@ -100,6 +107,7 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
+      "RenameFile" -> (renameFile@@# &),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
@@ -134,7 +142,7 @@ App[request_] := With[{
           
           <div class="md:pl-70" id="frame">
             <div class="h-full flex flex-col">
-              <TopBar Parameters={GlobalParameters} Controls={GlobalControls} Path={Path}/>
+              <TopBar Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
               <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>

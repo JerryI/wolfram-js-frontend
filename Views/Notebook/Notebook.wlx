@@ -435,6 +435,7 @@ Component[OptionsPattern[]] := With[{
                     Echo[">> SOCKET CLOSED!!!"];
                     EventRemove[socket];
                     EventFire[appEvents, "Notebook:Close", notebook];
+                    EventFire[notebook, "OnClose", True];
                     
                     destructor[notebook, secret, parameters, extensions];
                 ]}];
@@ -472,11 +473,6 @@ Component[OptionsPattern[]] := With[{
 
             (* /* reset a preliminary link */ *)
             WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
-        ],
-
-        (* /* When a user focuses on a notebook */ *)
-        "Activate" -> Function[Null,
-        
         ],
 
         "CallDropdown" -> Function[data,

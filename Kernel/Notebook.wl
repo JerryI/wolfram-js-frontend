@@ -212,7 +212,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
         transaction = Transaction[];
         transaction["Data"] = o["Data"];
-        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Hash"]|> ];
+        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Hash"], "Notebook" -> o["Notebook"]["Hash"]|> ];
 
         (* find any output cell after *)
         With[{seq = SequencePosition[o["Notebook", "Cells"], {Sequence[o, __?OutputCellQ]}] // Flatten},

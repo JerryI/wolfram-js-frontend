@@ -12,13 +12,10 @@ Pl   := ImportComponent["ItemParent.wlx"];
 
 If[!DirectoryQ[Path], Path = DirectoryName[Path]];
 
-Print[StringJoin["ItemList ", Path]];
-
 With[{
   Ul = Table[
     If[DirectoryQ[i],  
-      Print[{Current, i}];
-      
+    
       <li><Dir Port={Port} Parameters={Parameters} Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
       <li><Fl  Port={Port} Parameters={Parameters} File={i} Selected={SameQ[Current, i]}/></li>
     ]

@@ -6,7 +6,7 @@
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> {"dist/kernel.js", "src/boxes.js", "src/objects.js", 
-       "src/autocomplete.js", "src/frontsubmit.js"}, 
+       "src/autocomplete.js", "src/frontsubmit.js", "src/dir.js"}, 
      "frontend" -> {"src/Frontend.wl", "src/FrontendObject.wl", 
        "src/FrontendObjectSync.wl", "src/Autocomplete.wl", 
        "src/SetDirectory.wl", "src/RemoteCells.wl", "src/FrontSubmit.wl"}, 
@@ -47,10 +47,9 @@ rollup.config.mjs", "watch" -> "node --max-old-space-size=8192 \
 _temp && git clone \
 https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine && mv \
 Mathematica-ThreeJS-graphics-engine/.git ../.git && cd .. && rm -rf _temp"|>, 
-   "wljs-meta" -> <|"js" -> "dist/kernel.js", "autocomplete" -> 
-      "src/autocomplete.js", "styles" -> "src/styles.css"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> 
+   "wljs-meta" -> <|"js" -> "dist/kernel.js", "kernel" -> "src/Kernel.wl", 
+     "styles" -> "src/styles.css"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
       "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
@@ -82,9 +81,9 @@ Mathematica-ThreeJS-graphics-engine/.git ../.git && cd .. && rm -rf _temp"|>,
 clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> "dist/kernel.js", "styles" -> "src/styles.css", 
-     "autocomplete" -> "src/autocomplete.js"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-graphics-d3"|>, 
+     "kernel" -> "src/Kernel.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-graphics-d3"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
     <|"url" -> "https://github.com/JerryI/wljs-graphics-d3/issues"|>, 
@@ -201,10 +200,11 @@ wljs-markdown-support/.git ../.git && cd .. && rm -rf _temp"|>,
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-magic-support && mv wljs-magic-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> "dist/kernel.js"|>, "repository" -> 
-    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-magic-support\
-"|>, "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
+    <|"js" -> "dist/kernel.js", "frontend" -> "src/Frontend.wl"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-magic-support"|>, 
+   "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-magic-support", "defaultPackage" -> True|>, 
  "wljs-plotly" -> <|"name" -> "wljs-plotly", "version" -> "0.0.5", 
    "description" -> "Plotly.js adapter for Mathematica's Graphics", 
@@ -213,9 +213,9 @@ https://github.com/JerryI/wljs-magic-support && mv wljs-magic-support/.git \
      "watch" -> "node --max-old-space-size=8192 ./node_modules/.bin/rollup \
 --config rollup.config.mjs -w", "restore" -> "mkdir _temp && cd _temp && git \
 clone https://github.com/JerryI/wljs-plotly && mv wljs-plotly/.git ../.git && \
-cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-plotly"|>, 
+cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js", 
+     "kernel" -> "src/Kernel.wl"|>, "repository" -> 
+    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-plotly"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
      "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
       "15.0.1", "plotly.js-dist-min" -> "^2.18.2", "rollup" -> "^3.20.6", 
@@ -247,8 +247,9 @@ https://github.com/JerryI/wljs-cells && mv wljs-cells/.git ../.git && cd .. \
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-revealjs && mv wljs-revealjs/.git ../.git && \
 cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"frontend" -> "src/Frontend.wl", 
-     "js" -> "dist/kernel.js", "styles" -> {"dist/reveal.css", 
-       "src/style.css", "src/drawer/drawer.css", "src/pointer/pointer.css"}, 
+     "kernel" -> "src/Kernel.wl", "js" -> "dist/kernel.js", 
+     "styles" -> {"dist/reveal.css", "src/style.css", 
+       "src/drawer/drawer.css", "src/pointer/pointer.css"}, 
      "priority" -> 999|>, "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-revealjs"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^25.0.7", 
@@ -284,7 +285,7 @@ wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"|>,
     <|"type" -> "git", "url" -> 
       "https://github.com/JerryI/wljs-mermaid-support"|>, 
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
  "wljs-snippets" -> <|"name" -> "wljs-snippets", "version" -> "0.1.4", 
    "description" -> "Snippets for WLJS editor", 

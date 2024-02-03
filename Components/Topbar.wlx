@@ -33,15 +33,61 @@ timedSaveButton[client_, localController_, controls_, parameters_] := With[{clon
   ]
 ]
 
+rename[cli_, path_, modals_, Controls_] := (
+  With[{request = CreateUUID[]},
+    With[{splitted = FileNameSplit[path], decoded = path},
+      EventHandler[request, {
+        "Success" -> Function[name,
+          EventRemove[request];
+          If[Length[splitted] == 1,
+            If[DirectoryQ[decoded],
+              RenameDirectory[decoded, name];
+            ,
+              RenameFile[decoded, name];
+              Then[EventFire[Controls, "RenameFile", {decoded, name}], Function[Null,
+                WebUISubmit[UILocation[URLEncode[name] ], cli];
+              ]];
+            ];
+          ,
+            If[DirectoryQ[decoded],
+              RenameDirectory[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
+            ,
+              RenameFile[decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]];
+
+              Then[EventFire[Controls, "RenameFile", {decoded, FileNameJoin[Flatten @ {Drop[splitted,-1], name} ]}], Function[Null,
+                WebUISubmit[UILocation[URLEncode[ FileNameJoin[Flatten @ {Drop[splitted,-1], name} ] ]], cli];
+              ]];
+            ];       
+          ];
+        ],
+
+        _ -> Function[Null,
+          Echo["Cancelled or did not managed to perform"];
+          EventRemove[request];
+        ]
+      }];
+
+      EventFire[modals, "TextField", <|"Client"->cli, "Callback"->request, "Title"->"Enter new name", "String"-> Last[splitted]|>];
+    ];
+  ];
+);
+
 Component[OptionsPattern[]] := With[{
   Path = OptionValue["Path"], 
   Controls = OptionValue["Controls"], 
+  modals = OptionValue["Modals"], 
   Title = FileNameTake[OptionValue["Path"]],
   localController = CreateUUID[],
   localState = CreateUUID[],
   parameters = OptionsValue["Parameters"],
-  cloned = EventClone[OptionValue["Controls"]]
+  cloned = EventClone[OptionValue["Controls"]],
+  EditTitle = CreateUUID[]
 },
+
+  EventHandler[EditTitle, Function[Null,
+    Echo["Edit!"];
+    rename[Global`$Client(*`*), Path, modals, Controls]
+  ]];
 
   EventHandler[localState, Function[Null,
     timedSaveButton[Global`$Client(*`*), localController, Controls, parameters]
@@ -62,7 +108,7 @@ Component[OptionsPattern[]] := With[{
         </div>   
         <div class="grow h-full" style="-webkit-app-region: drag"></div> 
         <div class="grow h-full p-1 items-center flex rounded-md 0 h-7 pl-3 bg-gray-100 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6">
-          <span class="leading-6 text-sm text-gray-500"><Title/></span>
+          <span id="title-editable" class="leading-6 text-sm text-gray-500"><Title/></span>
         </div>
         <div class="grow h-full" style="-webkit-app-region: drag"></div>  
         <div class="my-auto ml-auto border-l border-gray-300 pl-1" style="padding-top: 0.2em">
@@ -125,10 +171,11 @@ Component[OptionsPattern[]] := With[{
                 </WebUIJSBind>                
             </List>
         </NotebookOnly>
-        <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />         
+        <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />  
+        <WebUIEventListener Type={"click"} Id={"title-editable"} Event={EditTitle} />       
     </div>
 ];
 
-Options[Component] = {"Controls" -> "", "Path" -> "", "Title"->""};
+Options[Component] = {"Controls" -> "", "Path" -> "", "Title"->"", "Modals"->""};
 
 Component
