@@ -55,7 +55,7 @@ pluginsMenu.fetch = () => {
                         label: mi["label"],
                         click: async(ev) => {
                             console.log(ev);
-                            windows.focused.win.webContents.send('pluginsMenu', mi["internalHandler"])
+                            windows.focused.call('extension', mi["internalHandler"]);
                         }
                     };
 
@@ -168,7 +168,7 @@ const buildMenu = (opts) => {
                         windows.focused.call('save', true);
                     }
                 },
-                { type: 'separator' },
+                /*{ type: 'separator' },
                 {
                     label: 'Share',
                     submenu: [{
@@ -185,7 +185,7 @@ const buildMenu = (opts) => {
                             }
                         }
                     ]
-                },
+                },*/
                 ...((options.localmenu) ? [{ type: 'separator' },
                     {
                         label: 'Open Examples',
@@ -229,14 +229,14 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('toggle_cell'),
                     click: async(ev) => {
                         console.log(ev);
-                        //windows.focused.operate('HC');
+                        windows.focused.call('togglecell');
                     }
                 },
                 {
                     label: 'Unhide All Cells',
                     click: async(ev) => {
                         console.log(ev);
-                        //windows.focused.call('unhideall', true);
+                        windows.focused.call('unhideallcells', true);
                     }
                 },
 
@@ -323,7 +323,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('evaluate_init'),
                     click: async(ev) => {
                         console.log(ev);
-                        //windows.focused.call('EIC');
+                        windows.focused.call('evaluateinit', true);
                     }
                 },
 
@@ -598,10 +598,6 @@ const windows = {
             }
 
             self.win.webContents.send(type, args);
-        },
-        operate (type) {
-            if (!this.win) return;
-            this.win.webContents.send('cellop', type);
         }
     }
 };

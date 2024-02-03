@@ -44,7 +44,7 @@ initializeKernel[parameters_][kernel_] := With[{
 
   With[{hash = kernel["Hash"], s = spinner["Promise"] // First},
     Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
-    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, "Ok" ]; ];
+    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, True ]; ];
   ];
 ]
 

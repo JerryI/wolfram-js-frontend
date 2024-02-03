@@ -2,9 +2,9 @@ id = $Options["Cell"]["Hash"];
 parameters = $Options["Parameters"];
 
 Class = If[TrueQ[$Options["Cell"]["Props"]["Hidden"]], "hidden", ""];
-(*
-InitializationClass = StringJoin["ring-offset-1 ring-", (If[StringQ[#], #, "teal"]&) @ parameters["AccentColor"], "-300"];
-If[TrueQ[$Options["Cell"]["Props"]["Initialization"]], InitializationClass = StringJoin[InitializationClass, " ring-2 rounded"]];
-*)
+GroupState = If[TrueQ[$Options["Cell"]["Props"]["InitGroup"]], "", " hidden"];
+GroupColor = StringJoin["bg-", (If[StringQ[#], #, "teal"]&) @ parameters["AccentColor"], "-300"];
 
-<div class="{Class}" id="{id}"></div>
+<div class="{Class}" id="{id}">
+    <div id="gi-{id}" class="cgi-ico {StringJoin[GroupColor, GroupState]}"></div>
+</div>

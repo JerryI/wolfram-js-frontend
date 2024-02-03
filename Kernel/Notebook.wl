@@ -100,6 +100,10 @@ Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
         cell["id"] = .;
     ]& /@ notebook["Cells"];
 
+    If[KeyExistsQ[n["notebook"], "store"], 
+        notebook["Storage"] = Compress[ ReleaseHold[#] ] &/@ n["notebook", "store"];
+    ];
+
     notebook["Objects"] = With[{key = #, value = n["notebook", "objects", #]},
         # -> <|"Public" -> ImportString["[\"Hold\", "<>value["json"]<>"]", "ExpressionJSON"] |>
     ] &/@ Keys[n["notebook", "objects"] ] // Association;

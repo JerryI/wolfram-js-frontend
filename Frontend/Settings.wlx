@@ -27,7 +27,7 @@ App[request_] := With[{
 
     (* /* destructor */ *)
     With[{socket = Null},
-    
+      Null;
     ];
 
     (* /* redirect to extensions  */ *)

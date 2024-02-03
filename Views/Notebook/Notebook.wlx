@@ -200,14 +200,14 @@ projectCell[cell_, notebook_, secret_String, kernels_, client_, modals_, paramet
     ];
 ] 
 
-evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
-    With[{cell = CellObj`HashMap[celluid] (*`*)},
+evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := Module[{},
+    With[{},
         If[cell["Type"] == "Output",
             Echo["Morphing..."];
             cell["Type"] = "Input";
 
             With[{template = CellGenerator[cell, client, parameters, extensions]},
-                WebUISubmit[Global`UINotebook["Morph", celluid, template, CellObj`Serialize[cell, "MetaOnly"->True]], client];
+                WebUISubmit[Global`UINotebook["Morph", cell["Hash"], template, CellObj`Serialize[cell, "MetaOnly"->True]], client];
             ];
         ];
     ];
@@ -222,7 +222,7 @@ evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, par
         Print["ok!"];
 
         (*/* the last check */*)
-        With[{cell = CellObj`HashMap[celluid] (*`*)},
+        With[{},
             If[cell["State"] != "Idle",
                 WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
             ,
@@ -234,7 +234,7 @@ evaluateCell[celluid_, notebook_, secret_String, kernels_, client_, modals_, par
         If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
         
         requestKernel[notebook, kernels, modals, client, Function[Null,
-            With[{cell = CellObj`HashMap[celluid] (*`*)},
+            With[{},
                         If[cell["State"] != "Idle",
                             WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
                         ,
@@ -302,7 +302,25 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 const props = await interpretate(args[2], env);
 
                 CellWrapper.morph(uid, template, props);
-            }  
+            } 
+
+            core.UINotebook.UnhideAllCells  = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                CellWrapper.unhideAll(uid); 
+            }
+
+            core.UINotebook.ToggleCell = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                CellWrapper.toggleCell(uid); 
+            }
+
+            core.UINotebook.ToggleInitGroup = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                const state = await interpretate(args[1], env);
+
+                CellWrapper.setInit(uid, state);
+            }
+
 
             core.UINotebook.RemoveCell = async (args, env) => {
                 const uid = await interpretate(args[0], env);
@@ -405,6 +423,30 @@ Component[OptionsPattern[]] := With[{
             notebook["Evaluator"]["Kernel"] // Kernel`Restart;
         ],
 
+        "ClearOutputs" -> Function[Null,
+            Echo["ClearOutputs"];
+            Delete /@ Select[notebook["Cells"], OutputCellQ];
+        ],  
+        
+        "UnhideAllCells" -> Function[Null,
+            WebUISubmit[Global`UINotebook["UnhideAllCells", notebook["Hash"]](*`*), $Client];
+        ],
+
+        "ToggleFocusedCell" -> Function[Null,
+            With[{focused = notebook["FocusedCell"]},
+                WebUISubmit[Global`UINotebook["ToggleCell", focused["Hash"]](*`*), $Client];
+            ]
+        ],
+
+        "DeleteFocusedCell" -> Function[Null,
+            notebook["FocusedCell"] // Delete;
+            If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
+        ],
+        
+        "EvaluateInitCells" -> Function[Null,
+            (evaluateCell[#, notebook, secret, kernels, $Client, modals, parameters, extensions]&) /@ Select[notebook["Cells"], TrueQ[#["Props"]["InitGroup"]]&];
+        ],
+
         "Abort" -> Function[Null,
             If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
                 Kernel`Abort[notebook["Evaluator"]["Kernel"]] (*`*);
@@ -414,7 +456,9 @@ Component[OptionsPattern[]] := With[{
                     EventFire[log, "Aborted", ""];
                 ], Select[notebook["Cells"], (#["State"] =!= "Idle") &]];
             ];
-        ]
+        ],
+
+        ExtensionEvent[e_] :> (EventFire[appEvents, ExtensionEvent[e], notebook]&) 
     }];
     
     EventHandler[secret, {
@@ -479,7 +523,16 @@ Component[OptionsPattern[]] := With[{
             Echo[data];
         ], 
 
+        "MakeInit" -> Function[uid,
+            Echo["Toggle initialization cell..."];
+            With[{cell = CellObj`HashMap[uid](*`*)},
+                cell["Props"] = Join[cell["Props"], <|"InitGroup" -> !TrueQ[cell["Props", "InitGroup"]]|>];
+                WebUISubmit[Global`UINotebook["ToggleInitGroup", uid, TrueQ[cell["Props", "InitGroup"]]](*`*), $Client];
+            ]
+        ],
+
         "ClearOutputs" -> Function[uid,
+            Echo["Clear outputs"];
             With[{cell = CellObj`HashMap[uid](*`*)},
                 Delete /@ CellObj`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?OutputCellQ]](*`*);
             ]
@@ -541,7 +594,7 @@ Component[OptionsPattern[]] := With[{
             ]
         ],        
 
-        "Evaluate" -> Function[celluid, evaluateCell[celluid, notebook, secret, kernels, $Client, modals, parameters, extensions]],
+        "Evaluate" -> Function[celluid, evaluateCell[CellObj`HashMap[celluid](*`*), notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
         else_String :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
     }];

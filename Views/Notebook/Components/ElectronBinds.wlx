@@ -16,6 +16,44 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('restartkernel', () => {
             server.emitt('<Controls/>', 'True', 'RestartKernel');
         });
+
+        window.electronAPI.listener('unhideallcells', () => {
+            server.emitt('<Controls/>', 'True', 'UnhideAllCells');
+        });
+
+        window.electronAPI.listener('clearoutputs', () => {
+            server.emitt('<Controls/>', 'True', 'ClearOutputs');
+        });
+
+        window.electronAPI.listener('togglecell', () => {
+            server.emitt('<Controls/>', 'True', 'ToggleFocusedCell');
+        });
+
+        window.electronAPI.listener('deletecell', () => {
+            server.emitt('<Controls/>', 'True', 'DeleteFocusedCell');
+        });
+
+        window.electronAPI.listener('settings', () => {
+            const fake = document.createElement('a');
+            fake.target = "_blank";
+            fake.href = '/settings';
+            fake.click();            
+        }); 
+        
+        window.electronAPI.listener('newnotebook', () => {
+            server.emitt('<Controls/>', 'True', 'NewNotebook');
+        });
+
+
+        window.electronAPI.listener('extension', (ev, p) => {
+            console.warn(p);
+            server._emitt('<Controls/>', 'True', 'ExtensionEvent["'+p+'"]');
+        });
+        
+
+        window.electronAPI.listener('evaluateinit', () => {
+            server.emitt('<Controls/>', 'True', 'EvaluateInitCells');
+        });
         
     }
 </script>

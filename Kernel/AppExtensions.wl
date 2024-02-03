@@ -1,6 +1,7 @@
 BeginPackage["JerryI`Notebook`AppExtensions`"]
 
 AppExtensions::usage = ""
+ExtensionEvent::usage = ""
 
 Begin["`Internal`"];
 

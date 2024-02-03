@@ -64,6 +64,20 @@
     --editor-bracket-6-a: #019e79;
     --editor-bracket-7-a: #008dc1;
   }
+  
+.sm-controls {
+    font-family: system-ui;
+}
+
+.cgi-ico {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+  right: 0;
+}
 
 .text-gray-454 {
   --tw-text-opacity: 1;
