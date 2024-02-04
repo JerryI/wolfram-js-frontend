@@ -1,13 +1,13 @@
 
 Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
             <div class="flex w-0 flex-1 items-center p-3">
               <div class="w-full">
-                <p class="text-sm font-medium text-gray-900"><Name/></p>
+                <p class="text-sm font-medium text-gray-900 dark:text-gray-400"><Name/></p>
                 <p class="mt-1 text-sm text-gray-500"><Message/></p>
               </div>
-              <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700">
               <span class="sr-only">Close</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -22,13 +22,13 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component[NotificationMessage[Name_], Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
             <div class="flex w-0 flex-1 items-center p-3">
               <div class="w-full">
-                <p class="text-sm font-medium text-gray-900"><Name/></p>
+                <p class="text-sm font-medium text-gray-900 dark:text-gray-400"><Name/></p>
                 <p class="mt-1 text-sm text-gray-500"><Message/></p>
               </div>
-              <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700">
               <span class="sr-only">Close</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -43,7 +43,7 @@ Component[NotificationMessage[Name_], Message_, opts___] := With[{Uid = CreateUU
 
 Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -52,10 +52,10 @@ Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
              </svg>
            </div>
            <div class="ml-3 w-0 flex-1 pt-0.5">
-             <p class="text-sm font-medium text-gray-900">Successfully saved!</p>
+             <p class="text-sm font-medium text-gray-900 dark:text-gray-400">Successfully saved!</p>
              <p class="mt-1 text-sm text-gray-500"><Message/></p>
            </div>
-           <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+           <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700">
            <span class="sr-only">Close</span>
            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -71,7 +71,7 @@ Component["Saved", Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Warning", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-      <div id="{Uid}" class="mb-1 translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 absolute">
+      <div id="{Uid}" class="mb-1 translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 absolute dark:bg-gray-700">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -80,10 +80,10 @@ Component["Warning", Message_, opts___] := With[{Uid = CreateUUID[]},
             </svg>
            </div>
            <div class="ml-3 w-0 flex-1 pt-0.5">
-             <p class="text-sm font-medium text-gray-900">Warning</p>
+             <p class="text-sm font-medium text-gray-900 dark:text-gray-400">Warning</p>
              <p class="mt-1 text-sm text-gray-500"><Message/></p>
            </div>
-           <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+           <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700">
            <span class="sr-only">Close</span>
            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -101,7 +101,7 @@ Component["Warning", Message_, opts___] := With[{Uid = CreateUUID[]},
 
 Component["Error", Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
-       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -110,11 +110,11 @@ Component["Error", Message_, opts___] := With[{Uid = CreateUUID[]},
              </svg>
            </div>
            <div class="ml-3 w-0 flex-1 pt-0.5">
-             <p class="text-sm font-medium text-gray-900">Error</p>
+             <p class="text-sm font-medium text-gray-900 dark:text-gray-400">Error</p>
              <p class="mt-1 text-sm text-gray-500"><Message/></p>
            </div>
            <div class="ml-4 flex flex-shrink-0">
-            <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button id="close-{Uid}" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700">
               <span class="sr-only">Close</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />

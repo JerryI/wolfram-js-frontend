@@ -21,7 +21,7 @@ Component[n_, client_, controller_] := With[{Uid = n["DOM"], Message = n["Body"]
     ];
 
     With[{template = 
-       <div id="{Uid}" style="z-index:1500" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+       <div id="{Uid}" style="z-index:1500" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
@@ -32,7 +32,7 @@ Component[n_, client_, controller_] := With[{Uid = n["DOM"], Message = n["Body"]
        <span class="sr-only">Loading...</span>
            </div>
            <div class="ml-3 w-0 flex-1 pt-0.5">
-             <p class="text-sm font-medium text-gray-900"><Topic/></p>
+             <p class="text-sm font-medium text-gray-900 dark:text-gray-400"><Topic/></p>
              <p class="mt-1 text-sm text-gray-500"><Message/></p>
            </div>         
          </div>

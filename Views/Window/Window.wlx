@@ -199,7 +199,7 @@ Component[OptionsPattern[]] := With[{
 
     With[{},
 
-        <main class="grow flex flex-col overflow-hidden">
+        <main class="grow flex flex-col overflow-hidden dark:invert dark:contrast-75 dark:brightness-5">
             <Container Parameters={parameters} Window={window} Event={secret}>
                 <div class="flex-shrink-0">
                     <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-teal-600" viewBox="0 0 100 101" fill="none">

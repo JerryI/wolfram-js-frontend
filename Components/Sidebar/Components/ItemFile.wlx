@@ -2,7 +2,7 @@ Dropdown := ImportComponent["Dropdown.wlx"];
 
 File = $Options["File"];
 
-Selected = If[TrueQ[$Options["Selected"]], "bg-gray-454-half", ""];
+Selected = If[TrueQ[$Options["Selected"]], "bg-gray-454-half dark:bg-gray-700", ""];
 
 Port = $Options["Port"];
 
@@ -29,7 +29,7 @@ Href = If[TrueQ[$Options["Selected"]],
 ];
 
 
-<div style="position: relative" class="{Selected} text-gray-700 flex flex-start items-center pl-7 gap-x-1 rounded-md">
+<div style="position: relative" class="{Selected} text-gray-700 dark:text-gray-400 flex flex-start items-center pl-7 gap-x-1 rounded-md">
     <Icon/>
     <Href/>
     <Dropdown Parameters={$Options["Parameters"]} Filename={File} Port={Port}/>

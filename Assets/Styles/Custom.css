@@ -65,6 +65,14 @@
     --editor-bracket-7-a: #008dc1;
   }
   
+.bg-d9 {
+  background: #d9d9d9;
+}
+
+.bg-239 {
+  background: rgb(239,239,239)
+}
+
 .sm-controls {
     font-family: system-ui;
 }
