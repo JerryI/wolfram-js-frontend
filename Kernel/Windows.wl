@@ -39,7 +39,7 @@ WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{trans
         transaction = Transaction[];
         transaction["Data"] = o["Data"];
         Echo[o["Data"] ];
-        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Ref"]|>, OptionValue["EvaluationContext"] ];
+        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Ref"], "Notebook"->o["Notebook", "Hash"]|>, OptionValue["EvaluationContext"] ];
 
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)

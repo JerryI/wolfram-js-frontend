@@ -39,7 +39,7 @@ checkWSLink[window_, client_, event_String] := Module[{},
 
 evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] := Module[{},
     checkWSLink[window, client, secret];
-    window // WindowObj`Evaluate;
+    WindowObj`Evaluate[window, "EvaluationContext"-><|"KernelWebSocket"->client|>]; (*`*)
 ];
 
 Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
