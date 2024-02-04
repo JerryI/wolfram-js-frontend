@@ -15,7 +15,7 @@ https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
        "src/SetDirectoryKernel.wl", "src/RemoteCellsKernel.wl", 
        "src/FrontSubmitKernel.wl", "src/StoreKernel.wl", 
        "src/EditorKernel.wl"}, "styles" -> "src/styles.css", 
-     "priority" -> -10, "important" -> True|>, 
+     "priority" -> -10, "important" -> True, "category" -> "Editor"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
    "dependencies" -> <|"@codemirror/lang-css" -> "^6.2.1", 
@@ -49,8 +49,9 @@ _temp && git clone \
 https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine && mv \
 Mathematica-ThreeJS-graphics-engine/.git ../.git && cd .. && rm -rf _temp"|>, 
    "wljs-meta" -> <|"js" -> "dist/kernel.js", "kernel" -> "src/Kernel.wl", 
-     "styles" -> "src/styles.css"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
+     "styles" -> "src/styles.css", "category" -> "Plotting & Graphics"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> 
       "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
@@ -82,9 +83,9 @@ Mathematica-ThreeJS-graphics-engine/.git ../.git && cd .. && rm -rf _temp"|>,
 clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> "dist/kernel.js", "styles" -> "src/styles.css", 
-     "kernel" -> "src/Kernel.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-graphics-d3"|>, 
+     "kernel" -> "src/Kernel.wl", "category" -> "Plotting & Graphics"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-graphics-d3"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
     <|"url" -> "https://github.com/JerryI/wljs-graphics-d3/issues"|>, 
@@ -105,9 +106,9 @@ clone https://github.com/JerryI/wljs-graphics-d3 && mv wljs-graphics-d3/.git \
 https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
-     "styles" -> "src/style.css"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-html-support"|>, 
+     "styles" -> "src/style.css", "category" -> "Cell types"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-html-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-html-support", "defaultPackage" -> True|>, 
@@ -120,7 +121,7 @@ https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 clone https://github.com/JerryI/wljs-inputs && mv wljs-inputs/.git ../.git && \
 cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"styles" -> {"src/handsontable.min.css", "src/styles.css"}, 
-     "kernel" -> "src/Kernel.wl", "expose" -> "templates"|>, 
+     "kernel" -> "src/Kernel.wl", "category" -> "User's GUI"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-inputs"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
@@ -142,7 +143,8 @@ https://github.com/JerryI/wljs-interpreter && mv wljs-interpreter/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> {"src/interpreter.js", "src/core.js", "src/metamarkers.js", 
        "src/settings.js"}, "autocomplete" -> "src/autocomplete.js", 
-     "important" -> True|>, "repository" -> <|"type" -> "git", 
+     "important" -> True, "category" -> "Internal"|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-interpreter"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
@@ -169,9 +171,9 @@ https://github.com/JerryI/wljs-interpreter && mv wljs-interpreter/.git \
 https://github.com/JerryI/wljs-js-support && mv wljs-js-support/.git ../.git \
 && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
-     "styles" -> "src/style.css"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-js-support"|>, 
+     "styles" -> "src/style.css", "category" -> "Cell types"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-js-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-js-support", "defaultPackage" -> True|>, 
@@ -184,9 +186,10 @@ https://github.com/JerryI/wljs-js-support && mv wljs-js-support/.git ../.git \
 https://github.com/JerryI/wljs-markdown-support && mv \
 wljs-markdown-support/.git ../.git && cd .. && rm -rf _temp"|>, 
    "wljs-meta" -> <|"js" -> "dist/kernel.js", "frontend" -> 
-      "src/Frontend.wl", "styles" -> "src/styles.css"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-markdown-support"|>, 
+      "src/Frontend.wl", "styles" -> "src/styles.css", 
+     "category" -> "Cell types"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-markdown-support"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^25.0.4", 
      "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
       "^15.2.1", "marked" -> "^5.0.1", "marked-katex-extension" -> "^2.0.2", 
@@ -201,8 +204,8 @@ wljs-markdown-support/.git ../.git && cd .. && rm -rf _temp"|>,
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-magic-support && mv wljs-magic-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> "dist/kernel.js", "frontend" -> "src/Frontend.wl"|>, 
-   "repository" -> <|"type" -> "git", 
+    <|"js" -> "dist/kernel.js", "frontend" -> "src/Frontend.wl", 
+     "category" -> "Editor"|>, "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-magic-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
@@ -215,8 +218,9 @@ https://github.com/JerryI/wljs-magic-support && mv wljs-magic-support/.git \
 --config rollup.config.mjs -w", "restore" -> "mkdir _temp && cd _temp && git \
 clone https://github.com/JerryI/wljs-plotly && mv wljs-plotly/.git ../.git && \
 cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js", 
-     "kernel" -> "src/Kernel.wl"|>, "repository" -> 
-    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-plotly"|>, 
+     "kernel" -> "src/Kernel.wl", "category" -> "Plotting & Graphics"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-plotly"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
      "@rollup/plugin-json" -> "^6.0.0", "@rollup/plugin-node-resolve" -> 
       "15.0.1", "plotly.js-dist-min" -> "^2.18.2", "rollup" -> "^3.20.6", 
@@ -232,7 +236,7 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "dist/kernel.js",
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-cells && mv wljs-cells/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> <|"js" -> "src/module.js", 
-     "priority" -> -100, "important" -> True|>, 
+     "priority" -> -100, "important" -> True, "category" -> "Internal"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-cells"|>, 
    "devDependencies" -> <|"@rollup/plugin-commonjs" -> "^24.0.1", 
@@ -251,7 +255,8 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"frontend" -> "src/Frontend.wl",
      "kernel" -> "src/Kernel.wl", "js" -> "dist/kernel.js", 
      "styles" -> {"dist/reveal.css", "src/style.css", 
        "src/drawer/drawer.css", "src/pointer/pointer.css"}, 
-     "priority" -> 999|>, "repository" -> <|"type" -> "git", 
+     "priority" -> 999, "category" -> "Cell types"|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-revealjs"|>, 
    "dependencies" -> <|"@rollup/plugin-commonjs" -> "^25.0.7", 
      "@rollup/plugin-json" -> "^6.0.1", "@rollup/plugin-node-resolve" -> 
@@ -267,9 +272,10 @@ cd .. && rm -rf _temp"|>, "wljs-meta" -> <|"frontend" -> "src/Frontend.wl",
 https://github.com/JerryI/wljs-wlx-support && mv wljs-wlx-support/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"frontend" -> "src/Frontend.wl", "js" -> "src/kernel.js", 
-     "styles" -> "src/styles.css", "priority" -> 500|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-wlx-support"|>, 
+     "styles" -> "src/styles.css", "priority" -> 500, 
+     "category" -> "Cell types"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-wlx-support"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-wlx-support", "defaultPackage" -> True|>, 
@@ -282,9 +288,9 @@ https://github.com/JerryI/wljs-wlx-support && mv wljs-wlx-support/.git \
 https://github.com/JerryI/wljs-mermaid-support && mv \
 wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"|>, 
    "wljs-meta" -> <|"frontend" -> "src/Frontend.wl", 
-     "js" -> "dist/kernel.js"|>, "repository" -> 
-    <|"type" -> "git", "url" -> 
-      "https://github.com/JerryI/wljs-mermaid-support"|>, 
+     "js" -> "dist/kernel.js", "category" -> "Cell types"|>, 
+   "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-mermaid-support"|>, 
    "dependencies" -> <|"mermaid" -> "^10.1.0", "rollup" -> "^3.21.6"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-mermaid-support", "defaultPackage" -> True|>, 
@@ -296,6 +302,7 @@ wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"|>,
 https://github.com/JerryI/wljs-snippets && mv wljs-snippets/.git ../.git && \
 cd .. && rm -rf _temp"|>, "defaultPackage" -> True, 
    "wljs-meta" -> <|"js" -> "src/kernel.js", "priority" -> 9999999, 
+     "category" -> "Notebook Extensions", 
      "menu" -> {<|"label" -> "Snippets", "accelerator" -> 
          {"Cmd+p", "Ctrl+p"}, "internalHandler" -> "snippetsOpen", 
         "spawnWindow" -> False, "type" -> "button"|>}|>, 
@@ -323,10 +330,17 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
 ./node_modules/.bin/rollup --config rollup.config.mjs"|>, 
    "defaultPackage" -> True, "wljs-meta" -> 
     <|"frontend" -> "src/Frontend.wl", "js" -> "dist/kernel.js", 
-     "styles" -> "src/xterm.css", "priority" -> 599|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-xterm"|>, 
+     "styles" -> "src/xterm.css", "priority" -> 599, 
+     "category" -> "Notebook Extensions"|>, "repository" -> 
+    <|"type" -> "git", "url" -> "https://github.com/JerryI/wljs-xterm"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6", "xterm" -> "^5.3.0", 
      "xterm-addon-fit" -> "^0.8.0", "xterm-webfont" -> "^2.0.0"|>, 
    "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
-   "path" -> "wljs-xterm"|>|>
+   "path" -> "wljs-xterm"|>, "wljs-alt-cell-controls" -> 
+  <|"name" -> "wljs-alt-cell-controls", "version" -> "0.0.1", 
+   "description" -> 
+    "Alterate the layout of controlling buttons in the cell frame", 
+   "wljs-meta" -> <|"frontend" -> {"Frontend.wl"}, "priority" -> -100, 
+     "category" -> "Editor"|>, "repository" -> <|"type" -> "git", 
+     "url" -> "https://github.com/JerryI/wljs-alt-cell-controls"|>, 
+   "enabled" -> True, "path" -> "wljs-alt-cell-controls"|>|>

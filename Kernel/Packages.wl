@@ -32,8 +32,6 @@ ImportJSON[url_String] := Module[{},
 
 WasUpdated = False;
 
-$Branch = "master";
-
 getJSON[package_Association] := Module[{new, json},
     new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[package["repository", "url"], RegularExpression[".com\\/(.*)"]->"$1"]//First];

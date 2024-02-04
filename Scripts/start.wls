@@ -56,7 +56,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 (* LocalPackage Manager *)
 Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ]
 
-LoadPluginsConfiguration["Root" -> Directory[]];
+LoadPluginsConfiguration["Root" -> Directory[], "Branch"->"dev"];
 LocalKernel`LTPServerStart[];
 
 RandomWord[];
@@ -159,7 +159,7 @@ WLJSTransportHandler["GetSymbol"] = Function[{expr, client, callback},
 ]
 *)
 
-SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&];
+SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
 
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];

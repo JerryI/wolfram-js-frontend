@@ -1,7 +1,0 @@
-<|"Notebook" -> <|"FrontendObjects" -> <||>, 
-   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/handbasin.wln"|>, 
- "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "082eb01c-a6e1-4407-93ba-3d2cf15b6151", "Props" -> <||>, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "d10ed514-8083-48f3-ba01-9b96adb6d591"|>}, 
- "serializer" -> "jsfn4"|>

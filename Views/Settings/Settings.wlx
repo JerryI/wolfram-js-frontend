@@ -67,12 +67,12 @@ Component[OptionsPattern[]] := With[{
     With[{},
 
         <main class="grow flex flex-col overflow-hidden">
-            <div class="divide-y divide-gray-200 overflow-hidden h-full bg-white">
-              <div class="px-4 py-2 text-center text-sm font-semibold" style="-webkit-app-region: drag">
+            <div class="divide-y divide-gray-200 overflow-hidden h-full bg-white dark:bg-gray-700 dark:divide-gray-600">
+              <div class="px-4 py-2 text-center text-sm font-semibold dark:text-gray-400" style="-webkit-app-region: drag">
                 Settings
               </div>
-              <div class="px-4 py-0 h-full overflow-y-auto">
-                <ul role="list" class="divide-y divide-gray-200">
+              <div class="px-4 py-0 h-full overflow-y-auto dark:text-gray-400">
+                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-600">
                     <li class="px-4 py-4 sm:px-0">
                         <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
                     </li>

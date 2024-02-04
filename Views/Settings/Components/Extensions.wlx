@@ -9,6 +9,8 @@ controller = CreateUUID[];
 installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
 
+categoryPackages = SortBy[#, Function[item, -Packages[item, "wljs-meta", "priority"]]] &/@ GroupBy[Function[c, If[MissingQ[c], "Misc", c]] @ #["wljs-meta"]["category"] &/@ Packages, Identity, Keys]; 
+
 EventHandler[Secret, {"Load" -> Function[Null,
     EventHandler[controller, {
         name_String :> Function[state,
@@ -67,19 +69,22 @@ EventHandler[installEvent, Function[val,
 
 {
     <div class="px-4 sm:px-0 pb-3 border-b border-gray-100">
-        <h3 class="text-base font-semibold leading-7 text-gray-900">Extensions</h3>
-        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Manage or install new</p>
+        <h3 class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-300">Extensions</h3>
+        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500">Manage or install new</p>
     </div>
 ,
-    With[{Tb = Table[
-        With[{Name = Packages[key, "name"], Desc = Packages[key, "description"]},
-            <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={Packages[key, "enabled"]}/>
+    Table[
+        With[{Tb = Table[
+            With[{Name = Packages[key, "name"], Desc = Packages[key, "description"]},
+                <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={Packages[key, "enabled"]}/>
+            ]
+        , {key, categoryPackages[CategoryName]}]},
+            <div class="mt-4 overflow-y-auto" style="max-height:60%">   
+                <span class="dark:text-gray-400"><CategoryName/></span>
+                <StringRiffle><Tb/></StringRiffle>
+            </div> 
         ]
-    , {key, PackagesOrder}]},
-        <div class="mt-6 overflow-y-auto" style="max-height:60%">   
-            <StringRiffle><Tb/></StringRiffle>
-        </div> 
-    ]
+    , {CategoryName, Complement[Keys @ categoryPackages, {"Internal"}] }] // StringRiffle
 ,
     <style>
         #github-link:focus-visible {
@@ -92,8 +97,8 @@ EventHandler[installEvent, Function[val,
 ,
     <div class="pb-10 pb-10 mt-5 gap-y-2 flex flex-col">
         <div class="rounded-md px-3 pb-3 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
-            <label for="name" class="block text-xs font-medium text-gray-900">Install a new one</label>
-            <input type="text" id="github-link" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Put a Github link and leave the focus"/>
+            <label for="name" class="block text-xs font-medium text-gray-900 dark:text-gray-400">Install a new one</label>
+            <input type="text" id="github-link" class="block w-full border-0 p-0 dark:bg-gray-700 text-gray-900 dark:text-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Put a Github link and leave the focus"/>
             <WebUIEventListener Id={"github-link"} Type={"blur"} Event={installEvent}/>
         </div> 
         <Knob Label={"Check updates"} Event={updateEvent} Class={"w15"}/>
