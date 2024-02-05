@@ -3,6 +3,8 @@
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
+Get[FileNameJoin[{"Services", "LPM.wl"}] ];
+
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects",
   Github -> "https://github.com/KirillBelovTest/Internal",
@@ -12,7 +14,7 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024uv",
   Github -> "https://github.com/JerryI/wl-wlx" -> "dev",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev"
-}]
+}, "Directory" -> Directory[] ]
 
 (* web-server *)
 <<KirillBelov`CSockets`
