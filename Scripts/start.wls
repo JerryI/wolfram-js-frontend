@@ -3,7 +3,16 @@
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
-PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
+PacletRepositories[{
+  Github -> "https://github.com/KirillBelovTest/Objects",
+  Github -> "https://github.com/KirillBelovTest/Internal",
+  Github -> "https://github.com/KirillBelovTest/TCPServer",
+  Github -> "https://github.com/KirillBelovTest/HTTPHandler",
+  Github -> "https://github.com/KirillBelovTest/WebSocketHandler",
+  Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024uv",
+  Github -> "https://github.com/JerryI/wl-wlx" -> "dev",
+  Github -> "https://github.com/JerryI/wl-misc" -> "dev"
+}]
 
 (* web-server *)
 <<KirillBelov`CSockets`
