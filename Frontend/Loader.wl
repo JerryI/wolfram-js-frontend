@@ -90,6 +90,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
                     (* wow such a hack... we have to rely on sockets in order to detect if window was closed... *)
                     EventFire[OptionValue["Events"], "Loader:Error", "Closing previous connection..."];
                     EventFire[cache[path]["Socket"], "Closed", True];
+                    WebUIClose[cache[path]["Socket"] ];
                     EventRemove[ cache[path]["Socket"] ];
                 ];
                 
@@ -109,13 +110,13 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
                             "Success" -> Function[assoc,
                                 EventRemove[request];
                                 loadToCache[h, path, path, opts];
-                                WebUISubmit[ WebUILocation[URLEncode[path] ], assoc["Client"] ];
+                                WebUILocation[URLEncode[path] , assoc["Client"] ];
                             ],
 
                             _ -> Function[assoc,
                                 EventRemove[request];
                                 loadToCache[path, path, path, opts];
-                                WebUISubmit[ WebUILocation[URLEncode[path] ], assoc["Client"] ];
+                                WebUILocation[URLEncode[path] , assoc["Client"] ];
                             ]
                         }];
 

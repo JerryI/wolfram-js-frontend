@@ -11,7 +11,7 @@ PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/TCPServer",
   Github -> "https://github.com/KirillBelovTest/HTTPHandler",
   Github -> "https://github.com/KirillBelovTest/WebSocketHandler",
-  Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024uv",
+  Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
   Github -> "https://github.com/JerryI/wl-wlx" -> "dev",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev"
 }, "Directory" -> Directory[] ]
