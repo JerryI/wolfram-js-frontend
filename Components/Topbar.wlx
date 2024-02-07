@@ -33,6 +33,7 @@ timedSaveButton[client_, localController_, controls_, parameters_] := With[{clon
   ]
 ]
 
+(* /*
 rename[cli_, path_, modals_, Controls_] := (
   With[{request = CreateUUID[]},
     With[{splitted = FileNameSplit[path], decoded = path},
@@ -72,22 +73,20 @@ rename[cli_, path_, modals_, Controls_] := (
   ];
 );
 
+*/ *)
+
 Component[OptionsPattern[]] := With[{
   Path = OptionValue["Path"], 
   Controls = OptionValue["Controls"], 
   modals = OptionValue["Modals"], 
-  Title = FileNameTake[OptionValue["Path"]],
   localController = CreateUUID[],
+  ExtensionTemplates = OptionValue["ExtensionTemplates"],
+  AppEvent = OptionValue["AppEvent"],
   localState = CreateUUID[],
   parameters = OptionsValue["Parameters"],
   cloned = EventClone[OptionValue["Controls"]],
-  EditTitle = CreateUUID[]
+  messages = OptionsValue["Messanger"]
 },
-
-  EventHandler[EditTitle, Function[Null,
-    Echo["Edit!"];
-    rename[Global`$Client(*`*), Path, modals, Controls]
-  ]];
 
   EventHandler[localState, Function[Null,
     timedSaveButton[Global`$Client(*`*), localController, Controls, parameters]
@@ -107,9 +106,9 @@ Component[OptionsPattern[]] := With[{
           </NotebookOnly> 
         </div>   
         <div class="grow h-full" style="-webkit-app-region: drag"></div> 
-        <div class="grow h-full p-1 items-center flex rounded-md 0 h-7 pl-3 bg-gray-100 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 dark:ring-gray-600 dark:bg-gray-700">
-          <span id="title-editable" class="leading-6 text-sm text-gray-400"><Title/></span>
-        </div>
+
+        <ExtensionTemplates Template={"AppTopBar"} Path={Path} Parameters={parameters} Modals={modals} AppEvent={AppEvent} Controls={Controls} Messanger={messages}/>
+
         <div class="grow h-full" style="-webkit-app-region: drag"></div>  
         <div class="my-auto ml-auto border-l border-gray-300 dark:border-gray-500 pl-1" style="padding-top: 0.2em">
           <NotebookOnly Path={Path}> 
@@ -172,7 +171,7 @@ Component[OptionsPattern[]] := With[{
             </List>
         </NotebookOnly>
         <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />  
-        <WebUIEventListener Type={"click"} Id={"title-editable"} Event={EditTitle} />       
+         
     </div>
 ];
 

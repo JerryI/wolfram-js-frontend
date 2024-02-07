@@ -301,7 +301,7 @@ wljs-mermaid-support/.git ../.git && cd .. && rm -rf _temp"|>,
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-snippets && mv wljs-snippets/.git ../.git && \
 cd .. && rm -rf _temp"|>, "defaultPackage" -> True, 
-   "wljs-meta" -> <|"js" -> "src/kernel.js", "priority" -> 9999999, 
+   "wljs-meta" -> <|"frontend" -> "src/Frontend.wl", "priority" -> 9999999, 
      "category" -> "Notebook Extensions", 
      "menu" -> {<|"label" -> "Snippets", "accelerator" -> 
          {"Cmd+p", "Ctrl+p"}, "internalHandler" -> "snippetsOpen", 
@@ -309,7 +309,7 @@ cd .. && rm -rf _temp"|>, "defaultPackage" -> True,
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
    "dependencies" -> <|"rollup" -> "^3.21.6"|>, 
-   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> False, 
+   "resolutions" -> <|"@babel/preset-env" -> "7.13.8"|>, "enabled" -> True, 
    "path" -> "wljs-snippets"|>, "wljs-chatbook-support" -> 
   <|"name" -> "wljs-chatbook-support", "version" -> "0.0.5", 
    "description" -> "Chatbook cells support for WLJS Editor", 
@@ -343,4 +343,4 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
    "wljs-meta" -> <|"frontend" -> {"Frontend.wl"}, "priority" -> -100, 
      "category" -> "Editor"|>, "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-alt-cell-controls"|>, 
-   "enabled" -> True, "path" -> "wljs-alt-cell-controls"|>|>
+   "enabled" -> False, "path" -> "wljs-alt-cell-controls"|>|>
