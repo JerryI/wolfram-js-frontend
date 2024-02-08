@@ -21,6 +21,8 @@ Views            = ImportComponent["Views.wl"];
 
 TopBar           = ImportComponent["Components/Topbar.wlx"];
 
+ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
+
 {saveNotebook, loadNotebook, renameNotebook, cloneNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
@@ -163,7 +165,8 @@ App[request_] := With[{
         </div>
         <Script/>
         <ExtensionTemplates Template={"AppScripts"} />
-        </body>
+        <ElectronBinds Controls={GlobalControls}/>
+      </body>
     </html>
 ];
 

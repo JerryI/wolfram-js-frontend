@@ -1,0 +1,9 @@
+Controls = $Options["Controls"];
+
+<script type="module">
+    if (window.electronAPI) {
+        window.electronAPI.listener('extension', (ev, pattern) => {
+            server.emitt('<Controls/>', 'True', pattern);
+        });
+    }
+</script>

@@ -48,12 +48,6 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('newnotebook', () => {
             server.emitt('<Controls/>', 'True', 'NewNotebook');
         });
-
-
-        window.electronAPI.listener('extension', (ev, p) => {
-            console.warn(p);
-            server._emitt('<Controls/>', 'True', 'ExtensionEvent["'+p+'"]');
-        });
         
 
         window.electronAPI.listener('evaluateinit', () => {

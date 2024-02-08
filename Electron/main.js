@@ -55,7 +55,7 @@ pluginsMenu.fetch = () => {
                         label: mi["label"],
                         click: async(ev) => {
                             console.log(ev);
-                            windows.focused.call('extension', mi["internalHandler"]);
+                            windows.focused.call('extension', mi["event"]);
                         }
                     };
 

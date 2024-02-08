@@ -304,7 +304,7 @@ cd .. && rm -rf _temp"|>, "defaultPackage" -> True,
    "wljs-meta" -> <|"frontend" -> "src/Frontend.wl", "priority" -> 9999999, 
      "category" -> "Notebook Extensions", 
      "menu" -> {<|"label" -> "Snippets", "accelerator" -> 
-         {"Cmd+p", "Ctrl+p"}, "internalHandler" -> "snippetsOpen", 
+         {"Cmd+p", "Ctrl+p"}, "event" -> "open_snippets", 
         "spawnWindow" -> False, "type" -> "button"|>}|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-snippets"|>, 
