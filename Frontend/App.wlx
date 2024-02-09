@@ -35,7 +35,9 @@ renameFile[old_String, new_String] := With[{},
   ];
 ]
 
-createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = assoc["BaseDirectory"]},
+NotebookQ[str_] := FileExtension[str] === "wln"
+
+createNotebook[assoc_Association, GlobalMessanger_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
   With[{result = saveNotebook[path, "Events"->AppEvent]},
     If[FailureQ[result],
@@ -46,7 +48,8 @@ createNotebook[assoc_Association, GlobalMessanger_, client_] := With[{path = ass
       EventFire[GlobalMessanger, "Log", "Created! Please wait"];
       Print["Redirect"];
       Print[result["Path"]];
-      WebUILocation[ URLEncode[ result["Path"] ], client ];
+      
+      WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
     ]
   ]
 ]
@@ -121,7 +124,7 @@ App[request_] := With[{
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
       "RenameFile" -> (renameFile@@# &),
-      "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client]&),
+      "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),

@@ -467,6 +467,10 @@ Component[OptionsPattern[]] := With[{
             ];
         ],
 
+        "NotebookQ" -> Function[Null,
+            notebook
+        ],
+
         ExtensionEvent[e_] :> (EventFire[appEvents, ExtensionEvent[e], notebook]&) 
     }];
     
