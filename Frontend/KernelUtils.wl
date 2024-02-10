@@ -58,7 +58,7 @@ deinitializeKernel[kernel_] := With[{},
 wsStartListerning[kernel_, port_] := With[{},
     
     Kernel`Init[kernel,  (  
-        Print["Establishing WS link..."];
+        (*Print["Establishing WS link..."];*)
         Global`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
         Module[{wcp, ws},
           wcp = TCPServer[];
@@ -72,16 +72,16 @@ wsStartListerning[kernel_, port_] := With[{},
 
           (* symbols tracking *)
           WLJSTransportHandler["AddTracking"] = Function[{symbol, name, cli, callback},
-              Print["Add tracking... for "<>name];
+              (*Print["Add tracking... for "<>name];*)
               Experimental`ValueFunction[ Unevaluated[symbol] ] = Function[{y,x}, callback[cli, x] ];
           , HoldFirst];
 
           WLJSTransportHandler["GetSymbol"] = Function[{expr, client, callback},
-              Print["evaluating the desired symbol on the Kernel"];
+              (*Print["evaluating the desired symbol on the Kernel"];*)
               callback[expr // ReleaseHold];
           ];
 
-          Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];
+          (*Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];*)
           SocketListen[CSocketOpen[Internal`Kernel`Host, port ], wcp@#&];
         ];
     ) ]

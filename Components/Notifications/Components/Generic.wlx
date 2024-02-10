@@ -20,7 +20,7 @@ Component[Name_, Message_, opts___] := With[{Uid = CreateUUID[]},
     ]
 ];
 
-Component[NotificationMessage[Name_], Message_, opts___] := With[{Uid = CreateUUID[]},
+Component[Notifications`NotificationMessage[Name_](*`*), Message_, opts___] := With[{Uid = CreateUUID[]},
     With[{template = 
       <div id="{Uid}" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto absolute flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
             <div class="flex w-0 flex-1 items-center p-3">

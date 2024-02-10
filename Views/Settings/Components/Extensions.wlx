@@ -17,7 +17,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
             If[TrueQ[Packages[name,"wljs-meta","important"]], WebUISubmit[Alert["This is a core-package. Do it on your own risk!"], $Client]];
             Packages[name] = Join[Packages[name], <|"enabled" -> state|>];
             Echo["CHanged!"];
-            EventFire[Messager, NotificationMessage["Info"], "A restart is required"]
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]
             UpdateConfiguration;
 
         ]
@@ -53,7 +53,7 @@ EventHandler[installEvent, Function[val,
                     InstallPackage[val, Function[{result, message},
                         EventFire[spinner["Promise"], Resolve, True];
                         If[result,
-                            EventFire[Messager, NotificationMessage["Info"], message];
+                            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), message];
                         ,
                             EventFire[Messager, "Error", message];
                         ];

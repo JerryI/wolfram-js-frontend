@@ -1,0 +1,405 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$35], 
+   "Objects" -> <|"745131ab-2da9-451d-a269-efb537617fca" -> 
+      <|"Public" -> Hold[EditorView[Offload[vart]]]|>, 
+     "baac848a-5cdd-44eb-a430-5a57b5cd9790" -> 
+      <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
+                Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
+                AbsoluteThickness[1.6]], Line[{{2.040816326530612*^-8, 
+                  2.040816326530612*^-8}, {0.00030671792055962676, 
+                  0.00030671792055962676}, {0.0006134154329559882, 
+                  0.0006134154329559882}, {0.0012268104577487112, 
+                  0.0012268104577487112}, {0.002453600507334157, 
+                  0.002453600507334157}, {0.004907180606505049, 
+                  0.004907180606505049}, {0.009814340804846833, 
+                  0.009814340804846833}, {0.0196286612015304, 
+                  0.0196286612015304}, {0.040908357085458646, 
+                  0.040908357085458646}, {0.06077788357015209, 
+                  0.06077788357015209}, {0.08025764881887605, 
+                  0.08025764881887605}, {0.10138846915816112, 
+                  0.10138846915816112}, {0.12110912009821138, 
+                  0.12110912009821138}, {0.1424808261288228, 
+                  0.1424808261288228}, {0.16346277092346467, 
+                  0.16346277092346467}, {0.18303454631887175, 
+                  0.18303454631887175}, {0.20425737680483996, 
+                  0.20425737680483996}, {0.22407003789157337, 
+                  0.22407003789157337}, {0.24349293774233727, 
+                  0.24349293774233727}, {0.26456689268366235, 
+                  0.26456689268366235}, {0.2842306782257526, 
+                  0.2842306782257526}, {0.305545518858404, 
+                  0.305545518858404}, {0.32647059825508584, 
+                  0.32647059825508584}, {0.34598550825253294, 
+                  0.34598550825253294}, {0.3671514733405411, 
+                  0.3671514733405411}, {0.3869072690293145, 
+                  0.3869072690293145}, {0.408314119808649, 
+                  0.408314119808649}, {0.429331209352014, 0.429331209352014}, 
+                 {0.44893812949614426, 0.44893812949614426}, 
+                 {0.47019610473083556, 0.47019610473083556}, 
+                 {0.4900439105662921, 0.4900439105662921}, 
+                 {0.5095019551657791, 0.5095019551657791}, 
+                 {0.5306110548558273, 0.5306110548558273}, 
+                 {0.5503099851466406, 0.5503099851466406}, 
+                 {0.5716599705280151, 0.5716599705280151}, 
+                 {0.5926201946734201, 0.5926201946734201}, 
+                 {0.6121702494195903, 0.6121702494195903}, 
+                 {0.6333713592563216, 0.6333713592563216}, 
+                 {0.6531622996938181, 0.6531622996938181}, 
+                 {0.6725634788953451, 0.6725634788953451}, 
+                 {0.6936157131874332, 0.6936157131874332}, 
+                 {0.7132577780802865, 0.7132577780802865}, 
+                 {0.7345508980637009, 0.7345508980637009}, 
+                 {0.7544338486478805, 0.7544338486478805}, 
+                 {0.7739270379960906, 0.7739270379960906}, 
+                 {0.7950712824348619, 0.7950712824348619}, 
+                 {0.8148053574743983, 0.8148053574743983}, 
+                 {0.8361904876044959, 0.8361904876044959}, 
+                 {0.857185856498624, 0.857185856498624}, {0.8767710559935172, 
+                  0.8767710559935172}, {0.8980073105789717, 
+                  0.8980073105789717}, {0.9178333957651912, 
+                  0.9178333957651912}, {0.9372697197154413, 
+                  0.9372697197154413}, {0.9583570987562524, 
+                  0.9583570987562524}, {0.9780343083978288, 
+                  0.9780343083978288}, {0.9783775220102351, 
+                  0.9783775220102351}, {0.9787207356226415, 
+                  0.9787207356226415}, {0.9794071628474543, 
+                  0.9794071628474543}, {0.9807800172970798, 
+                  0.9807800172970798}, {0.9835257261963308, 
+                  0.9835257261963308}, {0.9890171439948328, 
+                  0.9890171439948328}, {0.9893603576072392, 
+                  0.9893603576072392}, {0.9897035712196455, 
+                  0.9897035712196455}, {0.9903899984444582, 
+                  0.9903899984444582}, {0.9917628528940837, 
+                  0.9917628528940837}, {0.9945085617933347, 
+                  0.9945085617933347}, {0.9948517754057411, 
+                  0.9948517754057411}, {0.9951949890181475, 
+                  0.9951949890181475}, {0.9958814162429602, 
+                  0.9958814162429602}, {0.9972542706925858, 
+                  0.9972542706925858}, {0.9975974843049922, 
+                  0.9975974843049922}, {0.9979406979173985, 
+                  0.9979406979173985}, {0.9986271251422112, 
+                  0.9986271251422112}, {0.9989703387546176, 
+                  0.9989703387546176}, {0.999313552367024, 
+                  0.999313552367024}, {0.9996567659794304, 
+                  0.9996567659794304}, {0.9999999795918367, 
+                  0.9999999795918367}}]}, "Charting`Private`Tag$144132#1"]}}, 
+           {}}, {DisplayFunction -> Identity, Ticks -> {Automatic, 
+             Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> 
+            {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, DisplayFunction -> Identity, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, 
+           ImagePadding -> All, DisplayFunction -> Identity, 
+           AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, 
+           AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, 
+           DisplayFunction :> Identity, Frame -> {{False, False}, 
+             {False, False}}, FrameLabel -> {{None, None}, {None, None}}, 
+           FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, GridLinesStyle -> 
+            Directive[GrayLevel[0.5, 0.4]], Method -> 
+            {"DefaultBoundaryStyle" -> Automatic, 
+             "DefaultGraphicsInteraction" -> {"Version" -> 1.2, 
+               "TrackMousePosition" -> {True, False}, "Effects" -> 
+                {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> 
+                  {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> 
+                    True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+             "DefaultMeshStyle" -> AbsolutePointSize[6], 
+             "ScalingFunctions" -> None, "CoordinatesToolOptions" -> 
+              {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], 
+                  (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> 
+                ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[
+                   #1[[2]]]} & )}}, PlotRange -> {{0, 1}, 
+             {0, 0.9999999795918367}}, PlotRangeClipping -> True, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
+             Automatic}}]]|>, "abe4d6bb-7c49-45b7-a99f-66735fb65a05" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900 dark:text-white\"></label><input \
+id=\"n-c92ac090-f7a7-4e0c-abe3-829b40b0cca3\" min=\"0\" max=\"1\" \
+step=\"0.1\" value=\"0.4\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 focus:border-blue-500 \
+dark:bg-gray-700 dark:border-e-gray-700  dark:border-gray-600 dark:text-white \
+dark:focus:border-blue-500\"></input></div><input \
+id=\"r-c92ac090-f7a7-4e0c-abe3-829b40b0cca3\" min=\"0\" max=\"1\" \
+step=\"0.1\" value=\"0.4\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \
+dark:bg-gray-700\"></input></div>", Null}]]|>, 
+     "4765c996-4b9f-48e9-8d3f-c21273a4ad16" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900 dark:text-white\"></label><input \
+id=\"n-a46f07ee-5e82-4fe3-8953-42c54bb794d6\" min=\"0\" max=\"1\" \
+step=\"0.1\" value=\"0.4\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 focus:border-blue-500 \
+dark:bg-gray-700 dark:border-e-gray-700  dark:border-gray-600 dark:text-white \
+dark:focus:border-blue-500\"></input></div><input \
+id=\"r-a46f07ee-5e82-4fe3-8953-42c54bb794d6\" min=\"0\" max=\"1\" \
+step=\"0.1\" value=\"0.4\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \
+dark:bg-gray-700\"></input></div>", "<script type=\"module\"> const num = \
+document.getElementById('n-a46f07ee-5e82-4fe3-8953-42c54bb794d6');\n          \
+              const ran = \
+document.getElementById('r-a46f07ee-5e82-4fe3-8953-42c54bb794d6');\n\n        \
+                function isNumber(value) { return typeof value === 'number'}; \
+num.addEventListener('input', (event)=> {\n                                if \
+(isNaN(num.value)) return;\n                                ran.value = \
+num.value;\n                                \
+server.kernel.emitt('b75c8543-f566-4eae-b7fd-7843ed0005ee', num.value, \
+'Pusika');      \n                            });\n\n                         \
+   ran.addEventListener('input', (event)=> {\n                                \
+if (isNaN(ran.value)) return;\n                                num.value = \
+ran.value;\n                                \
+server.kernel.emitt('b75c8543-f566-4eae-b7fd-7843ed0005ee', ran.value, \
+'Pusika');      \n                            });; \
+num.addEventListener('blur', (event)=> {\n                                if \
+(isNaN(num.value)) return;\n                                ran.value = \
+num.value;\n                                \
+server.kernel.emitt('b75c8543-f566-4eae-b7fd-7843ed0005ee', num.value, \
+'Kisuka');      \n                            });\n\n                         \
+   ran.addEventListener('change', (event)=> {\n                               \
+ if (isNaN(ran.value)) return;\n                                num.value = \
+ran.value;\n                                \
+server.kernel.emitt('b75c8543-f566-4eae-b7fd-7843ed0005ee', ran.value, \
+'Kisuka');      \n                            });;</script>"}]]|>, 
+     "42454e2b-fa94-4ab2-a8ac-243aa5b20194" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div ><label class=\"block text-sm \
+font-medium leading-6 text-gray-900\">Test</label><div class=\"mt-1\"><input \
+id=\"378bec43-043a-4445-97a5-4b34336ac621\" value=\"\" placeholder=\"Type \
+here...\" type=\"text\" class=\"relative cursor-default rounded-md 0 h-7 pl-3 \
+pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 \
+focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 \
+bg-d9 dark:bg-gray-700 dark:ring-gray-500\" \
+aria-describedby=\"email-description\"/></div><p class=\"mt-1 text-sm \
+text-gray-500\"></p></div>", "<script type=\"module\"> const el = \
+document.getElementById('378bec43-043a-4445-97a5-4b34336ac621');\n            \
+el.addEventListener('input', () => {\n                \
+server.kernel.emitt('8d4493f1-b924-4e9f-91d1-523cf2342999', \
+'URLDecode[\"'+encodeURIComponent(el.value)+'\"]', 'Default')\n            \
+})</script>"}]]|>, "f7950189-5e9b-48cc-a26d-0104c8259e33" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<button style=\"\" \
+id=\"28e75c08-f0b5-4c61-a1c5-341c5d135738\" class=\"sm-controls rounded \
+bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 \
+ring-inset ring-gray-300 hover:bg-gray-50 \" type=\"button\">Click</button>", 
+           "<script type=\"module\"> const el = \
+document.getElementById('28e75c08-f0b5-4c61-a1c5-341c5d135738');\n            \
+el.addEventListener('click', (event)=>{\n                \
+server.kernel._emitt('0274cc74-cee9-42e9-a798-a6830df0698c', 'True', \
+'\"Default\"');     \n            });</script>"}]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/bluing.wln"|>, 
+ "Cells" -> {<|"Data" -> "vart = ToString[1/2, StandardForm];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dfe7cc6c-329a-41ce-b135-6de1e8dd8084", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "EditorView[vart // Offload] // CreateFrontEndObject ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c7b1c99c-60be-44c0-b173-b1790ddeead6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"745131ab-2da9-451d-a269-efb537617fca\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5uYG\
+hobJibpGqUkWuoCOSm6iUZmlrqpaUmmxuZmhuZpyYkAfSUVnw==\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1b1f342a-b669-4055-8be7-da659778e411", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> 
+     "var = ToString[Series[Sin[x], {x,0,7}] // Normal, StandardForm];  ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8e3c0a3f-f8a7-4575-bd3b-1fe204321e68", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "Plot[x, {x,0,1}]", "Display" -> "codemirror", 
+    "Hash" -> "2293906a-c4e2-4368-8f68-e51fe944bd8e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"baac848a-5cdd-44eb-a430-5a57b5cd9790\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJyUmJ\
+luYWCTqmianpOiamKQm6SaaGBvomiaamicBxSzNLQ0Al84WLw==\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f08f23e8-1716-4dcb-96c6-0f4802df070b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "Print[\"Hello World\"]", "Display" -> "codemirror", 
+    "Hash" -> "d2080a60-16f3-4dca-a96c-1c221eb4caba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, <|"Data" -> "InputButton[]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "77a85314-010a-48bf-8b87-751d2356da3f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"0274cc74-cee9-42e9-a798-a6830df0698c\", \"Initial\" -> False, \"View\" -> \
+\"f7950189-5e9b-48cc-a26d-0104c8259e33\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5lbmhoYWljqmqZaJumaWCQn6yYamaXoGhgamCR\
+bGJlaphobAwB8ZhUf\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "d98e6c28-f008-4a0f-ba64-469f360396f5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "EventHandler[InputRange[0,1,0.1,0.4, \"Topic\"->{\"Pusika\", \
+\"Kisuka\"}], {\n  any_ :> Function[data,\n    Print[any<>\" : \
+\"<>ToString[data]]; \n  ]\n}]", "Display" -> "codemirror", 
+    "Hash" -> "410db759-ebd0-43bf-88e9-f66c859786e5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"b75c8543-f566-4eae-b7fd-7843ed0005ee\", \"Initial\" -> 0.4, \"View\" -> \
+\"4765c996-4b9f-48e9-8d3f-c21273a4ad16\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5ibmSZbWprpmiRZpumaWKRa6lqkGKfpJhsZGpk\
+bJ5okphiaAQB8AxVb\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "40fbf4f1-e717-470f-99f9-2a237876505f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "22ff65fa-3a25-4e92-aa3a-1d409c13a31c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "InputText[\"Label\"->\"Test\"]", "Display" -> "codemirror", 
+    "Hash" -> "dc5c0e37-9310-4ced-a4cb-339849ba2ed3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"8d4493f1-b924-4e9f-91d1-523cf2342999\", \"Initial\" -> \"Label\" -> \
+\"Test\", \"View\" -> \
+\"42454e2b-fa94-4ab2-a8ac-243aa5b20194\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxiZmJqkGiXppiVamuiaJCYZ6SZaJCbrGpkYJya\
+aJhkZGFqaAACD1xWL\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "cd1ad769-938a-4b2a-856c-c48073eba717", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "28dc0812-c8df-4133-a278-d1f6c1908bbd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> ".wlx\n    <div>\n      <label for=\"email\" class=\"block \
+text-sm font-medium leading-6 text-gray-900\">Title</label>\n      <div \
+class=\"mt-1\">\n        <input type=\"email\" name=\"email\" id=\"email\" \
+class=\"relative cursor-default rounded-md 0 h-7 pl-3 pr-2 text-left \
+text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none \
+focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 bg-d9 \
+dark:bg-gray-700 dark:ring-gray-500\" placeholder=\"Placeholder\" \
+aria-describedby=\"email-description\"/>\n      </div>\n      <p class=\"mt-1 \
+text-sm text-gray-500\" id=\"email-description\">Description blah blash</p>\n \
+   </div>", "Display" -> "codemirror", 
+    "Hash" -> "54279000-8da2-42e1-ba4c-29a446b136a8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "<div ><label for=\"email\" class=\"block text-sm font-medium \
+leading-6 text-gray-900\">Title</label><div class=\"mt-1\"><input \
+type=\"email\" name=\"email\" id=\"email\" class=\"relative cursor-default \
+rounded-md 0 h-7 pl-3 pr-2 text-left text-gray-500  ring-1 ring-inset \
+ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 \
+sm:text-xs sm:leading-6 bg-d9 dark:bg-gray-700 dark:ring-gray-500\" \
+placeholder=\"Placeholder\" aria-describedby=\"email-description\"/></div><p \
+class=\"mt-1 text-sm text-gray-500\" id=\"email-description\">Description \
+blah blash</p></div>", "Display" -> "wlx", 
+    "Hash" -> "eb0cb5ae-59d0-428d-bed0-93b3e7ef90e0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "buffer = {};\nDefineOutputStreamMethod[\"MasterEchoPrint\", \
+{\n    \"ConstructorFunction\" -> \n        Function[{name, isAppend, caller, \
+opts}, \n            With[{state = Unique[\"PidorPrint\"]}, {True, state}] \n \
+       ], \n   \"CloseFunction\" -> Function[state, ClearAll[state] ], \n   \
+\"WriteFunction\" -> Function[{state, bytes},\n      AppendTo[buffer, \
+bytes];\n     \n    ] \n    \n}];\n\nst = OpenWrite[Method -> \
+\"MasterEchoPrint\"]", "Display" -> "codemirror", 
+    "Hash" -> "4538adeb-1a4b-477e-8d00-99e7b2a2f9ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "(*VB[*)(OutputStream[\"/private/var/folders/fs/ch7ddlhn7jz5vy\
+g5k8bbrxyh0000gn/T/m000004344971\", \
+4])(*,*)(*\"1:eJztWllvGzcQdos+FP0VrJEHW9gs9j4MNIAkS7KdKHYlNU2tCAgj0TLrvbKHYkX\
+Vz+v/6pC72suOkyBtU6A7D+uZj+RcHO4Obf/4xh9dfbO3txd9B48T31lcfcukH+DRW9DYD19Q8m78\
+58HeHmroP0/dJAyJF7/ATkKmfd+Luzg4IXR5Hc++tmsNNdRQQw011FBDDTX0FeiBDvmVJCsj/13Hv\
++07OI6JN92cJ3GQxOM4JNgV0FRAx2sPu3Q+9BeJQ2DmdDNZByQi8Ws/IN6jR+gn1MdORAS0w4n7hi\
+zGMY4JHx0RvFhvBbSpWTpoDTrT1uEGRgR0gT2uvJPEse8xLrPL2H7vIqQr0Pe6H4L/PW8xIpGfhHO\
+Ip9ehsYuDSEDjxHVxuIYF5+AYCWczAaXq+ok3j6nvoaMn6OCO95MwIYcCagcBwSH25gQ9foKe+x5E\
+1MERGcdrh0MbiKG3gixiuCMyoJ3EvotjOhfQkMTX/oKBFyEhbhDTFQHzbYcuPReSz9d3gSGhgNKfo\
+O3UxUsypu+5+ize6aakVhV19PjjtGWhHrT+aB0K6RMNQhxc03mU7hdwNx6JoqkkSpJsWJJhwoJNH8\
+9J3w/d6Qamr5+RFXFghq3C2HmA5zReT2VxtgWxTx2HLKCQVmkFbDaygDTwj22rJCCQJMbCT/UL0C0\
+TNhtFF3UBKaLOxFSQRdXWVZkDmmhImgnzswkqm7ATSny2JpelmiKpZCXl1bKQmqkoYr7kVnJBrUg7\
+73JAr2nLALUyDMJ2O+OHZNDp+o4fwk4Ytm3r3P86V90hAZ351Et3sufQCCo9Ok7c4PWQ8nqTJXGbT\
+Wo28V/ZxOJklbYzDYo/PuWEQT6VL9uRHZvtCDir6KrN0idJqq5kSVD0CiKLhqVYcg1jomEZqroT2U\
+KrGIVMaKaeS5qoymZVHeSoZDCTcpc+IENeFVWDGlUUUVNkuYLJKvPQrmCgwDJSy/eFewfbfjT3pdR\
++Mrs7AuC0bUIZyYpow3uX58MUTU0yADNES7WtKqaJlm6k82zRtiQ7XauZanUevKU1Q65glmgbisWz\
+ccfuQ1WpGZKtWqwq69xnfgbuKby7NWiLigQ7xV2zbIO7W8ZUVedVZEFUpsFClUUL8pBiMqvACmaKB\
+q/fMiLDO1KpaCtjO6sFBqWrW0pZmyraclrqhc0ytvOtwIoYCm13Yv1AsX1uDkGdoShmJZoytosaWN\
+kwqzkE1pAMpY5JmmZXMXhJWbZV1VfCcrs5VsRd6CvyU9gtYbl/FSyLo6SvHu/flUcD/FSMajwlLI8\
+b3i6WWa0ywCSlnkcNDo5m1TFJlqrVWMZyuzlWijvXV8pPbreCZf6VsDyOkr56vOy1AAPtKCDzeAQd\
+p8/6UMhS+5ZEjM36+g6e3yxDP/F4g1vuFdmHrB9ilzewrI/OxLxnPqYh6IZmeFo0oRPqrWdCRY852\
+ymawKyoaMD/uQ75octIbWz/OTh2hPYF9OqorxrSPYs7bPFBcY3ZdyVGGnyUbFOGlV24t0Dbf4EXC+\
+otS8nlUQ9xuKQejxu0w+WLBufeqQcXsSKx7C7iQAd34UeUX2ZgZIfVEsXPgiqxb1KeKnZmDg9aQos\
+90L58RM5uJ5OhfzF2n9/8Nmj7l8ve+GR1oz8dtUlHb58+e+sNxy9fPg2l69+X0c2JQ/BNfzU8HkyM\
+S4Kd8xF2zxQyuDwbuZdk/mv08/FAvT17T1+0u6tFZ9iFoJmtWafTOtzyz8eWb0G2B3wT7sn1Lx59m\
+xB0elxJuJat34LCAVd4n7pidFu7t/LLb8Tufxu2FNxhV9+vfTNv6GFqv4l8J4lJ5TcYQ7z06BWds/\
+eV1/yNr6GGGmqooYYaaqih/xN9Qoec/ncj+1/HEVyEou8ZQ/Di3HPWHGW3y78A80ttgw==\"*)(*]\
+VB*)", "Display" -> "codemirror", "Hash" -> 
+     "19872a7c-3b47-42e2-9081-8b057abab0b6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "WriteString[st, \"Hello!\"]", "Display" -> "codemirror", 
+    "Hash" -> "dfd862bb-2b2f-4f6a-b10a-a866edd44352", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "Join@@buffer //ByteArray // ByteArrayToString", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ef73d406-bc30-44e2-b288-903e275d9fce", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "\"Hello!Hello!\"", "Display" -> "codemirror", 
+    "Hash" -> "f04a3230-4a41-45ef-8fa7-271fc01fdc6a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "EventFire[Internal`Kernel`Stdout[ Internal`Kernel`Hash ], \
+\"Warning\", \"Hello!\"];", "Display" -> "codemirror", 
+    "Hash" -> "95703a4b-d280-46af-992f-944947031e86", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "$Output = {OpenWrite[Method -> \"MasterEchoPrint\"]};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a0392c01-21ef-4fbf-9068-86a6c6fbcc27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, <|"Data" -> "Print[1+1]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a5e38755-a6f4-4b33-ace4-53695b74bc20", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Evaluation", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, <|"Data" -> "Print[\"Hi\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f4480694-33db-4cdd-925a-55daac60eda1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>, 
+   <|"Data" -> "$Output = {OpenWrite[Method -> \"MasterEchoPrint\"]};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "157b071e-a5db-4656-b165-0d299e1e3d16", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "49d3659f-29e0-4f4b-ac7d-544d1cfebd1f"|>}, "serializer" -> "jsfn4"|>

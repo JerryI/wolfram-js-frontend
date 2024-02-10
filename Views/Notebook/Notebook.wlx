@@ -14,18 +14,20 @@ KernelIndicator:= ImportComponent["Components/KernelIndicator.wlx"];
 
 ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
 
+Global`UINotebook (*`*);
+
 addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[clonedEvent, {
         "New Cell" -> Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell] , list, secret], client]
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell] , list, secret], client]
             ];
         ],
 
         "Remove Cell" -> Function[cell,
             With[{},
-                WebUISubmit[Global`UINotebook["RemoveCell", cell["Hash"], secret], client](*`*)
+                WebUISubmit[UINotebook["RemoveCell", cell["Hash"], secret], client]
             ];            
         ]
     }];
@@ -43,7 +45,7 @@ restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions_
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[Global`UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True], client];
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True] (*`*), client];
             ]
         ]   
     ,    
@@ -67,7 +69,7 @@ checkWSLink[notebook_, client_, event_String] := Module[{},
         If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
             Echo["checkWSLink >> Asking to connect"];
 
-            WebUISubmit[Global`UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"], event ] (*`*), client];
+            WebUISubmit[UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"], event ], client];
             
             (*/* subscribe to event when Kernel dies */*)
             With[{cloned = EventClone[notebook["Evaluator"]["Kernel"]]},
@@ -135,14 +137,14 @@ requestKernel[notebook_, kernels_, modals_, client_, Success_] := With[{},
                     EventFire[notebook, "AquairedKernel", True];
                     Success[Null];
                 ,
-                    WebUISubmit[Global`Alert["Initialization is not complete"](*`*), client];
+                    WebUISubmit[Alert["Initialization is not complete"], client];
                 ];
                 
                 EventRemove[request];
             ],
             
             "Error" -> Function[error,
-                        WebUISubmit[Global`Alert[error](*`*), client];
+                        WebUISubmit[Alert[error], client];
                         EventRemove[request];
             ],
             
@@ -168,7 +170,7 @@ projectCell[cell_, notebook_, secret_String, kernels_, client_, modals_, paramet
 
         (*/* Check kernel and evaluator */*)
         If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
-            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Alert["No Kernels are available"], client]; Return[] ];
 
             (*/* Kernel looks conected and etc */*)
             Print["ok!"];
@@ -176,19 +178,19 @@ projectCell[cell_, notebook_, secret_String, kernels_, client_, modals_, paramet
             (*/* the last check */*)
             With[{},
                 If[cell["State"] != "Idle",
-                    WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                    WebUISubmit[Alert["Cell is still under evaluation"], client];
                 ,
                     checkWSLink[notebook, client, secret];
                     project;
                 ];
             ];
         ,
-            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Alert["No Kernels are available"], client]; Return[] ];
 
             requestKernel[notebook, kernels, modals, client, Function[Null,
                 With[{},
                             If[cell["State"] != "Idle",
-                                WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                                WebUISubmit[Alert["Cell is still under evaluation"], client];
                             ,
                                 Echo["Success!"];
                                 checkWSLink[notebook, client, secret];
@@ -207,7 +209,7 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
             cell["Type"] = "Input";
 
             With[{template = CellGenerator[cell, client, parameters, extensions]},
-                WebUISubmit[Global`UINotebook["Morph", cell["Hash"], template, CellObj`Serialize[cell, "MetaOnly"->True]], client];
+                WebUISubmit[UINotebook["Morph", cell["Hash"], template, CellObj`Serialize[cell, "MetaOnly"->True] (*`*)], client];
             ];
         ];
     ];
@@ -216,7 +218,7 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
 
     (*/* Check kernel and evaluator */*)
     If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized",
-        If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+        If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Alert["No Kernels are available"], client]; Return[] ];
 
         (*/* Kernel looks conected and etc */*)
         Print["ok!"];
@@ -224,19 +226,19 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
         (*/* the last check */*)
         With[{},
             If[cell["State"] != "Idle",
-                WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                WebUISubmit[Alert["Cell is still under evaluation"], client];
             ,
                 checkWSLink[notebook, client, secret];
                 cell // CellObj`Evaluate;
             ];
         ];
     ,
-        If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), client]; Return[] ];
+        If[Length[ReleaseHold @ kernels] == 0, Print["No kernels..."]; WebUISubmit[Alert["No Kernels are available"], client]; Return[] ];
         
         requestKernel[notebook, kernels, modals, client, Function[Null,
             With[{},
                         If[cell["State"] != "Idle",
-                            WebUISubmit[Global`Alert["Cell is still under evaluation"](*`*), client];
+                            WebUISubmit[Alert["Cell is still under evaluation"], client];
                         ,
                             Echo["Success!"];
                             checkWSLink[notebook, client, secret];
@@ -417,13 +419,13 @@ Component[OptionsPattern[]] := With[{
 
         "ChangeKernel" -> Function[Null,
         
-            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Global`Alert["No Kernels are available"](*`*), $Client]; Return[] ];
+            If[Length[ReleaseHold @ kernels] == 0, WebUISubmit[Alert["No Kernels are available"], $Client]; Return[] ];
             requestKernel[notebook, kernels, modals, $Client, Function[Null,
                 (*/* reset all links */*)
                 
                 notebook["Evaluator"] = .;
                 notebook["WebSocketQ"] = False; 
-                WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+                WebUISubmit[UINotebook["CreateServer"], $Client];
             ]];
         ],
 
@@ -438,12 +440,12 @@ Component[OptionsPattern[]] := With[{
         ],  
         
         "UnhideAllCells" -> Function[Null,
-            WebUISubmit[Global`UINotebook["UnhideAllCells", notebook["Hash"]](*`*), $Client];
+            WebUISubmit[UINotebook["UnhideAllCells", notebook["Hash"]], $Client];
         ],
 
         "ToggleFocusedCell" -> Function[Null,
             With[{focused = notebook["FocusedCell"]},
-                WebUISubmit[Global`UINotebook["ToggleCell", focused["Hash"]](*`*), $Client];
+                WebUISubmit[UINotebook["ToggleCell", focused["Hash"]], $Client];
             ]
         ],
 
@@ -466,6 +468,9 @@ Component[OptionsPattern[]] := With[{
                 ], Select[notebook["Cells"], (#["State"] =!= "Idle") &]];
             ];
         ],
+
+        "NotebookCellEvaluate" -> Function[cell, evaluateCell[cell, notebook, secret, kernels, $Client, modals, parameters, extensions]],
+        "NotebookCellProject" -> Function[cell, projectCell[cell, notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
         "NotebookQ" -> Function[Null,
             notebook
@@ -504,7 +509,7 @@ Component[OptionsPattern[]] := With[{
             (* /* controllers events */ *)
             Then[EventFire[notebook, "OnBeforeLoad", <|"Client" -> $Client|>], Function[Null,
                 (* /* Create a preliminary link to a Kernel */ *)
-                WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+                WebUISubmit[UINotebook["CreateServer"], $Client];
     
                 (* /* Establish WS Connection to a Kernel (if available) */ *)
                 checkWSLink[notebook, $Client, secret];
@@ -529,7 +534,7 @@ Component[OptionsPattern[]] := With[{
             notebook["WebSocketQ"] = False;
 
             (* /* reset a preliminary link */ *)
-            WebUISubmit[Global`UINotebook["CreateServer"](*`*), $Client];
+            WebUISubmit[UINotebook["CreateServer"], $Client];
         ],
 
         "CallDropdown" -> Function[data,
@@ -540,7 +545,7 @@ Component[OptionsPattern[]] := With[{
             Echo["Toggle initialization cell..."];
             With[{cell = CellObj`HashMap[uid](*`*)},
                 cell["Props"] = Join[cell["Props"], <|"InitGroup" -> !TrueQ[cell["Props", "InitGroup"]]|>];
-                WebUISubmit[Global`UINotebook["ToggleInitGroup", uid, TrueQ[cell["Props", "InitGroup"]]](*`*), $Client];
+                WebUISubmit[UINotebook["ToggleInitGroup", uid, TrueQ[cell["Props", "InitGroup"]]], $Client];
             ]
         ],
 
@@ -561,7 +566,7 @@ Component[OptionsPattern[]] := With[{
                     cell["Type"] = "Input";
     
                     With[{template = CellGenerator[cell, client, parameters, extensions]},
-                        WebUISubmit[Global`UINotebook["Morph", payload // First, template, CellObj`Serialize[cell, "MetaOnly"->True]], $Client];
+                        WebUISubmit[UINotebook["Morph", payload // First, template, CellObj`Serialize[cell, "MetaOnly"->True]], $Client];
                     ];
                 ];                
             ];   

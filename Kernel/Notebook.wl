@@ -169,7 +169,7 @@ initCell[o_] := Module[{uid = CreateUUID[]},
 ]
 
 CellObj`HashMap = <||>;
-CreateType[CellObj, initCell, {"Notebook"->Null, "Hash"->Null, "UID"->Null, "Data"->"", "State"->"Idle", "Props"-><||>, "Display"->"codemirror", "Type"->"Input", "After"->Null, "Before"->Null}]
+CreateType[CellObj, initCell, {"Notebook"->Null, "Hash"->Null, "UID"->Null, "Data"->"", "State"->"Idle", "Props"-><||>, "Display"->"codemirror", "Type"->"Input", "After"->Null, "Before"->Null, "MetaOnly"->False, "Invisible"->False}]
 
 CellObj /: EventHandler[n_CellObj, opts__] := EventHandler[n["Hash"], opts] 
 CellObj /: EventFire[n_CellObj, opts__] := EventFire[n["Hash"], opts]
@@ -182,10 +182,21 @@ Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{
     n["Cells"][[position]]
 ]
 
-CellObj`Serialize[n_CellObj, OptionsPattern[]] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
+CellObj`Serialize[n_CellObj, OptionsPattern[] ] := Module[{props},
+    props = {# -> n[#]} &/@ 
+        If[OptionValue["MetaOnly"], 
+            Complement[n["Properties"], {"Properties", "Icon", "Self", "Data", "Notebook", "Init", "After", "Before"}], 
+            Complement[n["Properties"], {"Properties", "Icon", "Self", "Notebook", "Init", "After", "Before"}] 
+        ];      
+
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
-    props // Flatten // Association
+    With[{cell = props // Flatten // Association},
+        If[n["MetaOnly"] // TrueQ, 
+            Join[cell, <|"Data"->""|>]
+        ,
+            cell
+        ]    
+    ]
 ]
 
 CellObj`Deserialize[assoc_Association, opts___] := With[{cell = CellObj[], list = Association[opts]},
@@ -213,6 +224,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
         o["State"] = "Evaluation";
         EventFire[o, "State", "Evaluation"];
+        EventFire[o, "Evaluate", True];
 
         transaction = Transaction[];
         transaction["Data"] = o["Data"];

@@ -19,7 +19,7 @@ Filter["Saved"]         = True
 Filter["Warning"]       = True
 Filter["Error"]         = True
 
-Filter[_NotificationMessage]   = True
+Filter[_Notifications`NotificationMessage(*`*)]   = True
 
 Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
     EventHandler[EventClone[Event], {
