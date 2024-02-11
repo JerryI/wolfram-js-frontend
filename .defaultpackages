@@ -10,8 +10,8 @@ https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
      "frontend" -> {"src/FrontendObject.wl", "src/Frontend.wl", 
        "src/FrontendObjectSync.wl", "src/Autocomplete.wl", 
        "src/SetDirectory.wl", "src/RemoteCells.wl", "src/FrontSubmit.wl", 
-       "src/Store.wl"}, "kernel" -> {"src/EditorKernel.wl", 
-       "src/FrontendObject.wl", "src/StandardForm.wl", "src/Boxes.wl", 
+       "src/Store.wl"}, "kernel" -> {"src/FrontendObject.wl", 
+       "src/EditorKernel.wl", "src/StandardForm.wl", "src/Boxes.wl", 
        "src/AutocompleteKernel.wl", "src/SetDirectoryKernel.wl", 
        "src/RemoteCellsKernel.wl", "src/FrontSubmitKernel.wl", 
        "src/StoreKernel.wl", "src/NotificationsKernel.wl"}, 
@@ -121,7 +121,8 @@ https://github.com/JerryI/wljs-html-support && mv wljs-html-support/.git \
 clone https://github.com/JerryI/wljs-inputs && mv wljs-inputs/.git ../.git && \
 cd .. && rm -rf _temp"|>, "wljs-meta" -> 
     <|"styles" -> {"src/handsontable.min.css", "src/styles.css"}, 
-     "kernel" -> "src/Kernel.wl", "category" -> "User's GUI"|>, 
+     "js" -> "dist/kernel.js", "kernel" -> "src/Kernel.wl", 
+     "category" -> "User's GUI", "priority" -> 550|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-inputs"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
@@ -348,7 +349,7 @@ wljs-chatbook-support/.git ../.git && cd .. && rm -rf _temp"|>,
    "version" -> "0.0.1", "description" -> 
     "An override to $Output, that redirects all messages to notifications", 
    "wljs-meta" -> <|"frontend" -> {"Frontend.wl"}, "kernel" -> {"Kernel.wl"}, 
-     "priority" -> -1000, "category" -> "Kernel"|>, 
+     "priority" -> -1000, "category" -> "User's GUI"|>, 
    "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-print-redirect-fix"|>, 
    "enabled" -> True, "path" -> "wljs-print-redirect-fix"|>|>
