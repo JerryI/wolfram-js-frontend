@@ -108,6 +108,8 @@ Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
         # -> <|"Public" -> ImportString["[\"Hold\", "<>value["json"]<>"]", "ExpressionJSON"] |>
     ] &/@ Keys[n["notebook", "objects"] ] // Association;
 
+    notebook["Objects"] = notebook["Objects"];
+
     notebook["path"] = .;
     notebook
 

@@ -26,6 +26,8 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     o["ReadyQ"] = True;
     o["State"]  = "Connected";
 
+    o["HeartBeat"] = heartBeat[o];
+
     TaskRemove[o["WatchDog"] ];
 
     EventFire[o, "State", o["State"] ];
@@ -34,6 +36,26 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
 ]
 
 CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+
+heartBeat[k_] := Module[{ok = True, orig}, With[{secret = CreateUUID[]},
+    EventHandler[secret, {_ -> Function[Null, ok = True]}];
+
+    SetInterval[
+        If[!ok,
+            orig = k["State"];
+            k["State"] = "Timeout";
+            EventFire[k, "State", k["State"] ];
+        ,
+            If[k["ReadyQ"] && k["State"] == "Timeout",
+                k["State"] = orig;
+                EventFire[k, "State", k["State"] ];
+            ];
+        ];
+        ok = False;
+        LTPEvaluate[k["LTPSocket"], Internal`Kernel`Ping[secret] ];
+        
+    , 6000]
+] ]
 
 HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p},
     LinkWrite[lnk, Unevaluated[ pp // Uncompress // ReleaseHold ] ]
@@ -63,7 +85,7 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         Internal`Kernel`Type = "LocalKernel";
         Internal`Kernel`Hash = uid;
 
-        Internal`Test := Echo["!!!!!!!!!!!!!!!!!!!!"];
+        Internal`Kernel`Ping[secret_] := EventFire[Internal`Kernel`Stdout[secret], "Pong", True];
 
         Unprotect[FileNameJoin];
         FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{split = FileNameJoin[{any}] // FileNameSplit},
@@ -89,11 +111,13 @@ restart[k_LocalKernelObject] := With[{},
     k["InitList"] = {};
 
     LinkClose[k["Link"] ];
+    TaskRemove[k["HeartBeat"] ];
     k["ReadyQ"] = False;
     Close[k["LTPSocket"][[1]]];
 
     k["State"] = "Stopped";
     EventFire[k, "State", k["State"] ];
+    
     
     SetTimeout[start[k], 1500];
 ]
@@ -107,6 +131,7 @@ SetAttributes[setProp, HoldFirst];
 unlink[k_LocalKernelObject] := With[{},
     k["InitList"] = {};
     LinkClose[k["Link"] ];
+    TaskRemove[k["HeartBeat"] ];
     k["ReadyQ"] = False;
     Close[k["LTPSocket"][[1]]];
 

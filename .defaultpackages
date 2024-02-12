@@ -6,17 +6,18 @@
 https://github.com/JerryI/wljs-editor && mv wljs-editor/.git ../.git && cd .. \
 && rm -rf _temp"|>, "wljs-meta" -> 
     <|"js" -> {"dist/kernel.js", "src/boxes.js", "src/objects.js", 
-       "src/autocomplete.js", "src/frontsubmit.js", "src/dir.js"}, 
-     "frontend" -> {"src/FrontendObject.wl", "src/Frontend.wl", 
-       "src/FrontendObjectSync.wl", "src/Autocomplete.wl", 
-       "src/SetDirectory.wl", "src/RemoteCells.wl", "src/FrontSubmit.wl", 
-       "src/Store.wl"}, "kernel" -> {"src/FrontendObject.wl", 
+       "src/autocomplete.js", "src/frontsubmit.js", "src/dir.js", 
+       "src/metamarkers.js"}, "frontend" -> {"src/FrontendObject.wl", 
+       "src/Frontend.wl", "src/FrontendObjectSync.wl", "src/SetDirectory.wl", 
+       "src/RemoteCells.wl", "src/FrontSubmit.wl", "src/Store.wl", 
+       "src/Autocomplete.wl"}, "kernel" -> {"src/FrontendObject.wl", 
        "src/EditorKernel.wl", "src/StandardForm.wl", "src/Boxes.wl", 
-       "src/AutocompleteKernel.wl", "src/SetDirectoryKernel.wl", 
-       "src/RemoteCellsKernel.wl", "src/FrontSubmitKernel.wl", 
-       "src/StoreKernel.wl", "src/NotificationsKernel.wl"}, 
-     "styles" -> "src/styles.css", "priority" -> -10, "important" -> True, 
-     "category" -> "Editor"|>, "repository" -> <|"type" -> "git", 
+       "src/SetDirectoryKernel.wl", "src/RemoteCellsKernel.wl", 
+       "src/FrontSubmitKernel.wl", "src/StoreKernel.wl", 
+       "src/NotificationsKernel.wl", "src/MetaMarkersKernel.wl", 
+       "src/AutocompleteKernel.wl"}, "styles" -> "src/styles.css", 
+     "priority" -> -10, "important" -> True, "category" -> "Editor"|>, 
+   "repository" -> <|"type" -> "git", 
      "url" -> "https://github.com/JerryI/wljs-editor"|>, 
    "dependencies" -> <|"@codemirror/lang-css" -> "^6.2.1", 
      "@codemirror/lang-html" -> "6.4.2", "@codemirror/lang-javascript" -> 
@@ -142,11 +143,11 @@ cd .. && rm -rf _temp"|>, "wljs-meta" ->
      "restore" -> "mkdir _temp && cd _temp && git clone \
 https://github.com/JerryI/wljs-interpreter && mv wljs-interpreter/.git \
 ../.git && cd .. && rm -rf _temp"|>, "wljs-meta" -> 
-    <|"js" -> {"src/interpreter.js", "src/core.js", "src/metamarkers.js", 
-       "src/settings.js"}, "autocomplete" -> "src/autocomplete.js", 
-     "important" -> True, "category" -> "Internal"|>, 
-   "repository" -> <|"type" -> "git", 
-     "url" -> "https://github.com/JerryI/wljs-interpreter"|>, 
+    <|"js" -> {"src/interpreter.js", "src/core.js", "src/settings.js"}, 
+     "autocomplete" -> "src/autocomplete.js", "important" -> True, 
+     "category" -> "Internal"|>, "repository" -> 
+    <|"type" -> "git", "url" -> 
+      "https://github.com/JerryI/wljs-interpreter"|>, 
    "author" -> "Kirill Vasin", "license" -> "GPL", 
    "bugs" -> 
     <|"url" -> "https://github.com/JerryI/wljs-interpreter/issues"|>, 
