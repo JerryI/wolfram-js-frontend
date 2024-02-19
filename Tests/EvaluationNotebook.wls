@@ -13,6 +13,9 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 LoadPluginsConfiguration["Root" -> Directory[]];
 
+Exit[-1];
+(*not adapted!!!!!!!!!!*)
+
 Includes["frontend"];
 Includes["kernel"];
 

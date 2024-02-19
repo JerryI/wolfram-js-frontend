@@ -1,64 +1,76 @@
-<|"notebook" -> <|"name" -> "Booking", "id" -> "unarmed-c45e1", 
-   "kernel" -> LocalKernel, "objects" :> 
-    <|"coords" -> <|"json" -> "[\"List\",0,0,0]", 
-       "date" -> DateObject[{2023, 6, 19, 15, 54, 
-          40.138889`8.356140325777314}, "Instant", "Gregorian", 3.]|>, 
-     "f3f8ff4f-db63-4648-8fe8-fa893f4e7e1e" -> 
-      <|"json" -> "[\"WEBSlider\",\"'d8e70df3-0ada-4bec-9115-f85e651ad7a1'\",\
-[\"List\",0,4,0.1]]", "date" -> DateObject[{2023, 4, 10, 17, 46, 
-          19.069286`8.032909416296585}, "Instant", "Gregorian", 3.]|>, 
-     "f2800669-4547-4f75-8f68-6a9e2ca73c81" -> 
-      <|"json" -> "[\"WEBSlider\",\"'41315956-768c-4e6c-a164-7af364a2bdde'\",\
-[\"List\",0,4,0.1]]", "date" -> DateObject[{2023, 6, 5, 0, 31, 
-          25.406696`8.157523173473155}, "Instant", "Gregorian", 3.]|>, 
-     "c32ec0e4-5fb0-42d7-a663-dfc5ae4ced0d" -> 
-      <|"json" -> "[\"Graphics3D\",[\"Sphere\",[\"Hold\",\"coords\"]]]", 
-       "date" -> DateObject[{2023, 6, 19, 15, 55, 
-          9.912815`7.748771987846795}, "Instant", "Gregorian", 3.]|>, 
-     "f46e7f6f-6ba5-4ef8-a064-7d5d23da773a" -> 
-      <|"json" -> "[\"Graphics3D\",[\"Sphere\",[\"Hold\",\"coords\"]],[\"Rule\
-\",\"'Lerp'\",true]]", "date" -> DateObject[{2023, 9, 8, 22, 6, 
-          4.430336`7.399011652759802}, "Instant", "Gregorian", 3.]|>, 
-     "78aaa469-48bf-4d0a-a7f3-5785bc53de4b" -> 
-      <|"json" -> "[\"RangeView\",[\"List\",0,4,0.1,2.0],[\"Rule\",\"'Event'\
-\",\"'787153f8-202b-4f0d-a5c8-80d0d7cf5db5'\"]]", 
-       "date" -> DateObject[{2023, 9, 8, 22, 6, 4.579995`7.413439991951936}, 
-         "Instant", "Gregorian", 3.]|>|>, "path" -> "/Volumes/Data/Github/wol\
-fram-js-frontend/Examples/Advanced/Virtual-Functions.wln", 
-   "cell" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd4175", 
-   "date" -> DateObject[{2023, 9, 8, 22, 5, 44.484724`8.400785877544756}, 
-     "Instant", "Gregorian", 3.], "symbols" -> 
-    <|"coords" -> <|"date" -> DateObject[{2023, 7, 28, 12, 27, 
-          43.082802`8.38687891842626}, "Instant", "Gregorian", 2.], 
-       "data" -> {0, 0, 0}|>|>, "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$33]|>, 
- "cells" -> {<|"id" -> "c8c20d16-d8d6-4aeb-a9b5-d53ca1a10baecd417566ea4a", 
-    "type" -> "input", "data" -> ".md\nTest with virtual functions", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "c038b3d8-792d-4488-bdab-4469fd38975bcd417566ea4a", 
-    "type" -> "output", "data" -> "\nTest with virtual functions", 
-    "display" -> "markdown", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "88b6553d-8927-49b8-aec6-9118e7524f8ccd417566ea4a", 
-    "type" -> "input", "data" -> "coords = {0,0,0};", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "20c5e107-c637-4a1f-90c0-b0a408389d35cd417566ea4a", 
-    "type" -> "input", "data" -> 
-     "Graphics3D[Sphere[coords//Hold], \"Lerp\"->True]", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "eaa14f69-ea07-44ce-9c64-f0f5c70dbaee", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"f46e7f6f-6ba5-4ef8-a064-7d5d23da773a\"]", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "912430de-0c74-40a2-b6a8-b04761d1d7d1cd417566ea4a", 
-    "type" -> "input", "data" -> "slider = \
-InputRange[0,4,0.1];\nFunction[x,coords={0,0,x};] // slider;\nslider", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False, "init" -> True|>|>, 
-   <|"id" -> "795414b0-c6d3-4e61-8132-4152197be543", "type" -> "output", 
-    "data" -> "FrontEndExecutable[\"78aaa469-48bf-4d0a-a7f3-5785bc53de4b\"]", 
-    "display" -> "codemirror", "sign" -> "unarmed-c45e1", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$256], 
+   "Objects" -> <|"262920b8-a367-42dc-b3d7-83793071216c" -> 
+      <|"Public" -> Hold[Graphics3D[Sphere[Offload[coords]]]]|>, 
+     "cc561cf3-44ca-4f23-8eed-db610410fdfe" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-c943b697-dd4e-45bb-a806-964ad1738ef0\" min=\"0\" max=\"4\" \
+step=\"0.1\" value=\"2.\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-c943b697-dd4e-45bb-a806-964ad1738ef0\" min=\"0\" max=\"4\" \
+step=\"0.1\" value=\"2.\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-c943b697-dd4e-45bb-a806-964ad1738ef0');\n        \
+const ran = \
+document.getElementById('r-c943b697-dd4e-45bb-a806-964ad1738ef0');\n\n        \
+function isNumber(value) { return typeof value === 'number'}\n\n        \
+num.addEventListener('input', (event)=> {\n            if (isNaN(num.value)) \
+return;\n            ran.value = num.value;\n            \
+server.kernel.emitt('962748d6-71c7-482b-a27a-1a7f7c52dba3', num.value, \
+'Default');      \n        });\n\n        ran.addEventListener('input', \
+(event)=> {\n            if (isNaN(ran.value)) return;\n            num.value \
+= ran.value;\n            \
+server.kernel.emitt('962748d6-71c7-482b-a27a-1a7f7c52dba3', ran.value, \
+'Default');      \n        });</script>"}]]|>|>, "Path" -> "/users/kirill/Git\
+hub/wolfram-js-frontend-dev/Examples/08 - Advanced \
+dynamics/VirtualFunctions.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\nTest with virtual functions", 
+    "Display" -> "codemirror", "Hash" -> 
+     "48889d8f-320e-40cd-b9ee-e14f4e244745", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "\nTest with virtual functions", "Display" -> "markdown", 
+    "Hash" -> "7fecd011-4271-47bc-8c24-bb2c7bd8229a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "coords = {0,0,0};", "Display" -> "codemirror", 
+    "Hash" -> "453fab10-9bbd-49b5-a0a3-0e5ec5a59845", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "Graphics3D[Sphere[coords//Offload]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5e06499a-23bf-4908-bc93-1fe6828f2dcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"262920b8-a367-42dc-b3d7-83793071216c\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5kZW\
+RoZJFnoJhqbmeuaGKUk6yYZp5jrWhibWxobmBsaGZolAwBzYhSy\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dd059913-2462-4679-a787-3501b64367c0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "slider = InputRange[0,4,0.1];\nEventHandler[slider, \
+Function[x,coords={0,0,x};] ] ;\nslider", "Display" -> "codemirror", 
+    "Hash" -> "94843684-aeb1-456f-af79-d3afc9548fcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"962748d6-71c7-482b-a27a-1a7f7c52dba3\", \"Initial\" -> 2., \"View\" -> \
+\"cc561cf3-44ca-4f23-8eed-db610410fdfe\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJyebmhkmpxnrmpgkJ+qapBkZ61qkpqbopiSZGRq\
+YGBqkpaSlAgCPJBZZ\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "a888cfca-35e9-4723-94a0-1a32aa70689f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "704f1e03-fb6e-4a87-91d4-25aa761218fd"|>}, "serializer" -> "jsfn4"|>

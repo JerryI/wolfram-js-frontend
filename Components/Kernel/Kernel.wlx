@@ -55,17 +55,7 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initK
       KernelListComponent := 
         Block[{client = $Client},
           Table[
-            With[{component = Item["Messager"->Messager, "Kernel"->K, "Client"->client]},
-              With[{Template = component["HTML"], Script = component["Script"]},
-                {
-                  <Template/>
-                ,
-                  <script>
-                    <Script/>
-                  </script>
-                }
-              ]
-            ]
+            Item["Messager"->Messager, "Kernel"->K, "Client"->client]
           , {K, ReleaseHold[KernelList]} ] // Flatten // ToStringRiffle
         ]
     },
@@ -76,7 +66,7 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initK
             <KernelListComponent/>
           </WebUILazyLoad>
           <WebUIContainerChild/> 
-          <WebUIOnLoad Event={LazyLoad} Type={"Load"}/>
+          <WebUIOnLoad Event={LazyLoad} Pattern={"Load"}/>
       </div>  
     </WebUIContainer>
    ],

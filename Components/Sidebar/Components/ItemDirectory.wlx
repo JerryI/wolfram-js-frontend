@@ -41,7 +41,7 @@ EventHandler[ButtonId, Function[Null,
 Selected = If[TrueQ[$Options["Selected"]], "bg-yellow-300", ""];
 
 <div style="position:relative">
-    <div>
+    <div class="rounded-md">
       <button id="{ButtonId}" type="button" class="{Selected} flex items-center w-full text-left rounded-md pl-1 gap-x-1 text-sm leading-6 text-gray-700 dark:text-gray-400" aria-controls="sub-menu-1" aria-expanded="false">
     
         <svg id="svg-{ButtonId}" class="text-gray-800 dark:text-gray-400 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

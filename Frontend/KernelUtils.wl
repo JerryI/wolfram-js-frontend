@@ -1,6 +1,6 @@
 BeginPackage["JerryI`Notebook`KernelUtils`", {
   "JerryI`Notebook`Evaluator`", 
-  "JerryI`Notebook`Packages`", 
+  "JerryI`WLJSPM`", 
   "JerryI`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
@@ -24,14 +24,14 @@ initializeKernel[parameters_][kernel_] := With[{
 
   (* load kernels and provide remote path *)
   With[{
-    p = Import[FileNameJoin[{"Packages", #}], "String"], 
+    p = Import[FileNameJoin[{"wljs_packages", #}], "String"], 
     path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][parameters["env", "host"], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm]
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       Kernel`Init[kernel,  ToExpression[processed, InputForm]; ](*`*);
     ];
-  ] &/@ Includes["kernel"];
+  ] &/@ WLJS`PM`Includes["kernel"];
 
   Echo["Starting WS link"];
   wsStartListerning[kernel,  wsPort];

@@ -632,7 +632,7 @@ Component[OptionsPattern[]] := With[{
             <ElectronBinds Event={secret} Controls={controller}/>
             <ExtensionTemplateInjection Template={"Scripts"} />
             
-            <WebUIOnLoad Event={secret} Type={"Load"}/>
+            <WebUIOnLoad Event={secret} Pattern={"Load"}/>
         </main>
 
     ]

@@ -11,10 +11,10 @@ Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 
 {Settings, SettingsScript, Initialization}           = ImportComponent["Views/Settings/Settings.wlx"];
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ Join[Includes["js"], Includes["jsmodule"]];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ Includes["styles"] // ToStringRiffle;
+] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
 
 App[request_] := With[{

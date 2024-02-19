@@ -29,7 +29,7 @@ Component[OptionsPattern[]] := With[{
     With[{nid = notebook["Hash"]},
 
         <main class="grow flex flex-col overflow-hidden"> 
-            <WebUIOnLoad Event={secret} Type={"Load"}/>
+            <WebUIOnLoad Event={secret} Pattern={"Load"}/>
         </main>
 
     ]

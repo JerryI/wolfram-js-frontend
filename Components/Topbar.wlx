@@ -148,7 +148,7 @@ Component[OptionsPattern[]] := With[{
                 <WebUIEventListener Type={"click"} Id={"sidebar-abort"} Pattern={"Abort"} Event={Controls} /> 
                 <WebUIEventListener Type={"click"} Id={"sidebar-kernel"} Pattern={"ChangeKernel"} Event={Controls} />
 
-                <WebUIOnLoad Event={localState} Type={"Load"}/>
+                <WebUIOnLoad Event={localState} Pattern={"Load"}/>
                 <WebUIJSBind Event={localController}>
                   const saveBtn = document.getElementById('sidebar-save');
                   let name;

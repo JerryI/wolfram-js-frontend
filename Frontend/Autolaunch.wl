@@ -1,6 +1,6 @@
 BeginPackage["JerryI`Notebook`KernelAutolaunch`", {
   "JerryI`Notebook`Evaluator`", 
-  "JerryI`Notebook`Packages`", 
+  "JerryI`WLJSPM`", 
   "JerryI`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",

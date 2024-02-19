@@ -3,7 +3,9 @@
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
-Get[FileNameJoin[{"Services", "LPM.wl"}] ];
+Uncompress["1:eJx1T8tuwjAQDBT1wo0/6Ac0vveKKAoNCJoDZ5NugsXGtrwbBf6edawKLlzG+5rxzMfJ/TZvWZbRVKBomkms5wLfBmF1NcR0qN6lL/fbfMC0j4Q18
+PM80mkmcDR8TlexK0Ug7SKnAh5f9F0aRoGi8y5wVUp5Zvb0pVTQQ96KTn/qCULtLIPlvHad2kAIt0IN+Imu1uh1fdEtkOq0seoHggVUydForuJgbJsCLgSWTj7r7d/q6gMQGWfT
+Lt7KLPp4ZPq3+qz0Iv6Yddcj3gGoDVPG"];
 
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects",
@@ -12,8 +14,9 @@ PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/HTTPHandler",
   Github -> "https://github.com/KirillBelovTest/WebSocketHandler",
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
-  Github -> "https://github.com/JerryI/wl-wlx" -> "dev",
-  Github -> "https://github.com/JerryI/wl-misc" -> "dev"
+  Github -> "https://github.com/JerryI/wl-wlx",
+  Github -> "https://github.com/JerryI/wl-misc" -> "dev",
+  Github -> "https://github.com/JerryI/wl-wljs-packages"
 }, "Directory" -> Directory[] ]
 
 (* web-server *)
@@ -64,17 +67,36 @@ PacletRepositories[{
 
 <<CodeParser`
 
-(* LocalPackage Manager *)
-Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ]
+(* WLJS Package manager *)
+<<JerryI`WLJSPM`
 
-LoadPluginsConfiguration["Root" -> Directory[], "Branch"->"dev"];
+WLJS`PM`Repositories[{
+  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
+  Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-xterm" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev"
+}, "Directory" -> Directory[] ]
+
 LocalKernel`LTPServerStart[];
 
 RandomWord[];
 
-Includes["jsmodule"];
-Includes["js"];
-Includes["frontend"];
+WLJS`PM`Includes["js"];
+WLJS`PM`Includes["frontend"];
 
 EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
@@ -84,10 +106,10 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
 
-  If[FailureQ[Get[FileNameJoin[{Directory[], "Packages",  UniversalPathConverter[#]}] ] ],
+  If[FailureQ[Get[FileNameJoin[{Directory[], "wljs_packages",  UniversalPathConverter[#]}] ] ],
     Echo["Failed to load some of the packages (see logs)"];
     Exit[0]
-  ] &/@ Includes["frontend"]; 
+  ] &/@ WLJS`PM`Includes["frontend"]; 
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
@@ -99,7 +121,7 @@ AutoTest    := ImportComponent["Frontend/Test.wlx"];
 
 (* Global variables *)
 
-$ExposedDirectories = {FileNameJoin[{Directory[], "Packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
+$ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
 
 $Env = <|
   "host" -> "127.0.0.1",
@@ -158,17 +180,6 @@ $Server["WebSocketHandler"] = ws;
 (* configure the handler for WLJS communications *)
 ws["MessageHandler", "Evaluate"]  = Function[True] -> WLJSTransportHandler
 
-(* symbols tracking 
-WLJSTransportHandler["AddTracking"] = Function[{symbol, name, cli, callback},
-    Print["Add tracking... for "<>name];
-    Experimental`ValueFunction[Unevaluated[symbol]] = Function[{y,x}, callback[cli, x]];
-, HoldFirst]
-
-WLJSTransportHandler["GetSymbol"] = Function[{expr, client, callback},
-    Print["evaluating the desired symbol on the Kernel"];
-    callback[expr // ReleaseHold];
-]
-*)
 
 SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
 

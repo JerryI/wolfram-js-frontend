@@ -9,26 +9,28 @@ controller = CreateUUID[];
 installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
 
-categoryPackages = SortBy[#, Function[item, -Packages[item, "wljs-meta", "priority"]]] &/@ GroupBy[Function[c, If[MissingQ[c], "Misc", c]] @ #["wljs-meta"]["category"] &/@ Packages, Identity, Keys]; 
+
+categoryPackages = SortBy[#, Function[item, -WLJS`PM`Packages[item, "wljs-meta", "priority"]]] &/@ GroupBy[
+    Association[(# -> (Function[c, If[MissingQ[c], "Misc", c]] @ WLJS`PM`Packages[#, "wljs-meta", "category"])) &/@ Keys[WLJS`PM`Packages]]
+  
+  , Identity, Keys]; 
 
 EventHandler[Secret, {"Load" -> Function[Null,
     EventHandler[controller, {
         name_String :> Function[state,
-            If[TrueQ[Packages[name,"wljs-meta","important"]], WebUISubmit[Alert["This is a core-package. Do it on your own risk!"], $Client]];
-            Packages[name] = Join[Packages[name], <|"enabled" -> state|>];
+            If[TrueQ[WLJS`PM`Packages[name,"wljs-meta","important"]], WebUISubmit[Alert["This is a core-package. Do it on your own risk!"], $Client]];
+            WLJS`PM`Packages[name, "enabled"] = state;
             Echo["CHanged!"];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]
-            UpdateConfiguration;
+            WLJS`PM`SaveConfiguration;
 
         ]
     }];
 
     EventHandler[updateEvent, Function[Null,
-        With[{spinner = NotificationSpinner["Topic"->"Updating", "Body"->"Please wait, until the process is finished..."]},
-            EventFire[Messager, spinner, Null];
-            CheckUpdates;
-            EventFire[spinner["Promise"], Resolve, True];
-        ];        
+        DeleteFile[".wljs_timestamp"];  
+        DeleteFile[".wl_timestamp"]; 
+        EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Will be checked on the next startup."];
     ]];
 
     With[{socket = EventClone[$Client]},
@@ -50,14 +52,16 @@ EventHandler[installEvent, Function[val,
             If[KeyExistsQ[Association[data], "wljs-meta"],
                 With[{spinner = NotificationSpinner["Topic"->"Installation", "Body"->StringTemplate["Please wait, until an intalation of `` is finished..."][Last @ url]]},
                     EventFire[Messager, spinner, Null];
-                    InstallPackage[val, Function[{result, message},
+                    WLJS`PM`InstallByURL[val, Function[{result, message},
                         EventFire[spinner["Promise"], Resolve, True];
                         If[result,
                             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), message];
+                            WLJS`PM`SaveConfiguration;
                         ,
                             EventFire[Messager, "Error", message];
                         ];
                     ]];
+
                 ];
                 
             ,
@@ -75,8 +79,8 @@ EventHandler[installEvent, Function[val,
 ,
     Table[
         With[{Tb = Table[
-            With[{Name = Packages[key, "name"], Desc = Packages[key, "description"]},
-                <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={Packages[key, "enabled"]}/>
+            With[{Name = WLJS`PM`Packages[key, "name"], Desc = WLJS`PM`Packages[key, "description"], enabled = WLJS`PM`Packages[key, "enabled"]},
+                <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={enabled}/>
             ]
         , {key, categoryPackages[CategoryName]}]},
             <div class="mt-4 overflow-y-auto" style="max-height:60%">   

@@ -79,7 +79,7 @@ Component[OptionsPattern[]] := With[{
                 </ul>                
               </div>
             </div>           
-            <WebUIOnLoad Event={secret} Type={"Load"}/>
+            <WebUIOnLoad Event={secret} Pattern={"Load"}/>
         </main>
 
     ]
