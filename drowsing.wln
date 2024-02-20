@@ -1,7 +1,0 @@
-<|"Notebook" -> 
-  <|"Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/drowsing.wln"|>, 
- "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "84db58c7-fd61-4e4c-8ad2-4c24da616a33", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cf387b17-43f1-41ef-8c15-fb4ae1af7f47"|>}, "serializer" -> "jsfn4"|>

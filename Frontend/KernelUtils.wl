@@ -31,6 +31,7 @@ initializeKernel[parameters_][kernel_] := With[{
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       Kernel`Init[kernel,  ToExpression[processed, InputForm]; ](*`*);
     ];
+    (*Kernel`Init[kernel,  ToExpression[StringTemplate["Block[{$RemotePackageDirectory = Internal`RemoteFS[\"``\"]}, Get[\"``\"] ];"][path, FileNameJoin[{Directory[], "wljs_packages", #}]], InputForm]; ](*`*);*)
   ] &/@ WLJS`PM`Includes["kernel"];
 
   Echo["Starting WS link"];

@@ -1,0 +1,116 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$54], 
+   "Objects" -> <||>, "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend-dev/1000dancers.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Dancing with friends and enemies: boids' \
+swarm intelligence\nAdapted from [Wolfram \
+Community](https://community.wolfram.com/groups/-/m/t/122095). Written by \
+*Simon Woods*", "Display" -> "codemirror", 
+    "Hash" -> "46d1e34a-b9d4-4c6d-8393-fa4eb319df47", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "# Dancing with friends and enemies: boids' swarm \
+intelligence\nAdapted from [Wolfram \
+Community](https://community.wolfram.com/groups/-/m/t/122095). Written by \
+*Simon Woods*", "Display" -> "markdown", 
+    "Hash" -> "12ac6da1-be0d-4bdb-b375-f3dca8a33c09", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> ".md\n- 1000 dancers assume random positions on the \
+dance-floor.\n- Each randomly chooses one \"friend\" and one \"enemy\".\n- At \
+each step every dancer\n  - moves 0.5% closer to the centre of the floor\n  - \
+then takes a large step towards their friend and a small step away from their \
+enemy.\n- At random intervals one dancer re-chooses their friend and \
+enemy\n\nRandomness is deliberately injected. Here is the dance...", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4186de77-f295-4cf1-93ad-b42342fb3caf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "- 1000 dancers assume random positions on the dance-floor.\n- \
+Each randomly chooses one \"friend\" and one \"enemy\".\n- At each step every \
+dancer\n  - moves 0.5% closer to the centre of the floor\n  - then takes a \
+large step towards their friend and a small step away from their enemy.\n- At \
+random intervals one dancer re-chooses their friend and enemy\n\nRandomness \
+is deliberately injected. Here is the dance...", "Display" -> "markdown", 
+    "Hash" -> "d637dff6-de4c-4e9d-9ad4-da0aba322e94", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "n = 1000;\nr := RandomInteger[{1, n}];\nf := (#/(.01 + \
+Sqrt[#.#])) & /@ (x[[#]] - x) &;\ns := With[{r1 = r}, p[[r1]] = r; q[[r1]] = \
+r];\nx = RandomReal[{-1, 1}, {n, 2}];\n{p, q} = RandomInteger[{1, n}, {2, \
+n}];", "Display" -> "codemirror", "Hash" -> 
+     "8bbfbd92-7a26-43de-b522-c3391dda0654", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> ".md\n__Main render function__", "Display" -> "codemirror", 
+    "Hash" -> "e4c52455-8de9-4dd1-bb73-62081b910103", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "__Main render function__", "Display" -> "markdown", 
+    "Hash" -> "78218124-9781-407e-9a76-4322b552f0f1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "EventHandler[\"frame\", Function[Null,\n  x = 0.995 x + 0.02 \
+f[p] - 0.01 f[q];\n  If[r < 100, s];\n]];", "Display" -> "codemirror", 
+    "Hash" -> "ad40a006-2d54-440c-b1b7-db3a9760e82c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> ".md\n__Drawing function__", "Display" -> "codemirror", 
+    "Hash" -> "c66d3bc9-aa67-42d8-86fb-43c83e3b9c06", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "__Drawing function__", "Display" -> "markdown", 
+    "Hash" -> "84e458aa-fd19-47a6-a17a-33915d7d42e6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "Graphics[{PointSize[0.007], Point[x // Offload], \
+AnimationFrameListener[x // Offload, \"Event\"->\"frame\"]}, PlotRange -> \
+{{-2,2}, {-2,2}}, TransitionType->\"Linear\", TransitionDuration->1]  ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e3128ede-2ade-4d53-8ae7-c0a158d24699", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> ".md\n__To stop__", "Display" -> "codemirror", 
+    "Hash" -> "8a8d52aa-d66a-453f-8c38-dd114445e662", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, <|"Data" -> "__To stop__", 
+    "Display" -> "markdown", "Hash" -> 
+     "6b91dae5-ae61-44cf-81a4-70a1ab7354d4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "EventRemove[\"frame\"];", "Display" -> "codemirror", 
+    "Hash" -> "fffca0df-38c7-4956-8d69-f582e9beafec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> 
+     ".md\n__To restart__ - evaluate `EventHandler` and then a kick-starter", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e1a4ec51-cefc-40f8-b13d-7fc14ac3a761", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> 
+     "__To restart__ - evaluate `EventHandler` and then a kick-starter", 
+    "Display" -> "markdown", "Hash" -> 
+     "8ce5931f-d252-4e11-965d-074c5c45c2b7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>, 
+   <|"Data" -> "EventFire[\"frame\", Null];", "Display" -> "codemirror", 
+    "Hash" -> "a2f11da0-66b3-4225-99d1-1ae927af72d9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ba56c62d-2ddc-471a-b977-97d9cf85f05a"|>}, "serializer" -> "jsfn4"|>

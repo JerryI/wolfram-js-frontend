@@ -86,7 +86,6 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
   Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
   Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-xterm" -> "dev",
   Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
   Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev"
 }, "Directory" -> Directory[] ]

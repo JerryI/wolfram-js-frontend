@@ -1,7 +1,77 @@
-<|"Notebook" -> 
-  <|"Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/contest.wln"|>, 
- "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "72c0dd23-476d-4be8-86f5-e264bdacb333", "Invisible" -> False, 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$35], 
+   "Objects" -> <|"17cd55be-7d08-473a-af91-03956ce428f8" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<button style=\"\" \
+id=\"3c3b3bc1-e248-4c44-8ce8-f91891d40cde\" class=\"sm-controls rounded \
+bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 \
+ring-inset ring-gray-300 hover:bg-gray-50 \" type=\"button\">Click</button>", 
+           "<script type=\"module\"> const el = \
+document.getElementById('3c3b3bc1-e248-4c44-8ce8-f91891d40cde');\n            \
+el.addEventListener('click', (event)=>{\n                \
+server.kernel.emitt('9710ae9a-db41-4078-9fa6-007ed0c9b7a7', 'True', \
+'Default');     \n            });</script>"}]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/contest.wln"|>, 
+ "Cells" -> {<|"Data" -> "FrontSubmit \
+((*GB[*){{0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*\
+|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|\
+*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*\
+),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*)\
+,(*|*)0}}(*]GB*))", "Display" -> "codemirror", 
+    "Hash" -> "eb98d43f-a43a-4aa0-947b-41aeefe20688", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "39a15cdf-1b4f-45db-9b2f-87db50173fb7"|>}, "serializer" -> "jsfn4"|>
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "7e9b1e24-e846-471d-b178-32d8bbcf853a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "ReportGraph = \
+(*VB[*)(Get[\"/Users/kirill/Github/wolfram-js-frontend-dev/iconized-d4a5.wl\"\
+])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdcvMSXXKr8gU0OBhAADq+Qq5\
+\"*)(*]VB*) // ListLinePlot; ", "Display" -> "codemirror", 
+    "Hash" -> "f36c5aa8-2076-4bee-9bbd-f14ad8533640", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "9fd254aa-e6c6-48a0-b008-b7420cc4f459", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "f::argx = \"Hi\";\nMessage[f::argx]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e494d716-ba13-403e-913a-6df8526fb382", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "f600e98b-05dd-457a-bd0c-2e1727634ce3", "Invisible" -> False, 
+    "MetaOnly" -> True, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> ".slide\n\n# Report\n\n<ReportGraph/>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fcad1d5d-5f67-4983-9864-e1578c242a91", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "EventHandler[InputButton[], Print] ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fd452482-59d8-4a6c-aef4-a30ed2ca5854", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"9710ae9a-db41-4078-9fa6-007ed0c9b7a7\", \"Initial\" -> False, \"View\" -> \
+\"17cd55be-7d08-473a-af91-03956ce428f8\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5onp5iaJqXqmqcYWOiamBsn6iamWRrqGhhbmpo\
+lp5oYWaRZAACEvxWB\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "9d5755a0-caf5-4de4-99be-49059aa57263", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "cfbd8646-d895-41f2-9877-9ffbf9fa3ded", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c92a8e3e-3c42-4b20-8fda-f9c4ef1cdb8b"|>}, "serializer" -> "jsfn4"|>
