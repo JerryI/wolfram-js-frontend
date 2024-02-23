@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`"}]
+BeginPackage["JerryI`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`", "KirillBelov`CSockets`"}]
 
 LocalKernel::usage = ""
 
@@ -14,7 +14,7 @@ LocalKernel`LTPServerStart[port_:36800] := With[{},
     tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
     tcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
 
-    SocketListen[StringTemplate["127.0.0.1:``"][port], tcp@#&];
+    SocketListen[CSocketOpen[ StringTemplate["127.0.0.1:``"][port] ], tcp@#&];
     LocalKernel`port = port;
 ]
 
@@ -54,7 +54,7 @@ heartBeat[k_] := Module[{ok = True, orig}, With[{secret = CreateUUID[]},
         ok = False;
         LTPEvaluate[k["LTPSocket"], Internal`Kernel`Ping[secret] ];
         
-    , 6000]
+    , 8000]
 ] ]
 
 HeldRemotePacket /: LinkWrite[lnk_, HeldRemotePacket[p_String] ] := With[{pp = p},
@@ -69,7 +69,7 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         Print["Establishing LTP link... using "<>addr];
         Internal`Kernel`Host = host;
         
-        Internal`Kernel`Stdout = SocketConnect[addr] // LTPTransport;
+        Internal`Kernel`Stdout = CSocketConnect[addr] // LTPTransport;
         Print["Establishing starting LTP server for backlink... using "<>(StringTemplate["127.0.0.1:``"][p])];
         Module[{tcp},
             tcp = TCPServer[];
@@ -77,7 +77,7 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
             tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
             tcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
 
-            SocketListen["127.0.0.1:"<>ToString[p], tcp@#&];
+            SocketListen[CSocketOpen["127.0.0.1:"<>ToString[p] ], tcp@#&];
             
         ];
 
@@ -91,7 +91,10 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{split = FileNameJoin[{any}] // FileNameSplit},
           URLBuild[{url, split} // Flatten] // Internal`RemoteFS
         ];
-        Protect[FileNameJoin];      
+
+        Protect[FileNameJoin];   
+        
+           
 
         Internal`RemoteFS /: Get[Internal`RemoteFS[url_] ] := Get[url];   
         Internal`RemoteFS /: StringTake[Internal`RemoteFS[url_], n_] := StringTake[url,n]; 
@@ -102,6 +105,8 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
 ]
 
 decryptor[ Hold[TextPacket[s_] ], print_, error_] := print[s];
+decryptor[ Hold[ReturnPacket[Null] ], __ ] := Null;
+decryptor[ Hold[OutputStream[__] ], __ ] := Null;
 decryptor[ any_ , a__] := Print[any];
 
 decryptor[ Hold[MessagePacket[symbol_, type_] ], print_, error_ ] := error[StringTemplate["``::``"][symbol, type] ]
@@ -240,6 +245,7 @@ LocalKernelObject /: Kernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] 
         With[{
                 value = expr // Hold // Compress // HeldRemotePacket
             },
+                Echo["LocalKernel Init >> Normal"];
                 tracker["Start"];
                 LinkWrite[k["Link"], value];
                 With[{promise = Promise[]},

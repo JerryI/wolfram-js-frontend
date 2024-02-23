@@ -25,17 +25,24 @@ initializeKernel[parameters_][kernel_] := With[{
   (* load kernels and provide remote path *)
   With[{
     p = Import[FileNameJoin[{"wljs_packages", #}], "String"], 
-    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][parameters["env", "host"], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm]
+    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][parameters["env", "host"], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm],
+    dir = FileNameJoin[{Directory[], "wljs_packages", #}]
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       Kernel`Init[kernel,  ToExpression[processed, InputForm]; ](*`*);
     ];
-    (*Kernel`Init[kernel,  ToExpression[StringTemplate["Block[{$RemotePackageDirectory = Internal`RemoteFS[\"``\"]}, Get[\"``\"] ];"][path, FileNameJoin[{Directory[], "wljs_packages", #}]], InputForm]; ](*`*);*)
+    (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
+      Echo[u];
+      Kernel`Init[kernel,  ToExpression[ u ] ](*`*);
+    ];*)
   ] &/@ WLJS`PM`Includes["kernel"];
 
   Echo["Starting WS link"];
   wsStartListerning[kernel,  wsPort];
+
+  
+
   kernel["WebSocket"] = wsPort;
 
   kernel["Container"] = StandardEvaluator`Container[kernel](*`*);
@@ -83,7 +90,9 @@ wsStartListerning[kernel_, port_] := With[{},
           ];
 
           (*Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];*)
-          SocketListen[CSocketOpen[Internal`Kernel`Host, port ], wcp@#&];
+          SocketListen[CSocketOpen[Internal`Kernel`Host, port ], wcp@#&, "SocketEventsHandler"->Identity];
+
+          (*SocketListen[port, wcp@#&];*)
         ];
     ) ]
 ]

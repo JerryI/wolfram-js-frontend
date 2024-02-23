@@ -85,7 +85,7 @@ Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
     notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["cells"];
     With[{cell = #},
         cell["Data"] = StringReplace[cell["data"], {
-            RegularExpression["FrontEndExecutable\\[\\\"([\w|\d|-]+)\\\"\\]"]:> With[{s = "$1"},    
+            RegularExpression["FrontEndExecutable\\[\\\"([\\w|\\d|-]+)\\\"\\]"]:> With[{s = "$1"},    
                 StringRiffle[{"(*VB[*)(FrontEndRef[\"", s, "\"])(*,*)(*", ToString[Compress[Hold[Global`FrontEndExecutable[s] ] ], InputForm], "*)(*]VB*)"}, ""]
         ]}];
 

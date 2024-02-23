@@ -4,14 +4,21 @@ init[n_] := With[{dom = CreateUUID[]},
     Echo["Created! Spinner"];
     n["DOM"] = dom;
     n["Promise"] = Promise[];
+    Then[n["Promise"], Function[Null,
+      EventFire[#, Resolve, Null] &/@ n["Instances"]
+    ],
+    Function[Null,
+      EventFire[#, Resolve, Null] &/@ n["Instances"]
+    ]];
 ];
 
 NotificationSpinner /: Delete[n_NotificationSpinner] := (
-    EventFire[n["Promise"], Reject, "Removed"];
+    EventFire[n["Promise"], Resolve, "Removed"];
 );
 
-Component[n_, client_, controller_] := With[{Uid = n["DOM"], Message = n["Body"], Topic = n["Topic"]},
-    Then[n["Promise"], 
+Component[n_, client_, controller_] := With[{Uid = n["DOM"], Message = n["Body"], Topic = n["Topic"], p = Promise[]},
+    n["Instances"] = Append[n["Instances"], p];
+    Then[p, 
       Function[Null,
         EventFire[controller, "RemoveSpinner", <|"Client"->client, "ID"->Uid|>];
       ],

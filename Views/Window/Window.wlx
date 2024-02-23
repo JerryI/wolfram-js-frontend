@@ -33,13 +33,15 @@ checkWSLink[window_, client_, event_String] := Module[{},
         Echo["checkWSLink >> Already connected"];
         Return[];
     ];
+    Echo["Using port"];
+    Echo[window["Notebook"]["Evaluator"]["Kernel"]["WebSocket"]];
 
     WebUISubmit[Global`UIWindow["WSConnect", window["Notebook"]["Evaluator"]["Kernel"]["WebSocket"], event ] (*`*), client];
 ];
 
 evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] := Module[{},
     checkWSLink[window, client, secret];
-    WindowObj`Evaluate[window, "EvaluationContext"-><|"KernelWebSocket"->client|>]; (*`*)
+    WindowObj`Evaluate[window];(*`*)
 ];
 
 Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
@@ -178,13 +180,20 @@ Component[OptionsPattern[]] := With[{
 
         ],
 
-        "WebSocketConnected" -> Function[Null,
+        "WebSocketConnected" -> Function[Null, With[{cli = $Client},
             Echo["window.wlx >> WebSocket link to evaluation Kernel was established"];
             window["WebSocketQ"] = True;
 
-            (* /* start evluation */ *)
-            evaluate[window, secret, $Client, modals, parameters, extensions];
-        ],
+            With[{x = EventFire[window, "OnWebSocketConnected", <|"Client" -> cli|>]},
+                Then[x,
+                    Function[Null,
+                        Echo["Fired. then passed..."];
+                        (* /* start evluation */ *)
+                        evaluate[window, secret, cli, modals, parameters, extensions];                
+                    ]
+                ];
+            ];
+        ]],
 
         "WebSocketLost" -> Function[Null,
             Echo["window.wlx >> WebSocket link to evaluation Kernel was LOST"];

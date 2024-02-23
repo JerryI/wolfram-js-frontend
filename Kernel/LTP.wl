@@ -26,7 +26,7 @@ LTPHandler[client_, message_ByteArray] := Block[{Global`$LTPClient = client},
 
 LTPTransport /: WriteString[s_LTPTransport, message_String] := BinaryWrite[s, StringToByteArray[message] ]
 LTPTransport /: BinaryWrite[LTPTransport[client_], message_ByteArray] := With[{length = Length[message]},
-    BinaryWrite[client, Join[signature, ExportByteArray[length, "UnsignedInteger32"], message]] // Print;
+    BinaryWrite[client, Join[signature, ExportByteArray[length, "UnsignedInteger32"], message]];
 ]
 
 LTPEvaluate[l_LTPTransport, expr_] := BinaryWrite[l, BinarySerialize[Hold[expr]]]

@@ -36,17 +36,17 @@ const workingDir = app.getPath('home');
 
 
 
-//fetch contex menus items from Packages folder
+//fetch contex menus items from wljs_packages folder
 
 /* extesions for contex menu */
 const pluginsMenu = {};
 
 pluginsMenu.items = [];
 pluginsMenu.fetch = () => {
-    if (!fs.existsSync(path.join(installationFolder, 'Packages'))) return;
+    if (!fs.existsSync(path.join(installationFolder, 'wljs_packages'))) return;
 
-    fs.readdirSync(path.join(installationFolder, 'Packages'), { withFileTypes: true }).filter(item => item.isDirectory()).map(item => {
-        const p = path.join(installationFolder, 'Packages', item.name, 'package.json');
+    fs.readdirSync(path.join(installationFolder, 'wljs_packages'), { withFileTypes: true }).filter(item => item.isDirectory()).map(item => {
+        const p = path.join(installationFolder, 'wljs_packages', item.name, 'package.json');
         if (fs.existsSync(p)) {
             const package = JSON.parse(fs.readFileSync(p, 'utf8'));
             if (package["wljs-meta"]["menu"]) {
@@ -1479,7 +1479,7 @@ function check_installed (cbk, window) {
                                     const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
                                     if (rersion > version) {
                                         windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
-                                        windows.log.print(':: warning :: it will clean up `wl_packages`, `Packages` and `Examples` folders', '\x1b[32m');
+                                        windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
 
                                         new promt('binary', (answer) => {
                                             if (answer) {
@@ -1592,7 +1592,7 @@ function install_frontend(cbk, window) {
                 
                 //remove specific files
                 const toremove = ['.thumbnails', 'main.js', 'wl_packages_lock.wl'];
-                const dirtoremove = ['Packages', 'wl_packages'];
+                const dirtoremove = ['wljs_packages', 'wl_packages'];
     
                 //windows.log.print('removing Packages...');
                 //windows.log.print('removing wl_packages...');

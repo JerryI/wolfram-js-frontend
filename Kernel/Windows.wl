@@ -24,6 +24,9 @@ init[o_] := Module[{uid = CreateUUID[]},
 
     o["Hash"] = uid;
     WindowObj`HashMap[uid] = o;
+    If[!NullQ[ o["Notebook"] ],
+        o["EvaluationContext"] = Join[o["Notebook"]["EvaluationContext"], <|"Notebook"->o["Notebook"]["Hash"]|>];
+    ];
 
     o
 ]
@@ -39,7 +42,7 @@ WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{trans
         transaction = Transaction[];
         transaction["Data"] = o["Data"];
         Echo[o["Data"] ];
-        transaction["EvaluationContext"] = Join[o["Notebook", "EvaluationContext"], <|"Ref" -> o["Ref"], "Notebook"->o["Notebook", "Hash"]|>, OptionValue["EvaluationContext"] ];
+        transaction["EvaluationContext"] = Join[o["EvaluationContext"], <|"Ref" -> o["Ref"]|>, OptionValue["EvaluationContext"] ];
 
         EventHandler[transaction, {"Result" -> Function[data,
             (* AFTER, BEFORE, TYPE, PROPS can be altered using provided meta-data from the transaction *)
@@ -95,7 +98,7 @@ WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{trans
 Options[WindowObj`Evaluate] = {"EvaluationContext" -> <||>}
 
 WindowObj /: WindowObj`Serialize[n_WindowObj, OptionsPattern[] ] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
+    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"EvaluationContext", "Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "EvaluationContext", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]

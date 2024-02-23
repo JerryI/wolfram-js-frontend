@@ -69,7 +69,7 @@ Status = Switch[
       "rgb(156 163 175)"
 ];
 
-{ <div class="px-4 py-0 w-full" id="{Uid}">
+<div class="px-4 py-0 w-full" id="{Uid}">
       <div class="relative mt-0 w-full">
          <button type="button" class="relative w-full cursor-default rounded-md 0 h-7 pl-3 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 bg-d9 dark:bg-gray-700 dark:ring-gray-500" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
          <span class="flex items-center">
@@ -94,8 +94,7 @@ Status = Switch[
          </span>
          </button>
       </div>
-   </div>
-,
+
    <WebUIJSBind Event={Controller}>
       //ui buttons
       const unlink = document.getElementById('unlink-<Uid/>');
@@ -139,5 +138,5 @@ Status = Switch[
 
         deffered(raw);
       });     
-   </WebUIJSBind> 
-}
+   </WebUIJSBind>       
+</div>
