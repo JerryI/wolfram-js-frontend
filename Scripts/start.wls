@@ -191,6 +191,7 @@ Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTem
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "Env"->$Env];
 
+Echo["Autotest start!"];
 
 (* autotest *)
 With[{secret = CreateUUID[]},

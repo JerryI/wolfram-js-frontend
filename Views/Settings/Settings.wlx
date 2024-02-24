@@ -1,6 +1,16 @@
 Checkbox = ImportComponent["Components/UI/Checkbox.wlx"];
-
 Extensions := ImportComponent["Components/Extensions.wlx"];
+GeneralSettings := ImportComponent["Components/General.wlx"];
+
+{loadSettings, storeSettings}        = ImportComponent["Frontend/Settings.wl"];
+
+settings = <||>;
+loadSettings[settings];
+
+updateSettings[new_] := (
+    settings = Join[settings, new];
+    storeSettings[settings];
+);
 
 Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
     <div>
@@ -10,16 +20,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
     </div>
 ] 
 
-loadConfiguration  := If[FileExistsQ[FileNameJoin[{Directory[], "settings.wl"}]], Get[FileNameJoin[{Directory[], "settings.wl"}]], Missing[]];
-storeConfiguration[c_Association] := Put[FileNameJoin[{Directory[], "settings.wl"}], c];
 
-initialize[conf_, OptionsPattern[]] := With[{default = OptionValue["Defaults"]},
-    conf = Join[default, (If[MissingQ[#], <||>, #]& ) @ loadConfiguration];
-    storeConfiguration[conf]
-];
-
-SetAttributes[initialize, HoldFirst];
-Options[initialize] = {"Defaults" -> <||>}
 
 
 Component[OptionsPattern[]] := With[{
@@ -73,6 +74,9 @@ Component[OptionsPattern[]] := With[{
               </div>
               <div class="px-4 py-0 h-full overflow-y-auto dark:text-gray-400">
                 <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-600">
+                    <li class="px-4 py-4 sm:px-0">
+                        <GeneralSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
+                    </li>                    
                     <li class="px-4 py-4 sm:px-0">
                         <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
                     </li>

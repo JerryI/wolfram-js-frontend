@@ -26,9 +26,14 @@ ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
 {saveNotebook, loadNotebook, renameNotebook, cloneNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
+{loadSettings, storeSettings}        = ImportComponent["Settings.wl"];
+
 autolaunch                           = ImportComponent["Autolaunch.wl"];
 
 serverParams = <|"env" -> env|>;
+settings = <||>;
+
+loadSettings[settings];
 
 renameFile[old_String, new_String] := With[{},
   If[FileExtension[old] === "wln",
@@ -188,9 +193,12 @@ Script = With[{},
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
 Print["App Loaded!"];
 
+If[settings["Autostart"],
+  Print["Autolaunch!"];
+  autolaunch[LocalKernel["Name"->"Auto"], Hold[KernelList], initKernel[serverParams], deinitKernel];
+];
 
-Print["Autolaunch!"];
-autolaunch[LocalKernel["Name"->"Auto"], Hold[KernelList], initKernel[serverParams], deinitKernel];
+Print["Done?"];
 
 
 

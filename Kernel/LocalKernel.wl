@@ -14,7 +14,7 @@ LocalKernel`LTPServerStart[port_:36800] := With[{},
     tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
     tcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
 
-    SocketListen[CSocketOpen[ StringTemplate["127.0.0.1:``"][port] ], tcp@#&];
+    SocketListen[SocketOpen[ StringTemplate["127.0.0.1:``"][port] ], tcp@#&];
     LocalKernel`port = port;
 ]
 

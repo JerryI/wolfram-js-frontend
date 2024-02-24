@@ -1,7 +1,7 @@
 Checkbox = ImportComponent["UI/Checkbox.wlx"];
 Knob     = ImportComponent["UI/Button.wlx"];
 
-Secret = $Options["Secret"];
+Secret = $Options["Secret"] // EventClone;
 
 Messager = $Options["Messager"];
 
@@ -39,6 +39,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
                 EventRemove[socket];
                 EventRemove[controller];
                 EventRemove[updateEvent];
+                EventRemove[Secret];
                 EventRemove[installEvent];
                 Echo["Extensions >> destoryed"];
             ]

@@ -2,6 +2,7 @@ node_modules
 Temp/
 __backups/*
 __localkernel/*
+_settings.wl
 shipped/*
 *.DS_STORE
 public/.DS_STORE
