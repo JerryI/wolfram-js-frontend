@@ -5,5 +5,8 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('extension', (ev, pattern) => {
             server.emitt('<Controls/>', 'True', pattern);
         });
+        window.electronAPI.listener('context', (ev, pattern) => {
+            server.emitt('<Controls/>', 'True', pattern);
+        });        
     }
 </script>

@@ -20,6 +20,10 @@ EventHandler[Secret, {"Load" -> Function[Null,
         "Autostart" -> Function[state,
             settings = Join[settings, <|"Autostart"->state|>];
             onSave[settings];
+        ],
+
+        "CleanBackups" -> Function[Null,
+            DeleteFile /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}]]
         ]
     }];
 
@@ -50,4 +54,15 @@ EventHandler[Secret, {"Load" -> Function[Null,
             <Checkbox Label={"Kernel autolaunch"} Event={controller} Topic={"Autostart"} Description={"Spawns local Wolfram Kernel on startup"} Checked={settings["Autostart"]}/>
         </StringRiffle>
     </div>  
+,
+    <div class="mt-4 overflow-y-auto" style="max-height:60%">   
+        <span class="dark:text-gray-400">Frontend</span>
+        <div class="pb-10 pb-10 mt-5 gap-y-2 flex flex-col">
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500">Purge internal backup storage</p>
+            <StringRiffle>
+                <Knob Label={"Clean up"} Topic={"CleanBackups"} Event={controller} Class={"w15"}/>
+            </StringRiffle>
+        </div>
+    </div>  
+
 }

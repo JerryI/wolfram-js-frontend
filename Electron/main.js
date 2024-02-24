@@ -9,6 +9,7 @@ const fs = require('fs');
 const fse = require('fs-extra');
 
 const contextMenu = require('electron-context-menu');
+const contextMenuExtensions = [];
 
 const { exec } = require('node:child_process');
 const controller = new AbortController();
@@ -64,6 +65,22 @@ pluginsMenu.fetch = () => {
                     }
 
                     pluginsMenu.items.push(mitem);
+                });
+            }
+
+            if (package["wljs-meta"]["contextMenu"]) {
+                package["wljs-meta"]["contextMenu"].forEach(mi => {
+                    const mitem = {
+                        label: mi["label"],
+                        event: mi["event"],
+                        visible: true,
+                    };
+
+                    if (mi["visible"]) {
+                        mitem.visible = mi["visible"];
+                    }
+
+                    contextMenuExtensions.push(mitem);
                 });
             }
         }
@@ -624,6 +641,7 @@ function create_window(opts, cbk = () => {}) {
         const defaults = {
             title: 'Notebook',
             show: true,
+            contextMenu: true,
             focus: false
         };
 
@@ -709,53 +727,44 @@ function create_window(opts, cbk = () => {}) {
         });
     
         //extend context menu
-        contextMenu({
-            window: win,
-            prepend: (defaultActions, parameters, browserWindow) => [{
-                    label: 'Evaluate in place',
-                    // Only show it when right-clicking images
-                    visible: parameters.selectionText.trim().length > 0,
-                    click: (e) => {
-                        win.webContents.send('context', 'Identity');
-    
+        if (options.contextMenu) {
+            contextMenu({
+                window: win,
+                prepend: (defaultActions, parameters, browserWindow) => contextMenuExtensions.map((mi) => {
+                    let visible = false;
+
+                    switch(mi.visible) {
+                        case 'selection':
+                            visible =  parameters.selectionText.trim().length > 0;
+                        break;
+                        default:
+                            visible = true;
+                    };
+
+                    const onclick = () => {
+                        win.webContents.send('context', mi.event);
                     }
-                },
-                {
-                    label: 'Iconize',
-                    // Only show it when right-clicking images
-                    visible: parameters.selectionText.trim().length > 0,
-                    click: () => {
-                        win.webContents.send('context', 'Iconize');
-                    }
-                },
-                {
-                    label: 'Simplify',
-                    // Only show it when right-clicking images
-                    visible: parameters.selectionText.trim().length > 0,
-                    click: () => {
-                        win.webContents.send('context', 'Simplify');
-                    }
-                },
-                {
-                    label: 'Highlight',
-                    // Only show it when right-clicking images
-                    visible: parameters.selectionText.trim().length > 0,
-                    click: () => {
-                        win.webContents.send('context', 'iHighlight');
-                    }
-                }
-            ],
-    
-            menu: (actions, props, browserWindow, dictionarySuggestions) => [
-                ...dictionarySuggestions,
-                actions.separator(),
-                actions.cut(),
-                actions.copy(),
-                actions.paste(),
-                actions.separator(),
-                actions.inspect()
-            ]
-        });
+
+                    return ({
+                        label: mi.label,
+                        // Only show it when right-clicking images
+                        visible: visible,
+                        click: onclick
+                    })
+                })
+                ,
+            
+                menu: (actions, props, browserWindow, dictionarySuggestions) => [
+                    ...dictionarySuggestions,
+                    actions.separator(),
+                    actions.cut(),
+                    actions.copy(),
+                    actions.paste(),
+                    actions.separator(),
+                    actions.inspect()
+                ]
+            });
+        }
 
         if (!options.url) {
             console.error('No url is provided!');

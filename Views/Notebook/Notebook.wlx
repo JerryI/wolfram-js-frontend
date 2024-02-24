@@ -670,6 +670,8 @@ Component[OptionsPattern[]] := With[{
 
             <CellDropdown Parameters={parameters} Event={secret} ExtesionInjector={ExtensionTemplateInjection}/>
             <ElectronBinds Event={secret} Controls={controller}/>
+
+            <ExtensionTemplateInjection Template={"Footer"} Modals={modals} Messager={log} Notebook={notebook} Event={secret} Controls={controller}/>
             <ExtensionTemplateInjection Template={"Scripts"} />
             
             <WebUIOnLoad Event={secret} Pattern={"Load"}/>
