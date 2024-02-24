@@ -77,6 +77,7 @@
 
 .sm-controls {
     font-family: system-ui;
+    caret-color: auto;
 }
 
 .cgi-ico {

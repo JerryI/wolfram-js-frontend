@@ -16,7 +16,27 @@ addListeners[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
   
 ];
 
-Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], appEvents = OptionValue["AppEvents"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+  
+  EventHandler[EventClone[LazyLoad], {
+    "Load" -> Function[Null,
+      With[{cli = EventClone[$Client], client = $Client,  cloned = EventClone[appEvents]},
+        EventHandler[cloned, {"AppendKernel" -> Function[kernel,
+          Echo["Kernels.wlx --> append Kernel"];
+          EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->Messager, "Kernel"->kernel, "Client"->client] |> ];
+        ]}];
+
+        EventHandler[cli, {"Closed" -> Function[Null,
+          Echo["Kernel list holder >> destroyed!"];
+          EventRemove[cloned];
+          EventRemove[cli];
+          EventRemove[LazyLoad];
+          EventRemove[Controller];
+        ]}];
+      ]
+    ]
+  }];
+  
   EventHandler[ButtonId, Function[Type,
     Echo[Type];
     With[{client = $Client, m = Messager, kernel = Switch[Type,
@@ -29,7 +49,7 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initK
       
         addListeners[kernel, KernelList, initKernel, deinitKernel];
 
-        EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->m, "Kernel"->kernel, "Client"->client] |> ];
+        EventFire[appEvents, "AppendKernel", kernel];
         kernel // Kernel`Start;
     ]    
   ]];
@@ -62,7 +82,7 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], initK
   
     <WebUIContainer Event={Controller}>
       <div class="mt-0 shrink-0 gap-y-1 flex flex-col">
-          <WebUILazyLoad Event={LazyLoad}>
+          <WebUILazyLoad Event={EventClone[LazyLoad]}>
             <KernelListComponent/>
           </WebUILazyLoad>
           <WebUIContainerChild/> 

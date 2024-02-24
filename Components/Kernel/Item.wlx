@@ -22,7 +22,6 @@ destoryWidget := With[{},
 With[{m = $Options["Messager"], client = Client},
    EventHandler[assignedEvent1, {any_ :> Function[data, 
       Block[{$Client = client},
-         Print[StringJoin["redirect >> ", m]];
          EventFire[m, any, data];
       ]  
    ]}]
@@ -39,7 +38,13 @@ EventHandler[assignedEvent2, {
       With[{client = Client},
          EventFire[Controller, "Error", <|"Client" -> client, "Data" -> new|> ];
       ]
-   ]   
+   ],
+   
+   "Exit" -> Function[Null,
+      With[{client = Client},
+         EventFire[Controller, "Exit", <|"Client" -> client|> ];
+      ]
+   ]
 }];
 
 EventHandler[assignedEvent3, {
@@ -94,25 +99,18 @@ Status = Switch[
          </span>
          </button>
       </div>
+   
+   <WebUIEventListener Type={"click"} Id={StringJoin["unlink-", Uid]} Event={Uid} Pattern={"Unlink"} />
+   <WebUIEventListener Type={"click"} Id={StringJoin["restart-", Uid]} Event={Uid} Pattern={"Restart"} />
 
    <WebUIJSBind Event={Controller}>
-      //ui buttons
-      const unlink = document.getElementById('unlink-<Uid/>');
-      const restart = document.getElementById('restart-<Uid/>');
-
-      unlink.addEventListener('click', () => {
-         unlink.remove();
-         server.emitt('<Uid/>', 'True', 'Unlink');
+      const state_field = document.getElementById('state-<Uid/>');
+      this.on('Error', () => state_field.style.backgroundColor = 'rgb(248 113 113)');
+      this.on('Exit', () => {
          setTimeout(() => {
             document.getElementById('<Uid/>').remove();
          }, 300);
       });
-      restart.addEventListener('click', () => {
-         server.emitt('<Uid/>', 'True', 'Restart');
-      });
-
-      const state_field = document.getElementById('state-<Uid/>');
-      this.on('Error', () => state_field.style.backgroundColor = 'rgb(248 113 113)');
       this.on('State', (raw) => {
         const deffered = async (data) => {
          const assoc = await interpretate(data, {hold:true});

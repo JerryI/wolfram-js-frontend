@@ -156,7 +156,7 @@ App[request_] := With[{
             <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 flex">
               <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>  
             </div>
-            <Kernels Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
+            <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300 dark:border-gray-600"></div>
             <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
