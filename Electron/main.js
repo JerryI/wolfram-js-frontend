@@ -508,8 +508,8 @@ const server = {
         if (server.startedQ) {
             this.startedQ = false;
             this.running = false;
-            this.wolfram.process.stdin.write("Exit[]\n");
-            this.wolfram.process.kill();
+            this.wolfram.process.kill('SIGINT');
+            this.wolfram.process.stdin.write("exit\n");
         }
     }
 }
