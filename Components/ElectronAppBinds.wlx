@@ -7,6 +7,12 @@ Controls = $Options["Controls"];
         });
         window.electronAPI.listener('context', (ev, pattern) => {
             server.emitt('<Controls/>', 'True', pattern);
-        });        
+        });     
+        window.electronAPI.listener('settings', (ev, pattern) => {
+            open('/settings', '_blank');
+        });    
+        window.electronAPI.listener('newnotebook', () => {
+            server.emitt('<Controls/>', 'True', '_NewNotebook');
+        });
     }
 </script>

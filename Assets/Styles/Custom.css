@@ -75,6 +75,10 @@
   background: rgb(239,239,239)
 }
 
+input::selection {
+  color: #2fa1d6;
+}
+
 .sm-controls {
     font-family: system-ui;
     caret-color: auto;

@@ -30,7 +30,7 @@ initializeKernel[parameters_][kernel_] := With[{
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
-      Kernel`Init[kernel,  ToExpression[processed, InputForm]; ](*`*);
+      Kernel`Async[kernel,  ToExpression[processed, InputForm] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
       Echo[u];

@@ -1,6 +1,8 @@
-<head>
-    <title>WLX Template</title>
-    <script src="/Styles/Tailwind.js"></script>
-    <link rel="stylesheet" href="/Styles/Custom.css"/>
-    <$Children/>
-</head>
+With[{Title = $Options["Title"]},
+    <head>
+        <title><Title/></title>
+        <script src="/Styles/Tailwind.js"></script>
+        <link rel="stylesheet" href="/Styles/Custom.css"/>
+        <$Children/>
+    </head>
+]

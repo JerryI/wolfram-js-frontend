@@ -38,18 +38,8 @@ Controls = $Options["Controls"];
             server.emitt('<Controls/>', 'True', 'DeleteFocusedCell');
         });
 
-        window.electronAPI.listener('settings', () => {
-            const fake = document.createElement('a');
-            fake.target = "_blank";
-            fake.href = '/settings';
-            fake.click();            
-        }); 
         
-        window.electronAPI.listener('newnotebook', () => {
-            server.emitt('<Controls/>', 'True', 'NewNotebook');
-        });
-        
-
+    
         window.electronAPI.listener('evaluateinit', () => {
             server.emitt('<Controls/>', 'True', 'EvaluateInitCells');
         });

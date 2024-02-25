@@ -200,6 +200,9 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
 
+        (* unknown bug, doesn't work in initialization ... *)
+        LinkWrite[link, EnterTextPacket["Unprotect[Interpretation, InterpretationBox]"] ];
+
         LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "Services", "LPM.wl"}] ] ] ];
     ];
 
