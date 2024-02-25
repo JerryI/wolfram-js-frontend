@@ -246,7 +246,7 @@ CellObj /: CellObj`Evaluate[o_CellObj] := Module[{transaction},
 
             If[data["Data"] != "Null",
                 If[KeyExistsQ[data, "Meta"],
-                    CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], data["Meta"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
+                    CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], data["Meta"], "After"->Sequence[o, ___?OutputCellQ], "Type"->"Output"(*"" data["Meta"]*)]
                 ,
                     CellObj["Data"->data["Data"], "Notebook"->o["Notebook"], "After"->Sequence[o, ___?OutputCellQ], "Display"->"codemirror", "Type"->"Output"(*"" data["Meta"]*)]
                 ]

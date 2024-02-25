@@ -47,7 +47,7 @@
           "role": "Editor"
         }
       ],
-      "icon": "./Electron/build/512x512.icns"
+      "icon": "./Electron/build/512x512.png"
     },
     "win": {
       "target": "NSIS",

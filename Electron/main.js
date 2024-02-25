@@ -27,7 +27,7 @@ let installationFolder;
 
 //check if it is working from the repo folder of not
 if (app.isPackaged) {
-    installationFolder = path.join(app.getPath('appData'), 'wljs-frontend');
+    installationFolder = path.join(app.getPath('appData'), 'wljs-notebook');
 } else {
     installationFolder = app.getAppPath();
 }
