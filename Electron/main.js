@@ -529,12 +529,13 @@ const windows = {
         },
 
         print (data, color) {
+            if (Array.isArray(this.dump)) this.dump.push(data);
             if (!this.readyQ || !this.aliveQ) {
                 console.log(data);
                 return;
             };
 
-            if (Array.isArray(this.dump)) this.dump.push(data);
+            
             this.win.webContents.send('push-logs', data, color);
         },
 
@@ -546,7 +547,7 @@ const windows = {
                 width: 600,
                 height: 400,
                 resizable: false,
-                title: 'Logger',
+                title: 'Launcher',
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_log.js'),
                     //webSecurity: false,
@@ -594,10 +595,13 @@ const windows = {
         },
 
         destroy() {
-            this.win.close();
             this.readyQ = false;
             this.aliveQ = false;
-            this.win = false;
+            //console.log('log wind destroyed');
+            //windows.log.win.close();
+            windows.log.win.destroy();
+
+            //this.win = false;
         }
     },
 
@@ -901,11 +905,11 @@ app.whenReady().then(() => {
     buildMenu({plugins: pluginsMenu.items});    
 
     //make a log window and start WL
-    /*windows.log.construct((log_window) => {
+    windows.log.construct((log_window) => {
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
-    });*/
-    server.url.local = `http://127.0.0.1:20560`;
-    create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
+    });
+    //server.url.local = `http://127.0.0.1:20560`;
+    //create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
@@ -993,7 +997,9 @@ function start_server (window) {
             //open a window, means server has started
             server.url.local = `http://${url_match.groups.ip}:${url_match.groups.port}`;
             
-            windows.log.destroy()
+            
+
+            console.log('Open first window');
 
             //open a first window. coudl be a file or second instance
             create_first_window();
@@ -1004,6 +1010,8 @@ function start_server (window) {
                 const string = data.toString();
                 windows.log.print(string);
             };
+
+            setTimeout(() => {windows.log.destroy()}, 300);
         }
 
     };
@@ -1022,6 +1030,7 @@ function create_first_window() {
 
     //Windows/Unix open a file
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
+        console.log('OPEN a FILE WIN/Linux');
         if (process.argv[1].length > 3) {
             app.addRecentDocument(process.argv[1]);
             create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
@@ -1035,6 +1044,7 @@ function create_first_window() {
       
     //Mac
     if (isMac && server.startedQ && !server.running && server.path.requested) {
+        console.log('OPEN a FILE OSX');
         app.addRecentDocument(server.path.requested);
         create_window({url: server.url.default() + '/' + encodeURIComponent(server.path.requested), title: server.path.requested, show: false, focus: true, cacheClear: server.wasUpdated});
         server.path.requested = undefined;
@@ -1044,7 +1054,9 @@ function create_first_window() {
     }
 
     //nothing... just regular start
-    create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false});
+
+    console.log('Regular start. Open default url');
+    create_window({url: server.url.default(), title: 'Notebook', show: true, focus: false});
     server.wasUpdated = false;
 }
 
@@ -1447,7 +1459,7 @@ function check_installed (cbk, window) {
     windows.log.print(installationFolder, '\x1b[32m');
 
     const package = path.join(installationFolder, 'package.json');
-    const script = path.join(installationFolder, 'Scripts', 'run.wls');
+    const script = path.join(installationFolder, 'Scripts', 'start.wls');
 
     //if it is already installed
     if (fs.existsSync(script)) {
@@ -1475,7 +1487,7 @@ function check_installed (cbk, window) {
                     clearTimeout(watchdog);
 
                     //check the official version
-                    const request = net.fetch('https://raw.githubusercontent.com/JerryI/wolfram-js-frontend/master/package.json');
+                    const request = net.fetch('https://raw.githubusercontent.com/JerryI/wolfram-js-frontend/updates/package.json');
                     request.then((result) => {
                         if (result.status === 200) {
                             console.log(result);
@@ -1556,7 +1568,7 @@ function install_frontend(cbk, window) {
 
         //path to zip
         const pathToFile = path.join(installationFolder, 'pkg.zip');
-        downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/master', pathToFile, (file) => {
+        downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/updates', pathToFile, (file) => {
             windows.log.print('Unzipping...', '\x1b[32m');
 
             const extracted = path.join(installationFolder, '__extracted');
@@ -1600,7 +1612,7 @@ function install_frontend(cbk, window) {
                 windows.log.print('Done');
                 
                 //remove specific files
-                const toremove = ['.thumbnails', 'main.js', 'wl_packages_lock.wl'];
+                const toremove = ['.thumbnails', 'LPM.wl', 'main.js', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl', '.wl_timestamp', '.wljs_timestamp'];
                 const dirtoremove = ['wljs_packages', 'wl_packages'];
     
                 //windows.log.print('removing Packages...');
@@ -1640,6 +1652,7 @@ function install_frontend(cbk, window) {
 
 //in a case of a powerful firewall or apocalipse
 const install_shipped = (cbk, window) => {
+    exit(-1);
     windows.log.print('Copying to installation folder of a shipped package...');
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
