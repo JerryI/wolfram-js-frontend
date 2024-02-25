@@ -4,6 +4,8 @@ const { platform } = require('node:process');
 
 const zlib = require('zlib');
 
+var spawn = require('node:child_process').spawn; 
+
 const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -508,8 +510,10 @@ const server = {
         if (server.startedQ) {
             this.startedQ = false;
             this.running = false;
-            this.wolfram.process.kill('SIGINT');
-            this.wolfram.process.stdin.write("exit\n");
+            console.log(this.wolfram.process.pid);
+            this.wolfram.process.kill('SIGKILL');
+            //this.wolfram.process.kill('SIGINT');
+            //this.wolfram.process.stdin.write("exit\n");
         }
     }
 }
@@ -1113,7 +1117,7 @@ function check_wl (configuration, cbk, window) {
 
     windows.log.print("");
     windows.log.print("Starting wolframscript by path: " + server.wolfram.path);
-    const program = exec('"'+server.wolfram.path+'" ' + server.wolfram.args.join(' '), { cwd: workingDir });
+    const program = spawn(server.wolfram.path, server.wolfram.args, { cwd: workingDir });
     
     //error
     program.on('error', function(err) {
