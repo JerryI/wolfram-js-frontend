@@ -4,7 +4,7 @@ const platforms = [['Windows', 'win'], ['Unix', 'unix'], ['OSX', 'osx'], ['Brows
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './**/*.{wlx}'
+    './**/*.wlx'
   ],
   theme: {
     extend: {
