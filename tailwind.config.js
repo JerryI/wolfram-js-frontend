@@ -1,19 +1,10 @@
 const plugin = require('tailwindcss/plugin')
-const platforms = [['Windows', 'win'], ['Unix', 'unix'], ['OSX', 'osx']]
+const platforms = [['Windows', 'win'], ['Unix', 'unix'], ['OSX', 'osx'], ['Browser', 'bro']]
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './**/*.{html,wlx}'
-  ],
-  safelist: [
-    'text-2xl',
-    'text-3xl',
-    'bg-teal-400',
-    'hover:bg-teal-400',
-    {
-      pattern: /columns-.*/,
-    },
   ],
   theme: {
     extend: {
@@ -31,4 +22,13 @@ module.exports = {
       })
     }),
   ],
+  safelist: [
+    'text-2xl',
+    'text-3xl',
+    'bg-teal-400',
+    'hover:bg-teal-400',
+    {
+      pattern: /columns-.*/,
+    }     
+  ]  
 }

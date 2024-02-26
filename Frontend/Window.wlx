@@ -63,7 +63,7 @@ App[request_] := With[{
           
           <div id="frame">
             <div class="h-full flex flex-col">
-              <div style="z-index: 100;" class="flex sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 px-2 pl-20 md:pl-2 dark:border-gray-500 bg-239 dark:bg-gray-700">
+              <div style="z-index: 100;" class="sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 px-2 pl-20 md:pl-2 dark:border-gray-500 bg-239 dark:bg-gray-700 hidden osx:flex">
                 <div class="grow h-full" style="-webkit-app-region: drag"></div>       
               </div>              
               <Notifications MessagePort={GlobalMessanger}/>

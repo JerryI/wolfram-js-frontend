@@ -2840,6 +2840,14 @@ select {
   opacity: 1;
 }
 
+[os="OSX"] .osx\:flex {
+  display: flex;
+}
+
+[os="Browser"] .bro\:hidden {
+  display: none;
+}
+
 @media (min-width: 640px) {
   .sm\:mx-0 {
     margin-left: 0px;

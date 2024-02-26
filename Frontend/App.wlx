@@ -155,7 +155,7 @@ App[request_] := With[{
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
           <div id="sidebar" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 border-r border-gray-300 dark:border-gray-600">
-            <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 flex">
+            <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex">
               <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>  
             </div>
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>

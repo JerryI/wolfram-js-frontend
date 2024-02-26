@@ -1162,7 +1162,7 @@ function check_wl (configuration, cbk, window) {
         () => {
             //if failed
             windows.log.clear();
-            program.kill();
+            program.kill('SIGKILL');
             check_wl(undefined, cbk, window);
         }, data.toString(), program, window)) return;
 
@@ -1224,7 +1224,7 @@ function check_wl (configuration, cbk, window) {
         },
         () => {
             //if failed
-            program.kill();
+            program.kill('SIGKILL');
             windows.log.clear();
             check_wl(undefined, cbk, window);
         }, s, program, window)) return;
@@ -1265,7 +1265,7 @@ function check_wl (configuration, cbk, window) {
             windows.log.print("No reply. Restart in 5 sec", '\x1b[46m');
 
             setTimeout(()=>{
-                program.kill();
+                program.kill('SIGKILL');
                 windows.log.clear();
                 check_wl(undefined, cbk, window);
             }, 5000);
@@ -1421,7 +1421,7 @@ function activate_wl(program, success, rejection, window) {
                     windows.log.print(data.toString());
                     if (check(data.toString())) return;
                     //timeout to retry
-                    program.kill();
+                    program.kill('SIGKILL');
                     setTimeout(rejection, 3000);
                 }); 
             });            
@@ -1439,7 +1439,7 @@ function activate_wl(program, success, rejection, window) {
                     windows.log.print(data.toString());
                     if (check(data.toString())) return;
                     //timeout to retry
-                    program.kill();
+                    program.kill('SIGKILL');
                     setTimeout(rejection, 3000);
                 });
             });
