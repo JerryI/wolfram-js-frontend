@@ -1,0 +1,15 @@
+{
+  "title": "Getting started",
+  "slug": "/category/getting-started",
+  "permalink": "/docs/category/getting-started",
+  "navigation": {
+    "previous": {
+      "title": "Quick start",
+      "permalink": "/docs/frontend/instruction"
+    },
+    "next": {
+      "title": "GUI Overview",
+      "permalink": "/docs/frontend/Outdated/Tutorial/GUI Overview"
+    }
+  }
+}

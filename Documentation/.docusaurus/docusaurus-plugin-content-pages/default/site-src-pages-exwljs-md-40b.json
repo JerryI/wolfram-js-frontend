@@ -1,0 +1,11 @@
+{
+  "type": "mdx",
+  "permalink": "/exwljs",
+  "source": "@site/src/pages/exwljs.md",
+  "title": "Execution environment WLJS",
+  "description": "It means that the function implementation is within or only makes sence on WLJS Interpreter (Javascript  engine running in your browser with WL framework). It is true for most graphics primitives, since Wolfram Kernel cannot draw anything, because it works as a backend only.",
+  "frontMatter": {
+    "title": "Execution environment WLJS"
+  },
+  "unlisted": false
+}

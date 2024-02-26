@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Outdated/Tutorial/Plugins",
+  "title": "Plugins",
+  "description": "WLJS Frontend uses a custom package manager to download, update and store extensions from any suitable Github repo. At the first startup it extracts them to a local Packages folder, where one can freely edit and explore them.",
+  "source": "@site/docs/frontend/Outdated/Tutorial/Plugins.md",
+  "sourceDirName": "frontend/Outdated/Tutorial",
+  "slug": "/frontend/Outdated/Tutorial/Plugins",
+  "permalink": "/docs/frontend/Outdated/Tutorial/Plugins",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Input elements",
+    "permalink": "/docs/frontend/Outdated/Tutorial/Input elements"
+  },
+  "next": {
+    "title": "Export notebook",
+    "permalink": "/docs/frontend/Outdated/Tutorial/Export notebook"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Arrow",
+  "title": "Arrow",
+  "description": "Plots an arrow with a fixed head-size from point 1 to point 2",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Arrow.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/Arrow",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Arrow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "update": false,
+    "needsContainer": false,
+    "virtual": true,
+    "origin": "https://github.com/JerryI/wljs-graphics-d3/",
+    "draft": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AbsoluteThickness",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness"
+  },
+  "next": {
+    "title": "Circle",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Circle"
+  }
+}

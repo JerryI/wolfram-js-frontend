@@ -1,0 +1,43 @@
+{
+  "permalink": "/blog/intro-transform-3d",
+  "source": "@site/blog/2023-07-25-transform-3d/index.md",
+  "title": "A major update of Graphics3D",
+  "description": "Every feature I introduce comes from the practicing on real-life cases. Recently I had an urge to make a nice figure for the Physical Review B paper.",
+  "date": "2023-07-25T00:00:00.000Z",
+  "formattedDate": "July 25, 2023",
+  "tags": [
+    {
+      "label": "graphics3d",
+      "permalink": "/blog/tags/graphics-3-d"
+    }
+  ],
+  "readingTime": 2.93,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "intro-transform-3d",
+    "title": "A major update of Graphics3D",
+    "authors": "jerryi",
+    "tags": [
+      "graphics3d"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "A minor update of Graphics2D",
+    "permalink": "/blog/intro-controls-2d-graphics"
+  },
+  "nextItem": {
+    "title": "WLJS in practice. Integrating absorption spectra",
+    "permalink": "/blog/practice-integration"
+  }
+}

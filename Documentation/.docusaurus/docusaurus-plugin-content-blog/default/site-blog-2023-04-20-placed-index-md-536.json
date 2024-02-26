@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/meta-example",
+  "source": "@site/blog/2023-04-20-placed/index.md",
+  "title": "Introducing metamarkers",
+  "description": ".png)",
+  "date": "2023-04-20T00:00:00.000Z",
+  "formattedDate": "April 20, 2023",
+  "tags": [
+    {
+      "label": "evaluation",
+      "permalink": "/blog/tags/evaluation"
+    },
+    {
+      "label": "metamarkers",
+      "permalink": "/blog/tags/metamarkers"
+    }
+  ],
+  "readingTime": 1.735,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "meta-example",
+    "title": "Introducing metamarkers",
+    "authors": "jerryi",
+    "tags": [
+      "evaluation",
+      "metamarkers"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Introducing middleware event handlers",
+    "permalink": "/blog/middleware-example"
+  }
+}

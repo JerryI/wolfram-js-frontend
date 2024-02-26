@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+  "title": "InstancesHashMap",
+  "description": "A global Javascript object that stores all containers including virtual containers used on a page",
+  "source": "@site/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap.md",
+  "sourceDirName": "frontend/Outdated/Reference/Javascript API",
+  "slug": "/frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+  "permalink": "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CellHashStorage",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage"
+  },
+  "next": {
+    "title": "ObjectHashMap",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap"
+  }
+}

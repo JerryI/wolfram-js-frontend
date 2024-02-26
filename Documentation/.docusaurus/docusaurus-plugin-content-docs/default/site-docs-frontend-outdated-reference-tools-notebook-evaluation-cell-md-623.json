@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+  "title": "EvaluationCell",
+  "description": "takes an identifier of an output cell generated after the evaluation. Can be used as EventObject for EventHandler to attach handlers to an output cell or to print another cell after.",
+  "source": "@site/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell.md",
+  "sourceDirName": "frontend/Outdated/Reference/Tools/Notebook",
+  "slug": "/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+  "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CellPrint",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint"
+  },
+  "next": {
+    "title": "GlobalThrottle",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle"
+  }
+}

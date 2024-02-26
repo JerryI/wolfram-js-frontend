@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/MatrixPlot",
+  "title": "MatrixPlot",
+  "description": "Plots a 2D array with an arbitrary data inside with axes",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/MatrixPlot.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/MatrixPlot",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListVectorPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot"
+  },
+  "next": {
+    "title": "Plot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/Plot"
+  }
+}

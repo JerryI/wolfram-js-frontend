@@ -1,0 +1,189 @@
+<|"notebook" -> <|"name" -> "Sportively", "id" -> "catering-99988", 
+   "kernel" -> LocalKernel, "objects" -> 
+    <|"50b53f8f-e873-434e-bced-d5899281f1ec" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
+\",0.1],[\"Point\",[\"Offload\",\"point\"]]],[\"Rule\",\"TransitionDuration\"\
+,50],[\"Rule\",\"TransitionType\",\"'Linear'\"]]", 
+       "date" -> DateObject[{2023, 10, 8, 0, 22, 
+          47.148173`8.426039844752374}, "Instant", "Gregorian", 2.]|>, 
+     "b7aa31bd-44f3-471b-b454-111ab6431d2e" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",1,0,0],[\"PointSize\
+\",0.1],[\"Point\",[\"Offload\",\"point\"]]],[\"Rule\",\"TransitionDuration\"\
+,50],[\"Rule\",\"TransitionType\",\"'Linear'\"]]", 
+       "date" -> DateObject[{2023, 10, 8, 0, 28, 
+          18.014828`8.008205104219533}, "Instant", "Gregorian", 2.]|>, 
+     "307e803b-7319-4387-bfeb-128f747ad06f" -> 
+      <|"json" -> "[\"ButtonView\",[\"Rule\",\"'Label'\",\"'Rumble'\"],[\"Rul\
+e\",\"'Event'\",\"'0ddcc17d-1b8f-423a-82d4-ce61ccede51c'\"]]", 
+       "date" -> DateObject[{2023, 10, 8, 0, 28, 
+          18.018283`8.008288388032556}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Temporary/NintendoPro.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 10, 21, 26, 32.120889`8.259362537040104}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$16], 
+   "SelectedCell" -> "2ab967fc-5d37-4f26-a7e4-2404fd194de2"|>, 
+ "cells" -> {<|"id" -> "9bc4c0e4-e089-482b-bd7b-e31e2e21eabb", 
+    "type" -> "input", "data" -> ".md\n## Nintendo Pro controller\nA sandbox \
+to play around with joystick API and NPM modules", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "e42e8f4c-7df9-4871-ac91-c04fd2c9dbf0", "type" -> "output", 
+    "data" -> "\n## Nintendo Pro controller\nA sandbox to play around with \
+joystick API and NPM modules", "display" -> "markdown", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "c389c2ef-4013-487b-9d20-c7edfe78c6b3", "type" -> "input", 
+    "data" -> ".md\n__install \
+[switch-pro](https://github.com/devrieda/switch-pro)__ module from NPM", 
+    "display" -> "codemirror", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "0f19e9bf-43d3-4a12-9e64-636bd9e278d1", "type" -> "output", 
+    "data" -> "\n__install \
+[switch-pro](https://github.com/devrieda/switch-pro)__ module from NPM", 
+    "display" -> "markdown", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "f27a8882-30ad-4598-9eeb-1c0c3b347d9e", "type" -> "input", 
+    "data" -> "NPM[\"switch-pro\"] // Install ", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "20f6c1c8-8634-432c-8e56-69b964c878bc", "type" -> "input", 
+    "data" -> ".md\nThe simplest code possible to redicrect the events from \
+the controller to WL via sockets. It is build inside the notebook!", 
+    "display" -> "codemirror", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "706cd100-0446-47d1-93be-6cfa561dbf6d", "type" -> "output", 
+    "data" -> "\nThe simplest code possible to redicrect the events from the \
+controller to WL via sockets. It is build inside the notebook!", 
+    "display" -> "markdown", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d0cf09cb-16bc-4e1a-9dd6-cec6f839293d", "type" -> "input", 
+    "data" -> ".esm\nimport SwitchPro from 'switch-pro'\n\nconst switchPro = \
+new SwitchPro(window)\n\nswitchPro.addListener((pressed) => {\n  \
+server.emitt('joy', `\"${JSON.stringify(pressed).replaceAll(/\"/g, \
+\"'\")}\"`);\n});\n\ncore.Rumble = async () => {\n  \
+switchPro.vibrate();\n}\n", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2161f680-e844-4891-ba85-c6f7f06a04df", "type" -> "output", 
+    "data" -> "var __create = Object.create;\nvar __defProp = \
+Object.defineProperty;\nvar __getOwnPropDesc = \
+Object.getOwnPropertyDescriptor;\nvar __getOwnPropNames = \
+Object.getOwnPropertyNames;\nvar __getProtoOf = Object.getPrototypeOf;\nvar \
+__hasOwnProp = Object.prototype.hasOwnProperty;\nvar __commonJS = (cb, mod) \
+=> function __require() {\n  return mod || (0, \
+cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), \
+mod.exports;\n};\nvar __copyProps = (to, from, except, desc) => {\n  if (from \
+&& typeof from === \"object\" || typeof from === \"function\") {\n    for \
+(let key of __getOwnPropNames(from))\n      if (!__hasOwnProp.call(to, key) \
+&& key !== except)\n        __defProp(to, key, { get: () => from[key], \
+enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });\n  \
+}\n  return to;\n};\nvar __toESM = (mod, isNodeMode, target) => (target = mod \
+!= null ? __create(__getProtoOf(mod)) : {}, __copyProps(\n  // If the \
+importer is in node compatibility mode or this is not an ESM\n  // file that \
+has been converted to a CommonJS file using a Babel-\n  // compatible \
+transform (i.e. \"__esModule\" has not been set), then set\n  // \"default\" \
+to the CommonJS \"module.exports\" for node compatibility.\n  isNodeMode || \
+!mod || !mod.__esModule ? __defProp(target, \"default\", { value: mod, \
+enumerable: true }) : target,\n  mod\n));\n\n// \
+node_modules/switch-pro/dist/index.js\nvar require_dist = __commonJS({\n  \
+\"node_modules/switch-pro/dist/index.js\"(exports, module2) {\n    \
+(function(global, factory) {\n      typeof exports === \"object\" && typeof \
+module2 !== \"undefined\" ? module2.exports = factory() : typeof define === \
+\"function\" && define.amd ? define(factory) : (global = typeof globalThis \
+!== \"undefined\" ? globalThis : global || self, global.switchPro = \
+factory());\n    })(exports, function() {\n      \"use strict\";\n      class \
+JoyStick {\n        constructor(type, horizAxis, vertAxis) {\n          \
+this.type = type;\n          this.horizAxis = horizAxis;\n          \
+this.vertAxis = vertAxis;\n          this.values = {\n            up: \
+vertAxis < 0 && Math.round(vertAxis / -1 * 100) / 100,\n            down: \
+vertAxis > 0 && Math.round(vertAxis / 1 * 100) / 100,\n            left: \
+horizAxis < 0 && Math.round(horizAxis / -1 * 100) / 100,\n            right: \
+horizAxis > 0 && Math.round(horizAxis / 1 * 100) / 100\n          };\n        \
+}\n        pressValues() {\n          const pressed = {};\n          const \
+directions = [\"up\", \"down\", \"left\", \"right\"];\n          \
+directions.forEach((dir) => {\n            if (this.values[dir] > 0) {\n      \
+        const key = `${this.type}-${dir.toUpperCase()}`;\n              \
+pressed[key] = this.values[dir];\n            }\n          });\n          \
+return pressed;\n        }\n      }\n      const FPS = 60;\n      const \
+BUTTON_MAPPING = {\n        0: \"B\",\n        1: \"A\",\n        2: \"Y\",\n \
+       3: \"X\",\n        4: \"L\",\n        5: \"R\",\n        6: \"ZL\",\n  \
+      7: \"ZR\",\n        8: \"MINUS\",\n        9: \"PLUS\",\n        10: \
+\"LS\",\n        11: \"RS\",\n        12: \"UP\",\n        13: \"DOWN\",\n    \
+    14: \"LEFT\",\n        15: \"RIGHT\",\n        16: \"HOME\",\n        17: \
+\"CAPTURE\"\n      };\n      class SwitchPro2 {\n        constructor(window2) \
+{\n          this.prevPressed = {};\n          this.pressed = {};\n          \
+this.listeners = [];\n          this._observeGamepad();\n        }\n        \
+addListener(fn) {\n          this.listeners.push(fn);\n        }\n        // \
+delay:    Start delay in ms\n        // duration: Duration is ms.\n        // \
+weak:     Magnitude of the weak actuator (0-1)\n        // strong:   \
+Magnitude of the strong actuator (0-1)\n        vibrate(delay = 0, duration = \
+200, weak = 1, strong = 1) {\n          const gp = this._getGamepad();\n      \
+    if (!gp?.vibrationActuator)\n            return;\n          \
+gp.vibrationActuator.playEffect(\"dual-rumble\", {\n            startDelay: \
+delay,\n            duration,\n            weakMagnitude: weak,\n            \
+strongMagnitude: strong\n          });\n        }\n        _observeGamepad() \
+{\n          window.addEventListener(\"gamepadconnected\", () => {\n          \
+  this.interval = setInterval(this._pollGamepads.bind(this), 1e3 / FPS);\n    \
+      });\n          window.addEventListener(\"gamepaddisconnected\", () => \
+{\n            clearInterval(this.interval);\n          });\n        }\n      \
+  _emit() {\n          this.listeners.forEach((fn) => fn(this.pressed));\n    \
+    }\n        _pollGamepads() {\n          const gp = this._getGamepad();\n  \
+        if (!gp)\n            return;\n          this.prevPressed = \
+this.pressed;\n          this.pressed = {};\n          for (let i = 0, j = \
+gp.buttons.length; i < j; i++) {\n            if (gp.buttons[i].pressed) {\n  \
+            const button = BUTTON_MAPPING[i];\n              \
+this.pressed[button] = 1;\n            }\n          }\n          const \
+leftStick = new JoyStick(\"LS\", gp.axes[0], gp.axes[1]);\n          const \
+rightStick = new JoyStick(\"RS\", gp.axes[2], gp.axes[3]);\n          \
+this.pressed = {\n            ...this.pressed,\n            \
+...leftStick.pressValues(),\n            ...rightStick.pressValues()\n        \
+  };\n          if (!this._shallowEqual(this.prevPressed, this.pressed)) {\n  \
+          this._emit();\n          }\n        }\n        // get reference to \
+the gamepad\n        _getGamepad() {\n          const gps = \
+navigator.getGamepads ? navigator.getGamepads() : [];\n          if \
+(gps.length === 0 || !Array.from(gps).some((gp) => !!gp))\n            \
+return;\n          return Array.from(gps).find((gp) => gp?.buttons.length === \
+18);\n        }\n        _shallowEqual(object1, object2) {\n          const \
+keys1 = Object.keys(object1);\n          const keys2 = \
+Object.keys(object2);\n          if (keys1.length !== keys2.length) {\n       \
+     return false;\n          }\n          for (let key of keys1) {\n         \
+   if (object1[key] !== object2[key]) {\n              return false;\n        \
+    }\n          }\n          return true;\n        }\n      }\n      return \
+SwitchPro2;\n    });\n  }\n});\n\n// <stdin>\nvar import_switch_pro = \
+__toESM(require_dist());\nvar switchPro = new \
+import_switch_pro.default(window);\nswitchPro.addListener((pressed) => {\n  \
+server.emitt(\"joy\", `\"${JSON.stringify(pressed).replaceAll(/\"/g, \
+\"'\")}\"`);\n});\ncore.Rumble = async () => {\n  switchPro.vibrate();\n};\n"\
+, "display" -> "esm", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "ab0f3d21-5a1f-40ee-8dc4-5c542987f12a", "type" -> "input", 
+    "data" -> ".md\n*the is no need to compile it again, since the bundle \
+__is stored inside the notebook__*", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "a07ee056-2b65-474c-b289-bb4ecd2588f9", "type" -> "output", 
+    "data" -> "\n*the is no need to compile it again, since the bundle __is \
+stored inside the notebook__*", "display" -> "markdown", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2cb4f554-7d45-4bde-8d27-d428bb99d468", "type" -> "input", 
+    "data" -> ".md\n### Event handling\nOn Wolfram's side one should decode \
+each command", "display" -> "codemirror", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "a0bbf70b-e0af-4c5b-9d78-d46db4cb2280", "type" -> "output", 
+    "data" -> 
+     "\n### Event handling\nOn Wolfram's side one should decode each command"\
+, "display" -> "markdown", "sign" -> "catering-99988", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "e7c982ff-9464-4625-9331-5873de5ee709", "type" -> "input", 
+    "data" -> "EventHandler[\"joy\", handler];", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "2ab967fc-5d37-4f26-a7e4-2404fd194de2", "type" -> "input", 
+    "data" -> "point =  {0,0};\nhandler = Function[cmd,\n  Module[{assoc = \
+ImportString[StringReplace[cmd, \"'\"->\"\\\"\"], \"JSON\"] // Association, p \
+= point},\n    If[KeyExistsQ[assoc, \"RS-DOWN\"], p = {p[[1]], \
+-assoc[\"RS-DOWN\"]}];\n    If[KeyExistsQ[assoc, \"RS-UP\"], p = {p[[1]], \
+assoc[\"RS-UP\"]}];\n    If[KeyExistsQ[assoc, \"RS-LEFT\"], p = \
+{-assoc[\"RS-LEFT\"], p[[2]]}];\n    If[KeyExistsQ[assoc, \"RS-RIGHT\"], p = \
+{assoc[\"RS-RIGHT\"], p[[2]]}]; \n\n    If[Length[Keys[assoc]] == 0, p = \
+{0,0}];\n\n    point = p;\n  ]\n];\n\nGraphics[{Red, PointSize[0.1], \
+Point[point // Offload]}, TransitionDuration->50, \
+TransitionType->\"Linear\"]\n\nEventHandler[InputButton[\"Rumble\"], \
+Function[Null, FrontSubmit[Rumble[]]]] ", "display" -> "codemirror", 
+    "sign" -> "catering-99988", "props" -> <|"hidden" -> False|>|>}, 
+ "serializer" -> "jsfn3"|>

@@ -1,0 +1,44 @@
+{
+  "permalink": "/blog/projector-intro",
+  "source": "@site/blog/2023-08-22-projector/index.md",
+  "title": "Introducing Projector! Output to a separate window",
+  "description": "I was always wondering on how to replicate the experience from the massive software like Origin Lab, Igor64, which has more traditional way of working with data - using windows.  Being limited to a cell in the notebooks is a big limitation, well...",
+  "date": "2023-08-22T00:00:00.000Z",
+  "formattedDate": "August 22, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    }
+  ],
+  "readingTime": 0.99,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "projector-intro",
+    "title": "Introducing Projector! Output to a separate window",
+    "authors": "jerryi",
+    "tags": [
+      "frontend"
+    ],
+    "enableComments": true,
+    "draft": false
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Mixing visual tools and code | Magic of Frontend Objects",
+    "permalink": "/blog/feobjects-example"
+  },
+  "nextItem": {
+    "title": "Image and Raster were implemented!",
+    "permalink": "/blog/imageraster"
+  }
+}

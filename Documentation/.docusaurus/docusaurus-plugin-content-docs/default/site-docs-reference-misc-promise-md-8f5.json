@@ -1,0 +1,25 @@
+{
+  "id": "Reference/Misc/Promise",
+  "title": "Promise",
+  "description": "Promise",
+  "source": "@site/docs/Reference/Misc/Promise.md",
+  "sourceDirName": "Reference/Misc",
+  "slug": "/Reference/Misc/Promise",
+  "permalink": "/wlx-docs/docs/Reference/Misc/Promise",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Language",
+    "permalink": "/wlx-docs/docs/Reference/Misc/Language"
+  },
+  "next": {
+    "title": "WLJSTransport",
+    "permalink": "/wlx-docs/docs/Reference/Misc/WLJSTransport"
+  }
+}

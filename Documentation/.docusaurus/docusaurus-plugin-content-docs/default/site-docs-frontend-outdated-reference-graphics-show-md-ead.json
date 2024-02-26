@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Show",
+  "title": "Show",
+  "description": "Is not supported in wljs-graphics-d3 for now",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Show.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/Show",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Show",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SVGAttribute",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute"
+  },
+  "next": {
+    "title": "Style",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Style"
+  }
+}

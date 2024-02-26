@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Development/Structure",
+  "title": "Structure",
+  "description": "Diagram of libraries used in WLJS Frontend",
+  "source": "@site/docs/frontend/Outdated/Development/Structure.md",
+  "sourceDirName": "frontend/Outdated/Development",
+  "slug": "/frontend/Outdated/Development/Structure",
+  "permalink": "/docs/frontend/Outdated/Development/Structure",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Development",
+    "permalink": "/docs/category/development"
+  },
+  "next": {
+    "title": "Decorations",
+    "permalink": "/docs/frontend/Outdated/Development/Decorations"
+  }
+}

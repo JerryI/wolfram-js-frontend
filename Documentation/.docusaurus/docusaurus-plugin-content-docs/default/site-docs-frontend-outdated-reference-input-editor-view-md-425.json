@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Outdated/Reference/Input/EditorView",
+  "title": "EditorView",
+  "description": "A view component to spawn an code-editor (fully functional)",
+  "source": "@site/docs/frontend/Outdated/Reference/Input/EditorView.md",
+  "sourceDirName": "frontend/Outdated/Reference/Input",
+  "slug": "/frontend/Outdated/Reference/Input/EditorView",
+  "permalink": "/docs/frontend/Outdated/Reference/Input/EditorView",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "origin": "https://github.com/JerryI/wljs-editor/tree/main",
+    "update": true,
+    "needsContainer": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ButtonView",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/ButtonView"
+  },
+  "next": {
+    "title": "FileUploadView",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/FileUploadView"
+  }
+}

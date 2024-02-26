@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Point",
+  "title": "Point",
+  "description": "",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Point.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/Point",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Point",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Offset",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Offset"
+  },
+  "next": {
+    "title": "Polygon",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Polygon"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Events/EventClone",
+  "title": "EventClone",
+  "description": "clones an instance of ev event object passed as EventObject or a string with no interfering an original event handler function assigned to ev.",
+  "source": "@site/docs/frontend/Outdated/Reference/Events/EventClone.md",
+  "sourceDirName": "frontend/Outdated/Reference/Events",
+  "slug": "/frontend/Outdated/Reference/Events/EventClone",
+  "permalink": "/docs/frontend/Outdated/Reference/Events/EventClone",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "source": "https://github.com/JerryI/wl-misc/"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Assign",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/Assign"
+  },
+  "next": {
+    "title": "EventFire",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/EventFire"
+  }
+}

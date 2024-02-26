@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/SVGAttribute",
+  "title": "SVGAttribute",
+  "description": "Allows to directly set SVG attribute to a 2D graphics object",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/SVGAttribute.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/SVGAttribute",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "update": null,
+    "source": "https://github.com/JerryI/wljs-graphics-d3/"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rotate",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Rotate"
+  },
+  "next": {
+    "title": "Show",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Show"
+  }
+}

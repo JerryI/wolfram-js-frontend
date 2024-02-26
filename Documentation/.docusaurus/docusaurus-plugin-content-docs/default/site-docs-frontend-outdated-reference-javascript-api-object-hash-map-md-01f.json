@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+  "title": "ObjectHashMap",
+  "description": "A global Javascript object that stores all data for normal containers including references to InstancesHashMap entities",
+  "source": "@site/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap.md",
+  "sourceDirName": "frontend/Outdated/Reference/Javascript API",
+  "slug": "/frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+  "permalink": "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InstancesHashMap",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap"
+  },
+  "next": {
+    "title": "core",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/core"
+  }
+}

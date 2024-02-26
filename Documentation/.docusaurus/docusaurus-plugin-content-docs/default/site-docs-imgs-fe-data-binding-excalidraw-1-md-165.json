@@ -1,0 +1,26 @@
+{
+  "id": "imgs/FE data binding.excalidraw 1",
+  "title": "FE data binding.excalidraw 1",
+  "description": "==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠==",
+  "source": "@site/docs/imgs/FE data binding.excalidraw 1.md",
+  "sourceDirName": "imgs",
+  "slug": "/imgs/FE data binding.excalidraw 1",
+  "permalink": "/docs/imgs/FE data binding.excalidraw 1",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "label": "excalidraw",
+      "permalink": "/docs/tags/excalidraw"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "excalidraw-plugin": "parsed",
+    "tags": [
+      "excalidraw"
+    ]
+  }
+}

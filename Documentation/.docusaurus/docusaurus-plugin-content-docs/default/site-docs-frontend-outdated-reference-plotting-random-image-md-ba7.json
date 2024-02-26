@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/RandomImage",
+  "title": "RandomImage",
+  "description": "Generates a raster Image with a given size and distribution. Only RGB space is supported. The maximum value is limited to 255 for each channel",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/RandomImage.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/RandomImage",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/RandomImage",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "Wolfram Language",
+    "source": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Plotly",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/Plotly"
+  },
+  "next": {
+    "title": "StackedListPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "WLX/examples/app",
+  "title": "Bouncing balls",
+  "description": "A bouncing balls simulation, that runs in real-time and uses user's mouse to add balls to the simulation.",
+  "source": "@site/docs/WLX/examples/app.md",
+  "sourceDirName": "WLX/examples",
+  "slug": "/WLX/examples/app",
+  "permalink": "/wlx-docs/docs/WLX/examples/app",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "File explorer & Plotter",
+    "permalink": "/wlx-docs/docs/WLX/examples/fileexplorer"
+  },
+  "next": {
+    "title": "Asteroids",
+    "permalink": "/wlx-docs/docs/WLX/examples/asteroids"
+  }
+}

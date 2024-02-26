@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Javascript API/interpretate",
+  "title": "interpretate",
+  "description": "An access to WLJS Interpreter, that can evaluate arbitrary Wolfram Expressions expr in a form of ExpressionJSON  and providing env object to all nested expressions",
+  "source": "@site/docs/frontend/Outdated/Reference/Javascript API/interpretate.md",
+  "sourceDirName": "frontend/Outdated/Reference/Javascript API",
+  "slug": "/frontend/Outdated/Reference/Javascript API/interpretate",
+  "permalink": "/docs/frontend/Outdated/Reference/Javascript API/interpretate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "downloadByURL",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/downloadByURL"
+  },
+  "next": {
+    "title": "openawindow",
+    "permalink": "/docs/frontend/Outdated/Reference/Javascript API/openawindow"
+  }
+}

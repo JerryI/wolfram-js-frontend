@@ -1,0 +1,19 @@
+{
+  "id": "interpreter/Advanced/meta-markers",
+  "title": "Meta markers",
+  "description": "You can think about them as a unique property assigned to the expression in order to use selectors on them. Sometimes it comes handy to attach or evaluate new object inside the existing instance",
+  "source": "@site/docs/interpreter/Advanced/meta-markers.md",
+  "sourceDirName": "interpreter/Advanced",
+  "slug": "/interpreter/Advanced/meta-markers",
+  "permalink": "/docs/interpreter/Advanced/meta-markers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  }
+}

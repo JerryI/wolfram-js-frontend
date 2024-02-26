@@ -1,0 +1,19 @@
+{
+  "id": "interpreter/Basics/js-access",
+  "title": "Javascript integration",
+  "description": "For deep overview of functions, containers and advanced control of evaluation process, please, see pages symbols and containers",
+  "source": "@site/docs/interpreter/Basics/js-access.md",
+  "sourceDirName": "interpreter/Basics",
+  "slug": "/interpreter/Basics/js-access",
+  "permalink": "/docs/interpreter/Basics/js-access",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  }
+}

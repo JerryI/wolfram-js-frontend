@@ -1,0 +1,11 @@
+{
+  "type": "mdx",
+  "permalink": "/registered",
+  "source": "@site/src/pages/registered.md",
+  "title": "Registered",
+  "description": "An expression, that requires to be evaluated on WLJS frontend (some graphics usually) inside a container, will automatically be exported to the desired format on output. No extra actions from the user are needed.",
+  "frontMatter": {
+    "title": "Registered"
+  },
+  "unlisted": false
+}

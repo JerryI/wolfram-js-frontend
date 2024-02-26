@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+  "title": "ParentCell",
+  "description": "asks master kernel to find an identifier of the parent cell (usually an input cell) of the given output cell.",
+  "source": "@site/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell.md",
+  "sourceDirName": "frontend/Outdated/Reference/Tools/Notebook",
+  "slug": "/frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+  "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NotebookStore",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore"
+  },
+  "next": {
+    "title": "SlideEvent",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent"
+  }
+}

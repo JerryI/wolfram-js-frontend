@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Advanced/Snippets/Snippets",
+  "title": "Snippets",
+  "description": "",
+  "source": "@site/docs/frontend/Outdated/Advanced/Snippets/Snippets.md",
+  "sourceDirName": "frontend/Outdated/Advanced/Snippets",
+  "slug": "/frontend/Outdated/Advanced/Snippets/",
+  "permalink": "/docs/frontend/Outdated/Advanced/Snippets/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Large tables of data",
+    "permalink": "/docs/frontend/Outdated/Advanced/Slides/tables"
+  },
+  "next": {
+    "title": "Exporting formats",
+    "permalink": "/docs/category/exporting-formats"
+  }
+}

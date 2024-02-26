@@ -1,0 +1,33 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/StackedListPlot",
+  "title": "StackedListPlot",
+  "description": "plots lines for each of the $datai$, with the $i^$ curve being the accumulation of values in $data1$ through $data_i$",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/StackedListPlot.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/StackedListPlot",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "registered": true,
+    "origin": "https://reference.wolfram.com/language/ref/StackedListPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RandomImage",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/RandomImage"
+  },
+  "next": {
+    "title": "StreamPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/StreamPlot"
+  }
+}

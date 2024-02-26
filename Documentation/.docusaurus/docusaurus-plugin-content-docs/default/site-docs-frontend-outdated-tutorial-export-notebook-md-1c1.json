@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Outdated/Tutorial/Export notebook",
+  "title": "Export notebook",
+  "description": "Since all magic happens inside the browser using plain Javascript, it is extremely easy to export notebook to a standalone HTML file or even React component to embed it on website (blog).",
+  "source": "@site/docs/frontend/Outdated/Tutorial/Export notebook.md",
+  "sourceDirName": "frontend/Outdated/Tutorial",
+  "slug": "/frontend/Outdated/Tutorial/Export notebook",
+  "permalink": "/docs/frontend/Outdated/Tutorial/Export notebook",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Plugins",
+    "permalink": "/docs/frontend/Outdated/Tutorial/Plugins"
+  },
+  "next": {
+    "title": "Cell types",
+    "permalink": "/docs/category/cell-types"
+  }
+}

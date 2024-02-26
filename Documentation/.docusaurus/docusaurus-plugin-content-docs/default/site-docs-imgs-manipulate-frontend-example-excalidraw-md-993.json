@@ -1,0 +1,26 @@
+{
+  "id": "imgs/manipulate-frontend-example.excalidraw",
+  "title": "manipulate-frontend-example.excalidraw",
+  "description": "==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠==",
+  "source": "@site/docs/imgs/manipulate-frontend-example.excalidraw.md",
+  "sourceDirName": "imgs",
+  "slug": "/imgs/manipulate-frontend-example.excalidraw",
+  "permalink": "/docs/imgs/manipulate-frontend-example.excalidraw",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "label": "excalidraw",
+      "permalink": "/docs/tags/excalidraw"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "excalidraw-plugin": "parsed",
+    "tags": [
+      "excalidraw"
+    ]
+  }
+}

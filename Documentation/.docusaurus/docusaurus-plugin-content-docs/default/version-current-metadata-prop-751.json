@@ -1,0 +1,2491 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "link",
+        "label": "Quick start",
+        "href": "/docs/frontend/instruction",
+        "className": "green",
+        "docId": "frontend/instruction",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Outdated",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "category",
+            "label": "Getting started",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "GUI Overview",
+                "href": "/docs/frontend/Outdated/Tutorial/GUI Overview",
+                "docId": "frontend/Outdated/Tutorial/GUI Overview",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Overview",
+                "href": "/docs/frontend/Outdated/Tutorial/Overview",
+                "docId": "frontend/Outdated/Tutorial/Overview",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Dynamics",
+                "href": "/docs/frontend/Outdated/Tutorial/Dynamics",
+                "docId": "frontend/Outdated/Tutorial/Dynamics",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Input elements",
+                "href": "/docs/frontend/Outdated/Tutorial/Input elements",
+                "docId": "frontend/Outdated/Tutorial/Input elements",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Plugins",
+                "href": "/docs/frontend/Outdated/Tutorial/Plugins",
+                "docId": "frontend/Outdated/Tutorial/Plugins",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Export notebook",
+                "href": "/docs/frontend/Outdated/Tutorial/Export notebook",
+                "docId": "frontend/Outdated/Tutorial/Export notebook",
+                "unlisted": false
+              }
+            ],
+            "href": "/docs/category/getting-started"
+          },
+          {
+            "type": "category",
+            "label": "Cell types",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Wolfram Language",
+                "href": "/docs/frontend/Outdated/Cell types/Wolfram Language",
+                "docId": "frontend/Outdated/Cell types/Wolfram Language",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Markdown",
+                "href": "/docs/frontend/Outdated/Cell types/Markdown",
+                "docId": "frontend/Outdated/Cell types/Markdown",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "HTML",
+                "href": "/docs/frontend/Outdated/Cell types/HTML",
+                "docId": "frontend/Outdated/Cell types/HTML",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Javascript",
+                "href": "/docs/frontend/Outdated/Cell types/Javascript",
+                "docId": "frontend/Outdated/Cell types/Javascript",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Files",
+                "href": "/docs/frontend/Outdated/Cell types/Files",
+                "docId": "frontend/Outdated/Cell types/Files",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Many more...",
+                "href": "/docs/frontend/Outdated/Cell types/Many more...",
+                "docId": "frontend/Outdated/Cell types/Many more...",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Chatbook",
+                "href": "/docs/frontend/Outdated/Cell types/Chatbook",
+                "docId": "frontend/Outdated/Cell types/Chatbook",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Slides",
+                "href": "/docs/frontend/Outdated/Cell types/Slides",
+                "docId": "frontend/Outdated/Cell types/Slides",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "WLX",
+                "href": "/docs/frontend/Outdated/Cell types/WLX",
+                "docId": "frontend/Outdated/Cell types/WLX",
+                "unlisted": false
+              }
+            ],
+            "href": "/docs/category/cell-types"
+          },
+          {
+            "type": "link",
+            "label": "Mathematica vs WLJS",
+            "href": "/docs/frontend/Outdated/Mathematica vs WLJS",
+            "docId": "frontend/Outdated/Mathematica vs WLJS",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Expressions representation",
+            "href": "/docs/frontend/Outdated/Expressions representation",
+            "docId": "frontend/Outdated/Expressions representation",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Advanced",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "category",
+                "label": "Boxes and Decorations",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "dynamic-decorations",
+                    "href": "/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+                    "docId": "frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Dynamics",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Simple manipulate",
+                    "href": "/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+                    "docId": "frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Indicators and monitoring",
+                    "href": "/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+                    "docId": "frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Performance tips",
+                    "href": "/docs/frontend/Outdated/Advanced/Dynamics/Performance tips",
+                    "docId": "frontend/Outdated/Advanced/Dynamics/Performance tips",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Scoping",
+                    "href": "/docs/frontend/Outdated/Advanced/Dynamics/Scoping",
+                    "docId": "frontend/Outdated/Advanced/Dynamics/Scoping",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "link",
+                "label": "Editor manipulation",
+                "href": "/docs/frontend/Outdated/Advanced/Editor manipulation",
+                "docId": "frontend/Outdated/Advanced/Editor manipulation",
+                "unlisted": false
+              },
+              {
+                "type": "category",
+                "label": "Events system",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Event objects, views and -generators",
+                    "href": "/docs/frontend/Outdated/Advanced/Events system/event-generators",
+                    "docId": "frontend/Outdated/Advanced/Events system/event-generators",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Routing",
+                    "href": "/docs/frontend/Outdated/Advanced/Events system/routing",
+                    "docId": "frontend/Outdated/Advanced/Events system/routing",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Frontend interpretation",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Working with containers",
+                    "href": "/docs/frontend/Outdated/Advanced/Frontend interpretation/executables",
+                    "docId": "frontend/Outdated/Advanced/Frontend interpretation/executables",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Frontend functions",
+                    "href": "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+                    "docId": "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "JS Tools",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Canvas",
+                    "href": "/docs/frontend/Outdated/Advanced/JS Tools/Canvas",
+                    "docId": "frontend/Outdated/Advanced/JS Tools/Canvas",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Slides",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Basics",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/intro",
+                    "docId": "frontend/Outdated/Advanced/Slides/intro",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Code highlighting",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/embed-wl",
+                    "docId": "frontend/Outdated/Advanced/Slides/embed-wl",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Graphics animation & interaction",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/animations",
+                    "docId": "frontend/Outdated/Advanced/Slides/animations",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Components",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/components",
+                    "docId": "frontend/Outdated/Advanced/Slides/components",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "styling",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/styling",
+                    "docId": "frontend/Outdated/Advanced/Slides/styling",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Large tables of data",
+                    "href": "/docs/frontend/Outdated/Advanced/Slides/tables",
+                    "docId": "frontend/Outdated/Advanced/Slides/tables",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "link",
+                "label": "Snippets",
+                "href": "/docs/frontend/Outdated/Advanced/Snippets/",
+                "docId": "frontend/Outdated/Advanced/Snippets/Snippets",
+                "unlisted": false
+              }
+            ],
+            "href": "/docs/category/advanced"
+          },
+          {
+            "type": "category",
+            "label": "Exporting formats",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "HTML file",
+                "href": "/docs/frontend/Outdated/Export/HTML file",
+                "docId": "frontend/Outdated/Export/HTML file",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "PDF",
+                "href": "/docs/frontend/Outdated/Export/PDF",
+                "docId": "frontend/Outdated/Export/PDF",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "React component",
+                "href": "/docs/frontend/Outdated/Export/React component",
+                "docId": "frontend/Outdated/Export/React component",
+                "unlisted": false
+              }
+            ],
+            "href": "/docs/category/exporting-formats"
+          },
+          {
+            "type": "category",
+            "label": "Development",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Structure",
+                "href": "/docs/frontend/Outdated/Development/Structure",
+                "docId": "frontend/Outdated/Development/Structure",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Decorations",
+                "href": "/docs/frontend/Outdated/Development/Decorations",
+                "docId": "frontend/Outdated/Development/Decorations",
+                "unlisted": false
+              },
+              {
+                "type": "category",
+                "label": "Plugins",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Known packages",
+                    "href": "/docs/frontend/Outdated/Development/Plugins/Known packages",
+                    "docId": "frontend/Outdated/Development/Plugins/Known packages",
+                    "unlisted": false
+                  }
+                ]
+              }
+            ],
+            "href": "/docs/category/development"
+          },
+          {
+            "type": "link",
+            "label": "Troubleshooting",
+            "href": "/docs/frontend/Outdated/Troubleshooting",
+            "docId": "frontend/Outdated/Troubleshooting",
+            "unlisted": false
+          },
+          {
+            "type": "category",
+            "label": "Reference",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "category",
+                "label": "Decorations",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Column",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Column",
+                    "docId": "frontend/Outdated/Reference/Decorations/Column",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Framed",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Framed",
+                    "docId": "frontend/Outdated/Reference/Decorations/Framed",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Grid",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Grid",
+                    "docId": "frontend/Outdated/Reference/Decorations/Grid",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "HTMLForm",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/HTMLForm",
+                    "docId": "frontend/Outdated/Reference/Decorations/HTMLForm",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputForm",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/InputForm",
+                    "docId": "frontend/Outdated/Reference/Decorations/InputForm",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Interpretation",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Interpretation",
+                    "docId": "frontend/Outdated/Reference/Decorations/Interpretation",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InterpretationBox",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/InterpretationBox",
+                    "docId": "frontend/Outdated/Reference/Decorations/InterpretationBox",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "category",
+                    "label": "Low level",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "BoxBox",
+                        "href": "/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+                        "docId": "frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "ViewBox",
+                        "href": "/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+                        "docId": "frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "link",
+                    "label": "MakeBoxes",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/MakeBoxes",
+                    "docId": "frontend/Outdated/Reference/Decorations/MakeBoxes",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "MatrixForm",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/MatrixForm",
+                    "docId": "frontend/Outdated/Reference/Decorations/MatrixForm",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Row",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Row",
+                    "docId": "frontend/Outdated/Reference/Decorations/Row",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "SVGForm",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/SVGForm",
+                    "docId": "frontend/Outdated/Reference/Decorations/SVGForm",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Style",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/Style",
+                    "docId": "frontend/Outdated/Reference/Decorations/Style",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "TableForm",
+                    "href": "/docs/frontend/Outdated/Reference/Decorations/TableForm",
+                    "docId": "frontend/Outdated/Reference/Decorations/TableForm",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Dynamics",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "CreateFrontEndObject",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+                    "docId": "frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Dynamic",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/Dynamic",
+                    "docId": "frontend/Outdated/Reference/Dynamics/Dynamic",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "DynamicModule",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/DynamicModule",
+                    "docId": "frontend/Outdated/Reference/Dynamics/DynamicModule",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "FrontEndVirtual",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+                    "docId": "frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "FrontSubmit",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit",
+                    "docId": "frontend/Outdated/Reference/Dynamics/FrontSubmit",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "category",
+                    "label": "Internals",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "FrontEndExecutable",
+                        "href": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+                        "docId": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "FrontEndExecutableInline",
+                        "href": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+                        "docId": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "FrontEndOnly",
+                        "href": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+                        "docId": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "FrontEndRef",
+                        "href": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+                        "docId": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "link",
+                    "label": "Manipulate",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/Manipulate",
+                    "docId": "frontend/Outdated/Reference/Dynamics/Manipulate",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "MetaMarker",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/MetaMarker",
+                    "docId": "frontend/Outdated/Reference/Dynamics/MetaMarker",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Offload",
+                    "href": "/docs/frontend/Outdated/Reference/Dynamics/Offload",
+                    "docId": "frontend/Outdated/Reference/Dynamics/Offload",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Events",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Assign",
+                    "href": "/docs/frontend/Outdated/Reference/Events/Assign",
+                    "docId": "frontend/Outdated/Reference/Events/Assign",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventClone",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventClone",
+                    "docId": "frontend/Outdated/Reference/Events/EventClone",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventFire",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventFire",
+                    "docId": "frontend/Outdated/Reference/Events/EventFire",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventHandler",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventHandler",
+                    "docId": "frontend/Outdated/Reference/Events/EventHandler",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventJoin",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventJoin",
+                    "docId": "frontend/Outdated/Reference/Events/EventJoin",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventObject",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventObject",
+                    "docId": "frontend/Outdated/Reference/Events/EventObject",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventRemove",
+                    "href": "/docs/frontend/Outdated/Reference/Events/EventRemove",
+                    "docId": "frontend/Outdated/Reference/Events/EventRemove",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Graphics",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "AbsoluteThickness",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+                    "docId": "frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Arrow",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Arrow",
+                    "docId": "frontend/Outdated/Reference/Graphics/Arrow",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Circle",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Circle",
+                    "docId": "frontend/Outdated/Reference/Graphics/Circle",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Directive",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Directive",
+                    "docId": "frontend/Outdated/Reference/Graphics/Directive",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Disk",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Disk",
+                    "docId": "frontend/Outdated/Reference/Graphics/Disk",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "GraphicsComplex",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex",
+                    "docId": "frontend/Outdated/Reference/Graphics/GraphicsComplex",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Image",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Image",
+                    "docId": "frontend/Outdated/Reference/Graphics/Image",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Inset",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Inset",
+                    "docId": "frontend/Outdated/Reference/Graphics/Inset",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "category",
+                    "label": "Internal",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "EventListener",
+                        "href": "/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener",
+                        "docId": "frontend/Outdated/Reference/Graphics/Internal/EventListener",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "link",
+                    "label": "Line",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Line",
+                    "docId": "frontend/Outdated/Reference/Graphics/Line",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "MiddlewareHandler",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler",
+                    "docId": "frontend/Outdated/Reference/Graphics/MiddlewareHandler",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Offset",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Offset",
+                    "docId": "frontend/Outdated/Reference/Graphics/Offset",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Point",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Point",
+                    "docId": "frontend/Outdated/Reference/Graphics/Point",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Polygon",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Polygon",
+                    "docId": "frontend/Outdated/Reference/Graphics/Polygon",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Raster",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Raster",
+                    "docId": "frontend/Outdated/Reference/Graphics/Raster",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Rectangle",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Rectangle",
+                    "docId": "frontend/Outdated/Reference/Graphics/Rectangle",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Rotate",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Rotate",
+                    "docId": "frontend/Outdated/Reference/Graphics/Rotate",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "SVGAttribute",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute",
+                    "docId": "frontend/Outdated/Reference/Graphics/SVGAttribute",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Show",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Show",
+                    "docId": "frontend/Outdated/Reference/Graphics/Show",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Style",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Style",
+                    "docId": "frontend/Outdated/Reference/Graphics/Style",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Text",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Text",
+                    "docId": "frontend/Outdated/Reference/Graphics/Text",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Translate",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics/Translate",
+                    "docId": "frontend/Outdated/Reference/Graphics/Translate",
+                    "unlisted": false
+                  }
+                ],
+                "href": "/docs/frontend/Outdated/Reference/Graphics/"
+              },
+              {
+                "type": "category",
+                "label": "Graphics3D",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "Cuboid",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics3D/Cuboid",
+                    "docId": "frontend/Outdated/Reference/Graphics3D/Cuboid",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EventListener",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics3D/EventListener",
+                    "docId": "frontend/Outdated/Reference/Graphics3D/EventListener",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Sphere",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics3D/Sphere",
+                    "docId": "frontend/Outdated/Reference/Graphics3D/Sphere",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "SpotLight",
+                    "href": "/docs/frontend/Outdated/Reference/Graphics3D/SpotLight",
+                    "docId": "frontend/Outdated/Reference/Graphics3D/SpotLight",
+                    "unlisted": false
+                  }
+                ],
+                "href": "/docs/frontend/Outdated/Reference/Graphics3D/"
+              },
+              {
+                "type": "category",
+                "label": "Input",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "ButtonView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/ButtonView",
+                    "docId": "frontend/Outdated/Reference/Input/ButtonView",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "EditorView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/EditorView",
+                    "docId": "frontend/Outdated/Reference/Input/EditorView",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "FileUploadView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/FileUploadView",
+                    "docId": "frontend/Outdated/Reference/Input/FileUploadView",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputButton",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputButton",
+                    "docId": "frontend/Outdated/Reference/Input/InputButton",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputFile",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputFile",
+                    "docId": "frontend/Outdated/Reference/Input/InputFile",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputGroup",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputGroup",
+                    "docId": "frontend/Outdated/Reference/Input/InputGroup",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputRange",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputRange",
+                    "docId": "frontend/Outdated/Reference/Input/InputRange",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputSpoiler",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputSpoiler",
+                    "docId": "frontend/Outdated/Reference/Input/InputSpoiler",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputTable",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputTable",
+                    "docId": "frontend/Outdated/Reference/Input/InputTable",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputText",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputText",
+                    "docId": "frontend/Outdated/Reference/Input/InputText",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InputToggle",
+                    "href": "/docs/frontend/Outdated/Reference/Input/InputToggle",
+                    "docId": "frontend/Outdated/Reference/Input/InputToggle",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "RangeView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/RangeView",
+                    "docId": "frontend/Outdated/Reference/Input/RangeView",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Slider",
+                    "href": "/docs/frontend/Outdated/Reference/Input/Slider",
+                    "docId": "frontend/Outdated/Reference/Input/Slider",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "TextView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/TextView",
+                    "docId": "frontend/Outdated/Reference/Input/TextView",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ToggleView",
+                    "href": "/docs/frontend/Outdated/Reference/Input/ToggleView",
+                    "docId": "frontend/Outdated/Reference/Input/ToggleView",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Javascript API",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "CellHashStorage",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage",
+                    "docId": "frontend/Outdated/Reference/Javascript API/CellHashStorage",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "InstancesHashMap",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+                    "docId": "frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ObjectHashMap",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+                    "docId": "frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "core",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/core",
+                    "docId": "frontend/Outdated/Reference/Javascript API/core",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "downloadByURL",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/downloadByURL",
+                    "docId": "frontend/Outdated/Reference/Javascript API/downloadByURL",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "interpretate",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/interpretate",
+                    "docId": "frontend/Outdated/Reference/Javascript API/interpretate",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "openawindow",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/openawindow",
+                    "docId": "frontend/Outdated/Reference/Javascript API/openawindow",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "server",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/server",
+                    "docId": "frontend/Outdated/Reference/Javascript API/server",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "setInnerHTML",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML",
+                    "docId": "frontend/Outdated/Reference/Javascript API/setInnerHTML",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "uuidv4",
+                    "href": "/docs/frontend/Outdated/Reference/Javascript API/uuidv4",
+                    "docId": "frontend/Outdated/Reference/Javascript API/uuidv4",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Plotting",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "ArrayPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ArrayPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ArrayPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "BarChart",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/BarChart",
+                    "docId": "frontend/Outdated/Reference/Plotting/BarChart",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "BubbleChart",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/BubbleChart",
+                    "docId": "frontend/Outdated/Reference/Plotting/BubbleChart",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ContourPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ContourPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ContourPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "DensityPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/DensityPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/DensityPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListContourPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListContourPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListContourPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListCurvePathPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListLinePlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListLinePlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListLinePlotly",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListLinePlotly",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListStepPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListStepPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListStepPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "ListVectorPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/ListVectorPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "MatrixPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/MatrixPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Plot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/Plot",
+                    "docId": "frontend/Outdated/Reference/Plotting/Plot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "Plotly",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/Plotly",
+                    "docId": "frontend/Outdated/Reference/Plotting/Plotly",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "RandomImage",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/RandomImage",
+                    "docId": "frontend/Outdated/Reference/Plotting/RandomImage",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "StackedListPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/StackedListPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "StreamPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/StreamPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/StreamPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "VectorPlot",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot",
+                    "docId": "frontend/Outdated/Reference/Plotting/VectorPlot",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "link",
+                    "label": "VectorPlot3D",
+                    "href": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D",
+                    "docId": "frontend/Outdated/Reference/Plotting/VectorPlot3D",
+                    "unlisted": false
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "Tools",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "category",
+                    "label": "Frontend",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "Alert",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/Alert",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/Alert",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "AttachDOM",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "FlipSymbols",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "FrontEditorSelected",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "ReadClipboard",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "TalkKernel",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "TalkMaster",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "WLJSFunction",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "WindowScope",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope",
+                        "docId": "frontend/Outdated/Reference/Tools/Frontend/WindowScope",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "link",
+                    "label": "LeakyModule",
+                    "href": "/docs/frontend/Outdated/Reference/Tools/LeakyModule",
+                    "docId": "frontend/Outdated/Reference/Tools/LeakyModule",
+                    "unlisted": false
+                  },
+                  {
+                    "type": "category",
+                    "label": "Notebook",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "CellPrint",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint",
+                        "docId": "frontend/Outdated/Reference/Tools/Notebook/CellPrint",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "EvaluationCell",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+                        "docId": "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "GlobalThrottle",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
+                        "docId": "frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "NotebookStore",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+                        "docId": "frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "ParentCell",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+                        "docId": "frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Slides",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "SlideEvent",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent",
+                        "docId": "frontend/Outdated/Reference/Tools/Slides/SlideEvent",
+                        "unlisted": false
+                      }
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Timers",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "link",
+                        "label": "SetInterval",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval",
+                        "docId": "frontend/Outdated/Reference/Tools/Timers/SetInterval",
+                        "unlisted": false
+                      },
+                      {
+                        "type": "link",
+                        "label": "SetTimeout",
+                        "href": "/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout",
+                        "docId": "frontend/Outdated/Reference/Tools/Timers/SetTimeout",
+                        "unlisted": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "frontend/instruction": {
+      "id": "frontend/instruction",
+      "title": "Quick start",
+      "description": "Wolfram Language Notebook requires  wolframscript (see Freeware Wolfram Engine or Wolfram Kernel) installed on your PC/Mac.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations": {
+      "id": "frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+      "title": "dynamic-decorations",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Dynamics/Indicators and monitoring": {
+      "id": "frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+      "title": "Indicators and monitoring",
+      "description": "Dynamic text field",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Dynamics/Performance tips": {
+      "id": "frontend/Outdated/Advanced/Dynamics/Performance tips",
+      "title": "Performance tips",
+      "description": "Performance tips",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Dynamics/Scoping": {
+      "id": "frontend/Outdated/Advanced/Dynamics/Scoping",
+      "title": "Scoping",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Dynamics/Simple manipulate": {
+      "id": "frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+      "title": "Simple manipulate",
+      "description": "It is always better to scope all dynamic variables using LeakyModule or just Module and perform all communications using events (plain EventObject objects). See Scoping",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Editor manipulation": {
+      "id": "frontend/Outdated/Advanced/Editor manipulation",
+      "title": "Editor manipulation",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Events system/event-generators": {
+      "id": "frontend/Outdated/Advanced/Events system/event-generators",
+      "title": "Event objects, views and -generators",
+      "description": "As a short summary - where you can use event-handlers / listeners",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Events system/routing": {
+      "id": "frontend/Outdated/Advanced/Events system/routing",
+      "title": "Routing",
+      "description": "Remember the number 1 rule: 1 event object = 1 handler",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Frontend interpretation/executables": {
+      "id": "frontend/Outdated/Advanced/Frontend interpretation/executables",
+      "title": "Working with containers",
+      "description": "This is a hardcore stuff, don't go here with a clear purpose",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions": {
+      "id": "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+      "title": "Frontend functions",
+      "description": "This is a hardcore stuff, don't go here with a clear purpose",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/JS Tools/Canvas": {
+      "id": "frontend/Outdated/Advanced/JS Tools/Canvas",
+      "title": "Canvas",
+      "description": "A very powerful component for visualization we have is  canvas. It supports WebGL renderer, i.e. one can run graphics shaders and use GPU to accelerate the rendering.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/animations": {
+      "id": "frontend/Outdated/Advanced/Slides/animations",
+      "title": "Graphics animation & interaction",
+      "description": "Interactive plots",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/components": {
+      "id": "frontend/Outdated/Advanced/Slides/components",
+      "title": "Components",
+      "description": "Making presentation is quite repetitive process. It is quite common to have some common element shared between different slides.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/embed-wl": {
+      "id": "frontend/Outdated/Advanced/Slides/embed-wl",
+      "title": "Code highlighting",
+      "description": "Since it support WLX syntax as well, one can combine the copied text from the normal Wolfram Language cell into a EditorView component",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/intro": {
+      "id": "frontend/Outdated/Advanced/Slides/intro",
+      "title": "Basics",
+      "description": "You can use pure Markdown, HTML, CSS or WLX languages while making slides",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/styling": {
+      "id": "frontend/Outdated/Advanced/Slides/styling",
+      "title": "styling",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Slides/tables": {
+      "id": "frontend/Outdated/Advanced/Slides/tables",
+      "title": "Large tables of data",
+      "description": "One can utilize component InputTable, that originally stands for editing table, but can be used just to view them as well. The good thing about it that it supports infinitely large tables since the actual content is loaded by parts (and unloads if no longer needed)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Advanced/Snippets/Snippets": {
+      "id": "frontend/Outdated/Advanced/Snippets/Snippets",
+      "title": "Snippets",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Chatbook": {
+      "id": "frontend/Outdated/Cell types/Chatbook",
+      "title": "Chatbook",
+      "description": "We couldn't resist the temptation and didn't join the general hype - that's why we added the ability to communicate with the GPT-3.5 model directly from notebook cells. To do this, you can simply enter .llm on the first line, and on the next line, any text",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Files": {
+      "id": "frontend/Outdated/Cell types/Files",
+      "title": "Files",
+      "description": "Image viewer",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/HTML": {
+      "id": "frontend/Outdated/Cell types/HTML",
+      "title": "HTML",
+      "description": "Github repo",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Javascript": {
+      "id": "frontend/Outdated/Cell types/Javascript",
+      "title": "Javascript",
+      "description": "Github repo",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Many more...": {
+      "id": "frontend/Outdated/Cell types/Many more...",
+      "title": "Many more...",
+      "description": "You can extend output cell types via a few lines of code and you favorite framework / package",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Markdown": {
+      "id": "frontend/Outdated/Cell types/Markdown",
+      "title": "Markdown",
+      "description": "Github repo",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Slides": {
+      "id": "frontend/Outdated/Cell types/Slides",
+      "title": "Slides",
+      "description": "One can also make presentations using WLJS Frontend. This is provided by wljs-revealjs, that integrates RevealJS and WLX language to provide components approach on making presentations as well as add interactivity and all features of frontend's cells like this",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/WLX": {
+      "id": "frontend/Outdated/Cell types/WLX",
+      "title": "WLX",
+      "description": "It allows to use Wolfram Language XML in your cell. It comes handy when making a a complex cell structure or stylizing it using the power of HTML/CSS/JS.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Cell types/Wolfram Language": {
+      "id": "frontend/Outdated/Cell types/Wolfram Language",
+      "title": "Wolfram Language",
+      "description": "Github repo",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Development/Decorations": {
+      "id": "frontend/Outdated/Development/Decorations",
+      "title": "Decorations",
+      "description": "You can think about it as a visual syntax sugar, which is similar to what one can see in VSCode, when one edits a CSS colors, the corresponding color picker popups allowing user to deal with color wheel instead of HEX color code.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Development/Plugins/Known packages": {
+      "id": "frontend/Outdated/Development/Plugins/Known packages",
+      "title": "Known packages",
+      "description": "Here the symbol 🔶 means, that the package is shipped together with a basic WLJS Frontend distribution. Anything else can be installed separately from the Settings menu",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Development/Structure": {
+      "id": "frontend/Outdated/Development/Structure",
+      "title": "Structure",
+      "description": "Diagram of libraries used in WLJS Frontend",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Export/HTML file": {
+      "id": "frontend/Outdated/Export/HTML file",
+      "title": "HTML file",
+      "description": "Is in development",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Export/PDF": {
+      "id": "frontend/Outdated/Export/PDF",
+      "title": "PDF",
+      "description": "Is in development",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Export/React component": {
+      "id": "frontend/Outdated/Export/React component",
+      "title": "React component",
+      "description": "Is in development",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Expressions representation": {
+      "id": "frontend/Outdated/Expressions representation",
+      "title": "Expressions representation",
+      "description": "The aim is to make a compromise between DisplayForm and InputForm representations Wolfram Expressions on the frontend's side.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Mathematica vs WLJS": {
+      "id": "frontend/Outdated/Mathematica vs WLJS",
+      "title": "Mathematica vs WLJS",
+      "description": "From the first sight, it feels similar, however there are some key difference compared to the way how you work with Mathematica's frontend and WLJS.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Column": {
+      "id": "frontend/Outdated/Reference/Decorations/Column",
+      "title": "Column",
+      "description": "shows the list of any Wolfram Expressions in a single column acting as a decoration",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Framed": {
+      "id": "frontend/Outdated/Reference/Decorations/Framed",
+      "title": "Framed",
+      "description": "Acts like a Style box, but wrapped into a frame",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Grid": {
+      "id": "frontend/Outdated/Reference/Decorations/Grid",
+      "title": "Grid",
+      "description": "Spawns a grid of WL editors with an arbitrary objects inside",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/HTMLForm": {
+      "id": "frontend/Outdated/Reference/Decorations/HTMLForm",
+      "title": "HTMLForm",
+      "description": "renders HTML tags to the output cell",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/InputForm": {
+      "id": "frontend/Outdated/Reference/Decorations/InputForm",
+      "title": "InputForm",
+      "description": "Prevents decorations to be set",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Interpretation": {
+      "id": "frontend/Outdated/Reference/Decorations/Interpretation",
+      "title": "Interpretation",
+      "description": "allows to alter the displayed expression",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/InterpretationBox": {
+      "id": "frontend/Outdated/Reference/Decorations/InterpretationBox",
+      "title": "InterpretationBox",
+      "description": "Make a formatting structure whose interpretation is not based on its appearance",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Low level/BoxBox": {
+      "id": "frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+      "title": "BoxBox",
+      "description": "Used to decorate Wolfram Expression with custom HTML elements",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Low level/ViewBox": {
+      "id": "frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+      "title": "ViewBox",
+      "description": "Used to replace wrapped Wolfram Expression with custom HTML elements",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/MakeBoxes": {
+      "id": "frontend/Outdated/Reference/Decorations/MakeBoxes",
+      "title": "MakeBoxes",
+      "description": "is a general expression used in UpValues of other expressions to change the visual representation (see Decorations) in the notebook.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/MatrixForm": {
+      "id": "frontend/Outdated/Reference/Decorations/MatrixForm",
+      "title": "MatrixForm",
+      "description": "shows the given matrix (list of lists) in a traditional form using Grid decoration",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Row": {
+      "id": "frontend/Outdated/Reference/Decorations/Row",
+      "title": "Row",
+      "description": "shows the list of any Wolfram Expressions in a row acting as a decoration",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/Style": {
+      "id": "frontend/Outdated/Reference/Decorations/Style",
+      "title": "Style",
+      "description": "Styling box used as a decoration for an arbitrary Wolfram Expressions",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/SVGForm": {
+      "id": "frontend/Outdated/Reference/Decorations/SVGForm",
+      "title": "SVGForm",
+      "description": "exports as SVG any Wolfram Expressions and plots it inside a cell.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Decorations/TableForm": {
+      "id": "frontend/Outdated/Reference/Decorations/TableForm",
+      "title": "TableForm",
+      "description": "shows the given table (list) in a traditional form using Grid decoration",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/CreateFrontEndObject": {
+      "id": "frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+      "title": "CreateFrontEndObject",
+      "description": "Creates a container for the inner expression and stores it into frontend objects storage shared with Kernel and Notebook",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Dynamic": {
+      "id": "frontend/Outdated/Reference/Dynamics/Dynamic",
+      "title": "Dynamic",
+      "description": "This concept is different from Mathematica. Please, use event-based approach instead - Dynamics",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/DynamicModule": {
+      "id": "frontend/Outdated/Reference/Dynamics/DynamicModule",
+      "title": "DynamicModule",
+      "description": "This concept is different from Mathematica. Please, use event-based approach instead - Dynamics",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/FrontEndVirtual": {
+      "id": "frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+      "title": "FrontEndVirtual",
+      "description": "It is a virtual container wrapper for any expressions evaluated on WLJS",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/FrontSubmit": {
+      "id": "frontend/Outdated/Reference/Dynamics/FrontSubmit",
+      "title": "FrontSubmit",
+      "description": "Allows to execute any arbitrary WL code on frontend's (browser / client), where the notebook interface is displayed",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable": {
+      "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+      "title": "FrontEndExecutable",
+      "description": "An replacement decoration and a reference to the frontend object aka  container in the shared objects storage with a corresponding id",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline": {
+      "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+      "title": "FrontEndExecutableInline",
+      "description": "The same as FrontEndExecutable, but does not require a dedicated storage, the data is stored as a compressed string",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly": {
+      "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+      "title": "FrontEndOnly",
+      "description": "An synonym for Offload",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef": {
+      "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+      "title": "FrontEndRef",
+      "description": "An invisible replacement for FrontEndExecutable, which is not replaced by a widget in the editor and Wolfram Kernel.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Manipulate": {
+      "id": "frontend/Outdated/Reference/Dynamics/Manipulate",
+      "title": "Manipulate",
+      "description": "This is not supported. Please, use Dynamics instead",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/MetaMarker": {
+      "id": "frontend/Outdated/Reference/Dynamics/MetaMarker",
+      "title": "MetaMarker",
+      "description": "A unique identifier or a reference of/to the container",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Dynamics/Offload": {
+      "id": "frontend/Outdated/Reference/Dynamics/Offload",
+      "title": "Offload",
+      "description": "Holds (or offloads) an expression to be evaluated on frontend (WLJS)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/Assign": {
+      "id": "frontend/Outdated/Reference/Events/Assign",
+      "title": "Assign",
+      "description": "This is an experimental function. It might be changed or removed in the next updates",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventClone": {
+      "id": "frontend/Outdated/Reference/Events/EventClone",
+      "title": "EventClone",
+      "description": "clones an instance of ev event object passed as EventObject or a string with no interfering an original event handler function assigned to ev.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventFire": {
+      "id": "frontend/Outdated/Reference/Events/EventFire",
+      "title": "EventFire",
+      "description": "manually fires an event provided as EventObject or a string.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventHandler": {
+      "id": "frontend/Outdated/Reference/Events/EventHandler",
+      "title": "EventHandler",
+      "description": "assigns an handler function to an event object provided as a string or EventObject. The secondary functionality is",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventJoin": {
+      "id": "frontend/Outdated/Reference/Events/EventJoin",
+      "title": "EventJoin",
+      "description": "joins two or more events passed as EventObjects or strings into a new joined event object. For EventObjects a standard Wolfram Language expression Join works as well",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventObject": {
+      "id": "frontend/Outdated/Reference/Events/EventObject",
+      "title": "EventObject",
+      "description": "a local representation of event entity used in Dynamics,  Input elements and event-generators. It does provide extra feature to an event system such as listed below",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Events/EventRemove": {
+      "id": "frontend/Outdated/Reference/Events/EventRemove",
+      "title": "EventRemove",
+      "description": "removes a handler function from event object ev previously assigned using EventHandler expression. Native Wolfram Language Delete also works",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/AbsoluteThickness": {
+      "id": "frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+      "title": "AbsoluteThickness",
+      "description": "is used to control the visible thickness of lines used in Graphics. The displayed is not affected by scaling or zooming the plot.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Arrow": {
+      "id": "frontend/Outdated/Reference/Graphics/Arrow",
+      "title": "Arrow",
+      "description": "Plots an arrow with a fixed head-size from point 1 to point 2",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Circle": {
+      "id": "frontend/Outdated/Reference/Graphics/Circle",
+      "title": "Circle",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Directive": {
+      "id": "frontend/Outdated/Reference/Graphics/Directive",
+      "title": "Directive",
+      "description": "Used for styling plots or 2D graphics",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Disk": {
+      "id": "frontend/Outdated/Reference/Graphics/Disk",
+      "title": "Disk",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Graphics": {
+      "id": "frontend/Outdated/Reference/Graphics/Graphics",
+      "title": "Graphics",
+      "description": "represents a two-dimensional graphical image. This is a fundamental expression, which is produced by all 2D plotting functions",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/GraphicsComplex": {
+      "id": "frontend/Outdated/Reference/Graphics/GraphicsComplex",
+      "title": "GraphicsComplex",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Image": {
+      "id": "frontend/Outdated/Reference/Graphics/Image",
+      "title": "Image",
+      "description": "Represents a raster image and plots the list of pixel's colors to a canvas used in notebooks",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Inset": {
+      "id": "frontend/Outdated/Reference/Graphics/Inset",
+      "title": "Inset",
+      "description": "a graphics object, that allows to put another Graphics into the canvas. pos has to be a 2D vector, that specifies the position of the inset.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Internal/EventListener": {
+      "id": "frontend/Outdated/Reference/Graphics/Internal/EventListener",
+      "title": "EventListener",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Line": {
+      "id": "frontend/Outdated/Reference/Graphics/Line",
+      "title": "Line",
+      "description": "the representation of a line going though the points {x1,y1}, {x2,y2}",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/MiddlewareHandler": {
+      "id": "frontend/Outdated/Reference/Graphics/MiddlewareHandler",
+      "title": "MiddlewareHandler",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Offset": {
+      "id": "frontend/Outdated/Reference/Graphics/Offset",
+      "title": "Offset",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Point": {
+      "id": "frontend/Outdated/Reference/Graphics/Point",
+      "title": "Point",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Polygon": {
+      "id": "frontend/Outdated/Reference/Graphics/Polygon",
+      "title": "Polygon",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Raster": {
+      "id": "frontend/Outdated/Reference/Graphics/Raster",
+      "title": "Raster",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Rectangle": {
+      "id": "frontend/Outdated/Reference/Graphics/Rectangle",
+      "title": "Rectangle",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Rotate": {
+      "id": "frontend/Outdated/Reference/Graphics/Rotate",
+      "title": "Rotate",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Show": {
+      "id": "frontend/Outdated/Reference/Graphics/Show",
+      "title": "Show",
+      "description": "Is not supported in wljs-graphics-d3 for now",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Style": {
+      "id": "frontend/Outdated/Reference/Graphics/Style",
+      "title": "Style",
+      "description": "A wrapper that can be used for Text . The following options can be provided",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/SVGAttribute": {
+      "id": "frontend/Outdated/Reference/Graphics/SVGAttribute",
+      "title": "SVGAttribute",
+      "description": "Allows to directly set SVG attribute to a 2D graphics object",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Text": {
+      "id": "frontend/Outdated/Reference/Graphics/Text",
+      "title": "Text",
+      "description": "Represents an arbitrary text label placed as a Graphics object",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics/Translate": {
+      "id": "frontend/Outdated/Reference/Graphics/Translate",
+      "title": "Translate",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics3D/Cuboid": {
+      "id": "frontend/Outdated/Reference/Graphics3D/Cuboid",
+      "title": "Cuboid",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics3D/EventListener": {
+      "id": "frontend/Outdated/Reference/Graphics3D/EventListener",
+      "title": "EventListener",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics3D/Graphics3D": {
+      "id": "frontend/Outdated/Reference/Graphics3D/Graphics3D",
+      "title": "Graphics3D",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics3D/Sphere": {
+      "id": "frontend/Outdated/Reference/Graphics3D/Sphere",
+      "title": "Sphere",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Graphics3D/SpotLight": {
+      "id": "frontend/Outdated/Reference/Graphics3D/SpotLight",
+      "title": "SpotLight",
+      "description": "places a fake source of light in a 3D scene (see Graphics3D)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/ButtonView": {
+      "id": "frontend/Outdated/Reference/Input/ButtonView",
+      "title": "ButtonView",
+      "description": "This is an internal part of InputButton",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/EditorView": {
+      "id": "frontend/Outdated/Reference/Input/EditorView",
+      "title": "EditorView",
+      "description": "A view component to spawn an code-editor (fully functional)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/FileUploadView": {
+      "id": "frontend/Outdated/Reference/Input/FileUploadView",
+      "title": "FileUploadView",
+      "description": "This is an internal part of InputFile",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputButton": {
+      "id": "frontend/Outdated/Reference/Input/InputButton",
+      "title": "InputButton",
+      "description": "creates a button component and returns EventObject.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputFile": {
+      "id": "frontend/Outdated/Reference/Input/InputFile",
+      "title": "InputFile",
+      "description": "outputs as a drag & drop file-form used to handle file input",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputGroup": {
+      "id": "frontend/Outdated/Reference/Input/InputGroup",
+      "title": "InputGroup",
+      "description": "groups different event-generators such as InputRange, InputButton or in general EventObject into a new EventObject",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputRange": {
+      "id": "frontend/Outdated/Reference/Input/InputRange",
+      "title": "InputRange",
+      "description": "creates a basic combo of a slider and numerical input field and returns EventObject.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputSpoiler": {
+      "id": "frontend/Outdated/Reference/Input/InputSpoiler",
+      "title": "InputSpoiler",
+      "description": "hides an input element to a spoiler. It does not affect an event object, but changes view of EventObject",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputTable": {
+      "id": "frontend/Outdated/Reference/Input/InputTable",
+      "title": "InputTable",
+      "description": "it places a sort of small Excel-like table editor for list provided. This is a great solution for a large tables, since it does support lazy loading from a server",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputText": {
+      "id": "frontend/Outdated/Reference/Input/InputText",
+      "title": "InputText",
+      "description": "creates an event-generator for an input-text field and returns EventObject",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/InputToggle": {
+      "id": "frontend/Outdated/Reference/Input/InputToggle",
+      "title": "InputToggle",
+      "description": "creates a toggle (checkbox) component and returns EventObject.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/RangeView": {
+      "id": "frontend/Outdated/Reference/Input/RangeView",
+      "title": "RangeView",
+      "description": "This is an internal (low-level) part of InputRange",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/Slider": {
+      "id": "frontend/Outdated/Reference/Input/Slider",
+      "title": "Slider",
+      "description": "This is not supported. Please, use alternative way InputRange",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/TextView": {
+      "id": "frontend/Outdated/Reference/Input/TextView",
+      "title": "TextView",
+      "description": "This is an internal part of InputText",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Input/ToggleView": {
+      "id": "frontend/Outdated/Reference/Input/ToggleView",
+      "title": "ToggleView",
+      "description": "This is an internal part of InputToggle",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/CellHashStorage": {
+      "id": "frontend/Outdated/Reference/Javascript API/CellHashStorage",
+      "title": "CellHashStorage",
+      "description": "A global Javascript object that stores all cells of the notebook",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/core": {
+      "id": "frontend/Outdated/Reference/Javascript API/core",
+      "title": "core",
+      "description": "Global context in Javascript engine, where all functions of WLJS Interpreter are stored.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/downloadByURL": {
+      "id": "frontend/Outdated/Reference/Javascript API/downloadByURL",
+      "title": "downloadByURL",
+      "description": "forces page to download a file given by url",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/InstancesHashMap": {
+      "id": "frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+      "title": "InstancesHashMap",
+      "description": "A global Javascript object that stores all containers including virtual containers used on a page",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/interpretate": {
+      "id": "frontend/Outdated/Reference/Javascript API/interpretate",
+      "title": "interpretate",
+      "description": "An access to WLJS Interpreter, that can evaluate arbitrary Wolfram Expressions expr in a form of ExpressionJSON  and providing env object to all nested expressions",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/ObjectHashMap": {
+      "id": "frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+      "title": "ObjectHashMap",
+      "description": "A global Javascript object that stores all data for normal containers including references to InstancesHashMap entities",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/openawindow": {
+      "id": "frontend/Outdated/Reference/Javascript API/openawindow",
+      "title": "openawindow",
+      "description": "opens a window given by url",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/server": {
+      "id": "frontend/Outdated/Reference/Javascript API/server",
+      "title": "server",
+      "description": "A global object, that gives an access to sever's API (if server is available). Usually server is Wolfram Kernel connected via WebSockets protocol or HTTP/POST",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/setInnerHTML": {
+      "id": "frontend/Outdated/Reference/Javascript API/setInnerHTML",
+      "title": "setInnerHTML",
+      "description": "sets the HTML content of the element and evaluating the included `` tags as well",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Javascript API/uuidv4": {
+      "id": "frontend/Outdated/Reference/Javascript API/uuidv4",
+      "title": "uuidv4",
+      "description": "generates a unique identifier as a string",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ArrayPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ArrayPlot",
+      "title": "ArrayPlot",
+      "description": "Generates a plot, where values are shown in a discrete array of blocks",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/BarChart": {
+      "id": "frontend/Outdated/Reference/Plotting/BarChart",
+      "title": "BarChart",
+      "description": "generates a bar chart for a list of heights",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/BubbleChart": {
+      "id": "frontend/Outdated/Reference/Plotting/BubbleChart",
+      "title": "BubbleChart",
+      "description": "creates a bubble chart for a list of triples",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ContourPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ContourPlot",
+      "title": "ContourPlot",
+      "description": "Generates a contour plot of $f$ as a function of $x$ and $y$",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/DensityPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/DensityPlot",
+      "title": "DensityPlot",
+      "description": "makes a density plot of f as a function of x and y",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListContourPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ListContourPlot",
+      "title": "ListContourPlot",
+      "description": "A list version of ContourPlot",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListCurvePathPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+      "title": "ListCurvePathPlot",
+      "description": "Plots a curve that corresponds to a smooth path through the specified points",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListLinePlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ListLinePlot",
+      "title": "ListLinePlot",
+      "description": "Plots a line like Plot through the list of points provided",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListLinePlotly": {
+      "id": "frontend/Outdated/Reference/Plotting/ListLinePlotly",
+      "title": "ListLinePlotly",
+      "description": "An alternative plotting function to ListLinePlot, that supports dynamic updates, panning, zoom out of the box",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListStepPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ListStepPlot",
+      "title": "ListStepPlot",
+      "description": "plots the values $y1$, $y2$ ... in steps",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/ListVectorPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/ListVectorPlot",
+      "title": "ListVectorPlot",
+      "description": "Plot the vector field interpolated from a specified set of vectors",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/MatrixPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/MatrixPlot",
+      "title": "MatrixPlot",
+      "description": "Plots a 2D array with an arbitrary data inside with axes",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/Plot": {
+      "id": "frontend/Outdated/Reference/Plotting/Plot",
+      "title": "Plot",
+      "description": "A Swiss knife for displaying 2D data",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/Plotly": {
+      "id": "frontend/Outdated/Reference/Plotting/Plotly",
+      "title": "Plotly",
+      "description": "An alternative plotting function to Plot that uses Plotly.js",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/RandomImage": {
+      "id": "frontend/Outdated/Reference/Plotting/RandomImage",
+      "title": "RandomImage",
+      "description": "Generates a raster Image with a given size and distribution. Only RGB space is supported. The maximum value is limited to 255 for each channel",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/StackedListPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/StackedListPlot",
+      "title": "StackedListPlot",
+      "description": "plots lines for each of the $datai$, with the $i^$ curve being the accumulation of values in $data1$ through $data_i$",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/StreamPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/StreamPlot",
+      "title": "StreamPlot",
+      "description": "Generates a stream plot of the vector field ${vx,vy}$ as a function of $x$ and $y$",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/VectorPlot": {
+      "id": "frontend/Outdated/Reference/Plotting/VectorPlot",
+      "title": "VectorPlot",
+      "description": "Generates a vector plot of the vector field ${vx,vy}$ as a function of $x$ and $y$",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Plotting/VectorPlot3D": {
+      "id": "frontend/Outdated/Reference/Plotting/VectorPlot3D",
+      "title": "VectorPlot3D",
+      "description": "Generates a 3D vector plot of the vector field {vx,vy,vz} as a function of $x$, $y$, and $z$",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/Alert": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/Alert",
+      "title": "Alert",
+      "description": "creates a pop-up message (dialog) in a user's opened window. Acts like alert in Javascript language.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/AttachDOM": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
+      "title": "AttachDOM",
+      "description": "attached a DOM element from the page found by id to the container, where this expression is evaluated",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/FlipSymbols": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
+      "title": "FlipSymbols",
+      "description": "swaps the content (down values) of the given symbols and fires update on dependent containers",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
+      "title": "FrontEditorSelected",
+      "description": "returns the selected line from the input/output cell's of the last focused editor as a string.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/ReadClipboard": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
+      "title": "ReadClipboard",
+      "description": "Returns a clipboard data of a user as a string",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/TalkKernel": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
+      "title": "TalkKernel",
+      "description": "exports an arbitrary object from the frontend to Wolfram Kernel as JSON string and applies handler function to it.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/TalkMaster": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+      "title": "TalkMaster",
+      "description": "the same as TalkKernel, but send the result to a master Wolfram kernel instead.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/WindowScope": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/WindowScope",
+      "title": "WindowScope",
+      "description": "returns Javascript object name defined in the global context.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Frontend/WLJSFunction": {
+      "id": "frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
+      "title": "WLJSFunction",
+      "description": "An anonymous WLJS function",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/LeakyModule": {
+      "id": "frontend/Outdated/Reference/Tools/LeakyModule",
+      "title": "LeakyModule",
+      "description": "Module that always leaks memory on-purpose",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Notebook/CellPrint": {
+      "id": "frontend/Outdated/Reference/Tools/Notebook/CellPrint",
+      "title": "CellPrint",
+      "description": "prints an output cell after the evaluated input cell with a content str provided. Can be used for creating progress bars or other dynamics elements that can help to monitor the state.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell": {
+      "id": "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+      "title": "EvaluationCell",
+      "description": "takes an identifier of an output cell generated after the evaluation. Can be used as EventObject for EventHandler to attach handlers to an output cell or to print another cell after.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle": {
+      "id": "frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
+      "title": "GlobalThrottle",
+      "description": "sets a throttling value for event generators such as InputText, InputRange and etc, so that they will not fire too often overloading the Wolfram Kernel.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Notebook/NotebookStore": {
+      "id": "frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+      "title": "NotebookStore",
+      "description": "Sometimes it is easier to ship notebook together with the data it depends on. However, not as a text encoded using BASE64 pasted into a notebook cell - it would just kill the performance, but as a dedicated inner structure, that can be exposed using NotebookStore",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Notebook/ParentCell": {
+      "id": "frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+      "title": "ParentCell",
+      "description": "asks master kernel to find an identifier of the parent cell (usually an input cell) of the given output cell.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Slides/SlideEvent": {
+      "id": "frontend/Outdated/Reference/Tools/Slides/SlideEvent",
+      "title": "SlideEvent",
+      "description": "An event-marker for the given slide of the presentation used in RevealJS plugin",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Timers/SetInterval": {
+      "id": "frontend/Outdated/Reference/Tools/Timers/SetInterval",
+      "title": "SetInterval",
+      "description": "Creates an asynchronous task, which is repeated with a period (milliseconds)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Reference/Tools/Timers/SetTimeout": {
+      "id": "frontend/Outdated/Reference/Tools/Timers/SetTimeout",
+      "title": "SetTimeout",
+      "description": "Creates an asynchronous task, which will be executed once after period (milliseconds)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Troubleshooting": {
+      "id": "frontend/Outdated/Troubleshooting",
+      "title": "Troubleshooting",
+      "description": "If something is not working as intended, please, post an issue on a Github with the data evaluated on your Wolfram Kernel, such as",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/Dynamics": {
+      "id": "frontend/Outdated/Tutorial/Dynamics",
+      "title": "Dynamics",
+      "description": "The way how dynamics work is quite different compared to Wolfram Mathematica. The key changes were made for the sake of performance and control (or imagination of  @JerryI - maintainer)",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/Export notebook": {
+      "id": "frontend/Outdated/Tutorial/Export notebook",
+      "title": "Export notebook",
+      "description": "Since all magic happens inside the browser using plain Javascript, it is extremely easy to export notebook to a standalone HTML file or even React component to embed it on website (blog).",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/GUI Overview": {
+      "id": "frontend/Outdated/Tutorial/GUI Overview",
+      "title": "GUI Overview",
+      "description": "The whole notebook interface is made using plain Javascript, HTML powered by a Wolfram WebServer  and template engine running locally on a Wolfram Kernel. It means you can work remotely by running a server anywhere you want.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/Input elements": {
+      "id": "frontend/Outdated/Tutorial/Input elements",
+      "title": "Input elements",
+      "description": "Usually, every UI element in a cell is Event generator, i.e. EventObject[] with a field view, which is shown on output. Unlike Mathematica, WLJS Frontend uses event-based approach, so you have to bind a handler function to each interactive element you used",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/Overview": {
+      "id": "frontend/Outdated/Tutorial/Overview",
+      "title": "Overview",
+      "description": "The whole notebook interface is made using plain Javascript, HTML powered by a Wolfram WebServer  and template engine running locally on a Wolfram Kernel. It means you can work remotely by running a server anywhere you want.",
+      "sidebar": "tutorialSidebar"
+    },
+    "frontend/Outdated/Tutorial/Plugins": {
+      "id": "frontend/Outdated/Tutorial/Plugins",
+      "title": "Plugins",
+      "description": "WLJS Frontend uses a custom package manager to download, update and store extensions from any suitable Github repo. At the first startup it extracts them to a local Packages folder, where one can freely edit and explore them.",
+      "sidebar": "tutorialSidebar"
+    },
+    "imgs/FE data binding.excalidraw 1": {
+      "id": "imgs/FE data binding.excalidraw 1",
+      "title": "FE data binding.excalidraw 1",
+      "description": "==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠=="
+    },
+    "imgs/feinput.gif": {
+      "id": "imgs/feinput.gif",
+      "title": "feinput.gif",
+      "description": ""
+    },
+    "imgs/manipulate-frontend-example.excalidraw": {
+      "id": "imgs/manipulate-frontend-example.excalidraw",
+      "title": "manipulate-frontend-example.excalidraw",
+      "description": "==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠=="
+    },
+    "interpreter/Advanced/architecture": {
+      "id": "interpreter/Advanced/architecture",
+      "title": "Architecture of symbols",
+      "description": "Features"
+    },
+    "interpreter/Advanced/containers": {
+      "id": "interpreter/Advanced/containers",
+      "title": "Containers",
+      "description": "The general definition will be"
+    },
+    "interpreter/Advanced/meta-markers": {
+      "id": "interpreter/Advanced/meta-markers",
+      "title": "Meta markers",
+      "description": "You can think about them as a unique property assigned to the expression in order to use selectors on them. Sometimes it comes handy to attach or evaluate new object inside the existing instance"
+    },
+    "interpreter/Advanced/symbols": {
+      "id": "interpreter/Advanced/symbols",
+      "title": "Definitions",
+      "description": "Let's make the things clear."
+    },
+    "interpreter/Basics/graphics": {
+      "id": "interpreter/Basics/graphics",
+      "title": "Working with graphics",
+      "description": "Easy animations"
+    },
+    "interpreter/Basics/js-access": {
+      "id": "interpreter/Basics/js-access",
+      "title": "Javascript integration",
+      "description": "For deep overview of functions, containers and advanced control of evaluation process, please, see pages symbols and containers"
+    },
+    "interpreter/Basics/scripts": {
+      "id": "interpreter/Basics/scripts",
+      "title": "Symbols and expressions",
+      "description": "It is assumed, you have wljs-graphics-d3 (see Libraries @ syntax) library included in your page. Most examples depend on it."
+    },
+    "interpreter/Basics/syntax": {
+      "id": "interpreter/Basics/syntax",
+      "title": "Syntax",
+      "description": "For the simplicity it is better to use wolframscript or Mathematica to transpile the source code to JSONExpression format using ExportString command."
+    },
+    "interpreter/Extras/implementation": {
+      "id": "interpreter/Extras/implementation",
+      "title": "How it works",
+      "description": "The idea"
+    },
+    "interpreter/Extras/reference": {
+      "id": "interpreter/Extras/reference",
+      "title": "Reference",
+      "description": "Please see interpretate and other pages there"
+    },
+    "interpreter/intro": {
+      "id": "interpreter/intro",
+      "title": "",
+      "description": "Minimal Wolfram Language Interpreter"
+    }
+  }
+}

@@ -1,0 +1,1324 @@
+{
+  "/__docusaurus/debug-f3b": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/__docusaurus/debug/config-91b": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/__docusaurus/debug/content-18c": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-13d": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/__docusaurus/debug/metadata-895": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/__docusaurus/debug/registry-7ea": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/__docusaurus/debug/routes-a09": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugebc-461"
+    }
+  },
+  "/blog-b33": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogb-7-a-1c8"
+      },
+      {
+        "content": "content---blogafc-e05"
+      },
+      {
+        "content": "content---blog-118-da6"
+      },
+      {
+        "content": "content---blog-1-cc-458"
+      },
+      {
+        "content": "content---blog-414-580"
+      },
+      {
+        "content": "content---blog-813-efd"
+      },
+      {
+        "content": "content---blog-068-98c"
+      },
+      {
+        "content": "content---blogf-1-f-466"
+      },
+      {
+        "content": "content---blog-9-e-8-371"
+      },
+      {
+        "content": "content---blog-474-aef"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/archive-c70": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/axes-label-624": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-axes-labelbd-9-cb5"
+  },
+  "/blog/balls-example-9f4": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-balls-example-312-8bb"
+  },
+  "/blog/curvesfit-example-0cb": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-curvesfit-exampledf-9-8bf"
+  },
+  "/blog/esm-into-553": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-esm-into-0-a-5-eb7"
+  },
+  "/blog/event-advanced-c95": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-event-advanced-1-a-4-f52"
+  },
+  "/blog/event-shortcuts-004": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-event-shortcuts-1-c-3-da4"
+  },
+  "/blog/feobjects-example-d7c": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-feobjects-example-05-e-2d1"
+  },
+  "/blog/hydrator-xp-056": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-hydrator-xp-60-a-fae"
+  },
+  "/blog/imageraster-0d5": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-imageraster-8-a-6-ee5"
+  },
+  "/blog/int-snippets-515": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-int-snippetsa-05-6e3"
+  },
+  "/blog/intro-controls-2d-graphics-4af": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-intro-controls-2-d-graphicsf-1-a-026"
+  },
+  "/blog/intro-transform-3d-eb0": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-intro-transform-3-d-2-e-3-e09"
+  },
+  "/blog/meta-example-7a5": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-meta-example-536-3d4"
+  },
+  "/blog/middleware-example-82d": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-middleware-examplee-95-ea2"
+  },
+  "/blog/notestore-ad7": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-notestore-593-89a"
+  },
+  "/blog/page/2-a04": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-b-9-b-003"
+      },
+      {
+        "content": "content---blog-page-2353-5f5"
+      },
+      {
+        "content": "content---blog-page-23-de-df8"
+      },
+      {
+        "content": "content---blog-page-24-d-4-139"
+      },
+      {
+        "content": "content---blog-page-2-ed-7-2b6"
+      },
+      {
+        "content": "content---blog-page-24-bf-cd0"
+      },
+      {
+        "content": "content---blog-page-2574-b18"
+      },
+      {
+        "content": "content---blog-page-2-a-3-f-35d"
+      },
+      {
+        "content": "content---blog-page-274-c-a90"
+      }
+    ],
+    "metadata": "metadata---blog-page-28-eb-625"
+  },
+  "/blog/practical-working-withlibs-9a7": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-practical-working-withlibsaa-1-6d6"
+  },
+  "/blog/practice-integration-a65": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-practice-integratione-97-bd9"
+  },
+  "/blog/projector-intro-38d": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-projector-introd-8-e-635"
+  },
+  "/blog/rtx-intro-6fe": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-rtx-intro-814-326"
+  },
+  "/blog/tags-43a": {
+    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "tags": "tags---blog-tagsa-70-da2"
+  },
+  "/blog/tags/devnotes-b31": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2353-5f5"
+      }
+    ],
+    "tag": "tag---blog-tags-devnotes-53-d-0cb",
+    "listMetadata": "listMetadata---blog-tags-devnotesd-97-2e7"
+  },
+  "/blog/tags/dynamics-3f0": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-118-da6"
+      },
+      {
+        "content": "content---blog-page-2-b-9-b-003"
+      },
+      {
+        "content": "content---blog-page-2-ed-7-2b6"
+      },
+      {
+        "content": "content---blog-page-24-bf-cd0"
+      },
+      {
+        "content": "content---blog-page-2574-b18"
+      },
+      {
+        "content": "content---blog-page-2-a-3-f-35d"
+      }
+    ],
+    "tag": "tag---blog-tags-dynamics-469-34f",
+    "listMetadata": "listMetadata---blog-tags-dynamics-7-f-0-97a"
+  },
+  "/blog/tags/evaluation-8b2": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-274-c-a90"
+      }
+    ],
+    "tag": "tag---blog-tags-evaluationa-8-c-d21",
+    "listMetadata": "listMetadata---blog-tags-evaluation-424-eec"
+  },
+  "/blog/tags/events-fe3": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-813-efd"
+      },
+      {
+        "content": "content---blog-page-2574-b18"
+      }
+    ],
+    "tag": "tag---blog-tags-events-4-e-7-252",
+    "listMetadata": "listMetadata---blog-tags-events-907-226"
+  },
+  "/blog/tags/fitting-80c": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-ed-7-2b6"
+      }
+    ],
+    "tag": "tag---blog-tags-fitting-162-3df",
+    "listMetadata": "listMetadata---blog-tags-fittingf-4-f-340"
+  },
+  "/blog/tags/frontend-531": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-118-da6"
+      },
+      {
+        "content": "content---blog-1-cc-458"
+      },
+      {
+        "content": "content---blog-813-efd"
+      },
+      {
+        "content": "content---blog-068-98c"
+      },
+      {
+        "content": "content---blogf-1-f-466"
+      },
+      {
+        "content": "content---blog-page-2-b-9-b-003"
+      },
+      {
+        "content": "content---blog-page-2353-5f5"
+      },
+      {
+        "content": "content---blog-page-23-de-df8"
+      },
+      {
+        "content": "content---blog-page-24-d-4-139"
+      },
+      {
+        "content": "content---blog-page-2-ed-7-2b6"
+      }
+    ],
+    "tag": "tag---blog-tags-frontendc-6-f-79c",
+    "listMetadata": "listMetadata---blog-tags-frontend-99-a-0c6"
+  },
+  "/blog/tags/frontend/page/2-216": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-24-bf-cd0"
+      },
+      {
+        "content": "content---blog-page-2574-b18"
+      },
+      {
+        "content": "content---blog-page-2-a-3-f-35d"
+      }
+    ],
+    "tag": "tag---blog-tags-frontend-page-2128-d9c",
+    "listMetadata": "listMetadata---blog-tags-frontend-page-20-e-2-136"
+  },
+  "/blog/tags/graphics-2f9": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-414-580"
+      },
+      {
+        "content": "content---blogf-1-f-466"
+      },
+      {
+        "content": "content---blog-9-e-8-371"
+      },
+      {
+        "content": "content---blog-page-23-de-df8"
+      }
+    ],
+    "tag": "tag---blog-tags-graphicsd-82-3a1",
+    "listMetadata": "listMetadata---blog-tags-graphicsaa-6-1fd"
+  },
+  "/blog/tags/graphics-3-d-315": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-474-aef"
+      }
+    ],
+    "tag": "tag---blog-tags-graphics-3-d-1-c-3-765",
+    "listMetadata": "listMetadata---blog-tags-graphics-3-d-365-c94"
+  },
+  "/blog/tags/html-6a9": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-24-d-4-139"
+      }
+    ],
+    "tag": "tag---blog-tags-htmld-1-c-483",
+    "listMetadata": "listMetadata---blog-tags-html-589-d6a"
+  },
+  "/blog/tags/metamarkers-342": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-274-c-a90"
+      }
+    ],
+    "tag": "tag---blog-tags-metamarkers-205-046",
+    "listMetadata": "listMetadata---blog-tags-metamarkers-042-155"
+  },
+  "/blog/tags/practice-da8": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---blog-9-e-3-306"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blog-page-2-b-9-b-003"
+      }
+    ],
+    "tag": "tag---blog-tags-practice-3-e-0-448",
+    "listMetadata": "listMetadata---blog-tags-practice-52-e-c82"
+  },
+  "/container-248": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "content": "content---container-7-ed-577"
+  },
+  "/exwl-d37": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "content": "content---exwl-0-fc-c5b"
+  },
+  "/exwljs-7ac": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "content": "content---exwljs-40-b-74f"
+  },
+  "/registered-afc": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "content": "content---registereda-10-49f"
+  },
+  "/update-f39": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "content": "content---update-3-e-1-e31"
+  },
+  "/docs-6ee": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---docs-437-a48"
+    }
+  },
+  "/docs-345": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "version": "version---docs-935-398"
+  },
+  "/docs/tags-0cc": {
+    "__comp": "__comp---theme-doc-tags-list-page-372-89e",
+    "tags": "tags---docs-tags-559-5e5"
+  },
+  "/docs/tags/excalidraw-e59": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "tag": "tag---docs-tags-excalidraw-1-c-7-55a"
+  },
+  "/docs-d3b": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs/category/advanced-7b4": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-advancedf-5-b-d7e"
+  },
+  "/docs/category/cell-types-f6d": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-cell-types-6-b-5-9e9"
+  },
+  "/docs/category/development-089": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-development-71-f-2cb"
+  },
+  "/docs/category/exporting-formats-ffb": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-exporting-formats-12-f-7ca"
+  },
+  "/docs/category/getting-started-01f": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-getting-started-315-9c6"
+  },
+  "/docs/frontend/instruction-f5e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-instruction-37-b-04d"
+  },
+  "/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations-b71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-boxes-and-decorations-dynamic-decorations-796-51b"
+  },
+  "/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring-549": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-dynamics-indicators-and-monitoring-799-88d"
+  },
+  "/docs/frontend/Outdated/Advanced/Dynamics/Performance tips-f61": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-dynamics-performance-tips-9-d-4-72a"
+  },
+  "/docs/frontend/Outdated/Advanced/Dynamics/Scoping-940": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-dynamics-scoping-7-dc-7c0"
+  },
+  "/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate-bdd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-dynamics-simple-manipulate-15-f-b53"
+  },
+  "/docs/frontend/Outdated/Advanced/Editor manipulation-b05": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-editor-manipulation-3-fb-66b"
+  },
+  "/docs/frontend/Outdated/Advanced/Events system/event-generators-2a6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-events-system-event-generators-066-20a"
+  },
+  "/docs/frontend/Outdated/Advanced/Events system/routing-578": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-events-system-routing-01-f-358"
+  },
+  "/docs/frontend/Outdated/Advanced/Frontend interpretation/executables-6be": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-frontend-interpretation-executables-696-e30"
+  },
+  "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions-bdb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-frontend-interpretation-frontend-functions-17-d-ad9"
+  },
+  "/docs/frontend/Outdated/Advanced/JS Tools/Canvas-ffd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-js-tools-canvas-261-813"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/animations-16e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-animations-317-896"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/components-d84": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-components-64-e-a3a"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/embed-wl-7d8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-embed-wl-6-a-4-791"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/intro-c39": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-intro-7-e-6-b9e"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/styling-eff": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-styling-487-ed8"
+  },
+  "/docs/frontend/Outdated/Advanced/Slides/tables-c64": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-slides-tables-691-e25"
+  },
+  "/docs/frontend/Outdated/Advanced/Snippets/-f73": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-advanced-snippets-431-364"
+  },
+  "/docs/frontend/Outdated/Cell types/Chatbook-799": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-chatbooke-57-54e"
+  },
+  "/docs/frontend/Outdated/Cell types/Files-c33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-files-93-c-d8e"
+  },
+  "/docs/frontend/Outdated/Cell types/HTML-3d8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-htm-lb-9-e-64f"
+  },
+  "/docs/frontend/Outdated/Cell types/Javascript-e71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-javascriptfb-6-0da"
+  },
+  "/docs/frontend/Outdated/Cell types/Many more...-c74": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-many-more-a-08-00c"
+  },
+  "/docs/frontend/Outdated/Cell types/Markdown-27b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-markdowndbd-c76"
+  },
+  "/docs/frontend/Outdated/Cell types/Slides-559": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-slides-489-657"
+  },
+  "/docs/frontend/Outdated/Cell types/WLX-698": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-wl-xe-11-c0f"
+  },
+  "/docs/frontend/Outdated/Cell types/Wolfram Language-213": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-cell-types-wolfram-languageea-2-d1f"
+  },
+  "/docs/frontend/Outdated/Development/Decorations-0a0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-development-decorations-09-f-ce1"
+  },
+  "/docs/frontend/Outdated/Development/Plugins/Known packages-d45": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-development-plugins-known-packages-117-199"
+  },
+  "/docs/frontend/Outdated/Development/Structure-87b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-development-structure-739-210"
+  },
+  "/docs/frontend/Outdated/Export/HTML file-820": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-export-html-filef-22-4ec"
+  },
+  "/docs/frontend/Outdated/Export/PDF-bcc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-export-pdf-1-f-6-7bb"
+  },
+  "/docs/frontend/Outdated/Export/React component-66b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-export-react-component-065-da3"
+  },
+  "/docs/frontend/Outdated/Expressions representation-dcb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-expressions-representation-581-eb7"
+  },
+  "/docs/frontend/Outdated/Mathematica vs WLJS-3fe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-mathematica-vs-wlj-sd-2-c-bbc"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Column-aeb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-columncf-5-cfe"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Framed-0f3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-framed-415-85c"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Grid-06d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-grid-92-c-655"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/HTMLForm-26b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-html-formabc-a47"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/InputForm-934": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-input-formbc-4-28d"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Interpretation-2d3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-interpretation-2-e-7-f92"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/InterpretationBox-047": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-interpretation-boxdee-67a"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox-22a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-low-level-box-box-750-f55"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox-3c0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-low-level-view-box-992-a54"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/MakeBoxes-867": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-make-boxesc-80-c24"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/MatrixForm-9a4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-matrix-form-34-b-4ec"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Row-d2a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-rowa-27-fc7"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/Style-c7f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-style-884-df3"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/SVGForm-6b1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-svg-formd-06-6cf"
+  },
+  "/docs/frontend/Outdated/Reference/Decorations/TableForm-2c7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-decorations-table-formcda-2b1"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject-7ec": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-create-front-end-object-1-c-1-8cf"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Dynamic-6cd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-dynamic-43-a-2bc"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/DynamicModule-094": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-dynamic-moduledc-7-a9c"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual-52c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-front-end-virtual-264-025"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit-c05": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-front-submit-0-d-8-02b"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable-47d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-internals-front-end-executablead-4-bad"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline-211": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-internals-front-end-executable-inline-627-b14"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly-544": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-internals-front-end-onlye-79-620"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef-63e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-internals-front-end-refcd-2-e4f"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Manipulate-d27": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-manipulate-7-d-8-7ce"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/MetaMarker-6b5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-meta-marker-47-e-dad"
+  },
+  "/docs/frontend/Outdated/Reference/Dynamics/Offload-e8e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-dynamics-offload-475-e25"
+  },
+  "/docs/frontend/Outdated/Reference/Events/Assign-a00": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-assign-642-d2b"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventClone-df0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-clone-51-c-02e"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventFire-854": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-firebce-b31"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventHandler-cde": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-handlera-78-374"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventJoin-a67": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-join-346-9af"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventObject-000": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-object-22-b-ef3"
+  },
+  "/docs/frontend/Outdated/Reference/Events/EventRemove-de8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-events-event-remove-808-845"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/-282": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-01-d-9cb"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness-5b2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-absolute-thickness-2-da-8bc"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Arrow-2cb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-arrow-4-b-5-687"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Circle-340": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-circle-134-dcb"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Directive-294": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-directive-5-a-5-5ab"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Disk-e43": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-disk-32-f-021"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex-135": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-graphics-complexe-9-a-dd2"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Image-063": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-imageeaf-63d"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Inset-ae7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-insetfef-004"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener-412": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-internal-event-listener-1-c-3-909"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Line-1bc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-linede-2-ce7"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler-b4d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-middleware-handler-7-b-7-3fd"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Offset-59f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-offset-847-554"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Point-b11": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-pointd-7-e-8a9"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Polygon-f1e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-polygon-2-e-5-a7b"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Raster-482": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-raster-8-be-b68"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Rectangle-444": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-rectanglec-46-6da"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Rotate-024": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-rotate-4-b-8-54d"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Show-e22": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-showead-b1b"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Style-999": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-style-37-a-3bd"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute-554": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-svg-attribute-3-a-8-0ca"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Text-f86": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-text-793-4a5"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics/Translate-dee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-translate-6-bb-f9d"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics3D/-765": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-3-d-83-f-cc1"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics3D/Cuboid-5c1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-3-d-cuboid-404-bd4"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics3D/EventListener-e5c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-3-d-event-listener-41-f-c61"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics3D/Sphere-ddf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-3-d-spheree-62-4c1"
+  },
+  "/docs/frontend/Outdated/Reference/Graphics3D/SpotLight-654": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-graphics-3-d-spot-light-3-f-7-50a"
+  },
+  "/docs/frontend/Outdated/Reference/Input/ButtonView-bb6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-button-view-4-a-2-563"
+  },
+  "/docs/frontend/Outdated/Reference/Input/EditorView-4e8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-editor-view-425-5fd"
+  },
+  "/docs/frontend/Outdated/Reference/Input/FileUploadView-bba": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-file-upload-viewc-92-2ba"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputButton-bbf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-button-695-122"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputFile-348": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-filecfc-a52"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputGroup-54a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-group-5-ed-388"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputRange-532": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-range-140-3f6"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputSpoiler-d1a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-spoiler-266-9c4"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputTable-6be": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-table-832-ccd"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputText-b4d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-text-026-00f"
+  },
+  "/docs/frontend/Outdated/Reference/Input/InputToggle-da6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-input-toggle-077-7d5"
+  },
+  "/docs/frontend/Outdated/Reference/Input/RangeView-a71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-range-viewd-3-f-f3f"
+  },
+  "/docs/frontend/Outdated/Reference/Input/Slider-08a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-slider-2-e-2-3b1"
+  },
+  "/docs/frontend/Outdated/Reference/Input/TextView-4da": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-text-viewd-64-107"
+  },
+  "/docs/frontend/Outdated/Reference/Input/ToggleView-798": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-input-toggle-view-95-a-10c"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage-98f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-cell-hash-storage-962-24a"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/core-705": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-core-5-de-b33"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/downloadByURL-7b1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-download-by-ur-lc-2-c-9b1"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap-a5f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-instances-hash-map-06-e-a24"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/interpretate-826": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-interpretateb-4-e-a84"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap-a25": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-object-hash-map-01-f-c78"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/openawindow-91b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-openawindow-9-c-3-0d2"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/server-9d1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-server-914-562"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML-a8d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-set-inner-html-9-b-5-841"
+  },
+  "/docs/frontend/Outdated/Reference/Javascript API/uuidv4-ca2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-javascript-api-uuidv-42-ea-7bc"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ArrayPlot-978": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-array-plota-16-7c7"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/BarChart-a35": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-bar-chart-1-a-0-631"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/BubbleChart-5fb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-bubble-chart-739-34d"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ContourPlot-041": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-contour-plotb-6-a-cf9"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/DensityPlot-73c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-density-plot-957-24a"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListContourPlot-ca7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-contour-plot-949-9fc"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot-94f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-curve-path-plote-03-442"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListLinePlot-6df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-line-plot-612-3d2"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly-e91": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-line-plotly-842-d6e"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListStepPlot-4a2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-step-plotc-5-b-f8c"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot-932": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-list-vector-plotd-38-0fa"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot-383": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-matrix-plotab-2-449"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/Plot-b6b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-plot-6-ac-3b4"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/Plotly-58f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-plotlyf-0-a-9dd"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/RandomImage-1e2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-random-imageba-7-a03"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot-678": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-stacked-list-plot-5-f-5-f09"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/StreamPlot-98a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-stream-plotcd-6-05d"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/VectorPlot-ef4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-vector-plot-561-c1c"
+  },
+  "/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D-ff5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-plotting-vector-plot-3-d-834-3da"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/Alert-371": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-alert-55-e-13c"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM-cc9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-attach-do-mac-5-633"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols-421": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-flip-symbols-262-67f"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected-31c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-front-editor-selectede-71-d80"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard-444": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-read-clipboard-07-b-067"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel-27e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-talk-kernela-8-d-1b1"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster-837": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-talk-masterf-00-f05"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope-212": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-window-scopeb-59-f97"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction-38f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-frontend-wljs-function-26-a-008"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/LeakyModule-83d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-leaky-modulecb-2-824"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint-abb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-notebook-cell-printe-30-afe"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell-1e1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-notebook-evaluation-cell-623-7d7"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle-1cb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-notebook-global-throttle-94-a-17c"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore-d70": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-notebook-notebook-store-06-a-d1e"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell-0fc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-notebook-parent-cellf-4-d-8bd"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent-8cf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-slides-slide-eventdd-0-b0d"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval-8cb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-timers-set-interval-2-ba-17a"
+  },
+  "/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout-b61": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-reference-tools-timers-set-timeout-0-b-6-d41"
+  },
+  "/docs/frontend/Outdated/Troubleshooting-ef9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-troubleshooting-3-ab-d67"
+  },
+  "/docs/frontend/Outdated/Tutorial/Dynamics-52a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-dynamics-014-436"
+  },
+  "/docs/frontend/Outdated/Tutorial/Export notebook-54d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-export-notebook-1-c-1-a14"
+  },
+  "/docs/frontend/Outdated/Tutorial/GUI Overview-8a5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-gui-overview-3-b-8-c35"
+  },
+  "/docs/frontend/Outdated/Tutorial/Input elements-b88": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-input-elementsb-90-75d"
+  },
+  "/docs/frontend/Outdated/Tutorial/Overview-edc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-overview-737-a6b"
+  },
+  "/docs/frontend/Outdated/Tutorial/Plugins-04d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-frontend-outdated-tutorial-plugins-15-b-438"
+  },
+  "/docs/imgs/FE data binding.excalidraw 1-d53": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-imgs-fe-data-binding-excalidraw-1165-9d1"
+  },
+  "/docs/imgs/feinput.gif-d03": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-imgs-feinput-gif-47-d-4ea"
+  },
+  "/docs/imgs/manipulate-frontend-example.excalidraw-8f5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-imgs-manipulate-frontend-example-excalidraw-993-fd8"
+  },
+  "/docs/interpreter/Advanced/architecture-f62": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-advanced-architecture-114-ec7"
+  },
+  "/docs/interpreter/Advanced/containers-050": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-advanced-containers-71-a-76c"
+  },
+  "/docs/interpreter/Advanced/meta-markers-236": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-advanced-meta-markers-3-e-4-d6f"
+  },
+  "/docs/interpreter/Advanced/symbols-20c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-advanced-symbolsdd-4-c0d"
+  },
+  "/docs/interpreter/Basics/graphics-d62": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-basics-graphics-421-c1f"
+  },
+  "/docs/interpreter/Basics/js-access-55e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-basics-js-access-4-a-3-741"
+  },
+  "/docs/interpreter/Basics/scripts-d54": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-basics-scripts-982-892"
+  },
+  "/docs/interpreter/Basics/syntax-e94": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-basics-syntax-636-761"
+  },
+  "/docs/interpreter/Extras/implementation-4a3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-extras-implementation-696-f38"
+  },
+  "/docs/interpreter/Extras/reference-ea9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-extras-reference-193-36d"
+  },
+  "/docs/interpreter/intro-e91": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-interpreter-intro-819-1a9"
+  },
+  "/-d5e": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---containerdf-6-3ba"
+    },
+    "config": "config---5-e-9-4f3"
+  }
+}

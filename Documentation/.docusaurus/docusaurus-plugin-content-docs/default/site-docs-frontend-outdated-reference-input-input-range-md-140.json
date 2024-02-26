@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Outdated/Reference/Input/InputRange",
+  "title": "InputRange",
+  "description": "creates a basic combo of a slider and numerical input field and returns EventObject.",
+  "source": "@site/docs/frontend/Outdated/Reference/Input/InputRange.md",
+  "sourceDirName": "frontend/Outdated/Reference/Input",
+  "slug": "/frontend/Outdated/Reference/Input/InputRange",
+  "permalink": "/docs/frontend/Outdated/Reference/Input/InputRange",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputGroup",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/InputGroup"
+  },
+  "next": {
+    "title": "InputSpoiler",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/InputSpoiler"
+  }
+}

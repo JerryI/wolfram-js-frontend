@@ -1,0 +1,19 @@
+{
+  "id": "interpreter/Advanced/symbols",
+  "title": "Definitions",
+  "description": "Let's make the things clear.",
+  "source": "@site/docs/interpreter/Advanced/symbols.md",
+  "sourceDirName": "interpreter/Advanced",
+  "slug": "/interpreter/Advanced/symbols",
+  "permalink": "/docs/interpreter/Advanced/symbols",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  }
+}

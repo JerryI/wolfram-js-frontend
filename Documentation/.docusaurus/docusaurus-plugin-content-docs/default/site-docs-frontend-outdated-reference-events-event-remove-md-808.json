@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Events/EventRemove",
+  "title": "EventRemove",
+  "description": "removes a handler function from event object ev previously assigned using EventHandler expression. Native Wolfram Language Delete also works",
+  "source": "@site/docs/frontend/Outdated/Reference/Events/EventRemove.md",
+  "sourceDirName": "frontend/Outdated/Reference/Events",
+  "slug": "/frontend/Outdated/Reference/Events/EventRemove",
+  "permalink": "/docs/frontend/Outdated/Reference/Events/EventRemove",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "source": "https://github.com/JerryI/wl-misc/"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EventObject",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/EventObject"
+  },
+  "next": {
+    "title": "Graphics",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/"
+  }
+}

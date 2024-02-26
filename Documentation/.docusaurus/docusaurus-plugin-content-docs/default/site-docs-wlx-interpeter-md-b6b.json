@@ -1,0 +1,28 @@
+{
+  "id": "WLX/interpeter",
+  "title": "Running WL in a browser",
+  "description": "There is a set of JS and WL libraries, which originally designed for WLJS Notebook project. It comes with a tiny Wolfram Language interpreter written in Javascript. It covers most needs in small numeric calculations, plotting and dynamics. To unlock full potential see dynamics section.",
+  "source": "@site/docs/WLX/interpeter.md",
+  "sourceDirName": "WLX",
+  "slug": "/WLX/interpeter",
+  "permalink": "/wlx-docs/docs/WLX/interpeter",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Components",
+    "permalink": "/wlx-docs/docs/WLX/components"
+  },
+  "next": {
+    "title": "Dynamics and interactivity",
+    "permalink": "/wlx-docs/docs/WLX/dynamics"
+  }
+}

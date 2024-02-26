@@ -127,7 +127,8 @@ $Env = <|
   "http" -> 20560,
   "ws"   -> 20559,
   "jtp"  -> 20562,
-  "ws2"  -> 20563
+  "ws2"  -> 20563,
+  "docs" -> 20540
 |>;
 
 
@@ -166,6 +167,22 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf", "
 )
 
 SocketListen[CSocketOpen[$Env["host"], $Env["http"]], tcp@#&]
+
+Print["Starting HTTP server for docs..."];
+
+dcp = TCPServer[];
+dcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
+dcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> dhttp;
+
+dhttp = HTTPHandler[];
+dhttp["MessageHandler", "Index"]  = AssocMatchQ[<|"Path" -> "/"|>] -> (ImportFile["index.html", "Base"->FileNameJoin[{Directory[], "Documentation", "build"}] ] &)
+dhttp["MessageHandler", "All"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf", "html", "woff", "css", "js", "apng", "png", "jpg", "svg", "pdf", "gif", "json"}] -> (
+  ImportFile[#, "Base"->FileNameJoin[{Directory[], "Documentation", "build"}] ] &
+)
+
+SocketListen[CSocketOpen[$Env["host"], $Env["docs"]], dcp@#&]
+
+
 
 Print["Staring WS/HTTP server..."];
 

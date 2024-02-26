@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Outdated/Cell types/Javascript",
+  "title": "Javascript",
+  "description": "Github repo",
+  "source": "@site/docs/frontend/Outdated/Cell types/Javascript.md",
+  "sourceDirName": "frontend/Outdated/Cell types",
+  "slug": "/frontend/Outdated/Cell types/Javascript",
+  "permalink": "/docs/frontend/Outdated/Cell types/Javascript",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTML",
+    "permalink": "/docs/frontend/Outdated/Cell types/HTML"
+  },
+  "next": {
+    "title": "Files",
+    "permalink": "/docs/frontend/Outdated/Cell types/Files"
+  }
+}

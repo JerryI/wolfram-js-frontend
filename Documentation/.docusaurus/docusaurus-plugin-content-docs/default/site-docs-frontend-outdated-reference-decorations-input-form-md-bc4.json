@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Decorations/InputForm",
+  "title": "InputForm",
+  "description": "Prevents decorations to be set",
+  "source": "@site/docs/frontend/Outdated/Reference/Decorations/InputForm.md",
+  "sourceDirName": "frontend/Outdated/Reference/Decorations",
+  "slug": "/frontend/Outdated/Reference/Decorations/InputForm",
+  "permalink": "/docs/frontend/Outdated/Reference/Decorations/InputForm",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTMLForm",
+    "permalink": "/docs/frontend/Outdated/Reference/Decorations/HTMLForm"
+  },
+  "next": {
+    "title": "Interpretation",
+    "permalink": "/docs/frontend/Outdated/Reference/Decorations/Interpretation"
+  }
+}

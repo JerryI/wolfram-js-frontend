@@ -1,0 +1,15 @@
+{
+  "title": "Development",
+  "slug": "/category/development",
+  "permalink": "/docs/category/development",
+  "navigation": {
+    "previous": {
+      "title": "React component",
+      "permalink": "/docs/frontend/Outdated/Export/React component"
+    },
+    "next": {
+      "title": "Structure",
+      "permalink": "/docs/frontend/Outdated/Development/Structure"
+    }
+  }
+}

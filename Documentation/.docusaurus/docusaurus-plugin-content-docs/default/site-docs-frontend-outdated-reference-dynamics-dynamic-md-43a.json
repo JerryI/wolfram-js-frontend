@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Reference/Dynamics/Dynamic",
+  "title": "Dynamic",
+  "description": "This concept is different from Mathematica. Please, use event-based approach instead - Dynamics",
+  "source": "@site/docs/frontend/Outdated/Reference/Dynamics/Dynamic.md",
+  "sourceDirName": "frontend/Outdated/Reference/Dynamics",
+  "slug": "/frontend/Outdated/Reference/Dynamics/Dynamic",
+  "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Dynamic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CreateFrontEndObject",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject"
+  },
+  "next": {
+    "title": "DynamicModule",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/DynamicModule"
+  }
+}

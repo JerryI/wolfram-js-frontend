@@ -1,0 +1,16 @@
+{
+  "title": "Advanced",
+  "description": "Deep dive into how to extend frontend features and gain maximum flexibility and performance.",
+  "slug": "/category/advanced-1",
+  "permalink": "/docs/category/advanced-1",
+  "navigation": {
+    "previous": {
+      "title": "Working with graphics",
+      "permalink": "/docs/interpreter/Basics/graphics"
+    },
+    "next": {
+      "title": "Architecture of symbols",
+      "permalink": "/docs/interpreter/Advanced/architecture"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Events/EventObject",
+  "title": "EventObject",
+  "description": "a local representation of event entity used in Dynamics,  Input elements and event-generators. It does provide extra feature to an event system such as listed below",
+  "source": "@site/docs/frontend/Outdated/Reference/Events/EventObject.md",
+  "sourceDirName": "frontend/Outdated/Reference/Events",
+  "slug": "/frontend/Outdated/Reference/Events/EventObject",
+  "permalink": "/docs/frontend/Outdated/Reference/Events/EventObject",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "source": "https://github.com/JerryI/wl-misc/"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EventJoin",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/EventJoin"
+  },
+  "next": {
+    "title": "EventRemove",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/EventRemove"
+  }
+}

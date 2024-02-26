@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Reference/Input/Slider",
+  "title": "Slider",
+  "description": "This is not supported. Please, use alternative way InputRange",
+  "source": "@site/docs/frontend/Outdated/Reference/Input/Slider.md",
+  "sourceDirName": "frontend/Outdated/Reference/Input",
+  "slug": "/frontend/Outdated/Reference/Input/Slider",
+  "permalink": "/docs/frontend/Outdated/Reference/Input/Slider",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RangeView",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/RangeView"
+  },
+  "next": {
+    "title": "TextView",
+    "permalink": "/docs/frontend/Outdated/Reference/Input/TextView"
+  }
+}

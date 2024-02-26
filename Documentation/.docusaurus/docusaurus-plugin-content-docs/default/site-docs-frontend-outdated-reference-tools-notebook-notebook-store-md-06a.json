@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+  "title": "NotebookStore",
+  "description": "Sometimes it is easier to ship notebook together with the data it depends on. However, not as a text encoded using BASE64 pasted into a notebook cell - it would just kill the performance, but as a dedicated inner structure, that can be exposed using NotebookStore",
+  "source": "@site/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore.md",
+  "sourceDirName": "frontend/Outdated/Reference/Tools/Notebook",
+  "slug": "/frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+  "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "GlobalThrottle",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle"
+  },
+  "next": {
+    "title": "ParentCell",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell"
+  }
+}

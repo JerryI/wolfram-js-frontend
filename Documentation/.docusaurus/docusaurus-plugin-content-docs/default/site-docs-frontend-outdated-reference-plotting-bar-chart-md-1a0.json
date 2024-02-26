@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/BarChart",
+  "title": "BarChart",
+  "description": "generates a bar chart for a list of heights",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/BarChart.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/BarChart",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/BarChart",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://reference.wolfram.com/language/ref/BarChart.html",
+    "update": false,
+    "needsContainer": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ArrayPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/ArrayPlot"
+  },
+  "next": {
+    "title": "BubbleChart",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/BubbleChart"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "WLX/examples/fileexplorer",
+  "title": "File explorer & Plotter",
+  "description": "This is an example of a static App, where there is no live connection to Kernel involved, it is close to somewhat typical PHP website.",
+  "source": "@site/docs/WLX/examples/fileexplorer.md",
+  "sourceDirName": "WLX/examples",
+  "slug": "/WLX/examples/fileexplorer",
+  "permalink": "/wlx-docs/docs/WLX/examples/fileexplorer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/wlx-docs/docs/category/examples"
+  },
+  "next": {
+    "title": "Bouncing balls",
+    "permalink": "/wlx-docs/docs/WLX/examples/app"
+  }
+}

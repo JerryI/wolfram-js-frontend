@@ -1,0 +1,26 @@
+{
+  "id": "frontend/instruction",
+  "title": "Quick start",
+  "description": "Wolfram Language Notebook requires  wolframscript (see Freeware Wolfram Engine or Wolfram Kernel) installed on your PC/Mac.",
+  "source": "@site/docs/frontend/instruction.md",
+  "sourceDirName": "frontend",
+  "slug": "/frontend/instruction",
+  "permalink": "/docs/frontend/instruction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "enableComments": true,
+    "sidebar_class_name": "green"
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Getting started",
+    "permalink": "/docs/category/getting-started"
+  }
+}

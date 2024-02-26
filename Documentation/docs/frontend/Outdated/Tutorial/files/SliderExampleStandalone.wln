@@ -1,0 +1,69 @@
+<|"notebook" -> <|"name" -> "Cenobitic", "id" -> "adage-afc89", 
+   "kernel" -> LocalKernel, "objects" :> 
+    <|"b8d98b3e-30df-4f62-8525-6e87b61ce637" -> 
+      <|"json" -> "[\"RangeView\",[\"List\",0,6,0.5,3.0],[\"Rule\",\"'Event'\
+\",\"'d0cca3ab-2079-42c6-a7a7-16f39169c078'\"]]", 
+       "date" -> DateObject[{2023, 6, 12, 15, 59, 
+          17.043656`7.984137744573426}, "Instant", "Gregorian", 3.]|>, 
+     "7801fd1c-f714-453e-9a64-1e8e7ce9f783" -> 
+      <|"json" -> "[\"Graphics\",[\"List\",[\"RGBColor\",0,1,1],[\"Line\",[\"\
+Hold\",[\"With\",[\"List\",[\"Set\",\"y\",\"v\"]],[\"Table\",[\"List\",[\"Cos\
+\",\"x\"],[\"Sin\",[\"Times\",\"y\",\"x\"]]],[\"List\",\"x\",0,[\"Times\",2,\
+\"Pi\"],1.0e-2]]]]]]]", "date" -> DateObject[{2023, 10, 8, 9, 40, 
+          28.481932`8.207144426757377}, "Instant", "Gregorian", 2.]|>|>, 
+   "path" -> "/Volumes/Data/Github/wljs-docs/docs/frontend/Tutorial/files/Sli\
+derExampleStandalone.wln", "cell" :> Exit[], 
+   "date" -> DateObject[{2023, 10, 8, 10, 17, 1.443407`6.911963796024649}, 
+     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
+   "channel" -> WebSocketChannel[
+     KirillBelov`WebSocketHandler`WebSocketChannel`$16], 
+   "SelectedCell" -> "d8b34085-1f45-46ea-9af2-520b3f13eda27a9"|>, 
+ "cells" -> {<|"id" -> "7e5a41fb-9ca0-458a-bf58-1df776ea7dbb7a9", 
+    "type" -> "input", "data" -> ".mdslider = InputRange[0,6, 0.5] \nTo \
+define slider use `InputRange` symbol (simillar to one you have in HTML)", 
+    "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "1c4801ff-5fb1-4b88-9355-84ff0c68b9027a9", "type" -> "output", 
+    "data" -> "\nTo define slider use `InputRange` symbol (simillar to one \
+you have in HTML)", "display" -> "markdown", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "d8b34085-1f45-46ea-9af2-520b3f13eda27a9", "type" -> "input", 
+    "data" -> "RangeView[{0,6,0.5, v}]//CreateFrontEndObject", 
+    "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "0ba4009e-12a2-41fd-bc01-9c4a4a162a34", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"408deaf4-7ac3-442d-9752-b44b1806c456\"]", 
+    "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "18859a2b-d502-42aa-ba66-de18c19715b97a9", "type" -> "input", 
+    "data" -> ".md\nThere is no need in assigning a handler function, since \
+it works just in browser", "display" -> "codemirror", 
+    "sign" -> "adage-afc89", "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "778c22d3-0687-4d54-baa7-4bc92e85998b7a9", "type" -> "output", 
+    "data" -> "\nThere is no need in assigning a handler function, since it \
+works just in browser", "display" -> "markdown", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "4f6b5aca-b973-4755-bfe0-de9f651221d67a9", "type" -> "input", 
+    "data" -> ".md\nLet's attach to our variable something interesting", 
+    "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "a172e9b7-58a1-4fd1-b889-a4790aee6a017a9", "type" -> "output", 
+    "data" -> "\nLet's attach to our variable something interesting", 
+    "display" -> "markdown", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "eb234683-3f7b-4e30-94c8-7d0bc49318287a9", "type" -> "input", 
+    "data" -> "Graphics[{Cyan, Line[With[{y = v}, Table[{Cos[x], Sin[y x]}, \
+{x,0,2$Pi$, 0.01}]] // Hold]}]", "display" -> "codemirror", 
+    "sign" -> "adage-afc89", "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "956defb0-e421-465e-b4d6-770b5bf197c57a9", "type" -> "output", 
+    "data" -> "FrontEndExecutable[\"7801fd1c-f714-453e-9a64-1e8e7ce9f783\"]", 
+    "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>, 
+   <|"id" -> "410a8ff5-3c76-4d70-b4cf-122f8cfe3a467a9", "type" -> "input", 
+    "data" -> ".md\nIt will work offline, there is no data-transfer to \
+Wolfram Kernel needed", "display" -> "codemirror", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> True|>|>, 
+   <|"id" -> "d9cc9455-a652-45dc-b821-11bb78d75a797a9", "type" -> "output", 
+    "data" -> "\nIt will work offline, there is no data-transfer to Wolfram \
+Kernel needed", "display" -> "markdown", "sign" -> "adage-afc89", 
+    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>

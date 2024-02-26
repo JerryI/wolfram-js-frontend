@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Outdated/Advanced/JS Tools/Canvas",
+  "title": "Canvas",
+  "description": "A very powerful component for visualization we have is  canvas. It supports WebGL renderer, i.e. one can run graphics shaders and use GPU to accelerate the rendering.",
+  "source": "@site/docs/frontend/Outdated/Advanced/JS Tools/Canvas.md",
+  "sourceDirName": "frontend/Outdated/Advanced/JS Tools",
+  "slug": "/frontend/Outdated/Advanced/JS Tools/Canvas",
+  "permalink": "/docs/frontend/Outdated/Advanced/JS Tools/Canvas",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frontend functions",
+    "permalink": "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions"
+  },
+  "next": {
+    "title": "Basics",
+    "permalink": "/docs/frontend/Outdated/Advanced/Slides/intro"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Examples",
+  "description": "The best way to learn how to use WLX is to do something practical.",
+  "slug": "/category/examples",
+  "permalink": "/wlx-docs/docs/category/examples",
+  "navigation": {
+    "previous": {
+      "title": "Dynamics and interactivity",
+      "permalink": "/wlx-docs/docs/WLX/dynamics"
+    },
+    "next": {
+      "title": "File explorer & Plotter",
+      "permalink": "/wlx-docs/docs/WLX/examples/fileexplorer"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "permalink": "/blog/practice-integration",
+  "source": "@site/blog/2023-07-22-pratical-integration/index.md",
+  "title": "WLJS in practice. Integrating absorption spectra",
+  "description": "I would like to start this series of application cases, where I am going to solve real-life problems I face using WLJS Frontend. Since my main area is quantum physics, it will be more focused on the scientific research field.",
+  "date": "2023-07-22T00:00:00.000Z",
+  "formattedDate": "July 22, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    },
+    {
+      "label": "practice",
+      "permalink": "/blog/tags/practice"
+    },
+    {
+      "label": "dynamics",
+      "permalink": "/blog/tags/dynamics"
+    }
+  ],
+  "readingTime": 0.715,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "practice-integration",
+    "title": "WLJS in practice. Integrating absorption spectra",
+    "authors": "jerryi",
+    "tags": [
+      "frontend",
+      "practice",
+      "dynamics"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "A major update of Graphics3D",
+    "permalink": "/blog/intro-transform-3d"
+  },
+  "nextItem": {
+    "title": "Developing library function in a notebook",
+    "permalink": "/blog/practical-working-withlibs"
+  }
+}

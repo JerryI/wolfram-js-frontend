@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+  "title": "TalkMaster",
+  "description": "the same as TalkKernel, but send the result to a master Wolfram kernel instead.",
+  "source": "@site/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster.md",
+  "sourceDirName": "frontend/Outdated/Reference/Tools/Frontend",
+  "slug": "/frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+  "permalink": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TalkKernel",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel"
+  },
+  "next": {
+    "title": "WLJSFunction",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Export/PDF",
+  "title": "PDF",
+  "description": "Is in development",
+  "source": "@site/docs/frontend/Outdated/Export/PDF.md",
+  "sourceDirName": "frontend/Outdated/Export",
+  "slug": "/frontend/Outdated/Export/PDF",
+  "permalink": "/docs/frontend/Outdated/Export/PDF",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTML file",
+    "permalink": "/docs/frontend/Outdated/Export/HTML file"
+  },
+  "next": {
+    "title": "React component",
+    "permalink": "/docs/frontend/Outdated/Export/React component"
+  }
+}

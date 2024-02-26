@@ -1,0 +1,25 @@
+{
+  "id": "Reference/WLX/Importer",
+  "title": "Importer",
+  "description": "ImportComponent",
+  "source": "@site/docs/Reference/WLX/Importer.md",
+  "sourceDirName": "Reference/WLX",
+  "slug": "/Reference/WLX/Importer",
+  "permalink": "/wlx-docs/docs/Reference/WLX/Importer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "WLX",
+    "permalink": "/wlx-docs/docs/Reference/WLX/"
+  },
+  "next": {
+    "title": "WLJS",
+    "permalink": "/wlx-docs/docs/Reference/WLX/WLJS"
+  }
+}

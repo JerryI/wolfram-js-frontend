@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/Plot",
+  "title": "Plot",
+  "description": "A Swiss knife for displaying 2D data",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/Plot.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/Plot",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/Plot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": false,
+    "virtual": null,
+    "registered": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "MatrixPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot"
+  },
+  "next": {
+    "title": "Plotly",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/Plotly"
+  }
+}

@@ -1,0 +1,189 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6440,        181]
+NotebookOptionsPosition[      5960,        164]
+NotebookOutlinePosition[      6356,        180]
+CellTagsIndexPosition[      6313,        177]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"animate", "[", 
+     RowBox[{"vel_", ",", "points_"}], "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"MapIndexed", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Max", "[", 
+            RowBox[{"#1", "//", "Abs"}], "]"}], ">", "1.2"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"vel", "[", 
+              RowBox[{"[", 
+               RowBox[{"#2", "//", "First"}], "]"}], "]"}]}], ",", 
+            RowBox[{"#1", "-", 
+             RowBox[{"0.1", " ", 
+              RowBox[{"vel", "[", 
+               RowBox[{"[", 
+                RowBox[{"#2", "//", "First"}], "]"}], "]"}]}]}]}], "}"}], ",",
+           " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"vel", "[", 
+             RowBox[{"[", 
+              RowBox[{"#2", "//", "First"}], "]"}], "]"}], ",", 
+            RowBox[{"#1", "+", 
+             RowBox[{"0.1", " ", 
+              RowBox[{"vel", "[", 
+               RowBox[{"[", 
+                RowBox[{"#2", "//", "First"}], "]"}], "]"}]}]}]}], "}"}]}], 
+         "\[IndentingNewLine]", "]"}], "&"}], ",", "points"}], "]"}], "//", 
+     "Transpose"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"addPoint", "[", 
+     RowBox[{"xy_", ",", " ", "points_", ",", " ", "vel_"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Append", "[", 
+       RowBox[{"points", ",", " ", "xy"}], "]"}], ",", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"vel", ",", " ", 
+        RowBox[{"RandomReal", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "2"}], "]"}]}], 
+       "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Framed", "@", 
+  RowBox[{"DynamicModule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"points", "=", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"vel", "=", 
+       RowBox[{"{", "}"}]}]}], "}"}], ",", 
+    RowBox[{"EventHandler", "[", 
+     RowBox[{
+      RowBox[{"Graphics", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "0.1", "]"}], ",", 
+          RowBox[{"Point", "[", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"vel", ",", "points"}], "}"}], "=", 
+              RowBox[{"animate", "[", 
+               RowBox[{"vel", ",", "points"}], "]"}]}], ";", 
+             "\[IndentingNewLine]", "points"}], "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"PlotRange", "->", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+      RowBox[{"\"\<MouseDown\>\"", ":>", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"points", ",", "vel"}], "}"}], "=", 
+         RowBox[{"addPoint", "[", 
+          RowBox[{
+           RowBox[{"MousePosition", "[", "\"\<Graphics\>\"", "]"}], ",", " ", 
+           "points", ",", " ", "vel"}], "]"}]}], ")"}]}]}], "]"}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.89775088886217*^9, 3.897751166168006*^9}, {
+  3.897751236234241*^9, 3.8977512527441273`*^9}, {3.89775128651266*^9, 
+  3.897751325213888*^9}, {3.897751370409034*^9, 3.897751435458489*^9}, {
+  3.897751474283291*^9, 3.8977515363473*^9}, {3.89775158479941*^9, 
+  3.897751588433296*^9}},ExpressionUUID->"c256d165-a42e-4687-93b0-\
+73c79bf976c4"],
+
+Cell[BoxData[
+ FrameBox[
+  DynamicModuleBox[{$CellContext`points$$ = {{0.9648906726176915, 
+   0.4729914897173296}, {-1.0346435568720154`, 
+   0.02031072207358802}, {-0.3856485751011338, 1.180253399294135}, {
+   0.18188084863314458`, -0.6447104040743432}, {-0.6211843364007263, \
+-0.43945192249017584`}, {-0.8484904312889217, -0.1604903158366502}}, \
+$CellContext`vel$$ = {{0.8939128478181799, 
+   0.3039708998690025}, {-0.8011067723937018, 0.3021530288651868}, {
+   0.5071797586238675, -0.9055552609449253}, {0.08231965863682067, 
+   0.9431548553004716}, {0.40483062183694063`, 0.14437426917584117`}, {
+   0.668280644193346, 0.651498455573265}}}, 
+   TagBox[
+    GraphicsBox[
+     {PointSize[0.1], 
+      PointBox[Dynamic[{$CellContext`vel$$, $CellContext`points$$} = \
+$CellContext`animate[$CellContext`vel$$, $CellContext`points$$]; \
+$CellContext`points$$]]},
+     PlotRange->{{-1, 1}, {-1, 1}}],
+    EventHandlerTag[{
+     "MouseDown" :> ({$CellContext`points$$, $CellContext`vel$$} = \
+$CellContext`addPoint[
+         MousePosition[
+         "Graphics"], $CellContext`points$$, $CellContext`vel$$]), Method -> 
+      "Preemptive", PassEventsDown -> Automatic, PassEventsUp -> True}]],
+   DynamicModuleValues:>{}],
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.897751128213108*^9, 3.897751166576962*^9}, {
+   3.897751237036708*^9, 3.897751253253624*^9}, {3.8977513161446123`*^9, 
+   3.897751436261538*^9}, 3.897751507334518*^9, 3.897751538550391*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"73cc666a-b5d6-4856-8282-5f6f60a04f3d"]
+}, Open  ]]
+},
+WindowSize->{808, 667},
+WindowMargins->{{47, Automatic}, {-5, Automatic}},
+FrontEndVersion->"13.0 for Mac OS X x86 (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7c6256df-442d-4f53-90b0-7a5a55026497"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3816, 107, 283, "Input",ExpressionUUID->"c256d165-a42e-4687-93b0-73c79bf976c4"],
+Cell[4399, 131, 1545, 30, 389, "Output",ExpressionUUID->"73cc666a-b5d6-4856-8282-5f6f60a04f3d"]
+}, Open  ]]
+}
+]
+*)
+

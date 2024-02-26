@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+  "title": "Frontend functions",
+  "description": "This is a hardcore stuff, don't go here with a clear purpose",
+  "source": "@site/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions.md",
+  "sourceDirName": "frontend/Outdated/Advanced/Frontend interpretation",
+  "slug": "/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+  "permalink": "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Working with containers",
+    "permalink": "/docs/frontend/Outdated/Advanced/Frontend interpretation/executables"
+  },
+  "next": {
+    "title": "Canvas",
+    "permalink": "/docs/frontend/Outdated/Advanced/JS Tools/Canvas"
+  }
+}

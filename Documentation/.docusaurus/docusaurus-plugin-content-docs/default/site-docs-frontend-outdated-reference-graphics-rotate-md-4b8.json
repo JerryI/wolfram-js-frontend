@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Rotate",
+  "title": "Rotate",
+  "description": "",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Rotate.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/Rotate",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Rotate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rectangle",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Rectangle"
+  },
+  "next": {
+    "title": "SVGAttribute",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute"
+  }
+}

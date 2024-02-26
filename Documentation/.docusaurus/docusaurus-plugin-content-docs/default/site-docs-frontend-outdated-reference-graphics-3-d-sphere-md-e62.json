@@ -1,0 +1,33 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics3D/Sphere",
+  "title": "Sphere",
+  "description": "",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics3D/Sphere.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics3D",
+  "slug": "/frontend/Outdated/Reference/Graphics3D/Sphere",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics3D/Sphere",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "virtual": true,
+    "needsContainer": null,
+    "update": true,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EventListener",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics3D/EventListener"
+  },
+  "next": {
+    "title": "SpotLight",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics3D/SpotLight"
+  }
+}

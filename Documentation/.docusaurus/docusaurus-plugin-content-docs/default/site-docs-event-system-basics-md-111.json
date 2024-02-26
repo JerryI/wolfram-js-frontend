@@ -1,0 +1,24 @@
+{
+  "id": "Event system/basics",
+  "title": "Events",
+  "description": "As a short summary - where you can use event-handlers",
+  "source": "@site/docs/Event system/basics.md",
+  "sourceDirName": "Event system",
+  "slug": "/Event system/basics",
+  "permalink": "/wlx-docs/docs/Event system/basics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Promises",
+    "permalink": "/wlx-docs/docs/Event system/promise"
+  }
+}

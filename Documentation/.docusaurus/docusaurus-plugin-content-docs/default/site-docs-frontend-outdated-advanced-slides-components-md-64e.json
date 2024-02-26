@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Advanced/Slides/components",
+  "title": "Components",
+  "description": "Making presentation is quite repetitive process. It is quite common to have some common element shared between different slides.",
+  "source": "@site/docs/frontend/Outdated/Advanced/Slides/components.md",
+  "sourceDirName": "frontend/Outdated/Advanced/Slides",
+  "slug": "/frontend/Outdated/Advanced/Slides/components",
+  "permalink": "/docs/frontend/Outdated/Advanced/Slides/components",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Graphics animation & interaction",
+    "permalink": "/docs/frontend/Outdated/Advanced/Slides/animations"
+  },
+  "next": {
+    "title": "styling",
+    "permalink": "/docs/frontend/Outdated/Advanced/Slides/styling"
+  }
+}

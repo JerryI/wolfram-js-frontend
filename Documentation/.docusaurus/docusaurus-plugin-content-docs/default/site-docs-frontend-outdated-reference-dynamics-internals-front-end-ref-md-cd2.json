@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+  "title": "FrontEndRef",
+  "description": "An invisible replacement for FrontEndExecutable, which is not replaced by a widget in the editor and Wolfram Kernel.",
+  "source": "@site/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef.md",
+  "sourceDirName": "frontend/Outdated/Reference/Dynamics/Internals",
+  "slug": "/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+  "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "internal": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FrontEndOnly",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly"
+  },
+  "next": {
+    "title": "Manipulate",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Manipulate"
+  }
+}

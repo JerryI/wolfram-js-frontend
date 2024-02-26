@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/StreamPlot",
+  "title": "StreamPlot",
+  "description": "Generates a stream plot of the vector field ${vx,vy}$ as a function of $x$ and $y$",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/StreamPlot.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/StreamPlot",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/StreamPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://reference.wolfram.com/language/ref/StreamPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "StackedListPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot"
+  },
+  "next": {
+    "title": "VectorPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot"
+  }
+}

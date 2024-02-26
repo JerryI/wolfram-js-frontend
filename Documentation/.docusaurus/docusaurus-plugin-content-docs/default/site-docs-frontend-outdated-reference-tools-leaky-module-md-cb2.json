@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Tools/LeakyModule",
+  "title": "LeakyModule",
+  "description": "Module that always leaks memory on-purpose",
+  "source": "@site/docs/frontend/Outdated/Reference/Tools/LeakyModule.md",
+  "sourceDirName": "frontend/Outdated/Reference/Tools",
+  "slug": "/frontend/Outdated/Reference/Tools/LeakyModule",
+  "permalink": "/docs/frontend/Outdated/Reference/Tools/LeakyModule",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "source": "https://github.com/JerryI/wl-misc/",
+    "update": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "WindowScope",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope"
+  },
+  "next": {
+    "title": "CellPrint",
+    "permalink": "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint"
+  }
+}

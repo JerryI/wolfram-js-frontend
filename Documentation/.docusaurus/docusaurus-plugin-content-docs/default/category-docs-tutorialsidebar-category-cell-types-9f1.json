@@ -1,0 +1,15 @@
+{
+  "title": "Cell types",
+  "slug": "/category/cell-types",
+  "permalink": "/docs/category/cell-types",
+  "navigation": {
+    "previous": {
+      "title": "Export notebook",
+      "permalink": "/docs/frontend/Outdated/Tutorial/Export notebook"
+    },
+    "next": {
+      "title": "Wolfram Language",
+      "permalink": "/docs/frontend/Outdated/Cell types/Wolfram Language"
+    }
+  }
+}

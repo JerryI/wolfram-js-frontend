@@ -1,0 +1,11 @@
+{
+  "type": "mdx",
+  "permalink": "/update",
+  "source": "@site/src/pages/update.md",
+  "title": "Support updates",
+  "description": "One of more of the arguments provided to the expression has an update method implemented, that allows to dynamically update the controllable parameters without reevaluation.",
+  "frontMatter": {
+    "title": "Support updates"
+  },
+  "unlisted": false
+}

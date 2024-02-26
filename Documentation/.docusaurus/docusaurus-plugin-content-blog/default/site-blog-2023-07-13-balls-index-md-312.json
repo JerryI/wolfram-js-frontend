@@ -1,0 +1,48 @@
+{
+  "permalink": "/blog/balls-example",
+  "source": "@site/blog/2023-07-13-balls/index.md",
+  "title": "Interactive graphics example",
+  "description": "Here we will try to recreate a simple example of the interactive plot, where bouncing dots are created using mouse clicks on an empty canvas.",
+  "date": "2023-07-13T00:00:00.000Z",
+  "formattedDate": "July 13, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    },
+    {
+      "label": "dynamics",
+      "permalink": "/blog/tags/dynamics"
+    }
+  ],
+  "readingTime": 2.195,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "balls-example",
+    "title": "Interactive graphics example",
+    "authors": "jerryi",
+    "tags": [
+      "frontend",
+      "dynamics"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Interactive curves fitting example",
+    "permalink": "/blog/curvesfit-example"
+  },
+  "nextItem": {
+    "title": "Introducing Events shortcuts",
+    "permalink": "/blog/event-shortcuts"
+  }
+}

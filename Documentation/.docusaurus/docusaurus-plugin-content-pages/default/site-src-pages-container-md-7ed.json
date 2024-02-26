@@ -1,0 +1,11 @@
+{
+  "type": "mdx",
+  "permalink": "/container",
+  "source": "@site/src/pages/container.md",
+  "title": "Needs container",
+  "description": "An expression, that requires to be evaluated on WLJS frontend (some graphics usually) inside a container.",
+  "frontMatter": {
+    "title": "Needs container"
+  },
+  "unlisted": false
+}

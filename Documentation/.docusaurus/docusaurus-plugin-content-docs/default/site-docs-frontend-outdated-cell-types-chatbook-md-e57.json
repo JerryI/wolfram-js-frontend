@@ -1,0 +1,25 @@
+{
+  "id": "frontend/Outdated/Cell types/Chatbook",
+  "title": "Chatbook",
+  "description": "We couldn't resist the temptation and didn't join the general hype - that's why we added the ability to communicate with the GPT-3.5 model directly from notebook cells. To do this, you can simply enter .llm on the first line, and on the next line, any text",
+  "source": "@site/docs/frontend/Outdated/Cell types/Chatbook.md",
+  "sourceDirName": "frontend/Outdated/Cell types",
+  "slug": "/frontend/Outdated/Cell types/Chatbook",
+  "permalink": "/docs/frontend/Outdated/Cell types/Chatbook",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Many more...",
+    "permalink": "/docs/frontend/Outdated/Cell types/Many more..."
+  },
+  "next": {
+    "title": "Slides",
+    "permalink": "/docs/frontend/Outdated/Cell types/Slides"
+  }
+}

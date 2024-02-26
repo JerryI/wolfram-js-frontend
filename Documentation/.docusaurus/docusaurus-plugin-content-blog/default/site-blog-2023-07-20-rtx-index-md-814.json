@@ -1,0 +1,48 @@
+{
+  "permalink": "/blog/rtx-intro",
+  "source": "@site/blog/2023-07-20-rtx/index.md",
+  "title": "Realtime path-tracing",
+  "description": "There is nothing more exciting in programming than designing a graphics application. Thankfully, there is one person on Github Garrett Johnson, who implemented a path-tracing algorithm on top of the well-known THREE.js graphics engine. Moreover, it fully supports features from the original library and can be anytime flipped as a main renderer.",
+  "date": "2023-07-20T00:00:00.000Z",
+  "formattedDate": "July 20, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    },
+    {
+      "label": "graphics",
+      "permalink": "/blog/tags/graphics"
+    }
+  ],
+  "readingTime": 2.05,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "rtx-intro",
+    "title": "Realtime path-tracing",
+    "authors": "jerryi",
+    "tags": [
+      "frontend",
+      "graphics"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Developing library function in a notebook",
+    "permalink": "/blog/practical-working-withlibs"
+  },
+  "nextItem": {
+    "title": "Hydrator experimantal feature",
+    "permalink": "/blog/hydrator-xp"
+  }
+}

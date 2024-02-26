@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Events/Assign",
+  "title": "Assign",
+  "description": "This is an experimental function. It might be changed or removed in the next updates",
+  "source": "@site/docs/frontend/Outdated/Reference/Events/Assign.md",
+  "sourceDirName": "frontend/Outdated/Reference/Events",
+  "slug": "/frontend/Outdated/Reference/Events/Assign",
+  "permalink": "/docs/frontend/Outdated/Reference/Events/Assign",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "source": "https://github.com/JerryI/wl-misc/",
+    "update": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Offload",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Offload"
+  },
+  "next": {
+    "title": "EventClone",
+    "permalink": "/docs/frontend/Outdated/Reference/Events/EventClone"
+  }
+}

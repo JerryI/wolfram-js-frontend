@@ -1,0 +1,25 @@
+{
+  "id": "Reference/Misc/Language",
+  "title": "Language",
+  "description": "LeakyModule",
+  "source": "@site/docs/Reference/Misc/Language.md",
+  "sourceDirName": "Reference/Misc",
+  "slug": "/Reference/Misc/Language",
+  "permalink": "/wlx-docs/docs/Reference/Misc/Language",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Events",
+    "permalink": "/wlx-docs/docs/Reference/Misc/Events"
+  },
+  "next": {
+    "title": "Promise",
+    "permalink": "/wlx-docs/docs/Reference/Misc/Promise"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Directive",
+  "title": "Directive",
+  "description": "Used for styling plots or 2D graphics",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Directive.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics",
+  "slug": "/frontend/Outdated/Reference/Graphics/Directive",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Directive",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": false,
+    "update": false,
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Circle",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Circle"
+  },
+  "next": {
+    "title": "Disk",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Disk"
+  }
+}

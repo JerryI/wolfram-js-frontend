@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Outdated/Reference/Graphics/Internal/EventListener",
+  "title": "EventListener",
+  "description": "",
+  "source": "@site/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener.md",
+  "sourceDirName": "frontend/Outdated/Reference/Graphics/Internal",
+  "slug": "/frontend/Outdated/Reference/Graphics/Internal/EventListener",
+  "permalink": "/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Inset",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Inset"
+  },
+  "next": {
+    "title": "Line",
+    "permalink": "/docs/frontend/Outdated/Reference/Graphics/Line"
+  }
+}

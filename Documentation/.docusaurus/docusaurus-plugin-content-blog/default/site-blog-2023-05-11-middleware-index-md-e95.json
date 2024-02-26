@@ -1,0 +1,48 @@
+{
+  "permalink": "/blog/middleware-example",
+  "source": "@site/blog/2023-05-11-middleware/index.md",
+  "title": "Introducing middleware event handlers",
+  "description": "To describe the idea of a new tool better, it is good to start from the initial problem.",
+  "date": "2023-05-11T00:00:00.000Z",
+  "formattedDate": "May 11, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    },
+    {
+      "label": "dynamics",
+      "permalink": "/blog/tags/dynamics"
+    }
+  ],
+  "readingTime": 3.71,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "middleware-example",
+    "title": "Introducing middleware event handlers",
+    "authors": "jerryi",
+    "tags": [
+      "frontend",
+      "dynamics"
+    ],
+    "enableComments": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Introducing Events shortcuts",
+    "permalink": "/blog/event-shortcuts"
+  },
+  "nextItem": {
+    "title": "Introducing metamarkers",
+    "permalink": "/blog/meta-example"
+  }
+}

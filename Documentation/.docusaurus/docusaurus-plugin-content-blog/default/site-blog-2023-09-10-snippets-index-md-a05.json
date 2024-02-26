@@ -1,0 +1,35 @@
+{
+  "permalink": "/blog/int-snippets",
+  "source": "@site/blog/2023-09-10-snippets/index.md",
+  "title": "Introducing snippets",
+  "description": "",
+  "date": "2023-09-10T00:00:00.000Z",
+  "formattedDate": "September 10, 2023",
+  "tags": [],
+  "readingTime": 0,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "int-snippets",
+    "authors": "jerryi",
+    "title": "Introducing snippets",
+    "draft": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
+    "permalink": "/blog/esm-into"
+  },
+  "nextItem": {
+    "title": "Mixing visual tools and code | Magic of Frontend Objects",
+    "permalink": "/blog/feobjects-example"
+  }
+}

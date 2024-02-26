@@ -1,0 +1,28 @@
+{
+  "id": "WLX/components",
+  "title": "Components",
+  "description": "In general it is not opinionated on how you organize your components as files or as functions. This sub-package is optional and represents only one of the possible ways.",
+  "source": "@site/docs/WLX/components.md",
+  "sourceDirName": "WLX",
+  "slug": "/WLX/components",
+  "permalink": "/wlx-docs/docs/WLX/components",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Scoping",
+    "permalink": "/wlx-docs/docs/WLX/scoping"
+  },
+  "next": {
+    "title": "Running WL in a browser",
+    "permalink": "/wlx-docs/docs/WLX/interpeter"
+  }
+}

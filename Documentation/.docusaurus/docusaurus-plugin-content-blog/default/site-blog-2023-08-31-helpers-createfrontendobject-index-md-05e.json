@@ -1,0 +1,49 @@
+{
+  "permalink": "/blog/feobjects-example",
+  "source": "@site/blog/2023-08-31-helpers-createfrontendobject/index.md",
+  "title": "Mixing visual tools and code | Magic of Frontend Objects",
+  "description": "Have you ever have spent minutes or even hours trying to find a proper position of an element by changing the value in a code iteration by iteration?",
+  "date": "2023-08-31T00:00:00.000Z",
+  "formattedDate": "August 31, 2023",
+  "tags": [
+    {
+      "label": "frontend",
+      "permalink": "/blog/tags/frontend"
+    },
+    {
+      "label": "dynamics",
+      "permalink": "/blog/tags/dynamics"
+    }
+  ],
+  "readingTime": 4.63,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Kirill Vasin",
+      "title": "Maintainer",
+      "url": "https://github.com/JerryI",
+      "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+      "key": "jerryi"
+    }
+  ],
+  "frontMatter": {
+    "slug": "feobjects-example",
+    "title": "Mixing visual tools and code | Magic of Frontend Objects",
+    "authors": "jerryi",
+    "tags": [
+      "frontend",
+      "dynamics"
+    ],
+    "enableComments": true,
+    "draft": true
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "Introducing snippets",
+    "permalink": "/blog/int-snippets"
+  },
+  "nextItem": {
+    "title": "Introducing Projector! Output to a separate window",
+    "permalink": "/blog/projector-intro"
+  }
+}

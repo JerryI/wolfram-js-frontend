@@ -1,0 +1,8 @@
+{
+  "label": "Advanced",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Deep dive into how to extend frontend features and gain maximum flexibility and performance."
+  }
+}

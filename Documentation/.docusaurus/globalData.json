@@ -1,0 +1,952 @@
+{
+  "docusaurus-lunr-search": {
+    "default": {
+      "fileNames": {
+        "searchDoc": "search-doc-1708969057470.json",
+        "lunrIndex": "lunr-index-1708969057470.json"
+      }
+    }
+  },
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "frontend/instruction",
+          "docs": [
+            {
+              "id": "frontend/instruction",
+              "path": "/docs/frontend/instruction",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+              "path": "/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Dynamics/Performance tips",
+              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Performance tips",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Dynamics/Scoping",
+              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Scoping",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Editor manipulation",
+              "path": "/docs/frontend/Outdated/Advanced/Editor manipulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Events system/event-generators",
+              "path": "/docs/frontend/Outdated/Advanced/Events system/event-generators",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Events system/routing",
+              "path": "/docs/frontend/Outdated/Advanced/Events system/routing",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Frontend interpretation/executables",
+              "path": "/docs/frontend/Outdated/Advanced/Frontend interpretation/executables",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+              "path": "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/JS Tools/Canvas",
+              "path": "/docs/frontend/Outdated/Advanced/JS Tools/Canvas",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/animations",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/animations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/components",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/components",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/embed-wl",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/embed-wl",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/intro",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/styling",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/styling",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Slides/tables",
+              "path": "/docs/frontend/Outdated/Advanced/Slides/tables",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Advanced/Snippets/Snippets",
+              "path": "/docs/frontend/Outdated/Advanced/Snippets/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Chatbook",
+              "path": "/docs/frontend/Outdated/Cell types/Chatbook",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Files",
+              "path": "/docs/frontend/Outdated/Cell types/Files",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/HTML",
+              "path": "/docs/frontend/Outdated/Cell types/HTML",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Javascript",
+              "path": "/docs/frontend/Outdated/Cell types/Javascript",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Many more...",
+              "path": "/docs/frontend/Outdated/Cell types/Many more...",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Markdown",
+              "path": "/docs/frontend/Outdated/Cell types/Markdown",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Slides",
+              "path": "/docs/frontend/Outdated/Cell types/Slides",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/WLX",
+              "path": "/docs/frontend/Outdated/Cell types/WLX",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Cell types/Wolfram Language",
+              "path": "/docs/frontend/Outdated/Cell types/Wolfram Language",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Development/Decorations",
+              "path": "/docs/frontend/Outdated/Development/Decorations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Development/Plugins/Known packages",
+              "path": "/docs/frontend/Outdated/Development/Plugins/Known packages",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Development/Structure",
+              "path": "/docs/frontend/Outdated/Development/Structure",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Export/HTML file",
+              "path": "/docs/frontend/Outdated/Export/HTML file",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Export/PDF",
+              "path": "/docs/frontend/Outdated/Export/PDF",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Export/React component",
+              "path": "/docs/frontend/Outdated/Export/React component",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Expressions representation",
+              "path": "/docs/frontend/Outdated/Expressions representation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Mathematica vs WLJS",
+              "path": "/docs/frontend/Outdated/Mathematica vs WLJS",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Column",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Column",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Framed",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Framed",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Grid",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Grid",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/HTMLForm",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/HTMLForm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/InputForm",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/InputForm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Interpretation",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Interpretation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/InterpretationBox",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/InterpretationBox",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/MakeBoxes",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/MakeBoxes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/MatrixForm",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/MatrixForm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Row",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Row",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/Style",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/Style",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/SVGForm",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/SVGForm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Decorations/TableForm",
+              "path": "/docs/frontend/Outdated/Reference/Decorations/TableForm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Dynamic",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Dynamic",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/DynamicModule",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/DynamicModule",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/FrontSubmit",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Manipulate",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Manipulate",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/MetaMarker",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/MetaMarker",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Dynamics/Offload",
+              "path": "/docs/frontend/Outdated/Reference/Dynamics/Offload",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/Assign",
+              "path": "/docs/frontend/Outdated/Reference/Events/Assign",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventClone",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventClone",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventFire",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventFire",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventHandler",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventHandler",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventJoin",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventJoin",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventObject",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventObject",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Events/EventRemove",
+              "path": "/docs/frontend/Outdated/Reference/Events/EventRemove",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Arrow",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Arrow",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Circle",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Circle",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Directive",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Directive",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Disk",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Disk",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Graphics",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/GraphicsComplex",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Image",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Image",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Inset",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Inset",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Internal/EventListener",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Line",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Line",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/MiddlewareHandler",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Offset",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Offset",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Point",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Point",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Polygon",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Polygon",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Raster",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Raster",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Rectangle",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Rectangle",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Rotate",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Rotate",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Show",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Show",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Style",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Style",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/SVGAttribute",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Text",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Text",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics/Translate",
+              "path": "/docs/frontend/Outdated/Reference/Graphics/Translate",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics3D/Cuboid",
+              "path": "/docs/frontend/Outdated/Reference/Graphics3D/Cuboid",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics3D/EventListener",
+              "path": "/docs/frontend/Outdated/Reference/Graphics3D/EventListener",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics3D/Graphics3D",
+              "path": "/docs/frontend/Outdated/Reference/Graphics3D/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics3D/Sphere",
+              "path": "/docs/frontend/Outdated/Reference/Graphics3D/Sphere",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Graphics3D/SpotLight",
+              "path": "/docs/frontend/Outdated/Reference/Graphics3D/SpotLight",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/ButtonView",
+              "path": "/docs/frontend/Outdated/Reference/Input/ButtonView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/EditorView",
+              "path": "/docs/frontend/Outdated/Reference/Input/EditorView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/FileUploadView",
+              "path": "/docs/frontend/Outdated/Reference/Input/FileUploadView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputButton",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputButton",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputFile",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputFile",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputGroup",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputGroup",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputRange",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputRange",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputSpoiler",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputSpoiler",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputTable",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputTable",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputText",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputText",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/InputToggle",
+              "path": "/docs/frontend/Outdated/Reference/Input/InputToggle",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/RangeView",
+              "path": "/docs/frontend/Outdated/Reference/Input/RangeView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/Slider",
+              "path": "/docs/frontend/Outdated/Reference/Input/Slider",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/TextView",
+              "path": "/docs/frontend/Outdated/Reference/Input/TextView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Input/ToggleView",
+              "path": "/docs/frontend/Outdated/Reference/Input/ToggleView",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/CellHashStorage",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/core",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/core",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/downloadByURL",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/downloadByURL",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/interpretate",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/interpretate",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/openawindow",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/openawindow",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/server",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/server",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/setInnerHTML",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Javascript API/uuidv4",
+              "path": "/docs/frontend/Outdated/Reference/Javascript API/uuidv4",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ArrayPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ArrayPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/BarChart",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/BarChart",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/BubbleChart",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/BubbleChart",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ContourPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ContourPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/DensityPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/DensityPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListContourPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListContourPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListLinePlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListLinePlotly",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListStepPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListStepPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/ListVectorPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/MatrixPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/Plot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/Plot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/Plotly",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/Plotly",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/RandomImage",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/RandomImage",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/StackedListPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/StreamPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/StreamPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/VectorPlot",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Plotting/VectorPlot3D",
+              "path": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/Alert",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/Alert",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/WindowScope",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/LeakyModule",
+              "path": "/docs/frontend/Outdated/Reference/Tools/LeakyModule",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Notebook/CellPrint",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Slides/SlideEvent",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Timers/SetInterval",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Reference/Tools/Timers/SetTimeout",
+              "path": "/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Troubleshooting",
+              "path": "/docs/frontend/Outdated/Troubleshooting",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/Dynamics",
+              "path": "/docs/frontend/Outdated/Tutorial/Dynamics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/Export notebook",
+              "path": "/docs/frontend/Outdated/Tutorial/Export notebook",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/GUI Overview",
+              "path": "/docs/frontend/Outdated/Tutorial/GUI Overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/Input elements",
+              "path": "/docs/frontend/Outdated/Tutorial/Input elements",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/Overview",
+              "path": "/docs/frontend/Outdated/Tutorial/Overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Outdated/Tutorial/Plugins",
+              "path": "/docs/frontend/Outdated/Tutorial/Plugins",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "imgs/FE data binding.excalidraw 1",
+              "path": "/docs/imgs/FE data binding.excalidraw 1"
+            },
+            {
+              "id": "imgs/feinput.gif",
+              "path": "/docs/imgs/feinput.gif"
+            },
+            {
+              "id": "imgs/manipulate-frontend-example.excalidraw",
+              "path": "/docs/imgs/manipulate-frontend-example.excalidraw"
+            },
+            {
+              "id": "interpreter/Advanced/architecture",
+              "path": "/docs/interpreter/Advanced/architecture"
+            },
+            {
+              "id": "interpreter/Advanced/containers",
+              "path": "/docs/interpreter/Advanced/containers"
+            },
+            {
+              "id": "interpreter/Advanced/meta-markers",
+              "path": "/docs/interpreter/Advanced/meta-markers"
+            },
+            {
+              "id": "interpreter/Advanced/symbols",
+              "path": "/docs/interpreter/Advanced/symbols"
+            },
+            {
+              "id": "interpreter/Basics/graphics",
+              "path": "/docs/interpreter/Basics/graphics"
+            },
+            {
+              "id": "interpreter/Basics/js-access",
+              "path": "/docs/interpreter/Basics/js-access"
+            },
+            {
+              "id": "interpreter/Basics/scripts",
+              "path": "/docs/interpreter/Basics/scripts"
+            },
+            {
+              "id": "interpreter/Basics/syntax",
+              "path": "/docs/interpreter/Basics/syntax"
+            },
+            {
+              "id": "interpreter/Extras/implementation",
+              "path": "/docs/interpreter/Extras/implementation"
+            },
+            {
+              "id": "interpreter/Extras/reference",
+              "path": "/docs/interpreter/Extras/reference"
+            },
+            {
+              "id": "interpreter/intro",
+              "path": "/docs/interpreter/intro"
+            },
+            {
+              "id": "/category/getting-started",
+              "path": "/docs/category/getting-started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/cell-types",
+              "path": "/docs/category/cell-types",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/advanced",
+              "path": "/docs/category/advanced",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/exporting-formats",
+              "path": "/docs/category/exporting-formats",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/development",
+              "path": "/docs/category/development",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/frontend/instruction",
+                "label": "frontend/instruction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

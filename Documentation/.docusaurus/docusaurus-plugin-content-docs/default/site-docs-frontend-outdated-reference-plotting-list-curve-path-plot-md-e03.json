@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+  "title": "ListCurvePathPlot",
+  "description": "Plots a curve that corresponds to a smooth path through the specified points",
+  "source": "@site/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot.md",
+  "sourceDirName": "frontend/Outdated/Reference/Plotting",
+  "slug": "/frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+  "permalink": "/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://reference.wolfram.com/language/ref/ListCurvePathPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListContourPlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/ListContourPlot"
+  },
+  "next": {
+    "title": "ListLinePlot",
+    "permalink": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlot"
+  }
+}

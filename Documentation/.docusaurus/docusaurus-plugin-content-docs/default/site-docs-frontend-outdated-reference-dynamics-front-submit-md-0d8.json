@@ -1,0 +1,33 @@
+{
+  "id": "frontend/Outdated/Reference/Dynamics/FrontSubmit",
+  "title": "FrontSubmit",
+  "description": "Allows to execute any arbitrary WL code on frontend's (browser / client), where the notebook interface is displayed",
+  "source": "@site/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit.md",
+  "sourceDirName": "frontend/Outdated/Reference/Dynamics",
+  "slug": "/frontend/Outdated/Reference/Dynamics/FrontSubmit",
+  "permalink": "/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel",
+      "WLJS"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "virtual": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FrontEndVirtual",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual"
+  },
+  "next": {
+    "title": "FrontEndExecutable",
+    "permalink": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable"
+  }
+}

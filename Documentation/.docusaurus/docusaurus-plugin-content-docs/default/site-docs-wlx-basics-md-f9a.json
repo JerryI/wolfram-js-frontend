@@ -1,0 +1,28 @@
+{
+  "id": "WLX/basics",
+  "title": "Basics of syntax",
+  "description": "One can think about WLX as a WL and plain HTML got extended to each other. It allows you to write Wolfram Language using XML tags, and building HTML template using Wolfram Expressions.",
+  "source": "@site/docs/WLX/basics.md",
+  "sourceDirName": "WLX",
+  "slug": "/WLX/basics",
+  "permalink": "/wlx-docs/docs/WLX/basics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1708366829,
+  "formattedLastUpdatedAt": "Feb 19, 2024",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/wlx-docs/docs/WLX/install"
+  },
+  "next": {
+    "title": "Scoping",
+    "permalink": "/wlx-docs/docs/WLX/scoping"
+  }
+}
