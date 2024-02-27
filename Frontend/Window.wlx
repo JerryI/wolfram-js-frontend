@@ -30,7 +30,8 @@ App[request_] := With[{
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
-        window        = WindowObj`HashMap[request["Query", "id"]] (*`*)
+        window        = WindowObj`HashMap[request["Query", "id"]] (*`*),
+        NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]
     },
 
     (* /* destructor */ *)
@@ -48,7 +49,7 @@ App[request_] := With[{
       any_ :> (EventFire[AppEvent, any, #]&)
     }]; 
 
-    <html class="h-full"> 
+    <html class="h-full" os="{NavigatorOS}"> 
         <Head Title={"Projector"}>
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     

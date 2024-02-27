@@ -41,7 +41,7 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
 
     {
         <WebUIContainer Event={Controller}>
-            <div aria-live="assertive" style="z-index:100" class="pointer-events-none fixed inset-0 flex items-start px-6 mt-12">
+            <div aria-live="assertive" style="z-index:100" class="pointer-events-none fixed inset-0 flex items-start px-6 mt-12 win:px-5 win:mt-7">
                 <div class="flex w-full flex-col items-center space-y-0 sm:items-end">      
                     <WebUIContainerChild/>
                 </div>  

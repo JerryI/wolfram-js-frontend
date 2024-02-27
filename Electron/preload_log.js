@@ -10,4 +10,3 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('promt-resolve', id, data)
   }
 })
-

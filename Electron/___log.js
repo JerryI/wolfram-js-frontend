@@ -5,6 +5,7 @@ import { generate, count } from "random-words";
 //import { FitAddon } from 'xterm-addon-fit';
 
 const term = new Terminal({cursorBlink: true});
+
 ///const fitAddon = new FitAddon();
 //term.loadAddon(fitAddon);
 

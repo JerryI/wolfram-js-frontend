@@ -4,11 +4,12 @@ const { platform } = require('node:process');
 
 const zlib = require('zlib');
 
-var spawn = require('node:child_process').spawn; 
-
 const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
+
+
+
 
 const contextMenu = require('electron-context-menu');
 const contextMenuExtensions = [];
@@ -92,6 +93,7 @@ pluginsMenu.fetch = () => {
 
 //load shortcuts
 const shortcuts_table = require("./shortcuts.json");
+const { spawnSync, spawn } = require('child_process');
 const shortcut = (id) => {
     console.log('shortcut required');
     if (process.platform === 'darwin') return shortcuts_table[id][0]
@@ -501,7 +503,7 @@ const server = {
 
     wolfram: {
         process: undefined,
-        path: 'wolframscript',
+        path: 'wolframscripft',
         args: []
     },
 
@@ -544,7 +546,10 @@ const windows = {
         },
 
         construct(cbk = () => {}) {
-            const win = new BrowserWindow({
+            let win;
+            
+            if (isMac) {
+              win = new BrowserWindow({
                 vibrancy: "sidebar", // in my case...
                 frame: true,
                 titleBarStyle: 'hiddenInset',
@@ -557,7 +562,25 @@ const windows = {
                     //webSecurity: false,
                     //nodeIntegration: true
                 }
-            });
+             });
+            } else {
+                win = new BrowserWindow({
+                    vibrancy: "sidebar", // in my case...
+                    frame: true,
+  
+                    width: 600,
+                    height: 400,
+                    resizable: false,
+                    title: 'Launcher',
+                    webPreferences: {
+                        preload: path.join(__dirname, 'preload_log.js'),
+                        //webSecurity: false,
+                        nodeIntegration: true
+                    }
+                 });   
+                 
+              
+            }
         
             /*win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
               callback({ responseHeaders: Object.assign({
@@ -678,17 +701,22 @@ function create_window(opts, cbk = () => {}) {
                 width: 800,
                 height: 600,
                 title: options.title,
-                transparent: IS_WINDOWS_11,
                 show: options.show,
+                autoHideMenuBar: true,
+                titleBarOverlay: true,
+                titleBarStyle: 'hidden',
                 webPreferences: {
-                    preload: path.join(__dirname, 'preload_main.js')
+                    preload: path.join(__dirname, 'preload_main.js'),
+                    enableRemoteModule: true,
+                    nodeIntegration: true
                 }
             });
 
             //Windows 10-11 specific settings for transparency
             if (IS_WINDOWS_11) {
                 win.setMicaEffect();
-                win.setMicaAcrylicEffect();
+                //win.setMicaTabbedEffect(); 
+                ///win.setMicaAcrylicEffect();
                 win.setAutoTheme();
             } else {
                 //win.setAcrylic();
@@ -707,6 +735,8 @@ function create_window(opts, cbk = () => {}) {
             }
     
         }
+
+
     
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
@@ -906,7 +936,9 @@ const checkCacheReset = () => {
 
 app.whenReady().then(() => {
     pluginsMenu.fetch();
-    buildMenu({plugins: pluginsMenu.items});    
+    buildMenu({plugins: pluginsMenu.items});   
+    
+
 
     //make a log window and start WL
     windows.log.construct((log_window) => {
@@ -1117,7 +1149,42 @@ function check_wl (configuration, cbk, window) {
 
     windows.log.print("");
     windows.log.print("Starting wolframscript by path: " + server.wolfram.path);
-    const program = spawn(server.wolfram.path, server.wolfram.args, { cwd: workingDir });
+    let program;
+    
+    try{
+        console.log('TRY');
+        program = spawn(server.wolfram.path, server.wolfram.args, { cwd: workingDir });
+    } catch (err) {
+        windows.log.clear();
+        windows.log.print(err);
+        console.log(err);
+        windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
+        new promt('binary', (answer) => {
+            if (answer) {
+                windows.log.print("");
+                windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
+
+                setTimeout(() => {
+                    const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
+                    promise.then((res) => {
+                        if (!res.canceled) {
+                            server.wolfram.path = res.filePaths[0];
+                            console.log(res.filePaths);
+                            windows.log.clear();
+                            check_wl(undefined, cbk, window);
+                        } else {
+                            windows.log.clear();
+                            check_wl(undefined, cbk, window);
+                        }
+                    });
+                }, 2000);
+
+            } else {
+                install_wl(window);
+            }
+        }, window); 
+        return;       
+    }
     
     //error
     program.on('error', function(err) {
@@ -1126,9 +1193,37 @@ function check_wl (configuration, cbk, window) {
         windows.log.print(String(err));
 
         setTimeout(() => {
-            app.exit();
-        }, 3000);
-        throw err;
+            windows.log.clear();
+            windows.log.print(err);
+            console.log(err);
+            windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
+            new promt('binary', (answer) => {
+                if (answer) {
+                    windows.log.print("");
+                    windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
+    
+                    setTimeout(() => {
+                        const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
+                        promise.then((res) => {
+                            if (!res.canceled) {
+                                server.wolfram.path = res.filePaths[0];
+                                console.log(res.filePaths);
+                                windows.log.clear();
+                                check_wl(undefined, cbk, window);
+                            } else {
+                                windows.log.clear();
+                                check_wl(undefined, cbk, window);
+                            }
+                        });
+                    }, 2000);
+    
+                } else {
+                    install_wl(window);
+                }
+            }, window); 
+            return;   
+        }, 2000);
+    
     });
 
     let _nohup = false;
@@ -1173,32 +1268,9 @@ function check_wl (configuration, cbk, window) {
         //this is a sign that the command was not found
         setTimeout(() => {
             windows.log.clear();
-            windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
-            new promt('binary', (answer) => {
-                if (answer) {
-                    windows.log.print("");
-                    windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[43m');
-
-                    setTimeout(() => {
-                        const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
-                        promise.then((res) => {
-                            if (!res.canceled) {
-                                server.wolfram.path = res.filePaths[0];
-                                console.log(res.filePaths);
-                                windows.log.clear();
-                                check_wl(undefined, cbk, window);
-                            } else {
-                                windows.log.clear();
-                                check_wl(undefined, cbk, window);
-                            }
-                        });
-                    }, 2000);
-
-                } else {
-                    install_wl(window);
-                }
-            }, window);
-        }, 1000);
+            check_wl(undefined, cbk, window);
+           
+        }, 3000);
     });
 
 
@@ -1277,7 +1349,7 @@ function check_wl (configuration, cbk, window) {
 function default_error_handling(success, reject, s, program, window) {
     //1# activation issues
     if (new RegExp('Wolfram product is not activated').exec(s)) {
-        windows.log.print("Automatic activation in 3 seconds...", '\x1b[43m');
+        windows.log.print("Automatic activation in 3 seconds...", '\x1b[44m');
         setTimeout(() => {
             server.wolfram.args.push('-activate');
             windows.log.clear();
@@ -1297,7 +1369,7 @@ function default_error_handling(success, reject, s, program, window) {
 
     //#2 Too many running Kernels
     if (new RegExp('The Wolfram Engine could not be activated using your Wolfram ID').exec(s)) {
-        windows.log.print("It seems you have some Wolfram Kernels running in the background or on another machine. Due to the Wolfram licensing limitations it is not allowed to run more than 2. WLJS Notebook requires exactly 2 to run locally.", '\x1b[43m');
+        windows.log.print("It seems you have some Wolfram Kernels running in the background or on another machine. Due to the Wolfram licensing limitations it is not allowed to run more than 2. WLJS Notebook requires exactly 2 to run locally.", '\x1b[44m');
         windows.log.print("");
 
         windows.log.print('Should we try to kill other processes?', '\x1b[42m');
