@@ -596,7 +596,7 @@ const server = {
 
     wolfram: {
         process: undefined,
-        path: 'wolframscripft',
+        path: 'wolframscript',
         args: []
     },
 
