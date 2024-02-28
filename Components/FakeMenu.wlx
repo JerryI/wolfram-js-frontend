@@ -1,0 +1,148 @@
+With[{Layout = 
+  {
+    <div class="py-0 px-2" role="none">     
+        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+          New Notebook
+        </button>    
+        <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+          Open File
+        </button>
+        <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+          Open Folder
+        </button>        
+    </div>
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        Save
+      </button>
+      <button data-name="SaveAs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+        Save As
+      </button>          
+    </div>
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="reload" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+        Reload page
+      </button>
+      <button data-name="OnTop" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+        Always on top
+      </button>      
+    </div>
+      
+    ,
+      <div class="py-0 px-2" role="none">
+        <button data-name="abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+          Abort
+        </button>
+        <button data-name="evalInit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+          Evaluate initialization cells
+        </button>                
+        <button data-name="clearoutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+    
+          Clear outputs
+        </button>
+      </div>
+      
+    ,
+      <div class="py-0 px-2" role="none">
+        <button data-name="locateExamples" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+       
+          Locate Examples
+        </button>
+        <button data-name="locateAppData" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+   
+          Locate AppData
+        </button>        
+      </div>
+      
+    ,
+      <div class="py-0 px-2" role="none">
+      <button data-name="docs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+  
+        Docs
+      </button>        
+      <button data-name="exit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+
+        Exit
+      </button>
+    </div>  
+
+  }
+},
+
+    <div class="h-8 p-1 pr-2 hidden osx:flex win:flex linux:flex">
+        <div class="my-auto mr-auto pr-1" style="padding-top: 0.2em;">
+            <button id="fake-menu-close" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 linux:ml-0">
+                <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 -2 16 20" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="currentColor">
+                        <path d="m 1 2 h 14 v 2 h -14 z m 0 0"></path>
+                        <path d="m 1 7 h 14 v 2 h -14 z m 0 0"></path>
+                        <path d="m 1 12 h 14 v 2 h -14 z m 0 0"></path>
+                    </g>
+                </svg>
+            </button>
+            <button id="fake-menu-open" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 linux:ml-0">
+                <svg fill="none" class="w-5 h-5 mr-auto ml-auto" viewBox="0 0 28 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M1 5C1 3.34315 2.34315 2 4 2H8.55848C9.84977 2 10.9962 2.82629 11.4045 4.05132L11.7208 5H20C21.1046 5 22 5.89543 22 7V9.00961C23.1475 9.12163 23.9808 10.196 23.7695 11.3578L22.1332 20.3578C21.9603 21.3087 21.132 22 20.1654 22H3C1.89543 22 1 21.1046 1 20V5ZM20 9V7H11.7208C10.8599 7 10.0956 6.44914 9.82339 5.63246L9.50716 4.68377C9.37105 4.27543 8.98891 4 8.55848 4H4C3.44772 4 3 4.44772 3 5V12.2709L3.35429 10.588C3.54913 9.66249 4.36562 9 5.31139 9H20ZM3.36634 20C3.41777 19.9109 3.4562 19.8122 3.47855 19.706L5.31139 11L21 11H21.8018L20.1654 20L3.36634 20Z"
+                        fill="currentColor"
+                    ></path>
+                </svg>
+            </button>
+        </div>
+        <div id="dropdown-fake" class="hidden absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800" style="top:0; left:0.5rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <Layout/>
+            <script type="module">
+                const holder = document.getElementById('dropdown-fake');
+
+                const openfolder = document.getElementById('fake-menu-open');
+                openfolder.addEventListener('click', () => {
+                  window.electronAPI.topMenu('openFolder');
+                });
+
+                const close = () => {
+                    holder.classList.add('hidden');
+                    window.removeEventListener('click', close);
+                }
+
+                const buttons = holder.getElementsByTagName('button');
+
+                for (let i=0; i<buttons.length; i++) {
+                    const el = buttons[i];
+                    el.addEventListener('click', () => {
+                      window.electronAPI.topMenu(el.dataset.name);
+                    });
+                }
+
+                const spawn = () => {
+
+                    holder.classList.remove('hidden');
+
+                    //const placeholder = document.getElementById('dropdown-holder-'+uid).getBoundingClientRect();
+                    //console.log(placeholder);
+                    //holder.style.top = - 25 + placeholder.bottom + 'px';
+                    //holder.style.right = (window.innerWidth - placeholder.right) + 'px';
+                    //e.preventDefault();
+                    //e.stopPropagation();
+                    setTimeout(() => {
+                        window.addEventListener('click', close);        
+                    }, 20);
+                };   
+
+                const hamburger = document.getElementById('fake-menu-close');
+                hamburger.addEventListener('click', spawn);
+
+            </script>
+        </div>        
+    </div>
+
+  ]
+

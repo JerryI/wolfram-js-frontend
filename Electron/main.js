@@ -103,6 +103,8 @@ const shortcut = (id) => {
 
 //build TOP MENU
 
+const callFakeMenu = {}
+
 const buildMenu = (opts) => {
     //default options
     const defaults = {
@@ -440,7 +442,98 @@ const buildMenu = (opts) => {
     Menu.setApplicationMenu(menu);
 }
 
+callFakeMenu["openFile"] = async () => {
+    const promise = dialog.showOpenDialog({
+        title: 'Open File',
+        filters: [
+            { name: 'Notebooks', extensions: ['wln'] }
+        ],
+        properties: ['openFile']
+    });
 
+    promise.then((res) => {
+        if (!res.canceled) {
+            app.addRecentDocument(res.filePaths[0]);
+            create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+        }
+    });
+}
+
+callFakeMenu["openFolder"] = async () => {
+    const promise = dialog.showOpenDialog({ title: 'Open Vault', properties: ['openDirectory'] });
+    promise.then((res) => {
+        if (!res.canceled) {
+            app.addRecentDocument(res.filePaths[0]);
+            create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+        }
+    });  
+}
+
+callFakeMenu["Save"] = async () => {
+    windows.focused.call('save', true);
+}
+
+callFakeMenu["SaveAs"] = async () => {
+    const promise = dialog.showSaveDialog({ title: 'Save as', properties: ['createDirectory'], filters: [
+        { name: 'Notebooks', extensions: ['wln'] }
+    ],});
+    promise.then((res) => {
+        if (!res.canceled) {
+            app.addRecentDocument(res.filePath);
+            console.log(res.filePath);
+            windows.focused.call('saveas', encodeURIComponent(res.filePath) );
+        }
+    });
+}
+
+callFakeMenu["OnTop"] = async(ev) => {
+    console.log(ev);
+    if (windows.focused.win.isAlwaysOnTop()) {
+        windows.focused.win.setAlwaysOnTop(false);
+    } else {
+        windows.focused.win.setAlwaysOnTop(true);
+    }
+}
+
+callFakeMenu["new"] = async(ev) => {
+    console.log(ev);
+    windows.focused.call('newnotebook', true);
+}
+
+callFakeMenu["abort"] = () => {
+    windows.focused.call('abort', true);
+}
+
+callFakeMenu["clearoutputs"] = () => {
+    windows.focused.call('clearoutputs', true);
+}
+
+callFakeMenu["evalInit"] = () => {
+    windows.focused.call('evaluateinit', true);
+}
+
+callFakeMenu["locateExamples"] = async(ev) => {
+    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
+}
+
+callFakeMenu["locateAppData"] = async(ev) => {
+    console.log(ev);
+    shell.showItemInFolder(installationFolder);
+}
+
+callFakeMenu["reload"] = () => {
+    windows.focused.win.webContents.reloadIgnoringCache();
+}
+
+callFakeMenu["docs"] = () => {
+    async() => {
+        const { shell } = require('electron')
+        await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+    }
+}
+callFakeMenu["exit"] = () => {
+    app.exit();
+}
 
 /* permissions for the main window, special headers */
 const setHID = (mainWindow) => {
@@ -991,6 +1084,11 @@ app.whenReady().then(() => {
             shell.showItemInFolder(path.join(...dir));
         }
     });
+
+    ipcMain.on('system-menu', (e, p) => {
+        const menusection = p;
+        callFakeMenu[menusection]();
+    });    
 
 
     //promts resolver

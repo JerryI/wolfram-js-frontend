@@ -111,7 +111,15 @@ App[request_] := With[{
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
-        Path = If[StringTrim[request["Path"]] == "/", FileNameJoin[{Directory[], "Examples"}], URLDecode @ StringDrop[request["Path"],1] ]
+        Path = If[StringTrim[request["Path"]] == "/", FileNameJoin[{Directory[], "Examples"}], URLDecode @ StringDrop[request["Path"],1] ],
+
+        FakeMenu = If[If[KeyExistsQ[#, "AppOS"], #["AppOS"] =!= "OSX", False] &@ request["Headers"], 
+          ImportComponent["Components/FakeMenu.wlx"]
+        ,  
+          <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex">
+            <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>
+          </div>
+        ]
     },
 
     (* /* destructor */ *)
@@ -154,10 +162,8 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">
-            <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex win:flex linux:flex">
-              <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>  
-            </div>
+          <div id="sidebar" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">        
+            <FakeMenu/>  
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300 dark:border-gray-600"></div>

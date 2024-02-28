@@ -16,6 +16,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-open',  path);
   },
 
+  topMenu: (name) => {
+    console.log(name);
+    ipcRenderer.send('system-menu',  name);
+  },
+
   toggleWindowSize: () => {
     ipcRenderer.send('system-window-toggle',  {});
   },
