@@ -810,6 +810,7 @@ function create_window(opts, cbk = () => {}) {
                 win.setMicaEffect();
                 //win.setMicaTabbedEffect(); 
                 ///win.setMicaAcrylicEffect();
+                win.setRoundedCorner();
                 win.setAutoTheme();
             } else {
                 //win.setAcrylic();

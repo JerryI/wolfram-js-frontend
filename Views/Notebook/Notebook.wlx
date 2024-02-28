@@ -659,7 +659,7 @@ Component[OptionsPattern[]] := With[{
 
     With[{nid = notebook["Hash"]},
 
-        <main class="grow flex flex-col overflow-hidden dark:invert dark:contrast-75 dark:brightness-5 win:m-4 win:mt-2 win:rounded-lg win:bg-white win:shadow">
+        <main class="grow flex flex-col overflow-hidden dark:invert dark:contrast-75 dark:brightness-5 win:m-4 win:mt-2 win:rounded-lg win:bg-white win:shadow linux:m-4 linux:mt-2 linux:rounded-lg linux:bg-white linux:shadow">
             <KernelIndicator Notebook={notebook}/>
             <ExtensionTemplateInjection Template={"Notebook-Prolog"} Notebook={notebook} Event={secret} />
             <TopBar Notebook={notebook}/>

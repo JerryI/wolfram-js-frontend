@@ -162,7 +162,7 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">        
+          <div id="sidebar" style="user-select: none" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">        
             <FakeMenu/>  
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>

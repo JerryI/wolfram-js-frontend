@@ -1,33 +1,33 @@
 With[{Layout = 
   {
     <div class="py-0 px-2" role="none">     
-        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New Notebook
         </button>    
-        <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open File
         </button>
-        <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open Folder
         </button>        
     </div>
     ,
     <div class="py-0 px-2" role="none">
-      <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
         Save
       </button>
-      <button data-name="SaveAs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="SaveAs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Save As
       </button>          
     </div>
     ,
     <div class="py-0 px-2" role="none">
-      <button data-name="reload" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="reload" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Reload page
       </button>
-      <button data-name="OnTop" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="OnTop" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Always on top
       </button>      
@@ -35,15 +35,15 @@ With[{Layout =
       
     ,
       <div class="py-0 px-2" role="none">
-        <button data-name="abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Abort
         </button>
-        <button data-name="evalInit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="evalInit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Evaluate initialization cells
         </button>                
-        <button data-name="clearoutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="clearoutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
           Clear outputs
         </button>
@@ -51,11 +51,11 @@ With[{Layout =
       
     ,
       <div class="py-0 px-2" role="none">
-        <button data-name="locateExamples" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="locateExamples" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
        
           Locate Examples
         </button>
-        <button data-name="locateAppData" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+        <button data-name="locateAppData" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
    
           Locate AppData
         </button>        
@@ -63,11 +63,11 @@ With[{Layout =
       
     ,
       <div class="py-0 px-2" role="none">
-      <button data-name="docs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="docs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   
         Docs
       </button>        
-      <button data-name="exit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4" role="menuitem" tabindex="-1">
+      <button data-name="exit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Exit
       </button>
@@ -79,7 +79,7 @@ With[{Layout =
     <div class="h-8 p-1 pr-2 hidden osx:flex win:flex linux:flex">
         <div class="my-auto mr-auto pr-1" style="padding-top: 0.2em;">
             <button id="fake-menu-close" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 linux:ml-0">
-                <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 -2 16 20" xmlns="http://www.w3.org/2000/svg">
+                <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 -1 16 20" xmlns="http://www.w3.org/2000/svg">
                     <g fill="currentColor">
                         <path d="m 1 2 h 14 v 2 h -14 z m 0 0"></path>
                         <path d="m 1 7 h 14 v 2 h -14 z m 0 0"></path>
@@ -88,17 +88,13 @@ With[{Layout =
                 </svg>
             </button>
             <button id="fake-menu-open" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 linux:ml-0">
-                <svg fill="none" class="w-5 h-5 mr-auto ml-auto" viewBox="0 0 28 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M1 5C1 3.34315 2.34315 2 4 2H8.55848C9.84977 2 10.9962 2.82629 11.4045 4.05132L11.7208 5H20C21.1046 5 22 5.89543 22 7V9.00961C23.1475 9.12163 23.9808 10.196 23.7695 11.3578L22.1332 20.3578C21.9603 21.3087 21.132 22 20.1654 22H3C1.89543 22 1 21.1046 1 20V5ZM20 9V7H11.7208C10.8599 7 10.0956 6.44914 9.82339 5.63246L9.50716 4.68377C9.37105 4.27543 8.98891 4 8.55848 4H4C3.44772 4 3 4.44772 3 5V12.2709L3.35429 10.588C3.54913 9.66249 4.36562 9 5.31139 9H20ZM3.36634 20C3.41777 19.9109 3.4562 19.8122 3.47855 19.706L5.31139 11L21 11H21.8018L20.1654 20L3.36634 20Z"
-                        fill="currentColor"
-                    ></path>
+                <svg fill="none" class="w-5 h-5 mr-auto ml-auto" viewBox="2 3 22 21" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.2686 14.2686L15 16M12.0627 6.06274L11.9373 5.93726C11.5914 5.59135 11.4184 5.4184 11.2166 5.29472C11.0376 5.18506 10.8425 5.10425 10.6385 5.05526C10.4083 5 10.1637 5 9.67452 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V10.2C21 9.0799 21 8.51984 20.782 8.09202C20.5903 7.71569 20.2843 7.40973 19.908 7.21799C19.4802 7 18.9201 7 17.8 7H14.3255C13.8363 7 13.5917 7 13.3615 6.94474C13.1575 6.89575 12.9624 6.81494 12.7834 6.70528C12.5816 6.5816 12.4086 6.40865 12.0627 6.06274ZM14 12.5C14 13.8807 12.8807 15 11.5 15C10.1193 15 9 13.8807 9 12.5C9 11.1193 10.1193 10 11.5 10C12.8807 10 14 11.1193 14 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
         </div>
-        <div id="dropdown-fake" class="hidden absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800" style="top:0; left:0.5rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="grow h-full" style="-webkit-app-region: drag"></div>
+        <div id="dropdown-fake" class="hidden absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <Layout/>
             <script type="module">
                 const holder = document.getElementById('dropdown-fake');

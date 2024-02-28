@@ -1540,6 +1540,11 @@ select {
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }
 
+.divide-gray-400 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-divide-opacity));
+}
+
 .divide-gray-500 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-divide-opacity));
@@ -2507,6 +2512,10 @@ select {
 [os="Windows"] .win\:px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+[os="Windows"] .win\:pl-2 {
+  padding-left: 0.5rem;
 }
 
 [os="Windows"] .win\:text-gray-500 {
