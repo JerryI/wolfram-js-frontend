@@ -1,5 +1,7 @@
 #!/usr/bin/env wolframscript
 
+PacletDirectoryUnload /@ PacletDirectoryLoad[];
+
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
