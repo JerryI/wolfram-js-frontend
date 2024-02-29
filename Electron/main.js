@@ -8,8 +8,9 @@ const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
 
+const { powerSaveBlocker } = require('electron')
 
-
+let powerSaveId; 
 
 const contextMenu = require('electron-context-menu');
 const contextMenuExtensions = [];
@@ -1025,6 +1026,26 @@ const checkCacheReset = () => {
     }
 }
 
+const powerSaver = () => {
+    console.log('Electron >> starting powersafe blocker');
+    powerSaveId = powerSaveBlocker.start('prevent-app-suspension');
+
+    setInterval(() => {
+        //console.log('Electron >> checking power saving...');
+        if (BrowserWindow.getAllWindows().length > 0) {
+            if (!powerSaveBlocker.isStarted(powerSaveId)) {
+                console.log('Electron >> starting powersafe blocker');
+                powerSaveId = powerSaveBlocker.start('prevent-app-suspension');
+            } 
+        } else {
+            if (powerSaveBlocker.isStarted(powerSaveId)) {
+                console.log('Electron >> stopping powersafe blocker');
+                powerSaveBlocker.stop(powerSaveId);
+            }            
+        }
+    }, 15000);
+}
+
 
 /* App Ready */
 
@@ -1032,7 +1053,7 @@ app.whenReady().then(() => {
     pluginsMenu.fetch();
     buildMenu({plugins: pluginsMenu.items});   
     
-
+    powerSaver();
 
     //make a log window and start WL
     windows.log.construct((log_window) => {
@@ -1827,7 +1848,7 @@ function install_frontend(cbk, window) {
 
 //in a case of a powerful firewall or apocalipse
 const install_shipped = (cbk, window) => {
-    exit(-1);
+   
     windows.log.print('Copying to installation folder of a shipped package...');
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
