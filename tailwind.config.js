@@ -26,6 +26,7 @@ module.exports = {
     'text-2xl',
     'text-3xl',
     'bg-teal-400',
+    'bg-teal-300',
     'hover:bg-teal-400',
     {
       pattern: /columns-.*/,
