@@ -2542,6 +2542,71 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+[os="Unix"] .linux\:m-4 {
+  margin: 1rem;
+}
+
+[os="Unix"] .linux\:ml-0 {
+  margin-left: 0px;
+}
+
+[os="Unix"] .linux\:mt-1 {
+  margin-top: 0.25rem;
+}
+
+[os="Unix"] .linux\:mt-2 {
+  margin-top: 0.5rem;
+}
+
+[os="Unix"] .linux\:mt-7 {
+  margin-top: 1.75rem;
+}
+
+[os="Unix"] .linux\:flex {
+  display: flex;
+}
+
+[os="Unix"] .linux\:h-6 {
+  height: 1.5rem;
+}
+
+[os="Unix"] .linux\:h-8 {
+  height: 2rem;
+}
+
+[os="Unix"] .linux\:min-w-32 {
+  min-width: 8rem;
+}
+
+[os="Unix"] .linux\:rounded-lg {
+  border-radius: 0.5rem;
+}
+
+[os="Unix"] .linux\:bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+[os="Unix"] .linux\:px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+[os="Unix"] .linux\:pl-2 {
+  padding-left: 0.5rem;
+}
+
+[os="Unix"] .linux\:text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+[os="Unix"] .linux\:shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 [os="OSX"] .osx\:flex {
   display: flex;
 }

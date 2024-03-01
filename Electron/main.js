@@ -773,7 +773,7 @@ function create_window(opts, cbk = () => {}) {
         const options = Object.assign({}, defaults, opts);
         let win;
 
-        if (isMac || !isWindows) {
+        if (isMac) {
             win = new BrowserWindow({
                 vibrancy: "sidebar", // in my case...
                 frame: true,
@@ -789,7 +789,7 @@ function create_window(opts, cbk = () => {}) {
                 }
     
             });
-        } else {
+        } else if (isWindows) {
     
             win = new MicaBrowserWindow({
                 width: 800,
@@ -829,6 +829,23 @@ function create_window(opts, cbk = () => {}) {
                 //win.setRoundedCorner();
             }
     
+        } else {
+            win = new BrowserWindow({
+                frame: true,
+                autoHideMenuBar: true,
+                titleBarOverlay: true,
+                titleBarStyle: 'hidden',
+                width: 800,
+                height: 600,
+                //backgroundMaterial: 'acrylic',
+                title: options.title,
+                //transparent:true,
+                show: options.show,
+                webPreferences: {
+                    preload: path.join(__dirname, 'preload_main.js')
+                }
+    
+            });
         }
 
 
