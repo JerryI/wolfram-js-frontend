@@ -533,7 +533,7 @@ callFakeMenu["docs"] = () => {
     }
 }
 callFakeMenu["exit"] = () => {
-    app.exit();
+    app.quit();
 }
 
 /* permissions for the main window, special headers */
@@ -602,12 +602,20 @@ const server = {
     },
 
 
-    shutdown () {
+    shutdown (cbk) {
         if (server.startedQ) {
             this.startedQ = false;
             this.running = false;
             console.log(this.wolfram.process.pid);
+            
             this.wolfram.process.kill('SIGKILL');
+            console.log('Killed?');
+
+            if (!isWindows && !isMac) {
+                //bug on Unix
+                kill_all(() => console.log('killed!'));
+            }
+            
             //this.wolfram.process.kill('SIGINT');
             //this.wolfram.process.stdin.write("exit\n");
         }
@@ -976,7 +984,7 @@ function create_window(opts, cbk = () => {}) {
 
 /* APP Logic */
 
-app.on('quit', () => {
+app.on('will-quit', () => {
     console.log('exiting the server...');
     server.shutdown();
 })
@@ -1560,18 +1568,17 @@ function default_error_handling(success, reject, s, program, window) {
 }
 
 function kill_all(cbk, window) {
-    const process = 'WolframKernel';
 
     switch(process.platform) {
         case 'win32':
-            exec('taskkill /F /IM ' + process + '.exe /T');
+            exec('taskkill /F /IM WolframKernel.exe /T');
         break;
         default: // Linux + Darwin
-            exec('pkill -f ' + process);
+            exec('pkill -9 -f Wolfram');
         break;
     }
 
-    windows.log.print('probably killed');
+    //windows.log.print('probably killed');
     setTimeout(cbk, 2000);
 }
 
