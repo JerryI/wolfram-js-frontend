@@ -2986,7 +2986,7 @@ select {
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
-  [os="Windows"] .win\:dark\:bg-gray-700 {
+  [os="Windows"] .dark\:win\:bg-gray-700 {
     --tw-bg-opacity: 1;
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
   }
@@ -2995,7 +2995,7 @@ select {
     background-color: transparent;
   }
 
-  [os="Unix"] .linux\:dark\:bg-gray-700 {
+  [os="Unix"] .dark\:linux\:bg-gray-700 {
     --tw-bg-opacity: 1;
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
   }
