@@ -2517,6 +2517,15 @@ select {
   border-radius: 0.5rem;
 }
 
+[os="Windows"] .win\:border {
+  border-width: 1px;
+}
+
+[os="Windows"] .win\:border-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+
 [os="Windows"] .win\:bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2975,5 +2984,19 @@ select {
   .dark\:hover\:text-white:hover {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  [os="Windows"] .win\:dark\:bg-gray-700 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  }
+
+  [os="Windows"] .win\:dark\:bg-transparent {
+    background-color: transparent;
+  }
+
+  [os="Unix"] .linux\:dark\:bg-gray-700 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
   }
 }
