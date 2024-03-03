@@ -2493,10 +2493,6 @@ select {
   margin-top: 0.5rem;
 }
 
-[os="Windows"] .win\:mt-7 {
-  margin-top: 1.75rem;
-}
-
 [os="Windows"] .win\:flex {
   display: flex;
 }
@@ -2556,10 +2552,6 @@ select {
 
 [os="Unix"] .linux\:mt-2 {
   margin-top: 0.5rem;
-}
-
-[os="Unix"] .linux\:mt-7 {
-  margin-top: 1.75rem;
 }
 
 [os="Unix"] .linux\:flex {
@@ -2641,10 +2633,6 @@ select {
 
 [os="WindowsLegacy"] .owin\:mt-2 {
   margin-top: 0.5rem;
-}
-
-[os="WindowsLegacy"] .owin\:mt-7 {
-  margin-top: 1.75rem;
 }
 
 [os="WindowsLegacy"] .owin\:flex {
