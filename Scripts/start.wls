@@ -75,6 +75,7 @@ PacletRepositories[{
 WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
   Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
   Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
   Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
   Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",

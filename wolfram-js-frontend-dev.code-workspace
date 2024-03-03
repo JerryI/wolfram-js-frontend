@@ -56,6 +56,12 @@
 		},
 		{
 			"path": "wljs_packages/wljs-graphics3d-threejs"
+		},
+		{
+			"path": "wljs_packages/wljs-export-html"
+		},
+		{
+			"path": "wljs_packages/wljs-sharedlib-d3"
 		}
 	],
 	"settings": {
