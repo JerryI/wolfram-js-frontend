@@ -109,7 +109,7 @@ App[request_] := With[{
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
-        AppClass = If[ElectronQ[request], "dark:linux:bg-gray-700 dark:win:bg-gray-700 win:border win:border-gray-800", "dark:bg-gray-800"],
+        AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         Path = If[StringTrim[request["Path"]] == "/", FileNameJoin[{Directory[], "Examples"}], URLDecode @ StringDrop[request["Path"],1] ],
 
@@ -156,7 +156,7 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full"> 
+        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:border owin:border-gray-500 owin:text-blue-100"> 
         <div>
           <Alert/>
           <Modals ModalsPort={ModalController}/>

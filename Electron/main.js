@@ -569,6 +569,7 @@ const setHID = (mainWindow) => {
 
     let currentOS;
     if (isWindows) currentOS = 'Windows';
+    if (isWindows && !IS_WINDOWS_11) currentOS = 'WindowsLegacy';
     if (isMac) currentOS = 'OSX';
     if (!isMac && !isWindows) currentOS = 'Unix';
 

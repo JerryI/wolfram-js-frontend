@@ -1,5 +1,5 @@
 const plugin = require('tailwindcss/plugin')
-const platforms = [['Windows', 'win'], ['Unix', 'linux'], ['OSX', 'osx'], ['Browser', 'bro']]
+const platforms = [['Windows', 'win'], ['Unix', 'linux'], ['OSX', 'osx'], ['Browser', 'bro'], ['WindowsLegacy', 'owin']]
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
