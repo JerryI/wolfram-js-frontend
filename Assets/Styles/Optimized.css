@@ -2676,9 +2676,8 @@ select {
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
-[os="WindowsLegacy"] .owin\:bg-blue-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+[os="WindowsLegacy"] .owin\:bg-blue-100\/20 {
+  background-color: rgb(219 234 254 / 0.2);
 }
 
 [os="WindowsLegacy"] .owin\:bg-white {
