@@ -2690,11 +2690,6 @@ select {
   padding-left: 0.5rem;
 }
 
-[os="WindowsLegacy"] .owin\:text-blue-100 {
-  --tw-text-opacity: 1;
-  color: rgb(219 234 254 / var(--tw-text-opacity));
-}
-
 [os="WindowsLegacy"] .owin\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
