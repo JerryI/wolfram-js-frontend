@@ -2,6 +2,8 @@ ItemList := ImportComponent["ItemList.wlx"];
 File  = $Options["File"];
 Level = $Options["Level"] + 1;
 
+Icons = $Options["Icons"];
+
 Parameters = $Options["Parameters"];
 
 Dropdown := ImportComponent["Dropdown.wlx"];
@@ -75,6 +77,6 @@ Selected = If[TrueQ[$Options["Selected"]], "bg-yellow-300", ""];
     </WebUIJSBind>
 
     <WebUILazyLoad Event={Controller}>
-        <ItemList Port={Port} Parameters={Parameters} Level={Level} Class={"mt-0"} Path={File} />
+        <ItemList Port={Port} Icons={Icons} Parameters={Parameters} Level={Level} Class={"mt-0"} Path={File} />
     </WebUILazyLoad>
 </div>

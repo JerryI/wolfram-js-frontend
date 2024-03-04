@@ -140,7 +140,7 @@ With[{
     <WebUIEventListener Type={"click"} Id={Button2Id} Event={Button2Id} />
   ,
     <WebUIRefresh Event={SidebarId} Class={"flex grow flex-col gap-y-5 overflow-y-auto px-4 sc-b"}>
-      <Sidebar Port={Secret} Icons={Icons}, Parameters={Parameters} Secret={"blackhole"} Path={Path} />
+      <Sidebar Port={Secret} Icons={Icons} Parameters={Parameters} Secret={"blackhole"} Path={Path} />
     </WebUIRefresh>
   ,
     <script type="module">
