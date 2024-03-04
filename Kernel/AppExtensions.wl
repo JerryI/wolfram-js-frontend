@@ -17,6 +17,10 @@ AppExtensions`Templates[ opts: OptionsPattern[] ] := With[{template = OptionValu
     ]
 ]
 
+sidebarIcons = {};
+AppExtensions`SidebarIcons := sidebarIcons
+AppExtensions`SidebarIcons /: Set[AppExtensions`SidebarIcons, list_List] := (sidebarIcons = Join[sidebarIcons, list])
+
 Options[AppExtensions`Templates] = {"Template" -> ""}
 
 (* global event object *)

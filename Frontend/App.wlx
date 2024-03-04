@@ -2,6 +2,7 @@ http                      =  $Options["HTTPHandler"];
 env                       =  $Options["Env"];
 AppEvent                  =  $Options["AppEvent"];
 ExtensionTemplates        =  $Options["ExtensionTemplates"];
+ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
 
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
@@ -165,7 +166,7 @@ App[request_] := With[{
           <div id="sidebar" style="user-select: none" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">        
             <FakeMenu/>  
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
-            <Sidebar Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
+            <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="border-b border-gray-300 dark:border-gray-600"></div>
             <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
               <SettingsButton/>

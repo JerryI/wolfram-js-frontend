@@ -5,7 +5,7 @@ ItemList := ImportComponent["Components/ItemList.wlx"];
     <nav class="flex flex-1 flex-col">
       <ul role="list" class="flex flex-1 flex-col gap-y-7">
         <li>
-          <ItemList Port={$Options["Port"]} Parameters={$Options["Parameters"]} Level={0} Class={"-mx-2 space-y-0"} Path={$Options["Path"]} Current={$Options["Path"]} />
+          <ItemList Icons={$Options["Icons"]} Port={$Options["Port"]} Parameters={$Options["Parameters"]} Level={0} Class={"-mx-2 space-y-0"} Path={$Options["Path"]} Current={$Options["Path"]} />
         </li>
         
       </ul>

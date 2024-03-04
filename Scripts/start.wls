@@ -166,7 +166,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf", "html", "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dmg"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
@@ -210,7 +210,7 @@ SetAttributes[Offload, HoldFirst];
 AutoTest["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
-App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "Env"->$Env];
+App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 Echo["Autotest start!"];
 
