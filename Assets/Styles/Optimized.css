@@ -849,6 +849,10 @@ select {
   z-index: 50;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .-mx-2 {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
@@ -1133,6 +1137,10 @@ select {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-8 {
@@ -1896,6 +1904,10 @@ select {
   padding-left: 0.25rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .pl-20 {
   padding-left: 5rem;
 }
@@ -2091,6 +2103,11 @@ select {
 .text-orange-600 {
   --tw-text-opacity: 1;
   color: rgb(234 88 12 / var(--tw-text-opacity));
+}
+
+.text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
 .text-red-400 {
@@ -2556,6 +2573,10 @@ select {
 
 [os="Unix"] .linux\:flex {
   display: flex;
+}
+
+[os="Unix"] .linux\:hidden {
+  display: none;
 }
 
 [os="Unix"] .linux\:h-6 {

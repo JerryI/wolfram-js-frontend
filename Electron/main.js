@@ -1102,6 +1102,19 @@ app.whenReady().then(() => {
         }
     });
 
+    ipcMain.handle('system-save-something', async (event, p) => {
+        const result = await dialog.showSaveDialog({ title: p.title, properties: ['createDirectory'], filters: [
+            { extensions: p.extension }
+        ]});
+
+        if (!result.canceled) {
+            return encodeURIComponent(result.filePath);
+        } else {
+            return false;
+        }
+    });
+
+
     ipcMain.on('system-window-expand', (e, p) => {
         windows.focused.win.setBounds({ width: 800 , animate: true});
     });

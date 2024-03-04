@@ -25,6 +25,7 @@ module.exports = {
   safelist: [
     'text-2xl',
     'text-3xl',
+    'text-red-300',
     'bg-teal-400',
     'bg-teal-300',
     'hover:bg-teal-400',

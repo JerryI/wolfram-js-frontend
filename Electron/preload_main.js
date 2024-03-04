@@ -25,6 +25,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-window-toggle',  {});
   },
 
+  requestFileWindow: (params, cbk) => {
+    ipcRenderer.invoke('system-save-something', params).then((result) => {
+      cbk(result);
+    });
+  },
+
   windowExpand: (path) => {
     console.log(path);
     ipcRenderer.send('system-window-expand',  {});
