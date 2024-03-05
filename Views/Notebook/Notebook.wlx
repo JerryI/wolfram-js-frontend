@@ -673,6 +673,8 @@ Component[OptionsPattern[]] := With[{
 
             <ExtensionTemplateInjection Template={"Footer"} Modals={modals} Messager={log} Notebook={notebook} Event={secret} Controls={controller}/>
             <ExtensionTemplateInjection Template={"Scripts"} />
+
+            <Script ExtensionTemplateInjection={ExtensionTemplateInjection}/>
             
             <WebUIOnLoad Event={secret} Pattern={"Load"}/>
         </main>
@@ -686,5 +688,5 @@ Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 
 
-{Component, Script}
+{Component, ""&}
 

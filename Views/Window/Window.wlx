@@ -218,6 +218,7 @@ Component[OptionsPattern[]] := With[{
                     <span class="sr-only">Loading...</span>
                 </div>
             </Container>
+            <Script ExtensionTemplateInjection={ExtensionTemplateInjection}/>
             <WebUIOnLoad Event={secret} Pattern={"Load"}/>
         </main>
 
@@ -230,5 +231,5 @@ Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
 emptyStringFunction[x__] := ""
 sequenceIdentity[first__, rulels___Rule] := first 
 
-{Component, Script}
+{Component, ""&}
 
