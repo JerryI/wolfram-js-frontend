@@ -103,6 +103,8 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
 ] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
+defaultHomeFolder = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
+
 App[request_] := With[{
         Secret = CreateUUID[], 
         SidebarId = CreateUUID[],
@@ -112,7 +114,7 @@ App[request_] := With[{
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
-        Path = If[StringTrim[request["Path"]] == "/", FileNameJoin[{Directory[], "Examples"}], URLDecode @ StringDrop[request["Path"],1] ],
+        Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1] ],
 
         FakeMenu = If[If[KeyExistsQ[#, "AppOS"], #["AppOS"] =!= "OSX", False] &@ request["Headers"], 
           ImportComponent["Components/FakeMenu.wlx"]

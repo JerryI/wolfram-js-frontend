@@ -13,13 +13,28 @@ controller = CreateUUID[];
 localEvent = CreateUUID[];
 installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
+homefolderEvent = CreateUUID[];
 
+DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
 EventHandler[Secret, {"Load" -> Function[Null,
+    EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->URLEncode[DefaultHome]|>];
+
     EventHandler[controller, {
         "Autostart" -> Function[state,
             settings = Join[settings, <|"Autostart"->state|>];
             onSave[settings];
+        ],
+
+        "ChangeHome" -> Function[Null,
+            With[{p = Promise[]},
+                EventFire[homefolderEvent, "Ask", <|"Client" -> $Client, "Promise"->First[p]|>];
+                Then[p, Function[result,
+                    EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->result|>];
+                    settings = Join[settings, <|"Home"->URLDecode[result]|>];
+                    onSave[settings];
+                ]];
+            ]
         ],
 
         "CleanBackups" -> Function[Null,
@@ -57,7 +72,36 @@ EventHandler[Secret, {"Load" -> Function[Null,
 ,
     <div class="mt-4 overflow-y-auto" style="max-height:60%">   
         <span class="dark:text-gray-400">Frontend</span>
-        <div class="pb-10 pb-10 mt-5 gap-y-2 flex flex-col">
+        <div class="pb-10 mt-5 gap-y-2 flex flex-col">
+            <p class="mt-1 max-w-2xl text-sm  text-gray-500 dark:text-gray-500">Home folder</p>
+            <p id="doc-home" class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500"></p>
+            <StringRiffle>
+                <Knob Label={"Change home folder"} Topic={"ChangeHome"} Event={controller} Class={"w15"}/>
+            </StringRiffle>
+            <WebUIJSBind Event={homefolderEvent}>
+                this.on('Ask', async (data) => {
+                    const assoc = await interpretate(data, {hold:true});
+                    const promise = await interpretate(assoc.Promise, {});
+
+                    window.electronAPI.requestFolderWindow({title:"Home"}, (result) => {
+                        if (!result) {
+                            console.log('Cancelled');
+                            server._emitt(promise, '"Cancel"', 'Reject');
+                            return;
+                        }
+
+                        console.log(result);
+                        server._emitt(promise, '"'+result+'"', 'Resolve');
+                    });
+                });
+
+                const doc = document.getElementById("doc-home");
+                this.on('ChangeLabel', async (data) => {
+                    const assoc = await interpretate(data, {hold:true});
+                    const text = await interpretate(assoc.Text, {});
+                    doc.innerText = decodeURIComponent(text);
+                })
+            </WebUIJSBind>
             <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500">Purge internal backup storage</p>
             <StringRiffle>
                 <Knob Label={"Clean up"} Topic={"CleanBackups"} Event={controller} Class={"w15"}/>

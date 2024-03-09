@@ -31,6 +31,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     });
   },
 
+  requestFolderWindow: (params, cbk) => {
+    ipcRenderer.invoke('system-open-folder-something', params).then((result) => {
+      cbk(result);
+    });
+  },
+
   windowExpand: (path) => {
     console.log(path);
     ipcRenderer.send('system-window-expand',  {});

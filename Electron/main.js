@@ -1114,6 +1114,16 @@ app.whenReady().then(() => {
         }
     });
 
+    ipcMain.handle('system-open-folder-something', async (event, p) => {
+        const result = await dialog.showOpenDialog({ title: p.title, buttonLabel:'Set home', properties: ['openDirectory', 'createDirectory']});
+
+        if (!result.canceled) {
+            return encodeURIComponent(result.filePaths[0]);
+        } else {
+            return false;
+        }
+    });
+
 
     ipcMain.on('system-window-expand', (e, p) => {
         windows.focused.win.setBounds({ width: 800 , animate: true});
