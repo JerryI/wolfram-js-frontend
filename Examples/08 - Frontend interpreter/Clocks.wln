@@ -1,42 +1,60 @@
-<|"notebook" -> <|"name" -> "Incongruousness", "id" -> "unalike-f8d1e", 
-   "kernel" -> LocalKernel, "objects" -> 
-    <|"20f246d7-f66c-45de-abbb-a19a040d02e0" -> 
-      <|"json" -> "[\"PlaceholderClock\"]", "date" -> 
-        DateObject[{2023, 9, 9, 12, 45, 18.53165`8.02048907350955}, 
-         "Instant", "Gregorian", 2.]|>|>, "path" -> "/Volumes/Data/Github/wol\
-fram-js-frontend/Examples/FrontendFunctions/Clocks-Memory.wln", 
-   "cell" -> "fd5a0793-c71a-43c2-91a2-1011a4bdb5c640b", 
-   "date" -> DateObject[{2023, 9, 9, 12, 44, 7.52401`7.629024351340869}, 
-     "Instant", "Gregorian", 2.], "symbols" -> <||>, 
-   "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$17]|>, 
- "cells" -> {<|"id" -> "fd5a0793-c71a-43c2-91a2-1011a4bdb5c640b45224d", 
-    "type" -> "input", "data" -> ".js\ncore.PlaceholderClock = async (args, \
-env) => {\n\t//store the handler object in the local \
-memory\n\tenv.local.start = new Date();\n\tenv.local.clock = \
-setInterval(()=>{\n\t\tconst d = (new Date() - \
-env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
-instance is about to be destoryed - clear \
-timer\ncore.PlaceholderClock.destroy = (args, env) => \
-{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
-env.local.start);\n\talert(passed+' passed');\n}", "display" -> "codemirror", 
-    "sign" -> "unalike-f8d1e", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "0c929185-77f1-4fff-806f-e3221f2926ee40b45224d", 
-    "type" -> "output", "data" -> "\ncore.PlaceholderClock = (args, env) => \
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
+   "Objects" -> <|"e1797651-3421-4ae3-a67a-c7aab4f5fdfb" -> 
+      <|"Public" -> Hold[PlaceholderClock[]]|>|>, 
+   "Path" -> "/users/kirill/Library/Application \
+Support/wljs-notebook/Examples/08 - Frontend interpreter/Clocks.wln"|>, 
+ "Cells" -> {<|"Data" -> ".js\ncore.PlaceholderClock = async (args, env) => \
 {\n\t//store the handler object in the local memory\n\tenv.local.start = new \
 Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
 env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
 instance is about to be destoryed - clear \
 timer\ncore.PlaceholderClock.destroy = (args, env) => \
 {\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
-env.local.start);\n\talert(passed+' passed');\n}", "display" -> "js", 
-    "sign" -> "unalike-f8d1e", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "3525d659-e49d-4ecb-89ad-f31e5fe9f4e740b45224d", 
-    "type" -> "input", "data" -> "CreateFrontEndObject[PlaceholderClock[]]", 
-    "display" -> "codemirror", "sign" -> "unalike-f8d1e", 
-    "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "f85ede1e-fae4-4661-a16d-a0b70b2e388240b45224d", 
-    "type" -> "output", "data" -> 
-     "FrontEndExecutable[\"20f246d7-f66c-45de-abbb-a19a040d02e0\"]", 
-    "display" -> "codemirror", "sign" -> "unalike-f8d1e", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+env.local.start);\n\talert(passed+' passed');\n}", "Display" -> "codemirror", 
+    "Hash" -> "888cb317-f066-4978-82c4-823554cdccd3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> "\ncore.PlaceholderClock = (args, env) => {\n\t//store the \
+handler object in the local memory\n\tenv.local.start = new \
+Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
+env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
+instance is about to be destoryed - clear \
+timer\ncore.PlaceholderClock.destroy = (args, env) => \
+{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
+env.local.start);\n\talert(passed+' passed');\n}", "Display" -> "js", 
+    "Hash" -> "645e9dc7-7625-4886-982b-be3716d549a8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> "CreateFrontEndObject[PlaceholderClock[]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "815ab1f1-b1e8-4ff5-bc79-9dc35217e7c6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"e1797651-3421-4ae3-a67a-c7aab4f5fdfb\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxqaW\
+5qbmRrqGpsYGeqaJKYa6yaamSfqJpsnJiaZpJmmpaQlAQB6CxYB\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5d9352ad-b77b-45a7-841f-de3911a8c3be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> ".md\nTry to copy this object from the output cell and paste \
+somewhere else!", "Display" -> "codemirror", 
+    "Hash" -> "e83bd547-af8b-49d2-a4ce-85c1b228000d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> 
+     "Try to copy this object from the output cell and paste somewhere else!"\
+, "Display" -> "markdown", "Hash" -> "2d8d1b4d-8d60-4748-bd33-1e3251e0dc12", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "c8ece8eb-4c70-45fe-9fa6-6b2d8d7be610", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>}, "serializer" -> "jsfn4"|>
