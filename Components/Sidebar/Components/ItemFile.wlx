@@ -13,13 +13,13 @@ Icon = FileExtension[File] /. Join[$Options["Icons"], {
 }];
 
 Href = If[TrueQ[$Options["Selected"]],
-    <div class="block rounded-md py-0 pr-0 text-sm leading-6">
+    <div class="block rounded-md py-0 pr-0 text-sm">
         <FileNameTake>
             <File/>
         </FileNameTake>        
     </div>
 ,
-    <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm leading-6">
+    <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
         <FileNameTake>
             <File/>
         </FileNameTake>
@@ -27,7 +27,7 @@ Href = If[TrueQ[$Options["Selected"]],
 ];
 
 
-<div style="position: relative" class="{Selected} text-gray-700 dark:text-gray-400 flex flex-start items-center pl-7 gap-x-1 rounded-md">
+<div style="position: relative" class="{Selected} pb-0.5 pt-0.5 text-gray-700 dark:text-gray-400 flex flex-start items-center pl-7 gap-x-1 rounded-md">
     <Icon/>
     <Href/>
     <Dropdown Parameters={$Options["Parameters"]} Filename={File} Port={Port}/>

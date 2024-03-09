@@ -1,0 +1,104 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$122], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/06 - Utils/Editor manipulations.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Editor manupilation", 
+    "Display" -> "codemirror", "Hash" -> 
+     "782b1107-4862-42af-8451-2f7b8f32b409", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "\n## Editor manupilation", "Display" -> "markdown", 
+    "Hash" -> "44fba53b-2450-4ebc-8d75-2318a56081e4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> ".md\n### Replace selected / insert text to the \
+editor\nEvaluate *the cell below* first, then, select a text in the cell and \
+press the button.", "Display" -> "codemirror", 
+    "Hash" -> "8188f5e2-0ed3-4218-b16d-8e020f372ef9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "\n### Replace selected / insert text to the editor\nEvaluate \
+*the cell below* first, then, select a text in the cell and press the \
+button.", "Display" -> "markdown", "Hash" -> 
+     "922483ab-ffa6-4433-90e5-29ce5b7d0d0d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[]},\n  \
+EventHandler[InputButton[\"Replace selected text\"],\n    Function[Null, \n   \
+   FrontSubmit[FrontEditorSelected[\"Set\", \"Yo\"], \"Window\"->win];\n    \
+]\n  ]\n] ", "Display" -> "codemirror", 
+    "Hash" -> "e4057293-e60e-495a-96c8-bf3e7042a3ea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> ".md\nExample cell", "Display" -> "codemirror", 
+    "Hash" -> "19d5d67c-a8c2-4db7-b402-60a2e48c07b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, <|"Data" -> "\nExample cell", 
+    "Display" -> "markdown", "Hash" -> 
+     "365c6a27-e2d4-4b5a-a6fa-40c9cc242dcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "Select some text here", "Display" -> "codemirror", 
+    "Hash" -> "78c63432-cc67-4b5c-9177-250ab5bf5908", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "98a3a152-08d7-4237-bcf0-6373873dd0df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> ".md\n### Reading selected text\nThis is a bit more \
+complicated, since it involves communication back to the Wolfram Kernel", 
+    "Display" -> "codemirror", "Hash" -> 
+     "23214271-06d0-4ecd-bee7-0e01becae291", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "\n### Reading selected text\nThis is a bit more complicated, \
+since it involves communication back to the Wolfram Kernel", 
+    "Display" -> "markdown", "Hash" -> 
+     "984691d7-aa7c-4cd5-842a-473b50bad0c0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[], cell = ResultCell[]},\n  \
+EventHandler[InputButton[\"Read selected text\"], Function[Null, \n    \
+CellPrint[\n      FrontFetch[FrontEditorSelected[\"Get\"], \"Window\"->win]\n \
+   , \"After\"->cell];\n  ]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "8dafd009-6f34-4b30-af1c-c27971244b71", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "80c02249-5b48-4a27-bec7-95f567366a93", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> ".md\n### Read cliboard\nThis is sort of an experimental \
+feature, that allows to read the content of a clipboard", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ad9715f3-2cb3-4826-a28d-63d2438566ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "\n### Read cliboard\nThis is sort of an experimental feature, \
+that allows to read the content of a clipboard", "Display" -> "markdown", 
+    "Hash" -> "61419aa8-9747-414f-9244-19761e5b5963", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[], cell = ResultCell[]},\n  \
+EventHandler[InputButton[\"Read selected text\"], Function[Null, \n    \
+CellPrint[\n      FrontFetch[ReadClipboard[], \"Window\"->win]\n    , \
+\"After\"->cell];\n  ]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "f3dbf272-c6cf-43a8-ac7e-6f425afc003c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61e70f6c-6e8d-475c-8ad2-74c51657e2cf"|>}, "serializer" -> "jsfn4"|>

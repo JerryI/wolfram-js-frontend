@@ -1,0 +1,100 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$324], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/09 - Frontend interpreter/GOL-Containers.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# GOL: Example with containers\nUsing the \
+advanced frontend functions definition", "Display" -> "codemirror", 
+    "Hash" -> "ee8686a3-d96c-43e9-baad-1efca24fd5f8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "\n# GOL: Example with containers\nUsing the advanced frontend \
+functions definition", "Display" -> "markdown", 
+    "Hash" -> "fd159f56-0ce0-4968-affb-8c527bef8d84", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> ".js\n\n//constructor\ncore.MyFunction = async (args, env) => \
+{\n  //just to make second object to be aware of the previous one\n  const \
+data = await interpretate(args[0], env);\n  //create js canvas\n  const \
+canvas = document.createElement(\"canvas\");\n  canvas.width = 400;\n  \
+canvas.height = 400;\n\n  let context = canvas.getContext(\"2d\");\n  \
+context.fillStyle = \"lightgray\";\n  context.fillRect(0, 0, 500, 500);\n\n  \
+//an array to store the previous state\n  let old = new Array(40);\n  for \
+(let i = 0; i < old.length; i++) {\n    old[i] = new Array(40).fill(0); \n  \
+}\n\n  env.element.appendChild(canvas);\n  env.local.old = old;\n  \
+env.local.ctx = context;\n}\n\n//on update\ncore.MyFunction.update = async \
+(args, env) => {\n  const data = await interpretate(args[0], env);\n  \
+console.log(env.local);\n  const context = env.local.ctx;\n  //draw our \
+boxes\n  for(let i=0; i<40; ++i) {\n    for (let j=0; j<40; ++j) {\n      \
+//old pixels will leave blue traces\n      if (env.local.old[i][j] > 0) {\n   \
+     context.fillStyle = \"rgba(0,0,255,0.2)\"; \n        \
+context.fillRect(i*10 + 2, j*10 + 2, 6, 6);\n      }\n      //new pixels\n    \
+  if (data[i][j] > 0) {\n        context.fillStyle = \"rgba(255,0,0,0.4)\"; \
+\n        context.fillRect(i*10 + 1, j*10 + 1, 8, 8);\n      } else {\n       \
+ context.fillStyle = \"rgba(255,255,255,0.4)\"; \n        \
+context.fillRect(i*10 + 1, j*10 + 1, 8, 8);\n      }\n    }\n  }\n\n  \
+env.local.old = data;\n}\n\ncore.MyFunction.destroy = (args, env) => \
+{}\n\nreturn null;", "Display" -> "codemirror", 
+    "Hash" -> "e639f344-7013-40ab-8d58-0abbd16b3ab8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "\n\n//constructor\ncore.MyFunction = async (args, env) => {\n \
+ //just to make second object to be aware of the previous one\n  const data = \
+await interpretate(args[0], env);\n  //create js canvas\n  const canvas = \
+document.createElement(\"canvas\");\n  canvas.width = 400;\n  canvas.height = \
+400;\n\n  let context = canvas.getContext(\"2d\");\n  context.fillStyle = \
+\"lightgray\";\n  context.fillRect(0, 0, 500, 500);\n\n  //an array to store \
+the previous state\n  let old = new Array(40);\n  for (let i = 0; i < \
+old.length; i++) {\n    old[i] = new Array(40).fill(0); \n  }\n\n  \
+env.element.appendChild(canvas);\n  env.local.old = old;\n  env.local.ctx = \
+context;\n}\n\n//on update\ncore.MyFunction.update = async (args, env) => {\n \
+ const data = await interpretate(args[0], env);\n  console.log(env.local);\n  \
+const context = env.local.ctx;\n  //draw our boxes\n  for(let i=0; i<40; ++i) \
+{\n    for (let j=0; j<40; ++j) {\n      //old pixels will leave blue \
+traces\n      if (env.local.old[i][j] > 0) {\n        context.fillStyle = \
+\"rgba(0,0,255,0.2)\"; \n        context.fillRect(i*10 + 2, j*10 + 2, 6, \
+6);\n      }\n      //new pixels\n      if (data[i][j] > 0) {\n        \
+context.fillStyle = \"rgba(255,0,0,0.4)\"; \n        context.fillRect(i*10 + \
+1, j*10 + 1, 8, 8);\n      } else {\n        context.fillStyle = \
+\"rgba(255,255,255,0.4)\"; \n        context.fillRect(i*10 + 1, j*10 + 1, 8, \
+8);\n      }\n    }\n  }\n\n  env.local.old = \
+data;\n}\n\ncore.MyFunction.destroy = (args, env) => {}\n\nreturn null;", 
+    "Display" -> "js", "Hash" -> "53cc01a1-b587-4212-bd4f-6d5108ee0b67", 
+    "Invisible" -> False, "MetaOnly" -> False, 
+    "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", "Type" -> "Output", 
+    "UID" -> Null, "Notebook" -> "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> ".md\nWolfram Mathematica code", "Display" -> "codemirror", 
+    "Hash" -> "c67fe409-837c-4223-9731-d8e4d2850255", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "\nWolfram Mathematica code", "Display" -> "markdown", 
+    "Hash" -> "0cd1f449-c44e-4dc0-ab71-432f7651f1b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, \
+{1, 1}};\nboard = RandomInteger[1, {40, \
+40}];\n\nCreateFrontEndObject[MyFunction[board // Offload]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "daed69ac-3e50-480d-af69-f7fcc528c055", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> ".md\nPerform an update", "Display" -> "codemirror", 
+    "Hash" -> "e4d482dc-1bc9-45bf-a0f4-61cdae9afb3c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "\nPerform an update", "Display" -> "markdown", 
+    "Hash" -> "a52a2c6d-b12e-4d9b-8409-08d202239729", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+   <|"Data" -> "\nDo[\n  board = CellularAutomaton[gameOfLife, board, {{0, \
+1}}] // Last;\n  Pause[0.1];\n, {i,1,100}]", "Display" -> "codemirror", 
+    "Hash" -> "afdaf70a-f04e-47eb-9231-4b4253cbfb1c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e690518f-2b35-425d-8073-1cac01ff1a41"|>}, "serializer" -> "jsfn4"|>

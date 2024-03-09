@@ -1,0 +1,100 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1187], 
+   "Objects" -> <|"c8e63eb9-7fed-47d9-9e7a-1e8f7c29278f" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\">Length</label><input \
+id=\"n-e0ff3acb-3de0-492d-bc30-5ac0ac96656c\" min=\"-1\" max=\"1\" \
+step=\"0.1\" value=\"0.\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-e0ff3acb-3de0-492d-bc30-5ac0ac96656c\" min=\"-1\" max=\"1\" \
+step=\"0.1\" value=\"0.\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-e0ff3acb-3de0-492d-bc30-5ac0ac96656c');\n        \
+const ran = \
+document.getElementById('r-e0ff3acb-3de0-492d-bc30-5ac0ac96656c');\n\n        \
+function isNumber(value) { return typeof value === 'number'}\n\n        \
+num.addEventListener('input', (event)=> {\n            if (isNaN(num.value)) \
+return;\n            ran.value = num.value;\n            \
+server.kernel.emitt('8646000a-5983-47ee-b7d6-d2cc9170f380', num.value, \
+'Default');      \n        });\n\n        ran.addEventListener('input', \
+(event)=> {\n            if (isNaN(ran.value)) return;\n            num.value \
+= ran.value;\n            \
+server.kernel.emitt('8646000a-5983-47ee-b7d6-d2cc9170f380', ran.value, \
+'Default');      \n        });</script>"}]]|>|>, "Path" -> "/Users/kirill/Lib\
+rary/Application \
+Support/wljs-notebook/Examples/Dynamics/Interaction/Slider.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Event-based approach\nEach input element is \
+an event object generator", "Display" -> "codemirror", 
+    "Hash" -> "93813447-ff05-41c9-adda-7b700d11cee8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "\n# Event-based approach\nEach input element is an event \
+object generator", "Display" -> "markdown", 
+    "Hash" -> "e67c62ac-7168-4c0c-9a25-7783ab6d33f6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "slider = InputRange[-1,1,0.1, \"Label\"->\"Length\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "de99dc25-a8c4-4603-abb7-25005d284543", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
+\"8646000a-5983-47ee-b7d6-d2cc9170f380\", \"Initial\" -> 0., \"View\" -> \
+\"c8e63eb9-7fed-47d9-9e7a-1e8f7c29278f\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1ukmhmnJlnqmqelpuiamKdY6lqmmifqGqZapJk\
+nG1kamVukAQCTmhYw\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "dbe76e2e-2247-4208-88c2-7cf4286b00ff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> ".md\nBind our event to update shared variable", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5b4d2177-824c-490c-b12a-d4028e7a817d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "\nBind our event to update shared variable", 
+    "Display" -> "markdown", "Hash" -> 
+     "aad25875-3edc-46a5-a024-91535c73c107", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> 
+     "EventHandler[slider, Function[l, length = l]];\nEventFire[slider];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5a28301d-16e6-4240-a69c-32316608de76", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> ".md\nNow we can make our dynamic rectangle", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c7883046-f970-433b-95e9-1f15e5ffdf0b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "\nNow we can make our dynamic rectangle", 
+    "Display" -> "markdown", "Hash" -> 
+     "56a94b06-d613-44d1-b60c-56da24690ea4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> "Graphics[{Cyan, \n  Rectangle[{-1,-1}, {length // Offload, \
+1}]\n}, PlotRange->{{-1,1},{-1,1}}, ImageSize->{400,100}, \
+\"TransitionDuration\"->30, \"TransitionType\"->\"Linear\"] ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ea1196c1-cd6f-41af-90d2-29da2d26e45c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "fb1f3676-796a-417e-8583-6b4b9e2b3333", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "baf87c1f-ed7a-4c41-8b2a-bc362e7ca508"|>}, "serializer" -> "jsfn4"|>

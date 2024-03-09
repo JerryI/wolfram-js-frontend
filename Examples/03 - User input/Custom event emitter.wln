@@ -1,0 +1,194 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$499], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
+Support/wljs-notebook/Examples/03 - User input/Custom event emitter.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Custom event generator\nLet us create a \
+custom UI element that can read users input", "Display" -> "codemirror", 
+    "Hash" -> "577ca0fe-4a8f-4a8f-81ff-262b6dbfa64e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "## Custom event generator\nLet us create a custom UI element \
+that can read users input", "Display" -> "markdown", 
+    "Hash" -> "7bfd37ca-0a64-48bd-9666-af154603e182", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\n## Javascript version", "Display" -> "codemirror", 
+    "Hash" -> "5e2cb254-b9ca-4fb1-929f-5b38fd5c9dd6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "## Javascript version", "Display" -> "markdown", 
+    "Hash" -> "a5b533a3-147e-4328-977b-199a92fcc16d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\nCustom Button example", "Display" -> "codemirror", 
+    "Hash" -> "fb11e8cd-4046-4ba7-8288-25c7e76e17ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "\nCustom Button example", "Display" -> "markdown", 
+    "Hash" -> "24681614-4f53-4214-b0b9-2346898fc179", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".js\n\ncore.CustomButtonView = async (args, env) => {\n  \
+const options = await core._getRules(args, env);\n  const button = \
+document.createElement('input');\n  button.type = \"button\";\n  \
+button.classList.add(\"bg-teal-300\", \"hover:bg-teal-400\", \"font-bold\", \
+\"py-2\", \"px-4\", \"rounded\");\n  button.value = options.Label;\n  \
+button.addEventListener('click', ()=>{\n    \
+server.kernel.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
+env.element.appendChild(button);\n}\n\nreturn '';", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9b379bc6-7742-44aa-9e15-13ef817a92fb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "\ncore.CustomButtonView = async (args, env) => {\n  const \
+options = await core._getRules(args, env);\n  const button = \
+document.createElement('input');\n  button.type = \"button\";\n  \
+button.classList.add(\"bg-teal-300\", \"hover:bg-teal-400\", \"font-bold\", \
+\"py-2\", \"px-4\", \"rounded\");\n  button.value = options.Label;\n  \
+button.addEventListener('click', ()=>{\n    \
+server.kernel.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
+env.element.appendChild(button);\n}\n\nreturn '';", "Display" -> "js", 
+    "Hash" -> "1fbf7a35-ec1b-444c-a34c-ef8b9995b9e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\nCapture events on WL Kernel", "Display" -> "codemirror", 
+    "Hash" -> "2a4d493d-ff27-4526-aa72-023fba9af8ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "Capture events on WL Kernel", "Display" -> "markdown", 
+    "Hash" -> "62794167-94ad-4252-a12c-3a61a2616fac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "CustomButton[label_] := With[{uid = CreateUUID[]},\n  \
+EventObject[<|\"Id\"->uid, \"Initial\"->False, \
+\"View\"->CustomButtonView[\"Label\"->label, \"Event\"->uid]|>]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4b09d7db-c650-4275-a1ce-ffa821988cda", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\nUse like a normal `Input-` element", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7dbb1b73-3841-4596-ae2c-c9fe3d4f8dba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "Use like a normal `Input-` element", "Display" -> "markdown", 
+    "Hash" -> "ca171eb9-3a78-41c5-8cd8-0e90f97ac068", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "EventHandler[CustomButton[\"Woo\"], Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "944eaa82-8fe5-4730-97e1-eac0512d9ce4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "e11764c7-0f4c-41d7-8355-6766cfad2ab4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\n## WLX + JS version\nThis way allows to combine power of \
+HTML and JS", "Display" -> "codemirror", 
+    "Hash" -> "7d4c1b19-f2d4-475b-a27b-d2e161843b93", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> 
+     "## WLX + JS version\nThis way allows to combine power of HTML and JS", 
+    "Display" -> "markdown", "Hash" -> 
+     "3a8f0eee-e960-4a10-9aba-1ca342a7f9e3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".wlx\n\nMyButton[OptionsPattern[]] := With[{Event = \
+OptionValue[\"Event\"], Label = OptionValue[\"Label\"], UId = \
+CreateUUID[]},\n<div>\n  <button type=\"button\" id=\"{UId}\" class=\"rounded \
+bg-indigo-600 px-2 py-1 text-sm font-semibold shadow-sm hover:bg-indigo-500 \
+focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 \
+focus-visible:outline-indigo-600\">\n    <Label/>\n  </button>\n  <script \
+type=\"module\">\n    const doc = document.getElementById('<UId/>');\n    \
+doc.addEventListener('click', ()=>{\n      server.kernel.emitt('<Event/>', \
+'True');\n    })\n  </script>\n</div>\n]\n\nOptions[MyButton] = \
+{\"Event\"->\"\", \"Label\"->\"Press me\"};", "Display" -> "codemirror", 
+    "Hash" -> "40b26ebe-96c6-4ffd-a3a1-9b6312adf6a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\nNow let us make a handy wrapper for it", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2e805b97-955b-40cc-bcc9-9e688ee0bea2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "Now let us make a handy wrapper for it", 
+    "Display" -> "markdown", "Hash" -> 
+     "c0b0ad45-301b-4ef1-94e9-ffda8810dbce", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "InputMyButton[opts: OptionsPattern[]] := With[{ev = \
+CreateUUID[]},\n  EventObject[<|\"Id\"->ev, \"View\"->WLXEmbed[MyButton[opts, \
+\"Event\"->ev]]|>]\n]", "Display" -> "codemirror", 
+    "Hash" -> "b50285c8-1770-420b-bd57-e1e399994715", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, <|"Data" -> ".md\nTest it!", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e3215df9-3845-43c7-87c8-802c2c7a23b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, <|"Data" -> "Test it", 
+    "Display" -> "markdown", "Hash" -> 
+     "9b8f72ca-8a56-4877-8067-2b039f81f69b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "EventHandler[InputMyButton[], Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5c728aa5-6187-4c9d-9710-92e914501578", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> ".md\nIn principle, one can use just `MyButton` wrapped with \
+`WLXEmbed` expression to display a button. Howvever, in this case you would \
+have to generate `Event Id` manually and assign all handler to it.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "83f4b431-360f-49b8-b890-7f4a1d958fbb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "In principle, one can use just `MyButton` wrapped with \
+`WLXEmbed` expression to display a button. Howvever, in this case you would \
+have to generate `Event Id` manually and assign all handler to it.", 
+    "Display" -> "markdown", "Hash" -> 
+     "b8d06fa8-3d6c-4fbc-9b09-722b5329f3de", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, <|"Data" -> ".md\nLike this", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a0b1a886-0cfe-476d-b8e2-04da59aef249", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, <|"Data" -> "Like this", 
+    "Display" -> "markdown", "Hash" -> 
+     "11c3e313-0f7a-4c6a-bb0e-6acef3181dd4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>, 
+   <|"Data" -> "EventHandler[\"c-ev\", Print];\nMyButton[\"Event\"->\"c-ev\"] \
+// WLXEmbed", "Display" -> "codemirror", 
+    "Hash" -> "7eca17cf-933d-40c8-87f0-1d295ced47fa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "830ebea6-fa8b-4668-b084-73d7f5b5efff"|>}, "serializer" -> "jsfn4"|>

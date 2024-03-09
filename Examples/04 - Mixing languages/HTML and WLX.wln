@@ -1,0 +1,58 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$57], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/04 - Mixing languages/HTML and WLX.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# HTML and Template engine\nOne can use basic \
+HTML together with insets of WL", "Display" -> "codemirror", 
+    "Hash" -> "7acef123-8a9f-450e-8295-37a8dcc8cf5e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> "# HTML and Template engine\nOne can use basic HTML together \
+with insets of WL", "Display" -> "markdown", 
+    "Hash" -> "547d8109-0f25-4bde-9bba-8fd23c530ac3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> ".html\n\nCurrent time: <b><?wsp TextString[Now] ?></b>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "eb8e3e95-2b60-49b2-b098-e3f7a46d0175", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> "\nCurrent time: <b>Sat 9 Mar 2024 16:18:54</b>", 
+    "Display" -> "html", "Hash" -> "1684b044-e2e7-4160-9258-822c93a3e11d", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "829fb291-08d9-4f8f-9436-5e39b5463d68", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> ".md\n# WLX Extension\nThis is combination of XML and WL \
+languages simillar to JSX. Please [read \
+docs](https://jerryi.github.io/wlx-docs/) here. An actual notebook interface \
+was made using WLX", "Display" -> "codemirror", 
+    "Hash" -> "b5f57230-89f0-4eb3-a86c-e28e1eef89ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> "# WLX Extension\nThis is combination of XML and WL languages \
+simillar to JSX. Please [read docs](https://jerryi.github.io/wlx-docs/) here. \
+An actual notebook interface was made using WLX", "Display" -> "markdown", 
+    "Hash" -> "a2f526e1-4fbc-4a8f-868a-daccf5d9db61", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> ".wlx\n\n<div>\n  Current time: \
+<b><TextString><Now/></TextString></b>\n</div>", "Display" -> "codemirror", 
+    "Hash" -> "71dea346-48e0-43e7-a923-b9fb257556bc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+   <|"Data" -> "<div > Current time: <b >Sat 9 Mar 2024 16:24:11</b></div>", 
+    "Display" -> "wlx", "Hash" -> "473f82be-162d-46e9-bfa6-585b29cb6350", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>}, 
+ "serializer" -> "jsfn4"|>

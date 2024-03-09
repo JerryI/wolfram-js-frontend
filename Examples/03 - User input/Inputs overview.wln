@@ -1,0 +1,217 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$87], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/03 - User input/Inputs overview.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# A simple button\nGenerates a single event", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e3b11a84-82dd-4bb8-8871-5d5428ddef15", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# A simple button\nGenerates a single event", 
+    "Display" -> "markdown", "Hash" -> 
+     "f7fb2360-be24-4f80-8193-e0e5cd582664", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> 
+     "button = InputButton[\"Click me!\"];\nEventHandler[button, Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b1486a08-16bc-4bbe-ad55-f9afe2ff1f7e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# A simple slider\nAlso generates a single event", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a40bca3b-4eea-4446-9a81-5ca8d1aef30a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# A simple slider\nAlso generates a single event", 
+    "Display" -> "markdown", "Hash" -> 
+     "a60a10a4-79f1-4330-bde2-5be8291d9a4b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "EventHandler[InputRange[0,1,0.1], Function[data, rpos = \
+data]];\n% \n% // EventFire; (* just to occupy rpos symbol with a default \
+value *)\nGraphics[Rectangle[{-1,0}, {1, Offload[rpos]}]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f9919de5-2e93-4ee7-83a8-6274b6c59717", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Input text", "Display" -> "codemirror", 
+    "Hash" -> "25a0b36b-ea6d-4e28-bbdb-1f04f00b10ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, <|"Data" -> "# Input text", 
+    "Display" -> "markdown", "Hash" -> 
+     "4ac55495-35a7-46a2-83ff-27e2a8c87d82", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "text = InputText[\"Hi\"]\nEventHandler[text, Print];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e05ee111-6fd7-49d3-9ada-67e69f5545b7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Input select", "Display" -> "codemirror", 
+    "Hash" -> "651e5e17-0984-439a-bfff-a5401360c78d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, <|"Data" -> "# Input select", 
+    "Display" -> "markdown", "Hash" -> 
+     "9fa930f4-0ab2-4e89-ad72-be0190dd220f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "select = InputSelect[{1->\"One\", \
+2->\"Two\"}];\nEventHandler[select, Print]", "Display" -> "codemirror", 
+    "Hash" -> "081858ab-8231-4f50-9022-9a24043eaaa4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Input checkbox", "Display" -> "codemirror", 
+    "Hash" -> "a5cf1dbe-7262-40b2-ab9e-73d63385898d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# Input checkbox", "Display" -> "markdown", 
+    "Hash" -> "7aaf9cab-008d-4359-a06f-768f23dff8a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "checkbox = InputCheckbox[False, \"Label\"->\"Label\", \
+\"Description\"->\"Some text\"];\nEventHandler[checkbox, Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "28af53e3-3706-4158-9865-74cfad0bffab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Grouping UI elements together\nas an association", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f2cfa1ff-9580-4d17-b58e-a409db3d56d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# Grouping UI elements together\nas an association", 
+    "Display" -> "markdown", "Hash" -> 
+     "f5d064bc-9f74-48d0-8368-11bf131cc40b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "group = InputGroup[<|\n  \"left\" -> InputRange[0,1,0.1],\n  \
+\"right\" -> InputRange[0,1,0.5]\n|>];\nEventHandler[group, Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8f65302d-1f15-466c-8292-8edce16029fa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\nor as array", "Display" -> "codemirror", 
+    "Hash" -> "c47c2774-d95f-422e-8169-4dca9562f9c2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, <|"Data" -> "or as array", 
+    "Display" -> "markdown", "Hash" -> 
+     "3e4c67bb-8c77-4099-a56b-3973787985d2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "group = InputGroup[{\n  InputRange[0,1,0.1],\n  \
+InputRange[0,1,0.5]\n}];\nEventHandler[group, Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2a009d8f-9816-4099-8d99-7fa9c37e56b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Input file\nIt does support multiple files as well. \
+The first event comes as a transaction details and then an actual files will \
+come", "Display" -> "codemirror", "Hash" -> 
+     "906120ec-888b-44ca-ad94-4e3662ad4a2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# Input file\nIt does support multiple files as well. The \
+first event comes as a transaction details and then an actual files will \
+come", "Display" -> "markdown", "Hash" -> 
+     "0736a317-0889-4447-bf66-b0d600211341", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "files = InputFile[];\n\nEventHandler[files, {\n  \
+\"Transaction\" -> Print,\n  \"File\" -> Echo \n}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "97a492b7-f9d3-41cc-b204-68026dca01d0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\nto decode file - use `BaseDecode` on `Data` field", 
+    "Display" -> "codemirror", "Hash" -> 
+     "94c8b2ce-10ca-44ae-a0aa-a15d0afdbae5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "to decode file - use `BaseDecode` on `Data` field", 
+    "Display" -> "markdown", "Hash" -> 
+     "e3bb08b7-51bd-41da-b10b-5a2b67dd0ddd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Input editor\nAn extended input field, that accepts \
+any WL expressions with syntax sugar", "Display" -> "codemirror", 
+    "Hash" -> "87ced2f2-b6d1-4f11-bc5e-b241bd72d88a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# Input editor\nAn extended input field, that accepts any WL \
+expressions with syntax sugar", "Display" -> "markdown", 
+    "Hash" -> "9abb0d50-f90b-401c-9570-df52c3e6f829", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "editorp = InputEditor[\"1+1\"];\nEventHandler[editorp, {\n  \
+type_ :> Function[data, Print[type, \": \", data]]\n}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0908bcfa-0879-44c3-8750-614b8e8ba6a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\n# Table input\nAn excel-like table editor", 
+    "Display" -> "codemirror", "Hash" -> 
+     "211671c8-2291-4b46-a15d-65104d605fce", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "# Table input\nAn excel-like table editor", 
+    "Display" -> "markdown", "Hash" -> 
+     "1e1d615d-f09a-4dcd-9fc7-bce934391d38", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "tableSymbol = {{0,0}, {1,1}, {2,2}};\nWith[{ev = \
+InputTable[tableSymbol]},\n  EventHandler[ev, \
+InputTable`EventHelper[tableSymbol]];\n  \n  (* to trigger an update we \
+reassign the symbol again to itself*)\n  EventHandler[ev // EventClone, \
+Function[Null, tableSymbol = tableSymbol]];\n  ev\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "aa86635f-133b-49f3-a5b7-6a946d8ce91f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> ".md\nPlot it lively", "Display" -> "codemirror", 
+    "Hash" -> "58339322-72d9-440a-9d1d-5b7862d29dfe", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, <|"Data" -> "Plot it lively", 
+    "Display" -> "markdown", "Hash" -> 
+     "fa03c484-cc75-4c79-be49-bb4ecc1cb1d1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>, 
+   <|"Data" -> "ListLinePlotly[tableSymbol // Offload]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "99436c27-0bcb-4ffc-8e2e-f13e2c014c7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1a1eb435-7cf7-4d6b-a197-b57043dfbb98"|>}, "serializer" -> "jsfn4"|>

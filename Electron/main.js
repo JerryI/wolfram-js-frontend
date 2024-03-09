@@ -1836,8 +1836,8 @@ function install_frontend(cbk, window) {
     
                 //remove examples from the previous build
                 if (fs.existsSync(path.join(installationFolder, 'Examples'))) {
-                    fs.rmSync(path.join(installationFolder, 'Examples'), { recursive: true, force: true });
-                    windows.log.print('`Examples` was removed');
+                    //fs.rmSync(path.join(installationFolder, 'Examples'), { recursive: true, force: true });
+                    //windows.log.print('`Examples` was removed');
                 }
                 
     

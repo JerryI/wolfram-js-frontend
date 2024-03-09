@@ -1,0 +1,91 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1074], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
+Support/wljs-notebook/Examples/Dynamics/Interaction/Inverse kinematics.wln"|>\
+, "Cells" -> {<|"Data" -> ".md\n## FABRIK Solver\nAn interactive \
+implementation of the simples inverse kinematics problem", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fc619d11-9c19-417e-a307-40ef39eb1bb7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "\n## FABRIK Solver\nAn interactive implementation of the \
+simples inverse kinematics problem", "Display" -> "markdown", 
+    "Hash" -> "0e763cb0-b20f-47a1-a55d-ad19b9a3a55c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> ".md\n*the actual implemntation is not well-optimized for \
+Wolfram Language, but serves a good purpose for the demonstration*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "02a30d98-33d7-4008-9f30-f74d99a2003d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "\n*the actual implemntation is not well-optimized for Wolfram \
+Language, but serves a good purpose for the demonstration*", 
+    "Display" -> "markdown", "Hash" -> 
+     "c81a1f33-4a69-4864-b07a-5830ee485ac9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> ".md\nDefine a bunch of points connect them into a segmented \
+line with fixed length", "Display" -> "codemirror", 
+    "Hash" -> "aa8fc688-3791-42b2-b979-f7642133ccac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "\nDefine a bunch of points connect them into a segmented line \
+with fixed length", "Display" -> "markdown", 
+    "Hash" -> "c0252fc4-b97a-4381-a362-e54c930e5187", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "chain = {Cos[#[[1]]], Sin[#[[2]]]}&/@ RandomReal[{-1,1}, {65, \
+2}] // Sort;\nlengths = Norm /@ (chain // Reverse // Differences) // \
+Reverse;", "Display" -> "codemirror", 
+    "Hash" -> "571f2961-e25a-42ee-882c-80e6a3283921", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> False|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> ".md\nFABRIK solver", "Display" -> "codemirror", 
+    "Hash" -> "42fcc8e5-3c72-41b0-9583-b9b17be9228a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, <|"Data" -> "\nFABRIK solver", 
+    "Display" -> "markdown", "Hash" -> 
+     "c17d4d37-5308-4e2c-9475-8ec4e883fb66", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "fabrik[lengths_, target_, origin_] := Module[{buffer, \
+prev},\n  buffer = Table[With[{p = chain[[-i]]},\n    If[i === 1,\n      prev \
+= target;\n      target\n    ,\n    \n      prev = prev - Normalize[(prev - \
+p)] lengths[[1-i]];\n      prev \n    ]\n  ], {i, chain // Length}] // \
+Reverse;\n\n  Table[With[{p = buffer[[i]]},\n    If[i === 1,\n      prev = \
+origin;\n      origin\n    ,\n    \n      prev = prev - Normalize[(prev - p)] \
+lengths[[i-1]];\n      prev \n    ]\n  ], {i, chain // Length}]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "bac81a49-cab1-4562-b844-8049bd910ec5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> False|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> ".md\nCamera! Action", "Display" -> "codemirror", 
+    "Hash" -> "fd32a5e7-f087-42c9-bc43-12b6a8178cf9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "\nCamera! Action", "Display" -> "markdown", 
+    "Hash" -> "73d9f288-0c50-4791-be8a-8bd18719cc31", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>, 
+   <|"Data" -> "Graphics[{\n\n  Line[chain // Offload], \n  Red, \
+PointSize[0.06], \n  EventHandler[Point[{-1,-1}], {\"drag\"->Function[xy, \
+chain = fabrik[lengths, xy, chain // First]]}], \n  Blue, Point[origin // \
+Offload]\n  \n}, PlotRange->{{-2,2}, {-2,2}}, ImageSize->500, \
+TransitionType->\"Linear\", TransitionDuration->30]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "523d3cfc-13a4-4b92-ba48-ce2539673b2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ab97670-22af-4718-8dec-0ee555b6800e"|>}, "serializer" -> "jsfn4"|>

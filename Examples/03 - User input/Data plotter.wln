@@ -1,0 +1,23 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$450], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
+Support/wljs-notebook/Examples/03 - User input/Data plotter.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Data plotter\nEvaluate the cell and drag a \
+`.dat` TSV file with a list of 2D curve", "Display" -> "codemirror", 
+    "Hash" -> "9c6a4d76-a140-4728-b2ac-9ad00b47028a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a6e1fa04-ff11-4b72-a84b-af6854bf01df"|>, 
+   <|"Data" -> "\n## Data plotter\nEvaluate the cell and drag a `.dat` TSV \
+file with a list of 2D curve", "Display" -> "markdown", 
+    "Hash" -> "724d904f-d00a-4737-9d0b-b85b9aa3a623", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a6e1fa04-ff11-4b72-a84b-af6854bf01df"|>, 
+   <|"Data" -> "datap = {{0,0}, {0,0}};\nEventHandler[InputFile[\"Drag and \
+Drop\"], {\n  \"File\" -> Function[file,\n    datap = \
+Drop[ImportByteArray[file[\"Data\"]//BaseDecode, \"TSV\"], 1]\n  \
+]\n}]\nListLinePlotly[datap // Offload]", "Display" -> "codemirror", 
+    "Hash" -> "549b925d-37e0-4c38-9e68-ab86d76b743c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a6e1fa04-ff11-4b72-a84b-af6854bf01df"|>}, "serializer" -> "jsfn4"|>

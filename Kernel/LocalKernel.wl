@@ -43,11 +43,9 @@ heartBeat[k_] := Module[{ok = True, orig}, With[{secret = CreateUUID[]},
     SetInterval[
         If[!ok,
             orig = k["State"];
-            k["State"] = "Timeout";
             EventFire[k, "State", k["State"] ];
         ,
-            If[k["ReadyQ"] && k["State"] == "Timeout",
-                k["State"] = orig;
+            If[k["ReadyQ"],
                 EventFire[k, "State", k["State"] ];
             ];
         ];

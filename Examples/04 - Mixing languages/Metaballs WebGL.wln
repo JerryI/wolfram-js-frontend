@@ -1,0 +1,197 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$686], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/04 - Mixing languages/MetaballsWebGL.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# WebGL Metaballs example\nShow some \
+demonstration on how WebGL can interact with WL Kernel using event-based \
+system.\nThe overall diagram is shown here", "Display" -> "codemirror", 
+    "Hash" -> "545a192a-b542-4e58-95ac-297296b84873", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\n# WebGL Metaballs example\nShow some demonstration on how \
+WebGL can interact with WL Kernel using event-based system.\nThe overall \
+diagram is shown here", "Display" -> "markdown", 
+    "Hash" -> "779c45f8-7931-4374-bd6a-0b61dc63cfe4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".mermaid\nflowchart LR\n    subgraph Wolfram Kernel\n    \
+subgraph Event\n        H[Handler]\n        \n    end\n    \
+Calculations[/Calculations/]\n    \n\n    end\n    \n    subgraph Browser\n   \
+     subgraph JS interpreter\n            definedFunction[UpdateCanvas]\n     \
+       event[FireEvent]---> H[Handler]\n        end\n        definedFunction \
+--> API\n        API -- each frame --> event\n        subgraph WebGL\n        \
+    API\n        end\n\n    end\n    \n\n    \
+H--->Calculations[/Calculations/]--WebSockets-->definedFunction", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4ae38d70-ff52-4a46-9998-af28d84fb347", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\nflowchart LR\n    subgraph Wolfram Kernel\n    subgraph \
+Event\n        H[Handler]\n        \n    end\n    \
+Calculations[/Calculations/]\n    \n\n    end\n    \n    subgraph Browser\n   \
+     subgraph JS interpreter\n            definedFunction[UpdateCanvas]\n     \
+       event[FireEvent]---> H[Handler]\n        end\n        definedFunction \
+--> API\n        API -- each frame --> event\n        subgraph WebGL\n        \
+    API\n        end\n\n    end\n    \n\n    \
+H--->Calculations[/Calculations/]--WebSockets-->definedFunction", 
+    "Display" -> "mermaid", "Hash" -> "a7e10b10-c15c-4121-9396-511a0f697c96", 
+    "Invisible" -> False, "MetaOnly" -> False, 
+    "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", "Type" -> "Output", 
+    "UID" -> Null, "Notebook" -> "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".md\nEverything goes asynchronous, therefore, you can still \
+operate with the cells. \n\nLet's define some basic 3-bodies system", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fd4e88bc-9967-4085-add3-36ae67102441", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\nEverything goes asynchronous, therefore, you can still \
+operate with the cells. \n\nLet's define some basic 3-bodies system", 
+    "Display" -> "markdown", "Hash" -> 
+     "793f8757-c132-4744-8187-3ebfbd9959c0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "bodies  = NBodySimulation[\n  \"InverseSquare\", {\n  \
+<|\"Mass\" -> 1, \"Position\" -> {0, 2}, \"Velocity\" -> {0, .5}|>,\n  \
+<|\"Mass\" -> 1, \"Position\" -> {3, 0.4}, \"Velocity\" -> {+0.01, -.5}|>,\n  \
+<|\"Mass\" -> 1, \"Position\" -> {-1.1, 0.4}, \"Velocity\" -> {-2.11, \
+-.5}|>}, 1];", "Display" -> "codemirror", 
+    "Hash" -> "7eced87c-3541-4813-a440-ab3f1186ae7d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".md\nThen define some parameters and create an `EventObject` \
+to be used for the interconnection with JS", "Display" -> "codemirror", 
+    "Hash" -> "ba391035-3069-4a69-9edb-9ae2b5c94eb2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\nThen define some parameters and create an `EventObject` to \
+be used for the interconnection with JS", "Display" -> "markdown", 
+    "Hash" -> "2560d816-0ca9-4696-a8fe-d3403b0660c9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "width = 500;\nheight = 500;\nt = 0;\n\ngetScaled[t_] := \
+Module[{max,min, pos = bodies[All, \"Position\", t]},\n  max = 1.5 \
+Max[pos//Flatten] {1,1};\n  min = 1.5 Min[pos//Flatten] {1,1};\n\n  ( {width, \
+height}  (# - min) / (max - min))& /@ pos\n];\nupdate = \
+\"reCompute\";\nupdate", "Display" -> "codemirror", 
+    "Hash" -> "e95468b5-7e06-4ba8-9f4c-b6521d235697", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\"reCompute\"", "Display" -> "codemirror", 
+    "Hash" -> "9ddb290a-26d0-4757-b8a7-a1bbbeeb3092", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".md\nNow JS part comes with some basic shaders, which returns \
+a DOM element", "Display" -> "codemirror", 
+    "Hash" -> "4606bcf7-c8af-4dde-8516-6212db214c09", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> 
+     "\nNow JS part comes with some basic shaders, which returns a DOM \
+element", "Display" -> "markdown", "Hash" -> 
+     "d9339025-f5e0-47bd-bcaf-b283911e492a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".js\nconst canvas = document.createElement('canvas');\nvar gl \
+= canvas.getContext(\"webgl\", {depth: false});\n\nvar height = 500;\nvar \
+width = 500;\n\ncanvas.width = width;\ncanvas.height = height;\n\nvar \
+fragmentShader;\n\n{\n  const shader = gl.createShader(gl.FRAGMENT_SHADER);\n \
+ gl.shaderSource(shader, `\nprecision highp float;\nuniform vec2 \
+u_ball1;\nuniform vec2 u_ball2;\nuniform vec2 u_ball3;\n\nconst float PI = \
+3.14159265359;\n\n// https://github.com/d3/d3-color\nvec3 cubehelix(vec3 c) \
+{\n  float a = c.y * c.z * (1.0 - c.z);\n  float cosh = cos(c.x + PI / \
+2.0);\n  float sinh = sin(c.x + PI / 2.0);\n  return vec3(\n    (c.z + a * \
+(1.78277 * sinh - 0.14861 * cosh)),\n    (c.z - a * (0.29227 * cosh + 0.90649 \
+* sinh)),\n    (c.z + a * (1.97294 * cosh))\n  );\n}\n\n// \
+https://github.com/d3/d3-scale-chromatic\nvec3 cubehelixDefault(float t) {\n  \
+return cubehelix(vec3(mix(300.0 / 180.0 * PI, -240.0 / 180.0 * PI, t), 0.5, \
+t));\n}\n\nvoid main(void) {\n  float f = 1.0 / (distance(gl_FragCoord.xy, \
+u_ball1)) + 1.0 / (distance(gl_FragCoord.xy, u_ball2)) + 1.0 / \
+(distance(gl_FragCoord.xy, u_ball3));\n  float t = smoothstep(0.0, 1.0, (0.04 \
+- f) / 0.04);\n  gl_FragColor = vec4(cubehelixDefault(t), 1.0);\n}\n`);\n  \
+gl.compileShader(shader);\n  fragmentShader= shader;\n\n}\n\nvar \
+vertexShader;\n\n{\n  const shader = gl.createShader(gl.VERTEX_SHADER);\n  \
+gl.shaderSource(shader, `\nattribute vec2 a_corner;\nvoid main(void) {\n  \
+gl_Position = vec4(a_corner, 0.0, 1.0);\n}\n`);\n  \
+gl.compileShader(shader);\n   vertexShader = shader;\n  \n}\n\nvar \
+program;\n{\n  const program0 = gl.createProgram();\n  \
+gl.attachShader(program0, vertexShader);\n  gl.attachShader(program0, \
+fragmentShader);\n  gl.linkProgram(program0);\n   program = program0;\n \
+\n};\n\nvar cornerBuffer;\n\n{\n  const buffer = gl.createBuffer();\n  \
+gl.bindBuffer(gl.ARRAY_BUFFER, buffer);\n  gl.bufferData(gl.ARRAY_BUFFER, \
+Float32Array.of(-1, -1, +1, -1, +1, +1, -1, +1), gl.STATIC_DRAW);\n  \
+cornerBuffer = buffer;\n}\n\nvar a_corner = gl.getAttribLocation(program, \
+\"a_corner\")\nvar u_ball1 = gl.getUniformLocation(program, \"u_ball1\")\nvar \
+u_ball2 = gl.getUniformLocation(program, \"u_ball2\")\nvar u_ball3 = \
+gl.getUniformLocation(program, \"u_ball3\")\n\ngl.viewport(0, 0, width, \
+height);\ngl.useProgram(program);\ngl.enableVertexAttribArray(a_corner);\ngl.\
+vertexAttribPointer(a_corner, 2, gl.FLOAT, false, 0, 0);\n\n//Frontend \
+function, which is called by the Wolfram kernel\ncore.UpdateCanvas = async \
+function(args, env) {\n  const coords = await interpretate(args[0], env);\n  \
+gl.uniform2f(\n    u_ball1,\n    coords[0][0],\n    coords[0][1]\n  );\n  \
+gl.uniform2f(\n    u_ball2,\n    coords[1][0],\n    coords[1][1]\n  );\n  \
+gl.uniform2f(\n    u_ball3,\n    coords[2][0],\n    coords[2][1]\n  );\n  \
+gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);  \n\n  \
+requestAnimationFrame(animate);\n}\n\nfunction animate() {\n  \
+server.kernel.emitt('reCompute', 'True');\n}\n\nconst uid = \
+requestAnimationFrame(animate);\nthis.ondestroy = function() \
+{cancelAnimationFrame(uid)};\n\nreturn canvas;", "Display" -> "codemirror", 
+    "Hash" -> "6b0eda7d-4ae8-4093-8756-ca89bf7887bd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".md\nStop the simulation", "Display" -> "codemirror", 
+    "Hash" -> "be28b3a3-37e3-4799-b536-b5578c1cbd84", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\nStop the simulation", "Display" -> "markdown", 
+    "Hash" -> "9abdb4ca-bb1d-4c3d-90cd-02d210e501a2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "EventRemove[update]; ", "Display" -> "codemirror", 
+    "Hash" -> "c6b71471-479a-414e-a0e6-8c4f1e923220", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> ".md\nStart the simulation", "Display" -> "codemirror", 
+    "Hash" -> "7989fd07-14d0-4f40-8e28-0109812b1e61", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "\nStart the simulation", "Display" -> "markdown", 
+    "Hash" -> "10498ccd-db33-4b27-97f1-6f81ba3717e2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[]},\n  EventHandler[update, \
+Function[data,\n \n    FrontSubmit[UpdateCanvas[getScaled[t]], \
+\"Window\"->win];\n    t = t + 0.01;\n    If[t > 1.0, t = 0;\n      (* \
+regenerate it! *)\n      bodies  = NBodySimulation[\n        \
+\"InverseSquare\", {\n        <|\"Mass\" -> 1, \"Position\" -> \
+RandomReal[{-3,3},2], \"Velocity\" -> RandomReal[{-3,3},2]|>,\n        \
+<|\"Mass\" -> 1, \"Position\" -> RandomReal[{-3,3},2], \"Velocity\" -> \
+RandomReal[{-3,3},2]|>,\n        <|\"Mass\" -> 1, \"Position\" -> \
+RandomReal[{-3,3},2], \"Velocity\" -> RandomReal[{-3,3},2]|>}, 1]  \n    ];\n \
+ ]];\n];\n\n(* kickstarter *)\nFrontSubmit[UpdateCanvas[getScaled[t]]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1d26e8ed-b8fa-4b70-b5e3-35e0344dffea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6b069dd0-0fd7-4b35-8601-77077e53737e"|>, 
+   <|"Data" -> "0", "Display" -> "codemirror", 
+    "Hash" -> "826375f1-ad64-417f-80d6-792b52df2eae", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6b069dd0-0fd7-4b35-8601-77077e53737e"|>}, "serializer" -> "jsfn4"|>

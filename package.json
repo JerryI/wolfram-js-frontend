@@ -14,7 +14,7 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
-    "dist": "electron-builder",
+    "dist": "electron-builder --universal",
     "dist-all": "electron-builder -mwl --x64",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
