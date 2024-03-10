@@ -66,7 +66,10 @@ Controller["Window", __] := Function[name,
   WebUISubmit[Global`UIOpenWindow[name] (*`*), $Client];
 ];
 
-Component[OptionsPattern[]] := 
+orderlessSameQ[a_List, b_List] := (Length@a == Length@b) && (Sort@Tally@a === Sort@Tally@b);
+
+
+Component[OptionsPattern[]] :=  Module[{timer, cached},
 With[{
     SidebarId = CreateUUID[], 
     Secret = OptionValue["Secret"], 
@@ -76,10 +79,31 @@ With[{
     modals = OptionValue["Modals"],
     Parameters = OptionValue["Parameters"],
     Button1Id = CreateUUID[],
-    Button2Id = CreateUUID[]
+    Button2Id = CreateUUID[],
+    dir = If[DirectoryQ[OptionValue["Path"]], OptionValue["Path"], DirectoryName[OptionValue["Path"]]]
   },
 
+  timer = AbsoluteTime[];
+  cached = FileNames["*", dir, 2];
+
+  EventHandler[EventClone @ SidebarId, {
+    any_ -> Function[Null, (timer = AbsoluteTime[])]
+  }];
+
   EventHandler[Secret, {
+    "CheckFiles" -> Function[Null,
+
+      If[AbsoluteTime[] - timer > 2.5,
+ 
+        With[{files = FileNames["*", dir, 2]},
+          If[!orderlessSameQ[files, cached],
+            cached = files;
+            Echo["Refresh sidebar!"];
+            EventFire[SidebarId, "Refresh", <|"Client"->$Client|>]; 
+          ]
+        ]
+      ];
+    ],
     FileOperate[any_] :> Controller[any, SidebarId, modals, Path, Controls]
   }];
 
@@ -160,9 +184,13 @@ With[{
         link.target = "_blank"
         link.click();
       }
+
+      setInterval(() => {
+        server.emitt('<Secret/>', 'True', 'CheckFiles');
+      }, 3000);
     </script>
   }
-]
+] ]
 
 Options[Component] = {"Icons"->"", "Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
 
