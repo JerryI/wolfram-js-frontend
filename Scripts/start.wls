@@ -140,12 +140,14 @@ $Env = <|
 EventHandler[AppExtensions`AppEvents // EventClone, {
  "Notebook:Close" -> Function[notebook,
 
-  $ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];
+  (*$ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];*)
  ],
  "Loader:NewNotebook" -> Function[notebook,
   $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
  ],
  "Loader:LoadNotebook" -> Function[notebook,
+  Echo["Load notebook and adding it to the path! >>"];
+  Echo[notebook["Path"] // DirectoryName];
   $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
  ]
 }];

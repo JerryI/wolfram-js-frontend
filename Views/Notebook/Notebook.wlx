@@ -652,9 +652,20 @@ Component[OptionsPattern[]] := With[{
             ]
         ],        
 
+        Global`Forwarded[type_] (*`*):> Function[data,
+            (*/* redirected events to Controls */*)
+            Echo["Forward events >> "];
+            If[AssociationQ[data],
+                EventFire[controller, type, Join[data, <|"Notebook"->notebook|>]];
+            ,
+                EventFire[controller, type, data];
+            ]   
+            
+        ],
+
         "Evaluate" -> Function[celluid, evaluateCell[CellObj`HashMap[celluid](*`*), notebook, secret, kernels, $Client, modals, parameters, extensions]],
 
-        else_String :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
+        else_ :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
     }];
 
     With[{nid = notebook["Hash"]},
