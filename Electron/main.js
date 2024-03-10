@@ -1040,13 +1040,15 @@ else {
 }
 
 //reset HTTP cache in the browser if an update flag was detected (created by WL)
-const checkCacheReset = () => {
+const checkCacheReset = (cbk) => {
     if (fs.existsSync(path.join(installationFolder, '.wasupdated'))) {
         fs.unlinkSync(path.join(installationFolder, '.wasupdated'));
         session.defaultSession.clearStorageData();
         session.defaultSession.clearCache();
 
         server.wasUpdated = true;
+
+        cbk();
 
         windows.log.print('HTTP Cache reset!', "\x1b[32m");
     }
@@ -1170,10 +1172,17 @@ app.whenReady().then(() => {
     //purge cache if an update was detected (using a special file created by WL)
     
     
-    /*const cinterval = setInterval(checkCacheReset, 15000);
-    setTimeout(() => {
+    let cinterval;
+    let tmout;
+    
+    /*cinterval = setInterval(checkCacheReset(() => {
         clearInterval(cinterval);
-    }, 60 * 1000 * 3)  */  
+        clearTimeout(tmout);
+    }), 5000);
+
+    tmout = setTimeout(() => {
+        clearInterval(cinterval);
+    }, 60 * 1000)  */
 });
 
 
