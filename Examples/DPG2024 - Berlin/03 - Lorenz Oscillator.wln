@@ -1,0 +1,296 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$393], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Library/CloudStorage/OneDrive-\
+Personal/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\
+\:043d\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/Lorenz \
+Oscillator.wln"|>, "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Model of Lorentz oscillator\nEquations from the textbooks", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a467576b-111d-4c13-944e-a38d19a491ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> 
+     "## Model of Lorentz oscillator\nEquations from the textbooks", 
+    "Display" -> "markdown", "Hash" -> 
+     "c0d06ed2-4f5d-4947-ba66-519a179fbfe6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\n<span style=\"color:red\">Evaluate initialization cells \
+first</span>", "Display" -> "codemirror", 
+    "Hash" -> "f457af8c-74b4-4fc1-bda8-137d7100449a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> 
+     "<span style=\"color:red\">Evaluate initialization cells first</span>", 
+    "Display" -> "markdown", "Hash" -> 
+     "4b42bbd6-5c83-4240-9732-73856ae35890", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\n## Define a Loretz model object\nIn order to manipulate \
+multiple oscillators, we need to set up a framework for them", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e6a9a10f-785c-45e7-84b8-98f6b3c157ec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "## Define a Loretz model object\nIn order to manipulate \
+multiple oscillators, we need to set up a framework for them", 
+    "Display" -> "markdown", "Hash" -> 
+     "4ce8284f-86bd-405c-97a2-5dd08cc2cb3d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "oscillators = {};\n\nOscillator[OptionsPattern[]] := With[{\n \
+ \[Omega]0 = OptionValue[\"\[Omega]0\"], \n  \[Gamma] = \
+OptionValue[\"\[Gamma]\"], \n  A = OptionValue[\"A\"], \n  \n  state = \
+Unique[\"Loretz\"]\n},\n   state = <|\n     \"Equation\" :> With[{f = \
+Function[{w0, g, a}, (*FB[*)(((*SpB[*)Power[a(*|*),(*|*)2](*]SpB*) \
+g)(*,*)/(*,*)((*SpB[*)Power[w0(*|*),(*|*)2](*]SpB*) - \
+(*SpB[*)Power[#(*|*),(*|*)2](*]SpB*) + I g #))(*]FB*)] @@ \
+state[\"Parameters\"]},\n       f&\n     ], \n     \n     \"Parameters\" -> \
+{\[Omega]0, \[Gamma], A}\n   |>;\n    \n   AppendTo[oscillators, \
+Oscillator[state]];\n   Oscillator[state]\n]\n\nSetAttributes[Oscillator, \
+HoldFirst]\n\nOscillator[s_Symbol][prop_] := s[prop]\nOscillator /: \
+Set[Oscillator[s_Symbol][prop_], value_] := s[prop] = value \nOscillator /: \
+Delete[Oscillator[s_Symbol]] := oscillators = oscillators /. {Oscillator[s] \
+-> Nothing};\n\nOptions[Oscillator] = {\"\[Omega]0\"->3000, \
+\"\[Gamma]\"->100, \"A\"->100};", "Display" -> "codemirror", 
+    "Hash" -> "2413748b-d2ea-4b10-9979-dfba492cd3d4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> 
+     ".md\nNow we can add them dynamically and calculate the properties ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0b819147-be98-4d91-9555-ba25b568ecb0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Now we can add them dynamically and calculate the properties \
+", "Display" -> "markdown", "Hash" -> "4be033af-605a-4a2a-bf6e-21c416b9caf1", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "fc030627-6f38-41c9-8760-f9204beb653f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nMain equations", "Display" -> "codemirror", 
+    "Hash" -> "44f207fa-1eef-4156-95e4-39c1e5623962", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, <|"Data" -> "Main equations", 
+    "Display" -> "markdown", "Hash" -> 
+     "b3133e14-3a0f-49ee-a02a-61d34ce46d61", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "f[\[Omega]_, eps_] := eps + Sum[i[\"Equation\"][\[Omega]], \
+{i, oscillators}]\nn[\[Omega]_, params__] := (*SqB[*)Sqrt[f[\[Omega], \
+params]](*]SqB*)\nR[\[Omega]_, params__] := \
+(*SpB[*)Power[Abs[(*FB[*)((n[\[Omega], params] - 1.)(*,*)/(*,*)(n[\[Omega], \
+params] + 1.))(*]FB*)](*|*),(*|*)2](*]SpB*)", "Display" -> "codemirror", 
+    "Hash" -> "ffd43c33-29a2-4f8c-8de6-1bd96690335d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "be54c58e-283d-4f1b-93e6-1462824bd839", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> 
+     ".md\nPlot our data dynamically. __Evaluate this cell__ very last", 
+    "Display" -> "codemirror", "Hash" -> 
+     "780bb9c3-9236-4c69-baa8-d09d6d878536", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Plot our data dynamically. __Evaluate this cell__ very last", 
+    "Display" -> "markdown", "Hash" -> 
+     "56a1912e-5ff5-42b0-8e82-100e7844555b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "LeakyModule[{data},\n  epsilon = 5.;\n  calculate := \
+With[{},\n    data = Table[\n  \n      {\[Omega], R[\[Omega], epsilon]}\n    \
+\n    , {\[Omega], 1000, 6000, 10}];\n    \n  ];\n\n  (* first time *)\n  \
+calculate;\n\n  \
+ListLinePlot[(*VB[*)(Get[\"/Users/kirill/Library/CloudStorage/OneDrive-Person\
+al/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\:043d\
+\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/iconized-e1cd.wl\"])\
+(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdcvMSXXKr8gU0OBhAADq+Qq5\"\
+*)(*]VB*), ImageSize->500, Epilog->{\n    TransitionDuration[30], \n    \
+TransitionType[\"Linear\"],  \n    Red, Line[data // Offload], \
+PointSize[0.05],\n    MetaMarker[\"fitter\"]\n  }]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "50f2ce47-67e2-43f0-88d1-8105d5e59c8b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> False|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nAdd oscillators", "Display" -> "codemirror", 
+    "Hash" -> "96ab4de0-2bab-4874-9f45-32a2d99282cd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, <|"Data" -> "Add oscillators", 
+    "Display" -> "markdown", "Hash" -> 
+     "81a31147-cc4e-477a-8a40-118bc6db0d69", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "With[{window = CurrentWindow[]},\n  \
+EventHandler[InputButton[\"Add\"], Function[Null,\n    With[{\n      o = \
+Oscillator[]\n    },\n      FrontSubmit[\n        EventHandler[Point[{3000, \
+0.18}], {\"drag\"->drag[o], \"zoom\"->zoom[o]}]\n      , \
+MetaMarker[\"fitter\"], \"Window\"->window]\n    ]\n  ]]\n]\n\nWith[{window = \
+CurrentWindow[]},\n  EventHandler[InputButton[\"Restore controls\"], \
+Function[Null,\n    With[{\n      o = #,\n      pos = (#[\"Parameters\"][[{1, \
+3}]]  {1, 1/1000} + {0, 0.11})\n    },\n        \
+FrontSubmit[EventHandler[Point[pos], {\"drag\"->drag[o], \"zoom\"->zoom[o]}], \
+MetaMarker[\"fitter\"], \"Window\"->window]\n    ]& /@ oscillators \n  ]]\n]"\
+, "Display" -> "codemirror", "Hash" -> 
+     "2b5f5173-89a4-4b27-b733-70c11c8b8abe", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, 
+      "Hidden" -> False|>, "State" -> "Idle", "Type" -> "Input", 
+    "UID" -> Null, "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nTable of parameters", "Display" -> "codemirror", 
+    "Hash" -> "313da0eb-5206-4e8c-970c-bdb1bdeabf31", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Table of parameters", "Display" -> "markdown", 
+    "Hash" -> "bfa15004-7977-4fe1-9344-6e608cf204a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "LeakyModule[{\n  table = ToString[Round[#[\"Parameters\"] &/@ \
+oscillators, 1] // TableForm, StandardForm],\n  timer = AbsoluteTime[]\n},\n  \
+EventHandler[\"table\", {\n    \"Input\" -> Function[params,\n        \
+MapIndexed[Function[{i, index}, With[{o = oscillators[[index // First]]},\n   \
+       If[MatchQ[i, List[__?NumericQ]],\n            o[\"Parameters\"] = i;\n \
+         ];\n        ]], ToExpression[params]];\n        calculate;\n        \
+\n    ],\n    \"Update\" -> Function[Null,\n      If[AbsoluteTime[] - timer > \
+0.5,\n        timer = AbsoluteTime[];\n        table = \"\";\n        table = \
+ToString[Round[#[\"Parameters\"] &/@ oscillators, 1] // TableForm, \
+StandardForm];\n      ];\n    ]\n  }];\n  \n  EditorView[table // Offload, \
+\"Event\"->\"table\"]\n]\n", "Display" -> "codemirror", 
+    "Hash" -> "c837b960-287c-4300-825c-e99744f55dc4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, 
+      "InitGroup" -> True|>, "State" -> "Idle", "Type" -> "Input", 
+    "UID" -> Null, "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nControl $\\\\epsilon_\\\\infty$ using a slider", 
+    "Display" -> "codemirror", "Hash" -> 
+     "35bfc39f-00ee-4931-a36c-18921a6ec1f2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Control $\\\\epsilon_\\\\infty$ using a slider", 
+    "Display" -> "markdown", "Hash" -> 
+     "026f0a62-5cce-4fbb-bcbf-7e2c3c6cfbfb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "EventHandler[InputRange[1, 7, 0.1, 5.0], Function[eps,\n  \
+epsilon = eps;\n  calculate;\n]]", "Display" -> "codemirror", 
+    "Hash" -> "be9637af-4137-4246-b501-6a5dc9fbd171", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nHelper functions to track the gizmo position", 
+    "Display" -> "codemirror", "Hash" -> 
+     "439cf9a2-663e-43bd-9807-4b17aeb2e398", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Helper functions to track the gizmo position", 
+    "Display" -> "markdown", "Hash" -> 
+     "c16604e1-dc5b-4272-8579-e8f63a3f444a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "drag[o_][xy_] := (\n  o[\"Parameters\"] = {xy[[1]], \
+o[\"Parameters\"][[2]], (xy[[2]] - 0.11) 1000};\n  calculate;\n  \
+EventFire[\"table\", \"Update\", Null];\n)\n\nzoom[o_][k_] := (\n  \
+o[\"Parameters\"] = {o[\"Parameters\"][[1]], k 100, \
+o[\"Parameters\"][[3]]};\n  calculate;\n  EventFire[\"table\", \"Update\", \
+Null];\n)", "Display" -> "codemirror", 
+    "Hash" -> "47ea12d0-f627-4d1a-8b31-523315045766", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\n### Export equation", "Display" -> "codemirror", 
+    "Hash" -> "630e7579-35d5-4089-b1dd-7e8d86c38317", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "### Export equation", "Display" -> "markdown", 
+    "Hash" -> "72c595cf-d7ff-45f1-a76c-08cdd20ba590", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nJust evaluate the next cell", "Display" -> "codemirror", 
+    "Hash" -> "93901fe5-77d8-4f34-a647-aca2322412f2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Just evaluate the next cell", "Display" -> "markdown", 
+    "Hash" -> "e16843c5-8d6d-416f-99d4-5f57ca6d32fc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Sum[i[\"Equation\"][\[Omega]], {i, oscillators}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7c4f3881-e4be-4667-9ad3-b255fb9ae712", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "(*FB[*)((64152)(*,*)/(*,*)(1444804+22 I \
+\\[Omega]-(*SpB[*)Power[\\[Omega](*|*),(*|*)2](*]SpB*)))(*]FB*)+(*FB[*)((1069\
+200)(*,*)/(*,*)(14424804+132 I \
+\\[Omega]-(*SpB[*)Power[\\[Omega](*|*),(*|*)2](*]SpB*)))(*]FB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c2e7ffed-6dca-4d17-ab7a-25ba70053f05", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> ".md\nor just a table of parameters", 
+    "Display" -> "codemirror", "Hash" -> 
+     "05996ce2-1475-40b8-8ab1-802d38efbd05", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "or just a table of parameters", "Display" -> "markdown", 
+    "Hash" -> "e6f9b71b-95d7-49c4-8ca0-105b873db00a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "Prepend[#[\"Parameters\"] &/@ oscillators // Round, \
+{\[Omega]0, \[Gamma], A}] // TableForm", "Display" -> "codemirror", 
+    "Hash" -> "2b06db9f-1488-43fe-afb5-7c797279f9d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> "(*GB[*){{\\[Omega]0(*|*),(*|*)\\[Gamma](*|*),(*|*)A}(*||*),(*\
+||*){3798(*|*),(*|*)132(*|*),(*|*)90}(*||*),(*||*){1202(*|*),(*|*)22(*|*),(*|\
+*)54}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "15e4e632-df80-456a-ab9e-d5a51f33bbf1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, 
+   <|"Data" -> 
+     "MatchQ[(#[\"Parameters\"] &/@ oscillators ) , List[__?NumericQ]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f0b24cc7-e723-433b-ae54-7aa040f63cb7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>, <|"Data" -> "False", 
+    "Display" -> "codemirror", "Hash" -> 
+     "18001b5f-e68f-4231-ac90-cad8eeb5d1a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b6f94cdb-44de-4dc5-a88e-1879682b9373"|>}, "serializer" -> "jsfn4"|>

@@ -930,7 +930,7 @@ function create_window(opts, cbk = () => {}) {
             return;
         }
     
-        win.loadURL(options.url);
+        
     
         if (options.cacheClear) {
             win.webContents.session.clearCache();
@@ -953,19 +953,18 @@ function create_window(opts, cbk = () => {}) {
         const contents = win.webContents;
         //handlers for internal links and pop-ups
 
-        contents.setWindowOpenHandler(({ url }) => {
+
+ 
+
+        win.webContents.setWindowOpenHandler(({ url }) => {
             console.log(url);
             const u = new URL(url);
+
+
             
             //if it is on the same domain
-            if (u.hostname === (new URL(options.url)).hostname) {
-                let path = u.searchParams.get('path');
-                if (!path) {
-                    //EDGE CASE: projected cells
-                    create_window({url: url, title: 'Projector', show: true});
-                } else {
-                    create_window({url: url, title: path, show: true, focus: true});
-                }
+            if (u.hostname === (new URL(server.url.default())).hostname) {
+                create_window({url: url, show: true});
     
             } else {
                 //open in the default user's browser
@@ -975,10 +974,11 @@ function create_window(opts, cbk = () => {}) {
             return { action: 'deny' };
         });
 
+        win.loadURL(options.url);
+
 
         return win;        
 }
-
 
 
 
