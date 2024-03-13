@@ -31,12 +31,21 @@ No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated
 ### Command Palette and GUI-in-Code Emulation
 #### Inline Dynamic Tool for Tuning 2D/3D Positions
 
-![Gizmo-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/09ee7bdc-1a5f-4e3f-ad26-c68078242595)
+![ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/5f24d9d2-bd36-40df-85c8-c50cbc37a8cd)
+
 
 ### Native Math Input in the Code Editor
 Write beautiful equations between lines of normal Wolfram Language expressions.
 
 ![Mathinput-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/ebc2d83a-0d4d-49e4-a073-e112829a8d62)
+
+### Compress to HTML
+An entire notebook can be exported to a standalone `.html` file keeping all data inside. __No internet dependency, no additional software__ is required for viewing a notebook
+
+![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
+
+
+Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
 ### Data-Driven Slides
 Make a presentation right from the notebook.
