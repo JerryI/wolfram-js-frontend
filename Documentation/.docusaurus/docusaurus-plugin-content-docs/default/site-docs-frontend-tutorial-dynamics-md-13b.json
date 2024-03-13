@@ -1,0 +1,26 @@
+{
+  "id": "frontend/Tutorial/Dynamics",
+  "title": "Dynamics",
+  "description": "The way how dynamics work is quite different compared to Wolfram Mathematica. The key changes were made for the sake of performance and control (or imagination of  @JerryI - maintainer)",
+  "source": "@site/docs/frontend/Tutorial/Dynamics.md",
+  "sourceDirName": "frontend/Tutorial",
+  "slug": "/frontend/Tutorial/Dynamics",
+  "permalink": "/wljs-docs/frontend/Tutorial/Dynamics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/wljs-docs/frontend/Tutorial/Overview"
+  },
+  "next": {
+    "title": "Input elements",
+    "permalink": "/wljs-docs/frontend/Tutorial/Input elements"
+  }
+}

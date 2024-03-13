@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwlx_docs=self.webpackChunkwlx_docs||[]).push([[5920],{71760:e=>{e.exports=JSON.parse('{"title":"Tutorials","slug":"/category/tutorials","permalink":"/wljs-docs/category/tutorials","navigation":{"previous":{"title":"Quick start","permalink":"/wljs-docs/"},"next":{"title":"Overview","permalink":"/wljs-docs/frontend/Tutorial/Overview"}}}')}}]);

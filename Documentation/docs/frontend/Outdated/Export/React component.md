@@ -1,3 +1,0 @@
-:::danger
-Is in development
-:::

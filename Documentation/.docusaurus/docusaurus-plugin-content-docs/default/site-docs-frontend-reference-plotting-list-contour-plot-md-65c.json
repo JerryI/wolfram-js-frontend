@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Plotting/ListContourPlot",
+  "title": "ListContourPlot",
+  "description": "A list version of ContourPlot",
+  "source": "@site/docs/frontend/Reference/Plotting/ListContourPlot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/ListContourPlot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/ListContourPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://reference.wolfram.com/language/ref/ListContourPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DensityPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/DensityPlot"
+  },
+  "next": {
+    "title": "ListCurvePathPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListCurvePathPlot"
+  }
+}

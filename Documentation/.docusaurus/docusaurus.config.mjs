@@ -7,8 +7,8 @@ export default {
   "title": "WLJS Notebook",
   "tagline": "Documentation",
   "favicon": "img/favicon.ico",
-  "url": "http://127.0.0.1",
-  "baseUrl": "/",
+  "url": "https://jerryi.github.io",
+  "baseUrl": "/wljs-docs/",
   "organizationName": "JerryI & KirillBelovTest",
   "projectName": "wljs-notebook",
   "onBrokenLinks": "warn",
@@ -41,6 +41,57 @@ export default {
       "crossorigin": "anonymous"
     }
   ],
+  "headTags": [
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-interpreter@dev/src/interpreter.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-interpreter@dev/src/core.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-sharedlib-d3@master/dist/kernel.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-graphics-d3@dev/dist/kernel.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-plotly@dev/dist/kernel.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/Mathematica-ThreeJS-graphics-engine@dev/dist/kernel.js"
+      }
+    },
+    {
+      "tagName": "script",
+      "attributes": {
+        "type": "module",
+        "src": "https://cdn.jsdelivr.net/gh/JerryI/wljs-revealjs@dev/dist/kernel.js"
+      }
+    }
+  ],
   "presets": [
     [
       "classic",
@@ -50,6 +101,7 @@ export default {
           "remarkPlugins": [
             null
           ],
+          "routeBasePath": "/",
           "rehypePlugins": [
             null
           ],
@@ -61,6 +113,7 @@ export default {
           ],
           "showLastUpdateTime": true
         },
+        "blog": false,
         "theme": {
           "customCss": "./src/css/custom.css"
         }
@@ -382,7 +435,6 @@ export default {
   ],
   "customFields": {},
   "scripts": [],
-  "headTags": [],
   "clientModules": [],
   "titleDelimiter": "|",
   "noIndex": false

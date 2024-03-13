@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Advanced/Dynamics/Simple manipulate",
+  "title": "Simple manipulate",
+  "description": "It is always better to scope all dynamic variables using LeakyModule or just Module and perform all communications using events (plain EventObject objects). See Scoping",
+  "source": "@site/docs/frontend/Advanced/Dynamics/Simple manipulate.md",
+  "sourceDirName": "frontend/Advanced/Dynamics",
+  "slug": "/frontend/Advanced/Dynamics/Simple manipulate",
+  "permalink": "/wljs-docs/frontend/Advanced/Dynamics/Simple manipulate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "sidebar_position": 8,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "dynamic-decorations",
+    "permalink": "/wljs-docs/frontend/Advanced/Boxes and Decorations/dynamic-decorations"
+  },
+  "next": {
+    "title": "Indicators and monitoring",
+    "permalink": "/wljs-docs/frontend/Advanced/Dynamics/Indicators and monitoring"
+  }
+}

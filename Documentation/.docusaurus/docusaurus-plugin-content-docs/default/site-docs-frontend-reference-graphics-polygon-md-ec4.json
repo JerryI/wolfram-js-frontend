@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Graphics/Polygon",
+  "title": "Polygon",
+  "description": "",
+  "source": "@site/docs/frontend/Reference/Graphics/Polygon.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Polygon",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Polygon",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Point",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Point"
+  },
+  "next": {
+    "title": "Raster",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Raster"
+  }
+}

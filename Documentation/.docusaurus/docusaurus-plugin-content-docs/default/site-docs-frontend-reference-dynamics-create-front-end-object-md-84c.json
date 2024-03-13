@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Dynamics/CreateFrontEndObject",
+  "title": "CreateFrontEndObject",
+  "description": "Creates a container for the inner expression and stores it into frontend objects storage shared with Kernel and Notebook",
+  "source": "@site/docs/frontend/Reference/Dynamics/CreateFrontEndObject.md",
+  "sourceDirName": "frontend/Reference/Dynamics",
+  "slug": "/frontend/Reference/Dynamics/CreateFrontEndObject",
+  "permalink": "/wljs-docs/frontend/Reference/Dynamics/CreateFrontEndObject",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TableForm",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/TableForm"
+  },
+  "next": {
+    "title": "Dynamic",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/Dynamic"
+  }
+}

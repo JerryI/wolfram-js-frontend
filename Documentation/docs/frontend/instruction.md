@@ -2,6 +2,7 @@
 sidebar_position: 1
 enableComments: true
 sidebar_class_name: green
+slug: /
 ---
 # Quick start
 Wolfram Language Notebook __requires  `wolframscript` (see Freeware [Wolfram Engine](https://www.wolfram.com/engine/) or Wolfram Kernel)__ installed on your PC/Mac. This application will check all paths and ask to locate a Wolfram executable if nothing is found.
@@ -9,6 +10,8 @@ Wolfram Language Notebook __requires  `wolframscript` (see Freeware [Wolfram Eng
 :::warning
 Works only with Wolfram Engine $\geq$ __13.0.0__. The version __13.0.1__ is more preferable.
 :::
+
+![](../light.png)
 
 There are two ways you can choose from
 
@@ -18,6 +21,7 @@ import TabItem from '@theme/TabItem';
 ## Desktop application
 Notebook interface is shipped as an Electron application, which is cross-platform and has most benefits of a native desktop app. __This is the easiest way__
 
+[Releases](https://github.com/JerryI/wolfram-js-frontend/releases)
 
 <Tabs  
 defaultValue="x86"  
@@ -41,7 +45,7 @@ values={[
 </Tabs>
 
 It comes with a launcher, that takes care about all updates, files extension association and etc.
-## Server application & web-browser
+## Server application
 Since this is a web-based application, you can also run on a server. User interface is  reachable from any modern browser. Clone a master branch and run `wolframscript`
 
 ```bash
@@ -56,3 +60,4 @@ It will take some time to download all core plugins, after that you can start us
 ...
 Open http://127.0.0.1:20560 in your browser
 ```
+

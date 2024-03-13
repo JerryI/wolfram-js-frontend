@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Reference/Plotting/MatrixPlot",
+  "title": "MatrixPlot",
+  "description": "Plots a 2D array with an arbitrary data inside with axes",
+  "source": "@site/docs/frontend/Reference/Plotting/MatrixPlot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/MatrixPlot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/MatrixPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListVectorPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListVectorPlot"
+  },
+  "next": {
+    "title": "Plot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/Plot"
+  }
+}

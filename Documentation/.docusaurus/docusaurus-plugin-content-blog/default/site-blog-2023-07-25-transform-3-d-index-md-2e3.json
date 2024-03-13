@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/intro-transform-3d",
+  "permalink": "/wljs-docs/blog/intro-transform-3d",
   "source": "@site/blog/2023-07-25-transform-3d/index.md",
   "title": "A major update of Graphics3D",
   "description": "Every feature I introduce comes from the practicing on real-life cases. Recently I had an urge to make a nice figure for the Physical Review B paper.",
@@ -8,7 +8,7 @@
   "tags": [
     {
       "label": "graphics3d",
-      "permalink": "/blog/tags/graphics-3-d"
+      "permalink": "/wljs-docs/blog/tags/graphics-3-d"
     }
   ],
   "readingTime": 2.93,
@@ -34,10 +34,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "A minor update of Graphics2D",
-    "permalink": "/blog/intro-controls-2d-graphics"
+    "permalink": "/wljs-docs/blog/intro-controls-2d-graphics"
   },
   "nextItem": {
     "title": "WLJS in practice. Integrating absorption spectra",
-    "permalink": "/blog/practice-integration"
+    "permalink": "/wljs-docs/blog/practice-integration"
   }
 }

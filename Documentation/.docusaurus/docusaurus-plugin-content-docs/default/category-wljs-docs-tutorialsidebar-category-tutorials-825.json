@@ -1,0 +1,15 @@
+{
+  "title": "Tutorials",
+  "slug": "/category/tutorials",
+  "permalink": "/wljs-docs/category/tutorials",
+  "navigation": {
+    "previous": {
+      "title": "Quick start",
+      "permalink": "/wljs-docs/"
+    },
+    "next": {
+      "title": "Overview",
+      "permalink": "/wljs-docs/frontend/Tutorial/Overview"
+    }
+  }
+}

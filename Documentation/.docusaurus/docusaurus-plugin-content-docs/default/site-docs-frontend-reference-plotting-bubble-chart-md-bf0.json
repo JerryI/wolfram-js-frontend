@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Plotting/BubbleChart",
+  "title": "BubbleChart",
+  "description": "creates a bubble chart for a list of triples",
+  "source": "@site/docs/frontend/Reference/Plotting/BubbleChart.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/BubbleChart",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/BubbleChart",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": false,
+    "origin": "https://reference.wolfram.com/language/ref/BubbleChart.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "BarChart",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/BarChart"
+  },
+  "next": {
+    "title": "ContourPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ContourPlot"
+  }
+}

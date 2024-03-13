@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Input/ToggleView",
+  "title": "ToggleView",
+  "description": "This is an internal part of InputToggle",
+  "source": "@site/docs/frontend/Reference/Input/ToggleView.md",
+  "sourceDirName": "frontend/Reference/Input",
+  "slug": "/frontend/Reference/Input/ToggleView",
+  "permalink": "/wljs-docs/frontend/Reference/Input/ToggleView",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs",
+    "needsContainer": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TextView",
+    "permalink": "/wljs-docs/frontend/Reference/Input/TextView"
+  },
+  "next": {
+    "title": "CellHashStorage",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/CellHashStorage"
+  }
+}

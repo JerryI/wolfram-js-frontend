@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/axes-label",
+  "permalink": "/wljs-docs/blog/axes-label",
   "source": "@site/blog/2023-08-16-axes-label.md",
   "title": "Axes label and partial LaTeX support",
   "description": "Finally Text was implemented in wljs-graphics-d3 package!",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "graphics",
-      "permalink": "/blog/tags/graphics"
+      "permalink": "/wljs-docs/blog/tags/graphics"
     }
   ],
   "readingTime": 0.495,
@@ -39,10 +39,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Introducing NotebookStore",
-    "permalink": "/blog/notestore"
+    "permalink": "/wljs-docs/blog/notestore"
   },
   "nextItem": {
     "title": "A minor update of Graphics2D",
-    "permalink": "/blog/intro-controls-2d-graphics"
+    "permalink": "/wljs-docs/blog/intro-controls-2d-graphics"
   }
 }

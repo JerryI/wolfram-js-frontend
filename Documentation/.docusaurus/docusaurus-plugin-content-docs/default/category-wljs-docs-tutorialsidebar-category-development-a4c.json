@@ -1,0 +1,15 @@
+{
+  "title": "Development",
+  "slug": "/category/development",
+  "permalink": "/wljs-docs/category/development",
+  "navigation": {
+    "previous": {
+      "title": "React component",
+      "permalink": "/wljs-docs/frontend/Export/React component"
+    },
+    "next": {
+      "title": "Structure",
+      "permalink": "/wljs-docs/frontend/Development/Structure"
+    }
+  }
+}

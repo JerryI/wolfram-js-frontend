@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Graphics/Directive",
+  "title": "Directive",
+  "description": "Used for styling plots or 2D graphics",
+  "source": "@site/docs/frontend/Reference/Graphics/Directive.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Directive",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Directive",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "draft": false,
+    "update": false,
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Arrow",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Arrow"
+  },
+  "next": {
+    "title": "GraphicsComplex",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/GraphicsComplex"
+  }
+}

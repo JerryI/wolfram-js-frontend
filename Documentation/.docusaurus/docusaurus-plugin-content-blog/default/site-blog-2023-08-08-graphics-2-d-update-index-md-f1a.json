@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/intro-controls-2d-graphics",
+  "permalink": "/wljs-docs/blog/intro-controls-2d-graphics",
   "source": "@site/blog/2023-08-08-graphics-2d-update/index.md",
   "title": "A minor update of Graphics2D",
   "description": "Now regular Graphics expressions has panning/zooming features. Use Controls->True as an option",
@@ -8,7 +8,7 @@
   "tags": [
     {
       "label": "graphics",
-      "permalink": "/blog/tags/graphics"
+      "permalink": "/wljs-docs/blog/tags/graphics"
     }
   ],
   "readingTime": 0.18,
@@ -34,10 +34,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Axes label and partial LaTeX support",
-    "permalink": "/blog/axes-label"
+    "permalink": "/wljs-docs/blog/axes-label"
   },
   "nextItem": {
     "title": "A major update of Graphics3D",
-    "permalink": "/blog/intro-transform-3d"
+    "permalink": "/wljs-docs/blog/intro-transform-3d"
   }
 }

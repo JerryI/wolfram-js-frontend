@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Plotting/ListLinePlotly",
+  "title": "ListLinePlotly",
+  "description": "An alternative plotting function to ListLinePlot, that supports dynamic updates, panning, zoom out of the box",
+  "source": "@site/docs/frontend/Reference/Plotting/ListLinePlotly.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/ListLinePlotly",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/ListLinePlotly",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "registered": true,
+    "needsContainer": true,
+    "update": true,
+    "origin": "https://github.com/JerryI/wljs-plotly"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListLinePlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListLinePlot"
+  },
+  "next": {
+    "title": "ListStepPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListStepPlot"
+  }
+}

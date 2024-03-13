@@ -1,0 +1,26 @@
+{
+  "id": "frontend/Reference/Plotting/VectorPlot3D",
+  "title": "VectorPlot3D",
+  "description": "Generates a 3D vector plot of the vector field {vx,vy,vz} as a function of $x$, $y$, and $z$",
+  "source": "@site/docs/frontend/Reference/Plotting/VectorPlot3D.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/VectorPlot3D",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/VectorPlot3D",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://reference.wolfram.com/language/ref/VectorPlot3D.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VectorPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/VectorPlot"
+  }
+}

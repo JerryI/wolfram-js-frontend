@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Graphics/Offset",
+  "title": "Offset",
+  "description": "",
+  "source": "@site/docs/frontend/Reference/Graphics/Offset.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Offset",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Offset",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Line",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Line"
+  },
+  "next": {
+    "title": "Point",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Point"
+  }
+}

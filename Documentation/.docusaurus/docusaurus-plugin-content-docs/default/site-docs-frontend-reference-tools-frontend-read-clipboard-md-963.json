@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Tools/Frontend/ReadClipboard",
+  "title": "ReadClipboard",
+  "description": "Returns a clipboard data of a user as a string",
+  "source": "@site/docs/frontend/Reference/Tools/Frontend/ReadClipboard.md",
+  "sourceDirName": "frontend/Reference/Tools/Frontend",
+  "slug": "/frontend/Reference/Tools/Frontend/ReadClipboard",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/ReadClipboard",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "update": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FrontEditorSelected",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/FrontEditorSelected"
+  },
+  "next": {
+    "title": "WLJSFunction",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/WLJSFunction"
+  }
+}

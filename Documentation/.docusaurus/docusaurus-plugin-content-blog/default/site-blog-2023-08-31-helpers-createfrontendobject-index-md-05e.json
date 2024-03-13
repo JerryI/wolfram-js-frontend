@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/feobjects-example",
+  "permalink": "/wljs-docs/blog/feobjects-example",
   "source": "@site/blog/2023-08-31-helpers-createfrontendobject/index.md",
   "title": "Mixing visual tools and code | Magic of Frontend Objects",
   "description": "Have you ever have spent minutes or even hours trying to find a proper position of an element by changing the value in a code iteration by iteration?",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "dynamics",
-      "permalink": "/blog/tags/dynamics"
+      "permalink": "/wljs-docs/blog/tags/dynamics"
     }
   ],
   "readingTime": 4.63,
@@ -40,10 +40,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Introducing snippets",
-    "permalink": "/blog/int-snippets"
+    "permalink": "/wljs-docs/blog/int-snippets"
   },
   "nextItem": {
     "title": "Introducing Projector! Output to a separate window",
-    "permalink": "/blog/projector-intro"
+    "permalink": "/wljs-docs/blog/projector-intro"
   }
 }

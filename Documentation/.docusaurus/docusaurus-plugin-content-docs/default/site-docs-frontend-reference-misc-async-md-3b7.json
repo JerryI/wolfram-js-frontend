@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Misc/Async",
+  "title": "Async",
+  "description": "SetTimeout",
+  "source": "@site/docs/frontend/Reference/Misc/Async.md",
+  "sourceDirName": "frontend/Reference/Misc",
+  "slug": "/frontend/Reference/Misc/Async",
+  "permalink": "/wljs-docs/frontend/Reference/Misc/Async",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TextView",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/TextView"
+  },
+  "next": {
+    "title": "Events",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Events"
+  }
+}

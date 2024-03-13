@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Development/Plugins/Known packages",
+  "title": "Known packages",
+  "description": "Here the symbol 🔶 means, that the package is shipped together with a basic WLJS Frontend distribution. Anything else can be installed separately from the Settings menu",
+  "source": "@site/docs/frontend/Development/Plugins/Known packages.md",
+  "sourceDirName": "frontend/Development/Plugins",
+  "slug": "/frontend/Development/Plugins/Known packages",
+  "permalink": "/wljs-docs/frontend/Development/Plugins/Known packages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Decorations",
+    "permalink": "/wljs-docs/frontend/Development/Decorations"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/wljs-docs/frontend/Troubleshooting"
+  }
+}

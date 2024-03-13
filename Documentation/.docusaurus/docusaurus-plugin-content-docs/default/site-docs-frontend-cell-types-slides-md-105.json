@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Cell types/Slides",
+  "title": "Slides",
+  "description": "One can also make presentations using WLJS Frontend. This is provided by wljs-revealjs, that integrates RevealJS and WLX language to provide components approach on making presentations as well as add interactivity and all features of frontend's cells like this",
+  "source": "@site/docs/frontend/Cell types/Slides.md",
+  "sourceDirName": "frontend/Cell types",
+  "slug": "/frontend/Cell types/Slides",
+  "permalink": "/wljs-docs/frontend/Cell types/Slides",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Many more...",
+    "permalink": "/wljs-docs/frontend/Cell types/Many more..."
+  },
+  "next": {
+    "title": "WLX",
+    "permalink": "/wljs-docs/frontend/Cell types/WLX"
+  }
+}

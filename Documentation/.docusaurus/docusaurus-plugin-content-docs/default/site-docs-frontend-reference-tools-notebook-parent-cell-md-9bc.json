@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Tools/Notebook/ParentCell",
+  "title": "ParentCell",
+  "description": "asks master kernel to find an identifier of the parent cell (usually an input cell) of the given output cell.",
+  "source": "@site/docs/frontend/Reference/Tools/Notebook/ParentCell.md",
+  "sourceDirName": "frontend/Reference/Tools/Notebook",
+  "slug": "/frontend/Reference/Tools/Notebook/ParentCell",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Notebook/ParentCell",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NotebookStore",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Notebook/NotebookStore"
+  },
+  "next": {
+    "title": "SlideEventListener",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Slides/SlideEventListener"
+  }
+}

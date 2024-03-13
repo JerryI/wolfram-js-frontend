@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Tools/Frontend/WLJSFunction",
+  "title": "WLJSFunction",
+  "description": "An anonymous WLJS function",
+  "source": "@site/docs/frontend/Reference/Tools/Frontend/WLJSFunction.md",
+  "sourceDirName": "frontend/Reference/Tools/Frontend",
+  "slug": "/frontend/Reference/Tools/Frontend/WLJSFunction",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/WLJSFunction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ReadClipboard",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/ReadClipboard"
+  },
+  "next": {
+    "title": "WindowScope",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/WindowScope"
+  }
+}

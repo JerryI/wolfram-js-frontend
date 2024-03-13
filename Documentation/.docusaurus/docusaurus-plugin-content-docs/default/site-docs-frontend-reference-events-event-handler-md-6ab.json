@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Events/EventHandler",
+  "title": "EventHandler",
+  "description": "assigns an handler function to an event object provided as a string or EventObject. The secondary functionality is",
+  "source": "@site/docs/frontend/Reference/Events/EventHandler.md",
+  "sourceDirName": "frontend/Reference/Events",
+  "slug": "/frontend/Reference/Events/EventHandler",
+  "permalink": "/wljs-docs/frontend/Reference/Events/EventHandler",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "source": "https://github.com/JerryI/wl-misc/",
+    "update": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EventFire",
+    "permalink": "/wljs-docs/frontend/Reference/Events/EventFire"
+  },
+  "next": {
+    "title": "EventJoin",
+    "permalink": "/wljs-docs/frontend/Reference/Events/EventJoin"
+  }
+}

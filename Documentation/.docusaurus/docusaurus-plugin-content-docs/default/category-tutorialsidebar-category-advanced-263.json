@@ -1,0 +1,16 @@
+{
+  "title": "Advanced",
+  "description": "Deep dive into how to extend frontend features and gain maximum flexibility and performance.",
+  "slug": "/category/advanced",
+  "permalink": "/category/advanced",
+  "navigation": {
+    "previous": {
+      "title": "Expressions representation",
+      "permalink": "/frontend/Expressions representation"
+    },
+    "next": {
+      "title": "dynamic-decorations",
+      "permalink": "/frontend/Advanced/Boxes and Decorations/dynamic-decorations"
+    }
+  }
+}

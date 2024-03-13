@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/event-advanced",
+  "permalink": "/wljs-docs/blog/event-advanced",
   "source": "@site/blog/2023-08-19-advanced-events/index.md",
   "title": "Advanced guide on Events",
   "description": "As a short summary - where you can use event-handlers / listeners",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "events",
-      "permalink": "/blog/tags/events"
+      "permalink": "/wljs-docs/blog/tags/events"
     }
   ],
   "readingTime": 5.86,
@@ -39,10 +39,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Image and Raster were implemented!",
-    "permalink": "/blog/imageraster"
+    "permalink": "/wljs-docs/blog/imageraster"
   },
   "nextItem": {
     "title": "Introducing NotebookStore",
-    "permalink": "/blog/notestore"
+    "permalink": "/wljs-docs/blog/notestore"
   }
 }

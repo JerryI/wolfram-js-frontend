@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Tools/Frontend/WindowScope",
+  "title": "WindowScope",
+  "description": "returns Javascript object name defined in the global context.",
+  "source": "@site/docs/frontend/Reference/Tools/Frontend/WindowScope.md",
+  "sourceDirName": "frontend/Reference/Tools/Frontend",
+  "slug": "/frontend/Reference/Tools/Frontend/WindowScope",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/WindowScope",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "WLJSFunction",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/WLJSFunction"
+  },
+  "next": {
+    "title": "CellPrint",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Notebook/CellPrint"
+  }
+}

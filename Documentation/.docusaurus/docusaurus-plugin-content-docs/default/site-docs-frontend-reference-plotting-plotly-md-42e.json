@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Plotting/Plotly",
+  "title": "Plotly",
+  "description": "An alternative plotting function to Plot that uses Plotly.js",
+  "source": "@site/docs/frontend/Reference/Plotting/Plotly.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/Plotly",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/Plotly",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "registered": true,
+    "update": null,
+    "origin": "https://github.com/JerryI/wljs-plotly"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Plot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/Plot"
+  },
+  "next": {
+    "title": "RandomImage",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/RandomImage"
+  }
+}

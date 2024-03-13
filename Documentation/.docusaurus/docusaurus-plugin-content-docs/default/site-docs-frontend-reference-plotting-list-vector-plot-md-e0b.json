@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Plotting/ListVectorPlot",
+  "title": "ListVectorPlot",
+  "description": "Plot the vector field interpolated from a specified set of vectors",
+  "source": "@site/docs/frontend/Reference/Plotting/ListVectorPlot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/ListVectorPlot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/ListVectorPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "origin": "https://reference.wolfram.com/language/ref/ListVectorPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListStepPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListStepPlot"
+  },
+  "next": {
+    "title": "MatrixPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/MatrixPlot"
+  }
+}

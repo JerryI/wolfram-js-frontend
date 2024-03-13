@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Misc/Promise",
+  "title": "Promise",
+  "description": "Promise",
+  "source": "@site/docs/frontend/Reference/Misc/Promise.md",
+  "sourceDirName": "frontend/Reference/Misc",
+  "slug": "/frontend/Reference/Misc/Promise",
+  "permalink": "/wljs-docs/frontend/Reference/Misc/Promise",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Language",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Language"
+  },
+  "next": {
+    "title": "ArrayPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ArrayPlot"
+  }
+}

@@ -2,944 +2,612 @@
   "docusaurus-lunr-search": {
     "default": {
       "fileNames": {
-        "searchDoc": "search-doc-1708969057470.json",
-        "lunrIndex": "lunr-index-1708969057470.json"
+        "searchDoc": "search-doc-1710355815504.json",
+        "lunrIndex": "lunr-index-1710355815504.json"
       }
     }
   },
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs",
+      "path": "/wljs-docs/",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/docs",
+          "path": "/wljs-docs/",
           "mainDocId": "frontend/instruction",
           "docs": [
             {
+              "id": "frontend/Advanced/Events system/event-generators",
+              "path": "/wljs-docs/frontend/Advanced/Events system/event-generators",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Events system/promises",
+              "path": "/wljs-docs/frontend/Advanced/Events system/promises",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Events system/routing",
+              "path": "/wljs-docs/frontend/Advanced/Events system/routing",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Slides/animations",
+              "path": "/wljs-docs/frontend/Advanced/Slides/animations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Slides/components",
+              "path": "/wljs-docs/frontend/Advanced/Slides/components",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Slides/embed-wl",
+              "path": "/wljs-docs/frontend/Advanced/Slides/embed-wl",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Slides/intro",
+              "path": "/wljs-docs/frontend/Advanced/Slides/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Advanced/Slides/tables",
+              "path": "/wljs-docs/frontend/Advanced/Slides/tables",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Files",
+              "path": "/wljs-docs/frontend/Cell types/Files",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/HTML",
+              "path": "/wljs-docs/frontend/Cell types/HTML",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Javascript",
+              "path": "/wljs-docs/frontend/Cell types/Javascript",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Many more...",
+              "path": "/wljs-docs/frontend/Cell types/Many more...",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Markdown",
+              "path": "/wljs-docs/frontend/Cell types/Markdown",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Slides",
+              "path": "/wljs-docs/frontend/Cell types/Slides",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/WLX",
+              "path": "/wljs-docs/frontend/Cell types/WLX",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Cell types/Wolfram Language",
+              "path": "/wljs-docs/frontend/Cell types/Wolfram Language",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Export/HTML file",
+              "path": "/wljs-docs/frontend/Export/HTML file",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Export/PDF",
+              "path": "/wljs-docs/frontend/Export/PDF",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/Expressions representation",
+              "path": "/wljs-docs/frontend/Expressions representation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "frontend/instruction",
-              "path": "/docs/frontend/instruction",
+              "path": "/wljs-docs/",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
-              "path": "/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations",
+              "id": "frontend/Reference/Decorations/Column",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Column",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
-              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring",
+              "id": "frontend/Reference/Decorations/Framed",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Framed",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Dynamics/Performance tips",
-              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Performance tips",
+              "id": "frontend/Reference/Decorations/Grid",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Grid",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Dynamics/Scoping",
-              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Scoping",
+              "id": "frontend/Reference/Decorations/HTMLForm",
+              "path": "/wljs-docs/frontend/Reference/Decorations/HTMLForm",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Dynamics/Simple manipulate",
-              "path": "/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate",
+              "id": "frontend/Reference/Decorations/InputForm",
+              "path": "/wljs-docs/frontend/Reference/Decorations/InputForm",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Editor manipulation",
-              "path": "/docs/frontend/Outdated/Advanced/Editor manipulation",
+              "id": "frontend/Reference/Decorations/Interpretation",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Interpretation",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Events system/event-generators",
-              "path": "/docs/frontend/Outdated/Advanced/Events system/event-generators",
+              "id": "frontend/Reference/Decorations/InterpretationBox",
+              "path": "/wljs-docs/frontend/Reference/Decorations/InterpretationBox",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Events system/routing",
-              "path": "/docs/frontend/Outdated/Advanced/Events system/routing",
+              "id": "frontend/Reference/Decorations/Low level/BoxBox",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Low level/BoxBox",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Frontend interpretation/executables",
-              "path": "/docs/frontend/Outdated/Advanced/Frontend interpretation/executables",
+              "id": "frontend/Reference/Decorations/Low level/ViewBox",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Low level/ViewBox",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
-              "path": "/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions",
+              "id": "frontend/Reference/Decorations/MakeBoxes",
+              "path": "/wljs-docs/frontend/Reference/Decorations/MakeBoxes",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/JS Tools/Canvas",
-              "path": "/docs/frontend/Outdated/Advanced/JS Tools/Canvas",
+              "id": "frontend/Reference/Decorations/MatrixForm",
+              "path": "/wljs-docs/frontend/Reference/Decorations/MatrixForm",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/animations",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/animations",
+              "id": "frontend/Reference/Decorations/Row",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Row",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/components",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/components",
+              "id": "frontend/Reference/Decorations/Style",
+              "path": "/wljs-docs/frontend/Reference/Decorations/Style",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/embed-wl",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/embed-wl",
+              "id": "frontend/Reference/Decorations/SVGForm",
+              "path": "/wljs-docs/frontend/Reference/Decorations/SVGForm",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/intro",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/intro",
+              "id": "frontend/Reference/Decorations/TableForm",
+              "path": "/wljs-docs/frontend/Reference/Decorations/TableForm",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/styling",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/styling",
+              "id": "frontend/Reference/Dynamics/CreateFrontEndObject",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/CreateFrontEndObject",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Slides/tables",
-              "path": "/docs/frontend/Outdated/Advanced/Slides/tables",
+              "id": "frontend/Reference/Dynamics/Dynamic",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Dynamic",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Advanced/Snippets/Snippets",
-              "path": "/docs/frontend/Outdated/Advanced/Snippets/",
+              "id": "frontend/Reference/Dynamics/DynamicModule",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/DynamicModule",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Chatbook",
-              "path": "/docs/frontend/Outdated/Cell types/Chatbook",
+              "id": "frontend/Reference/Dynamics/FrontEndVirtual",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/FrontEndVirtual",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Files",
-              "path": "/docs/frontend/Outdated/Cell types/Files",
+              "id": "frontend/Reference/Dynamics/Internals/FrontEndExecutable",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/HTML",
-              "path": "/docs/frontend/Outdated/Cell types/HTML",
+              "id": "frontend/Reference/Dynamics/Internals/FrontEndExecutableInline",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutableInline",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Javascript",
-              "path": "/docs/frontend/Outdated/Cell types/Javascript",
+              "id": "frontend/Reference/Dynamics/Internals/FrontEndOnly",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndOnly",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Many more...",
-              "path": "/docs/frontend/Outdated/Cell types/Many more...",
+              "id": "frontend/Reference/Dynamics/Internals/FrontEndRef",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndRef",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Markdown",
-              "path": "/docs/frontend/Outdated/Cell types/Markdown",
+              "id": "frontend/Reference/Dynamics/Manipulate",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Manipulate",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Slides",
-              "path": "/docs/frontend/Outdated/Cell types/Slides",
+              "id": "frontend/Reference/Dynamics/Offload",
+              "path": "/wljs-docs/frontend/Reference/Dynamics/Offload",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/WLX",
-              "path": "/docs/frontend/Outdated/Cell types/WLX",
+              "id": "frontend/Reference/Graphics/AbsoluteThickness",
+              "path": "/wljs-docs/frontend/Reference/Graphics/AbsoluteThickness",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Cell types/Wolfram Language",
-              "path": "/docs/frontend/Outdated/Cell types/Wolfram Language",
+              "id": "frontend/Reference/Graphics/Arrow",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Arrow",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Development/Decorations",
-              "path": "/docs/frontend/Outdated/Development/Decorations",
+              "id": "frontend/Reference/Graphics/Directive",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Directive",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Development/Plugins/Known packages",
-              "path": "/docs/frontend/Outdated/Development/Plugins/Known packages",
+              "id": "frontend/Reference/Graphics/Graphics",
+              "path": "/wljs-docs/frontend/Reference/Graphics/",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Development/Structure",
-              "path": "/docs/frontend/Outdated/Development/Structure",
+              "id": "frontend/Reference/Graphics/GraphicsComplex",
+              "path": "/wljs-docs/frontend/Reference/Graphics/GraphicsComplex",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Export/HTML file",
-              "path": "/docs/frontend/Outdated/Export/HTML file",
+              "id": "frontend/Reference/Graphics/Image",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Image",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Export/PDF",
-              "path": "/docs/frontend/Outdated/Export/PDF",
+              "id": "frontend/Reference/Graphics/Inset",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Inset",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Export/React component",
-              "path": "/docs/frontend/Outdated/Export/React component",
+              "id": "frontend/Reference/Graphics/Line",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Line",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Expressions representation",
-              "path": "/docs/frontend/Outdated/Expressions representation",
+              "id": "frontend/Reference/Graphics/Show",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Show",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Mathematica vs WLJS",
-              "path": "/docs/frontend/Outdated/Mathematica vs WLJS",
+              "id": "frontend/Reference/Graphics/Style",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Style",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Column",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Column",
+              "id": "frontend/Reference/Graphics/SVGAttribute",
+              "path": "/wljs-docs/frontend/Reference/Graphics/SVGAttribute",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Framed",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Framed",
+              "id": "frontend/Reference/Graphics/Text",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Text",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Grid",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Grid",
+              "id": "frontend/Reference/Graphics/Translate",
+              "path": "/wljs-docs/frontend/Reference/Graphics/Translate",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/HTMLForm",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/HTMLForm",
+              "id": "frontend/Reference/Graphics3D/SpotLight",
+              "path": "/wljs-docs/frontend/Reference/Graphics3D/SpotLight",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/InputForm",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/InputForm",
+              "id": "frontend/Reference/Inputs/EditorView",
+              "path": "/wljs-docs/frontend/Reference/Inputs/EditorView",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Interpretation",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Interpretation",
+              "id": "frontend/Reference/Inputs/InputButton",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputButton",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/InterpretationBox",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/InterpretationBox",
+              "id": "frontend/Reference/Inputs/InputFile",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputFile",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Low level/BoxBox",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox",
+              "id": "frontend/Reference/Inputs/InputGroup",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputGroup",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Low level/ViewBox",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox",
+              "id": "frontend/Reference/Inputs/InputRange",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputRange",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/MakeBoxes",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/MakeBoxes",
+              "id": "frontend/Reference/Inputs/InputTable",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputTable",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/MatrixForm",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/MatrixForm",
+              "id": "frontend/Reference/Inputs/InputText",
+              "path": "/wljs-docs/frontend/Reference/Inputs/InputText",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Row",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Row",
+              "id": "frontend/Reference/Inputs/Slider",
+              "path": "/wljs-docs/frontend/Reference/Inputs/Slider",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/Style",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/Style",
+              "id": "frontend/Reference/Inputs/TextView",
+              "path": "/wljs-docs/frontend/Reference/Inputs/TextView",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/SVGForm",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/SVGForm",
+              "id": "frontend/Reference/Misc/Async",
+              "path": "/wljs-docs/frontend/Reference/Misc/Async",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Decorations/TableForm",
-              "path": "/docs/frontend/Outdated/Reference/Decorations/TableForm",
+              "id": "frontend/Reference/Misc/Events",
+              "path": "/wljs-docs/frontend/Reference/Misc/Events",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject",
+              "id": "frontend/Reference/Misc/Language",
+              "path": "/wljs-docs/frontend/Reference/Misc/Language",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Dynamic",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Dynamic",
+              "id": "frontend/Reference/Misc/Promise",
+              "path": "/wljs-docs/frontend/Reference/Misc/Promise",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/DynamicModule",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/DynamicModule",
+              "id": "frontend/Reference/Plotting/ArrayPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ArrayPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual",
+              "id": "frontend/Reference/Plotting/BarChart",
+              "path": "/wljs-docs/frontend/Reference/Plotting/BarChart",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/FrontSubmit",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit",
+              "id": "frontend/Reference/Plotting/BubbleChart",
+              "path": "/wljs-docs/frontend/Reference/Plotting/BubbleChart",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable",
+              "id": "frontend/Reference/Plotting/ContourPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ContourPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline",
+              "id": "frontend/Reference/Plotting/DensityPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/DensityPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly",
+              "id": "frontend/Reference/Plotting/ListContourPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListContourPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef",
+              "id": "frontend/Reference/Plotting/ListCurvePathPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListCurvePathPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Manipulate",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Manipulate",
+              "id": "frontend/Reference/Plotting/ListLinePlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListLinePlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/MetaMarker",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/MetaMarker",
+              "id": "frontend/Reference/Plotting/ListLinePlotly",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListLinePlotly",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Dynamics/Offload",
-              "path": "/docs/frontend/Outdated/Reference/Dynamics/Offload",
+              "id": "frontend/Reference/Plotting/ListStepPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListStepPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/Assign",
-              "path": "/docs/frontend/Outdated/Reference/Events/Assign",
+              "id": "frontend/Reference/Plotting/ListVectorPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/ListVectorPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventClone",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventClone",
+              "id": "frontend/Reference/Plotting/MatrixPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/MatrixPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventFire",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventFire",
+              "id": "frontend/Reference/Plotting/Plot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/Plot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventHandler",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventHandler",
+              "id": "frontend/Reference/Plotting/Plotly",
+              "path": "/wljs-docs/frontend/Reference/Plotting/Plotly",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventJoin",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventJoin",
+              "id": "frontend/Reference/Plotting/RandomImage",
+              "path": "/wljs-docs/frontend/Reference/Plotting/RandomImage",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventObject",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventObject",
+              "id": "frontend/Reference/Plotting/StackedListPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/StackedListPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Events/EventRemove",
-              "path": "/docs/frontend/Outdated/Reference/Events/EventRemove",
+              "id": "frontend/Reference/Plotting/StreamPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/StreamPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/AbsoluteThickness",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness",
+              "id": "frontend/Reference/Plotting/VectorPlot",
+              "path": "/wljs-docs/frontend/Reference/Plotting/VectorPlot",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/Arrow",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Arrow",
+              "id": "frontend/Reference/Plotting/VectorPlot3D",
+              "path": "/wljs-docs/frontend/Reference/Plotting/VectorPlot3D",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/Circle",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Circle",
+              "id": "frontend/Troubleshooting",
+              "path": "/wljs-docs/frontend/Troubleshooting",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/Directive",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Directive",
+              "id": "frontend/Tutorial/Dynamics",
+              "path": "/wljs-docs/frontend/Tutorial/Dynamics",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/Disk",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Disk",
+              "id": "frontend/Tutorial/Export notebook",
+              "path": "/wljs-docs/frontend/Tutorial/Export notebook",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/Graphics",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/",
+              "id": "frontend/Tutorial/Input elements",
+              "path": "/wljs-docs/frontend/Tutorial/Input elements",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "frontend/Outdated/Reference/Graphics/GraphicsComplex",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Image",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Image",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Inset",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Inset",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Internal/EventListener",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Line",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Line",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/MiddlewareHandler",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Offset",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Offset",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Point",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Point",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Polygon",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Polygon",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Raster",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Raster",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Rectangle",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Rectangle",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Rotate",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Rotate",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Show",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Show",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Style",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Style",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/SVGAttribute",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/SVGAttribute",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Text",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Text",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics/Translate",
-              "path": "/docs/frontend/Outdated/Reference/Graphics/Translate",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics3D/Cuboid",
-              "path": "/docs/frontend/Outdated/Reference/Graphics3D/Cuboid",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics3D/EventListener",
-              "path": "/docs/frontend/Outdated/Reference/Graphics3D/EventListener",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics3D/Graphics3D",
-              "path": "/docs/frontend/Outdated/Reference/Graphics3D/",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics3D/Sphere",
-              "path": "/docs/frontend/Outdated/Reference/Graphics3D/Sphere",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Graphics3D/SpotLight",
-              "path": "/docs/frontend/Outdated/Reference/Graphics3D/SpotLight",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/ButtonView",
-              "path": "/docs/frontend/Outdated/Reference/Input/ButtonView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/EditorView",
-              "path": "/docs/frontend/Outdated/Reference/Input/EditorView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/FileUploadView",
-              "path": "/docs/frontend/Outdated/Reference/Input/FileUploadView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputButton",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputButton",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputFile",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputFile",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputGroup",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputGroup",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputRange",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputRange",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputSpoiler",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputSpoiler",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputTable",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputTable",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputText",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputText",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/InputToggle",
-              "path": "/docs/frontend/Outdated/Reference/Input/InputToggle",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/RangeView",
-              "path": "/docs/frontend/Outdated/Reference/Input/RangeView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/Slider",
-              "path": "/docs/frontend/Outdated/Reference/Input/Slider",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/TextView",
-              "path": "/docs/frontend/Outdated/Reference/Input/TextView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Input/ToggleView",
-              "path": "/docs/frontend/Outdated/Reference/Input/ToggleView",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/CellHashStorage",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/core",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/core",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/downloadByURL",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/downloadByURL",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/InstancesHashMap",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/interpretate",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/interpretate",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/ObjectHashMap",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/openawindow",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/openawindow",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/server",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/server",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/setInnerHTML",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Javascript API/uuidv4",
-              "path": "/docs/frontend/Outdated/Reference/Javascript API/uuidv4",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ArrayPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ArrayPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/BarChart",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/BarChart",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/BubbleChart",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/BubbleChart",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ContourPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ContourPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/DensityPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/DensityPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListContourPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListContourPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListLinePlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListLinePlotly",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListStepPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListStepPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/ListVectorPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/MatrixPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/MatrixPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/Plot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/Plot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/Plotly",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/Plotly",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/RandomImage",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/RandomImage",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/StackedListPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/StackedListPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/StreamPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/StreamPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/VectorPlot",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Plotting/VectorPlot3D",
-              "path": "/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/Alert",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/Alert",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/WindowScope",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/LeakyModule",
-              "path": "/docs/frontend/Outdated/Reference/Tools/LeakyModule",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Notebook/CellPrint",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Notebook/ParentCell",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Slides/SlideEvent",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Timers/SetInterval",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Reference/Tools/Timers/SetTimeout",
-              "path": "/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Troubleshooting",
-              "path": "/docs/frontend/Outdated/Troubleshooting",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/Dynamics",
-              "path": "/docs/frontend/Outdated/Tutorial/Dynamics",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/Export notebook",
-              "path": "/docs/frontend/Outdated/Tutorial/Export notebook",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/GUI Overview",
-              "path": "/docs/frontend/Outdated/Tutorial/GUI Overview",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/Input elements",
-              "path": "/docs/frontend/Outdated/Tutorial/Input elements",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/Overview",
-              "path": "/docs/frontend/Outdated/Tutorial/Overview",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "frontend/Outdated/Tutorial/Plugins",
-              "path": "/docs/frontend/Outdated/Tutorial/Plugins",
+              "id": "frontend/Tutorial/Overview",
+              "path": "/wljs-docs/frontend/Tutorial/Overview",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "imgs/FE data binding.excalidraw 1",
-              "path": "/docs/imgs/FE data binding.excalidraw 1"
+              "path": "/wljs-docs/imgs/FE data binding.excalidraw 1"
             },
             {
               "id": "imgs/feinput.gif",
-              "path": "/docs/imgs/feinput.gif"
+              "path": "/wljs-docs/imgs/feinput.gif"
             },
             {
               "id": "imgs/manipulate-frontend-example.excalidraw",
-              "path": "/docs/imgs/manipulate-frontend-example.excalidraw"
+              "path": "/wljs-docs/imgs/manipulate-frontend-example.excalidraw"
             },
             {
               "id": "interpreter/Advanced/architecture",
-              "path": "/docs/interpreter/Advanced/architecture"
+              "path": "/wljs-docs/interpreter/Advanced/architecture"
             },
             {
               "id": "interpreter/Advanced/containers",
-              "path": "/docs/interpreter/Advanced/containers"
+              "path": "/wljs-docs/interpreter/Advanced/containers"
             },
             {
               "id": "interpreter/Advanced/meta-markers",
-              "path": "/docs/interpreter/Advanced/meta-markers"
+              "path": "/wljs-docs/interpreter/Advanced/meta-markers"
             },
             {
               "id": "interpreter/Advanced/symbols",
-              "path": "/docs/interpreter/Advanced/symbols"
+              "path": "/wljs-docs/interpreter/Advanced/symbols"
             },
             {
               "id": "interpreter/Basics/graphics",
-              "path": "/docs/interpreter/Basics/graphics"
+              "path": "/wljs-docs/interpreter/Basics/graphics"
             },
             {
               "id": "interpreter/Basics/js-access",
-              "path": "/docs/interpreter/Basics/js-access"
+              "path": "/wljs-docs/interpreter/Basics/js-access"
             },
             {
               "id": "interpreter/Basics/scripts",
-              "path": "/docs/interpreter/Basics/scripts"
+              "path": "/wljs-docs/interpreter/Basics/scripts"
             },
             {
               "id": "interpreter/Basics/syntax",
-              "path": "/docs/interpreter/Basics/syntax"
+              "path": "/wljs-docs/interpreter/Basics/syntax"
             },
             {
               "id": "interpreter/Extras/implementation",
-              "path": "/docs/interpreter/Extras/implementation"
+              "path": "/wljs-docs/interpreter/Extras/implementation"
             },
             {
               "id": "interpreter/Extras/reference",
-              "path": "/docs/interpreter/Extras/reference"
+              "path": "/wljs-docs/interpreter/Extras/reference"
             },
             {
               "id": "interpreter/intro",
-              "path": "/docs/interpreter/intro"
+              "path": "/wljs-docs/interpreter/intro"
             },
             {
-              "id": "/category/getting-started",
-              "path": "/docs/category/getting-started",
+              "id": "Reference/Misc/Promise",
+              "path": "/wljs-docs/Reference/Misc/Promise"
+            },
+            {
+              "id": "/category/tutorials",
+              "path": "/wljs-docs/category/tutorials",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "/category/cell-types",
-              "path": "/docs/category/cell-types",
+              "path": "/wljs-docs/category/cell-types",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "/category/advanced",
-              "path": "/docs/category/advanced",
+              "path": "/wljs-docs/category/advanced",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "/category/exporting-formats",
-              "path": "/docs/category/exporting-formats",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "/category/development",
-              "path": "/docs/category/development",
+              "path": "/wljs-docs/category/exporting-formats",
               "sidebar": "tutorialSidebar"
             }
           ],
-          "draftIds": [],
+          "draftIds": [
+            "frontend/Advanced/Editor manipulation",
+            "frontend/Advanced/Boxes and Decorations/dynamic-decorations",
+            "frontend/Advanced/Dynamics/Indicators and monitoring",
+            "frontend/Advanced/Dynamics/Performance tips",
+            "frontend/Advanced/Dynamics/Scoping",
+            "frontend/Advanced/Dynamics/Simple manipulate",
+            "frontend/Advanced/Frontend interpretation/Frontend functions",
+            "frontend/Advanced/Frontend interpretation/executables",
+            "frontend/Advanced/JS Tools/Canvas",
+            "frontend/Advanced/Slides/styling",
+            "frontend/Reference/Graphics3D/Cuboid",
+            "frontend/Reference/Graphics3D/EventListener",
+            "frontend/Reference/Graphics3D/Graphics3D",
+            "frontend/Reference/Graphics3D/Sphere",
+            "frontend/Reference/Graphics/Circle",
+            "frontend/Reference/Graphics/Disk",
+            "frontend/Reference/Graphics/Offset",
+            "frontend/Reference/Graphics/Point",
+            "frontend/Reference/Graphics/Polygon",
+            "frontend/Reference/Graphics/Raster",
+            "frontend/Reference/Graphics/Rectangle",
+            "frontend/Reference/Graphics/Rotate",
+            "frontend/Reference/Graphics/Internal/EventListener"
+          ],
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/frontend/instruction",
+                "path": "/wljs-docs/",
                 "label": "frontend/instruction"
               }
             }

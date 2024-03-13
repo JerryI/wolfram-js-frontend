@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Plotting/ContourPlot",
+  "title": "ContourPlot",
+  "description": "Generates a contour plot of $f$ as a function of $x$ and $y$",
+  "source": "@site/docs/frontend/Reference/Plotting/ContourPlot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/ContourPlot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/ContourPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://reference.wolfram.com/language/ref/ContourPlot.html?q=ContourPlot"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "BubbleChart",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/BubbleChart"
+  },
+  "next": {
+    "title": "DensityPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/DensityPlot"
+  }
+}

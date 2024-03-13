@@ -3,27 +3,27 @@
   "items": [
     {
       "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
-      "permalink": "/blog/esm-into",
-      "unlisted": false
-    },
-    {
-      "title": "Introducing snippets",
-      "permalink": "/blog/int-snippets",
-      "unlisted": false
-    },
-    {
-      "title": "Mixing visual tools and code | Magic of Frontend Objects",
-      "permalink": "/blog/feobjects-example",
+      "permalink": "/wljs-docs/blog/esm-into",
       "unlisted": false
     },
     {
       "title": "Introducing Projector! Output to a separate window",
-      "permalink": "/blog/projector-intro",
+      "permalink": "/wljs-docs/blog/projector-intro",
       "unlisted": false
     },
     {
       "title": "Image and Raster were implemented!",
-      "permalink": "/blog/imageraster",
+      "permalink": "/wljs-docs/blog/imageraster",
+      "unlisted": false
+    },
+    {
+      "title": "Advanced guide on Events",
+      "permalink": "/wljs-docs/blog/event-advanced",
+      "unlisted": false
+    },
+    {
+      "title": "Introducing NotebookStore",
+      "permalink": "/wljs-docs/blog/notestore",
       "unlisted": false
     }
   ]

@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Decorations/SVGForm",
+  "title": "SVGForm",
+  "description": "exports as SVG any Wolfram Expressions and plots it inside a cell.",
+  "source": "@site/docs/frontend/Reference/Decorations/SVGForm.md",
+  "sourceDirName": "frontend/Reference/Decorations",
+  "slug": "/frontend/Reference/Decorations/SVGForm",
+  "permalink": "/wljs-docs/frontend/Reference/Decorations/SVGForm",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "needsContainer": true,
+    "registered": true,
+    "origin": "https://github.com/JerryI/wljs-html-support"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Row",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Row"
+  },
+  "next": {
+    "title": "Style",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Style"
+  }
+}

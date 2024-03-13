@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Graphics/Rotate",
+  "title": "Rotate",
+  "description": "",
+  "source": "@site/docs/frontend/Reference/Graphics/Rotate.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Rotate",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Rotate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rectangle",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Rectangle"
+  },
+  "next": {
+    "title": "SVGAttribute",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/SVGAttribute"
+  }
+}

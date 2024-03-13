@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.1.1",
+    "@docusaurus/plugin-client-redirects": "^3.1.1",
     "@docusaurus/preset-classic": "3.1.1",
     "@docusaurus/theme-mermaid": "^3.1.1",
     "@giscus/react": "^3.0.0",

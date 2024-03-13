@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Javascript API/core",
+  "title": "core",
+  "description": "Global context in Javascript engine, where all functions of WLJS Interpreter are stored.",
+  "source": "@site/docs/frontend/Reference/Javascript API/core.md",
+  "sourceDirName": "frontend/Reference/Javascript API",
+  "slug": "/frontend/Reference/Javascript API/core",
+  "permalink": "/wljs-docs/frontend/Reference/Javascript API/core",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ObjectHashMap",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/ObjectHashMap"
+  },
+  "next": {
+    "title": "downloadByURL",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/downloadByURL"
+  }
+}

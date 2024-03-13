@@ -1,0 +1,807 @@
+{
+  "blogPosts": [
+    {
+      "id": "esm-into",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/esm-into",
+        "source": "@site/blog/2023-10-10-esm/index.md",
+        "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
+        "description": "Have only plain JS cell types is still not enough, when it comes to import anything from NPM repository or your local files. Many sandboxes, such as Codepen, RunJS, ReplIT has this option to use NodeJS in the browser. Why don't we have this feature as well?",
+        "date": "2023-10-10T00:00:00.000Z",
+        "formattedDate": "October 10, 2023",
+        "tags": [],
+        "readingTime": 2.77,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "esm-into",
+          "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
+          "authors": "jerryi",
+          "enableComments": true
+        },
+        "unlisted": false,
+        "nextItem": {
+          "title": "Introducing Projector! Output to a separate window",
+          "permalink": "/wljs-docs/blog/projector-intro"
+        }
+      },
+      "content": "Have only plain JS cell types is still not enough, when it comes to `import` anything from NPM repository or your local files. Many sandboxes, such as Codepen, RunJS, ReplIT has this option to use NodeJS in the browser. Why don't we have this feature as well?\n\n[__wljs-esm-support__](https://github.com/JerryI/wljs-esm-support) plugin\n\n<!--truncate-->\n## Bundling on-fly\nThe idea is, you have `node` installed on your system and Wolfram Kernel runs an external process\n\n```mathematica\nRunProcess[{\"node\", ...}, Stdin]\n```\n\nusing some bundler, that support `stdin` method to process the file data instead of actual file. The only one I found is ESBuild. In principle, then, one can feed the content of any cell to it and get the data back to the output cell as a bundled JS file.\n\n## Helper functions\nIt would be nice to have a simple interface to interact with Node, therefore, I created a special object for that\n\n```mathematica\nNPM[\"name-of-a-package\"] // Install \n```\nwhich will install locally to the vault folder a module from npm repository. \n\n## Example\nLet us try the simples possible example. For instance you found a nice package for making fireworks inside your notebook [js-confetti](https://www.npmjs.com/package/js-confetti)\n\nThen you type\n```mathematica\nNPM[\"js-confetti\"] // Install\n```\n\nAnd finally our `.esm` cell\n```js\n.esm\n\nimport JSConfetti from 'js-confetti'\nconst jsConfetti = new JSConfetti()\njsConfetti.addConfetti();\n\nconst re = document.createElement('span');\nre.innerText = \"everything is fine!\";\n\nthis.onreturn = () => {\n  return re;\n}\n```\n\nWhen you evaluate it, it compiles JS file and embeds the result to the output cell.\n\n## Nintendo Pro controller & Wolfram Engine\nThis is rather much funnier example. It is known fact, any JS app can interact with gamepads, controllers connected via USB or Bluetooth channel. \n\nWhy not use it to communicate to Wolfram Kernel? 😵‍💫\nThe overhead from translating the signals OS $\\rightarrow$ V8 engine seems to be minimal.\n\n### Reading signals\n\n```mathematica\nNPM[\"switch-pro\"] // Install \n```\n\n```js\n.esm\nimport SwitchPro from 'switch-pro'\n\nconst switchPro = new SwitchPro(window)\n\nswitchPro.addListener((pressed) => {\n  server.emitt('joy', `\"${JSON.stringify(pressed).replaceAll(/\"/g, \"'\")}\"`);\n});\n\ncore.Rumble = async () => {\n  switchPro.vibrate();\n}\n\n```\n\nThis is super easy, we just redirect all events to WL kernel as JSON string with some minor changes in order to escape double quotes.\n\n:::note\nA library `switch-pro` automatically discovers Pro controller and connects to it. No actions are needed.\n:::\n\nThe last line `Rumble` is to \"vibrate\" our controller just for fun. We will use it later.\n\n### Handling signals\n\n```mathematica\nEventHandler[\"joy\", handler];\n```\n\nNow we attached an event-handler to the events from Nintendo controller. Let us decrypt JSON and send it to some plot\n\n```mathematica\npoint =  {0,0};\nhandler = Function[cmd,\n  Module[{assoc = ImportString[StringReplace[cmd, \"'\"->\"\\\"\"], \"JSON\"] // Association, p = point},\n    If[KeyExistsQ[assoc, \"RS-DOWN\"], p = {p[[1]], -assoc[\"RS-DOWN\"]}];\n    If[KeyExistsQ[assoc, \"RS-UP\"], p = {p[[1]], assoc[\"RS-UP\"]}];\n    If[KeyExistsQ[assoc, \"RS-LEFT\"], p = {-assoc[\"RS-LEFT\"], p[[2]]}];\n    If[KeyExistsQ[assoc, \"RS-RIGHT\"], p = {assoc[\"RS-RIGHT\"], p[[2]]}]; \n\n    If[Length[Keys[assoc]] == 0, p = {0,0}];\n\n    point = p;\n  ]\n];\n\nGraphics[{Red, PointSize[0.1], Point[point // Offload]}, TransitionDuration->50, TransitionType->\"Linear\"]\n```\n\nThis code looks a bit sketchy, the decoding could be done in a much more efficient manner.\nDo not forget about rumbling! But this is no-brainer\n\n```mathematica\nEventHandler[InputButton[\"Rumble\"], Function[Null, FrontSubmit[Rumble[]]]] \n```\n\nThe result you can see in the video\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qhG6PV4NZeA?si=a4wuC7KGR25FZo6I\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n\nYou can download the notebook using the link in the bottom\n- [__NintendoPro__](NintendoPro.wln)"
+    },
+    {
+      "id": "projector-intro",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/projector-intro",
+        "source": "@site/blog/2023-08-22-projector/index.md",
+        "title": "Introducing Projector! Output to a separate window",
+        "description": "I was always wondering on how to replicate the experience from the massive software like Origin Lab, Igor64, which has more traditional way of working with data - using windows.  Being limited to a cell in the notebooks is a big limitation, well...",
+        "date": "2023-08-22T00:00:00.000Z",
+        "formattedDate": "August 22, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          }
+        ],
+        "readingTime": 0.99,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "projector-intro",
+          "title": "Introducing Projector! Output to a separate window",
+          "authors": "jerryi",
+          "tags": [
+            "frontend"
+          ],
+          "enableComments": true,
+          "draft": false
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
+          "permalink": "/wljs-docs/blog/esm-into"
+        },
+        "nextItem": {
+          "title": "Image and Raster were implemented!",
+          "permalink": "/wljs-docs/blog/imageraster"
+        }
+      },
+      "content": "I was always wondering on how to replicate the experience from the massive software like *Origin Lab*, *Igor64*, which has more traditional way of working with data - using windows.  Being limited to a cell in the notebooks is a big limitation, well...\n\n![](Screenshot%202023-08-29%20at%2012.58.20.png)\n\n<!--truncate-->\n\nOn the above figure is my typical workspace. Looks messy, however being a theoretician I need to monitor multiple parameters of a model. Sliders are not really well sorted and in overall it looks messy, but it can be improved by a bit of a magic of CSS, which is available in `.html` cells. \n\nThe trick is\n![](Screenshot%202023-09-11%20at%2018.40.52.png)\n\nwhen you click on the icon of windows it evaluates the input cell and outputs its content to a new window, which is associated with the current notebook. It uses all features of the frontend engine, therefore you can use dynamics as if nothing was changed.\n\n:::warning\nBefore reevaluating a cell, you need to close a window. Hot reload is not supported for now\n:::\n\nOr if you are demonstrating a presentation using [wljs-revealjs](https://github.com/JerryI/wljs-revealjs/) plugin, this is the only use-case scenario for the projector feature.\n\nBut on this topic I will make a separate post."
+    },
+    {
+      "id": "imageraster",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/imageraster",
+        "source": "@site/blog/2023-09-14-image-raster/2023-08-20-image-raster.md",
+        "title": "Image and Raster were implemented!",
+        "description": "It means, MatrixPlot as well as Rasterize can work properly finally",
+        "date": "2023-08-20T00:00:00.000Z",
+        "formattedDate": "August 20, 2023",
+        "tags": [
+          {
+            "label": "graphics",
+            "permalink": "/wljs-docs/blog/tags/graphics"
+          }
+        ],
+        "readingTime": 0.73,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "imageraster",
+          "title": "Image and Raster were implemented!",
+          "authors": "jerryi",
+          "tags": [
+            "graphics"
+          ],
+          "enableComments": true,
+          "draft": false
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Introducing Projector! Output to a separate window",
+          "permalink": "/wljs-docs/blog/projector-intro"
+        },
+        "nextItem": {
+          "title": "Advanced guide on Events",
+          "permalink": "/wljs-docs/blog/event-advanced"
+        }
+      },
+      "content": "![](plot.svg)\n\n```mathematica\nMatrixPlot[\n Fourier[Table[\n   UnitStep[i, 4 - i] UnitStep[j, 7 - j], {i, -25, 25}, {j, -25, \n    25}]]]\n```\nIt means, `MatrixPlot` as well as `Rasterize` can work properly finally\n\n<!--truncate-->\n\n\n\n## Raster\n\n`MatrixPlot` produces `Graphics` with `Raster` inside. However, similar function `ArrayPlot` __won't work properly__ since it doesn't provide the `PlotRange` option.\n\nIn my implementation of `Graphics` it cannot guess what the plot range would be. Therefore you have to manually provide it. For example\n\n```mathematica\nGraphics[{\n\tRaster[Table[{x, y, x, y}, {x, .1, 1, .1}, {y, .1, 1, .1}]]}\n\t, PlotRange->{{0.1,10}, {0.1,10}\n}]\n```\n\n\n\nHere `PlotRange` is necessary, otherwise it will be set to `{-1,1}`.\n\n## Image\nThis is actually a separate entity, that uses HTML5 canvas\n> despite this fact, you can still easily embed it into `Graphics` using `Inset` wrapper\n\n\n\nPlease see __Reference__ section in the frontend docs for more information. See Ya!"
+    },
+    {
+      "id": "event-advanced",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/event-advanced",
+        "source": "@site/blog/2023-08-19-advanced-events/index.md",
+        "title": "Advanced guide on Events",
+        "description": "As a short summary - where you can use event-handlers / listeners",
+        "date": "2023-08-19T00:00:00.000Z",
+        "formattedDate": "August 19, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "events",
+            "permalink": "/wljs-docs/blog/tags/events"
+          }
+        ],
+        "readingTime": 5.86,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "event-advanced",
+          "title": "Advanced guide on Events",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "events"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Image and Raster were implemented!",
+          "permalink": "/wljs-docs/blog/imageraster"
+        },
+        "nextItem": {
+          "title": "Introducing NotebookStore",
+          "permalink": "/wljs-docs/blog/notestore"
+        }
+      },
+      "content": "As a short summary - where you can use event-handlers / listeners \n\n- on `Graphics2D` elements to listen users interactions \n\t- drag, click, zoom, mousemove\n- on `Graphics3D` elements\n\t- transform\n- on any `EventObject` \n- on the output cell using `EvaluationCell[]` to attach to cell's events\n\t- evaluation, destroy\n\nAn event-driven approach was inspired by Javascript language, where one can subscribe to any changes of any objects. Here it is way more simplified compared to JS, but covers all practical cases.\n\n<!--truncate-->\n\n\n\n\n\n\n## Thumb rule\n\nOne event-object - one handler function\n\n```mathematica\nev = EventObject[<|\"id\"->\"evid\", ...|>]\nEventHandler[ev, Print]\n```\n\ni.e.\n\n```mermaid\nflowchart LR\n\nsubgraph EventObject\n\tid=evid\n\t...\nend\n\nsubgraph EventHandler\n\tPrint\nend\n\nEventObject --\"By id\"-->EventHandler\n```\n\nto remove our handler\n```mathematica\nDelete[ev]\n```\nwhere it deletes a handler function, but not an `EventObject`.\n\n:::tip\nTo assign more event handlers, you need to __clone an event object__ \n:::\n### Cloning events\nConsidering the previous example we had\n\n```mathematica\nev = EventObject[<|\"id\"->\"evid\", ...|>]\n(* first handler *)\nEventHandler[ev, Print]; \n\n(* second handler *)\nclone = EventClone[ev];\nEventHandler[clone, Print];\n```\n\nWhat it does, it converts a simple `EventObject` into something like an event router, which is populated by two new event-objects\n\n```mermaid\nflowchart LR\n\nsubgraph EventObject\n\tid=evid\n\tprop1[\"props\"]\nend\n\nsubgraph EventRouter\n\tsubgraph List\n\t\tid=new1\n\t\tid=new2\n\tend\n\tprop2[\"props\"]\nend\n\nsubgraph EventHandler1[EventHandler]\n\tPrint1[Print]\nend\n\nsubgraph EventHandler2[EventHandler]\n\tPrint2[Print]\nend\n\nEventObject --\"By id\"--> EventRouter\n\nid=new1 --\"By id\"-->EventHandler1\nid=new2 --\"By id\"-->EventHandler2\n```\n\nAnything you do with `clone` will not affect the `ev`\n\n```mathematica\nDelete[clone]\n```\n\n:::info\nCloned object inherits all properties (i.e. initial data), that the original object has.\n:::\n\n## Merging\nFor example you want to update the state of something based on two events, that may happen independently, then\n\n```mathematica\nev1 = EventObject[<|\"id\"->\"evid1\"|>]\nev2 = EventObject[<|\"id\"->\"evid2\"|>]\n\njoined = Join[ev1, ev2]\n```\n\n:::tip\nYou do not have to clone your events before joining them, since it does it automatically keeping all other connections intact\n:::\n\n```mermaid\nflowchart LR\n\nsubgraph EventObject1[EventObject]\n\tid=evid1\n\tprop1[\"props1\"]\nend\n\nsubgraph EventObject2[EventObject]\n\tid=evid2\n\tprop2[\"props2\"]\nend\n\nsubgraph EventRouter\nend\n\nsubgraph EventObject3[EventObject]\n\tid=new\n\tprop3[\"merged props\"]\nend\n\nEventObject1 --> EventRouter\nEventObject2 --> EventRouter\n\nEventRouter --Fire--> EventObject3\n```\n## Properties\nThere is a simple association wrapped inside `EventObject`. By its nature this is not a classical object in the sense of OOP, since the handler function has no access to the their properties and only `id`  field is stored in global a memory. \n### Inheritable\nThere is a property `\"initial\"`, that specifies the initial value of the data shipped when the event is fired, when you apply `Join` or `EventClone` the final initial conditions will be merged from the different event objects or just copied\n\n```mathematica\nev1 = EventObject[<|\"id\"->\"ev1\", \"initial\"-><|\"x\"->1|>|>]\nev2 = EventObject[<|\"id\"->\"ev1\", \"initial\"-><|\"y\"->2|>|>]\n\nJoin[ev1, ev2]\n```\n\nthe result will be\n\n```mathematica\nEventObject[<|\"id\"->\"random\", \"initial\"-><|\"x\"->1, \"y\"->2|>|>]\n```\n### Non-inheritable\nA very useful property, that comes handy when making GUI elements `\"view\"`\n\n```mathematica\nEventObject[<|\"id\"->\"evid\", \"view\"->Graphics3D[Sphere[]]|>]\n```\n\nit acts only when the object is printed to the output cell, then, we will see\n\n\n\nThis is where the *body* of all input elements is located.\n## Applications\nThe most interesting part is coming below\n### Event listener for Graphics\nAn `EventHandler` expression always returns the original object, therefore it comes very handy to use it as a wrapper for buttons, sliders and most `Graphics` objects\n\n```mathematica\np = {0,0};\nGraphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,2}, {2,-2}],\n\t\t{\"mousemove\"->Function[xy, p = xy]}\n\t],\n\tPointSize[0.05], Cyan,\n\tPoint[p // Offload]\n}]\n```\n\nHere we are listening for `mousemove` event attached to a wide white rectangle and translate the coordinates to a cyan point.\n\n:::info\nAn event-handling functions must be in __a list of rules__ with corresponding names of the events for `EventHandler` being attached to a standard graphical object\n\n```mathematica\nEventHandler[GraphicsPrimitive_, {\"\"->...}]\n```\nI.e. the following\n```mathematica\nEventHandler[GraphicsPrimitive_, Print]\n```\n__will not work__, because `Point` does produce only named events\n:::\n\nThere are following event available for 2D primitives\n- drag\n- mousemove\n- click\n- zoom\n\nand for 3D primitives\n- transform - similar to drag, but with gizmos \n\n### Cells events\nIt comes handy, when you for instance clone events and need to purge the handlers before each reevaluation. There is an access to any output cell via\n\n```mathematica\nEvaluationCell[]\n```\n\nThen, one can assign any expression to it\n```mathematica\nEventHandler[EvaluationCell[], {\"destroy\"->Print, \"evaluation\"->Print}]\n```\n\nOne should not that those event are assigned to __the output cell__ generated after the evaluation. Therefore mostly useful will be to use `\"destroy\"`, while `\"evaluation\"` is called only if one tries to evaluate the output cell as an input cell.\n\n### GUI elements\nThe most common place to deal with `EventObject`s is\n\n```mathematica\nInputButton[\"Click me\"]\n```\n\nthat evaluates into \n```mathematica\nEventObject[<|\"id\"->\"generated...\", \"view\"->ButtonView[...], \"initial\"->False|>]\n```\n\nbut __you will never see it__, because on output it shows only `view` field, that contains actual representation of a button as an interactive object, that fires an event with `id`. \n### Javascript binding\nThink about it as a superset of the previous one. Let us try with an example of a...\n\nButton\n```javascript\n.js\nconst button = document.createElement('input');\nbutton.type = \"button\";\nbutton.value = \"Click me\";\nbutton.addEventListener('click', ()=>{\n  server.emitt('evid', '\"Clicked!\"');\n});\n\nreturn button;\n```\n\n```mathematica\nEventHandler[\"evid\", Print];\n```\n\nBy clicking on the appeared button you will see the message from the Kernel. This is how all GUI elements are made, apart from wrapping them into a functions, that generate uid's by its own. \n\n#### Making things fancier | View & Generator\nTaking the previous example, we can improve it a bit starting from the __view component__\n\n```js\n.js\ncore.CustomButtonView = async (args, env) => {\n  const options = await core._getRules(args, env);\n  const button = document.createElement('input');\n  button.type = \"button\";\n  button.value = options.Label;\n  button.addEventListener('click', ()=>{\n    server.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  env.element.appendChild(button);\n}\n\nreturn null;\n```\n\nNow this is a proper frontend function. Now it comes to __event-generator__\n\n```mathematica\nCustomButton[label_] := With[{uid = CreateUUID[]},\n  EventObject[<|\"id\"->uid, \"initial\"->False, \"view\"->CustomButtonView[\"Label\"->label, \"Event\"->uid]|>]\n]\n```\n\nThen we can use `CustomButton` as a real GUI component for user's input\n\n```mathematica\nEventHandler[CustomButton[\"Woo\"], Print]\n```\n\n## Cutting corners\nFor lazy people there are many shortcuts implemented\n\n___Aliases___\nThere are many ways to tell the same\n\n```mathematica\nEventBind[ev, Print]\nEventHandlet[ev, Print]\nPrint // ev\n```\n\n```mathematica\nDelete[ev]\nDeleteObject[ev]\n```\n\n___Fast event binding___\nThere is an another, sorter way of writing `EventHandler`\n```mathematica\nPrint // ev\n```\nwhich is basically \n```mathematica\nEventHandler[ev, Print]\n```\n\n___Assignment handler function___ \nSometimes it is too repetitive to write every-time `var = # &`, instead\n```mathematica\nev // Assign[x]\n```\nis basically an equivalent of \n```mathematica\nEventHandler[ev, (x = # &)]\n```\n\n___Fire an event manually___\nsometimes comes handy, when you want to initialize the data\n```mathematica\nev = EventObject[<|\"id\"->\"evid\", ...|>]\nEventFire[ev, 1+1]\n```\nor with no-data provided\n```mathematica\nEventFire[ev]\n```\nor just by using text-string\n```mathematica\nEventFire[\"event-id\"]\n```\n\n___Reference by id___\nif you know an `uid` of the event, but don't have a real `EventObject`\n```mathematica\nEventHandler[\"evid\", Print]\nEventRemove[\"evid\"]\nEventFire[\"evid\"]\nEventFire[\"evid\", 1+1]\n```\n\n---\n\n__[Download Notebook](Greyness.wln)__ \n\nAs well as the most part of WLJS Frontend, an event system was not carefully designed in-advance, but rather it was shaped and expanded iteratively via solving hundreds of practical cases."
+    },
+    {
+      "id": "notestore",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/notestore",
+        "source": "@site/blog/2023-08-17-notestore.md",
+        "title": "Introducing NotebookStore",
+        "description": "Sometimes it is easier to ship notebook together with the data it depends on. However, not as a text encoded using BASE64 pasted into a notebook cell - it would just kill the performance, but as a dedicated inner structure, that can be exposed using NotebookStore",
+        "date": "2023-08-17T00:00:00.000Z",
+        "formattedDate": "August 17, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          }
+        ],
+        "readingTime": 0.58,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "notestore",
+          "title": "Introducing NotebookStore",
+          "authors": "jerryi",
+          "tags": [
+            "frontend"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Advanced guide on Events",
+          "permalink": "/wljs-docs/blog/event-advanced"
+        },
+        "nextItem": {
+          "title": "Axes label and partial LaTeX support",
+          "permalink": "/wljs-docs/blog/axes-label"
+        }
+      },
+      "content": "Sometimes it is easier to ship notebook together with the data it depends on. However, not as a text encoded using BASE64 pasted into a notebook cell - it would just kill the performance, but as a dedicated inner structure, that can be exposed using `NotebookStore`\n\n```mathematica\nNotebookStore[\"key\"] = 1+1\nNotebookStore[\"key\"] === 1+1\n```\n\nAs simple as that. This is not real association, but mimics its behavior. To get all keys, use \n```mathematica\nKeys[NotebookStore]\n```\n\nIn the worst case scenario one can use `Iconize`, but that will make the data to be stored inside a notebook cell, which is recommended.\n\n:::tip\nFor the arrays of data apply `Compress` / `Uncompress` to save up the space\n:::"
+    },
+    {
+      "id": "axes-label",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/axes-label",
+        "source": "@site/blog/2023-08-16-axes-label.md",
+        "title": "Axes label and partial LaTeX support",
+        "description": "Finally Text was implemented in wljs-graphics-d3 package!",
+        "date": "2023-08-16T00:00:00.000Z",
+        "formattedDate": "August 16, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "graphics",
+            "permalink": "/wljs-docs/blog/tags/graphics"
+          }
+        ],
+        "readingTime": 0.495,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "axes-label",
+          "title": "Axes label and partial LaTeX support",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "graphics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Introducing NotebookStore",
+          "permalink": "/wljs-docs/blog/notestore"
+        },
+        "nextItem": {
+          "title": "A minor update of Graphics2D",
+          "permalink": "/wljs-docs/blog/intro-controls-2d-graphics"
+        }
+      },
+      "content": "Finally `Text` was implemented in [wljs-graphics-d3](https://github.com/JerryI/wljs-graphics-d3) package!\n\n\n\n<!--truncate-->\n\n`Text[text, pos]`, where both of them `text` and `pos` __support dynamic updates__. One can stylize it using traditional `Style` wrapper and specify `FrontSize`, `FontFamily` as well.\n\nSupported options for graphics \n\n- `Axes`\n- `AxesLabel`\n- `FrameLabel`\n- `Frame`\n- `Ticks`\n- `FrameTicks`\n- `TicksLength`\n- `TicksDirection`\n\nNone of them supports dynamic update for now ;)\n\nAlso now one can use LaTeX form for greek symbols and for sub- superscripts in the text labels or inside `Text` element like this\n\n```mathematica\nAxesLabel -> {\"wavenumber (cm^{-1})\", \"\\\\alpha (cm^{-1}) \"}\n```\n\nThanks for reading!"
+    },
+    {
+      "id": "intro-controls-2d-graphics",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/intro-controls-2d-graphics",
+        "source": "@site/blog/2023-08-08-graphics-2d-update/index.md",
+        "title": "A minor update of Graphics2D",
+        "description": "Now regular Graphics expressions has panning/zooming features. Use Controls->True as an option",
+        "date": "2023-08-08T00:00:00.000Z",
+        "formattedDate": "August 8, 2023",
+        "tags": [
+          {
+            "label": "graphics",
+            "permalink": "/wljs-docs/blog/tags/graphics"
+          }
+        ],
+        "readingTime": 0.18,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "intro-controls-2d-graphics",
+          "title": "A minor update of Graphics2D",
+          "authors": "jerryi",
+          "tags": [
+            "graphics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Axes label and partial LaTeX support",
+          "permalink": "/wljs-docs/blog/axes-label"
+        },
+        "nextItem": {
+          "title": "A major update of Graphics3D",
+          "permalink": "/wljs-docs/blog/intro-transform-3d"
+        }
+      },
+      "content": "![](ezgif.com-optimize-12.gif)\n\nNow regular `Graphics` expressions has panning/zooming features. Use `Controls->True` as an option \n\n```mathematica\nPlot[x, {x,0,10}];\nInsert[%, Controls->True, {2,-1}]\n```\n\nUnfortunately, it is not possible to extend option values for the regular functions `Plot` and etc."
+    },
+    {
+      "id": "intro-transform-3d",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/intro-transform-3d",
+        "source": "@site/blog/2023-07-25-transform-3d/index.md",
+        "title": "A major update of Graphics3D",
+        "description": "Every feature I introduce comes from the practicing on real-life cases. Recently I had an urge to make a nice figure for the Physical Review B paper.",
+        "date": "2023-07-25T00:00:00.000Z",
+        "formattedDate": "July 25, 2023",
+        "tags": [
+          {
+            "label": "graphics3d",
+            "permalink": "/wljs-docs/blog/tags/graphics-3-d"
+          }
+        ],
+        "readingTime": 2.93,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "intro-transform-3d",
+          "title": "A major update of Graphics3D",
+          "authors": "jerryi",
+          "tags": [
+            "graphics3d"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "A minor update of Graphics2D",
+          "permalink": "/wljs-docs/blog/intro-controls-2d-graphics"
+        },
+        "nextItem": {
+          "title": "WLJS in practice. Integrating absorption spectra",
+          "permalink": "/wljs-docs/blog/practice-integration"
+        }
+      },
+      "content": "![](ezgif.com-optimize.gif)\n\nEvery feature I introduce comes from the practicing on real-life cases. Recently I had an urge to make a nice figure for the Physical Review B paper.\n\nIn this post: __shadows__, __light-sources__, __toon-shading__, __transformation control__...\n\n<!--truncate-->\n\n\n\n\n<Component>\nhttps://cdn.statically.io/gh/JerryI/Mathematica-ThreeJS-graphics-engine/master/dist/kernel.js\n</Component>\n\n## Shadows\nFirstly, to depict a crystallographic structure is not a big deal. Using materials.project one can obtain `.cif` file and easily parse it using Wolfram Language. With a bit of a crystallography knowledge one can show ions as sphere with arbitrary colors and sizer for your taste \n\n\n\nOk, definitely, we __do not need spheres to cast shadows__...\nAh, by the way, some new features comes\n\n:::info\n```mathematica\nShadows[True]\n```\nAllows group of objects to cast shadows or receive them from the `PointLight`, `SpotLight`, `HemisphereLight` sources of light in the scene\n:::\n\n## Light sources\nTo define some custom light-source\n\n:::info\n```mathematica\nPointLight[RGBColor[], intensity_:1, ..., \"Position\"->{x,y,z}]\n```\nAdds point light source ([see THREE.js](https://threejs.org/docs/#api/en/lights/PointLight))\n:::\n\n:::info\n```mathematica\nSpotLight[RGBColor[], intensity_:1, ..., \"Position\"->{x,y,z}, \"Target\"->{0,0,0}]\n```\nAdds spot light source ([see THREE.js](https://threejs.org/docs/#api/en/lights/SpotLight))\n:::\n\n:::info\n```mathematica\nHemisphereLight[SkyColor_RGBColor, GroundColor_RGBColor, intensity_:1]\n```\nAdds hemisphere light source ([see THREE.js](https://threejs.org/docs/#api/en/lights/HemisphereLight))\n:::\n\nThe position and target object support dynamic updates, i.e. one can do\n```mathematica\nPointLight[\"Position\"->(pos // Offload)]\n```\n\n:::tip\nTo have more control over the lighting, disable the default one in the scene\n```mathematica\nGraphics3D[..., Lighting->None]\n```\n:::\n\nLet me continue with a figure. __No shadows__ and __only point-light source__\n\n\n\nNow it's much better, however this old-school 3D look for me feels a bit off being printed next to sets of 2D plots.  \n\n## MeshMaterials\nVector graphics has a minimal set of colors, I am looking for something like this one\n\n<div style={{textAlign: 'center'}}>\n\n![](screenshot-158_111793.jpg)\n\n*image from [CAHSEE - Properties of Shapes: Help and Review](https://study.com/academy/topic/cahsee-properties-of-shapes-help-and-review.html)*\n\n</div>\n\nWell, how one can archive that? It reminds me something\n\n<div style={{textAlign: 'center'}}>\n\n![](Toon-shader.jpg)\n\n*image from [Cell shading](https://en.wikipedia.org/wiki/Cel_shading)*\n\n</div>\n\nBrowsing through the materials on THREE.js docs, [I found one](https://threejs.org/docs/#api/en/materials/MeshToonMaterial) I was looking for and quickly applied that one\n\n\n\nHere we go! Let me introduce you `MeshMaterials`\n\n:::info\nUse `MeshMaterial[]` for a group of object to specify the material for the geometry. By the default, all objects have `MeshPhysicalMaterial[]`. \n\n```mathematica\nMeshMaterial[MeshPhysicalMaterial[]]\nMeshMaterial[MeshToonMaterial[]]\nMeshMaterial[MeshPhongMaterial[]]\nMeshMaterial[MeshLambertMaterial[]]\n```\n:::\n\nWell, I am not satisfied yet. \n\n## Transformation controls\nPositioning the light is pain. At least there is a dynamic binding, i.e. no need in re-evaluating a cell every-time. I wish, one could drag a light source like in Blender or any other 3D software.\n\nAs usual, everything [was invented before](https://threejs.org/examples/#misc_controls_transform), one only needs to adapt and integrate the given technology\n\n![](cTJTG9o.png)\n\nThe next logical step will be - implement it as a `EventHandler`, like `drag` or `click` listeners attached to an SVG element in `Graphics`\n\n:::info\nTo assign a draggable event handler used in 3D, apply handler for `transform` property\n```mathematica\nEventHandler[Sphere[], {\"transform\"->handler}]\n```\n`handler` function accepts an association with a current position of a dragged object\n```mathematica\n<|\"position\"->{x,y,z}|>\n```\n:::\n\nTo help with dragging an in-built gizmos will appear on-top of the attached object. Now it looks like this\n\n![](ezgif.com-optimize-11.gif)\n\n\nNow one can finally feel the freedom of positioning the light sources in the scene to achieve the best look\n\n\n\nProbably it won't work in the preview here in the post. To see it in action have a look at the thumbnail of this blog post or evaluate those three rows of a single cell in your notebook.\n\nNow I could finally overlay it with some notes and finished the look of a printed version\n\n![](Fig-1-01%201.svg)\n\nThanks for reading! See you soon"
+    },
+    {
+      "id": "practice-integration",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/practice-integration",
+        "source": "@site/blog/2023-07-22-pratical-integration/index.md",
+        "title": "WLJS in practice. Integrating absorption spectra",
+        "description": "I would like to start this series of application cases, where I am going to solve real-life problems I face using WLJS Frontend. Since my main area is quantum physics, it will be more focused on the scientific research field.",
+        "date": "2023-07-22T00:00:00.000Z",
+        "formattedDate": "July 22, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "practice",
+            "permalink": "/wljs-docs/blog/tags/practice"
+          },
+          {
+            "label": "dynamics",
+            "permalink": "/wljs-docs/blog/tags/dynamics"
+          }
+        ],
+        "readingTime": 0.715,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "practice-integration",
+          "title": "WLJS in practice. Integrating absorption spectra",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "practice",
+            "dynamics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "A major update of Graphics3D",
+          "permalink": "/wljs-docs/blog/intro-transform-3d"
+        },
+        "nextItem": {
+          "title": "Realtime path-tracing",
+          "permalink": "/wljs-docs/blog/rtx-intro"
+        }
+      },
+      "content": "![](ezgif.com-video-to-gif-26.gif)\n\n\n\n\n\n\nI would like to start this series of application cases, where I am going to solve real-life problems I face using WLJS Frontend. Since my main area is quantum physics, it will be more focused on the scientific research field.\n\nYou may think about notebooks as a sort of small apps. Useful, minimalistic and reactive with respect to the input data. I have been using Origin Pro for processing data for quite a long, however among of all scientific tools, most of them suffer from poor GUI. Looking at GUI of modern VST EQ plugins makes me envy, since there is nothing more clear and than dragging a pointer and seeing the result in the real-time.\n\nToday I will try to bring those ideas to live in a one short example\n\n<!--truncate-->\n\n\n\n\nThe original data is accessible by the link\n- [Archive.zip](Archive.zip)"
+    },
+    {
+      "id": "rtx-intro",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/rtx-intro",
+        "source": "@site/blog/2023-07-20-rtx/index.md",
+        "title": "Realtime path-tracing",
+        "description": "There is nothing more exciting in programming than designing a graphics application. Thankfully, there is one person on Github Garrett Johnson, who implemented a path-tracing algorithm on top of the well-known THREE.js graphics engine. Moreover, it fully supports features from the original library and can be anytime flipped as a main renderer.",
+        "date": "2023-07-20T00:00:00.000Z",
+        "formattedDate": "July 20, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "graphics",
+            "permalink": "/wljs-docs/blog/tags/graphics"
+          }
+        ],
+        "readingTime": 2.05,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "rtx-intro",
+          "title": "Realtime path-tracing",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "graphics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "WLJS in practice. Integrating absorption spectra",
+          "permalink": "/wljs-docs/blog/practice-integration"
+        },
+        "nextItem": {
+          "title": "Hydrator experimantal feature",
+          "permalink": "/wljs-docs/blog/hydrator-xp"
+        }
+      },
+      "content": "![](Screenshot%20from%202023-07-20%2020-04-08.png)\n\nThere is nothing more exciting in programming than designing a graphics application. Thankfully, there is one person on Github [Garrett Johnson](https://github.com/gkjohnson), who implemented a path-tracing algorithm on top of the well-known [THREE.js](https://threejs.org) graphics engine. Moreover, it fully supports features from the original library and can be anytime flipped as a main renderer.\n\n<!--truncate-->\n\nI hooked up his [library](https://github.com/gkjohnson/three-gpu-pathtracer) to works as a secondary engine for `Graphics3D` function presented in [wljs-graphics3d-threejs](https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine) library. Just pass an option\n\n```mathematica\nGraphics3D[%, \"RTX\"->True]\n```\n\nAnd it will bake a realtime photorealistic image. It also supports all properties used in traditional rendering, i.e. `Emissive[]`, `Metallness[]`, HDRI map and many more!\n\nSome classical examples from Wolfram Mathematica\n\n![](IMG_0556.png)\n\n\n![](screenshot(8)%201.png)\n\nYou might recognize those examples from `Graphics3D` official documentation page. Here is some other neat pictures produced using the following code\n\n### Metallic maze\nThis was taken from the discussion [here](https://mathematica.stackexchange.com/questions/191047/making-holes-from-maze-generated-graphics3d). The maze is made from many polygons, where for the surface `Metallness[1], Roughness[0]` were applied. Since it provides perfect reflection, the overall time for rendering (when the noise has gone) is relatively low.\n\n```mathematica\nshowmaze = Uncompress[FromCharacterCode @@ ImageData[Import[\"https://i.stack.imgur.com/XVJcP.png\"], \"Byte\"]];\nprims = CapsuleShape @@@ Cases[showmaze, _Cylinder, Infinity];\nprims = prims /. {{5., 5., 5.} -> {5.5, 5., 5.}, {1., 1., 1.} -> {1., 0.5, 1.}};\nims = RegionImage[#, {{0.3`, 5.7`}, {0.3`, 5.7`}, {0.3`, 5.7`}}, RasterSize -> 100] & /@ prims;\nim = ImageApply[Max, ims];\n```\n\nThen, the generated mesh is lit by `lighting` arrays, which contain randomly distributed glowing spheres\n\n```mathematica\nlighting = Table[{Emissive[RGBColor@@(RandomReal[{0,1}, 3]), 2], Sphere[RandomReal[{1,92}, 3], RandomReal[{1,7}]]}, {i, 1, 30}];\nShow[bmr = ImageMesh[im, Method -> \"DualMarchingCubes\"], PlotRange -> {{0, 91}, {1, 92}, {0, 91}}][[1]];\nGraphics3D[{lighting, Metalness[0], Roughness[0], %},  \"Lighting\"->None, ViewProjection->\"Perspective\", \"RTX\"->True]\n```\n\n\n![](screenshot(12).png)\n\nDespite the complicity of the scene, __it renders in real time__ with an acceptable amount of noise.\n\n### Torus Knot\nThis is rather classical example, but uses a glossy surface using `Roughness[0]` lit by two glowing spheres\n\n```mathematica\nKnotData[{\"TorusKnot\", {3, 5}}][[1]];\nGraphics3D[{{Emissive[Red, 5], Sphere[{0,0,-0.1}, 0.14]}, {Roughness[0],Cyan, %}, {Emissive[RGBColor[{1,1,1}], 5], Sphere[{0,0,0.4}, 0.1]}}, Lighting->None, \"RTX\"->True]\n```\n\nHere is the result\n\n![](screenshot(13).png)\n\nLooks like a dream...\n\n## Limitations\n- The dynamic scenes now are not supported, but can be added in theory according to the documentation of the path-rendering library. \n- Requires a dedicated GPU (actually with my Intel UHD integrated graphics it works, but demands an extremely long time to compile shaders to start rendering). However, iPhones, Androids can still handle not very complicated scenes.\n- Safari crashes (Firefox, Chrome, Vivaldi work well)"
+    },
+    {
+      "id": "hydrator-xp",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/hydrator-xp",
+        "source": "@site/blog/2023-07-15-hydrator.md",
+        "title": "Hydrator experimantal feature",
+        "description": "Here is an experimental feature provided by wljs-hydrator engine, that simply renders frontend object into a given div element",
+        "date": "2023-07-15T00:00:00.000Z",
+        "formattedDate": "July 15, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "html",
+            "permalink": "/wljs-docs/blog/tags/html"
+          }
+        ],
+        "readingTime": 0.1,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "hydrator-xp",
+          "title": "Hydrator experimantal feature",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "html"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Realtime path-tracing",
+          "permalink": "/wljs-docs/blog/rtx-intro"
+        },
+        "nextItem": {
+          "title": "Interactive curves fitting example",
+          "permalink": "/wljs-docs/blog/curvesfit-example"
+        }
+      },
+      "content": "Here is an experimental feature provided by [wljs-hydrator](https://github.com/JerryI/wljs-hydrator) engine, that simply renders frontend object into a given `div` element\n\n<!--truncate-->"
+    },
+    {
+      "id": "curvesfit-example",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/curvesfit-example",
+        "source": "@site/blog/2023-07-14-curves/index.md",
+        "title": "Interactive curves fitting example",
+        "description": "Here we will try to recreate a simple example of the interactive curves fitting based on Fit function provided by Wolfram Mathematica.",
+        "date": "2023-07-14T00:00:00.000Z",
+        "formattedDate": "July 14, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "dynamics",
+            "permalink": "/wljs-docs/blog/tags/dynamics"
+          },
+          {
+            "label": "fitting",
+            "permalink": "/wljs-docs/blog/tags/fitting"
+          }
+        ],
+        "readingTime": 1.24,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "curvesfit-example",
+          "title": "Interactive curves fitting example",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "dynamics",
+            "fitting"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Hydrator experimantal feature",
+          "permalink": "/wljs-docs/blog/hydrator-xp"
+        },
+        "nextItem": {
+          "title": "Interactive graphics example",
+          "permalink": "/wljs-docs/blog/balls-example"
+        }
+      },
+      "content": "![](ezgif.com-video-to-gif-18.gif)\n\n\nHere we will try to recreate a simple example of the interactive curves fitting based on `Fit` function provided by Wolfram Mathematica.\n<!--truncate-->\n\n## WLJS Frontend version\n\nFor the demonstration one can input the data points by clicking on an empty canvas\n\n```mathematica\nRGBColor[1,1,1],\n  EventHandler[Rectangle[{-10,10}, {10,-10}], {\"click\"->Function[xy, \n    points = Append[points, xy]; \n    fit = lineFit[points]\n]}],\n...\n```\n\nAn event listener is attached to the rectangle at the background. Each time user clicks on it, it will append a new point to the array and recalculate fitter curve using defined `lineFit` function.\n\nTo draw our points and fitted curve, we need one line of a code\n\n```mathematica\nPointSize[0.1],\n  Red, Point[points//Offload], Cyan, Line[fit//Offload]\n```\n\nThen, let us define the fitting function\n\n```mathematica\nfit = {};\npoints = {};\norder = 1;\n\nlineFit[points_] := With[{o = Table[CM6Superscript[x, i], {i, 0, order}]},\n  With[{f = Fit[points, o, x]}, \n    Table[{x, f}, {x, -1,1, 0.025}]\n  ]\n]\n```\n\nBasically,  it is done. However one can make it more interesting if we consider a control slider for changing the order of a curve as well as a clear button\n\n*in a new cell*\n```mathematica\nFunction[data, points = {}; fit = {};] // InputButton[\"Clear\"]\nFunction[data, order = data; fit = lineFit[points]] // InputRange[1, 5, 1]\n```\n\n:::info\nA shortcut to assign a `handler` function to an event-object \n```mathematica\nhandler // EventObject[...]\n```\nis an equivalent of\n```mathematica\nEventHandler[EventObject[...], handler]\n```\n:::\n\nHere the full code\n\n\n\nLinks\n- [Download Notebook](CurvesFit.wln)\n\nThanks for reading! See you next time"
+    },
+    {
+      "id": "balls-example",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/balls-example",
+        "source": "@site/blog/2023-07-13-balls/index.md",
+        "title": "Interactive graphics example",
+        "description": "Here we will try to recreate a simple example of the interactive plot, where bouncing dots are created using mouse clicks on an empty canvas.",
+        "date": "2023-07-13T00:00:00.000Z",
+        "formattedDate": "July 13, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "dynamics",
+            "permalink": "/wljs-docs/blog/tags/dynamics"
+          }
+        ],
+        "readingTime": 2.195,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "balls-example",
+          "title": "Interactive graphics example",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "dynamics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Interactive curves fitting example",
+          "permalink": "/wljs-docs/blog/curvesfit-example"
+        },
+        "nextItem": {
+          "title": "Introducing Events shortcuts",
+          "permalink": "/wljs-docs/blog/event-shortcuts"
+        }
+      },
+      "content": "![](ezgif.com-video-to-gif-16.gif)\n\n\nHere we will try to recreate a simple example of the interactive plot, where bouncing dots are created using mouse clicks on an empty canvas.\n<!--truncate-->\n\n## Mathematica's version\n\nOriginally it was designed for Wolfram Mathematica by Wolfram Research group. Let us have a look at the original core first\n\n```mathematica\nFramed@DynamicModule[{points = {}, vel = {}}, \n  EventHandler[\n  \n   Graphics[{PointSize[0.1], \n\t   Point[Dynamic[{vel, points} = animate[vel, points]; points]]}\n\t, PlotRange -> {{-1, 1}, {-1, 1}}], \n   \n   \"MouseDown\" :> ({points, vel} = \n      addPoint[MousePosition[\"Graphics\"], points, vel])\n  ]\n]\n```\n\nIt uses `DynamicModule` to localize dynamic variables and a set of two functions `animate` to recalculate new positions and `addPoint`.\n\n[Download Notebook](Balls.nb)\n\n## WLJS Frontend version\n\nTo recreate this using WLJS Frontend we need to change the way how dynamics is processed. Firstly, we need an event-listener object to get the place where a user clicked\n\n```mathematica\nGraphics[{\n\tRGBColor[1,1,1],\n\tEventHandler[Rectangle[{-10,10},{10,-10}], {\"click\"->addPoint}],\n\tRGBColor[0,0,0], PointSize[0.1],\n\tPoint[points // Offload]\n}]\n```\n\nHere it creates a white rectangle in the background to add event-listener for clicks. And a global variable `points` is bounded to `Point` expression using `Offload`.\n\n:::danger\n`EventHandler` expression does not fully correspond to the one used in Wolfram Mathematica\n:::\n\n:::info\nDynamic binding is possible only using global variables.\n:::\n\nThen, we need an function, that adds dots to an array\n\n```mathematica\npoints = {{0,0}};\nvel = {RandomReal[{-1,1}]};\n\naddPoint[xy_] := (points = Append[points, xy]; vel = Append[vel, RandomReal[{-1,1},2]]);\n```\n\nNow it should add new dots, when we click on a canvas\n\n![](ezgif.com-video-to-gif-17.gif)\n\n\nOne thing is missing - animation. One need to update `points` symbol with a new positions and etc. The corresponding function will be\n\n```mathematica\npoints = {{0,0}};\nvel = {RandomReal[{-1,1}]};\n\naddPoint[xy_] := (points = Append[points, xy]; vel = Append[vel, RandomReal[{-1,1},2]]);\n\nanimate[i_] := points = MapIndexed[(If[Max[#1//Abs] > 1.2, vel[[#2//First]] = - vel[[#2//First]]]; #1 + 0.1 vel[[#2//First]])&, points];\n```\n\nInstead of using timers, one can assign the an event handler to the transition animation, which is provided by [wljs-graphics-d3](https://github.com/JerryI/wljs-graphics-d3) library. \n:::info\nIO operations between the frontend and a server cannot run at full speed giving 60FPS, therefore the data is interpolated using the time-constant provided by the option to the `Graphics` expression called `\"TransitionDuration\"`.\n:::\n\nTo capture the transitions we need a `MiddlewareHandler`\n\n```mathematica\nPoint[MiddlewareHandler[points//Offload, \"end\"->animate, \"Threshold\"->0.2]]\n```\n\nIt stands in between the drawing function and an updatable symbol. Threshold value specifies when the event `animate` will be fired, i.e. `1` means after the transition and anything less means, that it will be fired a bit early. It is used to compensate the latency of the network making the animation smoother. \n\nHere the full code\n\n\n\nLinks\n- [Download Notebook](Balls.wln)\n\nThanks for reading! See you next time"
+    },
+    {
+      "id": "event-shortcuts",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/event-shortcuts",
+        "source": "@site/blog/2023-06-10-events.md",
+        "title": "Introducing Events shortcuts",
+        "description": "One of the paradigm of WLJS Frontend is an event-based approach. Any sliders, buttons are event generators, that produce EventObject[]. In order to simplify or mimic Mathematica's way of binding symbols to input elements Assign keyword was introduced.",
+        "date": "2023-06-10T00:00:00.000Z",
+        "formattedDate": "June 10, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "dynamics",
+            "permalink": "/wljs-docs/blog/tags/dynamics"
+          },
+          {
+            "label": "events",
+            "permalink": "/wljs-docs/blog/tags/events"
+          }
+        ],
+        "readingTime": 0.51,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "event-shortcuts",
+          "title": "Introducing Events shortcuts",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "dynamics",
+            "events"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Interactive graphics example",
+          "permalink": "/wljs-docs/blog/balls-example"
+        },
+        "nextItem": {
+          "title": "Introducing middleware event handlers",
+          "permalink": "/wljs-docs/blog/middleware-example"
+        }
+      },
+      "content": "One of the paradigm of WLJS Frontend is an event-based approach. Any sliders, buttons are event generators, that produce `EventObject[<|...|>]`. In order to simplify or mimic Mathematica's way of binding symbols to input elements `Assign` keyword was introduced.\n\nInstead of \n\n```mathematica\nInputRange[0,1, 0.1]\nEventHandler[%, Function[data, x = data]]\n```\n\none can write\n\n```mathematica\nInputRange[0,1, 0.1] // Assign[x]\n```\n\nThe result will be the same\n<!--truncate-->\nGoing further, one should note, that \n\n:::info\n`EventHandler` or `Assign` returns the same object `EventObject[<||>]` as it has on input. On cell's output `EventObject[<|\"view\"->...|>]` a field `view` will be displayed by automatic converting it into `FrontEndExecutable`.\n:::"
+    },
+    {
+      "id": "middleware-example",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/middleware-example",
+        "source": "@site/blog/2023-05-11-middleware/index.md",
+        "title": "Introducing middleware event handlers",
+        "description": "To describe the idea of a new tool better, it is good to start from the initial problem.",
+        "date": "2023-05-11T00:00:00.000Z",
+        "formattedDate": "May 11, 2023",
+        "tags": [
+          {
+            "label": "frontend",
+            "permalink": "/wljs-docs/blog/tags/frontend"
+          },
+          {
+            "label": "dynamics",
+            "permalink": "/wljs-docs/blog/tags/dynamics"
+          }
+        ],
+        "readingTime": 3.71,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "middleware-example",
+          "title": "Introducing middleware event handlers",
+          "authors": "jerryi",
+          "tags": [
+            "frontend",
+            "dynamics"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Introducing Events shortcuts",
+          "permalink": "/wljs-docs/blog/event-shortcuts"
+        },
+        "nextItem": {
+          "title": "Introducing metamarkers",
+          "permalink": "/wljs-docs/blog/meta-example"
+        }
+      },
+      "content": "![](ezgif.com-video-to-gif-25.gif)\n\n\nTo describe the idea of a new tool better, it is good to start from the initial problem. \n\n\n\n\n\n\nThe data transfer via `ExpressionJSON` representation over the WebSocket protocol adds a significant latency. What if we want to implement __real-time visualization with a least  $\\sim 30FPS$ ?__\n\n<!--truncate-->\n\n## Interpolation\nA standard library [wljs-graphics-d3](https://github.com/JerryI/wljs-graphics-d3) based on D3.js provides a decent transition mechanism, that makes a nice animated transitions from the old dataset to a new one perfectly in-sync with browser's refresh rate.\n\nLet us have a look at the example __with no interpolation involved__\n\n```mathematica\np = {-1,0};\nGraphics[{PointSize[0.1], Point[{p} // Offload]}, \"TransitionDuration\"->0.1]\n```\n\nBy updating the position \n\n```mathematica\nDo[\n  p = {x, Cos[10 x]}; \n  \n  (* simulate load *)\n  Pause[0.2];\n, {x,-1,1,0.1}]\n```\n\nwe will see the following\n\n![](ezgif.com-video-to-gif-19.gif)\n\nTo __enable the interpolation__ specify `TransitionDuration`\n\n```mathematica\nGraphics[{Cyan, PointSize[0.1],Point[{p} // Offload]}, ImageSize->{600,100}, \"TransitionDuration\"->300, \"TransitionType\"->\"Linear\"]\n```\n\nNow the transition time overlaps with our `Pause[0.2]` time period, that results in a kinda smooth behaviour. \n\n![](ezgif.com-video-to-gif-20.gif)\n\nThis approach might work well in a case, __when there is only one object to animate__.\n\n## Event-based approach\n\nHaving a fixed time delay and a loop in general __is a waste of resources__, especially when it comes to many independent animations. \n\nOne can assign all animations to the framerate of the browser, however doing that in a one directional way will introduce some issues, if the calculation time temporary exceeds the given time-window for render.\n\nSince we anyway are using [Interpolation](#Interpolation), one can use its local time-scale to call the next animation frame to be calculated (or data points will be updated).\n\nAssuming *$t_{calc} \\approx t_{transition}$ then we introduce a threshold value (0-1) that specifies, when the event of recalculating the position fires with respect to the duration of transition animation\n\n*threshold = 0.9*\n![](ezgif.com-video-to-gif-22.gif)\n*threshold = 0.5*\n![](ezgif.com-video-to-gif-23.gif)\n*threshold = 0.1*\n![](ezgif.com-video-to-gif-24.gif)\n\nThe good thing about it is that \n:::info\nA new transition will not occur if the calculation has not finished. \n:::\n\nA threshold and transition duration values can be adjusted to get the maximum smoothness and performance based on the network conditions and CPU load.\n\n### Implementation\nOne need to have an access to the transition process happening at the particular graphics element? Why not just\n\n```mathematica\nEventHandler[Point[p // Offload], \"transition\"->calc] ???\n```\n\nHere is why.\n\nFor the perspective of Javascript D3.js library used in frontend, when one calls\n\n*regular evaluation*\n```mathematica\nPoint[p // Offload]\n```\n```javascript\n> d3.Selection<SVGElement, unknown, HTMLElement, any>\n```\n\n*update method*\n```mathematica\nPoint[p // Offload]\n```\n```javascript\n> d3.Transition<GElement extends BaseType, Datum, PElement extends BaseType, PDatum>\n```\n\nHere one could attach to the returned object via\n\n```javascript\n(object) => {\n\tlet state = false;\n\tobject.tween(uid, function (d) {\n\t\treturn function (t) {\n\t\t\tif (t >= threshold && !state) {\n\t\t\t\tserver.emitt(uid, `True`);\n\t\t\t\tstate = true;\n\t\t\t}\n\t\t}\n\t}))\n}\n```\n\nYou have to attach it every-time when a transition occur, since each time this is a new object.\n\nHowever, there is a problem\n\n:::info\nDynamic binding happens only between containers (virtual or real), i.e. `p` and `Point` expressions\n\n```mathematica\nOurHandler[Point[p // Offload]] // Graphics\n```\n\nThe upper expression `Point` scopes all variables. When `p` updates, `OurHandler` or `Graphics` expression __will not be evaluated__!\n:::\n\nIt means, that in general `EventHandler` method, where the event-binding is executed from outside to inside works well for the static evaluation, but events generated during dynamic updates will not be captured!\n\n__We need to bind from inside__\n\n```mathematica\nPoint[MiddlewareHandler[p // Offload, \"end\"->calc]] // Graphics\n```\n\nNow the whole expression `Point` including all its guts will be evaluated during the dynamic updates of any inner expressions.\n\nWith some tweaked added to the WLJS Interpreter, I (@JerryI) managed to make it work properly as intended. \n\n### How to use\nThere is only one event type has been implemented by now.\n\n```mathematica\nPoint[MiddlewareHandler[data // Offload, \"end\"->calc, \"Threshold\"->0.5]] // Graphics\n```\n\nor\n\n```mathematica\nLine[MiddlewareHandler[data // Offload, \"end\"->calc, \"Threshold\"->0.5]]\n```\n\nor even for the transformations\n\n```mathematica\nTranslate[MiddlewareHandler[Point[{0,0}], \"end\"->calc], data // Offload]\n```\n\nwhere\n\n```mathematica\ncalc[garbage_] := data = recalculate[data];\n```\n\n:::tip\nPlace `MiddlewareHandler` inside any expression, of which you want to track the transition process. It acts as `Identity` operator, i.e. allows safely wrapping around any other expression. \n:::\n\n:::info\n`MiddlewareHandler` fires the first (zero) event just when it has been created\n:::\n\n## Making 2D Game\nNow we can use this trick for any projectiles in game animations! Each created object will be handled by its own `MiddlewareHandler`\n\n\n\nDownload notebook\n- [Baster.wln](Baster.wln)"
+    },
+    {
+      "id": "meta-example",
+      "metadata": {
+        "permalink": "/wljs-docs/blog/meta-example",
+        "source": "@site/blog/2023-04-20-placed/index.md",
+        "title": "Introducing metamarkers",
+        "description": ".png)",
+        "date": "2023-04-20T00:00:00.000Z",
+        "formattedDate": "April 20, 2023",
+        "tags": [
+          {
+            "label": "evaluation",
+            "permalink": "/wljs-docs/blog/tags/evaluation"
+          },
+          {
+            "label": "metamarkers",
+            "permalink": "/wljs-docs/blog/tags/metamarkers"
+          }
+        ],
+        "readingTime": 1.735,
+        "hasTruncateMarker": true,
+        "authors": [
+          {
+            "name": "Kirill Vasin",
+            "title": "Maintainer",
+            "url": "https://github.com/JerryI",
+            "imageURL": "https://avatars.githubusercontent.com/u/4111822?s=48&v=4",
+            "key": "jerryi"
+          }
+        ],
+        "frontMatter": {
+          "slug": "meta-example",
+          "title": "Introducing metamarkers",
+          "authors": "jerryi",
+          "tags": [
+            "evaluation",
+            "metamarkers"
+          ],
+          "enableComments": true
+        },
+        "unlisted": false,
+        "prevItem": {
+          "title": "Introducing middleware event handlers",
+          "permalink": "/wljs-docs/blog/middleware-example"
+        }
+      },
+      "content": "![](screenshot(5).png)\n\n\nTo add new elements to a plot / graph there is no need in full reevaluation of a cell or using dynamic binding. Since the context of executing is stored together with an object, one can simply evaluate (in-place) the needed expression.\n<!--truncate-->\n\n\n\n\n\n\nLet's have a look at the following example\n\n```mathematica\nPlot[Sin[x], {x,0,Pi}, Epilog->{MetaMarker[\"myplot\"]}]\n```\n\nHere it results in `Graphics` expressions with a bunch of `Line` lying inside, while `Epilog` option just puts the given expression into the end of the same `Graphics` object.\n\n![](Screenshot%202023-07-14%20at%2015.36.32.png)\n\nYou can think about `MetaMarker` as if it was `<div id=\"\">` or class, that allows you to identify that particular object in the given context.\n\nAfter than one can simply execute an expression by using the following expression\n\n```mathematica\nFrontSubmit[{\n\tRGBColor[1,0,1], \n\tLine[{{0,0},{0.4,1}}]\n}, MetaMarker[\"myplot\"]] \n```\n\n:::info\nUsing `FrontSubmit` together with the second argument given as `MetaMarker` will result in evaluation of the expression on frontend in the context and local memory of the marked excutable object.\n:::\n\nAs a result, the graph will show a new feature\n\n![](Screenshot%202023-07-14%20at%2015.37.00.png)\n\nThis does not depend on `Graphics` object, it can be anything in principle.\n\n## Voxel cellular automaton\nFor example, let us create an empty 3D canvas\n\n```mathematica\nGraphics3D[{Cuboid[{1,1,0}], MetaMarker[\"marker\"]},  \"Lighting\"->None, \"Lightmap\"->\"https://raw.githubusercontent.com/JerryI/Mathematica-ThreeJS-graphics-engine/master/assets/PureSky.hdr\", \"ViewProjection\"->\"Perspective\"]\n```\n\nThen using build-in cellular automaton, we can visualize it lively in 3D using simple `Cuboid` shapes with different colors\n\n```mathematica\nsize = {10,10};\nboard = CellularAutomaton[{6, {2, 1}, {1, 1}}, {{{1}}, 0}, 50]//First;\nsize = board//Dimensions\n\nz = 20;\n\niterate := (\n board = CellularAutomaton[{6, {2, 1}, {1, 1}}, board];\n\n Table[\n  If[board[[i+size[[1]]/2 // Floor,j+size[[2]]/2 // Floor]] > 0, \n    With[{cube = Cuboid[{i,j,z}, {i+1,j+1,z+0.8}], color = {1+i/100,1+i/100,(z+10)/10}},\n    \n      FrontSubmit[{ RGBColor@color, cube}, MetaMarker[\"marker\"]];\n      Pause[0.02];\n      \n    ]\n  ];\n , {i, -size[[1]]/2//Floor, size[[1]]/2//Floor}, {j, -size[[2]]/2//Floor, size[[2]]/2//Floor}];\n z = z - 0.8;\n);\n```\n\nIf a cell is 1, then it will be a cube on that place. By calling\n\n```mathematica\nDo[iterate //Quiet;, {i,1,10}];\n```\n\nOne can observe in real time the following\n\n![](ezgif.com-optimize-10.gif)\n\nThe full code is presented below\n\n\n\nYou can also download this notebook via a link\n- [VoxelAutomata.wln](VoxelAutomata.wln)\n\nThank you for reading! See you"
+    }
+  ]
+}

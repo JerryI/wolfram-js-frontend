@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Javascript API/openawindow",
+  "title": "openawindow",
+  "description": "opens a window given by url",
+  "source": "@site/docs/frontend/Reference/Javascript API/openawindow.md",
+  "sourceDirName": "frontend/Reference/Javascript API",
+  "slug": "/frontend/Reference/Javascript API/openawindow",
+  "permalink": "/wljs-docs/frontend/Reference/Javascript API/openawindow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "interpretate",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/interpretate"
+  },
+  "next": {
+    "title": "server",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/server"
+  }
+}

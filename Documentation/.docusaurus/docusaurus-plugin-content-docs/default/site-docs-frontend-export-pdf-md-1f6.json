@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Export/PDF",
+  "title": "PDF",
+  "description": "Is in development",
+  "source": "@site/docs/frontend/Export/PDF.md",
+  "sourceDirName": "frontend/Export",
+  "slug": "/frontend/Export/PDF",
+  "permalink": "/wljs-docs/frontend/Export/PDF",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTML file",
+    "permalink": "/wljs-docs/frontend/Export/HTML file"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/wljs-docs/frontend/Troubleshooting"
+  }
+}

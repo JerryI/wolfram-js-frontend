@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Misc/Language",
+  "title": "Language",
+  "description": "LeakyModule",
+  "source": "@site/docs/frontend/Reference/Misc/Language.md",
+  "sourceDirName": "frontend/Reference/Misc",
+  "slug": "/frontend/Reference/Misc/Language",
+  "permalink": "/wljs-docs/frontend/Reference/Misc/Language",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Events",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Events"
+  },
+  "next": {
+    "title": "Promise",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Promise"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/esm-into",
+  "permalink": "/wljs-docs/blog/esm-into",
   "source": "@site/blog/2023-10-10-esm/index.md",
   "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
   "description": "Have only plain JS cell types is still not enough, when it comes to import anything from NPM repository or your local files. Many sandboxes, such as Codepen, RunJS, ReplIT has this option to use NodeJS in the browser. Why don't we have this feature as well?",
@@ -25,7 +25,7 @@
   },
   "unlisted": false,
   "nextItem": {
-    "title": "Introducing snippets",
-    "permalink": "/blog/int-snippets"
+    "title": "Introducing Projector! Output to a separate window",
+    "permalink": "/wljs-docs/blog/projector-intro"
   }
 }

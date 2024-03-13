@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Input/InputGroup",
+  "title": "InputGroup",
+  "description": "groups different event-generators such as InputRange, InputButton or in general EventObject into a new EventObject",
+  "source": "@site/docs/frontend/Reference/Input/InputGroup.md",
+  "sourceDirName": "frontend/Reference/Input",
+  "slug": "/frontend/Reference/Input/InputGroup",
+  "permalink": "/wljs-docs/frontend/Reference/Input/InputGroup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs",
+    "update": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputFile",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputFile"
+  },
+  "next": {
+    "title": "InputRange",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputRange"
+  }
+}

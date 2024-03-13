@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Javascript API/downloadByURL",
+  "title": "downloadByURL",
+  "description": "forces page to download a file given by url",
+  "source": "@site/docs/frontend/Reference/Javascript API/downloadByURL.md",
+  "sourceDirName": "frontend/Reference/Javascript API",
+  "slug": "/frontend/Reference/Javascript API/downloadByURL",
+  "permalink": "/wljs-docs/frontend/Reference/Javascript API/downloadByURL",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "core",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/core"
+  },
+  "next": {
+    "title": "interpretate",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/interpretate"
+  }
+}

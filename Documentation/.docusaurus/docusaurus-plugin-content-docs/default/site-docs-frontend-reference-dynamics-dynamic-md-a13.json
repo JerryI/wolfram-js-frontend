@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Dynamics/Dynamic",
+  "title": "Dynamic",
+  "description": "This concept is different from Mathematica. Please, use event-based approach instead - Dynamics",
+  "source": "@site/docs/frontend/Reference/Dynamics/Dynamic.md",
+  "sourceDirName": "frontend/Reference/Dynamics",
+  "slug": "/frontend/Reference/Dynamics/Dynamic",
+  "permalink": "/wljs-docs/frontend/Reference/Dynamics/Dynamic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CreateFrontEndObject",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/CreateFrontEndObject"
+  },
+  "next": {
+    "title": "DynamicModule",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/DynamicModule"
+  }
+}

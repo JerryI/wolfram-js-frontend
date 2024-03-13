@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Plotting/ListStepPlot",
+  "title": "ListStepPlot",
+  "description": "plots the values $y1$, $y2$ ... in steps",
+  "source": "@site/docs/frontend/Reference/Plotting/ListStepPlot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/ListStepPlot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/ListStepPlot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "registered": true,
+    "origin": "https://reference.wolfram.com/language/ref/ListStepPlot.html"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListLinePlotly",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListLinePlotly"
+  },
+  "next": {
+    "title": "ListVectorPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ListVectorPlot"
+  }
+}

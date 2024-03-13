@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Inputs/ToggleView",
+  "title": "ToggleView",
+  "description": "This is an internal part of InputToggle",
+  "source": "@site/docs/frontend/Reference/Inputs/ToggleView.md",
+  "sourceDirName": "frontend/Reference/Inputs",
+  "slug": "/frontend/Reference/Inputs/ToggleView",
+  "permalink": "/wljs-docs/frontend/Reference/Inputs/ToggleView",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs",
+    "needsContainer": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TextView",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/TextView"
+  },
+  "next": {
+    "title": "Async",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Async"
+  }
+}

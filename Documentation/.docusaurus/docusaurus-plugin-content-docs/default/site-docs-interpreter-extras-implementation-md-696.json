@@ -5,13 +5,13 @@
   "source": "@site/docs/interpreter/Extras/implementation.md",
   "sourceDirName": "interpreter/Extras",
   "slug": "/interpreter/Extras/implementation",
-  "permalink": "/docs/interpreter/Extras/implementation",
+  "permalink": "/wljs-docs/interpreter/Extras/implementation",
   "draft": false,
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "lastUpdatedAt": 1539502055,
-  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "lastUpdatedAt": 1708970154,
+  "formattedLastUpdatedAt": "Feb 26, 2024",
   "sidebarPosition": 1,
   "frontMatter": {
     "sidebar_position": 1

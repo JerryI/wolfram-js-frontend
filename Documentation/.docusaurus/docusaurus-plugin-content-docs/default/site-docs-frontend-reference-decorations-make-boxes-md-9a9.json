@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Decorations/MakeBoxes",
+  "title": "MakeBoxes",
+  "description": "is a general expression used in UpValues of other expressions to change the visual representation (see Decorations) in the notebook.",
+  "source": "@site/docs/frontend/Reference/Decorations/MakeBoxes.md",
+  "sourceDirName": "frontend/Reference/Decorations",
+  "slug": "/frontend/Reference/Decorations/MakeBoxes",
+  "permalink": "/wljs-docs/frontend/Reference/Decorations/MakeBoxes",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ViewBox",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Low level/ViewBox"
+  },
+  "next": {
+    "title": "MatrixForm",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/MatrixForm"
+  }
+}

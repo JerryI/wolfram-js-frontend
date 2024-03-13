@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Plotting/Plot",
+  "title": "Plot",
+  "description": "A Swiss knife for displaying 2D data",
+  "source": "@site/docs/frontend/Reference/Plotting/Plot.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/Plot",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/Plot",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": false,
+    "virtual": null,
+    "registered": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "MatrixPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/MatrixPlot"
+  },
+  "next": {
+    "title": "Plotly",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/Plotly"
+  }
+}

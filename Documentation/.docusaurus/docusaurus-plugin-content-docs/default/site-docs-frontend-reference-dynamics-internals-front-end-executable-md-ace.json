@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Dynamics/Internals/FrontEndExecutable",
+  "title": "FrontEndExecutable",
+  "description": "An replacement decoration and a reference to the frontend object aka  container in the shared objects storage with a corresponding id",
+  "source": "@site/docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable.md",
+  "sourceDirName": "frontend/Reference/Dynamics/Internals",
+  "slug": "/frontend/Reference/Dynamics/Internals/FrontEndExecutable",
+  "permalink": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS",
+      "Wolfram Kernel"
+    ],
+    "update": true,
+    "internal": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FrontEndVirtual",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/FrontEndVirtual"
+  },
+  "next": {
+    "title": "FrontEndExecutableInline",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutableInline"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Exporting formats",
+  "slug": "/category/exporting-formats",
+  "permalink": "/category/exporting-formats",
+  "navigation": {
+    "previous": {
+      "title": "Snippets",
+      "permalink": "/frontend/Advanced/Snippets/"
+    },
+    "next": {
+      "title": "HTML file",
+      "permalink": "/frontend/Export/HTML file"
+    }
+  }
+}

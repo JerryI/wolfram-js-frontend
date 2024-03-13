@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Plotting/BarChart",
+  "title": "BarChart",
+  "description": "generates a bar chart for a list of heights",
+  "source": "@site/docs/frontend/Reference/Plotting/BarChart.md",
+  "sourceDirName": "frontend/Reference/Plotting",
+  "slug": "/frontend/Reference/Plotting/BarChart",
+  "permalink": "/wljs-docs/frontend/Reference/Plotting/BarChart",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://reference.wolfram.com/language/ref/BarChart.html",
+    "update": false,
+    "needsContainer": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ArrayPlot",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/ArrayPlot"
+  },
+  "next": {
+    "title": "BubbleChart",
+    "permalink": "/wljs-docs/frontend/Reference/Plotting/BubbleChart"
+  }
+}

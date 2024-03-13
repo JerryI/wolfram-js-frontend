@@ -1,0 +1,15 @@
+{
+  "title": "Getting started",
+  "slug": "/category/getting-started",
+  "permalink": "/wljs-docs/category/getting-started",
+  "navigation": {
+    "previous": {
+      "title": "Quick start",
+      "permalink": "/wljs-docs/"
+    },
+    "next": {
+      "title": "GUI Overview",
+      "permalink": "/wljs-docs/frontend/Tutorial/GUI Overview"
+    }
+  }
+}

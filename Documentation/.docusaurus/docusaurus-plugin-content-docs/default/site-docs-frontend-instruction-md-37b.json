@@ -1,26 +1,27 @@
 {
   "id": "frontend/instruction",
   "title": "Quick start",
-  "description": "Wolfram Language Notebook requires  wolframscript (see Freeware Wolfram Engine or Wolfram Kernel) installed on your PC/Mac.",
+  "description": "Wolfram Language Notebook requires  wolframscript (see Freeware Wolfram Engine or Wolfram Kernel) installed on your PC/Mac. This application will check all paths and ask to locate a Wolfram executable if nothing is found.",
   "source": "@site/docs/frontend/instruction.md",
   "sourceDirName": "frontend",
-  "slug": "/frontend/instruction",
-  "permalink": "/docs/frontend/instruction",
+  "slug": "/",
+  "permalink": "/wljs-docs/",
   "draft": false,
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "lastUpdatedAt": 1539502055,
-  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "lastUpdatedAt": 1708970154,
+  "formattedLastUpdatedAt": "Feb 26, 2024",
   "sidebarPosition": 1,
   "frontMatter": {
     "sidebar_position": 1,
     "enableComments": true,
-    "sidebar_class_name": "green"
+    "sidebar_class_name": "green",
+    "slug": "/"
   },
   "sidebar": "tutorialSidebar",
   "next": {
-    "title": "Getting started",
-    "permalink": "/docs/category/getting-started"
+    "title": "Tutorials",
+    "permalink": "/wljs-docs/category/tutorials"
   }
 }

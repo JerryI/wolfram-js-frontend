@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Reference/Inputs/InputText",
+  "title": "InputText",
+  "description": "creates an event-generator for an input-text field and returns EventObject",
+  "source": "@site/docs/frontend/Reference/Inputs/InputText.md",
+  "sourceDirName": "frontend/Reference/Inputs",
+  "slug": "/frontend/Reference/Inputs/InputText",
+  "permalink": "/wljs-docs/frontend/Reference/Inputs/InputText",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputTable",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/InputTable"
+  },
+  "next": {
+    "title": "Slider",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/Slider"
+  }
+}

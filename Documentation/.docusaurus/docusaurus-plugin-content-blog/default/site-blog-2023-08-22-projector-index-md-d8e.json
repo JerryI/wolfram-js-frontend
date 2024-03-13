@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/projector-intro",
+  "permalink": "/wljs-docs/blog/projector-intro",
   "source": "@site/blog/2023-08-22-projector/index.md",
   "title": "Introducing Projector! Output to a separate window",
   "description": "I was always wondering on how to replicate the experience from the massive software like Origin Lab, Igor64, which has more traditional way of working with data - using windows.  Being limited to a cell in the notebooks is a big limitation, well...",
@@ -8,7 +8,7 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     }
   ],
   "readingTime": 0.99,
@@ -34,11 +34,11 @@
   },
   "unlisted": false,
   "prevItem": {
-    "title": "Mixing visual tools and code | Magic of Frontend Objects",
-    "permalink": "/blog/feobjects-example"
+    "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
+    "permalink": "/wljs-docs/blog/esm-into"
   },
   "nextItem": {
     "title": "Image and Raster were implemented!",
-    "permalink": "/blog/imageraster"
+    "permalink": "/wljs-docs/blog/imageraster"
   }
 }

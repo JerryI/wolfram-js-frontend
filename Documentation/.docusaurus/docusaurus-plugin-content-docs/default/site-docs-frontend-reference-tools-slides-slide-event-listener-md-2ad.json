@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Tools/Slides/SlideEventListener",
+  "title": "SlideEventListener",
+  "description": "An event-marker for the given slide of the presentation used in RevealJS plugin",
+  "source": "@site/docs/frontend/Reference/Tools/Slides/SlideEventListener.md",
+  "sourceDirName": "frontend/Reference/Tools/Slides",
+  "slug": "/frontend/Reference/Tools/Slides/SlideEventListener",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Slides/SlideEventListener",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "source": "https://github.com/JerryI/wljs-revealjs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ParentCell",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Notebook/ParentCell"
+  }
+}

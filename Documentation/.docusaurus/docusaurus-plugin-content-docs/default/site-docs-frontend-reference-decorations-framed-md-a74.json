@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Decorations/Framed",
+  "title": "Framed",
+  "description": "Acts like a Style box, but wrapped into a frame",
+  "source": "@site/docs/frontend/Reference/Decorations/Framed.md",
+  "sourceDirName": "frontend/Reference/Decorations",
+  "slug": "/frontend/Reference/Decorations/Framed",
+  "permalink": "/wljs-docs/frontend/Reference/Decorations/Framed",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "origin": "https://github.com/JerryI/wljs-editor/tree/main",
+    "needsContainer": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Column",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Column"
+  },
+  "next": {
+    "title": "Grid",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Grid"
+  }
+}

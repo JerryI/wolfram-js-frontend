@@ -5,18 +5,18 @@
   "source": "@site/docs/imgs/FE data binding.excalidraw 1.md",
   "sourceDirName": "imgs",
   "slug": "/imgs/FE data binding.excalidraw 1",
-  "permalink": "/docs/imgs/FE data binding.excalidraw 1",
+  "permalink": "/wljs-docs/imgs/FE data binding.excalidraw 1",
   "draft": false,
   "unlisted": false,
   "tags": [
     {
       "label": "excalidraw",
-      "permalink": "/docs/tags/excalidraw"
+      "permalink": "/wljs-docs/tags/excalidraw"
     }
   ],
   "version": "current",
-  "lastUpdatedAt": 1539502055,
-  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "lastUpdatedAt": 1708970154,
+  "formattedLastUpdatedAt": "Feb 26, 2024",
   "frontMatter": {
     "excalidraw-plugin": "parsed",
     "tags": [

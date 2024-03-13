@@ -1,0 +1,26 @@
+{
+  "id": "frontend/Tutorial/Export notebook",
+  "title": "Export notebook",
+  "description": "Since all magic happens inside the browser using plain Javascript, it is extremely easy to export notebook to a standalone HTML file or even React component to embed it on website (blog).",
+  "source": "@site/docs/frontend/Tutorial/Export notebook.md",
+  "sourceDirName": "frontend/Tutorial",
+  "slug": "/frontend/Tutorial/Export notebook",
+  "permalink": "/wljs-docs/frontend/Tutorial/Export notebook",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Input elements",
+    "permalink": "/wljs-docs/frontend/Tutorial/Input elements"
+  },
+  "next": {
+    "title": "Cell types",
+    "permalink": "/wljs-docs/category/cell-types"
+  }
+}

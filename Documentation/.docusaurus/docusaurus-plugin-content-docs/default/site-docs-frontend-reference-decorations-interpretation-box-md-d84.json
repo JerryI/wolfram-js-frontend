@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Reference/Decorations/InterpretationBox",
+  "title": "InterpretationBox",
+  "description": "Make a formatting structure whose interpretation is not based on its appearance",
+  "source": "@site/docs/frontend/Reference/Decorations/InterpretationBox.md",
+  "sourceDirName": "frontend/Reference/Decorations",
+  "slug": "/frontend/Reference/Decorations/InterpretationBox",
+  "permalink": "/wljs-docs/frontend/Reference/Decorations/InterpretationBox",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Interpretation",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Interpretation"
+  },
+  "next": {
+    "title": "BoxBox",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Low level/BoxBox"
+  }
+}

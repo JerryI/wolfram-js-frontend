@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Inputs/InputToggle",
+  "title": "InputToggle",
+  "description": "creates a toggle (checkbox) component and returns EventObject.",
+  "source": "@site/docs/frontend/Reference/Inputs/InputToggle.md",
+  "sourceDirName": "frontend/Reference/Inputs",
+  "slug": "/frontend/Reference/Inputs/InputToggle",
+  "permalink": "/wljs-docs/frontend/Reference/Inputs/InputToggle",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputText",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/InputText"
+  },
+  "next": {
+    "title": "RangeView",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/RangeView"
+  }
+}

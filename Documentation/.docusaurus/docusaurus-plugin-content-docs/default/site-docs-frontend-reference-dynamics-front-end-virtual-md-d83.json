@@ -1,0 +1,28 @@
+{
+  "id": "frontend/Reference/Dynamics/FrontEndVirtual",
+  "title": "FrontEndVirtual",
+  "description": "It is a virtual container wrapper for any expressions evaluated on WLJS",
+  "source": "@site/docs/frontend/Reference/Dynamics/FrontEndVirtual.md",
+  "sourceDirName": "frontend/Reference/Dynamics",
+  "slug": "/frontend/Reference/Dynamics/FrontEndVirtual",
+  "permalink": "/wljs-docs/frontend/Reference/Dynamics/FrontEndVirtual",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "virtual": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DynamicModule",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/DynamicModule"
+  },
+  "next": {
+    "title": "FrontEndExecutable",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable"
+  }
+}

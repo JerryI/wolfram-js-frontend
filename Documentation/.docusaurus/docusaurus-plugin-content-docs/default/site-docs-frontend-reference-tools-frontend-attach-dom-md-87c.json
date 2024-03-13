@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Tools/Frontend/AttachDOM",
+  "title": "AttachDOM",
+  "description": "attached a DOM element from the page found by id to the container, where this expression is evaluated",
+  "source": "@site/docs/frontend/Reference/Tools/Frontend/AttachDOM.md",
+  "sourceDirName": "frontend/Reference/Tools/Frontend",
+  "slug": "/frontend/Reference/Tools/Frontend/AttachDOM",
+  "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/AttachDOM",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Alert",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/Alert"
+  },
+  "next": {
+    "title": "FrontEditorSelected",
+    "permalink": "/wljs-docs/frontend/Reference/Tools/Frontend/FrontEditorSelected"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Graphics/Line",
+  "title": "Line",
+  "description": "the representation of a line going though the points {x1,y1}, {x2,y2}",
+  "source": "@site/docs/frontend/Reference/Graphics/Line.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Line",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Line",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "virtual": true,
+    "update": true,
+    "draft": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Inset",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Inset"
+  },
+  "next": {
+    "title": "SVGAttribute",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/SVGAttribute"
+  }
+}

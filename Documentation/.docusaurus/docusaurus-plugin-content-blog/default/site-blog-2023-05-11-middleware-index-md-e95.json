@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/middleware-example",
+  "permalink": "/wljs-docs/blog/middleware-example",
   "source": "@site/blog/2023-05-11-middleware/index.md",
   "title": "Introducing middleware event handlers",
   "description": "To describe the idea of a new tool better, it is good to start from the initial problem.",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "dynamics",
-      "permalink": "/blog/tags/dynamics"
+      "permalink": "/wljs-docs/blog/tags/dynamics"
     }
   ],
   "readingTime": 3.71,
@@ -39,10 +39,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Introducing Events shortcuts",
-    "permalink": "/blog/event-shortcuts"
+    "permalink": "/wljs-docs/blog/event-shortcuts"
   },
   "nextItem": {
     "title": "Introducing metamarkers",
-    "permalink": "/blog/meta-example"
+    "permalink": "/wljs-docs/blog/meta-example"
   }
 }

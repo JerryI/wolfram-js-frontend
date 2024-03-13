@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Inputs/Slider",
+  "title": "Slider",
+  "description": "This is not supported. Please, use alternative way InputRange",
+  "source": "@site/docs/frontend/Reference/Inputs/Slider.md",
+  "sourceDirName": "frontend/Reference/Inputs",
+  "slug": "/frontend/Reference/Inputs/Slider",
+  "permalink": "/wljs-docs/frontend/Reference/Inputs/Slider",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputText",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/InputText"
+  },
+  "next": {
+    "title": "TextView",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/TextView"
+  }
+}

@@ -3,1374 +3,707 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', 'f3b'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '91b'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', '18c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', '13d'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '895'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '7ea'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', 'a09'),
-    exact: true
-  },
-  {
-    path: '/blog',
-    component: ComponentCreator('/blog', 'b33'),
-    exact: true
-  },
-  {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', 'c70'),
-    exact: true
-  },
-  {
-    path: '/blog/axes-label',
-    component: ComponentCreator('/blog/axes-label', '624'),
-    exact: true
-  },
-  {
-    path: '/blog/balls-example',
-    component: ComponentCreator('/blog/balls-example', '9f4'),
-    exact: true
-  },
-  {
-    path: '/blog/curvesfit-example',
-    component: ComponentCreator('/blog/curvesfit-example', '0cb'),
-    exact: true
-  },
-  {
-    path: '/blog/esm-into',
-    component: ComponentCreator('/blog/esm-into', '553'),
-    exact: true
-  },
-  {
-    path: '/blog/event-advanced',
-    component: ComponentCreator('/blog/event-advanced', 'c95'),
-    exact: true
-  },
-  {
-    path: '/blog/event-shortcuts',
-    component: ComponentCreator('/blog/event-shortcuts', '004'),
-    exact: true
-  },
-  {
-    path: '/blog/feobjects-example',
-    component: ComponentCreator('/blog/feobjects-example', 'd7c'),
-    exact: true
-  },
-  {
-    path: '/blog/hydrator-xp',
-    component: ComponentCreator('/blog/hydrator-xp', '056'),
-    exact: true
-  },
-  {
-    path: '/blog/imageraster',
-    component: ComponentCreator('/blog/imageraster', '0d5'),
-    exact: true
-  },
-  {
-    path: '/blog/int-snippets',
-    component: ComponentCreator('/blog/int-snippets', '515'),
-    exact: true
-  },
-  {
-    path: '/blog/intro-controls-2d-graphics',
-    component: ComponentCreator('/blog/intro-controls-2d-graphics', '4af'),
-    exact: true
-  },
-  {
-    path: '/blog/intro-transform-3d',
-    component: ComponentCreator('/blog/intro-transform-3d', 'eb0'),
-    exact: true
-  },
-  {
-    path: '/blog/meta-example',
-    component: ComponentCreator('/blog/meta-example', '7a5'),
-    exact: true
-  },
-  {
-    path: '/blog/middleware-example',
-    component: ComponentCreator('/blog/middleware-example', '82d'),
-    exact: true
-  },
-  {
-    path: '/blog/notestore',
-    component: ComponentCreator('/blog/notestore', 'ad7'),
-    exact: true
-  },
-  {
-    path: '/blog/page/2',
-    component: ComponentCreator('/blog/page/2', 'a04'),
-    exact: true
-  },
-  {
-    path: '/blog/practical-working-withlibs',
-    component: ComponentCreator('/blog/practical-working-withlibs', '9a7'),
-    exact: true
-  },
-  {
-    path: '/blog/practice-integration',
-    component: ComponentCreator('/blog/practice-integration', 'a65'),
-    exact: true
-  },
-  {
-    path: '/blog/projector-intro',
-    component: ComponentCreator('/blog/projector-intro', '38d'),
-    exact: true
-  },
-  {
-    path: '/blog/rtx-intro',
-    component: ComponentCreator('/blog/rtx-intro', '6fe'),
-    exact: true
-  },
-  {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '43a'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/devnotes',
-    component: ComponentCreator('/blog/tags/devnotes', 'b31'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/dynamics',
-    component: ComponentCreator('/blog/tags/dynamics', '3f0'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/evaluation',
-    component: ComponentCreator('/blog/tags/evaluation', '8b2'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/events',
-    component: ComponentCreator('/blog/tags/events', 'fe3'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/fitting',
-    component: ComponentCreator('/blog/tags/fitting', '80c'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/frontend',
-    component: ComponentCreator('/blog/tags/frontend', '531'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/frontend/page/2',
-    component: ComponentCreator('/blog/tags/frontend/page/2', '216'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/graphics',
-    component: ComponentCreator('/blog/tags/graphics', '2f9'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/graphics-3-d',
-    component: ComponentCreator('/blog/tags/graphics-3-d', '315'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/html',
-    component: ComponentCreator('/blog/tags/html', '6a9'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/metamarkers',
-    component: ComponentCreator('/blog/tags/metamarkers', '342'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/practice',
-    component: ComponentCreator('/blog/tags/practice', 'da8'),
-    exact: true
-  },
-  {
-    path: '/container',
-    component: ComponentCreator('/container', '248'),
-    exact: true
-  },
-  {
-    path: '/exwl',
-    component: ComponentCreator('/exwl', 'd37'),
-    exact: true
-  },
-  {
-    path: '/exwljs',
-    component: ComponentCreator('/exwljs', '7ac'),
-    exact: true
-  },
-  {
-    path: '/registered',
-    component: ComponentCreator('/registered', 'afc'),
-    exact: true
-  },
-  {
-    path: '/update',
-    component: ComponentCreator('/update', 'f39'),
-    exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', '6ee'),
+    path: '/wljs-docs/',
+    component: ComponentCreator('/wljs-docs/', 'a29'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '345'),
+        path: '/wljs-docs/',
+        component: ComponentCreator('/wljs-docs/', '698'),
         routes: [
           {
-            path: '/docs/tags',
-            component: ComponentCreator('/docs/tags', '0cc'),
+            path: '/wljs-docs/tags',
+            component: ComponentCreator('/wljs-docs/tags', '9d8'),
             exact: true
           },
           {
-            path: '/docs/tags/excalidraw',
-            component: ComponentCreator('/docs/tags/excalidraw', 'e59'),
+            path: '/wljs-docs/tags/excalidraw',
+            component: ComponentCreator('/wljs-docs/tags/excalidraw', '57a'),
             exact: true
           },
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', 'd3b'),
+            path: '/wljs-docs/',
+            component: ComponentCreator('/wljs-docs/', '786'),
             routes: [
               {
-                path: '/docs/category/advanced',
-                component: ComponentCreator('/docs/category/advanced', '7b4'),
+                path: '/wljs-docs/category/advanced',
+                component: ComponentCreator('/wljs-docs/category/advanced', '256'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/category/cell-types',
-                component: ComponentCreator('/docs/category/cell-types', 'f6d'),
+                path: '/wljs-docs/category/cell-types',
+                component: ComponentCreator('/wljs-docs/category/cell-types', '47e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/category/development',
-                component: ComponentCreator('/docs/category/development', '089'),
+                path: '/wljs-docs/category/exporting-formats',
+                component: ComponentCreator('/wljs-docs/category/exporting-formats', '753'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/category/exporting-formats',
-                component: ComponentCreator('/docs/category/exporting-formats', 'ffb'),
+                path: '/wljs-docs/category/tutorials',
+                component: ComponentCreator('/wljs-docs/category/tutorials', '1fb'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/category/getting-started',
-                component: ComponentCreator('/docs/category/getting-started', '01f'),
+                path: '/wljs-docs/frontend/Advanced/Events system/event-generators',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Events system/event-generators', 'e7c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/instruction',
-                component: ComponentCreator('/docs/frontend/instruction', 'f5e'),
+                path: '/wljs-docs/frontend/Advanced/Events system/promises',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Events system/promises', '58d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Boxes and Decorations/dynamic-decorations', 'b71'),
+                path: '/wljs-docs/frontend/Advanced/Events system/routing',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Events system/routing', '7f5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Dynamics/Indicators and monitoring', '549'),
+                path: '/wljs-docs/frontend/Advanced/Slides/animations',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Slides/animations', '599'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Dynamics/Performance tips',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Dynamics/Performance tips', 'f61'),
+                path: '/wljs-docs/frontend/Advanced/Slides/components',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Slides/components', '7a3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Dynamics/Scoping',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Dynamics/Scoping', '940'),
+                path: '/wljs-docs/frontend/Advanced/Slides/embed-wl',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Slides/embed-wl', '879'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Dynamics/Simple manipulate', 'bdd'),
+                path: '/wljs-docs/frontend/Advanced/Slides/intro',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Slides/intro', '29a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Editor manipulation',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Editor manipulation', 'b05'),
+                path: '/wljs-docs/frontend/Advanced/Slides/tables',
+                component: ComponentCreator('/wljs-docs/frontend/Advanced/Slides/tables', 'b06'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Events system/event-generators',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Events system/event-generators', '2a6'),
+                path: '/wljs-docs/frontend/Cell types/Files',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Files', '1ca'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Events system/routing',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Events system/routing', '578'),
+                path: '/wljs-docs/frontend/Cell types/HTML',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/HTML', 'aa4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Frontend interpretation/executables',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Frontend interpretation/executables', '6be'),
+                path: '/wljs-docs/frontend/Cell types/Javascript',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Javascript', 'fc2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Frontend interpretation/Frontend functions', 'bdb'),
+                path: '/wljs-docs/frontend/Cell types/Many more...',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Many more...', '02c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/JS Tools/Canvas',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/JS Tools/Canvas', 'ffd'),
+                path: '/wljs-docs/frontend/Cell types/Markdown',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Markdown', '1db'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/animations',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/animations', '16e'),
+                path: '/wljs-docs/frontend/Cell types/Slides',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Slides', '270'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/components',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/components', 'd84'),
+                path: '/wljs-docs/frontend/Cell types/WLX',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/WLX', 'a69'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/embed-wl',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/embed-wl', '7d8'),
+                path: '/wljs-docs/frontend/Cell types/Wolfram Language',
+                component: ComponentCreator('/wljs-docs/frontend/Cell types/Wolfram Language', '2c0'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/intro',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/intro', 'c39'),
+                path: '/wljs-docs/frontend/Export/HTML file',
+                component: ComponentCreator('/wljs-docs/frontend/Export/HTML file', '2e5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/styling',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/styling', 'eff'),
+                path: '/wljs-docs/frontend/Export/PDF',
+                component: ComponentCreator('/wljs-docs/frontend/Export/PDF', 'c03'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Slides/tables',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Slides/tables', 'c64'),
+                path: '/wljs-docs/frontend/Expressions representation',
+                component: ComponentCreator('/wljs-docs/frontend/Expressions representation', 'f50'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Advanced/Snippets/',
-                component: ComponentCreator('/docs/frontend/Outdated/Advanced/Snippets/', 'f73'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Column',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Column', 'fc4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Chatbook',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Chatbook', '799'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Framed',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Framed', '55d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Files',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Files', 'c33'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Grid',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Grid', '5dc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/HTML',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/HTML', '3d8'),
+                path: '/wljs-docs/frontend/Reference/Decorations/HTMLForm',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/HTMLForm', 'aa7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Javascript',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Javascript', 'e71'),
+                path: '/wljs-docs/frontend/Reference/Decorations/InputForm',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/InputForm', '58a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Many more...',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Many more...', 'c74'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Interpretation',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Interpretation', '61e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Markdown',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Markdown', '27b'),
+                path: '/wljs-docs/frontend/Reference/Decorations/InterpretationBox',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/InterpretationBox', '266'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Slides',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Slides', '559'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Low level/BoxBox',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Low level/BoxBox', '653'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/WLX',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/WLX', '698'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Low level/ViewBox',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Low level/ViewBox', 'cdf'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Cell types/Wolfram Language',
-                component: ComponentCreator('/docs/frontend/Outdated/Cell types/Wolfram Language', '213'),
+                path: '/wljs-docs/frontend/Reference/Decorations/MakeBoxes',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/MakeBoxes', 'e11'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Development/Decorations',
-                component: ComponentCreator('/docs/frontend/Outdated/Development/Decorations', '0a0'),
+                path: '/wljs-docs/frontend/Reference/Decorations/MatrixForm',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/MatrixForm', '790'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Development/Plugins/Known packages',
-                component: ComponentCreator('/docs/frontend/Outdated/Development/Plugins/Known packages', 'd45'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Row',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Row', '85a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Development/Structure',
-                component: ComponentCreator('/docs/frontend/Outdated/Development/Structure', '87b'),
+                path: '/wljs-docs/frontend/Reference/Decorations/Style',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/Style', '5a4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Export/HTML file',
-                component: ComponentCreator('/docs/frontend/Outdated/Export/HTML file', '820'),
+                path: '/wljs-docs/frontend/Reference/Decorations/SVGForm',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/SVGForm', '454'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Export/PDF',
-                component: ComponentCreator('/docs/frontend/Outdated/Export/PDF', 'bcc'),
+                path: '/wljs-docs/frontend/Reference/Decorations/TableForm',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Decorations/TableForm', '19b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Export/React component',
-                component: ComponentCreator('/docs/frontend/Outdated/Export/React component', '66b'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/CreateFrontEndObject',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/CreateFrontEndObject', '931'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Expressions representation',
-                component: ComponentCreator('/docs/frontend/Outdated/Expressions representation', 'dcb'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Dynamic',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Dynamic', 'c2f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Mathematica vs WLJS',
-                component: ComponentCreator('/docs/frontend/Outdated/Mathematica vs WLJS', '3fe'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/DynamicModule',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/DynamicModule', 'ee6'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Column',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Column', 'aeb'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/FrontEndVirtual',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/FrontEndVirtual', '8b2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Framed',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Framed', '0f3'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutable', '5a7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Grid',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Grid', '06d'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutableInline',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndExecutableInline', 'd4a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/HTMLForm',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/HTMLForm', '26b'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndOnly',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndOnly', '355'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/InputForm',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/InputForm', '934'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndRef',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndRef', '204'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Interpretation',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Interpretation', '2d3'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Manipulate',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Manipulate', 'd65'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/InterpretationBox',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/InterpretationBox', '047'),
+                path: '/wljs-docs/frontend/Reference/Dynamics/Offload',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Dynamics/Offload', 'c49'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Low level/BoxBox', '22a'),
+                path: '/wljs-docs/frontend/Reference/Graphics/',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/', '250'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Low level/ViewBox', '3c0'),
+                path: '/wljs-docs/frontend/Reference/Graphics/AbsoluteThickness',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/AbsoluteThickness', '2bd'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/MakeBoxes',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/MakeBoxes', '867'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Arrow',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Arrow', '795'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/MatrixForm',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/MatrixForm', '9a4'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Directive',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Directive', 'a52'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Row',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Row', 'd2a'),
+                path: '/wljs-docs/frontend/Reference/Graphics/GraphicsComplex',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/GraphicsComplex', 'd09'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/Style',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/Style', 'c7f'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Image',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Image', '7e4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/SVGForm',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/SVGForm', '6b1'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Inset',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Inset', 'ab0'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Decorations/TableForm',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Decorations/TableForm', '2c7'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Line',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Line', 'b9e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/CreateFrontEndObject', '7ec'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Show',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Show', '6f7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Dynamic',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Dynamic', '6cd'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Style',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Style', '7ce'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/DynamicModule',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/DynamicModule', '094'),
+                path: '/wljs-docs/frontend/Reference/Graphics/SVGAttribute',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/SVGAttribute', '485'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/FrontEndVirtual', '52c'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Text',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Text', '803'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/FrontSubmit', 'c05'),
+                path: '/wljs-docs/frontend/Reference/Graphics/Translate',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics/Translate', '5d2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutable', '47d'),
+                path: '/wljs-docs/frontend/Reference/Graphics3D/SpotLight',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Graphics3D/SpotLight', 'f5a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndExecutableInline', '211'),
+                path: '/wljs-docs/frontend/Reference/Inputs/EditorView',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/EditorView', '890'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndOnly', '544'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputButton',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputButton', '32c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Internals/FrontEndRef', '63e'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputFile',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputFile', '84d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Manipulate',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Manipulate', 'd27'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputGroup',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputGroup', '351'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/MetaMarker',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/MetaMarker', '6b5'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputRange',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputRange', 'ee4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Dynamics/Offload',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Dynamics/Offload', 'e8e'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputTable',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputTable', 'cf5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/Assign',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/Assign', 'a00'),
+                path: '/wljs-docs/frontend/Reference/Inputs/InputText',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/InputText', '0fc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventClone',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventClone', 'df0'),
+                path: '/wljs-docs/frontend/Reference/Inputs/Slider',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/Slider', '5ba'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventFire',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventFire', '854'),
+                path: '/wljs-docs/frontend/Reference/Inputs/TextView',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Inputs/TextView', 'f7f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventHandler',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventHandler', 'cde'),
+                path: '/wljs-docs/frontend/Reference/Misc/Async',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Misc/Async', 'd76'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventJoin',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventJoin', 'a67'),
+                path: '/wljs-docs/frontend/Reference/Misc/Events',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Misc/Events', '266'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventObject',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventObject', '000'),
+                path: '/wljs-docs/frontend/Reference/Misc/Language',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Misc/Language', '00c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Events/EventRemove',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Events/EventRemove', 'de8'),
+                path: '/wljs-docs/frontend/Reference/Misc/Promise',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Misc/Promise', '92b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/', '282'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ArrayPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ArrayPlot', '742'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/AbsoluteThickness', '5b2'),
+                path: '/wljs-docs/frontend/Reference/Plotting/BarChart',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/BarChart', '8f3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Arrow',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Arrow', '2cb'),
+                path: '/wljs-docs/frontend/Reference/Plotting/BubbleChart',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/BubbleChart', 'e71'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Circle',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Circle', '340'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ContourPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ContourPlot', 'dc9'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Directive',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Directive', '294'),
+                path: '/wljs-docs/frontend/Reference/Plotting/DensityPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/DensityPlot', '6c5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Disk',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Disk', 'e43'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListContourPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListContourPlot', '797'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/GraphicsComplex', '135'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListCurvePathPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListCurvePathPlot', '0b9'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Image',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Image', '063'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListLinePlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListLinePlot', 'b52'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Inset',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Inset', 'ae7'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListLinePlotly',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListLinePlotly', '7f7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Internal/EventListener', '412'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListStepPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListStepPlot', 'c9e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Line',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Line', '1bc'),
+                path: '/wljs-docs/frontend/Reference/Plotting/ListVectorPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/ListVectorPlot', '1f5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/MiddlewareHandler', 'b4d'),
+                path: '/wljs-docs/frontend/Reference/Plotting/MatrixPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/MatrixPlot', 'b2d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Offset',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Offset', '59f'),
+                path: '/wljs-docs/frontend/Reference/Plotting/Plot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/Plot', '51a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Point',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Point', 'b11'),
+                path: '/wljs-docs/frontend/Reference/Plotting/Plotly',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/Plotly', '322'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Polygon',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Polygon', 'f1e'),
+                path: '/wljs-docs/frontend/Reference/Plotting/RandomImage',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/RandomImage', 'ae3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Raster',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Raster', '482'),
+                path: '/wljs-docs/frontend/Reference/Plotting/StackedListPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/StackedListPlot', '5e5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Rectangle',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Rectangle', '444'),
+                path: '/wljs-docs/frontend/Reference/Plotting/StreamPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/StreamPlot', 'ac1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Rotate',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Rotate', '024'),
+                path: '/wljs-docs/frontend/Reference/Plotting/VectorPlot',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/VectorPlot', 'a43'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Show',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Show', 'e22'),
+                path: '/wljs-docs/frontend/Reference/Plotting/VectorPlot3D',
+                component: ComponentCreator('/wljs-docs/frontend/Reference/Plotting/VectorPlot3D', 'e25'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Style',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Style', '999'),
+                path: '/wljs-docs/frontend/Troubleshooting',
+                component: ComponentCreator('/wljs-docs/frontend/Troubleshooting', '1c8'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/SVGAttribute',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/SVGAttribute', '554'),
+                path: '/wljs-docs/frontend/Tutorial/Dynamics',
+                component: ComponentCreator('/wljs-docs/frontend/Tutorial/Dynamics', '75a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Text',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Text', 'f86'),
+                path: '/wljs-docs/frontend/Tutorial/Export notebook',
+                component: ComponentCreator('/wljs-docs/frontend/Tutorial/Export notebook', '420'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics/Translate',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics/Translate', 'dee'),
+                path: '/wljs-docs/frontend/Tutorial/Input elements',
+                component: ComponentCreator('/wljs-docs/frontend/Tutorial/Input elements', '03e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics3D/',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics3D/', '765'),
+                path: '/wljs-docs/frontend/Tutorial/Overview',
+                component: ComponentCreator('/wljs-docs/frontend/Tutorial/Overview', 'e6b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/Outdated/Reference/Graphics3D/Cuboid',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics3D/Cuboid', '5c1'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Graphics3D/EventListener',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics3D/EventListener', 'e5c'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Graphics3D/Sphere',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics3D/Sphere', 'ddf'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Graphics3D/SpotLight',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Graphics3D/SpotLight', '654'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/ButtonView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/ButtonView', 'bb6'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/EditorView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/EditorView', '4e8'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/FileUploadView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/FileUploadView', 'bba'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputButton',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputButton', 'bbf'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputFile',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputFile', '348'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputGroup',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputGroup', '54a'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputRange',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputRange', '532'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputSpoiler',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputSpoiler', 'd1a'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputTable',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputTable', '6be'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputText',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputText', 'b4d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/InputToggle',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/InputToggle', 'da6'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/RangeView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/RangeView', 'a71'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/Slider',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/Slider', '08a'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/TextView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/TextView', '4da'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Input/ToggleView',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Input/ToggleView', '798'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/CellHashStorage', '98f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/core',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/core', '705'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/downloadByURL',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/downloadByURL', '7b1'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/InstancesHashMap', 'a5f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/interpretate',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/interpretate', '826'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/ObjectHashMap', 'a25'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/openawindow',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/openawindow', '91b'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/server',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/server', '9d1'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/setInnerHTML', 'a8d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Javascript API/uuidv4',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Javascript API/uuidv4', 'ca2'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ArrayPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ArrayPlot', '978'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/BarChart',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/BarChart', 'a35'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/BubbleChart',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/BubbleChart', '5fb'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ContourPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ContourPlot', '041'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/DensityPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/DensityPlot', '73c'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListContourPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListContourPlot', 'ca7'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListCurvePathPlot', '94f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListLinePlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListLinePlot', '6df'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListLinePlotly', 'e91'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListStepPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListStepPlot', '4a2'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/ListVectorPlot', '932'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/MatrixPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/MatrixPlot', '383'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/Plot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/Plot', 'b6b'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/Plotly',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/Plotly', '58f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/RandomImage',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/RandomImage', '1e2'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/StackedListPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/StackedListPlot', '678'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/StreamPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/StreamPlot', '98a'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/VectorPlot',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/VectorPlot', 'ef4'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Plotting/VectorPlot3D', 'ff5'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/Alert',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/Alert', '371'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/AttachDOM', 'cc9'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/FlipSymbols', '421'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/FrontEditorSelected', '31c'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/ReadClipboard', '444'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/TalkKernel', '27e'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/TalkMaster', '837'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/WindowScope', '212'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Frontend/WLJSFunction', '38f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/LeakyModule',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/LeakyModule', '83d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Notebook/CellPrint', 'abb'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Notebook/EvaluationCell', '1e1'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Notebook/GlobalThrottle', '1cb'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Notebook/NotebookStore', 'd70'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Notebook/ParentCell', '0fc'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Slides/SlideEvent', '8cf'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Timers/SetInterval', '8cb'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout',
-                component: ComponentCreator('/docs/frontend/Outdated/Reference/Tools/Timers/SetTimeout', 'b61'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Troubleshooting',
-                component: ComponentCreator('/docs/frontend/Outdated/Troubleshooting', 'ef9'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/Dynamics',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/Dynamics', '52a'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/Export notebook',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/Export notebook', '54d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/GUI Overview',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/GUI Overview', '8a5'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/Input elements',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/Input elements', 'b88'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/Overview',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/Overview', 'edc'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/frontend/Outdated/Tutorial/Plugins',
-                component: ComponentCreator('/docs/frontend/Outdated/Tutorial/Plugins', '04d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/imgs/FE data binding.excalidraw 1',
-                component: ComponentCreator('/docs/imgs/FE data binding.excalidraw 1', 'd53'),
+                path: '/wljs-docs/imgs/FE data binding.excalidraw 1',
+                component: ComponentCreator('/wljs-docs/imgs/FE data binding.excalidraw 1', '84f'),
                 exact: true
               },
               {
-                path: '/docs/imgs/feinput.gif',
-                component: ComponentCreator('/docs/imgs/feinput.gif', 'd03'),
+                path: '/wljs-docs/imgs/feinput.gif',
+                component: ComponentCreator('/wljs-docs/imgs/feinput.gif', '4e2'),
                 exact: true
               },
               {
-                path: '/docs/imgs/manipulate-frontend-example.excalidraw',
-                component: ComponentCreator('/docs/imgs/manipulate-frontend-example.excalidraw', '8f5'),
+                path: '/wljs-docs/imgs/manipulate-frontend-example.excalidraw',
+                component: ComponentCreator('/wljs-docs/imgs/manipulate-frontend-example.excalidraw', 'fec'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Advanced/architecture',
-                component: ComponentCreator('/docs/interpreter/Advanced/architecture', 'f62'),
+                path: '/wljs-docs/interpreter/Advanced/architecture',
+                component: ComponentCreator('/wljs-docs/interpreter/Advanced/architecture', '8ed'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Advanced/containers',
-                component: ComponentCreator('/docs/interpreter/Advanced/containers', '050'),
+                path: '/wljs-docs/interpreter/Advanced/containers',
+                component: ComponentCreator('/wljs-docs/interpreter/Advanced/containers', '37a'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Advanced/meta-markers',
-                component: ComponentCreator('/docs/interpreter/Advanced/meta-markers', '236'),
+                path: '/wljs-docs/interpreter/Advanced/meta-markers',
+                component: ComponentCreator('/wljs-docs/interpreter/Advanced/meta-markers', 'dc6'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Advanced/symbols',
-                component: ComponentCreator('/docs/interpreter/Advanced/symbols', '20c'),
+                path: '/wljs-docs/interpreter/Advanced/symbols',
+                component: ComponentCreator('/wljs-docs/interpreter/Advanced/symbols', '2b5'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Basics/graphics',
-                component: ComponentCreator('/docs/interpreter/Basics/graphics', 'd62'),
+                path: '/wljs-docs/interpreter/Basics/graphics',
+                component: ComponentCreator('/wljs-docs/interpreter/Basics/graphics', 'b26'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Basics/js-access',
-                component: ComponentCreator('/docs/interpreter/Basics/js-access', '55e'),
+                path: '/wljs-docs/interpreter/Basics/js-access',
+                component: ComponentCreator('/wljs-docs/interpreter/Basics/js-access', '21d'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Basics/scripts',
-                component: ComponentCreator('/docs/interpreter/Basics/scripts', 'd54'),
+                path: '/wljs-docs/interpreter/Basics/scripts',
+                component: ComponentCreator('/wljs-docs/interpreter/Basics/scripts', '94e'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Basics/syntax',
-                component: ComponentCreator('/docs/interpreter/Basics/syntax', 'e94'),
+                path: '/wljs-docs/interpreter/Basics/syntax',
+                component: ComponentCreator('/wljs-docs/interpreter/Basics/syntax', '336'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Extras/implementation',
-                component: ComponentCreator('/docs/interpreter/Extras/implementation', '4a3'),
+                path: '/wljs-docs/interpreter/Extras/implementation',
+                component: ComponentCreator('/wljs-docs/interpreter/Extras/implementation', '738'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/Extras/reference',
-                component: ComponentCreator('/docs/interpreter/Extras/reference', 'ea9'),
+                path: '/wljs-docs/interpreter/Extras/reference',
+                component: ComponentCreator('/wljs-docs/interpreter/Extras/reference', '7e0'),
                 exact: true
               },
               {
-                path: '/docs/interpreter/intro',
-                component: ComponentCreator('/docs/interpreter/intro', 'e91'),
+                path: '/wljs-docs/interpreter/intro',
+                component: ComponentCreator('/wljs-docs/interpreter/intro', 'bb2'),
                 exact: true
+              },
+              {
+                path: '/wljs-docs/Reference/Misc/Promise',
+                component: ComponentCreator('/wljs-docs/Reference/Misc/Promise', 'c5c'),
+                exact: true
+              },
+              {
+                path: '/wljs-docs/',
+                component: ComponentCreator('/wljs-docs/', '907'),
+                exact: true,
+                sidebar: "tutorialSidebar"
               }
             ]
           }
         ]
       }
     ]
-  },
-  {
-    path: '/',
-    component: ComponentCreator('/', 'd5e'),
-    exact: true
   },
   {
     path: '*',

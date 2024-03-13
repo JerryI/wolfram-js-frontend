@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Reference/Javascript API/server",
+  "title": "server",
+  "description": "A global object, that gives an access to sever's API (if server is available). Usually server is Wolfram Kernel connected via WebSockets protocol or HTTP/POST",
+  "source": "@site/docs/frontend/Reference/Javascript API/server.md",
+  "sourceDirName": "frontend/Reference/Javascript API",
+  "slug": "/frontend/Reference/Javascript API/server",
+  "permalink": "/wljs-docs/frontend/Reference/Javascript API/server",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "openawindow",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/openawindow"
+  },
+  "next": {
+    "title": "setInnerHTML",
+    "permalink": "/wljs-docs/frontend/Reference/Javascript API/setInnerHTML"
+  }
+}

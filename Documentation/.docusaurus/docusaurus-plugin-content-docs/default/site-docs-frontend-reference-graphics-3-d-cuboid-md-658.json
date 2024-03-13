@@ -1,0 +1,27 @@
+{
+  "id": "frontend/Reference/Graphics3D/Cuboid",
+  "title": "Cuboid",
+  "description": "",
+  "source": "@site/docs/frontend/Reference/Graphics3D/Cuboid.md",
+  "sourceDirName": "frontend/Reference/Graphics3D",
+  "slug": "/frontend/Reference/Graphics3D/Cuboid",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics3D/Cuboid",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Graphics3D",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics3D/"
+  },
+  "next": {
+    "title": "EventListener",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics3D/EventListener"
+  }
+}

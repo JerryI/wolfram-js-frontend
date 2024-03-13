@@ -1,0 +1,26 @@
+{
+  "id": "frontend/Cell types/HTML",
+  "title": "HTML",
+  "description": "Github repo",
+  "source": "@site/docs/frontend/Cell types/HTML.md",
+  "sourceDirName": "frontend/Cell types",
+  "slug": "/frontend/Cell types/HTML",
+  "permalink": "/wljs-docs/frontend/Cell types/HTML",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown",
+    "permalink": "/wljs-docs/frontend/Cell types/Markdown"
+  },
+  "next": {
+    "title": "Javascript",
+    "permalink": "/wljs-docs/frontend/Cell types/Javascript"
+  }
+}

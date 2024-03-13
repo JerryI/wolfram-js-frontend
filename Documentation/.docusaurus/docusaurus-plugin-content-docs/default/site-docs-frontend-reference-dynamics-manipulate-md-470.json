@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Dynamics/Manipulate",
+  "title": "Manipulate",
+  "description": "This is not supported. Please, use Dynamics instead",
+  "source": "@site/docs/frontend/Reference/Dynamics/Manipulate.md",
+  "sourceDirName": "frontend/Reference/Dynamics",
+  "slug": "/frontend/Reference/Dynamics/Manipulate",
+  "permalink": "/wljs-docs/frontend/Reference/Dynamics/Manipulate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FrontEndRef",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/Internals/FrontEndRef"
+  },
+  "next": {
+    "title": "Offload",
+    "permalink": "/wljs-docs/frontend/Reference/Dynamics/Offload"
+  }
+}

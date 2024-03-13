@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Graphics/Text",
+  "title": "Text",
+  "description": "Represents an arbitrary text label placed as a Graphics object",
+  "source": "@site/docs/frontend/Reference/Graphics/Text.md",
+  "sourceDirName": "frontend/Reference/Graphics",
+  "slug": "/frontend/Reference/Graphics/Text",
+  "permalink": "/wljs-docs/frontend/Reference/Graphics/Text",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "virtual": true,
+    "needsContainer": true,
+    "update": true,
+    "source": "https://github.com/JerryI/wljs-graphics-d3/"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Style",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Style"
+  },
+  "next": {
+    "title": "Translate",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics/Translate"
+  }
+}

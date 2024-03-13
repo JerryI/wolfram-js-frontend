@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/event-shortcuts",
+  "permalink": "/wljs-docs/blog/event-shortcuts",
   "source": "@site/blog/2023-06-10-events.md",
   "title": "Introducing Events shortcuts",
   "description": "One of the paradigm of WLJS Frontend is an event-based approach. Any sliders, buttons are event generators, that produce EventObject[]. In order to simplify or mimic Mathematica's way of binding symbols to input elements Assign keyword was introduced.",
@@ -8,15 +8,15 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "dynamics",
-      "permalink": "/blog/tags/dynamics"
+      "permalink": "/wljs-docs/blog/tags/dynamics"
     },
     {
       "label": "events",
-      "permalink": "/blog/tags/events"
+      "permalink": "/wljs-docs/blog/tags/events"
     }
   ],
   "readingTime": 0.51,
@@ -44,10 +44,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Interactive graphics example",
-    "permalink": "/blog/balls-example"
+    "permalink": "/wljs-docs/blog/balls-example"
   },
   "nextItem": {
     "title": "Introducing middleware event handlers",
-    "permalink": "/blog/middleware-example"
+    "permalink": "/wljs-docs/blog/middleware-example"
   }
 }

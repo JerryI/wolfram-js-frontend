@@ -138,3 +138,89 @@ a {
  .markdown>h2 {
   color: var(--markdown-h2) !important;   
  }
+
+ .d3-controls {
+  position: absolute;
+  right: -1rem;
+  padding: 0;
+  opacity: 0.7;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.frontend-view:hover .d3-controls {
+  opacity: 0.6;
+}
+
+.graphics2d-controller {
+  position:absolute;
+  right:0;
+  opacity:0;
+}
+
+.graphics2d-controller:hover {
+  opacity:1;
+}
+
+.graphics3d-controller {
+  position:absolute;
+  right:0;
+  opacity:0;
+}
+
+.graphics3d-controller:hover {
+  opacity:1;
+}
+
+.dg.main {
+  color:#777;
+  text-shadow: none;
+  border-radius: 4px;
+  max-width:200px;
+}
+
+
+.dg.main li.cr.function {
+  border-radius: 4px;
+  border-bottom: none;
+  margin-bottom:0.25rem;
+  background-color: rgb(0 0 0 / 5%) !important;
+  
+}
+
+.dg.main li.title {
+  background-color: rgb(0 0 0 / 5%) !important;
+  border-radius: 4px;
+  border-bottom: none;
+  margin-bottom:0.25rem;
+  color: #777;
+  text-shadow: none;
+}
+
+.dg.main .close-button.close-bottom {
+  background-color: rgb(0 0 0 / 5%) !important;
+  border-radius: 4px;
+  border-bottom: none;
+  font-weight: 500;
+  color: #777;
+  text-shadow: none;   
+  max-width:200px; 
+}
+
+.dg.main li.cr.string {
+  border-radius: 4px;
+  border-bottom: none;
+  margin-bottom:0.25rem;
+  background-color: rgb(0 0 0 / 5%) !important; 
+  color:#777;
+  text-shadow: none;
+}
+
+.dg.main li.cr.boolean {
+      border-radius: 4px;
+  border-bottom: none;
+  margin-bottom:0.25rem;
+  background-color: rgb(0 0 0 / 5%) !important; 
+  color:#777;
+  text-shadow: none;
+}

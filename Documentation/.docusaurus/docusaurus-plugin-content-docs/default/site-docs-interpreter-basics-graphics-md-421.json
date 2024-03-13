@@ -5,13 +5,13 @@
   "source": "@site/docs/interpreter/Basics/graphics.md",
   "sourceDirName": "interpreter/Basics",
   "slug": "/interpreter/Basics/graphics",
-  "permalink": "/docs/interpreter/Basics/graphics",
+  "permalink": "/wljs-docs/interpreter/Basics/graphics",
   "draft": false,
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "lastUpdatedAt": 1539502055,
-  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "lastUpdatedAt": 1708970154,
+  "formattedLastUpdatedAt": "Feb 26, 2024",
   "sidebarPosition": 4,
   "frontMatter": {
     "sidebar_position": 4

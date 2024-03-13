@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Reference/Misc/Events",
+  "title": "Events",
+  "description": "EventObject",
+  "source": "@site/docs/frontend/Reference/Misc/Events.md",
+  "sourceDirName": "frontend/Reference/Misc",
+  "slug": "/frontend/Reference/Misc/Events",
+  "permalink": "/wljs-docs/frontend/Reference/Misc/Events",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Async",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Async"
+  },
+  "next": {
+    "title": "Language",
+    "permalink": "/wljs-docs/frontend/Reference/Misc/Language"
+  }
+}

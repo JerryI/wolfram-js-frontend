@@ -1,0 +1,23 @@
+{
+  "id": "frontend/Advanced/Events system/routing",
+  "title": "Routing",
+  "description": "Remember the number 1 rule: 1 event object = 1 handler",
+  "source": "@site/docs/frontend/Advanced/Events system/routing.md",
+  "sourceDirName": "frontend/Advanced/Events system",
+  "slug": "/frontend/Advanced/Events system/routing",
+  "permalink": "/wljs-docs/frontend/Advanced/Events system/routing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Promises",
+    "permalink": "/wljs-docs/frontend/Advanced/Events system/promises"
+  },
+  "next": {
+    "title": "Basics",
+    "permalink": "/wljs-docs/frontend/Advanced/Slides/intro"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Input/InputTable",
+  "title": "InputTable",
+  "description": "it places a sort of small Excel-like table editor for list provided. This is a great solution for a large tables, since it does support lazy loading from a server",
+  "source": "@site/docs/frontend/Reference/Input/InputTable.md",
+  "sourceDirName": "frontend/Reference/Input",
+  "slug": "/frontend/Reference/Input/InputTable",
+  "permalink": "/wljs-docs/frontend/Reference/Input/InputTable",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputSpoiler",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputSpoiler"
+  },
+  "next": {
+    "title": "InputText",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputText"
+  }
+}

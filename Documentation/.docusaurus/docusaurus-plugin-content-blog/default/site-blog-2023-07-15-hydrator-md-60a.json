@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/hydrator-xp",
+  "permalink": "/wljs-docs/blog/hydrator-xp",
   "source": "@site/blog/2023-07-15-hydrator.md",
   "title": "Hydrator experimantal feature",
   "description": "Here is an experimental feature provided by wljs-hydrator engine, that simply renders frontend object into a given div element",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "html",
-      "permalink": "/blog/tags/html"
+      "permalink": "/wljs-docs/blog/tags/html"
     }
   ],
   "readingTime": 0.1,
@@ -39,10 +39,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Realtime path-tracing",
-    "permalink": "/blog/rtx-intro"
+    "permalink": "/wljs-docs/blog/rtx-intro"
   },
   "nextItem": {
     "title": "Interactive curves fitting example",
-    "permalink": "/blog/curvesfit-example"
+    "permalink": "/wljs-docs/blog/curvesfit-example"
   }
 }

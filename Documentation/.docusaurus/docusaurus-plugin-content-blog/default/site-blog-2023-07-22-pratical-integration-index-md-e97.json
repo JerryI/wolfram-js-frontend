@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/practice-integration",
+  "permalink": "/wljs-docs/blog/practice-integration",
   "source": "@site/blog/2023-07-22-pratical-integration/index.md",
   "title": "WLJS in practice. Integrating absorption spectra",
   "description": "I would like to start this series of application cases, where I am going to solve real-life problems I face using WLJS Frontend. Since my main area is quantum physics, it will be more focused on the scientific research field.",
@@ -8,15 +8,15 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "practice",
-      "permalink": "/blog/tags/practice"
+      "permalink": "/wljs-docs/blog/tags/practice"
     },
     {
       "label": "dynamics",
-      "permalink": "/blog/tags/dynamics"
+      "permalink": "/wljs-docs/blog/tags/dynamics"
     }
   ],
   "readingTime": 0.715,
@@ -44,10 +44,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "A major update of Graphics3D",
-    "permalink": "/blog/intro-transform-3d"
+    "permalink": "/wljs-docs/blog/intro-transform-3d"
   },
   "nextItem": {
-    "title": "Developing library function in a notebook",
-    "permalink": "/blog/practical-working-withlibs"
+    "title": "Realtime path-tracing",
+    "permalink": "/wljs-docs/blog/rtx-intro"
   }
 }

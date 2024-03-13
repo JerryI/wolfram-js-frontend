@@ -1,0 +1,30 @@
+{
+  "id": "frontend/Reference/Decorations/Grid",
+  "title": "Grid",
+  "description": "Spawns a grid of WL editors with an arbitrary objects inside",
+  "source": "@site/docs/frontend/Reference/Decorations/Grid.md",
+  "sourceDirName": "frontend/Reference/Decorations",
+  "slug": "/frontend/Reference/Decorations/Grid",
+  "permalink": "/wljs-docs/frontend/Reference/Decorations/Grid",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "update": null,
+    "needsContainer": null,
+    "origin": "https://github.com/JerryI/wljs-editor/tree/main"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Framed",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/Framed"
+  },
+  "next": {
+    "title": "HTMLForm",
+    "permalink": "/wljs-docs/frontend/Reference/Decorations/HTMLForm"
+  }
+}

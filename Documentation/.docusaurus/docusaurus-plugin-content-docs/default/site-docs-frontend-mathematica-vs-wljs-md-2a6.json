@@ -1,0 +1,29 @@
+{
+  "id": "frontend/Mathematica vs WLJS",
+  "title": "Mathematica vs WLJS",
+  "description": "From the first sight, it feels similar, however there are some key difference compared to the way how you work with Mathematica's frontend and WLJS.",
+  "source": "@site/docs/frontend/Mathematica vs WLJS.md",
+  "sourceDirName": "frontend",
+  "slug": "/frontend/Mathematica vs WLJS",
+  "permalink": "/docs/frontend/Mathematica vs WLJS",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "draft": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "WLX",
+    "permalink": "/docs/frontend/Cell types/WLX"
+  },
+  "next": {
+    "title": "Expressions representation",
+    "permalink": "/docs/frontend/Expressions representation"
+  }
+}

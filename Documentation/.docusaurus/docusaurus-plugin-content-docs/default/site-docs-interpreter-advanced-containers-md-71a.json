@@ -5,13 +5,13 @@
   "source": "@site/docs/interpreter/Advanced/containers.md",
   "sourceDirName": "interpreter/Advanced",
   "slug": "/interpreter/Advanced/containers",
-  "permalink": "/docs/interpreter/Advanced/containers",
+  "permalink": "/wljs-docs/interpreter/Advanced/containers",
   "draft": false,
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "lastUpdatedAt": 1539502055,
-  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "lastUpdatedAt": 1708970154,
+  "formattedLastUpdatedAt": "Feb 26, 2024",
   "sidebarPosition": 2,
   "frontMatter": {
     "sidebar_position": 2

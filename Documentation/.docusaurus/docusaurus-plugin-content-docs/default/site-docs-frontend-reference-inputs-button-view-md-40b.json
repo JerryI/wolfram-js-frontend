@@ -1,0 +1,32 @@
+{
+  "id": "frontend/Reference/Inputs/ButtonView",
+  "title": "ButtonView",
+  "description": "This is an internal part of InputButton",
+  "source": "@site/docs/frontend/Reference/Inputs/ButtonView.md",
+  "sourceDirName": "frontend/Reference/Inputs",
+  "slug": "/frontend/Reference/Inputs/ButtonView",
+  "permalink": "/wljs-docs/frontend/Reference/Inputs/ButtonView",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "WLJS"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs",
+    "update": false,
+    "needsContainer": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SpotLight",
+    "permalink": "/wljs-docs/frontend/Reference/Graphics3D/SpotLight"
+  },
+  "next": {
+    "title": "EditorView",
+    "permalink": "/wljs-docs/frontend/Reference/Inputs/EditorView"
+  }
+}

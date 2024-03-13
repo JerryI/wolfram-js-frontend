@@ -10,17 +10,32 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const math = require('remark-math');
 const katex = require('rehype-katex');
 
+const scripts = [
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-interpreter@dev/src/interpreter.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-interpreter@dev/src/core.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-sharedlib-d3@master/dist/kernel.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-graphics-d3@dev/dist/kernel.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-plotly@dev/dist/kernel.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/Mathematica-ThreeJS-graphics-engine@dev/dist/kernel.js",
+  "https://cdn.jsdelivr.net/gh/JerryI/wljs-revealjs@dev/dist/kernel.js"
+].map((link) => {
+  return {tagName: 'script', attributes: {
+    type: 'module',
+    src: link
+  }}
+});
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'WLJS Notebook',
   tagline: 'Documentation',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'http://127.0.0.1',
+  url: 'https://jerryi.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/wljs-docs/',
+  
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -52,6 +67,8 @@ const config = {
     },
   ],
 
+  headTags: scripts,
+
   presets: [
     [
       'classic',
@@ -60,12 +77,14 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           remarkPlugins: [math],
+          routeBasePath: '/',
         rehypePlugins: [katex],
 
         exclude: ['/docs/Excalidraw', 'Excalidraw', '/blog', '/docs/imgs'],
 
         showLastUpdateTime: true,
         },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },

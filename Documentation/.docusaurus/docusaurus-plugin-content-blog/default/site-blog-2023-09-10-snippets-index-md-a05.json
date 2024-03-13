@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/int-snippets",
+  "permalink": "/wljs-docs/blog/int-snippets",
   "source": "@site/blog/2023-09-10-snippets/index.md",
   "title": "Introducing snippets",
   "description": "",
@@ -26,10 +26,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Introducing ESM Javascript cells | Poking Nintendo Pro",
-    "permalink": "/blog/esm-into"
+    "permalink": "/wljs-docs/blog/esm-into"
   },
   "nextItem": {
     "title": "Mixing visual tools and code | Magic of Frontend Objects",
-    "permalink": "/blog/feobjects-example"
+    "permalink": "/wljs-docs/blog/feobjects-example"
   }
 }

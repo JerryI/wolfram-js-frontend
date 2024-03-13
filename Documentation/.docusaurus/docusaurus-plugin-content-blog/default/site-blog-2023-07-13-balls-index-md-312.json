@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/balls-example",
+  "permalink": "/wljs-docs/blog/balls-example",
   "source": "@site/blog/2023-07-13-balls/index.md",
   "title": "Interactive graphics example",
   "description": "Here we will try to recreate a simple example of the interactive plot, where bouncing dots are created using mouse clicks on an empty canvas.",
@@ -8,11 +8,11 @@
   "tags": [
     {
       "label": "frontend",
-      "permalink": "/blog/tags/frontend"
+      "permalink": "/wljs-docs/blog/tags/frontend"
     },
     {
       "label": "dynamics",
-      "permalink": "/blog/tags/dynamics"
+      "permalink": "/wljs-docs/blog/tags/dynamics"
     }
   ],
   "readingTime": 2.195,
@@ -39,10 +39,10 @@
   "unlisted": false,
   "prevItem": {
     "title": "Interactive curves fitting example",
-    "permalink": "/blog/curvesfit-example"
+    "permalink": "/wljs-docs/blog/curvesfit-example"
   },
   "nextItem": {
     "title": "Introducing Events shortcuts",
-    "permalink": "/blog/event-shortcuts"
+    "permalink": "/wljs-docs/blog/event-shortcuts"
   }
 }

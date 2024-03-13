@@ -1,0 +1,31 @@
+{
+  "id": "frontend/Reference/Input/InputFile",
+  "title": "InputFile",
+  "description": "outputs as a drag & drop file-form used to handle file input",
+  "source": "@site/docs/frontend/Reference/Input/InputFile.md",
+  "sourceDirName": "frontend/Reference/Input",
+  "slug": "/frontend/Reference/Input/InputFile",
+  "permalink": "/wljs-docs/frontend/Reference/Input/InputFile",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "env": [
+      "Wolfram Kernel"
+    ],
+    "origin": "https://github.com/JerryI/wljs-inputs",
+    "update": false
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "InputButton",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputButton"
+  },
+  "next": {
+    "title": "InputGroup",
+    "permalink": "/wljs-docs/frontend/Reference/Input/InputGroup"
+  }
+}
