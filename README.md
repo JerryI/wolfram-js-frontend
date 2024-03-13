@@ -1,16 +1,16 @@
-# Freeware Wolfram Language Notebook
+# Open-source Notebook interface for Wolfram Language
 
-![demo2](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/374982a5-f127-4fcd-89de-cb285cfb313b)
+![alt text](imgs/Isingspins-ezgif.com-optipng.png)
 
-*written for the freeware Wolfram Engine using webstack with vanilla Javascript*
+*written for the freeware Wolfram Engine using Javascript and [WLX](https://jerryi.github.io/wlx-docs/)*
 
 __[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__
 
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
-**Recommended Wolfram Engine: 13.0.1**
+**Recommended Wolfram Engine: 13.0.1 or higher**
 
-__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP Server developer)__
+__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP Stack developer)__
 
 To help maintain this project
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)

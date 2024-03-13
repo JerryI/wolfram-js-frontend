@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "White Russians",
@@ -14,7 +14,8 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
-    "dist": "electron-builder --x64",
+    "dist": "electron-builder",
+    "dist86": "electron-builder --x64",
     "dist-all": "electron-builder -mwl --x64",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
