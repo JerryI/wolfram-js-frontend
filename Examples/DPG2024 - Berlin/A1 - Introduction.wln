@@ -1,0 +1,740 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$107], 
+   "Objects" -> <|"0abffd63-2484-4b4f-b2e2-f0e9e52c0377" -> 
+      <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
+                Opacity[1], AbsoluteThickness[1.6], RGBColor[Rational[1, 2], 
+                 Rational[1, 2], 1]], Line[{{2.040816326530612*^-8, 
+                  2.040816326530612*^-8}, {0.00030671792055962676, 
+                  0.00030671792055962676}, {0.0006134154329559882, 
+                  0.0006134154329559882}, {0.0012268104577487112, 
+                  0.0012268104577487112}, {0.002453600507334157, 
+                  0.002453600507334157}, {0.004907180606505049, 
+                  0.004907180606505049}, {0.009814340804846833, 
+                  0.009814340804846833}, {0.0196286612015304, 
+                  0.0196286612015304}, {0.040908357085458646, 
+                  0.040908357085458646}, {0.06077788357015209, 
+                  0.06077788357015209}, {0.08025764881887605, 
+                  0.08025764881887605}, {0.10138846915816112, 
+                  0.10138846915816112}, {0.12110912009821138, 
+                  0.12110912009821138}, {0.1424808261288228, 
+                  0.1424808261288228}, {0.16346277092346467, 
+                  0.16346277092346467}, {0.18303454631887175, 
+                  0.18303454631887175}, {0.20425737680483996, 
+                  0.20425737680483996}, {0.22407003789157337, 
+                  0.22407003789157337}, {0.24349293774233727, 
+                  0.24349293774233727}, {0.26456689268366235, 
+                  0.26456689268366235}, {0.2842306782257526, 
+                  0.2842306782257526}, {0.305545518858404, 
+                  0.305545518858404}, {0.32647059825508584, 
+                  0.32647059825508584}, {0.34598550825253294, 
+                  0.34598550825253294}, {0.3671514733405411, 
+                  0.3671514733405411}, {0.3869072690293145, 
+                  0.3869072690293145}, {0.408314119808649, 
+                  0.408314119808649}, {0.429331209352014, 0.429331209352014}, 
+                 {0.44893812949614426, 0.44893812949614426}, 
+                 {0.47019610473083556, 0.47019610473083556}, 
+                 {0.4900439105662921, 0.4900439105662921}, 
+                 {0.5095019551657791, 0.5095019551657791}, 
+                 {0.5306110548558273, 0.5306110548558273}, 
+                 {0.5503099851466406, 0.5503099851466406}, 
+                 {0.5716599705280151, 0.5716599705280151}, 
+                 {0.5926201946734201, 0.5926201946734201}, 
+                 {0.6121702494195903, 0.6121702494195903}, 
+                 {0.6333713592563216, 0.6333713592563216}, 
+                 {0.6531622996938181, 0.6531622996938181}, 
+                 {0.6725634788953451, 0.6725634788953451}, 
+                 {0.6936157131874332, 0.6936157131874332}, 
+                 {0.7132577780802865, 0.7132577780802865}, 
+                 {0.7345508980637009, 0.7345508980637009}, 
+                 {0.7544338486478805, 0.7544338486478805}, 
+                 {0.7739270379960906, 0.7739270379960906}, 
+                 {0.7950712824348619, 0.7950712824348619}, 
+                 {0.8148053574743983, 0.8148053574743983}, 
+                 {0.8361904876044959, 0.8361904876044959}, 
+                 {0.857185856498624, 0.857185856498624}, {0.8767710559935172, 
+                  0.8767710559935172}, {0.8980073105789717, 
+                  0.8980073105789717}, {0.9178333957651912, 
+                  0.9178333957651912}, {0.9372697197154413, 
+                  0.9372697197154413}, {0.9583570987562524, 
+                  0.9583570987562524}, {0.9780343083978288, 
+                  0.9780343083978288}, {0.9783775220102351, 
+                  0.9783775220102351}, {0.9787207356226415, 
+                  0.9787207356226415}, {0.9794071628474543, 
+                  0.9794071628474543}, {0.9807800172970798, 
+                  0.9807800172970798}, {0.9835257261963308, 
+                  0.9835257261963308}, {0.9890171439948328, 
+                  0.9890171439948328}, {0.9893603576072392, 
+                  0.9893603576072392}, {0.9897035712196455, 
+                  0.9897035712196455}, {0.9903899984444582, 
+                  0.9903899984444582}, {0.9917628528940837, 
+                  0.9917628528940837}, {0.9945085617933347, 
+                  0.9945085617933347}, {0.9948517754057411, 
+                  0.9948517754057411}, {0.9951949890181475, 
+                  0.9951949890181475}, {0.9958814162429602, 
+                  0.9958814162429602}, {0.9972542706925858, 
+                  0.9972542706925858}, {0.9975974843049922, 
+                  0.9975974843049922}, {0.9979406979173985, 
+                  0.9979406979173985}, {0.9986271251422112, 
+                  0.9986271251422112}, {0.9989703387546176, 
+                  0.9989703387546176}, {0.999313552367024, 
+                  0.999313552367024}, {0.9996567659794304, 
+                  0.9996567659794304}, {0.9999999795918367, 
+                  0.9999999795918367}}]}, "Charting`Private`Tag$142192#1"]}}, 
+           {}}, {DisplayFunction -> Identity, Ticks -> {Automatic, 
+             Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> 
+            {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, DisplayFunction -> Identity, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, 
+           ImagePadding -> All, DisplayFunction -> Identity, 
+           AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, 
+           AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, 
+           DisplayFunction :> Identity, Frame -> {{False, False}, 
+             {False, False}}, FrameLabel -> {{None, None}, {None, None}}, 
+           FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, GridLinesStyle -> 
+            Directive[GrayLevel[0.5, 0.4]], Method -> 
+            {"DefaultBoundaryStyle" -> Automatic, 
+             "DefaultGraphicsInteraction" -> {"Version" -> 1.2, 
+               "TrackMousePosition" -> {True, False}, "Effects" -> 
+                {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> 
+                  {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> 
+                    True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+             "DefaultMeshStyle" -> AbsolutePointSize[6], 
+             "ScalingFunctions" -> None, "CoordinatesToolOptions" -> 
+              {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], 
+                  (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> 
+                ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[
+                   #1[[2]]]} & )}}, PlotRange -> {{0, 1}, 
+             {0, 0.9999999795918367}}, PlotRangeClipping -> True, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
+             Automatic}}]]|>, "e630c1ab-22ee-4894-bd4e-df01145b168a" -> 
+      <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
+                Opacity[1], AbsoluteThickness[1.6], RGBColor[1, 0, 0]], Line[
+                {{2.040816326530612*^-8, 2.040816326530612*^-8}, 
+                 {0.00030671792055962676, 0.00030671792055962676}, 
+                 {0.0006134154329559882, 0.0006134154329559882}, 
+                 {0.0012268104577487112, 0.0012268104577487112}, 
+                 {0.002453600507334157, 0.002453600507334157}, 
+                 {0.004907180606505049, 0.004907180606505049}, 
+                 {0.009814340804846833, 0.009814340804846833}, 
+                 {0.0196286612015304, 0.0196286612015304}, 
+                 {0.040908357085458646, 0.040908357085458646}, 
+                 {0.06077788357015209, 0.06077788357015209}, 
+                 {0.08025764881887605, 0.08025764881887605}, 
+                 {0.10138846915816112, 0.10138846915816112}, 
+                 {0.12110912009821138, 0.12110912009821138}, 
+                 {0.1424808261288228, 0.1424808261288228}, 
+                 {0.16346277092346467, 0.16346277092346467}, 
+                 {0.18303454631887175, 0.18303454631887175}, 
+                 {0.20425737680483996, 0.20425737680483996}, 
+                 {0.22407003789157337, 0.22407003789157337}, 
+                 {0.24349293774233727, 0.24349293774233727}, 
+                 {0.26456689268366235, 0.26456689268366235}, 
+                 {0.2842306782257526, 0.2842306782257526}, 
+                 {0.305545518858404, 0.305545518858404}, 
+                 {0.32647059825508584, 0.32647059825508584}, 
+                 {0.34598550825253294, 0.34598550825253294}, 
+                 {0.3671514733405411, 0.3671514733405411}, 
+                 {0.3869072690293145, 0.3869072690293145}, 
+                 {0.408314119808649, 0.408314119808649}, {0.429331209352014, 
+                  0.429331209352014}, {0.44893812949614426, 
+                  0.44893812949614426}, {0.47019610473083556, 
+                  0.47019610473083556}, {0.4900439105662921, 
+                  0.4900439105662921}, {0.5095019551657791, 
+                  0.5095019551657791}, {0.5306110548558273, 
+                  0.5306110548558273}, {0.5503099851466406, 
+                  0.5503099851466406}, {0.5716599705280151, 
+                  0.5716599705280151}, {0.5926201946734201, 
+                  0.5926201946734201}, {0.6121702494195903, 
+                  0.6121702494195903}, {0.6333713592563216, 
+                  0.6333713592563216}, {0.6531622996938181, 
+                  0.6531622996938181}, {0.6725634788953451, 
+                  0.6725634788953451}, {0.6936157131874332, 
+                  0.6936157131874332}, {0.7132577780802865, 
+                  0.7132577780802865}, {0.7345508980637009, 
+                  0.7345508980637009}, {0.7544338486478805, 
+                  0.7544338486478805}, {0.7739270379960906, 
+                  0.7739270379960906}, {0.7950712824348619, 
+                  0.7950712824348619}, {0.8148053574743983, 
+                  0.8148053574743983}, {0.8361904876044959, 
+                  0.8361904876044959}, {0.857185856498624, 
+                  0.857185856498624}, {0.8767710559935172, 
+                  0.8767710559935172}, {0.8980073105789717, 
+                  0.8980073105789717}, {0.9178333957651912, 
+                  0.9178333957651912}, {0.9372697197154413, 
+                  0.9372697197154413}, {0.9583570987562524, 
+                  0.9583570987562524}, {0.9780343083978288, 
+                  0.9780343083978288}, {0.9783775220102351, 
+                  0.9783775220102351}, {0.9787207356226415, 
+                  0.9787207356226415}, {0.9794071628474543, 
+                  0.9794071628474543}, {0.9807800172970798, 
+                  0.9807800172970798}, {0.9835257261963308, 
+                  0.9835257261963308}, {0.9890171439948328, 
+                  0.9890171439948328}, {0.9893603576072392, 
+                  0.9893603576072392}, {0.9897035712196455, 
+                  0.9897035712196455}, {0.9903899984444582, 
+                  0.9903899984444582}, {0.9917628528940837, 
+                  0.9917628528940837}, {0.9945085617933347, 
+                  0.9945085617933347}, {0.9948517754057411, 
+                  0.9948517754057411}, {0.9951949890181475, 
+                  0.9951949890181475}, {0.9958814162429602, 
+                  0.9958814162429602}, {0.9972542706925858, 
+                  0.9972542706925858}, {0.9975974843049922, 
+                  0.9975974843049922}, {0.9979406979173985, 
+                  0.9979406979173985}, {0.9986271251422112, 
+                  0.9986271251422112}, {0.9989703387546176, 
+                  0.9989703387546176}, {0.999313552367024, 
+                  0.999313552367024}, {0.9996567659794304, 
+                  0.9996567659794304}, {0.9999999795918367, 
+                  0.9999999795918367}}]}, "Charting`Private`Tag$142192#1"]}}, 
+           {}}, {DisplayFunction -> Identity, Ticks -> {Automatic, 
+             Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> 
+            {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, DisplayFunction -> Identity, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, 
+           ImagePadding -> All, DisplayFunction -> Identity, 
+           AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, 
+           AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, 
+           DisplayFunction :> Identity, Frame -> {{False, False}, 
+             {False, False}}, FrameLabel -> {{None, None}, {None, None}}, 
+           FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, GridLinesStyle -> 
+            Directive[GrayLevel[0.5, 0.4]], Method -> 
+            {"DefaultBoundaryStyle" -> Automatic, 
+             "DefaultGraphicsInteraction" -> {"Version" -> 1.2, 
+               "TrackMousePosition" -> {True, False}, "Effects" -> 
+                {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> 
+                  {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> 
+                    True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+             "DefaultMeshStyle" -> AbsolutePointSize[6], 
+             "ScalingFunctions" -> None, "CoordinatesToolOptions" -> 
+              {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], 
+                  (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> 
+                ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[
+                   #1[[2]]]} & )}}, PlotRange -> {{0, 1}, 
+             {0, 0.9999999795918367}}, PlotRangeClipping -> True, 
+           PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
+             Automatic}}]]|>, "3a8e7b43-b8da-4fd7-8029-9fce36edb5d3" -> 
+      <|"Public" -> Hold[Graphics3D[Sphere[{0, 0, 0}]]]|>, 
+     "167ffe0f-6f06-4ba9-ae2c-98abf947a7cc" -> 
+      <|"Public" -> Hold[Graphics3D[Cuboid[{0, 0, 0}]]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/DPG2024 - \
+Berlin/A1 - Introduction.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Notebook interface\nAn overview of an multipurpose editor", 
+    "Display" -> "codemirror", "Hash" -> 
+     "816824ed-7bf3-45cb-8d92-7a926b5b1ae4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "# Notebook interface\nAn overview of an multipurpose editor", 
+    "Display" -> "markdown", "Hash" -> 
+     "d44eb17c-64a0-471c-87f9-fdf23b7da4cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> ".md\n---", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9039b881-6443-4f69-bfaf-49cac54f3907", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "---", "Display" -> "markdown", 
+    "Hash" -> "b88f07db-ace9-4df5-8e5e-e461e8688472", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n\n![](Interface-1.png)\n", "Display" -> "codemirror", 
+    "Hash" -> "5103d47c-b878-4abc-a71f-551e8a2ed716", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "\n\n![](Interface-1.png)\n", "Display" -> "markdown", 
+    "Hash" -> "c829385e-afd7-4756-9268-acf86ce2ef75", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nBy the default any text in a new cell is considered to \
+be Wolfram Language", "Display" -> "codemirror", 
+    "Hash" -> "7955925c-1069-4fb7-a2a2-d0b40febbdf7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "By the default any text in a new cell is considered to be \
+Wolfram Language", "Display" -> "markdown", 
+    "Hash" -> "cc4b63de-2cf2-442f-b5af-60d1be591106", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "71775fb5-9213-47ce-a043-0e3bdfc1bd07", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "2", "Display" -> "codemirror", 
+    "Hash" -> "bd8bd029-6583-42c0-a08b-fe256de8a33b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> 
+     ".md\n__To evaluate an expression__ press play icon or `Shift+Enter`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8a6470a5-5072-41a3-b111-54b6515974e7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> 
+     "__To evaluate an expression__ press play icon or `Shift+Enter`", 
+    "Display" -> "markdown", "Hash" -> 
+     "623edce8-a94f-4eb5-bbdc-89ce5aadce09", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n*One can also hide any input cell by clicking on a ^ \
+mark on the left side*", "Display" -> "codemirror", 
+    "Hash" -> "b5a1c551-9174-4e3c-8799-78b10b041660", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "*One can also hide any input cell by clicking on a ^ mark on \
+the left side*", "Display" -> "markdown", 
+    "Hash" -> "18760894-e0e1-4dfa-a6e4-031fded20642", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n### Text cells\nFor typing regular text, embedding \
+pictures, making description we use Markdown language.\n\nTo make markdown \
+cell type __in the first line of a new cell__ `.md`, if it was an anonymous \
+file", "Display" -> "codemirror", "Hash" -> 
+     "40c03737-5cbb-43c7-a168-404b40492c81", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "### Text cells\nFor typing regular text, embedding pictures, \
+making description we use Markdown language.\n\nTo make markdown cell type \
+__in the first line of a new cell__ `.md`, if it was an anonymous file", 
+    "Display" -> "markdown", "Hash" -> 
+     "783fdfeb-6897-4ea0-a4d8-a0f870be1fc1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n\n# Heading 1\n## Heading 2\n\nHere is a regular \
+paragraph, which can __be styled__ in a *different way*. Then press \
+`Shift+Enter` to make an output cell.\n\nYou can also hide an input cell \
+automatically by a shortcut `Win/Cmd + 2`\n\n$\\\\LaTeX$ is also \
+supported\n\nAs well as regular HTML <span \
+style=\"color:red\">language</span>", "Display" -> "codemirror", 
+    "Hash" -> "d8c647d2-6e3f-4db2-a21d-4293d9bce2e4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "\n# Heading 1\n## Heading 2\n\nHere is a regular paragraph, \
+which can __be styled__ in a *different way*. Then press `Shift+Enter` to \
+make an output cell.\n\nYou can also hide an input cell automatically by a \
+shortcut `Win/Cmd + 2`\n\n$\\\\LaTeX$ is also supported\n\nAs well as regular \
+HTML <span style=\"color:red\">language</span>", "Display" -> "markdown", 
+    "Hash" -> "5839e95a-2135-4491-97cc-1be2e5db9360", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "de0711e2-9a9b-449b-bb92-d5da38959fc2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nTo embed a picture \
+type\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_was\
+_here_%28re-drawn%29.gif)", "Display" -> "codemirror", 
+    "Hash" -> "d3dc1f89-1092-4c4f-a19b-395bf9ef6ccc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "To embed a picture \
+type\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_was\
+_here_%28re-drawn%29.gif)", "Display" -> "markdown", 
+    "Hash" -> "b26dc611-c9b3-431b-bf84-671f6353c662", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "30dc6b3b-320c-4911-a872-e8c7fd343f2d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> 
+     ".md\nThere are many more cell types are available. For example", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7ec7a26b-5f21-4353-8247-b6cb6576abe4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "There are many more cell types are available. For example", 
+    "Display" -> "markdown", "Hash" -> 
+     "a828a401-0c7a-4302-a548-26b4d85886d6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n### Javascript", "Display" -> "codemirror", 
+    "Hash" -> "3bae9880-8ee5-4961-8765-1933943215b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> "### Javascript", 
+    "Display" -> "markdown", "Hash" -> 
+     "07e2b4b0-0e25-484d-97bd-f682b672cc29", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".js\n\nreturn 1+1;", "Display" -> "codemirror", 
+    "Hash" -> "be8494ac-03c4-4110-ace8-f3fa8c6c5b9c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> "\nreturn 1+1;", 
+    "Display" -> "js", "Hash" -> "26a3eb3c-fb75-4e72-926f-763924cb1c2f", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n### Mermaid", "Display" -> "codemirror", 
+    "Hash" -> "4bb42c4b-247b-4021-8e8f-9f4df05de096", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> "### Mermaid", 
+    "Display" -> "markdown", "Hash" -> 
+     "c6350990-9587-4497-be53-4d9d1d5ad5cc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".mermaid\n\ngraph LR\n    A[Square Rect] -- Link text --> \
+B((Circle))\n    A --> C(Round Rect)\n    B --> D{Rhombus}\n    C --> D", 
+    "Display" -> "codemirror", "Hash" -> 
+     "74a99c2d-133d-449c-a097-c3d239dc2e51", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "\ngraph LR\n    A[Square Rect] -- Link text --> B((Circle))\n \
+   A --> C(Round Rect)\n    B --> D{Rhombus}\n    C --> D", 
+    "Display" -> "mermaid", "Hash" -> "1205db11-c5d4-41b2-a2c2-73bfa3365e94", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n***and many more!***", "Display" -> "codemirror", 
+    "Hash" -> "3c2f6ec6-87d4-4845-a5ec-ea95dde9eef9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "***and many more!***", "Display" -> "markdown", 
+    "Hash" -> "c809eeaa-0ea7-418f-a71b-052b351a970e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "03201d81-97b9-4db6-acb4-b1197ad57696", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> ".md\n---", 
+    "Display" -> "codemirror", "Hash" -> 
+     "375d2503-d474-4ea3-a802-6db1fecec545", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "---", "Display" -> "markdown", 
+    "Hash" -> "bc192f06-d77d-4a7e-b286-2763ce92c23e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n# Wolfram Language\nA symbolic programming language", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c3b6c4c0-ea8a-478d-9164-9f69ff4bdba5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "# Wolfram Language\nA symbolic programming language", 
+    "Display" -> "markdown", "Hash" -> 
+     "e745ed3b-156c-4413-af92-4a2b0f32fd50", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nThere are a few key-features compared to other \
+languages\n\n- Data and code are indistinguishable.\n- It employs a pattern \
+matching approach.\n- It features a versatile standard library, friendly for \
+mathematicians and physicists.\n- It boasts a comprehensive standard library \
+for visualizing data.\n- Provides powerful syntax sugar", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7b6bbdcf-bef2-4044-ad74-e70559be7c25", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "There are a few key-features compared to other languages\n\n- \
+Data and code are indistinguishable.\n- It employs a pattern matching \
+approach.\n- It features a versatile standard library, friendly for \
+mathematicians and physicists.\n- It boasts a comprehensive standard library \
+for visualizing data.\n- Provides powerful syntax sugar", 
+    "Display" -> "markdown", "Hash" -> 
+     "35013bca-9fda-41ae-93ff-a95b21a5895c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n*Output cells are editable, you can evaluate it as \
+well*", "Display" -> "codemirror", "Hash" -> 
+     "59abe1b5-87bb-4491-bbec-74e73cee19ae", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "*Output cells are editable, you can evaluate it as well*", 
+    "Display" -> "markdown", "Hash" -> 
+     "c61e8815-94ac-4f17-b0a4-2b9103235f10", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{1,1,2,2,2,2} /. {2 -> 1, 1 -> 0}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1427cbc0-1d80-499f-9cc8-1bfe8e7a7cc8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> "{0,0,1,1,1,1}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5050cd0d-3a20-439c-9b62-6f81d79899f2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nrules are one of the most powerful features, i.e.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "57d69013-dc40-40e3-b94f-b1bcd1d781a8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "rules are one of the most powerful features, i.e.", 
+    "Display" -> "markdown", "Hash" -> 
+     "e6aa8d22-53a4-4294-bd98-7884b13cea73", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{0,0,1,1,1,1} /. {any_Integer :> any / 2}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7c3ed47d-380c-4219-a9a4-e878cc2db133", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{0,0,(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)\
+(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
+*)}", "Display" -> "codemirror", "Hash" -> 
+     "78b73284-cddc-4b20-9144-18708c8bf81d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nAnd __everything is a Symbol (or expression)__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4269c40f-9ada-4b4f-b555-aadddd45890b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "And __everything is a Symbol (or expression)__", 
+    "Display" -> "markdown", "Hash" -> 
+     "3ef1ff65-2c3c-47c7-acc5-23e36258c755", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{0,0,(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)\
+(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
+*)} /. {any_?NumericQ :> {RGBColor[any, 1-any, 1], any} }", 
+    "Display" -> "codemirror", "Hash" -> 
+     "93dba434-2f34-4539-92a0-debc27513aa0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{{(*VB[*)(RGBColor[0, 1, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*),0},{(*VB[*)(RGBColor[0, 1, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*),0},{(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)},{\
+(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)},{\
+(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)},{\
+(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)}}"\
+, "Display" -> "codemirror", "Hash" -> 
+     "35032672-d026-4ccd-9bc7-7bbe854658c8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nor may be you prefer tables", "Display" -> "codemirror", 
+    "Hash" -> "8254d74c-3f34-41f4-ab72-fd19802ec218", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "or may be you prefer tables", "Display" -> "markdown", 
+    "Hash" -> "02c0c19f-fd78-44cd-8b7f-5b154cf1031e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "% // Transpose // TableForm ", "Display" -> "codemirror", 
+    "Hash" -> "d72c756f-f1f6-4adb-86e4-58f7167bb22b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "(*GB[*){{(*VB[*)(RGBColor[0, 1, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0, 1, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|\
+*)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
+*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,\
+*)(2))(*]FB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "e29e8924-e831-401f-ba64-5892789741e7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nOr something more complicated", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5ece584e-3239-42fe-9b80-55891486de33", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "Or something more complicated", "Display" -> "markdown", 
+    "Hash" -> "45d5090c-8f5a-429c-8a93-5cda9421d91a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> 
+     "Table[If[PrimeQ[i], Framed[i, Background->Yellow], i], {i, 1, 20}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "bafec49e-cfef-4285-a417-5aee2f0851ab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "{1,(*BB[*)(2)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArS\
+sxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/n\
+meeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),(*BB[*)(3)(*,*)(*\"1:eJxTTMoPSmNkYGAoZg\
+ESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRA\
+CiBnQdPMAGcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),4,(*BB[*)(5)(*,*)(*\
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8l\
+DRmmPIgdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*\
+),6,(*BB[*)(7)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INK\
+c1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/nmeeQWlJcWsIJsSc\
+4pTAcQ1Hcg=\"*)(*]BB*),8,9,10,(*BB[*)(11)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5K\
+WlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdP\
+MAGcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),12,(*BB[*)(13)(*,*)(*\"1:eJ\
+xTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPI\
+gdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),14,1\
+5,16,(*BB[*)(17)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArSsxNdcqvgIiA5I\
+NKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/nmeeQWlJcWsIJs\
+Sc4pTAcQ1Hcg=\"*)(*]BB*),18,(*BB[*)(19)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWl\
+MIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMA\
+GcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),20}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5db5797e-1d35-4bea-b7eb-b9540b19f716", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> ".md\n---", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2f61d364-347f-4971-945e-f70e517944cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "---", "Display" -> "markdown", 
+    "Hash" -> "3c9f1223-a5ba-4ded-818f-89fb9a35ffbb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\nThe same counts for Graphics", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f3810746-d9cd-4f1e-a183-5c5ce5587792", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "The same counts for Graphics", "Display" -> "markdown", 
+    "Hash" -> "1cfec9c9-5b17-4c12-aca8-45024e62bbc1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "Plot[x, {x,0,1}, PlotStyle -> (*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)]", "Display" -> "codemirror", 
+    "Hash" -> "bdbb455a-433f-41aa-8f6a-e121e85cb489", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"0abffd63-2484-4b4f-b2e2-f0e9e52c0377\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGyQmp\
+aWlmBnrGplYmOiaJJmk6SYZpRrpphmkWqaaGiUbGJubAwCNohXQ\"*)(*]VB*) /. \
+{(*VB[*)(RGBColor[1/2, 1/2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*) -> Red}", "Display" -> "codemirror", 
+    "Hash" -> "15981595-e8fe-47dd-95fe-a13cb495af6f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"e630c1ab-22ee-4894-bd4e-df01145b168a\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5oZG\
+yQbJibpGhmlpuqaWFia6CalmKTqpqQZGBqamCYZmlkkAgCJYBXF\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b16aec1c-5581-48f6-9cb2-0e94c5db8e3f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> ".md\n*This is not a picture, this is a set of Wolfram \
+Expressions covered with a decoration. Underneath there is still a working \
+code*", "Display" -> "codemirror", "Hash" -> 
+     "ab631776-8882-4a94-b714-3caf374b759b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "*This is not a picture, this is a set of Wolfram Expressions \
+covered with a decoration. Underneath there is still a working code*", 
+    "Display" -> "markdown", "Hash" -> 
+     "cc645a21-6f7a-42e0-a465-ac1db07c5b8f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "1118f859-b33f-4c86-bc99-87f400601e9b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> ".md\nOr may be", 
+    "Display" -> "codemirror", "Hash" -> 
+     "471bebf0-eda2-471d-a883-8bb9b915d3a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, <|"Data" -> "Or may be", 
+    "Display" -> "markdown", "Hash" -> 
+     "014867c6-f1d3-46ee-a0b6-a263b874733f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "Graphics3D[Sphere[]]", "Display" -> "codemirror", 
+    "Hash" -> "8161536e-74fb-45a6-8cf6-e8666ef839ad", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"3a8e7b43-b8da-4fd7-8029-9fce36edb5d3\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGydap\
+JonmRjrJlmkJOqapKWY61oYGFnqWqYlpxqbpaYkmaYYAwCNjRZC\"*)(*]VB*)/. {Sphere -> \
+Cuboid}", "Display" -> "codemirror", 
+    "Hash" -> "dcec12bf-fcbc-422f-bef7-0b3255603ca0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"167ffe0f-6f06-4ba9-ae2c-98abf947a7cc\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5qZp\
+6WlGqTpmqUZmOmaJCVa6iamGiXrWlokJqVZmpgnmicnAwCPcxZx\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "af1ce34e-51e2-4a11-ab51-a901e211d9b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "576009a0-0852-47b1-84a0-9139be2a4c06"|>}, "serializer" -> "jsfn4"|>
