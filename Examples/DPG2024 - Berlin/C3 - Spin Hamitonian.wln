@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$296], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$659], 
    "Objects" -> <|"5b08782b-740e-43ff-be21-295c1bf94885" -> 
       <|"Public" -> Hold[Graphics[{{}, {{{}, {}, {Hue[0.67, 0.6, 0.6], 
               Directive[PointSize[Rational[1, 72]], RGBColor[0.368417, 
@@ -738,7 +738,7 @@
              {-1.998191187950136, 1.998127946874572}}, PlotRangeClipping -> 
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.05], Scaled[0.05]}}, Ticks -> {Automatic, 
-             Automatic}}]]|>, "12e27dd2-d2ac-4119-9827-c284f899e1d4" -> 
+             Automatic}}]]|>, "479678d6-9200-4a82-8697-2c35e766c3b7" -> 
       <|"Public" -> Hold[Graphics[{{}, {{{}, {}, {Hue[0.67, 0.6, 0.6], 
               Directive[PointSize[Rational[1, 60]], RGBColor[0.368417, 
                 0.506779, 0.709798], AbsoluteThickness[1.6]], 
@@ -854,38 +854,37 @@
              {-2.6924879369750285, 2.6890401872392236}}, PlotRangeClipping -> 
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.05], Scaled[0.05]}}, Ticks -> {Automatic, 
-             Automatic}}]]|>|>, "Path" -> "/users/kirill/Library/CloudStorage\
-/OneDrive-Personal/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\
-\:041a\:043e\:043d\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/Sp\
-in Hamitonian.wln"|>, "Cells" -> 
+             Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
+ontend-dev/Examples/DPG2024 - Berlin/C3 - Spin Hamitonian.wln"|>, 
+ "Cells" -> 
   {<|"Data" -> 
      ".md\n## Quantuum mechanics\nLet us have a look at some simple examples"\
 , "Display" -> "codemirror", "Hash" -> 
-     "2e532cd8-ef5e-4ab4-b70e-2e5dd679a9b9", "Invisible" -> False, 
+     "e31a4f6a-e90d-4414-9fa1-a109d3f4dbac", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> 
      "## Quantuum mechanics\nLet us have a look at some simple examples", 
     "Display" -> "markdown", "Hash" -> 
-     "029c76c2-c767-4f15-acc6-87729f3f54a7", "Invisible" -> False, 
+     "12a0e33f-df3e-4bec-b318-f6d2aaeff242", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n**Note** you can skip all steps by __evaluating \
 initialization cells__ from the menu and then clicking to this button. You \
 will be navigated to a real-time modelling code", "Display" -> "codemirror", 
-    "Hash" -> "6e30aca4-7f01-4c34-81e8-1ca80866a101", "Invisible" -> False, 
+    "Hash" -> "eced9beb-acd5-4c02-a82c-24aaa6b3fcf9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "**Note** you can skip all steps by __evaluating \
 initialization cells__ from the menu and then clicking to this button. You \
 will be navigated to a real-time modelling code", "Display" -> "markdown", 
-    "Hash" -> "513ffda3-9f1f-4f38-b569-629fdf82c4d5", "Invisible" -> False, 
+    "Hash" -> "25ef36a8-b6ca-4fb7-bcd4-0bba0d164511", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".js\n\nconst button = \
 document.createElement('button');\nbutton.innerText = \
 \"Navigate\";\nbutton.classList.add('rounded', 'bg-teal-400', 'px-2', 'py-1', \
@@ -896,10 +895,10 @@ document.createElement('button');\nbutton.innerText = \
 => {\n  \
 document.getElementById('realtimeStuff').scrollIntoView();\n})\n\nreturn \
 button;", "Display" -> "codemirror", 
-    "Hash" -> "51f62634-c2b2-442e-9521-3fd73f058993", "Invisible" -> False, 
+    "Hash" -> "7b5ff847-bb69-4e1a-8ea8-7cb31d945f62", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "\nconst button = \
 document.createElement('button');\nbutton.innerText = \
 \"Navigate\";\nbutton.classList.add('rounded', 'bg-teal-400', 'px-2', 'py-1', \
@@ -910,66 +909,66 @@ document.createElement('button');\nbutton.innerText = \
 => {\n  \
 document.getElementById('realtimeStuff').scrollIntoView();\n})\n\nreturn \
 button;", "Display" -> "js", "Hash" -> 
-     "db8842ec-3c94-4e8c-95d8-c8cf56d09e97", "Invisible" -> False, 
+     "9fd4466b-c105-43e4-915e-bc533c4a7405", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, <|"Data" -> ".md\n---", 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "c79e19d8-a085-4123-b02e-9fede225201f", "Invisible" -> False, 
+     "f2485aac-dedf-4e5d-8f2d-0c5943efb8e9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "6446af13-3525-4cf4-9116-c397179f3e6b", "Invisible" -> False, 
+    "Hash" -> "f8823c24-54f9-47d7-8706-fa8e6a2c0c02", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, <|"Data" -> "Ket[1/2]", 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, <|"Data" -> "Ket[1/2]", 
     "Display" -> "codemirror", "Hash" -> 
-     "c8692acb-42c4-46ca-b01e-04f6d1d7e875", "Invisible" -> False, 
+     "b170354e-9a51-4e59-bc84-fab9d1204566", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(*BB[*)(Ket[(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)])(*,*)(*\"1:eJx\
 TTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8IohKFiARVJqTGgxieKQm\
 pgQzQ9QBABLAE1g=\"*)(*]BB*)", "Display" -> "codemirror", 
-    "Hash" -> "4e07d4ec-9afd-4487-8e37-9220936bb24f", "Invisible" -> False, 
+    "Hash" -> "49a7b630-027a-459a-a018-a64968d1408d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nLanguage provides features to visualize the \
 expressions.\n\nLet's work with wavefunction in the basis of $S=2$ and a \
 doubly-degenerated orbital state $\\\\hat{L}=1/2$", 
     "Display" -> "codemirror", "Hash" -> 
-     "9f46c8eb-5aa0-4ba7-9cad-94e64f61fa01", "Invisible" -> False, 
+     "46c0e677-e332-46c5-a477-91d101791973", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Language provides features to visualize the \
 expressions.\n\nLet's work with wavefunction in the basis of $S=2$ and a \
 doubly-degenerated orbital state $\\\\hat{L}=1/2$", "Display" -> "markdown", 
-    "Hash" -> "aebd1da4-f417-4622-9cea-46403ada6afc", "Invisible" -> False, 
+    "Hash" -> "83028fec-8b53-4fcb-8048-10267de71e2d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(*BB[*)(Ket[Ms, \
 Ml])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8Io\
 hKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*)", "Display" -> "codemirror", 
-    "Hash" -> "be5eb4dd-66fa-4b68-b831-fbae65a59dc2", "Invisible" -> False, 
+    "Hash" -> "35464088-507f-4e07-8dda-aba3257ddc23", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nDefine the ortogonality of our basis functions", 
     "Display" -> "codemirror", "Hash" -> 
-     "b831381d-bf2f-4d30-867e-f188eb45b07d", "Invisible" -> False, 
+     "e2884612-f19b-4b48-a643-192af33a3bd3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Define the ortogonality of our basis functions", 
     "Display" -> "markdown", "Hash" -> 
-     "a0cb2dfc-12eb-4bf6-b3c5-f54e3515980a", "Invisible" -> False, 
+     "814207e8-984b-43e8-942d-b0b3dea52b64", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Ket /: (*BB[*)(Bra[Ms1_, \
 Ml1_])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMaeiRJfU5PyixJL8\
 IohKFiARVJqTGgxieKQmpgQzQ9QBABBAEzo=\"*)(*]BB*).(*BB[*)(Ket[Ms2_, \
@@ -980,50 +979,50 @@ Ml2_])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8\
 IohKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*)] := (*BB[*)(Bra[Ms2, \
 Ml2])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMaeiRJfU5PyixJL8I\
 ohKFiARVJqTGgxieKQmpgQzQ9QBABBAEzo=\"*)(*]BB*)  ", "Display" -> "codemirror", 
-    "Hash" -> "d409dc28-a68b-4bae-a2f5-a12aaf989505", "Invisible" -> False, 
+    "Hash" -> "618caea3-0afa-449a-b9b6-49f56c1dd6b1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nLinear algebra rules must be defined as well", 
     "Display" -> "codemirror", "Hash" -> 
-     "c7cbddd0-6ac6-4021-a447-54ec9292570e", "Invisible" -> False, 
+     "159b5a7f-293b-4347-bf8f-033c56a395bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Linear algebra rules must be defined as well", 
     "Display" -> "markdown", "Hash" -> 
-     "54bef1de-1f09-4c03-bd4b-85a478b6c7c4", "Invisible" -> False, 
+     "ff5c87b8-9671-4600-acf1-51a43a64dcae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Unprotect[Dot];\nUnprotect[Conjugate];\n\nConjugate[a_ b_] := \
 Conjugate[a] Conjugate[b]\nConjugate[a_ + b_] := Conjugate[a] + \
 Conjugate[b]\nDot[a_, b_?NumericQ] := b a\nDot[b_?NumericQ, a_] := b \
 a\nDot[a_ + b_, c_] := a.c + b.c \nDot[c_, a_ + b_] := c.a + c.b  \nDot[a_, \
 b_?NumericQ c_] := b a.c\nDot[b_?NumericQ c_, a_] := b \
 c.a\n\nProtect[Dot];\nProtect[Conjugate];", "Display" -> "codemirror", 
-    "Hash" -> "b45ae8d8-375a-48ce-95ae-f50f02a78ebe", "Invisible" -> False, 
+    "Hash" -> "0fcaa4c9-afc6-4aa6-9e5e-a78e9035c7b2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n## Symbolic quantum operators\nA well known ladder-like \
 operators (see [more \
 here](https://easyspin.org/easyspin/documentation/spinoperators.html)) as \
 well as pauli-like operators $U_\\\\theta$, $U_\\\\varepsilon$ for an orbital \
 doublet", "Display" -> "codemirror", 
-    "Hash" -> "b5146cc8-1866-4222-a2e9-aac760b6ba7a", "Invisible" -> False, 
+    "Hash" -> "2c164cb4-a37a-4d3a-9009-b276653f8e93", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "## Symbolic quantum operators\nA well known ladder-like \
 operators (see [more \
 here](https://easyspin.org/easyspin/documentation/spinoperators.html)) as \
 well as pauli-like operators $U_\\\\theta$, $U_\\\\varepsilon$ for an orbital \
 doublet", "Display" -> "markdown", "Hash" -> 
-     "9d2adbc8-e689-4ad2-b24c-cdd6ff0670b3", "Invisible" -> False, 
+     "a3682f26-4893-47ae-b203-f9743afb910d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Ket /: Sp.(*BB[*)(Ket[Ms_, \
 Ml_])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8I\
 ohKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*) := (*SqB[*)Sqrt[2(2+1) - \
@@ -1059,88 +1058,88 @@ UEpfU5PyixJL8IohKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*).(*BB[*)(Bra[Ms, \
 KFiARVJqTGgxieKQmpgQzQ9QBABBAEzo=\"*)(*]BB*), {Ms,-2,2}];\n\nSx = \
 (*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)(Sp + Sm);\nSy =  (*FB[*)((1)(*,*)/(*,*)(2I \
 ))(*]FB*)(Sp - Sm); \n", "Display" -> "codemirror", 
-    "Hash" -> "8b73a3df-27ed-461a-9372-74d2a9513013", "Invisible" -> False, 
+    "Hash" -> "2fb47650-d98b-43be-8ae2-9de95c61bf04", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n### Testing", "Display" -> "codemirror", 
-    "Hash" -> "ee213e9d-99a2-46a0-9dc4-5c8d291f8473", "Invisible" -> False, 
+    "Hash" -> "3ce01f58-ec72-439e-83ea-97eccca21060", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, <|"Data" -> "### Testing", 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, <|"Data" -> "### Testing", 
     "Display" -> "markdown", "Hash" -> 
-     "dfbd04a0-8be7-46b1-be7b-2f619435c993", "Invisible" -> False, 
+     "a04629fb-f5d0-41ee-97f3-069137fa101c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\ncheck a single operator", "Display" -> "codemirror", 
-    "Hash" -> "b45f7426-5697-4c9b-82c4-9a9759e49f66", "Invisible" -> False, 
+    "Hash" -> "90db1d43-3c66-49bd-8422-47a1d7b36567", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "check a single operator", "Display" -> "markdown", 
-    "Hash" -> "24e2ec46-d908-4b81-b337-96927344d415", "Invisible" -> False, 
+    "Hash" -> "d5d8f450-d656-47b7-bac4-9b7ad6935200", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Sm.(*BB[*)(Ket[0,1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqS\
 n+BSWZ+XnFxTxAMe/UEpfU5PyixJL8IohKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*)\
 ", "Display" -> "codemirror", "Hash" -> 
-     "c7fa4fe0-34a2-43e7-808f-c8a032101790", "Invisible" -> False, 
+     "121ac216-e134-4a94-bd1c-31b9381220cb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "((*SqB[*)Sqrt[6](*]SqB*)) \
 ((*BB[*)(Ket[-1,1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/\
 UEpfU5PyixJL8IohKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*))", 
     "Display" -> "codemirror", "Hash" -> 
-     "ab363181-447d-47cc-84ea-f648f29942ef", "Invisible" -> False, 
+     "500d2fe6-2823-4796-8c1e-71bbd85a3686", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nWe can also build the matrix of a operator in the basis \
 of spin-only states", "Display" -> "codemirror", 
-    "Hash" -> "3cb3e52e-3230-4df1-8215-dcdc69e15a2b", "Invisible" -> False, 
+    "Hash" -> "2e6bee5e-1c13-4439-a108-0568fd760c1d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "We can also build the matrix of a operator in the basis of \
 spin-only states", "Display" -> "markdown", 
-    "Hash" -> "6419ecb1-0c42-4b50-be08-4cfea65b9f7a", "Invisible" -> False, 
+    "Hash" -> "842f39b0-1bca-4250-89bc-bed0b8bb31cd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Table[\n\n  (*BB[*)(Bra[Ms1, \
 1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMaeiRJfU5PyixJL8Ioh\
 KFiARVJqTGgxieKQmpgQzQ9QBABBAEzo=\"*)(*]BB*).(Sz).(*BB[*)(Ket[Ms2, \
 1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8Ioh\
 KFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*)\n\n, {Ms1, -2,2}, {Ms2, -2,2}] \
 // MatrixForm ", "Display" -> "codemirror", 
-    "Hash" -> "e25f625c-42ea-40d6-b0e2-da0e167d225a", "Invisible" -> False, 
+    "Hash" -> "66bc0192-f09c-42ad-9e52-17c3801cf613", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "((*GB[*){{-2(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}\
 (*||*),(*||*){0(*|*),(*|*)-1(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*\
 ){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*\
 )0(*|*),(*|*)0(*|*),(*|*)1(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)\
 0(*|*),(*|*)0(*|*),(*|*)2}}(*]GB*))", "Display" -> "codemirror", 
-    "Hash" -> "960f3e15-04f6-4617-9998-22b4f4ce6f62", "Invisible" -> False, 
+    "Hash" -> "c023b1bb-e95c-49a1-aac5-6ef6d990f8c3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nNow check the modulus of an spin-momentum", 
     "Display" -> "codemirror", "Hash" -> 
-     "c7ca80f1-f1df-416f-8f93-22fc5de1e561", "Invisible" -> False, 
+     "e2437ca5-afe1-4767-b80b-d5be74d71612", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Now check the modulus of an spin-momentum", 
     "Display" -> "markdown", "Hash" -> 
-     "5b475ef4-ba13-4aef-9c69-3d4a0bbaa99b", "Invisible" -> False, 
+     "27eccc9d-4543-4553-8d26-df243446792c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Table[\n\n  (*BB[*)(Bra[Ms1, \
 1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMaeiRJfU5PyixJL8Ioh\
 KFiARVJqTGgxieKQmpgQzQ9QBABBAEzo=\"*)(*]BB*).(Sz.Sz + Sx.Sx + \
@@ -1148,24 +1147,24 @@ Sy.Sy).(*BB[*)(Ket[Ms2, \
 1])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8Ioh\
 KFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*)\n\n, {Ms1, -2,2}, {Ms2, -2,2}] \
 // MatrixForm ", "Display" -> "codemirror", 
-    "Hash" -> "dc8c1156-1881-4e55-9ca9-e7bb8a143ff9", "Invisible" -> False, 
+    "Hash" -> "ebf9cc90-ab1e-4759-8fb4-8391242ab869", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "((*GB[*){{6(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(\
 *||*),(*||*){0(*|*),(*|*)6(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){\
 0(*|*),(*|*)0(*|*),(*|*)6(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0\
 (*|*),(*|*)0(*|*),(*|*)6(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(\
 *|*),(*|*)0(*|*),(*|*)6}}(*]GB*))", "Display" -> "codemirror", 
-    "Hash" -> "b441ee1a-92f0-46d0-8c92-ab8e3d95fbc4", "Invisible" -> False, 
+    "Hash" -> "8be2f594-30f7-42fd-8dad-4c63abf9b051", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "288183a4-6925-49ad-b22c-346ba49b34a8", "Invisible" -> False, 
+    "Hash" -> "f143fbbb-0dad-4d3f-ae6c-48d08e2847de", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n## Spin-Hamiltonian\nLet us have a look at the cubic \
 system with a doubly degenerated orbital states. For example, it can be \
 effectively $Fe^{2+}$ ions in a cubic spinels with $^5E_g$ states as a ground \
@@ -1174,10 +1173,10 @@ state\n\n$$\nH = \\\\mu g~ \\\\mathbf{S H_0} - d \\\\Big[ U_{\\\\theta} (3 \
 Sz^2 - S(S+1)) + \\\\sqrt{3} U_{\\\\epsilon}(Sx^2 - Sy^2)  \\\\Big] \
 \n$$\n\nwhere $d$ accounts for an effective spin-orbit coupling and then \
 dictates cubic anistoropy for the spin", "Display" -> "codemirror", 
-    "Hash" -> "266197eb-75d4-450e-9ca0-939d06f1a8b8", "Invisible" -> False, 
+    "Hash" -> "5626686c-5440-496e-88ad-680e01959526", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "## Spin-Hamiltonian\nLet us have a look at the cubic system \
 with a doubly degenerated orbital states. For example, it can be effectively \
 $Fe^{2+}$ ions in a cubic spinels with $^5E_g$ states as a ground multiplet. \
@@ -1186,59 +1185,59 @@ Let us have a look at the Hamiltonian for a paramagnetic state\n\n$$\nH = \
 \\\\sqrt{3} U_{\\\\epsilon}(Sx^2 - Sy^2)  \\\\Big] \n$$\n\nwhere $d$ accounts \
 for an effective spin-orbit coupling and then dictates cubic anistoropy for \
 the spin", "Display" -> "markdown", 
-    "Hash" -> "28b2c9ae-b32a-493d-8748-60a589b50ff9", "Invisible" -> False, 
+    "Hash" -> "1c0d4633-c1bd-4385-9b7b-601a1c68a8d8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n### Implementation\nNow we move to the actual code", 
     "Display" -> "codemirror", "Hash" -> 
-     "241b317f-618c-4d75-9023-a5dc5c9f96f8", "Invisible" -> False, 
+     "f2ebf747-c830-4766-a1c4-d85b8c482f4a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "### Implementation\nNow we move to the actual code", 
     "Display" -> "markdown", "Hash" -> 
-     "a0a307c0-03f3-4d6d-95b0-dfc05438cd04", "Invisible" -> False, 
+     "2a489bec-e8f5-43d6-bb43-90fd81409a4e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "\[Mu] = 0.466;\ng = 2.;", "Display" -> "codemirror", 
-    "Hash" -> "7a1c6936-28a5-4c42-92ba-dc3c358d447a", "Invisible" -> False, 
+    "Hash" -> "fe552087-d1e1-4b7a-9dd6-21a1772f8fd3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nEffective hamiltonian in our notations", 
     "Display" -> "codemirror", "Hash" -> 
-     "6b6a8690-4673-4f22-bdc9-b23137034ccd", "Invisible" -> False, 
+     "61f3af2e-f8f9-438b-ad7a-a7896450cbbe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Effective hamiltonian in our notations", 
     "Display" -> "markdown", "Hash" -> 
-     "5da3d785-64dd-42db-bf8b-4da4b5862d3d", "Invisible" -> False, 
+     "09b217b1-fe26-4503-a6e4-04aa53459377", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "H[Hx_, Hy_, Hz_, d_] := \[Mu] g (Hx Sx + Hy Sy + Hz Sz ) - d \
 (3 Sz.Sz.U\[Theta] -  2(2+1) U\[Theta] + (*SqB[*)Sqrt[3](*]SqB*) \
 Sx.Sx.U\[Epsilon] - (*SqB[*)Sqrt[3](*]SqB*) Sy.Sy.U\[Epsilon])", 
     "Display" -> "codemirror", "Hash" -> 
-     "44cf78f4-a9da-4829-a4b3-be7c21708396", "Invisible" -> False, 
+     "fd416408-b28a-4512-ba28-48b61ef9e98f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nNow define an array of basis vectors and function to \
 __find eigenvalues and eigenvectors__", "Display" -> "codemirror", 
-    "Hash" -> "999780b6-5eb8-46dd-895b-3414d842f9ad", "Invisible" -> False, 
+    "Hash" -> "9e423c3b-d796-4ae0-94e8-96b64e0da78c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Now define an array of basis vectors and function to __find \
 eigenvalues and eigenvectors__", "Display" -> "markdown", 
-    "Hash" -> "50d18578-f7d7-4f2d-824e-29249c1721f8", "Invisible" -> False, 
+    "Hash" -> "918dcd01-8ff2-4f2b-a896-7ec11b62b73e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "basis = Table[(*BB[*)(Ket[Ms2, \
 Ml])(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFxTxAMe/UEpfU5PyixJL8Io\
 hKFiARVJqTGgxieKQmpgQzQ9QBABLAE1g=\"*)(*]BB*), {Ms2,-2,2}, {Ml,-1,1,2}] // \
@@ -1246,22 +1245,22 @@ Flatten; \n\nsystem[params__] := With[{ h = Simplify[H[params]]}, With[{\n  r \
 = Table[\n\n    Conjugate[i].(h.j)\n\n  , {i, basis}, {j, basis}]  // \
 Eigensystem // Transpose \n},\n\n  (* truncate accuracy *)\n  r // Chop\n] ]"\
 , "Display" -> "codemirror", "Hash" -> 
-     "91acc9e9-9a9c-46dc-aed0-0c5d6ad12d71", "Invisible" -> False, 
+     "e585d784-d8ec-4299-8edf-da7ec7e17221", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nNow we need a helper function to find a __thermal \
 average of any quantum operator__", "Display" -> "codemirror", 
-    "Hash" -> "335641ef-143b-45cb-a401-72a16addb9c2", "Invisible" -> False, 
+    "Hash" -> "bc33cbe7-596d-4bfb-b34e-a8200920b903", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Now we need a helper function to find a __thermal average of \
 any quantum operator__", "Display" -> "markdown", 
-    "Hash" -> "7eeb3348-f531-4669-981b-6cc063221397", "Invisible" -> False, 
+    "Hash" -> "222b0e7b-0995-42e9-9fac-1584a9001525", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(* for caching already calculated values \
 *)\n\nClearAll[cached];\ncached[expr_] := cached[expr] = \
 expr;\nSetAttributes[cached, HoldFirst]\n\n\naverage[sys_, T_, operator_] := \
@@ -1271,122 +1270,122 @@ T))(*]FB*)] &/@ sys]\n},\n  Map[\n    \
 ((Conjugate[{#[[2]]}].operatorMatrix.Transpose[{#[[2]]}]) // First // First) \
 (*FB[*)((1)(*,*)/(*,*)(stat))(*]FB*) Exp[-(*FB[*)((#[[1]])(*,*)/(*,*)(0.7 \
 T))(*]FB*)] &\n    , sys] // Total  \n]", "Display" -> "codemirror", 
-    "Hash" -> "24f51693-b3de-4627-8fd8-50eb978143e0", "Invisible" -> False, 
+    "Hash" -> "7fdec234-324a-4366-b6c8-f3a549c658e5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nUsually for such systems a parameter $d\\\\simeq \
 3-4~cm^{-1}$. \n\nLet's try to see a magnetic anisotropy in an averaged \
 magnetic moment of a single ion site at $T=10~K$ in the magnetic field around \
 $10~T$", "Display" -> "codemirror", 
-    "Hash" -> "e8e7e1f5-d3c8-4392-8b0a-2b0b30bef661", "Invisible" -> False, 
+    "Hash" -> "cabd8ab9-6e76-4e01-b668-79f391cc32ca", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Usually for such systems a parameter $d\\\\simeq \
 3-4~cm^{-1}$. \n\nLet's try to see a magnetic anisotropy in an averaged \
 magnetic moment of a single ion site at $T=10~K$ in the magnetic field around \
 $10~T$", "Display" -> "markdown", "Hash" -> 
-     "7b22dc5f-84a9-4a46-82aa-ae7dc72844dd", "Invisible" -> False, 
+     "bdba1400-63e6-434a-bdf9-2fba097d4d36", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Table[\n  With[{\n    sys = system[10 Sin[x], 10 Cos[x], 0, \
 3.]\n  },\n    (2.0 average[sys, 10, #] &/@ {Sx, Sy}).({Sin[x],  Cos[x]})\n   \
 \n  ] {Sin[x],  Cos[x]}\n, {x, 0, 2Pi, 0.1}] // Re;\n\nListLinePlot[%, \n  \
 PlotRange->Full, \n  Epilog->{\n    Black // Lighter, Arrow[{{0, 0}, {2.5501, \
 0.0}}],\n    Arrow[{{0,0}, {0, 2.52099}}]\n}, AxesLabel->{\"\\\\mu x\", \
 \"\\\\mu y\"}, ImageSize->500]", "Display" -> "codemirror", 
-    "Hash" -> "3d1192a2-0d56-4f13-be97-d06c0b443ae5", "Invisible" -> False, 
+    "Hash" -> "9f697cf9-4e0f-4d63-a440-fd2ec2d6445b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
-   <|"Data" -> "(*VB[*)(FrontEndRef[\"12e27dd2-d2ac-4119-9827-c284f899e1d4\"]\
-)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGxqlG\
-pmnpBjpphglJuuaGBpa6lpaGJnrJhtZmKRZWFqmGqaYAAB/4hVQ\"*)(*]VB*)", 
+    "Notebook" -> "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"479678d6-9200-4a82-8697-2c35e766c3b7\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5hbm\
+plbpJjpWhoZGOiaJFoY6VqYWZrrGiUbm6aam5klGyeZAwBsURSi\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "96ed4fa8-fd1d-4b4f-bebf-2980af3b9452", "Invisible" -> False, 
+     "35afd27a-cab7-4bc0-8587-0b9a1d96d8c5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nDespite the wrong aspect ratio, it is clear, __that a \
 cubic anistropy is quite visible here__ \|01f4ab", "Display" -> "codemirror", 
-    "Hash" -> "48cc71a1-19c7-44cb-b502-f107b88c6cb4", "Invisible" -> False, 
+    "Hash" -> "75ed8e58-8be2-465b-8811-3a4a538e905e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Despite the wrong aspect ratio, it is clear, __that a cubic \
 anistropy is quite visible here__ \|01f4ab", "Display" -> "markdown", 
-    "Hash" -> "40be6b5d-e399-49ab-825e-ea24c9eb6d22", "Invisible" -> False, 
+    "Hash" -> "4e9bd4c4-f6ae-4c44-819a-ffd1172626a5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "955515f4-7b86-4cdb-b7b1-b55dcbb00dd8", "Invisible" -> False, 
+    "Hash" -> "ce91164c-57b0-4042-a1ac-6131018dd06b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n## Ferromagnetic ordering\nOne can go further and model \
 an ordered state using *mean field approximation*, which is suitable for \
 ferromagnets", "Display" -> "codemirror", 
-    "Hash" -> "915bcba4-28ed-4065-8b79-22620ab623d8", "Invisible" -> False, 
+    "Hash" -> "a51a9ceb-1cd1-4973-b0fb-3120817df1c8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "## Ferromagnetic ordering\nOne can go further and model an \
 ordered state using *mean field approximation*, which is suitable for \
 ferromagnets", "Display" -> "markdown", 
-    "Hash" -> "87bc3fea-51b9-4b29-93a0-ad1f1edceea6", "Invisible" -> False, 
+    "Hash" -> "57f90edc-1d4f-4964-a1a5-0671ed4a467d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n$$\nH = \\\\mu g~ \\\\mathbf{S H_0} - d \\\\Big[ \
 U_{\\\\theta} (3 Sz^2 - S(S+1)) + \\\\sqrt{3} U_{\\\\epsilon}(Sx^2 - Sy^2)  \
 \\\\Big] + J \\\\mathbf{S M}\n$$\n\nwhere $M$ is an average of $\\hat{S}$ \
 (i.e. just a classical vector).", "Display" -> "codemirror", 
-    "Hash" -> "8dd9550e-4537-44de-8889-9760a2c41d85", "Invisible" -> False, 
+    "Hash" -> "9c5541a2-7917-4a8b-ac7f-faee77cde200", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "$$\nH = \\\\mu g~ \\\\mathbf{S H_0} - d \\\\Big[ \
 U_{\\\\theta} (3 Sz^2 - S(S+1)) + \\\\sqrt{3} U_{\\\\epsilon}(Sx^2 - Sy^2)  \
 \\\\Big] + J \\\\mathbf{S M}\n$$\n\nwhere $M$ is an average of $\\hat{S}$ \
 (i.e. just a classical vector).", "Display" -> "markdown", 
-    "Hash" -> "155503c2-d1dd-4351-af74-8235ca2eda94", "Invisible" -> False, 
+    "Hash" -> "25b65ce5-f037-4700-8539-9f4de01cab67", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n### Implementation", "Display" -> "codemirror", 
-    "Hash" -> "a9d7ae4f-7a01-4e8f-9463-2b1662c2064f", "Invisible" -> False, 
+    "Hash" -> "ad5993d8-8e80-4810-bed7-034ebfe06f67", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "### Implementation", "Display" -> "markdown", 
-    "Hash" -> "7b174325-58e7-466a-a5ca-fb328e72e373", "Invisible" -> False, 
+    "Hash" -> "d4b9269d-a967-42cc-9d6b-9f569dcb8d41", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "H[Hx_, Hy_, Hz_, d_, J_, Mx_, My_, Mz_] := \[Mu] g (Hx Sx + \
 Hy Sy + Hz Sz ) - d (3 Sz.Sz.U\[Theta] -  2(2+1) U\[Theta] + \
 (*SqB[*)Sqrt[3](*]SqB*) Sx.Sx.U\[Epsilon] - (*SqB[*)Sqrt[3](*]SqB*) \
 Sy.Sy.U\[Epsilon]) + J (Mx Sx + My Sy + Mz Sz)", "Display" -> "codemirror", 
-    "Hash" -> "7e3265a6-9a8f-4621-ba9b-cd062265e978", "Invisible" -> False, 
+    "Hash" -> "5cba7d22-46f4-4319-ac7f-636dedcc6fd0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "5a35be42-7e79-4a00-a61e-9ca646ca4520", "Invisible" -> True, 
+    "Hash" -> "9e5c17ca-a531-4f2a-a7b3-89788965f452", "Invisible" -> True, 
     "MetaOnly" -> True, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Since this is a mean approximation method, we need to \
 substitute an averaged value of a spin back to the Hamiltonian and wait until \
 it converges. The *memory* of our system is stored exactly in this mean field \
 vector", "Display" -> "markdown", "Hash" -> 
-     "8f2ba30d-cadd-4837-98da-cc0dbd3bfebe", "Invisible" -> False, 
+     "79f25117-5e2c-491e-b917-0e671be2bf50", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "meanField = {0.1, -0.8, -0.1};\nsys;\n\nprogressBarGenerator \
 = Get[\"progressBar.wl\"];\n\nWith[{\n  progress = \
 progressBarGenerator[2Pi]\n},\n\nTable[\n  With[{\n    \n  },\n  \n    Do[\n  \
@@ -1398,201 +1397,198 @@ meanField];\n      meanField = average[sys, 10, #] &/@ {Sx, Sy, Sz}; \n      \
 // Lighter, Arrow[{{0, 0}, {2.3501, 0.0}}],\n    Arrow[{{0,0}, {0, \
 2.32099}}]\n}, AxesLabel->{\"\\\\mu x\", \"\\\\mu y\"}, ImageSize->500]", 
     "Display" -> "codemirror", "Hash" -> 
-     "38b7f548-7f4a-4f37-8974-734e1e70b9f8", "Invisible" -> False, 
+     "00392379-4b26-4e54-aa44-1a1d30d7d72d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"5b08782b-740e-43ff-be21-295c1bf94885\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmyYZW\
 JhbGCXpmpsYpOqaGKel6SalGhnqGlmaJhsmpVmaWFiYAgB9xBVQ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "b2a1ecb4-5b10-4d10-abdb-330e19f90316", "Invisible" -> False, 
+     "195f75cc-10fb-4853-a2e2-5cd785ffca29", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nNow it is clear, we see the pattern of __cubic magnetic \
 anisotropy__", "Display" -> "codemirror", 
-    "Hash" -> "ef64c690-85ad-4052-a7a7-957d6d1d5813", "Invisible" -> False, 
+    "Hash" -> "ad5a64e6-d0fd-468b-a897-4d62a0b3c0bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> 
      "Now it is clear, we see the pattern of __cubic magnetic anisotropy__", 
     "Display" -> "markdown", "Hash" -> 
-     "349c3ef5-77c0-44a7-81db-5510aef0a7f9", "Invisible" -> False, 
+     "a6055bdb-e8c5-4e14-a769-d4d2d28aab87", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nA calculation itself is quite slow, due to algebra we \
 used for quantum computations. In general, we do not need all operators, once \
 we constructed the Hamiltonian in the basis we have. We can deal only with \
 matrixes and linear algebra.", "Display" -> "codemirror", 
-    "Hash" -> "d0114cf6-ba7b-4160-b2a7-83765566e11d", "Invisible" -> False, 
+    "Hash" -> "c95771ae-44f3-40ad-83c3-64e5b979d768", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "A calculation itself is quite slow, due to algebra we used \
 for quantum computations. In general, we do not need all operators, once we \
 constructed the Hamiltonian in the basis we have. We can deal only with \
 matrixes and linear algebra.", "Display" -> "markdown", 
-    "Hash" -> "7db1d306-17e7-46d8-aaea-ebf558d5e7b3", "Invisible" -> False, 
+    "Hash" -> "0544f82b-c0f7-4bdb-a485-f0a5d119fbae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n### Converting operators to matrixes\nWe build a \
 function, that approximate any arbitary function up to 2nd order for all \
 variables in arguments.\n\nFirstly, import it", "Display" -> "codemirror", 
-    "Hash" -> "c28d61b7-c105-4858-8a98-f5d93d015ba7", "Invisible" -> False, 
+    "Hash" -> "d2f50753-669f-4202-bffc-fe338e7f0699", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "### Converting operators to matrixes\nWe build a function, \
 that approximate any arbitary function up to 2nd order for all variables in \
 arguments.\n\nFirstly, import it", "Display" -> "markdown", 
-    "Hash" -> "4e50a9e3-e9ea-4df4-9b2e-6bda27a8903f", "Invisible" -> False, 
+    "Hash" -> "cf9cf5aa-df3d-4d75-859c-0b955e824050", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "quadInterpolation = \
 Get[\"quadInterpolator.wl\"];\nprogressBarGenerator = \
 Get[\"progressBar.wl\"];", "Display" -> "codemirror", 
-    "Hash" -> "da378d0c-9b3d-47a0-82c3-de22f9a9f2b3", "Invisible" -> False, 
+    "Hash" -> "0ee079c9-8f17-463d-a5bf-8c8b1e0e69d1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nNow we apply it to our hamiltonian calculated in the \
 basis with a given parameters", "Display" -> "codemirror", 
-    "Hash" -> "ac895f3f-e751-4ca0-9cde-74c8c310d82c", "Invisible" -> False, 
+    "Hash" -> "8d23c134-fd39-4980-9908-192178141d1c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Now we apply it to our hamiltonian calculated in the basis \
 with a given parameters", "Display" -> "markdown", 
-    "Hash" -> "5a881b8c-4d15-4535-8eff-4d38db0cce1e", "Invisible" -> False, 
+    "Hash" -> "e16c5788-8621-4fbc-99f3-a41179b4565c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "int = quadInterpolation[\n\n  \
 Table[Conjugate[fin].H[a1,a2,a3, a4, a5, a6,a7,a8].ini, {fin, basis}, {ini, \
 basis}]\n  \n, {a1,0}, {a2,0}, {a3,0}, {a4,0}, {a5,0}, {a6,0}, {a7,0}, \
 {a8,0}, \"Monitor\"->progressBarGenerator];", "Display" -> "codemirror", 
-    "Hash" -> "7f1985d9-965c-4838-84df-6c8122d0b8f0", "Invisible" -> False, 
+    "Hash" -> "ad6e66e6-911e-4e9d-ba1e-bdeef50b22c0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> 
      ".md\nNow one can check that __it speeds up things__ drastically", 
     "Display" -> "codemirror", "Hash" -> 
-     "08654edc-fe8c-48ba-8ee7-8e0943bfda39", "Invisible" -> False, 
+     "6eb78f0c-78df-4d49-8d66-569364a086db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Now one can check that __it speeds up things__ drastically", 
     "Display" -> "markdown", "Hash" -> 
-     "090c2db9-87ff-456c-b289-aaf8e80aea9a", "Invisible" -> False, 
+     "c3c8efaa-297e-4f94-938b-440c40eb8250", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(* old *)\nTable[Conjugate[fin].H[0,1.,1., 1., 1.,  \
 1.,1.,1.].ini, {fin, basis}, {ini, basis}] // RepeatedTiming // First \n(* \
 converted *)\nint[0,1.,1., 1., 1.,  1.,1.,1.] // RepeatedTiming // First ", 
     "Display" -> "codemirror", "Hash" -> 
-     "a1f19f7f-31e5-4244-a12c-14e02f4236b1", "Invisible" -> False, 
+     "6bea36d1-e18d-441c-b8a1-1e8f0ee0d601", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, <|"Data" -> "1.075855`", 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, <|"Data" -> "1.051729`", 
     "Display" -> "codemirror", "Hash" -> 
-     "d243c1ba-ba34-4364-9dc5-d3c83dd6560b", "Invisible" -> False, 
+     "ce92a2a1-d6f6-4679-881c-3c89638b39b9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
-   <|"Data" -> "0.0007249326171875`", "Display" -> "codemirror", 
-    "Hash" -> "e984ace8-b5ca-4f18-876e-136677498fcd", "Invisible" -> False, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
+   <|"Data" -> "0.0007063037109375`", "Display" -> "codemirror", 
+    "Hash" -> "b16ec2f9-ecdb-4410-81d3-699cc9a5ccca", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nWe can also save this function for later, so that we do \
 not need to derive it again", "Display" -> "codemirror", 
-    "Hash" -> "4a0d2231-daae-42a0-a41a-799090bf6d74", "Invisible" -> False, 
+    "Hash" -> "0447abf1-40ef-45bc-83e4-d66f6ac1ece9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "We can also save this function for later, so that we do not \
 need to derive it again", "Display" -> "markdown", 
-    "Hash" -> "aedd9dbb-b6d4-4d2a-848c-92e18bc3f1ac", "Invisible" -> False, 
+    "Hash" -> "2f066020-8de8-4932-b70f-2e163228ddd7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, <|"Data" -> "int // Iconize ", 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, <|"Data" -> "int // Iconize ", 
     "Display" -> "codemirror", "Hash" -> 
-     "8c849616-51f9-422c-b086-3ffe8ce3993d", "Invisible" -> False, 
+     "454e5eba-f13c-4117-a538-2bd9ffc7ded9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
-   <|"Data" -> "(*VB[*)(Get[\"/Users/kirill/Library/CloudStorage/OneDrive-Per\
-sonal/\\:0414\\:043e\\:043a\\:0443\\:043c\\:0435\\:043d\\:0442\\:044b/\\:041a\
-\\:043e\\:043d\\:0444\\:0435\\:0440\\:0435\\:043d\\:0446\\:0438\\:0438/DPG202\
-3/iconized-91a0.wl\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdcvM\
-SXXKr8i0EGdmAADrVArH\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "735abb68-d475-41eb-b361-29233e1ab633", "Invisible" -> False, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
+   <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-6f9a.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8i0EGdmAADrVArH\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "aa5660ed-5523-4a10-a7fb-38036de009d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "952e3de2-d84f-4714-bd02-4dae1558b1cd", "Invisible" -> False, 
+    "Hash" -> "98202341-168a-447c-9f9d-32ac107ffa16", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n## Modelling\nusing faster approach", 
     "Display" -> "codemirror", "Hash" -> 
-     "84d22f3a-a403-4d2f-836f-44549a4ade24", "Invisible" -> False, 
+     "1db4ed7b-5d7f-4713-814d-ff691b192267", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "## Modelling\nusing faster approach", 
     "Display" -> "markdown", "Hash" -> 
-     "ea06d928-dff3-4026-994d-c13b08d55542", "Invisible" -> False, 
+     "b7524ec8-aca2-4ee0-b4b1-78c4c4f2799a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "progressBarGenerator = Get[\"progressBar.wl\"];\nint = \
-(*VB[*)(Get[\"/Users/kirill/Library/CloudStorage/OneDrive-Personal/\:0414\
-\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\:043d\:0444\
-\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/iconized-91a0.wl\"])(*,*)(\
-*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdcvMSXXKr8i0EGdmAADrVArH\"*)(*]V\
-B*);\n\nmeanField = {0.1, -0.8, -0.1};\nsys;\n\nWith[{\n  progress = \
-progressBarGenerator[15]\n},\nTable[\n  With[{\n    \n  },\n  \n    Do[\n     \
- sys = int @@ Join[{h Sin[x], h Cos[x], 0, 3., -100.}, meanField] // \
-Eigensystem // Transpose;\n      meanField = average[sys, 10, #] &/@ {Sx, Sy, \
-Sz}; \n    , {i, 25}];\n\n    progress[h];\n\n    \n    \n    ( \
-meanField[[{1,2}]]).({Sin[x], Cos[x]})\n   \n  ] {Sin[x], Cos[x]}\n, {h, \
-{1,5,10,15}}, {x, 0, 2Pi, 0.05}]\n];\n\nListLinePlot[%, \n  PlotRange->Full, \
-\n  Epilog->{\n    Black // Lighter, Arrow[{{0, 0}, {2.5501, 0.0}}],\n    \
-Arrow[{{0,0}, {0, 2.52099}}]\n}, AxesLabel->{\"\\\\mu x\", \"\\\\mu y\"}, \
-ImageSize->500]", "Display" -> "codemirror", 
-    "Hash" -> "ab9f11cd-57ea-44a5-ade0-a6039cacb167", "Invisible" -> False, 
+(*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-6f9a.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8i0EGdmAADrVArH\"*)(*]VB*);\n\nmeanField = {0.1, -0.8, \
+-0.1};\nsys;\n\nWith[{\n  progress = progressBarGenerator[15]\n},\nTable[\n  \
+With[{\n    \n  },\n  \n    Do[\n      sys = int @@ Join[{h Sin[x], h Cos[x], \
+0, 3., -100.}, meanField] // Eigensystem // Transpose;\n      meanField = \
+average[sys, 10, #] &/@ {Sx, Sy, Sz}; \n    , {i, 25}];\n\n    \
+progress[h];\n\n    \n    \n    ( meanField[[{1,2}]]).({Sin[x], Cos[x]})\n   \
+\n  ] {Sin[x], Cos[x]}\n, {h, {1,5,10,15}}, {x, 0, 2Pi, \
+0.05}]\n];\n\nListLinePlot[%, \n  PlotRange->Full, \n  Epilog->{\n    Black \
+// Lighter, Arrow[{{0, 0}, {2.5501, 0.0}}],\n    Arrow[{{0,0}, {0, \
+2.52099}}]\n}, AxesLabel->{\"\\\\mu x\", \"\\\\mu y\"}, ImageSize->500]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "680974b8-3357-4d42-8c98-50d47d4a062e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e95d0e56-6126-4ecc-9407-85dc03893eca\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp1qap\
 hikmprpmhkamemapCYn61qaGJjrWpimJBsYW1gapyYnAgB/NRWA\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "504f660f-1d36-4b33-a13c-659011fae5f0", "Invisible" -> False, 
+     "16224dcc-9338-4415-a87d-6219f14e294a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\nHere we have magnetic moment curves plotted for \
 different magnitudes of applied field", "Display" -> "codemirror", 
-    "Hash" -> "7c898e2c-ff7e-4b79-9b4c-0c9539aa5002", "Invisible" -> False, 
+    "Hash" -> "a4b73659-f44e-40ab-b6d2-aa2afd9660bd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "Here we have magnetic moment curves plotted for different \
 magnitudes of applied field", "Display" -> "markdown", 
-    "Hash" -> "bb6751a2-66d3-4a3d-b069-d2de3897184a", "Invisible" -> False, 
+    "Hash" -> "7a7f948d-93c4-46b1-8b11-e25b13008b0a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "{{(*VB[*)(RGBColor[0.368417, 0.506779, \
 0.709798])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3I\
 SSxJTWMGyXMgyRcVTJv0VGXKdfsiw2kvp3eYP7AvOt4yw3vVtmf2AKMBH1E=\"*)(*]VB*), \
@@ -1606,10 +1602,10 @@ SSxJTWMGyXMgyRcxPIvawvD2oX1R6dq9/qGKz+yLJCfsvff34wl7AJc8HzE=\"*)(*]VB*), \
 0.209179])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3I\
 SSxJTWMGyXMgyRdd2frNLrT1rX3RHf35ayTW3bAv0nBnXJRw7JQ9AKbfHmU=\"*)(*]VB*)}, \
 {1,5,10,15}} // Grid ", "Display" -> "codemirror", 
-    "Hash" -> "dcb8b73a-40e6-4474-b58b-7cc13b5bf454", "Invisible" -> False, 
+    "Hash" -> "73dcd598-f2b9-4d26-87ca-c758a527e980", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(RGBColor[0.368417, 0.506779, \
 0.709798])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3I\
 SSxJTWMGyXMgyRcVTJv0VGXKdfsiw2kvp3eYP7AvOt4yw3vVtmf2AKMBH1E=\"*)(*]VB*)(*|*),\
@@ -1624,72 +1620,70 @@ SSxJTWMGyXMgyRcxPIvawvD2oX1R6dq9/qGKz+yLJCfsvff34wl7AJc8HzE=\"*)(*]VB*)(*|*),\
 SSxJTWMGyXMgyRdd2frNLrT1rX3RHf35ayTW3bAv0nBnXJRw7JQ9AKbfHmU=\"*)(*]VB*)}(*||*\
 ),(*||*){1(*|*),(*|*)5(*|*),(*|*)10(*|*),(*|*)15}}(*]GB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "165e243c-359b-41c8-b614-b87572d73930", "Invisible" -> False, 
+     "a4ed50b0-882d-4f05-8c22-69765c2adcf4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "9cda66b1-65dc-4542-9aca-4ee9a79ce9a9", "Invisible" -> False, 
+    "Hash" -> "459c0bcb-8a61-4858-a67e-12e428afa9e6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".html\n<style>\n  #realtimeStuff {\n    scroll-behavior: \
 smooth;\n  }\n</style>\n<div id=\"realtimeStuff\"></div>", 
     "Display" -> "codemirror", "Hash" -> 
-     "5b97de44-fdd6-43b5-9263-7f8eecf0c575", "Invisible" -> False, 
+     "071487d2-6ba3-4fe2-aa86-5b707e6d8d38", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "<style>\n  #realtimeStuff {\n    scroll-behavior: smooth;\n  \
 }\n</style>\n<div id=\"realtimeStuff\"></div>", "Display" -> "html", 
-    "Hash" -> "8bcec26c-389a-4100-a118-1d095f36114d", "Invisible" -> False, 
+    "Hash" -> "6d386705-fd83-4a7b-bfaf-52c921208197", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n## Real-time modelling\nWe can go further and \
 recalculate spins based on user's input. For this case `Offload` keyword is \
 used together with some GUI building blocks", "Display" -> "codemirror", 
-    "Hash" -> "88534df9-f019-4b6c-b909-e08b7bc64b73", "Invisible" -> False, 
+    "Hash" -> "a3b86477-24b7-4ba3-b767-634b03e6a985", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> "## Real-time modelling\nWe can go further and recalculate \
 spins based on user's input. For this case `Offload` keyword is used together \
 with some GUI building blocks", "Display" -> "markdown", 
-    "Hash" -> "4be590ff-6069-4c3c-a8d4-dd15cda91ae0", "Invisible" -> False, 
+    "Hash" -> "31f01153-3880-440d-98da-ed3ce0ce113a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> ".md\n<span style=\"color:red\">Evaluate initialization cells \
 before</span>", "Display" -> "codemirror", 
-    "Hash" -> "3d5ed94d-730a-43de-9268-f360af9b659c", "Invisible" -> False, 
+    "Hash" -> "c6f66956-e6fc-412e-97d1-d53de3e33943", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> 
      "<span style=\"color:red\">Evaluate initialization cells before</span>", 
     "Display" -> "markdown", "Hash" -> 
-     "bce1aadb-2cf6-44ea-a013-84a60a75f025", "Invisible" -> False, 
+     "533c25b8-d8eb-4da0-9722-ecad0f6f3ac7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "cc24adfe-1709-4e38-be0f-b95113ff95d7", "Invisible" -> False, 
+    "Hash" -> "86d26dbb-3377-48ac-8aa4-a747768cdd0c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>, 
-   <|"Data" -> "int = \
-(*VB[*)(Get[\"/Users/kirill/Library/CloudStorage/OneDrive-Personal/\:0414\
-\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\:043d\:0444\
-\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/iconized-91a0.wl\"])(*,*)(\
-*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdcvMSXXKr8i0EGdmAADrVArH\"*)(*]V\
-B*);\n\nLeakyModule[{\n  spin = {0.1, -0.8, -0.11},\n  defaults = {0.,0.,0., \
-3., -100.},\n  temperature = 10.,\n  field = {0.,0.},\n  controlPanel,\n  \
-recalculate\n},\n\n  recalculate := With[{\n    sys = int @@ Join[defaults, \
-spin] // Eigensystem // Transpose\n  },\n    spin = average[sys, temperature, \
-#] &/@ {Sx, Sy, Sz} // Chop // Re;\n  ];\n\n  controlPanel = InputGroup[{\n   \
- InputRange[0, 5., 1, 3, \"Label\"->\"Spin-orbit\"],\n    InputRange[-100, \
-0., 10, -100, \"Label\"->\"J\"],\n    InputRange[1, 150., 10, 10, \
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>, 
+   <|"Data" -> "int = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-6f9a.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8i0EGdmAADrVArH\"*)(*]VB*);\n\nLeakyModule[{\n  spin = {0.1, -0.8, \
+-0.11},\n  defaults = {0.,0.,0., 3., -100.},\n  temperature = 10.,\n  field = \
+{0.,0.},\n  controlPanel,\n  recalculate\n},\n\n  recalculate := With[{\n    \
+sys = int @@ Join[defaults, spin] // Eigensystem // Transpose\n  },\n    spin \
+= average[sys, temperature, #] &/@ {Sx, Sy, Sz} // Chop // Re;\n  ];\n\n  \
+controlPanel = InputGroup[{\n    InputRange[0, 5., 1, 3, \
+\"Label\"->\"Spin-orbit\"],\n    InputRange[-100, 0., 10, -100, \
+\"Label\"->\"J\"],\n    InputRange[1, 150., 10, 10, \
 \"Label\"->\"Temperature\"]\n  }];\n\n  EventHandler[controlPanel, \
 Function[data,\n    defaults[[4;;5]] = data[[1;;2]];\n    temperature = \
 data[[3]];\n  ]];\n\n  {\n    Graphics[{\n      White, \
@@ -1701,7 +1695,7 @@ PlotRange->1.5{{-2,2}, {-2,2}}, Controls->False, \
 \"TransitionType\"->\"Linear\", \"TransitionDuration\"->30, \
 ImagePadding->0],\n    \n    controlPanel\n  } // Row  \n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "19937db0-bff8-4a20-b7b4-953b60aef778", "Invisible" -> False, 
+     "793745e8-06cc-4b21-aba1-9458f3f472c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "cad88986-c3f7-4b15-9bae-41dfb514b9be"|>}, "serializer" -> "jsfn4"|>
+     "effcea8c-e78d-4a56-9683-2e334a807cbf"|>}, "serializer" -> "jsfn4"|>

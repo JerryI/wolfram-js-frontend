@@ -282,7 +282,7 @@ Graphics[
        0.16624034674149726}, {3998.970338754617, 0.1662407315925834}, 
        {3999.3135523670235, 0.16624111592590732}, {3999.65676597943, 
        0.16624149974250851}, {3999.9999795918366, 0.16624188304342435}}]}, 
-     "Charting`Private`Tag$152425#1"], {}}}, {}}, 
+     "Charting`Private`Tag$96479#1"], {}}}, {}}, 
  {DisplayFunction -> Identity, Ticks -> {Automatic, Automatic}, 
   AxesOrigin -> {3000.000000000007, 0.13988701876499568}, 
   FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
