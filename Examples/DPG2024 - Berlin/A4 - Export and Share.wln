@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$228], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$56], 
    "Objects" -> <|"a2c496d3-7721-4daa-be89-ec4e0dbb7d88" -> 
       <|"Public" -> Hold[Graphics3D[{EdgeForm[], GraphicsComplex[
             {{8.471697807312012, 1.6333129405975342, 0.43172258138656616}, 
@@ -6935,172 +6935,743 @@
              {0.13988701876499537, 0.19890994006756973}}, 
            PlotRangeClipping -> True, PlotRangePadding -> 
             {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.02]}}, 
-           Ticks -> {Automatic, Automatic}}]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/DPG2024 - \
-Berlin/A4 - Export and Share.wln"|>, 
- "Cells" -> {<|"Data" -> ".md\n# Exporting to a portable format\nOne of the \
-motivations for developing this platform is to enable the sharing of \
+           Ticks -> {Automatic, Automatic}}]]|>, 
+     "9ab5b3d5-6e41-4804-ac66-4a856fe487b0" -> 
+      <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
+                Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
+                AbsoluteThickness[1.6]], Line[{{3000.0000204081634, 
+                  0.16742931785623077}, {3000.30671792056, 
+                  0.16742969751278255}, {3000.613415432956, 
+                  0.16743007765088466}, {3001.226810457749, 
+                  0.16743083937538544}, {3002.453600507334, 
+                  0.1674323686432177}, {3004.9071806065053, 
+                  0.16743545066132196}, {3009.8143408048472, 
+                  0.16744171031615243}, {3019.6286612015306, 
+                  0.16745462614288695}, {3040.9083570854586, 
+                  0.16748459293289933}, {3060.777883570152, 
+                  0.16751528834384682}, {3080.2576488188756, 
+                  0.16754830542898674}, {3101.3884691581607, 
+                  0.1675879071357898}, {3121.109120098211, 
+                  0.1676290060082385}, {3142.480826128822, 
+                  0.16767887310051363}, {3163.462770923464, 
+                  0.16773425462768243}, {3183.034546318871, 
+                  0.16779281903256169}, {3204.257376804839, 
+                  0.1678654994052545}, {3224.0700378915726, 
+                  0.16794395022422418}, {3243.4929377423364, 
+                  0.16803325598480073}, {3243.8222182882946, 
+                  0.16803489300645175}, {3244.1514988342524, 
+                  0.1680365344676704}, {3244.810059926169, 
+                  0.16803983078111415}, {3246.1271821100017, 
+                  0.16804647748368}, {3248.7614264776676, 
+                  0.16805999136940716}, {3254.029915212999, 
+                  0.16808793590032883}, {3264.5668926836615, 
+                  0.16814779539142607}, {3264.874139332757, 
+                  0.16814962601122457}, {3265.181385981852, 
+                  0.16815146170012318}, {3265.7958792800423, 
+                  0.168155148369535}, {3267.024865876423, 
+                  0.16816258347158552}, {3269.482839069184, 
+                  0.16817770560363887}, {3274.3987854547067, 
+                  0.16820899826622113}, {3284.2306782257515, 
+                  0.16827613218552342}, {3284.5637226106364, 
+                  0.16827852036289526}, {3284.896766995522, 
+                  0.16828091640380283}, {3285.5628557652926, 
+                  0.1682857322318482}, {3286.8950333048333, 
+                  0.16829545997668005}, {3289.5593883839147, 
+                  0.16831530887459634}, {3294.8880985420774, 
+                  0.16835665648410825}, {3295.221142926963, 
+                  0.16835931691070916}, {3295.5541873118477, 
+                  0.1683619865820818}, {3296.220276081618, 
+                  0.16836735385226723}, {3297.5524536211587, 
+                  0.1683782014732248}, {3300.21680870024, 
+                  0.1684003602963613}, {3305.545518858403, 
+                  0.16844662727984505}, {3305.872473223976, 
+                  0.16844955459445804}, {3306.199427589549, 
+                  0.16845249247962923}, {3306.8533363206952, 
+                  0.16845840019115035}, {3308.161153782988, 
+                  0.16847034500884153}, {3310.7767887075734, 
+                  0.1684947656237449}, {3316.008058556744, 
+                  0.16854584410343848}, {3316.335012922317, 
+                  0.16854914028090398}, {3316.66196728789, 
+                  0.1685524490872501}, {3317.3158760190363, 
+                  0.16855910487757264}, {3318.623693481329, 
+                  0.1685725712371622}, {3321.2393284059144, 
+                  0.16860014010690433}, {3326.4705982550845, 
+                  0.16865796701495908}, {3326.7755187237944, 
+                  0.1686614538255393}, {3327.080439192505, 
+                  0.168664953901126}, {3327.6902801299248, 
+                  0.16867199415078976}, {3328.9099620047655, 
+                  0.1686862372009932}, {3331.349325754446, 
+                  0.1687153912647013}, {3336.228053253808, 
+                  0.16877652189837114}, {3336.5329737225184, 
+                  0.16878047382071137}, {3336.8378941912283, 
+                  0.16878444174707707}, {3337.4477351286487, 
+                  0.1687924260017027}, {3338.667417003489, 
+                  0.16880859089188238}, {3341.10678075317, 
+                  0.16884172907433417}, {3345.9855082525314, 
+                  0.16891143387626986}, {3346.316226457032, 
+                  0.16891633340212148}, {3346.646944661532, 
+                  0.16892125593975543}, {3347.308381070532, 
+                  0.16893117070079866}, {3348.6312538885322, 
+                  0.1689512836054871}, {3351.2769995245335, 
+                  0.1689926814089482}, {3356.568490796535, 
+                  0.16908049594514749}, {3356.899209001035, 
+                  0.1690862205851244}, {3357.229927205535, 
+                  0.16909197428447795}, {3357.8913636145357, 
+                  0.1691035697492455}, {3359.2142364325364, 
+                  0.16912711928625512}, {3361.859982068537, 
+                  0.1691757055321482}, {3367.1514733405393, 
+                  0.16927928329029457}, {3367.4601576481764, 
+                  0.16928560729929784}, {3367.7688419558135, 
+                  0.16929196389149526}, {3368.3862105710878, 
+                  0.16930477583586523}, {3369.620947801636, 
+                  0.16933080198473305}, {3372.0904222627323, 
+                  0.16938452339101231}, {3377.029371184926, 
+                  0.16949916325504402}, {3377.3380554925625, 
+                  0.16950666910795303}, {3377.6467398001996, 
+                  0.16951421708310624}, {3378.264108415474, 
+                  0.16952944082311797}, {3379.4988456460223, 
+                  0.16956040964917854}, {3381.9683201071193, 
+                  0.16962451773677553}, {3386.9072690293124, 
+                  0.16976215828244026}, {3387.2417510727396, 
+                  0.1697719689964648}, {3387.576233116167, 
+                  0.16978184523921278}, {3388.245197203021, 
+                  0.16980179694739544}, {3389.583125376729, 
+                  0.1698425162105805}, {3392.258981724146, 
+                  0.16992737769688993}, {3392.593463767573, 
+                  0.16993832090483593}, {3392.9279458110004, 
+                  0.16994934129504594}, {3393.5969098978544, 
+                  0.16997161690171297}, {3394.934838071563, 
+                  0.17001713103389612}, {3397.6106944189796, 
+                  0.17011221032975019}, {3397.945176462407, 
+                  0.17012449334354143}, {3398.279658505834, 
+                  0.17013686811834627}, {3398.948622592688, 
+                  0.17016189708109292}, {3400.2865507663964, 
+                  0.17021310244759777}, {3402.9624071138132, 
+                  0.17032035524085773}, {3408.314119808647, 
+                  0.17055650009996415}, {3408.642511832762, 
+                  0.1705720286228961}, {3408.970903856877, 
+                  0.17058768628841947}, {3409.6276879051075, 
+                  0.17061939551766211}, {3410.9412560015676, 
+                  0.17068443639377745}, {3413.5683921944883, 
+                  0.1708214069946524}, {3413.8967842186034, 
+                  0.17083921118861328}, {3414.2251762427186, 
+                  0.17085717385362817}, {3414.8819602909484, 
+                  0.1708935830942939}, {3416.1955283874086, 
+                  0.17096839885462967}, {3418.8226645803293, 
+                  0.17112654730997773}, {3419.1510566044444, 
+                  0.17114716352800594}, {3419.479448628559, 
+                  0.1711679770827628}, {3420.1362326767894, 
+                  0.1712102075807165}, {3421.44980077325, 
+                  0.17129716488130417}, {3424.0769369661703, 
+                  0.1714817770045274}, {3429.3312093520117, 
+                  0.1719004309072599}, {3429.6375674792635, 
+                  0.1719271566609356}, {3429.9439256065157, 
+                  0.17195416302901023}, {3430.5566418610197, 
+                  0.1720090353328358}, {3431.7820743700277, 
+                  0.17212234757395348}, {3434.232939388044, 
+                  0.17236436386520487}, {3434.5392975152963, 
+                  0.17239616468016944}, {3434.845655642548, 
+                  0.172428329175226}, {3435.4583718970525, 
+                  0.17249377420853007}, {3436.6838044060605, 
+                  0.17262931159268124}, {3439.1346694240765, 
+                  0.17292057437359523}, {3439.4410275513283, 
+                  0.17295902677615568}, {3439.7473856785805, 
+                  0.17299796172708623}, {3440.3601019330845, 
+                  0.17307731563860076}, {3441.585534442093, 
+                  0.17324222699884737}, {3443.3468697438625, 
+                  0.1734987820524089}}], Line[{{3530.3635144208915, 
+                  0.16010081066759554}, {3530.611054855824, 
+                  0.1601399876252678}, {3530.9188506416176, 
+                  0.16018556795585337}, {3531.2266464274117, 
+                  0.1602305391882321}, {3531.8422379989997, 
+                  0.16031870182047345}, {3533.073421142176, 
+                  0.16048822343954447}, {3535.5357874285273, 
+                  0.16080235248248098}, {3535.8435832143214, 
+                  0.1608394653904266}, {3536.1513790001154, 
+                  0.16087612842520616}, {3536.766970571703, 
+                  0.16094813681637588}, {3537.9981537148788, 
+                  0.16108709626374076}, {3540.4605200012306, 
+                  0.1613463529117175}, {3540.768315787024, 
+                  0.16137713569237191}, {3541.0761115728183, 
+                  0.16140757730900845}, {3541.6917031444063, 
+                  0.16146745927070397}, {3542.9228862875825, 
+                  0.1615833671069077}, {3545.385252573934, 
+                  0.1618008601065659}, {3550.3099851466372, 
+                  0.16218613132680895}, {3550.6435786682214, 
+                  0.16221011470638866}, {3550.977172189805, 
+                  0.1622338526566083}, {3551.6443592329733, 
+                  0.16228060708486017}, {3552.978733319309, 
+                  0.16237132970019713}, {3555.647481491981, 
+                  0.16254237075744038}, {3555.981075013565, 
+                  0.16256283544415392}, {3556.314668535149, 
+                  0.16258310627478134}, {3556.9818555783168, 
+                  0.16262307722000705}, {3558.316229664653, 
+                  0.1627008094446867}, {3560.9849778373245, 
+                  0.16284798221016947}, {3561.3185713589082, 
+                  0.1628656459500747}, {3561.6521648804924, 
+                  0.16288315397391778}, {3562.31935192366, 
+                  0.162917710997662}, {3563.6537260099963, 
+                  0.16298504388428317}, {3566.322474182668, 
+                  0.16311299737191773}, {3571.6599705280114, 
+                  0.16334497183494578}, {3571.9874740302835, 
+                  0.1633582668787}, {3572.3149775325555, 
+                  0.16337146090264193}, {3572.969984537099, 
+                  0.16339755044457763}, {3574.279998546187, 
+                  0.16344856643887706}, {3576.9000265643626, 
+                  0.16354618024518022}, {3582.140082600714, 
+                  0.1637254180474099}, {3582.467586102986, 
+                  0.16373597253062877}, {3582.795089605258, 
+                  0.16374645543013175}, {3583.4500966098017, 
+                  0.16376720936260492}, {3584.7601106188895, 
+                  0.16380788941998545}, {3587.380138637065, 
+                  0.16388608797814452}, {3592.6201946734163, 
+                  0.16403092624412752}, {3592.925664278825, 
+                  0.1640389305062605}, {3593.231133884234, 
+                  0.16404688903370268}, {3593.842073095052, 
+                  0.16406267043958014}, {3595.0639515166877, 
+                  0.16409370129735057}, {3597.507708359959, 
+                  0.16415371684135305}, {3602.3952220465017, 
+                  0.16426616505536226}, {3602.7006916519103, 
+                  0.16427287935352905}, {3603.0061612573195, 
+                  0.16427955848002532}, {3603.6171004681373, 
+                  0.16429281231528867}, {3604.838978889773, 
+                  0.16431890983806965}, {3607.2827357330443, 
+                  0.1643695222060817}, {3612.1702494195865, 
+                  0.16446484590977753}, {3612.5015167607853, 
+                  0.16447103934282606}, {3612.8327841019845, 
+                  0.16447720031106097}, {3613.495318784382, 
+                  0.16448942586685153}, {3614.820388149178, 
+                  0.16451349840608517}, {3617.4705268787693, 
+                  0.16456018269669248}, {3622.770804337952, 
+                  0.16464810503676447}, {3623.102071679151, 
+                  0.16465337366275398}, {3623.43333902035, 
+                  0.1646586167976358}, {3624.0958737027477, 
+                  0.16466902732923622}, {3625.4209430675437, 
+                  0.1646895504880425}, {3628.071081797135, 
+                  0.164729444160891}, {3633.3713592563176, 
+                  0.16480491167248945}, {3633.6805927006535, 
+                  0.1648091468059365}, {3633.98982614499, 
+                  0.16481336417415085}, {3634.6082930336615, 
+                  0.1648217460594263}, {3635.845226811005, 
+                  0.16483830148575776}, {3638.319094365692, 
+                  0.16487060269842274}, {3643.2668294750656, 
+                  0.16493214524617492}, {3653.162299693814, 
+                  0.16504426146414364}, {3653.465443118838, 
+                  0.16504748614360393}, {3653.7685865438616, 
+                  0.1650506991249361}, {3654.374873393909, 
+                  0.16505709024655396}, {3655.587447094005, 
+                  0.165069734873576}, {3658.0125944941956, 
+                  0.16509448727635498}, {3662.862889294577, 
+                  0.16514194797736378}, {3672.5634788953407, 
+                  0.1652294386793416}, {3672.892420056154, 
+                  0.1652322456205299}, {3673.221361216968, 
+                  0.1652350426600889}, {3673.879243538596, 
+                  0.16524060724286704}, {3675.1950081818513, 
+                  0.16525161986255943}, {3677.8265374683624, 
+                  0.16527319013773745}, {3683.0895960413845, 
+                  0.16531459608361773}, {3693.615713187429, 
+                  0.16539108663241786}, {3693.9226204513798, 
+                  0.16539320020500314}, {3694.2295277153307, 
+                  0.1653953075229164}, {3694.843342243232, 
+                  0.16539950350530305}, {3696.0709712990356, 
+                  0.16540782162129034}, {3698.5262294106424, 
+                  0.16542416844509084}, {3703.4367456338555, 
+                  0.16545575032387028}, {3713.257778080282, 
+                  0.16551480413241426}, {3713.5904830800228, 
+                  0.16551671508733615}, {3713.923188079764, 
+                  0.16551862044139007}, {3714.5885980792455, 
+                  0.16552241444496074}, {3715.9194180782088, 
+                  0.16552993631246257}, {3718.581058076136, 
+                  0.16554472080027832}, {3723.9043380719895, 
+                  0.16557329349199484}, {3734.5508980636964, 
+                  0.16562675317563133}, {3754.433848647876, 
+                  0.16571519448942656}, {3773.927037996086, 
+                  0.16578999978268813}, {3795.071282434857, 
+                  0.16586043160669334}, {3814.8053574743935, 
+                  0.16591796166055975}, {3836.190487604491, 
+                  0.16597295504360568}, {3857.1858564986187, 
+                  0.16602075586905868}, {3876.7710559935117, 
+                  0.16606069538986648}, {3898.007310578966, 
+                  0.16609969170452654}, {3917.8333957651857, 
+                  0.16613262036758816}, {3937.2697197154357, 
+                  0.16616207928448246}, {3958.3570987562466, 
+                  0.16619128465910393}, {3978.0343083978228, 
+                  0.1662162671141203}, {3978.377522010229, 
+                  0.16621668504485823}, {3978.7207356226354, 
+                  0.16621710238997894}, {3979.4071628474485, 
+                  0.16621793532826706}, {3980.7800172970747, 
+                  0.16621959423112126}, {3983.525726196326, 
+                  0.1662228844118541}, {3989.01714399483, 
+                  0.16622935638844344}, {3989.3603576072364, 
+                  0.1662297561706376}, {3989.703571219643, 
+                  0.16623015540478606}, {3990.3899984444556, 
+                  0.16623095223342943}, {3991.7628528940813, 
+                  0.1662325393633158}, {3994.5085617933332, 
+                  0.1662356877606649}, {3994.8517754057393, 
+                  0.16623607890703113}, {3995.194989018146, 
+                  0.16623646952293664}, {3995.881416242959, 
+                  0.16623724916765859}, {3997.254270692585, 
+                  0.16623880213863462}, {3997.5974843049917, 
+                  0.16623918907122445}, {3997.940697917398, 
+                  0.16623957548186458}, {3998.627125142211, 
+                  0.16624034674149726}, {3998.970338754617, 
+                  0.1662407315925834}, {3999.3135523670235, 
+                  0.16624111592590732}, {3999.65676597943, 
+                  0.16624149974250851}, {3999.9999795918366, 
+                  0.16624188304342435}}], Line[{{3487.315842374322, 
+                  0.1734987820524089}, {3487.562934836857, 
+                  0.1706885581256242}, {3487.873056803036, 
+                  0.16710676242894176}, {3488.1831787692154, 
+                  0.16359156674127126}, {3488.4933007353943, 
+                  0.1602147416252146}, {3488.5044232316677, 
+                  0.16010081066759554}}]}, "Charting`Private`Tag$92919#1"]}}, 
+           {}}, {DisplayFunction -> Identity, Ticks -> {Automatic, 
+             Automatic}, AxesOrigin -> {3000.000000000007, 
+             0.1601008106675959}, FrameTicks -> {{Automatic, Automatic}, 
+             {Automatic, Automatic}}, GridLines -> {None, None}, 
+           DisplayFunction -> Identity, PlotRangePadding -> 
+            {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.05], Scaled[0.05]}}, 
+           PlotRangeClipping -> True, ImagePadding -> All, 
+           DisplayFunction -> Identity, AspectRatio -> GoldenRatio^(-1), 
+           Axes -> {True, True}, AxesLabel -> {None, None}, 
+           AxesOrigin -> {3000, 0.16010081066759554}, DisplayFunction :> 
+            Identity, Frame -> {{False, False}, {False, False}}, 
+           FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> 
+            {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, GridLinesStyle -> 
+            Directive[GrayLevel[0.5, 0.4]], Method -> 
+            {"DefaultBoundaryStyle" -> Automatic, 
+             "DefaultGraphicsInteraction" -> {"Version" -> 1.2, 
+               "TrackMousePosition" -> {True, False}, "Effects" -> 
+                {"Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> 
+                  {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> 
+                    True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+             "DefaultMeshStyle" -> AbsolutePointSize[6], 
+             "ScalingFunctions" -> None, "CoordinatesToolOptions" -> 
+              {"DisplayFunction" -> ({(Identity[#1] & )[#1[[1]]], 
+                  (Identity[#1] & )[#1[[2]]]} & ), "CopiedValueFunction" -> 
+                ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[
+                   #1[[2]]]} & )}}, PlotRange -> {{3000, 4000}, 
+             {0.16010081066759554, 0.1734987820524089}}, PlotRangeClipping -> 
+            True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
+             {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
+             Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
+ontend-dev/Examples/DPG2024 - Berlin/A4 - Export and Share.wln", 
+   "Storage" -> <|"OurModel" -> "1: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"|>\
+|>, "Cells" -> {<|"Data" -> ".md\n# Exporting to a portable format\nOne of \
+the motivations for developing this platform is to enable the sharing of \
 computable data in a self-descriptive format, allowing it to be viewed with \
 __no software installation required on any PC, Mac, smartphone, tablet, or \
 other devices__.", "Display" -> "codemirror", 
-    "Hash" -> "a426ce59-3109-4573-abdb-36b43a0ca256", "Invisible" -> False, 
+    "Hash" -> "c83ae765-3503-4e74-9881-c1de768cdd1e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "# Exporting to a portable format\nOne of the motivations for \
 developing this platform is to enable the sharing of computable data in a \
 self-descriptive format, allowing it to be viewed with __no software \
 installation required on any PC, Mac, smartphone, tablet, or other \
 devices__.", "Display" -> "markdown", 
-    "Hash" -> "9ad2dd80-d421-4bab-902c-b7520efa13a9", "Invisible" -> False, 
+    "Hash" -> "aa9d380a-6361-4f82-9cae-74cc50b887aa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "6807c92e-6629-44f4-ad7b-34c2b44ad8e8", "Invisible" -> False, 
+    "Hash" -> "ae95cc88-4776-43ed-9142-e832bf0fab6b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\nTo try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
 src=\"Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n---\n\n<br/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "f26b688b-dfaa-4172-b94a-2fc28b4fd11a", "Invisible" -> False, 
+     "0d0de458-4941-478f-8724-e3737310c47e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "To try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
 src=\"Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n---\n\n<br/>", 
     "Display" -> "markdown", "Hash" -> 
-     "fc84af7d-f387-4e4e-a60b-1e5a39cc7d39", "Invisible" -> False, 
+     "3ffee20e-712f-4653-a950-f1da52d32e3b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\nYou can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "codemirror", "Hash" -> 
-     "f2f8fc15-c4dc-48cf-be38-e69c82e51cdd", "Invisible" -> False, 
+     "cd8c444c-dcae-4370-9b88-217190e8f605", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "You can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "markdown", "Hash" -> 
-     "9b808187-cd1b-4805-a2c3-eca841cde808", "Invisible" -> False, 
+     "6967043e-36cc-4527-9c53-d3ed5808fe35", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "ExampleData[{\"Geometry3D\",\"KleinBottle\"}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "e14c150a-5965-4e51-b32a-9bb52d1f9a88", "Invisible" -> False, 
+     "c136a8d9-bea8-49e1-907d-488c7906cd6c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"a2c496d3-7721-4daa-be89-ec4e0dbb7d88\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxolm\
 1iapRjrmpsbGeqapCQm6ialWljqpiabpBqkJCWZp1hYAACJZRY6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "56fc3797-03e3-4c85-bbd1-f6f7a2678618", "Invisible" -> False, 
+     "09487ec6-4e6c-4bc1-83d5-adddbdc8cd14", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\n*Note: use your mouse to manipulate the view*", 
     "Display" -> "codemirror", "Hash" -> 
-     "f1b90ed3-ae18-46aa-b3be-8d3af7aa7de6", "Invisible" -> False, 
+     "a98ec8ad-cc4f-4d0c-b02a-4bb293a92ac9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "*Note: use your mouse to manipulate the view*", 
     "Display" -> "markdown", "Hash" -> 
-     "552808de-390d-444c-a49b-d1b46331a285", "Invisible" -> False, 
+     "8d16fe66-2ac8-43ca-a19d-d6b072be65de", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\nLet us embed here a figure from the previous tutorial \
 **A3 - Math and Fitting.wlx**", "Display" -> "codemirror", 
-    "Hash" -> "a9a2c787-234a-41d2-a744-1bcb486b7db9", "Invisible" -> False, 
+    "Hash" -> "301e503a-da9f-41fb-94f4-3bbb129edf4c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "Let us embed here a figure from the previous tutorial **A3 - \
 Math and Fitting.wlx**", "Display" -> "markdown", 
-    "Hash" -> "138c376b-4d49-4bad-806d-1e27488c0931", "Invisible" -> False, 
+    "Hash" -> "2132955b-bdb5-4e51-a9c0-c37d60b54c0b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-5fec.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8g8cJyRAQDvgAv9\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "1be13e07-8ac1-4cdb-b7eb-2172b9aacfec", "Invisible" -> False, 
+    "Hash" -> "4958fce4-3459-4464-ba72-22be86fe010a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"959888d7-bbdb-473d-a066-f2c2f2b1b9a4\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW5paW\
 lhYpJjrJiWlJOmamBun6CYamJnpphklG6UZJRkmWSaaAACFKhXe\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "22570812-83f4-41c2-b846-4a82558064be", "Invisible" -> False, 
+     "caf208fe-95b6-48a9-80f1-0dc456d7589d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\n*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "codemirror", "Hash" -> 
-     "214786bb-44a2-45a2-95bb-bac0a9c3ab4d", "Invisible" -> False, 
+     "7caf0986-7132-426c-8c81-ee77c3031137", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "markdown", "Hash" -> 
-     "451331e9-23d6-4276-8f98-cf8577ca9a0e", "Invisible" -> False, 
+     "a96d4343-b4fd-497f-98c7-b53ec9fe8a59", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "a4c43619-ebf1-41f0-86bc-fe3582086bfa", "Invisible" -> False, 
+    "Hash" -> "fa268fb6-fe70-4e47-958e-80b3051a2f83", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\nAn exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "codemirror", "Hash" -> 
-     "c82becdc-9611-4068-83aa-c9d4697656ae", "Invisible" -> False, 
+     "b87d2ed5-d04e-400f-999b-32a39fd93d06", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "An exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "markdown", "Hash" -> 
-     "f9867149-4dc7-4963-b677-6fa5dd01473f", "Invisible" -> False, 
+     "b9ee3572-667c-4157-9128-1770f97314c9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> ".md\n## Export to ASCII\nIt is also possible, so that the raw \
 data from the previous tutorial can be imported by other apps", 
     "Display" -> "codemirror", "Hash" -> 
-     "8820d396-a049-4db2-9c3e-26afca63815e", "Invisible" -> False, 
+     "3cb7d0e7-2399-4c54-bd3f-b1c26c51b998", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "## Export to ASCII\nIt is also possible, so that the raw data \
 from the previous tutorial can be imported by other apps", 
     "Display" -> "markdown", "Hash" -> 
-     "18300c34-52df-4243-85d8-7f17c9a523f2", "Invisible" -> False, 
+     "33aeaea3-6a23-4131-b4d2-94b8006d21d9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
    <|"Data" -> "With[{model = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)},\n  Export[\"data.dat\", Table[{x, \
 model[x]}, {x,3000,4000,10}]]\n]", "Display" -> "codemirror", 
-    "Hash" -> "ad0f5aca-6d37-4ea3-99a5-19eda8599ee8", "Invisible" -> False, 
+    "Hash" -> "279fc2d0-2d80-4fd4-9a28-05e99fe2581f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>, 
-   <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "8adfa84d-0857-4a48-ba68-751d92e1a48a", "Invisible" -> False, 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> ".md\n## Notebook storage\nOne can embedd raw data into the \
+notebook as well, __so you don't have to worry about external files while \
+sharing your notebook__.", "Display" -> "codemirror", 
+    "Hash" -> "5b89bf8b-15fc-4e0f-b619-1e967d188df5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> "## Notebook storage\nOne can embedd raw data into the \
+notebook as well, __so you don't have to worry about external files while \
+sharing your notebook__.", "Display" -> "markdown", 
+    "Hash" -> "24cd0dfd-e3dc-4185-8a90-cd18f0306e96", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> "NotebookStore[\"OurModel\"] = \
+(*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "76dc9100-7a1c-4e38-87e7-15a4c66b330f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e0564710-c924-4d58-9b6a-06a580162176"|>}, "serializer" -> "jsfn4"|>
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, <|"Data" -> "\"OurModel\"", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c0ce4c78-23d9-4aca-89f2-fbf185d00726", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> ".md\n`NotebookStore` <span style=\"color:red\">is \
+preserved</span> even if a notebook has been exported to an HTML file.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a0dd0926-1dce-440d-a59b-4a0dce41a4b0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> "`NotebookStore` <span style=\"color:red\">is preserved</span> \
+even if a notebook has been exported to an HTML file.", 
+    "Display" -> "markdown", "Hash" -> 
+     "d5cf191c-0f66-48ed-a44d-b3d269b31eda", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> "With[{model = NotebookStore[\"OurModel\"]},\n  Plot[model[x], \
+{x,3000,4000}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "6469b72b-2671-4703-9b10-16b59d448592", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"9ab5b3d5-6e41-4804-ac66-4a856fe487b0\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWyYmm\
+SYZp5jqmqWaGOqaWBiY6CYmm5npmiRamJqlpZpYmCcZAACD+hV6\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9877210c-c03d-40c3-aeac-5e062e16a023", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "946ee72a-ea62-4fab-b2e2-6fbb86a9f524"|>}, "serializer" -> "jsfn4"|>
