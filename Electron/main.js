@@ -518,7 +518,7 @@ callFakeMenu["zoomIn"] = () => {
 }
 
 callFakeMenu["zoomOut"] = () => {
-    windows.focused.call('zoomIn', true);
+    windows.focused.call('zoomOut', true);
 }
 
 callFakeMenu["locateExamples"] = async(ev) => {
@@ -833,6 +833,7 @@ function create_window(opts, cbk = () => {}) {
                 backgroundMaterial: 'mica',
                 title: options.title,
                 //transparent:true,
+                useContentSize:true,
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
