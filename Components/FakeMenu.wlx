@@ -62,6 +62,17 @@ With[{Layout =
       </div>
       
     ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="zoomIn" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Zoom in
+      </button>
+      <button data-name="zoomOut" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Zoom out
+      </button>      
+    </div>
+    ,    
       <div class="py-0 px-2" role="none">
       <button data-name="docs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   

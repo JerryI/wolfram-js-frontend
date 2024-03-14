@@ -1,8 +1,20 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
+const { webFrame } = require('electron')
+
+ipcRenderer.on('zoomIn', () => {
+  webFrame.setZoomFactor(webFrame.getZoomFactor() * 1.5)
+})
+
+ipcRenderer.on('zoomOut', () => {
+  webFrame.setZoomFactor(webFrame.getZoomFactor() / 1.5)
+})
+
 contextBridge.exposeInMainWorld('electronAPI', {
   contextMenu: (callback) => ipcRenderer.on('context', callback),
   call: (callback) => ipcRenderer.on('call', callback),
+
+
 
   listener: (name, callback) => ipcRenderer.on(name, callback),
 

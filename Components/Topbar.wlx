@@ -178,7 +178,7 @@ Component[OptionsPattern[]] := With[{
         </NotebookOnly>
         <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />
 
-        <div class="grow h-full hidden linux:min-w-32 win:min-w-32 owin:min-w-32 linux:flex owin:flex win:flex"></div>  
+        <div class="h-full hidden linux:w-40 win:w-40 owin:w-40 linux:flex owin:flex win:flex"></div>  
          
     </div>
 ];

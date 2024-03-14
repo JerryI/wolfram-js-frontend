@@ -19,11 +19,19 @@ Href = If[TrueQ[$Options["Selected"]],
         </FileNameTake>        
     </div>
 ,
-    <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
-        <FileNameTake>
-            <File/>
-        </FileNameTake>
-    </a>
+    If[MemberQ[Join[Keys[$Options["Icons"]], {"wln"}], FileExtension[File]], 
+        <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
+            <FileNameTake>
+                <File/>
+            </FileNameTake>
+        </a>
+    ,
+        <a href="{URLEncode[File]}" download="{URLEncode[FileNameTake[File]]}" class="block rounded-md py-0 pr-0 text-sm">
+            <FileNameTake>
+                <File/>
+            </FileNameTake>
+        </a>
+    ]
 ];
 
 

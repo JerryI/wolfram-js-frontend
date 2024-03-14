@@ -513,6 +513,14 @@ callFakeMenu["evalInit"] = () => {
     windows.focused.call('evaluateinit', true);
 }
 
+callFakeMenu["zoomIn"] = () => {
+    windows.focused.call('zoomIn', true);
+}
+
+callFakeMenu["zoomOut"] = () => {
+    windows.focused.call('zoomIn', true);
+}
+
 callFakeMenu["locateExamples"] = async(ev) => {
     create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
 }
@@ -800,7 +808,7 @@ function create_window(opts, cbk = () => {}) {
             });
         } else if (isWindows) {
     
-            win = new MicaBrowserWindow({
+            /*win = new BrowserWindow({
                 width: 800,
                 height: 600,
                 title: options.title,
@@ -813,10 +821,29 @@ function create_window(opts, cbk = () => {}) {
                     enableRemoteModule: true,
                     nodeIntegration: true
                 }
-            });
+            });*/
+
+            win = new BrowserWindow({
+                frame: true,
+                autoHideMenuBar: true,
+                titleBarOverlay: true,
+                titleBarStyle: 'hidden',
+                width: 800,
+                height: 600,
+                backgroundMaterial: 'mica',
+                title: options.title,
+                //transparent:true,
+                show: options.show,
+                webPreferences: {
+                    preload: path.join(__dirname, 'preload_main.js')
+                }
+    
+            });    
+            
+            //win.setVibrancy('appearance-based');
 
             //Windows 10-11 specific settings for transparency
-            if (IS_WINDOWS_11) {
+            /*if (IS_WINDOWS_11) {
                 win.setMicaEffect();
                 //win.setMicaTabbedEffect(); 
                 ///win.setMicaAcrylicEffect();
@@ -836,7 +863,18 @@ function create_window(opts, cbk = () => {}) {
     
                 checkTheme();
                 //win.setRoundedCorner();
+            }*/
+            const checkTheme = () => {
+                if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff");
+                else win.setBackgroundColor("#000");
             }
+
+            nativeTheme.on("updated", checkTheme);
+            win.on('closed', () => {
+                nativeTheme.removeListener("updated", checkTheme);
+            });
+
+            checkTheme();
     
         } else {
             win = new BrowserWindow({
