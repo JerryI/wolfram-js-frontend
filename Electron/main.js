@@ -865,17 +865,19 @@ function create_window(opts, cbk = () => {}) {
                 checkTheme();
                 //win.setRoundedCorner();
             }*/
-            const checkTheme = () => {
-                if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff");
-                else win.setBackgroundColor("#000");
+            if (!IS_WINDOWS_11) {
+                const checkTheme = () => {
+                    if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff");
+                    else win.setBackgroundColor("#000");
+                }
+            
+                nativeTheme.on("updated", checkTheme);
+                win.on('closed', () => {
+                    nativeTheme.removeListener("updated", checkTheme);
+                });
+            
+                checkTheme();
             }
-
-            nativeTheme.on("updated", checkTheme);
-            win.on('closed', () => {
-                nativeTheme.removeListener("updated", checkTheme);
-            });
-
-            checkTheme();
     
         } else {
             win = new BrowserWindow({
