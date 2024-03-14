@@ -83,7 +83,7 @@ checkWSLink[notebook_, client_, event_String, p_:Null] := With[{
 
                 With[{},
                     EventHandler[notebookEvent, {
-                        "OnWebSocketConnected" -> Function[Null,
+                        "AfterWebSocketConnected" -> Function[Null,
                             EventRemove[notebookEvent];
                             Echo["Resolved! Starting to evaluate!"];
                             EventFire[promise, Resolve, True];
@@ -566,7 +566,9 @@ Component[OptionsPattern[]] := With[{
         "WebSocketConnected" -> Function[Null,
             Echo["Notebook.wlx >> WebSocket link to evaluation Kernel was established"];
             notebook["WebSocketQ"] = True;
-            EventFire[notebook, "OnWebSocketConnected", <|"Client" -> $Client|>];
+            Then[EventFire[notebook, "OnWebSocketConnected", <|"Client" -> $Client|>], Function[Null,
+                EventFire[notebook, "AfterWebSocketConnected", <|"Client" -> $Client|>]
+            ]];
         ],
 
         "WebSocketLost" -> Function[Null,

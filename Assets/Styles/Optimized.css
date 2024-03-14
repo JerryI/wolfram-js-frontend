@@ -2535,6 +2535,10 @@ select {
   height: 2rem;
 }
 
+[os="Windows"] .win\:w-40 {
+  width: 10rem;
+}
+
 [os="Windows"] .win\:min-w-32 {
   min-width: 8rem;
 }
@@ -2598,6 +2602,10 @@ select {
 
 [os="Unix"] .linux\:h-8 {
   height: 2rem;
+}
+
+[os="Unix"] .linux\:w-40 {
+  width: 10rem;
 }
 
 [os="Unix"] .linux\:min-w-32 {
@@ -2679,6 +2687,10 @@ select {
 
 [os="WindowsLegacy"] .owin\:h-8 {
   height: 2rem;
+}
+
+[os="WindowsLegacy"] .owin\:w-40 {
+  width: 10rem;
 }
 
 [os="WindowsLegacy"] .owin\:min-w-32 {
