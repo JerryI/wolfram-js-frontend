@@ -888,19 +888,20 @@ function create_window(opts, cbk = () => {}) {
             win = new BrowserWindow({
                 frame: true,
                 autoHideMenuBar: true,
-                titleBarOverlay: true,
                 titleBarStyle: 'hidden',
+                titleBarOverlay: true,
                 width: 800,
                 height: 600,
-                //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
+                maximizable: true,
+
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 }
     
-            });
+            }); 
         }
 
 

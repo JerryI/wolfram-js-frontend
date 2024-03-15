@@ -157,3 +157,19 @@ input::selection {
 .z-inf {
   z-index:110;
 }
+
+.h-titlebar {
+  height: env(titlebar-area-height) !important;
+}
+
+[os="Windows"] .win\:h-titlebar {
+  height: env(titlebar-area-height) !important;
+}
+
+[os="WindowsLegacy"] .owin\:h-titlebar {
+  height: env(titlebar-area-height) !important;
+}
+
+[os="Unix"] .linux\:h-titlebar {
+  height: env(titlebar-area-height) !important;
+}
