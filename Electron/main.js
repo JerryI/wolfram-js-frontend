@@ -833,7 +833,8 @@ function create_window(opts, cbk = () => {}) {
                 backgroundMaterial: 'mica',
                 title: options.title,
                 //transparent:true,
-                useContentSize:true,
+                maximizable: true,
+
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
