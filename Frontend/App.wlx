@@ -165,7 +165,7 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" style="user-select: none" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600">        
+          <div id="sidebar" style="user-select: none" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
             <FakeMenu/>  
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
@@ -197,6 +197,17 @@ Script = With[{},
       if (window.electronAPI) {
         window.electronAPI.toggleWindowSize();
       }
+    }
+
+    if (window.electronAPI) {
+      const sidebar = document.getElementById('sidebar');
+      window.electronAPI.onblur(() => {
+        sidebar.classList.add('grayscale');
+      });
+
+      window.electronAPI.onfocus(() => {
+        sidebar.classList.remove('grayscale');
+      });
     }
   </script>
 ];

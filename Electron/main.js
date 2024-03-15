@@ -1023,6 +1023,14 @@ function create_window(opts, cbk = () => {}) {
 
         win.loadURL(options.url);
 
+        win.on('focus', () => {
+            win.webContents.send('focus');
+        });
+        
+        win.on('blur', () => {
+            win.webContents.send('blur');
+        });
+
 
         return win;        
 }
