@@ -201,13 +201,15 @@ Script = With[{},
 
     if (window.electronAPI) {
       const sidebar = document.getElementById('sidebar');
-      window.electronAPI.onblur(() => {
-        sidebar.classList.add('grayscale');
-      });
-
-      window.electronAPI.onfocus(() => {
-        sidebar.classList.remove('grayscale');
-      });
+      if (window.electronAPI.onblur) {
+        window.electronAPI.onblur(() => {
+          sidebar.classList.add('grayscale');
+        });
+      
+        window.electronAPI.onfocus(() => {
+          sidebar.classList.remove('grayscale');
+        });
+      }
     }
   </script>
 ];
