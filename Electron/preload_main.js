@@ -10,7 +10,12 @@ ipcRenderer.on('zoomOut', () => {
   webFrame.setZoomFactor(webFrame.getZoomFactor() / 1.5)
 })
 
+
 contextBridge.exposeInMainWorld('electronAPI', {
+
+  onfocus: (callback) =>  ipcRenderer.on('focus', callback),
+  onblur: (callback) => ipcRenderer.on('blur', callback),
+
   contextMenu: (callback) => ipcRenderer.on('context', callback),
   call: (callback) => ipcRenderer.on('call', callback),
 

@@ -93,7 +93,7 @@ Component[OptionsPattern[]] := With[{
     timedSaveButton[Global`$Client(*`*), localController, Controls, parameters]
   ]];
 
-    <div style="z-index: 100;" class="flex sticky top-0 z-40 flex h-10 win:h-8 owin:h-8 linux:h-8 shrink-0 items-center gap-x-4 osx:border-b border-gray-300 dark:border-gray-500 osx:bg-239 dark:bg-gray-700 dark:win:bg-transparent dark:owin:bg-transparent dark:linux:bg-transparent px-2 pl-20 win:pl-2 owin:pl-2 linux:pl-2 md:pl-2">
+    <div style="z-index: 100;" class="flex sticky top-0 z-40 flex h-10 win:h-titlebar owin:h-titlebar linux:h-titlebar shrink-0 items-center gap-x-4 osx:border-b border-gray-300 dark:border-gray-500 osx:bg-239 dark:bg-gray-700 dark:win:bg-transparent dark:owin:bg-transparent dark:linux:bg-transparent px-2 pl-20 win:pl-2 owin:pl-2 linux:pl-2 md:pl-2">
         <div class="my-auto mr-auto border-r border-gray-300 dark:border-gray-500 pr-1" style="padding-top: 0.2em">
           <button id="sidebar-toggle" class="md:-ml-14 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 owin:ml-0 linux:ml-0">
             <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@ Component[OptionsPattern[]] := With[{
         </NotebookOnly>
         <WebUIEventListener Type={"click"} Id={"sidebar-toggle"} Pattern={"SidebarToggle"} Event={Controls} />
 
-        <div class="h-full hidden linux:w-40 win:w-40 owin:w-40 linux:flex owin:flex win:flex"></div>  
+        <div class="h-full hidden linux:flex owin:flex win:flex" style="width: calc(100vw - env(titlebar-area-width))"></div>  
          
     </div>
 ];

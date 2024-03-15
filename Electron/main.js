@@ -826,14 +826,15 @@ function create_window(opts, cbk = () => {}) {
             win = new BrowserWindow({
                 frame: true,
                 autoHideMenuBar: true,
-                titleBarOverlay: true,
                 titleBarStyle: 'hidden',
+                titleBarOverlay: true,
                 width: 800,
                 height: 600,
                 backgroundMaterial: 'mica',
                 title: options.title,
                 //transparent:true,
-                useContentSize:true,
+                maximizable: true,
+
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
@@ -867,8 +868,12 @@ function create_window(opts, cbk = () => {}) {
             }*/
             if (!IS_WINDOWS_11) {
                 const checkTheme = () => {
-                    if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff");
-                    else win.setBackgroundColor("#000");
+                    if (!nativeTheme.shouldUseDarkColors) {
+                        win.setBackgroundColor("#fff");
+                        //titleBarOverlay
+                    } else {
+                        win.setBackgroundColor("#000");
+                    }
                 }
             
                 nativeTheme.on("updated", checkTheme);
@@ -883,19 +888,20 @@ function create_window(opts, cbk = () => {}) {
             win = new BrowserWindow({
                 frame: true,
                 autoHideMenuBar: true,
-                titleBarOverlay: true,
                 titleBarStyle: 'hidden',
+                titleBarOverlay: true,
                 width: 800,
                 height: 600,
-                //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
+                maximizable: true,
+
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 }
     
-            });
+            }); 
         }
 
 
@@ -1016,6 +1022,14 @@ function create_window(opts, cbk = () => {}) {
         });
 
         win.loadURL(options.url);
+
+        win.on('focus', () => {
+            win.webContents.send('focus');
+        });
+        
+        win.on('blur', () => {
+            win.webContents.send('blur');
+        });
 
 
         return win;        
