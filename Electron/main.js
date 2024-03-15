@@ -882,6 +882,30 @@ function create_window(opts, cbk = () => {}) {
                 });
             
                 checkTheme();
+            } else {
+                //a bug with maximizing the window
+                //https://github.com/electron/electron/issues/38743
+
+                win.once('maximize', () => {
+                    const checkTheme = () => {
+                        if (!nativeTheme.shouldUseDarkColors) {
+                            win.setBackgroundColor("#fff");
+                            //titleBarOverlay
+                        } else {
+                            win.setBackgroundColor("#000");
+                        }
+                    }
+                
+                    nativeTheme.on("updated", checkTheme);
+                    win.on('closed', () => {
+                        nativeTheme.removeListener("updated", checkTheme);
+                    });
+                
+                    checkTheme();                    
+                });
+
+                
+
             }
     
         } else {
