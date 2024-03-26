@@ -429,10 +429,10 @@ const buildMenu = (opts) => {
                 ...options.plugins,
                 {
                     role: 'help',
-                    label: 'Learn More',
+                    label: 'Documentation',
                     click: async() => {
                         const { shell } = require('electron')
-                        await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+                        await shell.openExternal('http://127.0.0.1:20540')
                     }
                 }
             ]
@@ -537,7 +537,7 @@ callFakeMenu["reload"] = () => {
 callFakeMenu["docs"] = () => {
     async() => {
         const { shell } = require('electron')
-        await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+        await shell.openExternal('http://127.0.0.1:20540')
     }
 }
 callFakeMenu["exit"] = () => {

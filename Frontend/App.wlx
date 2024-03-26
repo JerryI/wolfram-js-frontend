@@ -215,6 +215,8 @@ Script = With[{},
 ];
 
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+
+
 Print["App Loaded!"];
 
 If[settings["Autostart"],
