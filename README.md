@@ -21,7 +21,9 @@ Thank you 🍺
 
 ## Highlights
 
-### Not Typical Jupyter-Like Notebook Environment
+
+### Not a typical Jupyter-like notebook environment
+
 It supports dynamics, GUI building blocks, and powerful Mathematica syntax out of the box.
 
 ![alt text](imgs/Isingspins-ezgif.com-optipng.png)
