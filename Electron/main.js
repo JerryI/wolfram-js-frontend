@@ -1283,7 +1283,7 @@ function start_server (window) {
 
         //listerning for a specific line in output
         url_match = url_reg.exec(string);
-        if (url_match) {
+        if (url_match && !server.running) {
             //open a window, means server has started
             server.url.local = `http://${url_match.groups.ip}:${url_match.groups.port}`;
             
