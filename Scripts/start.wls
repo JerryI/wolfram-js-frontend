@@ -181,9 +181,9 @@ dcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
 dcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> dhttp;
 
 dhttp = HTTPHandler[];
-dhttp["MessageHandler", "Index"]  = AssocMatchQ[<|"Path" -> "/"|>] -> (ImportFile["index.html", "Base"->FileNameJoin[{Directory[], "Documentation", "build"}] ] &)
+dhttp["MessageHandler", "Index"]  = AssocMatchQ[<|"Path" -> "/"|>] -> (ImportFile["index.html", "Base"->FileNameJoin[{Directory[], "Documentation"}] ] &)
 dhttp["MessageHandler", "All"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf", "html", "woff", "css", "js", "apng", "png", "jpg", "svg", "pdf", "gif", "json"}] -> (
-  ImportFile[#, "Base"->FileNameJoin[{Directory[], "Documentation", "build"}] ] &
+  ImportFile[#, "Base"->{FileNameJoin[{Directory[], "Documentation"}], FileNameJoin[{Directory[], "wljs_packages"}]} ] &
 )
 
 SocketListen[CSocketOpen[$Env["host"], $Env["docs"]], dcp@#&]

@@ -64,6 +64,8 @@ Follows the mouse pointer and performs complex calculations.
 #### Markdown Cells
 #### Mermaid Diagrams
 
+#### Offline documentation 🩺
+
 WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved). __No internet connection is needed__.
 
 ## Motivation

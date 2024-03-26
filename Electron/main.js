@@ -429,10 +429,10 @@ const buildMenu = (opts) => {
                 ...options.plugins,
                 {
                     role: 'help',
-                    label: 'Learn More',
+                    label: 'Documentation',
                     click: async() => {
                         const { shell } = require('electron')
-                        await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+                        await shell.openExternal('http://127.0.0.1:20540')
                     }
                 }
             ]
@@ -537,7 +537,7 @@ callFakeMenu["reload"] = () => {
 callFakeMenu["docs"] = () => {
     async() => {
         const { shell } = require('electron')
-        await shell.openExternal('https://jerryi.github.io/wljs-docs/docs/frontend/instruction')
+        await shell.openExternal('http://127.0.0.1:20540')
     }
 }
 callFakeMenu["exit"] = () => {
@@ -882,6 +882,30 @@ function create_window(opts, cbk = () => {}) {
                 });
             
                 checkTheme();
+            } else {
+                //a bug with maximizing the window
+                //https://github.com/electron/electron/issues/38743
+
+                win.once('maximize', () => {
+                    const checkTheme = () => {
+                        if (!nativeTheme.shouldUseDarkColors) {
+                            win.setBackgroundColor("#fff");
+                            //titleBarOverlay
+                        } else {
+                            win.setBackgroundColor("#000");
+                        }
+                    }
+                
+                    nativeTheme.on("updated", checkTheme);
+                    win.on('closed', () => {
+                        nativeTheme.removeListener("updated", checkTheme);
+                    });
+                
+                    checkTheme();                    
+                });
+
+                
+
             }
     
         } else {
