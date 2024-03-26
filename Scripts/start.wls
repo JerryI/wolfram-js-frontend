@@ -232,6 +232,29 @@ With[{secret = CreateUUID[]},
   ];
 ];
 
-StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+SetTimeout[
+  StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+, 15000
+];
+
+SetTimeout[
+  StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+, 10000
+];
+
+SetTimeout[
+  StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+, 5000
+];
+
+SetTimeout[
+  StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+, 3000
+];
+
+SetTimeout[
+  StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
+, 1000
+];
 
 Looper[];

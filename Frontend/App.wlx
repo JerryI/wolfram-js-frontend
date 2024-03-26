@@ -24,6 +24,8 @@ TopBar           = ImportComponent["Components/Topbar.wlx"];
 
 ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
 
+BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
+
 {saveNotebook, loadNotebook, renameNotebook, cloneNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
@@ -106,23 +108,60 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
 defaultHomeFolder = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
 App[request_] := With[{
-        Secret = CreateUUID[], 
+  Secret = CreateUUID[], 
+  GlobalControls  = CreateUUID[],
+  Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1] ]
+},
+  
+  With[{
+        
         SidebarId = CreateUUID[],
-        GlobalControls  = CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
-        Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1] ],
+        
 
-        FakeMenu = If[If[KeyExistsQ[#, "AppOS"], #["AppOS"] =!= "OSX", False] &@ request["Headers"], 
-          ImportComponent["Components/FakeMenu.wlx"]
-        ,  
-          <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex">
-            <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>
-          </div>
-        ]
+        FakeMenu = 
+          Switch[If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
+            "Browser",
+              With[{middleware = CreateUUID[]},
+                EventHandler[middleware, {
+                  "NewNotebook" -> Function[Null,
+                    EventFire[GlobalControls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>]
+                  ],
+
+                  "LocateExamples" -> Function[Null,
+                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Examples"}]], $Client, "Target"->_];
+                  ],
+
+                  "OpenDocs" -> Function[Null,
+                    WebUILocation[StringTemplate["http://``:``"][env["host"], env["docs"]], $Client, "Target"->_];
+                  ], 
+
+                  "Exit" -> Function[Null,
+                    Exit[0];
+                  ],
+
+                  any_String :> (EventFire[GlobalControls, any, #]&)
+                }];
+              
+
+                BrowserMenu["Event" -> middleware]
+              ]
+            ,
+
+            "OSX",
+              <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex">
+                <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>
+              </div>
+            ,
+
+            _,
+              ImportComponent["Components/FakeMenu.wlx"]
+
+          ]
     },
 
     (* /* destructor */ *)
@@ -189,7 +228,7 @@ App[request_] := With[{
         <ElectronBinds Controls={GlobalControls}/>
       </body>
     </html>
-];
+] ];
 
 Script = With[{},
   <script type="module">
