@@ -431,8 +431,8 @@ const buildMenu = (opts) => {
                     role: 'help',
                     label: 'Documentation',
                     click: async() => {
-                        const { shell } = require('electron')
-                        await shell.openExternal('http://127.0.0.1:20540')
+                        //const { shell } = require('electron')
+                        shell.openExternal('http://127.0.0.1:20540')
                     }
                 }
             ]
@@ -534,11 +534,8 @@ callFakeMenu["reload"] = () => {
     windows.focused.win.webContents.reloadIgnoringCache();
 }
 
-callFakeMenu["docs"] = () => {
-    async() => {
-        const { shell } = require('electron')
-        await shell.openExternal('http://127.0.0.1:20540')
-    }
+callFakeMenu["docsx"] = () => {
+    shell.openExternal('http://127.0.0.1:20540')
 }
 callFakeMenu["exit"] = () => {
     app.quit();
