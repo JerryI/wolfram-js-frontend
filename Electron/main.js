@@ -636,7 +636,7 @@ const server = {
             this.wolfram.process.kill('SIGKILL');
             console.log('Killed?');
 
-            if (!isWindows && !isMac) {
+            if (!isWindows) {
                 //bug on Unix
                 kill_all(() => console.log('killed!'));
             }
@@ -1536,6 +1536,7 @@ function check_wl (configuration, cbk, window) {
             program.stderr.destroy();
 
             program.kill('SIGKILL');
+            kill_all(() => console.log('killed!'));
             check_wl(undefined, cbk, window);
         }, data.toString(), program, window)) return;
 
@@ -1581,6 +1582,7 @@ function check_wl (configuration, cbk, window) {
             
          
             program.kill('SIGKILL');
+            kill_all(() => console.log('killed!'));
             windows.log.clear();
             check_wl(undefined, cbk, window);
         }, s, program, window)) return;
@@ -1628,6 +1630,7 @@ function check_wl (configuration, cbk, window) {
             
     
                 program.kill('SIGKILL');
+                kill_all(() => console.log('killed!'));
                 windows.log.clear();
                 check_wl(undefined, cbk, window);
             }, 5000);
@@ -1789,6 +1792,7 @@ function activate_wl(program, success, rejection, window) {
             
 
                     program.kill('SIGKILL');
+                    kill_all(() => console.log('killed!'));
                     setTimeout(rejection, 3000);
                 }); 
             });            
@@ -1807,6 +1811,7 @@ function activate_wl(program, success, rejection, window) {
                     if (check(data.toString())) return;
                     //timeout to retry
                     program.kill('SIGKILL');
+                    kill_all(() => console.log('killed!'));
                     setTimeout(rejection, 3000);
                 });
             });
