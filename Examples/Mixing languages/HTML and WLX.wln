@@ -1,58 +1,58 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$57], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$351], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Examples/04 - Mixing languages/HTML and WLX.wln"|>, 
+/Examples/Mixing languages/HTML and WLX.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# HTML and Template engine\nOne can use basic \
 HTML together with insets of WL", "Display" -> "codemirror", 
-    "Hash" -> "7acef123-8a9f-450e-8295-37a8dcc8cf5e", "Invisible" -> False, 
+    "Hash" -> "febfc692-b0ef-41e6-ac9b-a450489dea55", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> "# HTML and Template engine\nOne can use basic HTML together \
 with insets of WL", "Display" -> "markdown", 
-    "Hash" -> "547d8109-0f25-4bde-9bba-8fd23c530ac3", "Invisible" -> False, 
+    "Hash" -> "d18683a1-52ee-411c-a086-b1f11cc27214", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> ".html\n\nCurrent time: <b><?wsp TextString[Now] ?></b>", 
     "Display" -> "codemirror", "Hash" -> 
-     "eb8e3e95-2b60-49b2-b098-e3f7a46d0175", "Invisible" -> False, 
+     "5b5e0bec-a51c-4c11-abc4-b96c8d0943a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> "\nCurrent time: <b>Sat 9 Mar 2024 16:18:54</b>", 
-    "Display" -> "html", "Hash" -> "1684b044-e2e7-4160-9258-822c93a3e11d", 
+    "Display" -> "html", "Hash" -> "7325f5b8-e7cf-4f26-903a-0de1cd5ca36b", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+    "Notebook" -> "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "829fb291-08d9-4f8f-9436-5e39b5463d68", "Invisible" -> False, 
+    "Hash" -> "6d14f972-4a45-4ee9-a95a-99b8729c1745", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> ".md\n# WLX Extension\nThis is combination of XML and WL \
 languages simillar to JSX. Please [read \
 docs](https://jerryi.github.io/wlx-docs/) here. An actual notebook interface \
 was made using WLX", "Display" -> "codemirror", 
-    "Hash" -> "b5f57230-89f0-4eb3-a86c-e28e1eef89ba", "Invisible" -> False, 
+    "Hash" -> "1f98cfd1-b430-4f94-b452-e710fdc10b80", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
    <|"Data" -> "# WLX Extension\nThis is combination of XML and WL languages \
 simillar to JSX. Please [read docs](https://jerryi.github.io/wlx-docs/) here. \
 An actual notebook interface was made using WLX", "Display" -> "markdown", 
-    "Hash" -> "a2f526e1-4fbc-4a8f-868a-daccf5d9db61", "Invisible" -> False, 
+    "Hash" -> "63355d9a-7f9a-4a14-8bce-f9da59da7339", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
-   <|"Data" -> ".wlx\n\n<div>\n  Current time: \
-<b><TextString><Now/></TextString></b>\n</div>", "Display" -> "codemirror", 
-    "Hash" -> "71dea346-48e0-43e7-a923-b9fb257556bc", "Invisible" -> False, 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
+   <|"Data" -> ".wlx\n\nGetTime := TextString[Now]\n\n<div>\n  Current time: \
+<b><GetTime/></b>\n</div>", "Display" -> "codemirror", 
+    "Hash" -> "5cd9d2b6-6199-4451-ba92-1c9d4d1e4685", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>, 
-   <|"Data" -> "<div > Current time: <b >Sat 9 Mar 2024 16:24:11</b></div>", 
-    "Display" -> "wlx", "Hash" -> "473f82be-162d-46e9-bfa6-585b29cb6350", 
+     "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>, 
+   <|"Data" -> "<div > Current time: <b >Wed 27 Mar 2024 19:16:13</b></div>", 
+    "Display" -> "wlx", "Hash" -> "d3d25022-a465-4bb6-b22b-bf2870fa8873", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "d318b91b-e7cf-4fe7-be59-712d2d9bbc65"|>}, 
+    "Notebook" -> "7148ea60-3430-4bf3-b516-15a9ef748c7a"|>}, 
  "serializer" -> "jsfn4"|>

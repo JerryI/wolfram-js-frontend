@@ -4,6 +4,8 @@ const { platform } = require('node:process');
 
 const zlib = require('zlib');
 
+const {powerMonitor } = require('electron')
+
 const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -1167,6 +1169,14 @@ const powerSaver = () => {
             }            
         }
     }, 15000);
+
+    powerMonitor.on('suspend', () => {
+
+    });
+
+    powerMonitor.on('lock-screen', () => {
+        
+    })
 }
 
 
