@@ -233,6 +233,13 @@ const buildMenu = (opts) => {
                             create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
                         }
                     },
+                    
+                    {
+                        label: 'Reopen in browser',
+                        click: async(ev) => {
+                            shell.openExternal(windows.focused.win.webContents.getURL());
+                        }
+                    },
                     {
                         label: 'Locate AppData',
                         click: async(ev) => {
@@ -499,6 +506,11 @@ callFakeMenu["OnTop"] = async(ev) => {
 callFakeMenu["new"] = async(ev) => {
     console.log(ev);
     windows.focused.call('newnotebook', true);
+}
+
+callFakeMenu["browser"] = async(ev) => {
+    
+    shell.openExternal(windows.focused.win.webContents.getURL());
 }
 
 callFakeMenu["abort"] = () => {

@@ -55,7 +55,7 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "./Electron/build/256x256.ico"
+      "icon": "./Electron/build/512x512.ico"
     },
     "files": [
       "./Electron/main.js",
