@@ -1,0 +1,22 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$35], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Interaction/Manipulate.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## ManipulatePlot\nAn example of built-in \
+function for interactive plotting", "Display" -> "codemirror", 
+    "Hash" -> "d81c1d6e-7a16-4c95-b4fd-a6c45e7697d0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f0193b11-bb9f-4951-8d71-ef8096831119"|>, 
+   <|"Data" -> "## ManipulatePlot\nAn example of built-in function for \
+interactive plotting", "Display" -> "markdown", 
+    "Hash" -> "bb06a323-9d9a-4517-af6e-5a71b56dad7a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f0193b11-bb9f-4951-8d71-ef8096831119"|>, 
+   <|"Data" -> 
+     "ManipulatePlot[Sin[w z + p], {z,0,10}, {w, 0, 15.1, 1}, {p, 0, Pi, \
+0.1}]", "Display" -> "codemirror", "Hash" -> 
+     "2e121b60-bcdb-4a0e-b9e9-f5635489ce90", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f0193b11-bb9f-4951-8d71-ef8096831119"|>}, "serializer" -> "jsfn4"|>
