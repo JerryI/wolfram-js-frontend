@@ -1,0 +1,190 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$364], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/Animations.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Basics of animation\nHere we will show a couple of example\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "58f35100-af2a-4969-b8b7-07fe1375a72f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> 
+     "## Basics of animation\nHere we will show a couple of example\n", 
+    "Display" -> "markdown", "Hash" -> 
+     "b6dbc701-734b-4cf3-a59b-50ba2b42cbf8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".md\n### Example 1\nMorphing lines", 
+    "Display" -> "codemirror", "Hash" -> 
+     "30c03513-80ee-4080-a7f6-fa9033846420", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "### Example 1\nMorphing lines", "Display" -> "markdown", 
+    "Hash" -> "8d8c4c61-b907-45e7-b626-55d53e32e59a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "Figure[OptionsPattern[]] := With[{event = \
+OptionValue[\"Id\"]},\n\t\n\tLeakyModule[{points},\n\t\t(* initial state \
+*)\n\t\tpoints = RandomReal[{-1,1}, {40,2}];\n\t\t\n\t\tEventHandler[event, \
+{\"fragment-1\" -> Function[Null, \n\t\t\t(* act when the event happend \
+*)\n\t\t\tpoints = {Sin[#], Cos[#]} &/@ \
+Range[40]\n\t\t]}];\n\t\t\n\t\tGraphics[\n          {Red, Line[points // \
+Offload]}, \n          PlotRange->{{-1,1}, {-1,1}},\n          \
+TransitionType->\"CubicInOut\",\n          TransitionDuration->2000\n        \
+]\n\t]\n]\n\nOptions[Figure] = {\"Id\"->\"\"};", "Display" -> "codemirror", 
+    "Hash" -> "7c21390e-1597-4618-864f-2dae2b80eb90", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".md\nUse it with fragments", "Display" -> "codemirror", 
+    "Hash" -> "77754069-2113-47bf-8df6-4293a65577b2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "Use it with fragments", "Display" -> "markdown", 
+    "Hash" -> "cd761ddb-f351-494d-a6ea-e064a73d09a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".slide\n\n# Animation example\n\n<Figure \
+Id={\"routed-event\"}/>\n\nThe figure will be changed, when the fragment \
+below is revealed\n\n<span style=\"color:red\">Magic</span> <!-- .element: \
+class=\"fragment\" data-fragment-index=\"1\" -->\n\n<SlideEventListener \
+Id={\"routed-event\"}/>\n", "Display" -> "codemirror", 
+    "Hash" -> "c76973e6-899c-468d-9e1a-7d816c744fa2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "b7f5f88e-e291-4e66-9029-1e0e2ea62cc7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".md\n## Example 2\nComplex animated figure\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a96acafd-80d5-40b4-bbf9-b78d48a13914", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "## Example 2\nComplex animated figure\n", 
+    "Display" -> "markdown", "Hash" -> 
+     "085a86f3-dae8-48d7-a33f-8bad6a9ebd52", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "SpinStructure[OptionsPattern[]] := LeakyModule[{t2=0, t0=0, \
+cloned = EventClone[OptionValue[\"Slide\"]]},\n  (* clone and remove for the \
+case if one assigns other handlers to the same patterns *)\n  \
+EventHandler[ResultCell[], {\"Destroy\" -> Function[Null,\n    \
+Print[\"Removed!\"];\n    EventRemove[cloned];\n  ]}];\n  \n  \
+EventHandler[cloned, {\n    OptionValue[\"Stage1\"] -> Function[Null,\n      \
+t0=1;\n    ],\n    \n    OptionValue[\"Stage2\"]->Function[Null,\n      \
+t2=1;\n    ],\n\n    (* you need to go back to the previous slide to reset \
+*)\n    \"Slide\"->Function[Null,\n        t0=0; t2=0;\n    ]\n  }];\n  \n  \
+Graphics[With[{\n  cSpins = \
+((*GB[*){{{1,-1}(*|*),(*|*){1,-1}(*|*),(*|*){1,1}(*|*),(*|*){1,-1}}(*||*),(*|\
+|*){{1,1}(*|*),(*|*){1,-1}(*|*),(*|*){1,1}(*|*),(*|*){1,-1}}(*||*),(*||*){{1,\
+-1}(*|*),(*|*){1,1}(*|*),(*|*){1,-1}(*|*),(*|*){1,1}}(*||*),(*||*){{1,1}(*|*)\
+,(*|*){1,1}(*|*),(*|*){1,-1}(*|*),(*|*){1,1}}}(*]GB*))\n  },\n  {\n    \
+Table[{\n      With[{spinPos = (0.23 cSpins[[i,j]] - 0.23 {1,0}), i=i, \
+j=j},\n        Arrow[{{i,j}, ( {i+0.23, j} + t0 spinPos) // Offload}]\n      \
+],\n      Circle[{i,j}, 0.18]\n    }, {i,1,4}, {j,1,4}],\n\n    Orange,\n    \
+Table[{\n      Circle[{i+0.5,j+0.5}, 0.2],\n      Disk[{i+0.5,j+0.5}, \
+0.15],\n      Black,\n      Arrow[{{i+0.5,j+0.5}, {-0.3, -0.08 Offload[t2]} + \
+{i+0.5,j+0.5}}]\n    }, {i,1,3,2}, {j,1,3,2}],\n\n    Disk[{1+1.5,1+1.5}, \
+0.2],\n    Black,\n    Arrow[{{1+1.5,1+1.5}, {-0.3, -0.08 Offload[t2]} + \
+{1+1.5,1+1.5}}]\n  \n  }\n  ], \n    Axes->True, \n    AxesLabel->{\"a\", \
+\"c-axis\"}, \n    AxesStyle->Directive[FontSize->18], Ticks->{{-10}, {-10}}, \
+\n    PlotRange->{{0,5}, {0,5}},\n    ImageSize->550,\n    \
+TransitionType->\"CubicInOut\",\n    TransitionDuration->500\n  \
+]\n]\n\nOptions[SpinStructure] = {\"Stage1\"->\"\", \"Stage2\"->\"\", \
+\"Slide\"->\"\"}", "Display" -> "codemirror", 
+    "Hash" -> "a92a4811-e80f-4c45-af92-a39a7cb89608", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "{\"Stage1\"->\"\",\"Stage2\"->\"\",\"Slide\"->\"\"}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7826c3b5-1a1d-4705-ad4b-403e8e853746", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".md\nOur animation consists of two stages, we will define \
+fragments for each", "Display" -> "codemirror", 
+    "Hash" -> "e7d3c339-54aa-43dc-8684-31649f0d2b06", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> 
+     "Our animation consists of two stages, we will define fragments for \
+each", "Display" -> "markdown", "Hash" -> 
+     "6c53f6fc-fc3a-4df2-af9e-53f54986ff46", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".slide\n\n# Animation Test\n\n---\n\n# Spin \
+structure\n\n<SpinStructure Slide={\"sslide\"} Stage1={\"fragment-1\"} \
+Stage2={\"fragment-2\"} />\n\nReported spin configuration $T < 35K$ <!-- \
+.element: class=\"fragment fade-in\" data-fragment-index=\"1\" \
+-->\n\nExpected low-temperature spin configuration <!-- .element: \
+class=\"fragment fade-in\" data-fragment-index=\"2\" --> \
+\n\n<SlideEventListener Id={\"sslide\"}/>", "Display" -> "codemirror", 
+    "Hash" -> "3ea1e0b4-5ea0-4ce4-bbe4-b089082c9665", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "ea205fee-0068-40ab-b95c-a1f7bb5a06ee", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".md\n## Example 2\nZooming into graph", 
+    "Display" -> "codemirror", "Hash" -> 
+     "086ed496-ea01-4d97-bd99-68ef98f373aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "## Example 2\nZooming into graph", "Display" -> "markdown", 
+    "Hash" -> "a5113ebc-9999-4a71-9607-d45fc337ede2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "Plt[OptionsPattern[]] := With[{ev = OptionValue[\"Zoom\"], \
+win = CurrentWindow[]},\n  EventHandler[ev, {\n    \"Slide\" -> \
+Function[Null,\n      FrontSubmit[ZoomAt[1], MetaMarker[\"marked\"], \
+\"Window\"->win]\n    ],\n\n    \"fragment-1\" -> Function[Null,\n      \
+FrontSubmit[ZoomAt[2], MetaMarker[\"marked\"], \"Window\"->win]\n    ]\n  \
+}];\n  \n  Plot[Sinc[x], {x,-10,10}, \
+Epilog->{MetaMarker[\"marked\"]}]\n]\n\nOptions[Plt] = {\"Zoom\"->\"\"}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9e953633-10e5-434e-8828-b7f0934f6246", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, <|"Data" -> ".md\nExample", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4c42c074-ef3a-48cf-9053-643490d0418e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, <|"Data" -> "Example", 
+    "Display" -> "markdown", "Hash" -> 
+     "532d60b3-2a78-417c-9dad-09dbd67b41dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> ".slide\n\n# Zoom in\n\n---\n\n<Plt \
+Zoom={\"vslide\"}/>\n\nZoom <!-- .element: class=\"fragment fade-in\" \
+data-fragment-index=\"1\" --> \n\n<SlideEventListener Id={\"vslide\"}/>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e6fcb06b-d44c-4699-976a-d8ce04dacc29", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "b60fed2e-ccd3-409e-976c-fc9d6f1da8a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ae1d0730-5623-4e08-9f00-4d142bb06b5f"|>}, "serializer" -> "jsfn4"|>
