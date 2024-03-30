@@ -16,7 +16,7 @@ PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/HTTPHandler",
   Github -> "https://github.com/JerryI/WebSocketHandler" -> "master",
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
-  Github -> "https://github.com/JerryI/wl-wlx",
+  Github -> "https://github.com/JerryI/wl-wlx" -> "master",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev",
   Github -> "https://github.com/JerryI/wl-wljs-packages"
 }, "Directory" -> Directory[] ]
@@ -91,7 +91,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
   Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
   Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-export-html" -> "master"
+  Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
+  Github -> "https://github.com/JerryI/wljs-manipulate" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -168,7 +169,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 

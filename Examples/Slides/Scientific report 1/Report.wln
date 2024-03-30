@@ -1,0 +1,532 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$117], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/Real reports/Report.wln", "Storage" -> <||>|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Short Summary Report\n\nA digital \
+archeological investigation was conducted on previously measured THz data in \
+magnetic fields. Hidden features demonstrating non-trivial selection rules \
+were discovered in the presence of a magnetic field, which are \
+thickness-dependent. The g-factors for some of the excitations demonstrate \
+different observed values depending on the polarization of incident THz \
+radiation, contradicting our expectations of light-matter interaction.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9e78a558-7b42-4f30-8de7-1d99216c287a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "# Short Summary Report\n\nA digital archeological \
+investigation was conducted on previously measured THz data in magnetic \
+fields. Hidden features demonstrating non-trivial selection rules were \
+discovered in the presence of a magnetic field, which are \
+thickness-dependent. The g-factors for some of the excitations demonstrate \
+different observed values depending on the polarization of incident THz \
+radiation, contradicting our expectations of light-matter interaction.", 
+    "Display" -> "markdown", "Hash" -> 
+     "7a3ed56d-3b20-4d60-b7a2-feea351019da", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n<span style=\"color:red\">Evaluate initialization \
+cell</span> and __then evaluate__ `.slides` cell below", 
+    "Display" -> "codemirror", "Hash" -> 
+     "61c2f24a-656e-421a-bd9c-dcaea76f36b8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "<span style=\"color:red\">Evaluate initialization cell</span> \
+and __then evaluate__ `.slides` cell below", "Display" -> "markdown", 
+    "Hash" -> "8b2e3f50-9987-4b23-a549-0e230c4a6d22", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".slides\n\nThank your for your attention!", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c75d2da9-1599-41b6-9ee6-e446ece3c599", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "6759818b-f58c-48e3-b639-53bf8b6c3749", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "2", "Display" -> "codemirror", 
+    "Hash" -> "ad7a1d3e-ce67-4cba-9436-08bf3dedc36f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "f717d9a4-0a3f-46a1-bcdd-72414f87a8bd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n__layout helpers__", "Display" -> "codemirror", 
+    "Hash" -> "2b4c4e18-44ff-4e3e-b12b-2d1d8d6eccb2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "__layout helpers__", "Display" -> "markdown", 
+    "Hash" -> "8ce82fdc-747c-4aba-8db1-0b205655d39b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".wlx\nColumns[Cols__, opts: OptionsPattern[]] := \
+Columns[List[Cols], opts]\nColumns[Cols_List, OptionsPattern[]] := With[{\n  \
+number = Length[Cols],\n  Layout = Table[<div><Item/></div>, {Item, Cols}],\n \
+ class = ToString[Length[Cols]]\n},\n    <div class=\"columns-{class}\">\n    \
+    <Layout/>\n    </div>                       \n];\n\nOptions[Columns] = \
+{\"Class\"->\"gap-4\"};", "Display" -> "codemirror", 
+    "Hash" -> "16a13712-1a35-4226-85ca-7349a69c208f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "aaadb090-7d6f-4be2-9c89-9c95e06dd15a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "2", "Display" -> "codemirror", 
+    "Hash" -> "13350798-855f-4f04-accf-8a6238880e36", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n## Introduction\nTalk about a material structure", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dec25f45-7de7-4018-b5e6-96f93f468549", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "## Introduction\nTalk about a material structure", 
+    "Display" -> "markdown", "Hash" -> 
+     "e8aa0931-e132-4343-9317-daeef0926c36", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".slide\n\n## THz spectroscopy of $Fe_2 Mo_3 O_8$ in magnetic \
+fields\n\n<u>K. V. Vasin</u> <sup>1,2</sup>, A. R. Nurmukhametov \
+<sup>1</sup>,  A. Strinic <sup>2</sup>, L. Prodan <sup>2</sup>, V. Tsurkan \
+<sup>2,3</sup>, I. K\[EAcute]zsm\[AAcute]rki <sup>2</sup>, M. V. Eremin \
+<sup>1</sup>, and J. Deisenhofer <sup>2</sup> \n\n- Institute of Physics, \
+Kazan (Volga region) Federal University, 420008, Kremlevskaya 18\n- Institute \
+of Physics, Augsburg University, 86159, Universit\[ADoubleDot]tsstra\[SZ]e \
+1\n- Institute of Applied Physics, MD-2028 Chisinau, Republic of Moldova\n  \
+\nkrikus.ms@gmail.com\n\n---\n\n## Crystal and magnetic \
+structure\n\n<Columns>\n <CrystalStructure/>\n <div>\n      \n  ## Crystal \
+structure\n\n  - $Fe_2 Mo_3 O_8$\n  - Hexagonal structure (polar) $P6_{3mc}$ \
+group\n  - Collinear AFM ordering below $T_N = 60K$\n  - __II type \
+multiferroic material__\n\n  <br/>\n\n  ### Sample preparation <!-- .element: \
+class=\"fragment\" data-fragment-index=\"1\" -->\n\n  Single crystals were \
+grown by the chemical transport reaction method @ Augsburg University <!-- \
+.element: class=\"fragment\" data-fragment-index=\"1\" -->\n\n  <br/>\n\n  \
+### Optically / Magnetically active ions <!-- .element: class=\"fragment\" \
+data-fragment-index=\"2\" -->\n\n  <div>\n  \n  $Fe^{2+} (3d^6)$ <!-- \
+.element: class=\"fragment\" data-fragment-index=\"2\" -->\n  \n  </div>\n  \
+\n  - A-site $FeO_4$ <!-- .element: class=\"fragment\" \
+data-fragment-index=\"2\" -->\n  - B-site $FeO_6$ <!-- .element: \
+class=\"fragment\" data-fragment-index=\"2\" -->\n \n </div> \n</Columns>\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "884db107-daf1-4167-8d3e-1ee1288abb07", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n### Crystal data\nLoad preconstructed CIF", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5198e172-f60e-45d2-ad68-256bc8854fb2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "### Crystal data\nLoad preconstructed CIF", 
+    "Display" -> "markdown", "Hash" -> 
+     "6c25e7a4-8a60-4484-9e7e-99037b314b4d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "ec25e431-07fd-4ca9-a0c7-f8523bfaf922", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "CrystalStructure = \
+Graphics3D[(*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-4816.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8i8MJOBAQDvNAve\"*)(*]VB*), ImageSize->{400,500}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "36d871f4-3e5b-4217-b4f2-2dc277667cef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "c8a1db98-f246-486f-8b8a-e701c3558d6e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n## Experimental data\nPlot THz data using ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ab2e7981-e09d-4815-a5c1-54d11d0bbb58", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "## Experimental data\nPlot THz data using ", 
+    "Display" -> "markdown", "Hash" -> 
+     "0abb96d3-0656-4a1e-97b4-928dcdd9248a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "thzData = {Get[\"fields_dump_ab.wl\"], \
+Get[\"fields_dump_ace.wl\"], Get[\"fields_dump_ach.wl\"]};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f41595be-3e69-41d4-9bff-c96896dcbe0a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "DropHalf[list_List] := Drop[list, -Length[list]/2 // \
+Ceiling]", "Display" -> "codemirror", 
+    "Hash" -> "4862a05c-d581-40ab-ac04-ce3d6707d0ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "THzPlot[OptionsPattern[]] := With[{\n  data = \
+KeyValueMap[With[{field = #1, plot = #2},\n          Drop[Drop[\n          \
+{#[[1]], #[[2]] + field 100} &/@ DropHalf[Drop[plot // First, \
+2][[All,4;;5]]]\n          , 200], -200]\n        ]&, \
+thzData[[OptionValue[\"Part\"]]][OptionValue[\"Key\"]] // KeySort]\n},\n  \
+If[OptionValue[\"ZeroField\"],\n    ListLinePlot[data // First, \n  \n      \
+PlotStyle->Table[Blend[OptionValue[\"Gradient\"], i], {i,0.,0.,1./8}],\n      \
+AxesLabel->{\"wavenumber (cm^{-1})\", \"absorption\"},\n      \
+PlotRange->OptionValue[\"PlotRange\"],\n      \
+ImageSize->OptionValue[\"ImageSize\"]\n    ]\n  ,\n    ListLinePlot[data, \n  \
+\n      PlotStyle->Table[Blend[OptionValue[\"Gradient\"], i], \
+{i,0.,1.,1./8}],\n      AxesLabel->{\"wavenumber (cm^{-1})\", \
+\"absorption\"},\n      Epilog->{Table[Style[Text[StringTemplate[\"``T\"][i], \
+{50, 50 + 100 i}], FontSize->14], {i, 0, 7}], \
+MetaMarker[OptionValue[\"Marker\"]]},\n      \
+PlotRange->OptionValue[\"PlotRange\"],\n      \
+ImageSize->OptionValue[\"ImageSize\"]\n    ]  \n  ]\n]\n\nOptions[THzPlot] = \
+{\"Part\"->1, \"Key\"->1.6`, \"Gradient\"->{Blue // Lighter, Red}, \
+\"PlotRange\"->{{30, 120}, {0,830}}, \"ImageSize\"->{330, 450}, \
+\"ZeroField\"->False, \"Marker\"->Null};", "Display" -> "codemirror", 
+    "Hash" -> "bee84e0e-6200-4824-afa0-03d4df8e8e7a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "3cfd11e4-0ee2-476f-bf20-5de5716cfe7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".slide\n\n## Unpublished low-frequency excitations \
+data\nAbsorption spectrum in THz range __measured below $T_N = \
+60K$__\n\n<Columns Class={\"gap-4 pt-4 pb-4\"}>\n  <div>\n    <div \
+class=\"p-4\" >$E^{\\omega}||\\mathbf{a}~~H^{\\omega}||\\mathbf{c}$</div>\n   \
+ <THzPlot Part={2} Key={0.7000000000000001} ZeroField={True} PlotRange={ \
+{{30,135}, {0,150}} } ImageSize={350} Gradient={ {RGBColor[0.368417, \
+0.506779, 0.709798], RGBColor[0.880722, 0.611041, 0.142051]} }/>\n    \n  \
+</div>\n  <div>\n    <div class=\"p-4\" \
+>$E^{\\omega}||\\mathbf{c}~~H^{\\omega}||\\mathbf{a}$</div>\n    <THzPlot \
+Part={3} Key={0.7000000000000001} ZeroField={True} PlotRange={ {{30,135}, \
+{0,150}} } ImageSize={350} Gradient={ {RGBColor[0.528488, 0.470624, \
+0.701351], RGBColor[0.560181, 0.691569, 0.194885]} }/>\n  </div>\n  <div>\n   \
+ <div class=\"p-4\" \
+>$E^{\\omega}||\\mathbf{a}~~H^{\\omega}||\\mathbf{b}$</div>\n    <THzPlot \
+Part={1} Key={0.7000000000000001} ZeroField={True} PlotRange={ {{30,135}, \
+{0,150}} } ImageSize={350} Gradient={ {RGBColor[0.363898, 0.618501, \
+0.782349], RGBColor[0.922526, 0.385626, 0.209179]} }/>\n  \
+</div>\n</Columns>\n\n\n__Ana Strinic, Benjamin Csizi and Co @ Augsburg \
+University (Germany)__", "Display" -> "codemirror", 
+    "Hash" -> "e8e2b833-16d7-43b0-88db-05ba39d58a7b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8e9ce194-bb1d-4fbc-857a-d46dc1ff8a58", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n## Field dependency\nAppend data", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b309dd70-65d5-477c-b081-470620a2ecce", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "## Field dependency\nAppend data", "Display" -> "markdown", 
+    "Hash" -> "01dff77c-6f1f-4178-9793-189c7d5ae304", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "75ab823b-5774-4015-857c-5790811c0fe5", "Invisible" -> False, 
+    "MetaOnly" -> True, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> ".md\n__Layout__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "76aedeba-2dad-44e0-8868-de088c0374b8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "__Layout__", 
+    "Display" -> "markdown", "Hash" -> 
+     "38e3a246-f60f-438b-afda-7386888bf74e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".slide\n\n# Field dependency\nThe measurements were taken \
+inside a cryostat with a superconducting magnet @ 4K \n\n<Columns \
+Class={\"gap-4 pt-4 pb-4\"}>\n  <div>\n    <div class=\"p-4\" \
+>$E^{\\omega}||\\mathbf{a}~~H^{\\omega}||\\mathbf{c}$</div>\n    <THzPlot \
+Part={2} Key={0.7000000000000001} Gradient={ {RGBColor[0.368417, 0.506779, \
+0.709798], RGBColor[0.880722, 0.611041, 0.142051]} } \
+Marker={\"marked-full-1\"}/>\n\n<b class=\"pt-2\">g=2.0, g=2.38</b> <!-- \
+.element: class=\"fragment\" data-fragment-index=\"1\" -->\n    \n  </div>\n  \
+<div>\n    <div class=\"p-4\" \
+>$E^{\\omega}||\\mathbf{c}~~H^{\\omega}||\\mathbf{a}$</div>\n    <THzPlot \
+Part={3} Key={0.7000000000000001} Gradient={ {RGBColor[0.528488, 0.470624, \
+0.701351], RGBColor[0.560181, 0.691569, 0.194885]} } \
+Marker={\"marked-full-2\"}/>\n\n<b class=\"pt-2\">g=2.0, g=2.46</b> <!-- \
+.element: class=\"fragment\" data-fragment-index=\"1\" -->\n      \n  \
+</div>\n  <div>\n    <div class=\"p-4\" \
+>$E^{\\omega}||\\mathbf{a}~~H^{\\omega}||\\mathbf{b}$</div>\n    <THzPlot \
+Part={1} Key={0.7000000000000001} Gradient={ {RGBColor[0.363898, 0.618501, \
+0.782349], RGBColor[0.922526, 0.385626, 0.209179]} } \
+Marker={\"marked-full-3\"}/>\n\n<b class=\"pt-2\">g=2.7, g=3.4</b> <!-- \
+.element: class=\"fragment\" data-fragment-index=\"1\" -->\n      \n  \
+</div>\n</Columns>\n\n\n<SlideEventListener \
+Id={\"fd-simple\"}/>\n<LinesPlacer Event={\"fd-simple\"} Fragment={1}/>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "46691518-0fcd-4d5e-bc36-c7117b22ac8b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "LinesPlacer[OptionsPattern[]] := With[{win = CurrentWindow[], \
+event = OptionValue[\"Event\"], fragment = \
+StringTemplate[\"fragment-``\"][OptionValue[\"Fragment\"]]},\n  \
+EventHandler[event, {fragment -> Function[Null,\n    FrontSubmit[{Red, \
+Line[{{89, 0}, {89 - 1.96 0.4688280 8, 100 8}}], Line[{{112.5, 0}, {112.5 - \
+2.38 0.4688280 8, 100 8}}]}, MetaMarker[\"marked-full-1\"], \
+\"Window\"->win];\n    FrontSubmit[{Red, Line[{{89, 0}, {89 - 2 0.4688280 8, \
+100 8}}], Line[{{112.5, 0}, {112.5 - 2.46 0.4688280 8, 100 8}}]}, \
+MetaMarker[\"marked-full-2\"], \"Window\"->win];\n    FrontSubmit[{Red, \
+Line[{{89, 0}, {89 - 2.7 0.4688280 8, 100 8}}], Line[{{112.5, 0}, {112.5 - \
+3.4 0.4688280 8, 100 8}}]}, MetaMarker[\"marked-full-3\"], \
+\"Window\"->win];\n  ]}];\n  \"\"\n];", "Display" -> "codemirror", 
+    "Hash" -> "e3fb71d0-742a-4d86-a561-959ffb0593b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "5080947e-913f-40d8-82d8-c81595afb71c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n## Thickness dependency of AB-cut\nResample the data in \
+order to match number of points", "Display" -> "codemirror", 
+    "Hash" -> "1fa6b224-572d-4d7b-aec5-5caff99b6ee0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "## Thickness dependency of AB-cut\nResample the data in order \
+to match number of points", "Display" -> "markdown", 
+    "Hash" -> "6b7192c2-8cf5-4fe9-944f-b301e724de17", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "reSampler[min_,max_,step_:0.1][data_List] := With[{i = \
+Interpolation[data, InterpolationOrder->1]},\n  Table[{x,  i[x]}, {x, min, \
+max, step}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "2aba3e95-9449-428d-8926-5d94c16cf057", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nExtract the given key from an array of data", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a85273b3-4a03-4ebd-8758-e8b0db54af2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "Extract the given key from an array of data", 
+    "Display" -> "markdown", "Hash" -> 
+     "6f04136e-340d-4c59-9f36-f613f8000f6f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "getTHz[key_, scale_:1] := KeyValueMap[With[{field = #1, plot \
+= #2},\n          Drop[Drop[\n          {#[[1]], scale #[[2]] + field 100} \
+&/@ DropHalf[Drop[plot // First, 2][[All,4;;5]]]\n          , 200], -200]\n   \
+     ]&, thzData[[1]][key] // KeySort];", "Display" -> "codemirror", 
+    "Hash" -> "c752c128-8da5-42b4-8844-2ab2ba531dc6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nA slider to control", "Display" -> "codemirror", 
+    "Hash" -> "8f1faaed-7920-4779-9952-12613b551710", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "A slider to control", "Display" -> "markdown", 
+    "Hash" -> "cbd65b61-ddcb-45b9-a50d-90fe97a58a8a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "ThicknessSlider[OptionsPattern[]] := With[{ev = \
+OptionValue[\"Event\"]},\n  EventHandler[InputRange[0.1, 1, 0.3, 1, \
+\"Label\"->\"Thickness (mm)\"], Function[value,\n    EventFire[ev, \
+\"Change\", Round[value / 0.3 + 1]];\n  ]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "f74ddf22-bc11-4da7-82ef-7d32896f1d9b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nDynamic plot", "Display" -> "codemirror", 
+    "Hash" -> "49006cb1-daed-43cd-8dfb-e5d703cf95d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "Dynamic plot", 
+    "Display" -> "markdown", "Hash" -> 
+     "8a4b6fbe-c4a4-4e91-b8ae-9d9294398bd7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "THzDynamic[OptionsPattern[]] := \n  With[{\n    colors = \
+Table[Blend[OptionValue[\"Gradient\"], i], {i,0.,1.,1./8}],\n    keys = \
+{0.1`,0.4`,0.7000000000000001`,1.6`},\n    ev = OptionValue[\"Event\"]\n  \
+},\n\n  LeakyModule[{lines = reSampler[35, 130] /@ getTHz[1.6`]},\n    \
+EventHandler[ev, {\"Change\" -> Function[part,\n      If[part == 1,\n        \
+lines = reSampler[35, 130] /@ getTHz[keys[[part]], 0.5]\n      ,\n        \
+lines = reSampler[35, 130] /@ getTHz[keys[[part]]]\n      ];\n    ]}];\n    \
+\n    Graphics[Table[With[{i = i},\n        {colors[[i]], Line[lines[[i]] // \
+Offload]}\n      ], {i, 1, Length[lines]}], \n      Axes->True,\n      \
+AxesLabel->{\"wavenumber (cm^{-1})\", \"absorption\"},\n      \
+Epilog->{Table[Style[Text[StringTemplate[\"``T\"][i], {50, 50 + 100 i}], \
+FontSize->14], {i, 0, 7}], MetaMarker[OptionValue[\"Marker\"]]},\n      \
+PlotRange->OptionValue[\"PlotRange\"],\n      \
+ImageSize->OptionValue[\"ImageSize\"],\n      TransitionDuration->300,\n      \
+TransitionType->\"Linear\"\n    ]  \n  ]\n]\n\nOptions[THzDynamic] = \
+{\"Gradient\"->{Blue // Lighter, Red}, \"PlotRange\"->{{30, 120}, {0,830}}, \
+\"ImageSize\"->{450, 450}, \"Marker\"->Null, \"Event\"->Null};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3247dad8-f13f-4204-b54d-854d7210889a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> 
+     ".md\n## G-factor fitter\nA live g-factor plot with control buttons", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2a4f1fe6-0bfe-44c3-b251-2f6dc033ad82", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "## G-factor fitter\nA live g-factor plot with control \
+buttons", "Display" -> "markdown", "Hash" -> 
+     "df697b3f-6da7-4e13-adc9-19d7565f607b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nNow dynamic g-factor", "Display" -> "codemirror", 
+    "Hash" -> "3516c4ad-0ee6-4939-8208-6599cd010853", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "Now dynamic g-factor", "Display" -> "markdown", 
+    "Hash" -> "41f7ecad-56ee-474a-95c1-4b3d9d396bc6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "GFactor[OptionsPattern[]] := With[{marker = \
+OptionValue[\"Marker\"], win = CurrentWindow[], view = \
+OptionValue[\"View\"]}, \n\n    EventHandler[InputButton[\"+\"], \
+Function[Null,\n      EventFire[view, ToString[placeLine[marker, win], \
+StandardForm]];\n    ]]\n] \n\nGFactorView[OptionsPattern[]] := With[{ev = \
+OptionValue[\"Event\"]},LeakyModule[{field = \" \"},\n  EventHandler[ev, \
+Function[data,\n    field = data;\n  ]];\n  EditorView[field // Offload] // \
+CreateFrontEndObject\n]]", "Display" -> "codemirror", 
+    "Hash" -> "18365717-a717-4b55-9963-9a711ffe82a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nA function to append a line to a plot", 
+    "Display" -> "codemirror", "Hash" -> 
+     "69cab4c0-4ce7-4f28-ac55-add95bba75aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "A function to append a line to a plot", 
+    "Display" -> "markdown", "Hash" -> 
+     "f58d9967-f064-45bb-95d4-16d37ec84db3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "placeLine[marker_String, win_, pos_:{{50,100}, {80,700}}] := \
+LeakyModule[{line = pos},\n  FrontSubmit[{\n    PointSize[0.04], Red, \n    \
+EventHandler[Point[pos // First], {\"drag\" -> Function[xy, line = {xy, \
+line[[2]]}]}],\n    EventHandler[Point[pos // Last ], {\"drag\" -> \
+Function[xy, line = {line[[1]], xy}]}],\n    Green, Line[line // Offload]\n  \
+}, MetaMarker[marker], \"Window\"->win];\n\n  TextView[With[{p = line}, \
+With[{diff = p[[2]] - p[[1]]},\n  (diff[[1]]/( diff[[2]] / 100) ) / 0.4688280 \
+\n]] // Offload, \"Label\"->\"g-factor\"]\n]", "Display" -> "codemirror", 
+    "Hash" -> "91b63842-0650-43d1-bd20-a56dddab4375", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "76c739ad-2082-41fd-88f1-64617ad1fe68", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> ".md\n__Layout__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "865a92d5-20de-4731-8001-e66b399b6e67", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "__Layout__", 
+    "Display" -> "markdown", "Hash" -> 
+     "254a4724-bdd5-405d-8ec8-1e546bb7dab0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "d3574ba4-629f-4ce8-8772-ea6e000ae69f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".slide\n\n# Thickness dependency\nLet us have a look at \
+__ab__-cuts only, where EM wave propagates along the \
+__c__-axis.\n\n<Columns>\n  <THzDynamic Event={\"thz-dyn\"} \
+Marker={\"marked-dyn\"}/>\n  <div class=\"sm-controls text-left pt-4\">\n\n   \
+ <ThicknessSlider Event={\"thz-dyn\"}/>\n\n    <GFactor \
+Marker={\"marked-dyn\"} View={\"view-g\"}/>\n    <GFactorView \
+Event={\"view-g\"}/>\n    \n  </div>\n</Columns>\n\n---\n\nIf we plot a \
+thickness dependency for an outermost lines\n\n<br/>\n\n<div class=\"flex \
+items-center justify-center\">\n  <GDep/>\n</div>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c7e1236e-21fe-45f4-9e23-5150f094575e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\n__the last slide__", "Display" -> "codemirror", 
+    "Hash" -> "cf8b502a-2d55-4927-843d-b8eded51a802", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "__the last slide__", "Display" -> "markdown", 
+    "Hash" -> "ec34729f-7243-46e7-bf73-2a69d390e328", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> ".md\nThickness vs g-factors", "Display" -> "codemirror", 
+    "Hash" -> "b782bd9a-47c7-40ec-8ec1-0aa7085df787", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "Thickness vs g-factors", "Display" -> "markdown", 
+    "Hash" -> "d19989e0-eb60-4636-be36-26e08ecbde26", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> "GDep := ListPlot[\n  {\n    {1.6, 3.5, 4}\n    {0.7, 2.7, \
+3.4},\n    {0.4, 2.4, 2.85},\n    {0.1, 2, 2.15}\n  }[[All, {1,2}]]\n, \
+PlotStyle->{PointSize[0.03]}, ImageSize->450, AxesLabel->{\"thickness (mm)\", \
+\"g_2\"}];", "Display" -> "codemirror", 
+    "Hash" -> "0baad538-6b29-4d5e-837c-e3f4eb8490d2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "278fc93d-8ff2-4ac8-b845-c656e201103c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>}, "serializer" -> "jsfn4"|>

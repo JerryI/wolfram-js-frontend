@@ -62,6 +62,9 @@
 		},
 		{
 			"path": "wljs_packages/wljs-sharedlib-d3"
+		},
+		{
+			"path": "wljs_packages/wljs-manipulate"
 		}
 	],
 	"settings": {

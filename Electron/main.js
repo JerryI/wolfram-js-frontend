@@ -4,6 +4,8 @@ const { platform } = require('node:process');
 
 const zlib = require('zlib');
 
+const {powerMonitor } = require('electron')
+
 const { net } = require('electron')
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -625,11 +627,18 @@ const server = {
             this.startedQ = false;
             this.running = false;
             console.log(this.wolfram.process.pid);
-            
+
+            this.wolfram.process.kill('SIGINT');
+            this.wolfram.process.stdin.write("exit\n");
+
+            this.wolfram.process.stdin.end();
+            this.wolfram.process.stdout.destroy();
+            this.wolfram.process.stderr.destroy();
+              
             this.wolfram.process.kill('SIGKILL');
             console.log('Killed?');
 
-            if (!isWindows && !isMac) {
+            if (!isWindows) {
                 //bug on Unix
                 kill_all(() => console.log('killed!'));
             }
@@ -1160,6 +1169,14 @@ const powerSaver = () => {
             }            
         }
     }, 15000);
+
+    powerMonitor.on('suspend', () => {
+
+    });
+
+    powerMonitor.on('lock-screen', () => {
+        
+    })
 }
 
 
@@ -1523,7 +1540,13 @@ function check_wl (configuration, cbk, window) {
         () => {
             //if failed
             windows.log.clear();
+
+            program.stdin.end();
+            program.stdout.destroy();
+            program.stderr.destroy();
+
             program.kill('SIGKILL');
+            kill_all(() => console.log('killed!'));
             check_wl(undefined, cbk, window);
         }, data.toString(), program, window)) return;
 
@@ -1562,7 +1585,14 @@ function check_wl (configuration, cbk, window) {
         },
         () => {
             //if failed
+
+            program.stdin.end();
+            program.stdout.destroy();
+            program.stderr.destroy();
+            
+         
             program.kill('SIGKILL');
+            kill_all(() => console.log('killed!'));
             windows.log.clear();
             check_wl(undefined, cbk, window);
         }, s, program, window)) return;
@@ -1603,7 +1633,14 @@ function check_wl (configuration, cbk, window) {
             windows.log.print("No reply. Restart in 5 sec", '\x1b[46m');
 
             setTimeout(()=>{
+
+                program.stdin.end();
+                program.stdout.destroy();
+                program.stderr.destroy();
+            
+    
                 program.kill('SIGKILL');
+                kill_all(() => console.log('killed!'));
                 windows.log.clear();
                 check_wl(undefined, cbk, window);
             }, 5000);
@@ -1758,7 +1795,14 @@ function activate_wl(program, success, rejection, window) {
                     windows.log.print(data.toString());
                     if (check(data.toString())) return;
                     //timeout to retry
+
+                    program.stdin.end();
+                    program.stdout.destroy();
+                    program.stderr.destroy();
+            
+
                     program.kill('SIGKILL');
+                    kill_all(() => console.log('killed!'));
                     setTimeout(rejection, 3000);
                 }); 
             });            
@@ -1777,6 +1821,7 @@ function activate_wl(program, success, rejection, window) {
                     if (check(data.toString())) return;
                     //timeout to retry
                     program.kill('SIGKILL');
+                    kill_all(() => console.log('killed!'));
                     setTimeout(rejection, 3000);
                 });
             });

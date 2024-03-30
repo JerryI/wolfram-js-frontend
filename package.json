@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "White Russians",
@@ -24,19 +24,21 @@
     "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
     "copyright": "WLJS © 2024 ${author}",
-    "fileAssociations": [
-      {
-        "ext": "wln",
-        "name": "WLJS Notebook",
-        "role": "Editor"
-      }
-    ],
     "dmg": {
       "title": "${productName} ${version}",
       "icon": "./Electron/build/512x512.icns"
+      
     },
     "mac": {
-      "icon": "./Electron/build/512x512.icns"
+      "icon": "./Electron/build/512x512.icns",
+      "fileAssociations": [
+        {
+          "ext": "wln",
+          "name": "WLJS Notebook",
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.icns"
+        }
+      ]
     },
     "linux": {
       "target": [
@@ -48,14 +50,23 @@
           "mimeType": "application/wln",
           "ext": "wln",
           "name": "WLJS Notebook",
-          "role": "Editor"
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.png"
         }
       ],
       "icon": "./Electron/build/512x512.png"
     },
     "win": {
       "target": "NSIS",
-      "icon": "./Electron/build/512x512.ico"
+      "icon": "./Electron/build/512x512.ico",
+      "fileAssociations": [
+        {
+          "ext": "wln",
+          "name": "WLJS Notebook",
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.ico"
+        }
+      ]
     },
     "files": [
       "./Electron/main.js",
