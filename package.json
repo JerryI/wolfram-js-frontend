@@ -3,7 +3,7 @@
   "version": "2.2.5",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
-    "name": "White Russians",
+    "name": "Coffee liqueur",
     "email": "krikus.ms@gmail.com"
   },
   "main": "Electron/main.js",
