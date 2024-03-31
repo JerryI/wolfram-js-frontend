@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$38], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$107], 
    "Objects" -> <|"e2ac9276-93fa-47c8-8225-9fa8c7f20617" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
@@ -2945,269 +2945,319 @@ server.kernel.emitt('d8d971fc-385f-4c59-9862-756c875b5883', num.value, \
 = ran.value;\n            \
 server.kernel.emitt('d8d971fc-385f-4c59-9862-756c875b5883', ran.value, \
 'Default');      \n        });</script>"}]]|>|>, "Path" -> "/users/kirill/Git\
-hub/wolfram-js-frontend-dev/Examples/DPG2024 - Berlin/B3 - Interactivity.wln"\
+hub/wolfram-js-frontend-dev/Examples/Tutorials/B3 - Sliders and Dynamics.wln"\
 |>, "Cells" -> {<|"Data" -> ".md\n# Dynamics and User's Input\nThis is one of \
 the major feature developed in WLJS Notebook", "Display" -> "codemirror", 
-    "Hash" -> "b21040d6-a17f-4752-b997-91eaed7a9aa1", "Invisible" -> False, 
+    "Hash" -> "b3caaf48-9812-48f0-b278-ff4a8418a3ee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "# Dynamics and User's Input\nThis is one of the major feature \
 developed in WLJS Notebook", "Display" -> "markdown", 
-    "Hash" -> "b3c200b8-8cf0-4ba8-93a1-7a007d83cda1", "Invisible" -> False, 
+    "Hash" -> "ae795c4c-a563-4915-9870-7b4883324523", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
-   <|"Data" -> ".md\n## Sliders and data\nThe simples way to demonstarate it \
-is to generate some data", "Display" -> "codemirror", 
-    "Hash" -> "517039ab-4f3f-494e-8111-a97448933bcb", "Invisible" -> False, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> ".md\n## A shortcut\nIf you just need to plot a function with \
+a few parameters to vary", "Display" -> "codemirror", 
+    "Hash" -> "1e7dcf74-70e3-4b31-b45c-3d768ee8ae2c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
-   <|"Data" -> "## Sliders and data\nThe simples way to demonstarate it is to \
-generate some data", "Display" -> "markdown", 
-    "Hash" -> "52e0b749-4d9c-4d73-854c-99754d86ee9c", "Invisible" -> False, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "## A shortcut\nIf you just need to plot a function with a few \
+parameters to vary", "Display" -> "markdown", 
+    "Hash" -> "971d6f1d-fbf5-403a-bef9-b13ba1aa9694", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "ManipulatePlot[Sum[Sin[i \[Omega] t], {i, 10}], {t,0,2Pi}, \
+{\[Omega], 0., 10.1, 0.1}]", "Display" -> "codemirror", 
+    "Hash" -> "099019b7-b9fb-4fb3-b99a-641dddfcc5ff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> ".md\nOr for multiple functions", "Display" -> "codemirror", 
+    "Hash" -> "f1e61e21-ec7b-4a9a-ada4-7adbd3afac96", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "Or for multiple function", "Display" -> "markdown", 
+    "Hash" -> "b0766085-4e46-4999-ac58-26d8495b346e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "ManipulatePlot[{Sin[\[Omega] t], Sum[Sin[i \[Omega] t], {i, \
+10}]}, {t,0,2Pi}, {\[Omega], 0., 10.1, 0.1}]", "Display" -> "codemirror", 
+    "Hash" -> "033e8e5d-9eac-44de-9a00-d4bacd79e036", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "38e5fd06-06eb-4b29-bece-842ee7d0a71d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> ".md\n## For whom need a deeper look", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c58ddb5c-996f-45e4-bcef-9dfa42fd7e31", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "## For whom need a deeper look", "Display" -> "markdown", 
+    "Hash" -> "3763850b-c881-4070-b3b9-fd4584ae0241", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> ".md\n## Sliders and data\nThe simples way to demonstarate it \
+is to generate some data", "Display" -> "codemirror", 
+    "Hash" -> "07e328a1-65f7-46d3-8cb4-3b13e3158dca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
+   <|"Data" -> "## Sliders and data\nThe simples way to demonstarate it is to \
+generate some data", "Display" -> "markdown", 
+    "Hash" -> "a4d67184-b557-4b29-be8b-61137f6a4e62", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "generate[\[Omega]_, t_] := Sum[Sin[i \[Omega] t], {i, 10}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "1b4d5764-efba-4283-af6d-b380127da1a8", "Invisible" -> False, 
+     "80544f9e-8bb8-470c-bef9-d61e458d9ecd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "Plot[generate[10., t], {t, 0, 2Pi}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "1af70b9c-dd9b-4349-a4ab-ea0c1bb2681d", "Invisible" -> False, 
+     "51fe5b5c-3121-48c2-be52-a757b2b794a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e2ac9276-93fa-47c8-8225-9fa8c7f20617\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxolJ\
 lsamZvpWhqnJeqamCdb6FoYGZnqWqYlWiSbpxkZmBmaAwCDpRVY\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "bfe8cd02-3f5a-4ce4-843a-2658aa0cf791", "Invisible" -> False, 
+     "1b9e5a5a-dfdc-4cda-bb2d-9cf308bcf8ce", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nThis is a static picture, but we can make it dynamic. \
 The major drawback is that we have to use basic primitives such as `Line` and \
 `Graphics` wrapper for this to happen", "Display" -> "codemirror", 
-    "Hash" -> "e0c06ae1-bcd8-49a0-b3d2-2ed55659ac5b", "Invisible" -> False, 
+    "Hash" -> "246e7388-1533-4b4f-b180-c9cb19a7d0fb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "This is a static picture, but we can make it dynamic. The \
 major drawback is that we have to use basic primitives such as `Line` and \
 `Graphics` wrapper for this to happen", "Display" -> "markdown", 
-    "Hash" -> "07836c1f-671d-4af7-8216-eb75affca98e", "Invisible" -> False, 
+    "Hash" -> "ad3b3e45-54c3-4f4a-8597-4821e3e67784", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nLet's try step by step", "Display" -> "codemirror", 
-    "Hash" -> "9dd69aac-9a29-4dc3-9044-efc0b32f2d25", "Invisible" -> False, 
+    "Hash" -> "33aafbd5-f110-494d-912e-32a719ba65d9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      ".md\n## Primitives\nLet's try it out with `Graphics` step by step", 
     "Display" -> "codemirror", "Hash" -> 
-     "f0eca8e9-6a56-4a1e-9f04-054cfb4794f6", "Invisible" -> False, 
+     "4e6cf26a-37e9-4879-8b1a-cfd6dc20729d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      "## Primitives\nLet's try it out with `Graphics` step by step", 
     "Display" -> "markdown", "Hash" -> 
-     "98b1aeb6-8770-4f47-9562-57d15cbb388a", "Invisible" -> False, 
+     "c081349b-43b3-4ea7-bdfe-0dce8a73fd22", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "dyn = Table[{t, generate[10., t]}, {t, 0, 2Pi, \
 0.04}];\nGraphics[Line[dyn]]", "Display" -> "codemirror", 
-    "Hash" -> "fd711f53-123c-4d85-a183-e0505684be0e", "Invisible" -> False, 
+    "Hash" -> "1e8b3f04-4f57-49a2-9b88-4d43a2e23096", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"52aa8ecb-9632-4f54-a94d-cf4c568e9051\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxolJ\
 lqkJifpWpoZG+mapJma6CZamqToJqeZJJuaWaRaGpgaAgCJ0BWu\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "de6f86e2-dfe4-4fa2-b1db-5858489ccbd0", "Invisible" -> False, 
+     "761d8b97-914e-4672-b619-fd896fa8abfe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nA bit more clarity", "Display" -> "codemirror", 
-    "Hash" -> "5edcdd39-adfa-4bb2-baee-f4d434e91f60", "Invisible" -> False, 
+    "Hash" -> "fde0bd73-378f-4bdb-b221-16c76c9b0900", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "A bit more clarity", "Display" -> "markdown", 
-    "Hash" -> "7e48ee76-980d-4353-90b9-e636afed31e3", "Invisible" -> False, 
+    "Hash" -> "0d07105e-b1cb-470c-851f-aa2c2ad951dd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "Graphics[Line[dyn], Axes->True, PlotRange->{{0,6}, {-7,7}}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "1e72eef9-89de-4629-8160-8acd110e6062", "Invisible" -> False, 
+     "4b5f6187-e6f9-454e-9668-6a68cf33db60", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"ea1e5a0c-b365-446e-a8dc-bbe08c0f96f6\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpyYap\
 pomGiTrJhmbmeqamJil6iZapAC5SakGFskGaZZmaWYAktcWYA==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "9631bd13-0deb-4a61-91d5-1cc72be95d60", "Invisible" -> False, 
+     "9ed5d99f-185b-4a0f-a9ba-39ceb981d9e0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nHowever, __this is still a static picture__, to make it \
 dynamic, we need to use `Offload` keyword", "Display" -> "codemirror", 
-    "Hash" -> "b3a157aa-d19e-49bd-8a8f-5834bedf687b", "Invisible" -> False, 
+    "Hash" -> "6c004aa0-7a8f-44be-afc2-68987ac4d9d0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "However, __this is still a static picture__, to make it \
 dynamic, we need to use `Offload` keyword", "Display" -> "markdown", 
-    "Hash" -> "589e493d-be4d-4c9c-90b4-872963039354", "Invisible" -> False, 
+    "Hash" -> "858b85d3-58ce-4848-b238-38b845a9cddc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      "Graphics[Line[dyn // Offload], Axes->True, PlotRange->{{0,6}, {-7,7}}]"\
 , "Display" -> "codemirror", "Hash" -> 
-     "ef743238-248e-4c99-b6fd-5a5b79f73250", "Invisible" -> False, 
+     "cce16672-9d2e-4b08-bc34-dcb8e312ec05", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\n*Note: Line, Rectangle, Disk, Circle, Sphere, and other \
 primitives support Offload. You cannot put an arbitary expression into \
 Offload*", "Display" -> "codemirror", 
-    "Hash" -> "15c1a89e-0622-4927-8232-3648400fec6f", "Invisible" -> False, 
+    "Hash" -> "f13117b7-0c4a-4e9e-a330-c9702473384b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "*Note: Line, Rectangle, Disk, Circle, Sphere, and other \
 primitives support Offload. You cannot put an arbitary expression into \
 Offload*", "Display" -> "markdown", 
-    "Hash" -> "c5b7ee36-68f8-439d-a4fb-e37fa9cfb3d6", "Invisible" -> False, 
+    "Hash" -> "271d77ee-9b1c-4861-9ae3-32211cb0fdde", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nNow try to evaluate this cell", 
     "Display" -> "codemirror", "Hash" -> 
-     "c090c458-17b8-4159-99d4-4b2653282a78", "Invisible" -> False, 
+     "ecd8bb64-cfab-4132-b09d-544f36f6ebda", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "Now try to evaluate this cell", "Display" -> "markdown", 
-    "Hash" -> "5380640a-2ba1-48cc-b3ce-09cacf2bce71", "Invisible" -> False, 
+    "Hash" -> "d663978d-321b-40b6-95fd-07e3a547bc36", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "dyn = Table[{t, generate[3., t]}, {t, 0, 2Pi, 0.04}];", 
     "Display" -> "codemirror", "Hash" -> 
-     "db45bd74-1c13-4309-b0d5-67e174df4476", "Invisible" -> False, 
+     "a52611b7-e6eb-46e8-b33a-6135530de92d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nThe graph above should be updated automatically, since \
 the dynamic link between __Line__ and __dyn__ symbols is created.", 
     "Display" -> "codemirror", "Hash" -> 
-     "2cd8a29f-b0d3-4a7e-9786-92009ad714ff", "Invisible" -> False, 
+     "d3a91a48-9682-47f0-a8b8-5707a64a4051", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "The graph above should be updated automatically, since the \
 dynamic link between __Line__ and __dyn__ symbols is created.", 
     "Display" -> "markdown", "Hash" -> 
-     "4ca8e50b-04a8-43f9-b192-e9f1c1408307", "Invisible" -> False, 
+     "5909bcd9-81f4-473c-b20a-183d3bb6eb6d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "9dd95698-1bea-477e-aa32-f906167333d1", "Invisible" -> False, 
+    "Hash" -> "15700fa4-e0b5-48d9-9ff5-f06a0749abcf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\n## Adding sliders\nOf course we need element for a user \
 to interact with", "Display" -> "codemirror", 
-    "Hash" -> "2d7c58bb-5bcd-4c3e-ad39-01e8641d2763", "Invisible" -> False, 
+    "Hash" -> "ca013b5a-588e-43b5-877b-43c3ef2a5241", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      "## Adding sliders\nOf course we need element for a user to interact \
 with", "Display" -> "markdown", "Hash" -> 
-     "c48e8b8d-74dd-49b4-8a0c-07238fb304a5", "Invisible" -> False, 
+     "92d310c5-1c18-41cb-a1e9-d53003ddc716", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      "slider = InputRange[0, 10, 1, \"Label\"->\"Frequency\"];\nslider", 
     "Display" -> "codemirror", "Hash" -> 
-     "a4483f42-b266-4f7e-b215-2c23eafbfecf", "Invisible" -> False, 
+     "8bc5c869-f9f4-48f7-9280-df64a8d17d42", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
 \"a70ad6c0-e24a-4f46-97f3-883d01d94d44\", \"Initial\" -> 5, \"View\" -> \
 \"5c52d2e6-41df-4e2d-83ba-07c1b88a1b3b\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
 k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmyabGqUYpZrpmhimpOmapBql6FoYJyXqGpgnGyZ\
 ZWCQaJhknAQCILRX1\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "e521ca54-919e-4f34-97a5-268f0ca69809", "Invisible" -> False, 
+    "Hash" -> "3303870e-fadf-4b54-98ba-c5a458b47673", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nIn order to read the input, we need to assign a handler \
 function. Let it be this one", "Display" -> "codemirror", 
-    "Hash" -> "95e707af-334b-40b2-b4d0-3afb1e7181c1", "Invisible" -> False, 
+    "Hash" -> "00fc65b3-9287-48b4-8962-cd46713bff62", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "In order to read the input, we need to assign a handler \
 function. Let it be this one", "Display" -> "markdown", 
-    "Hash" -> "2929f46a-6953-430e-b2e1-b18dfd21cc97", "Invisible" -> False, 
+    "Hash" -> "1144145e-4191-44b4-b0ce-ea3b35595ab8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "EventHandler[slider, Function[freq, \n  dyn = Table[{t, \
 generate[freq, t]}, {t, 0, 2Pi, 0.04}];\n]];", "Display" -> "codemirror", 
-    "Hash" -> "fddb6aa1-4dbe-443c-bbf7-ebaae38a97df", "Invisible" -> False, 
+    "Hash" -> "6084844a-365c-405f-963f-46d25a5a6652", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\n*Note: by dragging a slider above, our dynamic plot \
 should be updated*", "Display" -> "codemirror", 
-    "Hash" -> "9dfe031f-c8ab-4196-a3a2-f33a165e8d47", "Invisible" -> False, 
+    "Hash" -> "e3b841cb-a0d3-4b5f-89e7-91587ff44c13", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> 
      "*Note: by dragging a slider above, our dynamic plot should be updated*"\
-, "Display" -> "markdown", "Hash" -> "963a9355-a745-402d-9131-35edb345623b", 
+, "Display" -> "markdown", "Hash" -> "8b2fde4c-65c3-4694-9d6b-67fd32a9e4a1", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+    "Notebook" -> "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d4249ec0-4103-40dc-83ac-ebf0e190ee7b", "Invisible" -> False, 
+    "Hash" -> "458339ea-fedf-4549-83d1-69233c1ba449", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\n## Wrapping up\nIt is better not to litter the global \
 scope and use `Module` or `LeakyModule` to scope our variables", 
     "Display" -> "codemirror", "Hash" -> 
-     "cb1066ac-e2ff-482a-9066-140dfcddf6d6", "Invisible" -> False, 
+     "056e9b29-eb24-40c3-993f-3cde5674f985", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "## Wrapping up\nIt is better not to litter the global scope \
 and use `Module` or `LeakyModule` to scope our variables", 
     "Display" -> "markdown", "Hash" -> 
-     "6dfdb738-acc7-4eeb-9d13-fe8e469b1a09", "Invisible" -> False, 
+     "6291d23a-8a12-4618-968f-e129a48a2cb8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "generate[\[Omega]_, t_] := Sum[Sin[i \[Omega] t], {i, \
 10}];\n\nLeakyModule[{data, slider},\n  slider = InputRange[0, 10, 1, \
 \"Label\"->\"Frequency\"];\n  EventHandler[slider, Function[freq,\n    data = \
@@ -3215,10 +3265,10 @@ Table[{t, generate[freq, t]}, {t, 0, 2Pi, 0.04}];\n  ]];\n\n  slider // \
 EventFire; (* just to initialize *)\n\n  {\n    Graphics[Line[data // \
 Offload], Axes->True, PlotRange->{{0,6}, {-7,7}}],\n    slider\n  } // Row \
 \n]", "Display" -> "codemirror", "Hash" -> 
-     "be76f18e-f544-4b49-a53a-973fa8f4e0eb", "Invisible" -> False, 
+     "4cfd7b14-d240-4dc5-867a-77cd4f7fbaa6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(FrontEndRef[\"51eb1c2c-1769-4c70-ae7e-fe9bb0\
 794f9c\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkN\
 VgEKmxqmJhkmGyXrGpqbWeqaJJsb6CammqfqpqVaJiUZmFuapFkmAwCHyhYO\"*)(*]VB*)(*|*),\
@@ -3228,45 +3278,45 @@ VgEKmxqmJhkmGyXrGpqbWeqaJJsb6CammqfqpqVaJiUZmFuapFkmAwCHyhYO\"*)(*]VB*)(*|*),\
 k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxgkmRgaGCfrWhgaW+qaJCYm6iYmGVrqmhqnJaW\
 aGRglG5umAQCC6BW7\"*)(*]VB*)}(*||*),(*||*)}(*]GB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "162cdf98-7540-442c-8c52-c3d000265d15", "Invisible" -> False, 
+     "0f44390a-c6f5-4863-a9da-7c12b65d8d1b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "c50ddde0-d94a-4b28-a26a-35dca33641dc", "Invisible" -> False, 
+    "Hash" -> "5e92cca0-4df2-4454-8b81-dda74ad3cf0e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\nThe result will look like this", 
     "Display" -> "codemirror", "Hash" -> 
-     "24249242-40f8-46da-9339-27f0758b68f4", "Invisible" -> False, 
+     "d19a32ab-94c2-4318-93cf-1361cc467ac2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "The result will look like this", "Display" -> "markdown", 
-    "Hash" -> "5327f2c4-7c58-41fc-8a14-5ad38e338fab", "Invisible" -> False, 
+    "Hash" -> "a4e8340f-1088-41f1-81fb-c4059d6bad20", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "e50f34d5-36e3-43d6-a139-eb9713eb91af", "Invisible" -> False, 
+    "Hash" -> "47ddbf88-52ad-45d6-ad4c-02decc1a8969", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> ".md\n\n\n![](attachments/Slider-ezgif.com-optipng.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "fd3838f6-4a4d-4c3e-bb37-3e7b6777728e", "Invisible" -> False, 
+     "e1f2115f-be28-486d-b7e2-8d84baba6f7b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> "\n\n![](attachments/Slider-ezgif.com-optipng.png)\n", 
     "Display" -> "markdown", "Hash" -> 
-     "6e623452-e051-485b-b84d-f2b9994bab7e", "Invisible" -> False, 
+     "468d0925-28c0-4f24-bab7-3beaa876ff87", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>, 
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "2b1872e9-ac35-41ed-97df-1fee37a8c4b8", "Invisible" -> False, 
+    "Hash" -> "f5b0ce08-2d3d-4610-888b-315d380724a3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4ec8b1e5-b1a6-4a2e-9a76-23cf0aa91cc1"|>}, "serializer" -> "jsfn4"|>
+     "063bd418-63fc-4314-abd4-d82036ec4756"|>}, "serializer" -> "jsfn4"|>
