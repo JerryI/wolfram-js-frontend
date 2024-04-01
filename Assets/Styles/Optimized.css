@@ -1717,6 +1717,10 @@ select {
   background-color: rgb(45 212 191 / var(--tw-bg-opacity));
 }
 
+.bg-teal-500\/15 {
+  background-color: rgb(20 184 166 / 0.15);
+}
+
 .bg-teal-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
@@ -2108,6 +2112,11 @@ select {
   color: rgb(74 222 128 / var(--tw-text-opacity));
 }
 
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
@@ -2417,6 +2426,16 @@ select {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+.hover\:text-green-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(134 239 172 / var(--tw-text-opacity));
+}
+
+.hover\:text-red-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity));
+}
+
 .hover\:text-teal-600:hover {
   --tw-text-opacity: 1;
   color: rgb(13 148 136 / var(--tw-text-opacity));
@@ -2544,10 +2563,6 @@ select {
   height: 2rem;
 }
 
-[os="Windows"] .win\:w-40 {
-  width: 10rem;
-}
-
 [os="Windows"] .win\:min-w-32 {
   min-width: 8rem;
 }
@@ -2611,10 +2626,6 @@ select {
 
 [os="Unix"] .linux\:h-8 {
   height: 2rem;
-}
-
-[os="Unix"] .linux\:w-40 {
-  width: 10rem;
 }
 
 [os="Unix"] .linux\:min-w-32 {
@@ -2696,10 +2707,6 @@ select {
 
 [os="WindowsLegacy"] .owin\:h-8 {
   height: 2rem;
-}
-
-[os="WindowsLegacy"] .owin\:w-40 {
-  width: 10rem;
 }
 
 [os="WindowsLegacy"] .owin\:min-w-32 {
