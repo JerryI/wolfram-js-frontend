@@ -239,6 +239,7 @@ const buildMenu = (opts) => {
                     {
                         label: 'Reopen in browser',
                         click: async(ev) => {
+                            server.browserMode = true;
                             shell.openExternal(windows.focused.win.webContents.getURL());
                         }
                     },
@@ -1088,7 +1089,7 @@ app.on('will-quit', () => {
 })
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
+    if (process.platform !== 'darwin' && !server.browserMode) app.quit()
 })
 
 

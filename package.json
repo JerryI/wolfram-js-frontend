@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "Coffee liqueur",
@@ -21,13 +21,14 @@
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
+    "afterSign": "./Electron/sign.js",
     "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
     "copyright": "WLJS © 2024 ${author}",
     "dmg": {
       "title": "${productName} ${version}",
-      "icon": "./Electron/build/512x512.icns"
-      
+      "icon": "./Electron/build/512x512.icns",
+      "sign": false
     },
     "mac": {
       "icon": "./Electron/build/512x512.icns",
@@ -38,7 +39,11 @@
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.icns"
         }
-      ]
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "./Electron/build/entitlements.mac.plist",
+      "entitlementsInherit": "./Electron/build/entitlements.mac.plist"
     },
     "linux": {
       "target": [
@@ -76,6 +81,7 @@
       "./Electron/log.html",
       "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
+      "./Electron/sign.js",
       "./Electron/build/**/*",
       "./shipped/**"
     ],
@@ -91,6 +97,7 @@
   },
   "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
   "devDependencies": {
+    "@electron/notarize": "^2.3.0",
     "@rollup/plugin-commonjs": "^24.0.1",
     "electron": "^28.0.0",
     "electron-builder": "^24.6.3",
@@ -110,6 +117,7 @@
     "custom-electron-titlebar": "^4.2.8",
     "electron-context-menu": "^3.6.1",
     "electron-find": "^1.0.7",
+    "electron-notarize": "^1.2.2",
     "fflate": "^0.8.0",
     "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",
