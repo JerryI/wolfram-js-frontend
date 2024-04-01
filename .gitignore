@@ -20,6 +20,8 @@ wl_packages_lock.wl
 wljs_packages_lock.wl
 wljs_packages_users.wl
 .packages
+.env
+Electron/sign.js
 /LPM.wl
 .thumbnails
 Kernel/.lastpath
