@@ -81,7 +81,6 @@
       "./Electron/log.html",
       "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
-      "./Electron/sign.js",
       "./Electron/build/**/*",
       "./shipped/**"
     ],
@@ -107,6 +106,7 @@
     "systemjs": "^6.14.1"
   },
   "dependencies": {
+    "@electron/packager": "^18.3.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",

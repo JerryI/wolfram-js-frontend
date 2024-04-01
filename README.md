@@ -10,7 +10,7 @@ __[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__
 
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
-**Recommended Wolfram Engine: 13.0.1 or higher**
+**Recommended Wolfram Engine: 13.3 or higher**
 
 __Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP Stack developer)__
 
@@ -27,7 +27,9 @@ Thank you 🍺
 It supports dynamics, GUI building blocks, and powerful Mathematica syntax out of the box.
 
 ![alt text](imgs/Isingspins-ezgif.com-optipng.png)
+
 ![alt text](imgs/Shorter-ezgif.com-optimize.gif)
+
 No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated from scratch using `d3.js` and `THREE.js` libraries. Most native plotting functions of Mathematica are supported.
 
 ### Command Palette and GUI-in-Code Emulation
@@ -82,7 +84,7 @@ __There is no aim to fully copy Mathematica__ (it will never be possible), howev
 - Natural bridge between other languages - HTML as markup, WL for computations, and JS for stunning visuals
 
 # Installation
-[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.1 is preferable).
+[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable).
 
 ## Desktop App
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
@@ -106,7 +108,8 @@ Wolfram Language, JavaScript
 
 ## Inspired By
 
-- Wolfram's Mathematica
+- Wolfram Mathematica
+- Jupyter Notebook
 - Observable
 - Wolfram Language Notebook VSCode
 - Mathics
