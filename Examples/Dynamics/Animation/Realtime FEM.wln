@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$256], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$183], 
    "Objects" -> <|"51f56b92-40e0-47fb-8b1a-9df9b700dd1d" -> 
       <|"Public" -> Hold[Graphics[{{}, Annotation[
             {{Annotation[{Directive[AbsoluteThickness[2], RGBColor[1, 0, 0], 
@@ -597,55 +597,55 @@ Animation/Realtime FEM.wln"|>,
  "Cells" -> {<|"Data" -> ".md\n# Realtime Finite Elements Methods\nHere we \
 will solve simple 2D wave-equation and visualize it in realtime using \
 polygons", "Display" -> "codemirror", 
-    "Hash" -> "cee60ea1-428f-471f-8d89-d6cca181f086", "Invisible" -> False, 
+    "Hash" -> "4dd0c605-15dd-46d2-a339-8593b8c8956a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "# Realtime Finite Elements Methods\nHere we will solve simple \
 2D wave-equation and visualize it in realtime using polygons", 
     "Display" -> "markdown", "Hash" -> 
-     "27df3486-29dc-4e2c-9188-dae94e66490f", "Invisible" -> False, 
+     "32b60531-843c-446e-9ce0-52bb69b9f80c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> 
      ".md\n## Initialize mesh\n50x50 equally distributed points on 2D plane", 
     "Display" -> "codemirror", "Hash" -> 
-     "7e5a8ac5-0ab5-4034-a928-cfa0579fd65e", "Invisible" -> False, 
+     "60dbea8a-d657-4265-b1f8-20cfe124d439", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> 
      "## Initialize mesh\n50x50 equally distributed points on 2D plane", 
     "Display" -> "markdown", "Hash" -> 
-     "a8e88598-42fe-42f7-a5d2-7675954d0379", "Invisible" -> False, 
+     "81b945c5-73ed-42a1-a880-ce0e876232ee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "field0 = Table[0., {i,50}, {j,50}];\nfield1 = field0;\nfield2 \
 = field0;\n\n(* initial perturbation *)\nfield2[[25,25]] = 0.01;\n\nlattice = \
 Table[{i,j}, {i, 50}, {j,50}];\nmesh = Flatten[lattice, 1];\n\nmakeVertices = \
 Compile[{{f, _Real, 2}, {pairs, _Integer, 2}, {scale, _Real}},\n  Join[#, \
-{scale f[[#[[1]], #[[2]]]]}] &/@ pairs\n];\n\nvertices = makeVertices[field0, \
-mesh, 300];", "Display" -> "codemirror", 
-    "Hash" -> "d3606743-9132-4efb-8109-c6bdcec7ebe3", "Invisible" -> False, 
+{scale f[[#[[1]], #[[2]]]]}] &/@ pairs\n];\n\nvertices = \
+NumericArray[makeVertices[field0, mesh, 300]];", "Display" -> "codemirror", 
+    "Hash" -> "4f320d8d-b2c6-4176-999b-6fd141b07e16", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+    "Notebook" -> "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> ".md\n## Triangulation\nThis is necessary for plotting the \
 data using 3D polygons. That we keep indexes of all polygons the same, but \
 will update vertices", "Display" -> "codemirror", 
-    "Hash" -> "8f2c80a5-6c75-4292-ba46-1ac0a2744775", "Invisible" -> False, 
+    "Hash" -> "5d606f22-0eff-43d6-9f32-470386f040dc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "## Triangulation\nThis is necessary for plotting the data \
 using 3D polygons. That we keep indexes of all polygons the same, but will \
 update vertices", "Display" -> "markdown", 
-    "Hash" -> "a4bf9c2d-7b63-45e2-8366-d8a1fcdcc556", "Invisible" -> False, 
+    "Hash" -> "a3cae5ed-19a8-41a2-962c-188f94c6e221", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "Needs[\"ComputationalGeometry`\"];\ntriangles2[points_] := \
 Module[{tr, triples},\n  tr = DelaunayTriangulation[points];\n  triples = \
 Flatten[Function[{v, list},\n      Switch[Length[list],\n        (* account \
@@ -654,130 +654,131 @@ for nodes with connectivity 2 or less *)\n        1, {},\n        2, \
 1}]\n      ]\n    ] @@@ tr, 1];\n  Cases[GatherBy[triples, Sort], a_ /; \
 Length[a] == 3 :> a[[1]]]]\n\ntriangles = triangles2[mesh];", 
     "Display" -> "codemirror", "Hash" -> 
-     "9e13179c-25a7-49ed-957a-5cee94995968", "Invisible" -> False, 
+     "d915f79b-6bd9-4d09-ba72-fb8a9e0ac5ff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+    "Notebook" -> "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> ".md\nLet us check the result", "Display" -> "codemirror", 
-    "Hash" -> "f24cf72f-783d-4902-9d16-c94757bb4b4f", "Invisible" -> False, 
+    "Hash" -> "1173d947-8a98-4dff-a05c-ad5f0c3cba00", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "Let us check the result", "Display" -> "markdown", 
-    "Hash" -> "9edf5600-3355-4425-ae82-cba9cbffca4f", "Invisible" -> False, 
+    "Hash" -> "c2c2bb64-1a2a-40c9-8ce2-bfb253826580", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "ListPlot[mesh, PlotStyle->{Red, PointSize[0.01]}, \
 Prolog->{Line[mesh[[#]]] &/@ triangles}]", "Display" -> "codemirror", 
-    "Hash" -> "c44cd3ff-0222-4a7f-b0d3-2d0798d4e054", "Invisible" -> False, 
+    "Hash" -> "45e0c027-73f4-4c00-8d88-bdae34e225f3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"51f56b92-40e0-47fb-8b1a-9df9b700dd1d\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxqmm\
 ZolWRrpmhikGuiamKcl6VokGSbqWqakWSaZGxikpBimAACAORXR\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "d8c8be69-b954-4aea-a636-16c1f814560c", "Invisible" -> False, 
+     "4bfe6d7b-5a42-4754-980c-7d5d470bb7f1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "6738db9c-bd94-4a2b-acab-010b80771394", "Invisible" -> False, 
+    "Hash" -> "9da82320-c474-43f2-8eb5-6c82d87ba224", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> ".md\n## Define our equation\nThis is discretization of a \
 wave-equation in a form\n\n$$\n\\\\partial^2_{t,t} f - \\\\alpha^2 \
 \\\\nabla^2 f = 0\n$$\n\nwe follows [the \
 following](https://beltoforion.de/en/recreational_mathematics/2d-wave-equatio\
 n.php) tutorial and rewrite it in a form\n", "Display" -> "codemirror", 
-    "Hash" -> "f0ace02e-8c7b-4bbe-b563-7edea0d441c5", "Invisible" -> False, 
+    "Hash" -> "0fab2918-adf9-43ab-877d-64a40083f649", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "## Define our equation\nThis is discretization of a \
 wave-equation in a form\n\n$$\n\\\\partial^2_{t,t} f - \\\\alpha^2 \
 \\\\nabla^2 f = 0\n$$\n\nwe follows [the \
 following](https://beltoforion.de/en/recreational_mathematics/2d-wave-equatio\
 n.php) tutorial and rewrite it in a form\n", "Display" -> "markdown", 
-    "Hash" -> "9cbdf3c3-209b-4f79-b829-d1260f2497d6", "Invisible" -> False, 
+    "Hash" -> "9372b2f3-4ceb-427a-93d6-5b4b6d5d9dcd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "update = Compile[{{i, _Integer}, {j, _Integer}, {f, _Real, \
 2}, {p, _Real, 2}}, \n  0.001 (If[i-1 > 0, f[[i-1, j]], 0] + If[i+1 < 51, \
 f[[i+1, j]], 0] + If[j+1<51, f[[i, j+1]], 0] + If[j-1 > 0, f[[i, j-1]], 0] - \
 4 f[[i,j]])\n+ 2 f[[i,j]] - p[[i,j]]\n];", "Display" -> "codemirror", 
-    "Hash" -> "0aa1af03-a2a9-4482-82c7-a5937fd12897", "Invisible" -> False, 
+    "Hash" -> "16c9e1c0-4620-438d-b5ce-4b215d1aaef6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+    "Notebook" -> "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> 
      ".md\nUpdate function calculated a new value at vertex $\\\\{i,j\\\\}$. \
 ", "Display" -> "codemirror", "Hash" -> 
-     "7f7d01b0-cc2b-4866-b4b3-6be282f45791", "Invisible" -> False, 
+     "d5fc11d8-1496-4f97-9f43-db4cd52420ba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> 
      "Update function calculated a new value at vertex $\\\\{i,j\\\\}$. ", 
     "Display" -> "markdown", "Hash" -> 
-     "3e5b830a-fa45-474d-9913-c258184a3e8d", "Invisible" -> False, 
+     "f25c8dd6-fd3a-4627-acb0-ac1cf11aade5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "201f6367-8595-4dec-8be8-a270475d250e", "Invisible" -> False, 
+    "Hash" -> "4b4d13c8-8664-4ed5-8fc0-e95d4342f9a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> ".md\n## Realtime modelling\nFor displaying we use simple \
 `Polygon` and `GraphicsComplex`\n\n<span style=\"color:red\">Run the cell \
 below after</span> __evaluation of the initialization cells__", 
     "Display" -> "codemirror", "Hash" -> 
-     "3779a946-929f-460e-82a2-bb93cee132b8", "Invisible" -> False, 
+     "91ed64be-efb2-40c0-b6ef-f12062ded9f9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "## Realtime modelling\nFor displaying we use simple `Polygon` \
 and `GraphicsComplex`\n\n<span style=\"color:red\">Run the cell below \
 after</span> __evaluation of the initialization cells__", 
     "Display" -> "markdown", "Hash" -> 
-     "4240bd14-24a6-4c0b-9809-6eb42186469a", "Invisible" -> False, 
+     "ff9b5ffc-1a96-4d4a-9365-b0124f4ba3e8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "Graphics3D[{Shadows[True], SpotLight[Blue, {2.4463, 60.1604, \
 9.3104}, 1.5, 3000], SpotLight[Red, {48.1378, 47.8679, 12.4545}, 1.5, 3000], \
 \n  Roughness[0],\n  GraphicsComplex[vertices // Offload, \
 Polygon[triangles]]\n\n}, ImageSize->500]", "Display" -> "codemirror", 
-    "Hash" -> "2df8b1c3-4e9e-45d7-8813-9e37eb6d743c", "Invisible" -> False, 
+    "Hash" -> "afe39104-c6ed-41fc-8246-49344d0983fa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> ".md\nNow we wrap our calculations into a cycle\n\n__Run the \
 cell below to start calculations__", "Display" -> "codemirror", 
-    "Hash" -> "075012bd-cbb9-48ed-8764-39fa06887714", "Invisible" -> False, 
+    "Hash" -> "cacc994e-ade8-4f8e-a12e-9bbd4811c2ca", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "Now we wrap our calculations into a cycle\n\n__Run the cell \
 below to start calculations__", "Display" -> "markdown", 
-    "Hash" -> "7f0155da-d80f-450a-84ff-46d3c2323707", "Invisible" -> False, 
+    "Hash" -> "b887651c-4382-42c2-abbd-ef68e34a7127", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> "Do[\n\n  With[{i = #[[1]], j = #[[2]]}, \n    field0[[i,j]] = \
 update[i,j, field1, field2];\n  ]&/@ RandomSample[mesh];\n  \n  field2 = \
-field1;\n  field1 = field0;\n  \n  vertices = makeVertices[field0, mesh, \
-300];\n\n, {kk,3000}];", "Display" -> "codemirror", 
-    "Hash" -> "90f2ebe6-3bfc-4cb2-aaeb-e1f72b593007", "Invisible" -> False, 
+field1;\n  field1 = field0;\n  \n  vertices = \
+NumericArray[makeVertices[field0, mesh, 300]];\n\n, {kk,3000}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "29f1a2ff-136d-4883-b300-0b7b952af8fc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>, 
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "a10b8db9-ca4a-4b35-bfc4-d3e4d5ef1f5b", "Invisible" -> False, 
+    "Hash" -> "697acfc4-cb24-42fc-9cba-d9a5146bcf64", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3bf4f038-55c3-4d35-804b-bc64991903e3"|>}, "serializer" -> "jsfn4"|>
+     "47130f46-a0e6-4d26-b5eb-43b4e4eb928d"|>}, "serializer" -> "jsfn4"|>
