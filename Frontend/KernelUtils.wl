@@ -14,7 +14,7 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
 Begin["`Internal`"];
 
 initializeKernel[parameters_][kernel_] := With[{
-  wsPort = RandomInteger[{20500, 3900}], 
+  wsPort = parameters["env", "ws2"], 
   spinner = Global`NotificationSpinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]
 },
   Print["Init Kernel!!!"];
@@ -25,7 +25,7 @@ initializeKernel[parameters_][kernel_] := With[{
   (* load kernels and provide remote path *)
   With[{
     p = Import[FileNameJoin[{"wljs_packages", #}], "String"], 
-    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][parameters["env", "host"], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm],
+    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][With[{h =  parameters["env", "host"]}, If[h === "0.0.0.0", "127.0.0.1", h] ], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm],
     dir = FileNameJoin[{Directory[], "wljs_packages", #}]
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];

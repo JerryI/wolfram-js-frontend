@@ -65,6 +65,9 @@
 		},
 		{
 			"path": "wljs_packages/wljs-manipulate"
+		},
+		{
+			"path": "wljs_packages/wljs-sharedlib-mk"
 		}
 	],
 	"settings": {
