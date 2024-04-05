@@ -128,6 +128,8 @@ AutoTest    := ImportComponent["Frontend/Test.wlx"];
 
 $ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
 
+
+
 $Env = <|
   "host" -> "127.0.0.1",
   "http" -> 20560,
@@ -137,6 +139,23 @@ $Env = <|
   "docs" -> 20540
 |>;
 
+With[{argv = Rest @ $ScriptCommandLine},
+  Echo[argv];
+  MapIndexed[Function[{key, pos},
+    With[{},
+      If[MemberQ[Keys[$Env], key],
+        With[{
+          value = argv[[ pos[[1]] + 1 ]]
+        },
+          $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
+            ToExpression[value],
+            value
+          ]|>];
+        ]
+      ]
+    ]
+  ], argv]
+];
 
 
 EventHandler[AppExtensions`AppEvents // EventClone, {

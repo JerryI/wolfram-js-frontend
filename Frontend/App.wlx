@@ -137,7 +137,7 @@ App[request_] := With[{
                   ],
 
                   "OpenDocs" -> Function[Null,
-                    WebUILocation[StringTemplate["http://``:``"][env["host"], env["docs"]], $Client, "Target"->_];
+                    WebUISubmit[Global`UIDocsOpen[env["docs"], "index.html"](*`*), $Client];
                   ], 
 
                   "Exit" -> Function[Null,
@@ -235,6 +235,14 @@ App[request_] := With[{
 
 Script = With[{},
   <script type="module">
+    core.UIDocsOpen = async (args, env) => {
+      const port = await interpretate(args[0], env);
+      const link = await interpretate(args[1], env);
+      const fake = document.createElement('a');
+            fake.target = "_blank";
+            fake.href = 'http://' + window.location.hostname + ':'+String(port) + '/' + link;
+            fake.click();
+    }
     core.UIToggleWindowBonds = async (args, env) => {
       if (window.electronAPI) {
         window.electronAPI.toggleWindowSize();

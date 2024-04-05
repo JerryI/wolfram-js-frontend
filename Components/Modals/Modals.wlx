@@ -1,6 +1,7 @@
 SuggestKernel = ImportComponent["Components/SuggestKernel.wlx"];
 TextField     = ImportComponent["Components/TextField.wlx"];
 PickAFile     = ImportComponent["Components/PickAFile.wlx"];
+Initcells     = ImportComponent["Components/Initcells.wlx"];
 RequestPathToSave.wlx = ImportComponent["Components/RequestPathToSave.wlx"];
 
 Component[OptionsPattern[]] := With[{port = OptionValue["ModalsPort"]},
@@ -8,6 +9,7 @@ Component[OptionsPattern[]] := With[{port = OptionValue["ModalsPort"]},
         <SuggestKernel Events={port}/>
         <TextField Events={port}/>
         <PickAFile Events={port}/>
+        <Initcells Events={port}/>
         <RequestPathToSave.wlx Events={port}/>
     </div>
 ]
