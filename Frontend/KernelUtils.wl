@@ -39,7 +39,7 @@ initializeKernel[parameters_][kernel_] := With[{
   ] &/@ WLJS`PM`Includes["kernel"];
 
   Echo["Starting WS link"];
-  wsStartListerning[kernel,  wsPort];
+  wsStartListerning[kernel,  wsPort, parameters["env", "host"] ];
 
   
 
@@ -63,7 +63,7 @@ deinitializeKernel[kernel_] := With[{},
   kernel["WebSocket"] = .;
 ]
 
-wsStartListerning[kernel_, port_] := With[{},
+wsStartListerning[kernel_, port_, host_] := With[{},
     
     Kernel`Init[kernel,  (  
         (*Print["Establishing WS link..."];*)
@@ -94,7 +94,7 @@ wsStartListerning[kernel_, port_] := With[{},
           ];
 
           (*Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];*)
-          SocketListen[CSocketOpen[Internal`Kernel`Host, port ], wcp@#&, "SocketEventsHandler"->Null];
+          SocketListen[CSocketOpen[host, port ], wcp@#&, "SocketEventsHandler"->Null];
 
           (*SocketListen[port, wcp@#&];*)
         ];
