@@ -477,7 +477,7 @@ Component[OptionsPattern[]] := With[{
 
         "ClearOutputs" -> Function[Null,
             Echo["ClearOutputs"];
-            Delete /@ Select[notebook["Cells"], (OutputCellQ[#] && #["Display"]=!="markdown")&];
+            Delete /@ Select[notebook["Cells"], (OutputCellQ[#] && #["Display"] =!= "markdown") &];
         ],  
         
         "UnhideAllCells" -> Function[Null,
