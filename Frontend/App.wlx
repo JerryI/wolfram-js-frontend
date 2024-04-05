@@ -137,7 +137,7 @@ App[request_] := With[{
                   ],
 
                   "OpenDocs" -> Function[Null,
-                    WebUILocation[StringTemplate["http://``:``"][env["host"], env["docs"]], $Client, "Target"->_];
+                    WebUISubmit[Global`UIDocsOpen[env["docs"], "index.html"](*`*), $Client];
                   ], 
 
                   "Exit" -> Function[Null,
@@ -189,7 +189,9 @@ App[request_] := With[{
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];
-
+  {
+    "<!DOCTYPE html>"
+  ,
     <html class="h-full {AppClass}" os="{NavigatorOS}"> 
         <Head Title={FileNameTake[Path]}>
             <WLJSHeader List={ExtensionsJS}/>  
@@ -199,7 +201,7 @@ App[request_] := With[{
             <ExtensionsStyles/>
         </Head>  
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:border owin:border-gray-500 owin:bg-blue-100/20"> 
-        <div>
+        <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
@@ -214,7 +216,7 @@ App[request_] := With[{
             </div>
           </div>
           
-          <div class="md:pl-70" id="frame">
+          <div class="md:pl-70 h-full" id="frame">
             <div class="h-full flex flex-col">
               <TopBar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
@@ -228,10 +230,19 @@ App[request_] := With[{
         <ElectronBinds Controls={GlobalControls}/>
       </body>
     </html>
+  } // StringRiffle
 ] ];
 
 Script = With[{},
   <script type="module">
+    core.UIDocsOpen = async (args, env) => {
+      const port = await interpretate(args[0], env);
+      const link = await interpretate(args[1], env);
+      const fake = document.createElement('a');
+            fake.target = "_blank";
+            fake.href = 'http://' + window.location.hostname + ':'+String(port) + '/' + link;
+            fake.click();
+    }
     core.UIToggleWindowBonds = async (args, env) => {
       if (window.electronAPI) {
         window.electronAPI.toggleWindowSize();

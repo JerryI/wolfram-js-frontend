@@ -1,18 +1,18 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$344], 
-   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Examples/07 - Slides/Intro.wln"|>, 
- "Cells" -> {<|"Data" -> ".md\n## Basic example of a presentation\n*using \
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$359], 
+   "Objects" -> <||>, "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Slides/Intro.wln"|>\
+, "Cells" -> {<|"Data" -> ".md\n## Basic example of a presentation\n*using \
 Markdown, HTML/CSS and Wolfram Language*", "Display" -> "codemirror", 
-    "Hash" -> "ea557972-9250-46e8-877b-bbd10a6c7f3e", "Invisible" -> False, 
+    "Hash" -> "593a6153-224f-4381-bb1d-21e8fa265e5f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> "\n## Basic example of a presentation\n*using Markdown, \
 HTML/CSS and Wolfram Language*", "Display" -> "markdown", 
-    "Hash" -> "47d54cb2-a6be-4484-8b16-dce7cb4100f9", "Invisible" -> False, 
+    "Hash" -> "217a1e3d-aaba-4b11-8f8a-4a43503a0f1e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> ".slide\n\n# RevealJS\nHere we will try some basic stuff \
 related to slides\n\nFragment 1 <!-- .element: class=\"fragment\" \
 data-fragment-index=\"1\" -->\n\n<span style=\"color:red\">Fragment 2 (CSS \
@@ -21,83 +21,84 @@ styled)</span> <!-- .element: class=\"fragment\" data-fragment-index=\"2\" \
 picture\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_\
 was_here_%28re-drawn%29.gif) <!-- .element: class=\"fragment fade-out\" \
 data-fragment-index=\"1\" -->", "Display" -> "codemirror", 
-    "Hash" -> "c9feaf6b-0627-4a99-8957-12ae9f995123", "Invisible" -> False, 
+    "Hash" -> "3c3631b7-ebae-4a73-b3e8-3cdfe9205d66", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> 
      ".md\nOr one can make it more complicated using Wolfram Language XML", 
     "Display" -> "codemirror", "Hash" -> 
-     "89153359-72fb-4601-8ed0-11bf1f89f22b", "Invisible" -> False, 
+     "1f0d481c-7540-43ac-97bb-8aae681e39f1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> 
      "\nOr one can make it more complicated using Wolfram Language XML", 
     "Display" -> "markdown", "Hash" -> 
-     "4fa9dd27-9c02-4ea0-a81f-2570d6e398d1", "Invisible" -> False, 
+     "7cf5fe61-caf0-4012-8446-392e5f92686e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
-   <|"Data" -> "Plt3D = Graphics3D[Cuboid[]];", "Display" -> "codemirror", 
-    "Hash" -> "01aab0ea-f1bc-429c-a2f9-a96339a28dca", "Invisible" -> False, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
+   <|"Data" -> "Plt3D = Graphics3D[Cuboid[]];\nGetTime := TextString[Now];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "837aeb0c-737a-46d8-a2a1-3a9a626fdb99", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+    "Notebook" -> "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> ".slide\n\n# Using WLX\nAllow you to do some cool \
-stuff\n\nYour local time is __<TextString><Now/></TextString>__\n\n---\n\n# \
-Embed some figures\nEven 3D\n\n<div style=\"text-align: center; display: \
+stuff\n\nYour local time is __<GetTime/>__\n\n---\n\n# Embed some \
+figures\nEven 3D\n\n<div style=\"text-align: center; display: \
 inline-flex;\">\n  <Plt3D/>\n</div>\n\nTry to move it using your mouse\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "5dcc76df-72c0-4ffe-867a-6c61fce729b0", "Invisible" -> False, 
+     "679abf51-3040-4e3e-afd2-1b8d7e58adbb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> ".md\nAdding events to it", "Display" -> "codemirror", 
-    "Hash" -> "5666303b-214c-41db-a85e-5eac2fc67e07", "Invisible" -> False, 
+    "Hash" -> "892202ad-a8b6-43fb-817c-65cf4d393080", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> "\nAdding events to it", "Display" -> "markdown", 
-    "Hash" -> "4cd9e15c-c278-4ed4-a443-ee02fd239299", "Invisible" -> False, 
+    "Hash" -> "2d9ab083-42f1-441c-b921-d1b75fc5bf5d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> "EventHandler[\"myEvent\", {any_String :> \
 (Print[StringTemplate[\"::``:: ``\"][any, #]]&)}];", 
     "Display" -> "codemirror", "Hash" -> 
-     "0086ed4f-dbe7-4549-9ac8-de636d1c121c", "Invisible" -> False, 
+     "87c38496-b076-432f-b97b-168254a22503", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+    "Notebook" -> "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> ".slide\n\n# 1st Slide\nNothing\n\n---\n\n# 2nd Slide\nA \
 message pops up\n\nAnother message <!-- .element: class=\"fragment\" \
 data-fragment-index=\"1\" -->\n\n<SlideEventListener Id={\"myEvent\"}/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "ae121db3-5d97-43a2-8b91-badcb0ce6177", "Invisible" -> False, 
+     "180e6449-e5d3-4a6e-b0ce-b871869bf424", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d21cebfe-083c-4729-af4f-b509e7357cf8", "Invisible" -> False, 
+    "Hash" -> "d0f07acf-92fa-4ed0-a0ab-c8cfac64aab7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> ".md\n## Control slides externaly\nUsing `Events`", 
     "Display" -> "codemirror", "Hash" -> 
-     "55265470-542e-42a1-ab3a-7cee8e781ca9", "Invisible" -> False, 
+     "dd8ae6f1-5134-4a12-91b9-044d490231e9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> "## Control slides externaly\nUsing `Events`", 
     "Display" -> "markdown", "Hash" -> 
-     "d956236e-682f-418c-8cc0-5b12b70dd0fd", "Invisible" -> False, 
+     "87d34156-bef7-4235-a98f-d9e741e1aee3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>, 
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>, 
    <|"Data" -> "EventFire[Slides[], \"navigateNext\", 1]", 
     "Display" -> "codemirror", "Hash" -> 
-     "2cd22bc7-4713-42d9-8cbd-1bffd7dff87d", "Invisible" -> False, 
+     "1d963b99-786e-496c-820a-546e54ad6082", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "3404f0f0-422f-4f7b-970c-6805d24aae55"|>}, "serializer" -> "jsfn4"|>
+     "6b817a7e-27dc-4ff9-96fb-39ac92a217b7"|>}, "serializer" -> "jsfn4"|>

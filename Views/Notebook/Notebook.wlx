@@ -16,8 +16,8 @@ ElectronBinds  := ImportComponent["Components/ElectronBinds.wlx"];
 
 Global`UINotebook (*`*);
 
-ApplySync[f_, w_, {first_, rest___}] := f[w@@first, Function[Null, Echo["Async >> Next"]; ApplySync[f,w, {rest}]]]
-ApplySync[f_, w_, {}] := Null;
+ApplySync[f_, w_, {first_, rest___}, final_] := f[w@@first, Function[Null, Echo["Async >> Next"]; ApplySync[f,w, {rest}, final]]]
+ApplySync[f_, w_, {}, final_] := final[];
 
 
 addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
@@ -237,6 +237,47 @@ projectCell[cell_, notebook_, secret_String, kernels_, client_, modals_, paramet
     ];
 ] 
 
+checkEvaluationCells[currentCell_, notebook_, secret_, kernels_, client_, modals_, parameters_, extensions__] := Module[{
+
+},
+    If[TrueQ[notebook["CellsInitialized"]], Return[Null, Module]];
+    notebook["CellsInitialized"] = True;
+    Echo[">> Found initialization cells!"];
+
+    With[{
+        request = CreateUUID[],
+        promise = Promise[]
+    },
+        EventHandler[request, {
+            "Success" -> Function[Null,
+                EventRemove[request];
+                
+                ApplySync[Then, evaluateCell, {
+                        #, notebook, secret, kernels, client, modals, parameters, extensions
+                    } &/@ Select[notebook["Cells"], TrueQ[#["Props"]["InitGroup"]]&], Function[Null,
+                    
+                    Echo[">> Found initialization cells >> done"];
+                    If[TrueQ[currentCell["Props"]["InitGroup"]], 
+                        EventFire[promise, Reject, True];
+                    ,
+                        EventFire[promise, Resolve, True];
+                    ];
+                ]];
+
+                
+            ],
+
+            "Cancelled" -> Function[Null,
+                EventRemove[request];
+                EventFire[promise, Resolve, True];
+            ]
+        }];
+        EventFire[modals, "InitCellsQ", <|"Client"->client, "Callback"->request|>];
+
+        promise
+    ]
+]
+
 evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parameters_, extensions__] := With[{promise = Promise[]}, Module[{},
     With[{},
         If[cell["Type"] == "Output",
@@ -246,6 +287,13 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
             With[{template = CellGenerator[cell, client, parameters, extensions]},
                 WebUISubmit[UINotebook["Morph", cell["Hash"], template, CellObj`Serialize[cell, "MetaOnly"->True] (*`*)], client];
             ];
+        ];
+    ];
+
+    (* /*if this is an evaluation  cell, then switch the flag on*/ *)
+    If[notebook["CellsInitialized"] =!= True,
+        If[Length[Select[notebook["Cells"], TrueQ[#["Props"]["InitGroup"]]&]] == 0,
+            notebook["CellsInitialized"] = True;
         ];
     ];
 
@@ -264,8 +312,14 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
                 WebUISubmit[Alert["Cell is still under evaluation"], client];
             ,
                 Then[checkWSLink[notebook, client, secret], Function[Null,
-                    cell // CellObj`Evaluate;
-                    EventFire[promise, Resolve, True];
+                    Then[checkEvaluationCells[cell, notebook, secret, kernels, client, modals, parameters, extensions], Function[Null,
+                        cell // CellObj`Evaluate;
+                        EventFire[promise, Resolve, True];
+                    ],
+                    Function[Null,
+                        Echo["Skipping the given cell"];
+                        EventFire[promise, Resolve, True];
+                    ]];
                 ]];
             ];
         ];
@@ -279,8 +333,15 @@ evaluateCell[cell_, notebook_, secret_String, kernels_, client_, modals_, parame
                         ,
                             Echo["Success!"];
                             Then[checkWSLink[notebook, client, secret], Function[Null,
-                                cell // CellObj`Evaluate;
-                                EventFire[promise, Resolve, True];
+                                Then[checkEvaluationCells[cell, notebook, secret, kernels, client, modals, parameters, extensions], Function[Null,
+                                    cell // CellObj`Evaluate;
+                                    EventFire[promise, Resolve, True];
+                                ],
+                                Function[Null,
+                                    Echo["Skipping the given cell"];
+                                    EventFire[promise, Resolve, True];
+                                ]
+                                ];
                             ]];
                         ]
             ];
@@ -496,7 +557,8 @@ Component[OptionsPattern[]] := With[{
         ],
         
         "EvaluateInitCells" -> Function[Null,
-            ApplySync[Then, evaluateCell, {#, notebook, secret, kernels, $Client, modals, parameters, extensions} &/@ Select[notebook["Cells"], TrueQ[#["Props"]["InitGroup"]]&] ]
+            notebook["CellsInitialized"] = True;
+            ApplySync[Then, evaluateCell, {#, notebook, secret, kernels, $Client, modals, parameters, extensions} &/@ Select[notebook["Cells"], TrueQ[#["Props"]["InitGroup"]]&], Null]
         ],
 
         "Abort" -> Function[Null,

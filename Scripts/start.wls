@@ -76,6 +76,7 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
   Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
   Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
+  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
   Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
   Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
   Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
@@ -127,6 +128,8 @@ AutoTest    := ImportComponent["Frontend/Test.wlx"];
 
 $ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
 
+
+
 $Env = <|
   "host" -> "127.0.0.1",
   "http" -> 20560,
@@ -136,6 +139,23 @@ $Env = <|
   "docs" -> 20540
 |>;
 
+With[{argv = Rest @ $ScriptCommandLine},
+  Echo[argv];
+  MapIndexed[Function[{key, pos},
+    With[{},
+      If[MemberQ[Keys[$Env], key],
+        With[{
+          value = argv[[ pos[[1]] + 1 ]]
+        },
+          $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
+            ToExpression[value],
+            value
+          ]|>];
+        ]
+      ]
+    ]
+  ], argv]
+];
 
 
 EventHandler[AppExtensions`AppEvents // EventClone, {
@@ -169,7 +189,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
