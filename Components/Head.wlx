@@ -2,7 +2,6 @@ With[{Title = $Options["Title"]},
     <head>
         <title><Title/></title>
         <link rel="stylesheet" href="/Styles/Custom.css"/>
-        <script src="/Styles/Tailwind.js"></script>
         <link rel="stylesheet" href="/Styles/Optimized.css"/> 
         <$Children/>
     </head>

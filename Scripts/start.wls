@@ -76,6 +76,7 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
   Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
   Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
+  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
   Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
   Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
   Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
@@ -169,7 +170,7 @@ $Server["HTTPHandler"] = http;
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
