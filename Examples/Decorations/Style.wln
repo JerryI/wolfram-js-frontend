@@ -15,7 +15,7 @@ contrast background", "Display" -> "markdown",
      "5d66bc1d-2361-4620-9152-05d8feee0172"|>, 
    <|"Data" -> "Take[With[{data = ExampleData[{\"Text\", \"ToBeOrNotToBe\"}, \
 \"Words\"]}, \n   MapIndexed[Style[#, Background->RGBColor[1 - 2 \
-Count[Take[data, First[#2]], #]/25, 1,1]] &, data]], 50]", 
+Count[Take[data, First[#2]], #]/25, 1,1]] &, data]], 40]", 
     "Display" -> "codemirror", "Hash" -> 
      "ce3246dc-dce5-4f6c-b56f-38aa7c712d17", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
