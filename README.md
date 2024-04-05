@@ -96,6 +96,14 @@ Clone this repository and run:
 wolframscript -f Scripts/start.wls
 ```
 
+or on a specific hostname
+
+```shell
+wolframscript -f Scripts/start.wls host 0.0.0.0 http 8080 ws 8081 ws2 8082 docs 8085
+```
+
+that will open __an HTTP server__ on `8080` port with `8081`, `8082` __used for realtime communication__ and __docs pages__ at `8085`
+
 ## Package System
 
 The frontend uses its own package/plugin system. It doesn't require any software installed except wolframscript. Precompiled plugins are downloaded using URLFetch from GitHub repositories and imported to the system.
