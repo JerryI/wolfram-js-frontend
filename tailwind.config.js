@@ -26,6 +26,8 @@ module.exports = {
     'text-2xl',
     'text-3xl',
     'text-red-300',
+    'table-auto',
+    'border-spacing-x-0.5',
     'bg-teal-400',
     "bg-teal-500/15",
     "text-green-500",

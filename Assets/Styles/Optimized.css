@@ -1227,6 +1227,20 @@ select {
   flex-grow: 0;
 }
 
+.table-auto {
+  table-layout: auto;
+}
+
+.border-spacing-x-0 {
+  --tw-border-spacing-x: 0px;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
+.border-spacing-x-0\.5 {
+  --tw-border-spacing-x: 0.125rem;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
+
 .origin-top-right {
   transform-origin: top right;
 }
