@@ -1,10 +1,10 @@
 
 
 @font-face {
-  font-family: 'SF Mono Regular';
+  font-family: 'Hasklig';
   font-style: normal;
   font-weight: normal;
-  src: url("/Fonts/SFMonoRegular.woff");
+  src: url("/Fonts/Hasklig-Regular.otf");
 }
 .margin-bottom-fix {
   margin-bottom: 0.15em;
@@ -13,8 +13,7 @@
 
   
 .cm-line {
-  font-family: 'SF Mono Regular' !important;
-  font-size: 0.875rem;
+  font-family: 'Hasklig' !important;
 }
 
 .cell-type-widget {

@@ -1,0 +1,59 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$39], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Decorations/Summary Boxes.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n# Summary boxes\nAn example for a summary box", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c9be7d44-e3d7-4cf9-8f0b-8c3bbe28ce02", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, 
+   <|"Data" -> "# Summary boxes\nAn example for a summary box", 
+    "Display" -> "markdown", "Hash" -> 
+     "22fa5e7d-f28e-47c8-90d5-e09e8d3aa333", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, 
+   <|"Data" -> "$icon = Graphics[{Red, Disk[]}];\n\nMyObject /: MakeBoxes[obj \
+: MyObject[asc_Association], StandardForm] := \n    Module[{above, below},\n  \
+      above = { \n          {BoxForm`SummaryItem[{\"Name: \", \
+asc[\"Name\"]}]},\n          {BoxForm`SummaryItem[{\"Variables: \", \
+asc[\"Variables\"]}], BoxForm`SummaryItem[{\"Length: \", asc[\"Length\"]}]}\n \
+       };\n\n        BoxForm`ArrangeSummaryBox[\n           MyObject, (* head \
+*)\n           obj,      (* interpretation *)\n           $icon,    (* icon, \
+use None if not needed *)\n           (* above and below must be in a format \
+suitable for Grid or Column *)\n           above    (* always shown content \
+*),\n           Null\n        ]\n    ];", "Display" -> "codemirror", 
+    "Hash" -> "f7c80be8-f66d-4e9a-9529-29f4ff31249c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, <|"Data" -> ".md\nTest", 
+    "Display" -> "codemirror", "Hash" -> 
+     "bbb065fc-6b89-4fbc-9a81-8cbdd8fbbd73", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, <|"Data" -> "Test", 
+    "Display" -> "markdown", "Hash" -> 
+     "4af09b66-be92-4291-a6a3-798840029282", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, 
+   <|"Data" -> "MyObject[<|\n  \"Name\" -> \"My particular object\",\n  \
+\"Length\" -> 10,\n  \"Variables\" -> {a,b,c},\n  \"Date\" -> Today,\n  \
+MetaInformation -> \"more info...\" |>]", "Display" -> "codemirror", 
+    "Hash" -> "f683f066-e9c4-428d-9b2d-f56249f5fd82", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>, 
+   <|"Data" -> "MyObject[(*VB[*) <|\"Name\" -> \"My particular object\", \
+\"Length\" -> 10, \"Variables\" -> {a, b, c}, \"Date\" -> DateObject[{2024, \
+4, 7}, \"Day\"], MetaInformation -> \"more info...\"|> \
+(*,*)(*\"1:eJyVTstKA0EQXB9o1IMnFTytwWMOycEI3hQSImiEbNizPTu9cWQeoXcGHcR/t3djiA\
+jxcSmqq6qpOhNuUm4lSVKdMty416Ej83hNBHaGMgvGAEWWy406c8gwJGf9wMpckQ+gF8Y2w8hpWR0\
+xUYWzUzTzLBrh9Hmve9nvX5Sby9ydqvzqq7ka7+TLgM/iW48mV/iS7bA3BoNX6SK7zzCQyjtq7GM+\
+2/cxnQN5VQQNlDrxjIVvr2onQWO2VxMEGR+sjo08pYDftv265oC9HEiB0FitmbTL5xt0RKd4/8eGn\
+1pb9T60M/+0prLWet0/tTVkHLT+AJhlgzQ=\"*)(*]VB*)]", "Display" -> "codemirror", 
+    "Hash" -> "4b947f7b-b1b4-4b59-8be5-b7ab90a5b1d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2dfe49fa-99ec-47ce-b322-aa614bbf1666"|>}, "serializer" -> "jsfn4"|>
