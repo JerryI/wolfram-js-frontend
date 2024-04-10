@@ -1,0 +1,19 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$55], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/Inline styles.wln"|>, 
+ "Cells" -> {<|"Data" -> ".slide\n\n<!-- .slide: \
+data-background-color=\"black\" -->\n\n\n# Hey, I am white <!-- .element: \
+style=\"color:white\" -->\n\n# Hey, I am red <!-- .element: \
+style=\"color:red\" -->", "Display" -> "codemirror", 
+    "Hash" -> "8a9fa6ad-2f50-4b7b-8b7d-1a8ee24679cd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "66834df1-84b5-4eb1-b82b-7faeea8195db"|>, 
+   <|"Data" -> "<dummy >\n<!-- .slide: data-background-color=\"black\" \
+-->\n\n\n# Hey, I am white <!-- .element: style=\"color:white\" -->\n\n\n# \
+Hey, I am red <!-- .element: style=\"color:red\" --></dummy>", 
+    "Display" -> "slide", "Hash" -> "5fade612-d9a5-44c5-971c-3c6f6a1df1bd", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "66834df1-84b5-4eb1-b82b-7faeea8195db"|>}, 
+ "serializer" -> "jsfn4"|>

@@ -1,0 +1,106 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$149], 
+   "Objects" -> <||>, "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Slides/doting.wln"\
+|>, "Cells" -> {<|"Data" -> ".md\n# Dynamic background\nAn example with sick \
+moving objects on the background", "Display" -> "codemirror", 
+    "Hash" -> "84fd69ab-9468-40b6-8353-6d2ee8b5fd3b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "# Dynamic background\nAn example with sick moving objects on \
+the background", "Display" -> "markdown", 
+    "Hash" -> "0f2fc98c-0d61-47b5-a5d6-2edef80c271c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "BackImageDynamic := Graphics[{\n  Black, Rectangle[{0,0}, \
+{1,1}], Red,\n  curveDynamicGenerator[{0.5,0.5}, 0.8], Blue,\n  \
+curveDynamicGenerator[{0.5,0.5}, 0.3]\n}, Controls->False, ImagePadding->0, \
+ImageSize->{960,700}, PlotRange->{{0,1}, {0,1}}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "33b0f666-a0dc-4754-bfd7-373449f2119f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> ".md\nA curve component", "Display" -> "codemirror", 
+    "Hash" -> "c5e003b8-ad5b-4e22-985e-0964247c1a47", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "A curve component", "Display" -> "markdown", 
+    "Hash" -> "bab49011-59d6-4e43-a3d7-8f1ac985e5ab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "curveDynamicGenerator[center_, radius_] := With[{cell = \
+ResultCell[]}, LeakyModule[{\n  pts = Table[Norm[center - radius] {Sin[i], \
+Cos[i]} +\n         center, {i, 0, 2 Pi + 0.1, 0.1}],\n         \n  disk = \
+{10,10},\n  modulation = 0.,\n  phase = 0.,\n  initial = 12. \
+RandomInteger[{0,10}],\n  task\n},\n  task = SetInterval[\n      pts = \
+Table[(\n        Norm[center - radius] \n        + 0.02 modulation Sin[50. i \
++ 30 phase]\n      ) {Sin[i], Cos[i]} + center\n      , {i, 0, 2 Pi + 0.1, \
+0.01}];\n\n      disk = With[{i = 3. phase + initial},\n        (Norm[center \
+- radius] \n        + 0.01 modulation Sin[50. i + 30 phase]\n        ) \
+{Sin[i], Cos[i]} + center\n      ];\n\n      phase = phase + 0.02;\n      \
+modulation = Sin[phase/2];\n  , 100];\n\n  (* remove task if cell has been \
+destroyed *)\n  EventHandler[cell, {\"Destroy\" -> Function[Null, \
+Print[\"Removed\"]; TaskRemove[task]]}];\n  \n  {Line[pts // Offload], \
+Disk[disk // Offload, 0.013]}\n]]", "Display" -> "codemirror", 
+    "Hash" -> "7db9b848-b68a-4796-8467-f87c98b3aba3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, <|"Data" -> ".md\nNow test", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2f1fd0a1-1e28-47bd-a958-27db6be90033", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, <|"Data" -> "Now test", 
+    "Display" -> "markdown", "Hash" -> 
+     "2c1b0929-ce48-43c3-b8a2-3c707fe3aaa6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "BackImageDynamic", "Display" -> "codemirror", 
+    "Hash" -> "e2936237-2ae7-47c8-924c-5fe57db52262", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> ".md\nIn order to put it on a slide, one can do following", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2d76b837-0217-46ca-be94-9bb9ea2e79b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "In order to put it on a slide, one can do following", 
+    "Display" -> "markdown", "Hash" -> 
+     "fd118a0b-ceaa-4874-963d-63ad398da970", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> ".slide\n\n<!-- .element: data-background-color=\"black\" \
+-->\n\n<div class=\"w-full h-full flex flex-col text-white\">\n  <div \
+class=\"absolute w-full h-full\" style=\"scale: 1.1; left:-30px; \
+z-index:-100\"><BackImageDynamic/></div>\n\n<div class=\"mt-auto mb-auto\">\n \
+   \n  \n# Title of a slide\n\nThis is just an example\n\n</div>\n\n</div>\n"\
+, "Display" -> "codemirror", "Hash" -> 
+     "37f50f68-cc65-4f58-bc2f-86d793762265", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> ".md\nHere Tailwind is used, but one can do it using plain \
+CSS", "Display" -> "codemirror", "Hash" -> 
+     "09d6f717-2a71-4138-a883-a127db693b85", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> "Here Tailwind is used, but one can do it using plain CSS", 
+    "Display" -> "markdown", "Hash" -> 
+     "8760e1bc-2f38-448b-b998-bed7b4991204", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "149e7f46-6311-4e03-8db9-d25a6e869175", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>}, "serializer" -> "jsfn4"|>
