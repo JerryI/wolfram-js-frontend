@@ -1,8 +1,18 @@
-With[{Title = $Options["Title"]},
-    <head>
-        <title><Title/></title>
-        <link rel="stylesheet" href="/Styles/Custom.css"/>
-        <link rel="stylesheet" href="/Styles/Optimized.css"/> 
-        <$Children/>
-    </head>
+With[{Title = $Options["Title"], CSSJit = If[KeyExistsQ[$Options["Settings"], "CSSPreview"], $Options["Settings", "CSSPreview"], False]},
+    If[CSSJit,
+        <head>
+            <title><Title/></title>
+            <link rel="stylesheet" href="/Styles/Custom.css"/>
+            <link rel="stylesheet" href="/Styles/Optimized.css"/> 
+            <script src="/Styles/Tailwind.js"></script>
+            <$Children/>
+        </head>    
+    ,
+        <head>
+            <title><Title/></title>
+            <link rel="stylesheet" href="/Styles/Custom.css"/>
+            <link rel="stylesheet" href="/Styles/Optimized.css"/> 
+            <$Children/>
+        </head>
+    ]
 ]

@@ -35,7 +35,7 @@ Component[Notifications`NotificationMessage[Name_](*`*), Message_, opts___] := W
               </svg>
             </button>   
             </div>
-       </div>
+      </div>
     },
         <|"Data" -> template, "ID" -> Uid|>
     ]
@@ -181,13 +181,14 @@ Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]},
 
             if (!this.immortal) acc_count -= 1;
             
+            const element = this.element;
             this.element.classList.remove('ease-out', 'duration-300');
             this.element.classList.add('ease-in', 'duration-100');
             this.element.classList.remove('opacity-100');
             this.element.classList.add('opacity-0');
             const self = this;
             setTimeout(() => {
-                self.element.remove();
+              element.remove();
             }, 100);
         }
       };
@@ -198,7 +199,7 @@ Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]},
           if(type != 'Generic') return;
           new GenericNotification(assoc);
         });
-      });     
+      });
     </WebUIJSBind>    
 ];
 

@@ -1,6 +1,7 @@
 Checkbox = ImportComponent["Components/UI/Checkbox.wlx"];
 Extensions := ImportComponent["Components/Extensions.wlx"];
 GeneralSettings := ImportComponent["Components/General.wlx"];
+DevSettings := ImportComponent["Components/Dev.wlx"];
 
 {loadSettings, storeSettings}        = ImportComponent["Frontend/Settings.wl"];
 
@@ -79,6 +80,9 @@ Component[OptionsPattern[]] := With[{
                     </li>                    
                     <li class="px-4 py-4 sm:px-0">
                         <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
+                    </li>
+                    <li class="px-4 py-4 sm:px-0">
+                        <DevSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
                     </li>
                 </ul>                
               </div>
