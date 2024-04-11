@@ -395,6 +395,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                   console.warn('Connection lost to a Evaluation Kernel');
                   //server.kernel = undefined;
                   server.kernel.connected = false;
+                  server.kernel.dispose();
 
                   server.emitt(ev, 'True', 'WebSocketLost');
                 }; 
