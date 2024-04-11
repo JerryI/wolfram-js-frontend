@@ -155,6 +155,21 @@ input::selection {
   border-radius: 5px;
 }
 
+
+.cm-scroller::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.cm-scroller::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 15, 0.2);
+  border-radius: 5px;
+}
+
+.cm-scroller::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .z-inf {
   z-index:110;
 }
