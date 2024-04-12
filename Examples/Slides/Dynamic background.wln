@@ -1,37 +1,37 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$149], 
-   "Objects" -> <||>, "Path" -> 
-    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Slides/doting.wln"\
-|>, "Cells" -> {<|"Data" -> ".md\n# Dynamic background\nAn example with sick \
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$59], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/Dynamic background.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Dynamic background\nAn example with sick \
 moving objects on the background", "Display" -> "codemirror", 
-    "Hash" -> "84fd69ab-9468-40b6-8353-6d2ee8b5fd3b", "Invisible" -> False, 
+    "Hash" -> "6f3155bb-3fa4-474f-bf95-b4f666aa1aca", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "# Dynamic background\nAn example with sick moving objects on \
 the background", "Display" -> "markdown", 
-    "Hash" -> "0f2fc98c-0d61-47b5-a5d6-2edef80c271c", "Invisible" -> False, 
+    "Hash" -> "54273d64-fac5-4455-b14b-7e1dd7bcebd2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "BackImageDynamic := Graphics[{\n  Black, Rectangle[{0,0}, \
 {1,1}], Red,\n  curveDynamicGenerator[{0.5,0.5}, 0.8], Blue,\n  \
 curveDynamicGenerator[{0.5,0.5}, 0.3]\n}, Controls->False, ImagePadding->0, \
 ImageSize->{960,700}, PlotRange->{{0,1}, {0,1}}];", 
     "Display" -> "codemirror", "Hash" -> 
-     "33b0f666-a0dc-4754-bfd7-373449f2119f", "Invisible" -> False, 
+     "86e7d948-def0-4104-82ad-299372e3862f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> ".md\nA curve component", "Display" -> "codemirror", 
-    "Hash" -> "c5e003b8-ad5b-4e22-985e-0964247c1a47", "Invisible" -> False, 
+    "Hash" -> "302263fe-9947-4fc6-8ae4-b66bc9c171a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "A curve component", "Display" -> "markdown", 
-    "Hash" -> "bab49011-59d6-4e43-a3d7-8f1ac985e5ab", "Invisible" -> False, 
+    "Hash" -> "b9c373bd-c8b3-432b-818f-6d71c316b931", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "curveDynamicGenerator[center_, radius_] := With[{cell = \
 ResultCell[]}, LeakyModule[{\n  pts = Table[Norm[center - radius] {Sin[i], \
 Cos[i]} +\n         center, {i, 0, 2 Pi + 0.1, 0.1}],\n         \n  disk = \
@@ -46,61 +46,62 @@ modulation = Sin[phase/2];\n  , 100];\n\n  (* remove task if cell has been \
 destroyed *)\n  EventHandler[cell, {\"Destroy\" -> Function[Null, \
 Print[\"Removed\"]; TaskRemove[task]]}];\n  \n  {Line[pts // Offload], \
 Disk[disk // Offload, 0.013]}\n]]", "Display" -> "codemirror", 
-    "Hash" -> "7db9b848-b68a-4796-8467-f87c98b3aba3", "Invisible" -> False, 
+    "Hash" -> "b1468e53-92f3-49e0-a977-8b2879cd4377", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, <|"Data" -> ".md\nNow test", 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, <|"Data" -> ".md\nNow test", 
     "Display" -> "codemirror", "Hash" -> 
-     "2f1fd0a1-1e28-47bd-a958-27db6be90033", "Invisible" -> False, 
+     "1e5b9d23-c652-4ce0-ae2c-630d050a004a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, <|"Data" -> "Now test", 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, <|"Data" -> "Now test", 
     "Display" -> "markdown", "Hash" -> 
-     "2c1b0929-ce48-43c3-b8a2-3c707fe3aaa6", "Invisible" -> False, 
+     "72620fa4-bc7c-4663-abcb-121d5a32d3e0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "BackImageDynamic", "Display" -> "codemirror", 
-    "Hash" -> "e2936237-2ae7-47c8-924c-5fe57db52262", "Invisible" -> False, 
+    "Hash" -> "456142ab-1355-4f6c-b75f-8f6b2a017c8a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> ".md\nIn order to put it on a slide, one can do following", 
     "Display" -> "codemirror", "Hash" -> 
-     "2d76b837-0217-46ca-be94-9bb9ea2e79b9", "Invisible" -> False, 
+     "aaf94eb9-9360-4827-911b-8333d0c6df0f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "In order to put it on a slide, one can do following", 
     "Display" -> "markdown", "Hash" -> 
-     "fd118a0b-ceaa-4874-963d-63ad398da970", "Invisible" -> False, 
+     "fd5c8352-645c-4562-b5bb-37631e30ca84", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
-   <|"Data" -> ".slide\n\n<!-- .element: data-background-color=\"black\" \
--->\n\n<div class=\"w-full h-full flex flex-col text-white\">\n  <div \
-class=\"absolute w-full h-full\" style=\"scale: 1.1; left:-30px; \
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
+   <|"Data" -> ".slide\n\n<!-- .slide: data-background-color=\"black\" \
+-->\n<!-- .slide: style=\"height:100%\" -->\n\n<div class=\"w-full h-full \
+flex flex-col text-white\">\n  <div class=\"absolute w-full h-full\" \
+style=\"scale: 1.1; left:-30px; \
 z-index:-100\"><BackImageDynamic/></div>\n\n<div class=\"mt-auto mb-auto\">\n \
    \n  \n# Title of a slide\n\nThis is just an example\n\n</div>\n\n</div>\n"\
 , "Display" -> "codemirror", "Hash" -> 
-     "37f50f68-cc65-4f58-bc2f-86d793762265", "Invisible" -> False, 
+     "34fbfbc3-4902-423c-974c-b2ddbc2202aa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> ".md\nHere Tailwind is used, but one can do it using plain \
 CSS", "Display" -> "codemirror", "Hash" -> 
-     "09d6f717-2a71-4138-a883-a127db693b85", "Invisible" -> False, 
+     "aeafbe3f-b882-490d-a89a-333df133295a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> "Here Tailwind is used, but one can do it using plain CSS", 
     "Display" -> "markdown", "Hash" -> 
-     "8760e1bc-2f38-448b-b998-bed7b4991204", "Invisible" -> False, 
+     "e5708577-e4ce-4005-80fc-44f407f60eb0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>, 
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "149e7f46-6311-4e03-8db9-d25a6e869175", "Invisible" -> False, 
+    "Hash" -> "1c65de3c-1d72-4313-887a-7df295623dc1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e715d784-fb43-447d-b3a1-dcb6821d6a69"|>}, "serializer" -> "jsfn4"|>
+     "d86e062c-0efd-46cc-8f0b-e62cd88504f8"|>}, "serializer" -> "jsfn4"|>

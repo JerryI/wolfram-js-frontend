@@ -1,6 +1,6 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$117], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$192], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Examples/Slides/Real reports/Report.wln", "Storage" -> <||>|>, 
+/Examples/Slides/Scientific report 1/Report.wln", "Storage" -> <||>|>, 
  "Cells" -> {<|"Data" -> ".md\n# Short Summary Report\n\nA digital \
 archeological investigation was conducted on previously measured THz data in \
 magnetic fields. Hidden features demonstrating non-trivial selection rules \
@@ -9,10 +9,10 @@ thickness-dependent. The g-factors for some of the excitations demonstrate \
 different observed values depending on the polarization of incident THz \
 radiation, contradicting our expectations of light-matter interaction.", 
     "Display" -> "codemirror", "Hash" -> 
-     "9e78a558-7b42-4f30-8de7-1d99216c287a", "Invisible" -> False, 
+     "40d41d93-d50d-41de-b088-de16e0b935a5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "# Short Summary Report\n\nA digital archeological \
 investigation was conducted on previously measured THz data in magnetic \
 fields. Hidden features demonstrating non-trivial selection rules were \
@@ -21,86 +21,86 @@ thickness-dependent. The g-factors for some of the excitations demonstrate \
 different observed values depending on the polarization of incident THz \
 radiation, contradicting our expectations of light-matter interaction.", 
     "Display" -> "markdown", "Hash" -> 
-     "7a3ed56d-3b20-4d60-b7a2-feea351019da", "Invisible" -> False, 
+     "5bb9c278-87ba-4bd9-b2b1-2ef3a9061ece", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n<span style=\"color:red\">Evaluate initialization \
 cell</span> and __then evaluate__ `.slides` cell below", 
     "Display" -> "codemirror", "Hash" -> 
-     "61c2f24a-656e-421a-bd9c-dcaea76f36b8", "Invisible" -> False, 
+     "79ab13f6-7fce-47e8-b499-db39700bdc22", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "<span style=\"color:red\">Evaluate initialization cell</span> \
 and __then evaluate__ `.slides` cell below", "Display" -> "markdown", 
-    "Hash" -> "8b2e3f50-9987-4b23-a549-0e230c4a6d22", "Invisible" -> False, 
+    "Hash" -> "76aa7ef6-21d1-4380-b018-41babfe0d04d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".slides\n\nThank your for your attention!", 
     "Display" -> "codemirror", "Hash" -> 
-     "c75d2da9-1599-41b6-9ee6-e446ece3c599", "Invisible" -> False, 
+     "8b7005ba-5489-4e66-9cb3-817b803e7c2a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "1+1", "Display" -> "codemirror", 
-    "Hash" -> "6759818b-f58c-48e3-b639-53bf8b6c3749", "Invisible" -> False, 
+    "Hash" -> "bbc4e7d8-6463-4328-b40b-d80540c2faf7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "2", "Display" -> "codemirror", 
-    "Hash" -> "ad7a1d3e-ce67-4cba-9436-08bf3dedc36f", "Invisible" -> False, 
+    "Hash" -> "05906621-2847-4ea4-9af9-d55be4728c93", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "f717d9a4-0a3f-46a1-bcdd-72414f87a8bd", "Invisible" -> False, 
+    "Hash" -> "8f2d81c9-cca2-4cd9-8081-a261d1f5af06", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n__layout helpers__", "Display" -> "codemirror", 
-    "Hash" -> "2b4c4e18-44ff-4e3e-b12b-2d1d8d6eccb2", "Invisible" -> False, 
+    "Hash" -> "b68b42cd-aa9e-48cb-8b10-9d73b821330f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "__layout helpers__", "Display" -> "markdown", 
-    "Hash" -> "8ce82fdc-747c-4aba-8db1-0b205655d39b", "Invisible" -> False, 
+    "Hash" -> "8523d254-8bfc-4644-adf4-58068bd68adb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".wlx\nColumns[Cols__, opts: OptionsPattern[]] := \
 Columns[List[Cols], opts]\nColumns[Cols_List, OptionsPattern[]] := With[{\n  \
 number = Length[Cols],\n  Layout = Table[<div><Item/></div>, {Item, Cols}],\n \
  class = ToString[Length[Cols]]\n},\n    <div class=\"columns-{class}\">\n    \
     <Layout/>\n    </div>                       \n];\n\nOptions[Columns] = \
 {\"Class\"->\"gap-4\"};", "Display" -> "codemirror", 
-    "Hash" -> "16a13712-1a35-4226-85ca-7349a69c208f", "Invisible" -> False, 
+    "Hash" -> "a705a2fc-0226-4245-98e3-9b448deac24b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "1+1", "Display" -> "codemirror", 
-    "Hash" -> "aaadb090-7d6f-4be2-9c89-9c95e06dd15a", "Invisible" -> False, 
+    "Hash" -> "b7cf1f2d-7c7f-4e1f-b2a3-7c797d87b21f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "2", "Display" -> "codemirror", 
-    "Hash" -> "13350798-855f-4f04-accf-8a6238880e36", "Invisible" -> False, 
+    "Hash" -> "276dc812-eeeb-4bfd-8af7-3c89fbb406a0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n## Introduction\nTalk about a material structure", 
     "Display" -> "codemirror", "Hash" -> 
-     "dec25f45-7de7-4018-b5e6-96f93f468549", "Invisible" -> False, 
+     "e4f30c11-8ce0-4aec-8f16-cc4654a77b50", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "## Introduction\nTalk about a material structure", 
     "Display" -> "markdown", "Hash" -> 
-     "e8aa0931-e132-4343-9317-daeef0926c36", "Invisible" -> False, 
+     "cb7d85d1-4fed-4427-b2d8-d327af32a8a0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".slide\n\n## THz spectroscopy of $Fe_2 Mo_3 O_8$ in magnetic \
 fields\n\n<u>K. V. Vasin</u> <sup>1,2</sup>, A. R. Nurmukhametov \
 <sup>1</sup>,  A. Strinic <sup>2</sup>, L. Prodan <sup>2</sup>, V. Tsurkan \
@@ -110,80 +110,82 @@ Kazan (Volga region) Federal University, 420008, Kremlevskaya 18\n- Institute \
 of Physics, Augsburg University, 86159, Universit\[ADoubleDot]tsstra\[SZ]e \
 1\n- Institute of Applied Physics, MD-2028 Chisinau, Republic of Moldova\n  \
 \nkrikus.ms@gmail.com\n\n---\n\n## Crystal and magnetic \
-structure\n\n<Columns>\n <CrystalStructure/>\n <div>\n      \n  ## Crystal \
-structure\n\n  - $Fe_2 Mo_3 O_8$\n  - Hexagonal structure (polar) $P6_{3mc}$ \
-group\n  - Collinear AFM ordering below $T_N = 60K$\n  - __II type \
-multiferroic material__\n\n  <br/>\n\n  ### Sample preparation <!-- .element: \
-class=\"fragment\" data-fragment-index=\"1\" -->\n\n  Single crystals were \
-grown by the chemical transport reaction method @ Augsburg University <!-- \
-.element: class=\"fragment\" data-fragment-index=\"1\" -->\n\n  <br/>\n\n  \
-### Optically / Magnetically active ions <!-- .element: class=\"fragment\" \
+structure\n\n<Columns>\n <CrystalStructure/>\n <div \
+style=\"font-size:smaller\">\n      \n  ## Crystal structure\n\n  - $Fe_2 \
+Mo_3 O_8$\n  - Hexagonal structure (polar) $P6_{3mc}$ group\n  - Collinear \
+AFM ordering below $T_N = 60K$\n  - __II type multiferroic material__\n\n  \
+<br/>\n\n  ### Sample preparation <!-- .element: class=\"fragment\" \
+data-fragment-index=\"1\" -->\n\n  Single crystals were grown by the chemical \
+transport reaction method @ Augsburg University <!-- .element: \
+class=\"fragment\" data-fragment-index=\"1\" -->\n\n  <br/>\n\n  ### \
+Optically / Magnetically active ions <!-- .element: class=\"fragment\" \
 data-fragment-index=\"2\" -->\n\n  <div>\n  \n  $Fe^{2+} (3d^6)$ <!-- \
 .element: class=\"fragment\" data-fragment-index=\"2\" -->\n  \n  </div>\n  \
-\n  - A-site $FeO_4$ <!-- .element: class=\"fragment\" \
-data-fragment-index=\"2\" -->\n  - B-site $FeO_6$ <!-- .element: \
-class=\"fragment\" data-fragment-index=\"2\" -->\n \n </div> \n</Columns>\n", 
-    "Display" -> "codemirror", "Hash" -> 
-     "884db107-daf1-4167-8d3e-1ee1288abb07", "Invisible" -> False, 
+\n  - A-site  <!-- .element: class=\"fragment\" data-fragment-index=\"2\" --> \
+$FeO_4$ <!-- .element: class=\"fragment\" data-fragment-index=\"2\" -->\n  - \
+B-site <!-- .element: class=\"fragment\" data-fragment-index=\"2\" --> \
+$FeO_6$ <!-- .element: class=\"fragment\" data-fragment-index=\"2\" -->\n \n \
+</div> \n</Columns>\n", "Display" -> "codemirror", 
+    "Hash" -> "944b1151-8f72-4817-a2b5-92dd0658294d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n### Crystal data\nLoad preconstructed CIF", 
     "Display" -> "codemirror", "Hash" -> 
-     "5198e172-f60e-45d2-ad68-256bc8854fb2", "Invisible" -> False, 
+     "1b2cdb07-1226-4293-953c-1df83acec9ed", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "### Crystal data\nLoad preconstructed CIF", 
     "Display" -> "markdown", "Hash" -> 
-     "6c25e7a4-8a60-4484-9e7e-99037b314b4d", "Invisible" -> False, 
+     "4bd9b7c4-8de0-409b-a122-e09b75d2a9ff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "ec25e431-07fd-4ca9-a0c7-f8523bfaf922", "Invisible" -> False, 
+    "Hash" -> "78326016-c277-4f1e-98c7-8de56d3bc734", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "CrystalStructure = \
 Graphics3D[(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-4816.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8i8MJOBAQDvNAve\"*)(*]VB*), ImageSize->{400,500}];", 
     "Display" -> "codemirror", "Hash" -> 
-     "36d871f4-3e5b-4217-b4f2-2dc277667cef", "Invisible" -> False, 
+     "6d20f9df-b7f9-4cea-9a3e-08d62ea75a3c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "c8a1db98-f246-486f-8b8a-e701c3558d6e", "Invisible" -> False, 
+    "Hash" -> "7e2f010e-beac-47a1-807d-ddb541949702", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n## Experimental data\nPlot THz data using ", 
     "Display" -> "codemirror", "Hash" -> 
-     "ab2e7981-e09d-4815-a5c1-54d11d0bbb58", "Invisible" -> False, 
+     "aecf0f37-693f-40b9-8d53-9759c07aad5c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "## Experimental data\nPlot THz data using ", 
     "Display" -> "markdown", "Hash" -> 
-     "0abb96d3-0656-4a1e-97b4-928dcdd9248a", "Invisible" -> False, 
+     "3bcc4249-149f-422a-88b0-9cf3cd238aa3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "thzData = {Get[\"fields_dump_ab.wl\"], \
 Get[\"fields_dump_ace.wl\"], Get[\"fields_dump_ach.wl\"]};", 
     "Display" -> "codemirror", "Hash" -> 
-     "f41595be-3e69-41d4-9bff-c96896dcbe0a", "Invisible" -> False, 
+     "a4812b34-5a2b-4a63-9d11-35c7088c9aec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "DropHalf[list_List] := Drop[list, -Length[list]/2 // \
 Ceiling]", "Display" -> "codemirror", 
-    "Hash" -> "4862a05c-d581-40ab-ac04-ce3d6707d0ca", "Invisible" -> False, 
+    "Hash" -> "0f05f2ba-1a2c-4135-80e6-bd1c38a4d329", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "THzPlot[OptionsPattern[]] := With[{\n  data = \
 KeyValueMap[With[{field = #1, plot = #2},\n          Drop[Drop[\n          \
 {#[[1]], #[[2]] + field 100} &/@ DropHalf[Drop[plot // First, \
@@ -204,15 +206,15 @@ ImageSize->OptionValue[\"ImageSize\"]\n    ]  \n  ]\n]\n\nOptions[THzPlot] = \
 {\"Part\"->1, \"Key\"->1.6`, \"Gradient\"->{Blue // Lighter, Red}, \
 \"PlotRange\"->{{30, 120}, {0,830}}, \"ImageSize\"->{330, 450}, \
 \"ZeroField\"->False, \"Marker\"->Null};", "Display" -> "codemirror", 
-    "Hash" -> "bee84e0e-6200-4824-afa0-03d4df8e8e7a", "Invisible" -> False, 
+    "Hash" -> "58a4c2ba-0620-46a5-a1bb-320999ff31da", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "3cfd11e4-0ee2-476f-bf20-5de5716cfe7f", "Invisible" -> False, 
+    "Hash" -> "40db4124-e6ce-4453-a6a3-249f41a84367", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".slide\n\n## Unpublished low-frequency excitations \
 data\nAbsorption spectrum in THz range __measured below $T_N = \
 60K$__\n\n<Columns Class={\"gap-4 pt-4 pb-4\"}>\n  <div>\n    <div \
@@ -232,41 +234,41 @@ Part={1} Key={0.7000000000000001} ZeroField={True} PlotRange={ {{30,135}, \
 0.782349], RGBColor[0.922526, 0.385626, 0.209179]} }/>\n  \
 </div>\n</Columns>\n\n\n__Ana Strinic, Benjamin Csizi and Co @ Augsburg \
 University (Germany)__", "Display" -> "codemirror", 
-    "Hash" -> "e8e2b833-16d7-43b0-88db-05ba39d58a7b", "Invisible" -> False, 
+    "Hash" -> "2470c9e9-69f8-489f-83a5-68558707add4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "8e9ce194-bb1d-4fbc-857a-d46dc1ff8a58", "Invisible" -> False, 
+    "Hash" -> "4ea098a9-383a-4f46-ba8a-a1988e136c78", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n## Field dependency\nAppend data", 
     "Display" -> "codemirror", "Hash" -> 
-     "b309dd70-65d5-477c-b081-470620a2ecce", "Invisible" -> False, 
+     "37a87658-46fa-4daa-8ea4-693801f93b82", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "## Field dependency\nAppend data", "Display" -> "markdown", 
-    "Hash" -> "01dff77c-6f1f-4178-9793-189c7d5ae304", "Invisible" -> False, 
+    "Hash" -> "22970d3d-979d-4e4b-8b48-7639cf21a6ec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "75ab823b-5774-4015-857c-5790811c0fe5", "Invisible" -> False, 
+    "Hash" -> "0b113aef-4b7f-416b-a837-e3935454979c", "Invisible" -> False, 
     "MetaOnly" -> True, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> ".md\n__Layout__", 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, <|"Data" -> ".md\n__Layout__", 
     "Display" -> "codemirror", "Hash" -> 
-     "76aedeba-2dad-44e0-8868-de088c0374b8", "Invisible" -> False, 
+     "18d7d2c5-6fad-4d84-82b5-5095b4c66f32", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "__Layout__", 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, <|"Data" -> "__Layout__", 
     "Display" -> "markdown", "Hash" -> 
-     "38e3a246-f60f-438b-afda-7386888bf74e", "Invisible" -> False, 
+     "82f0e4b3-72ba-41ee-baa6-7ce9e4baacb7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".slide\n\n# Field dependency\nThe measurements were taken \
 inside a cryostat with a superconducting magnet @ 4K \n\n<Columns \
 Class={\"gap-4 pt-4 pb-4\"}>\n  <div>\n    <div class=\"p-4\" \
@@ -290,10 +292,10 @@ Marker={\"marked-full-3\"}/>\n\n<b class=\"pt-2\">g=2.7, g=3.4</b> <!-- \
 </div>\n</Columns>\n\n\n<SlideEventListener \
 Id={\"fd-simple\"}/>\n<LinesPlacer Event={\"fd-simple\"} Fragment={1}/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "46691518-0fcd-4d5e-bc36-c7117b22ac8b", "Invisible" -> False, 
+     "2cbd2658-c2bc-440a-846d-36631619b3a4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "LinesPlacer[OptionsPattern[]] := With[{win = CurrentWindow[], \
 event = OptionValue[\"Event\"], fragment = \
 StringTemplate[\"fragment-``\"][OptionValue[\"Fragment\"]]},\n  \
@@ -306,82 +308,82 @@ MetaMarker[\"marked-full-2\"], \"Window\"->win];\n    FrontSubmit[{Red, \
 Line[{{89, 0}, {89 - 2.7 0.4688280 8, 100 8}}], Line[{{112.5, 0}, {112.5 - \
 3.4 0.4688280 8, 100 8}}]}, MetaMarker[\"marked-full-3\"], \
 \"Window\"->win];\n  ]}];\n  \"\"\n];", "Display" -> "codemirror", 
-    "Hash" -> "e3fb71d0-742a-4d86-a561-959ffb0593b9", "Invisible" -> False, 
+    "Hash" -> "7dc6cee5-3424-4a2a-943d-242eaa221814", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "5080947e-913f-40d8-82d8-c81595afb71c", "Invisible" -> False, 
+    "Hash" -> "286ab3dc-1dcb-44f4-ac29-e453c5271162", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n## Thickness dependency of AB-cut\nResample the data in \
 order to match number of points", "Display" -> "codemirror", 
-    "Hash" -> "1fa6b224-572d-4d7b-aec5-5caff99b6ee0", "Invisible" -> False, 
+    "Hash" -> "151718db-d8bc-4067-b263-c27774176f9c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "## Thickness dependency of AB-cut\nResample the data in order \
 to match number of points", "Display" -> "markdown", 
-    "Hash" -> "6b7192c2-8cf5-4fe9-944f-b301e724de17", "Invisible" -> False, 
+    "Hash" -> "d11f5a0e-2235-4a18-9f95-513d1e303282", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "reSampler[min_,max_,step_:0.1][data_List] := With[{i = \
 Interpolation[data, InterpolationOrder->1]},\n  Table[{x,  i[x]}, {x, min, \
 max, step}]\n]", "Display" -> "codemirror", 
-    "Hash" -> "2aba3e95-9449-428d-8926-5d94c16cf057", "Invisible" -> False, 
+    "Hash" -> "c7246dcf-3a85-404d-aa29-1e8c68bee6cb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nExtract the given key from an array of data", 
     "Display" -> "codemirror", "Hash" -> 
-     "a85273b3-4a03-4ebd-8758-e8b0db54af2c", "Invisible" -> False, 
+     "10670290-dc3a-446e-b775-b5337433c4c0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "Extract the given key from an array of data", 
     "Display" -> "markdown", "Hash" -> 
-     "6f04136e-340d-4c59-9f36-f613f8000f6f", "Invisible" -> False, 
+     "e717e6e1-6406-4eda-b467-f794f4796474", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "getTHz[key_, scale_:1] := KeyValueMap[With[{field = #1, plot \
 = #2},\n          Drop[Drop[\n          {#[[1]], scale #[[2]] + field 100} \
 &/@ DropHalf[Drop[plot // First, 2][[All,4;;5]]]\n          , 200], -200]\n   \
      ]&, thzData[[1]][key] // KeySort];", "Display" -> "codemirror", 
-    "Hash" -> "c752c128-8da5-42b4-8844-2ab2ba531dc6", "Invisible" -> False, 
+    "Hash" -> "613347f9-2371-4ffa-a9c4-99bd2220f5fa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nA slider to control", "Display" -> "codemirror", 
-    "Hash" -> "8f1faaed-7920-4779-9952-12613b551710", "Invisible" -> False, 
+    "Hash" -> "a4e069a8-f442-4ba4-a449-4be740dbf2da", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "A slider to control", "Display" -> "markdown", 
-    "Hash" -> "cbd65b61-ddcb-45b9-a50d-90fe97a58a8a", "Invisible" -> False, 
+    "Hash" -> "1c921ff0-4849-44d9-b260-38fb12569c75", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "ThicknessSlider[OptionsPattern[]] := With[{ev = \
 OptionValue[\"Event\"]},\n  EventHandler[InputRange[0.1, 1, 0.3, 1, \
 \"Label\"->\"Thickness (mm)\"], Function[value,\n    EventFire[ev, \
 \"Change\", Round[value / 0.3 + 1]];\n  ]]\n]", "Display" -> "codemirror", 
-    "Hash" -> "f74ddf22-bc11-4da7-82ef-7d32896f1d9b", "Invisible" -> False, 
+    "Hash" -> "c6108904-8c4c-4558-9d3b-fd7f20e0c417", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nDynamic plot", "Display" -> "codemirror", 
-    "Hash" -> "49006cb1-daed-43cd-8dfb-e5d703cf95d5", "Invisible" -> False, 
+    "Hash" -> "d4328776-40c7-490a-9672-3110f7b474e5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "Dynamic plot", 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, <|"Data" -> "Dynamic plot", 
     "Display" -> "markdown", "Hash" -> 
-     "8a4b6fbe-c4a4-4e91-b8ae-9d9294398bd7", "Invisible" -> False, 
+     "282562d5-8d26-4c33-85af-b7766df51709", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "THzDynamic[OptionsPattern[]] := \n  With[{\n    colors = \
 Table[Blend[OptionValue[\"Gradient\"], i], {i,0.,1.,1./8}],\n    keys = \
 {0.1`,0.4`,0.7000000000000001`,1.6`},\n    ev = OptionValue[\"Event\"]\n  \
@@ -400,33 +402,33 @@ TransitionType->\"Linear\"\n    ]  \n  ]\n]\n\nOptions[THzDynamic] = \
 {\"Gradient\"->{Blue // Lighter, Red}, \"PlotRange\"->{{30, 120}, {0,830}}, \
 \"ImageSize\"->{450, 450}, \"Marker\"->Null, \"Event\"->Null};", 
     "Display" -> "codemirror", "Hash" -> 
-     "3247dad8-f13f-4204-b54d-854d7210889a", "Invisible" -> False, 
+     "2cb87f96-72ec-4a85-9ae2-cc8678344eaf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> 
      ".md\n## G-factor fitter\nA live g-factor plot with control buttons", 
     "Display" -> "codemirror", "Hash" -> 
-     "2a4f1fe6-0bfe-44c3-b251-2f6dc033ad82", "Invisible" -> False, 
+     "7f8b44ad-d007-49ad-af78-43220c337c87", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "## G-factor fitter\nA live g-factor plot with control \
 buttons", "Display" -> "markdown", "Hash" -> 
-     "df697b3f-6da7-4e13-adc9-19d7565f607b", "Invisible" -> False, 
+     "567e9f86-77be-48b2-ba72-3eeca0e12a59", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nNow dynamic g-factor", "Display" -> "codemirror", 
-    "Hash" -> "3516c4ad-0ee6-4939-8208-6599cd010853", "Invisible" -> False, 
+    "Hash" -> "9568f266-d5a9-4458-852b-060d2e37f6ef", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "Now dynamic g-factor", "Display" -> "markdown", 
-    "Hash" -> "41f7ecad-56ee-474a-95c1-4b3d9d396bc6", "Invisible" -> False, 
+    "Hash" -> "eeb8339c-e80c-45c4-963f-0d2c44ecca14", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "GFactor[OptionsPattern[]] := With[{marker = \
 OptionValue[\"Marker\"], win = CurrentWindow[], view = \
 OptionValue[\"View\"]}, \n\n    EventHandler[InputButton[\"+\"], \
@@ -435,22 +437,22 @@ StandardForm]];\n    ]]\n] \n\nGFactorView[OptionsPattern[]] := With[{ev = \
 OptionValue[\"Event\"]},LeakyModule[{field = \" \"},\n  EventHandler[ev, \
 Function[data,\n    field = data;\n  ]];\n  EditorView[field // Offload] // \
 CreateFrontEndObject\n]]", "Display" -> "codemirror", 
-    "Hash" -> "18365717-a717-4b55-9963-9a711ffe82a4", "Invisible" -> False, 
+    "Hash" -> "02e79343-7815-4659-80ac-8cf3da7172db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nA function to append a line to a plot", 
     "Display" -> "codemirror", "Hash" -> 
-     "69cab4c0-4ce7-4f28-ac55-add95bba75aa", "Invisible" -> False, 
+     "c38cc72b-af4e-4b03-b985-075e2229cb27", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "A function to append a line to a plot", 
     "Display" -> "markdown", "Hash" -> 
-     "f58d9967-f064-45bb-95d4-16d37ec84db3", "Invisible" -> False, 
+     "953aa733-b2e1-4e76-b070-d7ef522480bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "placeLine[marker_String, win_, pos_:{{50,100}, {80,700}}] := \
 LeakyModule[{line = pos},\n  FrontSubmit[{\n    PointSize[0.04], Red, \n    \
 EventHandler[Point[pos // First], {\"drag\" -> Function[xy, line = {xy, \
@@ -459,30 +461,30 @@ Function[xy, line = {line[[1]], xy}]}],\n    Green, Line[line // Offload]\n  \
 }, MetaMarker[marker], \"Window\"->win];\n\n  TextView[With[{p = line}, \
 With[{diff = p[[2]] - p[[1]]},\n  (diff[[1]]/( diff[[2]] / 100) ) / 0.4688280 \
 \n]] // Offload, \"Label\"->\"g-factor\"]\n]", "Display" -> "codemirror", 
-    "Hash" -> "91b63842-0650-43d1-bd20-a56dddab4375", "Invisible" -> False, 
+    "Hash" -> "7e0d095b-2d4f-4c8a-b973-ddb2fccbf901", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "76c739ad-2082-41fd-88f1-64617ad1fe68", "Invisible" -> False, 
+    "Hash" -> "658bf3f4-6b40-482d-a70e-4ba89b08fdb3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> ".md\n__Layout__", 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, <|"Data" -> ".md\n__Layout__", 
     "Display" -> "codemirror", "Hash" -> 
-     "865a92d5-20de-4731-8001-e66b399b6e67", "Invisible" -> False, 
+     "fd636385-43c8-4868-b7ee-b3a033ecbade", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, <|"Data" -> "__Layout__", 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, <|"Data" -> "__Layout__", 
     "Display" -> "markdown", "Hash" -> 
-     "254a4724-bdd5-405d-8ec8-1e546bb7dab0", "Invisible" -> False, 
+     "5c554304-8b16-4006-af8f-1993e6053d2d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d3574ba4-629f-4ce8-8772-ea6e000ae69f", "Invisible" -> False, 
+    "Hash" -> "1767dde6-1a9e-42ed-9672-81e77fabdaba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".slide\n\n# Thickness dependency\nLet us have a look at \
 __ab__-cuts only, where EM wave propagates along the \
 __c__-axis.\n\n<Columns>\n  <THzDynamic Event={\"thz-dyn\"} \
@@ -493,40 +495,40 @@ Event={\"view-g\"}/>\n    \n  </div>\n</Columns>\n\n---\n\nIf we plot a \
 thickness dependency for an outermost lines\n\n<br/>\n\n<div class=\"flex \
 items-center justify-center\">\n  <GDep/>\n</div>", 
     "Display" -> "codemirror", "Hash" -> 
-     "c7e1236e-21fe-45f4-9e23-5150f094575e", "Invisible" -> False, 
+     "7b8e06fa-b883-4b0a-be88-e6245d15eff1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\n__the last slide__", "Display" -> "codemirror", 
-    "Hash" -> "cf8b502a-2d55-4927-843d-b8eded51a802", "Invisible" -> False, 
+    "Hash" -> "56b4dce4-b6d2-4d5f-aa59-9ae79b55285d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "__the last slide__", "Display" -> "markdown", 
-    "Hash" -> "ec34729f-7243-46e7-bf73-2a69d390e328", "Invisible" -> False, 
+    "Hash" -> "21624070-e281-40cf-9c63-71590da9a32e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> ".md\nThickness vs g-factors", "Display" -> "codemirror", 
-    "Hash" -> "b782bd9a-47c7-40ec-8ec1-0aa7085df787", "Invisible" -> False, 
+    "Hash" -> "64be2aee-efc6-4cbd-92f1-baadcba536bf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "Thickness vs g-factors", "Display" -> "markdown", 
-    "Hash" -> "d19989e0-eb60-4636-be36-26e08ecbde26", "Invisible" -> False, 
+    "Hash" -> "590c452d-d23e-4bbc-8f50-e9959fb96f83", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> "GDep := ListPlot[\n  {\n    {1.6, 3.5, 4}\n    {0.7, 2.7, \
 3.4},\n    {0.4, 2.4, 2.85},\n    {0.1, 2, 2.15}\n  }[[All, {1,2}]]\n, \
 PlotStyle->{PointSize[0.03]}, ImageSize->450, AxesLabel->{\"thickness (mm)\", \
 \"g_2\"}];", "Display" -> "codemirror", 
-    "Hash" -> "0baad538-6b29-4d5e-837c-e3f4eb8490d2", "Invisible" -> False, 
+    "Hash" -> "56341327-bc81-4f01-a333-a8187ec759fe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>, 
+    "Notebook" -> "38b237c3-526f-4c69-a684-8c27a0015ab8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "278fc93d-8ff2-4ac8-b845-c656e201103c", "Invisible" -> False, 
+    "Hash" -> "4b4a20a6-c104-4455-a59d-4a059e153607", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ee3a2d0e-c09b-4803-b35d-6a6ba5f17db6"|>}, "serializer" -> "jsfn4"|>
+     "38b237c3-526f-4c69-a684-8c27a0015ab8"|>}, "serializer" -> "jsfn4"|>

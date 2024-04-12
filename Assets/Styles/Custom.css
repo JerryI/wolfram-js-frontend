@@ -170,6 +170,10 @@ input::selection {
   background-color: transparent;
 }
 
+.cg-fix {
+  height: auto;
+}
+
 .z-inf {
   z-index:110;
 }
