@@ -51,7 +51,7 @@ EventHandler[installEvent, Function[val,
     With[{url = First[StringCases[val, RegularExpression["github\\.com\\/(.*)\\/(.*)\\/?"] :> {"$1", "$2"}] ] },
         With[{data = Import[StringTemplate["https://raw.githubusercontent.com/``/``/main/package.json"]@@url , "JSON"]}, 
             If[KeyExistsQ[Association[data], "wljs-meta"],
-                With[{spinner = NotificationSpinner["Topic"->"Installation", "Body"->StringTemplate["Please wait, until an intalation of `` is finished..."][Last @ url]]},
+                With[{spinner = Notifications`Spinner["Topic"->"Installation", "Body"->StringTemplate["Please wait, until an intalation of `` is finished..."][Last @ url]] (*`*)},
                     EventFire[Messager, spinner, Null];
                     WLJS`PM`InstallByURL[val, Function[{result, message},
                         EventFire[spinner["Promise"], Resolve, True];

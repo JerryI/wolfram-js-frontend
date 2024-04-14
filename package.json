@@ -42,6 +42,9 @@
       ],
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Please give us access to your microphone"
+      },
       "entitlements": "./Electron/build/entitlements.mac.plist",
       "entitlementsInherit": "./Electron/build/entitlements.mac.plist"
     },

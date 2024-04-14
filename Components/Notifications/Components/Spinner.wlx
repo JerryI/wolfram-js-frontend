@@ -1,4 +1,4 @@
-CreateType[NotificationSpinner, init, {"Topic"->"Title", "Promise"->Null, "Body"->"Message", "DOM"->Null}]
+CreateType[Notifications`Spinner(*`*), init, {"Topic"->"Title", "Promise"->Null, "Body"->"Message", "DOM"->Null}]
 
 init[n_] := With[{dom = CreateUUID[]},
     Echo["Created! Spinner"];
@@ -12,7 +12,7 @@ init[n_] := With[{dom = CreateUUID[]},
     ]];
 ];
 
-NotificationSpinner /: Delete[n_NotificationSpinner] := (
+Notifications`Spinner(*`*) /: Delete[n_Notifications`Spinner(*`*)] := (
     EventFire[n["Promise"], Resolve, "Removed"];
 );
 

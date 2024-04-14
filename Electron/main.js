@@ -1,4 +1,4 @@
-const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
+const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme, screen } = require('electron')
 const path = require('path')
 const { platform } = require('node:process');
 
@@ -44,6 +44,8 @@ const workingDir = app.getPath('home');
 
 
 //fetch contex menus items from wljs_packages folder
+
+
 
 /* extesions for contex menu */
 const pluginsMenu = {};
@@ -587,9 +589,23 @@ const setHID = (mainWindow) => {
         return true
     })
 
+    session.fromPartition("default").setPermissionRequestHandler((webContents, permission, callback) => {
+        let allowedPermissions = ["audioCapture", "desktopCapture"]; // Full list here: https://developer.chrome.com/extensions/declare_permissions#manifest
+
+        if (allowedPermissions.includes(permission)) {
+            callback(true); // Approve permission request
+        } else {
+            console.error(
+                `The application tried to request permission for '${permission}'. This permission was not whitelisted and has been blocked.`
+            );
+
+            callback(false); // Deny
+        }
+    });
+
     let currentOS;
     if (isWindows) currentOS = 'Windows';
-    if (isWindows && !IS_WINDOWS_11) currentOS = 'WindowsLegacy';
+    if (isWindows && (!IS_WINDOWS_11 || server.frontend.WindowsLegacy)) currentOS = 'WindowsLegacy';
     if (isMac) currentOS = 'OSX';
     if (!isMac && !isWindows) currentOS = 'Unix';
 
@@ -621,6 +637,8 @@ const server = {
         path: 'wolframscript',
         args: []
     },
+
+    frontend: {},
 
 
     shutdown (cbk) {
@@ -797,6 +815,28 @@ const windows = {
     }
 };
 
+const read_wl_settings = () => {
+    if (!fs.existsSync(path.join(installationFolder, '_settings.wl'))) return;
+    const file = fs.readFileSync(path.join(installationFolder, '_settings.wl'), 'utf8');
+    console.log(file);
+
+    const r = new RegExp(/("\w*") -> ("?[^"|>,]*"?)/gm);
+    let m;
+
+    const parse = (s) => {
+        if (s == 'True') return true;
+        if (s == 'False') return false;
+        return s;
+    }
+
+    server.frontend = {};
+    while (m = r.exec(file)) {
+        server.frontend[m[1].slice(1,-1)] = parse(m[2]);
+    }
+
+    console.log(server.frontend);
+}
+
 function create_window(opts, cbk = () => {}) {
         //default options
         const defaults = {
@@ -885,7 +925,7 @@ function create_window(opts, cbk = () => {}) {
                 checkTheme();
                 //win.setRoundedCorner();
             }*/
-            if (!IS_WINDOWS_11) {
+            if (!IS_WINDOWS_11 || server.frontend.WindowsLegacy) {
                 const checkTheme = () => {
                     if (!nativeTheme.shouldUseDarkColors) {
                         win.setBackgroundColor("#fff");
@@ -1054,7 +1094,7 @@ function create_window(opts, cbk = () => {}) {
             
             //if it is on the same domain
             if (u.hostname === (new URL(server.url.default())).hostname) {
-                create_window({url: url, show: true});
+                create_window({url: url, show: true, parent: win});
     
             } else {
                 //open in the default user's browser
@@ -1063,6 +1103,39 @@ function create_window(opts, cbk = () => {}) {
     
             return { action: 'deny' };
         });
+
+        if ((new RegExp(/gptchat/)).exec(options.url)) {
+            if (options.parent) {
+
+
+                if (options.parent.isMaximized()) options.parent.unmaximize();
+
+                const pos = options.parent.getPosition();
+                const dims = options.parent.getSize(); 
+
+                const primaryDisplay = screen.getPrimaryDisplay();
+                const { swidth, sheight } = primaryDisplay.workAreaSize;
+
+                if (pos[0]+dims[0] + 310 > swidth) {
+                    if (dims[0] + 310 + 50 > swidth) {
+                        options.parent.setPosition(50, pos[1], true);
+                        const newwidth = swidth - 310 - 50;
+                        options.parent.setBounds({ width: newwidth, animate: true}, true);
+                        win.setBounds({ width: 300, height:dims[1], animate: true}, true);
+                        win.setPosition(dims[0] + newwidth + 10, pos[1], true);
+                    } else {
+                        options.parent.setPosition(50, pos[1], true);
+                        win.setBounds({ width: 300, height:dims[1], animate: true}, true);
+                        win.setPosition(dims[0] + 50 + 10, pos[1], true);
+                    }
+                } else {
+                    win.setBounds({ width: 300, height:dims[1], animate: true}, true);
+                    win.setPosition(pos[0]+dims[0] + 10, pos[1], true);
+                }
+            } else {
+                win.setBounds({ width: 300, animate: true}, true);
+            }
+        }
 
         win.loadURL(options.url);
 
@@ -1193,6 +1266,9 @@ app.whenReady().then(() => {
     windows.log.construct((log_window) => {
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });
+
+    read_wl_settings();
+
     //server.url.local = `http://127.0.0.1:20560`;
     //create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 

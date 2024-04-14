@@ -2236,6 +2236,11 @@ select {
   color: rgb(20 184 166 / var(--tw-text-opacity));
 }
 
+.text-teal-600 {
+  --tw-text-opacity: 1;
+  color: rgb(13 148 136 / var(--tw-text-opacity));
+}
+
 .text-transparent {
   color: transparent;
 }

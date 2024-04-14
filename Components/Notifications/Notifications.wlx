@@ -25,7 +25,7 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
     EventHandler[EventClone[Event], {
         (*/* dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&), */*)
 
-        n_NotificationSpinner   :> Function[Null,
+        n_Notifications`Spinner (*`*)  :> Function[Null,
 
             With[{client = $Client},
                 EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Spinner"|>, SpinnerTemplate[n, client, Controller]] ]

@@ -15,7 +15,7 @@ Begin["`Internal`"];
 
 initializeKernel[parameters_][kernel_] := With[{
   wsPort = parameters["env", "ws2"], 
-  spinner = Global`NotificationSpinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]
+  spinner = Notifications`Spinner["Topic"->"Initialization of the Kernel", "Body"->"Please, wait"]
 },
   Print["Init Kernel!!!"];
   EventFire[kernel, spinner, Null];
