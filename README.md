@@ -32,6 +32,11 @@ It supports dynamics, GUI building blocks, and powerful Mathematica syntax out o
 
 No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated from scratch using `d3.js` and `THREE.js` libraries. Most native plotting functions of Mathematica are supported.
 
+#### AI Assistant
+We deeply integrated ChatGPT, so that AI can have a read/write acccess to your notebook
+
+![AAI](imgs/ASKAI%20optimizer.gif)
+
 ### Command Palette and GUI-in-Code Emulation
 #### Inline Dynamic Tool for Tuning 2D/3D Positions
 
