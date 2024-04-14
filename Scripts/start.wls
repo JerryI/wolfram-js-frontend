@@ -107,28 +107,22 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
 }];
 
+(* start a bit earlier, so that extensions can hook on*)
+$Server = <||>;
+$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 
-(* load stuff into frontend *)
-Echo["Loading packages: FRONTEND"];
+Print["Staring HTTP server..."];
 
-  If[FailureQ[Get[FileNameJoin[{Directory[], "wljs_packages",  UniversalPathConverter[#]}] ] ],
-    Echo["Failed to load some of the packages (see logs)"];
-    Exit[0]
-  ] &/@ WLJS`PM`Includes["frontend"]; 
+tcp = TCPServer[];
+tcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
+tcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> http;
 
-JerryI`WLX`Importer`Private`CacheControl["Hour"];
+http = HTTPHandler[];
+$Server["HTTPHandler"] = http;
 
-(* Entrypoint of an app *)
-App         := ImportComponent["Frontend/App.wlx"];
-Window      := ImportComponent["Frontend/Window.wlx"];
-Settings    := ImportComponent["Frontend/Settings.wlx"];
-AutoTest    := ImportComponent["Frontend/Test.wlx"];
+AppExtensions`HTTPHandler = http;
 
-(* Global variables *)
-
-$ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
-
-
+System`$Env;
 
 $Env = <|
   "host" -> "127.0.0.1",
@@ -157,6 +151,27 @@ With[{argv = Rest @ $ScriptCommandLine},
   ], argv]
 ];
 
+(* load stuff into frontend *)
+Echo["Loading packages: FRONTEND"];
+
+  If[FailureQ[Get[FileNameJoin[{Directory[], "wljs_packages",  UniversalPathConverter[#]}] ] ],
+    Echo["Failed to load some of the packages (see logs)"];
+    Exit[0]
+  ] &/@ WLJS`PM`Includes["frontend"]; 
+
+JerryI`WLX`Importer`Private`CacheControl["Hour"];
+
+(* Entrypoint of an app *)
+App         := ImportComponent["Frontend/App.wlx"];
+Window      := ImportComponent["Frontend/Window.wlx"];
+Settings    := ImportComponent["Frontend/Settings.wlx"];
+AutoTest    := ImportComponent["Frontend/Test.wlx"];
+
+(* Global variables *)
+
+$ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "Assets"}], Directory[], "/", ""}
+
+
 
 EventHandler[AppExtensions`AppEvents // EventClone, {
  "Notebook:Close" -> Function[notebook,
@@ -174,17 +189,7 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 }];
 
 
-$Server = <||>;
-$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
 
-Print["Staring HTTP server..."];
-
-tcp = TCPServer[];
-tcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
-tcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> http;
-
-http = HTTPHandler[];
-$Server["HTTPHandler"] = http;
 
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 

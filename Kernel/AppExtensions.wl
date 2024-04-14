@@ -3,6 +3,8 @@ BeginPackage["JerryI`Notebook`AppExtensions`"]
 AppExtensions::usage = ""
 ExtensionEvent::usage = ""
 
+AppExtensions`HTTPHandler::usage = ""
+
 Begin["`Internal`"];
 
 Templates = <||>;
@@ -16,6 +18,8 @@ AppExtensions`Templates[ opts: OptionsPattern[] ] := With[{template = OptionValu
         emptyStringFunction[opts]
     ]
 ]
+
+AppExtensions`HTTPHandler = Null
 
 sidebarIcons = {};
 AppExtensions`SidebarIcons := sidebarIcons

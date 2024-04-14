@@ -60,7 +60,7 @@ Notebook /: EventClone[n_Notebook] := EventClone[n["Hash"]]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
 Notebook`Serialize[n_Notebook] := Module[{props},
-    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "CellsInitialized", "Socket", "EvaluationContext", "Opened","WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "ChatBook", "CellsInitialized", "Socket", "EvaluationContext", "Opened","WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
     props // Flatten // Association
 ]
 

@@ -20,7 +20,7 @@ Component[cell_CellObj, cli_, parameters_, OptionsPattern[]] := With[{
 },
     If[InputCellQ @ cell,
         EventHandler[cell, {
-            "Focus" -> Function[Null, Print["Focus!"]; cell["Notebook", "FocusedCell"] = cell]
+            "Focus" -> Function[Null, Print["Focus!"]; With[{n = cell["Notebook"]}, n["FocusedCell"] = cell] ]
         }];
         
 
