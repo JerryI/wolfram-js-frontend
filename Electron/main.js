@@ -1,4 +1,6 @@
-const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme, screen } = require('electron')
+const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
+const { screen} = require('electron/main')
+
 const path = require('path')
 const { platform } = require('node:process');
 
@@ -1114,12 +1116,16 @@ function create_window(opts, cbk = () => {}) {
                 const dims = options.parent.getSize(); 
 
                 const primaryDisplay = screen.getPrimaryDisplay();
-                const { swidth, sheight } = primaryDisplay.workAreaSize;
+                const { width, height } = primaryDisplay.workAreaSize;
+                console.warn({screen: width, parentPos: pos, parentdims:dims});
+          
 
-                if (pos[0]+dims[0] + 310 > swidth) {
-                    if (dims[0] + 310 + 50 > swidth) {
+                if (pos[0]+dims[0] + 310 > width) {
+                    console.warn('Contaner Overflow!');
+                    if (dims[0] + 310 + 50 > width) {
+                        console.warn('Resize parent');
                         options.parent.setPosition(50, pos[1], true);
-                        const newwidth = swidth - 310 - 50;
+                        const newwidth = width - 310 - 50;
                         options.parent.setBounds({ width: newwidth, animate: true}, true);
                         win.setBounds({ width: 300, height:dims[1], animate: true}, true);
                         win.setPosition(dims[0] + newwidth + 10, pos[1], true);
