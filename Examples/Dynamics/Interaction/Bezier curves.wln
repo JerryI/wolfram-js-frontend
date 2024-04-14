@@ -1,0 +1,138 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$180], 
+   "Objects" -> <|"3c27d476-8451-404e-91b9-f22b333474ed" -> 
+      <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], 
+           {Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 
+                pf$ = pf$157265}, {pi$ + 0*(pc$ - pi$), pc$ + 
+                 0*(pf$ - pc$)}]]], Line[Offload[With[{pc$ = pc$157265, 
+                pi$ = pi$157265, pf$ = pf$157265}, {pi$ + 0.1*(pc$ - pi$), 
+                pc$ + 0.1*(pf$ - pc$)}]]], Line[Offload[
+              With[{pc$ = pc$157265, pi$ = pi$157265, pf$ = pf$157265}, {
+                pi$ + 0.2*(pc$ - pi$), pc$ + 0.2*(pf$ - pc$)}]]], 
+            Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 
+                pf$ = pf$157265}, {pi$ + 0.30000000000000004*(pc$ - pi$), 
+                pc$ + 0.30000000000000004*(pf$ - pc$)}]]], 
+            Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 
+                pf$ = pf$157265}, {pi$ + 0.4*(pc$ - pi$), pc$ + 
+                 0.4*(pf$ - pc$)}]]], Line[Offload[With[{pc$ = pc$157265, 
+                pi$ = pi$157265, pf$ = pf$157265}, {pi$ + 0.5*(pc$ - pi$), 
+                pc$ + 0.5*(pf$ - pc$)}]]], Line[Offload[
+              With[{pc$ = pc$157265, pi$ = pi$157265, pf$ = pf$157265}, {
+                pi$ + 0.6000000000000001*(pc$ - pi$), pc$ + 
+                 0.6000000000000001*(pf$ - pc$)}]]], 
+            Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 
+                pf$ = pf$157265}, {pi$ + 0.7000000000000001*(pc$ - pi$), 
+                pc$ + 0.7000000000000001*(pf$ - pc$)}]]], 
+            Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 
+                pf$ = pf$157265}, {pi$ + 0.8*(pc$ - pi$), pc$ + 
+                 0.8*(pf$ - pc$)}]]], Line[Offload[With[{pc$ = pc$157265, 
+                pi$ = pi$157265, pf$ = pf$157265}, {pi$ + 0.9*(pc$ - pi$), 
+                pc$ + 0.9*(pf$ - pc$)}]]], Line[Offload[
+              With[{pc$ = pc$157265, pi$ = pi$157265, pf$ = pf$157265}, {
+                pi$ + 1*(pc$ - pi$), pc$ + 1*(pf$ - pc$)}]]]}, 
+           PointSize[0.06], RGBColor[1, 0, 0], EventListener[
+            Point[{0.2, 0.2}], {"drag" -> 
+              "49f6097a-8e7d-449f-9991-e5ae5c813d4a"}], EventListener[
+            Point[{0.3, 0.5}], {"drag" -> 
+              "5cf6262f-1183-4388-99f2-131d3e8f065d"}], EventListener[
+            Point[{0.6, 0.1}], {"drag" -> 
+              "d1927e61-5b62-4dcc-8fad-95930598b80e"}]}]]|>|>, 
+   "Path" -> "/users/kirill/Library/CloudStorage/OneDrive-Personal/\:0414\
+\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\:043d\:0444\
+\:0435\:0440\:0435\:043d\:0446\:0438\:0438/YandexJAM2024/Bezier curves.wln"|>\
+, "Cells" -> {<|"Data" -> ".md\n# Bezier curves\nAn demo on how to utilize \
+the power of WLJS Interpreter", "Display" -> "codemirror", 
+    "Hash" -> "05fbad2d-2eb0-44a1-aa34-b82a6c47ce26", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> 
+     "# Bezier curves\nAn demo on how to utilize the power of WLJS \
+Interpreter", "Display" -> "markdown", 
+    "Hash" -> "74809b38-c51d-47f1-a11c-125877d1d989", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> ".md\nGenerate intermediate points right on the frontend", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f1940483-2454-4c09-988a-9be415c98b67", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "Generate intermediate points right on the frontend", 
+    "Display" -> "markdown", "Hash" -> 
+     "4d1a4cd3-6a6a-492b-af48-d5c8c6fc47d2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "autoLine[t_, p1_, p2_, p3_] := \n Line[\n   With[{pc = p2, pi \
+= p1, pf = p3}, \n     {pi + t (pc - pi), pc + t (pf - pc)}\n   ] // \
+Offload\n ]\n\nSetAttributes[autoLine, HoldRest]", "Display" -> "codemirror", 
+    "Hash" -> "66d9c04e-2d81-4b16-84da-dcfc4972e169", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> ".md\nNow we can plot it with draggable points", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9868d39f-9086-4a9f-83dc-40803bf3c9d4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "Now we can plot it with draggable points", 
+    "Display" -> "markdown", "Hash" -> 
+     "674e55c7-6fc4-4361-bf52-84602c00c5e0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "curve[p1_, p2_, p3_] := LeakyModule[{pi = p1, pc = p2, pf = \
+p3},\n  {\n    Blue, Table[autoLine[t, pi, pc, pf], {t, 0, 1, 0.1}],\n    \
+PointSize[0.06], Red, \n\n    EventHandler[Point[pi], {\"drag\" -> \
+Function[xy, pi = xy]}],\n    EventHandler[Point[pc], {\"drag\" -> \
+Function[xy, pc = xy]}],\n    EventHandler[Point[pf], {\"drag\" -> \
+Function[xy, pf = xy]}]\n  }\n]", "Display" -> "codemirror", 
+    "Hash" -> "04c49b7b-e52a-4ab4-8a2a-1e09cc9e7bf9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> ".md\n__Draw__", "Display" -> "codemirror", 
+    "Hash" -> "c697ca02-8915-4ff3-b9a0-01624db431d8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, <|"Data" -> "__Draw__", 
+    "Display" -> "markdown", "Hash" -> 
+     "aa674417-c2c5-473f-a4af-3e57c100220b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "curve[{0.2,0.2}, {0.3,0.5}, {0.6,0.1}] // Graphics", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3d6bc075-e41d-42a2-9d63-5af294875662", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"3c27d476-8451-404e-91b9-f22b333474ed\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGycbm\
+aeYmJvpWpiYGuqaGJik6loaJlnqphkZJRkbG5uYm6SmAABzRhTo\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d201dd7b-c095-4619-a135-917d2b79b59b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> ".md\nNote, that actual calculation of the intermediate blue \
+line happens on frontend's side, i.e. in the browser. Kernel is only updating \
+the positions of three points `p1`, `p2`, `p3`.", "Display" -> "codemirror", 
+    "Hash" -> "436fd8a7-f19f-4d48-9055-316d98d76987", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> "Note, that actual calculation of the intermediate blue line \
+happens on frontend's side, i.e. in the browser. Kernel is only updating the \
+positions of three points `p1`, `p2`, `p3`.", "Display" -> "markdown", 
+    "Hash" -> "a64975ec-77b5-4e7a-8232-5e1efb57db04", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4a737091-4901-44ef-8979-840173b9de0b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "61330279-7e21-4f27-8894-4e0e92932ff2"|>}, "serializer" -> "jsfn4"|>
