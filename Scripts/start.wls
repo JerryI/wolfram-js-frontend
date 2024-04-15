@@ -10,15 +10,15 @@ PM80mkmcDR8TlexK0Ug7SKnAh5f9F0aRoGi8y5wVUp5Zvb0pVTQQ96KTn/qCULtLIPlvHad2kAIt0IN+
 Lt7KLPp4ZPq3+qz0Iv6Yddcj3gGoDVPG"];
 
 PacletRepositories[{
-  Github -> "https://github.com/KirillBelovTest/Objects",
+  Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
   Github -> "https://github.com/JerryI/Internal" -> "master",
-  Github -> "https://github.com/KirillBelovTest/TCPServer",
-  Github -> "https://github.com/KirillBelovTest/HTTPHandler",
+  Github -> "https://github.com/JerryI/TCPServer" -> "master",
+  Github -> "https://github.com/JerryI/HTTPHandler" -> "master",
   Github -> "https://github.com/JerryI/WebSocketHandler" -> "master",
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev",
-  Github -> "https://github.com/JerryI/wl-wljs-packages"
+  Github -> "https://github.com/JerryI/wl-wljs-packages" -> "master"
 }, "Directory" -> Directory[] ]
 
 (* web-server *)
