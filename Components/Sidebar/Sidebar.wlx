@@ -16,6 +16,10 @@ Controller["Reveal", __] := Function[name,
   WebUISubmit[Global`UIOpenExplorer[FileNameSplit[URLDecode[name]]] (*`*), $Client];
 ];
 
+Controller["Download", __] := Function[name,
+  WebUISubmit[Global`UIOpenDownloadWindow[name, FileNameTake[name // URLDecode]] (*`*), $Client];
+];
+
 Controller["Rename", sidebarId_, modals_, path_, Controls_] := Function[name,
   With[{decoded = URLDecode[name], request = CreateUUID[]},
     With[{splitted = FileNameSplit[decoded]},
@@ -175,6 +179,15 @@ With[{
         if (window.electronAPI) {
           window.electronAPI.openFinder(JSON.stringify(filename));
         }   
+      }
+
+      core.UIOpenDownloadWindow = async (args, env) => {
+        const url = await interpretate(args[0], env);
+        const name = await interpretate(args[1], env);
+        const  link = document.createElement("a")
+        link.href = 'downloadFile/?path=' + url;
+        link.download = name;
+        link.click();        
       }
 
       core.UIOpenWindow = async (args, env) => {

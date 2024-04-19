@@ -81,6 +81,9 @@ Component[OptionsPattern[]] := With[{
                     <li class="px-4 py-4 sm:px-0">
                         <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
                     </li>
+                    <li class="px-4 py-0 sm:px-0">
+                        <ExtensionTemplateInjection Template={"SettingsFooter"}  Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret} />
+                    </li>
                     <li class="px-4 py-4 sm:px-0">
                         <DevSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
                     </li>

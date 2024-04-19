@@ -166,6 +166,7 @@ App         := ImportComponent["Frontend/App.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
 AutoTest    := ImportComponent["Frontend/Test.wlx"];
+Downloader   = ImportComponent["Frontend/Downloader.wl"];
 
 (* Global variables *)
 
@@ -236,6 +237,7 @@ SetAttributes[Offload, HoldFirst];
 
 (* start an app *)
 AutoTest["HTTPHandler"->http];
+Downloader["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
