@@ -1,22 +1,25 @@
 BeginPackage["JerryI`Notebook`HTTPDownLoader`", {
-    "KirillBelov`HTTPHandler`"
-    "KirillBelov`HTTPHandler`Extensions`"
-}];
+    "KirillBelov`HTTPHandler`",
+    "KirillBelov`HTTPHandler`Extensions`",
+    "KirillBelov`Internal`"
+}]
     
-    Begin["`Internal`"];
+    Begin["`Internal`"]
 
     handler[request_] := With[{path = request["Query", "path"]},
-        ImportFile[URLDecode[path], "Base"->{Directory[]}]
+        (*dangerous stuff. I Asked to take an absolute path to a file like that *)
+        ImportFile[URLDecode[path], "Base"->Nothing]
     ]
 
     module[OptionsPattern[] ] := With[{http = OptionValue["HTTPHandler"]},
-        http["MessageHandler", "Downloader"] = AssocMatchQ[<|"Path" -> "/downloadFile"|>] -> handler;
+        Echo["Downloads module was attached"];
+        http["MessageHandler", "Downloader"] = AssocMatchQ[<|"Path" -> "/downloadFile/"|>] -> handler;
     ]
 
     Options[module] = {"HTTPHandler" -> Null}
 
-    End[];
+    End[]
 
-EndPackage[];
+EndPackage[]
 
 JerryI`Notebook`HTTPDownLoader`Internal`module
