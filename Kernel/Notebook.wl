@@ -74,6 +74,7 @@ Notebook`Deserialize[any_, n_Association, notebook_Notebook] := With[{},
     $Failed["Unknown Serializer: "<>ToString[any] ]
 ]
 
+(* native WLJS format *)
 Notebook`Deserialize["jsfn4", n_Association, notebook_Notebook] := With[{},
     (notebook[#] = n["Notebook", #]) &/@ Complement[Keys[n["Notebook"] ], {"Hash"}]; 
     notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["Cells"];
@@ -81,6 +82,7 @@ Notebook`Deserialize["jsfn4", n_Association, notebook_Notebook] := With[{},
     notebook
 ]
 
+(* legacy support of older formats *)
 Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
     notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["cells"];
     With[{cell = #},
