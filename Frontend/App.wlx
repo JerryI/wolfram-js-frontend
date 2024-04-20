@@ -36,6 +36,8 @@ autolaunch                           = ImportComponent["Autolaunch.wl"];
 serverParams = <|"env" -> env|>;
 settings = <||>;
 
+sidebarState = "show";
+
 loadSettings[settings];
 
 renameFile[old_String, new_String] := With[{},
@@ -112,6 +114,10 @@ App[request_] := With[{
   GlobalControls  = CreateUUID[],
   Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1] ]
 },
+
+  EventHandler[Secret, {
+    "SaveSidebarState" -> Function[state, sidebarState = state]
+  }];
   
   With[{
         
@@ -192,7 +198,7 @@ App[request_] := With[{
   {
     "<!DOCTYPE html>"
   ,
-    <html class="h-full {AppClass}" os="{NavigatorOS}"> 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" sidebar="{sidebarState}"> 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
@@ -206,7 +212,7 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" style="user-select: none" class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
+          <div id="sidebar" style="user-select: none" class="hidden md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
             <FakeMenu/>  
             <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
@@ -216,7 +222,7 @@ App[request_] := With[{
             </div>
           </div>
           
-          <div class="md:pl-70 h-full" id="frame">
+          <div class="md:pl-70 zen:pl-0 h-full" id="frame">
             <div class="h-full flex flex-col">
               <TopBar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
@@ -225,7 +231,7 @@ App[request_] := With[{
             </div> 
           </div>
         </div>
-        <Script/>
+        <Script Secret={Secret}/>
         <ExtensionTemplates Template={"AppScripts"} />
         <ElectronBinds Controls={GlobalControls}/>
       </body>
@@ -233,7 +239,7 @@ App[request_] := With[{
   } // StringRiffle
 ] ];
 
-Script = With[{},
+Script[Rule["Secret", Secret_]] := With[{},
   <script type="module">
     core.UIDocsOpen = async (args, env) => {
       const port = await interpretate(args[0], env);
@@ -243,10 +249,21 @@ Script = With[{},
             fake.href = 'http://' + window.location.hostname + ':'+String(port) + '/' + link;
             fake.click();
     }
+
     core.UIToggleWindowBonds = async (args, env) => {
-      if (window.electronAPI) {
-        window.electronAPI.toggleWindowSize();
+      if (document.documentElement.getAttribute('sidebar') === 'hidden' || window.innerWidth < 800) {
+        document.documentElement.setAttribute('sidebar', 'show');
+        server.emitt('<Secret/>', 'show', 'SaveSidebarState');
+        if (window.electronAPI) {
+          if (window.electronAPI.enlargeWindowSizeIfneeded) {
+            window.electronAPI.enlargeWindowSizeIfneeded();
+          }
+        }
+      } else {
+        document.documentElement.setAttribute('sidebar', 'hidden');
+        server.emitt('<Secret/>', 'hidden', 'SaveSidebarState');
       }
+      
     }
 
     if (window.electronAPI) {

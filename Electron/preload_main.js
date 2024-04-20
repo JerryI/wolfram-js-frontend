@@ -42,6 +42,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-window-toggle',  {});
   },
 
+  enlargeWindowSizeIfneeded: () => {
+    ipcRenderer.send('system-window-enlarge-if-needed',  {});
+  },
+
   requestFileWindow: (params, cbk) => {
     ipcRenderer.invoke('system-save-something', params).then((result) => {
       cbk(result);

@@ -858,6 +858,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarStyle: 'hiddenInset',
                 width: 800,
                 height: 600,
+                minWidth: 545,
                 //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
@@ -891,6 +892,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarOverlay: true,
                 width: 800,
                 height: 600,
+                minWidth: 545,
                 backgroundMaterial: 'mica',
                 title: options.title,
                 //transparent:true,
@@ -977,6 +979,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarOverlay: true,
                 width: 800,
                 height: 600,
+                minWidth: 545,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
@@ -1277,6 +1280,13 @@ app.whenReady().then(() => {
 
     //server.url.local = `http://127.0.0.1:20560`;
     //create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
+
+    ipcMain.on('system-window-enlarge-if-needed', (e, p) => {
+        const bonds = windows.focused.win.getBounds();
+        if (bonds.width < 800) {
+            windows.focused.win.setBounds({ width: 800 , animate: true}, true);
+        }      
+    });
 
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
