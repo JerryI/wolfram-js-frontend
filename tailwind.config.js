@@ -40,6 +40,12 @@ module.exports = {
     "hover:text-green-300",
     'bg-teal-300',
     'text-red-500',
+    'ring-green-600/20',
+    'bg-green-50',
+    'ring-green-600/20',
+    'bg-red-50',
+    'text-red-700',
+    'ring-red-600/20',
     'hover:text-red-300',
     'hover:bg-teal-400', 
     {

@@ -18,7 +18,7 @@
     "dist-win": "electron-builder --win --x64",
     "dist86": "electron-builder --x64",
     "dist-all": "electron-builder -mwl --x64",
-    "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css --minify"
+    "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
     "afterSign": "./Electron/sign.js",
