@@ -822,12 +822,13 @@ const read_wl_settings = () => {
     const file = fs.readFileSync(path.join(installationFolder, '_settings.wl'), 'utf8');
     console.log(file);
 
-    const r = new RegExp(/("\w*") -> ("?[^"|>,]*"?)/gm);
+    const r = new RegExp(/("\w*") -> *\n* *("?[^"|>,]*"?)/gm);
     let m;
 
     const parse = (s) => {
         if (s == 'True') return true;
         if (s == 'False') return false;
+        if (s.charAt(0) === '"') return s.slice(1,-1);
         return s;
     }
 
@@ -1961,6 +1962,9 @@ function check_installed (cbk, window) {
 
             const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
             const branch = server.frontend.UpdatesChannelBranch ||  'updates';
+
+            console.log([repo, branch]);
+            //app.exit(-1);
 
             //check internet
             const test = net.fetch('https://github.com');
