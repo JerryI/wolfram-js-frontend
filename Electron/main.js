@@ -1959,6 +1959,9 @@ function check_installed (cbk, window) {
                 cbk();
             }, 5000);
 
+            const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
+            const branch = server.frontend.UpdatesChannelBranch ||  'updates';
+
             //check internet
             const test = net.fetch('https://github.com');
             test.then((result) => {
@@ -1966,7 +1969,9 @@ function check_installed (cbk, window) {
                     clearTimeout(watchdog);
 
                     //check the official version
-                    const request = net.fetch('https://raw.githubusercontent.com/JerryI/wolfram-js-frontend/updates/package.json');
+
+
+                    const request = net.fetch('https://raw.githubusercontent.com/'+repo+'/'+branch+'/package.json');
                     request.then((result) => {
                         if (result.status === 200) {
                             console.log(result);
@@ -2014,6 +2019,8 @@ function check_installed (cbk, window) {
                         cbk();
                     });
 
+                } else {
+                    windows.log.print('Failed! using ' + repo + ' and branch ' + branch, '\x1b[32m');
                 }
             });
         });            
@@ -2047,7 +2054,11 @@ function install_frontend(cbk, window) {
 
         //path to zip
         const pathToFile = path.join(installationFolder, 'pkg.zip');
-        downloadFile('https://api.github.com/repos/JerryI/wolfram-js-frontend/zipball/updates', pathToFile, (file) => {
+
+        const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
+        const branch = server.frontend.UpdatesChannelBranch ||  'updates';
+
+        downloadFile('https://api.github.com/repos/'+repo+'/zipball/'+branch, pathToFile, (file) => {
             windows.log.print('Unzipping...', '\x1b[32m');
 
             const extracted = path.join(installationFolder, '__extracted');

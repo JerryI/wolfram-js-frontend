@@ -124,7 +124,7 @@ App[request_] := With[{
         SidebarId = CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
-        GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
+        GlobalParameters = Join[<|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal", "BackupTimeout" -> (3 60 1000)|>, settings],
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         

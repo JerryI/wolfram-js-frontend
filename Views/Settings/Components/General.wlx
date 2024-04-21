@@ -15,6 +15,11 @@ installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
 homefolderEvent = CreateUUID[];
 
+parseInt[any_String] := ToExpression[any]
+parseInt[any_] := any 
+
+defaultBackupTime = If[KeyExistsQ[settings, "BackupTimeout"], Round[settings["BackupTimeout"]/60/1000], 3]
+
 DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
 EventHandler[Secret, {"Load" -> Function[Null,
@@ -37,8 +42,15 @@ EventHandler[Secret, {"Load" -> Function[Null,
             ]
         ],
 
+        "BackupTimeout" -> Function[value,
+            settings = Join[settings, <|"BackupTimeout"-> (60 1000 parseInt[value])|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied on the next window load"];
+        ],
+
         "CleanBackups" -> Function[Null,
-            DeleteFile /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}]]
+            DeleteFile /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}]];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Cleaned"];
         ]
     }];
 
@@ -106,6 +118,14 @@ EventHandler[Secret, {"Load" -> Function[Null,
             <StringRiffle>
                 <Knob Label={"Clean up"} Topic={"CleanBackups"} Event={controller} Class={"w15"}/>
             </StringRiffle>
+
+            <div class="pb-2 mt-2 mt-5 gap-y-2 flex flex-col">
+                <div class="rounded-md px-3 pb-3 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+                    <label for="BackupTimeout" class="block text-xs font-medium text-gray-900 dark:text-gray-400">Backup time interval</label>
+                    <input type="number" value="{defaultBackupTime}" min="3" max="3000" step="1" id="BackupTimeout" class="block w-full border-0 p-0 dark:bg-gray-700 text-gray-900 dark:text-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"/>
+                    <WebUIEventListener Id={"BackupTimeout"} Type={"blur"} Event={controller} Pattern={"BackupTimeout"}/>
+                </div> 
+            </div> 
         </div>
     </div>  
 

@@ -11,7 +11,7 @@ timedSaveButton[client_, localController_, controls_, parameters_] := With[{clon
         EventFire[localController, "Color", <|"Client"->client, "Color"->(If[StringQ[#],#,"teal"]&) @ parameters["AccentColor"] |> ];
         EventFire[controls, "Backup", <|"Client"->client|>];
         If[alive, reset];
-      ), 3 60 1000];
+      ),  parameters["BackupTimeout"]];
     ];
 
     reset;
