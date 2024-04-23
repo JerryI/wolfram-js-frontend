@@ -886,6 +886,9 @@ function create_window(opts, cbk = () => {}) {
                 }
             });*/
 
+            let mica = 'mica';
+            if (server.frontend.WindowsLegacy) mica = false;
+
             win = new BrowserWindow({
                 frame: true,
                 autoHideMenuBar: true,
@@ -894,7 +897,7 @@ function create_window(opts, cbk = () => {}) {
                 width: 800,
                 height: 600,
                 minWidth: 545,
-                backgroundMaterial: 'mica',
+                backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
