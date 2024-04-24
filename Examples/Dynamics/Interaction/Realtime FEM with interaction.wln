@@ -1,0 +1,72 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$180], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Interaction/Realtime FEM with interaction.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Interactive FEM\nPlease see the previous \
+static implementation in the folder `Example/Dynamics/Animation/`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dd08c4f1-0cf9-4c73-a834-1574cbabae8f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c1303a2b-5cd9-4b4e-b942-1e79176f4c7d"|>, 
+   <|"Data" -> "## Interactive FEM\nPlease see the previous static \
+implementation in the folder `Example/Dynamics/Animation/`", 
+    "Display" -> "markdown", "Hash" -> 
+     "e8af6a15-7296-4630-80ef-74f4c0add253", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c1303a2b-5cd9-4b4e-b942-1e79176f4c7d"|>, 
+   <|"Data" -> ".md\nSource code", "Display" -> "codemirror", 
+    "Hash" -> "b92ce45c-08b7-4da8-99df-4c1c7444d5b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c1303a2b-5cd9-4b4e-b942-1e79176f4c7d"|>, <|"Data" -> "Source code", 
+    "Display" -> "markdown", "Hash" -> 
+     "05d4e40a-a345-4f6e-bd11-65186f4c7eac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c1303a2b-5cd9-4b4e-b942-1e79176f4c7d"|>, 
+   <|"Data" -> "field0 = Table[0., {i,100}, {j,100}];\nfield1 = \
+field0;\nfield2 = field0;\n\n\nlattice = Table[{i,j}, {i, 100}, \
+{j,100}];\nmesh = Flatten[lattice, 1];\n\nmakeVertices = Compile[{{f, _Real, \
+2}, {pairs, _Integer, 2}, {scale, _Real}},\n  Join[#, {scale f[[#[[1]], \
+#[[2]]]]}] &/@ pairs\n];\n\nallvertices = NumericArray[makeVertices[field0, \
+mesh, 300]];\n\nNeeds[\"ComputationalGeometry`\"];\ntriangles2[points_] := \
+Module[{tr, triples},\n  tr = DelaunayTriangulation[points];\n  triples = \
+Flatten[Function[{v, list},\n      Switch[Length[list],\n        (* account \
+for nodes with connectivity 2 or less *)\n        1, {},\n        2, \
+{Flatten[{v, list}]}, \n        _, {v, ##} & @@@ Partition[list, 2, 1, {1, \
+1}]\n      ]\n    ] @@@ tr, 1];\n  Cases[GatherBy[triples, Sort], a_ /; \
+Length[a] == 3 :> a[[1]]]]\n\ntriangles = triangles2[mesh];\n\nupdateField \
+=\n    Compile[\n        {{i, _Integer}, {j, _Integer}, {f, _Real, 2}, {p, \
+_Real, 2}}\n        ,\n        (\n                0.001(\n                    \
+If[i - 1 > 0,\n                            f[[i - 1, j]]\n                    \
+        ,\n                            0\n                        ] +\n       \
+                 If[i + 1 < 51,\n                            f[[i + 1, j]]\n  \
+                          ,\n                            0\n                  \
+      ] +\n                        If[j + 1 < 51,\n                           \
+ f[[i, j + 1]]\n                            ,\n                            \
+0\n                        ] +\n                        If[j - 1 > 0,\n       \
+                     f[[i, j - 1]]\n                            ,\n           \
+                 0\n                        ] - 4 f[[i, j]]\n                \
+) + 2 f[[i, j]] - p[[i, j]])/(1) + 0.01 (0 - f[[i,j]])\n    ];\n\n    field0 \
+= Table[0., {i,100}, {j,100}];\nfield1 = field0;\nfield2 = field0;\n\n(* \
+initial perturbation *)\n(*\nfield1[[25,25]] = 0.001; \nfield2[[25,25]] = \
+0.002;\n*)\n\nupdateVertices[pos_, amp_] := With[{p = Floor /@ pos},\n  \
+If[p[[1]] > 10 && p[[1]] <= 100-10 && p[[2]] > 10 && p[[2]] <= 100-10,\n      \
+Do[\n        With[{x = p[[1]] + dx, y = p[[2]] + dy},\n          \
+field2[[x,y]] = amp / 300;\n          field1[[x,y]] = amp / 300;\n        ]\n \
+   , {dx, -5,5}, {dy,-5,5}];\n  ];\n\n  With[{i = #[[1]], j = #[[2]]}, \n    \
+field0[[i,j]] = updateField[i,j, field1, field2];\n  ]&/@ \
+RandomSample[mesh];\n\n  field2 = field1;\n  field1 = field0;\n  \n  \
+allvertices = NumericArray[makeVertices[field0, mesh, \
+300]];\n\n];\n\n\nWith[{},\n  Graphics3D[{Shadows[True], SpotLight[Blue, \
+2{2.4463, 60.1604, 9.3104}, 1.5, 3000], SpotLight[Red, 2{48.1378, 47.8679, \
+12.4545}, 1.5, 3000], \n  Roughness[0],\n  GraphicsComplex[allvertices // \
+Offload, Polygon[triangles]],\n  EventHandler[Sphere[{50,50,10}], \
+{\"transform\" -> Function[assoc,\n    updateVertices[assoc[\"position\"], \
+assoc[\"position\"] // Last]\n  ]}]\n}, ImageSize->700]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9023518d-742c-4c0f-8041-dbf0269f7cdc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c1303a2b-5cd9-4b4e-b942-1e79176f4c7d"|>}, "serializer" -> "jsfn4"|>

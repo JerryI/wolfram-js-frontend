@@ -14,7 +14,7 @@ const fse = require('fs-extra');
 
 const { powerSaveBlocker } = require('electron')
 
-let powerSaveId; 
+let powerSaveId;
 
 const contextMenu = require('electron-context-menu');
 const contextMenuExtensions = [];
@@ -213,7 +213,7 @@ const buildMenu = (opts) => {
                             }
                         });
                     }
-                },                
+                },
                 /*{ type: 'separator' },
                 {
                     label: 'Share',
@@ -239,7 +239,7 @@ const buildMenu = (opts) => {
                             create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
                         }
                     },
-                    
+
                     {
                         label: 'Reopen in browser',
                         click: async(ev) => {
@@ -255,7 +255,7 @@ const buildMenu = (opts) => {
                         }
                     }
                 ] : []),
-                //win.webContents.send('context', 'Iconize');  
+                //win.webContents.send('context', 'Iconize');
                 ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...(options.footermenu), { role: 'quit' }])
             ]
         },
@@ -396,7 +396,7 @@ const buildMenu = (opts) => {
                         console.log(ev);
                         windows.focused.call('changekernel', true);
                     }
-                },                
+                },
 
                 { type: 'separator' },
 
@@ -415,7 +415,7 @@ const buildMenu = (opts) => {
                                 console.log(ev);
                                 windows.focused.call('newmasterkernel', true);
                             }
-                        },                       
+                        },
                         {
                             label: 'Restart',
                             click: async(ev) => {
@@ -481,7 +481,7 @@ callFakeMenu["openFolder"] = async () => {
             app.addRecentDocument(res.filePaths[0]);
             create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
         }
-    });  
+    });
 }
 
 callFakeMenu["Save"] = async () => {
@@ -516,7 +516,7 @@ callFakeMenu["new"] = async(ev) => {
 }
 
 callFakeMenu["browser"] = async(ev) => {
-    
+
     shell.openExternal(windows.focused.win.webContents.getURL());
 }
 
@@ -655,7 +655,7 @@ const server = {
             this.wolfram.process.stdin.end();
             this.wolfram.process.stdout.destroy();
             this.wolfram.process.stderr.destroy();
-              
+
             this.wolfram.process.kill('SIGKILL');
             console.log('Killed?');
 
@@ -663,7 +663,7 @@ const server = {
                 //bug on Unix
                 kill_all(() => console.log('killed!'));
             }
-            
+
             //this.wolfram.process.kill('SIGINT');
             //this.wolfram.process.stdin.write("exit\n");
         }
@@ -691,13 +691,13 @@ const windows = {
                 return;
             };
 
-            
+
             this.win.webContents.send('push-logs', data, color);
         },
 
         construct(cbk = () => {}) {
             let win;
-            
+
             if (isMac) {
               win = new BrowserWindow({
                 vibrancy: "sidebar", // in my case...
@@ -717,7 +717,7 @@ const windows = {
                 win = new BrowserWindow({
                     vibrancy: "sidebar", // in my case...
                     frame: true,
-  
+
                     width: 600,
                     height: 400,
                     resizable: false,
@@ -727,18 +727,18 @@ const windows = {
                         //webSecurity: false,
                         nodeIntegration: true
                     }
-                 });   
-                 
-              
+                 });
+
+
             }
-        
+
             /*win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
               callback({ responseHeaders: Object.assign({
                   "Content-Security-Policy": [ "default-src 'self' 'unsafe-inline'"]
               }, details.responseHeaders)})});*/
-        
+
             win.loadFile(path.join(__dirname, 'log.html'));
-        
+
             windows.log.win = win;
             this.aliveQ = true;
 
@@ -765,9 +765,9 @@ const windows = {
                         self.print('Logs were dumped', "\x1b[32m");
 
                     });
-                }, 1000 * 60 * 2);                
+                }, 1000 * 60 * 2);
             }
-        
+
             return win;
         },
 
@@ -867,10 +867,10 @@ function create_window(opts, cbk = () => {}) {
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 }
-    
+
             });
         } else if (isWindows) {
-    
+
             /*win = new BrowserWindow({
                 width: 800,
                 height: 600,
@@ -886,15 +886,22 @@ function create_window(opts, cbk = () => {}) {
                 }
             });*/
 
+            let mica = 'mica';
+            if (server.frontend.WindowsLegacy) mica = false;
+
             win = new BrowserWindow({
                 frame: true,
                 autoHideMenuBar: true,
                 titleBarStyle: 'hidden',
-                titleBarOverlay: true,
-                width: 800,
-                height: 600,
+                titleBarOverlay: {
+                  color: 'rgba(255, 255, 255, 0.0)',
+                  symbolColor: 'rgba(128, 128, 128, 1.0)'
+                },
+
+                width: 1024,
+                height: 640,
                 minWidth: 545,
-                backgroundMaterial: 'mica',
+                backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
@@ -903,15 +910,15 @@ function create_window(opts, cbk = () => {}) {
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 }
-    
-            });    
-            
+
+            });
+
             //win.setVibrancy('appearance-based');
 
             //Windows 10-11 specific settings for transparency
             /*if (IS_WINDOWS_11) {
                 win.setMicaEffect();
-                //win.setMicaTabbedEffect(); 
+                //win.setMicaTabbedEffect();
                 ///win.setMicaAcrylicEffect();
                 win.setRoundedCorner();
                 win.setAutoTheme();
@@ -921,12 +928,12 @@ function create_window(opts, cbk = () => {}) {
                     if (!nativeTheme.shouldUseDarkColors) win.setBackgroundColor("#fff");
                     else win.setBackgroundColor("#000");
                 }
-    
+
                 nativeTheme.on("updated", checkTheme);
                 win.on('closed', () => {
                     nativeTheme.removeListener("updated", checkTheme);
                 });
-    
+
                 checkTheme();
                 //win.setRoundedCorner();
             }*/
@@ -939,12 +946,12 @@ function create_window(opts, cbk = () => {}) {
                         win.setBackgroundColor("#000");
                     }
                 }
-            
+
                 nativeTheme.on("updated", checkTheme);
                 win.on('closed', () => {
                     nativeTheme.removeListener("updated", checkTheme);
                 });
-            
+
                 checkTheme();
             } else {
                 //a bug with maximizing the window
@@ -959,19 +966,19 @@ function create_window(opts, cbk = () => {}) {
                             win.setBackgroundColor("#000");
                         }
                     }
-                
+
                     nativeTheme.on("updated", checkTheme);
                     win.on('closed', () => {
                         nativeTheme.removeListener("updated", checkTheme);
                     });
-                
-                    checkTheme();                    
+
+                    checkTheme();
                 });
 
-                
+
 
             }
-    
+
         } else {
             win = new BrowserWindow({
                 frame: true,
@@ -989,21 +996,21 @@ function create_window(opts, cbk = () => {}) {
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 }
-    
-            }); 
+
+            });
         }
 
 
-    
+
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
             //show results when Ctrl+F pressed
             console.log(result)
         });
-    
+
         //permissions of the window
         setHID(win);
-    
+
         //focus window
         if (options.focus) {
             win.focus();
@@ -1020,7 +1027,7 @@ function create_window(opts, cbk = () => {}) {
             windows.focused.remove(win);
             windows.windows.splice(windows.windows.findIndex(a => a.uuid === win.uuid) , 1);
         });
-    
+
         //extend context menu
         if (options.contextMenu) {
             contextMenu({
@@ -1048,7 +1055,7 @@ function create_window(opts, cbk = () => {}) {
                     })
                 })
                 ,
-            
+
                 menu: (actions, props, browserWindow, dictionarySuggestions) => [
                     ...dictionarySuggestions,
                     actions.separator(),
@@ -1065,9 +1072,9 @@ function create_window(opts, cbk = () => {}) {
             console.error('No url is provided!');
             return;
         }
-    
-        
-    
+
+
+
         if (options.cacheClear) {
             win.webContents.session.clearCache();
         }
@@ -1090,23 +1097,23 @@ function create_window(opts, cbk = () => {}) {
         //handlers for internal links and pop-ups
 
 
- 
+
 
         win.webContents.setWindowOpenHandler(({ url }) => {
             console.log(url);
             const u = new URL(url);
 
 
-            
+
             //if it is on the same domain
             if (u.hostname === (new URL(server.url.default())).hostname) {
                 create_window({url: url, show: true, parent: win});
-    
+
             } else {
                 //open in the default user's browser
                 shell.openExternal(url);
             }
-    
+
             return { action: 'deny' };
         });
 
@@ -1117,12 +1124,12 @@ function create_window(opts, cbk = () => {}) {
                 if (options.parent.isMaximized()) options.parent.unmaximize();
 
                 const pos = options.parent.getPosition();
-                const dims = options.parent.getSize(); 
+                const dims = options.parent.getSize();
 
                 const primaryDisplay = screen.getPrimaryDisplay();
                 const { width, height } = primaryDisplay.workAreaSize;
                 console.warn({screen: width, parentPos: pos, parentdims:dims});
-          
+
 
                 if (pos[0]+dims[0] + 310 > width) {
                     console.warn('Contaner Overflow!');
@@ -1152,13 +1159,13 @@ function create_window(opts, cbk = () => {}) {
         win.on('focus', () => {
             win.webContents.send('focus');
         });
-        
+
         win.on('blur', () => {
             win.webContents.send('blur');
         });
 
 
-        return win;        
+        return win;
 }
 
 
@@ -1245,12 +1252,12 @@ const powerSaver = () => {
             if (!powerSaveBlocker.isStarted(powerSaveId)) {
                 console.log('Electron >> starting powersafe blocker');
                 powerSaveId = powerSaveBlocker.start('prevent-app-suspension');
-            } 
+            }
         } else {
             if (powerSaveBlocker.isStarted(powerSaveId)) {
                 console.log('Electron >> stopping powersafe blocker');
                 powerSaveBlocker.stop(powerSaveId);
-            }            
+            }
         }
     }, 15000);
 
@@ -1259,7 +1266,7 @@ const powerSaver = () => {
     });
 
     powerMonitor.on('lock-screen', () => {
-        
+
     })
 }
 
@@ -1268,8 +1275,8 @@ const powerSaver = () => {
 
 app.whenReady().then(() => {
     pluginsMenu.fetch();
-    buildMenu({plugins: pluginsMenu.items});   
-    
+    buildMenu({plugins: pluginsMenu.items});
+
     powerSaver();
 
     //make a log window and start WL
@@ -1286,7 +1293,7 @@ app.whenReady().then(() => {
         const bonds = windows.focused.win.getBounds();
         if (bonds.width < 800) {
             windows.focused.win.setBounds({ width: 800 , animate: true}, true);
-        }      
+        }
     });
 
     ipcMain.on('system-window-toggle', (e, p) => {
@@ -1329,10 +1336,10 @@ app.whenReady().then(() => {
     ipcMain.on('system-window-expand', (e, p) => {
         windows.focused.win.setBounds({ width: 800 , animate: true});
     });
- 
+
     ipcMain.on('system-window-shrink', (e, p) => {
         windows.focused.win.setBounds({ width: 600 , animate: true});
-    });   
+    });
 
     //set up search on-page (any focused windows)
     ipcMain.on('search-text', (event, arg) => {
@@ -1342,7 +1349,7 @@ app.whenReady().then(() => {
             findNext: nextRes,
             matchCase: false
         });
-    });    
+    });
     ipcMain.on('stop-search', (event, arg) => {
         windows.focused.win.webContents.stopFindInPage('clearSelection');
     });
@@ -1360,20 +1367,20 @@ app.whenReady().then(() => {
     ipcMain.on('system-menu', (e, p) => {
         const menusection = p;
         callFakeMenu[menusection]();
-    });    
+    });
 
 
     //promts resolver
     ipcMain.on('promt-resolve', (e, id, val) => {
         promts_hash[id].resolve(val);
-    });    
+    });
 
     //purge cache if an update was detected (using a special file created by WL)
-    
-    
+
+
     let cinterval;
     let tmout;
-    
+
     /*cinterval = setInterval(checkCacheReset(() => {
         clearInterval(cinterval);
         clearTimeout(tmout);
@@ -1396,7 +1403,7 @@ function start_server (window) {
     }
 
     server.wolfram.process.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
-    
+
     let url_match;
     const url_reg = new RegExp(/Open http:\/\/(?<ip>[0-9|.]*):(?<port>[0-9]*) in your browser/);
 
@@ -1409,8 +1416,8 @@ function start_server (window) {
         if (url_match && !server.running) {
             //open a window, means server has started
             server.url.local = `http://${url_match.groups.ip}:${url_match.groups.port}`;
-            
-            
+
+
 
             console.log('Open first window');
 
@@ -1431,7 +1438,7 @@ function start_server (window) {
     server.wolfram.errors = (data) => {
         const string = data.toString();
         windows.log.print(string, '\x1b[46m');
-    };    
+    };
 
     server.wolfram.process.stdout.on('data', server.wolfram.streamer);
     server.wolfram.process.stderr.on('data', server.wolfram.errors);
@@ -1454,7 +1461,7 @@ function create_first_window() {
         server.wasUpdated = false;
         return;
     }
-      
+
     //Mac
     if (isMac && server.startedQ && !server.running && server.path.requested) {
         console.log('OPEN a FILE OSX');
@@ -1489,8 +1496,8 @@ class promt {
                 window.webContents.send('promt', this.uuid);
                 this.promise = (result) => {
                     //window.webContents.send('');
-                    cbk(result)      
-                }          
+                    cbk(result)
+                }
             break;
         }
 
@@ -1510,9 +1517,9 @@ function store_configuration(cbk) {
 
     fs.writeFile(path.join(installationFolder, 'configuration.ini'), JSON.stringify(opts), function(err) {
         if (err) throw err;
-    }); 
+    });
 
-    cbk();    
+    cbk();
 }
 
 function load_configuration() {
@@ -1527,7 +1534,7 @@ function check_wl (configuration, cbk, window) {
     windows.log.print("");
     windows.log.print("Starting wolframscript by path: " + server.wolfram.path);
     let program;
-    
+
     try{
         console.log('TRY');
         program = spawn(server.wolfram.path, server.wolfram.args, { cwd: workingDir });
@@ -1559,10 +1566,10 @@ function check_wl (configuration, cbk, window) {
             } else {
                 install_wl(window);
             }
-        }, window); 
-        return;       
+        }, window);
+        return;
     }
-    
+
     //error
     program.on('error', function(err) {
         windows.log.print("");
@@ -1578,7 +1585,7 @@ function check_wl (configuration, cbk, window) {
                 if (answer) {
                     windows.log.print("");
                     windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
-    
+
                     setTimeout(() => {
                         const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
                         promise.then((res) => {
@@ -1593,14 +1600,14 @@ function check_wl (configuration, cbk, window) {
                             }
                         });
                     }, 2000);
-    
+
                 } else {
                     install_wl(window);
                 }
-            }, window); 
-            return;   
+            }, window);
+            return;
         }, 2000);
-    
+
     });
 
     let _nohup = false;
@@ -1612,24 +1619,24 @@ function check_wl (configuration, cbk, window) {
 
     program.stdout.on('data', (data) => {
         windows.log.print(data.toString());
-    }); */   
+    }); */
 
     program.stderr.once('data', (data) => {
         console.warn(data.toString());
         if (_nohup) return;
         _nohup = true;
-        
+
         windows.log.print("");
 
         //TROUBLESHOOTING
         if (default_error_handling(()=>{
-            //If managed 
+            //If managed
             //Wolframscript started
             server.wolfram.process = program;
             server.running = false;
             server.startedQ = true;
             windows.log.clear();
-            cbk();             
+            cbk();
         },
         () => {
             //if failed
@@ -1652,30 +1659,30 @@ function check_wl (configuration, cbk, window) {
         setTimeout(() => {
             windows.log.clear();
             check_wl(undefined, cbk, window);
-           
+
         }, 3000);
     });
 
 
-    
+
     program.stdout.once('data', (data) => {
         //this is ok. wolframscript now is running
         if (_nohup) return;
         _nohup = true;
 
         const s = data.toString();
-        
+
         windows.log.print("");
 
         //TROUBLESHOOTING
         if (default_error_handling(()=>{
-            //If managed 
+            //If managed
             //Wolframscript started
             windows.log.clear();
             server.wolfram.process = program;
             server.running = false;
             server.startedQ = true;
-            cbk();             
+            cbk();
         },
         () => {
             //if failed
@@ -1683,8 +1690,8 @@ function check_wl (configuration, cbk, window) {
             program.stdin.end();
             program.stdout.destroy();
             program.stderr.destroy();
-            
-         
+
+
             program.kill('SIGKILL');
             kill_all(() => console.log('killed!'));
             windows.log.clear();
@@ -1699,10 +1706,10 @@ function check_wl (configuration, cbk, window) {
             server.running = false;
             server.startedQ = true;
             windows.log.clear();
-            cbk();            
+            cbk();
             return;
         }
-        
+
 
         windows.log.print("");
         windows.log.print(s);
@@ -1716,7 +1723,7 @@ function check_wl (configuration, cbk, window) {
                 server.wolfram.process = program;
                 server.running = false;
                 server.startedQ = true;
-                cbk();            
+                cbk();
                 return;
             }
 
@@ -1731,8 +1738,8 @@ function check_wl (configuration, cbk, window) {
                 program.stdin.end();
                 program.stdout.destroy();
                 program.stderr.destroy();
-            
-    
+
+
                 program.kill('SIGKILL');
                 kill_all(() => console.log('killed!'));
                 windows.log.clear();
@@ -1788,7 +1795,7 @@ function default_error_handling(success, reject, s, program, window) {
     //#3 Activation
     if (new RegExp('The Wolfram Engine requires one-time').exec(s)) {
         windows.log.print('Do you have a developer license from Wolfram?', '\x1b[42m');
-        
+
         new promt('binary', (answer) => {
             if (!answer) {
                 windows.log.clear();
@@ -1802,7 +1809,7 @@ function default_error_handling(success, reject, s, program, window) {
                         reject();
                     }, window);
                 }, 3000);
-                
+
             } else {
                 windows.log.clear();
                 activate_wl(program, success, () => {
@@ -1813,7 +1820,7 @@ function default_error_handling(success, reject, s, program, window) {
             }
         }, window);
 
-        return true;          
+        return true;
     }
 
     return false;
@@ -1863,7 +1870,7 @@ function activate_wl(program, success, rejection, window) {
 
 
     windows.log.print('Please, enter your Wolfram ID (usually - your email):', '\x1b[42m');
-    
+
     new promt('input', (result) => {
         program.stdin.write(result.trim());
         program.stdin.write('\n');
@@ -1893,13 +1900,13 @@ function activate_wl(program, success, rejection, window) {
                     program.stdin.end();
                     program.stdout.destroy();
                     program.stderr.destroy();
-            
+
 
                     program.kill('SIGKILL');
                     kill_all(() => console.log('killed!'));
                     setTimeout(rejection, 3000);
-                }); 
-            });            
+                });
+            });
 
             program.stdout.once('data', (data) => {
                 if (_nohup) return;
@@ -2027,8 +2034,8 @@ function check_installed (cbk, window) {
                     windows.log.print('Failed! using ' + repo + ' and branch ' + branch, '\x1b[32m');
                 }
             });
-        });            
-        
+        });
+
         return;
     }
 
@@ -2043,13 +2050,13 @@ function install_frontend(cbk, window) {
         windows.log.print('No internet connection! Using shipped version...', '\x1b[32m');
         install_shipped(cbk, window);
     }, 5000);
-    
+
     //check internet
     const test = net.fetch('https://github.com');
     test.then((result) => {
      if (result.status === 200) {
         clearTimeout(watchdog);
-        
+
         //set the flag to reset cache of the HTTP client
         server.wasUpdated = true;
 
@@ -2076,15 +2083,15 @@ function install_frontend(cbk, window) {
 
             const StreamZip = require('node-stream-zip');
             const zip = new StreamZip.async({ file: file });
-    
+
             zip.extract(null, extracted).then((res) => {
                 windows.log.print(res);
                 windows.log.print('Extracted', '\x1b[32m');
-                
+
                 //remove zip archive
                 zip.close();
                 fs.unlinkSync(file);
-    
+
                 //read extracted folder
                 const sub = fs.readdirSync(extracted)[0];
                 windows.log.print(sub);
@@ -2093,50 +2100,50 @@ function install_frontend(cbk, window) {
                 //fs.unlinkSync(path.join(extracted, sub, 'main.js'));
                 if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
                 windows.log.print('`.git` was removed');
-    
+
                 //remove examples from the previous build
                 if (fs.existsSync(path.join(installationFolder, 'Examples'))) {
                     //fs.rmSync(path.join(installationFolder, 'Examples'), { recursive: true, force: true });
                     //windows.log.print('`Examples` was removed');
                 }
-                
-    
+
+
                 windows.log.print('Copying new data...');
                 fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
                 windows.log.print('Done');
-                
+
                 //remove specific files
                 const toremove = ['.thumbnails', 'LPM.wl', 'main.js', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl', '.wl_timestamp', '.wljs_timestamp'];
                 const dirtoremove = ['wljs_packages', 'wl_packages'];
-    
+
                 //windows.log.print('removing Packages...');
                 //windows.log.print('removing wl_packages...');
-    
+
                 toremove.forEach((p) => {
                     if (fs.existsSync(path.join(installationFolder, p))) {
                         fs.unlinkSync(path.join(installationFolder, p));
                     }
                 });
-    
+
                 dirtoremove.forEach((p) => {
                     if (fs.existsSync(path.join(installationFolder, p))) {
                         fs.rmSync(path.join(installationFolder, p), { recursive: true, force: true });
                     }
                 });
-    
+
                 //resetting cache
                 windows.log.print('Cache reset');
                 session.defaultSession.clearStorageData();
                 session.defaultSession.clearCache();
-    
+
                 windows.log.print('Done');
-    
+
                 fs.rmSync(extracted, { recursive: true, force: true });
-    
+
                 windows.log.print('Temporal folders were cleaned up');
-    
+
                 cbk();
-    
+
             })
         });
      }
@@ -2146,7 +2153,7 @@ function install_frontend(cbk, window) {
 
 //in a case of a powerful firewall or apocalipse
 const install_shipped = (cbk, window) => {
-   
+
     windows.log.print('Copying to installation folder of a shipped package...');
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
