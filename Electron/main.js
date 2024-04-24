@@ -1139,7 +1139,7 @@ function create_window(opts, cbk = () => {}) {
                         const newwidth = width - 310 - 50;
                         options.parent.setBounds({ width: newwidth, animate: true}, true);
                         win.setBounds({ width: 300, height:dims[1], animate: true}, true);
-                        win.setPosition(dims[0] + newwidth + 10, pos[1], true);
+                        win.setPosition( newwidth + 10 + 50, pos[1], true);
                     } else {
                         options.parent.setPosition(50, pos[1], true);
                         win.setBounds({ width: 300, height:dims[1], animate: true}, true);
