@@ -91,7 +91,7 @@ __There is no aim to fully copy Mathematica__ (it will never be possible), howev
 # Installation
 [The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 or higher is recommended).
 
-On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install this app through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
+On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
 
 ```shell
 brew install --cask wolfram-engine
