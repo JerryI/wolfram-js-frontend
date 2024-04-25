@@ -2763,6 +2763,10 @@ select {
   font-weight: 600;
 }
 
+[os="Browser"] .bro\:ml-0 {
+  margin-left: 0px;
+}
+
 [os="Browser"] .bro\:hidden {
   display: none;
 }
