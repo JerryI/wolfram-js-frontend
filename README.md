@@ -89,10 +89,22 @@ __There is no aim to fully copy Mathematica__ (it will never be possible), howev
 - Natural bridge between other languages - HTML as markup, WL for computations, and JS for stunning visuals
 
 # Installation
-[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable).
+[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 or higher is recommended).
+
+On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
+
+```shell
+brew install --cask wolfram-engine
+```
 
 ## Desktop App
-Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
+Download it from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
+
+Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
+
+```shell
+brew install --cask wljs-notebook
+```
 
 ## Standalone Server
 Clone this repository and run:
