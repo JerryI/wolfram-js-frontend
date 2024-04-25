@@ -193,3 +193,19 @@ input::selection {
 [os="Unix"] .linux\:h-titlebar {
   height: env(titlebar-area-height) !important;
 }
+
+[os="Windows"][sidebar="hidden"] .win-zen\:pl-2 {
+  padding-left: 0.5rem;
+}
+
+[os="Unix"][sidebar="hidden"] .linux-zen\:pl-2 {
+  padding-left: 0.5rem;
+}
+
+[os="WindowsLegacy"][sidebar="hidden"] .owin-zen\:pl-2 {
+  padding-left: 0.5rem;
+}
+
+[os="Browser"][sidebar="hidden"] .bro-zen\:pl-2 {
+  padding-left: 0.5rem;
+}
