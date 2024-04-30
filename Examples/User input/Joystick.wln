@@ -1,0 +1,78 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$57], 
+   "Objects" -> <|"7eb5fbd3-a868-4599-8329-c6db7bf331e7" -> 
+      <|"Public" -> Hold[Graphics[{RGBColor[1, 0, 0], PointSize[0.05], 
+           Point[Offload[pt]]}, PlotRange -> {{-1, 1}, {-1, 1}}]]|>|>, 
+   "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/mu.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n## Joystick demo\nA demo for a new input element", 
+    "Display" -> "codemirror", "Hash" -> 
+     "16e51471-6089-4434-a40f-1ba543cff300", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "## Joystick demo\nA demo for a new input element", 
+    "Display" -> "markdown", "Hash" -> 
+     "aa15de47-576e-4ea4-955f-670af4d12c8c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> ".md\nMake joystick using helper functions", 
+    "Display" -> "codemirror", "Hash" -> 
+     "20d1b6f0-1f4c-4e74-9296-05b5d80e7220", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "Make joystick using helper functions", 
+    "Display" -> "markdown", "Hash" -> 
+     "939eccb2-9c16-4dc4-95fe-6eba0fd62dcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "pt = {0.,0.};\n\nhandler = \
+InputJoystick`IntegrationHelper[][Function[xy, \n  pt = \
+xy\n]];\n\nEventHandler[InputJoystick[], handler]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c6aea82d-501a-4afe-b3b2-3b532db70413", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> ".md\ndynamic plot", "Display" -> "codemirror", 
+    "Hash" -> "6771f24c-9c4d-4580-83bb-dd4d41fadc6d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, <|"Data" -> "dynamic plot", 
+    "Display" -> "markdown", "Hash" -> 
+     "895d95e6-fbb7-431a-814c-d3d37c2ecd0a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "Graphics[\n  {Red, PointSize[0.05], Point[pt // Offload]}\n  \
+, PlotRange->{{-1,1}, {-1,1}}\n]", "Display" -> "codemirror", 
+    "Hash" -> "791f8718-d07c-4ba6-942d-5b1e2a480283", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"7eb5fbd3-a868-4599-8329-c6db7bf331e7\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6cmm\
+aYlpRjrJlqYWeiamFpa6loYG1nqJpulJJknpRkbG6aaAwCJixW+\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d633c61c-0d48-4153-a526-d13cda9f4d04", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "1b77961a-3c69-4fa6-b447-ab51d1208478", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "342412fb-d3a5-4780-bb14-bc299fb51235", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "38f7e641-0e4e-4ecb-b6f4-c1db5b14c1b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e001b478-f31f-4f01-b9c8-0684ac4c3c81"|>}, "serializer" -> "jsfn4"|>
