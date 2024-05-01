@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwlx_docs=self.webpackChunkwlx_docs||[]).push([[5548],{992:e=>{e.exports=JSON.parse('{"title":"Cell types","slug":"/category/cell-types","permalink":"/category/cell-types","navigation":{"previous":{"title":"Dynamics","permalink":"/frontend/Dynamics"},"next":{"title":"Wolfram Language","permalink":"/frontend/Cell types/Wolfram Language"}}}')}}]);

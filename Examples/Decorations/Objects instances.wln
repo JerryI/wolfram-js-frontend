@@ -1,0 +1,209 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$845], 
+   "Objects" -> <|"aacfdc7c-b982-495b-a3bf-318b18028027" -> 
+      <|"Public" -> Hold[EditorView[Offload[state$387651]]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Decoratio\
+ns/Objects instances.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Objects example\nHere we create our own \
+type of entity with its internal state and dynamic decorations", 
+    "Display" -> "codemirror", "Hash" -> 
+     "495a7885-57ef-4578-a034-dcba7c72a3ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "## Objects example\nHere we create our own type of entity \
+with its internal state and dynamic decorations", "Display" -> "markdown", 
+    "Hash" -> "63b5e9f7-3e15-4c25-bb36-bfb8dbb87b34", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "CreateType[StateMachine, init, {\"State\"->1}]\ninit[o_] := \
+o[\"UId\"] = CreateUUID[];\n\nStateMachine /: \
+StateMachineChange[s_StateMachine, state_Integer] := With[{},\n  s[\"State\"] \
+= state;\n  EventFire[s, \"State\", state];\n  s\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7541a064-4049-4c59-9d8b-fbe2f26b3a12", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, <|"Data" -> "StateMachine", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ff314de4-1702-49ea-afc2-52dcd0ce0cac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> ".md\nNow integrate it with events system", 
+    "Display" -> "codemirror", "Hash" -> 
+     "60661500-8c61-42e5-aa63-74c0dd1f0a50", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "Now integrate it with events system", 
+    "Display" -> "markdown", "Hash" -> 
+     "014fdbfd-d9aa-466f-8de5-e2474e0617f5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachine /: EventFire[s_StateMachine, opts__] := \
+EventFire[s[\"UId\"], opts]\n\nStateMachine /: EventHandler[s_StateMachine, \
+opts__] := EventHandler[s[\"UId\"], opts]\n\nStateMachine /: \
+EventClone[s_StateMachine] := EventClone[s[\"UId\"]]\nStateMachine /: \
+EventRemove[s_StateMachine] := EventRemove[s[\"UId\"]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1b9fe879-7525-4c67-bffa-8a9ca9efd8ee", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> ".md\nThe last thing is dynamic decoration", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d73f9b27-2aa8-4a37-9da1-f3b209647896", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "The last thing is dynamic decoration", 
+    "Display" -> "markdown", "Hash" -> 
+     "41d830ae-ddf2-4994-a81a-4ab3f4cd86d0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachine /: MakeBoxes[s: \
+StateMachine[symbol_Symbol?AssociationQ], form: (StandardForm | \
+TraditionalForm)] := Module[{\n\tstate = s[\"State\"] // ToString,\n    \
+instances = 0,\n    eventObject, construct, destruct\n}, With[{\n\ttextField \
+= EditorView[state // Offload],\n\tcontroller = CreateUUID[]\n},\n\n    \
+construct := With[{},\n      (* subscribe to object events and update \
+decoration *)\n      eventObject = EventClone[s];\n      \
+EventHandler[eventObject, {\n        \"State\" -> Function[new, state = new \
+// ToString]\n      }];     \n    ];\n\n    destruct := With[{},\n      \
+Echo[\"Removed\"];\n\t  EventRemove[eventObject];    \n    \
+];\n\n\tEventHandler[controller, {\n\t\t\"Mounted\" -> Function[Null,\n\n     \
+     If[instances === 0, construct];\n          instances = instances + \
+1;\n\n\t\t],\n\t\t\n\t\t\"Destroy\" -> Function[Null, \n\t\t\tinstances = \
+instances - 1;\n\t\t\t\n\t        (* unsubscribe when there is no instances \
+*)\n\t        If[instances === 0, destruct];\n          \
+]\n\t}];\n\n\tWith[{\n\t\tsummary = {BoxForm`SummaryItem[{\"State: \", \
+textField}]}\n\t},\n\t\tBoxForm`ArrangeSummaryBox[\n\t\t\tStateMachine,\n\t\t\
+\ts,\n\t\t\tNone,\n\t\t\tsummary,\n            Null,\n\n\t\t\t\"Event\" -> \
+controller\n\t\t]\n\t]\n] ]", "Display" -> "codemirror", 
+    "Hash" -> "ab6da79c-9636-45c8-bbc6-4c3f224c4ab2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> 
+     ".md\n## Testing\nLet us create an instance and then change its state", 
+    "Display" -> "codemirror", "Hash" -> 
+     "eef8a376-949c-4a92-b668-e7012fd21ef6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> 
+     "## Testing\nLet us create an instance and then change its state", 
+    "Display" -> "markdown", "Hash" -> 
+     "a5599f46-7eba-418a-b5b5-a4de46ea0e3e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "instance = StateMachine[]", "Display" -> "codemirror", 
+    "Hash" -> "8683314f-47db-4c4a-8aea-400281c3975e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachine[(*VB[*) Global`StateMachine`$18 \
+(*,*)(*\"1:eJxdUF1P4kAUxa8YfdlHE5+U+ADNNiktQjHxgZoKFgTCQBWNibd0pjad6ZBhinR/3/\
+6wndI1uzGZnJw55957Zu5lwKdkv1KprH8omAi+iUMcjlcy5umaHBTGuQKHb++5YO9dISCNcIgyxkD\
+kSiZ7X833gqfSTUM/FjIDWhqHCvqchjsy4in+Jw/jtSyjz/5L+Dv5QWLmx/gTHSsPSZD45qIsPlXg\
+hrHkYuf/Vtea5juvWr329YIpJq9VgCUJl+2lHnRsU292rgMdrIDoVsMOGrZhqtOuvtVr2k/VqVUbN\
+9jbzmaPfILYKFn0uvwlclF/k1wPpnfY9ZzPgS0mA6s/QlZPItfIhnP6mCfJyI/cgZcv2Ko1T1hOhE\
+cp9MYMnjzOWmgBXut51fuQ4DlKdyInmSVdhub+r+j2tlpkv/mOVi8/V+xlmlGMTgqCIczHKc138kx\
+kuNxiRum36qNiJxucSnSlmAkdbASWpXdMAnoTbEuHdrOlg20YpBGAYZnGHziFibk=\"*)(*]VB*)]\
+", "Display" -> "codemirror", "Hash" -> 
+     "e0963180-7900-47b6-a02b-0b2591bb67ed", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachine[(*VB[*) Global`StateMachine`$18 \
+(*,*)(*\"1:eJxdUF1P4kAUxa8YfdlHE5+U+ADNNiktQjHxgZoKFgTCQBWNibd0pjad6ZBhinR/3/\
+6wndI1uzGZnJw55957Zu5lwKdkv1KprH8omAi+iUMcjlcy5umaHBTGuQKHb++5YO9dISCNcIgyxkD\
+kSiZ7X833gqfSTUM/FjIDWhqHCvqchjsy4in+Jw/jtSyjz/5L+Dv5QWLmx/gTHSsPSZD45qIsPlXg\
+hrHkYuf/Vtea5juvWr329YIpJq9VgCUJl+2lHnRsU292rgMdrIDoVsMOGrZhqtOuvtVr2k/VqVUbN\
+9jbzmaPfILYKFn0uvwlclF/k1wPpnfY9ZzPgS0mA6s/QlZPItfIhnP6mCfJyI/cgZcv2Ko1T1hOhE\
+cp9MYMnjzOWmgBXut51fuQ4DlKdyInmSVdhub+r+j2tlpkv/mOVi8/V+xlmlGMTgqCIczHKc138kx\
+kuNxiRum36qNiJxucSnSlmAkdbASWpXdMAnoTbEuHdrOlg20YpBGAYZnGHziFibk=\"*)(*]VB*)] \
+StateMachine[(*VB[*) Global`StateMachine`$18 \
+(*,*)(*\"1:eJxdUF1P4kAUxa8YfdlHE5+U+ADNNiktQjHxgZoKFgTCQBWNibd0pjad6ZBhinR/3/\
+6wndI1uzGZnJw55957Zu5lwKdkv1KprH8omAi+iUMcjlcy5umaHBTGuQKHb++5YO9dISCNcIgyxkD\
+kSiZ7X833gqfSTUM/FjIDWhqHCvqchjsy4in+Jw/jtSyjz/5L+Dv5QWLmx/gTHSsPSZD45qIsPlXg\
+hrHkYuf/Vtea5juvWr329YIpJq9VgCUJl+2lHnRsU292rgMdrIDoVsMOGrZhqtOuvtVr2k/VqVUbN\
+9jbzmaPfILYKFn0uvwlclF/k1wPpnfY9ZzPgS0mA6s/QlZPItfIhnP6mCfJyI/cgZcv2Ko1T1hOhE\
+cp9MYMnjzOWmgBXut51fuQ4DlKdyInmSVdhub+r+j2tlpkv/mOVi8/V+xlmlGMTgqCIczHKc138kx\
+kuNxiRum36qNiJxucSnSlmAkdbASWpXdMAnoTbEuHdrOlg20YpBGAYZnGHziFibk=\"*)(*]VB*)]\
+", "Display" -> "codemirror", "Hash" -> 
+     "9d371d0f-6445-46de-87e9-55f65c9e1e21", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4c6b9958-e46d-437c-800c-5f043e522216", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachineChange[instance, RandomInteger[{1,10}]];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "32cb81f0-1555-4b78-a21c-b65fe9e27f63", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "809fcbf2-632a-4c12-8766-24040a3cc30a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> ".md\n### Adding sliders\nOne can add controllers to each \
+instance as well", "Display" -> "codemirror", 
+    "Hash" -> "1b5a8214-d3c6-47fd-814a-524beabe24cc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> 
+     "### Adding sliders\nOne can add controllers to each instance as well", 
+    "Display" -> "markdown", "Hash" -> 
+     "66d66b6b-780e-4021-8038-66c4f12049ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "StateMachine /: MakeBoxes[s: \
+StateMachine[symbol_Symbol?AssociationQ], form: (StandardForm | \
+TraditionalForm)] := Module[{\n\tstate = s[\"State\"] // ToString,\n    \
+instances = 0,\n    eventObject, construct, destruct, slider\n}, \
+With[{\n\ttextField = EditorView[state // Offload],\n\tcontroller = \
+CreateUUID[]\n},\n\n    slider = InputRange[0, 10, 1, s[\"State\"]];\n    \
+EventHandler[slider, Function[n, \n      StateMachineChange[s, n]\n    \
+]];\n\n    construct := With[{},\n      (* subscribe to object events and \
+update decoration *)\n      eventObject = EventClone[s];\n      \
+EventHandler[eventObject, {\n        \"State\" -> Function[new, state = new \
+// ToString]\n      }];     \n    ];\n\n    destruct := With[{},\n      \
+Echo[\"Removed\"];\n\t  EventRemove[eventObject];    \n    \
+];\n\n\tEventHandler[controller, {\n\t\t\"Mounted\" -> Function[Null,\n\n     \
+     If[instances === 0, construct];\n          instances = instances + \
+1;\n\n\t\t],\n\t\t\n\t\t\"Destroy\" -> Function[Null, \n\t\t\tinstances = \
+instances - 1;\n\t\t\t\n\t        (* unsubscribe when there is no instances \
+*)\n\t        If[instances === 0, destruct];\n          \
+]\n\t}];\n\n\tWith[{\n\t\tsummary = {\n          \
+BoxForm`SummaryItem[{\"State: \", textField}],\n          \
+BoxForm`SummaryItem[{\"\", slider}]\n        \
+}\n\t},\n\t\tBoxForm`ArrangeSummaryBox[\n\t\t\tStateMachine,\n\t\t\ts,\n\t\t\
+\tNone,\n\t\t\tsummary,\n            Null,\n\n\t\t\t\"Event\" -> \
+controller\n\t\t]\n\t]\n] ]", "Display" -> "codemirror", 
+    "Hash" -> "87f40da8-1b0c-4662-92d5-2154fac8960d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4bb611fb-5c76-41e8-a1d7-80a90f9076e3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>, 
+   <|"Data" -> "instance = StateMachine[]\ninstance", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d0e50d03-483e-4432-9f84-7d828d1483fb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e940baae-e4c0-4510-9de5-1e6cbebfba90"|>}, "serializer" -> "jsfn4"|>
