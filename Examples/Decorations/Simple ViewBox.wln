@@ -1,0 +1,137 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$50], 
+   "Objects" -> <|"b4406070-98bd-4a81-a3a3-af7a0f779f11" -> 
+      <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], Disk[{0, 0}, 1], 
+           Opacity[0.5], RGBColor[1, 0, 0], Disk[{0, 0}, 1]}, 
+          ImageSize -> 80, Controls -> False, ImagePadding -> None]]|>, 
+     "9bee4239-d664-43c9-9310-e79d63825f84" -> 
+      <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], Disk[{0, 0}, 1], 
+           Opacity[0.5], RGBColor[1, 0, 0], Disk[{0, 0}, 2]}, 
+          ImageSize -> 80, Controls -> False, ImagePadding -> None]]|>, 
+     "7cb8e7f6-5080-4554-b462-e45565d7ccfb" -> 
+      <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], Disk[{0, 0}, 1], 
+           Opacity[0.5], RGBColor[1, 0, 0], Disk[{0, 0}, 3]}, 
+          ImageSize -> 80, Controls -> False, ImagePadding -> None]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Decoratio\
+ns/Simple ViewBox.wln"|>, "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Simple ViewBox example\nMake a decoration for our symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6974da65-3fcb-480d-adec-e34358e37578", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "## Simple ViewBox example\nMake a decoration for our symbol", 
+    "Display" -> "markdown", "Hash" -> 
+     "9316d858-fb00-4a79-b4ad-2a5a3b40940f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
+With[{\n  g = Graphics[{Blue, Disk[{0,0},1], Opacity[0.5], \
+Red,Disk[{0,0},s]}, ImageSize->80, Controls->False, ImagePadding->None]\n},\n \
+ ViewBox[boxObject[s], g // CreateFrontEndObject]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3c525798-cf61-4936-a9ba-59fd9b9df071", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> ".md\nNow we can test it", "Display" -> "codemirror", 
+    "Hash" -> "5f21d1f9-d44f-4c83-849a-43805534e9fa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "Now we can test it", "Display" -> "markdown", 
+    "Hash" -> "ac07fb39-6838-469d-8448-a211cc0a1da1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "Table[boxObject[i], {i,3}]", "Display" -> "codemirror", 
+    "Hash" -> "408becda-6e28-42ac-8a30-55e4707c0e18", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "{(*VB[*)(boxObject[1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCe\
+EJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5mYGJgZmBvoWlokpeiaJFoY6iYaJxrrJqaZJxqkmZtbp\
+hkaAgB8FhVr\"*)(*]VB*),(*VB[*)(boxObject[2])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWyalppoYGVvqppiZmeiaGCdb6loaGxropppbppg\
+ZWxiZplmYAAB9phUB\"*)(*]VB*),(*VB[*)(boxObject[3])(*,*)(*\"1:eJxTTMoPSmNkYGAo\
+ZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmycnWaSap5npmhpYGOiamJqa6CaZmBnpp\
+gKZZqYp5snJaUkAfcgVgw==\"*)(*]VB*)}", "Display" -> "codemirror", 
+    "Hash" -> "19e20a47-8742-41e2-868b-77106ae3f18a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, <|"Data" -> ".md\n---", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9cad8406-f17f-47b1-a8c6-84abfd5036be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "---", "Display" -> "markdown", 
+    "Hash" -> "36308206-48c3-4858-b95e-3b34f40233e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "ef238b54-cde1-455e-b41f-4e9a054fb057", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> ".md\nOne can go further and subscribe to its events", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5db3dfee-b689-4c01-a3c8-47d8e6c9148d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "One can go further and subscribe to its events", 
+    "Display" -> "markdown", "Hash" -> 
+     "9ec45869-8c9d-4db4-b7a6-6de09e2c224f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
+With[{\n  g = Graphics[{Blue, Disk[{0,0},1], Opacity[0.5], \
+Red,Disk[{0,0},s]}, ImageSize->80, Controls->False, ImagePadding->None],\n  \
+uid = CreateUUID[]\n},\n  EventHandler[uid, {\"Destroy\"->Beep}];\n  \n  \
+ViewBox[boxObject[s], g // CreateFrontEndObject, \"Event\"->uid]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6bcf366d-cca3-4e42-8007-851603f91bd3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> ".md\nNow once destroyed it will make a beeep sound", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8d33f7f1-f475-44b1-a836-4fa1f91088c0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> "Now once destroyed it will make a beeep sound", 
+    "Display" -> "markdown", "Hash" -> 
+     "cd54d5d0-7a28-456b-90e5-d3405a60ed73", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, <|"Data" -> "boxObject[2]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ccdaaf22-e08e-4642-95a0-7de84e7134a8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "6107f374-ca1d-4ce2-850c-f4bac3a37be0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "b23aa1a2-8e7c-4a9e-933c-ba105dcb3f19", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "3f2fdd5c-1e7a-40a4-9b6a-5b9f3f784c2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "2decfcfa-fb94-4788-b4ac-d8e3498ef62c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>}, "serializer" -> "jsfn4"|>
