@@ -21,6 +21,8 @@ Filter["Error"]         = True
 
 Filter[_Notifications`NotificationMessage(*`*)]   = True
 
+beepTimeout = Now
+
 Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
     EventHandler[EventClone[Event], {
         (*/* dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&), */*)
@@ -30,7 +32,21 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
             With[{client = $Client},
                 EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Spinner"|>, SpinnerTemplate[n, client, Controller]] ]
             ]
-        ],       
+        ],     
+        
+        _Notifications`Beeper (*`*) -> Function[Null,
+            Print["BEEE!P!"];
+            If[Now - beepTimeout > Quantity[1, "Seconds"], 
+                beepTimeout = Now;
+                Print["BEEEP!"];
+
+                With[{client = $Client},
+                    WebUISubmit[Hold[Beep], client]
+                ]
+            ,
+                Print["Too many. Suppressed"];
+            ]
+        ],
 
         any_?Filter   :> Function[data,
             With[{client = $Client},
@@ -51,6 +67,27 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
         <GenericScript Controller={Controller}/>
     ,
         <SpinnerScript Controller={Controller}/>
+    ,
+        <script type="module">
+            core.Beep = () => {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                oscillator.type = "triangle";
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start(audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
+                const fadeOutTime = 1;
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + fadeOutTime);
+                setTimeout(() => {
+                    oscillator.stop();
+                    oscillator.disconnect();
+                    gainNode.disconnect();
+                }, fadeOutTime * 1000);
+            }
+        </script>
     }
 ];
 
