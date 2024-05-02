@@ -76,13 +76,13 @@ Component[OptionsPattern[]] := With[{
               <div class="px-4 py-0 h-full overflow-y-auto dark:text-gray-400">
                 <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-600">
                     <li class="px-4 py-4 sm:px-0">
-                        <GeneralSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
+                        <GeneralSettings Modals={modals} Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
                     </li>                    
                     <li class="px-4 py-4 sm:px-0">
                         <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
                     </li>
                     <li class="px-4 py-0 sm:px-0">
-                        <ExtensionTemplateInjection Template={"SettingsFooter"}  Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret} />
+                        <ExtensionTemplateInjection Template={"SettingsFooter"}  Modals={modals} Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret} />
                     </li>
                     <li class="px-4 py-4 sm:px-0">
                         <DevSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
