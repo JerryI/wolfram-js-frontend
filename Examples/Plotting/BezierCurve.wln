@@ -1,0 +1,59 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$439], 
+   "Objects" -> <|"52eb540b-b7a0-4880-bb8a-bbd3e97769be" -> 
+      <|"Public" -> Hold[Graphics[{BezierCurve[{{0, 0}, {1, 1}, {2, -1}, 
+             {3, 0}, {5, 2}, {6, -1}, {7, 3}}], RGBColor[0, 1, 0], 
+           Line[{{0, 0}, {1, 1}, {2, -1}, {3, 0}, {5, 2}, {6, -1}, {7, 3}}], 
+           RGBColor[1, 0, 0], Point[{{0, 0}, {1, 1}, {2, -1}, {3, 0}, {5, 2}, 
+             {6, -1}, {7, 3}}]}]]|>|>, "Path" -> "/users/kirill/Github/wolfra\
+m-js-frontend-dev/Examples/BezierCurve.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## BezierCurve\nTest", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1a8afc62-2e12-4ce9-af39-b3b6ca83a2bf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> "## BezierCurve\nTest", "Display" -> "markdown", 
+    "Hash" -> "45cf295e-52bc-4688-8b24-d8f039250314", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> "pts = {{0, 0}, {1, 1}, {2, -1}, {3, 0}, {5, 2}, {6, -1}, {7, \
+3}};\nGraphics[{BezierCurve[pts], Green, Line[pts], Red, Point[pts]}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "22f9b31e-4d63-4e44-b830-6dd89815a861", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"52eb540b-b7a0-4880-bb8a-bbd3e97769be\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxqlJ\
+pmaGCTpJpknGuiaWFgY6CYlWSQCiRTjVEtzczPLpFQAhwYWBA==\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8cbc38e5-0a5e-4d9e-9fbd-beb44238b6ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, <|"Data" -> ".md\nDynamics", 
+    "Display" -> "codemirror", "Hash" -> 
+     "72342975-782e-4c70-880f-07bc805efc9c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, <|"Data" -> "Dynamics", 
+    "Display" -> "markdown", "Hash" -> 
+     "ecac1370-29f6-4ffa-84eb-930ff88c19a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> ".md\n*not implemented*", "Display" -> "codemirror", 
+    "Hash" -> "f3a8eb6a-1ae4-4edd-848e-4fe8b6f31ea6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> "*not implemented*", "Display" -> "markdown", 
+    "Hash" -> "6b3ff672-48df-49c5-9fe4-472219280cba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8dcaf906-c86c-4fa8-ade6-bf9135c7a17d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b52411ff-5deb-4b21-8e77-e2ba35270942"|>}, "serializer" -> "jsfn4"|>

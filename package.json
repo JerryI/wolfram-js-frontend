@@ -123,6 +123,7 @@
     "electron-context-menu": "^3.6.1",
     "electron-find": "^1.0.7",
     "electron-notarize": "^1.2.2",
+    "electron-trackpad-utils": "^1.0.1",
     "fflate": "^0.8.0",
     "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",

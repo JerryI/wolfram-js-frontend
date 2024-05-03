@@ -4,6 +4,8 @@ const { screen} = require('electron/main')
 const path = require('path')
 const { platform } = require('node:process');
 
+const trackpadUtils = require("electron-trackpad-utils");
+
 const zlib = require('zlib');
 
 const {powerMonitor } = require('electron')
@@ -1288,6 +1290,10 @@ app.whenReady().then(() => {
 
     //server.url.local = `http://127.0.0.1:20560`;
     //create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
+
+    ipcMain.on('system-harptic', () => {
+        trackpadUtils.triggerFeedback();
+    });
 
     ipcMain.on('system-window-enlarge-if-needed', (e, p) => {
         const bonds = windows.focused.win.getBounds();

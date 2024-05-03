@@ -42,6 +42,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-window-toggle',  {});
   },
 
+  harptic: () => {
+    ipcRenderer.send('system-harptic',  {});
+  },
+
   enlargeWindowSizeIfneeded: () => {
     ipcRenderer.send('system-window-enlarge-if-needed',  {});
   },
