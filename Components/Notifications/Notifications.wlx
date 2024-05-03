@@ -32,7 +32,13 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
             With[{client = $Client},
                 EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Spinner"|>, SpinnerTemplate[n, client, Controller]] ]
             ]
-        ],     
+        ],   
+        
+        _Notifications`Rumble (*`*) -> Function[Null,
+            With[{client = $Client},
+                WebUISubmit[Hold[HapticFeedback], client]
+            ]
+        ],
         
         _Notifications`Beeper (*`*) -> Function[Null,
             Print["BEEE!P!"];
@@ -86,6 +92,12 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
                     oscillator.disconnect();
                     gainNode.disconnect();
                 }, fadeOutTime * 1000);
+            }
+
+            core.HapticFeedback = () => {
+                if (!window.electronAPI) {console.warn('This is electron only feature'); return}
+                if (!window.electronAPI.harptic) {console.warn('Haptic feedback not supported'); return}
+                window.electronAPI.harptic();
             }
         </script>
     }
