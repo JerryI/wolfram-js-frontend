@@ -1,5 +1,5 @@
 Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"], Class = If[OptionValue["Cell"]["Type"] == "Input" && TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "hidden", ""]}, 
-    <div class="h-1.5 w-full cursor-vertical-text {Class}" id="separator-{uid}"></div>
+    <div class="h-3 w-full opacity-0 ttint cursor-vertical-text {Class}" id="separator-{uid}"></div>
 ]
 
 Options[Element] = {"Cell"->""}
@@ -12,6 +12,61 @@ Script = With[{},
                 const event = opts.event;
         
                 const button = document.getElementById('separator-'+cell.uid);
+                let lastHover = Date.now();
+                let lastlastHover = Date.now();
+                let activated = false;
+                let insideQ = false;
+
+                let left = () => insideQ = false;
+                let entered = () => insideQ = true;
+
+                const over = () => {
+                    //console.log(Date.now() - lastHover);
+
+                    if (/*lastHover - lastlastHover < 1500 && */Date.now() - lastHover < 300 && !activated) {
+                        activated = true;
+                        button.style.height = "1.5rem";
+                        button.style.opacity = 1;
+
+                        insideQ = true;
+
+                        button.addEventListener('mouseleave', left);
+                        button.addEventListener('mouseenter', entered);
+
+                        setTimeout(() => {
+                            button.removeEventListener('mouseleave', left);
+                            button.removeEventListener('mouseenter', entered);
+                            
+                            if (!insideQ) {
+                                button.style.height = '0.75rem';
+                                button.style.opacity = 0;
+                                activated = false;
+                            } else {
+                                let check;
+                                
+                                check = () => {
+                                    button.style.height = '0.75rem';
+                                    button.style.opacity = 0;
+                                    activated = false;
+                                    button.removeEventListener('mouseleave', check);
+                                }
+
+                                button.addEventListener('mouseleave', check);
+                            }
+                            
+                        }, 600);
+                    }
+
+                    lastlastHover = lastHover;
+                    lastHover = Date.now();
+
+                    
+                }
+
+                setTimeout(() => {
+                    button.addEventListener('mouseover', over);
+                }, 200);
+                
                 
                 button.addEventListener('click', () => {
                     server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
