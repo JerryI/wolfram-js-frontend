@@ -1,0 +1,5 @@
+[
+	"Graphics3D",
+	["List",["GrayLevel",0],["Polygon",["List",["List",-5,5,-1],["List",5,5,-1],["List",5,-5,-1],["List",-5,-5,-1]]],["GrayLevel",1],["Cuboid",["List",-1,-1,-1],["List",1,1,1]],["PointLight",["RGBColor",1,0,0],["List",1.5075,4.1557,2.6129],100],["PointLight",["RGBColor",0,1,1],["List",-2.4489,-1.9012,2.8386],100]],
+	["Rule","'Lighting'","None"]
+]

@@ -1,0 +1,94 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$116], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Decorations/Magic joystick.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Magic joystick symbol\nA test of `Offload` \
+and `Interpretation` combo to make a dynamic symbol with a joystick as a \
+decoration", "Display" -> "codemirror", 
+    "Hash" -> "77af615d-28ab-45bb-bc1d-298751c81480", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "## Magic joystick symbol\nA test of `Offload` and \
+`Interpretation` combo to make a dynamic symbol with a joystick as a \
+decoration", "Display" -> "markdown", 
+    "Hash" -> "e8f67b65-9516-4f23-a7dd-3d63d3effd8c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "createDynamic2DSymbol[] := Module[{symbol = {0,0}}, \
+With[{\n\teventObject = InputJoystick[],\n\thelper = \
+InputJoystick`IntegrationHelper[][Function[xy, symbol = \
+xy]]\n},\n\tEventHandler[eventObject, helper];\n\tInterpretation[eventObject, \
+Offload[symbol]]\n]]", "Display" -> "codemirror", 
+    "Hash" -> "88b1a1e6-c542-40a1-90fd-6e5540f651f9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> ".md\nNow create one and __cut it__ from the output cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b93e5143-01a1-42b1-9074-b433449c754b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "Now create one and __cut it__ from the output cell", 
+    "Display" -> "markdown", "Hash" -> 
+     "2b68aaf1-4a80-4e4c-97fc-ef2bf4ff6f17", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "createDynamic2DSymbol[]", "Display" -> "codemirror", 
+    "Hash" -> "7e3090a5-7da5-49cd-917c-9a1bcb379045", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8995ad32-2825-451f-8a39-69b523cd1e01", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "985d8072-e297-4029-aeab-18704a7d3384", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> ".md\nThen __paste it to a cell belov__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a017522c-c151-41b9-8a49-64999461f457", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "Then __paste it to a cell belov__", "Display" -> "markdown", 
+    "Hash" -> "bea932d5-9274-4f8a-9638-74dec975e2cd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "Plot[Sin[x], {x, -5Pi, 5Pi}, Epilog->{\n  Disk[ (* paste it \
+here *), 0.5]\n}]", "Display" -> "codemirror", 
+    "Hash" -> "b5fc3158-060b-4ec6-a66c-cbdeadf0b631", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "f75c5376-e2f4-4516-be77-b57cff792de9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> 
+     ".md\nDEMO\n\n<br/>\n\n\n![](attachments/Dragdjoy%20GIF%20speed.gif)\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9f5492c1-9016-4e7f-828d-0f345702825b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> 
+     "DEMO\n\n<br/>\n\n\n![](attachments/Dragdjoy%20GIF%20speed.gif)\n", 
+    "Display" -> "markdown", "Hash" -> 
+     "c9fca225-7243-4f67-a809-4fdc6a677220", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "dc6db0f1-edb7-4a53-9363-73b0a14f215c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dd48030f-1fe7-463e-927c-fdb043989fa6"|>}, "serializer" -> "jsfn4"|>

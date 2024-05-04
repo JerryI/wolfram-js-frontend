@@ -1,0 +1,4 @@
+[
+	"Graphics3D",
+	["List",["RGBColor",0,0,1],["Cylinder",["List",["List",0,0,-1],["List",0,0,1]]],["RGBColor",1,0,0],["Sphere",["List",0,0,2]],["GrayLevel",0],["Thickness","Large"],["Line",["List",["List",-2,0,2],["List",2,0,2],["List",0,0,4],["List",-2,0,2]]],["RGBColor",1,1,0],["Polygon",["List",["List",-3,-3,-2],["List",-3,3,-2],["List",3,3,-2],["List",3,-3,-2]]],["RGBColor",0,1,0],["Opacity",0.3],["Cuboid",["List",-2,-2,-2],["List",2,2,-1]]]
+]

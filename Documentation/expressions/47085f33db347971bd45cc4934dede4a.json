@@ -1,0 +1,7 @@
+[
+	"Graphics",
+	["Circle",["List",0,0]],
+	["Rule","ImageSize",350],
+	["Rule","Axes",true],
+	["Rule","AxesLabel",["List","'x-axis (cm^{-1})'","'y-axis \\alpha'"]]
+]

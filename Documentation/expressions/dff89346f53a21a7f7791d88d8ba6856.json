@@ -1,0 +1,5 @@
+[
+	"Graphics",
+	["List",["RGBColor",1,0,0],["Text","'Hello World'",["List",0,0]]],
+	["Rule","ImageSize",500]
+]

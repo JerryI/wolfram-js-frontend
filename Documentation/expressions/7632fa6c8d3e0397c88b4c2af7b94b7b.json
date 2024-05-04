@@ -1,0 +1,5 @@
+[
+	"Graphics3D",
+	["List",["MeshMaterial",["MeshToonMaterial"]],["Roughness",0],["Sphere",["List",0,0,0]],["PointLight",["RGBColor",1,0,0],["List",1.5075,4.1557,2.6129],50],["PointLight",["RGBColor",0,1,1],["List",-2.268,-2.144,3.1635],50]],
+	["Rule","'Lighting'","None"]
+]

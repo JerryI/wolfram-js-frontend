@@ -1,0 +1,4 @@
+[
+	"Graphics",
+	["List",["BezierCurve",["List",["List",0,0],["List",1,1],["List",2,-1],["List",3,0],["List",5,2],["List",6,-1],["List",7,3]]],["RGBColor",0,1,0],["Line",["List",["List",0,0],["List",1,1],["List",2,-1],["List",3,0],["List",5,2],["List",6,-1],["List",7,3]]],["RGBColor",1,0,0],["Point",["List",["List",0,0],["List",1,1],["List",2,-1],["List",3,0],["List",5,2],["List",6,-1],["List",7,3]]]]
+]
