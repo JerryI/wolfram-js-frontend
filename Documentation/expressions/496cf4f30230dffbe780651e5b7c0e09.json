@@ -1,0 +1,10 @@
+[
+	"Graphics",
+	["Raster",["List",["List",["List",1.0,1.0,1.0],["List",0.260487,0.356,0.891569]],["List",["List",1.0,0.42,0.0],["List",1.0,1.0,1.0]]],["List",["List",0,0],["List",2,2]],["List",0,1]],
+	["Rule","Frame",true],
+	["Rule","FrameLabel",["List","None","None"]],
+	["Rule","FrameTicks",["List",["List",["List",["List",1.5,1],["List",0.5,2]],["List",["List",1.5,1],["List",0.5,2]]],["List",["List",["List",0.5,1],["List",1.5,2]],["List",["List",0.5,1],["List",1.5,2]]]]],
+	["Rule","GridLinesStyle",["Directive",["GrayLevel",0.5,0.4]]],
+	["Rule","ImageSize",["List",350,350]],
+	["Rule","Method",["List",["Rule","'GridLinesInFront'",true],["Rule","'AxisPadding'",["Scaled",2.0e-2]],["Rule","'DefaultBoundaryStyle'","Automatic"],["Rule","'DefaultGraphicsInteraction'",["List",["Rule","'Version'",1.2],["Rule","'TrackMousePosition'",["List",true,false]],["Rule","'Effects'",["List",["Rule","'Highlight'",["List",["Rule","'ratio'",2]]],["Rule","'HighlightPoint'",["List",["Rule","'ratio'",2]]],["Rule","'Droplines'",["List",["Rule","'freeformCursorMode'",true],["Rule","'placement'",["List",["Rule","'x'","'All'"],["Rule","'y'","'None'"]]]]]]]]],["Rule","'DefaultPlotStyle'","Automatic"],["Rule","'DomainPadding'",["Scaled",2.0e-2]],["Rule","'RangePadding'",["Scaled",5.0e-2]]]]
+]

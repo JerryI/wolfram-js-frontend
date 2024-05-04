@@ -1,0 +1,7 @@
+[
+	"Graphics",
+	["Circle",["List",0,0]],
+	["Rule","ImageSize",350],
+	["Rule","Axes",true],
+	["Rule","Ticks",["List",["List",["List",0,"'Zero'"],["List",0.5,"'Half'"],["List",1,"'One'"]],["List"]]]
+]

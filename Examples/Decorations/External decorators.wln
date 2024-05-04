@@ -1,0 +1,103 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$165], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Decorations/External decorators.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# External decorators\nusing Javascript to \
+alter symbols representation", "Display" -> "codemirror", 
+    "Hash" -> "ab2a1a62-a6c9-4aad-9c89-c94241c4031e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> 
+     "# External decorators\nusing Javascript to alter symbols \
+representation", "Display" -> "markdown", 
+    "Hash" -> "7c523620-d44f-44bf-84c6-31d4b4905367", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> ".md\nDefine a plain decoration for our symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "55b3f788-46ba-400c-b313-d8c0dd1be4cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "Define a plain decoration for our symbol", 
+    "Display" -> "markdown", "Hash" -> 
+     "20e1e46a-61ff-4b97-a51d-c0518840f37e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
+With[{},\n  ViewBox[boxObject[s], customDecorator[s]]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "700b36cf-a0ac-4b0b-aded-74778d685455", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> ".md\nActual decorator", "Display" -> "codemirror", 
+    "Hash" -> "4201c9eb-1fe7-4129-8fa4-4cb755e3a477", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "Actual decorator", "Display" -> "markdown", 
+    "Hash" -> "fabe875e-2347-4f12-b090-b244fd43fe8d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> ".js\ncore.customDecorator = async (args, env) => {\n\tconst \
+state = await interpretate(args[0], env);\n\tconst element = \
+env.element;\n\n\telement.classList.add('flex', 'rounded-md', \
+'p-2');\n\telement.style.border = \"1px solid \
+#999\";\n\telement.style.boxShadow = \"inset 0 2px 4px 0 rgb(1 1 1 / \
+0.05)\";\n\n    element.style.transitionDuration = '0.8s';\n    \
+element.style.transitionProperty = 'transform';\n\n    setTimeout(() => {\n   \
+   element.style.transform = \"rotate(360deg)\";\n    }, \
+100);\n\n\telement.innerText = state;\n}", "Display" -> "codemirror", 
+    "Hash" -> "dd8e4547-6a0b-4cf6-b7b9-e2fa8cdf0d25", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "core.customDecorator = async (args, env) => {\n\tconst state \
+= await interpretate(args[0], env);\n\tconst element = \
+env.element;\n\n\telement.classList.add('flex', 'rounded-md', \
+'p-2');\n\telement.style.border = \"1px solid \
+#999\";\n\telement.style.boxShadow = \"inset 0 2px 4px 0 rgb(1 1 1 / \
+0.05)\";\n\n    element.style.transitionDuration = '0.8s';\n    \
+element.style.transitionProperty = 'transform';\n\n    setTimeout(() => {\n   \
+   element.style.transform = \"rotate(360deg)\";\n    }, \
+100);\n\n\telement.innerText = state;\n}", "Display" -> "js", 
+    "Hash" -> "755d1fee-52bc-4794-88fa-3722fd385e1d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> ".md\nLet us test it", "Display" -> "codemirror", 
+    "Hash" -> "90329856-3ec2-4209-a35f-8b5e6c6f43ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, <|"Data" -> "Let us test it", 
+    "Display" -> "markdown", "Hash" -> 
+     "283eded9-8706-4335-9e6e-3d258fa1cb08", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, <|"Data" -> "boxObject[33]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1277f738-892f-4824-a632-3bc20e6acb25", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "(*VB[*)(boxObject[33])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAe\
+P5BILi0uyc91SU3OL0osyS/KVASKAQD8Rgtb\"*)(*]VB*) // First ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "53ed14ba-db93-44f8-87d2-ea61fee7103e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> "33", "Display" -> "codemirror", 
+    "Hash" -> "3a07c9a3-e745-498a-b31e-1adaf7417384", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "c532d49f-0fa0-49ad-a82c-bc2348cd9194", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "3dabaf06-5358-4a93-8063-6f23728e6ee0"|>}, "serializer" -> "jsfn4"|>
