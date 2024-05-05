@@ -1,0 +1,220 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$352], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Interaction/Bubbles.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Dynamically generated disks\nHere we will \
+demonstrate how to append and remove many instances of dynamic graphics \
+primitives", "Display" -> "codemirror", 
+    "Hash" -> "3dd5ac39-7a91-4220-946b-30235170b2a2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "# Dynamically generated disks\nHere we will demonstrate how \
+to append and remove many instances of dynamic graphics primitives", 
+    "Display" -> "markdown", "Hash" -> 
+     "6b302783-920e-497b-bf41-2120eb5b22a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nThe complexity comes mostly from the fact, that we don't \
+have a direct access from Wolfram Kernel to the frontend, but only WebSockets \
+protocol, which gives a big overhead. The only solution to maintain good \
+performance is to minimize numbers of transactions.\n\n<br/>\n\nThink about \
+it was a GPU-CPU comminucation, which also comes with similar restrictions", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c7900ea8-e7dd-4b52-8bb7-90cd6bb8d5d3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "The complexity comes mostly from the fact, that we don't have \
+a direct access from Wolfram Kernel to the frontend, but only WebSockets \
+protocol, which gives a big overhead. The only solution to maintain good \
+performance is to minimize numbers of transactions.\n\n<br/>\n\nThink about \
+it was a GPU-CPU comminucation, which also comes with similar restrictions", 
+    "Display" -> "markdown", "Hash" -> 
+     "5d3136ec-428d-459e-91de-d19041b52d85", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> 
+     ".md\n## Pool of objects parameters\nThis is going to be our buffers", 
+    "Display" -> "codemirror", "Hash" -> 
+     "40129b6b-c0a7-4ae3-b4b7-a94e56dbbc7e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> 
+     "## Pool of objects parameters\nThis is going to be our buffers", 
+    "Display" -> "markdown", "Hash" -> 
+     "ccbe05c0-3795-46ed-a8b8-728c91c6b40d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "cPool = Table[{0.,0.}, {i,100}];\nvPool = cPool;\nrPool = \
+Table[0., {i,100}];\n\noPool = Table[Null, {i,100}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "adeac698-b79d-4856-8d9c-b312a6b7dad3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nThe general idea is not to allocate new variables for \
+new object, but rather reuse objects from the pool.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7b28ec45-d1ee-48b1-857a-602f78743b59", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "The general idea is not to allocate new variables for new \
+object, but rather reuse objects from the pool.", "Display" -> "markdown", 
+    "Hash" -> "4b532c1c-1a25-4c96-ab24-659d5218bfc0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nGraphical output and mouse listener", 
+    "Display" -> "codemirror", "Hash" -> 
+     "491d4451-7cb3-4378-b4f9-21e69ad3ee26", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "Graphical output and mouse listener", 
+    "Display" -> "markdown", "Hash" -> 
+     "282302b0-30d7-4782-b130-3ae280419de4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "Graphics[{White, EventHandler[Rectangle[{-1,-1}, {1,1}], \
+{\"mousemove\"->handler}], Green, MetaMarker[\"canvas\"]}, \
+ImagePadding->None]", "Display" -> "codemirror", 
+    "Hash" -> "235fc384-1e92-4c09-874d-8b0f1bbd69c4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nOur future loop. We don't need to evaluate it now", 
+    "Display" -> "codemirror", "Hash" -> 
+     "98910f22-924a-4eec-89f5-c65d66a7f2aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "Our future loop. We don't need to evaluate it now", 
+    "Display" -> "markdown", "Hash" -> 
+     "9af9faca-b3a5-405b-911b-7704c3bba936", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[]},\n  handler = Function[xy, \n    \
+If[!created[xy, \"canvas\", win], update[win]];\n  ];\n];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "db1845d0-1bd6-4ccb-848e-c7283f384150", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nAnd to stop it simply", "Display" -> "codemirror", 
+    "Hash" -> "7fdb2bf9-89d5-43e0-881f-a063773bdac9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "And to stop it simply", "Display" -> "markdown", 
+    "Hash" -> "9c819695-406e-42a3-b076-ea484641c925", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, <|"Data" -> "handler = Null;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "72390cef-5de4-40d7-9b3b-65d0f9cfc0aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\n## Implementation", "Display" -> "codemirror", 
+    "Hash" -> "4bf08edb-40ed-436e-8db4-6a7d016028ce", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "## Implementation", "Display" -> "markdown", 
+    "Hash" -> "44a71d00-de5c-4651-bf46-477b5444b59f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nUpdate positions and radiuses based on velocities", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dac4a8ba-b52c-4435-8f50-0a8bbc5318f1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "Update positions and radiuses based on velocities", 
+    "Display" -> "markdown", "Hash" -> 
+     "95b25137-2181-405b-9580-3ecc5b704e30", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "update[win_] := With[{},\n  {cPool, rPool} = \
+Transpose[MapIndexed[Function[{a, index},\n    (* if slot is not empty - \
+recalculate *)\n    If[oPool[[index//First]] =!= Null,\n        \n      \
+If[a[[2]] <= 0.002, \n        (* if radius is too small - remove an object \
+*)\n        remove[index//First, win];\n        a\n      ,\n        (* if ok \
+- animate *)\n        {a[[1]] + 0.05 vPool[[index//First]], 0.9 a[[2]]}\n     \
+ ]\n      \n    ,\n      a\n    ]\n    \n  ], {cPool, rPool} // \
+Transpose]];\n];\n\nremove[index_, win_] := (\n  (* destroy instance on the \
+frontend *)\n  Delete[oPool[[index]], \"Window\"->win]; \n  oPool[[index]] = \
+Null\n);", "Display" -> "codemirror", 
+    "Hash" -> "aa5ed401-b5fe-453f-af32-f9450b866a3d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\nFor creating we also need a function", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5ff4c075-1e66-4d83-8a48-4de603248b64", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "For creating we also need a function", 
+    "Display" -> "markdown", "Hash" -> 
+     "2acf94ea-1b2d-49de-a9eb-965bea1ed7c9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "created[xy_, marker_String, win_] := With[{\n  (* find empty \
+slot *)\n  slot = FirstPosition[oPool, Null]\n},\n  If[!MissingQ[slot],\n    \
+With[{s = slot // First},\n\n      (* initial positions and etc *)\n      \
+cPool[[s]] = xy;\n      rPool[[s]] = 0.05;\n      vPool[[s]] = \
+RandomReal[{-1,1}, 2];\n      oPool[[s]] = True;\n\n      (* update so that \
+object wont appear in an odd way *)\n      update[win];\n\n      (* create an \
+instance of Disk on a graph *)\n      With[{\n        o = {\n          \
+Hue[RandomReal[{0,1}],1,1],\n                                                \
+(* prevent double updates *)\n          Disk[Offload[cPool[[s]]], \
+Offload[rPool[[s]], \"Static\"->True]]\n        }\n      },\n        \
+oPool[[s]] = FrontSubmit[o, MetaMarker[marker], \"Window\"->win, \
+\"Tracking\"->True];\n      ];\n    ];\n\n    True\n  ,\n    False\n  ]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8ca5c4a3-16e3-4d7c-9a21-51d6c140caba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\n---\n\n<br/>\n<br/>\n\n*Expected \
+result*\n\n<br/>\n\n![](attachments/Bubbles%20video%20to%20gif.gif)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1f46b002-4410-4472-9321-63a33f06c1b6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "---\n\n<br/>\n<br/>\n\n*Expected \
+result*\n\n<br/>\n\n![](attachments/Bubbles%20video%20to%20gif.gif)", 
+    "Display" -> "markdown", "Hash" -> 
+     "743da481-7cc3-411e-9596-9d743edac25a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> ".md\n## Notes\nUsing `AnimationEventListener`, one can also \
+make this animation continuous.", "Display" -> "codemirror", 
+    "Hash" -> "e225d3be-ec8e-4e95-9ccb-e1510dd43811", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, 
+   <|"Data" -> "## Notes\nUsing `AnimationEventListener`, one can also make \
+this animation continuous.", "Display" -> "markdown", 
+    "Hash" -> "a652c80a-e45b-4ced-b369-6aeffde426b6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>, <|"Data" -> " \n\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "aa28f470-a9e7-47d1-9af5-ad0351a37d27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "892a46fa-277c-4fc6-b5d3-032364ef1fb3"|>}, "serializer" -> "jsfn4"|>

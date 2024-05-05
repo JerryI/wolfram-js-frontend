@@ -1,0 +1,180 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$271], 
+   "Objects" -> <|"b1a3f409-dc0b-4131-9218-05a36224f3bd" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$146949]]]|>, 
+     "f7c0cfdc-6dd0-49e4-a284-56fe523d88df" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-122b3e1d-c235-4ab8-9a67-84b9b8891cfd\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-122b3e1d-c235-4ab8-9a67-84b9b8891cfd\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-122b3e1d-c235-4ab8-9a67-84b9b8891cfd');\n        \
+const ran = \
+document.getElementById('r-122b3e1d-c235-4ab8-9a67-84b9b8891cfd');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('66f9731a-2097-4313-9435-6071a62d924b', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('66f9731a-2097-4313-9435-6071a62d924b', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>|>, "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Decorations/diet.w\
+ln"|>, "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Animation helpers\nA set of oscillators you can use for \
+animating", "Display" -> "codemirror", 
+    "Hash" -> "44d3b70f-853a-4374-a4fc-11315c80efc4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> 
+     "# Animation helpers\nA set of oscillators you can use for animating", 
+    "Display" -> "markdown", "Hash" -> 
+     "4815f968-9902-4964-89f9-f5b78b7a2a54", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "CreateType[oscillator, init, {\"Freq\"->1}]\ninit[o_] := \
+LeakyModule[{count = 0, symbol = 0.0},\n  o[\"UId\"] = CreateUUID[];\n  \
+o[\"Freq\"] = 1.0;\n  o[\"Symbol\"] = Offload[symbol];\n  o[\"Handler\"] = \
+Function[Null,\n    symbol = Sin[2.0 Pi o[\"Freq\"] count / 255.0];\n    \
+If[count > 255, count = 0];\n    count++;\n  ];\n  o[\"Task\"] = \
+Null;\n];\n\noscillator /: oscillatorSet[s_oscillator, freq_?NumericQ] := \
+With[{},\n  s[\"Freq\"] = freq;  \n  EventFire[s, \"Freq\", freq];\n  \
+s\n]\n\noscillator /: EventFire[s_oscillator, opts__] := \
+EventFire[s[\"UId\"], opts]\n\noscillator /: EventHandler[s_oscillator, \
+opts__] := EventHandler[s[\"UId\"], opts]\n\noscillator /: \
+EventClone[s_oscillator] := EventClone[s[\"UId\"]]\noscillator /: \
+EventRemove[s_oscillator] := EventRemove[s[\"UId\"]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a226f5fa-4e9f-4bbb-aaae-1c8d977a7771", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "oscillator", "Display" -> "codemirror", 
+    "Hash" -> "7c66182e-0b8e-445a-988d-ac9eceeabbac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> ".md\nSymbol representation in the output cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6b734d72-7d90-43b0-bf90-368cbcea982a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "Symbol representation in the output cell", 
+    "Display" -> "markdown", "Hash" -> 
+     "64847571-b400-4fce-9f64-7b19f5acd53e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "oscillator /: MakeBoxes[s: oscillator[_Symbol?AssociationQ], \
+form: (StandardForm | TraditionalForm)] := Module[{\n\tfreq = s[\"Freq\"] // \
+ToString,\n    instances = 0,\n    eventObject, construct, destruct, \
+slider\n}, With[{\n\ttextField = EditorView[freq // Offload],\n\tcontroller = \
+CreateUUID[],\n    f = s[\"Freq\"],\n    win = CurrentWindow[],\n    symbol = \
+s[\"Symbol\"]\n},\n\n    slider = InputRange[0.1, 10, 0.1, f];\n    \
+EventHandler[slider, Function[n, \n      oscillatorSet[s, n]\n    ]];\n\n    \
+(* if notebook was closed *)\n    With[{socket = EventClone[win]},\n      \
+EventHandler[socket, {\n        \"Closed\" -> Function[Null, \n          \
+EventRemove[socket];\n          destruct;\n        ]\n      }]\n    ];\n\n    \
+construct := With[{},\n      (* subscribe to object events and update \
+decoration *)\n      eventObject = EventClone[s];\n      \
+EventHandler[eventObject, {\n        \"Freq\" -> Function[new, freq = new // \
+ToString]\n      }];    \n      Echo[\"Construct!\"];\n      s[\"Task\"] = \
+SetInterval[s[\"Handler\"][], 100]; \n    ];\n\n    destruct := With[{},\n    \
+  Echo[\"Removed\"];\n\t  EventRemove[eventObject];    \n      \
+TaskRemove[s[\"Task\"]];\n    ];\n\n\tEventHandler[controller, \
+{\n\t\t\"Mounted\" -> Function[Null,\n\n          If[instances === 0, \
+construct];\n          instances = instances + \
+1;\n\n\t\t],\n\t\t\n\t\t\"Destroy\" -> Function[Null, \n\t\t\tinstances = \
+instances - 1;\n\t\t\t\n\t        (* unsubscribe when there is no instances \
+*)\n\t        If[instances === 0, destruct];\n          \
+]\n\t}];\n\n\tWith[{\n\t\tsummary = {\n          {Style[\"Freq: \", Italic], \
+textField},\n          {Style[\"\", Bold], slider}\n        } // \
+TableForm\n\t},\n\t\tViewBox[symbol, EditorView[ToString[summary, \
+StandardForm], \"ReadOnly\"->True], \"Event\"->controller]\n\t]\n] ]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cbe57bb8-ee7c-42a1-8300-7439f7eba1e7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> 
+     ".md\n## Testing\nCreate a new oscillator by calling this symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0a0a89b3-9ece-420b-96b7-88f7ae1e7543", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "## Testing\nCreate a new oscillator by calling this symbol", 
+    "Display" -> "markdown", "Hash" -> 
+     "9f568c98-447d-459c-ad0b-dc928af3806c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, <|"Data" -> "oscillator[]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d31779f6-26c9-4728-ac29-68eb01c68c14", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> ".md\n__Cut__ and paste it to a a symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8a425433-e1d4-4ad3-94ae-f822a88ab5e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "__Cut__ and paste it to a a symbol", "Display" -> "markdown", 
+    "Hash" -> "133afb8b-0e8a-49d2-978b-33e67d678762", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "Graphics[{\n  Disk[{0,0}, Abs[(* here *)]]\n}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "45862e08-732e-46f6-94d4-c81ae086639f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> ".md\n*due to a bug in slider controls, copies of the same \
+symbol won't allow to change the frequency. sorry ;(* So you need to create \
+another instance by calling `oscillator`", "Display" -> "codemirror", 
+    "Hash" -> "23a5efe3-a86d-4e85-87e5-fe7dca3f86e3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "*due to a bug in slider controls, copies of the same symbol \
+won't allow to change the frequency. sorry ;(* So you need to create another \
+instance by calling `oscillator`", "Display" -> "markdown", 
+    "Hash" -> "4b9becf3-289e-4447-a8aa-ae2926627d1a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> ".md\nHow it would look like\n\n![](attachments/Osc.gif)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8468733b-4bb0-4d54-9af5-cf9b4eff30e7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> "How it would look like\n\n![](attachments/Osc.gif)", 
+    "Display" -> "markdown", "Hash" -> 
+     "8ff39460-57d9-4f33-a684-8ef25ff6fc7c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "6197e9dc-ce3e-4216-ada1-c077cc7b4547", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "36b87af0-7211-463e-aea5-3623dacac112"|>}, "serializer" -> "jsfn4"|>
