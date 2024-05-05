@@ -4,7 +4,8 @@ const { screen} = require('electron/main')
 const path = require('path')
 const { platform } = require('node:process');
 
-const trackpadUtils = require("electron-trackpad-utils");
+
+
 
 const zlib = require('zlib');
 
@@ -31,6 +32,13 @@ const { PARAMS, VALUE, MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica
 
 const isWindows = process.platform === 'win32'
 const isMac = process.platform === 'darwin'
+
+
+let trackpadUtils = {
+    onForceClick: () => {},
+    triggerFeedback: () => {}
+};
+if (isMac) trackpadUtils = require("electron-trackpad-utils");
 
 //all routes to important folders
 let installationFolder;
