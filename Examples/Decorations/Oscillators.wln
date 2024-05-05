@@ -1,0 +1,452 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$42], 
+   "Objects" -> <|"9273c93e-328a-432b-b825-92d7c60db1f6" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$148855]]]|>, 
+     "470f2db7-680a-47ec-abc0-200f2610eebc" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-3b928536-6890-4d1e-a412-50e50ae31679\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-3b928536-6890-4d1e-a412-50e50ae31679\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-3b928536-6890-4d1e-a412-50e50ae31679');\n        \
+const ran = \
+document.getElementById('r-3b928536-6890-4d1e-a412-50e50ae31679');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('1cc910ff-43e1-406a-bde4-efcedf152c15', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('1cc910ff-43e1-406a-bde4-efcedf152c15', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "65c64376-9da7-4fa1-a472-edd0b091c5c2" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$149866]]]|>, 
+     "7e317409-b606-4838-943e-68fac96dd25f" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-3dd4d86d-14a4-496b-90e5-6188a21cd59f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-3dd4d86d-14a4-496b-90e5-6188a21cd59f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-3dd4d86d-14a4-496b-90e5-6188a21cd59f');\n        \
+const ran = \
+document.getElementById('r-3dd4d86d-14a4-496b-90e5-6188a21cd59f');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('afc94e0d-9a91-4afb-860c-93fc324fb179', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('afc94e0d-9a91-4afb-860c-93fc324fb179', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "103bde7c-d45f-4894-9fb6-40a6984aceef" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$149883]]]|>, 
+     "b58ed8f9-3b63-4338-bfa2-cd151f4fc628" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-c4608a7f-5675-49da-bc8b-99187c04cffb\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-c4608a7f-5675-49da-bc8b-99187c04cffb\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-c4608a7f-5675-49da-bc8b-99187c04cffb');\n        \
+const ran = \
+document.getElementById('r-c4608a7f-5675-49da-bc8b-99187c04cffb');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('4c15f812-d9f2-46b5-9862-3c87e3c1c1be', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('4c15f812-d9f2-46b5-9862-3c87e3c1c1be', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "4209d57f-31c5-4f19-8d96-8df123e70e97" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$149900]]]|>, 
+     "b7d81e67-f9b9-4cf0-b113-57122a735ff3" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-7d23146c-b5fc-4a32-b5d2-3a5238a9155f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-7d23146c-b5fc-4a32-b5d2-3a5238a9155f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-7d23146c-b5fc-4a32-b5d2-3a5238a9155f');\n        \
+const ran = \
+document.getElementById('r-7d23146c-b5fc-4a32-b5d2-3a5238a9155f');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('7fe4dc5d-267e-44db-9e0c-96cd70a3c469', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('7fe4dc5d-267e-44db-9e0c-96cd70a3c469', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "ca8eeb68-9491-44d4-a3f2-fee04c264ce2" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$149917]]]|>, 
+     "3d92cbfb-c732-419c-a953-7cc71f395378" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-f7c023b3-8479-4fd6-bd49-a05b3ae2360a\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-f7c023b3-8479-4fd6-bd49-a05b3ae2360a\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-f7c023b3-8479-4fd6-bd49-a05b3ae2360a');\n        \
+const ran = \
+document.getElementById('r-f7c023b3-8479-4fd6-bd49-a05b3ae2360a');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('34287fd2-1912-4910-a40e-dcbdd1fb9b62', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('34287fd2-1912-4910-a40e-dcbdd1fb9b62', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "99698253-176c-4136-bf71-d869dc6ee8c0" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$151084]]]|>, 
+     "ec5ab05a-72b1-4544-a09e-9b1c804c567d" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-3240095f-158d-4110-841d-0dde4b46949f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-3240095f-158d-4110-841d-0dde4b46949f\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-3240095f-158d-4110-841d-0dde4b46949f');\n        \
+const ran = \
+document.getElementById('r-3240095f-158d-4110-841d-0dde4b46949f');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('e1258769-3b08-45af-be10-8b6ba3fc189b', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('e1258769-3b08-45af-be10-8b6ba3fc189b', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "aed39551-bf6f-48b2-bcc9-31e0e9d296a7" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$151101]]]|>, 
+     "bf512353-8a46-40f0-804e-a79f55420e05" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-f2526cc2-af91-489f-965f-4fb6a7549990\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-f2526cc2-af91-489f-965f-4fb6a7549990\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-f2526cc2-af91-489f-965f-4fb6a7549990');\n        \
+const ran = \
+document.getElementById('r-f2526cc2-af91-489f-965f-4fb6a7549990');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('b93eb6c5-c4d1-4d21-b69f-e596952686d4', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('b93eb6c5-c4d1-4d21-b69f-e596952686d4', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "68d63887-3f92-42cd-8573-6e582f76b503" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$151118]]]|>, 
+     "e7df91cb-71e5-407e-a7b8-2a9d7b06f230" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-71250007-59d6-4d77-a40b-2a3ee416a80b\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-71250007-59d6-4d77-a40b-2a3ee416a80b\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-71250007-59d6-4d77-a40b-2a3ee416a80b');\n        \
+const ran = \
+document.getElementById('r-71250007-59d6-4d77-a40b-2a3ee416a80b');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('58f032c0-e58a-41a8-9e8d-668aedea93ed', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('58f032c0-e58a-41a8-9e8d-668aedea93ed', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>, "2e47ccbd-65c4-4acf-9dfc-690893dfd642" -> 
+      <|"Public" -> Hold[EditorView[Offload[freq$151135]]]|>, 
+     "8062af2f-f9c6-45be-b7db-2646205b5ce5" -> 
+      <|"Public" -> Hold[WLXEmbed[{"<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input \
+id=\"n-495d6004-85ab-469f-9f1f-afe488adf1c7\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"number\" class=\"ml-auto h-2 grow max-w-60 \
+block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md border-2-gray-50 \
+border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input \
+id=\"r-495d6004-85ab-469f-9f1f-afe488adf1c7\" min=\"0.1\" max=\"10\" \
+step=\"0.1\" value=\"1.0\" type=\"range\" class=\"sm-controls w-full h-1 \
+bg-gray-200 rounded-lg appearance-none cursor-pointer \"></input></div>", "<s\
+cript type=\"module\"> const num = \
+document.getElementById('n-495d6004-85ab-469f-9f1f-afe488adf1c7');\n        \
+const ran = \
+document.getElementById('r-495d6004-85ab-469f-9f1f-afe488adf1c7');\n\n        \
+let harpticQ = true;\n\n        function isNumber(value) { return typeof \
+value === 'number'}\n\n        num.addEventListener('input', (event)=> {\n    \
+        if (isNaN(num.value)) return;\n            ran.value = num.value;\n   \
+         server.kernel.emitt('5026d3ce-07d0-49f8-9e15-eebe3816001e', \
+num.value, 'Default');      \n        });\n\n        \
+ran.addEventListener('input', (event)=> {\n            if (isNaN(ran.value)) \
+return;\n            num.value = ran.value;\n            \
+server.kernel.emitt('5026d3ce-07d0-49f8-9e15-eebe3816001e', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>"}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Decorations/Oscillators.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Animation helpers\nA set of oscillators you can use for \
+animating", "Display" -> "codemirror", 
+    "Hash" -> "2c71dfda-ad84-43f4-9fc1-3758f4e7cbef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> 
+     "# Animation helpers\nA set of oscillators you can use for animating", 
+    "Display" -> "markdown", "Hash" -> 
+     "6287583e-6b11-44f6-93ac-6a1bf17ae20b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "CreateType[oscillator, init, {\"Freq\"->1}]\ninit[o_] := \
+LeakyModule[{count = 0, symbol = 0.0},\n  o[\"UId\"] = CreateUUID[];\n  \
+o[\"Freq\"] = 1.0;\n  o[\"Symbol\"] = Offload[symbol];\n  o[\"Handler\"] = \
+Function[Null,\n    symbol = Sin[2.0 Pi o[\"Freq\"] count / 255.0];\n    \
+If[count > 255, count = 0];\n    count++;\n  ];\n  o[\"Task\"] = \
+Null;\n];\n\noscillator /: oscillatorSet[s_oscillator, freq_?NumericQ] := \
+With[{},\n  s[\"Freq\"] = freq;  \n  EventFire[s, \"Freq\", freq];\n  \
+s\n]\n\noscillator /: EventFire[s_oscillator, opts__] := \
+EventFire[s[\"UId\"], opts]\n\noscillator /: EventHandler[s_oscillator, \
+opts__] := EventHandler[s[\"UId\"], opts]\n\noscillator /: \
+EventClone[s_oscillator] := EventClone[s[\"UId\"]]\noscillator /: \
+EventRemove[s_oscillator] := EventRemove[s[\"UId\"]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "74cd9049-ccb9-4303-9d4a-b3f86dd21e2f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "oscillator", "Display" -> "codemirror", 
+    "Hash" -> "0c6a2e23-99a2-4e4a-b691-500bb9fc6960", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> ".md\nSymbol representation in the output cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a0441727-b21b-4602-b876-a19c02399a6c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "Symbol representation in the output cell", 
+    "Display" -> "markdown", "Hash" -> 
+     "4b4e8a39-8083-4635-b531-80fde42d4d48", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "oscillator /: MakeBoxes[s: oscillator[_Symbol?AssociationQ], \
+form: (StandardForm | TraditionalForm)] := Module[{\n\tfreq = s[\"Freq\"] // \
+ToString,\n    instances = 0,\n    eventObject, construct, destruct, \
+slider\n}, With[{\n\ttextField = EditorView[freq // Offload],\n\tcontroller = \
+CreateUUID[],\n    f = s[\"Freq\"],\n    win = CurrentWindow[],\n    symbol = \
+s[\"Symbol\"]\n},\n\n    slider = InputRange[0.1, 10, 0.1, f];\n    \
+EventHandler[slider, Function[n, \n      oscillatorSet[s, n]\n    ]];\n\n    \
+(* if notebook was closed *)\n    With[{socket = EventClone[win]},\n      \
+EventHandler[socket, {\n        \"Closed\" -> Function[Null, \n          \
+EventRemove[socket];\n          destruct;\n        ]\n      }]\n    ];\n\n    \
+construct := With[{},\n      (* subscribe to object events and update \
+decoration *)\n      eventObject = EventClone[s];\n      \
+EventHandler[eventObject, {\n        \"Freq\" -> Function[new, freq = new // \
+ToString]\n      }];    \n      Echo[\"Construct!\"];\n      s[\"Task\"] = \
+SetInterval[s[\"Handler\"][], 100]; \n    ];\n\n    destruct := With[{},\n    \
+  Echo[\"Removed\"];\n\t  EventRemove[eventObject];    \n      \
+TaskRemove[s[\"Task\"]];\n    ];\n\n\tEventHandler[controller, \
+{\n\t\t\"Mounted\" -> Function[Null,\n\n          If[instances === 0, \
+construct];\n          instances = instances + \
+1;\n\n\t\t],\n\t\t\n\t\t\"Destroy\" -> Function[Null, \n\t\t\tinstances = \
+instances - 1;\n\t\t\t\n\t        (* unsubscribe when there is no instances \
+*)\n\t        If[instances === 0, destruct];\n          \
+]\n\t}];\n\n\tWith[{\n\t\tsummary = {\n          {Style[\"Freq: \", Italic], \
+textField},\n          {Style[\"\", Bold], slider}\n        } // \
+TableForm\n\t},\n\t\tViewBox[symbol, EditorView[ToString[summary, \
+StandardForm], \"ReadOnly\"->True], \"Event\"->controller]\n\t]\n] ]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b29a7971-7d4e-4786-a43b-4005398312c1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> 
+     ".md\n## Testing\nCreate a new oscillator by calling this symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "baa281fc-d2e5-49ee-b21c-bc8f52f2e3b5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "## Testing\nCreate a new oscillator by calling this symbol", 
+    "Display" -> "markdown", "Hash" -> 
+     "26dfe515-ab6a-4def-a452-002ffe4cfb08", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, <|"Data" -> "oscillator[]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "45e4c4c3-992d-4ad7-976f-e741e67701cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> ".md\nOr if you need multiple copies of the same oscillator we \
+would recommend you to", "Display" -> "codemirror", 
+    "Hash" -> "49cdc8c6-677e-4bbe-87fc-3e0334a4dffc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "Or if you need multiple copies of the same oscillator we \
+would recommend you to", "Display" -> "markdown", 
+    "Hash" -> "20e0703d-14a6-4b09-8ed0-a73e68768246", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "With[{osc = oscillator[]},\n\tTable[osc, {i,4}]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "55d4d801-ebc5-4a72-8f03-37103945e0d9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "1525a6f9-5a5f-49c8-b94c-0341e6564f93", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> ".md\n__Cut__ and paste one instance inside a symbol", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9e926c4b-30df-49b7-8b7f-482dd68e0566", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "__Cut__ and paste one instance inside a symbol", 
+    "Display" -> "markdown", "Hash" -> 
+     "2b47c446-6c57-43ff-84f6-edaa1e16ef2e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "Graphics[{\n  Disk[{0,0}, Abs[(* here *)]]\n}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "926773f0-540b-499a-96d3-edb8edf74223", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> ".md\n*due to a bug in slider controls, copies of the same \
+symbol won't allow to change the frequency. sorry ;(* So you need to create \
+another instance by calling `oscillator`", "Display" -> "codemirror", 
+    "Hash" -> "b3511b55-0b12-47a0-9d5f-c11fcf1db684", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "*due to a bug in slider controls, copies of the same symbol \
+won't allow to change the frequency. sorry ;(* So you need to create another \
+instance by calling `oscillator`", "Display" -> "markdown", 
+    "Hash" -> "67582225-97af-4658-861a-049e2c05409f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> ".md\nHow it would look like\n\n![](attachments/Osc.gif)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cc0575b7-96b0-4a76-9b10-961c96ef72a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> "How it would look like\n\n![](attachments/Osc.gif)", 
+    "Display" -> "markdown", "Hash" -> 
+     "e3be8bbf-5dd2-4353-abeb-43f1bdd9118a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "f1b9a075-f313-4f00-bc8b-844ad9c5ee9e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "73508745-b7cf-40fb-8491-339579c5c550"|>}, "serializer" -> "jsfn4"|>

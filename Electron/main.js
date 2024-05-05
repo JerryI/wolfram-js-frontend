@@ -45,6 +45,9 @@ if (app.isPackaged) {
 const runPath = path.join(installationFolder, 'Scripts', 'start.wls');
 const workingDir = app.getPath('home');
 
+trackpadUtils.onForceClick(() => {
+	console.log("onForceClick");
+});
 
 
 //fetch contex menus items from wljs_packages folder

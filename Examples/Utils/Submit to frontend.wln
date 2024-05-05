@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$105], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$301], 
    "Objects" -> <|"dfa30147-c4ac-4d14-8351-634508c41207" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
@@ -465,126 +465,169 @@
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
              Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
-ontend-dev/Examples/06 - Utils/Submit to frontend.wln"|>, 
+ontend-dev/Examples/Utils/Submit to frontend.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# Executing expression on frontend\nLet's \
 start from the simples example", "Display" -> "codemirror", 
-    "Hash" -> "970c64ed-da2b-4d16-af5d-fd23f5d22947", "Invisible" -> False, 
+    "Hash" -> "3e97bb94-f6e0-4b77-88c8-e934469cf38e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> 
      "# Executing expression on frontend\nLet's start from the simples \
 example", "Display" -> "markdown", "Hash" -> 
-     "6d5cf72e-3c3c-4223-9e40-df25fcbfd8d1", "Invisible" -> False, 
+     "7fde3400-f8f1-4df9-bda8-cfb2b1bfd454", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "FrontSubmit[Alert[\"Hi\"]]", "Display" -> "codemirror", 
-    "Hash" -> "3027d3e2-bddc-4496-aef3-f2094e9f7135", "Invisible" -> False, 
+    "Hash" -> "8d7a5faf-77c8-4e6d-be39-1d5f50353564", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "0", "Display" -> "codemirror", 
-    "Hash" -> "70820d69-d5ef-4d67-9373-c9ef3dcfa86f", "Invisible" -> False, 
+    "Hash" -> "0a5484c6-1c56-4d5f-9e2f-ad06bc1c9233", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> 
      ".md\nIt allows to append objects on already plotter graphs for \
 instance", "Display" -> "codemirror", 
-    "Hash" -> "53825fd9-d435-4611-95af-bae5d72f2795", "Invisible" -> False, 
+    "Hash" -> "d91013ad-1a89-4f0b-a5dd-752774b9af14", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> 
      "It allows to append objects on already plotter graphs for instance", 
     "Display" -> "markdown", "Hash" -> 
-     "a33f9833-5e15-43b0-96b6-97fb9746e104", "Invisible" -> False, 
+     "c324e866-dae4-4c32-a02b-5c52438f1dcc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
-   <|"Data" -> "Plot[Sin[x], {x,0,2Pi}, Epilog->MetaMarker[\"plot\"]]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "a26e7a54-2277-4af3-aea9-890ff2b4cd24", "Invisible" -> False, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "Plot[Sin[x], {x,0,2Pi}, \
+Epilog->(*BB[*)(MetaMarker[\"plot\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB\
+5AILqnMSXXKr0hjgskHleakFnMBGU6JydnpRfmleSlpzDDlQe5Ozvk5+UVFDGDwwR6dwcAAAAHdFi\
+w=\"*)(*]BB*)]", "Display" -> "codemirror", 
+    "Hash" -> "f3dd047a-19ee-4d2c-a2b9-3fddc088fb19", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"dfa30147-c4ac-4d14-8351-634508c41207\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp6QlG\
 hsYmpjrJpskJuuapBia6FoYmxrqmhmbmBpYJJsYGhmYAwCA2RTR\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "43e0eaad-f4e9-4d7a-83cd-14f99060be1b", "Invisible" -> False, 
+     "d8c55be9-935e-40de-ade8-81880c64d421", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> ".md\nNow using `MetaMarker` to execute inside a container", 
     "Display" -> "codemirror", "Hash" -> 
-     "93d44f00-e06f-471e-a30d-b5abc6151d72", "Invisible" -> False, 
+     "1725a507-5baa-44ba-b024-e7567fde3fb8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "Now using `MetaMarker` to execute inside a container", 
     "Display" -> "markdown", "Hash" -> 
-     "9d8381af-0d75-4e11-ad97-0bc7c8f366d9", "Invisible" -> False, 
+     "154ff3a7-0bd6-4592-bf2d-482c406da44c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
-   <|"Data" -> 
-     "FrontSubmit[{Red, Line[{{0,0}, {2Pi,0}}]}, MetaMarker[\"plot\"]]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "828eb534-833c-4508-b575-787ad1fa0c22", "Invisible" -> False, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "FrontSubmit[{Red, Line[{{0,0}, {2Pi,0}}]}, \
+(*BB[*)(MetaMarker[\"plot\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5AILqnMS\
+XXKr0hjgskHleakFnMBGU6JydnpRfmleSlpzDDlQe5Ozvk5+UVFDGDwwR6dwcAAAAHdFiw=\"*)(*\
+]BB*)]", "Display" -> "codemirror", 
+    "Hash" -> "1e7c4c82-f2e5-4068-9fab-00bbcae57c08", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "0", "Display" -> "codemirror", 
-    "Hash" -> "4a411be6-1d8b-46de-b4cd-2d83be5271f2", "Invisible" -> False, 
+    "Hash" -> "898ae9ac-be02-4611-826e-80b8fe12c109", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "c8487115-eea2-45b1-8ea2-e0af517afe46", "Invisible" -> False, 
+    "Hash" -> "5f322c8a-15b3-47ae-b3c8-82ecde0c3e63", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> ".md\n## Submit to a projected window\nFor this reason there \
 is a special `\"Window\"` object that will assign the given window (notebook \
 or projected one)", "Display" -> "codemirror", 
-    "Hash" -> "ca756e59-6b76-4b3b-8ff5-c31e4d9de4e0", "Invisible" -> False, 
+    "Hash" -> "62952dd0-7ab5-4dd6-bbed-0320f87441f3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "## Submit to a projected window\nFor this reason there is a \
 special `\"Window\"` object that will assign the given window (notebook or \
 projected one)", "Display" -> "markdown", 
-    "Hash" -> "5529cc8b-a329-4c09-ad0c-43ff33a4b43a", "Invisible" -> False, 
+    "Hash" -> "dd4aeb62-ff7c-4cad-b06b-f8e844a15665", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "With[{win = CurrentWindow[]},\n  \
 SetTimeout[FrontSubmit[Alert[\"This must occur in the projected window\"], \
 \"Window\"->win], 3000];\n  \"Hi there!\"\n]", "Display" -> "codemirror", 
-    "Hash" -> "320fe754-d25b-4e97-9a9d-8e2a90fcc554", "Invisible" -> False, 
+    "Hash" -> "6515cbd3-01da-4935-babe-6dbf53783d94", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> ".md\n*Try to project the cell above to a separate window \
 using tools on the right (...)*. Here `win` object will be evaluated in the \
 context of a window and then transfers to a anonumous function.", 
     "Display" -> "codemirror", "Hash" -> 
-     "7ce990e2-94b3-42d3-9d4f-60f99b882fb1", "Invisible" -> False, 
+     "edb1fa18-7d48-4285-8f47-063a28e41ed1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> "*Try to project the cell above to a separate window using \
 tools on the right (...)*. Here `win` object will be evaluated in the context \
 of a window and then transfers to a anonumous function.", 
     "Display" -> "markdown", "Hash" -> 
-     "4bc27516-9f2a-42ec-8dde-28cd53f54b98", "Invisible" -> False, 
+     "357ddfc9-66e7-48c7-b452-5c2e17eeda27", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>, 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "f4f55747-1009-421d-8896-2d15dc79ea77", "Invisible" -> False, 
+    "Hash" -> "1995d4d4-326a-47d7-ad01-aaff98b2a83a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "db2639a9-86b6-4731-8334-5731c806a6dc"|>}, "serializer" -> "jsfn4"|>
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> ".md\n## Submit and remove\nYou can have an additional control \
+over evaluation of the frontend. If a symbol creates instance there, you can \
+remove it dynamically from there if it supports `destroy` method", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f2819e02-23de-47aa-bf8f-fd60b36a0947", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "## Submit and remove\nYou can have an additional control over \
+evaluation of the frontend. If a symbol creates instance there, you can \
+remove it dynamically from there if it supports `destroy` method", 
+    "Display" -> "markdown", "Hash" -> 
+     "d74ac72b-63a0-4d34-a882-160cfce93ebb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "instance = FrontSubmit[{\n  Cyan, Opacity[0.5], \n  \
+Disk[{0,0}, 1]\n}, MetaMarker[\"plot\"], \
+(*BB[*)(\"Tracking\"->True)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5AILqnMSXX\
+Kr0hjgskHleakFnMBGU6JydnpRfmleSlpzDDlQe5Ozvk5+UVFDGDwwR6dwcAAAAHdFiw=\"*)(*]B\
+B*)];", "Display" -> "codemirror", "Hash" -> 
+     "8fa0f791-4d2a-4c45-938b-1eae899b7b77", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> ".md\nand to remove it", "Display" -> "codemirror", 
+    "Hash" -> "c559ac39-3783-4dcf-b2df-3239c500923a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "and to remove it", "Display" -> "markdown", 
+    "Hash" -> "49730c8a-d66e-4db2-aa13-7773ad07a361", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>, 
+   <|"Data" -> "instance // Delete", "Display" -> "codemirror", 
+    "Hash" -> "122f50a2-d65f-454a-9a02-efd92cff4fe7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4f892faf-0ff2-449d-b88d-f7d5ad02e715"|>}, "serializer" -> "jsfn4"|>
