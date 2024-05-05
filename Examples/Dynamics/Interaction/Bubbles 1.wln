@@ -1,0 +1,75 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$194], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Interaction/Bubbles 1.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n\n# Dynamically generated disks PT1\nFollow \
+the cursor and append disks!", "Display" -> "codemirror", 
+    "Hash" -> "0cba0659-faea-44b8-8886-97efbed01288", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> 
+     "\n# Dynamically generated disks PT1\nFollow the cursor and append \
+disks!", "Display" -> "markdown", "Hash" -> 
+     "8eb86c0b-5853-401e-8183-4ce937bdabdf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> "Graphics[{White, EventHandler[Rectangle[{-1,-1}, {1,1}], \
+{\"mousemove\"->handler}], MetaMarker[\"canvas\"]}, ImagePadding->None]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "bb9dae18-71fc-4182-ba68-99ab56ca82b8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> ".md\ndefine a handler", "Display" -> "codemirror", 
+    "Hash" -> "9c35182b-c54b-4332-94b4-f40486f49799", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> "define a handler", "Display" -> "markdown", 
+    "Hash" -> "d43fc268-de84-4fcb-ab96-96bf79f77ccf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> "With[{win = CurrentWindow[]},\n  handler = Function[xy, \n    \
+FrontSubmit[{\n      Hue[RandomReal[{0,1}], 1,1],\n      Disk[xy, \
+RandomReal[{0.01,0.1}]]\n    }, MetaMarker[\"canvas\"], \"Window\"->win]\n  \
+];\n];", "Display" -> "codemirror", 
+    "Hash" -> "fa3d6c17-686f-48a2-b8ff-5e0b3e6f9453", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "bf0b89f2-6919-49ff-994f-811fdd79b79a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "022bd068-e296-44e8-85a8-79f74e790823", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "0ef2df80-57da-4a41-80cb-109559bf0214", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> 
+     ".md\n*expected result*\n\n\n![](attachments/Canvas%20Buggles1.gif)\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "07f13157-dbd4-4a2c-93bc-c8db37bd9e77", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> 
+     "*expected result*\n\n\n![](attachments/Canvas%20Buggles1.gif)\n", 
+    "Display" -> "markdown", "Hash" -> 
+     "cc90de85-98fe-410c-9b7d-a47e497443f3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "453211b7-14c7-42d9-9bb9-d78f1a3da3d2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "55d76530-2f3b-4d66-a970-1c0df76c0ab9"|>}, "serializer" -> "jsfn4"|>
