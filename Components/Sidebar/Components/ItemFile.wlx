@@ -26,7 +26,7 @@ Href = If[TrueQ[$Options["Selected"]],
             </FileNameTake>
         </a>
     ,
-        <a href="{URLEncode[File]}" download="{URLEncode[FileNameTake[File]]}" class="block rounded-md py-0 pr-0 text-sm">
+        <a href="{URLEncode[File]}" download="{URLEncode[FileNameTake[File]]}" class="block rounded-md py-0 pr-0 text-sm leading-tight">
             <FileNameTake>
                 <File/>
             </FileNameTake>
@@ -36,7 +36,7 @@ Href = If[TrueQ[$Options["Selected"]],
 
 
 <div style="position: relative" class="{Selected} pb-0.5 pt-0.5 text-gray-700 dark:text-gray-400 flex flex-start items-center pl-7 gap-x-1 rounded-md">
-    <Icon/>
+    <div><Icon/></div>
     <Href/>
     <Dropdown Parameters={$Options["Parameters"]} Filename={File} Port={Port}/>
 </div>

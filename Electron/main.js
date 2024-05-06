@@ -859,10 +859,18 @@ function create_window(opts, cbk = () => {}) {
             title: 'Notebook',
             show: true,
             contextMenu: true,
-            focus: false
+            focus: false,
         };
 
+
+
         const options = Object.assign({}, defaults, opts);
+        options.minWidth = 545;
+
+        if ((new RegExp(/gptchat/)).exec(options.url)) {
+            options.minWidth = 200;
+        }
+
         let win;
 
         if (isMac) {
@@ -872,7 +880,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarStyle: 'hiddenInset',
                 width: 800,
                 height: 600,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
@@ -913,7 +921,7 @@ function create_window(opts, cbk = () => {}) {
 
                 width: 1024,
                 height: 640,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
@@ -1000,7 +1008,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarOverlay: true,
                 width: 800,
                 height: 600,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
