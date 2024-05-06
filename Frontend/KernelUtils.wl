@@ -94,7 +94,7 @@ wsStartListerning[kernel_, port_, host_] := With[{},
           ];
 
           (*Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];*)
-          SocketListen[CSocketOpen[host, port ], wcp@#&, "SocketEventsHandler"->Null];
+          SocketListen[CSocketOpen[host, port ], wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
 
           (*SocketListen[port, wcp@#&];*)
         ];
