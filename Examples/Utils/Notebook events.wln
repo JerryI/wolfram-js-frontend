@@ -1,0 +1,21 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$91], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Utils/Notebook events.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\nBeep, when notebook has been closed", 
+    "Display" -> "codemirror", "Hash" -> 
+     "abd47b9c-61ec-4247-819b-0cbc0da2038d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b732845b-45d8-465c-a4aa-4f98d0b0797c"|>, 
+   <|"Data" -> "Beep, when notebook has been closed", 
+    "Display" -> "markdown", "Hash" -> 
+     "d7f3fa8f-d9cb-48ce-b6e9-cb8336904c80", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b732845b-45d8-465c-a4aa-4f98d0b0797c"|>, 
+   <|"Data" -> "EventHandler[EvaluationNotebook[], {\"OnClose\" -> \
+Function[Null,\n\tBeep[]\n]}]", "Display" -> "codemirror", 
+    "Hash" -> "ae14ef7d-c3eb-4579-aa30-27bbfedafd28", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b732845b-45d8-465c-a4aa-4f98d0b0797c"|>}, "serializer" -> "jsfn4"|>
