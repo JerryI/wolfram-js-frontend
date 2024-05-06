@@ -1,4 +1,4 @@
-const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
+const { session, app, Tray, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
 const { screen} = require('electron/main')
 
 const path = require('path')
@@ -60,7 +60,7 @@ trackpadUtils.onForceClick(() => {
 
 //fetch contex menus items from wljs_packages folder
 
-
+let tray;
 
 /* extesions for contex menu */
 const pluginsMenu = {};
@@ -255,7 +255,7 @@ const buildMenu = (opts) => {
 
                     {
                         label: 'Reopen in browser',
-                        click: async(ev) => {
+                        click: (ev) => {
                             server.browserMode = true;
                             shell.openExternal(windows.focused.win.webContents.getURL());
                         }
@@ -529,7 +529,7 @@ callFakeMenu["new"] = async(ev) => {
 }
 
 callFakeMenu["browser"] = async(ev) => {
-
+    server.browserMode = true;
     shell.openExternal(windows.focused.win.webContents.getURL());
 }
 
@@ -1186,13 +1186,32 @@ function create_window(opts, cbk = () => {}) {
 
 /* APP Logic */
 
-app.on('will-quit', () => {
+app.on('will-quit', (e) => {
     console.log('exiting the server...');
+    //e.preventDefault();
     server.shutdown();
 })
 
+app.on('before-quit', (e) => {
+    console.log('aaahhh...');
+    //server.shutdown();
+    if (server.browserMode && process.platform !== 'darwin') {
+    
+        e.preventDefault();
+        console.log('aaahhh...');
+        tray.fireBallon()
+
+        
+    }
+})
+
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin' && !server.browserMode) app.quit()
+    if (process.platform !== 'darwin' && !server.browserMode) {app.quit()} else {
+        if (server.browserMode) {
+            console.log('aaahhh...');
+            tray.fireBallon()
+        }
+    }
 })
 
 
@@ -1287,6 +1306,36 @@ const powerSaver = () => {
 /* App Ready */
 
 app.whenReady().then(() => {
+    if (!isMac) {
+        tray = new Tray(path.join(__dirname, 'build', '256x256_new.ico'));
+        console.log(path.join(__dirname, 'build', '256x256_new.ico'));
+        tray.setToolTip('Sorry, I am buzy');
+        tray.setContextMenu(Menu.buildFromTemplate([
+            {
+              label: 'Quit', click: function () {
+                server.browserMode = false;
+                app.quit();
+              }
+            }
+          ]));
+
+        tray.fireBallon = () => {
+            tray.displayBalloon({
+                title: "WLJS Server",
+                content: "Running in the background as a server",
+                largeIcon: false
+              });
+              setTimeout(() => {tray.displayBalloon({
+                title: "WLJS Server",
+                content: "Running in the background as a server",
+                largeIcon: false
+              });console.log("QQQ")}, 1000);
+              console.log("QQQ")
+        }  
+
+          
+    }
+
     pluginsMenu.fetch();
     buildMenu({plugins: pluginsMenu.items});
 
