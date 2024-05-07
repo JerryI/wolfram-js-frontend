@@ -1,10 +1,11 @@
-const { session, app, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
+const { session, app, Tray, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
 const { screen} = require('electron/main')
 
 const path = require('path')
 const { platform } = require('node:process');
 
-const trackpadUtils = require("electron-trackpad-utils");
+
+
 
 const zlib = require('zlib');
 
@@ -32,6 +33,13 @@ const { PARAMS, VALUE, MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica
 const isWindows = process.platform === 'win32'
 const isMac = process.platform === 'darwin'
 
+
+let trackpadUtils = {
+    onForceClick: () => {},
+    triggerFeedback: () => {}
+};
+if (isMac) trackpadUtils = require("electron-trackpad-utils");
+
 //all routes to important folders
 let installationFolder;
 
@@ -52,7 +60,7 @@ trackpadUtils.onForceClick(() => {
 
 //fetch contex menus items from wljs_packages folder
 
-
+let tray;
 
 /* extesions for contex menu */
 const pluginsMenu = {};
@@ -247,7 +255,7 @@ const buildMenu = (opts) => {
 
                     {
                         label: 'Reopen in browser',
-                        click: async(ev) => {
+                        click: (ev) => {
                             server.browserMode = true;
                             shell.openExternal(windows.focused.win.webContents.getURL());
                         }
@@ -521,7 +529,7 @@ callFakeMenu["new"] = async(ev) => {
 }
 
 callFakeMenu["browser"] = async(ev) => {
-
+    server.browserMode = true;
     shell.openExternal(windows.focused.win.webContents.getURL());
 }
 
@@ -851,10 +859,18 @@ function create_window(opts, cbk = () => {}) {
             title: 'Notebook',
             show: true,
             contextMenu: true,
-            focus: false
+            focus: false,
         };
 
+
+
         const options = Object.assign({}, defaults, opts);
+        options.minWidth = 545;
+
+        if ((new RegExp(/gptchat/)).exec(options.url)) {
+            options.minWidth = 200;
+        }
+
         let win;
 
         if (isMac) {
@@ -864,7 +880,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarStyle: 'hiddenInset',
                 width: 800,
                 height: 600,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
@@ -905,7 +921,7 @@ function create_window(opts, cbk = () => {}) {
 
                 width: 1024,
                 height: 640,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
@@ -992,7 +1008,7 @@ function create_window(opts, cbk = () => {}) {
                 titleBarOverlay: true,
                 width: 800,
                 height: 600,
-                minWidth: 545,
+                minWidth: options.minWidth,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
@@ -1178,13 +1194,32 @@ function create_window(opts, cbk = () => {}) {
 
 /* APP Logic */
 
-app.on('will-quit', () => {
+app.on('will-quit', (e) => {
     console.log('exiting the server...');
+    //e.preventDefault();
     server.shutdown();
 })
 
+app.on('before-quit', (e) => {
+    console.log('aaahhh...');
+    //server.shutdown();
+    if (server.browserMode && process.platform !== 'darwin') {
+    
+        e.preventDefault();
+        console.log('aaahhh...');
+        tray.fireBallon()
+
+        
+    }
+})
+
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin' && !server.browserMode) app.quit()
+    if (process.platform !== 'darwin' && !server.browserMode) {app.quit()} else {
+        if (server.browserMode) {
+            console.log('aaahhh...');
+            tray.fireBallon()
+        }
+    }
 })
 
 
@@ -1279,6 +1314,36 @@ const powerSaver = () => {
 /* App Ready */
 
 app.whenReady().then(() => {
+    if (!isMac) {
+        tray = new Tray(path.join(__dirname, 'build', '256x256_new.ico'));
+        console.log(path.join(__dirname, 'build', '256x256_new.ico'));
+        tray.setToolTip('Sorry, I am buzy');
+        tray.setContextMenu(Menu.buildFromTemplate([
+            {
+              label: 'Quit', click: function () {
+                server.browserMode = false;
+                app.quit();
+              }
+            }
+          ]));
+
+        tray.fireBallon = () => {
+            tray.displayBalloon({
+                title: "WLJS Server",
+                content: "Running in the background as a server",
+                largeIcon: false
+              });
+              setTimeout(() => {tray.displayBalloon({
+                title: "WLJS Server",
+                content: "Running in the background as a server",
+                largeIcon: false
+              });console.log("QQQ")}, 1000);
+              console.log("QQQ")
+        }  
+
+          
+    }
+
     pluginsMenu.fetch();
     buildMenu({plugins: pluginsMenu.items});
 

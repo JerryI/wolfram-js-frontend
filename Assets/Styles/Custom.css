@@ -190,6 +190,54 @@ input::selection {
   height: env(titlebar-area-height) !important;
 }
 
+[os="Windows"] .win\:sc-b {
+  scrollbar-width: 2px;
+  scrollbar-color: rgba(15, 15, 15, 0.2) transparent;
+}
+
+[os="Windows"] .win\:sc-b::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+[os="Windows"] .win\:sc-b::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 15, 0.2);
+  border-radius: 5px;
+}
+
+[os="Windows"] .win\:sc-b::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+[os="Windows"] .win\:sc-b::-webkit-scrollbar-button {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+[os="WindowsLegacy"] .owin\:sc-b {
+  scrollbar-width: 2px;
+  scrollbar-color: rgba(15, 15, 15, 0.2) transparent;
+}
+
+[os="WindowsLegacy"] .owin\:sc-b::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+[os="WindowsLegacy"] .owin\:sc-b::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 15, 0.2);
+  border-radius: 5px;
+}
+
+[os="WindowsLegacy"] .owin\:sc-b::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+[os="WindowsLegacy"] .owin\:sc-b::-webkit-scrollbar-button {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
 [os="Unix"] .linux\:h-titlebar {
   height: env(titlebar-area-height) !important;
 }
