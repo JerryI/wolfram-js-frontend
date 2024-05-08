@@ -42,7 +42,7 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
         
         _Notifications`Beeper (*`*) -> Function[Null,
             Print["BEEE!P!"];
-            If[Now - beepTimeout > Quantity[1, "Seconds"], 
+            If[Now - beepTimeout > Quantity[0.2, "Seconds"], 
                 beepTimeout = Now;
                 Print["BEEEP!"];
 
