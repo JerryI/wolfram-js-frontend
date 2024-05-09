@@ -1,6 +1,6 @@
-# Open-source Notebook Interface for Wolfram Language
+# Dynamic Notebook Environment for Wolfram Language
 
-![Cover-compressed](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/53547d20-e27a-41fb-992c-82dda0e4058f)
+![Preview](imgs/Toster.png)
 
 __Made for scientists by scientists__
 
@@ -12,12 +12,11 @@ __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
 
 **Recommended Wolfram Engine: 13.3 or higher**
 
-__Special thanks to [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP Stack developer)__
+__Special thanks to co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP/WS Stack developer)__
 
-To help maintain this project:
+To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
-Thank you 🍺 
 
 ## Highlights
 
