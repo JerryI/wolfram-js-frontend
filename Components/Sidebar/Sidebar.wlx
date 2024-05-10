@@ -1,7 +1,9 @@
 Sidebar := ImportComponent["Body.wlx"];
 
 Controller["Delete", sidebarId_, ___] := Function[name,
-  DeleteFile[URLDecode[name]];
+  With[{p = URLDecode[name]},
+    If[DirectoryQ[p], DeleteDirectory[p, DeleteContents->True], DeleteFile[p]];
+  ];
   EventFire[sidebarId, "Refresh", <|"Client"->$Client|>];
 ];
 

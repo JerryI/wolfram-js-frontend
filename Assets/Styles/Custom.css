@@ -262,3 +262,10 @@ input::selection {
   transition: height 0.2s;
   background: #0056880f;
 }
+
+.h-fade-20 {
+  mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  max-height: 4rem;
+  overflow: hidden;
+}
+

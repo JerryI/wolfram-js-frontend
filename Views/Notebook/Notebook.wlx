@@ -425,6 +425,12 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
                 CellWrapper.setInit(uid, state);
             }
+            core.UINotebook.ToggleFade = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                const state = await interpretate(args[1], env);
+
+                CellWrapper.fadeCell(uid, state);
+            }            
 
 
             core.UINotebook.RemoveCell = async (args, env) => {
@@ -653,6 +659,14 @@ Component[OptionsPattern[]] := With[{
                 WebUISubmit[UINotebook["ToggleInitGroup", uid, TrueQ[cell["Props", "InitGroup"]]], $Client];
             ]
         ],
+
+        "Fade" -> Function[uid,
+            Echo["Fade cell..."];
+            With[{cell = CellObj`HashMap[uid](*`*)},
+                cell["Props"] = Join[cell["Props"], <|"Fade" -> !TrueQ[cell["Props", "Fade"]]|>];
+                WebUISubmit[UINotebook["ToggleFade", uid, TrueQ[cell["Props", "Fade"]]], $Client];
+            ]
+        ],        
 
         "ClearOutputs" -> Function[uid,
             Echo["Clear outputs"];
