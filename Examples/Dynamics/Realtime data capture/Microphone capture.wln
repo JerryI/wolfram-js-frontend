@@ -1,33 +1,31 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$478], 
-   "Objects" -> <||>, "Path" -> "/users/kirill/Library/CloudStorage/OneDrive-\
-Personal/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\
-\:043d\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/Microphone \
-capture.wln"|>, "Cells" -> 
-  {<|"Data" -> ".md\n# Audio stream\nVisualize the waveform", 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$349], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Realtime data capture/Microphone capture.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Audio stream\nVisualize the waveform", 
     "Display" -> "codemirror", "Hash" -> 
-     "67f1f8aa-0e92-45a2-8cbd-4e9f94cac45f", "Invisible" -> False, 
+     "1933d2b9-1851-43eb-bad8-e5eccc323782", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "# Audio stream\nVisualize the waveform", 
     "Display" -> "markdown", "Hash" -> 
-     "ea8f2302-1422-4a24-bb72-2fd6bf5d5c6b", "Invisible" -> False, 
+     "4f3b9708-b94b-4856-9312-e9088921ecc5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> 
      ".md\n## Javascript\nGrab the data from AudioContext and send to WL", 
     "Display" -> "codemirror", "Hash" -> 
-     "ec18c103-8308-41cb-9533-504a3a8186b1", "Invisible" -> False, 
+     "1168a3a6-4f7c-4968-ad3c-1533e2585c3b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "## Javascript\nGrab the data from AudioContext and send to \
 WL", "Display" -> "markdown", "Hash" -> 
-     "a2b2175a-35da-4e23-8e93-cda6c3372260", "Invisible" -> False, 
+     "1b33b8d9-ab59-4bf3-9e19-735e11ed0ea3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> ".js\n\n  // Constants\n  const audioContext = new \
 AudioContext();\n  const analyser = audioContext.createAnalyser();\n  const \
 scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);\n  const \
@@ -64,10 +62,10 @@ analyser.disconnect();\n  scriptProcessor.disconnect();\n  \n  sign.style = \
 analyser.disconnect();\n  scriptProcessor.disconnect();\n};\n\nconst sign = \
 document.createElement('div');\nsign.style = \"color: gray\";\nsign.innerText \
 = \"Idle\";\n\nreturn sign;", "Display" -> "codemirror", 
-    "Hash" -> "341cc888-d0b6-460d-ac00-81527623aee8", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Hash" -> "948d70bf-e373-46ab-8c41-1f5d179504a5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "\n  // Constants\n  const audioContext = new \
 AudioContext();\n  const analyser = audioContext.createAnalyser();\n  const \
 scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);\n  const \
@@ -104,22 +102,22 @@ analyser.disconnect();\n  scriptProcessor.disconnect();\n  \n  sign.style = \
 analyser.disconnect();\n  scriptProcessor.disconnect();\n};\n\nconst sign = \
 document.createElement('div');\nsign.style = \"color: gray\";\nsign.innerText \
 = \"Idle\";\n\nreturn sign;", "Display" -> "js", 
-    "Hash" -> "5dd4a3b6-ba72-4ad6-8d16-ffe6fd8a037e", "Invisible" -> False, 
+    "Hash" -> "e37dbd56-485e-4d64-af10-7c659b27b959", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> ".md\n## Wolfram Language\nReceive and draw", 
     "Display" -> "codemirror", "Hash" -> 
-     "175b956b-a393-4bc1-97ea-69b74b9326ef", "Invisible" -> False, 
+     "8b6ac124-ea07-4bc8-b750-1790473be4a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "## Wolfram Language\nReceive and draw", 
     "Display" -> "markdown", "Hash" -> 
-     "7bfeb9fc-623f-49cf-a9df-bfdaab524a66", "Invisible" -> False, 
+     "f04f644e-21d3-47f9-90c5-2d241c18ac03", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "LeakyModule[{line = {{0.,-256.}, {512.,256.}}},\n  \
 EventHandler[\"audio\", Function[data,\n    \n    line = MapIndexed[{#2[[1]], \
 #1}&, data];\n  ]];\n  Graphics[\n    Line[line // Offload], \n    PlotRange \
@@ -129,12 +127,12 @@ EventHandler[InputButton[\"Start\"], Function[Null, FrontSubmit[MicStart[], \
 \"Window\"->win]]]\n]\nWith[{win = CurrentWindow[]},\n  \
 EventHandler[InputButton[\"Stop\"], Function[Null, FrontSubmit[MicStop[], \
 \"Window\"->win]]]\n]", "Display" -> "codemirror", 
-    "Hash" -> "376fedef-a2ae-4649-a432-92e6cba060b3", "Invisible" -> False, 
+    "Hash" -> "173f8036-f012-4b2d-8616-72f56eb805c6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>, 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
    <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "b1a52996-5cd4-4eea-96c8-5364ee6957f1", "Invisible" -> False, 
+    "Hash" -> "2e5f70dd-68fa-4750-9981-2d346dcdb121", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1344b61b-f6bf-473a-a6d8-3c99ad53b703"|>}, "serializer" -> "jsfn4"|>
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>}, "serializer" -> "jsfn4"|>

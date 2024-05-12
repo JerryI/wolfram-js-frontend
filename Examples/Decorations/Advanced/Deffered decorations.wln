@@ -1,0 +1,68 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$48], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Decorations/Deffered decorations.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Deffered decorations\nIt generates a unique \
+decoration for each widget's instace, unlike traditional way of using \
+`MakeBoxes`", "Display" -> "codemirror", 
+    "Hash" -> "ceec5257-8271-49f6-ae1e-920c6a9f9e6e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> "# Deffered decorations\nIt generates a unique decoration for \
+each widget's instace, unlike traditional way of using `MakeBoxes`", 
+    "Display" -> "markdown", "Hash" -> 
+     "035cb0b1-42b7-436c-9561-3a76399838c9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> "dummy /: MakeBoxes[dummy[handler_], StandardForm] := With[{\n \
+ uid = CreateUUID[]\n},\n  EventHandler[uid, {\"Mounted\" :> \
+Function[marker,\n    With[{win = WindowObj[<|\"Socket\"->$Client|>]},\n      \
+FrontSubmit[handler[marker, win], MetaMarker[marker], \"Window\"->win];\n    \
+]\n   ]\n  }];\n  \n  ViewBox[Null, Null, \"Event\"->uid]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d4940889-b2c0-4e64-b537-522aeef8bf59", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> 
+     ".md\nA handler function, that populates instance with a content", 
+    "Display" -> "codemirror", "Hash" -> 
+     "60424c2b-0416-4d93-b1c5-0eaba277b234", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> "A handler function, that populates instance with a content", 
+    "Display" -> "markdown", "Hash" -> 
+     "817f56a6-db7e-42a4-ac29-6f24fdb6a407", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> "handler[marker_String, win_] := With[{\n  g = With[{d = 2 \
+Pi/RandomInteger[{2,16}]}, \n Graphics[\n  Table[{EdgeForm[Opacity[.6]], \
+Hue[(-11 + q + 10 r)/72, 1, 1], \n    Polygon[{(8 - r) {Cos[d (q - 1)], \n    \
+    Sin[d (q - 1)]}, (8 - r) {Cos[d (q + 1)], \n        Sin[d (q + 1)]}, (10 \
+- r) {Cos[d q], Sin[d q]}}]}, {r, 6}, {q,\n     12}], ImageSize->{50,50}, \
+ImagePadding->None]]\n},\n  {PaneBox[], g // CreateFrontEndObject}\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fe869940-ffdf-40a7-b9f0-d725438d0251", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> ".md\nEvaluate this and then try to copy and paste", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c8a65141-5835-471d-9876-5e64ad313d5f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, 
+   <|"Data" -> "Evaluate this and then try to copy and paste", 
+    "Display" -> "markdown", "Hash" -> 
+     "4a96d585-0688-43ab-84b0-e36b4e5d6e11", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>, <|"Data" -> "dummy[handler]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f421220b-2669-4079-9cc3-3fe2ed6711f3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "bc75cf9d-dbae-44c6-9597-3f75e30c3b02"|>}, "serializer" -> "jsfn4"|>
