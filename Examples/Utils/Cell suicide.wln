@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$84], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$84], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/06 - Utils/CellSuicide.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Force cell to commit suicide\nA fun \

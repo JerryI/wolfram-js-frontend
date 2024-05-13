@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$87], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$87], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/03 - User input/Inputs overview.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# A simple button\nGenerates a single event", 

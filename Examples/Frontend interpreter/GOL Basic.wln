@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$312], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$312], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/09 - Frontend interpreter/GOL-Basic.wln"|>, 
  "Cells" -> 

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$290], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$290], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/01 - Introduction/Markdown.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# Markdown\nBy typing `.md` in the beginning \

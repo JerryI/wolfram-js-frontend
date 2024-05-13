@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$173], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$173], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/DPG2024 - Berlin/B4 - Interactive Graphics.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# Interactive Graphics\nIn the previous \

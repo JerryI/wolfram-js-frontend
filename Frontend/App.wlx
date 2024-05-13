@@ -49,12 +49,10 @@ renameFile[old_String, new_String] := With[{},
 
 NotebookQ[str_] := FileExtension[str] === "wln"
 
-createNotebook[assoc_Association, GlobalMessanger_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
+createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
-  With[{result = saveNotebook[path, "Events"->AppEvent]},
-    If[FailureQ[result],
-      EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
-    ,
+  Then[saveNotebook[path, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
+
       Print[result];
       EventFire[AppEvent, Notebook["OnCreate"], result];
       EventFire[GlobalMessanger, "Log", "Created! Please wait"];
@@ -62,39 +60,48 @@ createNotebook[assoc_Association, GlobalMessanger_, client_, currentpath_] := Wi
       Print[result["Path"]];
       
       WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
-    ]
-  ]
+    
+  ], Function[error,
+    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+  ]]
 ]
 
 backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
-  With[{result = saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True]},
-    If[FailureQ[result],
-      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-    ,
-      Print[result];
+  If[!TrueQ[notebook["ReadOnly"]], 
+    Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
+        Print[result];
+      ], Function[error, EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]]
     ]
   ]
 ]
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
-  With[{result = saveNotebook[notebook, "Events"->AppEvent]},
-    If[FailureQ[result],
-      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-    ,
-      Print[result];
+dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{},
+  If[TrueQ[notebook["ReadOnly"]],
+    EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
+  ,
+    Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
+      Function[result,
+        Print[result]
+      ], 
+      Function[error,
+        EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+      ]
     ]
   ]
 ]
 
-dumpNotebookAs[assoc_Association, GlobalMessanger_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
-  With[{result = cloneNotebook[notebook, path]},
-    If[FailureQ[result],
-      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-    ,
+dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
+If[TrueQ[notebook["ReadOnly"]],
+  EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
+,
+  Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
+    Function[result,
       WebUILocation[ URLEncode[ path ], client ];
+    ], Function[error,
+    EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
     ]
   ]
-]
+]]
 
 toggleWindowSize[_, client_] := With[{},
   WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
@@ -188,10 +195,10 @@ App[request_] := With[{
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
       "RenameFile" -> (renameFile@@# &),
-      "NewNotebook" -> (createNotebook[#, GlobalMessanger, $Client, Path]&),
-      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, $Client, Path]&),
-      "DumpSave" -> (dumpNotebook[#, GlobalMessanger, $Client]&),
-      "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, $Client]&),
+      "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
+      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
+      "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
+      "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];

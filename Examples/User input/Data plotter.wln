@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$450], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$450], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
 Support/wljs-notebook/Examples/03 - User input/Data plotter.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Data plotter\nEvaluate the cell and drag a \

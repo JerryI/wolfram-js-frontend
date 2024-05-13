@@ -7,6 +7,27 @@ body {
 :root {
   --filter : invert(1);
 }
+/* https://manuel.pinto.dev */
+body {
+	background: linear-gradient(-45deg, #ee77521f, #e7ce3c1a, #d523760f, #23d5ab2e);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
+	/* opacity: 0.1; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 body[data-theme='dark'] {
   --filter : invert(0);

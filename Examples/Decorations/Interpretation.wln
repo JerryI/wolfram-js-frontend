@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$593], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$593], 
    "Objects" -> <|"e4bf505c-3bc4-4b14-9e9d-e1b02aae3ced" -> 
       <|"Public" -> Hold[Graphics3D[Cuboid[{0, 0, 0}], ImageSize -> 
            100]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$138], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$138], 
    "Objects" -> <|"8d493ce0-bf4e-4367-bdb6-fccfbd2cd4cc" -> 
       <|"Public" -> Hold[WLXEmbed[{"<button style=\"\" \
 id=\"d21486ad-5273-4237-b2e1-df2cfbf81492\" class=\"sm-controls rounded \

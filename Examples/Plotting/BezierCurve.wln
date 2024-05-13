@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$439], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$439], 
    "Objects" -> <|"52eb540b-b7a0-4880-bb8a-bbd3e97769be" -> 
       <|"Public" -> Hold[Graphics[{BezierCurve[{{0, 0}, {1, 1}, {2, -1}, 
              {3, 0}, {5, 2}, {6, -1}, {7, 3}}], RGBColor[0, 1, 0], 

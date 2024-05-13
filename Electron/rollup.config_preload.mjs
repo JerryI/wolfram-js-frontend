@@ -4,7 +4,7 @@ import json from "@rollup/plugin-json";
 
 export default {
 
-  input: 'Electron/preload_log.js',
+  input: 'Electron/log.js',
   
   output: {
     dir: 'Electron/bundle',

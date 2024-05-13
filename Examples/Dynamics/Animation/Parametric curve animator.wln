@@ -1,19 +1,19 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1150], 
-   "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
-Support/wljs-notebook/Examples/Dynamics/Animation/Parametric curve \
-animator.wln"|>, "Cells" -> 
-  {<|"Data" -> ".md\n## Parametric curve animator\nProvide a curve equation \
-as a function of the angle and the ranges", "Display" -> "codemirror", 
-    "Hash" -> "6d33d1ae-346e-4393-9aec-bafc2da43ca5", "Invisible" -> False, 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$251], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Animation/Parametric curve animator.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Parametric curve animator\nProvide a curve \
+equation as a function of the angle and the ranges", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7d7f840a-7635-4e1c-a93b-728ffe5920c8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "dd480928-fcc5-4e60-a49b-4b69fa9e78a6"|>, 
+     "84784ea0-d871-44d3-bb59-3d724f4c1733"|>, 
    <|"Data" -> "\n## Parametric curve animator\nProvide a curve equation as a \
 function of the angle and the ranges", "Display" -> "markdown", 
-    "Hash" -> "93183377-ba0c-418e-b7a6-52a3805aadbf", "Invisible" -> False, 
+    "Hash" -> "827e0738-9b7d-45cf-bfad-d03a46b1081b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "dd480928-fcc5-4e60-a49b-4b69fa9e78a6"|>, 
+     "84784ea0-d871-44d3-bb59-3d724f4c1733"|>, 
    <|"Data" -> "ParametricAnimator[equation_, variable_:t, range_:{0, \
 Infinity, 0.1}] := LeakyModule[{time = range[[1]], task, scale = 1, array = \
 {}, scaledArray={}, cell = ResultCell[]},\n\n    (* sample the equation each \
@@ -23,20 +23,20 @@ frame and rescale if needed *)\n\tanimate := Block[{variable = time},\n       \
 \t\tscaledArray = scale array; \n            pointer = e scale;\n        \
 ];\n\n\t\ttime += range[[3]];\n\t\tIf[time >= range[[2]], \
 TaskRemove[task]];\n\t];\n\n    animate;\n\n    (* async task to animate \
-every 30 ms *)\n\ttask = SetInterval[animate, 30];\n\n    (* stop the task if \
+every 30 ms *)\n\ttask = SetInterval[animate, 50];\n\n    (* stop the task if \
 cell was destroyed or reevaluated *)\n\tEventHandler[cell, \
 {\"Destroy\"->Function[Null, TaskRemove[task]; \
 Print[\"removed\"]]}];\n\n\tGraphics[{Red, PointSize[0.05], Point[pointer // \
 Offload],\n Opacity[0.5], Line[scaledArray // Offload]\n  }, \
-\"TransitionDuration\"->10, \"TransitionType\"->\"Linear\", Controls->True, \
+\"TransitionDuration\"->50, \"TransitionType\"->\"Linear\", Controls->True, \
 PlotRange->{{-1,1}, {-1,1}}]\n]", "Display" -> "codemirror", 
-    "Hash" -> "9cb837df-f8ff-42db-b40e-1ba305e07393", "Invisible" -> False, 
+    "Hash" -> "c4eb7159-7875-4687-a5dd-f38bf00ed907", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "dd480928-fcc5-4e60-a49b-4b69fa9e78a6"|>, 
+    "Notebook" -> "84784ea0-d871-44d3-bb59-3d724f4c1733"|>, 
    <|"Data" -> "ParametricAnimator[Exp[Sin[t]] - 2 Cos[4t] + Sin[(2t - \
 Pi)/24], t, {0,16, 0.05}]", "Display" -> "codemirror", 
-    "Hash" -> "8e02110b-d96a-4c43-afb6-bcdf44fe8a72", "Invisible" -> False, 
+    "Hash" -> "e7f849e9-d642-4b58-a7e8-e036afb17c1e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "dd480928-fcc5-4e60-a49b-4b69fa9e78a6"|>}, "serializer" -> "jsfn4"|>
+     "84784ea0-d871-44d3-bb59-3d724f4c1733"|>}, "serializer" -> "jsfn4"|>

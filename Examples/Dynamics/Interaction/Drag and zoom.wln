@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1112], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1112], 
    "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
 Support/wljs-notebook/Examples/Dynamics/Interaction/Drag and zoom.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# Interactive Plot", 

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$180], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$180], 
    "Objects" -> <|"3c27d476-8451-404e-91b9-f22b333474ed" -> 
       <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], 
            {Line[Offload[With[{pc$ = pc$157265, pi$ = pi$157265, 

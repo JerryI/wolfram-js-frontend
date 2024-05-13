@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$57], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$57], 
    "Objects" -> <|"7eb5fbd3-a868-4599-8329-c6db7bf331e7" -> 
       <|"Public" -> Hold[Graphics[{RGBColor[1, 0, 0], PointSize[0.05], 
            Point[Offload[pt]]}, PlotRange -> {{-1, 1}, {-1, 1}}]]|>|>, 

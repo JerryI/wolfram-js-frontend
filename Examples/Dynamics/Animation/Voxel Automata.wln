@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$32], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$32], 
    "Objects" -> <|"076f0378-38d3-45b8-9697-933daacb7120" -> 
       <|"Public" -> Hold[Graphics3D[{Cuboid[{1, 1, 0}], 
            MetaMarker["marker"]}, "Lighting" -> None, "Lightmap" -> "https://\

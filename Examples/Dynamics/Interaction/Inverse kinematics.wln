@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1074], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1074], 
    "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
 Support/wljs-notebook/Examples/Dynamics/Interaction/Inverse kinematics.wln"|>\
 , "Cells" -> {<|"Data" -> ".md\n## FABRIK Solver\nAn interactive \

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$136], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$136], 
    "Objects" -> <|"e864a889-4313-4351-b64b-3e6f23a15d24" -> 
       <|"Public" -> Hold[Graphics[GraphicsComplex[{{-0.8660254037844384, 
              -0.4999999999999994}, {1.8369701987210297*^-16, 1}, 

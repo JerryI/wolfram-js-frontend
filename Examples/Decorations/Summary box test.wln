@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$35], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$35], 
    "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/Decorations/Summary box test.wln"|>, 
  "Cells" -> 
