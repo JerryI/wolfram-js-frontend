@@ -3066,9 +3066,9 @@ window.ifWin = () => {
     logger.style.height = "auto";
     runColorMode((isDarkMode) => {
         if (isDarkMode) {
-            document.body.style.background = "rgb(41, 45, 62)";
+            document.body.style.background = "linear-gradient(-45deg, rgb(64,55,65), rgb(61,61,64),  rgb(52, 45, 64),  rgb(52, 75, 81))";    
         } else {
-            document.body.style.background = "rgb(255, 255, 250)";
+            document.body.style.background = "linear-gradient(-45deg, rgb(251, 239, 235), rgb(252, 250, 238), rgb(252, 243, 247), rgb(227, 247, 240))";
         }
       }); 
     
