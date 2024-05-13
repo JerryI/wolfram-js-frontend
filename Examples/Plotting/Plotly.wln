@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$794], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$794], 
    "Objects" -> <|"dc1717b7-09e1-41f7-8612-467d26d4e271" -> 
       <|"Public" -> Hold[ListLinePlotly[{{{2.040816326530612*^-8, 
              2.040816326530612*^-8}, {0.00030671792055962676, 

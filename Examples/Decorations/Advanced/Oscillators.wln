@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$40], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$40], 
    "Objects" -> <|"47eef2b8-aed8-4205-a9cc-9bb5e81b5f0c" -> 
       <|"Public" -> Hold[EditorView[Offload[freq$159476]]]|>, 
      "1f6e178f-2650-491c-9f47-50ade06d7c37" -> 

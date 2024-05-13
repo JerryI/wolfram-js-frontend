@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$391], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$391], 
    "Objects" -> <|"a2c496d3-7721-4daa-be89-ec4e0dbb7d88" -> 
       <|"Public" -> Hold[Graphics3D[{EdgeForm[], GraphicsComplex[
             {{8.471697807312012, 1.6333129405975342, 0.43172258138656616}, 

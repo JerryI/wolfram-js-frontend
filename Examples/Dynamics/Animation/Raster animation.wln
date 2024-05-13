@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1457], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1457], 
    "Objects" -> <|"b2a83b23-37ba-4e74-b80c-95f8df164119" -> 
       <|"Public" -> Hold[Image[NumericArray[{{{254, 255, 239}, 
              {254, 255, 239}, {254, 255, 239}, {254, 255, 239}, 

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
    "Objects" -> <|"e1797651-3421-4ae3-a67a-c7aab4f5fdfb" -> 
       <|"Public" -> Hold[PlaceholderClock[]]|>|>, 
    "Path" -> "/users/kirill/Library/Application \

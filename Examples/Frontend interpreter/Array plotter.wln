@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$234], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$234], 
    "Objects" -> <|"0d765fb5-63e3-4806-8acc-51cab0744426" -> 
       <|"Public" -> ImportString[StringJoin["[\"Hold\", ", 
           <|"notebook" -> <|"name" -> "Ashtray", "id" -> "chorale-7f2a2", 

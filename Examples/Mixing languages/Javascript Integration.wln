@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$414], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$414], 
    "Objects" -> <|"397f3689-4b70-4b33-93e5-691ef75edf3e" -> 
       <|"Public" -> Hold[MyFunction2["Hello World!"]]|>, 
      "98560aba-19be-403b-8432-a5ea5ad21e7d" -> 

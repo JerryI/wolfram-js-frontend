@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$499], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$499], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
 Support/wljs-notebook/Examples/03 - User input/Custom event emitter.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Custom event generator\nLet us create a \

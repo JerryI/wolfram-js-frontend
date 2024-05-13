@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$165], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$165], 
    "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/Decorations/External decorators.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n# External decorators\nusing Javascript to \

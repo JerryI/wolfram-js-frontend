@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$99], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$99], 
    "Objects" -> <|"aacfdc7c-b982-495b-a3bf-318b18028027" -> 
       <|"Public" -> Hold[EditorView[Offload[state$387651]]]|>|>, 
    "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Decoratio\

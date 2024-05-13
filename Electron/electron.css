@@ -9,7 +9,7 @@ body {
 }
 /* https://manuel.pinto.dev */
 body {
-	background: linear-gradient(-45deg, #ee77521f, #e7ce3c1a, #23a6d530, #23d5ab2e);
+	background: linear-gradient(-45deg, #ee77521f, #e7ce3c1a, #d523760f, #23d5ab2e);
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
 	height: 100vh;

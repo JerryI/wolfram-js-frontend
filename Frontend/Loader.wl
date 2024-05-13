@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook`", "JerryI`WLX`WebUI`"}];
+BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`", "JerryI`WLX`WebUI`"}];
     
     Begin["`Internal`"];
 
@@ -11,14 +11,14 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
         Echo["Loader >> renamed."];
     ];
 
-    clone[notebook_Notebook, newPath_String] := With[{oldPath = notebook["Path"]},
+    clone[notebook_Notebook, newPath_String, opts: OptionsPattern[] ] := With[{oldPath = notebook["Path"]},
         cache[oldPath] = .;
         cache[newPath] = notebook;
         notebook["Path"] = newPath;
-        save[notebook]
+        save[notebook, opts]
     ];
     
-    save[path_String, notebook_Notebook, opts: OptionsPattern[] ] := Module[{dir = path},
+    save[path_String, notebook_Notebook, opts: OptionsPattern[] ] := With[{modals = OptionValue["Modals"], promise = Promise[], client = OptionValue["Client"]}, Module[{dir = path},
         If[DirectoryQ[dir],
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
@@ -40,19 +40,80 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
             |>, makeHashPath[dir] ]},
                 If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
             ];
+
+            EventFire[promise, Resolve, notebook];
         ,
             With[{h = checkbackups[notebook]}, If[h =!= False, DeleteFile[h] ] ];
-            With[{r = Put[<| 
-                "Notebook" -> Notebook`Serialize[notebook], 
-                "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
-                "serializer" -> "jsfn4" 
-            |>, dir] },
-                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
-            ];
+
+            saveByPath := (
+                With[{r = Put[<| 
+                    "Notebook" -> Notebook`Serialize[notebook], 
+                    "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
+                    "serializer" -> "jsfn4" 
+                |>, dir] },
+                    If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
+                ];
+                EventFire[promise, Resolve, notebook];
+            );
+
+            (*If[ MemberQ[FileNameSplit[dir], "Examples"] && !MissingQ[client],
+                    With[{request = CreateUUID[]},
+                        EventHandler[request, {
+                            "Success" -> Function[assoc,
+                                EventRemove[request];
+                                
+                                With[{
+                                    p = Promise[]
+                                },
+                                    EventFire[modals, "RequestPathToSave", <|
+                                        "Promise"->p,
+                                        "Title"->"Save as",
+                                        "Ext"->"wln",
+                                        "Client"->assoc["Client"]
+                                    |>];
+
+                                    Then[p, Function[directory,
+
+                                        
+                                        With[{newDir = If[StringTake[dir, -3] =!= "wln",
+                                            directory <> ".wln", directory
+                                        ]},
+                                            dir = newDir;
+                                            cache[newDir] = .;
+                                            cache[newDir] = notebook;
+                                            notebook["Path"] = newDir;
+                                            saveByPath;                                         
+                                        ]
+
+
+                                    ] ];
+                                ];
+
+                            ],
+
+                            _ -> Function[assoc,
+                                EventRemove[request];
+                                saveByPath; 
+                            ]
+                        }];
+
+                        EventFire[modals, "GenericAskTemplate", <|
+                            "Callback" -> request, 
+                            "Client" -> client,
+                            "Title" -> "It seems you are trying to save to Examples folder, which is read-only. Save to somewhere else?", "SVGIcon" -> ""
+                        |>];
+                    ];                
+            ,
+               saveByPath; 
+            ];*)
+
+            saveByPath; 
         ];
 
-        notebook
-    ];
+        
+
+        promise
+    ] ];
 
     checkbackups[notebook_Notebook] := notebook["Path"] // checkbackups
     checkbackups[p_String] := With[{
@@ -138,8 +199,8 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Notebook
     ];
 
     Options[load] = {"Events"->"Blackhole"}
-    Options[save] = {"Events"->"Blackhole", "Temporal"->False}
-    Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False}
+    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
+    Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
 
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},
         Echo["Loading to cache..."];

@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$659], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$659], 
    "Objects" -> <|"5b08782b-740e-43ff-be21-295c1bf94885" -> 
       <|"Public" -> Hold[Graphics[{{}, {{{}, {}, {Hue[0.67, 0.6, 0.6], 
               Directive[PointSize[Rational[1, 72]], RGBColor[0.368417, 

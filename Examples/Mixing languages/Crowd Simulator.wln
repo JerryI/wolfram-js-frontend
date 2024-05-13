@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$645], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$645], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Examples/04 - Mixing languages/CrowdSimulator.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Crowd Simulator\nWritten in JS by [Szenia \

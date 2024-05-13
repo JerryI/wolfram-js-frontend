@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4437], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4437], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
 Support/wljs-notebook/Examples/06 - Utils/Editor manipulations.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Editor manupilation", 

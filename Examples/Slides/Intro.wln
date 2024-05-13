@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$359], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$359], 
    "Objects" -> <||>, "Path" -> 
     "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Slides/Intro.wln"|>\
 , "Cells" -> {<|"Data" -> ".md\n## Basic example of a presentation\n*using \

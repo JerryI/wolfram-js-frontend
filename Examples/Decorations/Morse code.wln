@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$430], 
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$430], 
    "Objects" -> <|"77396535-9691-4b59-8ddd-e4bd0861953c" -> 
       <|"Public" -> Hold[Sound[SampledSoundList[{4.9631702229120274*^-6, 
             0.4794328817350867, 0.8414801252020672, 0.9975049015314038, 

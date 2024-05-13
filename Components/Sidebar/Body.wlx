@@ -9,6 +9,7 @@ ItemList := ImportComponent["Components/ItemList.wlx"];
         </li>
         
       </ul>
+      <div class="grow h-full" style="-webkit-app-region: drag"></div>
     </nav>
 
 
