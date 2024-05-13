@@ -1351,6 +1351,7 @@ app.whenReady().then(() => {
 
     //make a log window and start WL
     windows.log.construct((log_window) => {
+        //new promt('input', 'Do you have Wolfram Engine installed?', (answer) => console.log(answer), log_window);
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });
 
@@ -1478,12 +1479,16 @@ function start_server (window) {
 
     server.wolfram.process.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
 
+    const PACError = new RegExp(/Execution of PAC script at/);
+
     let url_match;
     const url_reg = new RegExp(/Open http:\/\/(?<ip>[0-9|.]*):(?<port>[0-9]*) in your browser/);
 
     server.wolfram.streamer = (data) => {
         const string = data.toString();
         windows.log.print(string);
+
+        
 
         //listerning for a specific line in output
         url_match = url_reg.exec(string);
@@ -1511,6 +1516,12 @@ function start_server (window) {
     };
     server.wolfram.errors = (data) => {
         const string = data.toString();
+
+        //checking errors
+        if (PACError.exec(string)) {
+            new promt('binary', 'There might be an problem with Wolfram Engine (Execution of PAC script). If you face any further issues, try to restart frontend with no active internet connection', ()=>{}, window);
+        }
+
         windows.log.print(string, '\x1b[46m');
     };
 
@@ -1554,24 +1565,23 @@ function create_first_window() {
     server.wasUpdated = false;
 }
 
+const prompt = require('native-prompt')
 
 const promts_hash = {}
 class promt {
-    constructor(type = 'binary', cbk, window) {
+    constructor(type = 'binary', title, cbk, window) {
         this.uuid = uuid4();
 
         switch(type) {
             case 'binary':
-                window.webContents.send('yesorno', this.uuid);
+                window.webContents.send('yesorno', this.uuid, title);
                 this.promise = (result) => cbk(result)
             break;
 
             case 'input':
-                window.webContents.send('promt', this.uuid);
-                this.promise = (result) => {
-                    //window.webContents.send('');
+                prompt('Action needed', title).then((result) => {
                     cbk(result)
-                }
+                });
             break;
         }
 
@@ -1616,8 +1626,8 @@ function check_wl (configuration, cbk, window) {
         windows.log.clear();
         windows.log.print(err);
         console.log(err);
-        windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
-        new promt('binary', (answer) => {
+        //windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
+        new promt('binary', 'Do you have Wolfram Engine installed?', (answer) => {
             if (answer) {
                 windows.log.print("");
                 windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
@@ -1654,8 +1664,8 @@ function check_wl (configuration, cbk, window) {
             windows.log.clear();
             windows.log.print(err);
             console.log(err);
-            windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
-            new promt('binary', (answer) => {
+            //windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
+            new promt('binary', 'Do you have Wolfram Engine installed?', (answer) => {
                 if (answer) {
                     windows.log.print("");
                     windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
@@ -1850,8 +1860,8 @@ function default_error_handling(success, reject, s, program, window) {
         windows.log.print("It seems you have some Wolfram Kernels running in the background or on another machine. Due to the Wolfram licensing limitations it is not allowed to run more than 2. WLJS Notebook requires exactly 2 to run locally.", '\x1b[44m');
         windows.log.print("");
 
-        windows.log.print('Should we try to kill other processes?', '\x1b[42m');
-        new promt('binary', (answer) => {
+        //windows.log.print('Should we try to kill other processes?', '\x1b[42m');
+        new promt('binary','Should we try to kill other Wolfram processes?', (answer) => {
             if (!answer) {
                 kill_all(() => {
                     windows.log.clear();
@@ -1868,9 +1878,9 @@ function default_error_handling(success, reject, s, program, window) {
 
     //#3 Activation
     if (new RegExp('The Wolfram Engine requires one-time').exec(s)) {
-        windows.log.print('Do you have a developer license from Wolfram?', '\x1b[42m');
+        //windows.log.print('Do you have a developer license from Wolfram?', '\x1b[42m');
 
-        new promt('binary', (answer) => {
+        new promt('binary', 'Do you have a developer license activated?', (answer) => {
             if (!answer) {
                 windows.log.clear();
                 windows.log.print('Please get the license from Wolfram website. A window will open shortly...', '\x1b[42m');
@@ -1945,13 +1955,13 @@ function activate_wl(program, success, rejection, window) {
 
     windows.log.print('Please, enter your Wolfram ID (usually - your email):', '\x1b[42m');
 
-    new promt('input', (result) => {
+    new promt('input', 'Wolfram ID', (result) => {
         program.stdin.write(result.trim());
         program.stdin.write('\n');
 
         windows.log.clear();
         windows.log.print('Please, enter your password', '\x1b[42m');
-        new promt('input', (result) => {
+        new promt('input', 'Password', (result) => {
             program.stdin.write(result.trim());
             program.stdin.write('\n');
 
@@ -2071,7 +2081,7 @@ function check_installed (cbk, window) {
                                         windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
                                         windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
 
-                                        new promt('binary', (answer) => {
+                                        new promt('binary', 'A new version is available. Should we install it?', (answer) => {
                                             if (answer) {
                                                 install_frontend(cbk, window);
                                             } else {
