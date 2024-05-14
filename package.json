@@ -16,6 +16,7 @@
     "el": "electron .",
     "dist": "electron-builder",
     "dist-win": "electron-builder --win --x64",
+    "dist-linux": "electron-builder --linux --x64",
     "dist86": "electron-builder --x64",
     "dist-all": "electron-builder -mwl --x64",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
@@ -85,6 +86,8 @@
       "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
+      "./Electron/native-prompt-leo/**",
+      "./Electron/build/**/",
       "./shipped/**"
     ],
     "asar": false
