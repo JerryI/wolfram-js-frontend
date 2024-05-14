@@ -29,7 +29,11 @@ initializeKernel[parameters_][kernel_] := With[{
     dir = FileNameJoin[{Directory[], "wljs_packages", #}]
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];
+    Echo[kernel];
+    Echo[kernel["LTPSocket"] ];
+    
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
+      
       Kernel`Async[kernel,  ToExpression[processed, InputForm] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},

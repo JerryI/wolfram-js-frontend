@@ -715,6 +715,7 @@ const windows = {
               win = new BrowserWindow({
                 vibrancy: "sidebar", // in my case...
                 frame: true,
+                
                 titleBarStyle: 'hiddenInset',
                 width: 600,
                 height: 400,
@@ -730,7 +731,7 @@ const windows = {
                 win = new BrowserWindow({
                     vibrancy: "sidebar", // in my case...
                     frame: true,
-
+                    autoHideMenuBar: true,
                     width: 600,
                     height: 400,
                     resizable: false,
@@ -1315,8 +1316,12 @@ const powerSaver = () => {
 
 app.whenReady().then(() => {
     if (!isMac) {
-        tray = new Tray(path.join(__dirname, 'build', '256x256_new.ico'));
-        console.log(path.join(__dirname, 'build', '256x256_new.ico'));
+        if (!isWindows) {
+            tray = new Tray(path.join(__dirname, 'build', '512x512.png'));
+        } else {
+            tray = new Tray(path.join(__dirname, 'build', '256x256_new.ico'));
+        }
+        //console.log(path.join(__dirname, 'build', '256x256_new.ico'));
         tray.setToolTip('Sorry, I am buzy');
         tray.setContextMenu(Menu.buildFromTemplate([
             {
@@ -1565,7 +1570,7 @@ function create_first_window() {
     server.wasUpdated = false;
 }
 
-const prompt = require('native-prompt')
+const prompt = require('./native-prompt-leo/')
 
 const promts_hash = {}
 class promt {

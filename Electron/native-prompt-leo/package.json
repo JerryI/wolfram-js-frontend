@@ -1,0 +1,23 @@
+{
+  "name": "native-prompt",
+  "version": "2.1.4",
+  "description": "Create native prompts with Node.js and Electron",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "(rm tsconfig.tsbuildinfo && rm -R dist && tsc && node test) || (del .\\tsconfig.tsbuildinfo && rd /s /q .\\dist && tsc && node test.js) || (tsc && node test.js)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssight/native-prompt.git"
+  },
+  "author": "ssight",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ssight/native-prompt/issues"
+  },
+  "homepage": "https://github.com/ssight/native-prompt#readme",
+  "keywords": ["nodejs", "electron", "gui"],
+  "devDependencies": {
+    "@types/node": "^20.12.2"
+  }
+}
