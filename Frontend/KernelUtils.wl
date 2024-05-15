@@ -5,6 +5,7 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
+  "KirillBelov`CSockets`EventsExtension`",
   "KirillBelov`Internal`",
   "KirillBelov`TCPServer`",
   "KirillBelov`WebSocketHandler`",
