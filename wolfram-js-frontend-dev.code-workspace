@@ -68,6 +68,9 @@
 		},
 		{
 			"path": "wljs_packages/wljs-sharedlib-mk"
+		},
+		{
+			"path": "wl_packages/KirillBelov_CSockets"
 		}
 	],
 	"settings": {
