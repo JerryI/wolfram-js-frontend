@@ -708,6 +708,14 @@ const windows = {
             this.win.webContents.send('push-logs', data, color);
         },
 
+        info (data) {
+            this.win.webContents.send('info', data);
+        },
+
+        version (data) {
+            this.win.webContents.send('version', data);
+        },
+
         construct(cbk = () => {}) {
             let win;
 
@@ -723,7 +731,7 @@ const windows = {
                 title: 'Launcher',
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_log.js'),
-                    //webSecurity: false,
+                    webSecurity: false,
                     //nodeIntegration: true
                 }
              });
@@ -744,7 +752,14 @@ const windows = {
                  });
 
 
+
+
             }
+
+            win.webContents.setWindowOpenHandler((details) => {
+                shell.openExternal(details.url); // Open URL in user's browser.
+                return { action: "deny" }; // Prevent the app from opening the URL.
+              })
 
             /*win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
               callback({ responseHeaders: Object.assign({
@@ -1280,6 +1295,7 @@ const checkCacheReset = (cbk) => {
         cbk();
 
         windows.log.print('HTTP Cache reset!', "\x1b[32m");
+        windows.log.info('HTTP Cache reset');
     }
 }
 
@@ -1354,8 +1370,11 @@ app.whenReady().then(() => {
 
     powerSaver();
 
+    
+
     //make a log window and start WL
     windows.log.construct((log_window) => {
+        windows.log.version(app.getVersion());
         //new promt('input', 'Do you have Wolfram Engine installed?', (answer) => console.log(answer), log_window);
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });
@@ -1482,6 +1501,7 @@ function start_server (window) {
         return;
     }
 
+    windows.log.info('Starting server');
     server.wolfram.process.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
 
     const PACError = new RegExp(/Execution of PAC script at/);
@@ -1570,7 +1590,6 @@ function create_first_window() {
     server.wasUpdated = false;
 }
 
-const prompt = require('./native-prompt-leo/')
 
 const promts_hash = {}
 class promt {
@@ -1584,9 +1603,11 @@ class promt {
             break;
 
             case 'input':
-                prompt('Action needed', title).then((result) => {
-                    cbk(result)
-                });
+                window.webContents.send('promt', this.uuid, title);
+                this.promise = (result) => cbk(result)
+                //prompt('Action needed', title).then((result) => {
+                  //  cbk(result)
+                //});
             break;
         }
 
@@ -1621,6 +1642,7 @@ function check_wl (configuration, cbk, window) {
     if (configuration) server.wolfram = {...server.wolfram, ...configuration.wolfram};
 
     windows.log.print("");
+    windows.log.info("Starting wolframscript");
     windows.log.print("Starting wolframscript by path: " + server.wolfram.path);
     let program;
 
@@ -1631,10 +1653,12 @@ function check_wl (configuration, cbk, window) {
         windows.log.clear();
         windows.log.print(err);
         console.log(err);
+        windows.log.info("wolframscript was not found!");
         //windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
         new promt('binary', 'Do you have Wolfram Engine installed?', (answer) => {
             if (answer) {
                 windows.log.print("");
+                new promt('binary', 'Please, locate an executable called `wolframscript` or `WolframKernel`', ()=>{}, window);
                 windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
 
                 setTimeout(() => {
@@ -1662,6 +1686,7 @@ function check_wl (configuration, cbk, window) {
     //error
     program.on('error', function(err) {
         windows.log.print("");
+        windows.log.info("Cannot execute a given process");
         windows.log.print("Cannot execute a given process", '\x1b[46m');
         windows.log.print(String(err));
 
@@ -1670,9 +1695,11 @@ function check_wl (configuration, cbk, window) {
             windows.log.print(err);
             console.log(err);
             //windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
+            windows.log.info("Cannot locate wolframscript!");
             new promt('binary', 'Do you have Wolfram Engine installed?', (answer) => {
                 if (answer) {
                     windows.log.print("");
+                    
                     windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
 
                     setTimeout(() => {
@@ -1821,6 +1848,7 @@ function check_wl (configuration, cbk, window) {
             windows.log.print(data.toString());
             windows.log.print("");
             windows.log.print("No reply. Restart in 5 sec", '\x1b[46m');
+            windows.log.info("No reply. Restart in 5 sec");
 
             setTimeout(()=>{
 
@@ -1843,6 +1871,8 @@ function default_error_handling(success, reject, s, program, window) {
     //1# activation issues
     if (new RegExp('Wolfram product is not activated').exec(s)) {
         windows.log.print("Automatic activation in 3 seconds...", '\x1b[44m');
+        windows.log.info("Automatic activation in 3 seconds...");
+
         setTimeout(() => {
             server.wolfram.args.push('-activate');
             windows.log.clear();
@@ -1864,6 +1894,7 @@ function default_error_handling(success, reject, s, program, window) {
     if (new RegExp('The Wolfram Engine could not be activated using your Wolfram ID').exec(s)) {
         windows.log.print("It seems you have some Wolfram Kernels running in the background or on another machine. Due to the Wolfram licensing limitations it is not allowed to run more than 2. WLJS Notebook requires exactly 2 to run locally.", '\x1b[44m');
         windows.log.print("");
+        windows.log.info('It seems you have other Wolfram Kernels running in the background. Please stop them');
 
         //windows.log.print('Should we try to kill other processes?', '\x1b[42m');
         new promt('binary','Should we try to kill other Wolfram processes?', (answer) => {
@@ -1884,6 +1915,7 @@ function default_error_handling(success, reject, s, program, window) {
     //#3 Activation
     if (new RegExp('The Wolfram Engine requires one-time').exec(s)) {
         //windows.log.print('Do you have a developer license from Wolfram?', '\x1b[42m');
+        windows.log.info('Activation required');
 
         new promt('binary', 'Do you have a developer license activated?', (answer) => {
             if (!answer) {
@@ -1942,6 +1974,7 @@ function activate_wl(program, success, rejection, window) {
 
         if (new RegExp('Incorrect').exec(string)) {
             //windows.log.print('Incorrect');
+            windows.log.info('Incorrect login/password');
             setTimeout(rejection, 3000);
             //stop
             return true;
@@ -1949,6 +1982,7 @@ function activate_wl(program, success, rejection, window) {
 
         if (new RegExp('Wolfram Language').exec(string)) {
             //windows.log.print('Success!');
+            windows.log.info('Activated');
             success();
             return true;
         }
@@ -1958,7 +1992,7 @@ function activate_wl(program, success, rejection, window) {
     }
 
 
-    windows.log.print('Please, enter your Wolfram ID (usually - your email):', '\x1b[42m');
+    windows.log.print('Please, enter your Wolfram ID (usually - your email)', '\x1b[42m');
 
     new promt('input', 'Wolfram ID', (result) => {
         program.stdin.write(result.trim());
@@ -1980,6 +2014,7 @@ function activate_wl(program, success, rejection, window) {
                 if (check(data.toString())) return;
 
                 windows.log.print('please, wait...');
+                windows.log.info('Please wait');
 
                 program.stderr.once('data', (data) => {
                     windows.log.print(data.toString());
@@ -2005,6 +2040,7 @@ function activate_wl(program, success, rejection, window) {
                 if (check(data.toString())) return;
 
                 windows.log.print('please, wait...');
+                windows.log.info('Please wait');
 
                 program.stdout.once('data', (data) => {
                     windows.log.print(data.toString());
@@ -2021,6 +2057,7 @@ function activate_wl(program, success, rejection, window) {
 
 function install_wl(window) {
     windows.log.clear();
+    windows.log.info('Wolfram Engine is required. Please, install > 13.0.1');
     windows.log.print("Please download and install Wolfram Engine manually. A windows will open shortly. A feature for auto-installation is not supported for now.");
     windows.log.print("");
     windows.log.print("Recommended version is 13.0.1", '\x1b[42m');
@@ -2042,6 +2079,7 @@ function check_installed (cbk, window) {
         fs.readFile(package, (err, raw) => {
             if (err) {
                 windows.log.print('Cannot read '+package+'!');
+                windows.log.info('Cannot read bundle files!');
                 throw err;
             }
 
@@ -2052,6 +2090,7 @@ function check_installed (cbk, window) {
 
             //watchdog for internet connection
             const watchdog = setTimeout(() => {
+                windows.log.info('Offline mode');
                 windows.log.print('No internet connection! Skipping update checks...', '\x1b[32m');
                 cbk();
             }, 5000);
@@ -2063,6 +2102,7 @@ function check_installed (cbk, window) {
             //app.exit(-1);
 
             //check internet
+            windows.log.info('Checking updates');
             const test = net.fetch('https://github.com');
             test.then((result) => {
                 if (result.status === 200) {
@@ -2085,6 +2125,7 @@ function check_installed (cbk, window) {
                                     if (rersion > version) {
                                         windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
                                         windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
+                                        windows.log.info('Update is available');
 
                                         new promt('binary', 'A new version is available. Should we install it?', (answer) => {
                                             if (answer) {
@@ -2097,11 +2138,13 @@ function check_installed (cbk, window) {
 
                                     } else {
                                         windows.log.print('You are using the latest release', '\x1b[32m');
+                                        windows.log.info('You are using the latest');
                                         cbk();
                                     }
                                 } else {
                                     windows.log.print('Unable to check updates!', '\x1b[42m');
                                     windows.log.print('skipping...', '\x1b[32m');
+                                    windows.log.info('Unable to check updates');
                                     cbk();
                                 }
                             })
@@ -2109,6 +2152,7 @@ function check_installed (cbk, window) {
                             windows.log.print('Unable to check updates!', '\x1b[32m');
                             windows.log.print('status code ' + result.status, '\x1b[34m');
                             windows.log.print('skipping...', '\x1b[32m');
+                            windows.log.info('Unable to check updates');
                             cbk();
                         }
                     },
@@ -2116,11 +2160,13 @@ function check_installed (cbk, window) {
                         windows.log.print('Unable to check updates! Reason:', '\x1b[32m');
                         windows.log.print(JSON.stringify(rejection), '\x1b[34m');
                         windows.log.print('skipping...', '\x1b[32m');
+                        windows.log.info('Unable to check updates');
                         cbk();
                     });
 
                 } else {
                     windows.log.print('Failed! using ' + repo + ' and branch ' + branch, '\x1b[32m');
+                    windows.log.info('Failed!');
                 }
             });
         });
@@ -2129,6 +2175,7 @@ function check_installed (cbk, window) {
     }
 
     windows.log.print('System folder is empty! Starting installation...', '\x1b[32m');
+    windows.log.info('Installing WLJS');
     install_frontend(cbk, window);
 }
 
@@ -2137,6 +2184,7 @@ function install_frontend(cbk, window) {
     //watchdog for internet connection
     const watchdog = setTimeout(() => {
         windows.log.print('No internet connection! Using shipped version...', '\x1b[32m');
+        windows.log.info('Offline mode. Using shipped packages');
         install_shipped(cbk, window);
     }, 5000);
 
@@ -2151,6 +2199,7 @@ function install_frontend(cbk, window) {
 
         windows.log.clear();
         windows.log.print('Downloading .zip archive to ' + installationFolder + '...', '\x1b[32m');
+        windows.log.info('Dowloading the latest release from ' + (server.frontend.UpdatesChannelBranch ||  'updates'));
 
         //path to zip
         const pathToFile = path.join(installationFolder, 'pkg.zip');
@@ -2160,6 +2209,7 @@ function install_frontend(cbk, window) {
 
         downloadFile('https://api.github.com/repos/'+repo+'/zipball/'+branch, pathToFile, (file) => {
             windows.log.print('Unzipping...', '\x1b[32m');
+            windows.log.info('Unzipping');
 
             const extracted = path.join(installationFolder, '__extracted');
 
@@ -2176,6 +2226,8 @@ function install_frontend(cbk, window) {
             zip.extract(null, extracted).then((res) => {
                 windows.log.print(res);
                 windows.log.print('Extracted', '\x1b[32m');
+
+                windows.log.info('Extracted');
 
                 //remove zip archive
                 zip.close();
@@ -2198,6 +2250,7 @@ function install_frontend(cbk, window) {
 
 
                 windows.log.print('Copying new data...');
+                windows.log.info('Copying new data over the previous');
                 fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
                 windows.log.print('Done');
 
@@ -2222,6 +2275,7 @@ function install_frontend(cbk, window) {
 
                 //resetting cache
                 windows.log.print('Cache reset');
+
                 session.defaultSession.clearStorageData();
                 session.defaultSession.clearCache();
 
@@ -2230,6 +2284,8 @@ function install_frontend(cbk, window) {
                 fs.rmSync(extracted, { recursive: true, force: true });
 
                 windows.log.print('Temporal folders were cleaned up');
+
+                windows.log.info('Done!');
 
                 cbk();
 
@@ -2244,12 +2300,14 @@ function install_frontend(cbk, window) {
 const install_shipped = (cbk, window) => {
 
     windows.log.print('Copying to installation folder of a shipped package...');
+    windows.log.info('Restoring the shipped version');
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
 
     fse.copySync(sub, installationFolder, { overwrite: true });
     windows.log.print('');
     windows.log.print('Done!');
+    windows.log.info('Done!');
     cbk();
 }
 

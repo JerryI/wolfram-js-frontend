@@ -2962,7 +2962,7 @@ wordList.reduce((longestWord, currentWord) =>
 //const c = require('ansi-colors');
 //import { FitAddon } from 'xterm-addon-fit';
 
-const term = new xtermExports.Terminal({cursorBlink: true});
+const term = new xtermExports.Terminal({cursorBlink: true, rows: 13});
 
 ///const fitAddon = new FitAddon();
 //term.loadAddon(fitAddon);
@@ -2974,6 +2974,8 @@ term.open(logger);
 
 term.options.fontSize = 12;
 term.cols = 30;
+term.rows = 5;
+//term.resize();
 
 term.options.theme.background = "rgb(0,0,0,0)";
 
@@ -2982,7 +2984,7 @@ document.getElementsByClassName('xterm-viewport')[0].style.backgroundColor = "tr
 //setTimeout(() =>fitAddon.fit(), 100);
 
 logger.addEventListener("resize", (event) => {
-    //fitAddon.fit();
+   // fitAddon.fit();
 });
 
 
@@ -3009,10 +3011,37 @@ window.electronAPI.handleLogs((event, value, color) => {
     }
 }*/
 
+const info = document.getElementById("modal_info");
+
+window.electronAPI.updateInfo((event, info) => {
+    document.getElementById("modal_info_state").innerText = info;
+});
+
+window.electronAPI.updateVersion((event, info) => {
+    document.getElementById("modal_info_version").innerText = info;
+});
 
 window.electronAPI.addPromt((event, id, title) => {
+    //well. implement it in a way you like, this is just a simple form
+    const modal = document.getElementById('modal_dialog');
+    document.getElementById('modal_dialog_message').innerText = title;
+    const button = document.getElementById('modal_dialog_button');
+    
 
+    let resolve;
+    
 
+    resolve = () => {
+        button.removeEventListener('click', resolve);
+        window.electronAPI.resolveInput(id, document.getElementById('modal_dialog_field').value);
+        modal.classList.add('hidden');
+        info.classList.remove('hidden');
+    };
+
+    button.addEventListener('click', resolve);
+
+    info.classList.add('hidden');
+    modal.classList.remove('hidden');
 });
 
 

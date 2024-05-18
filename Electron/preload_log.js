@@ -3,6 +3,8 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('electronAPI', {
   handleLogs: (callback) => ipcRenderer.on('push-logs', callback),
   addPromt: (callback) => ipcRenderer.on('promt', callback),
+  updateInfo: (callback) => ipcRenderer.on('info', callback),
+  updateVersion: (callback) => ipcRenderer.on('version', callback),
   addDialog: (callback) => ipcRenderer.on('yesorno', callback),
   clear: (callback) => ipcRenderer.on('clear', callback),
   resolveInput: (id, data) => {

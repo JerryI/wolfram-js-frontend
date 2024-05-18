@@ -1,7 +1,0 @@
-.npmignore
-dist
-tsconfig.tsbuildinfo
-desktop.ini
-node_modules
-bun.lockb
-native-prompt-*.tgz

@@ -83,10 +83,11 @@
       "./Electron/bundle/log.js",
       "./Electron/electron.css",
       "./Electron/log.html",
+      "./Electron/tailwind.css",
+      "./Electron/tailwind.config.js",
       "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
-      "./Electron/native-prompt-leo/**",
       "./Electron/build/**/",
       "./shipped/**"
     ],
