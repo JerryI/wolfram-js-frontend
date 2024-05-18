@@ -125,6 +125,22 @@ wolframscript -f Scripts/start.wls noautolaunch True
 wolframscript -f Scripts/start.wls bypasstest True
 ```
 
+## Shortcuts
+*working in both: browser and desktop application*
+
+### UI
+- `Ctrl+S`, `Cmd+S` save notebook
+- `Alt+.`, `Cmd+.` abort evaluation
+- `Ctrl+P`, `Cmd+P` open command palette
+- `Shift+Enter` evaluate current cell
+
+### Cells
+- `Ctrl+W`, `Cmd+2` hide/show input cell
+- `Ctrl+/` make fraction on selected
+- `Ctrl+6` make superscript on selected
+- `Ctrl+2` make square root on selected
+- `Ctrl+-` make subscript on selected
+
 ## Package System
 
 The frontend uses its own package/plugin system. It doesn't require any software installed except wolframscript. Precompiled plugins are downloaded using URLFetch from GitHub repositories and imported to the system.
