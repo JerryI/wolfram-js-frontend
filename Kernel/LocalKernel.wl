@@ -178,7 +178,7 @@ start[k_LocalKernelObject] := Module[{link},
 
     LinkWrite[link, Unevaluated[$HistoryLength = 0] ];
     With[{path = k["RootDirectory"]},
-        LinkWrite[link, Unevaluated[ PacletDirectoryUnload /@ PacletDirectoryLoad[] ] ];
+        LinkWrite[link, Unevaluated[ PacletDirectoryUnload /@ PacletDirectoryLoad[]; ] ];
         LinkWrite[link, Unevaluated[ SetDirectory[path] ] ] ;
         LinkWrite[link, Unevaluated[ Set[Internal`Kernel`RootDirectory, path] ] ];
         LinkWrite[link, Unevaluated[ PacletDirectoryLoad[Directory[] ] ] ];

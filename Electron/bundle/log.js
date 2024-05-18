@@ -2969,6 +2969,9 @@ const term = new xtermExports.Terminal({cursorBlink: true, rows: 13});
 
 const logger = document.getElementById('log');
 
+const logFile = document.getElementById('log_file');
+logFile.addEventListener('click', () => window.electronAPI.locateLogFile());
+
 // Open the terminal in #terminal-container
 term.open(logger);
 
@@ -3026,6 +3029,7 @@ window.electronAPI.addPromt((event, id, title) => {
     const modal = document.getElementById('modal_dialog');
     document.getElementById('modal_dialog_message').innerText = title;
     const button = document.getElementById('modal_dialog_button');
+    const field = document.getElementById('modal_dialog_field');
     
 
     let resolve;
@@ -3033,9 +3037,10 @@ window.electronAPI.addPromt((event, id, title) => {
 
     resolve = () => {
         button.removeEventListener('click', resolve);
-        window.electronAPI.resolveInput(id, document.getElementById('modal_dialog_field').value);
+        window.electronAPI.resolveInput(id, field.value);
         modal.classList.add('hidden');
         info.classList.remove('hidden');
+        field.value = "";
     };
 
     button.addEventListener('click', resolve);

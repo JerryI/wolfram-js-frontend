@@ -783,6 +783,10 @@ select {
   margin-top: 0.5rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -1009,4 +1013,44 @@ select {
 
 .hover\:outline:hover {
   outline-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-300 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-gray-500\/25 {
+    background-color: rgb(107 114 128 / 0.25);
+  }
+
+  .dark\:bg-gray-600\/50 {
+    background-color: rgb(75 85 99 / 0.5);
+  }
+
+  .dark\:text-blue-400 {
+    --tw-text-opacity: 1;
+    color: rgb(96 165 250 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-300 {
+    --tw-text-opacity: 1;
+    color: rgb(209 213 219 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:ring-gray-400 {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(156 163 175 / var(--tw-ring-opacity));
+  }
+
+  .dark\:ring-gray-600 {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity));
+  }
 }

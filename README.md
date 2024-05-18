@@ -108,6 +108,23 @@ wolframscript -f Scripts/start.wls host 0.0.0.0 http 8080 ws 8081 ws2 8082 docs 
 
 that will open __an HTTP server__ on `8080` port with `8081`, `8082` __used for realtime communication__ and __docs pages__ at `8085`
 
+### Extra arguments
+
+- set the home folder (overrides settings)
+```
+wolframscript -f Scripts/start.wls folder "Demos"
+```
+
+- disable autolaunch of the evaluation kernel
+```
+wolframscript -f Scripts/start.wls noautolaunch True
+```
+
+- disable autotest
+```
+wolframscript -f Scripts/start.wls bypasstest True
+```
+
 ## Package System
 
 The frontend uses its own package/plugin system. It doesn't require any software installed except wolframscript. Precompiled plugins are downloaded using URLFetch from GitHub repositories and imported to the system.

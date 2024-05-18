@@ -12,6 +12,9 @@ const term = new Terminal({cursorBlink: true, rows: 13});
 
 const logger = document.getElementById('log');
 
+const logFile = document.getElementById('log_file');
+logFile.addEventListener('click', () => window.electronAPI.locateLogFile());
+
 // Open the terminal in #terminal-container
 term.open(logger);
 
@@ -69,6 +72,7 @@ window.electronAPI.addPromt((event, id, title) => {
     const modal = document.getElementById('modal_dialog');
     document.getElementById('modal_dialog_message').innerText = title;
     const button = document.getElementById('modal_dialog_button');
+    const field = document.getElementById('modal_dialog_field');
     
 
     let resolve;
@@ -76,9 +80,10 @@ window.electronAPI.addPromt((event, id, title) => {
 
     resolve = () => {
         button.removeEventListener('click', resolve);
-        window.electronAPI.resolveInput(id, document.getElementById('modal_dialog_field').value);
+        window.electronAPI.resolveInput(id, field.value);
         modal.classList.add('hidden');
         info.classList.remove('hidden');
+        field.value = "";
     };
 
     button.addEventListener('click', resolve);
@@ -138,9 +143,11 @@ window.ifWin = () => {
     logger.style.height = "auto";
     runColorMode((isDarkMode) => {
         if (isDarkMode) {
-            document.body.style.background = "linear-gradient(-45deg, rgb(64,55,65), rgb(61,61,64),  rgb(52, 45, 64),  rgb(52, 75, 81))";    
+            document.body.classList.add("dark-static");    
+            document.body.classList.remove("light-static");    
         } else {
-            document.body.style.background = "linear-gradient(-45deg, rgb(251, 239, 235), rgb(252, 250, 238), rgb(252, 243, 247), rgb(227, 247, 240))";
+            document.body.classList.remove("dark-static");    
+            document.body.classList.add("light-static");  
         }
       }); 
     

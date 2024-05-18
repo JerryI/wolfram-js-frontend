@@ -1474,6 +1474,10 @@ app.whenReady().then(() => {
         promts_hash[id].resolve(val);
     });
 
+    ipcMain.on('locate-logfile', () => {
+        shell.showItemInFolder(installationFolder);
+    });
+
     //purge cache if an update was detected (using a special file created by WL)
 
 
