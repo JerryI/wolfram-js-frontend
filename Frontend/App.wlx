@@ -114,7 +114,7 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
 ] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
-defaultHomeFolder = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
+defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->FileNameJoin[{Directory[], "Demos"}]|>, settings]["Home"] ];
 
 App[request_] := With[{
   Secret = CreateUUID[], 
@@ -146,7 +146,7 @@ App[request_] := With[{
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Examples"}]], $Client, "Target"->_];
+                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Demos"}]], $Client, "Target"->_];
                   ],
 
                   "OpenDocs" -> Function[Null,
@@ -293,7 +293,7 @@ http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
 
 Print["App Loaded!"];
 
-If[settings["Autostart"],
+If[settings["Autostart"] && !TrueQ[$Env["noautolaunch"]],
   Print["Autolaunch!"];
   autolaunch[LocalKernel["Name"->"Auto"], Hold[KernelList], initKernel[serverParams], deinitKernel];
 ];

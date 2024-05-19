@@ -365,9 +365,11 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
             }
 
             core.UINotebook.WSConnect = async (args, env) => {
+                
                 const port = await interpretate(args[0], env);
                 const ev = await interpretate(args[1], env);
 
+                console.warn('Trying to connect on port ' + port + ' to evaluation kernel');
                 if (server.kernel.connected) {
                     console.warn('A request to connect was rejected, since socket is still alive');
                     return;
@@ -377,7 +379,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
 
                 socket.onopen = function(e) {
-                  console.log("[open]");
+                  console.warn("[open] Evaluation Kernel");
                   server.kernel.init({socket: socket});
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
@@ -463,6 +465,9 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
 destructor[notebook_, secret_, __] := With[{},
     Echo["Notebook.wlx >> Destroy"];
+
+    Echo["!!!!Our socket number!!!!"];
+    Echo[notebook["EvaluationContext", "KernelWebSocket"]];
     
     (* /* clean up secret and all handlers created */ *)
     EventRemove[secret];

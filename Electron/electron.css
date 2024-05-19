@@ -16,6 +16,18 @@ body {
 	/* opacity: 0.1; */
 }
 
+.dark-static {
+  background: linear-gradient(-45deg, rgb(64,55,65), rgb(61,61,64),  rgb(52, 45, 64),  rgb(52, 75, 81));
+  background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
+.light-static {
+  background: linear-gradient(-45deg, rgb(251, 239, 235), rgb(252, 250, 238), rgb(252, 243, 247), rgb(227, 247, 240));
+  background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -38,8 +50,7 @@ body[data-theme='dark'] {
 }
 
 .logs {
-  width: 100%;
-    height: 85vh;
+    height: 200px;
     overflow: hidden;
 }
 

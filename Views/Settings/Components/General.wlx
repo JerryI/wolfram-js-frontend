@@ -39,6 +39,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
                 Then[p, Function[result,
                     EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->result|>];
                     settings = Join[settings, <|"Home"->URLDecode[result]|>];
+                    EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
                     onSave[settings];
                 ],
                     Function[reason,
@@ -48,6 +49,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
                                     "Success" -> Function[path,
                                         EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->path|>];
                                         settings = Join[settings, <|"Home"->path|>];
+                                        EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
                                         onSave[settings];
                                     ],
                                 

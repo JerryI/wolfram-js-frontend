@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.3.5",
+  "version": "2.3.7",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "Coffee liqueur",
@@ -9,8 +9,6 @@
   "main": "Electron/main.js",
   "scripts": {
     "start": "wolframscript -f Scripts/run.wls",
-    "dev": "wolframscript -f Scripts/run.wls dev",
-    "build": "wolframscript -f Scripts/build.wls",
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
@@ -83,10 +81,11 @@
       "./Electron/bundle/log.js",
       "./Electron/electron.css",
       "./Electron/log.html",
+      "./Electron/tailwind.css",
+      "./Electron/tailwind.config.js",
       "./Electron/shortcuts.json",
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
-      "./Electron/native-prompt-leo/**",
       "./Electron/build/**/",
       "./shipped/**"
     ],

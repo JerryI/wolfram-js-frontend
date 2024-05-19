@@ -9,7 +9,10 @@ App[request_] := With[{
     </ToString>
 ];
 
+Ping[request_] := With[{}, "OK"];
+
 http["MessageHandler", "Autotest"] = AssocMatchQ[<|"Path" -> "/test"|>] -> App;
+http["MessageHandler", "Ping"] = AssocMatchQ[<|"Path" -> "/ping"|>] -> Ping;
 Print["Test Loaded!"];
 
 

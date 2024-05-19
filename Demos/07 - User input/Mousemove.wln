@@ -1,0 +1,11 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$34], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/07 - User input/Mousemove.wln"|>, 
+ "Cells" -> {<|"Data" -> "pt = {};\nGraphics[{\n\tPointSize[0.05], Blue, \
+Opacity[0.5],\n\tPoint[pt // Offload],\n\tEventHandler[Graphics`Canvas[], \
+{\n\t\t\"mousemove\" -> Function[xy, pt = Append[pt, xy]]\n\t}]\n}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "80051480-667d-43bc-8b09-a92da97a396a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cef25365-1ab4-4d65-bc8a-4b3c86943f49"|>}, "serializer" -> "jsfn4"|>

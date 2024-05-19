@@ -1,7 +1,7 @@
-Class = $Options["Class"];
+Level    = $Options["Level"];
+Class = StringJoin[$Options["Class"], " pl-", ToString[Level]];
 Path     = $Options["Path"];
 Current  = $Options["Current"];
-Level    = $Options["Level"];
 Parameters = $Options["Parameters"];
 
 Icons = $Options["Icons"];
@@ -29,7 +29,7 @@ With[{
     ""
   ]
 },
-  <ul class="{Class} pl-{Level*2}">
+  <ul class="{Class}">
     <Extra/>
     <Ul/>
   </ul>

@@ -2,17 +2,17 @@
 
 ![Preview](imgs/Toster.png)
 
-__Made for scientists by scientists__
+__Made for scientists by scientists__ ⚗️
 
-*Written for the freeware Wolfram Engine using JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
+*written with love using freeware Wolfram Engine, JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
 
-__[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__
+__[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__ 📚
 
-__[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__
+__[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 
-**Recommended Wolfram Engine: 13.3 or higher**
+**Recommended [Wolfram Engine](https://www.wolfram.com/engine/): 13.3 or higher**
 
-__Special thanks to co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP/WS Stack developer)__
+__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP/WS Stack developer)__
 
 To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
@@ -21,7 +21,7 @@ To help maintain this project ❤️
 ## Highlights
 
 
-### Not a typical Jupyter-like notebook environment
+### Not a typical Jupyter-like notebook environment 🧨
 
 It supports dynamics, GUI building blocks, and powerful Mathematica syntax out of the box.
 
@@ -31,23 +31,23 @@ It supports dynamics, GUI building blocks, and powerful Mathematica syntax out o
 
 No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated from scratch using `d3.js` and `THREE.js` libraries. Most native plotting functions of Mathematica are supported.
 
-#### AI Assistant
+#### AI Assistant 🤖
 We deeply integrated ChatGPT, so that AI can have a read/write acccess to your notebook
 
 ![AAI](imgs/ASKAI%20optimizer.gif)
 
-### Command Palette and GUI-in-Code Emulation
+### Command Palette and GUI-in-Code Emulation 🎨
 #### Inline Dynamic Tool for Tuning 2D/3D Positions
 
 ![ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/5f24d9d2-bd36-40df-85c8-c50cbc37a8cd)
 
 
-### Native Math Input in the Code Editor
+### Native Math Input in the Code Editor 🧮
 Write beautiful equations between lines of normal Wolfram Language expressions.
 
 ![Mathinput-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/ebc2d83a-0d4d-49e4-a073-e112829a8d62)
 
-### Compress to HTML
+### Compress to HTML 🗜️
 An entire notebook can be exported to a standalone `.html` file keeping all data inside. __No internet dependency, no additional software__ is required for viewing a notebook
 
 ![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
@@ -55,12 +55,12 @@ An entire notebook can be exported to a standalone `.html` file keeping all data
 
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
-### Data-Driven Slides
+### Data-Driven Slides 🛝
 Make a presentation right from the notebook.
 
 ![slides](imgs/ezgif.com-optimize-15.gif)
 
-### Real-Time Interactivity
+### Real-Time Interactivity ⏱️
 Follows the mouse pointer and performs complex calculations.
 
 ![](imgs/ezgif.com-optimize-5-55576aef6756b65dcc582b2f19964fa0.gif)
@@ -83,27 +83,24 @@ __There is no aim to fully copy Mathematica__ (it will never be possible), howev
 
 - __Stability__ and speed
 - Independence from WRI
-- Portability (not PDF) - easy to share your work with someone outside the ecosystem __keeping your graphics interactive__ or embedded on a website
+- Portability (not PDF) - easy to share your work with someone outside the ecosystem __keeping your graphics interactive__ or embedded to a website
 - Event-based approach to dynamics - allow users to __build complex dynamic notebooks__ and to have clear control over all moving parts
 - Natural bridge between other languages - HTML as markup, WL for computations, and JS for stunning visuals
 
-# Installation
-[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 or higher is recommended).
+# Installation 🛠️
+[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable). Activation can be done later using WLJS Notebook App.
 
-On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
+*On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):*
 
 ```shell
 brew install --cask wolfram-engine
 ```
 
-## Desktop App
-Download it from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
+*a side note for Linux users*
+If you face any issues, try to install avahi daemon.
 
-Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
-
-```shell
-brew install --cask wljs-notebook
-```
+## Desktop App ✨
+Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
 
 ## Standalone Server
 Clone this repository and run:
@@ -119,6 +116,43 @@ wolframscript -f Scripts/start.wls host 0.0.0.0 http 8080 ws 8081 ws2 8082 docs 
 ```
 
 that will open __an HTTP server__ on `8080` port with `8081`, `8082` __used for realtime communication__ and __docs pages__ at `8085`
+
+### Extra arguments
+
+- set the home folder (overrides settings)
+```
+wolframscript -f Scripts/start.wls folder "Demos"
+```
+
+- disable autolaunch of the evaluation kernel
+```
+wolframscript -f Scripts/start.wls noautolaunch True
+```
+
+- disable autotest
+```
+wolframscript -f Scripts/start.wls bypasstest True
+```
+
+### A side note for servers with no desktop interface
+You might need to install the following (for `Image` and some other graphics to work properly) [libraries](https://support.wolfram.com/59044).
+
+
+## Shortcuts 🎬
+*working in both: browser and desktop application*
+
+### UI
+- `Ctrl+S`, `Cmd+S` save notebook
+- `Alt+.`, `Cmd+.` abort evaluation
+- `Ctrl+P`, `Cmd+P` open command palette
+- `Shift+Enter` evaluate current cell
+
+### Cells
+- `Ctrl+W`, `Cmd+2` hide/show input cell
+- `Ctrl+/` make fraction on selected
+- `Ctrl+6` make superscript on selected
+- `Ctrl+2` make square root on selected
+- `Ctrl+-` make subscript on selected
 
 ## Package System
 
