@@ -90,6 +90,12 @@ __There is no aim to fully copy Mathematica__ (it will never be possible), howev
 # Installation 🛠️
 [The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable). Activation can be done later using WLJS Notebook App.
 
+*On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):*
+
+```shell
+brew install --cask wolfram-engine
+```
+
 *a side note for Linux users*
 If you face any issues, try to install avahi daemon.
 
