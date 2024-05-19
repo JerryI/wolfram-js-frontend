@@ -1,0 +1,6 @@
+[
+	"Graphics3D",
+	["List",["Metalness",1],["Sphere",["List",0,0,0]]],
+	["Rule","'Lighting'","None"],
+	["Rule","'Lightmap'","'https:\/\/raw.githubusercontent.com\/JerryI\/Mathematica-ThreeJS-graphics-engine\/master\/assets\/PureSky.hdr'"]
+]

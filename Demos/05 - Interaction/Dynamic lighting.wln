@@ -1,0 +1,25 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$117], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/05 - Interaction/Dynamic lighting.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Dynamic Spot Light\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c09b6757-4dd8-4983-b24a-642b61687620", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dbe7f098-50d3-4fdc-9e53-d9d8b62e528b"|>, 
+   <|"Data" -> "## Dynamic Spot Light\n", "Display" -> "markdown", 
+    "Hash" -> "8e09df35-5f2c-4868-8df4-567a6fffa419", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "dbe7f098-50d3-4fdc-9e53-d9d8b62e528b"|>, 
+   <|"Data" -> "point = {1,1,1};\n\nGraphics3D[{Shadows[True], \n  \
+Polygon[{{-5, 5, -1}, {5, 5, -1}, {5, -5, -1}, {-5, -5, -1}}], White, \n  \
+Cuboid[{-1, -1, -1}, {1, 1, 1}], Shadows[False], \n  PointLight[Red, {1.5075, \
+4.1557, 2.6129}, 100], \n  Shadows[True], SpotLight[Cyan, point // Offload]\n \
+ \n  EventHandler[Sphere[point, 0.1], {\n    \"transform\" -> Function[assoc, \
+point = assoc[\"position\"]]\n  }] \n  \n}, \"Lighting\" -> None]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "44fe82b7-0449-421b-b0e7-2c55918d9f7b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "dbe7f098-50d3-4fdc-9e53-d9d8b62e528b"|>}, "serializer" -> "jsfn4"|>

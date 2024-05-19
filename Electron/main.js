@@ -249,7 +249,7 @@ const buildMenu = (opts) => {
                     {
                         label: 'Open Examples',
                         click: async(ev) => {
-                            create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
+                            create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
                         }
                     },
 
@@ -554,7 +554,7 @@ callFakeMenu["zoomOut"] = () => {
 }
 
 callFakeMenu["locateExamples"] = async(ev) => {
-    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Examples')), title: 'Examples'});
+    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
 }
 
 callFakeMenu["locateAppData"] = async(ev) => {

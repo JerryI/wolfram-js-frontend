@@ -1,0 +1,7 @@
+[
+	"Graphics",
+	["Circle",["List",0,0]],
+	["Rule","ImageSize",350],
+	["Rule","Axes",true],
+	["Rule","Frame",true]
+]

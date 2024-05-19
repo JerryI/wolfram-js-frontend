@@ -1,0 +1,6 @@
+[
+	"Graphics",
+	["List",["EdgeForm",["GrayLevel",0]],["RGBColor",0,1,0],["Rectangle",["List",0,-1],["List",2,1]],["RGBColor",1,0,0],["Disk",["List",0,0]],["RGBColor",0,0,1],["Circle",["List",2,0]],["RGBColor",1,1,0],["Polygon",["List",["List",2,0],["List",4,1],["List",4,-1]]],["RGBColor",0.5,0,0.5],["Arrow",["List",["List",4,["Rational",3,2]],["List",0,["Rational",3,2]],["List",0,0]]],["GrayLevel",0],["SVGAttribute",["Line",["List",["List",-1,0],["List",4,0]]],["Rule","'stroke-dasharray'","'3'"]]],
+	["Rule","ImageSize",350],
+	["Rule","ImagePadding","None"]
+]

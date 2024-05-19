@@ -1,0 +1,5 @@
+[
+	"Graphics",
+	["List",["PointSize",2.0e-2],["Point",["Hold",["RandomReal",["List",-1,1],["List",64,2]]]]],
+	["Rule","ImageSize",500]
+]

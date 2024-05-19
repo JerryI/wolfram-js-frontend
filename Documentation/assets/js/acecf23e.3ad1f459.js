@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwlx_docs=self.webpackChunkwlx_docs||[]).push([[6360],{81112:e=>{e.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog title"}')}}]);

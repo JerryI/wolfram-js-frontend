@@ -1,0 +1,9 @@
+[
+	"Graphics",
+	["Circle",["List",0,0]],
+	["Rule","ImageSize",350],
+	["Rule","Axes",true],
+	["Rule","Frame",true],
+	["Rule","FrameLabel",["List",["List","'yy'","None"],["List","'xx'","None"]]],
+	["Rule","FrameStyle",["Directive",["Rule","FontSize",16]]]
+]

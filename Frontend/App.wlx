@@ -146,7 +146,7 @@ App[request_] := With[{
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Examples"}]], $Client, "Target"->_];
+                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Demos"}]], $Client, "Target"->_];
                   ],
 
                   "OpenDocs" -> Function[Null,

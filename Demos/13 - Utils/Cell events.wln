@@ -1,21 +1,21 @@
-<|"notebook" -> <|"name" -> "Loaning", "id" -> "daunted-ca382", 
-   "kernel" -> LocalKernel, "objects" -> <||>, 
-   "path" -> 
-    "/Volumes/Data/Github/wolfram-js-frontend/Examples/Utils/CellEvents.wln", 
-   "cell" :> Exit[], "date" -> DateObject[{2023, 10, 29, 10, 53, 
-      17.163276`7.987175170887363}, "Instant", "Gregorian", 1.], 
-   "symbols" -> <||>, "channel" -> WebSocketChannel[
-     KirillBelov`WebSocketHandler`WebSocketChannel`$24], 
-   "SelectedCell" -> "c7367763-b377-4362-afa6-9ebb38035e57"|>, 
- "cells" -> {<|"id" -> "3f1bf506-9347-41dd-af31-acf385d05c02", 
-    "type" -> "input", "data" -> ".md\nTry to reevaluate this cell", 
-    "display" -> "codemirror", "sign" -> "daunted-ca382", 
-    "props" -> <|"hidden" -> True|>|>, 
-   <|"id" -> "be7cb665-fe8d-4338-bdf0-b046e0876397", "type" -> "output", 
-    "data" -> "\nTry to reevaluate this cell", "display" -> "markdown", 
-    "sign" -> "daunted-ca382", "props" -> <|"hidden" -> False|>|>, 
-   <|"id" -> "c7367763-b377-4362-afa6-9ebb38035e57", "type" -> "input", 
-    "data" -> "With[{},\n  EventHandler[EvaluationCell[], {\"destroy\" -> \
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$48], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/13 - Utils/Cell events.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\nTry to reevaluate this cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "37f72d38-70d9-4341-b7c3-66f849823c4b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>, 
+   <|"Data" -> "\nTry to reevaluate this cell", "Display" -> "markdown", 
+    "Hash" -> "2566e427-9422-48ce-a43d-81e74930005e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>, 
+   <|"Data" -> "With[{},\n  EventHandler[ResultCell[], {\"Destroy\" -> \
 (Print[\"Destroyed!\"] &)}];\n  \"Lovely day\"\n]", 
-    "display" -> "codemirror", "sign" -> "daunted-ca382", 
-    "props" -> <|"hidden" -> False|>|>}, "serializer" -> "jsfn3"|>
+    "Display" -> "codemirror", "Hash" -> 
+     "7af42ad8-8220-4fbf-81da-948e0747f88b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>}, "serializer" -> "jsfn4"|>
