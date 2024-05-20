@@ -102,6 +102,12 @@ If you face any issues, try to install avahi daemon.
 ## Desktop App ✨
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
 
+Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
+
+```shell
+brew install --cask wljs-notebook
+```
+
 ## Standalone Server
 Clone this repository and run:
 
