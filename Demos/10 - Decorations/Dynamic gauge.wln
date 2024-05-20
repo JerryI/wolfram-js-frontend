@@ -1,0 +1,151 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$231], 
+   "Objects" -> <|"555838ee-9cd1-42a5-b3d2-0e5b2349ff0c" -> 
+      <|"Public" -> Hold[gauge[0.3]]|>|>, "Path" -> "/users/kirill/Github/wol\
+fram-js-frontend-dev/Demos/10 - Decorations/Dynamic gauge.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Dynamic gauge\nAn example of advanced \
+decoration, which supports changing data", "Display" -> "codemirror", 
+    "Hash" -> "6cca0d8d-10bc-416e-a5fd-5f9a55e8399d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "# Dynamic gauge\nAn example of advanced decoration, which \
+supports changing data", "Display" -> "markdown", 
+    "Hash" -> "382c54b9-ce03-4786-87cb-6f2a60ffc9df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, <|"Data" -> ".md\nDefine", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b07d17de-be69-4f4c-a456-c8b7cd042f93", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, <|"Data" -> "Define", 
+    "Display" -> "markdown", "Hash" -> 
+     "e083cd00-3306-4e2f-aadd-e5eb917740ec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "gauge /: MakeBoxes[g_gauge, StandardForm] := With[{\n  o = \
+CreateFrontEndObject[g]\n},\n  MakeBoxes[o, StandardForm]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2e832b39-3ab8-47d4-a26a-d3cfb7233565", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> ".md\nNow we need to implement the interpretation function on \
+the frontend", "Display" -> "codemirror", 
+    "Hash" -> "32db64e3-eaa2-4781-a6ee-b9c32d921d86", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> 
+     "Now we need to implement the interpretation function on the frontend", 
+    "Display" -> "markdown", "Hash" -> 
+     "1424edb4-341d-4c40-965e-62780406bfd2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> ".js\n\ncore.gauge = async (args, env) => {\n  \n  // Create a \
+gauge meter element\n  const gauge = document.createElement('div');\n  \
+gauge.style.width = '100px'; // half the original width\n  gauge.style.height \
+= '50px'; // half the original height\n  gauge.style.border = '1px solid \
+#000';\n  gauge.style.borderRadius = '50px 50px 0 0'; // adjusted for smaller \
+size\n  gauge.style.position = 'relative';\n  gauge.style.background = \
+'linear-gradient(to right, red 0%, yellow 50%, green 100%)';\n\n  // Create a \
+needle for the gauge\n  const needle = document.createElement('div');\n  \
+needle.style.width = '2px';\n  needle.style.height = '40px'; // made the \
+needle longer for better visibility\n  needle.style.background = '#000';\n  \
+needle.style.position = 'absolute';\n  needle.style.bottom = '0';\n  \
+needle.style.left = '50%';\n  needle.style.transformOrigin = 'bottom';\n\n  \
+// Function to set the needle position based on input value\n  function \
+setNeedlePosition(value) {\n    // Ensure value is between 0 and 1\n    value \
+= Math.max(0, Math.min(1, value));\n    // Convert value to angle\n    const \
+angle = value * 180 - 90; // -90 to 90 degrees\n    needle.style.transform = \
+`rotate(${angle}deg)`;\n  }\n\n  // Set initial needle position\n  const pos \
+= await interpretate(args[0], env);\n  setNeedlePosition(pos); // Middle \
+position\n  \n\n  gauge.appendChild(needle);\n\n  \
+env.element.appendChild(gauge);\n  env.local.update = \
+setNeedlePosition;\n}\n\ncore.gauge.update = async (args, env) => {\n  const \
+val = await interpretate(args[0], env);\n  \
+env.local.update(val);\n}\n\ncore.gauge.destroy = () => {\n  \
+console.log('Nothing to do');\n}", "Display" -> "codemirror", 
+    "Hash" -> "623b2324-b337-4178-ae9c-72fd8110e54e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "\ncore.gauge = async (args, env) => {\n  \n  // Create a \
+gauge meter element\n  const gauge = document.createElement('div');\n  \
+gauge.style.width = '100px'; // half the original width\n  gauge.style.height \
+= '50px'; // half the original height\n  gauge.style.border = '1px solid \
+#000';\n  gauge.style.borderRadius = '50px 50px 0 0'; // adjusted for smaller \
+size\n  gauge.style.position = 'relative';\n  gauge.style.background = \
+'linear-gradient(to right, red 0%, yellow 50%, green 100%)';\n\n  // Create a \
+needle for the gauge\n  const needle = document.createElement('div');\n  \
+needle.style.width = '2px';\n  needle.style.height = '40px'; // made the \
+needle longer for better visibility\n  needle.style.background = '#000';\n  \
+needle.style.position = 'absolute';\n  needle.style.bottom = '0';\n  \
+needle.style.left = '50%';\n  needle.style.transformOrigin = 'bottom';\n\n  \
+// Function to set the needle position based on input value\n  function \
+setNeedlePosition(value) {\n    // Ensure value is between 0 and 1\n    value \
+= Math.max(0, Math.min(1, value));\n    // Convert value to angle\n    const \
+angle = value * 180 - 90; // -90 to 90 degrees\n    needle.style.transform = \
+`rotate(${angle}deg)`;\n  }\n\n  // Set initial needle position\n  const pos \
+= await interpretate(args[0], env);\n  setNeedlePosition(pos); // Middle \
+position\n  \n\n  gauge.appendChild(needle);\n\n  \
+env.element.appendChild(gauge);\n  env.local.update = \
+setNeedlePosition;\n}\n\ncore.gauge.update = async (args, env) => {\n  const \
+val = await interpretate(args[0], env);\n  \
+env.local.update(val);\n}\n\ncore.gauge.destroy = () => {\n  \
+console.log('Nothing to do');\n}", "Display" -> "js", 
+    "Hash" -> "ab312fc1-75b1-4a7f-97a3-697137b4d8cf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> ".md\nLet us test it!", "Display" -> "codemirror", 
+    "Hash" -> "9b35dc81-caad-4fcb-a6f9-278ad39dfa1a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, <|"Data" -> "Let us test it!", 
+    "Display" -> "markdown", "Hash" -> 
+     "3e12c831-613a-44d7-99d2-a918da024d78", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, <|"Data" -> "gauge[0.3]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8aebcecf-330b-425e-8e28-7bccba4dc64c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"555838ee-9cd1-42a5-b3d2-0e5b2349ff0c\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5qaW\
+hhbpKbqWianGOqaGCWa6iYZpxjpGqSaJhkZm1impRkkAwB/zhWk\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "979b15cc-3493-43c7-a5b8-71b960900686", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "ce1819e1-c2c2-43fb-bfd9-70a4441f1102", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "", "Display" -> "markdown", 
+    "Hash" -> "4ca0142c-47a8-4ee6-9dfb-c6ce8b0501cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> ".md\n## Dynamics", "Display" -> "codemirror", 
+    "Hash" -> "433097ab-80fa-4485-bb01-a978e4f0824d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, <|"Data" -> "## Dynamics", 
+    "Display" -> "markdown", "Hash" -> 
+     "1d980009-82af-4a65-86bb-722b955953a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>, 
+   <|"Data" -> "gvalue = 0.1;\nEventHandler[InputRange[0, 1, 0.1, 0.1], \
+(gvalue = #) &]\n\ngauge[gvalue // Offload]", "Display" -> "codemirror", 
+    "Hash" -> "c52697b6-ddbd-46e5-8f27-bdc22b2e56de", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8ceb5397-892c-44f0-902b-0b72485ca647"|>}, "serializer" -> "jsfn4"|>
