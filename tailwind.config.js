@@ -5,7 +5,8 @@ const sidebarStates = [['hidden', 'zen']]
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './**/*.wlx'
+    './**/*.wlx',
+    //'./wljs_packages/wljs-inputs/src/kernel.js'
   ],
   theme: {
     extend: {
