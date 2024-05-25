@@ -6,6 +6,10 @@ Element[OptionsPattern[]] := With[{cell = OptionValue["Cell"], client = OptionVa
                     Print["State update"];
                     WebUISubmit[Global`UINotebook["CellState", uid, state] (*`*), client];
                 ],
+                "ChangeContent" -> Function[content,
+                    Print["ChangeContent update"];
+                    WebUISubmit[Global`UINotebook["CellContent", uid, content] (*`*), client];
+                ],                
                 "Info" -> Function[state,
                     WebUISubmit[Global`UINotebook["CellInfo", uid, state] (*`*), client];
                 ],
@@ -30,6 +34,11 @@ Options[Element] = {"Cell"->Null, "Client"->""};
 
 Script = With[{},
     <Placebo>
+        core.UINotebook.CellContent = async (args, env) => {
+            const uid      = await interpretate(args[0], env);
+            const content    = await interpretate(args[1], env);
+            CellWrapper.setContent(uid, content);
+        }
         core.UINotebook.CellError = async (args, env) => {
             const uid      = await interpretate(args[0], env);
             const state    = await interpretate(args[1], env);
@@ -40,7 +49,7 @@ Script = With[{},
             info.classList.add('text-red-600');
             info.parentNode.style.position = "relative";
             info.parentNode.style.height = "1rem";
-        }
+        }        
         core.UINotebook.CellState = async (args, env) => {
             const uid      = await interpretate(args[0], env);
             const state    = await interpretate(args[1], env);
