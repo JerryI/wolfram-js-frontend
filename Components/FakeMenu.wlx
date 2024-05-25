@@ -3,9 +3,11 @@ With[{Layout =
     <div class="py-0 px-2" role="none">     
         <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New Notebook
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+N</kbd></span>
         </button>    
         <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open File
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+O</kbd></span>
         </button>
         <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open Folder
@@ -15,6 +17,7 @@ With[{Layout =
     <div class="py-0 px-2" role="none">
       <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
         Save
+        <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+S</kbd></span>
       </button>
       <button data-name="SaveAs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
@@ -38,14 +41,22 @@ With[{Layout =
         <button data-name="abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Abort
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+.</kbd></span>
         </button>
         <button data-name="evalInit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Evaluate initialization cells
-        </button>                
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+I</kbd></span>
+        </button>   
+        <button data-name="togglecells" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+    
+          Show/Hide cell
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+W</kbd></span>
+        </button>                     
         <button data-name="clearoutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
           Clear outputs
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+U</kbd></span>
         </button>
       </div>
       
@@ -66,6 +77,7 @@ With[{Layout =
       <button data-name="zoomIn" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Zoom in
+        
       </button>
       <button data-name="zoomOut" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 

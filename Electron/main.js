@@ -541,6 +541,10 @@ callFakeMenu["clearoutputs"] = () => {
     windows.focused.call('clearoutputs', true);
 }
 
+callFakeMenu["togglecells"] = () => {
+    windows.focused.call('togglecell', true);
+}
+
 callFakeMenu["evalInit"] = () => {
     windows.focused.call('evaluateinit', true);
 }

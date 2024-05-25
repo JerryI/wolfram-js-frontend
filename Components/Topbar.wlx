@@ -109,11 +109,11 @@ Component[OptionsPattern[]] := With[{
              
           </NotebookOnly> 
         </div>   
-        <div class="grow h-full" style="-webkit-app-region: drag"></div> 
+        <div class="grow h-full" style="-webkit-app-region: drag; max-width:300px"></div> 
 
         <ExtensionTemplates Template={"AppTopBar"} Path={Path} Parameters={parameters} Modals={modals} AppEvent={AppEvent} Controls={Controls} Messanger={messages}/>
 
-        <div class="grow h-full" style="-webkit-app-region: drag"></div>  
+        <div class="grow h-full" style="-webkit-app-region: drag; max-width:300px"></div>  
         <div class="my-auto ml-auto border-l border-gray-300 dark:border-gray-500 pl-1" style="padding-top: 0.2em">
           <NotebookOnly Path={Path}> 
             <List> 

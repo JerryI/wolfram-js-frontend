@@ -1,18 +1,23 @@
 Component[OptionsPattern[]] := 
 With[{
-  Event = OptionValue["Event"]
+  Event = OptionValue["Event"],
+  AltKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Alt+", "Linux", "Alt+", _, "&#8984;/Alt+"],
+  ToggleKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;+2", "Windows", "Ctrl+W", "Linux", "Ctrl+W", _, "&#8984;+2/Ctrl+W"],
+  MetaKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Ctrl+", "Linux", "Ctrl+", _, "&#8984;/Ctrl+"]
 },
   With[{Layout = 
   {
     <div class="py-0 px-2" role="none">     
         <button data-name="NewNotebook" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New Notebook
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><MetaKey/>N</kbd></span>
         </button>          
     </div>
     ,
     <div class="py-0 px-2" role="none">
       <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
         Save
+        <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><MetaKey/>S</kbd></span>
       </button>        
     </div>      
     ,
@@ -20,11 +25,17 @@ With[{
         <button data-name="Abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Abort
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><AltKey/>.</kbd></span>
         </button>
         <button data-name="EvaluateInitCells" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Evaluate initialization cells
-        </button>                
+        </button>      
+        <button data-name="ToggleCells" class="block w-full text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+          Show/Hide cell
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><ToggleKey/></kbd></span>
+        </button>                    
         <button data-name="ClearOutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
           Clear outputs

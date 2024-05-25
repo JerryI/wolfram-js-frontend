@@ -1,0 +1,673 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$34], 
+   "Objects" -> <||>, "Path" -> 
+    "/users/kirill/Temp/Sketches/Benchmark.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Complete benchmark\nTo run test - evaluate a cell below", 
+    "Display" -> "codemirror", "Hash" -> 
+     "96f89ae7-ce83-4d0c-b08f-38d2f8af423c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "# Complete benchmark\nTo run test - evaluate a cell below", 
+    "Display" -> "markdown", "Hash" -> 
+     "57459c63-1fe8-4991-a932-e12b21fc2a21", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "benchmarkReport = <||>;\nbenchmarkMeta = <|\n  \
+\"wljs-version\" -> Import[FileNameJoin[{Internal`Kernel`RootDirectory, \
+\"package.json\"}], \
+\"RawJSON\"][\"version\"]\n|>;\n\n1+1;\n\nPrint[\"Starting in a \
+second...\"];\nPause[1];\n\nwin = CurrentWindow[];\ncell = \
+EvaluationCell[];\n\nThen[KernelBenchmark[win, cell], Function[Null,\n  \
+Then[JavascriptBenchmark[win, cell], Function[Null, Pause[1];\n    \
+Then[BubblesBenchmark[win, cell], Function[Null, Pause[1];\n      \
+Then[BoidsBenchmark[win, cell], Function[Null, Pause[1];\n        \
+Then[BallsBenchmark[win, cell], Function[Null, Pause[1];\n          \
+Then[WavesBenchmark[win, cell], Function[Null, Pause[1];\n            \
+Then[WLJSBenchmark[win, cell], Function[Null, Pause[1];\n              \
+Then[SocketsIO[win, cell], Function[Null,  \n                With[{c = \
+CellPrint[ToString[Stats[win, cell], StandardForm], \"After\"->cell]},\n      \
+            With[{cc = CellPrint[ToString[StatsTable[win, cell], \
+StandardForm], \"After\"->c]},\n\n                    \
+AppendTo[benchmarkResults, Compress[{benchmarkMeta, benchmarkReport}]];\n     \
+               showAllResults[win, cc];\n                  ]\n                \
+];\n              ]];\n            ]];\n          ]]; \n        ]];\n      \
+]];\n    ]];\n  ]];\n]];", "Display" -> "codemirror", 
+    "Hash" -> "eda856d4-165a-4b95-b0de-41b23af430b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "aed5ed0a-e2ef-4caa-8515-47eb036749c6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "66ba2bc5-1a9c-4f77-85d5-f3f94dbf3fe6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "52901ee2-5de2-4c77-8ab5-f51f702b76fd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "3a0e1a97-68d1-4620-a201-ef454446b1cc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n### Fancy stats generator\n  Show off your score!", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0cefd24c-608a-408e-ab15-692ea447d0f4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "### Fancy stats generator\nShow off your score!", 
+    "Display" -> "markdown", "Hash" -> 
+     "eaab17e7-7831-4bf2-8b5e-a4819cf5564f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "StatsTable[win_, cell_] := Column[{\n  \
+TableView[Join[<|\"System\"->{benchmarkMeta[\"System\"]}, \
+\"WLJS\"->{benchmarkMeta[\"wljs-version\"]}|>, \
+Association[Table[key->{benchmarkReport[key, \"Total\"]}, {key, \
+benchmarkReport // Keys}]]]]\n,\n  Style[\"Submit it to us using the \
+following code\", Italic]\n,\n  Pane[Compress[{benchmarkMeta, \
+benchmarkReport}], ImageSize->300]\n}]", "Display" -> "codemirror", 
+    "Hash" -> "bb3cef9c-ca5f-4c72-8988-20cbe664aafd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "Stats[win_, cell_] := LeakyModule[{\n  max = #[\"Total\"]&/@ \
+Values[benchmarkReport],\n  scale = 0.0001\n},\n\n  With[{ table = Table[{\n  \
+  Section[{\n      Text[Style[category, Bold, FontSize->16], {0, 1}],\n      \
+Red, Rectangle[{0,-0.5}, {Offload[scale] benchmarkReport[category, \
+\"Total\"], 0.5}]\n    }],\n\n  Table[SubSection[{\n    Text[Style[sub, Bold, \
+FontSize->14], {0, 1}],\n    Blue, Rectangle[{0,-0.5}, \
+{Offload[scale](*FB[*)((benchmarkReport[category, \
+sub])(*,*)/(*,*)(Max[KeyDrop[benchmarkReport[category], \
+\"Total\"]//Values]))(*]FB*)benchmarkReport[category, \"Total\"], 0.5}]\n  \
+}], {sub, Complement[Keys[benchmarkReport[category]], {\"Total\"}]}]\n    \n  \
+}, {category, Keys[benchmarkReport]}] },\n\n    With[{list = (table // \
+Flatten) /. {Section -> Identity, SubSection -> Identity}},\n\n    \
+SetTimeout[scale = 1.0, 300];\n\n      Graphics[\n        \
+Table[Translate[list[[i]], {0, 0 - 4 i}], {i, Length[list]}]\n      \
+,TransitionDuration->1000, PlotRange->{{0, 50}, {-4 Length[list] - 4, 0}}, \
+Axes->{True, False}, ImageSize->{600,600}, Controls->False]\n    ]\n  ]\n  \
+\n]", "Display" -> "codemirror", "Hash" -> 
+     "0a712558-c5de-4e4b-80ed-106d37d6620c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "53df2a1f-8ab0-4903-91d7-a3d12d0da1dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "d864392f-de22-42ce-bc09-7ba69093f05a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> 
+     ".md\n## Wolfram Kernel Benchmark\nIt checks numerics and symbolics", 
+    "Display" -> "codemirror", "Hash" -> 
+     "574a4658-bd4f-409b-acdc-d748771c19df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## Wolfram Kernel Benchmark\nIt checks numerics and \
+symbolics", "Display" -> "markdown", 
+    "Hash" -> "08144876-a444-4a3a-a54b-319000a4fa4e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "Needs[\"Benchmarking`\"];\n\nKernelBenchmark[win_, cell_] := \
+With[{},\n  With[{a = Benchmark[] // First // Association},\n    \
+benchmarkReport[\"Kernel\"] = Join[<|\"Total\" -> (100.0/a[\"TotalTime\"])|>, \
+Association[Table[i[[1]]->(1/i[[2]]), {i, a[\"Results\"]}]]];\n      \
+(benchmarkMeta[#] = a[#])&/@{\"System\", \"BenchmarkName\", \
+\"FullVersionNumber\", \"Date\"};\n  ]\n];", "Display" -> "codemirror", 
+    "Hash" -> "3a302096-bd74-4042-89e3-521bddc47a90", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "e5331c1f-dd9d-4eee-b5f1-46b5a756ba49", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## Pure Javascript benchmark\nIt checks the performance \
+of some typical operations, including DOM.", "Display" -> "codemirror", 
+    "Hash" -> "3d96a066-9365-4c68-87a8-8971c1d336fa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## Pure Javascript benchmark\nIt checks the performance of \
+some typical operations, including DOM.", "Display" -> "markdown", 
+    "Hash" -> "55cab8e0-4600-41d6-926d-81b002e4481c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".js\n\ncore.JSBenchmark = async () => {\n    const results = \
+{};\n\n    // Test 1: Mathematical Calculations\n    const mathTest = () => \
+{\n        const start = performance.now();\n        let result = 0;\n        \
+for (let i = 0; i < 1e6; i++) {\n            result += Math.sqrt(i);\n        \
+}\n        const end = performance.now();\n        results.mathTest = end - \
+start;\n    };\n\n    // Test 2: String Manipulations\n    const stringTest = \
+() => {\n        const start = performance.now();\n        let str = \"\";\n  \
+      for (let i = 0; i < 1e5; i++) {\n            str += \
+String.fromCharCode(i % 256);\n        }\n        const end = \
+performance.now();\n        results.stringTest = end - start;\n    };\n\n    \
+// Test 3: DOM Manipulations\n    const domTest = () => {\n        const \
+start = performance.now();\n        const container = \
+document.createElement('div');\n        document.body.appendChild(container); \
+// Attach container to document body\n        for (let i = 0; i < 1e4; i++) \
+{\n            const element = document.createElement('div');\n            \
+element.textContent = `Element ${i}`;\n            \
+container.appendChild(element);\n        }\n        \
+document.body.removeChild(container); // Remove container from document \
+body\n        const end = performance.now();\n        results.domTest = end - \
+start;\n    };\n\n    // Test 4: Array Operations\n    const arrayTest = () \
+=> {\n        const start = performance.now();\n        const arr = [];\n     \
+   for (let i = 0; i < 1e6; i++) {\n            arr.push(i);\n        }\n     \
+   arr.sort((a, b) => b - a);\n        const end = performance.now();\n       \
+ results.arrayTest = end - start;\n    };\n\n    // Run all tests\n    \
+mathTest();\n    stringTest();\n    domTest();\n    arrayTest();\n\n    // \
+Calculate total score\n    results.Total = \
+1000.0/Object.values(results).reduce((acc, cur) => acc + cur, 0);\n\n    \
+return results;\n};", "Display" -> "codemirror", 
+    "Hash" -> "ac16cd69-bbdd-46f5-b652-65e1995275aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "\ncore.JSBenchmark = async () => {\n    const results = \
+{};\n\n    // Test 1: Mathematical Calculations\n    const mathTest = () => \
+{\n        const start = performance.now();\n        let result = 0;\n        \
+for (let i = 0; i < 1e6; i++) {\n            result += Math.sqrt(i);\n        \
+}\n        const end = performance.now();\n        results.mathTest = end - \
+start;\n    };\n\n    // Test 2: String Manipulations\n    const stringTest = \
+() => {\n        const start = performance.now();\n        let str = \"\";\n  \
+      for (let i = 0; i < 1e5; i++) {\n            str += \
+String.fromCharCode(i % 256);\n        }\n        const end = \
+performance.now();\n        results.stringTest = end - start;\n    };\n\n    \
+// Test 3: DOM Manipulations\n    const domTest = () => {\n        const \
+start = performance.now();\n        const container = \
+document.createElement('div');\n        document.body.appendChild(container); \
+// Attach container to document body\n        for (let i = 0; i < 1e4; i++) \
+{\n            const element = document.createElement('div');\n            \
+element.textContent = `Element ${i}`;\n            \
+container.appendChild(element);\n        }\n        \
+document.body.removeChild(container); // Remove container from document \
+body\n        const end = performance.now();\n        results.domTest = end - \
+start;\n    };\n\n    // Test 4: Array Operations\n    const arrayTest = () \
+=> {\n        const start = performance.now();\n        const arr = [];\n     \
+   for (let i = 0; i < 1e6; i++) {\n            arr.push(i);\n        }\n     \
+   arr.sort((a, b) => b - a);\n        const end = performance.now();\n       \
+ results.arrayTest = end - start;\n    };\n\n    // Run all tests\n    \
+mathTest();\n    stringTest();\n    domTest();\n    arrayTest();\n\n    // \
+Calculate total score\n    results.Total = \
+1000.0/Object.values(results).reduce((acc, cur) => acc + cur, 0);\n\n    \
+return results;\n};", "Display" -> "js", 
+    "Hash" -> "47cae170-ecc8-45af-b935-c8e6135300b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "\nJavascriptBenchmark[win_, cell_]:=With[{},\n  \
+benchmarkReport[\"Javascript\"] = Association @ FrontFetch[JSBenchmark, \
+\"Window\"->win, \"Format\"->\"RawJSON\"];\n  benchmarkNext[];\n];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "149430e1-b4a3-4602-a481-b4b3bb50ea84", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "58e483df-b198-4be1-bd1b-46c2f041feea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "0d714ee1-9436-413e-bd04-a16259ab7b45", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n### BubblesBenchmark\n\nThe `BubblesBenchmark` function \
+performs a graphical benchmark by creating, updating, and removing animated \
+bubbles on a canvas. It calculates the frames per second (FPS) of the \
+animation and reports the performance.\n\n**Key components:**\n- **Pools** \
+(`cPool`, `vPool`, `rPool`, `oPool`): Manage positions, velocities, radii, \
+and states of bubbles.\n- `update[win_]`: Updates the positions and radii of \
+bubbles.\n- `remove[index_, win_]`: Removes a bubble from the canvas.\n- \
+`created[xy_, marker_String, win_]`: Creates a bubble at a given position.\n- \
+Event handlers to manage animation frames and bubble creation.\n- FPS \
+calculation and reporting.", "Display" -> "codemirror", 
+    "Hash" -> "0586893e-2868-48b6-a98b-b7cca2448990", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "### BubblesBenchmark\n\nThe `BubblesBenchmark` function \
+performs a graphical benchmark by creating, updating, and removing animated \
+bubbles on a canvas. It calculates the frames per second (FPS) of the \
+animation and reports the performance.\n\n**Key components:**\n- **Pools** \
+(`cPool`, `vPool`, `rPool`, `oPool`): Manage positions, velocities, radii, \
+and states of bubbles.\n- `update[win_]`: Updates the positions and radii of \
+bubbles.\n- `remove[index_, win_]`: Removes a bubble from the canvas.\n- \
+`created[xy_, marker_String, win_]`: Creates a bubble at a given position.\n- \
+Event handlers to manage animation frames and bubble creation.\n- FPS \
+calculation and reporting.", "Display" -> "markdown", 
+    "Hash" -> "cd375f01-e2af-4299-8a7b-edafb939c936", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "BubblesBenchmark[window_, after_] := LeakyModule[{promise = \
+Promise[], cPool, vPool, rPool, oPool, update, remove, created, time, \
+timeout, fpsmeter, fps, bubbleCell},\n\n  cPool = Table[{0., 0.}, {i, \
+100}];\n  vPool = cPool;\n  rPool = Table[0., {i, 100}];\n\n  oPool = \
+Table[Null, {i, 100}];\n\n  update[win_] := With[{},\n    {cPool, rPool} = \
+Transpose[\n      MapIndexed[\n        Function[{a, index},\n          (* if \
+slot is not empty - recalculate *)\n          If[oPool[[index // First]] =!= \
+Null,\n            If[\n              a[[2]] <= 0.002,\n              (* if \
+radius is too small - remove an object *)\n              remove[index // \
+First, win];\n              a,\n              (* if ok - animate *)\n         \
+     {a[[1]] + 0.05 vPool[[index // First]], 0.9 a[[2]]}\n            ],\n    \
+        a\n          ]\n        ],\n        {cPool, rPool} // Transpose\n     \
+ ]\n    ];\n  ];\n\n  remove[index_, win_] := (\n    (* destroy instance on \
+the frontend *)\n    Delete[oPool[[index]], \"Window\" -> win];\n    \
+oPool[[index]] = Null\n  );\n\n  created[xy_, marker_String, win_] := \
+With[{\n    (* find empty slot *)\n    slot = FirstPosition[oPool, Null]\n  \
+},\n    If[!MissingQ[slot],\n      With[{s = slot // First},\n\n        (* \
+initial positions and etc *)\n        cPool[[s]] = xy;\n        rPool[[s]] = \
+0.05;\n        vPool[[s]] = RandomReal[{-1, 1}, 2];\n        oPool[[s]] = \
+True;\n\n        update[win];\n\n        (* create an instance of Disk on a \
+graph *)\n        With[{\n          o = {\n            Hue[RandomReal[{0, \
+1}], 1, 1],\n            (* prevent double updates *)\n            \
+Disk[Offload[cPool[[s]]], Offload[rPool[[s]], \"Static\" -> True]]\n          \
+}\n        },\n          oPool[[s]] = FrontSubmit[o, MetaMarker[marker], \
+\"Window\" -> win, \"Tracking\" -> True];\n        ];\n      ];\n      \
+True,\n      False\n    ]\n  ];\n\n  time = AbsoluteTime[];\n  timeout = \
+AbsoluteTime[];\n  fps = 0;\n  fpsmeter = {};\n\n  With[{win = window},\n    \
+EventHandler[\"frame\", Function[Null,\n      With[{a = AbsoluteTime[]},\n    \
+    fps = 1 / (a - time);\n        time = a;\n        If[a - timeout > 1,\n   \
+       AppendTo[fpsmeter, fps];\n          If[Length[fpsmeter] > 5,\n         \
+   EventRemove[\"frame\"];\n            Delete[bubbleCell];\n            \
+benchmarkReport[\"Bubbles\"] = <|\"Total\" -> Mean[fpsmeter], \"FPS\" -> \
+Mean[fpsmeter]|>;\n            EventFire[promise, Resolve, True];\n          \
+];\n          timeout = a;\n        ];\n      ];\n      \
+If[!created[RandomReal[{-1, 1}, 2], \"canvas\", win], update[win]];\n    \
+]];\n  ];\n\n  bubbleCell = CellPrint[\n    ToString[\n      Graphics[{White, \
+AnimationFrameListener[rPool // Offload, \"Event\" -> \"frame\"], Green, \
+MetaMarker[\"canvas\"]},\n        PlotRange -> {{-1, 1}, {-1, 1}}, \
+ImagePadding -> None, TransitionType -> None], \n      StandardForm\n    ], \
+\n    \"After\" -> after\n  ];\n\n  promise\n];", "Display" -> "codemirror", 
+    "Hash" -> "89e9e6b5-40b9-42b6-a1ef-d3f2b10e1807", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "647297c0-de27-4697-9dd9-becf655bd42e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## 1000 boids\nAnother FPS test", 
+    "Display" -> "codemirror", "Hash" -> 
+     "20b978a9-d879-4161-87e2-9aaf8c0ac903", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## 1000 boids\nAnother FPS test", "Display" -> "markdown", 
+    "Hash" -> "f3e0d8ac-c225-4bc3-9c7c-8058bf5b4a9b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "BoidsBenchmark[win_, after_] := LeakyModule[{\n  n, r, f, s, \
+x, fps, fpsmeter, time, cell, promise = Promise[]\n},\n  n = 1000;\nr := \
+RandomInteger[{1, n}];\nf := (#/(.01 + Sqrt[#.#])) & /@ (x[[#]] - x) &;\ns := \
+With[{r1 = r}, p[[r1]] = r; q[[r1]] = r];\nx = RandomReal[{-1, 1}, {n, \
+2}];\n{p, q} = RandomInteger[{1, n}, {2, n}];\n\n\nfps = 0;\nfpsmeter = \
+{};\ntime = AbsoluteTime[];\n\nEventHandler[\"boids\", Function[Null,\n  x = \
+0.995 x + 0.02 f[p] - 0.01 f[q];\n  If[r < 100, s];\n\n  (* FPS counter *)\n  \
+fps += 1;\n  With[{diff = AbsoluteTime[] - time},\n    If[diff >= 1.0,\n      \
+AppendTo[fpsmeter, fps / (diff)];\n      If[Length[fpsmeter] > 5, \n        \
+EventRemove[\"boids\"];\n        Delete[cell];\n        \
+benchmarkReport[\"Boids\"] = <|\"Total\" -> Mean[fpsmeter], \"FPS\" -> \
+Mean[fpsmeter]|>;\n        \n        EventFire[promise, Resolve, True];\n     \
+ ];\n      fps = 0;\n      time = AbsoluteTime[];\n    ];\n  ];\n]];\n\ncell \
+= CellPrint[ToString[Graphics[{\n  PointSize[0.007], Point[x // Offload],\n  \
+AnimationFrameListener[x // Offload, \"Event\"->\"boids\"],\n  Text[fpsLabel \
+// Offload, {-1.8,1.8}]\n}, PlotRange -> {{-2,2}, {-2,2}}, \
+TransitionType->None], StandardForm], \"After\"->after];\n\npromise\n\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "58253336-b844-4f8e-8e45-4afcce15b126", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "7547a6e1-000c-4e8c-97d1-472853feaae8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## Falling balls\nA simple demo with balls in 3D", 
+    "Display" -> "codemirror", "Hash" -> 
+     "59fc4bba-eba3-45a7-affa-6f4c29f03033", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## Falling balls\nA simple demo with balls in 3D", 
+    "Display" -> "markdown", "Hash" -> 
+     "a9fbbab8-0149-416c-a1c5-869ec1193536", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "BallsBenchmark[win_, after_] := LeakyModule[{\n balls, vels, \
+fps, fpsmeter, time, timeout, cell, promise = Promise[]\n},\n\nballs = \
+RandomReal[{-1,1}, {100,3}];\nvels  = RandomReal[{-1,1}, {100,3}];\n\n\nfps = \
+0;\nfpsmeter = {};\ntime = AbsoluteTime[];\ntimeout = \
+AbsoluteTime[];\n\nEventHandler[\"balls\", Function[Null,\n  vels = Table[\n  \
+  If[Norm[balls[[i]]] < 0.01, -1, 1] vels[[i]] - 0.08 balls[[i]]\n  , {i, \
+Length[balls]}];\n  \n  balls = Table[balls[[i]] + 0.08 vels[[i]], {i, \
+Length[balls]}];\n\n  (* FPS counter *)\n      With[{a = AbsoluteTime[]},\n   \
+     fps = 1 / (a - time);\n        time = a;\n        If[a - timeout > 1,\n  \
+        AppendTo[fpsmeter, fps];\n          If[Length[fpsmeter] > 5,\n        \
+    EventRemove[\"balls\"];\n            Delete[cell];\n            \
+benchmarkReport[\"Balls3D\"] = <|\"Total\" -> Mean[fpsmeter], \"FPS\" -> \
+Mean[fpsmeter]|>;\n            EventFire[promise, Resolve, True];\n          \
+];\n          timeout = a;\n        ];\n      ];\n]];\n\ncell = \
+CellPrint[ToString[Graphics3D[{\n  Table[With[{i = i},\n    {\n      \
+RGBColor[RandomReal[{0,1}, 3]],\n      Sphere[balls[[i]] // Offload, 0.03]\n  \
+  }\n  ], {i, Length[balls]}], \n  AnimationFrameListener[balls // Offload, \
+\"Event\"->\"balls\"]\n}], StandardForm], \"After\"->after];\n\npromise\n\n]"\
+, "Display" -> "codemirror", "Hash" -> 
+     "db340412-843c-4092-beef-e7118b0cba12", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## WaveEquation\nTest in 3D", "Display" -> "codemirror", 
+    "Hash" -> "fd16a34f-5edb-49f3-915d-19733d2ddd95", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "a33c8236-4589-4530-b68e-1f6a010493bc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## WaveEquation\nTest in 3D", "Display" -> "markdown", 
+    "Hash" -> "6142f7e6-e640-4047-9ee2-fd1414fe7ccb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "Needs[\"ComputationalGeometry`\"];\n\nWavesBenchmark[win_, \
+after_] := LeakyModule[{\n field0, field1, update, triangles, triangles2, \
+makeVertices, vertices, lattice, mesh, field2, fps, fpsmeter, time, timeout, \
+cell, promise = Promise[]\n},\n\nfield0 = Table[0., {i,50}, {j,50}];\nfield1 \
+= field0;\nfield2 = field0;\n\n(* initial perturbation *)\nfield2[[25,25]] = \
+0.01;\n\nlattice = Table[{i,j}, {i, 50}, {j,50}];\nmesh = Flatten[lattice, \
+1];\n\nmakeVertices = Compile[{{f, _Real, 2}, {pairs, _Integer, 2}, {scale, \
+_Real}},\n  Join[#, {scale f[[#[[1]], #[[2]]]]}] &/@ pairs\n];\n\nvertices = \
+NumericArray[makeVertices[field0, mesh, 300]];\n\n\ntriangles2[points_] := \
+Module[{tr, triples},\n  tr = DelaunayTriangulation[points];\n  triples = \
+Flatten[Function[{v, list},\n      Switch[Length[list],\n        (* account \
+for nodes with connectivity 2 or less *)\n        1, {},\n        2, \
+{Flatten[{v, list}]}, \n        _, {v, ##} & @@@ Partition[list, 2, 1, {1, \
+1}]\n      ]\n    ] @@@ tr, 1];\n  Cases[GatherBy[triples, Sort], a_ /; \
+Length[a] == 3 :> a[[1]]]];\n\ntriangles = triangles2[mesh];\n\nupdate = \
+Compile[{{i, _Integer}, {j, _Integer}, {f, _Real, 2}, {p, _Real, 2}}, \n  \
+0.001 (If[i-1 > 0, f[[i-1, j]], 0] + If[i+1 < 51, f[[i+1, j]], 0] + \
+If[j+1<51, f[[i, j+1]], 0] + If[j-1 > 0, f[[i, j-1]], 0] - 4 f[[i,j]])\n+ 2 \
+f[[i,j]] - p[[i,j]]\n];\n\n\nfps = 0;\nfpsmeter = {};\ntime = \
+AbsoluteTime[];\ntimeout = AbsoluteTime[];\n\nEventHandler[\"wave\", \
+Function[Null,\n   With[{i = #[[1]], j = #[[2]]}, \n    field0[[i,j]] = \
+update[i,j, field1, field2];\n  ]&/@ RandomSample[mesh];\n  \n  field2 = \
+field1;\n  field1 = field0;\n  \n  vertices = \
+NumericArray[makeVertices[field0, mesh, 300]];\n\n  (* FPS counter *)\n      \
+With[{a = AbsoluteTime[]},\n        fps = 1 / (a - time);\n        time = \
+a;\n        If[a - timeout > 1,\n          AppendTo[fpsmeter, fps];\n         \
+ If[Length[fpsmeter] > 5,\n            EventRemove[\"wave\"];\n            \
+Delete[cell];\n            benchmarkReport[\"Wave3D\"] = <|\"Total\" -> \
+Mean[fpsmeter], \"FPS\" -> Mean[fpsmeter]|>;\n            EventFire[promise, \
+Resolve, True];\n          ];\n          timeout = a;\n        ];\n      \
+];\n]];\n\ncell = CellPrint[ToString[Graphics3D[{Shadows[True], \
+AnimationFrameListener[vertices//Offload, \"Event\"->\"wave\"], \
+SpotLight[Blue, {2.4463, 60.1604, 9.3104}, 1.5, 3000], SpotLight[Red, \
+{48.1378, 47.8679, 12.4545}, 1.5, 3000], \n  Roughness[0],\n  \
+GraphicsComplex[vertices // Offload, Polygon[triangles]]\n\n}, \
+ImageSize->500], StandardForm], \"After\"->after];\n\npromise\n\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "46c7e13e-9f6a-4f18-ab80-2ff0d4639ffd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## Connectivity\nTest sockets and network IO", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7d8b80d0-6879-4be2-b3dd-8f7479d7cec2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## Connectivity\nTest sockets and network IO", 
+    "Display" -> "markdown", "Hash" -> 
+     "2ee46efd-0d07-40d5-86d9-b06f7c604f2a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".js\n\ncore.WLJSRoundTrip = async (args, env) => {\n  //const \
+event = await interpretate(args[0], env);\n  //server.emitt(event, 'True');\n \
+ return true;\n}\n\nlet timer;\n\ncore.WLJSReadStartTimer = async (args, env) \
+=> {\n  timer = performance.now();\n}\n\ncore.WLJSRead = async (args, env) => \
+{\n  return performance.now() - timer;\n}\n\nconst array = [];\nfor (let i=0; \
+i<65536; ++i) array.push(Math.random());\n\ncore.WLJSWrite = async (args, \
+env) => {\n\n  return array;\n}\n\n\ncore.HTTPDownload = async (args, env) => \
+{\n  //prevent disk IO requests;\n  await fetch('dummy.pdf');\n  \n  const \
+time = performance.now();\n  const response = await fetch('dummy.pdf');\n  \
+console.log(response);\n  return (response.headers.get('Content-Length') / \
+(performance.now() - time) / 50000);\n}\n\n", "Display" -> "codemirror", 
+    "Hash" -> "d43c77a7-8044-41f6-a9ee-5b43b1076922", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "\ncore.WLJSRoundTrip = async (args, env) => {\n  //const \
+event = await interpretate(args[0], env);\n  //server.emitt(event, 'True');\n \
+ return true;\n}\n\nlet timer;\n\ncore.WLJSReadStartTimer = async (args, env) \
+=> {\n  timer = performance.now();\n}\n\ncore.WLJSRead = async (args, env) => \
+{\n  return performance.now() - timer;\n}\n\nconst array = [];\nfor (let i=0; \
+i<65536; ++i) array.push(Math.random());\n\ncore.WLJSWrite = async (args, \
+env) => {\n\n  return array;\n}\n\n\ncore.HTTPDownload = async (args, env) => \
+{\n  //prevent disk IO requests;\n  await fetch('dummy.pdf');\n  \n  const \
+time = performance.now();\n  const response = await fetch('dummy.pdf');\n  \
+console.log(response);\n  return (response.headers.get('Content-Length') / \
+(performance.now() - time) / 50000);\n}\n\n", "Display" -> "js", 
+    "Hash" -> "e3889041-e7a6-44a8-82bc-75d563f9c2e7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "0c579982-37d0-49f9-beca-9a3c93f943da", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "SocketsIO[win_, cell_] := LeakyModule[{\n  time, promise = \
+Promise[]\n},\n  time = AbsoluteTime[];\n  \
+Then[FrontFetchAsync[WLJSRoundTrip[], \"Window\"->win], Function[Null,\n    \
+With[{trip = AbsoluteTime[] - time},\n      benchmarkReport[\"Sockets\"] = \
+<||>;\n      benchmarkReport[\"Sockets\", \"RoundTrip\"] = 1/trip;\n\n      \
+With[{payload = RandomInteger[{0,255}, 65536]},\n        \
+FrontSubmit[WLJSReadStartTimer[], \"Window\"->win];\n        \
+Then[FrontFetchAsync[WLJSRead[payload], \"Window\"->win], Function[el,\n      \
+    benchmarkReport[\"Sockets\", \"WebsocketsSendJSON\"] = 1000.0/el;\n\n     \
+     With[{start = AbsoluteTime[]},\n          \n            \
+Then[FrontFetchAsync[WLJSWrite[], \"Window\"->win], Function[Null,\n          \
+    benchmarkReport[\"Sockets\", \"WebsocketsReadJSON\"] = \
+10000.0/((AbsoluteTime[] - start)1000);\n\n              \
+Then[FrontFetchAsync[HTTPDownload[], \"Window\"->win], Function[speed,\n      \
+          benchmarkReport[\"Sockets\", \"HTTPDownload\"] = speed / 2.0;\n\n   \
+             benchmarkReport[\"Sockets\", \"Total\"] = 5/(\n                  \
+(1/benchmarkReport[\"Sockets\", \"RoundTrip\"]) +\n                  \
+(1/benchmarkReport[\"Sockets\", \"WebsocketsSendJSON\"]) +\n                  \
+(1/benchmarkReport[\"Sockets\", \"WebsocketsReadJSON\"]) +\n                  \
+(1/benchmarkReport[\"Sockets\", \"HTTPDownload\"]) \n                );\n\n   \
+             EventFire[promise, Resolve, True];\n              ]];\n          \
+    \n            ]];\n          ];\n          \n        ]];\n      ];\n    \
+];\n  ]];\n\n  promise\n]", "Display" -> "codemirror", 
+    "Hash" -> "a686448a-af7d-45f7-92e7-8d5cabd00837", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## WLJS Interpreter\nTest on a large dataset", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5ef197b3-4cc8-4dc3-9fbf-ddf05136eb18", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## WLJS Interpreter\nTest on a large datase", 
+    "Display" -> "markdown", "Hash" -> 
+     "1acf42bb-b1fe-4374-bb75-d9112b5c4584", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".js\n\ncore.WLJSDummyTest = async (args, env) => {\n  const \
+timer = performance.now();\n  const data = await interpretate(args[0], \
+env);\n  return performance.now() - timer;\n}", "Display" -> "codemirror", 
+    "Hash" -> "662c3b3c-ffda-439a-bc1a-39ae6ad654e0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "\ncore.WLJSDummyTest = async (args, env) => {\n  const timer \
+= performance.now();\n  const data = await interpretate(args[0], env);\n  \
+return performance.now() - timer;\n}", "Display" -> "js", 
+    "Hash" -> "da34cdad-bb7e-48fe-b431-d75b0290d10d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "WLJSBenchmark[win_, _] := Module[{\ndummy, dummyNumeric, \
+dummyCalc, dummyCalc2, promise = Promise[]\n},\n\n  Then[FrontFetchAsync[{\n  \
+  WLJSDummyTest[Table[i, {i, 100000}]],\n    WLJSDummyTest[Table[i, {i, \
+100000}] // NumericArray],\n    WLJSDummyTest[Table[With[{i=i}, \
+Offload[Sin[i] + Cos[i/10]]], {i, 100000}]],\n    WLJSDummyTest[Table[Sin[i] \
++ Cos[i/10], {i, 100000}] // Offload]\n  }, \"Window\"->win], Function[data, \
+\n  \n    {dummy, dummyNumeric, dummyCalc, dummyCalc2} = 0.1 data / 3;\n    \
+{dummy, dummyNumeric, dummyCalc, dummyCalc2} = {10.0/dummy, \
+10.0/dummyNumeric, 1000.0/dummyCalc, 1000.0/dummyCalc2};\n\n    \
+benchmarkReport[\"WLJS Interpreter\"] = <|\n    \"Total\" -> (1/(1/dummy + \
+1/dummyNumeric + 1/dummyCalc + 1/dummyCalc2)),\n    \"parseArray\" -> \
+dummy,\n    \"parseNumericArray\" -> dummyNumeric,\n    \"parseAndCalc\" -> \
+dummyCalc,\n    \"Calc\" -> dummyCalc2\n    |>;  \n\n    EventFire[promise, \
+Resolve, True];\n  ]];\n\n  promise\n\n\n]", "Display" -> "codemirror", 
+    "Hash" -> "335cb085-124f-4226-b39a-dcbea6910c32", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "db5723be-0ba0-4b5c-be0b-0ea9ad566c45", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> ".md\n## Database of all results", "Display" -> "codemirror", 
+    "Hash" -> "bc9f29e6-2273-4145-a7fe-157582a94b1f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "## Database of all results", "Display" -> "markdown", 
+    "Hash" -> "a898fd00-8aac-428b-9239-08742fb961aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "benchmarkResults = \
+(*VB[*)(Uncompress[\"1:eJwNkreuhFYARJ8l+0NcU5AuyZILYMlpyaEjpwWWHD7I3+nXzOhIUx\
+3N39nkVH/8/Pysf/6G3q6b+99fPz/oP6V6f4IAnWTR96PO+W6FlKJGMndeyw9cthodg8PTjbn+1Uq\
+UqWJi73L2zuz4hucQbuAWVljMsdcoayiLqyxXIjiiaJ9xDjGCL/x2K2o4UHg1zhzhGzZsUIkygquj\
+0OSj8N0/jGRQBpwDAofx3Qrzcl7UGxAJPzkv9JQsyZl1R2NgEryE0EkvaU3ZlRJ0bfUh2qJZQHV0R\
+YWrJ68SpuI4Mn0kxKDZLZbbwlVfrHS6TyMd2qjl9ATuwKWnkoewxV8EHODKKFlGv/CIOHBQcdnypa\
+qFSHQ5ePXLqcdGxUrGzByY+DG+qyzaqnepy6zVIWpfudSY8VfKJxCT7QDoeZ/n7hrw6E2VBtR5jVI\
+JGVwUsosKsyfx1UEVT645VzrYiINkdf31v1ptmwN8Ry305MwCH3ceOWoTOmezaG8rqPYXxMgjCkVX\
+ilu0KJo+EPw0iR9+bNwp6gxpOuWRu6jkPTqbu4UpU8TC46r1mGEKo/a1sqjuCd65AJcitMPzo3v72\
+PaAF9jDsowmlM1ohFoZIkjwO6Ez6K2+uOysOs05BehFT8cVF7o2VlTeSPJXDVp58DSl4O1kYY/Lo+\
+olocN+7Yl1h1OafN14McJ26mKEm3880boCleU0bEO40arrkgLCg4C8hPfDGzZgJg1M7vatji0S9E5\
+yFOWvWZ4d5EEmSP4LJJ2u0fJTlsP7bVDAXieLvcpUESXXLefkTVUMeX+HL+ayllw48ZRmwiLvFu9R\
+t/7GF6xLAG172LQUnRyJg22Sl9Fzkw7YGomLiHq6qr3nEDq05RxMWgruVpacyaUFJhsqq6HpUnpqp\
+o+ylDNiPJPY2d66GHEwT+eCeg38uv++niqiujOgEiwRvZhzyGU2K2sUB6+813gy6jnRRic0TXEDFm\
+flZREEfJObulIvE1NCEdKi5QGPca0zIog0nFSFL2529eseD9Y47Bbp8VcgIoGUzVxhedM8IoIY4EH\
+hnLqSF07hF4/Ri/vHNXd82RNB1WVLe6PS7TIBTaBb2Uw9J/EYIL8kSEVTRKj492uJq0YFigmRad5B\
+ZBRol3sKKmQQTvSeecZ0KJ29KArDPGdz4wj2k9wKu05E2NYDZrQubppoJodThhP8WznWuMuSl5UXa\
+TVhS7rXfWrF2ZySaaOskIdaXZZvtu8XZuXCU/UQra7wWQ4MCPmwYMcJDhIy0n3tMMqTuCVXO4bSU8\
+LzsKV0xhgCmO5JMNB0gtVBm4z8QZ5QpX82eLaICrEQgmtgf1xRuMXkhyiIF7K2hCmtE0w9DEHRHx9\
+eCJ8Juk1zdNeZ6F8KkyvUYLYUNlJIRrtIvjOmJB9FbFM2pQdXQqhlxhffbDGejjqifk4n0Exks0u+\
+PDx8O9c3HLKiA0PYumYMiiJDyfpV1Z9V6CZ4Ao1PLmpJRPKyzTDNftAG/lwAxg5dO2ECBSRcvjNst\
+d5dBfQYbSWf/fff/wHZOd5V\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5DwTM7Py6x\
+KdcqvyDRgY2AAAL2TCSc=\"*)(*]VB*);", "Display" -> "codemirror", 
+    "Hash" -> "dba74d91-3acb-4e11-8842-a2551f6db37d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "showAllResults[win_, cell_] := \
+\nCellPrint[ToString[Graphics[With[{list = With[{item = Uncompress[#]}, \
+Function[key, <|\"wljs-version\"->item[[1]][\"wljs-version\"], \
+\"System\"->item[[1]][\"System\"], \"Score\" -> {key, item[[2]][key, \
+\"Total\"]}|> ]/@ (Keys[item[[2]]])]&/@benchmarkResults // Flatten},\n  \
+With[{partition = Partition[list, \
+Length[Uncompress[benchmarkResults[[1]]][[2]] // Keys]]},\n    Table[\n      \
+Table[With[{\n        offset = - 18.5 p - 17 (Length[partition // First]) \
+k,\n        score = partition[[p,k]][\"Score\"],\n        system = \
+partition[[p,k]][\"System\"],\n        wljs = \
+partition[[p,k]][\"wljs-version\"]\n      }, {\n        Text[system, {-10.5 - \
+5, offset - 0.5}],\n        Text[wljs, {score[[2]] + 1, offset - 0.5}],\n     \
+   If[p === Length[partition],\n          {Red, Arrow[{{score[[2]] + 1 + 20, \
+offset - 0.5}, {score[[2]] + 15, offset - 0.5}}]}\n        ],\n        \
+ColorData[97][k],\n        If[p==1, Text[score[[1]], {0, 1 + offset}]],\n     \
+   Rectangle[{0, -0.5 + offset}, {score[[2]], 0.5 + offset}]\n      }], {k, \
+Length[partition // First]}]\n    , {p, Length[partition]}]\n  ]\n], \
+ImagePadding->20, ImageSize->{600,600}], StandardForm], \"After\"->cell]\n  \
+\n(*showAllResults[_, EvaluationCell[]] *)\n\n", "Display" -> "codemirror", 
+    "Hash" -> "3b0d04bb-1a95-4d66-b3cf-e2514e21d9be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "Take[benchmarkResults, -1] // Iconize", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dbf6b834-95c4-4eb1-82fb-9a825a27501a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "(*VB[*)(Uncompress[\"1:eJwNkreuhFYARJ8l+0NcU5AuyZILYMlpyaEjpw\
+WWHD7I3+nXzOhIUx3N39nkVH/8/Pysf/6G3q6b+99fPz/oP6V6f4IAnWTR96PO+W6FlKJGMndeyw9\
+cthodg8PTjbn+1UqUqWJi73L2zuz4hucQbuAWVljMsdcoayiLqyxXIjiiaJ9xDjGCL/x2K2o4UHg1\
+zhzhGzZsUIkygquj0OSj8N0/jGRQBpwDAofx3Qrzcl7UGxAJPzkv9JQsyZl1R2NgEryE0EkvaU3Zl\
+RJ0bfUh2qJZQHV0RYWrJ68SpuI4Mn0kxKDZLZbbwlVfrHS6TyMd2qjl9ATuwKWnkoewxV8EHODKKF\
+lGv/CIOHBQcdnypaqFSHQ5ePXLqcdGxUrGzByY+DG+qyzaqnepy6zVIWpfudSY8VfKJxCT7QDoeZ/\
+n7hrw6E2VBtR5jVIJGVwUsosKsyfx1UEVT645VzrYiINkdf31v1ptmwN8Ry305MwCH3ceOWoTOmez\
+aG8rqPYXxMgjCkVXilu0KJo+EPw0iR9+bNwp6gxpOuWRu6jkPTqbu4UpU8TC46r1mGEKo/a1sqjuC\
+d65AJcitMPzo3v72PaAF9jDsowmlM1ohFoZIkjwO6Ez6K2+uOysOs05BehFT8cVF7o2VlTeSPJXDV\
+p58DSl4O1kYY/Lo+olocN+7Yl1h1OafN14McJ26mKEm3880boCleU0bEO40arrkgLCg4C8hPfDGzZ\
+gJg1M7vatji0S9E5yFOWvWZ4d5EEmSP4LJJ2u0fJTlsP7bVDAXieLvcpUESXXLefkTVUMeX+HL+ay\
+llw48ZRmwiLvFu9Rt/7GF6xLAG172LQUnRyJg22Sl9Fzkw7YGomLiHq6qr3nEDq05RxMWgruVpacy\
+aUFJhsqq6HpUnpqpo+ylDNiPJPY2d66GHEwT+eCeg38uv++niqiujOgEiwRvZhzyGU2K2sUB6+813\
+gy6jnRRic0TXEDFmflZREEfJObulIvE1NCEdKi5QGPca0zIog0nFSFL2529eseD9Y47Bbp8VcgIoG\
+UzVxhedM8IoIY4EHhnLqSF07hF4/Ri/vHNXd82RNB1WVLe6PS7TIBTaBb2Uw9J/EYIL8kSEVTRKj4\
+92uJq0YFigmRad5BZBRol3sKKmQQTvSeecZ0KJ29KArDPGdz4wj2k9wKu05E2NYDZrQubppoJodTh\
+hP8WznWuMuSl5UXaTVhS7rXfWrF2ZySaaOskIdaXZZvtu8XZuXCU/UQra7wWQ4MCPmwYMcJDhIy0n\
+3tMMqTuCVXO4bSU8LzsKV0xhgCmO5JMNB0gtVBm4z8QZ5QpX82eLaICrEQgmtgf1xRuMXkhyiIF7K\
+2hCmtE0w9DEHRHx9eCJ8Juk1zdNeZ6F8KkyvUYLYUNlJIRrtIvjOmJB9FbFM2pQdXQqhlxhffbDGe\
+jjqifk4n0Exks0u+PDx8O9c3HLKiA0PYumYMiiJDyfpV1Z9V6CZ4Ao1PLmpJRPKyzTDNftAG/lwAx\
+g5dO2ECBSRcvjNstd5dBfQYbSWf/fff/wHZOd5V\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk\
+5KRAeF5DwTM7Py6xKdcqvyDRgY2AAAL2TCSc=\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "f3df2a4f-899a-4828-8a12-a82bf2bf799d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "8fd5c602-484b-452d-a6d9-b5732e045c10", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "33e61541-6b67-416a-95d9-ec14de4c800f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "13a4ec77-d456-47a4-b212-fdbdaa98f1e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e84f6fc0-890e-44c6-8aae-b99de75ee251"|>}, "serializer" -> "jsfn4"|>
