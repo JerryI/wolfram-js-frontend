@@ -563,6 +563,12 @@ Component[OptionsPattern[]] := With[{
             ]
         ],
 
+        "ToggleCell" -> Function[cell,
+            With[{},
+                WebUISubmit[UINotebook["ToggleCell", cell["Hash"]], $Client];
+            ]
+        ],        
+
         "DeleteFocusedCell" -> Function[Null,
             notebook["FocusedCell"] // Delete;
             If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
