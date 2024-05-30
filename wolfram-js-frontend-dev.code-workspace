@@ -71,6 +71,9 @@
 		},
 		{
 			"path": "wl_packages/KirillBelov_CSockets"
+		},
+		{
+			"path": "wljs_packages/wljs-sound"
 		}
 	],
 	"settings": {
