@@ -1,18 +1,19 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$192], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$210], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Examples/Decorations/State preservation.wln"|>, 
- "Cells" -> {<|"Data" -> ".md\n# State preservation\nAn example of mutable \
-deffered decoration in a form of a slider", "Display" -> "codemirror", 
-    "Hash" -> "18abe57b-ca0f-4f63-97c8-6da46cf7df00", "Invisible" -> False, 
+/Demos/11 - Dynamic decorations/State preservation.wln", 
+   "ReadOnly" -> False|>, "Cells" -> 
+  {<|"Data" -> ".md\n# State preservation\nAn example of mutable deffered \
+decoration in a form of a slider", "Display" -> "codemirror", 
+    "Hash" -> "a32c2376-0c88-4d37-90de-a488bb94c4d8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> "# State preservation\nAn example of mutable deffered \
 decoration in a form of a slider", "Display" -> "markdown", 
-    "Hash" -> "f4e9fae5-506c-4c4e-886f-ff6deeead458", "Invisible" -> False, 
+    "Hash" -> "e54332f0-066f-4555-8381-d81c0891633a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> "handler[state_String, marker_, window_] := Module[{\n\tobject \
 = InputRange[0,1, 0.1, ToExpression[state]]\n},\n\tEventHandler[object, \
 Function[value,\n       FrontSubmit[ViewBox`InnerExpression[ToString[value]], \
@@ -26,40 +27,40 @@ Then[FrontFetchAsync[ViewBox`InnerExpression[], MetaMarker[marker], \
 FrontSubmit[handler[{payload}//Flatten//First, marker, win], \
 MetaMarker[marker], \"Window\"->win];\n      ]]\n    ]\n   ]\n  }];\n  \n  \
 ViewBox[initial, Null, \"Event\"->uid]\n]", "Display" -> "codemirror", 
-    "Hash" -> "6f05afb2-8981-451d-a539-69d5a5c14f8c", "Invisible" -> False, 
+    "Hash" -> "0af01270-b10b-4304-ad2f-37692e73d060", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> ".md\nCreate a slider", "Display" -> "codemirror", 
-    "Hash" -> "14eb4a4f-9f9b-4091-8da8-c71f83d133b8", "Invisible" -> False, 
+    "Hash" -> "50037aa5-2aa6-4485-bb15-f63dc5d672ba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, <|"Data" -> "Create a slider", 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "Create a slider", 
     "Display" -> "markdown", "Hash" -> 
-     "c785645c-d42a-4fff-8df1-3881f97b73af", "Invisible" -> False, 
+     "363828bb-cf28-4598-a120-d9fafc7e14fd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, <|"Data" -> "handler[0.4]", 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "slider[0.4]", 
     "Display" -> "codemirror", "Hash" -> 
-     "7d4892a0-2b5f-46f5-ac3c-ac7ad0b15186", "Invisible" -> False, 
+     "cdb6ecbd-5d03-46c8-a46b-9b4693027748", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> 
      ".md\nTry to copy and paste or evaluate. It will keep the value ", 
     "Display" -> "codemirror", "Hash" -> 
-     "40a24912-cfd9-4ee4-a383-83b4181669ef", "Invisible" -> False, 
+     "fd31ec53-630c-4cfe-a5a6-a47d0d84b095", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> "Try to copy and paste or evaluate. It will keep the value ", 
     "Display" -> "markdown", "Hash" -> 
-     "8cab9d16-7909-4fe8-bb00-2779c366c31e", "Invisible" -> False, 
+     "435e7fdb-c053-4bc1-aee4-674690a79ade", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>, 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "ce958273-3eee-4a41-bb88-9dedc4d02455", "Invisible" -> False, 
+    "Hash" -> "c2a2d2cd-74cf-4d63-8f52-f1e975445003", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "37467bab-582b-4744-b44e-04038fe8e375"|>}, "serializer" -> "jsfn4"|>
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>}, "serializer" -> "jsfn4"|>
