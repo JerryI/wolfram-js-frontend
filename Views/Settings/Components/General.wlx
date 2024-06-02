@@ -33,6 +33,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
             onSave[settings];
         ],
 
+        "Transparency" -> Function[state,
+            settings = Join[settings, <|"Transparency"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],
+
         "ChangeHome" -> Function[Null,
             With[{p = Promise[], cli = $Client},
                 EventFire[homefolderEvent, "Ask", <|"Client" -> $Client, "Promise"->First[p]|>];
@@ -154,6 +160,10 @@ EventHandler[Secret, {"Load" -> Function[Null,
                     <WebUIEventListener Id={"BackupTimeout"} Type={"blur"} Event={controller} Pattern={"BackupTimeout"}/>
                 </div> 
             </div> 
+
+            <StringRiffle>
+                <Checkbox Label={"Inner window transparency"} Event={controller} Topic={"Transparency"} Description={"Makes a notebook background transparent. It might not work on all OS"} Checked={settings["Transparency"]}/>
+            </StringRiffle>
         </div>
     </div>  
 

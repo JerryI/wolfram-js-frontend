@@ -262,6 +262,10 @@ input::selection {
   padding-left: 0.5rem;
 }
 
+[transparency="true"] .bg-g-trans {
+  background: transparent !important;
+}
+
 .ttint {
   transition: height 0.2s;
   background: #0056880f;
