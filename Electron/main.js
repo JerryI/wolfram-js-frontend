@@ -885,7 +885,7 @@ function create_window(opts, cbk = () => {}) {
 
 
         const options = Object.assign({}, defaults, opts);
-        options.minWidth = 545;
+        options.minWidth = 576;
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
