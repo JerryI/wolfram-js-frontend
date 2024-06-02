@@ -135,6 +135,7 @@ App[request_] := With[{
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         
+        Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"],
 
         FakeMenu = 
           Switch[If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
@@ -205,7 +206,7 @@ App[request_] := With[{
   {
     "<!DOCTYPE html>"
   ,
-    <html class="h-full {AppClass}" os="{NavigatorOS}" sidebar="{sidebarState}"> 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" sidebar="{sidebarState}"> 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
