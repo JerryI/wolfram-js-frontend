@@ -790,6 +790,7 @@ const windows = {
             //collect and dump all logs for 2 minutes to a file
             if (Array.isArray(self.dump) && !server.debug) {
                 setTimeout(() => {
+                    if (server.debug) return;
                     fs.writeFile(path.join(installationFolder, 'Debug', 'System.log'), self.dump.join('\r\n'), function(err) {
                         if (err) throw err;
 
