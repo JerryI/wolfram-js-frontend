@@ -178,10 +178,6 @@ App[request_] := With[{
           ]
     },
 
-    (* /* destructor */ *)
-    With[{socket = Null},
-    
-    ];
 
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {

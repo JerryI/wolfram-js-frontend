@@ -6,5 +6,5 @@ GroupState = If[TrueQ[$Options["Cell"]["Props"]["InitGroup"]], "", " hidden"];
 GroupColor = StringJoin["bg-", (If[StringQ[#], #, "teal"]&) @ parameters["AccentColor"], "-300"];
 
 <div class="{Class}" id="{id}">
-    <div id="gi-{id}" class="cgi-ico {StringJoin[GroupColor, GroupState]}"></div>
+    <div id="gi-{id}" class="cgi-ico {Quiet[StringJoin[GroupColor, GroupState]]}"></div>
 </div>

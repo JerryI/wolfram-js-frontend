@@ -8,8 +8,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
   addDialog: (callback) => ipcRenderer.on('yesorno', callback),
   clear: (callback) => ipcRenderer.on('clear', callback),
   locateLogFile: () => {
-    ipcRenderer.send('locate-logfile', id, data)
+    ipcRenderer.send('locate-logfile', {})
   },
+  debug: () => {
+    ipcRenderer.send('debug', {})
+  },  
   resolveInput: (id, data) => {
     // Send IPC event to main process to read the file.
     ipcRenderer.send('promt-resolve', id, data)

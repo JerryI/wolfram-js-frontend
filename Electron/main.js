@@ -788,9 +788,9 @@ const windows = {
             });
 
             //collect and dump all logs for 2 minutes to a file
-            if (Array.isArray(self.dump)) {
+            if (Array.isArray(self.dump) && !server.debug) {
                 setTimeout(() => {
-                    fs.writeFile(path.join(installationFolder, '2minutesLog.txt'), self.dump.join('\r\n'), function(err) {
+                    fs.writeFile(path.join(installationFolder, 'Debug', 'System.log'), self.dump.join('\r\n'), function(err) {
                         if (err) throw err;
 
                         //block it for the rest of time
@@ -849,6 +849,29 @@ const windows = {
         }
     }
 };
+
+function ensureDirectoryExistence(filePath) {
+    var dirname = path.dirname(filePath);
+    if (fs.existsSync(dirname)) {
+      return true;
+    }
+    ensureDirectoryExistence(dirname);
+    fs.mkdirSync(dirname);
+  }
+
+const dumpLogs = (cbk) => {
+    const p = path.join(installationFolder, 'Debug', 'System.log');
+    ensureDirectoryExistence(p);
+    fs.writeFile(p, windows.log.dump.join('\r\n'), function(err) {
+        if (err) throw err;
+
+        shell.showItemInFolder(p);
+        shell.beep();
+        cbk();
+    });
+
+
+}
 
 const read_wl_settings = () => {
     if (!fs.existsSync(path.join(installationFolder, '_settings.wl'))) return;
@@ -1216,12 +1239,24 @@ function create_window(opts, cbk = () => {}) {
 
 app.on('will-quit', (e) => {
     console.log('exiting the server...');
+
     //e.preventDefault();
     server.shutdown();
-})
+});
 
 app.on('before-quit', (e) => {
     console.log('aaahhh...');
+    if (server.debug) {
+        e.preventDefault();
+
+        dumpLogs(()=>{
+            server.debug = false;
+            server.shutdown();
+            app.exit(0);
+        });
+        return false;
+    }
+    
     //server.shutdown();
     if (server.browserMode && process.platform !== 'darwin') {
     
@@ -1374,7 +1409,10 @@ app.whenReady().then(() => {
 
     powerSaver();
 
-    
+    ipcMain.on('debug', () => {
+        server.debug = true;
+
+    });
 
     //make a log window and start WL
     windows.log.construct((log_window) => {
@@ -1543,7 +1581,7 @@ function start_server (window) {
                 windows.log.print(string);
             };
 
-            setTimeout(() => {windows.log.destroy()}, 300);
+            if (!server.debug) setTimeout(() => {windows.log.destroy()}, 300);
         }
 
     };

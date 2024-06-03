@@ -22,7 +22,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
 ];
 
 restoreCells[window_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
-    
+    Print["nothing to do"];
 ];
 
 checkWSLink[window_, client_, event_String] := Module[{},

@@ -48,7 +48,7 @@ EventHandler[assignedEvent2, {
 }];
 
 EventHandler[assignedEvent3, {
-   any_ :> Function[data, Echo[StringJoin["Kernel: ", any, ": ", ToString[data] ] ] ]
+   any_ :> Function[data, Echo[StringJoin["Kernel output >> ", ToString[any], ": ", ToString[data] ] ] ]
 }];
 
 With[{kernel = kernel},

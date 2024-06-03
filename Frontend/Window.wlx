@@ -39,11 +39,6 @@ App[request_] := With[{
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]
     },
 
-    (* /* destructor */ *)
-    With[{socket = Null},
-    
-    ];
-
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
       any_ :> (EventFire[AppEvent, Messanger[any], #]&)

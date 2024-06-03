@@ -177,7 +177,7 @@ $ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoi
 
 EventHandler[AppExtensions`AppEvents // EventClone, {
  "Notebook:Close" -> Function[notebook,
-
+  Print["Notebook was closed"];
   (*$ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];*)
  ],
  "Loader:NewNotebook" -> Function[notebook,

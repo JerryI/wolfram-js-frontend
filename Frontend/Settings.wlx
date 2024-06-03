@@ -25,10 +25,7 @@ App[request_] := With[{
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>
     },
 
-    (* /* destructor */ *)
-    With[{socket = Null},
-      Null;
-    ];
+
 
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
