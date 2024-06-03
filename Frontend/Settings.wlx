@@ -42,6 +42,7 @@ App[request_] := With[{
 
     <html class="h-full"> 
         <Head Title={"Settings"}>
+            <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
