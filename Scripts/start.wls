@@ -134,7 +134,8 @@ $Env = <|
   "docs" -> 20540
 |>;
 
-With[{argv = Rest @ $ScriptCommandLine},
+With[{argv = Rest @ $ScriptCommandLine // Quiet},
+  Echo["Command line: "];
   Echo[argv];
   MapIndexed[Function[{key, pos},
     With[{},
