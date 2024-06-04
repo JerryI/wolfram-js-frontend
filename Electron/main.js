@@ -791,7 +791,9 @@ const windows = {
             if (Array.isArray(self.dump) && !server.debug) {
                 setTimeout(() => {
                     if (server.debug) return;
-                    fs.writeFile(path.join(installationFolder, 'Debug', 'System.log'), self.dump.join('\r\n'), function(err) {
+                    const p = path.join(installationFolder, 'Debug', 'System.log');
+                    ensureDirectoryExistence(p);
+                    fs.writeFile(p, self.dump.join('\r\n'), function(err) {
                         if (err) throw err;
 
                         //block it for the rest of time

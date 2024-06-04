@@ -82,40 +82,6 @@ Notebook`Deserialize["jsfn4", n_Association, notebook_Notebook] := With[{},
     notebook
 ]
 
-(* legacy support of older formats *)
-Notebook`Deserialize["jsfn3", n_Association, notebook_Notebook] := With[{},
-    notebook["Cells"] = CellObj`Deserialize[#, "Notebook"->notebook] &/@ n["cells"];
-    With[{cell = #},
-        cell["Data"] = StringReplace[cell["data"], {
-            RegularExpression["FrontEndExecutable\\[\\\"([\\w|\\d|-]+)\\\"\\]"]:> With[{s = "$1"},    
-                StringRiffle[{"(*VB[*)(FrontEndRef[\"", s, "\"])(*,*)(*", ToString[Compress[Hold[Global`FrontEndExecutable[s] ] ], InputForm], "*)(*]VB*)"}, ""]
-        ]}];
-
-        cell["data"] = .;
-        cell["Type"] = cell["type"] /. {"input" -> "Input", "output" -> "Output"};
-        cell["type"] = .;
-        cell["Display"] = cell["display"];
-        cell["display"] = .;
-        cell["Props"] = (cell["props"] // Normal) /. {"hidden" -> "Hidden"} // Association;
-        cell["props"] = .;
-        cell["sign"] = .;
-        cell["id"] = .;
-    ]& /@ notebook["Cells"];
-
-    If[KeyExistsQ[n["notebook"], "store"], 
-        notebook["Storage"] = Compress[ ReleaseHold[#] ] &/@ n["notebook", "store"];
-    ];
-
-    notebook["Objects"] = With[{key = #, value = n["notebook", "objects", #]},
-        # -> <|"Public" -> ImportString["[\"Hold\", "<>value["json"]<>"]", "ExpressionJSON"] |>
-    ] &/@ Keys[n["notebook", "objects"] ] // Association;
-
-    notebook["Objects"] = notebook["Objects"];
-
-    notebook["path"] = .;
-    notebook
-
-]
 
 
 Notebook`Sockets = <||>;
