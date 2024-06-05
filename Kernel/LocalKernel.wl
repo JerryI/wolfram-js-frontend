@@ -21,7 +21,16 @@ LocalKernel`LTPServerStart[port_:36800] := With[{},
 (*  internal function that will be called by other kernel remotely *)
 LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Echo["LocalKernel >> local kernel link connected!"];
-    o["LTPSocket"] = SocketConnect[ "127.0.0.1:"<>ToString[o["Port"] ] ] // LTPTransport;
+    o["LTPSocket"] = SocketConnect[ "127.0.0.1:"<>ToString[o["Port"] ] ] ;
+    Echo[o["LTPSocket"] ];
+
+    If[FailureQ[o["LTPSocket"] ],
+        Echo["Cound not connect to a local kernel!"];
+        Echo["PANIK"];
+        Exit[-1];
+    ];
+
+    o["LTPSocket"] = o["LTPSocket"] // LTPTransport;
 
     o["ReadyQ"] = True;
     o["State"]  = "Connected";

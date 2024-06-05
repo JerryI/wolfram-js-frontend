@@ -32,12 +32,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
         ],
 
         "UpdatesChannelBranch" -> Function[channel,
-            settings = Join[settings, <|"UpdatesChannelBranch"->channel|>];
+            settings = Join[settings, <|"UpdatesChannelBranch"->StringTrim[channel]|>];
             onSave[settings];        
         ],
 
         "UpdatesChannelRepo" -> Function[channel,
-            settings = Join[settings, <|"UpdatesChannelRepo"->channel|>];
+            settings = Join[settings, <|"UpdatesChannelRepo"->StringTrim[channel]|>];
             onSave[settings];        
         ]
     }];
