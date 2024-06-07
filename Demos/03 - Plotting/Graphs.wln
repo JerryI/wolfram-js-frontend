@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$136], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$711], 
    "Objects" -> <|"e864a889-4313-4351-b64b-3e6f23a15d24" -> 
       <|"Public" -> Hold[Graphics[GraphicsComplex[{{-0.8660254037844384, 
              -0.4999999999999994}, {1.8369701987210297*^-16, 1}, 
@@ -46,7 +46,44 @@
               {-0.19358265850793532, 1}, {1.8369701987210297*^-16, 
                0.8064173414920645}}]}}, {FormatType -> TraditionalForm, 
            FrameTicks -> None, ImagePadding -> None, ImageSize -> 120, 
-           Controls -> False}]]|>, "d395e57e-d56f-4987-9e51-c53e68b663d2" -> 
+           Controls -> False}]]|>, "04909f23-fd86-45a8-8288-4d17974615ee" -> 
+      <|"Public" -> Hold[Graphics[GraphicsComplex[{{-0.40673664307580076, 
+             0.9135454576426012}, {1.8369701987210297*^-16, 1}, 
+            {0.4067366430758001, 0.9135454576426005}, {0.7431448254773939, 
+             0.6691306063588571}, {0.9510565162951536, 0.3090169943749455}, 
+            {0.9945218953682734, -0.1045284632676543}, {0.8660254037844389, 
+             -0.5000000000000012}, {0.5877852522924735, -0.8090169943749481}, 
+            {0.20791169081775956, -0.9781476007338058}, 
+            {-0.20791169081775882, -0.9781476007338054}, 
+            {-0.5877852522924728, -0.8090169943749468}, {-0.8660254037844384, 
+             -0.4999999999999994}, {-0.9945218953682733, 
+             -0.10452846326765261}, {-0.9510565162951538, 
+             0.3090169943749484}, {-0.7431448254773946, 0.6691306063588587}}, 
+           {{Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], Arrowheads[0], 
+             {Arrow[{{1, 2}, {1, 15}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}, 
+                {7, 8}, {8, 9}, {9, 10}, {10, 11}, {11, 12}, {12, 13}, 
+                {13, 14}, {14, 15}}, 0.02252250508849482]}}, 
+            {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
+                Opacity[0.7]]]], Style[Disk[1, 0.04158233816355176], 
+              Hue[0, 1, 1]], Style[Disk[2, 0.08316467632710352], 
+              Hue[Rational[1, 15], 1, 1]], Style[Disk[3, 0.1247470144906553], 
+              Hue[Rational[2, 15], 1, 1]], Style[Disk[4, 
+               0.16632935265420704], Hue[Rational[1, 5], 1, 1]], 
+             Style[Disk[5, 0.2079116908177588], Hue[Rational[4, 15], 1, 1]], 
+             Style[Disk[6, 0.04158233816355176], Hue[Rational[1, 3], 1, 1]], 
+             Style[Disk[7, 0.08316467632710352], Hue[Rational[2, 5], 1, 1]], 
+             Style[Disk[8, 0.1247470144906553], Hue[Rational[7, 15], 1, 1]], 
+             Style[Disk[9, 0.16632935265420704], Hue[Rational[8, 15], 1, 1]], 
+             Style[Disk[10, 0.2079116908177588], Hue[Rational[3, 5], 1, 1]], 
+             Style[Disk[11, 0.04158233816355176], Hue[Rational[2, 3], 1, 1]], 
+             Style[Disk[12, 0.08316467632710352], Hue[Rational[11, 15], 1, 
+               1]], Style[Disk[13, 0.1247470144906553], Hue[Rational[4, 5], 
+               1, 1]], Style[Disk[14, 0.16632935265420704], Hue[Rational[13, 
+                15], 1, 1]], Style[Disk[15, 0.2079116908177588], 
+              Hue[Rational[14, 15], 1, 1]]}}], 
+          {FormatType -> TraditionalForm, FrameTicks -> None, 
+           ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>, 
+     "d395e57e-d56f-4987-9e51-c53e68b663d2" -> 
       <|"Public" -> Hold[Graphics[GraphicsComplex[
            {{1.879676691411236, -3.9946859225302846}, {2.3852308248656304, 
              -4.858068564166079}, {4.034550729484852, -0.38528964832921386}, 
@@ -400,121 +437,84 @@
              Disk[98, 0.0797025883283277], Disk[99, 0.0797025883283277], 
              Disk[100, 0.0797025883283277], Disk[101, 0.0797025883283277]}}], 
           {FormatType -> TraditionalForm, FrameTicks -> None, 
-           ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>, 
-     "04909f23-fd86-45a8-8288-4d17974615ee" -> 
-      <|"Public" -> Hold[Graphics[GraphicsComplex[{{-0.40673664307580076, 
-             0.9135454576426012}, {1.8369701987210297*^-16, 1}, 
-            {0.4067366430758001, 0.9135454576426005}, {0.7431448254773939, 
-             0.6691306063588571}, {0.9510565162951536, 0.3090169943749455}, 
-            {0.9945218953682734, -0.1045284632676543}, {0.8660254037844389, 
-             -0.5000000000000012}, {0.5877852522924735, -0.8090169943749481}, 
-            {0.20791169081775956, -0.9781476007338058}, 
-            {-0.20791169081775882, -0.9781476007338054}, 
-            {-0.5877852522924728, -0.8090169943749468}, {-0.8660254037844384, 
-             -0.4999999999999994}, {-0.9945218953682733, 
-             -0.10452846326765261}, {-0.9510565162951538, 
-             0.3090169943749484}, {-0.7431448254773946, 0.6691306063588587}}, 
-           {{Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], Arrowheads[0], 
-             {Arrow[{{1, 2}, {1, 15}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}, 
-                {7, 8}, {8, 9}, {9, 10}, {10, 11}, {11, 12}, {12, 13}, 
-                {13, 14}, {14, 15}}, 0.02252250508849482]}}, 
-            {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
-                Opacity[0.7]]]], Style[Disk[1, 0.04158233816355176], 
-              Hue[0, 1, 1]], Style[Disk[2, 0.08316467632710352], 
-              Hue[Rational[1, 15], 1, 1]], Style[Disk[3, 0.1247470144906553], 
-              Hue[Rational[2, 15], 1, 1]], Style[Disk[4, 
-               0.16632935265420704], Hue[Rational[1, 5], 1, 1]], 
-             Style[Disk[5, 0.2079116908177588], Hue[Rational[4, 15], 1, 1]], 
-             Style[Disk[6, 0.04158233816355176], Hue[Rational[1, 3], 1, 1]], 
-             Style[Disk[7, 0.08316467632710352], Hue[Rational[2, 5], 1, 1]], 
-             Style[Disk[8, 0.1247470144906553], Hue[Rational[7, 15], 1, 1]], 
-             Style[Disk[9, 0.16632935265420704], Hue[Rational[8, 15], 1, 1]], 
-             Style[Disk[10, 0.2079116908177588], Hue[Rational[3, 5], 1, 1]], 
-             Style[Disk[11, 0.04158233816355176], Hue[Rational[2, 3], 1, 1]], 
-             Style[Disk[12, 0.08316467632710352], Hue[Rational[11, 15], 1, 
-               1]], Style[Disk[13, 0.1247470144906553], Hue[Rational[4, 5], 
-               1, 1]], Style[Disk[14, 0.16632935265420704], Hue[Rational[13, 
-                15], 1, 1]], Style[Disk[15, 0.2079116908177588], 
-              Hue[Rational[14, 15], 1, 1]]}}], 
-          {FormatType -> TraditionalForm, FrameTicks -> None, 
            ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>|>, 
-   "Path" -> 
-    "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Graphs.wln"|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Demos/03 - \
+Plotting/Graphs.wln", "ReadOnly" -> False|>, 
  "Cells" -> 
   {<|"Data" -> ".md\n## Graphs packet\nHere we show some examples on \
 `Graph`s", "Display" -> "codemirror", 
-    "Hash" -> "dc029bca-dd10-498f-b197-0efa81982626", "Invisible" -> False, 
+    "Hash" -> "d1ca20b3-1cf1-4c34-8526-562ab445fb18", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "## Graphs packet\nHere we show some examples on `Graph`s", 
     "Display" -> "markdown", "Hash" -> 
-     "b3720955-d5a0-4f7f-8af7-6a453f4364fc", "Invisible" -> False, 
+     "daaa3653-398b-4abc-aaf8-e564f8b19dee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
-   <|"Data" -> "Graph[{1 \[UndirectedEdge] 2, 2 \[UndirectedEdge] 3, \n  3 \
-\[UndirectedEdge] 1}]", "Display" -> "codemirror", 
-    "Hash" -> "fc477204-b897-4ce4-aca6-f1a3a88c2756", "Invisible" -> False, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+   <|"Data" -> "Graph[{1 -> 2, 2 -> 3, \n  3 -> 1}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "860375e7-a93d-4ff4-8e39-5baedc7f4320", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {UndirectedEdge[1, 2], \
 UndirectedEdge[2, 3], UndirectedEdge[3, \
 1]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp\
 1qYmSRaWFjqmhgbGgMJU0PdJDOTJF3jVLM0I+NEQ9MUIxMAdH0U5A==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "5ccc175b-1a41-4661-8553-d9d696caa6e8", "Invisible" -> False, 
+     "41b4aff2-4d5f-486b-959f-f6ca1c161a0a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Graph[{1 -> 2, 2 -> 3, 3 -> 1}]", "Display" -> "codemirror", 
-    "Hash" -> "7ad7d168-ed3f-4436-94da-debf1634a436", "Invisible" -> False, 
+    "Hash" -> "bf598122-206b-4d7c-8a9d-0103334f9a9d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {DirectedEdge[1, 2], DirectedEdge[2, \
 3], DirectedEdge[3, \
 1]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW\
 5gbmCWlpJjppiRaGOuamKUY6lqmmRnqGqQYmJuYmVkmGyZZAgCBixVQ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "7ab5c77c-f957-40da-8f6a-463573d91554", "Invisible" -> False, 
+     "7e12a020-bbc2-441f-8afe-3d01c1b82ecc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Graph[{1 -> 2, 2 -> 3, 3 -> 1},\n  VertexShapeFunction -> \
 \"Diamond\", VertexSize -> Medium]", "Display" -> "codemirror", 
-    "Hash" -> "8f6cd6d0-f88c-49c4-bca8-70166db45f8d", "Invisible" -> False, 
+    "Hash" -> "574a0cac-3923-4cea-b802-84202b4c926e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {DirectedEdge[1, 2], DirectedEdge[2, \
 3], DirectedEdge[3, 1]}, {VertexShapeFunction -> {\"Diamond\"}, VertexSize -> \
 {Medium}}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykk\
 NVgEKW5iYWCYZGiXrGhuYWeiaGJsn6iaaGSbqGpqZmyenGZomG1oaAwBznhTh\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "231a5a0d-d948-4733-a2a4-22bd01505ae3", "Invisible" -> False, 
+     "e9f1b1e7-4239-47df-807d-488fff3c320b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> ".md\nOr something more complicated", 
     "Display" -> "codemirror", "Hash" -> 
-     "c8fb3a6b-6bd0-44b9-a016-5d750d059762", "Invisible" -> False, 
+     "ff120b90-74d7-40d9-b37f-655c7e3c1bb7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Or something more complicated", "Display" -> "markdown", 
-    "Hash" -> "3c227891-f069-43b2-a3f5-bc06bae96b3c", "Invisible" -> False, 
+    "Hash" -> "ad27f65c-400a-44a6-bdc3-24a0b30631b0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Graph[Table[\n  Annotation[\n   v, {VertexSize -> 0.2 + 0.2 \
 Mod[v, 5], \n    VertexStyle -> Hue[v/15, 1, 1]}], {v, 0, 14}], \n Table[v \
 <-> Mod[v + 1, 15], {v, 0, 14}]]", "Display" -> "codemirror", 
-    "Hash" -> "7028727a-f214-4e40-a34d-3d18d73d566a", "Invisible" -> False, 
+    "Hash" -> "b32412f1-0f7d-406d-9569-f7c110f22a10", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, \
 14}, {UndirectedEdge[0, 1], UndirectedEdge[1, 2], UndirectedEdge[2, 3], \
 UndirectedEdge[3, 4], UndirectedEdge[4, 5], UndirectedEdge[5, 6], \
@@ -532,16 +532,16 @@ Hue[3/5, 1, \
 1]}}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 G5hYGlimGRnrpqVYmOmamCZa6FoYWVjomqQYmluam5gZmqamAgBzTBTS\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "b5c48ceb-387e-4d40-b0f8-74828f87dd25", "Invisible" -> False, 
+     "17fb3740-2fbe-42a2-9609-a606ca8a48f8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Graph[Thread[Range[20] -> RandomSample[Range[20]]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "20939a10-1ba0-4b25-be91-b8d52adc693a", "Invisible" -> False, 
+     "de67fd8b-17c3-4e7c-9cf7-9e06ee863fa4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 7, 2, 11, 3, 13, 4, 20, 5, 10, 6, 15, 18, \
 8, 14, 9, 12, 17, 16, 19}, {DirectedEdge[1, 7], DirectedEdge[2, 11], \
 DirectedEdge[3, 13], DirectedEdge[4, 20], DirectedEdge[5, 10], \
@@ -553,16 +553,16 @@ DirectedEdge[18, 19], DirectedEdge[19, 3], DirectedEdge[20, \
 9]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp\
 xhbmqaamqfqppiapemaWFqY61qmmhrqJpsap5pZJJmZGacYAQCCvRVo\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "5a2668d9-d36e-4f0f-94f4-da5ff1628c18", "Invisible" -> False, 
+     "15467446-1a57-445f-86ff-5b213537031c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "Graph[Table[i -> Mod[i^2, 74], {i, 100}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "2f64f117-351c-4ae1-9322-68431e3a336c", "Invisible" -> False, 
+     "10498f43-202d-4896-bd9f-bb466ba8ad6d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>, 
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 4, 3, 9, 16, 5, 25, 6, 36, 7, 49, 8, 64, \
 10, 26, 11, 47, 12, 70, 13, 21, 14, 48, 15, 34, 17, 67, 18, 28, 19, 65, 20, \
 30, 71, 22, 40, 23, 24, 58, 33, 27, 63, 44, 29, 31, 73, 32, 62, 53, 46, 35, \
@@ -605,7 +605,7 @@ DirectedEdge[99, 33], DirectedEdge[100, \
 10]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 J6ZYmhmlmFjomhkmpuqaJKaa6CaZmybqmhpaJppZWBqYGVgaAACHNxVJ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "a54a8823-c183-44b2-a952-2a803f960358", "Invisible" -> False, 
+     "6a96a2a3-b4c2-414b-9e9e-3f64f3665722", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "ada464e6-3147-41ab-afc6-b4e00af1afe2"|>}, "serializer" -> "jsfn4"|>
+     "75302174-ecee-46b4-9545-4e614e7e6619"|>}, "serializer" -> "jsfn4"|>

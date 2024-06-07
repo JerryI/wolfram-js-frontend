@@ -1,0 +1,1222 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$919], 
+   "Objects" -> <|"d4118946-b23b-4071-a689-74f8dd828603" -> 
+      <|"Public" -> Hold[ProvidedOptions[Dataset[
+           {Association["class" -> "1st", "age" -> 29, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 1, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 2, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 25, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 48, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 63, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 39, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 53, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 71, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 47, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 18, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 26, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 80, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 50, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 32, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 36, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 37, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 47, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 26, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 42, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 29, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 25, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 19, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 35, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 28, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 45, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 40, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 58, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 42, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 41, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 48, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 44, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 59, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 60, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 41, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 45, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 42, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 53, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 36, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 58, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 28, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 17, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 11, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 14, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 36, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 49, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 36, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 76, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 46, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 47, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 27, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 30, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 45, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> Missing[], 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 27, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 26, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 47, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 39, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 37, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 64, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 70, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 36, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 64, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 39, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 38, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 51, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 27, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 31, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 27, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 31, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 17, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 53, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 4, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 54, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 50, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 27, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 48, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 48, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 49, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 39, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 23, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 38, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 54, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> Missing[], 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 36, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 28, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 23, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 64, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 60, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 30, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 50, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 43, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 60, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 48, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 37, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 47, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 49, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 71, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 53, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 19, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 38, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 58, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 23, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 46, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 25, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 25, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 48, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 49, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 45, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 40, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 27, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 52, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 42, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 55, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 16, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 44, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 51, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 42, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 35, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 38, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 38, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 50, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 49, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 46, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 50, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 58, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 41, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 42, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 45, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 39, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 49, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 42, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 16, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 51, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 29, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 21, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 58, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 15, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 16, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 19, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 18, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 46, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 54, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 28, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 65, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 44, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 37, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 30, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 47, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 37, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 31, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 23, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 58, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 19, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 64, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 39, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 65, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 29, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 46, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 29, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 22, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 18, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 17, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 52, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 47, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 56, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 38, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 22, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 43, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 31, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 45, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 33, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 46, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 33, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 54, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 33, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 13, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 18, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 21, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 61, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 48, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 34, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 40, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 35, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 50, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 39, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 56, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 28, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 56, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 56, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 18, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 24, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 23, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 6, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 45, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 40, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 57, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 32, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 62, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 54, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 43, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 52, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "1st", "age" -> 62, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 67, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 63, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 61, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 48, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 18, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 52, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 39, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 48, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 49, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 17, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 39, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "1st", "age" -> 31, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 40, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 61, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 47, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 35, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 64, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 60, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 60, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 54, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 21, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 55, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 31, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 57, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 50, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 27, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 50, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 21, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> 51, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 21, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "1st", "age" -> 31, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "1st", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "1st", "age" -> 62, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "1st", "age" -> 36, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 18, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 57, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 18, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 23, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 51, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 32, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 19, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 1, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 4, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 12, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 36, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 34, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 26, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 42, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 27, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 15, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 60, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 40, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 20, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 25, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 25, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 42, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 42, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 1, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 26, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 22, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 35, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 44, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 54, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 52, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 37, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 29, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 25, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 28, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 28, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 8, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 31, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 31, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 22, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> Missing[], "sex" -> "female", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 21, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 8, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 18, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 48, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 32, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 17, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 29, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 18, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 18, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 54, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 8, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 42, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 21, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 18, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 40, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 29, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 18, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 38, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 35, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 38, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 34, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 16, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 26, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 47, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 21, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 21, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 24, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 34, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 52, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 1, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 44, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 6, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 28, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 62, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 7, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 43, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 45, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 49, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 48, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 55, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 32, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 21, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 18, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 20, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 36, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 54, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 50, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 44, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 21, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 42, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 63, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 60, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 33, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 17, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 42, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 47, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 22, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 32, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 24, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 22, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "2nd", "age" -> 35, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 57, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 31, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 26, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 1, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 3, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 25, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 22, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 17, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "female", "survived" -> True], 
+            Association["class" -> "2nd", "age" -> 34, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 61, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 50, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 42, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 57, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 1, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 31, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 40, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 32, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 46, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 13, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 41, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 19, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 39, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 48, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 70, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 54, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 39, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 16, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 62, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 33, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 14, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 2, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 3, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 37, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 26, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 28, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 20, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 29, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 39, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 22, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 28, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> Missing[], "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 50, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 41, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 21, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 43, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 32, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 34, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 2, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 8, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 33, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 36, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 34, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 30, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 1, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 3, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 24, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 50, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 21, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 26, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 27, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 18, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 20, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 59, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 35, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 40, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 41, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 19, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 14, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 50, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 28, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 40, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 31, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 31, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 12, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 40, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 33, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 27, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "2nd", "age" -> 29, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 2, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 4, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 29, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 1, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 5, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 36, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", "age" -> 33, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "2nd", "age" -> 66, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> False], 
+            Association["class" -> "2nd", "age" -> 31, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "2nd", 
+             "age" -> Missing[], "sex" -> "male", "survived" -> True], 
+            Association["class" -> "2nd", "age" -> 26, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "2nd", "age" -> 24, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 42, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 13, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 16, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 35, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 16, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "3rd", "age" -> 25, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 20, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "3rd", "age" -> 18, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 30, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 26, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 40, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 1, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 18, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "3rd", "age" -> 26, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 26, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 20, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 24, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 35, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 18, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 32, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 19, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 4, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 6, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 2, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 17, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 38, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 9, 
+             "sex" -> "female", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 11, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 39, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 27, "sex" -> "male", 
+             "survived" -> True], Association["class" -> "3rd", "age" -> 26, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 39, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 20, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 26, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 25, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 18, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 24, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 35, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 5, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 9, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 3, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 13, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 5, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 40, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 23, 
+             "sex" -> "male", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 38, "sex" -> "female", 
+             "survived" -> True], Association["class" -> "3rd", "age" -> 45, 
+             "sex" -> "female", "survived" -> True], Association[
+             "class" -> "3rd", "age" -> 21, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 23, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 17, "sex" -> "female", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 30, 
+             "sex" -> "male", "survived" -> False], Association[
+             "class" -> "3rd", "age" -> 23, "sex" -> "male", 
+             "survived" -> False], Association["class" -> "3rd", "age" -> 13, 
+             "sex" -> "female", "survived" -> True]}, TypeSystem`Vector[
+            TypeSystem`Struct[{"class", "age", "sex", "survived"}, 
+             {TypeSystem`Atom[TypeSystem`Enumeration["1st", "2nd", "3rd"]], 
+              TypeSystem`Atom[Integer], TypeSystem`Atom[
+               TypeSystem`Enumeration["female", "male"]], TypeSystem`Atom[
+               TypeSystem`Boolean]}], 654], Association[]], 
+          "RequestEvent" -> "8c2de233-ac50-465e-ab12-d95f894cd4df", 
+          "RequestCallback" -> "tableRequest16", "Total" -> 1309, 
+          "Parts" -> 3]]|>, "aae16088-91aa-4e75-9c3c-be1bd183d887" -> 
+      <|"Public" -> Hold[Dataset[{Association["class" -> "3rd", "age" -> 23, 
+            "sex" -> "male", "survived" -> False], Association[
+            "class" -> "3rd", "age" -> Missing[], "sex" -> "male", 
+            "survived" -> False], Association["class" -> "1st", "age" -> 36, 
+            "sex" -> "male", "survived" -> True], Association[
+            "class" -> "3rd", "age" -> Missing[], "sex" -> "male", 
+            "survived" -> False], Association["class" -> "3rd", "age" -> 21, 
+            "sex" -> "male", "survived" -> True]}, TypeSystem`Vector[
+           TypeSystem`Struct[{"class", "age", "sex", "survived"}, 
+            {TypeSystem`Atom[TypeSystem`Enumeration["1st", "2nd", "3rd"]], 
+             TypeSystem`Atom[Integer], TypeSystem`Atom[TypeSystem`Enumeration[
+               "female", "male"]], TypeSystem`Atom[TypeSystem`Boolean]}], 5], 
+          Association[]]]|>, "5c3f2640-85f1-4a7b-b017-77e1bf8d113c" -> 
+      <|"Public" -> Hold[Graphics[{{Directive[EdgeForm[Directive[Thickness[
+                Small], Opacity[0.567]]], RGBColor[0.987148, 
+              0.8073604000000001, 0.49470040000000004]], 
+            {{}, {Directive[EdgeForm[Directive[Thickness[Small], 
+                 Opacity[0.567]]], RGBColor[0.987148, 0.8073604000000001, 
+                0.49470040000000004]], {{Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{0, 0}, {5, 51}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  51], Style[51, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{5, 0}, {10, 31}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  31], Style[31, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{10, 0}, {15, 25}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  25], Style[25, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{15, 0}, {20, 118}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  118], Style[118, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{20, 0}, {25, 183}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  183], Style[183, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{25, 0}, {30, 161}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  161], Style[161, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{30, 0}, {35, 130}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  130], Style[130, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{35, 0}, {40, 102}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  102], Style[102, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{40, 0}, {45, 69}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  69], Style[69, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{45, 0}, {50, 66}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  66], Style[66, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{50, 0}, {55, 43}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  43], Style[43, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{55, 0}, {60, 27}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  27], Style[27, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{60, 0}, {65, 27}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 
+                  27], Style[27, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{65, 0}, {70, 5}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 5], 
+                 Style[5, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{70, 0}, {75, 6}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 6], 
+                 Style[6, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{75, 0}, {80, 1}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 1], 
+                 Style[1, {}]]}, {Tooltip[StatusArea[
+                  {Charting`DelayedMouseEffect[Rectangle[{80, 0}, {85, 1}, 
+                     "RoundingRadius" -> 0], {"Style", EdgeForm[{GrayLevel[
+                        0.5], AbsoluteThickness[1.5], Opacity[0.66]}]}]}, 1], 
+                 Style[1, {}]]}}}, {}, {}}}, {{}, {}, {}, {}, {}, {}, {}, {}, 
+            {}, {}, {}, {}, {}, {}, {}, {}, {}}}, 
+          {AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, 
+           AxesLabel -> {None, None}, AxesOrigin -> {-1.7, 0}, 
+           FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> 
+            {{Automatic, Automatic}, {Automatic, Automatic}}, 
+           GridLines -> {None, None}, GridLinesStyle -> 
+            Directive[GrayLevel[0.5, 0.4]], PlotRange -> 
+            {{0, 85}, {All, All}}, PlotRangePadding -> 
+            {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.05]}}, 
+           Ticks -> {Automatic, Automatic}}]]|>, 
+     "18f90d83-9914-463a-a102-a0478e1cc9d0" -> 
+      <|"Public" -> Hold[Dataset[Association["female" -> Association[
+             "1st" -> 0.9652777777777778, "2nd" -> 0.8867924528301887, 
+             "3rd" -> 0.49074074074074076], "male" -> Association[
+             "1st" -> 0.3407821229050279, "2nd" -> 0.14619883040935672, 
+             "3rd" -> 0.15212981744421908]], TypeSystem`Assoc[
+           TypeSystem`Atom[String], TypeSystem`Struct[{"1st", "2nd", "3rd"}, 
+            {TypeSystem`Atom[Real], TypeSystem`Atom[Real], TypeSystem`Atom[
+              Real]}], 2], Association[]]]|>|>, "Path" -> "/users/kirill/Gith\
+ub/wolfram-js-frontend-dev/Demos/07 - User input/Dataset.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Dataset\nstructured dataset based on a \
+hierarchy of lists and associations", "Display" -> "codemirror", 
+    "Hash" -> "d46d226f-4f0d-4645-89e1-2baa531dbff4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "## Dataset\nstructured dataset based on a hierarchy of lists \
+and associations", "Display" -> "markdown", 
+    "Hash" -> "ea1868bd-ce3e-4412-b90d-0653a346a137", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "titanic = ExampleData[{\"Dataset\", \"Titanic\"}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f6d16482-59b1-4ab4-85fc-3e6d10555031", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "(*VB[*)(Dataset[Join@@Notebook`Kernel`Inputs`Private`store$14\
+9242,TypeSystem`Vector[TypeSystem`Struct[{\"class\", \"age\", \"sex\", \
+\"survived\"}, {TypeSystem`Atom[TypeSystem`Enumeration[\"1st\", \"2nd\", \
+\"3rd\"]], TypeSystem`Atom[Integer], \
+TypeSystem`Atom[TypeSystem`Enumeration[\"female\", \"male\"]], \
+TypeSystem`Atom[TypeSystem`Boolean]}], \
+1309],<||>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMyk\
+kNVgEKp5gYGlpYmpjpJhkZJ+maGJgb6iaaWVjqmpukWaSkWBhZmBkYAwBz6hTB\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "43b160e3-2d8e-4e4a-91da-8a9bfee76e42", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> ".md\nGet a random sample of passengers:", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d2ee4aec-4a11-4944-ba34-76224020c5b6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "Get a random sample of passengers:", "Display" -> "markdown", 
+    "Hash" -> "6045ba16-9757-47a3-b6da-8054c9d21daa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "RandomSample[titanic, 5]", "Display" -> "codemirror", 
+    "Hash" -> "5563cb24-4f1a-4e24-8e53-73885fd6ea54", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"aae16088-91aa-4e75-9c3c-be1bd183d887\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJyamG\
+poZWFjoWhomJuqapJqb6lomGyfrJqUaJqUYWhinWFiYAwCJoBXZ\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "428eaafd-859d-4e2c-8fd0-af60d39ec841", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> ".md\nCount the number of passengers with a missing age:", 
+    "Display" -> "codemirror", "Hash" -> 
+     "27c64149-da9f-4b0d-a3a2-19b65adab611", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "Count the number of passengers with a missing age:", 
+    "Display" -> "markdown", "Hash" -> 
+     "d95e712c-b2c8-4dfa-bb76-83aa050a8415", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "titanic[Count[_Missing], \"age\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7dccda94-1308-404f-bfef-2e27b5c01c2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "263", "Display" -> "codemirror", 
+    "Hash" -> "bbd05fa9-e98d-4012-b23b-19809d9fa9a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "titanic[Histogram, \"age\"]", "Display" -> "codemirror", 
+    "Hash" -> "bb333e28-70a5-4a8b-a48c-b9ca50141f9e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"5c3f2640-85f1-4a7b-b017-77e1bf8d113c\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmyYbp\
+xmZmRjoWpimGeqaJJon6SYZGJrrmpunGialWaQYGhonAwB8+xVs\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5fcbaf8a-e084-4841-b34c-7e1880da8f10", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> ".md\nCheck the ratio", "Display" -> "codemirror", 
+    "Hash" -> "8488affa-89c5-4e91-86a0-725958e91736", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, <|"Data" -> "Check the ratio", 
+    "Display" -> "markdown", "Hash" -> 
+     "5d314b76-2ce0-4ce5-af51-b200afeb5a2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "ratio[list_] := list // Boole // Mean // N;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0c060277-505c-42cc-b072-2bda85e92128", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> 
+     "titanic[GroupBy[\"sex\"], GroupBy[\"class\"], ratio, \"survived\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "90ca5b49-0eaa-40a4-b740-640f8a6d89f4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"18f90d83-9914-463a-a102-a0478e1cc9d0\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG1qkW\
+RqkWBjrWloamuiamBkn6iYaGhjpJhqYmFukGiYnW6YYAAB0ghUQ\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "57521a19-b7f2-4843-95dd-7a1435d0737f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b01365fb-a634-42c5-8e5f-e143b3af2985"|>}, "serializer" -> "jsfn4"|>
