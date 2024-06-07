@@ -12,11 +12,17 @@ __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): 13.3 or higher**
 
-__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language HTTP/WS Stack developer)__
+__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language Web Server developer)__
 
 To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
+
+## Media
+- YTS 📽️ [You don't need to program your figures manually](https://youtube.com/shorts/Z76dMHK8POM?feature=share)
+- YTS 📽️ [How to do Dynamics in Computation Notebook](https://youtube.com/shorts/T-ryDA1Sb3g?feature=share)
+- YTS 📽️ [We made AI Copilot in your Notebook 🤖](https://youtube.com/shorts/6s9m5ZGPkdE?feature=share)
+- YTS 📽️ [AI Copilot in your Notebook. Part 2 🤖](https://youtube.com/shorts/B_ZVjN9cvQM?feature=share)
 
 ## Publications 📢
 - *Medium* May 2024: [Reinventing dynamic and portable notebooks with Javascript and Wolfram Language](https://medium.com/@krikus.ms/reinventing-dynamic-and-portable-notebooks-with-javascript-and-wolfram-language-22701d38d651)
@@ -83,17 +89,6 @@ Follows the mouse pointer and performs complex calculations.
 #### Offline documentation 🩺
 
 WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved). __No internet connection is needed__.
-
-## Motivation
-The idea is to implement a minimalistic but easily extendable open-source notebook interface with syntax sugar, interactive objects for the freeware Wolfram Engine.
-
-__There is no aim to fully copy Mathematica__ (it will never be possible), however, there are a few things that can be improved:
-
-- __Stability__ and speed
-- Independence from WRI
-- Portability (not PDF) - easy to share your work with someone outside the ecosystem __keeping your graphics interactive__ or embedded to a website
-- Event-based approach to dynamics - allow users to __build complex dynamic notebooks__ and to have clear control over all moving parts
-- Natural bridge between other languages - HTML as markup, WL for computations, and JS for stunning visuals
 
 # Installation 🛠️
 [The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable). Activation can be done later using WLJS Notebook App.
