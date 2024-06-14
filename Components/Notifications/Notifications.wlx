@@ -9,6 +9,7 @@ CreateType[NotificationsDialog, initDialog, {"Message"->"Dummy", "Event"->Null}]
 
 ImportComponent["Components/Types.wl"];
 
+MessageList  = ImportComponent["Components/MessagesList.wlx"]; 
 {SpinnerTemplate, SpinnerScript}  = ImportComponent["Components/Spinner.wlx"]; 
 {GenericTemplate, GenericScript}  = ImportComponent["Components/Generic.wlx"]; 
 
@@ -23,7 +24,34 @@ Filter[_Notifications`NotificationMessage(*`*)]   = True
 
 beepTimeout = Now
 
-Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Controller = CreateUUID[], JSBinds = CreateUUID[]},
+assignClient[target_, data_, buffer_] := With[{c = EventClone[data]},
+    target = data;
+    EventHandler[c, {
+        "Closed" -> Function[Null,
+            EventRemove[c];
+            ClearAll[buffer];
+            ClearAll[target];
+            Echo["Purged messager buffer"];
+        ]
+    }];
+]
+
+SetAttributes[assignClient, HoldAll];
+
+
+Component[OptionsPattern[]] := Module[{buffer = {}, lastClient = Null}, With[{
+    Event = OptionValue["MessagePort"], 
+    Controller = CreateUUID[], 
+    localControls = CreateUUID[], 
+    JSBinds = CreateUUID[],
+    listController = CreateUUID[]
+},
+    EventHandler[localControls, {"ShowAll" -> Function[Null,
+        With[{client = $Client},
+            EventFire[listController, "Load", <|"Client"->client|>];
+        ]
+    ]}];
+
     EventHandler[EventClone[Event], {
         (*/* dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&), */*)
 
@@ -55,8 +83,12 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
         ],
 
         any_?Filter   :> Function[data,
-            With[{client = $Client},
-                EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Generic"|>, GenericTemplate[any, data]] ]
+            With[{client = $Client, g = GenericTemplate[any, data]},
+                EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Generic"|>, g] ];
+                buffer = Append[buffer, <|"Type"->any, "Message" -> data, "Date"->Now|>];
+                If[lastClient === Null, assignClient[lastClient, client, buffer]];
+
+                
             ]
         ]
     }];
@@ -70,7 +102,9 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
             </div>  
         </WebUIContainer>
     ,
-        <GenericScript Controller={Controller}/>
+        <MessageList Controller={listController} Data={Hold[buffer]}/>
+    ,
+        <GenericScript Controller={Controller} Port={localControls}/>
     ,
         <SpinnerScript Controller={Controller}/>
     ,
@@ -101,6 +135,6 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["MessagePort"], Control
             }
         </script>
     }
-];
+] ];
 
 Component

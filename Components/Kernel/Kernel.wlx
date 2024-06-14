@@ -57,7 +57,7 @@ Component[OptionsPattern[]] := With[{deinitKernel = OptionValue["OnExit"], appEv
   {
     <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex">
       Kernels
-      <button class="ml-auto" id="{ButtonId}">
+      <button class="ml-auto" title="Spawn Kernel" id="{ButtonId}">
       <svg  fill="currentColor" class="opacity-0 group-hover:opacity-100 h-4 w-4" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
         <g>
           <g>

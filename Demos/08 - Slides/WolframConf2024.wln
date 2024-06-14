@@ -1,0 +1,426 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$113], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Library/CloudStorage/OneDrive-\
+Personal/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\:041a\:043e\
+\:043d\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/WL2024/Slides.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Wolram Language Conference 2024\nSaint-Petersburg, Russia", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5eb2e8c1-4bf7-448c-93b3-7469024f4492", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "# Wolram Language Conference 2024\nSaint-Petersburg, Russia", 
+    "Display" -> "markdown", "Hash" -> 
+     "13ce7232-bafe-4a93-9291-779f02606747", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slides\n\n# Thank you for attention \
+\:2764\:fe0f\n\n<br/>\n\n<BarCodeLink/>", "Display" -> "codemirror", 
+    "Hash" -> "268e92e3-57e1-4d45-8390-25106aa78007", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "BarCodeLink = \
+BarcodeImage[\"https://github.com/JerryI/wolfram-js-frontend\", \"QR\", \
+400];", "Display" -> "codemirror", "Hash" -> 
+     "622eb8cb-8af0-4af0-9e1d-4dd6ad64563a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n## Interactive programming in WLJS \
+Notebook\n\n\nKirill Vasin <sup>1</sup>, Kirill Belov \
+<sup>2</sup>\n\n<br/><br/>\n\n\n<sup>1</sup> *PhD student, University of \
+Augsburg*\n\n<sup>2</sup> *Administrator of Wolfram Language Russian \
+Support*\n\n---\n\n<div class=\"flex items-center justify-center\">\n  <img \
+src=\"attachments/Toster.png\" \
+width=\"800\"/>\n</div>\n\n---\n\n<BarCodeLink/>", "Display" -> "codemirror", 
+    "Hash" -> "d0b4d7b7-8a34-41ba-8a38-928c03867c89", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4e5395e9-7e9a-46b0-b8c2-0842419b0b3f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n## Dynamics\nThe flexibillity of WL", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3697f2d5-2990-4405-a222-dab8654de233", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "## Dynamics\nThe flexibillity of WL", 
+    "Display" -> "markdown", "Hash" -> 
+     "2d1afb7d-05b3-4a93-bee9-ed2bc1e9d429", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "Boids`n = 100;\nBoids`r := RandomInteger[{1, \
+Boids`n}];\nBoids`f := (#/(.05 + Sqrt[#.#])) & /@ (Boids`x[[#]] - Boids`x) \
+&;\nBoids`s := With[{r1 = Boids`r}, Boids`p[[r1]] = Boids`r; Boids`q[[r1]] = \
+Boids`r];\nBoids`x = RandomReal[{-1, 1}, {Boids`n, 2}];\nB$$v = {#,#} &/@ \
+Boids`x;\n{Boids`p, Boids`q} = RandomInteger[{1, Boids`n}, {2, \
+Boids`n}];\nBoids`colors = RGBColor[#/Boids`n // N,0.3,0.5] &/@ \
+Range[Boids`n];\n\nBoids`defaults = <|\"p\"->0.03, \
+\"q\"->0.02|>;\nBoids`started = False;\n\nEventHandler[\"boids\", \
+Function[Null, \n  If[!Boids`started, Return[]];\n\n  With[{new = 0.995 \
+Boids`x + Boids`defaults[\"p\"] Boids`f[Boids`p] - Boids`defaults[\"q\"] \
+Boids`f[Boids`q]},\n    B$$v = {5 #[[1]], 5 #[[1]] + 30 #[[2]]} &/@ \
+Transpose[{new, new - Boids`x}];\n    Boids`x = new;\n  ];\n  \n  If[Boids`r \
+< 100, Boids`s];\n]];\n\nEventHandler[\"boids-controller\", {\n  \"Start\" -> \
+Function[Null, Boids`started = True; EventFire[\"boids\", True]],\n  \"Stop\" \
+-> Function[Null, Boids`started = False]\n}];\n\nBoidsDisplay = Graphics[{\n  \
+PointSize[0.007], Table[With[{i = i, c = Boids`colors[[i]]},\n    {c, \
+Arrow[B$$v[[i]] // Offload]}\n  ], {i, Boids`n}],\n  \
+AnimationFrameListener[B$$v // Offload, \"Event\"->\"boids\"]\n}, PlotRange \
+-> {{-2,2}, {-2,2}}, \"TransitionType\"->\"Linear\", \
+\"TransitionDuration\"->10, ImageSize->500];\n\nBoidsControls = \
+EventHandler[InputGroup[<|\n  \"p\" -> InputRange[0, 0.1, 0.01, 0.03, \
+\"Label\"->\"p\"], \n  \"q\" -> InputRange[0, 0.1, 0.01, 0.02, \
+\"Label\"->\"q\"]\n|>], Function[assoc, Boids`defaults = assoc]];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8b42d162-abaa-4e72-af85-ed99b2dc486c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "field0 = Table[0., {i,100}, {j,100}];\nfield1 = \
+field0;\nfield2 = field0;\n\n\nlattice = Table[{i,j}, {i, 100}, \
+{j,100}];\nmesh = Flatten[lattice, 1];\n\nmakeVertices = Compile[{{f, _Real, \
+2}, {pairs, _Integer, 2}, {scale, _Real}},\n  Join[#, {scale f[[#[[1]], \
+#[[2]]]]}] &/@ pairs\n];\n\nallvertices = NumericArray[makeVertices[field0, \
+mesh, 300]];\n\nNeeds[\"ComputationalGeometry`\"];\ntriangles2[points_] := \
+Module[{tr, triples},\n  tr = DelaunayTriangulation[points];\n  triples = \
+Flatten[Function[{v, list},\n      Switch[Length[list],\n        (* account \
+for nodes with connectivity 2 or less *)\n        1, {},\n        2, \
+{Flatten[{v, list}]}, \n        _, {v, ##} & @@@ Partition[list, 2, 1, {1, \
+1}]\n      ]\n    ] @@@ tr, 1];\n  Cases[GatherBy[triples, Sort], a_ /; \
+Length[a] == 3 :> a[[1]]]]\n\ntriangles = triangles2[mesh];\n\nupdateField \
+=\n    Compile[\n        {{i, _Integer}, {j, _Integer}, {f, _Real, 2}, {p, \
+_Real, 2}}\n        ,\n        (\n                0.001(\n                    \
+If[i - 1 > 0,\n                            f[[i - 1, j]]\n                    \
+        ,\n                            0\n                        ] +\n       \
+                 If[i + 1 < 51,\n                            f[[i + 1, j]]\n  \
+                          ,\n                            0\n                  \
+      ] +\n                        If[j + 1 < 51,\n                           \
+ f[[i, j + 1]]\n                            ,\n                            \
+0\n                        ] +\n                        If[j - 1 > 0,\n       \
+                     f[[i, j - 1]]\n                            ,\n           \
+                 0\n                        ] - 4 f[[i, j]]\n                \
+) + 2 f[[i, j]] - p[[i, j]])/(1) + 0.01 (0 - f[[i,j]])\n    ];\n\n    field0 \
+= Table[0., {i,100}, {j,100}];\nfield1 = field0;\nfield2 = field0;\n\n(* \
+initial perturbation *)\n(*\nfield1[[25,25]] = 0.001; \nfield2[[25,25]] = \
+0.002;\n*)\n\nupdateVertices[pos_, amp_] := With[{p = Floor /@ pos},\n  \
+If[p[[1]] > 10 && p[[1]] <= 100-10 && p[[2]] > 10 && p[[2]] <= 100-10,\n      \
+Do[\n        With[{x = p[[1]] + dx, y = p[[2]] + dy},\n          \
+field2[[x,y]] = amp / 300;\n          field1[[x,y]] = amp / 300;\n        ]\n \
+   , {dx, -5,5}, {dy,-5,5}];\n  ];\n\n  With[{i = #[[1]], j = #[[2]]}, \n    \
+field0[[i,j]] = updateField[i,j, field1, field2];\n  ]&/@ \
+RandomSample[mesh];\n\n  field2 = field1;\n  field1 = field0;\n  \n  \
+allvertices = NumericArray[makeVertices[field0, mesh, \
+300]];\n\n];\n\n\nDynamicsExample3D := With[{},\n  Graphics3D[{Shadows[True], \
+SpotLight[Blue, 2{2.4463, 60.1604, 9.3104}, 1.5, 3000], SpotLight[Red, \
+2{48.1378, 47.8679, 12.4545}, 1.5, 3000], \n  Roughness[0],\n  \
+GraphicsComplex[allvertices // Offload, Polygon[triangles]],\n  \
+EventHandler[Sphere[{50,50,10}], {\"transform\" -> Function[assoc,\n    \
+updateVertices[assoc[\"position\"], assoc[\"position\"] // Last]\n  ]}]\n}, \
+ImageSize->800]\n]", "Display" -> "codemirror", 
+    "Hash" -> "7123faf0-71c4-4ca2-ab39-181f79745197", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "cPool = Table[{0.,0.}, {i,100}];\nvPool = cPool;\nrPool = \
+Table[0., {i,100}];\n\noPool = Table[Null, {i,100}];\n\nWith[{win = \
+CurrentWindow[]},\n  handler = Function[xy, \n    If[!created[xy, \"canvas\", \
+win], update[win]];\n  ];\n];\n\nupdate[win_] := With[{},\n  {cPool, rPool} = \
+Transpose[MapIndexed[Function[{a, index},\n    (* if slot is not empty - \
+recalculate *)\n    If[oPool[[index//First]] =!= Null,\n        \n      \
+If[a[[2]] <= 0.002, \n        (* if radius is too small - remove an object \
+*)\n        remove[index//First, win];\n        a\n      ,\n        (* if ok \
+- animate *)\n        {a[[1]] + 0.05 vPool[[index//First]], 0.9 a[[2]]}\n     \
+ ]\n      \n    ,\n      a\n    ]\n    \n  ], {cPool, rPool} // \
+Transpose]];\n];\n\nremove[index_, win_] := (\n  (* destroy instance on the \
+frontend *)\n  Delete[oPool[[index]], \"Window\"->win]; \n  oPool[[index]] = \
+Null\n);\n\ncreated[xy_, marker_String, win_] := With[{\n  (* find empty slot \
+*)\n  slot = FirstPosition[oPool, Null]\n},\n  If[!MissingQ[slot],\n    \
+With[{s = slot // First},\n\n      (* initial positions and etc *)\n      \
+cPool[[s]] = xy;\n      rPool[[s]] = 0.05;\n      vPool[[s]] = \
+RandomReal[{-1,1}, 2];\n      oPool[[s]] = True;\n\n      (* update so that \
+object wont appear in an odd way *)\n      update[win];\n\n      (* create an \
+instance of Disk on a graph *)\n      With[{\n        o = {\n          \
+Hue[RandomReal[{0,1}],1,1],\n                                                \
+(* prevent double updates *)\n          Disk[Offload[cPool[[s]]], \
+Offload[rPool[[s]], \"Static\"->True]]\n        }\n      },\n        \
+oPool[[s]] = FrontSubmit[o, MetaMarker[marker], \"Window\"->win, \
+\"Tracking\"->True];\n      ];\n    ];\n\n    True\n  ,\n    False\n  \
+]\n]\n\nDynamicExampleBubbles := Graphics[{White, \
+EventHandler[Rectangle[{-1,-1}, {1,1}], {\"mousemove\"->handler}], Green, \
+MetaMarker[\"canvas\"]}, ImagePadding->None, ImageSize->800, \
+PlotRange->{{-1,1}, {-1,1}}];", "Display" -> "codemirror", 
+    "Hash" -> "016695ec-21a9-4f48-97ae-d5e8326c51a1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n\:0421\:043b\:0430\:0439\:0434", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7fb3dc0f-8da7-4d37-abca-5b1708c3c6b2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n# 1. Dynamic evaluation\n\n---\n\n<div class=\"py-2 \
+flex items-center justify-center\">\n  <BoidsDisplay/>\n  \
+<BoidsControls/>\n</div>\n\n<SlideEventListener Id={\"boids-controller\"} \
+Pattern={\"Start\"}/>\n\n---\n\n<DynamicExampleBubbles/>\n\n<SlideEventListen\
+er Id={\"boids-controller\"} \
+Pattern={\"Stop\"}/>\n\n---\n\n<DynamicsExample3D/>\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "146c15ff-32e5-4744-b21b-5848aa6aeedd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n## Helper functions", "Display" -> "codemirror", 
+    "Hash" -> "27080b9c-1394-4f49-8b37-eb7e709ef9cc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "## Helper functions", "Display" -> "markdown", 
+    "Hash" -> "d1646dc5-b22b-4c27-8a4a-882027ce470c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".wlx\nCodeBlock[str_String] := With[{Fe = EditorView[str] // \
+CreateFrontEndObject},\n  <div class=\"text-left text-sm\"><Fe/></div>\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "22a063fa-e8a7-45bc-a0d2-7d5fdbb13c05", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".wlx\n\n<style>\n  .slide-frontend-object .cm-editor {\n    \
+text-align: left;\n    font-size: 14px;\n  }\n</style>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "62296141-bf1f-4491-948f-459fd9446f35", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "<style > .slide-frontend-object .cm-editor {\n    text-align: \
+left;\n    font-size:14px;\n  }</style>", "Display" -> "wlx", 
+    "Hash" -> "4bb91ea1-1e61-4328-8850-3e1a045a1eef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".wlx\nAnimationWidget := LeakyModule[{\n  SliderItem = \
+InputRange[0.1, 1, 0.05, 0.1],\n  symbol = 0.1\n},\n\n  \
+EventHandler[SliderItem, Function[value, symbol = value]];\n\n  With[{\n    \
+Widget = Graphics[{\n      Green, Disk[{0,0}, symbol // Offload], Pink,\n     \
+ Rotate[Rectangle[{-1,-1}, {1,1}], 3.14 symbol // Offload]\n    }, \
+Controls->False, PlotRange->{1.2{-1,1}, 1.2{-1,1}}, ImagePadding->None]\n  }, \
+\n  <div class=\"divide-y divide-gray-200 overflow-hidden rounded-lg bg-white \
+shadow\">\n    <div class=\"px-2 py-3 sm:p-6\">\n      <Widget/>\n    \
+</div>\n    <div class=\"px-2 py-2 sm:px-6\">\n      <SliderItem/>\n    \
+</div>\n  </div>\n  ]\n]\n\nAnimationWidget2 := LeakyModule[{\n  SliderItem = \
+InputRange[0.1, 1, 0.05, 0.1],\n  symbol = 0.1\n},\n\n  \
+EventHandler[SliderItem, Function[value, symbol = value]];\n\n  With[{\n    \
+Widget = Graphics[{\n      Green, Disk[{0,0}, symbol // Offload], \
+RGBColor[symbol//Offload, 1,1],\n      Rotate[Rectangle[{-1,-1}, {1,1}], 3.14 \
+symbol // Offload]\n    }, Controls->False, PlotRange->{1.2{-1,1}, \
+1.2{-1,1}}, ImagePadding->None]\n  }, \n  <div class=\"divide-y \
+divide-gray-200 overflow-hidden rounded-lg bg-white shadow\">\n    <div \
+class=\"px-2 py-3 sm:p-6\">\n      <Widget/>\n    </div>\n    <div \
+class=\"px-2 py-2 sm:px-6\">\n      <SliderItem/>\n    </div>\n  </div>\n  \
+]\n]", "Display" -> "codemirror", "Hash" -> 
+     "9bfe312b-b600-4e94-be29-5f2776b8c74e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "\nSimpleDynamicsDisk[Rule[\"Event\", ev_]] := \
+LeakyModule[{sym = 1},\n  EventHandler[ev, {\n    \"Slide\" -> Function[Null, \
+sym = 1;],\n    \"Left\" -> Function[Null, sym = 1;],\n    \"fragment-1\" -> \
+Function[Null, sym = 0.5]\n  }];\n\n  Graphics[{Green, Disk[{0,0}, sym // \
+Offload]}, PlotRange->{{-1,1}, {-1,1}}, ImagePadding->None]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8e81db8c-0970-4c76-9f2f-9379bbccc267", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "InputRangeTest := EventHandler[InputRange[0,1,0.1], Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8d4f7051-7cca-47a8-9cc7-5b01fdae30ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "ffad5216-0cd7-4ec5-b8a1-06fe6b3719a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n## Try dynamics", "Display" -> "codemirror", 
+    "Hash" -> "3f0acf63-3c6c-477a-82b0-44f7d1ffa27d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, <|"Data" -> "## Try dynamics", 
+    "Display" -> "markdown", "Hash" -> 
+     "6f1445c4-832d-42bf-ac1c-365f9d747884", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n# Offload\n\nHow to couple two \
+expressions\n\n<CodeBlock>\nsymbol = 1.0;\nGraphics[{(*VB[*)(RGBColor[0, 1, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEeLgIAAP0TXQ==\"*)(*]VB*), Disk[{0,0}, symbol // \
+Offload]}]\n</CodeBlock>\n\n<SimpleDynamicsDisk \
+Event={\"slide-disk\"}/>\n\n<div><CodeBlock>\nsymbol = 0.5;\n</CodeBlock> \
+</div> <!-- .element: class=\"fragment\" data-fragment-index=\"1\" \
+-->\n\n<SlideEventListener Id={\"slide-disk\"}/>\n\n---\n\n# User's \
+input\n\nEvent-based approach\n\n<CodeBlock>\nslider = \
+InputRange[0,1,0.1]\n</CodeBlock>\n\n<InputRangeTest/>\n\n<div>\n  \
+<CodeBlock>\nEventHandler[slider, Print];\n  </CodeBlock>\n</div> <!-- \
+.element: class=\"fragment\" data-fragment-index=\"1\" -->\n\n\n\n---\n\n<div \
+class=\"columns-2\">\n  <div class=\"text-left mt-2\">\n\nGather all \
+together\n\n\n<CodeBlock>\nsymbol = 0.1;\nGraphics[{\n      \
+(*VB[*)(RGBColor[0, 1, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEeLgIAAP0TXQ==\"*)(*]VB*), Disk[{0,0}, symbol // Offload], \
+(*VB[*)(RGBColor[1, 0.5, \
+0.5])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJT\
+WMGyXMgyRcxgMEHeyjjAYIBABm5FZs=\"*)(*]VB*),\n      Rotate[Rectangle[{-1,-1}, \
+{1,1}], 3.14 symbol // Offload]\n}]\n</CodeBlock>\n\nadd \
+handler\n\n<CodeBlock>\nEventHandler[InputRange[0.1, 1, 0.05], (symbol = \
+#)&]\n</CodeBlock>\n  \n  </div>\n\n  \
+<AnimationWidget/>\n\n</div>\n\n---\n\n<div class=\"columns-2\">\n  <div \
+class=\"text-left mt-2\">\n\nUpdate color\n\n\n<CodeBlock>\nsymbol = \
+0.1;\nGraphics[{\n      (*VB[*)(RGBColor[0, 1, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEeLgIAAP0TXQ==\"*)(*]VB*), Disk[{0,0}, symbol // Offload], \n  \
+    RGBColor[symbol//Offload, 1, 1],\n      Rotate[Rectangle[{-1,-1}, {1,1}], \
+3.14 symbol // Offload]\n}]\n</CodeBlock>\n\nadd \
+handler\n\n<CodeBlock>\nEventHandler[InputRange[0.1, 1, 0.05], (symbol = \
+#)&]\n</CodeBlock>\n  \n  </div>\n\n  <AnimationWidget2/>\n\n</div>\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1f22fc25-fd63-44b6-8d74-0861e8268909", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n## \:0414\:0435\:043b\:0430\:0435\:043c \
+\:0433\:0440\:0430\:0444\:0438\:043a\:0443", "Display" -> "codemirror", 
+    "Hash" -> "58aab9e0-5392-49e0-9ac9-0d01fc8c6d7e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "## \:0414\:0435\:043b\:0430\:0435\:043c \
+\:0433\:0440\:0430\:0444\:0438\:043a\:0443", "Display" -> "markdown", 
+    "Hash" -> "10b05327-5800-47f7-b375-a15874fd3e8b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "GraphicsDemo := Graphics[{\n  EdgeForm[Black], White, \
+Rectangle[{-1,-1}, {1,1}],\n  Orange, Disk[{1,1}, 1], Black, \
+Text[Style[\"\:041f\:0440\:0438\:0432\:0435\:0442 \:043c\:0438\:0440\", \
+FontSize->16], {0,0}]\n}, PlotRange->{{-1,1}, {-1,1}}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "aca60b6b-1884-4639-911f-4784b60f9d2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n# 2. Interpretation in frontend vs \
+kernel\n\n---\n\n# An example wiyh graphics\n\n<CodeBlock>\nGraphics[{\n  \
+EdgeForm[(*VB[*)(RGBColor[0.1, 0.1, \
+0.1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJT\
+WMGyXMgyRfNmgkCO+0xGQCvoh/b\"*)(*]VB*)], (*VB[*)(RGBColor[0.9, 0.9, \
+0.9])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJT\
+WMGyXMgyRedPQMCb+wxGQDqNCQK\"*)(*]VB*), Rectangle[{-1,-1}, {1,1}],\n  \
+(*VB[*)(RGBColor[1, 0.5, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHeyjjAYzBwAAAF7oUfA==\"*)(*]VB*), Disk[{1,1}, 1], \
+(*VB[*)(RGBColor[0.1, 0.1, \
+0.1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJT\
+WMGyXMgyRfNmgkCO+0xGQCvoh/b\"*)(*]VB*), \
+Text[\"\:041f\:0440\:0438\:0432\:0435\:0442 \:043c\:0438\:0440\", {0,0}]\n}, \
+PlotRange->{{-1,1}, {-1,1}}]\n</CodeBlock>\n\nShould I really to it \
+manually?! <!-- .element: class=\"fragment\" data-fragment-index=\"1\" \
+-->\n\n<GraphicsDemo/>", "Display" -> "codemirror", 
+    "Hash" -> "84ca278f-c314-4ce6-bb68-615b93d2e41a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "2a23946f-37b9-42f1-9617-bb6671bdeca2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".md\n## Making slides", "Display" -> "codemirror", 
+    "Hash" -> "6969ae44-0ca1-420e-a44f-01dd8e9152b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "## Making slides", "Display" -> "markdown", 
+    "Hash" -> "d6cdc07e-f397-417a-86a5-8ec9ae000698", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> 
+     ".slide\n\n# 3. Data-driven slides using Markdown, HTML and WL\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "552ed492-5153-4601-b3b4-3f9944a27afd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n<CodeBlock>\n.slide\n  \n# Title\n\nText text. One \
+can use *Markdown* and <\[ThinSpace]span \
+style=\"color:red\">HTML<\[ThinSpace]/\[ThinSpace]span>\n\n![](https://upload\
+.wikimedia.org/Macedonia.jpg)\n\n</CodeBlock>\n\n---\n\n# Title\n\nText text. \
+One can use *Markdown* and <span \
+style=\"color:red\">HTML</span>\n\n![](https://upload.wikimedia.org/wikipedia\
+/commons/thumb/a/ab/Eastern_greenish_black-tip_%28Euchloe_penia%29_underside_\
+Macedonia.jpg/480px-Eastern_greenish_black-tip_%28Euchloe_penia%29_underside_\
+Macedonia.jpg)", "Display" -> "codemirror", 
+    "Hash" -> "a20e47d6-312d-4ca1-b17d-dd8080b1a818", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "GetFakeTime := \"<GetTime/>\";\nGetTime := Now // \
+TextString;", "Display" -> "codemirror", 
+    "Hash" -> "91f4ee29-118e-4a42-a9b0-728874f18a3f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\nWolfram Language cell\n\n<CodeBlock>\nGetTime := \
+Now // TextString\n</CodeBlock>\n\n\nSlide cell\n\n<CodeBlock>\n.slide\n  \n# \
+Embed WL\n\nYou local time is \
+<GetTime/\[ThinSpace]>\n\n</CodeBlock>\n\n---\n\n# Embed WL\n\nYour local \
+time is <GetTime/>", "Display" -> "codemirror", 
+    "Hash" -> "f7101df3-1dbf-4ccf-af06-56bee61e6e44", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "04d59271-0ac9-4bad-a57a-1b552e29806d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> "Figure = Plot3D[Sin[x y], {x, 0, 3}, {y, 0, 3}, \n \
+ColorFunction -> \"BlueGreenYellow\"];", "Display" -> "codemirror", 
+    "Hash" -> "65a3016a-ad0e-489a-8323-4cb939d916c6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\nWolfram Language cell\n\n<CodeBlock>\nFigure := \
+Plot3D[Sin[x y], {x, 0, 3}, {y, 0, 3}, \n ColorFunction -> \
+\"BlueGreenYellow\"]\n</CodeBlock>\n\n\nSlide cell\n\n<CodeBlock>\n.slide\n  \
+\n# Embed interactive graphics\n\nShow $sin(x y)$ \
+plot\n<Figure/\[ThinSpace]>\n\n\n</CodeBlock>\n\n---\n\n# Embed interactive \
+graphics\n\nShow $sin(x y)$\n\n<Figure/>", "Display" -> "codemirror", 
+    "Hash" -> "ed5e000c-0167-4146-b949-6631ac159b77", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8e822137-9a2c-4ee6-a431-eb290db25ad1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>, 
+   <|"Data" -> ".slide\n\n# 4. Bonus: AI Copilot", "Display" -> "codemirror", 
+    "Hash" -> "2ef24a55-d54c-41f5-bcaa-930b3b8c0029", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d37d4101-a984-4fda-8bd4-83714119983b"|>}, "serializer" -> "jsfn4"|>

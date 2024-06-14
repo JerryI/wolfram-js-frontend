@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.3.8",
+  "version": "2.4.2",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "Coffee liqueur",

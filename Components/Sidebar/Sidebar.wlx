@@ -146,7 +146,7 @@ With[{
     <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex">
       File browser
       <div class="ml-auto gap-x-1 flex group-hover:opacity-100 opacity-0">
-        <button id="{Button1Id}">
+        <button id="{Button1Id}" title="New notebook">
           <svg  fill="currentColor" class="h-4 w-4" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
             <g>
               <g>
@@ -156,7 +156,7 @@ With[{
             </g>
           </svg>
         </button>
-        <button id="{Button2Id}">
+        <button id="{Button2Id}" title="New folder">
         <svg stroke="currentColor" class="h-5 w-5" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19H6.931A1.922 1.922 0 015 17.087V8h12.069C18.135 8 19 8.857 19 9.913V11"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7.64L13.042 6c-.36-.616-1.053-1-1.806-1H7.057C5.921 5 5 5.86 5 6.92V11M17 15v4M19 17h-4"></path>

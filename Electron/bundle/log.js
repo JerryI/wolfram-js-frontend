@@ -3013,8 +3013,18 @@ window.electronAPI.handleLogs((event, value, color) => {
         return;
     }
 }*/
+const debug = document.getElementById("debug_button");
+debug.addEventListener('click', () => {
+    window.electronAPI.debug();
+    debug.remove();
+});
 
 const info = document.getElementById("modal_info");
+
+const installDir = document.getElementById('log_file');
+installDir.addEventListener('click', () => {
+    window.electronAPI.locateLogFile();
+});
 
 window.electronAPI.updateInfo((event, info) => {
     document.getElementById("modal_info_state").innerText = info;
@@ -3100,9 +3110,11 @@ window.ifWin = () => {
     logger.style.height = "auto";
     runColorMode((isDarkMode) => {
         if (isDarkMode) {
-            document.body.style.background = "linear-gradient(-45deg, rgb(64,55,65), rgb(61,61,64),  rgb(52, 45, 64),  rgb(52, 75, 81))";    
+            document.body.classList.add("dark-static");    
+            document.body.classList.remove("light-static");    
         } else {
-            document.body.style.background = "linear-gradient(-45deg, rgb(251, 239, 235), rgb(252, 250, 238), rgb(252, 243, 247), rgb(227, 247, 240))";
+            document.body.classList.remove("dark-static");    
+            document.body.classList.add("light-static");  
         }
       }); 
     

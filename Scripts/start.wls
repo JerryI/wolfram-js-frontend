@@ -134,7 +134,8 @@ $Env = <|
   "docs" -> 20540
 |>;
 
-With[{argv = Rest @ $ScriptCommandLine},
+With[{argv = Rest @ $ScriptCommandLine // Quiet},
+  Echo["Command line: "];
   Echo[argv];
   MapIndexed[Function[{key, pos},
     With[{},
@@ -177,7 +178,7 @@ $ExposedDirectories = {FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoi
 
 EventHandler[AppExtensions`AppEvents // EventClone, {
  "Notebook:Close" -> Function[notebook,
-
+  Print["Notebook was closed"];
   (*$ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];*)
  ],
  "Loader:NewNotebook" -> Function[notebook,

@@ -25,10 +25,7 @@ App[request_] := With[{
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>
     },
 
-    (* /* destructor */ *)
-    With[{socket = Null},
-      Null;
-    ];
+
 
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
@@ -42,6 +39,7 @@ App[request_] := With[{
 
     <html class="h-full"> 
         <Head Title={"Settings"}>
+            <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>

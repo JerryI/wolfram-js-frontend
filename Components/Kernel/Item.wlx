@@ -48,7 +48,7 @@ EventHandler[assignedEvent2, {
 }];
 
 EventHandler[assignedEvent3, {
-   any_ :> Function[data, Echo[StringJoin["Kernel: ", any, ": ", ToString[data] ] ] ]
+   any_ :> Function[data, Echo[StringJoin["Kernel output >> ", ToString[any], ": ", ToString[data] ] ] ]
 }];
 
 With[{kernel = kernel},
@@ -76,28 +76,28 @@ Status = Switch[
 
 <div class="px-4 py-0 w-full" id="{Uid}">
       <div class="relative mt-0 w-full">
-         <button type="button" class="relative w-full cursor-default rounded-md 0 h-7 pl-3 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 bg-d9 dark:bg-gray-700 dark:ring-gray-500" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
-         <span class="flex items-center">
+         <div class="relative w-full cursor-default rounded-md 0 h-7 pl-3 pr-2 text-left text-gray-500  ring-1 ring-inset ring-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-xs sm:leading-6 bg-d9 dark:bg-gray-700 dark:ring-gray-500" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+         <span class="flex items-center h-full">
            <span id="state-{Uid}" class="inline-block h-2 w-2 flex-shrink-0 rounded-full" style="background: {Status}">
            </span>
            <span class="ml-3 block truncate"><Name/></span>
            <div class="flex ml-auto flex-end gap-x-1">
-           <svg id="unlink-{Uid}" class="h-4 w-4 group text-gray-600 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+           <button id="unlink-{Uid}" title="Exit"><svg class="h-4 w-4 group text-gray-600 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
              <g class="opacity-100 group-hover:opacity-0">
                <path  d="M9.1718 14.8288L14.8287 9.17192M7.05086 11.293L5.63664 12.7072C4.07455 14.2693 4.07409 16.8022 5.63619 18.3643C7.19829 19.9264 9.7317 19.9259 11.2938 18.3638L12.7065 16.9498M11.2929 7.05L12.7071 5.63579C14.2692 4.07369 16.8016 4.07397 18.3637 5.63607C19.9258 7.19816 19.9257 9.73085 18.3636 11.2929L16.9501 12.7071"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
              </g>
              <g class="opacity-0 group-hover:opacity-100">
                <path  d="M16 20V18M18 16H20M7.04996 11.293L5.63574 12.7072C4.07365 14.2693 4.07466 16.8016 5.63675 18.3637C7.19885 19.9258 9.7308 19.9262 11.2929 18.3641L12.7076 16.9497M6 8H4M8 4V6M11.293 7.05044L12.7072 5.63623C14.2693 4.07413 16.8016 4.07368 18.3637 5.63578C19.9258 7.19787 19.9254 9.7308 18.3633 11.2929L16.9492 12.7071"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
              </g>          
-           </svg>
-           <svg id="restart-{Uid}" class="h-4 w-4 text-gray-600 hover:rotate-90 transition dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+           </svg></button>
+           <button id="restart-{Uid}" title="Restart"><svg class="h-4 w-4 text-gray-600 hover:rotate-90 transition dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
              <g >
              <path d="M13.9998 8H18.9998V3M18.7091 16.3569C17.7772 17.7918 16.4099 18.8902 14.8079 19.4907C13.2059 20.0913 11.4534 20.1624 9.80791 19.6937C8.16246 19.225 6.71091 18.2413 5.66582 16.8867C4.62073 15.5321 4.03759 13.878 4.00176 12.1675C3.96593 10.4569 4.47903 8.78001 5.46648 7.38281C6.45392 5.98561 7.86334 4.942 9.48772 4.40479C11.1121 3.86757 12.8661 3.86499 14.4919 4.39795C16.1177 4.93091 17.5298 5.97095 18.5209 7.36556"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
              </g>
-           </svg>
+           </svg></button>
            </div>
          </span>
-         </button>
+         </div>
       </div>
    
    <WebUIEventListener Type={"click"} Id={StringJoin["unlink-", Uid]} Event={Uid} Pattern={"Unlink"} />

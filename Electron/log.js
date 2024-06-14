@@ -56,8 +56,18 @@ window.electronAPI.handleLogs((event, value, color) => {
         return;
     }
 }*/
+const debug = document.getElementById("debug_button");
+debug.addEventListener('click', () => {
+    window.electronAPI.debug();
+    debug.remove();
+})
 
 const info = document.getElementById("modal_info");
+
+const installDir = document.getElementById('log_file')
+installDir.addEventListener('click', () => {
+    window.electronAPI.locateLogFile();
+})
 
 window.electronAPI.updateInfo((event, info) => {
     document.getElementById("modal_info_state").innerText = info;
