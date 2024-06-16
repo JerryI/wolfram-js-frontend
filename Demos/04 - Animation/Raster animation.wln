@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1457], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$48], 
    "Objects" -> <|"b2a83b23-37ba-4e74-b80c-95f8df164119" -> 
       <|"Public" -> Hold[Image[NumericArray[{{{254, 255, 239}, 
              {254, 255, 239}, {254, 255, 239}, {254, 255, 239}, 
@@ -29483,118 +29483,120 @@
             "Exif" -> Association["XResolution" -> Rational[47993, 500], 
               "YResolution" -> Rational[47993, 500], "ResolutionUnit" -> 
                "Inch", "Software" -> "paint.net 4.2.12"]]]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Dynamics/\
-Animation/Raster animation.wln"|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Demos/04 - \
+Animation/Raster animation.wln", "ReadOnly" -> False|>, 
  "Cells" -> {<|"Data" -> ".md\n# Image Animation\nHere, we will attempt an \
 impossible task - drawing and updating a raster image.", 
     "Display" -> "codemirror", "Hash" -> 
-     "2c7f187c-4810-4280-b40f-fa66781d7f67", "Invisible" -> False, 
+     "c3fe8949-d238-4277-a244-fac540d20ce7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> "# Image Animation\nHere, we will attempt an impossible task - \
 drawing and updating a raster image.", "Display" -> "markdown", 
-    "Hash" -> "d5d93e1c-f826-4360-8c5b-aa0d4c74cbbd", "Invisible" -> False, 
+    "Hash" -> "4900816f-376f-46f5-95c5-d24b7dc032a5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> ".md\nIn general, the current architecture is not quite \
 suitable for piping binary data, since we do not fully support the WebSocket \
 protocol with binary data frames. Instead, we work with JSON strings and \
 plain arrays of data, which is ... quite slow when it comes to large chunks \
 of binary data.", "Display" -> "codemirror", 
-    "Hash" -> "a2e69533-faa7-4d30-a5e3-fd615645c520", "Invisible" -> False, 
+    "Hash" -> "19130371-cb51-4b8e-bfff-8ec3431af363", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> "In general, the current architecture is not quite suitable \
 for piping binary data, since we do not fully support the WebSocket protocol \
 with binary data frames. Instead, we work with JSON strings and plain arrays \
 of data, which is ... quite slow when it comes to large chunks of binary \
 data.", "Display" -> "markdown", "Hash" -> 
-     "63d3e9ff-cc91-496a-9f68-7d8a2b0891bd", "Invisible" -> False, 
+     "9904df1f-36e2-45cb-a94a-493c8e87e6b9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> ".md\nOur example image", "Display" -> "codemirror", 
-    "Hash" -> "2b919391-4f67-46e8-b7af-05384a3d5b1b", "Invisible" -> False, 
+    "Hash" -> "bd27f79d-bcb6-4367-8440-eebeaea09dad", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> "Our example image", "Display" -> "markdown", 
-    "Hash" -> "bf8a6961-17aa-49f0-9c90-1d0b4078ce79", "Invisible" -> False, 
+    "Hash" -> "e23b9831-a5db-432d-ae63-373997335497", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
-   <|"Data" -> "img = \
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
+   <|"Data" -> "img = ImageData[ \
 (*VB[*)(FrontEndRef[\"b2a83b23-37ba-4e74-b80c-95f8df164119\"])(*,*)(*\"1:eJxT\
 TMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxklWhgnGRnrGpsnJeqap\
-Jqb6CZZGCTrWpqmWaSkGZqZGBpaAgCFDhV0\"*)(*]VB*) // ImageData;", 
+Jqb6CZZGCTrWpqmWaSkGZqZGBpaAgCFDhV0\"*)(*]VB*), \"Byte\"];", 
     "Display" -> "codemirror", "Hash" -> 
-     "2b6ba3ff-e3aa-414f-8928-8a816bf25531", "Invisible" -> False, 
+     "b5c04b3a-6a05-42d6-828e-e51b561e5aea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+    "Notebook" -> "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> ".md\nNow lets us write a simple \"shader\" for animating it", 
     "Display" -> "codemirror", "Hash" -> 
-     "22b0da65-f9a3-47a4-b6a0-a3a437cbbe47", "Invisible" -> False, 
+     "cfd37067-a8a7-4ab4-a3f5-32af6c181e5e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> "Now lets us write a simple \"shader\" for animating it", 
     "Display" -> "markdown", "Hash" -> 
-     "bf790df7-4fa7-4822-9aeb-7ad4619fd948", "Invisible" -> False, 
+     "22759740-4032-471e-ab84-9fe77de12b7f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
-   <|"Data" -> "shader = Compile[{{img, _Real, 3}, {phase, _Real}}, \
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
+   <|"Data" -> "shader = Compile[{{img, _Integer, 3}, {phase, _Real}}, \
 Module[{iter},\n  With[{\n    ysize = Length[img],\n    xsize = \
 Length[img[[1]]]\n  },\n    Table[\n    iter = 1.0;\n    Table[With[{\n      \
 yr = y,\n      xr = If[# < 1, 1, If[# > xsize, xsize, #]] &@ Round[iter]\n    \
 },\n\n      iter = iter + (1.0 + 0.7 Sin[6 Pi x / xsize + phase]);\n\n      \
-Floor[255 img[[yr, xr]]]\n      \n      \n    ],  {x, xsize}], {y, ysize}] \n \
- ]\n]];", "Display" -> "codemirror", 
-    "Hash" -> "bbaf3490-24e8-460d-977d-41d08eaecab5", "Invisible" -> False, 
+img[[yr, xr]]\n      \n      \n    ],  {x, xsize}], {y, ysize}] \n  ]\n]];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "431a02a1-1202-4fb7-a47c-b903c2a6378f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+    "Notebook" -> "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> ".md\nIt is designed to manipulate an image represented by a \
 2-dimensional array (img) based on a given phase (phase). It simulates a \
 wave-like distortion effect across the image. ", "Display" -> "codemirror", 
-    "Hash" -> "b00ab660-95e2-487d-9dc6-c6739c25ca17", "Invisible" -> False, 
+    "Hash" -> "93f126de-d3a8-43cf-bfe4-2ff930a51148", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> "It is designed to manipulate an image represented by a \
 2-dimensional array (img) based on a given phase (phase). It simulates a \
 wave-like distortion effect across the image. ", "Display" -> "markdown", 
-    "Hash" -> "8f80afbc-2f37-425f-8163-967293d82a84", "Invisible" -> False, 
+    "Hash" -> "307081fb-2b0b-422e-acc5-d53663f3c3a8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
-   <|"Data" -> "imageFrame = img;\nImage[imageFrame // Offload]", 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
+   <|"Data" -> "imageFrame = NumericArray[img, \
+\"UnsignedInteger8\"];\nImage[imageFrame // Offload, \"Byte\"]", 
     "Display" -> "codemirror", "Hash" -> 
-     "e85a04cf-36a0-4bfb-b0f6-2b489a54b480", "Invisible" -> False, 
+     "510a9e40-cd17-4bb5-b381-bf684437919d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+    "Notebook" -> "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> 
      ".md\nNow we can start to animate it as fast as the whole system can", 
     "Display" -> "codemirror", "Hash" -> 
-     "ef4e93c5-7ae4-46b3-bd7f-be079ce608ae", "Invisible" -> False, 
+     "d6ed186a-78cd-4cd3-8745-039d0de0c4f8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
    <|"Data" -> 
      "Now we can start to animate it as fast as the whole system can", 
     "Display" -> "markdown", "Hash" -> 
-     "03255d13-30b8-4ec9-9031-15ce6652f81d", "Invisible" -> False, 
+     "d9c67e2c-ea8f-47cc-8c26-432ed43383b0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>, 
-   <|"Data" -> "Do[\n  imageFrame = shader[img, angle] // NumericArray;\n, \
-{angle, 0, 2Pi, 0.1}]", "Display" -> "codemirror", 
-    "Hash" -> "95c537f6-33d7-4841-b8d0-7faf4833d8f3", "Invisible" -> False, 
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>, 
+   <|"Data" -> "Do[\n  imageFrame = NumericArray[shader[img, angle], \
+\"UnsignedInteger8\"];\n, {angle, 0, 4Pi, 2Pi/30.0}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d212ddbd-d9cf-42fc-9d34-42e18f0bbc4c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b2eff484-9ece-45a1-8114-f7cbdcea78ae"|>}, "serializer" -> "jsfn4"|>
+     "8b0f0e50-bf0f-4c18-9d9e-b02255241f5f"|>}, "serializer" -> "jsfn4"|>
