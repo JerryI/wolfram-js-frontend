@@ -74,9 +74,16 @@ initPrimitiveEvaluator[k_] := Module[{},
             With[{result = ToExpression[ t["Data"], InputForm ] },
                 EventFire[Internal`Kernel`Stdout[ t["Hash"] ], "Result", <|"Data" -> ToString[result, InputForm] |> ];
                 EventFire[Internal`Kernel`Stdout[ t["Hash"] ], "Finished", True ];
-                result
+                result;
             ]
         ];
+        Internal`Kernel`Evaluator`Held = Function[t, 
+            With[{result = t["Data"] // ReleaseHold },
+                EventFire[Internal`Kernel`Stdout[ t["Hash"] ], "Result", <|"Data" -> result |> ];
+                EventFire[Internal`Kernel`Stdout[ t["Hash"] ], "Finished", True ];
+                result;
+            ]
+        ];        
     ]
 ]
 
