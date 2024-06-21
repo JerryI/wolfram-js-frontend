@@ -57,7 +57,7 @@ Controls = $Options["Controls"];
                 return false;
             }           
             
-            if (e.ctrlKey && e.key == "w" || e.metaKey && e.key == "2") {
+            if (e.altKey && e.key == "2" || e.metaKey && e.key == "2") {
                 server.emitt('<Controls/>', 'True', 'ToggleFocusedCell');
                 e.preventDefault();
                 return false;

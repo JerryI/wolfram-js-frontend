@@ -3,7 +3,7 @@
     "open_file"     : ["Cmd+O", "Ctrl+O"],
     "save"          : ["Cmd+S", "Ctrl+S"],
     "find"          : ["Cmm+F", "Ctrl+F"],
-    "toggle_cell"   : ["Cmd+2", "Ctrl+w"],
+    "toggle_cell"   : ["Cmd+2", "Alt+2"],
     "delete_cell"   : ["Cmd+'", "Ctrl+d"],
     "abort"         : ["Cmd+.", "Alt+."],
     "evaluate_init" : ["Cmd+i", "Alt+i"],

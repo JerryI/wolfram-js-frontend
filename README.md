@@ -157,7 +157,7 @@ You might need to install the following (for `Image` and some other graphics to 
 - `Shift+Enter` evaluate current cell
 
 ### Cells
-- `Ctrl+W`, `Cmd+2` hide/show input cell
+- `Alt+2`, `Cmd+2` hide/show input cell
 - `Ctrl+/` make fraction on selected
 - `Ctrl+6` make superscript on selected
 - `Ctrl+2` make square root on selected
