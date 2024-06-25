@@ -6,7 +6,7 @@ Component[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]}, We
       With[{Msg = GenericTemplate[Item["Type"], Item["Message"], "Class"->""]["Data"]},
         <li class="my-2"><Msg/></li>
       ]
-    , {Item, ReleaseHold @ OptionValue["Data"]}],
+    , {Item, Reverse @ ReleaseHold @ OptionValue["Data"]}],
 
     UId = CreateUUID[]
   },
