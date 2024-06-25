@@ -94,7 +94,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
   Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
   Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sound" -> "master"
+  Github -> "https://github.com/JerryI/wljs-sound" -> "master",
+  Github -> "https://github.com/JerryI/wljs-video" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];

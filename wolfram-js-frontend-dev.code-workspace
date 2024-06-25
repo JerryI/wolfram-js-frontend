@@ -74,6 +74,9 @@
 		},
 		{
 			"path": "wljs_packages/wljs-sound"
+		},
+		{
+			"path": "wljs_packages/wljs-video"
 		}
 	],
 	"settings": {
