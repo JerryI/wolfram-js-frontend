@@ -142,8 +142,10 @@ With[{argv = Rest @ $ScriptCommandLine // Quiet},
     With[{},
       If[MemberQ[Keys[$Env], key] || True,
         With[{
-          value = argv[[ pos[[1]] + 1 ]]
+          value = argv[[2;;;;2]][[ pos[[1]] ]]
         },
+          Echo[key -> value];
+
           $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
             ToExpression[value],
             value
@@ -151,8 +153,11 @@ With[{argv = Rest @ $ScriptCommandLine // Quiet},
         ]
       ]
     ]
-  ], argv]
+  ], argv[[;;;;2]]];
 ];
+
+Echo["ENV"];
+Echo[ToString[$Env, InputForm] ];
 
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
@@ -247,18 +252,22 @@ App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplate
 
 Echo["Autotest start!"];
 
-(* autotest *)
-With[{secret = CreateUUID[]},
-  With[{
-          result = URLFetch[StringTemplate["http://``:``/test?token=``"][$Env["host"], $Env["http"], URLEncode[ secret ] ] ]
-      },
+If[$Env["bypasstest"] === True,
+  Echo["Autotest was skipped"];
+,
+  (* autotest *)
+  With[{secret = CreateUUID[]},
+    With[{
+            result = URLFetch[StringTemplate["http://``:``/test?token=``"][$Env["host"], $Env["http"], URLEncode[ secret ] ] ]
+        },
 
-    If[result === ToString[ Hash[secret] ],
-      Echo["Autotest passed!"];
-    ,
-      Echo["Autotest failed!"];
-      Echo[result];
-      If[!TrueQ[$Env["bypasstest"] ], Exit[-1] ];
+      If[result === ToString[ Hash[secret] ],
+        Echo["Autotest passed!"];
+      ,
+        Echo["Autotest failed!"];
+        Echo[result];
+        If[!TrueQ[$Env["bypasstest"] ], Exit[-1] ];
+      ];
     ];
   ];
 ];
