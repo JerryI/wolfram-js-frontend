@@ -252,7 +252,7 @@ App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplate
 
 Echo["Autotest start!"];
 
-If[$Env["bypasstest"] === True,
+If[$Env["bypasstest"] === "True" || $Env["bypasstest"] === True,
   Echo["Autotest was skipped"];
 ,
   (* autotest *)
