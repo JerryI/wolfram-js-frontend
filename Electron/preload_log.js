@@ -10,6 +10,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   locateLogFile: () => {
     ipcRenderer.send('locate-logfile', {})
   },
+  reinstall: () => {
+    ipcRenderer.send('reinstall', {})
+  },
   debug: () => {
     ipcRenderer.send('debug', {})
   },  

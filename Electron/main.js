@@ -787,23 +787,6 @@ const windows = {
                 //app.quit();
             });
 
-            //collect and dump all logs for 2 minutes to a file
-            if (Array.isArray(self.dump) && !server.debug) {
-                setTimeout(() => {
-                    if (server.debug) return;
-                    const p = path.join(installationFolder, 'Debug', 'System.log');
-                    ensureDirectoryExistence(p);
-                    fs.writeFile(p, self.dump.join('\r\n'), function(err) {
-                        if (err) throw err;
-
-                        //block it for the rest of time
-                        self.dump = false;
-                        self.print('Logs were dumped', "\x1b[32m");
-
-                    });
-                }, 1000 * 60 * 2);
-            }
-
             return win;
         },
 
@@ -1417,13 +1400,29 @@ app.whenReady().then(() => {
 
     });
 
+    read_wl_settings();
+
+    if (server.frontend.Theme) {
+        nativeTheme.themeSource = server.frontend.Theme.toLowerCase();
+    }
+
+
     //make a log window and start WL
     windows.log.construct((log_window) => {
         windows.log.version(app.getVersion());
+        ipcMain.on('reinstall', () => {
+            reinstall((state) => {
+                if (state) {
+                    app.relaunch();
+                    app.quit();
+                }
+            }, log_window);
+        });
         //new promt('input', 'Do you have Wolfram Engine installed?', (answer) => console.log(answer), log_window);
         check_installed(() => check_wl(load_configuration(), () => store_configuration(() => start_server(log_window)), log_window), log_window);
     });
 
+    //again in a case if something changed
     read_wl_settings();
 
     //server.url.local = `http://127.0.0.1:20560`;
@@ -2114,6 +2113,42 @@ function install_wl(window) {
         shell.openExternal("https://www.wolfram.com/engine/");
         app.quit();
     }, 3000);
+}
+
+function reinstall(cbk, window) {
+    const toRemove = ['package.json', '.wl_timestamp', '.wljs_timestamp', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl'];
+    const dirToRemove = ['wl_packages', 'Script', 'wljs_packages', '__localkernel'];
+    const recreate = ['__localkernel'];
+
+    new promt('binary', 'This action will remove wl*, wljs* package folders', (answer) => {
+        if (answer) {
+            //cbk(true); return;
+            if (app.isPackaged) return cbk(false);
+
+            toRemove.forEach((p) => {
+                if (fs.existsSync(path.join(installationFolder, p))) {
+                    fs.unlinkSync(path.join(installationFolder, p));
+                }
+            });
+        
+            dirToRemove.forEach((p) => {
+                if (fs.existsSync(path.join(installationFolder, p))) {
+                    fs.rmSync(path.join(installationFolder, p), { recursive: true, force: true });
+                }
+            });
+        
+            recreate.forEach((p) => {
+                fs.mkdirSync(path.join(installationFolder, p))
+            });
+        
+            cbk();
+        } else {
+            cbk(false);
+        }
+    }, window);
+
+
+
 }
 
 function check_installed (cbk, window) {

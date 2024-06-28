@@ -1,5 +1,6 @@
 Checkbox = ImportComponent["UI/Checkbox.wlx"];
 Knob     = ImportComponent["UI/Button.wlx"];
+Radio     = ImportComponent["UI/Radio.wlx"];
 
 Secret = $Options["Secret"] // EventClone;
 
@@ -21,6 +22,7 @@ parseInt[any_String] := ToExpression[any]
 parseInt[any_] := any 
 
 defaultBackupTime = If[KeyExistsQ[settings, "BackupTimeout"], Round[settings["BackupTimeout"]/60/1000], 3]
+defaultTheme = If[KeyExistsQ[settings, "Theme"], settings["Theme"], "System"]
 
 DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
@@ -38,6 +40,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
             onSave[settings];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
         ],
+
+        "Theme" -> Function[state,
+            settings = Join[settings, <|"Theme"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],        
 
         "ChangeHome" -> Function[Null,
             With[{p = Promise[], cli = $Client},
@@ -164,6 +172,8 @@ EventHandler[Secret, {"Load" -> Function[Null,
             <StringRiffle>
                 <Checkbox Label={"Inner window transparency"} Event={controller} Topic={"Transparency"} Description={"Makes a notebook background transparent. It might not work on all OS"} Checked={settings["Transparency"]}/>
             </StringRiffle>
+
+            <Radio Label={"UI Theme"} List={ {{"System", "System"}, {"Light", "Light"}, {"Dark", "Dark"}} } Selected={defaultTheme} Pattern={"Theme"} Event={controller} />
         </div>
     </div>  
 
