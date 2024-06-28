@@ -1480,6 +1480,11 @@ app.whenReady().then(() => {
         windows.focused.win.setBounds({ width: 800 , animate: true});
     });
 
+    ipcMain.on('open-tools', () => {
+        console.warn('Dev tools!');
+        windows.focused.win.webContents.openDevTools()
+    });
+
     ipcMain.on('system-window-shrink', (e, p) => {
         windows.focused.win.setBounds({ width: 600 , animate: true});
     });
