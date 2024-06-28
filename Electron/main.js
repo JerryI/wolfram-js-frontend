@@ -2117,13 +2117,13 @@ function install_wl(window) {
 
 function reinstall(cbk, window) {
     const toRemove = ['package.json', '.wl_timestamp', '.wljs_timestamp', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl'];
-    const dirToRemove = ['wl_packages', 'Script', 'wljs_packages', '__localkernel'];
+    const dirToRemove = ['wl_packages', 'Scripts', 'wljs_packages', '__localkernel'];
     const recreate = ['__localkernel'];
 
     new promt('binary', 'This action will remove wl*, wljs* package folders', (answer) => {
         if (answer) {
             //cbk(true); return;
-            if (app.isPackaged) return cbk(false);
+            if (!app.isPackaged) return cbk(false);
 
             toRemove.forEach((p) => {
                 if (fs.existsSync(path.join(installationFolder, p))) {
@@ -2141,7 +2141,7 @@ function reinstall(cbk, window) {
                 fs.mkdirSync(path.join(installationFolder, p))
             });
         
-            cbk();
+            cbk(true);
         } else {
             cbk(false);
         }
