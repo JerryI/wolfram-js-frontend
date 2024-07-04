@@ -34,6 +34,12 @@ Options[Element] = {"Cell"->Null, "Client"->""};
 
 Script = With[{},
     <Placebo>
+        const callElectronProgress = (p) => {
+            if (window.electronAPI) {
+                if (window.electronAPI.setProgress) window.electronAPI.setProgress(p);
+            }
+        }
+
         core.UINotebook.CellContent = async (args, env) => {
             const uid      = await interpretate(args[0], env);
             const content    = await interpretate(args[1], env);
@@ -65,20 +71,24 @@ Script = With[{},
             bar.style.width = "0%";
 
             if (state != 'Idle') {
+                callElectronProgress(0);
                 //bar.parentNode.classList.remove('opacity-0');
                 setTimeout(() => {
                     bar.parentNode.style.opacity = 1;
                     bar.style.transition = "width 3s";
                     bar.style.width = "70%";
+                    callElectronProgress(0.7);
                 }, 100);
             } else {
                 //bar.parentNode.classList.add('opacity-0');
                 bar.style.transition = "width 200ms";
                 bar.style.width = "100%";
+                callElectronProgress(1);
                 setTimeout(() => {
                     bar.style.transition = "width 3s";
                     bar.style.width = "0%";
                     bar.parentNode.style.opacity = 0;
+                    callElectronProgress(-1);
                 }, 100);
             }
         }

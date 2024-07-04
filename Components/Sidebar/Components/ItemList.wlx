@@ -18,18 +18,18 @@ With[{
   Ul = Table[
     If[DirectoryQ[i],  
     
-      <li><Dir Icons={Icons} Port={Port} Parameters={Parameters} Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
-      <li><Fl  Icons={Icons} Port={Port} Parameters={Parameters} File={i} Selected={SameQ[Current, i]}/></li>
+      <li class="list-none"><Dir Icons={Icons} Port={Port} Parameters={Parameters} Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
+      <li class="list-none"><Fl  Icons={Icons} Port={Port} Parameters={Parameters} File={i} Selected={SameQ[Current, i]}/></li>
     ]
   , {i, FileNames["*", Path]}],
 
   Extra =   If[Level == 0,
-    <li><Pl  File={ParentDirectory[Path]}/></li>
+    <li class="list-none"><Pl  File={ParentDirectory[Path]}/></li>
   ,
     ""
   ]
 },
-  <ul class="{Class}">
+  <ul class="p-0 {Class}">
     <Extra/>
     <Ul/>
   </ul>

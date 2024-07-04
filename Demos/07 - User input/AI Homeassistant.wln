@@ -1,0 +1,131 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$474], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/07 - User input/AI Homeassistant.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# AI Home assistant\nA basic example of API \
+function usage. Please install a library from a command line: paste this url \
+`https://github.com/KirillBelovTest/AILink`", "Display" -> "codemirror", 
+    "Hash" -> "6bf9e43a-f160-4430-977f-1a6811b61667", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "# AI Home assistant\nA basic example of API function usage. \
+Please install a library from a command line: paste this url \
+`https://github.com/KirillBelovTest/AILink`", "Display" -> "markdown", 
+    "Hash" -> "a738229b-141a-4ae2-a6de-89895799953f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "<<KirillBelov`AILink`", "Display" -> "codemirror", 
+    "Hash" -> "8ad467b5-8e35-4788-9333-583bc78064b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> ".md\nAssign you API Token to a system variable or directly to \
+any API call", "Display" -> "codemirror", 
+    "Hash" -> "daef3d78-a9ea-44de-ba98-a0482f7e3ed6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> 
+     "Assign you API Token to a system variable or directly to any API call", 
+    "Display" -> "markdown", "Hash" -> 
+     "c5a55fc2-d3b3-4aeb-a622-d3b162ef3893", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "SystemCredential[\"OPENAI_API_KEY\"] = \"...\"", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8fe24a7b-3518-401c-bedc-17102e1e3f0b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "1890b3bb-e223-41f8-9a8f-7167664b2bc3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "26692a51-0d4a-4341-aaef-7921800f0c7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "## Setup\nDefine API functions and assign them to a virtual \
+lighting system", "Display" -> "markdown", 
+    "Hash" -> "70eb4e10-60ba-4a8b-b14b-72256c356a41", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "lightLivingRoom = {0,0,0};\nlightBathRoom = \
+{0,0,0};\n\nswitchLight[\"living_room\", \"on\"] := (lightLivingRoom = \
+{1,1,0}; \"on\"); \nswitchLight[\"living_room\", \"off\"] := (lightLivingRoom \
+= {0,0,0}; \"off\"); \n\nswitchLight[\"bath_room\", \"on\"] := (lightBathRoom \
+= {1,1,0}; \"on\"); \nswitchLight[\"bath_room\", \"off\"] := (lightBathRoom = \
+{0,0,0}; \"off\"); \n\nswitch[room_String, state_String] := switchLight[room, \
+state]\n\nswitch::usage = \"operates the light switches in rooms. First \
+argument is a string, can be either \\\"living_room\\\" or \\\"bath_room\\\". \
+Second argument is a string and represents the operation: either \\\"on\\\" \
+or \\\"off\\\". Function return the state if the operation was \
+succesfull\";\n\n\nchat = AIChatObject[\n    \"You are home assistant bot. \
+You have two rooms living_room and bath_room to control and light switches. \
+Call API functions only one at the time. Do not call in parallel\", \n    \
+\"Tools\" -> {switch}\n]; \n\nGraphics[{\n    {RGBColor[lightLivingRoom // \
+Offload], Disk[{-1,0}, 0.25]},\n    {RGBColor[lightBathRoom // Offload], \
+Disk[{1,0},0.25]}\n}, PlotRange->{{-1.25,1.25},{-1.25,1.25}}, ImageSize->200, \
+ImagePadding->None]", "Display" -> "codemirror", 
+    "Hash" -> "9cffe657-bd03-4394-a250-59932c26ac4b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> ".md\n## Examples\nTurn on all lights", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a8963649-b5c4-4714-859d-573907fd0bf2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "## Examples\nTurn on all lights", "Display" -> "markdown", 
+    "Hash" -> "636a241a-526c-4297-b22c-1d0c03d43ca8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "AIChatComplete[chat, \"Turn on lights in the all \
+rooms\"][\"Messages\"][[-1, \"content\"]];\nStyle[%, Italic]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "594a9833-29d0-4e0a-b56d-fe0179894419", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> ".md\nAsk indirectly to turn off all", 
+    "Display" -> "codemirror", "Hash" -> 
+     "be0db819-f93a-4dd9-8617-a3080eb3cb76", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "Ask indirectly to turn off all", "Display" -> "markdown", 
+    "Hash" -> "5e279eb0-639a-4ebd-baf6-38d75f8e9ab1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "AIChatComplete[chat, \"It is a bed time \
+now!\"][\"Messages\"][[-1, \"content\"]];\nStyle[%, Italic]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "260f6af7-d0d6-4fe4-922e-767ed69c0a9a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> ".md\nOr individually", "Display" -> "codemirror", 
+    "Hash" -> "76640c22-8823-41ff-8815-39ed4188798e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, <|"Data" -> "Or individually", 
+    "Display" -> "markdown", "Hash" -> 
+     "dbff17ee-7aea-405b-9e92-782018ad75e1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>, 
+   <|"Data" -> "AIChatComplete[chat, \"I want to have a bath \
+now\"][\"Messages\"][[-1, \"content\"]];\nStyle[%, Italic]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2a2b69b9-d030-459a-961b-850dffe2abdc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7cfe8213-a694-460d-9e42-e1664527ec75"|>}, "serializer" -> "jsfn4"|>

@@ -19,7 +19,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   contextMenu: (callback) => ipcRenderer.on('context', callback),
   call: (callback) => ipcRenderer.on('call', callback),
 
-
+  devTools: () => ipcRenderer.send('open-tools',  ''),
 
   listener: (name, callback) => ipcRenderer.on(name, callback),
 
@@ -28,6 +28,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   pluginsMenu: (callback) => ipcRenderer.on('pluginsMenu', callback),
   
+  setProgress: (p) => ipcRenderer.send('set-progress', p),
+
   openFinder: (path) => {
     console.log(path);
     ipcRenderer.send('system-open',  path);

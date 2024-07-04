@@ -81,6 +81,59 @@ Script = With[{},
 
         //add it to the constructor
         CellWrapper.epilog.push(controls);    }
+
+        //tracing bugs and errors
+        {
+        let gcbk = () => {};
+
+        const tester = (promiseRejectionEvent) => {
+            console.log(promiseRejectionEvent);
+            gcbk(promiseRejectionEvent);
+            gcbk = () => {};
+        };      
+        
+        window.addEventListener("unhandledrejection", tester);
+
+        const requestErrorListener = (cbk, timeout = 2000) => {
+            gcbk = cbk;
+        }
+
+        let promise;
+        promise = (str) => {
+            promise = str;
+        }
+
+
+        CellWrapper.prolog.push((opts) => {
+            requestErrorListener((error) => {
+                let str = error.reason;
+                if (typeof str != 'string') str = str.stack;
+                //console.log(str);
+                str = str.slice(0, Math.min(str.length - 1, 100 - 3));
+                promise(str);
+            });
+        });
+
+        CellWrapper.epilog.push((opts)=> {
+            const p = (str) => {
+                const uid = opts.cell.uid;
+                const box = decodeURIComponent('%3Cdiv%20class%3D%22py-0.5%20flex%20text-red-500%20flex-row%20items-center%20flex-row-reverse%20text-xs%22%3E%3Cbutton%20id%3D%22dev-')+uid+decodeURIComponent('%22%20class%3D%22w-4%20h-4%22%3E%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M12%2019C9.23858%2019%207%2016.7614%207%2014M12%2019C14.7614%2019%2017%2016.7614%2017%2014M12%2019V14M7%2014V11.8571C7%2011.0592%207%2010.6602%207.11223%2010.3394C7.31326%209.76495%207.76495%209.31326%208.33944%209.11223C8.66019%209%209.05917%209%209.85714%209H14.1429C14.9408%209%2015.3398%209%2015.6606%209.11223C16.2351%209.31326%2016.6867%209.76495%2016.8878%2010.3394C17%2010.6602%2017%2011.0592%2017%2011.8571V14M7%2014H4M17%2014H20M17%2010L19.5%207.5M4.5%2020.5L8%2017M7%2010L4.5%207.5M19.5%2020.5L16%2017M14%206V5C14%203.89543%2013.1046%203%2012%203C10.8954%203%2010%203.89543%2010%205V6H14Z%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E%3C%2Fbutton%3E%3Cspan%20class%3D%22pr-2%20text-gray-300%20dark%3Atext-gray-600%22%3E')+str+decodeURIComponent('...%3C%2Fspan%3E%3C%2Fdiv%3E');
+                console.log({box, uid})
+                opts.cell.element.insertAdjacentHTML('beforeend', box);
+                document.getElementById('dev-' + uid).addEventListener('click', () => {
+                    if (window.electronAPI) {
+                        window.electronAPI.devTools();
+                    }
+                })
+            }           
+
+            if (typeof promise === 'string') {
+                p(str);
+            } else {
+                promise = p;
+            }
+        })            
+        }
     </Placebo>
 ]
 

@@ -1,19 +1,19 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$131], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$34], 
    "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
 /Demos/04 - Animation/Basic refresh.wln"|>, 
  "Cells" -> {<|"Data" -> ".md\n## Refresh\nBasics example", 
     "Display" -> "codemirror", "Hash" -> 
-     "87d02521-7da0-4dd0-b9c5-c1758517601b", "Invisible" -> False, 
+     "cb5ad21f-2190-44d1-82d5-6ac298178813", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "47e8c7eb-8978-47ac-9e23-ec561da56236"|>, 
+     "1593b2a2-33ad-473b-ba93-e70f2ed2bfc0"|>, 
    <|"Data" -> "## Refresh\nBasics example", "Display" -> "markdown", 
-    "Hash" -> "663b6823-3f1c-4e85-a9c3-d66ff9324f39", "Invisible" -> False, 
+    "Hash" -> "746d1938-064b-4d06-85f3-a9cce624927e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "47e8c7eb-8978-47ac-9e23-ec561da56236"|>, 
-   <|"Data" -> "Refresh[Now // TextString, 1]", "Display" -> "codemirror", 
-    "Hash" -> "a97a9d4e-f58e-4dcf-b1f4-6ca82456b148", "Invisible" -> False, 
+     "1593b2a2-33ad-473b-ba93-e70f2ed2bfc0"|>, <|"Data" -> "Refresh[Now, 1]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "09168526-4896-449f-8d6c-3c265b976066", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "47e8c7eb-8978-47ac-9e23-ec561da56236"|>}, "serializer" -> "jsfn4"|>
+     "1593b2a2-33ad-473b-ba93-e70f2ed2bfc0"|>}, "serializer" -> "jsfn4"|>

@@ -4,7 +4,7 @@ Component[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]}, We
   With[{
     MessageList = Table[
       With[{Msg = GenericTemplate[Item["Type"], Item["Message"], "Class"->""]["Data"]},
-        <li class="my-2"><Msg/></li>
+        <li class="my-2 list-none"><Msg/></li>
       ]
     , {Item, Reverse @ ReleaseHold @ OptionValue["Data"]}],
 
@@ -23,7 +23,7 @@ Component[OptionsPattern[]] := With[{Controller = OptionValue["Controller"]}, We
             <div class="pointer-events-none h-full fixed inset-y-0 right-0 flex w-40 pl-10" style="width: 35vw; max-width: 400px;">
                 <div class="pointer-events-auto w-screen max-w-md">
                     <div class="flex h-full flex-col overflow-y-scroll transform overflow-hidden rounded-md sc-b transition-all text-left text-gray-500 w-70 transparent pb-1 py-6">
-                      <ul class="relative mt-2 flex-1 px-4"><MessageList/></ul>
+                      <ul class="relative p-0 mt-2 flex-1 px-4"><MessageList/></ul>
                       </div>
                 </div>
             </div>

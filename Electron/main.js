@@ -1,5 +1,5 @@
 const { session, app, Tray, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
-const { screen} = require('electron/main')
+const { screen, globalShortcut} = require('electron/main')
 
 const path = require('path')
 const { platform } = require('node:process');
@@ -195,13 +195,15 @@ const buildMenu = (opts) => {
                         }
                     },
                     {
-                        label: "Open Recent",
-                        role: "recentdocuments",
-                        submenu: [{
-                            label: "Clear Recent",
-                            role: "clearrecentdocuments"
-                        }]
-                    }
+                        "label":"Open Recent",
+                        "role":"recentdocuments",
+                        "submenu":[
+                          {
+                            "label":"Clear Recent",
+                            "role":"clearrecentdocuments"
+                          }
+                        ]
+                      }
                 ] : []),
                 { type: 'separator' },
                 {
@@ -210,6 +212,7 @@ const buildMenu = (opts) => {
                     click: async(ev) => {
                         console.log(ev);
                         windows.focused.call('save', true);
+                        
                     }
                 },
                 {
@@ -221,6 +224,7 @@ const buildMenu = (opts) => {
                         promise.then((res) => {
                             if (!res.canceled) {
                                 app.addRecentDocument(res.filePath);
+                                
                                 console.log(res.filePath);
                                 windows.focused.call('saveas', encodeURIComponent(res.filePath) );
                             }
@@ -1393,6 +1397,10 @@ app.whenReady().then(() => {
     pluginsMenu.fetch();
     buildMenu({plugins: pluginsMenu.items});
 
+    globalShortcut.register('CommandOrControl+W', () => {
+        console.log('Electron loves global shortcuts!')
+    });
+
     powerSaver();
 
     ipcMain.on('debug', () => {
@@ -1425,11 +1433,19 @@ app.whenReady().then(() => {
     //again in a case if something changed
     read_wl_settings();
 
+    
+
     //server.url.local = `http://127.0.0.1:20560`;
     //create_window({url: 'http://127.0.0.1:20560', show: true, focus: true, cacheClear: true});
 
     ipcMain.on('system-harptic', () => {
         trackpadUtils.triggerFeedback();
+    });
+
+    ipcMain.on('set-progress', (e, p) => {
+        const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
+        if (senderWindow)
+            senderWindow.setProgressBar(p);
     });
 
     ipcMain.on('system-window-enlarge-if-needed', (e, p) => {
@@ -1478,6 +1494,11 @@ app.whenReady().then(() => {
 
     ipcMain.on('system-window-expand', (e, p) => {
         windows.focused.win.setBounds({ width: 800 , animate: true});
+    });
+
+    ipcMain.on('open-tools', () => {
+        console.warn('Dev tools!');
+        windows.focused.win.webContents.openDevTools()
     });
 
     ipcMain.on('system-window-shrink', (e, p) => {
@@ -2117,13 +2138,13 @@ function install_wl(window) {
 
 function reinstall(cbk, window) {
     const toRemove = ['package.json', '.wl_timestamp', '.wljs_timestamp', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl'];
-    const dirToRemove = ['wl_packages', 'Script', 'wljs_packages', '__localkernel'];
+    const dirToRemove = ['wl_packages', 'Scripts', 'wljs_packages', '__localkernel'];
     const recreate = ['__localkernel'];
 
     new promt('binary', 'This action will remove wl*, wljs* package folders', (answer) => {
         if (answer) {
             //cbk(true); return;
-            if (app.isPackaged) return cbk(false);
+            if (!app.isPackaged) return cbk(false);
 
             toRemove.forEach((p) => {
                 if (fs.existsSync(path.join(installationFolder, p))) {
@@ -2141,7 +2162,7 @@ function reinstall(cbk, window) {
                 fs.mkdirSync(path.join(installationFolder, p))
             });
         
-            cbk();
+            cbk(true);
         } else {
             cbk(false);
         }
