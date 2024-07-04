@@ -9,7 +9,7 @@ Label := ImportComponent["Label.wlx"];
 
 Elements = Table[
     With[{Link = i["Link"], MDate = TextString@Round@i["Modified"]},
-        <li>
+        <li class="list-none">
           <a href="{Link}" class="flex justify-between round gap-x-6 px-3 py-5 hover:bg-sky-100">
             <div class="flex gap-x-4">
               <div class="min-w-0 flex-auto">
@@ -34,6 +34,6 @@ Elements = Table[
     ]
 , {i, $Options["Data"]}];
 
-<ul role="list" class="divide-y divide-gray-100">
+<ul role="list" class="p-0 divide-y divide-gray-100">
     <Elements/>
 </ul>

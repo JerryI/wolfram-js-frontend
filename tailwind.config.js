@@ -6,7 +6,7 @@ const sidebarStates = [['hidden', 'zen']]
 module.exports = {
   content: [
     './**/*.wlx',
-    //'./wljs_packages/wljs-inputs/src/kernel.js'
+    './wljs_packages/wljs-inputs/src/kernel.js'
   ],
   theme: {
     extend: {
@@ -34,8 +34,11 @@ module.exports = {
     'text-3xl',
     'text-red-300',
     'table-auto',
+    'flex-row-reverse',
     'border-spacing-x-0.5',
     'bg-teal-400',
+    '-ml-2',
+    '-ml-1',
     "bg-teal-500/15",
     "text-green-500",
     "hover:text-green-300",
