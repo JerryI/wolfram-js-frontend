@@ -64,11 +64,10 @@ Write beautiful equations between lines of normal Wolfram Language expressions.
 
 ![Mathinput-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/ebc2d83a-0d4d-49e4-a073-e112829a8d62)
 
-### Compress to HTML 🗜️
+### Compress to HTML / Markdown 🗜️
 An entire notebook can be exported to a standalone `.html` file keeping all data inside. __No internet dependency, no additional software__ is required for viewing a notebook
 
 ![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
-
 
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
@@ -81,6 +80,9 @@ Make a presentation right from the notebook.
 Follows the mouse pointer and performs complex calculations.
 
 ![](imgs/ezgif.com-optimize-5-55576aef6756b65dcc582b2f19964fa0.gif)
+
+![](imgs/rerer-ezgif.com-video-to-gif-converter.gif)
+
 
 ### Many More
 #### Autocomplete
