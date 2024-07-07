@@ -18,6 +18,9 @@ To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 
+### Contributing
+See [here](CONTRIBUTING.md)
+
 ## Media
 - YTS 📽️ [You don't need to program your figures manually](https://youtube.com/shorts/vxEaryg8Hxg?feature=share)
 - YTS 📽️ [How to do Dynamics in Computation Notebook](https://youtube.com/shorts/ItXbjNtGlew?feature=share)
