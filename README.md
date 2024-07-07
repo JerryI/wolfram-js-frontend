@@ -18,7 +18,7 @@ To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 
-## Contribution
+### Contributing
 See [here](CONTRIBUTING.md)
 
 ## Media
