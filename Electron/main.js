@@ -427,13 +427,6 @@ const buildMenu = (opts) => {
                             }
                         },
                         {
-                            label: 'New Master Kernel',
-                            click: async(ev) => {
-                                console.log(ev);
-                                windows.focused.call('newmasterkernel', true);
-                            }
-                        },
-                        {
                             label: 'Restart',
                             click: async(ev) => {
                                 console.log(ev);

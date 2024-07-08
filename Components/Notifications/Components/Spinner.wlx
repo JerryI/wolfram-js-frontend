@@ -28,7 +28,7 @@ Component[n_, client_, controller_] := With[{Uid = n["DOM"], Message = n["Body"]
     ];
 
     With[{template = 
-       <div id="{Uid}" style="z-index:1500" class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
+       <div id="{Uid}" style="z-index:1500" class="my-2 translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2 pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
        <div class="p-3">
          <div class="flex items-start">
            <div class="flex-shrink-0">
