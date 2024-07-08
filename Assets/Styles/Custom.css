@@ -182,6 +182,10 @@ input::selection {
   z-index:110;
 }
 
+.invisible-cell {
+  display: none;
+}
+
 .h-titlebar {
   height: env(titlebar-area-height) !important;
 }

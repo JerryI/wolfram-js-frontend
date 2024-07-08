@@ -1,5 +1,9 @@
-LeftElement[OptionsPattern[]] := With[{cell = OptionValue["Cell"], Class = If[TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "rotate-90", ""]}, 
-    <div class="grow-0 self-start pr-1 mb-4 group-hover:opacity-100 opacity-0 hidden md:flex">
+LeftElement[OptionsPattern[]] := With[{
+    cell = OptionValue["Cell"], 
+    Class = If[TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "rotate-90", ""],
+    MainClass = If[TrueQ[OptionValue["Cell"]["Props"]["Locked"]], "hidden", "grow-0 self-start pr-1 mb-4 group-hover:opacity-100 opacity-0 hidden md:flex"]
+}, 
+    <div class="{MainClass}">
         <button class="button-cadd">
             <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M5 12H19"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
