@@ -96,7 +96,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
   Github -> "https://github.com/JerryI/wljs-sound" -> "master",
   Github -> "https://github.com/JerryI/wljs-video" -> "master",
-  Github -> "https://github.com/JerryI/wljs-templates" -> "master"
+  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
+  Github -> "https://github.com/JerryI/wljs-xterm" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
