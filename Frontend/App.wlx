@@ -26,6 +26,8 @@ ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
 
 BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
 
+FakeMenu            = ImportComponent["Components/FakeMenu.wlx"];
+
 {saveNotebook, loadNotebook, renameNotebook, cloneNotebook}         = ImportComponent["Loader.wl"];
 {deinitKernel, initKernel}           = ImportComponent["KernelUtils.wl"];
 
@@ -120,7 +122,17 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
 
 defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->FileNameJoin[{Directory[], "Demos"}]|>, settings]["Home"] ];
 
-ExtensionMenuItems = WLJS`PM`Includes["menu"];
+ExtensionMenuItems = <|"file"->{}, "misc"->{}, "view"->{}, "edit"->{}|>;
+
+Map[Function[item, 
+  If[KeyExistsQ[item, "section"], 
+    With[{sec = item["section"]},
+      ExtensionMenuItems[sec] = Append[ExtensionMenuItems[sec], item]
+    ]
+  ,
+    ExtensionMenuItems["misc"] = Append[ExtensionMenuItems["misc"], item]
+  ];
+], Select[Flatten[WLJS`PM`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJS`PM`Packages]], AssociationQ]];
 
 App[request_] := With[{
   Secret = CreateUUID[], 
@@ -168,7 +180,7 @@ App[request_] := With[{
                 }];
               
 
-                BrowserMenu["Event" -> middleware, "Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"])]
+                BrowserMenu["Event" -> middleware, "Plugins"->ExtensionMenuItems, "Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"])]
               ]
             ,
 
@@ -179,7 +191,7 @@ App[request_] := With[{
             ,
 
             _,
-              ImportComponent["Components/FakeMenu.wlx"]
+              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls]
 
           ]
     },

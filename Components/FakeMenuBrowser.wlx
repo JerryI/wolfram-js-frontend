@@ -1,8 +1,9 @@
 Component[OptionsPattern[]] := 
 With[{
   Event = OptionValue["Event"],
+  Plugins = Join[<|"view"->{}, "misc"->{}, "edit"->{}, "file"->{}|>, OptionValue["Plugins"]],
   AltKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Alt+", "Linux", "Alt+", _, "&#8984;/Alt+"],
-  ToggleKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;+2", "Windows", "Ctrl+W", "Linux", "Ctrl+W", _, "&#8984;+2/Ctrl+W"],
+  ToggleKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;+2", "Windows", "Ctrl+W", "Linux", "Alt+2", _, "&#8984;+2/Ctrl+W"],
   MetaKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Ctrl+", "Linux", "Ctrl+", _, "&#8984;/Ctrl+"]
 },
   With[{Layout = 
@@ -13,6 +14,14 @@ With[{
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><MetaKey/>N</kbd></span>
         </button>          
     </div>
+    ,
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+          <div class="py-0 px-2" role="none">     
+            <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+              <Label/>
+            </button>          
+          </div>        
+      ], {Vi, Plugins["file"]}]
     ,
     <div class="py-0 px-2" role="none">
       <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -41,7 +50,14 @@ With[{
           Clear outputs
         </button>
       </div>
-      
+    ,
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+          <div class="py-0 px-2" role="none">     
+            <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+              <Label/>
+            </button>          
+          </div>        
+      ], {Vi, Join[Plugins["edit"], Plugins["view"]]}]      
     ,
       <div class="py-0 px-2" role="none">
         <button data-name="LocateExamples" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -51,6 +67,14 @@ With[{
       </div>
       
     ,    
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+      <div class="py-0 px-2" role="none">     
+        <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          <Label/>
+        </button>          
+      </div>        
+      ], {Vi, Plugins["misc"]}]  
+    ,
       <div class="py-0 px-2" role="none">
       <button data-name="OpenDocs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   
@@ -62,7 +86,7 @@ With[{
       </button>
     </div>  
 
-  }
+  }//Flatten
 },
 
     <div class="h-titlebar p-1 pr-2 flex">
@@ -127,6 +151,6 @@ With[{
   ]
 ]
 
-Options[Component] = {"Event"->""}
+Options[Component] = {"Event"->"", "Plugins"-><||>}
 
 Component
