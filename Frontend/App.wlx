@@ -108,6 +108,10 @@ toggleWindowSize[_, client_] := With[{},
 ]
 
 KernelList = {};
+With[{},
+  (*/* Trick WLX to use global scope */*)
+  AppExtensions`KernelList = Hold[KernelList]; (*`*)
+];
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
@@ -115,6 +119,8 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
 ] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
 defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->FileNameJoin[{Directory[], "Demos"}]|>, settings]["Home"] ];
+
+ExtensionMenuItems = WLJS`PM`Includes["menu"];
 
 App[request_] := With[{
   Secret = CreateUUID[], 
