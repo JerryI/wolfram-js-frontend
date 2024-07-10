@@ -95,7 +95,9 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
   Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
   Github -> "https://github.com/JerryI/wljs-sound" -> "master",
-  Github -> "https://github.com/JerryI/wljs-video" -> "master"
+  Github -> "https://github.com/JerryI/wljs-video" -> "master",
+  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
+  Github -> "https://github.com/JerryI/wljs-xterm" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -135,25 +137,27 @@ $Env = <|
   "docs" -> 20540
 |>;
 
-With[{argv = Rest @ $ScriptCommandLine // Quiet},
-  Echo["Command line: "];
-  Echo[argv];
-  MapIndexed[Function[{key, pos},
-    With[{},
-      If[MemberQ[Keys[$Env], key] || True,
-        With[{
-          value = argv[[2;;;;2]][[ pos[[1]] ]]
-        },
-          Echo[key -> value];
-
-          $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
-            ToExpression[value],
-            value
-          ]|>];
+If[$ScriptCommandLine =!= {},
+  With[{argv = Rest @ $ScriptCommandLine},
+    Echo["Command line: "];
+    Echo[argv];
+    MapIndexed[Function[{key, pos},
+      With[{},
+        If[MemberQ[Keys[$Env], key] || True,
+          With[{
+            value = argv[[2;;;;2]][[ pos[[1]] ]]
+          },
+            Echo[key -> value];
+  
+            $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
+              ToExpression[value],
+              value
+            ]|>];
+          ]
         ]
       ]
-    ]
-  ], argv[[;;;;2]]];
+    ], argv[[;;;;2]]];
+  ];
 ];
 
 Echo["ENV"];

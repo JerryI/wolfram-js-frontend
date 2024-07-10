@@ -438,7 +438,20 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 const state = await interpretate(args[1], env);
 
                 CellWrapper.fadeCell(uid, state);
-            }            
+            }      
+            core.UINotebook.ToggleLock = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                const state = await interpretate(args[1], env);
+
+                CellWrapper.lockCell(uid, state);
+            }             
+
+            core.UINotebook.ToggleInvisible = async (args, env) => {
+                const uid   = await interpretate(args[0], env);
+                const state = await interpretate(args[1], env);
+
+                CellWrapper.vanishCell(uid, state);                
+            }      
 
 
             core.UINotebook.RemoveCell = async (args, env) => {
@@ -678,19 +691,71 @@ Component[OptionsPattern[]] := With[{
             ]
         ],
 
+        "Lock" -> Function[uid,
+            Echo["Lock cell..."];
+            With[{cell = CellObj`HashMap[uid](*`*)},
+                cell["Props"] = Join[cell["Props"], <|"Locked" -> !TrueQ[cell["Props", "Locked"]]|>];
+                WebUISubmit[UINotebook["ToggleLock", uid, TrueQ[cell["Props", "Locked"]]], $Client];
+            ]
+        ],  
+
+        "Hide" -> Function[uid,
+            Echo["Fade cell..."];
+            With[{cell = CellObj`HashMap[uid](*`*)},
+                WebUISubmit[UINotebook["ToggleCell", cell["Hash"]], $Client];
+            ]            
+        ],         
+        
         "Fade" -> Function[uid,
             Echo["Fade cell..."];
             With[{cell = CellObj`HashMap[uid](*`*)},
                 cell["Props"] = Join[cell["Props"], <|"Fade" -> !TrueQ[cell["Props", "Fade"]]|>];
                 WebUISubmit[UINotebook["ToggleFade", uid, TrueQ[cell["Props", "Fade"]]], $Client];
             ]
-        ],        
+        ],         
 
         "ClearOutputs" -> Function[uid,
             Echo["Clear outputs"];
             With[{cell = CellObj`HashMap[uid](*`*)},
                 Delete /@ CellObj`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?OutputCellQ]](*`*);
             ]
+        ],
+
+        "Vanish" -> Function[uid,
+            If[!TrueQ[CellObj`HashMap[uid]["Invisible"](*`*)],
+                With[{request = CreateUUID[]},
+                    EventHandler[request, {
+                        "Success" -> Function[Null, 
+                            EventRemove[request];
+
+                            With[{cell = CellObj`HashMap[uid](*`*)},
+                                cell["Invisible"] = !TrueQ[cell["Invisible"]];
+                                WebUISubmit[UINotebook["ToggleInvisible", uid, TrueQ[cell["Invisible"]]], $Client];
+                            ]                        
+                        ],
+
+                        _ -> Function[Null,
+                            EventRemove[request]
+                        ]
+                    }];
+
+                    EventFire[modals, "GenericAskTemplate", <|
+                        "Callback" -> request, 
+                        "Client" -> $Client,
+                        "Title" -> "Do you want to make it invisible?", 
+                        "Content" -> "Invisible cell can only be changed in Expert mode",
+                        "SVGIcon" -> With[{},
+                            <svg class="mr-2 h-4 w-4 text-gray-500" viewBox="0 0 32 32" ><path  fill="currentColor" d="M27,12h-5.435C22.185,10.572,23,8.428,23,7c0-2.206-1.794-4-4-4c-1.2,0-2.266,0.542-3,1.382 C15.266,3.542,14.2,3,13,3c-2.206,0-4,1.794-4,4c0,1.413,0.818,3.566,1.439,5H5v2h2.882L7,29h18l-0.882-15H27V12z M19,5 c1.103,0,2,0.897,2,2c0,1.241-1.01,3.672-1.629,5h-0.742C17.912,10.455,17,8.121,17,7C17,5.897,17.897,5,19,5z M16.439,12h-0.874 c0.14-0.323,0.289-0.679,0.438-1.059C16.151,11.321,16.299,11.677,16.439,12z M11,7c0-1.103,0.897-2,2-2s2,0.897,2,2 c0,1.241-1.01,3.672-1.629,5h-0.742C11.912,10.455,11,8.121,11,7z M9.121,27l0.529-9h12.699l0.529,9H9.121z M22.232,16H9.768 l0.118-2h12.228L22.232,16z"/></svg>
+                        ]
+                    |>];
+
+                ];
+            ,
+                With[{cell = CellObj`HashMap[uid](*`*)},
+                    cell["Invisible"] = !TrueQ[cell["Invisible"]];
+                    WebUISubmit[UINotebook["ToggleInvisible", uid, TrueQ[cell["Invisible"]]], $Client];
+                ] 
+            ];
         ],
 
         "Project" -> Function[uid, projectCell[CellObj`HashMap[uid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
@@ -711,7 +776,7 @@ Component[OptionsPattern[]] := With[{
 
         "RemoveCell" -> Function[uid,
             CellObj`HashMap[uid] (*`*) //Delete;
-            If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
+            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && InputCellQ[c]]] === {}, CellObj["Notebook"->notebook, "Data"->""]];
         ],
 
         "SetProperty" -> Function[json,

@@ -5,7 +5,7 @@ import { generate, count } from "random-words";
 //const c = require('ansi-colors');
 //import { FitAddon } from 'xterm-addon-fit';
 
-const term = new Terminal({cursorBlink: true, rows: 13});
+const term = new Terminal({cursorBlink: true, rows: 13, fontFamily: 'monospace'});
 
 ///const fitAddon = new FitAddon();
 //term.loadAddon(fitAddon);

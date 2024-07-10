@@ -1,5 +1,5 @@
 Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"], Class = If[OptionValue["Cell"]["Type"] == "Input" && TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "hidden", ""]}, 
-    <div class="h-3 w-full opacity-0 ttint cursor-vertical-text {Class}" id="separator-{uid}"></div>
+    <div class="cseparator h-3 w-full opacity-0 ttint cursor-vertical-text {Class}" id="separator-{uid}"></div>
 ]
 
 Options[Element] = {"Cell"->""}

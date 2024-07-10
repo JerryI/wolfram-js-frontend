@@ -41,6 +41,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
         ],
 
+        "ExpertMode" -> Function[state,
+            settings = Join[settings, <|"ExpertMode"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],        
+
         "Theme" -> Function[state,
             settings = Join[settings, <|"Theme"->state|>];
             onSave[settings];
@@ -170,8 +176,14 @@ EventHandler[Secret, {"Load" -> Function[Null,
             </div> 
 
             <StringRiffle>
+                <Checkbox Label={"Expert mode"} Event={controller} Topic={"ExpertMode"} Description={"Shows invisible cells"} Checked={settings["ExpertMode"]}/>
+            </StringRiffle>
+
+            <StringRiffle>
                 <Checkbox Label={"Inner window transparency"} Event={controller} Topic={"Transparency"} Description={"Makes a notebook background transparent. It might not work on all OS"} Checked={settings["Transparency"]}/>
             </StringRiffle>
+
+
 
             <Radio Label={"UI Theme"} List={ {{"System", "System"}, {"Light", "Light"}, {"Dark", "Dark"}} } Selected={defaultTheme} Pattern={"Theme"} Event={controller} />
         </div>

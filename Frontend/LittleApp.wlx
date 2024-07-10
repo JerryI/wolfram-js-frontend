@@ -42,13 +42,6 @@ sidebarState = "show";
 
 loadSettings[settings];
 
-renameFile[old_String, new_String] := With[{},
-  If[FileExtension[old] === "wln",
-    Echo["A notebook was renamed!"];
-    renameNotebook[old, new];
-  ];
-]
-
 NotebookQ[str_] := FileExtension[str] === "wln"
 
 createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
@@ -105,15 +98,8 @@ If[TrueQ[notebook["ReadOnly"]],
   ]
 ]]
 
-toggleWindowSize[_, client_] := With[{},
-  WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
-]
 
-KernelList = {};
-With[{},
-  (*/* Trick WLX to use global scope */*)
-  AppExtensions`KernelList = Hold[KernelList]; (*`*)
-];
+KernelList := ReleaseHold[AppExtensions`KernelList(*`*)]
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
@@ -209,19 +195,17 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "RenameFile" -> (renameFile@@# &),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
       "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
-      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
-      "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
+      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&)
     }];
   {
     "<!DOCTYPE html>"
   ,
 
-    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" sidebar="{sidebarState}"> 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" > 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
@@ -236,17 +220,8 @@ App[request_] := With[{
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" style="user-select: none" class="hidden md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
-            <FakeMenu/>  
-            <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
-            <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
-            <div class="osx:border-b border-gray-300 dark:border-gray-600"></div>
-            <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
-              <SettingsButton/>
-            </div>
-          </div>
           
-          <div class="md:pl-70 zen:pl-0 h-full" id="frame">
+          <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
               <TopBar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
@@ -274,48 +249,13 @@ Script[Rule["Secret", Secret_]] := With[{},
             fake.click();
     }
 
-    core.UIToggleWindowBonds = async (args, env) => {
-      if (document.documentElement.getAttribute('sidebar') === 'hidden' || window.innerWidth < 800) {
-        document.documentElement.setAttribute('sidebar', 'show');
-        server.emitt('<Secret/>', 'show', 'SaveSidebarState');
-        if (window.electronAPI) {
-          if (window.electronAPI.enlargeWindowSizeIfneeded) {
-            window.electronAPI.enlargeWindowSizeIfneeded();
-          }
-        }
-      } else {
-        document.documentElement.setAttribute('sidebar', 'hidden');
-        server.emitt('<Secret/>', 'hidden', 'SaveSidebarState');
-      }
-      
-    }
-
-    if (window.electronAPI) {
-      const sidebar = document.getElementById('sidebar');
-      if (window.electronAPI.onblur) {
-        window.electronAPI.onblur(() => {
-          sidebar.classList.add('grayscale');
-        });
-      
-        window.electronAPI.onfocus(() => {
-          sidebar.classList.remove('grayscale');
-        });
-      }
-    }
   </script>
 ];
 
-http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+http["MessageHandler", "Index"] = AssocMatchQ[<|"Path" -> "/little"|>] -> App;
 
 
-Print["App Loaded!"];
-
-If[settings["Autostart"] && !TrueQ[$Env["noautolaunch"]],
-  Print["Autolaunch!"];
-  autolaunch[LocalKernel["Name"->"Auto"], Hold[KernelList], initKernel[serverParams], deinitKernel];
-];
-
-Print["Done?"];
+Print["LittleApp Loaded!"];
 
 
 

@@ -65,7 +65,7 @@ let tray;
 /* extesions for contex menu */
 const pluginsMenu = {};
 
-pluginsMenu.items = [];
+pluginsMenu.items = {kernel: [], edit: [], view: [], file: [], misc: []};
 pluginsMenu.fetch = () => {
     if (!fs.existsSync(path.join(installationFolder, 'wljs_packages'))) return;
 
@@ -86,8 +86,10 @@ pluginsMenu.fetch = () => {
                     if (mi["accelerator"]) {
                         mitem.accelerator = isMac ? mi["accelerator"][0] : mi["accelerator"][1];
                     }
+                    let section = mi["section"];
+                    if (!section) section =  "misc";
 
-                    pluginsMenu.items.push(mitem);
+                    pluginsMenu.items[section].push(mitem);
                 });
             }
 
@@ -161,6 +163,7 @@ const buildMenu = (opts) => {
                         windows.focused.call('newnotebook', true);
                     }
                 },
+                ...options.plugins.file,
                 ...((options.localmenu) ? [{
                         label: 'Open File',
                         accelerator: shortcut('open_file'),
@@ -321,6 +324,7 @@ const buildMenu = (opts) => {
                     }
                 },
                 { type: 'separator' },
+                ...options.plugins.edit,
                 ...(isMac ? [
                     { role: 'pasteAndMatchStyle' },
                     { role: 'delete' },
@@ -361,6 +365,7 @@ const buildMenu = (opts) => {
                         }
                     }
                 },
+                ...options.plugins.view,
                 { type: 'separator' },
                 { role: 'resetZoom' },
                 { role: 'zoomIn' },
@@ -415,6 +420,8 @@ const buildMenu = (opts) => {
                     }
                 },
 
+                ...options.plugins.kernel,
+
                 { type: 'separator' },
 
                 {
@@ -424,13 +431,6 @@ const buildMenu = (opts) => {
                             click: async(ev) => {
                                 console.log(ev);
                                 windows.focused.call('newlocalkernel', true);
-                            }
-                        },
-                        {
-                            label: 'New Master Kernel',
-                            click: async(ev) => {
-                                console.log(ev);
-                                windows.focused.call('newmasterkernel', true);
                             }
                         },
                         {
@@ -457,7 +457,7 @@ const buildMenu = (opts) => {
 
                 { type: 'separator' },
 
-                ...options.plugins,
+                ...options.plugins.misc,
                 {
                     role: 'help',
                     label: 'Documentation',

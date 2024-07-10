@@ -4,6 +4,7 @@ AppExtensions::usage = ""
 ExtensionEvent::usage = ""
 
 AppExtensions`HTTPHandler::usage = ""
+AppExtensions`KernelList::usage = ""
 
 Begin["`Internal`"];
 

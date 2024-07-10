@@ -1,1 +1,1 @@
-<div class="group-hover:bg-gray-300 absolute" style="height: calc(100% - 0.25rem); top:0; width: 2px; border-radius:2px; right: -0.5rem;"></div>
+<div class="cborder group-hover:bg-gray-300 absolute" style="height: calc(100% - 0.25rem); top:0; width: 2px; border-radius:2px; right: -0.5rem;"></div>

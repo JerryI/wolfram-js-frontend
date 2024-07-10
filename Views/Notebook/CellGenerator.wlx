@@ -15,8 +15,8 @@ CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
 Component[cell_CellObj, cli_, parameters_, OptionsPattern[]] := With[{
     ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
     ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],
-    Class = StringJoin["hover:b0g-", (If[StringQ[#], #, "teal"]&) @ (parameters["AccentColor"]), "-700/5"],
-    Style = If[TrueQ[cell["Invisible"]], "border-radius:2px hidden", "border-radius:2px"]
+    Class = StringJoin["hover:b0g-", (If[StringQ[#], #, "teal"]&) @ (parameters["AccentColor"]), "-700/5", " ", If[TrueQ[cell["Invisible"]], "invisible-cell", ""]],
+    Style = "border-radius:2px"
 },
     If[InputCellQ @ cell,
         EventHandler[cell, {
