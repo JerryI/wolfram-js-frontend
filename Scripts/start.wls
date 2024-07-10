@@ -137,25 +137,27 @@ $Env = <|
   "docs" -> 20540
 |>;
 
-With[{argv = Rest @ $ScriptCommandLine // Quiet},
-  Echo["Command line: "];
-  Echo[argv];
-  MapIndexed[Function[{key, pos},
-    With[{},
-      If[MemberQ[Keys[$Env], key] || True,
-        With[{
-          value = argv[[2;;;;2]][[ pos[[1]] ]]
-        },
-          Echo[key -> value];
-
-          $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
-            ToExpression[value],
-            value
-          ]|>];
+If[$ScriptCommandLine =!= {},
+  With[{argv = Rest @ $ScriptCommandLine},
+    Echo["Command line: "];
+    Echo[argv];
+    MapIndexed[Function[{key, pos},
+      With[{},
+        If[MemberQ[Keys[$Env], key] || True,
+          With[{
+            value = argv[[2;;;;2]][[ pos[[1]] ]]
+          },
+            Echo[key -> value];
+  
+            $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
+              ToExpression[value],
+              value
+            ]|>];
+          ]
         ]
       ]
-    ]
-  ], argv[[;;;;2]]];
+    ], argv[[;;;;2]]];
+  ];
 ];
 
 Echo["ENV"];

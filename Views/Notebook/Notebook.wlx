@@ -776,7 +776,7 @@ Component[OptionsPattern[]] := With[{
 
         "RemoveCell" -> Function[uid,
             CellObj`HashMap[uid] (*`*) //Delete;
-            If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
+            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && InputCellQ[c]]] === {}, CellObj["Notebook"->notebook, "Data"->""]];
         ],
 
         "SetProperty" -> Function[json,
