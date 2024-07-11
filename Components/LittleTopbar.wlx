@@ -1,0 +1,38 @@
+NotebookOnly[exprs_, OptionsPattern[]]  := If[FileExtension[OptionValue["Path"]] === "wln", exprs, ""];
+NotebookOnly[exprs__, OptionsPattern[]]  := If[FileExtension[OptionValue["Path"]] === "wln", ToStringRiffle[Flatten @ {exprs}], ""];
+Options[NotebookOnly] = {"Path" -> Null};
+
+
+Component[OptionsPattern[]] := With[{
+  Path = OptionValue["Path"], 
+  Controls = OptionValue["Controls"], 
+  modals = OptionValue["Modals"], 
+  Menu = OptionValue["Menu"],
+  localController = CreateUUID[],
+  ExtensionTemplates = OptionValue["ExtensionTemplates"],
+  AppEvent = OptionValue["AppEvent"],
+  localState = CreateUUID[],
+  parameters = OptionValue["Parameters"],
+  cloned = EventClone[OptionValue["Controls"]],
+  messages = OptionValue["Messanger"]
+},
+
+  EventHandler[localState, Function[Null,
+    1+1
+  ]];
+
+    <div style="z-index: 100;" class="flex sticky top-0 z-40 flex h-10 win:h-titlebar owin:h-titlebar linux:h-titlebar shrink-0 items-center gap-x-4 osx:border-b border-gray-300 dark:border-gray-500 osx:bg-239 dark:bg-gray-700 dark:win:bg-transparent dark:owin:bg-transparent dark:linux:bg-transparent px-2 win:pl-2 owin:pl-2 linux:pl-2 md:pl-2 zen:pl-20 win-zen:pl-2 owin-zen:pl-2 linux-zen:pl-2 bro-zen:pl-2">
+        <Menu/>
+        <div class="grow h-full" style="-webkit-app-region: drag; max-width:300px"></div> 
+
+        <ExtensionTemplates Template={"AppTopBar"} Path={Path} Parameters={parameters} Modals={modals} AppEvent={AppEvent} Controls={Controls} Messanger={messages}/>
+
+        <div class="grow h-full" style="-webkit-app-region: drag; max-width:300px"></div>  
+        <div class="h-full hidden linux:flex owin:flex win:flex" style="width: calc(100vw - env(titlebar-area-width))"></div>  
+         
+    </div>
+];
+
+Options[Component] = {"Menu"->"", "Controls" -> "", "Path" -> "", "Title"->"", "Modals"->""};
+
+Component

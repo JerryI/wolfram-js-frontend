@@ -68,6 +68,28 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
   ]]
 ]
 
+createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
+  Print[StringJoin["Creating notebook using path : ", path]];
+  Then[saveNotebook[path, "Props"->props, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
+
+      Print[result];
+      EventFire[AppEvent, Notebook["OnCreate"], result];
+      EventFire[GlobalMessanger, "Log", "Created! Please wait"];
+      Print["Redirect"];
+      Print[result["Path"]];
+      
+      If[props["Little"] === True,
+        WebUILocation[ StringJoin["little/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+      , 
+        WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+      ];
+      
+    
+  ], Function[error,
+    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+  ]]
+]
+
 backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   If[!TrueQ[notebook["ReadOnly"]], 
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
@@ -90,6 +112,10 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := 
       ]
     ]
   ]
+]
+
+reopenNotebookAsLittle[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
+  WebUILocation[StringJoin["little/", URLEncode[ path ]], client ];
 ]
 
 dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
@@ -212,8 +238,10 @@ App[request_] := With[{
       "RenameFile" -> (renameFile@@# &),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
       "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
+      "_NewLittleNotebook" -> (createNotebook[<|"Little"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
+      "ReopenAsLittle" -> (reopenNotebookAsLittle[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
       "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
     }];

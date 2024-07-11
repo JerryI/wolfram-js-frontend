@@ -1,5 +1,6 @@
 {
     "new_file"      : ["Cmd+N", "Ctrl+N"],
+    "new_quick_file": ["Cmd+Shift+N", "Ctrl+Shift+N"],
     "open_file"     : ["Cmd+O", "Ctrl+O"],
     "save"          : ["Cmd+S", "Ctrl+S"],
     "find"          : ["Cmm+F", "Ctrl+F"],

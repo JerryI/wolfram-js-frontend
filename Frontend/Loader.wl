@@ -26,6 +26,10 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         cache[dir] = notebook;
         notebook["Path"] = dir;
 
+        If[OptionValue["Props"] =!= Null,
+            Map[(notebook[#] = OptionValue["Props"][#]) &, Keys[OptionValue["Props"] ] ];
+        ];
+
         EventFire[OptionValue["Events"], "Loader:NewNotebook", notebook];
 
         Print["filepath:"]
@@ -142,7 +146,11 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     load[path_String, opts: OptionsPattern[] ] := Module[{},
-        If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed["File does not exists"] ] ];
+        If[!FileExistsQ[path], 
+            Echo["Loader >> file noex!!!"]; 
+            Echo[path];
+            Return[$Failed["File does not exists"] ] 
+        ];
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
             If[TrueQ[ cache[path]["Opened"] ],
@@ -199,7 +207,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     Options[load] = {"Events"->"Blackhole"}
-    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
+    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
     Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
 
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},

@@ -163,6 +163,15 @@ If[$ScriptCommandLine =!= {},
 Echo["ENV"];
 Echo[ToString[$Env, InputForm] ];
 
+
+AppExtensions`QuickNotesDir = FileNameJoin[{Directory[], "__ntemp"}];
+With[{now = Now},
+  Function[file,
+    If[now - FileDate[file] > Quantity[14, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
+  ] /@ FileNames["*.wln", AppExtensions`QuickNotesDir]
+];
+
+
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
 
@@ -174,7 +183,8 @@ Echo["Loading packages: FRONTEND"];
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
 (* Entrypoint of an app *)
-App         := ImportComponent["Frontend/App.wlx"];
+App               := ImportComponent["Frontend/App.wlx"];
+LittleApp         := ImportComponent["Frontend/LittleApp.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
 AutoTest    := ImportComponent["Frontend/Test.wlx"];
@@ -247,11 +257,12 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandle
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
-(* start an app *)
+(* hook all routes handlers *)
 AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
+LittleApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 Echo["Autotest start!"];
@@ -275,6 +286,9 @@ If[$Env["bypasstest"] === "True" || $Env["bypasstest"] === True,
     ];
   ];
 ];
+
+
+
 
 SetTimeout[
   StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;

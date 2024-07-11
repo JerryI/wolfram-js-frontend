@@ -163,6 +163,14 @@ const buildMenu = (opts) => {
                         windows.focused.call('newnotebook', true);
                     }
                 },
+                {
+                    label: 'New quick note',
+                    accelerator: shortcut('new_quick_file'),
+                    click: async(ev) => {
+                        console.log(ev);
+                        windows.focused.call('newshortnote', true);
+                    }
+                },
                 ...options.plugins.file,
                 ...((options.localmenu) ? [{
                         label: 'Open File',
@@ -257,6 +265,13 @@ const buildMenu = (opts) => {
                         label: 'Open Examples',
                         click: async(ev) => {
                             create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+                        }
+                    },
+
+                    {
+                        label: 'Reopen in as little note',
+                        click: (ev) => {
+                            windows.focused.call('reopenaslittle', true);
                         }
                     },
 
@@ -577,6 +592,12 @@ callFakeMenu["reload"] = () => {
 callFakeMenu["docsx"] = () => {
     shell.openExternal('http://127.0.0.1:20540')
 }
+
+
+callFakeMenu["little"] = () => {
+    windows.focused.call('reopenaslittle', true);
+}
+
 callFakeMenu["exit"] = () => {
     app.quit();
 }
@@ -824,7 +845,7 @@ const windows = {
             if (!self.win) {
 
                 //special cases - open window if not shown
-                if (type === 'newnotebook' || type === 'settings') {
+                if (type === 'newnotebook' || type === 'settings' || type === 'newshortnote') {
                     new notebookWindow({url: server.url.default(), focus: true}, (window) => {
                         window.webContents.send('call', type);
                     });
@@ -893,6 +914,8 @@ function create_window(opts, cbk = () => {}) {
             show: true,
             contextMenu: true,
             focus: false,
+            width: 1024,
+            height: 640
         };
 
 
@@ -904,6 +927,12 @@ function create_window(opts, cbk = () => {}) {
             options.minWidth = 200;
         }
 
+        if ((new RegExp(/little/)).exec(options.url)) {
+            options.minWidth = 500*1024.0/800.0;;
+            options.width = 576*1024.0/800.0;
+            options.height = 520*640.0/600.0;
+        }
+
         let win;
 
         if (isMac) {
@@ -911,9 +940,9 @@ function create_window(opts, cbk = () => {}) {
                 vibrancy: "sidebar", // in my case...
                 frame: true,
                 titleBarStyle: 'hiddenInset',
-                width: 800,
-                height: 600,
-                minWidth: options.minWidth,
+                width: Math.round(options.width*800.0/1024),
+                height: Math.round(options.height*600.0/640),
+                minWidth: Math.round(options.minWidth),
                 //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
@@ -952,9 +981,9 @@ function create_window(opts, cbk = () => {}) {
                   symbolColor: 'rgba(128, 128, 128, 1.0)'
                 },
 
-                width: 1024,
-                height: 640,
-                minWidth: options.minWidth,
+                width: Math.round(options.width),
+                height: Math.round(options.height),
+                minWidth: Math.round(options.minWidth),
                 backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,

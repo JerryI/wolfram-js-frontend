@@ -1,6 +1,7 @@
 node_modules
 Temp/
 __backups/*.wln
+__ntemp/*.wln
 __localkernel/*
 _settings.wl
 shipped/*

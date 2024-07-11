@@ -14,5 +14,10 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('newnotebook', () => {
             server.emitt('<Controls/>', 'True', '_NewNotebook');
         });
+
+        window.electronAPI.listener('newshortnote', () => {
+            server.emitt('<Controls/>', 'True', '_NewLittleNotebook');
+        });        
+        
     }
 </script>

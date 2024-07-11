@@ -542,6 +542,10 @@ Component[OptionsPattern[]] := With[{
             ];
         ],
 
+        "ReopenAsLittleNote" -> Function[Null,
+            EventFire[controller, "ReopenAsLittle", <|"Notebook" -> notebook, "Client"-> client, "Path" -> notebook["Path"]|>];
+        ],
+
         "Backup" -> Function[data,
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
                 Then[tt, Function[Null,
