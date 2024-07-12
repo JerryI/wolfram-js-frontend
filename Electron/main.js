@@ -117,11 +117,13 @@ pluginsMenu.fetch = () => {
 let shortcuts_table = require("./shortcuts.json");
 if (fs.existsSync(path.join(installationFolder, "Electron", "shortcuts.json"))) {
     shortcuts_table = JSON.parse(fs.readFileSync(path.join(installationFolder, "Electron", "shortcuts.json"), 'utf8'));
+    console.log(shortcuts_table);
 } 
 
 const { spawnSync, spawn } = require('child_process');
 const shortcut = (id) => {
-    console.log('shortcut required');
+
+    if (! shortcuts_table[id]) return undefined;
     if (process.platform === 'darwin') return shortcuts_table[id][0]
     return shortcuts_table[id][1]
 }
@@ -174,7 +176,8 @@ const buildMenu = (opts) => {
                         console.log(ev);
                         windows.focused.call('newshortnote', true);
                     }
-                },
+                },              
+                ...options.plugins.file,
                 {
                     label: 'Overlay',
                     click: async(ev) => {
@@ -182,8 +185,7 @@ const buildMenu = (opts) => {
                         if (server.running)
                             create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
                     }
-                },                
-                ...options.plugins.file,
+                },                  
                 ...((options.localmenu) ? [{
                         label: 'Open File',
                         accelerator: shortcut('open_file'),
