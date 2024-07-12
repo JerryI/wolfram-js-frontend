@@ -172,8 +172,10 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
-  Path = If[StringTrim[request["Path"]] == "/little/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1 + 6] ]
+  Path = If[$OperatingSystem === "Windows",  URLDecode @ StringDrop[request["Path"],1 + 6 + 1],  URLDecode @ StringDrop[request["Path"],1 + 6]]
 },
+
+
 
   EventHandler[Secret, {
     "SaveSidebarState" -> Function[state, sidebarState = state]

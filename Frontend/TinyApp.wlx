@@ -295,6 +295,7 @@ App[request_] := With[{
         </Head>  
         <body class="h-full"> 
         <div class="h-full">
+          <Alert/>
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
           <style>

@@ -561,6 +561,11 @@ callFakeMenu["new"] = async(ev) => {
     windows.focused.call('newnotebook', true);
 }
 
+callFakeMenu["newshort"] = async(ev) => {
+    windows.focused.call('newshortnote', true);
+}
+
+
 callFakeMenu["browser"] = async(ev) => {
     server.browserMode = true;
     shell.openExternal(windows.focused.win.webContents.getURL());
@@ -1048,7 +1053,8 @@ function create_window(opts, cbk = () => {}) {
                 checkTheme();
                 //win.setRoundedCorner();
             }*/
-            if (!IS_WINDOWS_11 || server.frontend.WindowsLegacy) {
+            if (!options.overlay) {
+                if (!IS_WINDOWS_11 || server.frontend.WindowsLegacy) {
                 const checkTheme = () => {
                     if (!nativeTheme.shouldUseDarkColors) {
                         win.setBackgroundColor("#fff");
@@ -1064,7 +1070,7 @@ function create_window(opts, cbk = () => {}) {
                 });
 
                 checkTheme();
-            } else {
+                } else {
                 //a bug with maximizing the window
                 //https://github.com/electron/electron/issues/38743
 
@@ -1088,6 +1094,7 @@ function create_window(opts, cbk = () => {}) {
 
 
 
+                }
             }
 
         } else {
