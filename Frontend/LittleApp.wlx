@@ -40,7 +40,8 @@ loadSettings[settings];
 NotebookQ[str_] := FileExtension[str] === "wln"
 
 createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
-  Print[StringJoin["Creating notebook using path : ", path]];
+
+Print[StringJoin["Creating notebook using path : ", path]];
   Then[saveNotebook[path, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
 
       Print[result];
@@ -49,7 +50,7 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
     
   ], Function[error,
     EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
@@ -67,9 +68,9 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       Print[result["Path"]];
       
       If[props["Little"] === True,
-        WebUILocation[ StringJoin["little/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+        WebUILocation[ StringJoin["/little/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
       , 
-        WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+        WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
       ];
       
     
@@ -111,7 +112,7 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := 
                   Then[saveNotebook[filename, notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
                     Function[savedResult,
                       notebook["HaveToSaveAs"] = False;
-                      Print[savedResult]
+                      WebUILocation[ StringJoin["/little/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
                     ], 
                     Function[error,
                       EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
@@ -198,7 +199,7 @@ App[request_] := With[{
               With[{middleware = CreateUUID[]},
                 EventHandler[middleware, {
                   "NewNotebook" -> Function[Null,
-                    EventFire[GlobalControls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>]
+                    EventFire[GlobalControls, "NewNotebook", <|"BaseDirectory" -> defaultHomeFolder|>]
                   ],
 
                   "LocateExamples" -> Function[Null,
@@ -244,8 +245,8 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
-      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
+      "NewNotebook" -> (createNotebook[<|"BaseDirectory"->defaultHomeFolder|>, GlobalMessanger, ModalController, $Client, defaultHomeFolder]&),
+      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->defaultHomeFolder|>, GlobalMessanger, ModalController, $Client, defaultHomeFolder]&),
       "_NewLittleNotebook" -> (createNotebook[<|"Little"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
