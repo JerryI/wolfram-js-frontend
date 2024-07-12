@@ -179,7 +179,7 @@ const buildMenu = (opts) => {
                 },              
                 ...options.plugins.file,
                 {
-                    label: 'Overlay',
+                    label: 'Prompt call',
                     click: async(ev) => {
                         console.log(ev);
                         if (server.running)
@@ -612,6 +612,11 @@ callFakeMenu["docsx"] = () => {
     shell.openExternal('http://127.0.0.1:20540')
 }
 
+callFakeMenu["prompt"] = () => {
+    if (server.running)
+        create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+}
+
 
 callFakeMenu["little"] = () => {
     windows.focused.call('reopenaslittle', true);
@@ -922,6 +927,10 @@ const read_wl_settings = () => {
     while (m = r.exec(file)) {
         server.frontend[m[1].slice(1,-1)] = parse(m[2]);
     }
+
+    //if ('RunInTray' in server.frontend && ! server.frontend.RunInTray) {
+        //server.frontend.RunInTray = false;
+   // } 
 
     console.log(server.frontend);
 }
@@ -1316,7 +1325,7 @@ app.on('before-quit', (e) => {
     }
     
     //server.shutdown();
-    if (server.browserMode && process.platform !== 'darwin') {
+    if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
     
         e.preventDefault();
         console.log('aaahhh...');
@@ -1327,8 +1336,8 @@ app.on('before-quit', (e) => {
 })
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin' && !server.browserMode) {app.quit()} else {
-        if (server.browserMode) {
+    if (process.platform !== 'darwin' && !(server.browserMode || server.frontend.RunInTray)) {app.quit()} else {
+        if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
             console.log('aaahhh...');
             tray.fireBallon()
         }
@@ -1440,9 +1449,25 @@ app.whenReady().then(() => {
             {
               label: 'Quit', click: function () {
                 server.browserMode = false;
+                server.frontend.RunInTray = false;
                 app.quit();
               }
-            }
+            },
+
+
+            {
+                label: 'Prompt', click: function () {
+                    if (server.running)
+                        create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+                }
+              },
+
+              {
+                label: 'Create window', click: function () {
+                    if (server.running)
+                        create_window({url: server.url.default(), title: 'WLJS Notebook', show: true, focus: true});
+                }
+              }
           ]));
 
         tray.fireBallon = () => {

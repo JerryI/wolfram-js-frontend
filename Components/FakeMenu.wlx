@@ -14,6 +14,10 @@ Component[OptionsPattern[]] := With[{
           New quick note
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+Shift+N</kbd></span>
         </button> 
+        <button data-name="prompt" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Prompt
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+Shift+Space</kbd></span>
+        </button> 
         <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open File
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+O</kbd></span>
