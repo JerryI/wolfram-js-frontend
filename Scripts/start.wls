@@ -171,6 +171,12 @@ With[{now = Now},
   ] /@ FileNames["*.wln", AppExtensions`QuickNotesDir]
 ];
 
+With[{now = Now},
+  Function[file,
+    If[now - FileDate[file] > Quantity[30, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
+  ] /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}] ]
+];
+
 
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
@@ -185,6 +191,7 @@ JerryI`WLX`Importer`Private`CacheControl["Hour"];
 (* Entrypoint of an app *)
 App               := ImportComponent["Frontend/App.wlx"];
 LittleApp         := ImportComponent["Frontend/LittleApp.wlx"];
+TinyApp         := ImportComponent["Frontend/TinyApp.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
 AutoTest    := ImportComponent["Frontend/Test.wlx"];
@@ -262,6 +269,7 @@ AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
+TinyApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 LittleApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 

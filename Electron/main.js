@@ -114,7 +114,11 @@ pluginsMenu.fetch = () => {
 
 
 //load shortcuts
-const shortcuts_table = require("./shortcuts.json");
+let shortcuts_table = require("./shortcuts.json");
+if (fs.existsSync(path.join(installationFolder, "Electron", "shortcuts.json"))) {
+    shortcuts_table = JSON.parse(fs.readFileSync(path.join(installationFolder, "Electron", "shortcuts.json"), 'utf8'));
+} 
+
 const { spawnSync, spawn } = require('child_process');
 const shortcut = (id) => {
     console.log('shortcut required');
@@ -171,6 +175,14 @@ const buildMenu = (opts) => {
                         windows.focused.call('newshortnote', true);
                     }
                 },
+                {
+                    label: 'Overlay',
+                    click: async(ev) => {
+                        console.log(ev);
+                        if (server.running)
+                            create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+                    }
+                },                
                 ...options.plugins.file,
                 ...((options.localmenu) ? [{
                         label: 'Open File',
@@ -915,7 +927,8 @@ function create_window(opts, cbk = () => {}) {
             contextMenu: true,
             focus: false,
             width: 1024,
-            height: 640
+            height: 640,
+            override: {}
         };
 
 
@@ -931,6 +944,17 @@ function create_window(opts, cbk = () => {}) {
             options.minWidth = 500*1024.0/800.0;;
             options.width = 576*1024.0/800.0;
             options.height = 520*640.0/600.0;
+        }
+
+        if (options.overlay) {
+            options.width = options.minWidth;
+            options.height = 2*112 * 640.0/600.0;
+            options.override.frame = false;
+            options.override.resizable = false;
+            options.override.transparent = true;
+            options.override.titleBarStyle = undefined;
+            options.override.titleBarOverlay = undefined;
+            options.override.vibrancy = undefined;
         }
 
         let win;
@@ -949,7 +973,8 @@ function create_window(opts, cbk = () => {}) {
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
-                }
+                },
+                ...options.override
 
             });
         } else if (isWindows) {
@@ -992,7 +1017,8 @@ function create_window(opts, cbk = () => {}) {
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
-                }
+                },
+                ...options.override
 
             });
 
@@ -1083,7 +1109,11 @@ function create_window(opts, cbk = () => {}) {
             });
         }
 
-
+        if (options.overlay) {
+            win.once('blur', () => {
+                win.close();
+            })
+        }
 
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
@@ -1484,6 +1514,19 @@ app.whenReady().then(() => {
         }
     });
 
+    ipcMain.on('resize-window-by', (e, delta) => {
+        const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
+        if (senderWindow) {
+            const bonds = senderWindow.getBounds();
+            if (delta[0] === 0) {
+                senderWindow.setBounds({ height: bonds.height + delta[1], animate: true}, true);
+            } else {
+                senderWindow.setBounds({ width: bonds.width + delta[0], height: bonds.height + delta[1], animate: true}, true);
+            }
+            
+        }
+    })
+
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
         if (bonds.width < 800) {
@@ -1570,6 +1613,11 @@ app.whenReady().then(() => {
 
     ipcMain.on('locate-logfile', () => {
         shell.showItemInFolder(installationFolder);
+    });
+
+    globalShortcut.register(shortcut("overlay"), () => {
+        if (server.running)
+            create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
     });
 
     //purge cache if an update was detected (using a special file created by WL)

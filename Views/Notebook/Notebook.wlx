@@ -49,7 +49,7 @@ restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions_
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True] (*`*), client];
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True, "FocusFirst" -> True] (*`*), client];
             ]
         ]   
     ,    

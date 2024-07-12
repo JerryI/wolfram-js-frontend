@@ -30,6 +30,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   
   setProgress: (p) => ipcRenderer.send('set-progress', p),
 
+  changeWindowSizeBy: (p) => ipcRenderer.send('resize-window-by', p),
+
   openFinder: (path) => {
     console.log(path);
     ipcRenderer.send('system-open',  path);
