@@ -192,7 +192,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
             </StringRiffle>
 
             <StringRiffle>
-                <Checkbox Label={"Run in a tray"} Event={controller} Topic={"RunInTray"} Description={"Keeps WLJS kernel alive, even if all windows are closed."} Checked={defaultTray}/>
+                <Checkbox Label={"Run in a tray"} Event={controller} Topic={"RunInTray"} Description={"Keeps WLJS kernel alive, even if all windows are closed (Windows/Linux only)"} Checked={defaultTray}/>
             </StringRiffle>
 
 

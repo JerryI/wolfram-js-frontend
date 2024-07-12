@@ -17,7 +17,7 @@ Views            = ImportComponent["Views.wl"];
 
 TopBar           = ImportComponent["Components/LittleTopbar.wlx"];
 
-ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
+ElectronBinds           := ImportComponent["Components/TinyElectronAppBinds.wlx"];
 
 BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
 
