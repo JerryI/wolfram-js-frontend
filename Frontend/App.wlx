@@ -91,7 +91,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
 ]
 
 backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
-  If[!TrueQ[notebook["ReadOnly"]], 
+  If[!TrueQ[notebook["ReadOnly?"]], 
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
         Print[result];
       ], Function[error, EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]]
@@ -100,7 +100,7 @@ backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
 ]
 
 dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{},
-  If[TrueQ[notebook["ReadOnly"]],
+  If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
     Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
@@ -119,7 +119,7 @@ reopenNotebookAsLittle[assoc_Association, GlobalMessanger_, ModalController_, cl
 ]
 
 dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
-If[TrueQ[notebook["ReadOnly"]],
+If[TrueQ[notebook["ReadOnly?"]],
   EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
 ,
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
