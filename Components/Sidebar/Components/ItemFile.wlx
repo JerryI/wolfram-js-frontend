@@ -20,7 +20,7 @@ Href = If[TrueQ[$Options["Selected"]],
     </div>
 ,
     If[MemberQ[Join[Keys[$Options["Icons"]], {"wln"}], FileExtension[File]], 
-        <a href="{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
+        <a href="/folder/{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
             <FileNameTake>
                 <File/>
             </FileNameTake>

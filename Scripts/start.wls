@@ -188,10 +188,13 @@ Echo["Loading packages: FRONTEND"];
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
+AppExtensions`KernelList = {};
+
+
 (* Entrypoint of an app *)
-App               := ImportComponent["Frontend/App.wlx"];
-LittleApp         := ImportComponent["Frontend/LittleApp.wlx"];
-TinyApp         := ImportComponent["Frontend/TinyApp.wlx"];
+ExtendedApp               := ImportComponent["Frontend/ExtendedApp.wlx"];
+App         := ImportComponent["Frontend/App.wlx"];
+PromptWindow         := ImportComponent["Frontend/PromptWindow.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
 AutoTest    := ImportComponent["Frontend/Test.wlx"];
@@ -269,8 +272,8 @@ AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
-TinyApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
-LittleApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+ExtendedApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 Echo["Autotest start!"];

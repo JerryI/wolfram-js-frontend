@@ -170,6 +170,27 @@ const buildMenu = (opts) => {
                     }
                 },
                 {
+                    label: 'Open File',
+                    accelerator: shortcut('open_file'),
+                    click: async() => {
+                        const promise = dialog.showOpenDialog({
+                            title: 'Open File',
+                            filters: [
+                                { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
+                            ],
+                            properties: ['openFile']
+                        });
+
+                        promise.then((res) => {
+                            if (!res.canceled) {
+                                app.addRecentDocument(res.filePaths[0]);
+                                create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                            }
+                        });
+                    }
+                },
+                { type: 'separator' },
+                {
                     label: 'New quick note',
                     accelerator: shortcut('new_quick_file'),
                     click: async(ev) => {
@@ -178,34 +199,17 @@ const buildMenu = (opts) => {
                     }
                 },              
                 ...options.plugins.file,
+                { type: 'separator' },
                 {
                     label: 'Prompt call',
                     click: async(ev) => {
                         console.log(ev);
                         if (server.running)
-                            create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+                            create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
                     }
-                },                  
-                ...((options.localmenu) ? [{
-                        label: 'Open File',
-                        accelerator: shortcut('open_file'),
-                        click: async() => {
-                            const promise = dialog.showOpenDialog({
-                                title: 'Open File',
-                                filters: [
-                                    { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
-                                ],
-                                properties: ['openFile']
-                            });
-
-                            promise.then((res) => {
-                                if (!res.canceled) {
-                                    app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
-                                }
-                            });
-                        }
-                    },
+                }, 
+                { type: 'separator' },                 
+                ...((options.localmenu) ? [
                     {
                         label: 'Open Folder',
 
@@ -214,7 +218,7 @@ const buildMenu = (opts) => {
                             promise.then((res) => {
                                 if (!res.canceled) {
                                     app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                                    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
                                 }
                             });
                         }
@@ -278,14 +282,14 @@ const buildMenu = (opts) => {
                     {
                         label: 'Open Examples',
                         click: async(ev) => {
-                            create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+                            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
                         }
                     },
-
+                    { type: 'separator' },
                     {
-                        label: 'Reopen in as little note',
+                        label: 'Reopen as quick note',
                         click: (ev) => {
-                            windows.focused.call('reopenaslittle', true);
+                            windows.focused.call('reopenasquick', true);
                         }
                     },
 
@@ -296,6 +300,7 @@ const buildMenu = (opts) => {
                             shell.openExternal(windows.focused.win.webContents.getURL());
                         }
                     },
+                    { type: 'separator' },
                     {
                         label: 'Locate AppData',
                         click: async(ev) => {
@@ -431,7 +436,7 @@ const buildMenu = (opts) => {
                         windows.focused.call('evaluateinit', true);
                     }
                 },
-
+                { type: 'separator' },
                 {
                     label: 'Clear Output Cells',
                     accelerator: shortcut('clear_outputs'),
@@ -456,7 +461,7 @@ const buildMenu = (opts) => {
                 {
                     label: 'Kernel',
                     submenu: [{
-                            label: 'New Local Kernel',
+                            label: 'New Evaluation Kernel',
                             click: async(ev) => {
                                 console.log(ev);
                                 windows.focused.call('newlocalkernel', true);
@@ -468,12 +473,19 @@ const buildMenu = (opts) => {
                                 console.log(ev);
                                 windows.focused.call('restartkernel', true);
                             }
+                        },
+                        {
+                            label: 'Shutdown all',
+                            click: async(ev) => {
+                                console.log(ev);
+                                windows.focused.call('killallkernels', true);
+                            }
                         }
                     ]
                 }
             ]
         },
-
+       
         {
             label: 'Misc',
             submenu: [{
@@ -525,7 +537,7 @@ callFakeMenu["openFolder"] = async () => {
     promise.then((res) => {
         if (!res.canceled) {
             app.addRecentDocument(res.filePaths[0]);
-            create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
         }
     });
 }
@@ -587,6 +599,14 @@ callFakeMenu["evalInit"] = () => {
     windows.focused.call('evaluateinit', true);
 }
 
+callFakeMenu["restartkernels"] = () => {
+    windows.focused.call('restartkernel', true);
+}
+
+callFakeMenu["shutdownall"] = () => {
+    windows.focused.call('killallkernels', true);
+}
+
 callFakeMenu["zoomIn"] = () => {
     windows.focused.call('zoomIn', true);
 }
@@ -614,12 +634,12 @@ callFakeMenu["docsx"] = () => {
 
 callFakeMenu["prompt"] = () => {
     if (server.running)
-        create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+        create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
 }
 
 
-callFakeMenu["little"] = () => {
-    windows.focused.call('reopenaslittle', true);
+callFakeMenu["quickmode"] = () => {
+    windows.focused.call('reopenasquick', true);
 }
 
 callFakeMenu["exit"] = () => {
@@ -866,11 +886,12 @@ const windows = {
 
         call (type, args) {
             const self = this;
+            console.log(type);
             if (!self.win) {
 
                 //special cases - open window if not shown
                 if (type === 'newnotebook' || type === 'settings' || type === 'newshortnote') {
-                    new notebookWindow({url: server.url.default(), focus: true}, (window) => {
+                    create_window({url: server.url.default(), focus: true}, (window) => {
                         window.webContents.send('call', type);
                     });
                     return;
@@ -1458,7 +1479,7 @@ app.whenReady().then(() => {
             {
                 label: 'Prompt', click: function () {
                     if (server.running)
-                        create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+                        create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
                 }
               },
 
@@ -1651,7 +1672,7 @@ app.whenReady().then(() => {
 
     globalShortcut.register(shortcut("overlay"), () => {
         if (server.running)
-            create_window({url: server.url.default() + '/tiny', title: 'Overlay', overlay: true, show: true, focus: true});
+            create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
     });
 
     //purge cache if an update was detected (using a special file created by WL)
@@ -2339,13 +2360,33 @@ function check_installed (cbk, window) {
                                 if (remote["version"]) {
                                     const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
                                     if (rersion > version) {
+
+                                        
+
                                         windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
+
+
+
                                         windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
                                         windows.log.info('Update is available');
 
                                         new promt('binary', 'A new version is available. Should we install it?', (answer) => {
                                             if (answer) {
-                                                install_frontend(cbk, window);
+                                                const appVersion = parseInt(app.getVersion().replaceAll(/\./gm, ''));
+                                                const remoteAppVersion = parseInt(remote["recommended-client-version"].replaceAll(/\./gm, ''));
+                                                if (appVersion < remoteAppVersion) {
+                                                    new promt('binary', 'A recommended Desktop App version is '+ remote["recommended-client-version"] + ', but you have installed ' + app.getVersion() + '. Some features might not work properly. Continue?', (answer) => {
+                                                        if (answer) {
+                                                            install_frontend(cbk, window);
+                                                        } else {
+                                                            cbk();
+                                                        }
+                                                    });
+                                                } else {
+                                                    install_frontend(cbk, window);
+                                                }                           
+
+                                                
                                             } else {
                                                 cbk();
                                             }

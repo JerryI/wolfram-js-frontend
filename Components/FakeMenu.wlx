@@ -7,9 +7,16 @@ Component[OptionsPattern[]] := With[{
   {
     <div class="py-0 px-2" role="none">     
         <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          New Notebook
+          New notebook
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+N</kbd></span>
-        </button>   
+        </button>  
+        <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Open File
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+O</kbd></span>
+        </button> 
+    </div>
+  ,
+    <div class="py-0 px-2" role="none">        
         <button data-name="newshort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New quick note
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+Shift+N</kbd></span>
@@ -18,10 +25,7 @@ Component[OptionsPattern[]] := With[{
           Prompt
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+Shift+Space</kbd></span>
         </button> 
-        <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          Open File
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+O</kbd></span>
-        </button>
+    
         <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open Folder
         </button>        
@@ -90,6 +94,18 @@ Component[OptionsPattern[]] := With[{
         </button>
       </div> 
     ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="restartkernels" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Restart Kernel
+        
+      </button>
+      <button data-name="shutdownall" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Shutdown all 
+      </button>      
+    </div>
+    ,    
       Table[ With[{event = Vi["event"], Label = Vi["label"]},
       <div class="py-0 px-2" role="none">     
         <button data-ctl="true" data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -131,13 +147,14 @@ Component[OptionsPattern[]] := With[{
       ], {Vi, Join[Plugins["misc"], {}]}]
     ,    
       <div class="py-0 px-2" role="none">
-      <button data-name="docsx" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-  
-        Docs
-      </button> 
-      <button data-name="little" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-  
-        Open as a little note
+        <button data-name="docsx" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Docs
+        </button> 
+      </div>
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="quickmode" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        Open as quick note
       </button>          
       <button data-name="browser" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   

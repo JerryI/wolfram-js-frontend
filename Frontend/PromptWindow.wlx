@@ -7,6 +7,8 @@ ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
+PromptTools = ImportComponent["Components/PromptTools.wlx"];
+
 Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
 Alert           = ImportComponent["Components/Alert.wlx"];
@@ -15,9 +17,9 @@ Modals           = ImportComponent["Components/Modals/Modals.wlx"];
 
 Views            = ImportComponent["Views.wl"];
 
-TopBar           = ImportComponent["Components/LittleTopbar.wlx"];
+TopBar           = ImportComponent["Components/Topbar.wlx"];
 
-ElectronBinds           := ImportComponent["Components/TinyElectronAppBinds.wlx"];
+ElectronBinds           := ImportComponent["Components/MinimalElectronAppBinds.wlx"];
 
 BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
 
@@ -33,122 +35,27 @@ autolaunch                           = ImportComponent["Autolaunch.wl"];
 serverParams = <|"env" -> env|>;
 settings = <||>;
 
-sidebarState = "show";
-
 loadSettings[settings];
 
 NotebookQ[str_] := FileExtension[str] === "wln"
 
-createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
-  Print[StringJoin["Creating notebook using path : ", path]];
-  Then[saveNotebook[path, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
-
-      Print[result];
-      EventFire[AppEvent, Notebook["OnCreate"], result];
-      EventFire[GlobalMessanger, "Log", "Created! Please wait"];
-      Print["Redirect"];
-      Print[result["Path"]];
-      
-      If[client =!= Null, WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ] ];
-    
-  ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
-  ]]
-]
-
-createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
-  Print[StringJoin["Creating notebook using path : ", path]];
-  Then[saveNotebook[path, "Props"->props, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
-
-      Print[result];
-      EventFire[AppEvent, Notebook["OnCreate"], result];
-      EventFire[GlobalMessanger, "Log", "Created! Please wait"];
-      Print["Redirect"];
-      Print[result["Path"]];
-      
-      If[props["Little"] === True,
-        WebUILocation[ StringJoin["little/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
-      , 
-        WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
-      ];
-      
-    
-  ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
-  ]]
-]
-
-backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
-  If[!TrueQ[notebook["ReadOnly?"]], 
-    Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
-        Print[result];
-      ], Function[error, EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]]
-    ]
-  ]
-]
 
 dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{},
   If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
-    If[TrueQ @ (notebook["HaveToSaveAs"]),
-      With[{
-          p = Promise[]
-      },
-          EventFire[ModalController, "RequestPathToSave", <|
-              "Promise"->p,
-              "Title"->"Notebook",
-              "Ext"->"wln",
-              "Client"->client
-          |>];
-          
-          Then[p, Function[result, 
-              Module[{filename = StringJoin[result, ".wln"]},
-                  If[filename === ".wln", filename = StringJoin[name, filename] ];
-                  If[DirectoryName[filename] === "", filename = FileNameJoin[{path, filename}] ];
-                  
-                  
-                  Then[saveNotebook[filename, notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
-                    Function[savedResult,
-                      notebook["HaveToSaveAs"] = False;
-                      Print[savedResult]
-                    ], 
-                    Function[error,
-                      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-                    ]
-                  ];                  
-              ];
-          ], Function[result, Echo["!!!R!!"]; Echo[result] ] ];
-
-      ]
-    ,
-      Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
-        Function[result,
-          Print[result]
-        ], 
-        Function[error,
-          EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-        ]
-      ]
-    ]
+  Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
+  Function[result,
+    Print[result]
+  ], 
+  Function[error,
+    EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+  ]
+]
   ]
 ]
 
-dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
-If[TrueQ[notebook["ReadOnly?"]],
-  EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
-,
-  Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
-    Function[result,
-      WebUILocation[ URLEncode[ path ], client ];
-    ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
-    ]
-  ]
-]]
 
-
-KernelList := ReleaseHold[AppExtensions`KernelList(*`*)]
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
@@ -171,11 +78,23 @@ Map[Function[item,
 
 temporalNotebook = Null;
 
+
+transformNotebook[n_, cli_] := With[{},
+  n["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), StringJoin[RandomWord[], StringTake[CreateUUID[], 3], ".wln"]}];
+  n["HaveToSaveAs"] = True;
+  dumpNotebook[n, Null, Null, Null];
+  
+
+  WebUILocation[ StringJoin["/", URLEncode[ n["Path"] ]], cli, "Target"->_ ];
+  temporalNotebook = Null;
+]
+
 recreateNotebook[modals_] := With[{n = Notebook[]},
   temporalNotebook = n;
   CellObj["Notebook"->temporalNotebook];
   temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), "overlayNote.wln"}];
   dumpNotebook[temporalNotebook, Null, Null, Null];
+
 
   EventHandler[EventClone[n], {
     "New Cell" -> Function[cell,
@@ -188,16 +107,14 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
               EventHandler[request, {
                   "Success" -> Function[Null, 
                       EventRemove[request];
-
-                      temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), StringJoin[RandomWord[], StringTake[CreateUUID[], 3], ".wln"]}];
-                      dumpNotebook[temporalNotebook, Null, Null, Null];
-
-                      WebUILocation[ StringJoin["little/", URLEncode[ temporalNotebook["Path"] ]], cli, "Target"->_ ];
-                      temporalNotebook = Null;
+                      transformNotebook[n, cli];
+                      
                   ],
                 
                   _ -> Function[Null,
-                      EventRemove[request]
+                      EventRemove[request];
+                      Echo["Cannecled"];
+                      n["AskedToExtend"] = True;
                   ]
               }];
             
@@ -221,44 +138,76 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
           
           ];
 
-          n["AskedToExtend"] = True;
+          
         ]
     ]
   }];
 ]
 
-App[request_] := With[{
+
+localTemplates = <||>;
+localTemplates["Notebook-Prolog"] = {PromptTools}
+
+
+
+
+App[request_] := Module[{localExtensions}, With[{
   Secret = CreateUUID[], 
-  GlobalControls  = CreateUUID[]
+  GlobalControls  = CreateUUID[],
+  promtEventUID = CreateUUID[]
 },
 
 
   Echo[temporalNotebook];
   Echo["Created temporal notebook"];
 
-  EventHandler[Secret, {
-    "SaveSidebarState" -> Function[state, sidebarState = state]
-  }];
   
   With[{
         
         SidebarId = CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
+        kernels = Hold[AppExtensions`KernelList] (*`*),
         GlobalParameters = Join[<|"Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]), "ElectronQ" -> ElectronQ[request], "AccentColor"->"teal", "BackupTimeout" -> (3 60 1000)|>, settings],
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         
         Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"],
 
-        n := temporalNotebook
+        n := temporalNotebook,
+
+        toolbox = Rule["PromptToolbar", promptEventUID]
+        
     },
+
+
+    localExtensions[ opts__Rule ] := With[{t = Association[opts]["Template"]},
+
+      With[{template = If[KeyExistsQ[localTemplates, t],
+        Join[#[opts, "PromptToolbar" -> promtEventUID] &/@ localTemplates[t], {ExtensionTemplates[opts]}]
+      ,
+        ExtensionTemplates[opts]
+      ]},
+        template
+      ]
+    ];
 
     If[temporalNotebook === Null, 
       recreateNotebook[ModalController];
     ];
 
     Echo[n["Path"]];
+
+    EventHandler[promtEventUID, {
+      "CleanUp" -> Function[Null, With[{notebook = n},
+        Delete /@ Select[n["Cells"], InputCellQ];
+        CellObj["Notebook" -> n];
+      ]],
+      "Expand" -> Function[Null, With[{},
+        EventRemove[promtEventUID];
+        transformNotebook[temporalNotebook, $Client];
+      ] ]
+    }];
 
 
     (* /* redirect to extensions  */ *)
@@ -271,15 +220,8 @@ App[request_] := With[{
       any_ :> (EventFire[AppEvent, any, #]&)
     }]; */ *)
    
-    (*/* Hard logic */*)
-    EventHandler[EventClone[GlobalControls], {
-      "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
-      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
-      "_NewLittleNotebook" -> (createNotebook[<|"Little"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
-      "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
-      "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
-      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&)
-    }];
+   
+    
   {
     "<!DOCTYPE html>"
   ,
@@ -322,7 +264,7 @@ App[request_] := With[{
           </style>
           <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={n["Path"]} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} Path={n["Path"]} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={localExtensions}/>
             </div> 
           </div>
         </div>
@@ -332,7 +274,7 @@ App[request_] := With[{
       </body>
     </html>
   } // StringRiffle
-] ];
+] ] ];
 
 Script[Rule["Secret", Secret_]] := With[{},
   <script type="module">
@@ -372,12 +314,12 @@ Script[Rule["Secret", Secret_]] := With[{},
 
     interval = setInterval(checkBorders, 300);
   </script>
-];
+] ;
 
-http["MessageHandler", "Tiny"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/tiny" ~~___|>] -> App;
+http["MessageHandler", "PromptWindow"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/prompt" ~~___|>] -> App;
 
 
-Print["LittleApp Loaded!"];
+Print["Prompt window Loaded!"];
 
 
 

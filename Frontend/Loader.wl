@@ -2,7 +2,19 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     
     Begin["`Internal`"];
 
-    cache = <||>;
+    scache = <||>;
+
+    cache[key_] := scache[ ToLowerCase[key] ];
+
+    cache /: Set[cache[key_], val_] := With[{l = ToLowerCase[key]},
+        scache[l] = val
+    ];
+    cache /: Unset[cache[key_] ] := With[{l = ToLowerCase[key]},
+        scache[l] = .
+    ];
+    cache /: KeyExistsQ[cache, key_] := With[{l = ToLowerCase[key]},
+        KeyExistsQ[scache, l]
+    ];
 
     rename[old_String, new_String] := With[{notebook = cache[old]},
         cache[new] = notebook;
@@ -10,6 +22,13 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         cache[old] = .;
         Echo["Loader >> renamed."];
     ];
+
+    rename[notebook_Notebook, new_String] := With[{path = notebook["Path"]},
+        cache[path] = .;
+        notebook["Path"] = new;
+        cache[new] = notebook;
+        Echo["Loader >> renamed."];
+    ];    
 
     clone[notebook_Notebook, newPath_String, opts: OptionsPattern[] ] := With[{oldPath = notebook["Path"]},
         cache[oldPath] = .;
