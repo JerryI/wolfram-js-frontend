@@ -195,6 +195,7 @@ AppExtensions`KernelList = {};
 
 
 (* Entrypoint of an app *)
+ServerError       := ImportComponent["Frontend/ServerError.wlx"];
 ExtendedApp               := ImportComponent["Frontend/ExtendedApp.wlx"];
 App         := ImportComponent["Frontend/App.wlx"];
 PromptWindow         := ImportComponent["Frontend/PromptWindow.wlx"];
@@ -228,6 +229,7 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 
 
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
+ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
 http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
@@ -270,14 +272,34 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandle
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
+appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"];
+
+With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["recommended-client-version"], "."], 2], ""]},
+  middleware[app_][request_] := With[{},
+    If[KeyExistsQ[request["Headers"], "Electron"],
+      If[TrueQ[Interpreter["Number"][request["Headers", "Electron"] ] >= minimalClient ],
+        app[request]
+      ,
+        Echo["Error!"];
+        Echo["Client App is outdated! Needed: " <> ToString[minimalClient] ];
+        ServerError["We apologize for the inconvenience. Your app appears outdated and is not compatible with desktop mode. Please try running it from the console, or download a new version of the WLJS app from the <a target=\"_blank\" href=\"https://github.com/JerryI/wolfram-js-frontend/releases\">Releases page</a>. Although this issue occurs rarely, we regret any inconvenience it may have caused."]
+      ]
+    ,
+      app[request]
+    ]
+  ]
+]
+
+
+
 (* hook all routes handlers *)
 AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
-ExtendedApp["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
-App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+ExtendedApp["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+App["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 Echo["Autotest start!"];
 

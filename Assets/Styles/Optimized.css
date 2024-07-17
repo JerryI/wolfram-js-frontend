@@ -2948,6 +2948,10 @@ ol {
   display: none;
 }
 
+[os="Browser"] .bro\:pt-2 {
+  padding-top: 0.5rem;
+}
+
 [os="WindowsLegacy"] .owin\:m-4 {
   margin: 1rem;
 }

@@ -3,6 +3,7 @@ env                       =  $Options["Env"];
 AppEvent                  =  $Options["AppEvent"];
 ExtensionTemplates        =  $Options["ExtensionTemplates"];
 ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
+middleware                = $Options["Middleware"];
 
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
@@ -337,8 +338,8 @@ Script[Rule["Secret", Secret_]] := With[{},
 ];
 
 
-http["MessageHandler", "Folder"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/folder/" ~~ ___|>] -> App;
-http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/"|>] -> App;
+http["MessageHandler", "Folder"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/folder/" ~~ ___|>] -> middleware[App];
+http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/"|>] -> middleware[App];
 
 (*/* TODO: Move it to Script.wls */*)
 Print["App Loaded!"];

@@ -702,13 +702,18 @@ const setHID = (mainWindow) => {
     if (!isMac && !isWindows) currentOS = 'Unix';
 
 
+
     session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
-        details.requestHeaders['Electron'] = 'True';
+        details.requestHeaders['Electron'] = majorVersion;
         details.requestHeaders['AppOS'] = currentOS;
         callback({ requestHeaders: details.requestHeaders })
     });
 
 }
+
+var majorVersion = app.getVersion().split('.');
+majorVersion.pop();
+majorVersion = majorVersion.join('');
 
 const server = {
     startedQ: false,

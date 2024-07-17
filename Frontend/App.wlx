@@ -3,7 +3,7 @@ env                       =  $Options["Env"];
 AppEvent                  =  $Options["AppEvent"];
 ExtensionTemplates        =  $Options["ExtensionTemplates"];
 ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
-
+middleware                = $Options["Middleware"];
 
 
 Head        := ImportComponent["Components/Head.wlx"];
@@ -298,7 +298,7 @@ Script[Rule["Secret", Secret_]] := With[{},
   </script>
 ];
 
-http["MessageHandler", "App"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+http["MessageHandler", "App"] = AssocMatchQ[<|"Method" -> "GET"|>] -> middleware[App];
 
 
 Print["App Loaded!"];
