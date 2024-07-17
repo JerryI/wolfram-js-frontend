@@ -2180,6 +2180,10 @@ ol {
   padding-top: 0.25rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -2190,10 +2194,6 @@ ol {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pt-7 {
-  padding-top: 1.75rem;
 }
 
 .text-left {
@@ -2839,6 +2839,10 @@ ol {
   padding-left: 0px;
 }
 
+[os="Windows"] .win\:pl-2 {
+  padding-left: 0.5rem;
+}
+
 [os="Windows"] .win\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2896,6 +2900,10 @@ ol {
   padding-left: 0px;
 }
 
+[os="Unix"] .linux\:pl-2 {
+  padding-left: 0.5rem;
+}
+
 [os="Unix"] .linux\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2917,14 +2925,6 @@ ol {
 
 [os="OSX"] .osx\:border-r {
   border-right-width: 1px;
-}
-
-[os="OSX"] .osx\:pl-20 {
-  padding-left: 5rem;
-}
-
-[os="OSX"] .osx\:pt-0 {
-  padding-top: 0px;
 }
 
 [os="OSX"] .osx\:font-semibold {
@@ -2971,6 +2971,11 @@ ol {
   border-width: 1px;
 }
 
+[os="WindowsLegacy"] .owin\:border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
 [os="WindowsLegacy"] .owin\:border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
@@ -2992,6 +2997,10 @@ ol {
 
 [os="WindowsLegacy"] .owin\:pl-0 {
   padding-left: 0px;
+}
+
+[os="WindowsLegacy"] .owin\:pl-2 {
+  padding-left: 0.5rem;
 }
 
 [os="WindowsLegacy"] .owin\:text-gray-500 {
@@ -3019,6 +3028,10 @@ ol {
 
 [sidebar="hidden"] .zen\:pl-0 {
   padding-left: 0px;
+}
+
+[sidebar="hidden"] .zen\:pl-20 {
+  padding-left: 5rem;
 }
 
 @media (min-width: 640px) {
