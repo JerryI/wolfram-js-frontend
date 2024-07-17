@@ -221,7 +221,7 @@ App[request_] := With[{
             ,
 
             _,
-              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls, "Style"->"padding-top: 0.3rem", "Class"->"zen:ml-0 pl-1 -ml-70 zen:relative absolute"]
+              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls, "Style"->"padding-top: 0.3rem", "Class"->"zen:ml-0 pl-1 md:-ml-70 zen:relative relative ml-0 md:absolute"]
 
           ]
     },
@@ -262,7 +262,7 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white"> 
+        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>

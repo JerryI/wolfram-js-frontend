@@ -46,7 +46,7 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full"> 
+        <body class="h-full owin:border owin:border-slate-400"> 
         <div>
           <Alert/>
           <Modals ModalsPort={ModalController}/>

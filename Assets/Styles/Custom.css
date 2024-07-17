@@ -117,6 +117,17 @@ input::selection {
   }
 }
 
+@media (min-width: 768px) {
+  .md\:-ml-70 {
+    margin-left: -16rem !important;
+  }
+
+}
+
+[sidebar="hidden"] .zen\:ml-0 {
+  margin-left: 0px !important;
+}
+
 .-ml-70 {
   margin-left: -16rem;
 }

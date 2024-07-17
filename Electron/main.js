@@ -987,6 +987,9 @@ function create_window(opts, cbk = () => {}) {
 
         const options = Object.assign({}, defaults, opts);
         options.minWidth = 576;
+        if (!isMac) {
+            options.minWidth = 688;
+        }        
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
@@ -997,6 +1000,8 @@ function create_window(opts, cbk = () => {}) {
             options.width = 576*1024.0/800.0;
             options.height = 520*640.0/600.0;
         }
+
+
 
         if (options.overlay) {
             options.width = options.minWidth;

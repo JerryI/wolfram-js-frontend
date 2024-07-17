@@ -1,8 +1,8 @@
 
 Component[OptionsPattern[]] := With[{event = OptionValue["PromptToolbar"], notebook = OptionValue["Notebook"]},
 
-    If[notebook["AskedToExtend"] === True,
-        <div class="flex flex-row ml-auto mr-auto">
+    If[notebook["AskedToExtend"] === True || n["ShowToolbox"] === True,
+        <div class="flex flex-row ml-auto mr-auto pt-1">
             <button id="btn-expand" class="hover:bg-teal-400 hover:text-white text-gray-500 p-2 rounded">
             <svg class="h-4 w-4 " viewBox="0 0 24 24" fill="none" >
                             <rect width="24" height="24" fill="none"/>

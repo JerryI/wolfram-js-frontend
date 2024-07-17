@@ -1044,10 +1044,6 @@ ol {
   margin-right: 0.75rem;
 }
 
-.mr-8 {
-  margin-right: 2rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
@@ -1134,10 +1130,6 @@ ol {
 
 .h-12 {
   height: 3rem;
-}
-
-.h-16 {
-  height: 4rem;
 }
 
 .h-2 {
@@ -1815,14 +1807,6 @@ ol {
   border-bottom-width: 1px;
 }
 
-.border-l {
-  border-left-width: 1px;
-}
-
-.border-r {
-  border-right-width: 1px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -2130,10 +2114,6 @@ ol {
 
 .pl-20 {
   padding-left: 5rem;
-}
-
-.pl-24 {
-  padding-left: 6rem;
 }
 
 .pl-3 {
@@ -2839,10 +2819,6 @@ ol {
   padding-left: 0px;
 }
 
-[os="Windows"] .win\:pl-2 {
-  padding-left: 0.5rem;
-}
-
 [os="Windows"] .win\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2898,10 +2874,6 @@ ol {
 
 [os="Unix"] .linux\:pl-0 {
   padding-left: 0px;
-}
-
-[os="Unix"] .linux\:pl-2 {
-  padding-left: 0.5rem;
 }
 
 [os="Unix"] .linux\:text-gray-500 {
@@ -2971,14 +2943,14 @@ ol {
   border-width: 1px;
 }
 
-[os="WindowsLegacy"] .owin\:border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
 [os="WindowsLegacy"] .owin\:border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+[os="WindowsLegacy"] .owin\:border-slate-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
 [os="WindowsLegacy"] .owin\:bg-blue-100\/20 {
@@ -2997,10 +2969,6 @@ ol {
 
 [os="WindowsLegacy"] .owin\:pl-0 {
   padding-left: 0px;
-}
-
-[os="WindowsLegacy"] .owin\:pl-2 {
-  padding-left: 0.5rem;
 }
 
 [os="WindowsLegacy"] .owin\:text-gray-500 {
@@ -3028,10 +2996,6 @@ ol {
 
 [sidebar="hidden"] .zen\:pl-0 {
   padding-left: 0px;
-}
-
-[sidebar="hidden"] .zen\:pl-20 {
-  padding-left: 5rem;
 }
 
 @media (min-width: 640px) {
@@ -3171,6 +3135,10 @@ ol {
     position: fixed;
   }
 
+  .md\:absolute {
+    position: absolute;
+  }
+
   .md\:inset-y-0 {
     top: 0px;
     bottom: 0px;
@@ -3178,10 +3146,6 @@ ol {
 
   .md\:z-50 {
     z-index: 50;
-  }
-
-  .md\:-ml-14 {
-    margin-left: -3.5rem;
   }
 
   .md\:ml-2 {
@@ -3229,6 +3193,14 @@ ol {
 }
 
 @media (min-width: 1024px) {
+  .lg\:border-l {
+    border-left-width: 1px;
+  }
+
+  .lg\:border-r {
+    border-right-width: 1px;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

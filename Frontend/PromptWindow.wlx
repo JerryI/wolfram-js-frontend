@@ -115,6 +115,7 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
                       EventRemove[request];
                       Echo["Cannecled"];
                       n["AskedToExtend"] = True;
+                      n["ShowToolbox"] = True;
                   ]
               }];
             
@@ -139,7 +140,13 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
           ];
 
           
-        ]
+        ];
+
+        If[Length[n["Cells"]] > 1,
+          n["ShowToolbox"] = True;
+        ,
+          n["ShowToolbox"] = False;
+        ];
     ]
   }];
 ]
