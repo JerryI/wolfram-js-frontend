@@ -840,6 +840,10 @@ ol {
   visibility: visible;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1819,10 +1823,6 @@ ol {
   border-right-width: 1px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -2190,6 +2190,10 @@ ol {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-7 {
+  padding-top: 1.75rem;
 }
 
 .text-left {
@@ -2831,8 +2835,8 @@ ol {
   padding-right: 1.25rem;
 }
 
-[os="Windows"] .win\:pl-2 {
-  padding-left: 0.5rem;
+[os="Windows"] .win\:pl-0 {
+  padding-left: 0px;
 }
 
 [os="Windows"] .win\:text-gray-500 {
@@ -2888,8 +2892,8 @@ ol {
   padding-right: 1.25rem;
 }
 
-[os="Unix"] .linux\:pl-2 {
-  padding-left: 0.5rem;
+[os="Unix"] .linux\:pl-0 {
+  padding-left: 0px;
 }
 
 [os="Unix"] .linux\:text-gray-500 {
@@ -2913,6 +2917,14 @@ ol {
 
 [os="OSX"] .osx\:border-r {
   border-right-width: 1px;
+}
+
+[os="OSX"] .osx\:pl-20 {
+  padding-left: 5rem;
+}
+
+[os="OSX"] .osx\:pt-0 {
+  padding-top: 0px;
 }
 
 [os="OSX"] .osx\:font-semibold {
@@ -2959,11 +2971,6 @@ ol {
   border-width: 1px;
 }
 
-[os="WindowsLegacy"] .owin\:border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
 [os="WindowsLegacy"] .owin\:border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
@@ -2983,8 +2990,8 @@ ol {
   padding-right: 1.25rem;
 }
 
-[os="WindowsLegacy"] .owin\:pl-2 {
-  padding-left: 0.5rem;
+[os="WindowsLegacy"] .owin\:pl-0 {
+  padding-left: 0px;
 }
 
 [os="WindowsLegacy"] .owin\:text-gray-500 {
@@ -2998,6 +3005,10 @@ ol {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+[sidebar="hidden"] .zen\:relative {
+  position: relative;
+}
+
 [sidebar="hidden"] .zen\:ml-0 {
   margin-left: 0px;
 }
@@ -3008,10 +3019,6 @@ ol {
 
 [sidebar="hidden"] .zen\:pl-0 {
   padding-left: 0px;
-}
-
-[sidebar="hidden"] .zen\:pl-20 {
-  padding-left: 5rem;
 }
 
 @media (min-width: 640px) {

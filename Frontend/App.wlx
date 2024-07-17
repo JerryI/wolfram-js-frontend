@@ -170,7 +170,7 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
-  Path = If[$OperatingSystem === "Windows",  URLDecode @ StringDrop[request["Path"],1 + 1],  URLDecode @ StringDrop[request["Path"],1 ]]
+  Path = If[$OperatingSystem === "Windows",  URLDecode @ StringDrop[request["Path"],1],  URLDecode @ StringDrop[request["Path"],1 ]]
 },
 
   Print["## Loading by path : "]; Print[Path];
@@ -222,7 +222,7 @@ App[request_] := With[{
             ,
 
             _,
-              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls]
+              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls,  "Class"->"ml-1", "Style"->""]
 
           ]
     },
@@ -260,7 +260,7 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-blue-100/20"> 
+        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white"> 
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>

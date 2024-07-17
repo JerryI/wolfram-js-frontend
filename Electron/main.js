@@ -603,6 +603,10 @@ callFakeMenu["restartkernels"] = () => {
     windows.focused.call('restartkernel', true);
 }
 
+callFakeMenu["newlocalkernel"] = () => {
+    windows.focused.call('newlocalkernel', true);
+}
+
 callFakeMenu["shutdownall"] = () => {
     windows.focused.call('killallkernels', true);
 }
@@ -813,6 +817,12 @@ const windows = {
                     vibrancy: "sidebar", // in my case...
                     frame: true,
                     autoHideMenuBar: true,
+                    titleBarStyle: 'hidden',
+                    titleBarOverlay: {
+                        color: 'rgba(255, 255, 255, 0.0)',
+                        symbolColor: 'rgba(128, 128, 128, 1.0)'
+                    },
+                    autoHideMenuBar: true,
                     width: 600,
                     height: 400,
                     resizable: false,
@@ -839,7 +849,12 @@ const windows = {
                   "Content-Security-Policy": [ "default-src 'self' 'unsafe-inline'"]
               }, details.responseHeaders)})});*/
 
-            win.loadFile(path.join(__dirname, 'log.html'));
+            if (isMac) {
+                win.loadFile(path.join(__dirname, 'log.html'));
+            } else {
+                win.loadFile(path.join(__dirname, 'log_padded.html'));
+            }
+            
 
             windows.log.win = win;
             this.aliveQ = true;

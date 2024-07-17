@@ -143,7 +143,7 @@ With[{
   ]];
 
   {
-    <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex">
+    <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex" style="-webkit-app-region:none">
       File browser
       <div class="ml-auto gap-x-1 flex group-hover:opacity-100 opacity-0">
         <button id="{Button1Id}" title="New notebook">

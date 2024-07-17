@@ -165,7 +165,9 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
-  Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"], StringLength["folder/"] ] ]
+  Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"], 
+    If[$OperatingSystem === "Windows", StringLength["/folder/"], StringLength["folder/"] ]
+  ] ]
 },
 
   Print["# Loading by path : "]; Print[Path];
@@ -221,7 +223,7 @@ App[request_] := With[{
             ,
 
             _,
-              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls]
+              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls, "Style"->"padding-top: 0.3rem", "Class"->"zen:ml-0 pl-1 -ml-70 zen:relative absolute"]
 
           ]
     },
@@ -262,14 +264,13 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-blue-100/20"> 
+        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white"> 
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" style="user-select: none" class="hidden md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
-            <FakeMenu/>  
+          <div id="sidebar" style="user-select: none; -webkit-app-region: drag;" class="hidden pt-7 osx:pt-0 md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
             <Kernels AppEvents={AppEvent} Controls={GlobalControls} Messager={GlobalMessanger} KernelList={kernels} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="osx:border-b border-gray-300 dark:border-gray-600"></div>
@@ -280,7 +281,7 @@ App[request_] := With[{
           
           <div class="md:pl-70 zen:pl-0 h-full" id="frame">
             <div class="h-full flex flex-col">
-              <TopBar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
+              <TopBar Menu={FakeMenu} ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
               <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>

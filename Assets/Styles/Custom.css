@@ -117,6 +117,10 @@ input::selection {
   }
 }
 
+.-ml-70 {
+  margin-left: -16rem;
+}
+
 @media (min-width: 768px) {
  .md\:pl-70 {
     padding-left: 16rem;

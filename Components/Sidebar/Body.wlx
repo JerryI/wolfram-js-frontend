@@ -2,7 +2,7 @@ ItemList := ImportComponent["Components/ItemList.wlx"];
 
 
 
-    <nav class="flex flex-1 flex-col">
+    <nav class="flex flex-1 flex-col" style="-webkit-app-region:none">
       <ul role="list" class="flex flex-1 flex-col gap-y-7 p-0">
         <li class="list-none">
           <ItemList Icons={$Options["Icons"]} Port={$Options["Port"]} Parameters={$Options["Parameters"]} Level={0} Class={"-mx-2 space-y-0"} Path={$Options["Path"]} Current={$Options["Path"]} />
