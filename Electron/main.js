@@ -1014,7 +1014,7 @@ function create_window(opts, cbk = () => {}) {
         }
 
         if (new RegExp(/acknowledgments/).exec(options.url)) {
-            options.height = 400;
+            options.height = 310;
         }
 
         if (new RegExp(/window/).exec(options.url)) {
