@@ -51,7 +51,9 @@ loadSettingsOnceMore := With[{},
 
 checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
   With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
-    With[{books = Select[files, Function[name, StringMatchQ[FileBaseNameTake[name], version~~___]]]},
+    With[{books = Select[files, Function[name, StringMatchQ[FileNameTake[name], version~~__]]]},
+      Echo[StringJoin["Checking release notes for ", version]];
+      Echo[books];
       If[Length[books] > 0,
         WebUILocation[StringJoin["/", URLEncode[books[[1]]]], client, "Target"->_];
       ];
