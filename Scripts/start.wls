@@ -275,6 +275,8 @@ SetAttributes[Offload, HoldFirst];
 
 appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"];
 
+$Env["AppJSON"] = appJSON;
+
 With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["recommended-client-version"], "."], 2], ""]},
   middleware[app_][request_] := With[{},
     If[KeyExistsQ[request["Headers"], "Electron"],

@@ -43,6 +43,25 @@ sidebarState = "show";
 
 loadSettings[settings];
 
+loadSettingsOnceMore := With[{},
+  Print["Load settings one more time"];
+  loadSettingsOnceMore = Null;
+  loadSettings[settings];
+];
+
+checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
+  With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
+    With[{books = Select[files, Function[name, StringMatchQ[FileBaseNameTake[name], version~~___]]]},
+      If[Length[books] > 0,
+        WebUILocation[StringJoin["/", URLEncode[books[[1]]]], client, "Target"->_];
+      ];
+
+      settings = Join[settings, <|"CurrentVersion" -> version|>];
+      storeSettings[settings];
+    ]
+  ]
+] ];
+
 renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
   filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
@@ -186,6 +205,7 @@ App[request_] := With[{
   With[{
         
         SidebarId = CreateUUID[],
+        OnLoad =  CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         kernels = Hold[AppExtensions`KernelList] (*`*),
@@ -239,6 +259,9 @@ App[request_] := With[{
     },
 
 
+    (* /* collect any runtime changes  */ *)
+    loadSettingsOnceMore;
+
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
       any_ :> (EventFire[AppEvent, Messanger[any], #]&)
@@ -248,6 +271,11 @@ App[request_] := With[{
     EventHandler[EventClone[GlobalControls], {
       any_ :> (Print[any]&)
     }]; 
+
+    EventHandler[OnLoad, Function[Null,
+      checkReleaseNotes[$Client];
+      EventRemove[OnLoad];
+    ]];
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
@@ -301,6 +329,7 @@ App[request_] := With[{
         <Script Secret={Secret}/>
         <ExtensionTemplates Template={"AppScripts"} />
         <ElectronBinds Controls={GlobalControls}/>
+        <WebUIOnLoad Event={OnLoad}/>
       </body>
     </html>
   } // StringRiffle
@@ -351,6 +380,8 @@ Script[Rule["Secret", Secret_]] := With[{},
 
 http["MessageHandler", "Folder"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/folder/" ~~ ___|>] -> middleware[App];
 http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/"|>] -> middleware[App];
+
+
 
 (*/* TODO: Move it to Script.wls */*)
 Print["App Loaded!"];

@@ -39,6 +39,24 @@ settings = <||>;
 
 
 loadSettings[settings];
+loadSettingsOnceMore := With[{},
+  Print["Load settings one more time"];
+  loadSettingsOnceMore = Null;
+  loadSettings[settings];
+];
+
+checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
+  With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
+    With[{books = Select[files, Function[name, StringMatchQ[FileBaseNameTake[name], version~~___]]]},
+      If[Length[books] > 0,
+        WebUILocation[StringJoin["/", URLEncode[books[[1]]]], client, "Target"->_];
+      ];
+
+      settings = Join[settings, <|"CurrentVersion" -> version|>];
+      storeSettings[settings];
+    ]
+  ]
+] ];
 
 NotebookQ[str_] := FileExtension[str] === "wln"
 
@@ -187,6 +205,7 @@ App[request_] := With[{
   With[{
         
         SidebarId = CreateUUID[],
+        OnLoad    = CreateUUID[],
         ModalController = CreateUUID[],
         kernels = Hold[AppExtensions`KernelList] (*`*),
         GlobalMessanger = CreateUUID[],
@@ -239,6 +258,13 @@ App[request_] := With[{
           ]
     },
 
+    (* /* collect any runtime changes  */ *)
+    loadSettingsOnceMore;
+
+    EventHandler[OnLoad, Function[Null,
+      checkReleaseNotes[$Client];
+      EventRemove[OnLoad];
+    ]];
 
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
@@ -291,6 +317,7 @@ App[request_] := With[{
         <Script Secret={Secret}/>
         <ExtensionTemplates Template={"AppScripts"} />
         <ElectronBinds Controls={GlobalControls}/>
+        <WebUIOnLoad Event={OnLoad}/>
       </body>
     </html>
   } // StringRiffle
