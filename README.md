@@ -18,6 +18,8 @@ To help maintain this project ❤️
 - [GitHub Sponsors](https://github.com/sponsors/JerryI)
 - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 
+Any amount (one-time or monthly) is appreciated, and your profile will be permanently displayed on this page. Thank you for helping us!
+
 ### Contributing
 See [here](CONTRIBUTING.md)
 
@@ -104,6 +106,10 @@ Follows the mouse pointer and performs complex calculations.
 
 WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved). __No internet connection is needed__.
 
+## Sponsors (one-time or monthly) ☺️
+- Jon L. Woodard, USA
+- @MitsuhaMiyamizu, Mars
+
 # Installation 🛠️
 [The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable). Activation can be done later using WLJS Notebook App.
 
@@ -181,8 +187,6 @@ You might need to install the following (for `Image` and some other graphics to 
 
 The frontend uses its own package/plugin system. It doesn't require any software installed except wolframscript. Precompiled plugins are downloaded using URLFetch from GitHub repositories and imported to the system.
 
-## Sponsors
-@MitsuhaMiyamizu 🤍
 
 ## Technology Stack
 Wolfram Language, JavaScript
