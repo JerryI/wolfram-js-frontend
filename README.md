@@ -56,7 +56,7 @@ Write beautiful equations between lines of normal Wolfram Language expressions.
 
 ![Mathinput-ezgif com-optipng](imgs/ezgif.com-math-1.gif)
 
-There is no need to lift your fingers from the keyboard 🎹
+There is __no need to lift your fingers from the keyboard__ 🎹
 
 ![Mathinput-ezgif com-optipng](imgs/ezgif.com-math-2.gif)
 
