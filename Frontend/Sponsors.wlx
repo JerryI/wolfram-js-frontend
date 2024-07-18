@@ -69,7 +69,7 @@ App[request_] := With[{
                     </ul>                
                   </div>
                 </div>  
-                <div class="p-4">
+                <div class="p-4 dark:text-gray-300">
                     <p>
                         To help maintain this project, you might consider
                         <ul>
