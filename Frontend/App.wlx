@@ -170,7 +170,15 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
-  Path = If[$OperatingSystem === "Windows",  URLDecode @ StringDrop[request["Path"],1],  URLDecode @ StringDrop[request["Path"],1 ]]
+  Path = Switch[$OperatingSystem,
+    "Windows",  
+    URLDecode @ StringDrop[request["Path"],1],  
+    
+    "Linux",
+    URLDecode @ StringDrop[request["Path"],1 ],
+
+    _,
+    URLDecode @ StringDrop[request["Path"],1 ]]
 },
 
   Print["## Loading by path : "]; Print[Path];

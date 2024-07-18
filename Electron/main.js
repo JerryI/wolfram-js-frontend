@@ -620,7 +620,7 @@ callFakeMenu["zoomOut"] = () => {
 }
 
 callFakeMenu["locateExamples"] = async(ev) => {
-    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
 }
 
 callFakeMenu["locateAppData"] = async(ev) => {

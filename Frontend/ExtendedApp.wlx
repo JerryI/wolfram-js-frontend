@@ -167,7 +167,14 @@ App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
   Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"], 
-    If[$OperatingSystem === "Windows", StringLength["/folder/"], StringLength["folder/"] ]
+    Switch[$OperatingSystem,
+      "Windows", 
+      StringLength["/folder/"], 
+      "Linux",
+      StringLength["folder"],
+      _,  
+      StringLength["folder/"] 
+    ]
   ] ]
 },
 
