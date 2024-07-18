@@ -48,21 +48,25 @@ It supports dynamics, GUI building blocks, and powerful Mathematica syntax out o
 
 No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated from scratch using `d3.js` and `THREE.js` libraries. Most native plotting functions of Mathematica are supported.
 
-#### AI Assistant 🤖
-We deeply integrated ChatGPT, so that AI can have a read/write acccess to your notebook
-
-![AAI](imgs/ASKAI%20optimizer.gif)
 
 ### Command Palette and GUI-in-Code Emulation 🎨
+
+### Native Math Input in the Code Editor 🧮
+Write beautiful equations between lines of normal Wolfram Language expressions.
+
+![Mathinput-ezgif com-optipng](imgs/ezgif.com-math-1.gif)
+
+There is no need to lift your fingers from the keyboard 🎹
+
+![Mathinput-ezgif com-optipng](imgs/ezgif.com-math-2.gif)
+
+Or use toolboxes for complex structures such as integrals, sum, Greek letters
+
 #### Inline Dynamic Tool for Tuning 2D/3D Positions
 
 ![ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/5f24d9d2-bd36-40df-85c8-c50cbc37a8cd)
 
 
-### Native Math Input in the Code Editor 🧮
-Write beautiful equations between lines of normal Wolfram Language expressions.
-
-![Mathinput-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/ebc2d83a-0d4d-49e4-a073-e112829a8d62)
 
 ### Compress to HTML / Markdown 🗜️
 An entire notebook can be exported to a standalone `.html` file keeping all data inside. __No internet dependency, no additional software__ is required for viewing a notebook
@@ -70,6 +74,11 @@ An entire notebook can be exported to a standalone `.html` file keeping all data
 ![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
 
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
+
+#### AI Assistant 🤖
+We deeply integrated ChatGPT, so that AI can have a read/write acccess to your notebook
+
+![AAI](imgs/ASKAI%20optimizer.gif)
 
 ### Data-Driven Slides 🛝
 Make a presentation right from the notebook.
