@@ -17,6 +17,11 @@ Controls = $Options["Controls"];
             server.emitt('<Controls/>', 'True', '_NewNotebook');
         });
 
+        window.electronAPI.listener('acknowledgments', () => {
+            open('/acknowledgments', '_blank');
+        });
+        
+
         window.electronAPI.listener('newshortnote', () => {
             server.emitt('<Controls/>', 'True', '_NewQuickNotebook');
         });    

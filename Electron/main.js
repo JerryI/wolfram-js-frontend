@@ -506,7 +506,16 @@ const buildMenu = (opts) => {
                         //const { shell } = require('electron')
                         shell.openExternal('http://127.0.0.1:20540')
                     }
-                }
+                },
+                {
+                    role: 'help',
+                    label: 'Acknowledgments',
+                    click: async() => {
+                        //const { shell } = require('electron')
+                        windows.focused.call('acknowledgments', true);
+                        //create_window({url: server.url.default('local') + `/sponsors`, title: 'Acknowledgments'});
+                    }
+                }                
             ]
         }
     ];
@@ -575,6 +584,10 @@ callFakeMenu["new"] = async(ev) => {
 
 callFakeMenu["newshort"] = async(ev) => {
     windows.focused.call('newshortnote', true);
+}
+
+callFakeMenu["acknowledgments"] = async(ev) => {
+    windows.focused.call('acknowledgments', true);
 }
 
 
@@ -998,6 +1011,10 @@ function create_window(opts, cbk = () => {}) {
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
+        }
+
+        if (new RegExp(/acknowledgments/).exec(options.url)) {
+            options.height = 400;
         }
 
         if ((new RegExp(/little/)).exec(options.url)) {

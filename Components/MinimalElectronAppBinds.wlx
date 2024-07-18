@@ -7,7 +7,11 @@ Controls = $Options["Controls"];
         });
         window.electronAPI.listener('context', (ev, pattern) => {
             server.emitt('<Controls/>', 'True', pattern);
-        });            
+        });        
+        
+        window.electronAPI.listener('acknowledgments', () => {
+            open('/acknowledgments', '_blank');
+        });
         
     }
 </script>

@@ -208,6 +208,10 @@ App[request_] := With[{
                     WebUILocation[StringJoin["/folder/", URLEncode[FileNameJoin[{Directory[], "Demos"}]]], $Client, "Target"->_];
                   ],
 
+                  "Acknowledgments" -> Function[Null,
+                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
+                  ],
+
                   "OpenDocs" -> Function[Null,
                     WebUISubmit[Global`UIDocsOpen[env["docs"], "index.html"](*`*), $Client];
                   ], 

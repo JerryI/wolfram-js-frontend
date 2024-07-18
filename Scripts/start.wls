@@ -195,6 +195,7 @@ AppExtensions`KernelList = {};
 
 
 (* Entrypoint of an app *)
+Sponsors       := ImportComponent["Frontend/Sponsors.wlx"];
 ServerError       := ImportComponent["Frontend/ServerError.wlx"];
 ExtendedApp               := ImportComponent["Frontend/ExtendedApp.wlx"];
 App         := ImportComponent["Frontend/App.wlx"];
@@ -295,6 +296,7 @@ With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["reco
 (* hook all routes handlers *)
 AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
+Sponsors["HTTPHandler"->http];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
