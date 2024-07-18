@@ -1017,6 +1017,13 @@ function create_window(opts, cbk = () => {}) {
             options.height = 400;
         }
 
+        if (new RegExp(/window/).exec(options.url)) {
+            options.window = 500;
+            options.minWidth = 100;
+            options.height = 500;
+        }        
+        
+
         if ((new RegExp(/little/)).exec(options.url)) {
             options.minWidth = 500*1024.0/800.0;;
             options.width = 576*1024.0/800.0;
