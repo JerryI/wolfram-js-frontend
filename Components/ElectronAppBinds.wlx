@@ -1,6 +1,7 @@
 Controls = $Options["Controls"];
 
 <script type="module">
+
     if (window.electronAPI) {
         window.electronAPI.listener('extension', (ev, pattern) => {
             server.emitt('<Controls/>', 'True', pattern);
@@ -12,7 +13,20 @@ Controls = $Options["Controls"];
             open('/settings', '_blank');
         });    
         window.electronAPI.listener('newnotebook', () => {
+            console.log('note');
             server.emitt('<Controls/>', 'True', '_NewNotebook');
         });
+
+        window.electronAPI.listener('acknowledgments', () => {
+            open('/acknowledgments', '_blank');
+        });
+        
+
+        window.electronAPI.listener('newshortnote', () => {
+            server.emitt('<Controls/>', 'True', '_NewQuickNotebook');
+        });    
+        
+
+        
     }
 </script>

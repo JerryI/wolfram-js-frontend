@@ -1,6 +1,7 @@
 {
   "name": "wljs-notebook",
-  "version": "2.4.7",
+  "version": "2.5.0",
+  "recommended-client-version": "2.4.9",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
     "name": "Coffee liqueur",
@@ -45,7 +46,16 @@
         "NSMicrophoneUsageDescription": "Please give us access to your microphone"
       },
       "entitlements": "./Electron/build/entitlements.mac.plist",
-      "entitlementsInherit": "./Electron/build/entitlements.mac.plist"
+      "entitlementsInherit": "./Electron/build/entitlements.mac.plist",
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ],
+            "role" : "Editor"
+        }
+      ]
     },
     "linux": {
       "target": [
@@ -61,7 +71,15 @@
           "icon": "./Electron/build/file/512x512.png"
         }
       ],
-      "icon": "./Electron/build/512x512.png"
+      "icon": "./Electron/build/512x512.png",
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ]
+        }
+      ]
     },
     "win": {
       "target": "NSIS",
@@ -73,6 +91,14 @@
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.ico"
         }
+      ],
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ]
+        }
       ]
     },
     "files": [
@@ -81,6 +107,7 @@
       "./Electron/bundle/log.js",
       "./Electron/electron.css",
       "./Electron/log.html",
+      "./Electron/log_padded.html",
       "./Electron/tailwind.css",
       "./Electron/tailwind.config.js",
       "./Electron/shortcuts.json",

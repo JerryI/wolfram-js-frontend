@@ -26,7 +26,7 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["Events"], Channel = Cr
                                         EventFire[data["Promise"], Resolve, result];
                                     ]
                                 }];
-                                EventFire[Event, "TextField", <|"Client"->data["Client"], "Title"->"Type a filename", "String" -> "exported.html", "Callback"->temp|>];
+                                EventFire[Event, "TextField", <|"Client"->data["Client"], "Title"->data["Title"], "String" -> StringJoin["untitled.", data["Ext"]], "Callback"->temp|>];
                             ];             
                         ,
                             EventFire[data["Promise"], Reject, reject];

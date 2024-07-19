@@ -840,6 +840,10 @@ ol {
   visibility: visible;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1819,10 +1823,6 @@ ol {
   border-right-width: 1px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -2178,6 +2178,10 @@ ol {
 
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .pt-2 {
@@ -2831,6 +2835,10 @@ ol {
   padding-right: 1.25rem;
 }
 
+[os="Windows"] .win\:pl-0 {
+  padding-left: 0px;
+}
+
 [os="Windows"] .win\:pl-2 {
   padding-left: 0.5rem;
 }
@@ -2888,6 +2896,10 @@ ol {
   padding-right: 1.25rem;
 }
 
+[os="Unix"] .linux\:pl-0 {
+  padding-left: 0px;
+}
+
 [os="Unix"] .linux\:pl-2 {
   padding-left: 0.5rem;
 }
@@ -2907,12 +2919,21 @@ ol {
   display: flex;
 }
 
+[os="OSX"] .osx\:h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 [os="OSX"] .osx\:border-b {
   border-bottom-width: 1px;
 }
 
 [os="OSX"] .osx\:border-r {
   border-right-width: 1px;
+}
+
+[os="OSX"] .osx\:pl-20 {
+  padding-left: 5rem;
 }
 
 [os="OSX"] .osx\:font-semibold {
@@ -2925,6 +2946,10 @@ ol {
 
 [os="Browser"] .bro\:hidden {
   display: none;
+}
+
+[os="Browser"] .bro\:pt-2 {
+  padding-top: 0.5rem;
 }
 
 [os="WindowsLegacy"] .owin\:m-4 {
@@ -2969,6 +2994,11 @@ ol {
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
+[os="WindowsLegacy"] .owin\:border-slate-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
 [os="WindowsLegacy"] .owin\:bg-blue-100\/20 {
   background-color: rgb(219 234 254 / 0.2);
 }
@@ -2981,6 +3011,10 @@ ol {
 [os="WindowsLegacy"] .owin\:px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+[os="WindowsLegacy"] .owin\:pl-0 {
+  padding-left: 0px;
 }
 
 [os="WindowsLegacy"] .owin\:pl-2 {
@@ -2996,6 +3030,10 @@ ol {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+[sidebar="hidden"] .zen\:relative {
+  position: relative;
 }
 
 [sidebar="hidden"] .zen\:ml-0 {
@@ -3151,6 +3189,10 @@ ol {
     position: fixed;
   }
 
+  .md\:absolute {
+    position: absolute;
+  }
+
   .md\:inset-y-0 {
     top: 0px;
     bottom: 0px;
@@ -3206,9 +3248,21 @@ ol {
   .md\:pr-5 {
     padding-right: 1.25rem;
   }
+
+  [os="OSX"] .md\:osx\:pl-2 {
+    padding-left: 0.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .lg\:border-l {
+    border-left-width: 1px;
+  }
+
+  .lg\:border-r {
+    border-right-width: 1px;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

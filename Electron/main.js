@@ -114,10 +114,16 @@ pluginsMenu.fetch = () => {
 
 
 //load shortcuts
-const shortcuts_table = require("./shortcuts.json");
+let shortcuts_table = require("./shortcuts.json");
+if (fs.existsSync(path.join(installationFolder, "Electron", "shortcuts.json"))) {
+    shortcuts_table = JSON.parse(fs.readFileSync(path.join(installationFolder, "Electron", "shortcuts.json"), 'utf8'));
+    console.log(shortcuts_table);
+} 
+
 const { spawnSync, spawn } = require('child_process');
 const shortcut = (id) => {
-    console.log('shortcut required');
+
+    if (! shortcuts_table[id]) return undefined;
     if (process.platform === 'darwin') return shortcuts_table[id][0]
     return shortcuts_table[id][1]
 }
@@ -163,27 +169,47 @@ const buildMenu = (opts) => {
                         windows.focused.call('newnotebook', true);
                     }
                 },
-                ...options.plugins.file,
-                ...((options.localmenu) ? [{
-                        label: 'Open File',
-                        accelerator: shortcut('open_file'),
-                        click: async() => {
-                            const promise = dialog.showOpenDialog({
-                                title: 'Open File',
-                                filters: [
-                                    { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
-                                ],
-                                properties: ['openFile']
-                            });
+                {
+                    label: 'Open File',
+                    accelerator: shortcut('open_file'),
+                    click: async() => {
+                        const promise = dialog.showOpenDialog({
+                            title: 'Open File',
+                            filters: [
+                                { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
+                            ],
+                            properties: ['openFile']
+                        });
 
-                            promise.then((res) => {
-                                if (!res.canceled) {
-                                    app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
-                                }
-                            });
-                        }
-                    },
+                        promise.then((res) => {
+                            if (!res.canceled) {
+                                app.addRecentDocument(res.filePaths[0]);
+                                create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                            }
+                        });
+                    }
+                },
+                { type: 'separator' },
+                {
+                    label: 'New quick note',
+                    accelerator: shortcut('new_quick_file'),
+                    click: async(ev) => {
+                        console.log(ev);
+                        windows.focused.call('newshortnote', true);
+                    }
+                },              
+                ...options.plugins.file,
+                { type: 'separator' },
+                {
+                    label: 'Prompt call',
+                    click: async(ev) => {
+                        console.log(ev);
+                        if (server.running)
+                            create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
+                    }
+                }, 
+                { type: 'separator' },                 
+                ...((options.localmenu) ? [
                     {
                         label: 'Open Folder',
 
@@ -192,7 +218,7 @@ const buildMenu = (opts) => {
                             promise.then((res) => {
                                 if (!res.canceled) {
                                     app.addRecentDocument(res.filePaths[0]);
-                                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+                                    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
                                 }
                             });
                         }
@@ -256,7 +282,14 @@ const buildMenu = (opts) => {
                     {
                         label: 'Open Examples',
                         click: async(ev) => {
-                            create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+                            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+                        }
+                    },
+                    { type: 'separator' },
+                    {
+                        label: 'Reopen as quick note',
+                        click: (ev) => {
+                            windows.focused.call('reopenasquick', true);
                         }
                     },
 
@@ -267,6 +300,7 @@ const buildMenu = (opts) => {
                             shell.openExternal(windows.focused.win.webContents.getURL());
                         }
                     },
+                    { type: 'separator' },
                     {
                         label: 'Locate AppData',
                         click: async(ev) => {
@@ -402,7 +436,7 @@ const buildMenu = (opts) => {
                         windows.focused.call('evaluateinit', true);
                     }
                 },
-
+                { type: 'separator' },
                 {
                     label: 'Clear Output Cells',
                     accelerator: shortcut('clear_outputs'),
@@ -427,7 +461,7 @@ const buildMenu = (opts) => {
                 {
                     label: 'Kernel',
                     submenu: [{
-                            label: 'New Local Kernel',
+                            label: 'New Evaluation Kernel',
                             click: async(ev) => {
                                 console.log(ev);
                                 windows.focused.call('newlocalkernel', true);
@@ -439,12 +473,19 @@ const buildMenu = (opts) => {
                                 console.log(ev);
                                 windows.focused.call('restartkernel', true);
                             }
+                        },
+                        {
+                            label: 'Shutdown all',
+                            click: async(ev) => {
+                                console.log(ev);
+                                windows.focused.call('killallkernels', true);
+                            }
                         }
                     ]
                 }
             ]
         },
-
+       
         {
             label: 'Misc',
             submenu: [{
@@ -465,7 +506,16 @@ const buildMenu = (opts) => {
                         //const { shell } = require('electron')
                         shell.openExternal('http://127.0.0.1:20540')
                     }
-                }
+                },
+                {
+                    role: 'help',
+                    label: 'Acknowledgments',
+                    click: async() => {
+                        //const { shell } = require('electron')
+                        windows.focused.call('acknowledgments', true);
+                        //create_window({url: server.url.default('local') + `/sponsors`, title: 'Acknowledgments'});
+                    }
+                }                
             ]
         }
     ];
@@ -496,7 +546,7 @@ callFakeMenu["openFolder"] = async () => {
     promise.then((res) => {
         if (!res.canceled) {
             app.addRecentDocument(res.filePaths[0]);
-            create_window({url: server.url.default('local') + `/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
+            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(res.filePaths[0]), title: res.filePaths[0]});
         }
     });
 }
@@ -532,6 +582,15 @@ callFakeMenu["new"] = async(ev) => {
     windows.focused.call('newnotebook', true);
 }
 
+callFakeMenu["newshort"] = async(ev) => {
+    windows.focused.call('newshortnote', true);
+}
+
+callFakeMenu["acknowledgments"] = async(ev) => {
+    windows.focused.call('acknowledgments', true);
+}
+
+
 callFakeMenu["browser"] = async(ev) => {
     server.browserMode = true;
     shell.openExternal(windows.focused.win.webContents.getURL());
@@ -553,6 +612,18 @@ callFakeMenu["evalInit"] = () => {
     windows.focused.call('evaluateinit', true);
 }
 
+callFakeMenu["restartkernels"] = () => {
+    windows.focused.call('restartkernel', true);
+}
+
+callFakeMenu["newlocalkernel"] = () => {
+    windows.focused.call('newlocalkernel', true);
+}
+
+callFakeMenu["shutdownall"] = () => {
+    windows.focused.call('killallkernels', true);
+}
+
 callFakeMenu["zoomIn"] = () => {
     windows.focused.call('zoomIn', true);
 }
@@ -562,7 +633,7 @@ callFakeMenu["zoomOut"] = () => {
 }
 
 callFakeMenu["locateExamples"] = async(ev) => {
-    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
 }
 
 callFakeMenu["locateAppData"] = async(ev) => {
@@ -577,6 +648,17 @@ callFakeMenu["reload"] = () => {
 callFakeMenu["docsx"] = () => {
     shell.openExternal('http://127.0.0.1:20540')
 }
+
+callFakeMenu["prompt"] = () => {
+    if (server.running)
+        create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
+}
+
+
+callFakeMenu["quickmode"] = () => {
+    windows.focused.call('reopenasquick', true);
+}
+
 callFakeMenu["exit"] = () => {
     app.quit();
 }
@@ -633,13 +715,18 @@ const setHID = (mainWindow) => {
     if (!isMac && !isWindows) currentOS = 'Unix';
 
 
+
     session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
-        details.requestHeaders['Electron'] = 'True';
+        details.requestHeaders['Electron'] = majorVersion;
         details.requestHeaders['AppOS'] = currentOS;
         callback({ requestHeaders: details.requestHeaders })
     });
 
 }
+
+var majorVersion = app.getVersion().split('.');
+majorVersion.pop();
+majorVersion = majorVersion.join('');
 
 const server = {
     startedQ: false,
@@ -748,6 +835,12 @@ const windows = {
                     vibrancy: "sidebar", // in my case...
                     frame: true,
                     autoHideMenuBar: true,
+                    titleBarStyle: 'hidden',
+                    titleBarOverlay: {
+                        color: 'rgba(255, 255, 255, 0.0)',
+                        symbolColor: 'rgba(128, 128, 128, 1.0)'
+                    },
+                    autoHideMenuBar: true,
                     width: 600,
                     height: 400,
                     resizable: false,
@@ -774,7 +867,12 @@ const windows = {
                   "Content-Security-Policy": [ "default-src 'self' 'unsafe-inline'"]
               }, details.responseHeaders)})});*/
 
-            win.loadFile(path.join(__dirname, 'log.html'));
+            if (isMac) {
+                win.loadFile(path.join(__dirname, 'log.html'));
+            } else {
+                win.loadFile(path.join(__dirname, 'log_padded.html'));
+            }
+            
 
             windows.log.win = win;
             this.aliveQ = true;
@@ -821,11 +919,12 @@ const windows = {
 
         call (type, args) {
             const self = this;
+            console.log(type);
             if (!self.win) {
 
                 //special cases - open window if not shown
-                if (type === 'newnotebook' || type === 'settings') {
-                    new notebookWindow({url: server.url.default(), focus: true}, (window) => {
+                if (type === 'newnotebook' || type === 'settings' || type === 'newshortnote') {
+                    create_window({url: server.url.default(), focus: true}, (window) => {
                         window.webContents.send('call', type);
                     });
                     return;
@@ -883,6 +982,10 @@ const read_wl_settings = () => {
         server.frontend[m[1].slice(1,-1)] = parse(m[2]);
     }
 
+    //if ('RunInTray' in server.frontend && ! server.frontend.RunInTray) {
+        //server.frontend.RunInTray = false;
+   // } 
+
     console.log(server.frontend);
 }
 
@@ -893,15 +996,51 @@ function create_window(opts, cbk = () => {}) {
             show: true,
             contextMenu: true,
             focus: false,
+            width: 1024,
+            height: 640,
+            override: {}
         };
 
 
 
         const options = Object.assign({}, defaults, opts);
         options.minWidth = 576;
+        if (!isMac) {
+            options.minWidth = 688;
+        }        
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
+        }
+
+        if (new RegExp(/acknowledgments/).exec(options.url)) {
+            options.height = 310;
+        }
+
+        if (new RegExp(/window/).exec(options.url)) {
+            options.minWidth = 100;
+            options.width = 500;
+            options.height = 500;
+        }        
+        
+
+        if ((new RegExp(/little/)).exec(options.url)) {
+            options.minWidth = 500*1024.0/800.0;;
+            options.width = 576*1024.0/800.0;
+            options.height = 520*640.0/600.0;
+        }
+
+
+
+        if (options.overlay) {
+            options.width = options.minWidth;
+            options.height = 2*112 * 640.0/600.0;
+            options.override.frame = false;
+            options.override.resizable = false;
+            options.override.transparent = true;
+            options.override.titleBarStyle = undefined;
+            options.override.titleBarOverlay = undefined;
+            options.override.vibrancy = undefined;
         }
 
         let win;
@@ -911,16 +1050,17 @@ function create_window(opts, cbk = () => {}) {
                 vibrancy: "sidebar", // in my case...
                 frame: true,
                 titleBarStyle: 'hiddenInset',
-                width: 800,
-                height: 600,
-                minWidth: options.minWidth,
+                width: Math.round(options.width*800.0/1024),
+                height: Math.round(options.height*600.0/640),
+                minWidth: Math.round(options.minWidth),
                 //backgroundMaterial: 'acrylic',
                 title: options.title,
                 //transparent:true,
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
-                }
+                },
+                ...options.override
 
             });
         } else if (isWindows) {
@@ -952,9 +1092,9 @@ function create_window(opts, cbk = () => {}) {
                   symbolColor: 'rgba(128, 128, 128, 1.0)'
                 },
 
-                width: 1024,
-                height: 640,
-                minWidth: options.minWidth,
+                width: Math.round(options.width),
+                height: Math.round(options.height),
+                minWidth: Math.round(options.minWidth),
                 backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
@@ -963,7 +1103,8 @@ function create_window(opts, cbk = () => {}) {
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
-                }
+                },
+                ...options.override
 
             });
 
@@ -991,7 +1132,8 @@ function create_window(opts, cbk = () => {}) {
                 checkTheme();
                 //win.setRoundedCorner();
             }*/
-            if (!IS_WINDOWS_11 || server.frontend.WindowsLegacy) {
+            if (!options.overlay) {
+                if (!IS_WINDOWS_11 || server.frontend.WindowsLegacy) {
                 const checkTheme = () => {
                     if (!nativeTheme.shouldUseDarkColors) {
                         win.setBackgroundColor("#fff");
@@ -1007,7 +1149,7 @@ function create_window(opts, cbk = () => {}) {
                 });
 
                 checkTheme();
-            } else {
+                } else {
                 //a bug with maximizing the window
                 //https://github.com/electron/electron/issues/38743
 
@@ -1031,6 +1173,7 @@ function create_window(opts, cbk = () => {}) {
 
 
 
+                }
             }
 
         } else {
@@ -1054,7 +1197,11 @@ function create_window(opts, cbk = () => {}) {
             });
         }
 
-
+        if (options.overlay) {
+            win.once('blur', () => {
+                win.close();
+            })
+        }
 
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
@@ -1248,7 +1395,7 @@ app.on('before-quit', (e) => {
     }
     
     //server.shutdown();
-    if (server.browserMode && process.platform !== 'darwin') {
+    if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
     
         e.preventDefault();
         console.log('aaahhh...');
@@ -1259,8 +1406,8 @@ app.on('before-quit', (e) => {
 })
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin' && !server.browserMode) {app.quit()} else {
-        if (server.browserMode) {
+    if (process.platform !== 'darwin' && !(server.browserMode || server.frontend.RunInTray)) {app.quit()} else {
+        if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
             console.log('aaahhh...');
             tray.fireBallon()
         }
@@ -1277,6 +1424,19 @@ app.on('open-file', (ev, path) => {
     }
 
     create_window({url: server.url.default('local') + `/` + encodeURIComponent(path), title: path, show: true, focus: true});
+})
+
+app.on('open-url', (event, url) => {
+    const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(url);
+    console.log(protocol);
+
+    if (!server.running) {
+        server.path.requested = path;
+        server.protocol = protocol[1];
+        return;
+    }
+
+    create_window({url: server.url.default('local') + `/protocol/` +protocol[1], title: 'WLJS Window', show: true, focus: true});
 })
 
 app.on('activate', () => {
@@ -1301,7 +1461,14 @@ else {
             windows.log.print('second instance was blocked');
             windows.log.print(argv[0]);
             windows.log.print(argv[1]);
-            windows.log.print(argv[2]);
+            windows.log.print(argv);
+
+            const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(argv[argv.length - 1]);
+            if (protocol) {
+                console.log(protocol[1]);
+                create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
+                return;
+            }
 
             let pos = 1;
             if (new RegExp('--').exec(argv[pos])) pos++;
@@ -1311,6 +1478,14 @@ else {
         }
     });
 }
+
+if (process.defaultApp) {
+    if (process.argv.length >= 2) {
+      app.setAsDefaultProtocolClient('wljs-url-message', process.execPath, [path.resolve(process.argv[1])])
+    }
+  } else {
+    app.setAsDefaultProtocolClient('wljs-url-message')
+  }
 
 //reset HTTP cache in the browser if an update flag was detected (created by WL)
 const checkCacheReset = (cbk) => {
@@ -1372,9 +1547,25 @@ app.whenReady().then(() => {
             {
               label: 'Quit', click: function () {
                 server.browserMode = false;
+                server.frontend.RunInTray = false;
                 app.quit();
               }
-            }
+            },
+
+
+            {
+                label: 'Prompt', click: function () {
+                    if (server.running)
+                        create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
+                }
+              },
+
+              {
+                label: 'Create window', click: function () {
+                    if (server.running)
+                        create_window({url: server.url.default(), title: 'WLJS Notebook', show: true, focus: true});
+                }
+              }
           ]));
 
         tray.fireBallon = () => {
@@ -1454,6 +1645,19 @@ app.whenReady().then(() => {
             windows.focused.win.setBounds({ width: 800 , animate: true}, true);
         }
     });
+
+    ipcMain.on('resize-window-by', (e, delta) => {
+        const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
+        if (senderWindow) {
+            const bonds = senderWindow.getBounds();
+            if (delta[0] === 0) {
+                senderWindow.setBounds({ height: bonds.height + delta[1], animate: true}, true);
+            } else {
+                senderWindow.setBounds({ width: bonds.width + delta[0], height: bonds.height + delta[1], animate: true}, true);
+            }
+            
+        }
+    })
 
     ipcMain.on('system-window-toggle', (e, p) => {
         const bonds = windows.focused.win.getBounds();
@@ -1543,6 +1747,11 @@ app.whenReady().then(() => {
         shell.showItemInFolder(installationFolder);
     });
 
+    globalShortcut.register(shortcut("overlay"), () => {
+        if (server.running)
+            create_window({url: server.url.default() + '/prompt', title: 'Overlay', overlay: true, show: true, focus: true});
+    });
+
     //purge cache if an update was detected (using a special file created by WL)
 
 
@@ -1623,6 +1832,9 @@ function start_server (window) {
     server.wolfram.process.stderr.on('data', server.wolfram.errors);
 }
 
+
+
+
 //applicable only to the first time!!!
 function create_first_window() {
     //we need to decide what to open!
@@ -1630,12 +1842,33 @@ function create_first_window() {
     //Windows/Unix open a file
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
         console.log('OPEN a FILE WIN/Linux');
+
+        const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(process.argv[process.argv.length - 1]);
+        if (protocol) {
+            console.log(protocol[1]);
+            create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
+            server.wasUpdated = false;
+            return;
+        }
+
+
         if (process.argv[1].length > 3) {
             app.addRecentDocument(process.argv[1]);
             create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
         } else  {
             create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false, cacheClear: server.wasUpdated});
         }
+
+        server.wasUpdated = false;
+        return;
+    }
+
+    //Mac
+    if (isMac && server.startedQ && !server.running && server.protocol) {
+        console.log('OPEN a URL on OSX');
+        //app.addRecentDocument(server.path.requested);
+        create_window({url: server.url.default() + '/protocol/' + server.protocol, title: 'WLJS Window', show: false, focus: true, cacheClear: server.wasUpdated});
+        server.protocol = undefined;
 
         server.wasUpdated = false;
         return;
@@ -2228,13 +2461,33 @@ function check_installed (cbk, window) {
                                 if (remote["version"]) {
                                     const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
                                     if (rersion > version) {
+
+                                        
+
                                         windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
+
+
+
                                         windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
                                         windows.log.info('Update is available');
 
                                         new promt('binary', 'A new version is available. Should we install it?', (answer) => {
                                             if (answer) {
-                                                install_frontend(cbk, window);
+                                                const appVersion = parseInt(app.getVersion().replaceAll(/\./gm, ''));
+                                                const remoteAppVersion = parseInt(remote["recommended-client-version"].replaceAll(/\./gm, ''));
+                                                if (appVersion < remoteAppVersion) {
+                                                    new promt('binary', 'A recommended Desktop App version is '+ remote["recommended-client-version"] + ', but you have installed ' + app.getVersion() + '. Some features might not work properly. Continue?', (answer) => {
+                                                        if (answer) {
+                                                            install_frontend(cbk, window);
+                                                        } else {
+                                                            cbk();
+                                                        }
+                                                    });
+                                                } else {
+                                                    install_frontend(cbk, window);
+                                                }                           
+
+                                                
                                             } else {
                                                 cbk();
                                             }

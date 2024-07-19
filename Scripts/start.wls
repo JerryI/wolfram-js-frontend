@@ -5,9 +5,12 @@ PacletDirectoryUnload /@ PacletDirectoryLoad[];
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
-Uncompress["1:eJx1T8tuwjAQDBT1wo0/6Ac0vveKKAoNCJoDZ5NugsXGtrwbBf6edawKLlzG+5rxzMfJ/TZvWZbRVKBomkms5wLfBmF1NcR0qN6lL/fbfMC0j4Q18
-PM80mkmcDR8TlexK0Ug7SKnAh5f9F0aRoGi8y5wVUp5Zvb0pVTQQ96KTn/qCULtLIPlvHad2kAIt0IN+Imu1uh1fdEtkOq0seoHggVUydForuJgbJsCLgSWTj7r7d/q6gMQGWfT
-Lt7KLPp4ZPq3+qz0Iv6Yddcj3gGoDVPG"];
+If[FileExistsQ["LPM.wl"], 
+  Get["LPM.wl"], 
+  With[{lpm = Import["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl", "String"]}, 
+    Export["LPM.wl", lpm, "String"]; Get["LPM.wl"]; 
+  ]
+];
 
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
@@ -163,6 +166,21 @@ If[$ScriptCommandLine =!= {},
 Echo["ENV"];
 Echo[ToString[$Env, InputForm] ];
 
+
+AppExtensions`QuickNotesDir = FileNameJoin[{Directory[], "__ntemp"}];
+With[{now = Now},
+  Function[file,
+    If[now - FileDate[file] > Quantity[14, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
+  ] /@ FileNames["*.wln", AppExtensions`QuickNotesDir]
+];
+
+With[{now = Now},
+  Function[file,
+    If[now - FileDate[file] > Quantity[30, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
+  ] /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}] ]
+];
+
+
 (* load stuff into frontend *)
 Echo["Loading packages: FRONTEND"];
 
@@ -173,8 +191,16 @@ Echo["Loading packages: FRONTEND"];
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
+AppExtensions`KernelList = {};
+
+
 (* Entrypoint of an app *)
+Sponsors       := ImportComponent["Frontend/Sponsors.wlx"];
+ServerError       := ImportComponent["Frontend/ServerError.wlx"];
+Protocol          := ImportComponent["Frontend/Protocol.wlx"];
+ExtendedApp               := ImportComponent["Frontend/ExtendedApp.wlx"];
 App         := ImportComponent["Frontend/App.wlx"];
+PromptWindow         := ImportComponent["Frontend/PromptWindow.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
 AutoTest    := ImportComponent["Frontend/Test.wlx"];
@@ -205,6 +231,7 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 
 
 ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
+ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
 http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
@@ -247,12 +274,38 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandle
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
-(* start an app *)
+appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"];
+
+$Env["AppJSON"] = appJSON;
+
+With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["recommended-client-version"], "."], 2], ""]},
+  middleware[app_][request_] := With[{},
+    If[KeyExistsQ[request["Headers"], "Electron"],
+      If[TrueQ[Interpreter["Number"][request["Headers", "Electron"] ] >= minimalClient ],
+        app[request]
+      ,
+        Echo["Error!"];
+        Echo["Client App is outdated! Needed: " <> ToString[minimalClient] ];
+        ServerError["We apologize for the inconvenience. Your app appears outdated and is not compatible with desktop mode. Please try running it from the console, or download a new version of the WLJS app from the <a target=\"_blank\" href=\"https://github.com/JerryI/wolfram-js-frontend/releases\">Releases page</a>. Although this issue occurs rarely, we regret any inconvenience it may have caused."]
+      ]
+    ,
+      app[request]
+    ]
+  ]
+]
+
+
+
+(* hook all routes handlers *)
 AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
+Sponsors["HTTPHandler"->http];
+Protocol["HTTPHandler"->http, "Middleware"->Identity, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
-App["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+ExtendedApp["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+App["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 Echo["Autotest start!"];
 
@@ -275,6 +328,9 @@ If[$Env["bypasstest"] === "True" || $Env["bypasstest"] === True,
     ];
   ];
 ];
+
+
+
 
 SetTimeout[
   StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;

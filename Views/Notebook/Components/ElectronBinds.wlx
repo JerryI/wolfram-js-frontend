@@ -18,9 +18,11 @@ Controls = $Options["Controls"];
             server.emitt('<Controls/>', `"${path}"`, 'SaveAs');
         });
 
-        window.electronAPI.listener('restartkernel', () => {
-            server.emitt('<Controls/>', 'True', 'RestartKernel');
+        window.electronAPI.listener('reopenasquick', (ev) => {
+            server.emitt('<Controls/>', `True`, 'ReopenAsQuickNote');
         });
+
+        
 
         window.electronAPI.listener('unhideallcells', () => {
             server.emitt('<Controls/>', 'True', 'UnhideAllCells');

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script>  -->
+    <title>Launcher</title>
+    <link rel="stylesheet" href="./../node_modules/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="./electron.css">
+    <link rel="stylesheet" href="./tailwind.css">
+  </head>
+  <body style="border-width: 1px; border-color: rgb(148 163 184);">
+    <div id="debug_background" style="position:absolute; z-index:-99; width:100%; height:100%; top:0; left:0; bottom:0; right:0"></div>
+    <div class="flex flex-col h-full" style="padding-top: 2rem; -webkit-app-region: drag;">
+      <div id="log" class="logs backdrop-blur-md mx-4 my-4 p-2 rounded outline shadow-inner outline-gray-400 outline-offset-2 outline-1"></div>
+      <div class="flex grow">
+          <div class="px-4 py-2 h-full w-full flex flex-col" id="modal_info">
+            
+            <div class="mt-2 w-full flex flex-row text-sm text-gray-500 dark:text-gray-300">
+              <div>Version <span id="modal_info_version"></span></div>
+              <a style="-webkit-app-region: no-drag;" class="ml-auto hover:underline text-blue-600 dark:text-blue-400 visited:text-purple-600" target="_blank" href="https://github.com/JerryI/wolfram-js-frontend/issues" >Github Issues</a>
+            </div>
+            
+            <div class="mt-2 w-full flex flex-row text-sm text-gray-500 dark:text-gray-300">
+              <button id="debug_button" style="-webkit-app-region: no-drag;" class="inline-flex bg-gray-100/50 dark:bg-gray-600/50 text-xs items-center px-4 outline-gray-400 outline-offset-2 ring-1 text-gray-800 ring-inset ring-gray-300 dark:ring-gray-400 hover:outline outline-1 placeholder:text-gray-400 rounded-md dark:text-gray-400">Debug</button>
+              <button id="log_file" style="-webkit-app-region: no-drag;" class="ml-auto hover:underline text-blue-600 dark:text-blue-400 visited:text-purple-600"  >Installation directory</button>
+              <button id="reinstall" style="-webkit-app-region: no-drag;" class="ml-auto hover:underline text-blue-600 dark:text-blue-400 visited:text-purple-600"  >Reinstall</button>
+            </div>
+    
+    
+    <div class="w-full mt-auto flex flex-row text-sm text-gray-500 dark:text-gray-300"><div id="modal_info_state">Setting everything up...</div><div class="relative flex ml-auto mt-1 h-3 w-3">
+  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 dark:bg-gray-300 opacity-75"></span>
+  <span class="relative inline-flex rounded-full h-3 w-3"></span>
+</div></div>
+            
+          </div>
+      <div class="px-4 py-2 hidden" id="modal_dialog">
+            <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-300">Action needed</h3>
+            <div class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-400">
+              <p id="modal_dialog_message">Wolfram ID</p>
+            </div>
+            <div class="mt-2 flex flex-row w-full">
+              <div class="grow mr-5">
+               
+                <input type="text" style="-webkit-app-region: no-drag;" id="modal_dialog_field" class="block w-full rounded-md border-0 px-2 bg-white/25 dark:bg-gray-500/25 py-1.5 text-gray-900 dark:text-gray-400 ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400" placeholder="">
+              </div>
+              <button id="modal_dialog_button" style="-webkit-app-region: no-drag;" class="inline-flex bg-gray-100/50 dark:bg-gray-600/50 items-center px-4 outline-gray-400 outline-offset-2 ring-1 text-gray-800 ring-inset ring-gray-300 dark:ring-gray-400 hover:outline outline-1 placeholder:text-gray-400 rounded-md dark:text-gray-400">Next</button>
+            </div>
+          </div></div>
+    </div>
+  </body>
+  <script src="./bundle/log.js"></script>
+   
+</html>

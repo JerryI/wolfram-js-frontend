@@ -3,14 +3,13 @@ env                       =  $Options["Env"];
 AppEvent                  =  $Options["AppEvent"];
 ExtensionTemplates        =  $Options["ExtensionTemplates"];
 ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
+middleware                = $Options["Middleware"];
+
 
 Head        := ImportComponent["Components/Head.wlx"];
 Breadcrumbs := ImportComponent["Components/Topbar/Breadcrumbs.wlx"];
 
-Mode := ImportComponent["Components/Mode.wlx"];
-SettingsButton  = ImportComponent["Components/Settings.wlx"];
-Kernels  = ImportComponent["Components/Kernel/Kernel.wlx"];
-Sidebar     = ImportComponent["Components/Sidebar/Sidebar.wlx"];
+Kernels   =  ImportComponent["Components/Kernel/Minimal.wlx"];
 
 Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
 
@@ -38,22 +37,44 @@ autolaunch                           = ImportComponent["Autolaunch.wl"];
 serverParams = <|"env" -> env|>;
 settings = <||>;
 
-sidebarState = "show";
 
 loadSettings[settings];
+loadSettingsOnceMore := With[{},
+  Print["Load settings one more time"];
+  loadSettingsOnceMore = Null;
+  loadSettings[settings];
+];
 
-renameFile[old_String, new_String] := With[{},
-  If[FileExtension[old] === "wln",
-    Echo["A notebook was renamed!"];
-    renameNotebook[old, new];
-  ];
-]
+checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
+  With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
+    With[{books = Select[files, Function[name, StringMatchQ[FileNameTake[name], version~~__]]]},
+      Echo[StringJoin["Checking release notes for ", version]];
+      Echo[books];
+      If[Length[books] > 0,
+        WebUILocation[StringJoin["/", URLEncode[books[[1]]]], client, "Target"->_];
+      ];
+
+      settings = Join[settings, <|"CurrentVersion" -> version|>];
+      storeSettings[settings];
+    ]
+  ]
+] ];
 
 NotebookQ[str_] := FileExtension[str] === "wln"
 
-createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
+reopenNotebookAsQuick[_, GlobalMessanger_, __] := EventFire[GlobalMessanger, "Info", "You are already in a quick view"]
+
+renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
+  If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
+  filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
+  RenameFile[oldPath, filename];
+  renameNotebook[notebook, filename];
+  WebUILocation[StringJoin["/folder/", URLEncode[notebook["Path"]]], client];
+]
+
+createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalController_, client_, currentpath_] := With[{path = assoc["BaseDirectory"]},
   Print[StringJoin["Creating notebook using path : ", path]];
-  Then[saveNotebook[path, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
+  Then[saveNotebook[path, "Props"->props, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], Function[result,
 
       Print[result];
       EventFire[AppEvent, Notebook["OnCreate"], result];
@@ -61,7 +82,8 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ URLEncode[ result["Path"] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+      
     
   ], Function[error,
     EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
@@ -69,7 +91,7 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
 ]
 
 backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
-  If[!TrueQ[notebook["ReadOnly"]], 
+  If[!TrueQ[notebook["ReadOnly?"]], 
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
         Print[result];
       ], Function[error, EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]]
@@ -77,43 +99,74 @@ backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   ]
 ]
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{},
-  If[TrueQ[notebook["ReadOnly"]],
+dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
+  If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
-    Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
-      Function[result,
-        Print[result]
-      ], 
-      Function[error,
-        EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+    If[TrueQ @ (notebook["HaveToSaveAs"]),
+      With[{
+          p = Promise[]
+      },
+          EventFire[ModalController, "RequestPathToSave", <|
+              "Promise"->p,
+              "Title"->"Notebook",
+              "Ext"->"wln",
+              "Client"->client
+          |>];
+          
+          Then[p, Function[result, 
+              Module[{filename = StringJoin[result, ".wln"]},
+                  If[filename === ".wln", filename = StringJoin[name, filename] ];
+                  If[DirectoryName[filename] === "", filename = FileNameJoin[{path, filename}] ];
+                  
+                  
+                  Then[saveNotebook[filename, notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
+                    Function[savedResult,
+                      notebook["HaveToSaveAs"] = False;
+                      EventFire[promise, Resolve, True];
+                      WebUILocation[ StringJoin["/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
+                    ], 
+                    Function[error,
+                      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+                    ]
+                  ];                  
+              ];
+          ], Function[result, Echo["!!!R!!"]; Echo[result] ] ];
+
+      ]
+    ,
+      Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
+        Function[result,
+          Print[result];
+          EventFire[promise, Resolve, True];
+        ], 
+        Function[error,
+          EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+        ]
       ]
     ]
-  ]
+  ];
+
+  promise
 ]
 
-dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"]},
-If[TrueQ[notebook["ReadOnly"]],
+dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] := With[{notebook = assoc["Notebook"], path = assoc["Path"], promise = Promise[]},
+If[TrueQ[notebook["ReadOnly?"]],
   EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
 ,
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
     Function[result,
-      WebUILocation[ URLEncode[ path ], client ];
+      EventFire[promise, Resolve, True];
+      WebUILocation[ StringJoin["/", URLEncode[ path ] ], client ];
     ], Function[error,
     EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
     ]
   ]
-]]
-
-toggleWindowSize[_, client_] := With[{},
-  WebUISubmit[Global`UIToggleWindowBonds[True](*`*), client];
+  
+];
+promise
 ]
 
-KernelList = {};
-With[{},
-  (*/* Trick WLX to use global scope */*)
-  AppExtensions`KernelList = Hold[KernelList]; (*`*)
-];
 
 ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
@@ -137,17 +190,26 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
-  Path = If[StringTrim[request["Path"]] == "/", defaultHomeFolder, URLDecode @ StringDrop[request["Path"],1] ]
+  Path = Switch[$OperatingSystem,
+    "Windows",  
+    URLDecode @ StringDrop[request["Path"],1],  
+    
+    "Linux",
+    URLDecode @ StringDrop[request["Path"],1 ],
+
+    _,
+    URLDecode @ StringDrop[request["Path"],1 ]]
 },
 
-  EventHandler[Secret, {
-    "SaveSidebarState" -> Function[state, sidebarState = state]
-  }];
+  Print["## Loading by path : "]; Print[Path];
+
   
   With[{
         
         SidebarId = CreateUUID[],
+        OnLoad    = CreateUUID[],
         ModalController = CreateUUID[],
+        kernels = Hold[AppExtensions`KernelList] (*`*),
         GlobalMessanger = CreateUUID[],
         GlobalParameters = Join[<|"Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]), "ElectronQ" -> ElectronQ[request], "AccentColor"->"teal", "BackupTimeout" -> (3 60 1000)|>, settings],
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
@@ -161,11 +223,15 @@ App[request_] := With[{
               With[{middleware = CreateUUID[]},
                 EventHandler[middleware, {
                   "NewNotebook" -> Function[Null,
-                    EventFire[GlobalControls, "NewNotebook", <|"BaseDirectory" -> If[DirectoryQ[Path], Path, DirectoryName[Path]]|>]
+                    EventFire[GlobalControls, "NewNotebook", True]
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[URLEncode[FileNameJoin[{Directory[], "Demos"}]], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/folder/", URLEncode[FileNameJoin[{Directory[], "Demos"}]]], $Client, "Target"->_];
+                  ],
+
+                  "Acknowledgments" -> Function[Null,
+                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
                   ],
 
                   "OpenDocs" -> Function[Null,
@@ -185,17 +251,22 @@ App[request_] := With[{
             ,
 
             "OSX",
-              <div style="height: 5rem" class="h-16 p-1 pl-24 pr-2 hidden osx:flex">
-                <div class="grow h-full mr-8" style="-webkit-app-region: drag"></div>
-              </div>
+              ""
             ,
 
             _,
-              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls]
+              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls,  "Class"->"ml-1", "Style"->""]
 
           ]
     },
 
+    (* /* collect any runtime changes  */ *)
+    loadSettingsOnceMore;
+
+    EventHandler[OnLoad, Function[Null,
+      checkReleaseNotes[$Client];
+      EventRemove[OnLoad];
+    ]];
 
     (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalMessanger], {
@@ -209,19 +280,18 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "RenameFile" -> (renameFile@@# &),
-      "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
-      "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
+      "RenameFile" -> ((renameFile @@ #) &),
+       ("NewNotebook" | "_NewNotebook" | "_NewQuickNotebook") -> (createNotebook[<|"Quick"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
-      "SidebarToggle" -> (toggleWindowSize[#, $Client]&)
+      "ReopenAsQuick" -> (reopenNotebookAsQuick[#, GlobalMessanger, ModalController, $Client]&)
     }];
   {
     "<!DOCTYPE html>"
   ,
 
-    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" sidebar="{sidebarState}"> 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" > 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
@@ -230,27 +300,18 @@ App[request_] := With[{
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
-        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:border owin:border-gray-300 owin:bg-blue-100/20"> 
+        <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
+          <Kernels AppEvents={AppEvent} Controls={GlobalControls} Messager={GlobalMessanger} KernelList={kernels} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
 
-          <div id="sidebar" style="user-select: none" class="hidden md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
-            <FakeMenu/>  
-            <Kernels AppEvents={AppEvent} Messager={GlobalMessanger} KernelList={Hold[KernelList]} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
-            <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
-            <div class="osx:border-b border-gray-300 dark:border-gray-600"></div>
-            <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
-              <SettingsButton/>
-            </div>
-          </div>
-          
-          <div class="md:pl-70 zen:pl-0 h-full" id="frame">
+          <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
-              <TopBar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
+              <TopBar Menu={FakeMenu} ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={Hold[KernelList]} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>
@@ -258,6 +319,7 @@ App[request_] := With[{
         <Script Secret={Secret}/>
         <ExtensionTemplates Template={"AppScripts"} />
         <ElectronBinds Controls={GlobalControls}/>
+        <WebUIOnLoad Event={OnLoad}/>
       </body>
     </html>
   } // StringRiffle
@@ -274,48 +336,13 @@ Script[Rule["Secret", Secret_]] := With[{},
             fake.click();
     }
 
-    core.UIToggleWindowBonds = async (args, env) => {
-      if (document.documentElement.getAttribute('sidebar') === 'hidden' || window.innerWidth < 800) {
-        document.documentElement.setAttribute('sidebar', 'show');
-        server.emitt('<Secret/>', 'show', 'SaveSidebarState');
-        if (window.electronAPI) {
-          if (window.electronAPI.enlargeWindowSizeIfneeded) {
-            window.electronAPI.enlargeWindowSizeIfneeded();
-          }
-        }
-      } else {
-        document.documentElement.setAttribute('sidebar', 'hidden');
-        server.emitt('<Secret/>', 'hidden', 'SaveSidebarState');
-      }
-      
-    }
-
-    if (window.electronAPI) {
-      const sidebar = document.getElementById('sidebar');
-      if (window.electronAPI.onblur) {
-        window.electronAPI.onblur(() => {
-          sidebar.classList.add('grayscale');
-        });
-      
-        window.electronAPI.onfocus(() => {
-          sidebar.classList.remove('grayscale');
-        });
-      }
-    }
   </script>
 ];
 
-http["MessageHandler", "Index"] = AssocMatchQ[<|"Method" -> "GET"|>] -> App;
+http["MessageHandler", "App"] = AssocMatchQ[<|"Method" -> "GET"|>] -> middleware[App];
 
 
 Print["App Loaded!"];
-
-If[settings["Autostart"] && !TrueQ[$Env["noautolaunch"]],
-  Print["Autolaunch!"];
-  autolaunch[LocalKernel["Name"->"Auto"], Hold[KernelList], initKernel[serverParams], deinitKernel];
-];
-
-Print["Done?"];
 
 
 

@@ -1,0 +1,17 @@
+Controls = $Options["Controls"];
+
+<script type="module">
+    if (window.electronAPI) {
+        window.electronAPI.listener('extension', (ev, pattern) => {
+            server.emitt('<Controls/>', 'True', pattern);
+        });
+        window.electronAPI.listener('context', (ev, pattern) => {
+            server.emitt('<Controls/>', 'True', pattern);
+        });        
+        
+        window.electronAPI.listener('acknowledgments', () => {
+            open('/acknowledgments', '_blank');
+        });
+        
+    }
+</script>

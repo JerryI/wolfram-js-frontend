@@ -24,6 +24,8 @@ parseInt[any_] := any
 defaultBackupTime = If[KeyExistsQ[settings, "BackupTimeout"], Round[settings["BackupTimeout"]/60/1000], 3]
 defaultTheme = If[KeyExistsQ[settings, "Theme"], settings["Theme"], "System"]
 
+defaultTray = If[KeyExistsQ[settings, "RunInTray"], settings["RunInTray"], False]
+
 DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
 EventHandler[Secret, {"Load" -> Function[Null,
@@ -37,6 +39,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
 
         "Transparency" -> Function[state,
             settings = Join[settings, <|"Transparency"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],
+
+        "RunInTray" -> Function[state,
+            settings = Join[settings, <|"RunInTray"->state|>];
             onSave[settings];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
         ],
@@ -181,6 +189,10 @@ EventHandler[Secret, {"Load" -> Function[Null,
 
             <StringRiffle>
                 <Checkbox Label={"Inner window transparency"} Event={controller} Topic={"Transparency"} Description={"Makes a notebook background transparent. It might not work on all OS"} Checked={settings["Transparency"]}/>
+            </StringRiffle>
+
+            <StringRiffle>
+                <Checkbox Label={"Run in a tray"} Event={controller} Topic={"RunInTray"} Description={"Keeps WLJS kernel alive, even if all windows are closed (Windows/Linux only)"} Checked={defaultTray}/>
             </StringRiffle>
 
 

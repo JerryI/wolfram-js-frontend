@@ -2,7 +2,19 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     
     Begin["`Internal`"];
 
-    cache = <||>;
+    scache = <||>;
+
+    cache[key_] := scache[ ToLowerCase[key] ];
+
+    cache /: Set[cache[key_], val_] := With[{l = ToLowerCase[key]},
+        scache[l] = val
+    ];
+    cache /: Unset[cache[key_] ] := With[{l = ToLowerCase[key]},
+        scache[l] = .
+    ];
+    cache /: KeyExistsQ[cache, key_] := With[{l = ToLowerCase[key]},
+        KeyExistsQ[scache, l]
+    ];
 
     rename[old_String, new_String] := With[{notebook = cache[old]},
         cache[new] = notebook;
@@ -10,6 +22,13 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         cache[old] = .;
         Echo["Loader >> renamed."];
     ];
+
+    rename[notebook_Notebook, new_String] := With[{path = notebook["Path"]},
+        cache[path] = .;
+        notebook["Path"] = new;
+        cache[new] = notebook;
+        Echo["Loader >> renamed."];
+    ];    
 
     clone[notebook_Notebook, newPath_String, opts: OptionsPattern[] ] := With[{oldPath = notebook["Path"]},
         cache[oldPath] = .;
@@ -25,6 +44,10 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
 
         cache[dir] = notebook;
         notebook["Path"] = dir;
+
+        If[OptionValue["Props"] =!= Null,
+            Map[(notebook[#] = OptionValue["Props"][#]) &, Keys[OptionValue["Props"] ] ];
+        ];
 
         EventFire[OptionValue["Events"], "Loader:NewNotebook", notebook];
 
@@ -142,7 +165,11 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     load[path_String, opts: OptionsPattern[] ] := Module[{},
-        If[!FileExistsQ[path], Echo["Loader >> file noex!!!"]; Return[$Failed["File does not exists"] ] ];
+        If[!FileExistsQ[path], 
+            Echo["Loader >> file noex!!!"]; 
+            Echo[path];
+            Return[$Failed["File does not exists"] ] 
+        ];
         If[KeyExistsQ[cache, path], 
             Echo["Loader >> cached >> restoring"];
             If[TrueQ[ cache[path]["Opened"] ],
@@ -199,7 +226,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     Options[load] = {"Events"->"Blackhole"}
-    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
+    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
     Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
 
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},

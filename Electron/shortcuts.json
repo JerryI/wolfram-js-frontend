@@ -1,5 +1,7 @@
 {
     "new_file"      : ["Cmd+N", "Ctrl+N"],
+    "new_quick_file": ["Cmd+Shift+N", "Ctrl+Shift+N"],
+    "overlay":        ["Shift+Alt+Space", "Shift+Alt+Space"],
     "open_file"     : ["Cmd+O", "Ctrl+O"],
     "save"          : ["Cmd+S", "Ctrl+S"],
     "find"          : ["Cmm+F", "Ctrl+F"],

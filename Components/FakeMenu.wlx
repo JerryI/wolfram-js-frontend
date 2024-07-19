@@ -1,19 +1,33 @@
 
 Component[OptionsPattern[]] := With[{
   Plugins = Join[<|"view"->{}, "misc"->{}, "edit"->{}, "file"->{}|>, OptionValue["Plugins"]],
-  Controls = OptionValue["Controls"]
+  Controls = OptionValue["Controls"],
+  Class = OptionValue["Class"],
+  Style = OptionValue["Style"]
 },
   With[{Layout = 
   {
     <div class="py-0 px-2" role="none">     
         <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          New Notebook
+          New notebook
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+N</kbd></span>
-        </button>    
+        </button>  
         <button data-name="openFile" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open File
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+O</kbd></span>
-        </button>
+        </button> 
+    </div>
+  ,
+    <div class="py-0 px-2" role="none">        
+        <button data-name="newshort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          New quick note
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+Shift+N</kbd></span>
+        </button> 
+        <button data-name="prompt" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Prompt
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+Shift+Space</kbd></span>
+        </button> 
+    
         <button data-name="openFolder" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           Open Folder
         </button>        
@@ -82,6 +96,23 @@ Component[OptionsPattern[]] := With[{
         </button>
       </div> 
     ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="newlocalkernel" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+       New Kernel
+        
+      </button>    
+      <button data-name="restartkernels" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Restart Kernel
+        
+      </button>
+      <button data-name="shutdownall" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Shutdown all 
+      </button>      
+    </div>
+    ,    
       Table[ With[{event = Vi["event"], Label = Vi["label"]},
       <div class="py-0 px-2" role="none">     
         <button data-ctl="true" data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -123,10 +154,22 @@ Component[OptionsPattern[]] := With[{
       ], {Vi, Join[Plugins["misc"], {}]}]
     ,    
       <div class="py-0 px-2" role="none">
-      <button data-name="docsx" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-  
-        Docs
-      </button>    
+        <button data-name="docsx" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Docs
+        </button> 
+      </div>
+    ,
+      <div class="py-0 px-2" role="none">
+        <button data-name="acknowledgments" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          Acknowledgments
+        </button> 
+      </div>
+      
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="quickmode" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        Open as quick note
+      </button>          
       <button data-name="browser" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   
         Open in browser
@@ -140,8 +183,8 @@ Component[OptionsPattern[]] := With[{
   } // Flatten
 },
 
-    <div class="h-titlebar p-1 pr-2 flex">
-        <div class="my-auto mr-auto pr-1" style="padding-top: 0.2em;">
+    <div class="h-titlebar flex {Class}" style="-webkit-app-region:none">
+        <div class="my-auto mr-auto pr-1" style="{Style}">
             <button id="fake-menu-close" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 owin:ml-0 linux:ml-0">
                 <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 -1 16 20" xmlns="http://www.w3.org/2000/svg">
                     <g fill="currentColor">
@@ -158,7 +201,7 @@ Component[OptionsPattern[]] := With[{
             </button>
         </div>
         <div class="grow h-full" style="-webkit-app-region: drag"></div>
-        <div id="dropdown-fake" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; height:80%" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div id="dropdown-fake" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; height:80vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <Layout/>
             <script type="module">
                 const holder = document.getElementById('dropdown-fake');
@@ -213,7 +256,7 @@ Component[OptionsPattern[]] := With[{
   ]]
 
 
-Options[Component] = {"Plugins"-><||>, "Controls"->""}
+Options[Component] = {"Plugins"-><||>, "Controls"->"", "Style" -> "", "Class" -> "p-1 pr-2"}
 
 Component
 

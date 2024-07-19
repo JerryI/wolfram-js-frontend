@@ -1,0 +1,123 @@
+Item := ImportComponent["Item.wlx"];
+
+appendHeld[Hold[list_], a_] := list = Append[list, a];
+removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
+SetAttributes[appendHeld, HoldFirst];
+SetAttributes[removeHeld, HoldFirst];
+
+
+addListeners[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
+  appendHeld[KernelList, kernel];
+
+  EventHandler[EventClone[kernel], {
+    "Exit" -> Function[Null, removeHeld[KernelList, kernel]; deinitKernel[kernel] ],
+    "Connected" -> Function[Null, initKernel[kernel]]
+  }];
+  
+];
+
+
+addMessageFwd[kernel_, client_, log_] := With[{cloned = EventClone[kernel]},
+    EventHandler[cloned, {any_ :> Function[data, 
+        Block[{$Client = client},
+           EventFire[log, any, data];
+        ]  
+    ]}];
+
+    With[{socket = EventClone[client]},
+        EventHandler[socket, {"Closed" -> Function[Null,
+            EventRemove[cloned];
+        ]}];
+    ];
+]
+
+Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitKernel = OptionValue["OnExit"], appEvents = OptionValue["AppEvents"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+  
+    EventHandler[LazyLoad, {
+       "Load" -> Function[Null,
+         With[{cli = EventClone[$Client], client = $Client,  cloned = EventClone[appEvents]},
+
+           EventHandler[cloned, {"AppendKernel" -> Function[kernel,
+             Echo["Kernels.wlx --> append Kernel"];
+             addMessageFwd[kernel, client, Messager];
+           ]}];
+
+           EventHandler[cli, {"Closed" -> Function[Null,
+             Echo["Kernel list holder >> destroyed!"];
+             EventRemove[cloned];
+             EventRemove[cli];
+             EventRemove[LazyLoad];
+             EventRemove[Controller];
+           ]}];
+
+           addMessageFwd[#, client, Messager] &/@ ReleaseHold[KernelList];
+         ]
+       ]
+     }];    
+  
+  EventHandler[ButtonId, {"New" -> Function[Type,
+    Echo[Type];
+    With[{client = $Client, m = Messager, kernel = Switch[Type,
+                                                    "Master", MasterKernel["Name"->RandomWord[]],
+                                                    _, LocalKernel["Name"->RandomWord[]]
+                                                  ]
+    },
+        Print["Working!"];
+        Print[initKernel];
+      
+        addListeners[kernel, KernelList, initKernel, deinitKernel];
+
+        EventFire[appEvents, "AppendKernel", kernel];
+        kernel // Kernel`Start;
+    ]    
+  ],
+    "Restart" -> Function[Null,
+      If[Length[ReleaseHold[KernelList] ] === 0,  
+        EventFire[m, "Warning", "No kernels found. Nothing to restart"];
+        Return[Null];
+      ];
+
+      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_Notebook, ___} :> n}},
+        If[MatchQ[onlineNotebook, _Notebook],
+          If[onlineNotebook["Evaluator"]["Kernel"]["State"] === "Initialized",
+            onlineNotebook["Evaluator"]["Kernel"] // Kernel`Restart;
+          ,
+            EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
+            First[ReleaseHold[KernelList]] // Kernel`Restart;
+          ]
+        ,
+          EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
+          First[ReleaseHold[KernelList]] // Kernel`Restart;
+        ]
+      ]
+    ],
+
+    "KillAll" -> Function[Null,
+      
+      Kernel`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
+      EventFire[m, "Info", "All kernels have been unlinked"];
+    ]
+  }];
+
+  {
+    <WebUIOnLoad Event={LazyLoad} Pattern={"Load"}/>
+  ,
+   <script type="module">
+    if (window.electronAPI) {
+      //window.electronAPI.openFinder(JSON.stringify(filename));
+      window.electronAPI.listener('newmasterkernel', () => server.emitt('<ButtonId/>', '"Master"', 'New'));
+      window.electronAPI.listener('newlocalkernel', () => server.emitt('<ButtonId/>', '"Local"', 'New'));
+      window.electronAPI.listener('restartkernel', () => {
+        server.emitt('<ButtonId/>', 'True', "Restart")
+      });
+      window.electronAPI.listener('killallkernels', () => {
+        server.emitt('<ButtonId/>', 'True', "KillAll")
+      });
+    }   
+   </script>
+  }
+];
+
+Options[Component] = {"Messager"->"", "OnExit"->Print, "KernelList"->{}, "OnConnected"->Print, "OnStart"->Print, "Controls" -> "aaaa"}
+
+Component

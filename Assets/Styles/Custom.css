@@ -118,6 +118,21 @@ input::selection {
 }
 
 @media (min-width: 768px) {
+  .md\:-ml-70 {
+    margin-left: -16rem !important;
+  }
+
+}
+
+[sidebar="hidden"] .zen\:ml-0 {
+  margin-left: 0px !important;
+}
+
+.-ml-70 {
+  margin-left: -16rem;
+}
+
+@media (min-width: 768px) {
  .md\:pl-70 {
     padding-left: 16rem;
  }
@@ -250,12 +265,28 @@ input::selection {
   height: env(titlebar-area-height) !important;
 }
 
+[os="Windows"] .win\:pt-fix {
+  padding-top: 0.2em
+}
+
+[os="WindowsLegacy"] .owin\:pt-fix {
+  padding-top: 0.2em
+}
+
+[os="Unix"] .linux\:pt-fix {
+  padding-top: 0.2em
+}
+
 [os="Windows"][sidebar="hidden"] .win-zen\:pl-2 {
   padding-left: 0.5rem;
 }
 
 [os="Unix"][sidebar="hidden"] .linux-zen\:pl-2 {
   padding-left: 0.5rem;
+}
+
+[os="OSX"][sidebar="hidden"] .osx-zen\:pl-20 {
+  padding-left: 5rem;
 }
 
 [os="WindowsLegacy"][sidebar="hidden"] .owin-zen\:pl-2 {

@@ -143,7 +143,7 @@ With[{
   ]];
 
   {
-    <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex">
+    <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex" style="-webkit-app-region:none">
       File browser
       <div class="ml-auto gap-x-1 flex group-hover:opacity-100 opacity-0">
         <button id="{Button1Id}" title="New notebook">
@@ -195,7 +195,7 @@ With[{
       core.UIOpenWindow = async (args, env) => {
         const url = await interpretate(args[0], env);
         const  link = document.createElement("a")
-        link.href = url;
+        link.href = '/folder/' + url;
         link.target = "_blank"
         link.click();
       }

@@ -49,7 +49,7 @@ restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions_
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True] (*`*), client];
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True, "FocusFirst" -> True] (*`*), client];
             ]
         ]   
     ,    
@@ -527,8 +527,10 @@ Component[OptionsPattern[]] := With[{
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-                    EventFire[controller, "DumpSave", notebook];
-                    EventFire[log, "Saved", ""];
+                    Then[EventFire[controller, "DumpSave", notebook], Function[Null, 
+                        EventFire[log, "Saved", ""];
+                    ]];
+                    
                 ]];
             ];            
         ],
@@ -536,10 +538,16 @@ Component[OptionsPattern[]] := With[{
         "SaveAs" -> Function[path,
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
                 Then[tt, Function[Null,
-                    Echo["ASSAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-                    EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>];
+                    Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    Then[EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>], Function[Null, 
+                        1+1
+                    ]];
                 ]];
             ];
+        ],
+
+        "ReopenAsQuickNote" -> Function[Null,
+            EventFire[controller, "ReopenAsQuick", <|"Notebook" -> notebook, "Client"-> client, "Path" -> notebook["Path"]|>];
         ],
 
         "Backup" -> Function[data,

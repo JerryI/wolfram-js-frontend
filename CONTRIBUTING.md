@@ -8,6 +8,7 @@ Here is some to-do list grouped by repos
 ## wolfram-js-frontend
 *server, IO, UI, cells manager, render process and client app*
 ### Primary
+- [ ] Electron app auto-updater. Use Github releases to update client app automatically (probably won't work for linux)
 - [ ] tutorials/examples for new users (no WL background) on Wolfram Language
 - [ ] autotests in a format of WLJS notebook, which go though most features
 - [ ] more example on differnet topics (for data-scientists, scientists, students, ...)
