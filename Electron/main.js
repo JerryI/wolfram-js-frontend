@@ -1018,8 +1018,8 @@ function create_window(opts, cbk = () => {}) {
         }
 
         if (new RegExp(/window/).exec(options.url)) {
-            options.window = 500;
             options.minWidth = 100;
+            options.width = 500;
             options.height = 500;
         }        
         
