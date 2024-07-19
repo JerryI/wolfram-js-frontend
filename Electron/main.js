@@ -1426,6 +1426,19 @@ app.on('open-file', (ev, path) => {
     create_window({url: server.url.default('local') + `/` + encodeURIComponent(path), title: path, show: true, focus: true});
 })
 
+app.on('open-url', (event, url) => {
+    const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(url);
+    console.log(protocol);
+
+    if (!server.running) {
+        server.path.requested = path;
+        server.protocol = protocol[1];
+        return;
+    }
+
+    create_window({url: server.url.default('local') + `/protocol/` +protocol[1], title: 'WLJS Window', show: true, focus: true});
+})
+
 app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -1448,7 +1461,14 @@ else {
             windows.log.print('second instance was blocked');
             windows.log.print(argv[0]);
             windows.log.print(argv[1]);
-            windows.log.print(argv[2]);
+            windows.log.print(argv);
+
+            const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(argv[argv.length - 1]);
+            if (protocol) {
+                console.log(protocol[1]);
+                create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
+                return;
+            }
 
             let pos = 1;
             if (new RegExp('--').exec(argv[pos])) pos++;
@@ -1458,6 +1478,14 @@ else {
         }
     });
 }
+
+if (process.defaultApp) {
+    if (process.argv.length >= 2) {
+      app.setAsDefaultProtocolClient('wljs-url-message', process.execPath, [path.resolve(process.argv[1])])
+    }
+  } else {
+    app.setAsDefaultProtocolClient('wljs-url-message')
+  }
 
 //reset HTTP cache in the browser if an update flag was detected (created by WL)
 const checkCacheReset = (cbk) => {
@@ -1804,6 +1832,9 @@ function start_server (window) {
     server.wolfram.process.stderr.on('data', server.wolfram.errors);
 }
 
+
+
+
 //applicable only to the first time!!!
 function create_first_window() {
     //we need to decide what to open!
@@ -1811,12 +1842,33 @@ function create_first_window() {
     //Windows/Unix open a file
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
         console.log('OPEN a FILE WIN/Linux');
+
+        const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(process.argv[process.argv.length - 1]);
+        if (protocol) {
+            console.log(protocol[1]);
+            create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
+            server.wasUpdated = false;
+            return;
+        }
+
+
         if (process.argv[1].length > 3) {
             app.addRecentDocument(process.argv[1]);
             create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
         } else  {
             create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false, cacheClear: server.wasUpdated});
         }
+
+        server.wasUpdated = false;
+        return;
+    }
+
+    //Mac
+    if (isMac && server.startedQ && !server.running && server.protocol) {
+        console.log('OPEN a URL on OSX');
+        //app.addRecentDocument(server.path.requested);
+        create_window({url: server.url.default() + '/protocol/' + server.protocol, title: 'WLJS Window', show: false, focus: true, cacheClear: server.wasUpdated});
+        server.protocol = undefined;
 
         server.wasUpdated = false;
         return;

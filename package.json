@@ -46,7 +46,16 @@
         "NSMicrophoneUsageDescription": "Please give us access to your microphone"
       },
       "entitlements": "./Electron/build/entitlements.mac.plist",
-      "entitlementsInherit": "./Electron/build/entitlements.mac.plist"
+      "entitlementsInherit": "./Electron/build/entitlements.mac.plist",
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ],
+            "role" : "Editor"
+        }
+      ]
     },
     "linux": {
       "target": [
@@ -62,7 +71,15 @@
           "icon": "./Electron/build/file/512x512.png"
         }
       ],
-      "icon": "./Electron/build/512x512.png"
+      "icon": "./Electron/build/512x512.png",
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ]
+        }
+      ]
     },
     "win": {
       "target": "NSIS",
@@ -73,6 +90,14 @@
           "name": "WLJS Notebook",
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.ico"
+        }
+      ],
+      "protocols": [
+        {
+            "name": "WLJS URL communication",
+            "schemes": [
+                "wljs-url-message"
+            ]
         }
       ]
     },
