@@ -1427,7 +1427,7 @@ app.on('open-file', (ev, path) => {
 })
 
 app.on('open-url', (event, url) => {
-    const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(url);
+    const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(url);
     console.log(protocol);
 
     if (!server.running) {
@@ -1463,7 +1463,7 @@ else {
             windows.log.print(argv[1]);
             windows.log.print(argv);
 
-            const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(argv[argv.length - 1]);
+            const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(argv[argv.length - 1]);
             if (protocol) {
                 console.log(protocol[1]);
                 create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
@@ -1843,7 +1843,7 @@ function create_first_window() {
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
         console.log('OPEN a FILE WIN/Linux');
 
-        const protocol = new RegExp('wljs-url-message:\/\/(.*)\/').exec(process.argv[process.argv.length - 1]);
+        const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(process.argv[process.argv.length - 1]);
         if (protocol) {
             console.log(protocol[1]);
             create_window({url: server.url.default('local') + `/protocol/` + protocol[1], title:'WLJS Notebook', focus: true, show: false});
