@@ -179,7 +179,7 @@ App[request_] := Module[{localExtensions}, With[{
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         
-        Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"],
+        Transparency = "true",
 
         n := temporalNotebook,
 
