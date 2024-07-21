@@ -3,6 +3,7 @@ TextField     = ImportComponent["Components/TextField.wlx"];
 PickAFile     = ImportComponent["Components/PickAFile.wlx"];
 Initcells     = ImportComponent["Components/Initcells.wlx"];
 Generic       = ImportComponent["Components/Generic.wlx"];
+Custom        = ImportComponent["Components/Custom.wlx"];
 Selector       = ImportComponent["Components/Select.wlx"];
 RequestPathToSave.wlx = ImportComponent["Components/RequestPathToSave.wlx"];
 
@@ -13,6 +14,7 @@ Component[OptionsPattern[]] := With[{port = OptionValue["ModalsPort"]},
         <PickAFile Events={port}/>
         <Initcells Events={port}/>
         <Generic Events={port}/>
+        <Custom Events={port}/>
         <Selector Events={port}/>
         <RequestPathToSave.wlx Events={port}/>
     </div>
