@@ -51,7 +51,13 @@ loadSettingsOnceMore := With[{},
 
 checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
   With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
-    With[{books = Select[files, Function[name, StringMatchQ[FileNameTake[name], version~~__]]]},
+    With[{
+      books = If[StringQ[settings["CurrentVersion"]], 
+        Select[files, Function[name, StringMatchQ[FileNameTake[name], version~~__]]]
+      ,
+        {Last[SortBy[files, FileDate]]}
+      ]
+    },
       Echo[StringJoin["Checking release notes for ", version]];
       Echo[books];
       If[Length[books] > 0,
