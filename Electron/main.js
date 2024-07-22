@@ -1041,6 +1041,7 @@ function create_window(opts, cbk = () => {}) {
             options.override.titleBarStyle = undefined;
             options.override.titleBarOverlay = undefined;
             options.override.vibrancy = undefined;
+            options.override.backgroundMaterial = false; 
         }
 
         let win;
