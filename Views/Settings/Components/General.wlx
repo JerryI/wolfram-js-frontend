@@ -25,7 +25,7 @@ defaultBackupTime = If[KeyExistsQ[settings, "BackupTimeout"], Round[settings["Ba
 defaultTheme = If[KeyExistsQ[settings, "Theme"], settings["Theme"], "System"]
 
 defaultTray = If[KeyExistsQ[settings, "RunInTray"], settings["RunInTray"], False]
-defaultMaterial = If[KeyExistsQ[settings, "WindowsBackgroundMaterial"], settings["WindowsBackgroundMaterial"], "auto"]
+defaultMaterial = If[KeyExistsQ[settings, "WindowsBackgroundMaterial"], settings["WindowsBackgroundMaterial"], "tabbed"]
 
 DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 

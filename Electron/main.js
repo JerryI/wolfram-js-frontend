@@ -1082,7 +1082,7 @@ function create_window(opts, cbk = () => {}) {
             });*/
 
             //let mica = 'mica';
-            let mica = server.frontend.WindowsBackgroundMaterial || 'mica';
+            let mica = server.frontend.WindowsBackgroundMaterial || 'tabbed';
             if (server.frontend.WindowsLegacy) mica = false;
 
             win = new BrowserWindow({
@@ -1187,7 +1187,6 @@ function create_window(opts, cbk = () => {}) {
                 width: Math.round(options.width),
                 height: Math.round(options.height),
                 minWidth: Math.round(options.minWidth),
-                backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
