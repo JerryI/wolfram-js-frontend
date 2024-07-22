@@ -1081,7 +1081,8 @@ function create_window(opts, cbk = () => {}) {
                 }
             });*/
 
-            let mica = 'mica';
+            //let mica = 'mica';
+            let mica = server.frontend.WindowsBackgroundMaterial || 'mica';
             if (server.frontend.WindowsLegacy) mica = false;
 
             win = new BrowserWindow({
@@ -1183,9 +1184,10 @@ function create_window(opts, cbk = () => {}) {
                 autoHideMenuBar: true,
                 titleBarStyle: 'hidden',
                 titleBarOverlay: true,
-                width: 800,
-                height: 600,
-                minWidth: options.minWidth,
+                width: Math.round(options.width),
+                height: Math.round(options.height),
+                minWidth: Math.round(options.minWidth),
+                backgroundMaterial: mica,
                 title: options.title,
                 //transparent:true,
                 maximizable: true,
@@ -1193,7 +1195,8 @@ function create_window(opts, cbk = () => {}) {
                 show: options.show,
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
-                }
+                },
+                ...options.override
 
             });
         }
