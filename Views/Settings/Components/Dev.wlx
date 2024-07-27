@@ -14,7 +14,7 @@ installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
 
 defaultUpdatesChannel = {
-    If[KeyExistsQ[settings, "UpdatesChannelBranch"], settings["UpdatesChannelBranch"], "updates"],
+    If[KeyExistsQ[settings, "UpdatesChannelBranch"], settings["UpdatesChannelBranch"], "main"],
     If[KeyExistsQ[settings, "UpdatesChannelRepo"], settings["UpdatesChannelRepo"], "JerryI/wolfram-js-frontend"]
 };
 

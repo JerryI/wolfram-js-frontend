@@ -64,7 +64,8 @@ checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["Current
         WebUILocation[StringJoin["/", URLEncode[books[[1]]]], client, "Target"->_];
       ];
 
-      settings = Join[settings, <|"CurrentVersion" -> version|>];
+      (*/* FIXME REMOVE FORCED Branch change! */*)
+      settings = Join[settings, <|"CurrentVersion" -> version, "UpdatesChannelBranch" -> "main"|>];
       storeSettings[settings];
     ]
   ]

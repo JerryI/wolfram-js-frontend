@@ -1,6 +1,7 @@
 http                      =  $Options["HTTPHandler"];
 env                       =  $Options["Env"];
 AppEvent                  =  $Options["AppEvent"];
+AppProtocol                =  $Options["AppProtocol"];
 ExtensionTemplates        =  $Options["ExtensionTemplates"];
 ExtensionSidebarIcons        =  $Options["ExtensionSidebarIcons"];
 middleware                = $Options["Middleware"];
@@ -191,7 +192,7 @@ App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
   Path = defaultHomeFolder,
-  Protocol = URLDecode @ StringDrop[request["Path"], 
+  Protocol = If[StringTake[#, 1] === "/", StringDrop[#, 1], #] &@ URLDecode @ StringDrop[request["Path"], 
     Switch[$OperatingSystem,
       "Windows", 
       StringLength["/protocol/"], 
@@ -267,7 +268,11 @@ App[request_] := With[{
 
     EventHandler[OnLoad, Function[Null,
       checkReleaseNotes[$Client];
-      EventFire[AppEvent, "Protocol", <|"URL" -> Protocol, "Client" -> $Client, "Controls" -> GlobalControls, "Messanger" -> GlobalMessanger, "Modals"->ModalController, "KernelList"->kernels|>];
+      With[{msg = ImportString[Protocol, "RawJSON"]},
+        Echo[msg];
+        EventFire[AppProtocol, msg["type"], Join[<|"URL" -> Protocol, "Client" -> $Client, "Controls" -> GlobalControls, "Messanger" -> GlobalMessanger, "Modals"->ModalController, "KernelList"->kernels|>, msg]];
+      ];
+      
 
       EventRemove[OnLoad];
     ]];

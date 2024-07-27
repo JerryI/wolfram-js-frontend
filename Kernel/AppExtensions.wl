@@ -3,6 +3,8 @@ BeginPackage["JerryI`Notebook`AppExtensions`"]
 AppExtensions::usage = ""
 ExtensionEvent::usage = ""
 
+AppExtensions`AppProtocol;
+
 AppExtensions`HTTPHandler::usage = ""
 AppExtensions`KernelList::usage = ""
 
@@ -30,7 +32,7 @@ Options[AppExtensions`Templates] = {"Template" -> ""}
 
 (* global event object *)
 AppExtensions`AppEvents      = "AppEvents"; 
-
+AppExtensions`AppProtocol = "AppProtocol$::";
 
 AppExtensions`TemplateInjection /: Set[AppExtensions`TemplateInjection[template_String], function_] := With[{},
     If[KeyExistsQ[Templates, template],
