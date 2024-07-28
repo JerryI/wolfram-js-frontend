@@ -192,7 +192,7 @@ App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
   Path = defaultHomeFolder,
-  Protocol = If[StringTake[#, 1] === "/", StringDrop[#, 1], #] &@ URLDecode @ StringDrop[request["Path"], 
+  Protocol = If[StringTake[#, -1] === "/", StringDrop[#, -1], # ] &@ (If[StringTake[#, 1] === "/", StringDrop[#, 1], #] &@ URLDecode @ StringDrop[request["Path"], 
     Switch[$OperatingSystem,
       "Windows", 
       StringLength["/protocol/"], 
@@ -201,7 +201,7 @@ App[request_] := With[{
       _,  
       StringLength["protocol/"] 
     ]
-  ] 
+  ]) 
  },
 
   Print["## Loading by protocol : "]; Print[Protocol];
