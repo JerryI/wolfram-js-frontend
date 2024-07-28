@@ -100,7 +100,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-sound" -> "master",
   Github -> "https://github.com/JerryI/wljs-video" -> "master",
   Github -> "https://github.com/JerryI/wljs-templates" -> "master",
-  Github -> "https://github.com/JerryI/wljs-xterm" -> "master"
+  Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
+  Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -300,7 +301,7 @@ With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["reco
 AutoTest["HTTPHandler"->http];
 Downloader["HTTPHandler"->http];
 Sponsors["HTTPHandler"->http];
-Protocol["HTTPHandler"->http, "Middleware"->Identity, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+Protocol["HTTPHandler"->http, "AppProtocol" -> AppExtensions`AppProtocol, "Middleware"->Identity, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates]
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];

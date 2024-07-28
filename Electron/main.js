@@ -1653,10 +1653,60 @@ app.whenReady().then(() => {
         const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
         if (senderWindow) {
             const bonds = senderWindow.getBounds();
+            const pos = senderWindow.getPosition();
+            const dims = senderWindow.getSize();
+
+            const primaryDisplay = screen.getPrimaryDisplay();
+            const { width, height } = primaryDisplay.workAreaSize;
+
             if (delta[0] === 0) {
-                senderWindow.setBounds({ height: bonds.height + delta[1], animate: true}, true);
+                if (bonds.height + delta[1] > height*0.5) {
+                    console.log('Large resize. Adjusting...');
+                    let mid = height/2.0 - ((bonds.height + delta[1])/2.0);
+                    if (mid < 0)
+                        mid = 100;
+
+                    let wheight = bonds.height + delta[1];
+                    if (wheight + mid > height) {
+                        console.log('OVERLOFW!');
+                        wheight = height - mid - 100;
+                    }
+
+                    senderWindow.setBounds({ y: mid, height: wheight, animate: true}, true);
+                } else {
+                    console.log('Not too big');
+                    let mid = bonds.y;
+                    let wheight = bonds.height + delta[1];
+                    if (wheight + mid > height) wheight = height - mid - 100;
+
+                    senderWindow.setBounds({ height: wheight, animate: true}, true);
+                }
+                //senderWindow.center();
             } else {
-                senderWindow.setBounds({ width: bonds.width + delta[0], height: bonds.height + delta[1], animate: true}, true);
+                let wwidth = bonds.width + delta[0];
+                if (bonds.height + delta[1] > height*0.5) {
+                    console.log('Large resize. Adjusting...');
+                    let mid = height/2.0 - ((bonds.height + delta[1])/2.0);
+                    if (mid < 0)
+                        mid = 100;
+
+                    let wheight = bonds.height + delta[1];
+                    if (wheight + mid > height) {
+                        console.log('OVERLOFW!');
+                        wheight = height - mid - 100;
+                    }
+
+                    senderWindow.setBounds({ y: mid, width: wwidth, height: wheight, animate: true}, true);
+                } else {
+                    console.log('Not too big');
+                    let mid = bonds.y;
+                    let wheight = bonds.height + delta[1];
+                    if (wheight + mid > height) wheight = height - mid - 100;
+
+                    senderWindow.setBounds({ width: wwidth, height: wheight, animate: true}, true);
+                }              
+                
+                //senderWindow.center();
             }
             
         }
@@ -2437,7 +2487,9 @@ function check_installed (cbk, window) {
             }, 5000);
 
             const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
-            const branch = server.frontend.UpdatesChannelBranch ||  'updates';
+            let branch = server.frontend.UpdatesChannelBranch ||  'main';
+
+            if (branch == "updates") branch = 'main';
 
             console.log([repo, branch]);
             //app.exit(-1);
@@ -2560,13 +2612,14 @@ function install_frontend(cbk, window) {
 
         windows.log.clear();
         windows.log.print('Downloading .zip archive to ' + installationFolder + '...', '\x1b[32m');
-        windows.log.info('Dowloading the latest release from ' + (server.frontend.UpdatesChannelBranch ||  'updates'));
+        windows.log.info('Dowloading the latest release from ' + (server.frontend.UpdatesChannelBranch ||  'main'));
 
         //path to zip
         const pathToFile = path.join(installationFolder, 'pkg.zip');
 
         const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
-        const branch = server.frontend.UpdatesChannelBranch ||  'updates';
+        let branch = server.frontend.UpdatesChannelBranch ||  'main';
+        if (branch == "updates") branch = 'main';
 
         downloadFile('https://api.github.com/repos/'+repo+'/zipball/'+branch, pathToFile, (file) => {
             windows.log.print('Unzipping...', '\x1b[32m');
