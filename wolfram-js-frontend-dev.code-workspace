@@ -80,6 +80,12 @@
 		},
 		{
 			"path": "wljs_packages/wljs-templates"
+		},
+		{
+			"path": "wljs_packages/wljs-excalidraw"
+		},
+		{
+			"path": "wljs_packages/wljs-sharedlib-react"
 		}
 	],
 	"settings": {
