@@ -11,7 +11,7 @@ COPY proxy-snippet.conf /etc/nginx/snippets/proxy.conf
 
 RUN mkdir -p /wljs
 WORKDIR /wljs
-RUN git clone https://github.com/JerryI/wolfram-js-frontend .
+COPY ../../wolfram-js-frontent ./
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
