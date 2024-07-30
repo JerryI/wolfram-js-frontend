@@ -62,6 +62,13 @@ There is __no need to lift your fingers from the keyboard__ 🎹
 
 ![Mathinput-ezgif com-optipng](imgs/ezgif.com-math-2.gif)
 
+### Shortcuts
+- `Alt+2`, `Cmd+2` hide/show input cell
+- `Ctrl+/` make fraction on selected
+- `Ctrl+6` make superscript on selected
+- `Ctrl+2` make square root on selected
+- `Ctrl+-` make subscript on selected
+
 Or use toolboxes for complex structures such as integrals, sum, Greek letters
 
 #### Inline Dynamic Tool for Tuning 2D/3D Positions

@@ -331,7 +331,7 @@ Script[Rule["Secret", Secret_]] := With[{},
       const link = await interpretate(args[1], env);
       const fake = document.createElement('a');
             fake.target = "_blank";
-            fake.href = 'http://' + window.location.hostname + ':'+String(port) + '/' + link;
+            fake.href = window.location.protocol + "//" + window.location.hostname + ':'+String(port) + '/' + link;
             fake.click();
     }
 
