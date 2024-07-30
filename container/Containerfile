@@ -4,7 +4,7 @@ USER root
 
 RUN useradd -m wljs
 
-RUN apt-get update && apt-get install -y git nginx
+RUN apt-get update && apt-get install -y git nginx expect
 
 COPY container/wljs-routes /etc/nginx/sites-available/default
 COPY container/proxy-snippet.conf /etc/nginx/snippets/proxy.conf
