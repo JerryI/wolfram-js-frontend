@@ -8,10 +8,11 @@ PGID=${PGID:-1000}
 groupmod -o -g "$PGID" wljs
 usermod -o -u "$PUID" wljs
 
+mkdir -p $LICENSE_DIR
+
 chown -R wljs:wljs /wljs
 chown -R wljs:wljs /home/wljs
 
-mkdir -p $LICENSE_DIR
 
 function activate_wolframscript {
   
@@ -43,9 +44,6 @@ function activate_wolframscript {
     fi
 
   fi
-
-  # Wait for license file to be created
-  sleep 5;
 
   if [ -f $LICENSE_DIR/mathpass ]; then
     # Activation success. Saving mathpass file
