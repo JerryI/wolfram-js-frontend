@@ -8,14 +8,30 @@ I have only so far tested on podman and it is far from perfect. Navigating the d
 
 To use the image please notice these requirements:
 
-- The mathpass needs to be available at `/Licensing/mathpass` inside the container. Sufficient on first start of the container. Either a bind mount or volume can be used.
+- A volume or bind mount should be used at `/Licensing` inside the container to save licensing information
 - The root directory of WLJS is `/workspace` inside the container. It is possible to mount external storage there to persist the workspace.
 - The container further allows specifying the `PUID` and `PGID` environment variables to set the user id and group id of the user accessing the `/workspace` directory. Both default to 1000.
 - The WLJS server is started on the following ports: http 4000 (Main http port); ws 4001 (Websocket port); ws2 4002 (Alternate websocket port); docs 4003 (Documentation). 
 
 Example start of the container:
 
-``` podman run -v WolframLicensing:/Licensing -v ~/Documents/wljs:/workspace -e PUID=2000 -e PGID=2000 -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs <name of the image> ```
+```
+podman run -it -v WolframLicense:/Licensing -v ~/Documents/wljs:/workspace -e PUID=2000 -e PGID=2000 -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/yloose/wolfram-js-frontend:latest
+```
+
+## Activation
+
+On first use the WolframEngine must be activated. To do there are two options:
+
+1. Run the container in interactive mode. You will then be prompted to enter your Wolfram ID email address and password.
+After entering you can safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd>.
+
+2. It is also possible to pass login information via environment variables. Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and
+`WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use.
+Example:
+```
+podman run -d -e WOLFRAMID_USERNAME="mail@example.com" -e WOLFRAMID_PASSWORD="secure_password" -v WolframLicense:/Licensing ...
+```
 
 ## NGINX Proxy
 
