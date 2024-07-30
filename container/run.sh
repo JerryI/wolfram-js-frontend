@@ -37,19 +37,19 @@ function activate_wolframscript {
     exit \$value
     EOF"
 
-    if [ $? -neq 0 ]; then
+    if [ $? -ne 0 ]; then
       echo "Activation with provided credentials failed.";
       exit -1;
     fi
 
   fi
 
-  if [ ! -f $LICENSE_DIR/mathpass ]; then
-   echo "License file missing after activation."
-   exit -1;
-  else
+  if [ -f $LICENSE_DIR/mathpass ]; then
     # Activation success. Saving mathpass file
     cp $LICENSE_DIR/mathpass /Licensing/mathpass
+  else
+    echo "License file missing after activation."
+    exit -1;
   fi
 
 }
