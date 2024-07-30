@@ -19,7 +19,7 @@ function activate_wolframscript {
     # Manual activation
     su - wljs -c "wolframscript -activate"
     
-    if [ $? -neq 0 ]; then
+    if [ $? -ne 0 ]; then
       echo "Activation failed, exiting.";
       exit -1;
     fi
@@ -43,6 +43,9 @@ function activate_wolframscript {
     fi
 
   fi
+
+  # Wait for license file to be created
+  sleep 5;
 
   if [ -f $LICENSE_DIR/mathpass ]; then
     # Activation success. Saving mathpass file
