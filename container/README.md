@@ -21,16 +21,16 @@ podman run -it -v WolframLicense:/Licensing -v ~/Documents/wljs:/workspace -e PU
 
 ## Activation
 
-On first use the WolframEngine must be activated. To do there are two options:
+On first use the WolframEngine must be activated. To do so there are two options:
 
 1. Run the container in interactive mode. You will then be prompted to enter your Wolfram ID email address and password.
-After entering you can safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd>.
+After entering, you can safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd>.
 
 2. It is also possible to pass login information via environment variables. Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and
 `WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use.
 Example:
 ```
-podman run -d -e WOLFRAMID_USERNAME="mail@example.com" -e WOLFRAMID_PASSWORD="secure_password" -v WolframLicense:/Licensing ...
+podman run -d -e WOLFRAMID_USERNAME="mail@example.com" -e WOLFRAMID_PASSWORD="secure_password" -v WolframLicense:/Licensing [...]
 ```
 
 ## NGINX Proxy
