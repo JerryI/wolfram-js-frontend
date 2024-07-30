@@ -15,8 +15,7 @@ if [ ! -f $LICENSE_DIR/mathpass ]; then
   if [ -f /Licensing/mathpass ]; then
     cp /Licensing/mathpass $LICENSE_DIR/mathpass
   else
-    echo "No license file available!"
-    exit -1
+    echo "No license file to install."
   fi
 fi
 chown -R wljs:wljs /home/wljs/.WolframEngine
