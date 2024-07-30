@@ -4,6 +4,7 @@ USER root
 
 RUN useradd -m wljs
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y git nginx expect
 
 COPY container/wljs-routes /etc/nginx/sites-available/default
