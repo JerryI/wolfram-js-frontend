@@ -382,7 +382,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 }
 
                 server.kernel.connected = true;
-                const socket = new WebSocket('ws://'+window.location.hostname+':'+port);
+                const socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
 
                 socket.onopen = function(e) {
                   console.warn("[open] Evaluation Kernel");

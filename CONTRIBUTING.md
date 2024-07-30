@@ -21,14 +21,14 @@ Here is some to-do list grouped by repos
 - [ ] `PlotLegends` are not rendered inside a `Graphics` object (acts like a wrapper). Exported figures do not show legends.
 
 ### Secondary
-- [ ] misssing implementations for `FilledCurve`, ...
+- [x] misssing implementations for `FilledCurve`, ...
 - [ ] `GraphicsComplex` with many `Polygon` is too slow. Especially it can be seen on `ContourPlot`, since it produces tons of SVG paths. 
 - [ ] need to override Mathematica's `Export` on graphics objects. Probably use some tricks with rendering on frontend and communicating the result over websockets to a kernel
 
 ## wljs-graphics3d-threejs
 ### Primary
-- [ ] `AxesLabel`, and all ticks are not implemented! We need someone, who can draw text nodes ontop of 3D plot. `PlotRange` is completely absent. See [Issue](https://github.com/JerryI/wolfram-js-frontend/issues/216)
-- [ ] `Text` is not implemented in the context of `Graphics3D`
+- [ ] `AxesLabel`, `Ticks`, does not have any effect.  `PlotRange` is absent. 
+- [x] `Text` is not implemented in the context of `Graphics3D`
 
 ### Secondary
 - [ ] `RTX` feature shows incorrect faces of polygons (black triangles) on OSX (probably also depends on a browser)
