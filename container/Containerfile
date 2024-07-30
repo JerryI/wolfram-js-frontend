@@ -10,8 +10,7 @@ COPY wljs-routes /etc/nginx/sites-available/default
 COPY proxy-snippet.conf /etc/nginx/snippets/proxy.conf
 
 RUN mkdir -p /wljs
-WORKDIR /wljs
-COPY ../../wolfram-js-frontend ./
+COPY ./* /wljs/
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
