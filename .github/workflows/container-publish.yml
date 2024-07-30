@@ -1,11 +1,10 @@
 name: Container image
 
 on:
-  push:
-    # Build container on manual dispatch or on a new release
-    workflow_dispatch:
-    release:
-      types: [published]
+  # Build container on manual dispatch or on a new release
+  workflow_dispatch:
+  release:
+    types: [published]
 
 env:
   # Github container registry
