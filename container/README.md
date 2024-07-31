@@ -28,8 +28,6 @@ The container is capable of following features:
 - To first activate the container you can either start it in interactive mode like shown in the [Getting Started](#Getting-Started) section or use environment variables.
 Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and `WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use.
 
-Example start of the container:
-
 ## NGINX Proxy
 
 The container also includes a nginx proxy running by default. This aggreggates the http and websockets ports into one port at 3000. It also makes it possible to further reverse proxy the application and add TLS encryption as normally the ports and protocols (ws/wss) are hardcoded into the app. To achieve this, nginx rewrites certain parts of the html and javascript during transit.
