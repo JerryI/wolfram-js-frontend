@@ -94,7 +94,7 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
       WebUILocation[ StringJoin["/folder/", URLEncode[ result["Path"] ] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
     
   ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check if the working directory is writable"];
   ]]
 ]
 
@@ -116,7 +116,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       
     
   ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check if the working directory is writable"];
   ]]
 ]
 

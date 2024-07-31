@@ -61,7 +61,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
                 "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
                 "serializer" -> "jsfn4" 
             |>, makeHashPath[dir] ]},
-                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
+                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r]; Return[$Failed] ];
             ];
 
             EventFire[promise, Resolve, notebook];
@@ -74,7 +74,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
                     "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
                     "serializer" -> "jsfn4" 
                 |>, dir] },
-                    If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; Return[$Failed] ];
+                    If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r]; Return[$Failed] ];
                 ];
                 EventFire[promise, Resolve, notebook];
             );

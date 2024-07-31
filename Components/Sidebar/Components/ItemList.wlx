@@ -23,10 +23,15 @@ With[{
     ]
   , {i, FileNames["*", Path]}],
 
-  Extra =   If[Level == 0,
-    <li class="list-none"><Pl  File={ParentDirectory[Path]}/></li>
-  ,
-    ""
+  Extra =   
+   With[{
+    parent = ParentDirectory[Path]
+   },
+    If[Level == 0 && StringQ[parent],
+      <li class="list-none"><Pl  File={parent}/></li>
+    ,
+      ""
+    ]
   ]
 },
   <ul class="p-0 {Class}">
