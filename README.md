@@ -139,6 +139,7 @@ brew install --cask wljs-notebook
 ```
 
 ## Docker Container
+*created by @yloose *
 
 See [here](container/README.md)
 
