@@ -27,7 +27,7 @@ With[{
    With[{
     parent = ParentDirectory[Path]
    },
-    If[Level == 0 && StringQ[parent],
+    If[Level == 0 && StringQ[parent] && $Env["parent_folder"] != parent,
       <li class="list-none"><Pl  File={parent}/></li>
     ,
       ""
