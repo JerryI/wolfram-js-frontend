@@ -13,9 +13,8 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
 
 4. Open a web browser at
-```
-http://127.0.0.1:4000/
-```
+
+        http://127.0.0.1:4000/
 
 ## Features
 
