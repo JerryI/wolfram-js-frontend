@@ -164,6 +164,10 @@ If[$ScriptCommandLine =!= {},
   ];
 ];
 
+If[KeyExistsQ[$Env, "folder"],
+  $Env["parent_folder"] = ParentDirectory[ $Env["folder"] ];
+];
+
 Echo["ENV"];
 Echo[ToString[$Env, InputForm] ];
 
