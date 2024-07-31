@@ -1,0 +1,19 @@
+FROM docker.io/wolframresearch/wolframengine
+
+USER root
+
+RUN useradd -m wljs
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y git nginx expect
+
+COPY container/wljs-routes /etc/nginx/sites-available/default
+COPY container/proxy-snippet.conf /etc/nginx/snippets/proxy.conf
+
+RUN mkdir -p /wljs
+COPY ./ /wljs/
+
+COPY container/run.sh /run.sh
+RUN chmod +x /run.sh
+
+CMD /run.sh
