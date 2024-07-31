@@ -37,7 +37,6 @@ autolaunch                           = ImportComponent["Autolaunch.wl"];
 serverParams = <|"env" -> env|>;
 settings = <||>;
 
-
 loadSettings[settings];
 loadSettingsOnceMore := With[{},
   Print["Load settings one more time"];
@@ -93,7 +92,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       
     
   ], Function[error,
-    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check logs"];
+    EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check if the working directory is writable"];
   ]]
 ]
 
