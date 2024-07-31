@@ -61,10 +61,12 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
                 "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
                 "serializer" -> "jsfn4" 
             |>, makeHashPath[dir] ]},
-                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r]; Return[$Failed] ];
+                If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r],
+                    EventFire[promise, Resolve, notebook];
+                ];
             ];
 
-            EventFire[promise, Resolve, notebook];
+            
         ,
             With[{h = checkbackups[notebook]}, If[h =!= False, DeleteFile[h] ] ];
 
@@ -74,9 +76,11 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
                     "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
                     "serializer" -> "jsfn4" 
                 |>, dir] },
-                    If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r]; Return[$Failed] ];
+                    If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r],
+                        EventFire[promise, Resolve, notebook];
+                    ];
                 ];
-                EventFire[promise, Resolve, notebook];
+                
             );
 
             (*If[ MemberQ[FileNameSplit[dir], "Examples"] && !MissingQ[client],
