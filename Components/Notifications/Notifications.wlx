@@ -120,12 +120,12 @@ Component[OptionsPattern[]] := Module[{buffer = {}, lastClient = Null}, With[{
     ,
         <script type="module">
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            oscillator.type = "triangle";
-            oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
-            const gainNode = audioCtx.createGain();
 
             core.Beep = () => {
+                const oscillator = audioCtx.createOscillator();
+                oscillator.type = "triangle";
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+                const gainNode = audioCtx.createGain();
                 oscillator.connect(gainNode);
                 gainNode.connect(audioCtx.destination);
                 oscillator.start(audioCtx.currentTime);
