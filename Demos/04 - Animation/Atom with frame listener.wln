@@ -1,0 +1,98 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$98], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend-dev/Demos/04 - Animation/Atom with frame listener.wln", 
+   "Quick" -> True, "Symbols" -> 
+    <|"light1" -> {0.7821723252011563, 4.938441702975688, 0}, 
+     "light2" -> {0.7821723252011563, -2.469220851487844, 4.276815969885432}, 
+     "light3" -> {3.2197086554931986, -2.948201623405119, 
+       -2.4375363302920423}|>|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n# Atom model animation\n*created by Kirill Belov*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8e5bafab-f2eb-4bb9-8f79-b4c5b3c17815", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> "># Atom model animation\n*created by Kirill Belov*", 
+    "Display" -> "markdown", "Hash" -> 
+     "e7679442-9e15-40a1-871e-4f6fb9e7f1a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ".md\nPrecalculate paths of electrons", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1ca43184-9b1b-4104-bea4-656d19c1bd86", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ">Precalculate paths of electrons", "Display" -> "markdown", 
+    "Hash" -> "bab1b977-6683-466b-b110-728af30d8793", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> "path1 = Table[{5 * Sin[t], 5 * Cos[t], 0}, {t, 0.0, 8*Pi, \
+Pi/360.0}]; \nlight1 = path1[[1]]; \n\npath2 = RotationTransform[2Pi/3, {1, \
+0, 0}] /@ path1; \nlight2 = path2[[1]]; \n\npath3 = RotationTransform[4Pi/3, \
+{1, 0, 1}] /@ path1; \nlight3 = path3[[1]];", "Display" -> "codemirror", 
+    "Hash" -> "d5258ba3-0228-42c9-a610-5c29e5573272", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ".md\nSubscribe to a frame event", "Display" -> "codemirror", 
+    "Hash" -> "52669e6c-07e6-4111-81c3-fae4dfedb974", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ">Subscribe to a frame event", "Display" -> "markdown", 
+    "Hash" -> "2ef737e4-dcd9-4e11-b126-9b1713e22095", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> "t := Mod[Round[AbsoluteTime[] * 100] + 1, \
+Length[path1]]\n\nEventHandler[\"frame\", Function[Null,\n  light1 = \
+path1[[t]]; \n  light2 = path2[[t]]; \n  light3 = path3[[t]]; \n]];\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0ebf8474-b364-4458-b661-fdb7b948b01b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ".md\nConstruct 3D graphics", "Display" -> "codemirror", 
+    "Hash" -> "7a816888-7620-4fcc-a375-4ba968ab8999", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ">Construct 3D graphics", "Display" -> "markdown", 
+    "Hash" -> "f8ebe02d-c47a-4f9b-97f0-ea280e6c0f57", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> "Graphics3D[{  \n  {  \n    \
+MeshMaterial[MeshPhysicalMaterial[]],   \n    Roughness[0.1],   \n    \
+Sphere[]  \n  },   \n  {  \n    PointLight[Cyan, Offload @ light1],   \n    \
+PointLight[Magenta, Offload @ light2],   \n    PointLight[Orange, Offload @ \
+light3]  \n  },   \n  {  \n    Emissive[Cyan, 5], Sphere[Offload @ light1, \
+0.1],   \n    Emissive[Magenta, 5], Sphere[Offload @ light2, 0.1],   \n    \
+Emissive[Orange, 5], Sphere[Offload @ light3, 0.1],\n    \
+AnimationFrameListener[Offload @ light3, \"Event\" -> \"frame\"]\n  },   \n  \
+{  \n    LightBlue, Line[path1],   \n    LightRed, Line[path2],   \n    \
+LightGreen, Line[path3]  \n  }  \n},     \n  PlotRange -> {{-10, 10}, {-10, \
+10}, {-10, 10}},   \n  Lighting -> None  \n] ", "Display" -> "codemirror", 
+    "Hash" -> "4ea052a6-a70a-47c5-b7d5-177a4984e34d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ".md\nCancel animation", "Display" -> "codemirror", 
+    "Hash" -> "7ab032f2-d282-487c-9c98-a499f2188968", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> ">Cancel animation", "Display" -> "markdown", 
+    "Hash" -> "23ec6eb4-f609-4709-8af0-5a58bdab17cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>, 
+   <|"Data" -> "EventRemove[\"frame\"]", "Display" -> "codemirror", 
+    "Hash" -> "aae18bf4-9cb1-42b9-88e9-6dcc332a6e7e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "492d93d1-09e4-4ddd-a4a9-1f524746aa7e"|>}, "serializer" -> "jsfn4"|>
