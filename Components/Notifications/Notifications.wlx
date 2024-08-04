@@ -11,6 +11,7 @@ ImportComponent["Components/Types.wl"];
 
 MessageList  = ImportComponent["Components/MessagesList.wlx"]; 
 {SpinnerTemplate, SpinnerScript}  = ImportComponent["Components/Spinner.wlx"]; 
+CustomTemplate                    = ImportComponent["Components/Custom.wlx"]; 
 {GenericTemplate, GenericScript}  = ImportComponent["Components/Generic.wlx"]; 
 
 
@@ -61,6 +62,15 @@ Component[OptionsPattern[]] := Module[{buffer = {}, lastClient = Null}, With[{
                 EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Spinner"|>, SpinnerTemplate[n, client, Controller]] ]
             ]
         ],   
+
+        n_Notifications`Custom (*`*)  :> Function[Null,
+
+            With[{client = $Client},
+                EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Custom"|>, CustomTemplate[n, client, Controller]] ]
+            ]
+        ], 
+
+        
         
         _Notifications`Rumble (*`*) -> Function[Null,
             With[{client = $Client},
@@ -109,8 +119,9 @@ Component[OptionsPattern[]] := Module[{buffer = {}, lastClient = Null}, With[{
         <SpinnerScript Controller={Controller}/>
     ,
         <script type="module">
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
             core.Beep = () => {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
                 oscillator.type = "triangle";
                 oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
@@ -130,7 +141,7 @@ Component[OptionsPattern[]] := Module[{buffer = {}, lastClient = Null}, With[{
 
             core.HapticFeedback = () => {
                 if (!window.electronAPI) {console.warn('This is electron only feature'); return}
-                if (!window.electronAPI.harptic) {console.warn('Haptic feedback not supported'); return}
+                if (!window.electronAPI.harptic) {console.warn('Haptic feedback not supported in your App'); return}
                 window.electronAPI.harptic();
             }
         </script>

@@ -286,6 +286,7 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
+      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_]&), 
       "RenameFile" -> ((renameFile @@ #) &),
        ("NewNotebook" | "_NewNotebook" | "_NewQuickNotebook") -> (createNotebook[<|"Quick"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
