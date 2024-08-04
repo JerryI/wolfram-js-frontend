@@ -1671,15 +1671,18 @@ app.whenReady().then(() => {
                         console.log('OVERLOFW!');
                         wheight = height - mid - 100;
                     }
-
-                    senderWindow.setBounds({ y: mid, height: wheight, animate: true}, true);
+                    console.log({ y: mid, height: wheight, animate: true});
+                    senderWindow.setBounds({  height: wheight, animate: true}, true);
+                    if (wheight > height / 1.45) senderWindow.center();
                 } else {
                     console.log('Not too big');
                     let mid = bonds.y;
                     let wheight = bonds.height + delta[1];
                     if (wheight + mid > height) wheight = height - mid - 100;
 
+                    console.log({ height: wheight, animate: true});
                     senderWindow.setBounds({ height: wheight, animate: true}, true);
+                    if (wheight > height / 1.45) senderWindow.center();
                 }
                 //senderWindow.center();
             } else {
@@ -1696,7 +1699,8 @@ app.whenReady().then(() => {
                         wheight = height - mid - 100;
                     }
 
-                    senderWindow.setBounds({ y: mid, width: wwidth, height: wheight, animate: true}, true);
+                    senderWindow.setBounds({  width: wwidth, height: wheight, animate: true}, true);
+                    if (wheight > height / 1.45) senderWindow.center();
                 } else {
                     console.log('Not too big');
                     let mid = bonds.y;
@@ -1704,6 +1708,7 @@ app.whenReady().then(() => {
                     if (wheight + mid > height) wheight = height - mid - 100;
 
                     senderWindow.setBounds({ width: wwidth, height: wheight, animate: true}, true);
+                    if (wheight > height / 1.45) senderWindow.center();
                 }              
                 
                 //senderWindow.center();

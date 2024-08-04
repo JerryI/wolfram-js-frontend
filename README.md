@@ -138,6 +138,11 @@ Again, if you have [Homebrew](https://brew.sh/) installed, you can install this 
 brew install --cask wljs-notebook
 ```
 
+## Docker Container
+*contributed by [@yloose](https://github.com/yloose)*
+
+See [here](container/README.md)
+
 ## Standalone Server
 Clone this repository and run:
 

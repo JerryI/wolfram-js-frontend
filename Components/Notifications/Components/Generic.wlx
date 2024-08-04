@@ -199,10 +199,7 @@ Script[OptionsPattern[]] := With[{Controller = OptionValue["Controller"], BackCo
                 setTimeout(() => {
                     element.classList.remove('translate-y-2', 'opacity-0', 'sm:translate-y-0', 'sm:translate-x-2');
                     element.classList.add('translate-y-0', 'opacity-100', 'sm:translate-x-0');                    
-                }, 30);
-
-                
-                
+                }, 30);      
 
                 if (!("Timeout" in assoc)) {
                   acc_count += 1;
