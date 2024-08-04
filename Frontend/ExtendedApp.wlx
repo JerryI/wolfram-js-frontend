@@ -288,6 +288,7 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
+      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_]&), 
       "RenameFile" -> ((renameFile @@ #)&),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
       "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),
