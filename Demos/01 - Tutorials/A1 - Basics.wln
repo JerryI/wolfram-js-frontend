@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$875], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1915], 
    "Objects" -> <|"0abffd63-2484-4b4f-b2e2-f0e9e52c0377" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], AbsoluteThickness[1.6], RGBColor[Rational[1, 2], 
@@ -903,328 +903,329 @@
             -0.8090169943749578, -0.7071067811865241, -0.5877852522924514, 
             -0.45399049973952843, -0.30901699437493374, -0.1564344650402228, 
             1.964386723728472*^-15}, 8000]]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Tutorials\
-/A1 - Basics.wln"|>, "Cells" -> 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/01 - \
+Tutorials/A1 - Basics.wln", "ReadOnly" -> True, "Symbols" -> <||>|>, 
+ "Cells" -> 
   {<|"Data" -> 
      ".md\n# Notebook interface\nAn overview of an multipurpose editor", 
     "Display" -> "codemirror", "Hash" -> 
-     "275d8753-3f12-446a-8e50-7c5bd3d90f7d", "Invisible" -> False, 
+     "9ecb7d62-30ec-451e-8dca-a461bcf83c53", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "# Notebook interface\nAn overview of an multipurpose editor", 
     "Display" -> "markdown", "Hash" -> 
-     "6184c0d0-70da-4590-9eac-99beb9604138", "Invisible" -> False, 
+     "e11a92b0-1c2b-42a6-9798-7260aaf68030", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> ".md\n---", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "b27a2914-2eea-4af9-b01c-182fcad4bd45", "Invisible" -> False, 
+     "d9f8493c-ff08-4286-9cd2-89d978e948c1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "d372ddbb-c4a3-49ca-9ebb-8424bc5f9508", "Invisible" -> False, 
+    "Hash" -> "c742d2ee-4548-433c-9a10-f1cbf37621a7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
-   <|"Data" -> ".md\n\n![](Interface-1.png)\n", "Display" -> "codemirror", 
-    "Hash" -> "eccc4e5f-0866-42ad-bad6-a557fee51c3f", "Invisible" -> False, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
+   <|"Data" -> ".md\n\n![](/Interface-1.png)\n", "Display" -> "codemirror", 
+    "Hash" -> "27933654-9b34-44dc-b294-dac40eddcd61", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
-   <|"Data" -> "\n\n![](Interface-1.png)\n", "Display" -> "markdown", 
-    "Hash" -> "103ebdc9-9461-44e2-9da4-df6ecbd305a3", "Invisible" -> False, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
+   <|"Data" -> ">\n![](/Interface-1.png)", "Display" -> "markdown", 
+    "Hash" -> "86fe19ea-112a-4b71-85bd-402a2473cbe8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nBy the default any text in a new cell is considered to \
 be Wolfram Language", "Display" -> "codemirror", 
-    "Hash" -> "ff4d4ff0-1da3-47c2-8dde-325dd418cca0", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Hash" -> "33bcc382-91dc-497a-9083-13589697280a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "By the default any text in a new cell is considered to be \
 Wolfram Language", "Display" -> "markdown", 
-    "Hash" -> "48451bf6-40e9-446e-878e-a320a278fb28", "Invisible" -> False, 
+    "Hash" -> "e2e75648-7783-4da1-b0e7-751552124e29", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "1+1", "Display" -> "codemirror", 
-    "Hash" -> "bf517744-1e12-4b59-a1ec-120d89a5b98e", "Invisible" -> False, 
+    "Hash" -> "f510e9ef-4392-4d0b-a00f-774ce9daefee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "2", "Display" -> "codemirror", 
-    "Hash" -> "8459d77b-f162-4d4c-8a77-71107b6bbfb6", "Invisible" -> False, 
+    "Hash" -> "f3a79f40-8aa1-4f37-bd72-aaf5b3027dcc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> 
      ".md\n__To evaluate an expression__ press play icon or `Shift+Enter`", 
     "Display" -> "codemirror", "Hash" -> 
-     "37517770-96cd-498e-b71a-a99b140a4baf", "Invisible" -> False, 
+     "f68f718e-5d44-4c13-b900-852eca1eda3b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> 
      "__To evaluate an expression__ press play icon or `Shift+Enter`", 
     "Display" -> "markdown", "Hash" -> 
-     "42f8b130-6f6f-4553-b385-5446f22eb683", "Invisible" -> False, 
+     "ffb90276-b984-4e73-99ec-aa90bb47630e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n*One can also hide any input cell by clicking on a ^ \
 mark on the left side*", "Display" -> "codemirror", 
-    "Hash" -> "2b209d25-e512-4bc7-a2f7-b50ef3e2c7f2", "Invisible" -> False, 
+    "Hash" -> "fe190192-110f-4a1b-9eb8-8a44cf8344c4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "*One can also hide any input cell by clicking on a ^ mark on \
 the left side*", "Display" -> "markdown", 
-    "Hash" -> "36377b4d-a003-4120-a1b3-982fca959e40", "Invisible" -> False, 
+    "Hash" -> "3277aa03-e052-4116-bc57-ad3b23c55023", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n### Text cells\nFor typing regular text, embedding \
 pictures, making description we use Markdown language.\n\nTo make markdown \
 cell type __in the first line of a new cell__ `.md`, if it was an anonymous \
 file", "Display" -> "codemirror", "Hash" -> 
-     "04f69cb7-e88d-448b-9b0a-c528b9fc50ba", "Invisible" -> False, 
+     "2be04ed3-c067-40e5-a1c5-182954bff97e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "### Text cells\nFor typing regular text, embedding pictures, \
 making description we use Markdown language.\n\nTo make markdown cell type \
 __in the first line of a new cell__ `.md`, if it was an anonymous file", 
     "Display" -> "markdown", "Hash" -> 
-     "76465e81-f56b-4510-bf1e-55d2328665df", "Invisible" -> False, 
+     "d35b7913-3d22-4cbc-85dc-69218fb653a6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n\n# Heading 1\n## Heading 2\n\nHere is a regular \
 paragraph, which can __be styled__ in a *different way*. Then press \
 `Shift+Enter` to make an output cell.\n\nYou can also hide an input cell \
 automatically by a shortcut `Win/Cmd + 2`\n\n$\\\\LaTeX$ is also \
 supported\n\nAs well as regular HTML <span \
 style=\"color:red\">language</span>", "Display" -> "codemirror", 
-    "Hash" -> "089b5a0e-a2b7-4adb-9477-7bcdf5761e8d", "Invisible" -> False, 
+    "Hash" -> "a91d3e8b-37f7-4dd5-a924-28941168de22", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "\n# Heading 1\n## Heading 2\n\nHere is a regular paragraph, \
 which can __be styled__ in a *different way*. Then press `Shift+Enter` to \
 make an output cell.\n\nYou can also hide an input cell automatically by a \
 shortcut `Win/Cmd + 2`\n\n$\\\\LaTeX$ is also supported\n\nAs well as regular \
 HTML <span style=\"color:red\">language</span>", "Display" -> "markdown", 
-    "Hash" -> "e4421c32-a453-4d7a-8f57-1dba17d2ed8d", "Invisible" -> False, 
+    "Hash" -> "c7fb1f7a-de52-43d4-8eeb-a4d92b1bbb60", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "cbbf944a-46cd-4b17-8ae7-8cec7d130d22", "Invisible" -> False, 
+    "Hash" -> "890ee767-e78e-4212-ac9e-efbf54341018", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nTo embed a picture \
 type\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_was\
 _here_%28re-drawn%29.gif)", "Display" -> "codemirror", 
-    "Hash" -> "6249ad8c-5010-4ed9-a6b4-6ef7e2c466aa", "Invisible" -> False, 
+    "Hash" -> "38aa0da5-4fe3-4575-9867-a57f17426fb7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "To embed a picture \
 type\n\n![alt](https://upload.wikimedia.org/wikipedia/commons/a/a0/Kilroy_was\
 _here_%28re-drawn%29.gif)", "Display" -> "markdown", 
-    "Hash" -> "5c7167c8-3c4b-437c-9fa2-139e40d644f4", "Invisible" -> False, 
+    "Hash" -> "e375b9d4-b043-45ed-9b4a-43428acab6e0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "3d29ba6e-b577-420c-961d-70382b58856a", "Invisible" -> False, 
+    "Hash" -> "c5ac2412-cf4a-4369-988b-d81b690ffebe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> 
      ".md\nThere are many more cell types are available. For example", 
     "Display" -> "codemirror", "Hash" -> 
-     "3bbc9328-d440-47d6-b39c-e734b6948949", "Invisible" -> False, 
+     "740e05df-4cfe-4218-9e29-ed7e28ccab25", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "There are many more cell types are available. For example", 
     "Display" -> "markdown", "Hash" -> 
-     "24a3a90b-d7f4-4a51-9ae4-c9010846255f", "Invisible" -> False, 
+     "1785e72a-6788-4153-88fb-df2515f4200b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n### Javascript", "Display" -> "codemirror", 
-    "Hash" -> "0b32b134-8ca4-4ace-aecd-d1a214fc9235", "Invisible" -> False, 
+    "Hash" -> "11e0adc5-9d30-4558-a8c5-effa6014525d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> "### Javascript", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> "### Javascript", 
     "Display" -> "markdown", "Hash" -> 
-     "b9faf8aa-62e1-48ee-81cb-68e80c7cd440", "Invisible" -> False, 
+     "54a25b34-417b-46ed-9089-0adedb90d579", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".js\n\nreturn 1+1;", "Display" -> "codemirror", 
-    "Hash" -> "392eb09f-9aa5-4747-9bde-ac9c336dac67", "Invisible" -> False, 
+    "Hash" -> "74132b66-95ae-4885-bc40-90d6a4dba5d4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> "\nreturn 1+1;", 
-    "Display" -> "js", "Hash" -> "b903a530-a0b3-43cc-9c9f-c9119c444a2b", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> "\nreturn 1+1;", 
+    "Display" -> "js", "Hash" -> "a69b4742-050b-4028-983f-10e8a7b824af", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "912d684c-7406-49d8-b16e-73773e172330"|>, 
+    "Notebook" -> "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n### Mermaid", "Display" -> "codemirror", 
-    "Hash" -> "1e1b7043-e614-4334-9e4b-200bcfd377aa", "Invisible" -> False, 
+    "Hash" -> "f79d4645-1195-4f42-b318-7f029d1fbdb9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> "### Mermaid", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> "### Mermaid", 
     "Display" -> "markdown", "Hash" -> 
-     "1f01d0d8-14a5-4808-88b7-098f5ecccdf2", "Invisible" -> False, 
+     "7660a93a-9735-460f-a022-6173241abab7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".mermaid\n\ngraph LR\n    A[Square Rect] -- Link text --> \
 B((Circle))\n    A --> C(Round Rect)\n    B --> D{Rhombus}\n    C --> D", 
     "Display" -> "codemirror", "Hash" -> 
-     "a66ee6bf-8344-4390-8f61-f92bfb2af135", "Invisible" -> False, 
+     "384b2554-361f-42fe-ad4b-8cab59efc038", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "\ngraph LR\n    A[Square Rect] -- Link text --> B((Circle))\n \
    A --> C(Round Rect)\n    B --> D{Rhombus}\n    C --> D", 
-    "Display" -> "mermaid", "Hash" -> "f8d43230-f426-46aa-a741-8a3ae983e520", 
+    "Display" -> "mermaid", "Hash" -> "d613d143-7d85-444c-a55c-8c22675d2343", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "912d684c-7406-49d8-b16e-73773e172330"|>, 
+    "Notebook" -> "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n***and many more!***", "Display" -> "codemirror", 
-    "Hash" -> "be27397f-3942-4f19-98cd-72b2e27426a6", "Invisible" -> False, 
+    "Hash" -> "29130964-329d-4cdc-bc0a-21ac77c78c9a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "***and many more!***", "Display" -> "markdown", 
-    "Hash" -> "9799e418-841e-433d-a6a8-b522ccaa6b61", "Invisible" -> False, 
+    "Hash" -> "6dc2d890-7881-4599-9ec7-13ccc7cf15e5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "55910846-6fb5-4e46-a42c-a337c356d7b1", "Invisible" -> False, 
+    "Hash" -> "45fcc4fa-e5ab-4712-9822-ffd957fcfd66", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> ".md\n---", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "15649dbf-fbad-403a-8011-25f94a5fac0f", "Invisible" -> False, 
+     "9ae01e02-ca66-4d74-b6e4-887ff985bf7a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "7c3cd17b-6134-407b-b04e-07c6c6fb9a4f", "Invisible" -> False, 
+    "Hash" -> "d050b52b-288d-4aef-9de2-20865cd2dc8b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n# Wolfram Language\nA symbolic programming language", 
     "Display" -> "codemirror", "Hash" -> 
-     "a076da81-88a1-4e44-af1b-9b7d4eedc6e5", "Invisible" -> False, 
+     "a90ffbef-9c7e-43f6-ab3b-417764fb41bd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "# Wolfram Language\nA symbolic programming language", 
     "Display" -> "markdown", "Hash" -> 
-     "b613fbf0-6e74-4a14-b7d4-0ac89b0cf9d5", "Invisible" -> False, 
+     "ebc99f8c-b0de-442e-8e2d-0ecc06b2836d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nThere are a few key-features compared to other \
 languages\n\n- Data and code are indistinguishable.\n- It employs a pattern \
 matching approach.\n- It features a versatile standard library, friendly for \
 mathematicians and physicists.\n- It boasts a comprehensive standard library \
 for visualizing data.\n- Provides powerful syntax sugar", 
     "Display" -> "codemirror", "Hash" -> 
-     "6d8a7524-eba7-4d77-8dac-233ff221d5c7", "Invisible" -> False, 
+     "3b6e0dc9-f461-4b2e-935e-854cd5566389", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "There are a few key-features compared to other languages\n\n- \
 Data and code are indistinguishable.\n- It employs a pattern matching \
 approach.\n- It features a versatile standard library, friendly for \
 mathematicians and physicists.\n- It boasts a comprehensive standard library \
 for visualizing data.\n- Provides powerful syntax sugar", 
     "Display" -> "markdown", "Hash" -> 
-     "caee9b6a-6b16-448c-8eb0-d95bee0d16df", "Invisible" -> False, 
+     "5c7e4c66-00f3-4d71-8842-afcae5ae1fd7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n*Output cells are editable, you can evaluate it as \
 well*", "Display" -> "codemirror", "Hash" -> 
-     "a4ca6550-dd9f-4168-b5aa-86039133b497", "Invisible" -> False, 
+     "cb0a6833-5a02-4f67-a1fa-8ce035fd4d4e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "*Output cells are editable, you can evaluate it as well*", 
     "Display" -> "markdown", "Hash" -> 
-     "51c62829-15be-403a-8ac0-955b0bfe12fa", "Invisible" -> False, 
+     "51f00425-da95-4e58-bae6-07339faba3c3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{1,1,2,2,2,2} /. {2 -> 1, 1 -> 0}", 
     "Display" -> "codemirror", "Hash" -> 
-     "a2f8397c-adf7-4d4e-a586-c2b26001b2b1", "Invisible" -> False, 
+     "3506fe85-075b-499a-bad8-6eda9eebfb8e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> "{0,0,1,1,1,1}", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> "{0,0,1,1,1,1}", 
     "Display" -> "codemirror", "Hash" -> 
-     "94ca72cc-f077-449a-840b-cf907eb8a02d", "Invisible" -> False, 
+     "562103f0-7ccd-4e39-bf5c-18966d588524", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nrules are one of the most powerful features, i.e.", 
     "Display" -> "codemirror", "Hash" -> 
-     "a14a092f-5166-447d-84c4-abeb3e3b4491", "Invisible" -> False, 
+     "58d5b4a8-c2d2-4707-b77e-673f4f267197", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "rules are one of the most powerful features, i.e.", 
     "Display" -> "markdown", "Hash" -> 
-     "351b604d-69be-4126-ad69-ab860ce04c15", "Invisible" -> False, 
+     "3e20eace-459f-4d25-a383-941310a99241", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{0,0,1,1,1,1} /. {any_Integer :> any / 2}", 
     "Display" -> "codemirror", "Hash" -> 
-     "e27438ba-84f3-49d2-a69c-f384edca7420", "Invisible" -> False, 
+     "a292e783-1309-40f9-881f-055e4a551c8c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{0,0,(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)\
 (2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
 *)}", "Display" -> "codemirror", "Hash" -> 
-     "5ae088df-83c4-4d1c-98aa-edda7a918f8c", "Invisible" -> False, 
+     "9fdeb7c6-21e1-4e85-805a-c98540ddb49c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nAnd __everything is a Symbol (or expression)__", 
     "Display" -> "codemirror", "Hash" -> 
-     "1de53a70-1f24-4d25-bfda-eb50c18c4b1f", "Invisible" -> False, 
+     "c805d4c3-26b6-4e96-b088-90e65a483376", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "And __everything is a Symbol (or expression)__", 
     "Display" -> "markdown", "Hash" -> 
-     "68080744-80ef-438b-b81e-ec690632bb11", "Invisible" -> False, 
+     "af5d1611-5a65-4ee3-bc63-ad4990cda7f6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{0,0,(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)\
 (2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
 *)} /. {any_?NumericQ :> {RGBColor[any, 1-any, 1], any} }", 
     "Display" -> "codemirror", "Hash" -> 
-     "45e35cf7-0b5b-447e-8254-40233d993a80", "Invisible" -> False, 
+     "d16d906c-11e8-4bf9-a7ae-33cf0b043d26", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{{(*VB[*)(RGBColor[0, 1, \
 1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
 GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*),0},{(*VB[*)(RGBColor[0, 1, \
@@ -1242,25 +1243,25 @@ GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)},{\
 1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
 GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*),(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)}}"\
 , "Display" -> "codemirror", "Hash" -> 
-     "15b5dee3-5c43-45f5-9de2-23d6f5de0141", "Invisible" -> False, 
+     "26f0d738-51d8-46c5-90ac-3082a8930c1f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nor may be you prefer tables", "Display" -> "codemirror", 
-    "Hash" -> "2b23ac47-886a-4c30-bc20-7c169cdb8b47", "Invisible" -> False, 
+    "Hash" -> "1d5b2ea2-3492-4d07-b534-3e290a64d85d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "or may be you prefer tables", "Display" -> "markdown", 
-    "Hash" -> "9d99e18d-1931-44c4-ae42-3ab8d228eeea", "Invisible" -> False, 
+    "Hash" -> "6f7dfe88-0e89-4e60-bf3e-7a5158471f15", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "% // Transpose // TableForm ", "Display" -> "codemirror", 
-    "Hash" -> "dfd78577-29ac-4d7f-a196-786b50d1a850", "Invisible" -> False, 
+    "Hash" -> "f506f57d-7787-4d0b-87f5-9c9c8571f2ec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(RGBColor[0, 1, \
 1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
 GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0, 1, \
@@ -1277,28 +1278,28 @@ GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|\
 *)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB\
 *)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)(*|*),(*|*)(*FB[*)((1)(*,*)/(*,\
 *)(2))(*]FB*)}}(*]GB*)", "Display" -> "codemirror", 
-    "Hash" -> "e3cfae2d-4117-4645-adb2-788daa9d2d40", "Invisible" -> False, 
+    "Hash" -> "1aac68df-2855-4061-a0d5-6cbea0ce728d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nOr something more complicated", 
     "Display" -> "codemirror", "Hash" -> 
-     "a5db2759-efdc-490f-b1bb-55a4a81fd7fb", "Invisible" -> False, 
+     "09b4e97c-3d96-40ae-90eb-2f91ef6614ea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "Or something more complicated", "Display" -> "markdown", 
-    "Hash" -> "3fe93e7a-7f8d-41e4-ab30-1ea79669602a", "Invisible" -> False, 
+    "Hash" -> "6977391e-fd7d-443e-a4e1-e8023d4a0464", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> 
      "Table[If[PrimeQ[i], Framed[i, Background->Yellow], i], {i, 1, 20}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "2dc39523-f718-4123-8d29-0613c8fc24cc", "Invisible" -> False, 
+     "18803399-0880-4e8a-9c58-ca315a137e62", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "{1,(*BB[*)(2)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkHArS\
 sxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMAGcElRZkF/n\
 meeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),(*BB[*)(3)(*,*)(*\"1:eJxTTMoPSmNkYGAoZg\
@@ -1319,132 +1320,132 @@ Sc4pTAcQ1Hcg=\"*)(*]BB*),18,(*BB[*)(19)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWl\
 MIB4HkHArSsxNdcqvgIiA5INKc1KLuYAMp8Tk7PSi/NK8lDRmmPIgdyfn/Jz8okyQcRACiBnQdPMA\
 GcElRZkF/nmeeQWlJcWsIJsSc4pTAcQ1Hcg=\"*)(*]BB*),20}", 
     "Display" -> "codemirror", "Hash" -> 
-     "c6f1659a-ca39-4ffb-9174-78020fc8a1e6", "Invisible" -> False, 
+     "6b406f1b-2658-4c71-b87c-14913472157e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> ".md\n---", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "bba5532b-17c8-45e5-ba42-49a66fe89347", "Invisible" -> False, 
+     "7606f13b-9093-413b-a4af-3e0a9a2bb86a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "76846959-9e49-48e0-9108-bac7d9330984", "Invisible" -> False, 
+    "Hash" -> "d9882c53-a3c5-4e7a-bf04-14ae91fe4fb2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nThe same counts for Graphics", 
     "Display" -> "codemirror", "Hash" -> 
-     "2a0d9ce5-0454-4cd7-b1fb-4f77d29fe7dd", "Invisible" -> False, 
+     "66273ac2-e222-4a1e-a59c-17bee241f8ae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "The same counts for Graphics", "Display" -> "markdown", 
-    "Hash" -> "a083269d-484f-4a1c-a46b-b68eef1c8064", "Invisible" -> False, 
+    "Hash" -> "f8d0bebb-c71e-4483-afe3-5c3075586996", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "Plot[x, {x,0,1}, PlotStyle -> (*VB[*)(RGBColor[1/2, 1/2, \
 1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
 GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*)]", "Display" -> "codemirror", 
-    "Hash" -> "f1cf4fc1-7a9d-4a97-9505-c2719d8c4ae5", "Invisible" -> False, 
+    "Hash" -> "b27d1378-51b1-4727-99ba-9e5daa456143", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"0abffd63-2484-4b4f-b2e2-f0e9e52c0377\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGyQmp\
 aWlmBnrGplYmOiaJJmk6SYZpRrpphmkWqaaGiUbGJubAwCNohXQ\"*)(*]VB*) /. \
 {(*VB[*)(RGBColor[1/2, 1/2, \
 1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
 GyXMgyRcxgMEDe3TGB3sAGJkVmw==\"*)(*]VB*) -> Red}", "Display" -> "codemirror", 
-    "Hash" -> "8bb61a55-a745-4cd8-b50b-0f70bf8460f6", "Invisible" -> False, 
+    "Hash" -> "a849a410-a6a7-4b2a-8301-6f9533f7731a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e630c1ab-22ee-4894-bd4e-df01145b168a\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5oZG\
 yQbJibpGhmlpuqaWFia6CalmKTqpqQZGBqamCYZmlkkAgCJYBXF\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "74455a6f-b464-45f4-aeee-487258442854", "Invisible" -> False, 
+     "1f2e8362-87a7-41d7-9404-f9557c650581", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\n*This is not a picture, this is a set of Wolfram \
 Expressions covered with a decoration. Underneath there is still a working \
 code*", "Display" -> "codemirror", "Hash" -> 
-     "9cc268a2-945d-4ebf-a4d2-6766757fbe30", "Invisible" -> False, 
+     "f83d49d1-3b87-41af-8b84-5f72a2d28522", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "*This is not a picture, this is a set of Wolfram Expressions \
 covered with a decoration. Underneath there is still a working code*", 
     "Display" -> "markdown", "Hash" -> 
-     "635a09e6-de71-4fb5-b26c-a27ffa7adf33", "Invisible" -> False, 
+     "3b061bd7-d2c7-42a6-8b31-0a03e9c94d69", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "48fe85f4-0bc5-41de-9eeb-d2873993ba01", "Invisible" -> False, 
+    "Hash" -> "f8ef2fb2-b43d-4bf4-9aa9-51efd90de97e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> ".md\nOr may be", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> ".md\nOr may be", 
     "Display" -> "codemirror", "Hash" -> 
-     "a7d3d7e8-e91f-4000-96c1-6f3cd2d73560", "Invisible" -> False, 
+     "c69283f3-5eb6-4cad-ae01-cdfd8f8c54ea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, <|"Data" -> "Or may be", 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, <|"Data" -> "Or may be", 
     "Display" -> "markdown", "Hash" -> 
-     "c930b9f0-0ede-4446-bd24-b4ebf5a7d45f", "Invisible" -> False, 
+     "cf4a6b92-8e7a-4c0f-a972-4cbcb7830cea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "Graphics3D[Sphere[]]", "Display" -> "codemirror", 
-    "Hash" -> "40b2d389-39dc-4abb-85bc-30142e52d56e", "Invisible" -> False, 
+    "Hash" -> "28498c09-1d6e-4e61-84f2-2228cc308d31", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"3a8e7b43-b8da-4fd7-8029-9fce36edb5d3\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGydap\
 JonmRjrJlmkJOqapKWY61oYGFnqWqYlpxqbpaYkmaYYAwCNjRZC\"*)(*]VB*)/. {Sphere -> \
 Cuboid}", "Display" -> "codemirror", 
-    "Hash" -> "9a58bf88-e205-4b80-935e-72421f2808b0", "Invisible" -> False, 
+    "Hash" -> "f425d3a2-e588-45b7-be86-8110e044ddb4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"167ffe0f-6f06-4ba9-ae2c-98abf947a7cc\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5qZp\
 6WlGqTpmqUZmOmaJCVa6iamGiXrWlokJqVZmpgnmicnAwCPcxZx\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "aa7a18ae-e542-4fe3-859b-6a216bb898dc", "Invisible" -> False, 
+     "cecf15e5-b785-41df-88f5-5f95a0ebff0b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "ad3f32d0-2c66-429b-85b2-79c32eed27be", "Invisible" -> False, 
+    "Hash" -> "9b93727d-24dc-40c4-93c6-49308859fe1d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> ".md\nOr play some sound", "Display" -> "codemirror", 
-    "Hash" -> "caf886d9-88df-45e5-a1f5-7187ae5f7805", "Invisible" -> False, 
+    "Hash" -> "505abd14-163f-4146-9d61-a9968fa8c044", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "Or play some sound", "Display" -> "markdown", 
-    "Hash" -> "05501d5e-092a-4c87-9ba7-b00364cb4ba6", "Invisible" -> False, 
+    "Hash" -> "9378cf7f-2223-458b-bff8-c390b2ee9cb8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "ListPlay[Table[Sin[2 \[Pi] 50 t], {t, 0, 1, 1./2000}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "d563b957-e424-4213-8a0f-24cf9f4af695", "Invisible" -> False, 
+     "ed322b13-3902-4ee2-909b-787bb874be79", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>, 
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"f51f5383-6cd0-41da-a191-c1bc8c4a6f6b\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5kap\
 pkaWxjrmiWnGOiaGKYk6iYaWhrqJhsmJVskmySapZklAQCEkRX4\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "b3f3fd04-8820-493b-80d1-8748f6be3003", "Invisible" -> False, 
+     "214a6ba2-76be-46c0-accd-ed8844094040", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "912d684c-7406-49d8-b16e-73773e172330"|>}, "serializer" -> "jsfn4"|>
+     "f953b7e7-232d-425e-aa83-c1a3aac041e5"|>}, "serializer" -> "jsfn4"|>
