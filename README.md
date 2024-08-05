@@ -23,6 +23,10 @@ Any amount (one-time or monthly) is appreciated, and your profile will be perman
 ### Contributing
 See [here](CONTRIBUTING.md)
 
+### WLJS Notebook Demonstration Project (Beta)
+[🔗 Link](https://jerryi.github.io/wljs-demo/)
+Notebooks posted as static web pages showcase various examples that demonstrate how to use the Wolfram Language and the dynamic features of our frontend. 
+
 ## Media
 - YTS 📽️ [You don't need to program your figures manually](https://youtube.com/shorts/vxEaryg8Hxg?feature=share)
 - YTS 📽️ [How to do Dynamics in Computation Notebook](https://youtube.com/shorts/ItXbjNtGlew?feature=share)
