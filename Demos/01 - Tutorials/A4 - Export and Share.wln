@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$391], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2071], 
    "Objects" -> <|"a2c496d3-7721-4daa-be89-ec4e0dbb7d88" -> 
       <|"Public" -> Hold[Graphics3D[{EdgeForm[], GraphicsComplex[
             {{8.471697807312012, 1.6333129405975342, 0.43172258138656616}, 
@@ -7255,425 +7255,426 @@
              {0.16010081066759554, 0.1734987820524089}}, PlotRangeClipping -> 
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
-             Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
-ontend-dev/Examples/Tutorials/A4 - Export and Share.wln", 
-   "Storage" -> <|"OurModel" -> "1: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"|>\
-|>, "Cells" -> {<|"Data" -> ".md\n# Exporting to a portable format\nOne of \
-the motivations for developing this platform is to enable the sharing of \
+             Automatic}}]]|>|>, "Path" -> "/Users/kirill/Github/wolfram-js-fr\
+ontend-dev/Demos/01 - Tutorials/A4 - Export and Share.wln", 
+   "ReadOnly" -> True, "Storage" -> <|"OurModel" -> "1:eJztnfdDzu/797NViLIysp\
+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\
+8Xa28vf8P6eQ9mQ=="|>, "Symbols" -> <||>|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Exporting to a portable format\nOne of the \
+motivations for developing this platform is to enable the sharing of \
 computable data in a self-descriptive format, allowing it to be viewed with \
 __no software installation required on any PC, Mac, smartphone, tablet, or \
 other devices__.", "Display" -> "codemirror", 
-    "Hash" -> "684f7927-5fef-428f-8c38-b4009bdbcc01", "Invisible" -> False, 
+    "Hash" -> "16fef476-3745-481a-af03-8c656f925be6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "# Exporting to a portable format\nOne of the motivations for \
 developing this platform is to enable the sharing of computable data in a \
 self-descriptive format, allowing it to be viewed with __no software \
 installation required on any PC, Mac, smartphone, tablet, or other \
 devices__.", "Display" -> "markdown", 
-    "Hash" -> "a69b73a2-0dca-4aef-8c02-de77efb91f28", "Invisible" -> False, 
+    "Hash" -> "29be16ea-2bf5-4d2f-a8a7-9a0642f7951c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "7d8ae573-9645-4ca6-b885-7ce8b8a5f967", "Invisible" -> False, 
+    "Hash" -> "46113cf1-61f3-4b22-9cd9-e7a2303337bd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\nTo try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
-src=\"Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
+src=\"/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
 save you notebook before exporting!__\n\n---\n\n<br/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "513e01ce-486b-4dc1-971f-5439b7470ced", "Invisible" -> False, 
+     "038a7ca0-0065-4feb-a6c2-21a2f7535fe1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
-   <|"Data" -> "To try this feature click here\n\n<img class=\"py-4\" \
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+   <|"Data" -> ">To try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
-src=\"Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
-save you notebook before exporting!__\n\n---\n\n<br/>", 
+src=\"/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
+save you notebook before exporting!__\n\n---\n\n<br />", 
     "Display" -> "markdown", "Hash" -> 
-     "91d4a87c-9a2e-4d7e-9d92-43a67a4853b9", "Invisible" -> False, 
+     "47c89d38-1137-4a02-b05a-f71d58dfa204", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\nYou can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "codemirror", "Hash" -> 
-     "206dada7-c5e8-4e91-9838-eb0c2bdd5f7f", "Invisible" -> False, 
+     "382a4f14-fd5b-4f25-945e-3b7b492f2cc3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "You can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "markdown", "Hash" -> 
-     "b7c32624-c677-465f-8290-6f60fd8f3196", "Invisible" -> False, 
+     "c46775fb-a30c-4272-a713-c7c1da5f19b8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "ExampleData[{\"Geometry3D\",\"KleinBottle\"}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "754880b6-900d-4695-9ea4-987dc13e845c", "Invisible" -> False, 
+     "09aa03cf-680e-43f4-a496-ceb1a5778a70", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"a2c496d3-7721-4daa-be89-ec4e0dbb7d88\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxolm\
 1iapRjrmpsbGeqapCQm6ialWljqpiabpBqkJCWZp1hYAACJZRY6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "aa53abb8-eafc-4cae-b921-0999a095294d", "Invisible" -> False, 
+     "c42b6c1f-2f75-4aab-a322-b143fda4fe76", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\n*Note: use your mouse to manipulate the view*", 
     "Display" -> "codemirror", "Hash" -> 
-     "ed2c463e-721c-497f-a673-5b89d3aa86cc", "Invisible" -> False, 
+     "e47cf3bf-47af-4ab8-bd35-d96ee66c5f7b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "*Note: use your mouse to manipulate the view*", 
     "Display" -> "markdown", "Hash" -> 
-     "7dd9136c-ab44-4bc9-a637-dcfce019d2b8", "Invisible" -> False, 
+     "a78926d8-d84b-43b3-9844-3f327e91cf8d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\nLet us embed here a figure from the previous tutorial \
 **A3 - Math and Fitting.wlx**", "Display" -> "codemirror", 
-    "Hash" -> "03ffbfe0-61c3-4fb8-8172-6f5c63a10446", "Invisible" -> False, 
+    "Hash" -> "ba09b2e1-8429-4182-8f74-ccf37403857e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "Let us embed here a figure from the previous tutorial **A3 - \
 Math and Fitting.wlx**", "Display" -> "markdown", 
-    "Hash" -> "22877413-c16e-41dd-a24d-9f9c5be4a196", "Invisible" -> False, 
+    "Hash" -> "793a1531-b9ac-4de9-a1f5-523dfab18be2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-5fec.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8g8cJyRAQDvgAv9\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "4d17f3d2-7831-40e2-8562-3e11d0765bad", "Invisible" -> False, 
+    "Hash" -> "57fdbf8a-2aa8-487f-8612-c03094a1e8db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"959888d7-bbdb-473d-a066-f2c2f2b1b9a4\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW5paW\
 lhYpJjrJiWlJOmamBun6CYamJnpphklG6UZJRkmWSaaAACFKhXe\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "82a1cb38-42d7-4b1f-b6ef-0cf57dad04e8", "Invisible" -> False, 
+     "3cbf4ca8-e77f-47b6-9fe0-5b4f07152c34", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\n*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "codemirror", "Hash" -> 
-     "de7936be-fe9d-4e0e-adc1-fb45a773a3ab", "Invisible" -> False, 
+     "588b35aa-3201-403b-9114-fb2e79d12734", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "markdown", "Hash" -> 
-     "67996f7e-762c-430a-81e8-d8d924217714", "Invisible" -> False, 
+     "e22cf50e-e3cd-40e9-9424-bc438701c106", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "024e27ba-154a-49de-9dc3-2835b8d28967", "Invisible" -> False, 
+    "Hash" -> "46e6d80b-770d-4e2c-ac15-ffadb38b0117", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\nAn exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "codemirror", "Hash" -> 
-     "e37be4a5-1ea4-4721-b479-78315c46d61f", "Invisible" -> False, 
+     "dc34e636-c0e9-43fb-85ad-7e24d7fa7269", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "An exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "markdown", "Hash" -> 
-     "725bb8eb-5019-48dc-a72e-bc66c01001d9", "Invisible" -> False, 
+     "acf13211-643d-4c22-b132-147225399fc6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\n## Export to ASCII\nIt is also possible, so that the raw \
 data from the previous tutorial can be imported by other apps", 
     "Display" -> "codemirror", "Hash" -> 
-     "5ee306e8-074d-4d05-be3f-f534993df1f5", "Invisible" -> False, 
+     "de99240b-ca24-4b2b-b0d6-203326935136", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "## Export to ASCII\nIt is also possible, so that the raw data \
 from the previous tutorial can be imported by other apps", 
     "Display" -> "markdown", "Hash" -> 
-     "1d6e5393-1a3b-43dd-85d7-fa960005a380", "Invisible" -> False, 
+     "356bd91f-20c1-42cb-9953-36e5070ab458", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "With[{model = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)},\n  Export[\"data.dat\", Table[{x, \
 model[x]}, {x,3000,4000,10}]]\n]", "Display" -> "codemirror", 
-    "Hash" -> "c3a91190-7429-4350-9acc-1b7ae6c02d42", "Invisible" -> False, 
+    "Hash" -> "a1fd941a-cf8a-4a92-a72a-cce2a26369ac", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\n## Notebook storage\nOne can embedd raw data into the \
 notebook as well, __so you don't have to worry about external files while \
 sharing your notebook__.", "Display" -> "codemirror", 
-    "Hash" -> "e6797a91-b483-4638-8b05-3b2be6dbcf04", "Invisible" -> False, 
+    "Hash" -> "1acac6d2-3394-45be-b5e1-d892d4581464", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "## Notebook storage\nOne can embedd raw data into the \
 notebook as well, __so you don't have to worry about external files while \
 sharing your notebook__.", "Display" -> "markdown", 
-    "Hash" -> "2f970a93-ee29-46a8-ac4a-11f66b34840f", "Invisible" -> False, 
+    "Hash" -> "a1ea8e28-56ef-484a-bb9f-8213b72a0fa7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "NotebookStore[\"OurModel\"] = \
 (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "860704aa-2078-4461-ae24-671c53b14fa4", "Invisible" -> False, 
+    "Hash" -> "80e04287-5162-4d7b-bef6-f8c19579b9db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, <|"Data" -> "\"OurModel\"", 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, <|"Data" -> "\"OurModel\"", 
     "Display" -> "codemirror", "Hash" -> 
-     "5aac9c8e-5a92-4b85-bb00-d0a393574a9f", "Invisible" -> False, 
+     "4c6bd7c6-f1ea-4c62-aacd-7cb78f032be4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> ".md\n`NotebookStore` <span style=\"color:red\">is \
 preserved</span> even if a notebook has been exported to an HTML file.", 
     "Display" -> "codemirror", "Hash" -> 
-     "e08b6af7-d423-4c9a-a39c-2e6afd688c1c", "Invisible" -> False, 
+     "f11ea49c-f0ea-4537-93fb-90696abbc760", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "`NotebookStore` <span style=\"color:red\">is preserved</span> \
 even if a notebook has been exported to an HTML file.", 
     "Display" -> "markdown", "Hash" -> 
-     "74246083-9e7b-45fc-9c1e-426c6d43a991", "Invisible" -> False, 
+     "f1f9802b-496d-4174-b919-feb82b404636", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "With[{model = NotebookStore[\"OurModel\"]},\n  Plot[model[x], \
 {x,3000,4000}]\n]", "Display" -> "codemirror", 
-    "Hash" -> "23f7e055-1292-45ae-9b35-14031e57516e", "Invisible" -> False, 
+    "Hash" -> "b26ff4f0-f9d0-49dc-858c-dfba16437677", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>, 
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"9ab5b3d5-6e41-4804-ac66-4a856fe487b0\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWyYmm\
 SYZp5jqmqWaGOqaWBiY6CYmm5npmiRamJqlpZpYmCcZAACD+hV6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "483c044b-22ce-4ffd-8b35-a640c069d0e4", "Invisible" -> False, 
+     "a097e74f-0f74-4d68-9064-87a5c81d6f6e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "15be8edd-9339-4c77-90d9-ac25cf56ef30"|>}, "serializer" -> "jsfn4"|>
+     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>}, "serializer" -> "jsfn4"|>
