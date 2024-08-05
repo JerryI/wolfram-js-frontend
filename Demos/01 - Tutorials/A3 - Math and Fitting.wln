@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$745], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2030], 
    "Objects" -> <|"add373d2-6545-4da9-bc17-d02155645966" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
@@ -1716,94 +1716,95 @@
            PlotRangeClipping -> True, PlotRangePadding -> 
             {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.02]}}, 
            Ticks -> {Automatic, Automatic}}]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Tutorials\
-/A3 - Math and Fitting.wln"|>, 
- "Cells" -> {<|"Data" -> ".md\n# Math typing\nUse shortcuts to make fractions \
-and superscript\n- `Ctrl+/` makes fraction\n- `Ctrl+7` makes superscript \
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/01 - \
+Tutorials/A3 - Math and Fitting.wln", "ReadOnly" -> True, 
+   "Symbols" -> <||>|>, "Cells" -> 
+  {<|"Data" -> ".md\n# Math typing\nUse shortcuts to make fractions and \
+superscript\n- `Ctrl+/` makes fraction\n- `Ctrl+7` makes superscript \
 (power)\n- `Ctrl+2` makes squareroot", "Display" -> "codemirror", 
-    "Hash" -> "7ce1229d-4488-401c-a49f-69146b7c4cea", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Hash" -> "645e62f9-3004-4118-a1b4-4c80eea0de48", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "# Math typing\nUse shortcuts to make fractions and \
 superscript\n- `Ctrl+/` makes fraction\n- `Ctrl+7` makes superscript \
 (power)\n- `Ctrl+2` makes squareroot", "Display" -> "markdown", 
-    "Hash" -> "d06fa0f1-14c5-4170-9a67-3dd95f5dd4d8", "Invisible" -> False, 
+    "Hash" -> "42d20766-bd54-4486-b20a-85ddeadc2084", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
-   <|"Data" -> ".md\n\n![](Mathinput-ezgif.com-optipng.png)\n", 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
+   <|"Data" -> ".md\n\n![](/Mathinput-ezgif.com-optipng.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "a56f4eb0-931c-4eed-9840-f8fca39b48f9", "Invisible" -> False, 
+     "74e33194-e968-461d-bd69-802c7f8a6025", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
-   <|"Data" -> "\n![](Mathinput-ezgif.com-optipng.png)\n", 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
+   <|"Data" -> ">\n![](/Mathinput-ezgif.com-optipng.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "993b1715-3d39-40dd-a1d2-c7c5c8093ee7", "Invisible" -> False, 
+     "5882c8aa-a414-4fb9-9495-4f3047ceb8d3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "2b222e0c-2208-454b-9caa-3f96ab2f70c4", "Invisible" -> False, 
+    "Hash" -> "c8aab1b9-e9a9-4d96-b519-bf65a5c919bd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\nan example from above", "Display" -> "codemirror", 
-    "Hash" -> "abab7af6-194e-412d-a868-87ca67041f5c", "Invisible" -> False, 
+    "Hash" -> "9289882c-7838-4e93-8ebf-2a1671a79940", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "an example from above", "Display" -> "markdown", 
-    "Hash" -> "81f838a6-de46-40ba-815a-fa2103198775", "Invisible" -> False, 
+    "Hash" -> "f56a11de-f61d-4d9c-80ad-b1d02fa857a9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "\[Epsilon] + (*FB[*)(((*SpB[*)Power[A(*|*),(*|*)2](*]SpB*) \
 \[Gamma])(*,*)/(*,*)((*SpB[*)Power[\[Omega]0(*|*),(*|*)2](*]SpB*) - \
 (*SpB[*)Power[\[Omega](*|*),(*|*)2](*]SpB*) + I \[Gamma] \[Omega]))(*]FB*) /. \
 {\[Epsilon] -> 1, A -> 1, \[Gamma] -> 2, \[Omega]0 -> 0};\n\nPlot[% // ReIm \
 // Evaluate, {\[Omega], -10,10}, ImageSize->500]", "Display" -> "codemirror", 
-    "Hash" -> "0b6859de-646d-4d88-b41d-84e5f37d0c63", "Invisible" -> False, 
+    "Hash" -> "e2fb9d48-f76c-4f30-9d0e-a285c2a0047a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"add373d2-6545-4da9-bc17-d02155645966\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ6akG\
 JsbpxjpmpmamOqapCRa6iYlG5rrphgYGZqampmYWpqZAQCEZRUX\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "9aae5c10-99ca-4f63-8a02-e1c399a93e2a", "Invisible" -> False, 
+     "ba7e0ead-99a3-480b-9f7f-75d25f723d48", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "fdbe1af1-a31b-4db9-acc3-44b4e01393fe", "Invisible" -> False, 
+    "Hash" -> "a313cb4f-a77b-4a2e-b8a4-3aaba3c8ca8e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\n# Fitting using Lorentz oscillator model\nLet us use the \
 simples possible approach to fit it", "Display" -> "codemirror", 
-    "Hash" -> "fdc4509f-71f1-435d-bf8d-4f1e1d9e7e11", "Invisible" -> False, 
+    "Hash" -> "e995c586-ee61-4a9f-bc28-3c85ab03f1d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "# Fitting using Lorentz oscillator model\nLet us use the \
 simples possible approach to fit it", "Display" -> "markdown", 
-    "Hash" -> "f7f22044-d580-48f4-92ac-c925f27bbc53", "Invisible" -> False, 
+    "Hash" -> "dc338c51-8f47-415f-8dc6-87ad0f065d11", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\n__define out material parameters__", 
     "Display" -> "codemirror", "Hash" -> 
-     "786f8edf-3432-486b-bf71-9b6809cd2fa9", "Invisible" -> False, 
+     "4955acf3-0f87-444f-931e-13294b0ee5ec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "__define out material parameters__", "Display" -> "markdown", 
-    "Hash" -> "6d350509-0037-4015-80e7-a9749c0e518a", "Invisible" -> False, 
+    "Hash" -> "1e083a3f-33c3-463e-8718-1710b8246ea8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "dielectric[\[Omega]_, \[Epsilon]_, \[Omega]0_, \[Gamma]_, A_] \
 := \[Epsilon] + (*FB[*)(((*SpB[*)Power[A(*|*),(*|*)2](*]SpB*) \
 \[Gamma])(*,*)/(*,*)((*SpB[*)Power[\[Omega]0(*|*),(*|*)2](*]SpB*) - \
@@ -1812,26 +1813,26 @@ simples possible approach to fit it", "Display" -> "markdown",
 (*SqB[*)Sqrt[dielectric[\[Omega], params]](*]SqB*)\nR[\[Omega]_, params__] := \
 (*SpB[*)Power[Abs[(*FB[*)((n[\[Omega], params] - 1.)(*,*)/(*,*)(n[\[Omega], \
 params] + 1.))(*]FB*)](*|*),(*|*)2](*]SpB*)", "Display" -> "codemirror", 
-    "Hash" -> "80f3d3ec-69ed-4cbb-9a38-2ee6f840fe66", "Invisible" -> False, 
+    "Hash" -> "4813f7a7-884a-45b4-bd87-8bee7eefdaa0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "bf86afdc-0d4a-4572-b554-21eeb5ac83d5", "Invisible" -> False, 
+    "Hash" -> "a5f4966c-f7bf-441e-9984-982d3e38be49", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\nNow let's see how it fits our data", 
     "Display" -> "codemirror", "Hash" -> 
-     "9d8a653a-3089-4bee-b092-ddd6228615bf", "Invisible" -> False, 
+     "150ef1fb-e450-4833-9e87-634b2cad0d93", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "Now let's see how it fits our data", "Display" -> "markdown", 
-    "Hash" -> "1600ead3-8611-41a8-8c44-761c70ac837d", "Invisible" -> False, 
+    "Hash" -> "58f697bb-ed87-4bdd-abb6-f99a837494c6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "experiment = Select[(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-dd15.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*), (#[[1]] > 3000 && #[[1]] < \
@@ -1840,108 +1841,108 @@ vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*), (#[[1]] > 3000 && #[[1]] < \
 {A,100}}, \[Omega]];\n\nPlot[\n  model[x], {x, 3000,4000}, \n  \n  \
 Epilog->{Red, Point[experiment]}, \n  PlotRange->Full,\n  ImageSize->500\n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "fc8b315d-c501-4450-a9be-df1aaea54048", "Invisible" -> False, 
+     "675c64aa-6a21-4a36-a00f-3a615c97d5a9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"d13694ae-47ca-49a1-b477-867ff2b03580\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxgam\
 1maJKbqmpgnJ+qaWCYa6iaZmJvrWpiZp6UZJRkYm1oYAACCFxVL\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "f68d21af-56a1-485e-a73f-e92875627ca1", "Invisible" -> False, 
+     "3041bd86-0eda-4754-a521-f716ab9c55c0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\nNow we can save our plot to be used for later", 
     "Display" -> "codemirror", "Hash" -> 
-     "77ae8650-003c-4a02-bc9d-29c4be4fee63", "Invisible" -> False, 
+     "920c885f-a487-41c9-935d-fdc6a7299bf5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "Now we can save our plot to be used for later", 
     "Display" -> "markdown", "Hash" -> 
-     "e1da135d-14a6-4d51-8369-42fa75adf8a8", "Invisible" -> False, 
+     "165262ec-88d7-48a5-881e-8ed6f35d9007", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, <|"Data" -> "% // Iconize ", 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, <|"Data" -> "% // Iconize ", 
     "Display" -> "codemirror", "Hash" -> 
-     "c01df833-f8b2-4288-88b0-66b5ea2c05bc", "Invisible" -> False, 
+     "fa2b67d0-9ed6-44a5-9099-9a29c61b9336", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-5fec.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8g8cJyRAQDvgAv9\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "64ece5fa-9668-49f6-87b9-41e534343649", "Invisible" -> False, 
+    "Hash" -> "c9140f01-ad53-45c1-95fc-d3623290b04d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "model // Iconize ", "Display" -> "codemirror", 
-    "Hash" -> "eab6a949-a288-4f52-bc39-a51f7526d8f0", "Invisible" -> False, 
+    "Hash" -> "b4c46838-4be0-4b02-9aac-6f5411191492", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "7be2b474-09cc-4690-8f67-0cf46e9314af", "Invisible" -> False, 
+    "Hash" -> "5e40f339-bdc6-42de-b21c-b536b9db447a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "ca04fe07-accf-4f1d-b98f-d862190013e6", "Invisible" -> False, 
+    "Hash" -> "75a68833-a5f2-4837-a68a-7b3e3c03cecf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\n## Entering Matrixes", "Display" -> "codemirror", 
-    "Hash" -> "8e881207-c6aa-4f73-8cf5-a6d1af22ca2e", "Invisible" -> False, 
+    "Hash" -> "8a789597-3e7a-43a9-8888-6885c5b6dc59", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "## Entering Matrixes", "Display" -> "markdown", 
-    "Hash" -> "301ba7d8-c0cc-4e57-91ca-56f7c7e6b736", "Invisible" -> False, 
+    "Hash" -> "f80c6853-d60f-45b9-b77c-bc4cd7b52012", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\nOne can also operate with matrixes and multiply them \
 like normal. __Try `MatrixForm`__ or use a snippet tool `Ctrl/CMD+P` __and \
 locate `Insert Matrix` helper widget__", "Display" -> "codemirror", 
-    "Hash" -> "e81783bc-020a-43a1-b840-3680f43637b4", "Invisible" -> False, 
+    "Hash" -> "c9b3b77b-024e-4fd9-9b14-944522ed05f7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "One can also operate with matrixes and multiply them like \
 normal. __Try `MatrixForm`__ or use a snippet tool `Ctrl/CMD+P` __and locate \
 `Insert Matrix` helper widget__", "Display" -> "markdown", 
-    "Hash" -> "e8616908-746c-40a0-8d7b-54861efb418b", "Invisible" -> False, 
+    "Hash" -> "d2f78777-b7a6-4bd8-a732-d21d4aa07775", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "((*GB[*){{1(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*\
 )a(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)1}}(*]GB*)).((*GB[*){{0(\
 *|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){1(*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*)\
 {1(*|*),(*|*)0(*|*),(*|*)0}}(*]GB*)) // MatrixForm", 
     "Display" -> "codemirror", "Hash" -> 
-     "291ada37-bf38-4c83-8b47-ff30d3e28d4f", "Invisible" -> False, 
+     "0a94a8f4-133f-4ba7-8345-c590f4264d9c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> ".md\n## Greek letters\n\nTo enter Greek's symbols __use `ESC` \
 key__ and type the first letter. The autocomplete will suggest the \
 corresponding letter", "Display" -> "codemirror", 
-    "Hash" -> "eb0fb0ce-0158-4179-8fcd-846d2e5bc962", "Invisible" -> False, 
+    "Hash" -> "d487eaf5-f5a7-4153-837d-968414522c2f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "## Greek letters\n\nTo enter Greek's symbols __use `ESC` \
 key__ and type the first letter. The autocomplete will suggest the \
 corresponding letter", "Display" -> "markdown", 
-    "Hash" -> "9fda1e98-1c7c-4e19-a487-64f5a5ddabe6", "Invisible" -> False, 
+    "Hash" -> "3655037f-e5ea-424b-a526-824300292544", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>, 
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>, 
    <|"Data" -> "\[Alpha], \[Beta], \[Gamma]", "Display" -> "codemirror", 
-    "Hash" -> "49938b93-f2a9-4c25-b73a-2e066f57b38b", "Invisible" -> False, 
+    "Hash" -> "39609785-2e3c-4a5e-a0ff-36a743ec6023", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "08f20751-3302-4ce4-a8bc-f5be3d7ecd9c"|>}, "serializer" -> "jsfn4"|>
+     "56794987-cafb-407c-a1ed-91baeae973f6"|>}, "serializer" -> "jsfn4"|>

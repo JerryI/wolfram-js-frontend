@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$55], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1997], 
    "Objects" -> <|"1d8f3ab5-8dc2-4914-a7f1-f02da8ed0d59" -> 
       <|"Public" -> Hold[Graphics[{{}, {{{}, {}, {Hue[0.67, 0.6, 0.6], 
               Directive[PointSize[Rational[1, 180]], RGBColor[0.368417, 
@@ -3664,202 +3664,202 @@
            {139.812, 0.40768}, {140.777, 0.369139}, {141.741, 0.34076}, 
            {142.705, 0.321624}, {143.669, 0.331448}}, "Loader" -> 
            "Notebook`Kernel`Inputs`Private`loader$95625"]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/DPG2024 - \
-Berlin/A2 - Import and Plot.wln"|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/01 - \
+Tutorials/A2 - Import and Plot.wln", "ReadOnly" -> True, "Symbols" -> <||>|>, 
  "Cells" -> {<|"Data" -> ".md\n# Plotting data\nUse `Ctrl/CMD + P` to call \
 command palette and pick __upload ASCII__", "Display" -> "codemirror", 
-    "Hash" -> "928abff9-fc3e-4841-b972-0c5ec109197b", "Invisible" -> False, 
+    "Hash" -> "001f56ed-63e2-47ea-b757-40a18f81b77a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "# Plotting data\nUse `Ctrl/CMD + P` to call command palette \
 and pick __upload ASCII__", "Display" -> "markdown", 
-    "Hash" -> "9d4b584d-47b5-463d-a88f-4c7d32b0aea2", "Invisible" -> False, 
+    "Hash" -> "94207006-1705-4b79-98d1-fb95fa9dce9a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
-   <|"Data" -> ".md\n![](UploadACSII-ezgif.com-optipng.png)", 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
+   <|"Data" -> ".md\n![](/UploadACSII-ezgif.com-optipng.png)", 
     "Display" -> "codemirror", "Hash" -> 
-     "8bd16b4f-91c8-4a9d-9fad-337b13f37f40", "Invisible" -> False, 
+     "5c8045e4-b02c-4d29-9c47-a11749df0d7d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
-   <|"Data" -> "![](UploadACSII-ezgif.com-optipng.png)", 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
+   <|"Data" -> ">![](/UploadACSII-ezgif.com-optipng.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "b1034ff6-5553-4989-aef0-368d29aab15c", "Invisible" -> False, 
+     "81eaab0e-fa85-451c-87a8-5fcca8ece5a3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\nOnce you finished, an special symbol will appear. You \
 can work with it if it was a array of data compressed to a size of single \
 icon.", "Display" -> "codemirror", "Hash" -> 
-     "0d832c63-5d4e-4107-9fbd-5e53f1a8719d", "Invisible" -> False, 
+     "4a5d2539-7d3d-4375-9f2f-416281f0ea6c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "Once you finished, an special symbol will appear. You can \
 work with it if it was a array of data compressed to a size of single icon.", 
     "Display" -> "markdown", "Hash" -> 
-     "3bd08645-71fa-49cc-b844-0f32992c002c", "Invisible" -> False, 
+     "d81fe103-33e4-4dfa-bfb8-c7952d54e1e6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\n**Example data***", "Display" -> "codemirror", 
-    "Hash" -> "28245baf-a8ad-406e-b441-0efcbe61751c", "Invisible" -> False, 
+    "Hash" -> "ac8b52d4-fd31-4e0c-8f96-fcb18b69ac77", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "**Example data***", "Display" -> "markdown", 
-    "Hash" -> "d3ba485d-829f-4080-8381-aa7ca29796d3", "Invisible" -> False, 
+    "Hash" -> "57954354-c261-4248-9a19-9f59c78899ea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-dd15.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "60df4fbb-3e39-4b5e-b100-853da29b5a35", "Invisible" -> False, 
+    "Hash" -> "1e84dc37-8bd3-4493-b3fd-6fa43f46119d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "29744e1c-031b-4b9d-9c46-c9af18d13a5c", "Invisible" -> False, 
+    "Hash" -> "3fc6543e-ad5e-4f99-9479-5ed3b188a0ab", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "34bcb258-114e-4d08-ad88-a8e6ba1415b7", "Invisible" -> False, 
+    "Hash" -> "2d7ce4d6-e36f-47b6-851f-eb5d03746788", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\nNow you can copy and paste this symbol", 
     "Display" -> "codemirror", "Hash" -> 
-     "c3d49b7d-8fcd-4c78-b9c5-82786af6208e", "Invisible" -> False, 
+     "db77595b-0e46-47d8-9f31-6e423644eeb5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "Now you can copy and paste this symbol", 
     "Display" -> "markdown", "Hash" -> 
-     "dccda79b-d3e6-46cd-87f0-30fda976f521", "Invisible" -> False, 
+     "3c5c0ae5-aa9d-4fac-9a48-b0123717f402", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "ListLinePlot[(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-dd15.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*), PlotRange->Full, ImageSize->500]", 
     "Display" -> "codemirror", "Hash" -> 
-     "40709951-641b-463b-9211-892e6c94ca78", "Invisible" -> False, 
+     "0a1ca3c3-a4bf-4f5b-a92b-2cf5c19210c9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"1d8f3ab5-8dc2-4914-a7f1-f02da8ed0d59\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG6ZYp\
 BknJpnqWqQkG+maWBqa6CaapxnqphkYpSRapKYYpJhaAgCK+BYD\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "bf818392-738b-4907-902f-60663b32180c", "Invisible" -> False, 
+     "b6b7dac5-dd4d-49d2-85f4-0edc09a682da", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\n*TIP: try to pan and zoom into the plot using mouse*", 
     "Display" -> "codemirror", "Hash" -> 
-     "fe6cafb8-65fa-48e3-b125-71a4a6c674d0", "Invisible" -> False, 
+     "8ad49aa9-06ed-41b4-9d42-4ce9210bc9f3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "*TIP: try to pan and zoom into the plot using mouse*", 
     "Display" -> "markdown", "Hash" -> 
-     "957e4d7d-8bee-4880-acfc-404a368b5dfc", "Invisible" -> False, 
+     "a0e2542d-df9e-4df9-afd3-2d589a27ad98", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "15627dc7-d21d-4c7d-a1f7-bc177b3e0713", "Invisible" -> False, 
+    "Hash" -> "af166bb1-c4ea-4590-a025-874b3c7da5ab", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\nYou can also manipulate the data, cut it or crop using \
 Wolfram Language native tools for Lists", "Display" -> "codemirror", 
-    "Hash" -> "9a861895-f63a-4086-a8e0-414d1d6c55c0", "Invisible" -> False, 
+    "Hash" -> "c4059ea4-c017-4945-8364-4ae06d9843b0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "You can also manipulate the data, cut it or crop using \
 Wolfram Language native tools for Lists", "Display" -> "markdown", 
-    "Hash" -> "30dff749-1f64-4f76-a8c6-64d7b1c0cf10", "Invisible" -> False, 
+    "Hash" -> "a9f21298-ecf7-47e4-a12e-63c2adb5b673", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "ListLinePlot[\n  \
 Select[(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-dd15.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*), (#[[1]] > 3000 && #[[1]] < 4000)&]\n, \
 PlotRange->Full, ImageSize->500] ", "Display" -> "codemirror", 
-    "Hash" -> "b968efd1-9fd8-459d-b5b4-45ebcdec42a1", "Invisible" -> False, 
+    "Hash" -> "d2bba377-7fc8-4e6b-8bc8-2231456a4ae6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e4015242-1c6d-4aed-b9f5-799c6651958a\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5oYG\
 JoamRjpGiabpeiaJKam6CZZppnqmltaJpuZmRpamlokAgB+GBVR\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "fc1b3e6d-74c3-44fc-a977-0775301b8e14", "Invisible" -> False, 
+     "88df8d36-6664-4551-ba62-8fb8a0b4567f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "c51d9630-8f6e-4b2f-ba51-52990c0f172d", "Invisible" -> False, 
+    "Hash" -> "abf5f2a5-01cc-4f26-ab03-a4d250f541b2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\n## Preview  data as a table\nFor whom likes Origin", 
     "Display" -> "codemirror", "Hash" -> 
-     "f2c4d85a-6ef5-4a3e-a2a3-333b548f875f", "Invisible" -> False, 
+     "43905e54-e964-4b00-9736-7cd0984f27e8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "## Preview  data as a table\nFor whom likes Origin", 
     "Display" -> "markdown", "Hash" -> 
-     "1aa82e68-5556-4082-97ff-888cb45e62d6", "Invisible" -> False, 
+     "8109f20b-03b3-4606-9630-319fd0359dff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-dd15.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8gU0OBhAADq+Qq5\"*)(*]VB*) // TableView ", "Display" -> "codemirror", 
-    "Hash" -> "31323f7c-1813-48a2-871a-bc3d03c4276a", "Invisible" -> False, 
+    "Hash" -> "f182eb5f-21d0-4a1e-90c3-4d99ffaa5d69", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"c262eaaa-3557-4f03-ba22-5b313afe68bf\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxuZG\
 aUmJibqGpuamuuapBkY6yYlGhnpmiYZGxonpqWaWSSlAQCHKBXw\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "91dca934-bf6d-4cc5-9fce-96bc172ffb69", "Invisible" -> False, 
+     "972a69d6-7be0-4c94-8bf4-7f6705399df8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> ".md\n## Simple automatic fitting\nLet us use a simple Lorenz \
 oscillator to fit it", "Display" -> "codemirror", 
-    "Hash" -> "66bfe56b-4854-45af-815f-730a8c69da11", "Invisible" -> False, 
+    "Hash" -> "2ee7b461-6380-4dc1-a386-132847ae383b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "71f402f6-cab3-49f6-8aca-3c01d98759d9", "Invisible" -> False, 
+    "Hash" -> "1dded428-b64e-4446-908f-03909dd0a85e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "9039f4c1-5913-4ad1-918d-9a4b08affe51", "Invisible" -> False, 
+    "Hash" -> "e59ddedf-c6b4-4b41-bc42-411682e424cd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "111d3793-bb61-4ab7-a16f-b43e9f3c37f4", "Invisible" -> False, 
+    "Hash" -> "44e36043-6991-4687-9c34-e880d100c8a6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>, 
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "5e831b50-2267-4f3d-a040-823aae387fbd", "Invisible" -> False, 
+    "Hash" -> "2711195f-36e0-471b-a262-e99dff3732cf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b63042f8-ae7c-416e-8705-fe4e86e3867b"|>}, "serializer" -> "jsfn4"|>
+     "d7ab0b9c-862b-48dc-b87e-c3a3b4e400fe"|>}, "serializer" -> "jsfn4"|>
