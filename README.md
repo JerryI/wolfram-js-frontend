@@ -20,8 +20,19 @@ To help maintain this project ❤️
 
 Any amount (one-time or monthly) is appreciated, and your profile will be permanently displayed on this page. Thank you for helping us!
 
+
+<a href="https://jerryi.github.io/wljs-demo/"><img width="1058" alt="Screenshot 2024-08-05 at 22 39 49" src="https://github.com/user-attachments/assets/b548b9d9-e23f-4705-8735-d9daa1ba1705"></a>
+
+
+[🔗 Link](https://jerryi.github.io/wljs-demo/)
+Notebooks posted as static web pages showcase various examples that demonstrate how to use the Wolfram Language and the dynamic features of our frontend. 
+
+
+
+
 ### Contributing
 See [here](CONTRIBUTING.md)
+
 
 ## Media
 - YTS 📽️ [You don't need to program your figures manually](https://youtube.com/shorts/vxEaryg8Hxg?feature=share)
@@ -139,6 +150,7 @@ brew install --cask wljs-notebook
 ```
 
 ## Docker Container
+*contributed by [@yloose](https://github.com/yloose)*
 
 See [here](container/README.md)
 

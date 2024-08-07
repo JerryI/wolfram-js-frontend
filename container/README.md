@@ -1,4 +1,6 @@
 # Wolfram JS Frontend container
+*contributed by [@yloose](https://github.com/yloose)*
+
 ## Description
 A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfram-js-frontend) project is provided here. The image is based on the on the [Wolfram Engine](https://hub.docker.com/r/wolframresearch/wolframengine) docker image to provide wolframscript.
 
@@ -7,8 +9,9 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 1. Make sure you have either installed [docker](https://docs.docker.com/engine/install/) or [podman](https://podman.io/get-started) on your machine.
 2. Register at the [Wolfram Engine download page](https://www.wolfram.com/engine/). Click to download (only needed to be redirected to the right place) and then follow the `Get your license` instructions. Register on the next page and acquire the license (it is free). A confirmation message will be sent to your email address. Please follow the link received by email.
 3. Start the container:
+        <!--Change ":main" back to ":latest" when first release with container build is made -->
 
-        docker run -it -v WolframLicensing:/Licensing -v ~/Documents/wljs:/workspace -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/yloose/wolfram-js-frontend:latest
+        docker run -it -v WolframLicensing:/Licensing -v ~/Documents/wljs:/workspace -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
 
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
 
