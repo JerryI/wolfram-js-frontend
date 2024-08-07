@@ -1,17 +1,15 @@
 http                      =  $Options["HTTPHandler"];
 
 App[request_] := With[{
-        SecretString = Hash[URLDecode[ request["Query", "token"] ] ]
-    },
+    SecretString = ToString[StringReverse[URLDecode[ request["Path"] ] ] ]
+},
 
-    <ToString>
-        <SecretString/>
-    </ToString>
-];
+    <SecretString/>
+];  
 
 Ping[request_] := With[{}, "OK"];
 
-http["MessageHandler", "Autotest"] = AssocMatchQ[<|"Path" -> "/test"|>] -> App;
+http["MessageHandler", "Test"] = AssocMatchQ[<|"Path" -> "/test"|>] -> App;
 http["MessageHandler", "Ping"] = AssocMatchQ[<|"Path" -> "/ping"|>] -> Ping;
 Print["Test Loaded!"];
 

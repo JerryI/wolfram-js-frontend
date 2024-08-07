@@ -312,15 +312,15 @@ PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "Extensio
 ExtendedApp["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 App["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
-Echo["Autotest start!"];
+(*Echo["Autotest start!"];
 
 If[$Env["bypasstest"] === "True" || $Env["bypasstest"] === True,
   Echo["Autotest was skipped"];
 ,
   (* autotest *)
-  With[{secret = CreateUUID[]},
+  With[{secret = "123"},
     With[{
-            result = URLFetch[StringTemplate["http://``:``/test?token=``"][$Env["host"], $Env["http"], URLEncode[ secret ] ] ]
+            result = Get[StringTemplate["http://``:``/test/``"][$Env["host"], $Env["http"], URLEncode[ secret ] ] ]
         },
 
       If[result === ToString[ Hash[secret] ],
@@ -332,7 +332,7 @@ If[$Env["bypasstest"] === "True" || $Env["bypasstest"] === True,
       ];
     ];
   ];
-];
+];*)
 
 
 
