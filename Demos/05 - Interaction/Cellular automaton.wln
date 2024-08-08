@@ -1,0 +1,120 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$71], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend-dev/Demos/05 - Interaction/Cellular automaton.wln", 
+   "Quick" -> True, "Symbols" -> <|"t$3591289" -> 1175|>|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Game of life\nusing SVG canvas and dynamic object creation", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3b27ccab-502a-4b11-9ad3-78084f75a037", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> "># Game of life\nusing SVG canvas and dynamic object \
+creation", "Display" -> "markdown", 
+    "Hash" -> "e223ba10-b2f1-4e91-9e94-e634f3069f7a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ".md\n## Utility functions\nSupporting structure for adding \
+and removing objects from SVG canvas. In general operations with SVG are \
+slow, therefore we need to minimize the operations applied, i.e. apply only \
+diffs", "Display" -> "codemirror", "Hash" -> 
+     "5e11f39c-b7a9-4f84-91cd-48012b4637f1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ">## Utility functions\nSupporting structure for adding and \
+removing objects from SVG canvas. In general operations with SVG are slow, \
+therefore we need to minimize the operations applied, i.e. apply only diffs", 
+    "Display" -> "markdown", "Hash" -> 
+     "543c3170-72cd-499c-86a1-fa6024249129", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> "hashmap = <||>;\n\ncreateCell[coords_, win_, marker_] := \
+With[{\n  l = coords - {0.5, 0.5}, \n  r = coords + {0.5,0.5}\n},\n  \
+hashmap[coords] = FrontSubmit[\n    Rectangle[l,r]\n  , MetaMarker[marker], \
+\"Tracking\"->True, \"Window\"->win];\n]\n\ndeleteCell[coords_] := (\n  \
+With[{o = hashmap[coords]},\n      Delete[o];\n      hashmap[cords] = .;\n  \
+]\n)\n\nClamp[min_, max_][val_] := If[val >= min, If[val <= max, val, max], \
+min]", "Display" -> "codemirror", "Hash" -> 
+     "5c6fa627-f6fe-470d-b065-560bd6493f44", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ".md\nBatch processing is not yet supported, therefore for \
+every change `FrontSubmit` is called, which slows the system down, when \
+number of cells if large", "Display" -> "codemirror", 
+    "Hash" -> "aae84a8c-2a04-46df-87e0-a19fda28d3ec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ">Batch processing is not yet supported, therefore for every \
+change `FrontSubmit` is called, which slows the system down, when number of \
+cells if large", "Display" -> "markdown", 
+    "Hash" -> "b70c35ac-6f1d-464a-a513-3223723af908", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ".md\n## The main game loop\nWe use `AnimationFrameListener` \
+to sync up with browser's refresh rate", "Display" -> "codemirror", 
+    "Hash" -> "fbd177c8-4a2b-4e67-9a2c-a7df532dc3f0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ">## The main game loop\nWe use `AnimationFrameListener` to \
+sync up with browser's refresh rate", "Display" -> "markdown", 
+    "Hash" -> "9144402e-05d0-4bd1-a8fa-f1cd2a55af01", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> "hashmap = <||>;\n\nModule[{\n  t = 4.0, \n  \n  pen = False, \
+\n  running = False,\n  rule = \"GameOfLife\",\n  \n  board = Table[0, \
+{i,30}, {j,30}], \n  buffer,\n  draw,\n  canvas,\n   \n  win = \
+CurrentWindow[], \n  marker = CreateUUID[],\n  uid    = CreateUUID[],\n  cell \
+  = ResultCell[]\n},\n\n  buffer = board;\n\n  EventHandler[uid, \
+Function[Null,\n    t = t + 1;\n    \n    If[Mod[t, 3] == 0,\n\n      \
+If[running, board = CellularAutomaton[rule, board]];\n\n\n        \
+MapIndexed[\n          Function[{val, index}, \n            If[val >0, \n     \
+         createCell[index, win, marker], \n              If[val < 0, \n       \
+         deleteCell[index]\n              ]\n            ]\n        ], board \
+- buffer, {2}];\n\n        buffer = board;\n    ];\n    \n  ]];\n\n  \
+draw[xy_] := With[{\n            i = xy[[1]] // Round // Clamp[1, \
+Length[board]], \n            j = xy[[2]] // Round // Clamp[1, \
+Length[board]]\n          },\n      \n            board[[i, j]] = 1;\n  \
+];\n\n  EventHandler[win, {\"Closed\" -> Function[Null,\n    Delete[cell]\n  \
+]}];\n\n  controls = Column[{  \n    EventHandler[InputButton[\"Random \
+fill\"], Function[Null, board = Table[RandomInteger[{0,1}], {i, 30}, {j, \
+30}]]],\n    EventHandler[InputButton[\"Clear\"], Function[Null, board = \
+Table[0, {i, 30}, {j, 30}]]],\n    EventHandler[InputCheckbox[False, \
+\"Label\" -> \"Run\"], Function[state, running = state]]\n  }];\n \n  canvas \
+= Graphics[{\n    MetaMarker[marker],\n    \n    {LightGray,\n    \
+Table[Line[{\n      {{i,0}, {i, 30}},\n      {{0,i}, {30, i}}\n    }], {i, \
+29}]},\n    \n    EventHandler[Graphics`Canvas[], {\n      \"mousedown\" -> \
+Function[xy, draw[xy]; pen = True],\n      \"mouseup\" -> Function[Null, pen \
+= False],\n      \"mousemove\" -> Function[xy, If[pen, draw[xy]]]\n    \
+}],\n\n    AnimationFrameListener[t // Offload, \"Event\" -> uid]\n    \n  }, \
+ImagePadding->None, Controls -> False, PlotRange->{{0,30}, {0,30}}, \
+ImageSize->500];\n\n  Row[{canvas, controls}]\n \n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2dfa6bc6-f099-42d0-9646-05c5f3703d29", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ".md\nUse your mouse to draw cells", 
+    "Display" -> "codemirror", "Hash" -> 
+     "604c46c4-5346-4a9c-8cda-4e817a3c8249", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> ">Use your mouse to draw cells", "Display" -> "markdown", 
+    "Hash" -> "d0f6113e-da70-4bba-9cdd-a74a51078732", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4b9e7b98-78c4-4525-bcad-fab6d9e56f7a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cdc031dd-6a01-4fb9-91a7-dc2126d43420"|>}, "serializer" -> "jsfn4"|>
