@@ -1,269 +1,283 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$414], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$212], 
    "Objects" -> <|"397f3689-4b70-4b33-93e5-691ef75edf3e" -> 
       <|"Public" -> Hold[MyFunction2["Hello World!"]]|>, 
      "98560aba-19be-403b-8432-a5ea5ad21e7d" -> 
       <|"Public" -> Hold[MyCustomComponent["Click me pls", "event1"]]|>, 
      "72f2f2d7-3d3c-41b0-bba4-9aec687785bf" -> 
       <|"Public" -> Hold[MyCustomComponent["Click me", 
-          "dfbc2acf-452c-4098-b7d6-db1661703bc9"]]|>, 
-     "70a437fc-9067-4b54-b737-84b66358624c" -> 
-      <|"Public" -> Hold[WLXEmbed["<div ><button \
-id=\"994b79df-2eb9-42df-bd68-d0dff67c3bc1\" style=\"background: lightblue\" \
-class=\"p-1\">Hello World!</button><script type=\"module\"> \
-document.getElementById('994b79df-2eb9-42df-bd68-d0dff67c3bc1').addEventListe\
-ner('click', () => {\n\n          server.kernel.emitt('test', 'True');\n      \
-})</script></div>"]]|>|>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend\
--dev/Examples/Mixing languages/Javascript Integration.wln"|>, 
+          "dfbc2acf-452c-4098-b7d6-db1661703bc9"]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/09 - Mixing \
+languages/Javascript Integration.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "JS - WL Interaction", 
+      CellObj[JerryI`Notebook`CellObj`$150]], 
+     Notebook`Editor`TOC`Private`heading[2, "Direct call", 
+      CellObj[JerryI`Notebook`CellObj`$152]], 
+     Notebook`Editor`TOC`Private`heading[2, "Direct call in a container", 
+      CellObj[JerryI`Notebook`CellObj`$163]], 
+     Notebook`Editor`TOC`Private`heading[2, "Data fetch", 
+      CellObj[JerryI`Notebook`CellObj`$172]], 
+     Notebook`Editor`TOC`Private`heading[2, 
+      "Asynchronious call from Javascript", 
+      CellObj[JerryI`Notebook`CellObj`$181]], 
+     Notebook`Editor`TOC`Private`heading[2, "Custom Javascript component", 
+      CellObj[JerryI`Notebook`CellObj`$190]], 
+     Notebook`Editor`TOC`Private`heading[3, "Integrating with EventObjects", 
+      CellObj[JerryI`Notebook`CellObj`$203]], 
+     Notebook`Editor`TOC`Private`heading[2, 
+      "Custom Javascript component + WLX", 
+      CellObj[JerryI`Notebook`CellObj`$211]], 
+     Notebook`Editor`TOC`Private`heading[2, "Request evaluation", 
+      CellObj[JerryI`Notebook`CellObj`$220]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# JS - WL Interaction\nHere we will highlight \
 a few methods for communication with Javascript", "Display" -> "codemirror", 
-    "Hash" -> "19c828f2-014b-412d-96eb-84a51fbdc0b4", "Invisible" -> False, 
+    "Hash" -> "ee7bfc20-86b5-477a-93fc-2771fca1e2dd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "# JS - WL Interaction\nHere we will highlight a few methods \
 for communication with Javascript", "Display" -> "markdown", 
-    "Hash" -> "d9f88ade-7565-4e7b-a3e6-5324736acb39", "Invisible" -> False, 
+    "Hash" -> "0e3958b6-ca08-4694-bb01-1d7ffdb19c52", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Direct call\nFirstly define our function", 
     "Display" -> "codemirror", "Hash" -> 
-     "d60e85c5-5bad-4e39-ae34-98f0dcdd579c", "Invisible" -> False, 
+     "85649516-bc58-4cd8-b067-dacd92b39c15", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Direct call\nFirstly define our function", 
     "Display" -> "markdown", "Hash" -> 
-     "17d3f23e-f8bf-4b55-812c-24e8207f1077", "Invisible" -> False, 
+     "1fbed77e-1530-4200-b322-07b1aef15302", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\ncore.MyFunction = async (args, env) => {\n  const data \
 = await interpretate(args[0], env);\n  alert(data);\n}", 
     "Display" -> "codemirror", "Hash" -> 
-     "319a194e-1216-4c65-a520-2c878019ac4b", "Invisible" -> False, 
+     "934b56cb-5158-453e-8e17-c457f5438793", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "\ncore.MyFunction = async (args, env) => {\n  const data = \
 await interpretate(args[0], env);\n  alert(data);\n}", "Display" -> "js", 
-    "Hash" -> "07775de6-6f26-4e3a-b7e8-a16315cf4e58", "Invisible" -> False, 
+    "Hash" -> "964bf1da-072b-4b95-9cdd-785009940aaa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nNow call it", "Display" -> "codemirror", 
-    "Hash" -> "58c24e6c-9b8e-49ec-b9d0-32bece371011", "Invisible" -> False, 
+    "Hash" -> "92e1f75d-bc69-4101-ac5d-3c467fa417b2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "Now call it", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "Now call it", 
     "Display" -> "markdown", "Hash" -> 
-     "f2252696-f4da-4c24-bf56-e9ecf745e0e7", "Invisible" -> False, 
+     "67b1ab48-d12c-47f5-b04f-5c45dc3d65a4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "FrontSubmit[MyFunction[\"Hello World!\"]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "c8ec3d70-05bf-4e5b-8d39-a2229e1724bb", "Invisible" -> False, 
+     "46532336-554d-417a-8b68-1e306ee03764", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nOr chain it with some other WLJS functions", 
     "Display" -> "codemirror", "Hash" -> 
-     "1a460bca-19d8-4908-98d5-d51093cf8057", "Invisible" -> False, 
+     "40f87671-2952-4d87-aeca-d62cf08bda39", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "Or chain it with some other WLJS functions", 
     "Display" -> "markdown", "Hash" -> 
-     "835c9e65-41f4-4328-bb9b-9a43f6e01c92", "Invisible" -> False, 
+     "21ad110b-e5ab-4583-b331-b23495fb64e1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "FrontSubmit[MyFunction[ReadClipboard[]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "b153e973-746a-4a52-b35f-d778f5674a40", "Invisible" -> False, 
+     "da911fd5-5086-4c19-92fa-a0bb906060af", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "20b17b9c-85f5-4922-a503-6455ffe1061b", "Invisible" -> False, 
+    "Hash" -> "e1d4f59e-7aa4-431b-8e63-772239d2b1f9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Direct call in a container\nWe can go further and \
 allocate a DOM element as well as some local memeory for a function", 
     "Display" -> "codemirror", "Hash" -> 
-     "f26c6c9f-0071-4294-a77e-b7aa20f61211", "Invisible" -> False, 
+     "b4ffba59-acbc-4b5d-b5cd-9ac9b668bf27", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Direct call in a container\nWe can go further and allocate \
 a DOM element as well as some local memeory for a function", 
     "Display" -> "markdown", "Hash" -> 
-     "dd223f7d-1c8e-40fb-880f-c03a85f6926e", "Invisible" -> False, 
+     "0a0389ce-27f1-43b7-8003-b9adc234380e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\ncore.MyFunction2 = async (args, env) => {\n  const \
 data = await interpretate(args[0], env);\n  env.element.innerHTML = `<span \
 style=\"color:red\">${data}</span>`;\n}", "Display" -> "codemirror", 
-    "Hash" -> "b5bea42e-e557-4188-9774-b9e1d934fdaf", "Invisible" -> False, 
+    "Hash" -> "7886392d-a6bb-4cee-9559-9651c7f44a55", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "\ncore.MyFunction2 = async (args, env) => {\n  const data = \
 await interpretate(args[0], env);\n  env.element.innerHTML = `<span \
 style=\"color:red\">${data}</span>`;\n}", "Display" -> "js", 
-    "Hash" -> "b5cbdf57-50b6-4d3f-b9e5-7d70a953f429", "Invisible" -> False, 
+    "Hash" -> "4ff18e80-62ba-41e8-8513-9260a1d36e75", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nNow call it in a cell", "Display" -> "codemirror", 
-    "Hash" -> "fb6d4f99-38d6-4f60-a5b9-b3a9a5bc5a9f", "Invisible" -> False, 
+    "Hash" -> "99a24a16-9c7a-482d-b8a2-5693dea4fbd0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "Now call it in a cell", "Display" -> "markdown", 
-    "Hash" -> "0f7a777f-378c-4ba0-86c9-0c4478b1ddb6", "Invisible" -> False, 
+    "Hash" -> "db5f1232-e76b-4178-80c1-9d7323ced8c1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "CreateFrontEndObject[MyFunction2[\"Hello World!\"]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "ee24b30e-99b3-410c-b714-5e2083b51faa", "Invisible" -> False, 
+     "d2a3ee4e-6d2e-4650-bc23-5c8ff1213b08", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"397f3689-4b70-4b33-93e5-691ef75edf3e\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG1uap\
 xmbWVjqmiSZGwAJY2NdS+NUU10zS8PUNHPT1JQ041QAdU0VYw==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "324d7ecf-302c-43ea-bd5c-3a0fbdadc5d0", "Invisible" -> False, 
+     "d4fc1e57-b645-4791-8bea-a893d0e02d9a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "a5d736f8-90ca-495d-8471-9e3ad5bc70e0", "Invisible" -> False, 
+    "Hash" -> "56f16554-1bea-4948-adc7-75651061ed92", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Data fetch\nWe can also fetch some data from JS", 
     "Display" -> "codemirror", "Hash" -> 
-     "4eef0ada-684b-42d3-acc1-9adeb80ba6a5", "Invisible" -> False, 
+     "2361a33a-0459-4c1f-8ca2-17ebe2e08592", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Data fetch\nWe can also fetch some data from JS", 
     "Display" -> "markdown", "Hash" -> 
-     "22fc715f-2ed6-4360-ac63-12780e6bce9d", "Invisible" -> False, 
+     "29a1a262-df06-4a69-b11d-dec13de67b8a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\ncore.MyFunction3 = async (args, env) => {\n  return \
 [1,2,3,4,5,6];\n}", "Display" -> "codemirror", 
-    "Hash" -> "33227360-e845-469b-b5a9-e4c80230f352", "Invisible" -> False, 
+    "Hash" -> "da23dbd3-c059-4cae-ae8f-92411f1b71bf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> 
      "\ncore.MyFunction3 = async (args, env) => {\n  return \
 [1,2,3,4,5,6];\n}", "Display" -> "js", 
-    "Hash" -> "d69fce5c-5c35-4c2a-a84b-4b424a958991", "Invisible" -> False, 
+    "Hash" -> "e6f27ed9-ced4-422e-8448-d77cd5e85d05", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nNow read it out", "Display" -> "codemirror", 
-    "Hash" -> "0adad6ab-91be-4f53-b5f3-22243c4ca947", "Invisible" -> False, 
+    "Hash" -> "f5834540-a101-46a3-98cc-ee593099442f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "Now read it out", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "Now read it out", 
     "Display" -> "markdown", "Hash" -> 
-     "073985b9-7dc4-427b-b5fe-e0ff1657a965", "Invisible" -> False, 
+     "7ecfacb1-084c-42ef-9b1c-22c6cf20cc12", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "FrontFetch[MyFunction3[]]", "Display" -> "codemirror", 
-    "Hash" -> "33b71fe3-285e-4d47-8483-a43cfb85a81f", "Invisible" -> False, 
+    "Hash" -> "2b81ba66-03b3-40ff-88af-f03bb72d1128", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "{1,2,3,4,5,6}", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "{1,2,3,4,5,6}", 
     "Display" -> "codemirror", "Hash" -> 
-     "7f755eda-2709-496f-a3c6-371fccb23162", "Invisible" -> False, 
+     "e56b73cf-0bfd-49cf-aef2-e286bc61a5cb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "5d7dedf2-0125-4f2c-bd88-3df6c0e47bba", "Invisible" -> False, 
+    "Hash" -> "98fe74cb-54f6-4a15-aac1-e5bac668ee35", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Asynchronious call from Javascript\nHere we can call \
 WL using events ", "Display" -> "codemirror", 
-    "Hash" -> "0081077a-c178-4468-bd5d-88b25a57890d", "Invisible" -> False, 
+    "Hash" -> "7c627345-e253-460a-9902-f2e6f338073e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> 
      "## Asynchronious call from Javascript\nHere we can call WL using events \
-", "Display" -> "markdown", "Hash" -> "7aeb7dbf-32bb-4039-825d-73d15a4c9472", 
+", "Display" -> "markdown", "Hash" -> "c0ba6298-e0eb-41ee-9c6c-149b7f72cac5", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+    "Notebook" -> "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\nconst button = \
 document.createElement('button');\nbutton.innerText = \"Press \
 me\";\n\nbutton.addEventListener('click', () => {\n  \
 server.kernel.emitt('eventUid', 'True');\n});\n\nreturn button;", 
     "Display" -> "codemirror", "Hash" -> 
-     "b8b65ad6-452c-4ff6-8b84-0b9f9e4d5e5d", "Invisible" -> False, 
+     "0ac90b99-ad63-4686-8eb2-61265c2e5e96", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "\nconst button = \
 document.createElement('button');\nbutton.innerText = \"Press \
 me\";\n\nbutton.addEventListener('click', () => {\n  \
 server.kernel.emitt('eventUid', 'True');\n});\n\nreturn button;", 
-    "Display" -> "js", "Hash" -> "3d047f03-a8c3-4c8f-a1d7-4ef3b73efb8c", 
+    "Display" -> "js", "Hash" -> "a3419c7a-3df0-4130-8a38-852fa2daa7d8", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+    "Notebook" -> "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nLets capture it", "Display" -> "codemirror", 
-    "Hash" -> "b28d3899-cee6-4a01-bcaa-42278123f264", "Invisible" -> False, 
+    "Hash" -> "bc3a56dc-3df7-43d3-baf1-b33d43a55b73", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "Lets capture it", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "Lets capture it", 
     "Display" -> "markdown", "Hash" -> 
-     "efc78573-3f3d-4b12-bcc6-2108ffa15463", "Invisible" -> False, 
+     "3a429225-f481-4eff-a4e6-642f5257011c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "EventHandler[\"eventUid\", Print]", 
     "Display" -> "codemirror", "Hash" -> 
-     "d1274b15-440e-41c2-8e74-c8eaa64fdc91", "Invisible" -> False, 
+     "f1cc34b2-ff3e-4438-9321-9624a24dff4d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "\"eventUid\"", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "\"eventUid\"", 
     "Display" -> "codemirror", "Hash" -> 
-     "7d474222-8d18-4a2c-b5b1-02593b181080", "Invisible" -> False, 
+     "be28528e-0f16-4f91-a9fb-53a4925a3039", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "506fe2b0-b6d0-411b-8d82-2c7e01d56b48", "Invisible" -> False, 
+    "Hash" -> "a9679992-72de-4bad-a328-f5fa06607ddb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Custom Javascript component\nhere we can learn on how \
 to make custom input components using pure JS", "Display" -> "codemirror", 
-    "Hash" -> "4a42fbb6-2de4-4f60-a3dc-7341e1da3ba1", "Invisible" -> False, 
+    "Hash" -> "067c2b89-7433-484f-8c4e-42841dcbea59", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Custom Javascript component\nhere we can learn on how to \
 make custom input components using pure JS", "Display" -> "markdown", 
-    "Hash" -> "d7d1d67a-b56b-4ea1-b5f8-74b48c97a7f5", "Invisible" -> False, 
+    "Hash" -> "b8ca98a1-d472-456f-b121-d632ff582cf4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\ncore.MyCustomComponent = async (args, env) => {\n  \
 const label = await interpretate(args[0], env);\n  const ev = await \
 interpretate(args[1], env);\n  \n  const button = \
@@ -272,10 +286,10 @@ button.style.backgroundColor = \"lightblue\";\n\n  \
 button.addEventListener('click', () => {\n    server.kernel.emitt(ev, \
 'True');\n  });\n\n  env.element.appendChild(button);\n}", 
     "Display" -> "codemirror", "Hash" -> 
-     "954200e5-e097-412a-871b-6b26fa51a23c", "Invisible" -> False, 
+     "f883f3ff-f69e-471d-959c-efaa07d63d26", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "\ncore.MyCustomComponent = async (args, env) => {\n  const \
 label = await interpretate(args[0], env);\n  const ev = await \
 interpretate(args[1], env);\n  \n  const button = \
@@ -283,118 +297,118 @@ document.createElement('button');\n  button.innerText = label;\n  \
 button.style.backgroundColor = \"lightblue\";\n\n  \
 button.addEventListener('click', () => {\n    server.kernel.emitt(ev, \
 'True');\n  });\n\n  env.element.appendChild(button);\n}", "Display" -> "js", 
-    "Hash" -> "9a423eb2-fe74-44d5-b381-9c03e336222c", "Invisible" -> False, 
+    "Hash" -> "a58f7adf-aff6-406c-a5a3-a5c4a4a12814", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nNow we can make boxes for it", 
     "Display" -> "codemirror", "Hash" -> 
-     "c24de551-7d84-4b26-a77b-36854e7b962b", "Invisible" -> False, 
+     "3d848ebf-412b-493c-b9bb-2f14b7901690", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "Now we can make boxes for it", "Display" -> "markdown", 
-    "Hash" -> "b7cd4242-8497-48a8-9633-e948216b0270", "Invisible" -> False, 
+    "Hash" -> "d5ecd688-9373-4552-bc4d-ac9557b657df", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "MyCustomComponent /: MakeBoxes[m_MyCustomComponent, \
 StandardForm] := With[{\n  o = CreateFrontEndObject[m]\n},\n  MakeBoxes[o, \
 StandardForm]\n]", "Display" -> "codemirror", 
-    "Hash" -> "421e81e4-49b5-4e74-bdf4-8482bfcce44b", "Invisible" -> False, 
+    "Hash" -> "435530f7-d524-4e7c-9900-afa0534df14c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> ".md\nin action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> ".md\nin action", 
     "Display" -> "codemirror", "Hash" -> 
-     "82e17de3-4074-4001-be73-6f65f8bfed0d", "Invisible" -> False, 
+     "2d44c012-0cfe-4db1-9e60-302fd23eca15", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "in action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "in action", 
     "Display" -> "markdown", "Hash" -> 
-     "976f8115-60d1-42d8-b204-9fcaf658059a", "Invisible" -> False, 
+     "e6e4075e-63e6-44c7-a35f-46a87db95142", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "MyCustomComponent[\"Click me pls\", \
 \"event1\"]\nEventHandler[\"event1\", Print];", "Display" -> "codemirror", 
-    "Hash" -> "959ef8a8-92e1-47eb-95ac-f9b1abec9a70", "Invisible" -> False, 
+    "Hash" -> "8320d06f-fdd3-4687-8627-b81c7074d1e2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"98560aba-19be-403b-8432-a5ea5ad21e7d\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW1qYm\
 hkkJiXqGlompeqaGBgn6VqYGBvpJpqmJpomphgZppqnAACBfhXH\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "00e06fba-a97b-4019-b9e2-044da9fdb5f6", "Invisible" -> False, 
+     "1319b2f8-cd81-41bb-9814-63a85476867e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "e6c0aa47-bd31-4d43-98ee-5a52b8ddbac6", "Invisible" -> False, 
+    "Hash" -> "3d670f64-8231-4b92-8216-81a563d2196b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n### Integrating with EventObjects\nIt is much easier to \
 work with event object", "Display" -> "codemirror", 
-    "Hash" -> "d7d67c16-c5b0-4385-b871-ab7a7bae8d0c", "Invisible" -> False, 
+    "Hash" -> "dfc49f29-a439-42fa-9cf1-f6f8cd47620b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "### Integrating with EventObjects\nIt is much easier to work \
 with event object", "Display" -> "markdown", 
-    "Hash" -> "da80a871-f3ca-43c8-959e-f79e84b492b2", "Invisible" -> False, 
+    "Hash" -> "c8234f38-e430-42b4-9734-1ff4150862ec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "ClearAll[MyCustomComponent]\n\nMyCustomInput[label_String] := \
 With[{uid = CreateUUID[]},\n  EventObject[<|\"Id\"->uid, \
 \"View\"->MyCustomComponent[label, uid]|>]\n]", "Display" -> "codemirror", 
-    "Hash" -> "67e47194-900d-4bf3-9a38-4710a1693ff6", "Invisible" -> False, 
+    "Hash" -> "c07409d4-c60d-45d0-ab7f-9e2b98e6e9d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> ".md\nin action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> ".md\nin action", 
     "Display" -> "codemirror", "Hash" -> 
-     "95d71886-5ead-4eef-b18b-766fa7e9581b", "Invisible" -> False, 
+     "d56db57e-1650-4267-a118-76e935189db0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "in action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "in action", 
     "Display" -> "markdown", "Hash" -> 
-     "aa862bd8-78ef-465a-a780-af8a2e58893b", "Invisible" -> False, 
+     "6badf97a-01ac-488b-9508-e20a3d382fe3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "EventHandler[MyCustomInput[\"Click me\"], Print]", 
     "Display" -> "codemirror", "Hash" -> 
-     "71d50e2a-b1be-4964-b8a1-af03865c8b10", "Invisible" -> False, 
+     "83b4c4d4-eb00-4f8e-a7d5-926a27918a41", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "(*VB[*)(EventObject[<|\"Id\" -> \
 \"dfbc2acf-452c-4098-b7d6-db1661703bc9\", \"View\" -> \
 \"72f2f2d7-3d3c-41b0-bba4-9aec687785bf\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
 k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxulAWGKua5xinGyrolhkoFuUlKiia5lYmqymYW\
 5uYVpUhoAiSkWBw==\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "9d9c46c8-6e2a-4fa3-bef4-24f53cfa69b9", "Invisible" -> False, 
+    "Hash" -> "b36d3cef-63d1-4c5c-a3ce-018f89ba3f7e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "aa01d285-47fa-40c0-87ba-35c1bfaff045", "Invisible" -> False, 
+    "Hash" -> "1593e3c7-e984-49fc-bb09-082a2d3edd6e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Custom Javascript component + WLX\nIt is much easier \
 to write markup in WLX compared to JS", "Display" -> "codemirror", 
-    "Hash" -> "166a0315-a4e6-4122-b419-7763d1efe66a", "Invisible" -> False, 
+    "Hash" -> "8942e927-5adc-4ed2-acb8-453d31f88e74", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Custom Javascript component + WLX\nIt is much easier to \
 write markup in WLX compared to JS", "Display" -> "markdown", 
-    "Hash" -> "b229770c-8b2d-4b4e-8931-dcada88c8d58", "Invisible" -> False, 
+    "Hash" -> "d9e10cba-48b3-4239-b177-c0f22db9556b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".wlx\n\nMyCustomComponent2[OptionsPattern[]] := With[{\n  \
 Event = OptionValue[\"Event\"],\n  Label = OptionValue[\"Label\"],\n  Uid = \
 CreateUUID[]\n},\n  <div>\n    <button id=\"{Uid}\" style=\"background: \
@@ -404,68 +418,60 @@ document.getElementById('<Uid/>').addEventListener('click', () => {\n\n       \
    server.kernel.emitt('<Event/>', 'True');\n      })\n    </script>\n  \
 </div>\n]\n\nOptions[MyCustomComponent2] = {\"Event\" -> \"\", \"Label\" -> \
 \"Click me\"};", "Display" -> "codemirror", 
-    "Hash" -> "6d83c79c-df1e-4c26-b5a2-4dedd87cc38a", "Invisible" -> False, 
+    "Hash" -> "4531971f-7dcc-4d73-bdac-d3d3e8a51eae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> ".md\nIn action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> ".md\nIn action", 
     "Display" -> "codemirror", "Hash" -> 
-     "f5dbb97a-e8a0-47c4-b852-201fde1bba3e", "Invisible" -> False, 
+     "5ea3d010-732c-4028-b77b-fd8139171e73", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, <|"Data" -> "In action", 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, <|"Data" -> "In action", 
     "Display" -> "markdown", "Hash" -> 
-     "e17e7798-5d1a-4daa-b761-1b18ee248dfb", "Invisible" -> False, 
+     "d68e07d5-362d-4f2e-a3fc-5ab012794c0a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "MyCustomComponent2[\"Event\"->\"test\", \"Label\"->\"Hello \
-World!\"] // WLXEmbed\nEventHandler[\"test\", Print];", 
+World!\"] // HTMLView\nEventHandler[\"test\", Print];", 
     "Display" -> "codemirror", "Hash" -> 
-     "79e3427e-90ac-44d6-b24d-c8fd600b21b2", "Invisible" -> False, 
+     "059bdabb-1954-4ae4-b26f-e990b9ff8251", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
-   <|"Data" -> "(*VB[*)(FrontEndRef[\"70a437fc-9067-4b54-b737-84b66358624c\"]\
-)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxskm\
-hibpyXrWhqYmeuaJJma6CaZG5vrWpgkmZkZm1qYGZkkAwB2wBTD\"*)(*]VB*)", 
-    "Display" -> "codemirror", "Hash" -> 
-     "fe309f45-2312-4b4b-8bac-54a0bf39f019", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\nYou can do pretty much the same we did with normal JS to \
 assign boxes or event object.", "Display" -> "codemirror", 
-    "Hash" -> "b5189386-ce57-429b-a309-9f2836d0b078", "Invisible" -> False, 
+    "Hash" -> "2e1622aa-5bed-49cf-9b69-a6debcb24725", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "You can do pretty much the same we did with normal JS to \
 assign boxes or event object.", "Display" -> "markdown", 
-    "Hash" -> "d60bdc53-84ad-4493-a3c5-b0b1ac593d31", "Invisible" -> False, 
+    "Hash" -> "75170518-10c8-483f-98d2-c26b54fa686e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".md\n## Request evaluation", "Display" -> "codemirror", 
-    "Hash" -> "cb6814bf-9e61-4c93-8208-616faba954d2", "Invisible" -> False, 
+    "Hash" -> "d8fe061b-1c24-4daa-8222-3fe234eba19a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> "## Request evaluation", "Display" -> "markdown", 
-    "Hash" -> "2a95c9c0-9136-4eea-a598-cfe11a404f1a", "Invisible" -> False, 
+    "Hash" -> "f2a949cd-5d95-4c70-bd35-adb42decfc63", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> ".js\n\nconst doc = document.createElement('span');\n\nconst \
 run = async () => {\n  const data = await \
 server.kernel.ask('RandomReal[{-1,1}, 3]');\n  const result = await \
 interpretate(data, {});\n  doc.innerText = result.join(', \
 ');\n}\n\nrun();\n\nreturn doc;", "Display" -> "codemirror", 
-    "Hash" -> "77cb7386-6588-4309-9dd8-21b1126713fe", "Invisible" -> False, 
+    "Hash" -> "f5761d4b-7fe8-46da-8f06-056ce43620c4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>, 
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "3502b74c-5a15-448b-ab42-5c770e010266", "Invisible" -> False, 
+    "Hash" -> "37c537e8-17c8-4c95-b633-fa086f850a63", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "399498db-6fd1-4bdc-bed6-3faa84411df7"|>}, "serializer" -> "jsfn4"|>
+     "df4efd2a-2c01-417f-9c48-a80d84d485a4"|>}, "serializer" -> "jsfn4"|>
