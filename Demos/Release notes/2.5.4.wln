@@ -1,6 +1,150 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$50], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$65], 
    "HaveToSaveAs" -> False, "Objects" -> 
-    <|"97ecd983-15ed-4563-b876-57489c892d95" -> 
+    <|"70e9d9b3-4160-45f6-9a23-494e14fb1c0b" -> 
+      <|"Public" -> Hold[Graphics[{{Arrowheads[Medium], 
+            Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], 
+            Arrow[{{{1.3031167282892082, 0.8687444855261388}, {
+                0.8687444855261388, 0}}, {{1.3031167282892082, 
+                0.8687444855261388}, {1.7374889710522776, 0}}, 
+              {{0.6515583641446041, 1.7374889710522776}, {1.3031167282892082, 
+                0.8687444855261388}}, {{0, 0.8687444855261388}, {0, 0}}, 
+              {{0, 0.8687444855261388}, {0.6515583641446041, 
+                1.7374889710522776}}}, 0.02044525157230459]}, 
+           {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
+               Opacity[0.7]]]], {Disk[{0, 0}, 0.02044525157230459], 
+             {GrayLevel[0], Text["x", Offset[{2, 2}, {0.02044525157230459, 
+                 0.02044525157230459}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{0.8687444855261388, 0}, 
+              0.02044525157230459], {GrayLevel[0], Text["y", Offset[{2, 2}, 
+                {0.8891897370984434, 0.02044525157230459}], ImageScaled[
+                {0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{1.7374889710522776, 0}, 0.02044525157230459], 
+             {GrayLevel[0], Text["z", Offset[{2, 2}, {1.7579342226245822, 
+                 0.02044525157230459}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{1.3031167282892082, 
+               0.8687444855261388}, 0.02044525157230459], {GrayLevel[0], 
+              Text["Plus", Offset[{2, 2}, {1.3235619798615128, 
+                 0.8891897370984434}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{0.6515583641446041, 
+               1.7374889710522776}, 0.02044525157230459], {GrayLevel[0], 
+              Text["Sin", Offset[{2, 2}, {0.6720036157169087, 
+                 1.7579342226245822}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{0, 0.8687444855261388}, 
+              0.02044525157230459], {GrayLevel[0], Text["function", Offset[
+                {2, 2}, {0.02044525157230459, 0.8891897370984434}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}}}, 
+          {FormatType -> TraditionalForm, FrameTicks -> None, 
+           ImagePadding -> None, ImageSize -> 180, Controls -> False}]]|>, 
+     "17e8cc9e-a1e9-44a3-a34f-54bf7438a509" -> 
+      <|"Public" -> Hold[Graphics[{{Arrowheads[Medium], 
+            Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], 
+            Arrow[{{{0, 0.8090398349558905}, {0, 0}}, {{0.8090398349558906, 
+                0.8090398349558905}, {0.8090398349558906, 0}}, 
+              {{0.4045199174779453, 1.6180796699117812}, {0, 
+                0.8090398349558905}}, {{0.4045199174779453, 
+                1.6180796699117812}, {0.8090398349558906, 
+                0.8090398349558905}}, {{0.4045199174779453, 
+                2.427119504867672}, {0.4045199174779453, 
+                1.6180796699117812}}, {{1.6180796699117812, 
+                0.8090398349558905}, {1.6180796699117812, 0}}, 
+              {{2.427119504867672, 0.8090398349558905}, {2.427119504867672, 
+                0}}, {{2.0225995873897267, 1.6180796699117812}, {
+                1.6180796699117812, 0.8090398349558905}}, 
+              {{2.0225995873897267, 1.6180796699117812}, {2.427119504867672, 
+                0.8090398349558905}}, {{2.0225995873897267, 
+                2.427119504867672}, {2.0225995873897267, 
+                1.6180796699117812}}, {{3.2361593398235624, 
+                0.8090398349558905}, {3.2361593398235624, 0}}, 
+              {{4.045199174779453, 0.8090398349558905}, {4.045199174779453, 
+                0}}, {{3.6406792573015077, 1.6180796699117812}, {
+                3.2361593398235624, 0.8090398349558905}}, 
+              {{3.6406792573015077, 1.6180796699117812}, {4.045199174779453, 
+                0.8090398349558905}}, {{3.6406792573015077, 
+                2.427119504867672}, {3.6406792573015077, 
+                1.6180796699117812}}, {{2.0225995873897267, 
+                3.2361593398235624}, {0.4045199174779453, 
+                2.427119504867672}}, {{2.0225995873897267, 
+                3.2361593398235624}, {2.0225995873897267, 
+                2.427119504867672}}, {{2.0225995873897267, 
+                3.2361593398235624}, {3.6406792573015077, 
+                2.427119504867672}}}, 0.03729346003382589]}, 
+           {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
+               Opacity[0.7]]]], {Disk[{0, 0}, 0.03729346003382589], 
+             {GrayLevel[0], Text["1", Offset[{2, 2}, {0.03729346003382589, 
+                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{0, 0.8090398349558905}, 
+              0.03729346003382589], {GrayLevel[0], Text["AtomicNumber", 
+               Offset[{2, 2}, {0.03729346003382589, 0.8463332949897164}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{0.8090398349558906, 0}, 0.03729346003382589], 
+             {GrayLevel[0], Text["1.00793", Offset[{2, 2}, 
+                {0.8463332949897164, 0.03729346003382589}], ImageScaled[
+                {0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{0.8090398349558906, 0.8090398349558905}, 
+              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
+               Offset[{2, 2}, {0.8463332949897164, 0.8463332949897164}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{0.4045199174779453, 1.6180796699117812}, 
+              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
+                {2, 2}, {0.4418133775117712, 1.6553731299456071}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{0.4045199174779453, 2.427119504867672}, 
+              0.03729346003382589], {GrayLevel[0], Text["Hydrogen", Offset[
+                {2, 2}, {0.4418133775117712, 2.4644129649014976}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{1.6180796699117812, 0}, 0.03729346003382589], 
+             {GrayLevel[0], Text["4.00259", Offset[{2, 2}, 
+                {1.6553731299456071, 0.03729346003382589}], ImageScaled[
+                {0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{1.6180796699117812, 0.8090398349558905}, 
+              0.03729346003382589], {GrayLevel[0], Text["AtomicNumber", 
+               Offset[{2, 2}, {1.6553731299456071, 0.8463332949897164}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{2.427119504867672, 0}, 0.03729346003382589], 
+             {GrayLevel[0], Text["2", Offset[{2, 2}, {2.4644129649014976, 
+                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{2.427119504867672, 0.8090398349558905}, 
+              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
+               Offset[{2, 2}, {2.4644129649014976, 0.8463332949897164}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{2.0225995873897267, 1.6180796699117812}, 
+              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
+                {2, 2}, {2.0598930474235524, 1.6553731299456071}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{2.0225995873897267, 2.427119504867672}, 
+              0.03729346003382589], {GrayLevel[0], Text["Helium", Offset[
+                {2, 2}, {2.0598930474235524, 2.4644129649014976}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{3.2361593398235624, 0}, 0.03729346003382589], 
+             {GrayLevel[0], Text["3", Offset[{2, 2}, {3.273452799857388, 
+                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{3.2361593398235624, 
+               0.8090398349558905}, 0.03729346003382589], {GrayLevel[0], 
+              Text["AtomicNumber", Offset[{2, 2}, {3.273452799857388, 
+                 0.8463332949897164}], ImageScaled[{0, 0}], BaseStyle -> 
+                "Graphics"]}}, {Disk[{4.045199174779453, 0}, 
+              0.03729346003382589], {GrayLevel[0], Text["6.94141", Offset[
+                {2, 2}, {4.0824926348132795, 0.03729346003382589}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{4.045199174779453, 0.8090398349558905}, 
+              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
+               Offset[{2, 2}, {4.0824926348132795, 0.8463332949897164}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{3.6406792573015077, 1.6180796699117812}, 
+              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
+                {2, 2}, {3.6779727173353334, 1.6553731299456071}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{3.6406792573015077, 2.427119504867672}, 
+              0.03729346003382589], {GrayLevel[0], Text["Lithium", Offset[
+                {2, 2}, {3.6779727173353334, 2.4644129649014976}], 
+               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
+            {Disk[{2.0225995873897267, 3.2361593398235624}, 
+              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
+                {2, 2}, {2.0598930474235524, 3.273452799857388}], ImageScaled[
+                {0, 0}], BaseStyle -> "Graphics"]}}}}, 
+          {FormatType -> TraditionalForm, FrameTicks -> None, 
+           ImagePadding -> None, ImageSize -> 180, Controls -> False}]]|>, 
+     "97ecd983-15ed-4563-b876-57489c892d95" -> 
       <|"Public" -> Hold[Graphics[GraphicsComplex[{{1.7530917013108804, 
              -13.506389244392482}, {15.211092519529505, -2.347529873713092}, 
             {14.81710633522885, -2.9857229884898198}, {1.5372783645039547, 
@@ -287,161 +431,20 @@
              Disk[98, 0.0797025883283277], Disk[99, 0.0797025883283277], 
              Disk[100, 0.0797025883283277], Disk[101, 0.0797025883283277]}}], 
           {FormatType -> TraditionalForm, FrameTicks -> None, 
-           ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>, 
-     "70e9d9b3-4160-45f6-9a23-494e14fb1c0b" -> 
-      <|"Public" -> Hold[Graphics[{{Arrowheads[Medium], 
-            Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], 
-            Arrow[{{{1.3031167282892082, 0.8687444855261388}, {
-                0.8687444855261388, 0}}, {{1.3031167282892082, 
-                0.8687444855261388}, {1.7374889710522776, 0}}, 
-              {{0.6515583641446041, 1.7374889710522776}, {1.3031167282892082, 
-                0.8687444855261388}}, {{0, 0.8687444855261388}, {0, 0}}, 
-              {{0, 0.8687444855261388}, {0.6515583641446041, 
-                1.7374889710522776}}}, 0.02044525157230459]}, 
-           {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
-               Opacity[0.7]]]], {Disk[{0, 0}, 0.02044525157230459], 
-             {GrayLevel[0], Text["x", Offset[{2, 2}, {0.02044525157230459, 
-                 0.02044525157230459}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{0.8687444855261388, 0}, 
-              0.02044525157230459], {GrayLevel[0], Text["y", Offset[{2, 2}, 
-                {0.8891897370984434, 0.02044525157230459}], ImageScaled[
-                {0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{1.7374889710522776, 0}, 0.02044525157230459], 
-             {GrayLevel[0], Text["z", Offset[{2, 2}, {1.7579342226245822, 
-                 0.02044525157230459}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{1.3031167282892082, 
-               0.8687444855261388}, 0.02044525157230459], {GrayLevel[0], 
-              Text["Plus", Offset[{2, 2}, {1.3235619798615128, 
-                 0.8891897370984434}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{0.6515583641446041, 
-               1.7374889710522776}, 0.02044525157230459], {GrayLevel[0], 
-              Text["Sin", Offset[{2, 2}, {0.6720036157169087, 
-                 1.7579342226245822}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{0, 0.8687444855261388}, 
-              0.02044525157230459], {GrayLevel[0], Text["function", Offset[
-                {2, 2}, {0.02044525157230459, 0.8891897370984434}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}}}, 
-          {FormatType -> TraditionalForm, FrameTicks -> None, 
-           ImagePadding -> None, ImageSize -> 180, Controls -> False}]]|>, 
-     "17e8cc9e-a1e9-44a3-a34f-54bf7438a509" -> 
-      <|"Public" -> Hold[Graphics[{{Arrowheads[Medium], 
-            Directive[Opacity[0.7], Hue[0.6, 0.7, 0.5]], 
-            Arrow[{{{0, 0.8090398349558905}, {0, 0}}, {{0.8090398349558906, 
-                0.8090398349558905}, {0.8090398349558906, 0}}, 
-              {{0.4045199174779453, 1.6180796699117812}, {0, 
-                0.8090398349558905}}, {{0.4045199174779453, 
-                1.6180796699117812}, {0.8090398349558906, 
-                0.8090398349558905}}, {{0.4045199174779453, 
-                2.427119504867672}, {0.4045199174779453, 
-                1.6180796699117812}}, {{1.6180796699117812, 
-                0.8090398349558905}, {1.6180796699117812, 0}}, 
-              {{2.427119504867672, 0.8090398349558905}, {2.427119504867672, 
-                0}}, {{2.0225995873897267, 1.6180796699117812}, {
-                1.6180796699117812, 0.8090398349558905}}, 
-              {{2.0225995873897267, 1.6180796699117812}, {2.427119504867672, 
-                0.8090398349558905}}, {{2.0225995873897267, 
-                2.427119504867672}, {2.0225995873897267, 
-                1.6180796699117812}}, {{3.2361593398235624, 
-                0.8090398349558905}, {3.2361593398235624, 0}}, 
-              {{4.045199174779453, 0.8090398349558905}, {4.045199174779453, 
-                0}}, {{3.6406792573015077, 1.6180796699117812}, {
-                3.2361593398235624, 0.8090398349558905}}, 
-              {{3.6406792573015077, 1.6180796699117812}, {4.045199174779453, 
-                0.8090398349558905}}, {{3.6406792573015077, 
-                2.427119504867672}, {3.6406792573015077, 
-                1.6180796699117812}}, {{2.0225995873897267, 
-                3.2361593398235624}, {0.4045199174779453, 
-                2.427119504867672}}, {{2.0225995873897267, 
-                3.2361593398235624}, {2.0225995873897267, 
-                2.427119504867672}}, {{2.0225995873897267, 
-                3.2361593398235624}, {3.6406792573015077, 
-                2.427119504867672}}}, 0.03729346003382589]}, 
-           {Directive[Hue[0.6, 0.2, 0.8], EdgeForm[Directive[GrayLevel[0], 
-               Opacity[0.7]]]], {Disk[{0, 0}, 0.03729346003382589], 
-             {GrayLevel[0], Text["1", Offset[{2, 2}, {0.03729346003382589, 
-                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{0, 0.8090398349558905}, 
-              0.03729346003382589], {GrayLevel[0], Text["AtomicNumber", 
-               Offset[{2, 2}, {0.03729346003382589, 0.8463332949897164}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{0.8090398349558906, 0}, 0.03729346003382589], 
-             {GrayLevel[0], Text["1.00793", Offset[{2, 2}, 
-                {0.8463332949897164, 0.03729346003382589}], ImageScaled[
-                {0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{0.8090398349558906, 0.8090398349558905}, 
-              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
-               Offset[{2, 2}, {0.8463332949897164, 0.8463332949897164}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{0.4045199174779453, 1.6180796699117812}, 
-              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
-                {2, 2}, {0.4418133775117712, 1.6553731299456071}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{0.4045199174779453, 2.427119504867672}, 
-              0.03729346003382589], {GrayLevel[0], Text["Hydrogen", Offset[
-                {2, 2}, {0.4418133775117712, 2.4644129649014976}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{1.6180796699117812, 0}, 0.03729346003382589], 
-             {GrayLevel[0], Text["4.00259", Offset[{2, 2}, 
-                {1.6553731299456071, 0.03729346003382589}], ImageScaled[
-                {0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{1.6180796699117812, 0.8090398349558905}, 
-              0.03729346003382589], {GrayLevel[0], Text["AtomicNumber", 
-               Offset[{2, 2}, {1.6553731299456071, 0.8463332949897164}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{2.427119504867672, 0}, 0.03729346003382589], 
-             {GrayLevel[0], Text["2", Offset[{2, 2}, {2.4644129649014976, 
-                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{2.427119504867672, 0.8090398349558905}, 
-              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
-               Offset[{2, 2}, {2.4644129649014976, 0.8463332949897164}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{2.0225995873897267, 1.6180796699117812}, 
-              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
-                {2, 2}, {2.0598930474235524, 1.6553731299456071}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{2.0225995873897267, 2.427119504867672}, 
-              0.03729346003382589], {GrayLevel[0], Text["Helium", Offset[
-                {2, 2}, {2.0598930474235524, 2.4644129649014976}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{3.2361593398235624, 0}, 0.03729346003382589], 
-             {GrayLevel[0], Text["3", Offset[{2, 2}, {3.273452799857388, 
-                 0.03729346003382589}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{3.2361593398235624, 
-               0.8090398349558905}, 0.03729346003382589], {GrayLevel[0], 
-              Text["AtomicNumber", Offset[{2, 2}, {3.273452799857388, 
-                 0.8463332949897164}], ImageScaled[{0, 0}], BaseStyle -> 
-                "Graphics"]}}, {Disk[{4.045199174779453, 0}, 
-              0.03729346003382589], {GrayLevel[0], Text["6.94141", Offset[
-                {2, 2}, {4.0824926348132795, 0.03729346003382589}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{4.045199174779453, 0.8090398349558905}, 
-              0.03729346003382589], {GrayLevel[0], Text["AtomicWeight", 
-               Offset[{2, 2}, {4.0824926348132795, 0.8463332949897164}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{3.6406792573015077, 1.6180796699117812}, 
-              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
-                {2, 2}, {3.6779727173353334, 1.6553731299456071}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{3.6406792573015077, 2.427119504867672}, 
-              0.03729346003382589], {GrayLevel[0], Text["Lithium", Offset[
-                {2, 2}, {3.6779727173353334, 2.4644129649014976}], 
-               ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}}, 
-            {Disk[{2.0225995873897267, 3.2361593398235624}, 
-              0.03729346003382589], {GrayLevel[0], Text["Null", Offset[
-                {2, 2}, {2.0598930474235524, 3.273452799857388}], ImageScaled[
-                {0, 0}], BaseStyle -> "Graphics"]}}}}, 
-          {FormatType -> TraditionalForm, FrameTicks -> None, 
-           ImagePadding -> None, ImageSize -> 180, Controls -> False}]]|>|>, 
+           ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>|>, 
    "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/Release \
 notes/2.5.4.wln", "Quick" -> True, "Symbols" -> <||>, 
    "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Release notes *2.5.4*", 
-      CellObj[JerryI`Notebook`CellObj`$37]], 
+      CellObj[JerryI`Notebook`CellObj`$44]], 
      Notebook`Editor`TOC`Private`heading[2, "Outline feature", 
-      CellObj[JerryI`Notebook`CellObj`$40]], 
+      CellObj[JerryI`Notebook`CellObj`$47]], 
      Notebook`Editor`TOC`Private`heading[2, "Find and replace", 
-      CellObj[JerryI`Notebook`CellObj`$43]], 
+      CellObj[JerryI`Notebook`CellObj`$49]], 
      Notebook`Editor`TOC`Private`heading[2, "Expression trees", 
-      CellObj[JerryI`Notebook`CellObj`$45]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$52]], 
+     Notebook`Editor`TOC`Private`heading[2, 
+      "Links to documentation in autocomplete panel", 
+      CellObj[JerryI`Notebook`CellObj`$73]]}|>, 
  "Cells" -> {<|"Data" -> ".html\n\n<style>\n  .balloon {\n  height: 125px;\n  \
 width: 105px;\n  border-radius: 75% 75% 70% 70%;\n  position: \
 relative;\n}\n\n.balloon:before {\n  content: \"\";\n  height: 75px;\n  \
@@ -457,10 +460,10 @@ position:fixed;\n  bottom: 0;\n  z-index: -99;  \n  padding: 1em;\n  \
 box-sizing: border-box;\n  display: flex;\n  flex-wrap: wrap;\n  overflow: \
 hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "codemirror", 
-    "Hash" -> "0ce2d081-8c49-458f-a392-a0196bcf73c9", "Invisible" -> False, 
+    "Hash" -> "8b5333ce-740c-4b23-aaf7-a2276e54e792", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Locked" -> True, "Hidden" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+    "Notebook" -> "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "\n<style>\n  .balloon {\n  height: 125px;\n  width: 105px;\n  \
 border-radius: 75% 75% 70% 70%;\n  position: relative;\n}\n\n.balloon:before \
 {\n  content: \"\";\n  height: 75px;\n  width: 1px;\n  padding: 1px;\n  \
@@ -475,10 +478,10 @@ translateY(-300vh);\n  opacity: 0;}\n}\n#balloon-container {\n  height: \
 padding: 1em;\n  box-sizing: border-box;\n  display: flex;\n  flex-wrap: \
 wrap;\n  overflow: hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "html", 
-    "Hash" -> "5caeeeb3-6c1a-4f10-92ba-0e020ac01529", "Invisible" -> False, 
+    "Hash" -> "cff02b8e-d7a6-4f1a-bc73-6e3484eeb25f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".js\n\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -496,10 +499,10 @@ balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 7000);\n\nreturn \
 '';\n", "Display" -> "codemirror", "Hash" -> 
-     "39c3015b-6b9d-406c-b29a-d1e04ace4756", "Invisible" -> True, 
+     "7905ee52-6803-4d23-ac87-3ef6dec2a719", "Invisible" -> True, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -516,110 +519,110 @@ balloonContainer.append(balloon);\n  }\n}\n\nfunction removeBalloons() {\n  \
 balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 15000);\n\nreturn \
-'';\n", "Display" -> "js", "Hash" -> "3748cab3-e332-400d-9dd8-0bc441f036f2", 
+'';\n", "Display" -> "js", "Hash" -> "2dd4d3fd-e445-4d5c-8d52-84cbfd7524dc", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+    "Notebook" -> "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\n# Release notes *2.5.4*\n\nPerfomance improvements \
 (mostly in WLJS Interpreter), new UI features, better support of WL \
 functions", "Display" -> "codemirror", 
-    "Hash" -> "251f248b-98d0-4a41-9926-6db6cfc5ec2b", "Invisible" -> False, 
+    "Hash" -> "da00bbc1-dfe5-4959-8f14-2b9ea9fd4aa8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "># Release notes *2.5.4*\n\nPerfomance improvements (mostly \
 in WLJS Interpreter), new UI features, better support of WL functions", 
     "Display" -> "markdown", "Hash" -> 
-     "285569de-5454-4813-b042-24d7e1a1e6c7", "Invisible" -> False, 
+     "2432c85b-e1d6-4d76-b684-cc49f255373f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\n## Outline feature\nTable of content is automatically \
 created for notebook with more than 1 headings. It scans all markdown cells \
 and extracts headings from them \
 \n\n![](/attachments/Screenshot%202024-08-14%20at%2020.54.17.png)\n\nIf you \
 click on labels it will automatically scroll into its view\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "03f1fccc-8313-43c1-8078-397d2e3abccc", "Invisible" -> False, 
+     "3fbd3093-d178-41ac-8a44-a565f1b5e1c9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ">## Outline feature\nTable of content is automatically \
 created for notebook with more than 1 headings. It scans all markdown cells \
 and extracts headings from them \
 \n\n![](/attachments/Screenshot%202024-08-14%20at%2020.54.17.png)\n\nIf you \
 click on labels it will automatically scroll into its view\n", 
     "Display" -> "markdown", "Hash" -> 
-     "2cebe8ac-3c10-4bae-9874-483893b3c3df", "Invisible" -> False, 
+     "686cea23-9769-41c7-8664-61df08cf95a0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\n## Find and replace\nThe most basic feature you know \
 from other IDE is now implemented. The search is localized for each cell and \
 can be called using `Ctrl/Cmd+f` combination of \
 keys\n\n\n![](/attachments/Screenshot%202024-08-14%20at%2020.56.31.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "b228262f-69ae-45ee-9fc7-3b8568870a63", "Invisible" -> False, 
+     "4bcbd268-f774-4b6c-b98b-d0a30f901ded", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ">## Find and replace\nThe most basic feature you know from \
 other IDE is now implemented. The search is localized for each cell and can \
 be called using `Ctrl/Cmd+f` combination of \
 keys\n\n\n![](/attachments/Screenshot%202024-08-14%20at%2020.56.31.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "eef108cd-f989-4e97-a8ff-7e742c69918c", "Invisible" -> False, 
+     "4627e15b-5531-4149-8e25-18e65dc0037a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\n## Expression trees\n\nHere is `TreeForm`", 
     "Display" -> "codemirror", "Hash" -> 
-     "931c04eb-4eb3-4218-a0a5-ffc56f776715", "Invisible" -> False, 
+     "78de8025-5be2-4715-852d-623f0e2ed60c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ">## Expression trees\n\nHere is `TreeForm`", 
     "Display" -> "markdown", "Hash" -> 
-     "420b454e-1b09-4af4-a575-5e5624e57665", "Invisible" -> False, 
+     "202a967a-4093-49e6-b6ce-36f8b6685abe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "TreeForm[function[x, Sin[y + z]]] ", 
     "Display" -> "codemirror", "Hash" -> 
-     "2324f7d4-a88c-44e1-b957-2bee0d16270f", "Invisible" -> False, 
+     "e2c17bae-ed65-4ba4-ab5f-61e9448a219a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "(*VB[*)(Tree[function, {Tree[x, None], Tree[Sin, {Tree[Plus, \
 {Tree[y, None], Tree[z, \
 None]}]}]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMyk\
 kNVgEKmxukWqZYJhnrmhiaGeiamKaZ6VomGgG5liaphiZpSYbJBkkAeWYVQg==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "cbd475bf-ea66-4660-bcad-20747c598c21", "Invisible" -> False, 
+     "15fb4fe0-f36d-424a-9a93-992ccc27c9ba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\nOr another example from the standard library", 
     "Display" -> "codemirror", "Hash" -> 
-     "2a6c8d94-e207-4bb3-8112-d9a37b6e803b", "Invisible" -> False, 
+     "3e19d54d-d40b-4879-98f5-dbc5c292ca04", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ">Or another example from the standard library", 
     "Display" -> "markdown", "Hash" -> 
-     "beb2f6b5-6f6a-4da5-8258-4f34c7afbd73", "Invisible" -> False, 
+     "db66c114-c179-4fbf-a5db-46e5dcd6a5b1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "ImportString[\"{\\\"Hydrogen\\\":{\\\"AtomicNumber\\\":1,\\\"\
 AtomicWeight\\\":1.00793},\\\"Helium\\\":{\\\"AtomicNumber\\\":4.00259,\\\"At\
 omicWeight\\\":2},\\\"Lithium\\\":{\\\"AtomicNumber\\\":3,\\\"AtomicWeight\\\
 \":6.94141}}\", \"JSON\"];\n\nExpressionTree[%, \"JSON\"]", 
     "Display" -> "codemirror", "Hash" -> 
-     "27e388e6-4a2c-4ddb-a9c4-f8c03adddd2e", "Invisible" -> False, 
+     "dc58ae92-8b0b-403c-b71d-63bfd1fade03", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "(*VB[*)(Tree[Null, {Tree[\"Hydrogen\", {Tree[Null, \
 {Tree[\"AtomicNumber\", {Tree[1, None]}], Tree[\"AtomicWeight\", \
 {Tree[1.00793, None]}]}]}], Tree[\"Helium\", {Tree[Null, \
@@ -629,28 +632,28 @@ omicWeight\\\":2},\\\"Lithium\\\":{\\\"AtomicNumber\\\":3,\\\"AtomicWeight\\\
 None]}]}]}]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlM\
 ykkNVgEKG5qnWiQnW6bqJhqmWuqamCQa6yYam6TpmpokpZmbGFskmhpYAgCLQxWs\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "30a1bff0-da78-4997-b388-1367f567f532", "Invisible" -> False, 
+     "181cfba5-9a20-41ec-8227-216f100cc4ab", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\nAll trees are automatically converted into labelled \
 graphs like this one", "Display" -> "codemirror", 
-    "Hash" -> "bcca2ca2-4f8b-4940-9b5c-81714d9c90df", "Invisible" -> False, 
+    "Hash" -> "a94c24d1-04b8-4fa5-bf38-e33386bc7c28", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ">All trees are automatically converted into labelled graphs \
 like this one", "Display" -> "markdown", 
-    "Hash" -> "1be11888-9a55-4631-a142-36af74fa9ebe", "Invisible" -> False, 
+    "Hash" -> "d4428438-6427-446f-ad9e-e5edb7c7045e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "Graph[Table[i -> Mod[i^2, 74], {i, 100}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "6e383c0d-3d77-4297-b7aa-00aa77547219", "Invisible" -> False, 
+     "067c5f0b-c9ce-4998-919b-3e5d285d851b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 4, 3, 9, 16, 5, 25, 6, 36, 7, 49, 8, 64, \
 10, 26, 11, 47, 12, 70, 13, 21, 14, 48, 15, 34, 17, 67, 18, 28, 19, 65, 20, \
 30, 71, 22, 40, 23, 24, 58, 33, 27, 63, 44, 29, 31, 73, 32, 62, 53, 46, 35, \
@@ -693,10 +696,10 @@ DirectedEdge[99, 33], DirectedEdge[100, \
 10]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 W5qnJqdYWhjrGpqmpuiamJoZ6yZZmJvpmpqbWFgmW1gapViaAgB/SRUU\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "447078df-9aed-4181-b40a-891d405e5679", "Invisible" -> False, 
+     "4473bdfe-c4e4-4b47-85eb-f7cdd557d9bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
    <|"Data" -> ".md\n## Figures export\nThere is a way to embed individual \
 graphs from your notebook to a web. You need just a little knowledge about \
 HTML \
@@ -710,19 +713,35 @@ your plots from the head section to reduce the loading time of your website. \
 WLJS cannot guess it automatically.\n\n<br/>\n\nThe code section for the \
 figure can be embedded to any place in your HTML document. Feel free to \
 customize CSS.\n", "Display" -> "codemirror", 
-    "Hash" -> "8e63e5fc-ed6a-445c-939a-01ea1f183648", "Invisible" -> False, 
+    "Hash" -> "7ae524bd-32c6-4c88-b045-89adb96ed89d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
-   <|"Data" -> ".md\n*Ballon animation by Jemima (codepen)*", 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+   <|"Data" -> ".md\n## Links to documentation in autocomplete panel\nClick \
+to \|01f50e icon to open a documentation on a given \
+symbol\n\n\n![](/attachments/Screenshot%202024-08-15%20at%2012.50.31.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "e50c1633-678c-4037-9c28-45c21726c47b", "Invisible" -> False, 
+     "197985f8-525d-4aa6-a36d-a32f7c4ad8af", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>, 
-   <|"Data" -> ">*Ballon animation by Jemima (codepen)*", 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+   <|"Data" -> ">## Links to documentation in autocomplete panel\nClick to \
+\|01f50e icon to open a documentation on a given \
+symbol\n\n\n![](/attachments/Screenshot%202024-08-15%20at%2012.50.31.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "f0732d28-6218-4298-85fe-f0b18ffcee15", "Invisible" -> False, 
+     "d46c1ee5-87eb-41ac-b632-bc8ce1faf222", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b64d535c-26e1-491b-ad97-5ddda67b2b03"|>}, "serializer" -> "jsfn4"|>
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+   <|"Data" -> ".md\n*Ballon animation by Jemima (codepen)*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "24a5c0c0-0f51-4890-9f04-532a26f7c233", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+   <|"Data" -> ">*Ballon animation by Jemima (codepen)*", 
+    "Display" -> "markdown", "Hash" -> 
+     "e4903ae7-5041-4008-a7a5-1bb1d0f4e13d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>}, "serializer" -> "jsfn4"|>
