@@ -1,18 +1,103 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$324], 
-   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Examples/09 - Frontend interpreter/GOL-Containers.wln"|>, 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2172], 
+   "Objects" -> <|"c0052f5a-2937-4288-9dab-fab8f249695d" -> 
+      <|"Public" -> Hold[MyFunction[Offload[board]]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/12 - \
+Frontend interpreter/GOL Containers.wln", "ReadOnly" -> True, 
+   "Symbols" -> <|"board" -> {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+       {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+       {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "GOL: Example with containers", 
+      CellObj[JerryI`Notebook`CellObj`$2164]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# GOL: Example with containers\nUsing the \
 advanced frontend functions definition", "Display" -> "codemirror", 
-    "Hash" -> "ee8686a3-d96c-43e9-baad-1efca24fd5f8", "Invisible" -> False, 
+    "Hash" -> "f7eb0119-917b-4a73-95e6-1d8d1bf3e191", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> "\n# GOL: Example with containers\nUsing the advanced frontend \
 functions definition", "Display" -> "markdown", 
-    "Hash" -> "fd159f56-0ce0-4968-affb-8c527bef8d84", "Invisible" -> False, 
+    "Hash" -> "007e5d0b-3617-4177-b73a-2ff99c8311c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> ".js\n\n//constructor\ncore.MyFunction = async (args, env) => \
 {\n  //just to make second object to be aware of the previous one\n  const \
 data = await interpretate(args[0], env);\n  //create js canvas\n  const \
@@ -34,13 +119,14 @@ context.fillRect(i*10 + 2, j*10 + 2, 6, 6);\n      }\n      //new pixels\n    \
  context.fillStyle = \"rgba(255,255,255,0.4)\"; \n        \
 context.fillRect(i*10 + 1, j*10 + 1, 8, 8);\n      }\n    }\n  }\n\n  \
 env.local.old = data;\n}\n\ncore.MyFunction.destroy = (args, env) => \
-{}\n\nreturn null;", "Display" -> "codemirror", 
-    "Hash" -> "e639f344-7013-40ab-8d58-0abbd16b3ab8", "Invisible" -> False, 
+{}\n\ncore.MyFunction.virtual = true\n\nreturn null;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "43b0b848-94bd-4049-a133-aeeccd35f99f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
-   <|"Data" -> "\n\n//constructor\ncore.MyFunction = async (args, env) => {\n \
- //just to make second object to be aware of the previous one\n  const data = \
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
+   <|"Data" -> "\n//constructor\ncore.MyFunction = async (args, env) => {\n  \
+//just to make second object to be aware of the previous one\n  const data = \
 await interpretate(args[0], env);\n  //create js canvas\n  const canvas = \
 document.createElement(\"canvas\");\n  canvas.width = 400;\n  canvas.height = \
 400;\n\n  let context = canvas.getContext(\"2d\");\n  context.fillStyle = \
@@ -59,42 +145,51 @@ context.fillStyle = \"rgba(255,0,0,0.4)\"; \n        context.fillRect(i*10 + \
 1, j*10 + 1, 8, 8);\n      } else {\n        context.fillStyle = \
 \"rgba(255,255,255,0.4)\"; \n        context.fillRect(i*10 + 1, j*10 + 1, 8, \
 8);\n      }\n    }\n  }\n\n  env.local.old = \
-data;\n}\n\ncore.MyFunction.destroy = (args, env) => {}\n\nreturn null;", 
-    "Display" -> "js", "Hash" -> "53cc01a1-b587-4212-bd4f-6d5108ee0b67", 
-    "Invisible" -> False, "MetaOnly" -> False, 
-    "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", "Type" -> "Output", 
-    "UID" -> Null, "Notebook" -> "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+data;\n}\n\ncore.MyFunction.destroy = (args, env) => \
+{}\n\ncore.MyFunction.virtual = true\n\nreturn null;", "Display" -> "js", 
+    "Hash" -> "faa3f75d-da88-4f68-ac9e-af6acdd66a79", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> ".md\nWolfram Mathematica code", "Display" -> "codemirror", 
-    "Hash" -> "c67fe409-837c-4223-9731-d8e4d2850255", "Invisible" -> False, 
+    "Hash" -> "10b3d478-9e08-4920-b531-542d42a6c538", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> "\nWolfram Mathematica code", "Display" -> "markdown", 
-    "Hash" -> "0cd1f449-c44e-4dc0-ab71-432f7651f1b9", "Invisible" -> False, 
+    "Hash" -> "0d0d34e3-7472-4fff-9568-daaa18f466eb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, \
 {1, 1}};\nboard = RandomInteger[1, {40, \
 40}];\n\nCreateFrontEndObject[MyFunction[board // Offload]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "daed69ac-3e50-480d-af69-f7fcc528c055", "Invisible" -> False, 
+     "76393952-2259-436e-9539-5ca414395d92", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"c0052f5a-2937-4288-9dab-fab8f249695d\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxsYm\
+BqlmSbqGlkam+uaGFlY6FqmJCbppiUmWaQZmViaWZqmAAB9fhWC\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fc37078b-c0a3-49ee-aefe-594a76f1dc9f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> ".md\nPerform an update", "Display" -> "codemirror", 
-    "Hash" -> "e4d482dc-1bc9-45bf-a0f4-61cdae9afb3c", "Invisible" -> False, 
+    "Hash" -> "8a880b75-e112-42f2-ac90-56e0bb4c427d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> "\nPerform an update", "Display" -> "markdown", 
-    "Hash" -> "a52a2c6d-b12e-4d9b-8409-08d202239729", "Invisible" -> False, 
+    "Hash" -> "fdcf0e5d-d5e3-46e4-99f1-f687c75402ff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>, 
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>, 
    <|"Data" -> "\nDo[\n  board = CellularAutomaton[gameOfLife, board, {{0, \
-1}}] // Last;\n  Pause[0.1];\n, {i,1,100}]", "Display" -> "codemirror", 
-    "Hash" -> "afdaf70a-f04e-47eb-9231-4b4253cbfb1c", "Invisible" -> False, 
+1}}] // Last;\n  Pause[0.03];\n, {i,1,100}]", "Display" -> "codemirror", 
+    "Hash" -> "db5e0d4c-4fa4-43a3-9a09-3b1a8a367a4f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "e690518f-2b35-425d-8073-1cac01ff1a41"|>}, "serializer" -> "jsfn4"|>
+     "db15764e-66a5-49c9-a32c-df3fce7e0ea2"|>}, "serializer" -> "jsfn4"|>

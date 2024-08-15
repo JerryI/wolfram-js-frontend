@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$50], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1901], 
    "Objects" -> <|"b4406070-98bd-4a81-a3a3-af7a0f779f11" -> 
       <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], Disk[{0, 0}, 1], 
            Opacity[0.5], RGBColor[1, 0, 0], Disk[{0, 0}, 1]}, 
@@ -11,45 +11,47 @@
       <|"Public" -> Hold[Graphics[{RGBColor[0, 0, 1], Disk[{0, 0}, 1], 
            Opacity[0.5], RGBColor[1, 0, 0], Disk[{0, 0}, 3]}, 
           ImageSize -> 80, Controls -> False, ImagePadding -> None]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Examples/Decoratio\
-ns/Simple ViewBox.wln"|>, "Cells" -> 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/10 - \
+Decorations/Simple ViewBox.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Simple ViewBox example", 
+      CellObj[JerryI`Notebook`CellObj`$1890]]}|>, 
+ "Cells" -> 
   {<|"Data" -> 
      ".md\n## Simple ViewBox example\nMake a decoration for our symbol", 
     "Display" -> "codemirror", "Hash" -> 
-     "6974da65-3fcb-480d-adec-e34358e37578", "Invisible" -> False, 
+     "4d5ce8db-bee3-4648-98a4-789f416c5407", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "## Simple ViewBox example\nMake a decoration for our symbol", 
     "Display" -> "markdown", "Hash" -> 
-     "9316d858-fb00-4a79-b4ad-2a5a3b40940f", "Invisible" -> False, 
+     "0612bf9b-c248-4514-9e26-6979e1d03f71", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
 With[{\n  g = Graphics[{Blue, Disk[{0,0},1], Opacity[0.5], \
 Red,Disk[{0,0},s]}, ImageSize->80, Controls->False, ImagePadding->None]\n},\n \
- ViewBox[boxObject[s], g // CreateFrontEndObject]\n]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "3c525798-cf61-4936-a9ba-59fd9b9df071", "Invisible" -> False, 
+ ViewBox[boxObject[s], g ]\n]", "Display" -> "codemirror", 
+    "Hash" -> "c9726e0a-b8e7-4796-a012-90fb52799ed1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> ".md\nNow we can test it", "Display" -> "codemirror", 
-    "Hash" -> "5f21d1f9-d44f-4c83-849a-43805534e9fa", "Invisible" -> False, 
+    "Hash" -> "3f155e3d-9691-4697-8ccb-3c8a2c2ca7c4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "Now we can test it", "Display" -> "markdown", 
-    "Hash" -> "ac07fb39-6838-469d-8448-a211cc0a1da1", "Invisible" -> False, 
+    "Hash" -> "4da59d4e-21f6-4eb6-a000-0cf8a8aa5228", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "Table[boxObject[i], {i,3}]", "Display" -> "codemirror", 
-    "Hash" -> "408becda-6e28-42ac-8a30-55e4707c0e18", "Invisible" -> False, 
+    "Hash" -> "0ca1e9c7-4dfd-4ff5-9460-b115772e2096", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "{(*VB[*)(boxObject[1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCe\
 EJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5mYGJgZmBvoWlokpeiaJFoY6iYaJxrrJqaZJxqkmZtbp\
 hkaAgB8FhVr\"*)(*]VB*),(*VB[*)(boxObject[2])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
@@ -57,81 +59,80 @@ k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWyalppoYGVvqppiZmeiaGCdb6loaGxropppbppg\
 ZWxiZplmYAAB9phUB\"*)(*]VB*),(*VB[*)(boxObject[3])(*,*)(*\"1:eJxTTMoPSmNkYGAo\
 ZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmycnWaSap5npmhpYGOiamJqa6CaZmBnpp\
 gKZZqYp5snJaUkAfcgVgw==\"*)(*]VB*)}", "Display" -> "codemirror", 
-    "Hash" -> "19e20a47-8742-41e2-868b-77106ae3f18a", "Invisible" -> False, 
+    "Hash" -> "c6e5f037-b194-468a-9479-9cdbdd95d1dc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, <|"Data" -> ".md\n---", 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "9cad8406-f17f-47b1-a8c6-84abfd5036be", "Invisible" -> False, 
+     "44de93ad-1d17-4b0f-9b8e-d687b567c7ef", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "36308206-48c3-4858-b95e-3b34f40233e9", "Invisible" -> False, 
+    "Hash" -> "c4c882c7-4e59-48a7-8382-00939342bb0f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "ef238b54-cde1-455e-b41f-4e9a054fb057", "Invisible" -> False, 
+    "Hash" -> "73e411af-3982-46b3-bc45-01fb439ac6c1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> ".md\nOne can go further and subscribe to its events", 
     "Display" -> "codemirror", "Hash" -> 
-     "5db3dfee-b689-4c01-a3c8-47d8e6c9148d", "Invisible" -> False, 
+     "f5d4901a-d5e3-4f92-a84b-4adf6e31871e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "One can go further and subscribe to its events", 
     "Display" -> "markdown", "Hash" -> 
-     "9ec45869-8c9d-4db4-b7a6-6de09e2c224f", "Invisible" -> False, 
+     "be01907e-728e-4cf7-9471-fd159502ad27", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
 With[{\n  g = Graphics[{Blue, Disk[{0,0},1], Opacity[0.5], \
 Red,Disk[{0,0},s]}, ImageSize->80, Controls->False, ImagePadding->None],\n  \
 uid = CreateUUID[]\n},\n  EventHandler[uid, {\"Destroy\"->Beep}];\n  \n  \
-ViewBox[boxObject[s], g // CreateFrontEndObject, \"Event\"->uid]\n]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "6bcf366d-cca3-4e42-8007-851603f91bd3", "Invisible" -> False, 
+ViewBox[boxObject[s], g, \"Event\"->uid]\n]", "Display" -> "codemirror", 
+    "Hash" -> "adb95235-dd21-4f7b-9609-fd893aa82762", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> ".md\nNow once destroyed it will make a beeep sound", 
     "Display" -> "codemirror", "Hash" -> 
-     "8d33f7f1-f475-44b1-a836-4fa1f91088c0", "Invisible" -> False, 
+     "9638b842-93b1-426d-bfa1-e55431ecc713", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> "Now once destroyed it will make a beeep sound", 
     "Display" -> "markdown", "Hash" -> 
-     "cd54d5d0-7a28-456b-90e5-d3405a60ed73", "Invisible" -> False, 
+     "030e5ecc-c6b3-47bf-925a-5716bb9be7c6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, <|"Data" -> "boxObject[2]", 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, <|"Data" -> "boxObject[2]", 
     "Display" -> "codemirror", "Hash" -> 
-     "ccdaaf22-e08e-4642-95a0-7de84e7134a8", "Invisible" -> False, 
+     "9010ba95-b2da-4c92-b34d-5a11053cd387", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "6107f374-ca1d-4ce2-850c-f4bac3a37be0", "Invisible" -> False, 
+    "Hash" -> "1aae7487-1e55-4e9e-ab76-9fa15b32cbda", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "b23aa1a2-8e7c-4a9e-933c-ba105dcb3f19", "Invisible" -> False, 
+    "Hash" -> "d1fdc24a-6d12-4fb4-b7f2-f5cd421dbcea", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "3f2fdd5c-1e7a-40a4-9b6a-5b9f3f784c2c", "Invisible" -> False, 
+    "Hash" -> "09ef23b5-ee7d-4bae-bd7f-e577534b5032", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>, 
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "2decfcfa-fb94-4788-b4ac-d8e3498ef62c", "Invisible" -> False, 
+    "Hash" -> "416b80f6-73cc-4e99-9114-cfb97813d774", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "b9913dd3-9ac3-4fdd-8684-1a60b0a3e391"|>}, "serializer" -> "jsfn4"|>
+     "9d21f3b3-1e46-4c93-a09a-ea8420325f79"|>}, "serializer" -> "jsfn4"|>

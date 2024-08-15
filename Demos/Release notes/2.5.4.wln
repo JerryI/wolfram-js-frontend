@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$65], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2418], 
    "HaveToSaveAs" -> False, "Objects" -> 
     <|"70e9d9b3-4160-45f6-9a23-494e14fb1c0b" -> 
       <|"Public" -> Hold[Graphics[{{Arrowheads[Medium], 
@@ -435,16 +435,16 @@
    "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/Release \
 notes/2.5.4.wln", "Quick" -> True, "Symbols" -> <||>, 
    "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Release notes *2.5.4*", 
-      CellObj[JerryI`Notebook`CellObj`$44]], 
+      CellObj[JerryI`Notebook`CellObj`$2441]], 
      Notebook`Editor`TOC`Private`heading[2, "Outline feature", 
-      CellObj[JerryI`Notebook`CellObj`$47]], 
+      CellObj[JerryI`Notebook`CellObj`$2419]], 
      Notebook`Editor`TOC`Private`heading[2, "Find and replace", 
-      CellObj[JerryI`Notebook`CellObj`$49]], 
+      CellObj[JerryI`Notebook`CellObj`$2421]], 
      Notebook`Editor`TOC`Private`heading[2, "Expression trees", 
-      CellObj[JerryI`Notebook`CellObj`$52]], 
+      CellObj[JerryI`Notebook`CellObj`$2423]], 
      Notebook`Editor`TOC`Private`heading[2, 
       "Links to documentation in autocomplete panel", 
-      CellObj[JerryI`Notebook`CellObj`$73]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$2436]]}|>, 
  "Cells" -> {<|"Data" -> ".html\n\n<style>\n  .balloon {\n  height: 125px;\n  \
 width: 105px;\n  border-radius: 75% 75% 70% 70%;\n  position: \
 relative;\n}\n\n.balloon:before {\n  content: \"\";\n  height: 75px;\n  \
@@ -460,10 +460,10 @@ position:fixed;\n  bottom: 0;\n  z-index: -99;  \n  padding: 1em;\n  \
 box-sizing: border-box;\n  display: flex;\n  flex-wrap: wrap;\n  overflow: \
 hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "codemirror", 
-    "Hash" -> "8b5333ce-740c-4b23-aaf7-a2276e54e792", "Invisible" -> False, 
+    "Hash" -> "b63ab0ea-4821-4875-b4ba-481f86d850d7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Locked" -> True, "Hidden" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+    "Notebook" -> "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "\n<style>\n  .balloon {\n  height: 125px;\n  width: 105px;\n  \
 border-radius: 75% 75% 70% 70%;\n  position: relative;\n}\n\n.balloon:before \
 {\n  content: \"\";\n  height: 75px;\n  width: 1px;\n  padding: 1px;\n  \
@@ -478,10 +478,10 @@ translateY(-300vh);\n  opacity: 0;}\n}\n#balloon-container {\n  height: \
 padding: 1em;\n  box-sizing: border-box;\n  display: flex;\n  flex-wrap: \
 wrap;\n  overflow: hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "html", 
-    "Hash" -> "cff02b8e-d7a6-4f1a-bc73-6e3484eeb25f", "Invisible" -> False, 
+    "Hash" -> "a81cfc71-0b74-4186-86ec-e9b87a03ec8a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".js\n\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -499,10 +499,10 @@ balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 7000);\n\nreturn \
 '';\n", "Display" -> "codemirror", "Hash" -> 
-     "7905ee52-6803-4d23-ac87-3ef6dec2a719", "Invisible" -> True, 
+     "e3048f54-fc92-44b8-abaa-77b7b7a86035", "Invisible" -> True, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -519,110 +519,110 @@ balloonContainer.append(balloon);\n  }\n}\n\nfunction removeBalloons() {\n  \
 balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 15000);\n\nreturn \
-'';\n", "Display" -> "js", "Hash" -> "2dd4d3fd-e445-4d5c-8d52-84cbfd7524dc", 
+'';\n", "Display" -> "js", "Hash" -> "6382520c-9fec-49f5-8448-fc01f5412a03", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+    "Notebook" -> "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n# Release notes *2.5.4*\n\nPerfomance improvements \
-(mostly in WLJS Interpreter), new UI features, better support of WL \
-functions", "Display" -> "codemirror", 
-    "Hash" -> "da00bbc1-dfe5-4959-8f14-2b9ea9fd4aa8", "Invisible" -> False, 
+(mostly in WLJS Interpreter, removed a lot of logging and outdated APIs), new \
+UI features, better support of WL functions", "Display" -> "codemirror", 
+    "Hash" -> "827dfa4b-23bf-4299-a173-b54933254fae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "># Release notes *2.5.4*\n\nPerfomance improvements (mostly \
-in WLJS Interpreter), new UI features, better support of WL functions", 
-    "Display" -> "markdown", "Hash" -> 
-     "2432c85b-e1d6-4d76-b684-cc49f255373f", "Invisible" -> False, 
+in WLJS Interpreter, removed a lot of logging and outdated APIs), new UI \
+features, better support of WL functions", "Display" -> "markdown", 
+    "Hash" -> "96ee3786-5e96-473b-9e1d-b7410901fb30", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n## Outline feature\nTable of content is automatically \
 created for notebook with more than 1 headings. It scans all markdown cells \
 and extracts headings from them \
 \n\n![](/attachments/Screenshot%202024-08-14%20at%2020.54.17.png)\n\nIf you \
 click on labels it will automatically scroll into its view\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "3fbd3093-d178-41ac-8a44-a565f1b5e1c9", "Invisible" -> False, 
+     "91633f7d-9e4b-4334-9387-221d5f3a1e78", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">## Outline feature\nTable of content is automatically \
 created for notebook with more than 1 headings. It scans all markdown cells \
 and extracts headings from them \
 \n\n![](/attachments/Screenshot%202024-08-14%20at%2020.54.17.png)\n\nIf you \
 click on labels it will automatically scroll into its view\n", 
     "Display" -> "markdown", "Hash" -> 
-     "686cea23-9769-41c7-8664-61df08cf95a0", "Invisible" -> False, 
+     "1d3864e9-e1ac-4080-b305-6025f58d255d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n## Find and replace\nThe most basic feature you know \
 from other IDE is now implemented. The search is localized for each cell and \
 can be called using `Ctrl/Cmd+f` combination of \
 keys\n\n\n![](/attachments/Screenshot%202024-08-14%20at%2020.56.31.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "4bcbd268-f774-4b6c-b98b-d0a30f901ded", "Invisible" -> False, 
+     "1706f608-f658-45b4-b653-48cce7bb195c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">## Find and replace\nThe most basic feature you know from \
 other IDE is now implemented. The search is localized for each cell and can \
 be called using `Ctrl/Cmd+f` combination of \
 keys\n\n\n![](/attachments/Screenshot%202024-08-14%20at%2020.56.31.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "4627e15b-5531-4149-8e25-18e65dc0037a", "Invisible" -> False, 
+     "34f17766-a596-4703-bf6c-e6acfb6ff0f7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n## Expression trees\n\nHere is `TreeForm`", 
     "Display" -> "codemirror", "Hash" -> 
-     "78de8025-5be2-4715-852d-623f0e2ed60c", "Invisible" -> False, 
+     "bf8e68f8-e79c-4a0c-9c36-72b8e243759f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">## Expression trees\n\nHere is `TreeForm`", 
     "Display" -> "markdown", "Hash" -> 
-     "202a967a-4093-49e6-b6ce-36f8b6685abe", "Invisible" -> False, 
+     "92bdd84a-1b3a-45d3-ac4b-9ccfcd181418", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "TreeForm[function[x, Sin[y + z]]] ", 
     "Display" -> "codemirror", "Hash" -> 
-     "e2c17bae-ed65-4ba4-ab5f-61e9448a219a", "Invisible" -> False, 
+     "e7476dda-148d-4beb-a2f7-1d58ea02220f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "(*VB[*)(Tree[function, {Tree[x, None], Tree[Sin, {Tree[Plus, \
 {Tree[y, None], Tree[z, \
 None]}]}]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMyk\
 kNVgEKmxukWqZYJhnrmhiaGeiamKaZ6VomGgG5liaphiZpSYbJBkkAeWYVQg==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "15fb4fe0-f36d-424a-9a93-992ccc27c9ba", "Invisible" -> False, 
+     "e2a0b90f-31bf-49ba-b9b6-c75146f4fc4a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\nOr another example from the standard library", 
     "Display" -> "codemirror", "Hash" -> 
-     "3e19d54d-d40b-4879-98f5-dbc5c292ca04", "Invisible" -> False, 
+     "21a2017a-a223-4a73-af4f-1cc94ecf88b4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">Or another example from the standard library", 
     "Display" -> "markdown", "Hash" -> 
-     "db66c114-c179-4fbf-a5db-46e5dcd6a5b1", "Invisible" -> False, 
+     "2c7ace2c-5a5f-4cdd-945c-111e12ff7d13", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "ImportString[\"{\\\"Hydrogen\\\":{\\\"AtomicNumber\\\":1,\\\"\
 AtomicWeight\\\":1.00793},\\\"Helium\\\":{\\\"AtomicNumber\\\":4.00259,\\\"At\
 omicWeight\\\":2},\\\"Lithium\\\":{\\\"AtomicNumber\\\":3,\\\"AtomicWeight\\\
 \":6.94141}}\", \"JSON\"];\n\nExpressionTree[%, \"JSON\"]", 
     "Display" -> "codemirror", "Hash" -> 
-     "dc58ae92-8b0b-403c-b71d-63bfd1fade03", "Invisible" -> False, 
+     "401754cc-42f0-4fe3-a544-ad618dc55139", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "(*VB[*)(Tree[Null, {Tree[\"Hydrogen\", {Tree[Null, \
 {Tree[\"AtomicNumber\", {Tree[1, None]}], Tree[\"AtomicWeight\", \
 {Tree[1.00793, None]}]}]}], Tree[\"Helium\", {Tree[Null, \
@@ -632,28 +632,28 @@ omicWeight\\\":2},\\\"Lithium\\\":{\\\"AtomicNumber\\\":3,\\\"AtomicWeight\\\
 None]}]}]}]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlM\
 ykkNVgEKG5qnWiQnW6bqJhqmWuqamCQa6yYam6TpmpokpZmbGFskmhpYAgCLQxWs\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "181cfba5-9a20-41ec-8227-216f100cc4ab", "Invisible" -> False, 
+     "ea5a34e3-5504-477e-9a21-af5eb01d82c5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\nAll trees are automatically converted into labelled \
 graphs like this one", "Display" -> "codemirror", 
-    "Hash" -> "a94c24d1-04b8-4fa5-bf38-e33386bc7c28", "Invisible" -> False, 
+    "Hash" -> "4a45364e-4db5-464a-8da8-6446b1cc6eae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">All trees are automatically converted into labelled graphs \
 like this one", "Display" -> "markdown", 
-    "Hash" -> "d4428438-6427-446f-ad9e-e5edb7c7045e", "Invisible" -> False, 
+    "Hash" -> "b8e8f787-bb41-4fbc-86f9-200bd35fce0a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "Graph[Table[i -> Mod[i^2, 74], {i, 100}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "067c5f0b-c9ce-4998-919b-3e5d285d851b", "Invisible" -> False, 
+     "0148a43e-93e8-4971-8432-9d4b0779b07d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 4, 3, 9, 16, 5, 25, 6, 36, 7, 49, 8, 64, \
 10, 26, 11, 47, 12, 70, 13, 21, 14, 48, 15, 34, 17, 67, 18, 28, 19, 65, 20, \
 30, 71, 22, 40, 23, 24, 58, 33, 27, 63, 44, 29, 31, 73, 32, 62, 53, 46, 35, \
@@ -696,10 +696,10 @@ DirectedEdge[99, 33], DirectedEdge[100, \
 10]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 W5qnJqdYWhjrGpqmpuiamJoZ6yZZmJvpmpqbWFgmW1gapViaAgB/SRUU\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "4473bdfe-c4e4-4b47-85eb-f7cdd557d9bc", "Invisible" -> False, 
+     "fda002b9-a401-486b-b481-bdbf0603446e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n## Figures export\nThere is a way to embed individual \
 graphs from your notebook to a web. You need just a little knowledge about \
 HTML \
@@ -713,35 +713,35 @@ your plots from the head section to reduce the loading time of your website. \
 WLJS cannot guess it automatically.\n\n<br/>\n\nThe code section for the \
 figure can be embedded to any place in your HTML document. Feel free to \
 customize CSS.\n", "Display" -> "codemirror", 
-    "Hash" -> "7ae524bd-32c6-4c88-b045-89adb96ed89d", "Invisible" -> False, 
+    "Hash" -> "40ada197-aea7-4c0b-9e18-b6ebdb4cbda5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n## Links to documentation in autocomplete panel\nClick \
 to \|01f50e icon to open a documentation on a given \
 symbol\n\n\n![](/attachments/Screenshot%202024-08-15%20at%2012.50.31.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "197985f8-525d-4aa6-a36d-a32f7c4ad8af", "Invisible" -> False, 
+     "40f97d7f-1745-4d59-b9f4-3e38faa910fd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">## Links to documentation in autocomplete panel\nClick to \
 \|01f50e icon to open a documentation on a given \
 symbol\n\n\n![](/attachments/Screenshot%202024-08-15%20at%2012.50.31.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "d46c1ee5-87eb-41ac-b632-bc8ce1faf222", "Invisible" -> False, 
+     "95c8f93c-8639-4797-a0ef-aafbc10b1e01", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ".md\n*Ballon animation by Jemima (codepen)*", 
     "Display" -> "codemirror", "Hash" -> 
-     "24a5c0c0-0f51-4890-9f04-532a26f7c233", "Invisible" -> False, 
+     "2822d329-53a1-46dd-8eab-baf8ced071ae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>, 
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>, 
    <|"Data" -> ">*Ballon animation by Jemima (codepen)*", 
     "Display" -> "markdown", "Hash" -> 
-     "e4903ae7-5041-4008-a7a5-1bb1d0f4e13d", "Invisible" -> False, 
+     "e2230b6e-7ae3-4f72-b45e-c21d202c130e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "38d2216c-7ee8-49eb-856c-7237eafdec5c"|>}, "serializer" -> "jsfn4"|>
+     "f3a9393b-924a-42e5-9a2b-fc8087559727"|>}, "serializer" -> "jsfn4"|>
