@@ -1,0 +1,290 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$444], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend-dev/Demos/05 - Interaction/Fluid simulation.wln", 
+   "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Real-time Fluid Simulation (Short)", 
+      CellObj[JerryI`Notebook`CellObj`$395]], 
+     Notebook`Editor`TOC`Private`heading[2, "Equations", 
+      CellObj[JerryI`Notebook`CellObj`$424]], 
+     Notebook`Editor`TOC`Private`heading[3, "Advection function", 
+      CellObj[JerryI`Notebook`CellObj`$427]], 
+     Notebook`Editor`TOC`Private`heading[3, "Function to remove divergence", 
+      CellObj[JerryI`Notebook`CellObj`$431]], 
+     Notebook`Editor`TOC`Private`heading[3, "Bilinear interpolator", 
+      CellObj[JerryI`Notebook`CellObj`$435]], 
+     Notebook`Editor`TOC`Private`heading[3, "Advection for test particles", 
+      CellObj[JerryI`Notebook`CellObj`$439]], 
+     Notebook`Editor`TOC`Private`heading[2, "Demonstration", 
+      CellObj[JerryI`Notebook`CellObj`$447]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Real-time Fluid Simulation (Short)\n*Using \
+Wolfram Language and WLJS libraries*\n\n__Please see the `Tutorials/D - *` \
+section__ for a step-by-step solution. Here, only the final example will be \
+presented.", "Display" -> "codemirror", 
+    "Hash" -> "31760341-45ea-437c-bb1a-d614f07eb86e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "# Real-time Fluid Simulation (Short)\n*Using Wolfram Language \
+and WLJS libraries*\n\n__Please see the `Tutorials/D - *` section__ for a \
+step-by-step solution. Here, only the final example will be presented.", 
+    "Display" -> "markdown", "Hash" -> 
+     "3cefd069-9e4d-4f10-945a-93c776beedff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n## Equations\nWe based our implementation on the \
+Navier-Stokes equation for incompressible fluid with no \
+viscosity\n\n$$\n\\\\frac{\\\\partial \\\\mathbf{v}}{\\\\partial t} + \
+(\\\\mathbf{v} \\\\cdot \\\\nabla) \\\\mathbf{v} = f_{\\\\text{external}}, \
+\\\\qquad div~\\\\mathbf{v} = 0\n$$\n\nwhere $f_{external}$ accounts for the \
+pressure gradient and external forces.\n\nThen, we solve these two equations \
+in a discretized form on a grid using a technique mentioned in Jos Stam's \
+*Stable Fluids* work.", "Display" -> "codemirror", 
+    "Hash" -> "9cdc6fe6-097c-48f3-b8b3-58ff829785b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "## Equations\nWe based our implementation on the \
+Navier-Stokes equation for incompressible fluid with no \
+viscosity\n\n$$\n\\\\frac{\\\\partial \\\\mathbf{v}}{\\\\partial t} + \
+(\\\\mathbf{v} \\\\cdot \\\\nabla) \\\\mathbf{v} = f_{\\\\text{external}}, \
+\\\\qquad div~\\\\mathbf{v} = 0\n$$\n\nwhere $f_{external}$ accounts for the \
+pressure gradient and external forces.\n\nThen, we solve these two equations \
+in a discretized form on a grid using a technique mentioned in Jos Stam's \
+*Stable Fluids* work.", "Display" -> "markdown", 
+    "Hash" -> "d3cd83b9-9c74-469c-a170-cbfcab1b2021", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n### Advection function", "Display" -> "codemirror", 
+    "Hash" -> "afc81324-a817-4fe7-989f-c6b8f4d25717", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "### Advection function", "Display" -> "markdown", 
+    "Hash" -> "bcf6fc77-a84a-4be4-ac6c-df8ff5fba36b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "advect[v_, u_, \[Delta]t_:0.1] := With[{max = Length[v]}, \
+With[{\n  take = Function[{array, x,y}, If[x >= 1 && x <= max && y >= 1 && y \
+<= max, array[[x,y]], array[[1,1]] 0.]]\n},\n  Table[ \n  \n    With[{\n      \
+v1 =  (*FB[*)((take[v, i-1, j] + take[v, i, \
+j])(*,*)/(*,*)(2.0))(*]FB*).{1,0},\n      v2 =  (*FB[*)((take[v, i, j+1] + \
+take[v, i, j])(*,*)/(*,*)(2.0))(*]FB*).{0,-1},\n      v3 =  (*FB[*)((take[v, \
+i+1, j] + take[v, i, j])(*,*)/(*,*)(2.0))(*]FB*).{-1,0},\n      v4 =  \
+(*FB[*)((take[v, i, j-1] + take[v, i, j])(*,*)/(*,*)(2.0))(*]FB*).{0,1},\n    \
+  org = u[[i,j]]\n    },\n\n      org + (\n      \n        v1 \
+(*TB[*)Piecewise[{{(*|*)take[u, i-1, j](*|*),(*|*)v1 > \
+0(*|*)},{(*|*)org(*|*),(*|*)True(*|*)}}](*|*)(*1:eJxTTMoPSmNkYGAo5gESAZmpyanl\
+mcWpTvkVmUxAAQBzVQdd*)(*]TB*) + v3 (*TB[*)Piecewise[{{(*|*)take[u, i+1, \
+j](*|*),(*|*)v3 > \
+0(*|*)},{(*|*)org(*|*),(*|*)True(*|*)}}](*|*)(*1:eJxTTMoPSmNkYGAo5gESAZmpyanl\
+mcWpTvkVmUxAAQBzVQdd*)(*]TB*)  +\n        \n        v4 \
+(*TB[*)Piecewise[{{(*|*)take[u, i, j-1](*|*),(*|*)v4 > \
+0(*|*)},{(*|*)org(*|*),(*|*)True(*|*)}}](*|*)(*1:eJxTTMoPSmNkYGAo5gESAZmpyanl\
+mcWpTvkVmUxAAQBzVQdd*)(*]TB*) + v2 (*TB[*)Piecewise[{{(*|*)take[u, i, \
+j+1](*|*),(*|*)v2 > \
+0(*|*)},{(*|*)org(*|*),(*|*)True(*|*)}}](*|*)(*1:eJxTTMoPSmNkYGAo5gESAZmpyanl\
+mcWpTvkVmUxAAQBzVQdd*)(*]TB*)\n        \n      ) \[Delta]t\n    ]\n    \n  , \
+{i, max}, {j, max}] // Chop\n ]]", "Display" -> "codemirror", 
+    "Hash" -> "cc38d90c-7b62-4b79-b1e9-81389762cd6a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n### Function to remove divergence", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6d325b8b-db2c-42ad-91e3-eec785112bcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "### Function to remove divergence", "Display" -> "markdown", 
+    "Hash" -> "c940d0e3-bdf5-4935-aa88-727c71f3041c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "removeDivergence[grid_] := With[{\n  (*BB[*)(*safety checks, \
+which enforce closed \
+boundaries*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5\
+uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJScz\
+MQVYCAOFrJEU=\"*)(*]BB*)\n  take = Function[{array, x,y}, If[x >= 1 && x <= \
+Length[grid] && y >= 1 && y <= Length[grid], array[[x,y]], {0,0}]]\n},\n  \
+MapIndexed[Function[{val, i}, \n    val + (*FB[*)((1)(*,*)/(*,*)(8.0))(*]FB*) \
+(\n      ((take[grid, i[[1]] - 1, i[[2]] - 1] + take[grid, i[[1]] + 1, i[[2]] \
++ 1]).{1,1}){1,1} +\n\n      ((take[grid, i[[1]] - 1, i[[2]] + 1] + \
+take[grid, i[[1]] + 1, i[[2]] - 1]).{1,-1}){1,-1} +\n\n      (take[grid, \
+i[[1]]-1, i[[2]]] + take[grid, i[[1]]+1, i[[2]]] - take[grid, i[[1]], \
+i[[2]]-1] - take[grid, i[[1]], i[[2]]+1]){2,-2} + take[grid, i[[1]], i[[2]]] \
+(-4)\n\n    )\n  ], grid, {2}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "8754ee06-4f5b-458f-b20c-07a56717bef3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n### Bilinear interpolator", "Display" -> "codemirror", 
+    "Hash" -> "a8b003d0-27c0-4fd6-8998-dfe07f7e2989", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "### Bilinear interpolator", "Display" -> "markdown", 
+    "Hash" -> "9ee78f51-09e7-47a4-ac23-c093d8d20087", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "bilinearInterpolation[array_, {x0_, y0_}] := Module[\n  \
+{rows, cols, x = y0, y = x0, x1, x2, y1, y2, fQ11, fQ12, fQ21, fQ22},\n  \n  \
+(* Get the dimensions of the array *)\n  {rows, cols} = \
+Take[Dimensions[array], 2];\n  \n  (* Clip points to the boundaries *)\n  x = \
+Clip[x, {1, cols}];\n  y = Clip[y, {1, rows}];\n  \n  (* Find the bounding \
+indices *)\n  x1 = Floor[x]; \n  x2 = Ceiling[x];\n  y1 = Floor[y]; \n  y2 = \
+Ceiling[y];\n  \n  (* Get the values at the four corners *)\n  fQ11 = \
+array[[y1, x1]];\n  fQ12 = array[[y2, x1]];\n  fQ21 = array[[y1, x2]];\n  \
+fQ22 = array[[y2, x2]];\n  \n  (* Perform bilinear interpolation *)\n  If[x2 \
+== x1,\n    If[y2 == y1,\n      fQ11,\n      1/(2 (y2 - y1)) * (\n        \
+fQ11 (y2 - y) +\n        fQ21 (y2 - y) +\n        fQ12 (y - y1) +\n        \
+fQ22 (y - y1)\n      )\n    ],\n    If[y2 == y1,\n      1/(2 (x2 - x1)) * (\n \
+       fQ11 (x2 - x) +\n        fQ21 (x - x1) +\n        fQ12 (x2 - x) +\n    \
+    fQ22 (x - x1)\n      ),\n      1/((x2 - x1) (y2 - y1)) * (\n        fQ11 \
+(x2 - x) (y2 - y) +\n        fQ21 (x - x1) (y2 - y) +\n        fQ12 (x2 - x) \
+(y - y1) +\n        fQ22 (x - x1) (y - y1)\n      )\n    ]\n  ]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5681d5d6-2ab4-41b7-8141-d968eeb0624d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n### Advection for test particles", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d17cc0c8-90bc-4aa8-9cb2-8ca260aa2ac0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "### Advection for test particles", "Display" -> "markdown", 
+    "Hash" -> "27e7dbf8-a30c-47c3-882e-791a3dd10928", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "advectParticles[v_, pts_, \[Delta]t_:0.02] := Map[Function[p, \
+p + \[Delta]t (bilinearInterpolation[v, p])], pts]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "00f2f73d-87ce-474f-8184-238c39c8e600", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> ".md\n---\n## Demonstration\n\n<span id=\"tldr\" \
+style=\"color: blue\"><b>Evaluate the cell below</b> in the notebook. Use \
+your mouse to draw velocity vectors.</span>", "Display" -> "codemirror", 
+    "Hash" -> "54e5a546-8f21-479f-9caf-f75534b4393c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "---\n## Demonstration\n\n<span id=\"tldr\" style=\"color: \
+blue\"><b >Evaluate the cell below</b> in the notebook. Use your mouse to \
+draw velocity vectors.</span>", "Display" -> "markdown", 
+    "Hash" -> "afdfb651-d8c3-47b8-b79f-07ae1730b852", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>, 
+   <|"Data" -> "fgrid = Table[{0.,0.}, {i,15}, {j,15}];\nfngrid = fgrid // \
+NumericArray; (*BB[*)(*introduce a copy of fgrid wrapped as \
+NumericArray*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyf\
+m5uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJS\
+czMQVYCAOFrJEU=\"*)(*]BB*)\n\n(*BB[*)(*NumericArray is always faster than a \
+normal \
+List*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KU\
+XxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCA\
+OFrJEU=\"*)(*]BB*)\n\nfcolors = Table[1.0, {Length[fgrid]}, \
+{Length[fgrid]}];\n\nstart = {1,1};\ndrawing = False;\ndest = {0,0};\nffps = \
+0;\n\nparticles = RandomPointConfiguration[\n      \
+HardcorePointProcess[10000\n      , 0.4, 2],\n      Rectangle[{1+4,1+4}, \
+{15-4,15-4}], Method -> {\"LengthOfRun\" -> \
+10000000}][\"Points\"];\n\nWith[{\n  win = CurrentWindow[], (*BB[*)(* save \
+the current window to append graphics \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n  currentCell = ResultCell[]\n},\n\n  EventHandler[win, \
+{\"Closed\" -> Function[Null,\n    Delete[currentCell] (*BB[*)(* remove \
+output cell if a notebook has been closed \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n    (*BB[*)(* this will prevent the animation running \
+uncontrollably on the next start \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n  ]}];\n\n  Graphics[{Arrowheads[Medium/2],\n    \
+Table[With[{i=i, j=j}, \n      (*BB[*)(* now we have dynamic Hue and dynamic \
+Arrow \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n      Offload[{ \n        Hue[fcolors[[i]][[j]]],\n        \
+Arrow[{{i,j}, {i,j} +  fngrid[[i]][[j]]}]\n      }] \n    \n    ], {i,15}, \
+{j,15}],\n\n    (*BB[*)(*attach listeners to a user's mouse to manipulate the \
+grid*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KU\
+XxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCA\
+OFrJEU=\"*)(*]BB*)\n    EventHandler[Graphics`Canvas[], {\n      \"mouseup\" \
+-> Function[xy,\n        With[{v = -Normalize[start - xy]},\n          Do[ \
+(*BB[*)(* draw a line of velocities \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n            With[{p = Round /@ ((xy - start) a + start)},\n   \
+       \n              If[p[[1]] <= 15 && p[[1]] >=1 && p[[2]] <=15 && p[[2]] \
+>=1,\n                fgrid[[p[[1]],p[[2]]]] = {v[[1]], v[[2]]};\n            \
+  ];\n\n            ];\n          , {a, 0, 1,0.1}];\n          \n        \
+];\n\n        Delete[drawing]; (*BB[*)(* delete temporal arrow \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n        drawing = False;\n      \n      ],\n\n      \
+\"mousemove\" -> Function[xy,\n        dest = xy;\n      ],\n    \n      \
+\"mousedown\" -> Function[xy,\n        start = xy;\n        dest = xy;\n      \
+\n        If[drawing =!= False, Delete[drawing]];\n        (*BB[*)(*append \
+GUI's arrow to existing \
+canvas*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
+CAOFrJEU=\"*)(*]BB*)\n        drawing = FrontSubmit[{\n          \
+AbsoluteThickness[3], Gray, \n          Arrow[{xy, dest // Offload}]\n        \
+}, \n          MetaMarker[\"fcanvas\"], \n          \"Window\"->win, \n       \
+   \"Tracking\"->True (*BB[*)(*enable tracking of created \
+object*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
+CAOFrJEU=\"*)(*]BB*)\n        ];\n      \n      ]\n    }], \n\n    \
+(*BB[*)(*sync with browser's repaint cycle and update of fps \
+label*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
+UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
+AOFrJEU=\"*)(*]BB*)\n    AnimationFrameListener[ffps // Offload, \
+\"Event\"->\"fframe\"], \n    (*BB[*)(*mark this instance of Graphics with \
+uid to append new \
+elements*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5ua\
+V+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQ\
+VYCAOFrJEU=\"*)(*]BB*)\n    MetaMarker[\"fcanvas\"], \n    PointSize[0.02], \
+Point[particles//Offload],\n    Text[ffps // Offload, {0,0}]\n  }, \n    \
+Controls->False, \n    ImageSize->500, \n    PlotRange->{{-0.5,15.5}, \
+{-0.5,15.5}}, \n    ImagePadding->None, \n    TransitionDuration->35 \
+(*BB[*)(*since the simulation is slow, we have to \
+interpolate*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm\
+5uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSc\
+zMQVYCAOFrJEU=\"*)(*]BB*)\n  ]\n]\n\n(* subscribe to animation event \
+*)\n\nftime = AbsoluteTime[];\n\n(*BB[*)(* 1 advection per 2 removeDivergence \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\nfpipeline = Composition[removeDivergence, removeDivergence, \
+advect[#,#, 0.2]&];\n\nEventHandler[\"fframe\", Function[Null,\n\n  \
+(*BB[*)(*apply the whole pipline as a single \
+function*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5ua\
+V+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQ\
+VYCAOFrJEU=\"*)(*]BB*)\n  fgrid = fpipeline[fgrid];\n  fngrid = fgrid // \
+NumericArray; (*BB[*)(*speed up data-transfer by packaging \
+array*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
+UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
+AOFrJEU=\"*)(*]BB*)\n  \n  fcolors = Map[Function[val, (*FB[*)((\[Pi] + 2.0 \
+ToPolarCoordinates[val]// Last)(*,*)/(*,*)(3.0 \[Pi]))(*]FB*) ], fgrid, {2}] \
+// NumericArray;\n  \n  (*BB[*)(*2 times \
+advection*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5u\
+aV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczM\
+QVYCAOFrJEU=\"*)(*]BB*)\n  particles = With[{p = advectParticles[fgrid, \
+particles // Normal, 0.3]},\n    advectParticles[fgrid, p, 0.3] // \
+NumericArray\n  ];\n\n  ffps = (*FB[*)(((ffps + 1 / (AbsoluteTime[] - \
+ftime)))(*,*)/(*,*)(2.0))(*]FB*) // Round;\n  ftime = AbsoluteTime[]; \n]];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dfffb09d-6b51-43ef-b262-df01dbce02a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5e1a0458-bae9-45cc-b450-11af3630070f"|>}, "serializer" -> "jsfn4"|>
