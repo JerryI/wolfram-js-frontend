@@ -75,6 +75,89 @@ PacletRepositories[{
 (* WLJS Package manager *)
 <<JerryI`WLJSPM`
 
+
+(* env parameters *)
+System`$Env;
+
+$Env = <|
+  "host" -> "127.0.0.1",
+  "http" -> 20560,
+  "ws"   -> 20559,
+  "jtp"  -> 20562,
+  "ws2"  -> 20563,
+  "docs" -> 20540
+|>;
+
+If[$ScriptCommandLine =!= {},
+  With[{argv = Rest @ $ScriptCommandLine},
+    Echo["Command line: "];
+    Echo[argv];
+    MapIndexed[Function[{key, pos},
+      With[{},
+        If[MemberQ[Keys[$Env], key] || True,
+          With[{
+            value = argv[[2;;;;2]][[ pos[[1]] ]]
+          },
+            Echo[key -> value];
+  
+            $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
+              ToExpression[value],
+              value
+            ]|>];
+          ]
+        ]
+      ]
+    ], argv[[;;;;2]]];
+  ];
+];
+
+If[KeyExistsQ[$Env, "folder"],
+  $Env["parent_folder"] = ParentDirectory[ $Env["folder"] ];
+];
+
+With[{appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"]},
+  $Env["AppJSON"] = appJSON;
+];
+
+Echo["System`$Env"];
+Echo[ToString[$Env, InputForm] ];
+
+(* ~~check version~~ *)
+Echo["Checking version of WLJS Notebook ..."];
+
+{loadSettings, storeSettings}        = Get[FileNameJoin[{"Frontend", "Settings.wl"}] ];
+
+Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] // ToExpression ]},
+  loadSettings[settings];
+  If[KeyExistsQ[settings, "CurrentVersion"],
+    Echo[StringTemplate["AppJSON: ``, Settings: ``"][$Env["AppJSON", "version"], settings["CurrentVersion"] ] ];
+    With[{},
+      If[toNumber[$Env["AppJSON", "version"] ] > toNumber[settings["CurrentVersion"] ],
+        Echo["Not in sync!"];
+        
+        If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages"}] ],
+          If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages_legacy"}] ], 
+            Echo["Purging `wljs_packages_legacy`"];
+            DeleteDirectory[FileNameJoin[{Directory[], "wljs_packages_legacy"}], DeleteContents->True];
+          ];
+          RenameDirectory[FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "wljs_packages_legacy"}] ];
+          Echo["Previous folder was moved to wljs_packages_legacy"];
+        ];
+        
+        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_lock.wl"}] ];
+        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_users.wl"}] ];
+        DeleteFile[FileNameJoin[{Directory[], ".wljs_timestamp"}] ];
+        
+        Echo["Everything will be in sync"];
+      ,
+        Echo["Everything is in sync!"];
+      ];
+    ];
+  ,
+    Echo["Undefined!"];
+  ];
+];
+
 WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
   Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
@@ -129,48 +212,6 @@ http = HTTPHandler[];
 $Server["HTTPHandler"] = http;
 
 AppExtensions`HTTPHandler = http;
-
-System`$Env;
-
-$Env = <|
-  "host" -> "127.0.0.1",
-  "http" -> 20560,
-  "ws"   -> 20559,
-  "jtp"  -> 20562,
-  "ws2"  -> 20563,
-  "docs" -> 20540
-|>;
-
-If[$ScriptCommandLine =!= {},
-  With[{argv = Rest @ $ScriptCommandLine},
-    Echo["Command line: "];
-    Echo[argv];
-    MapIndexed[Function[{key, pos},
-      With[{},
-        If[MemberQ[Keys[$Env], key] || True,
-          With[{
-            value = argv[[2;;;;2]][[ pos[[1]] ]]
-          },
-            Echo[key -> value];
-  
-            $Env = Join[$Env, <|key -> If[NumericQ[ $Env[key] ],
-              ToExpression[value],
-              value
-            ]|>];
-          ]
-        ]
-      ]
-    ], argv[[;;;;2]]];
-  ];
-];
-
-If[KeyExistsQ[$Env, "folder"],
-  $Env["parent_folder"] = ParentDirectory[ $Env["folder"] ];
-];
-
-Echo["ENV"];
-Echo[ToString[$Env, InputForm] ];
-
 
 AppExtensions`QuickNotesDir = FileNameJoin[{Directory[], "__ntemp"}];
 With[{now = Now},
@@ -239,7 +280,7 @@ ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
@@ -279,11 +320,7 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandle
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
-appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"];
-
-$Env["AppJSON"] = appJSON;
-
-With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["recommended-client-version"], "."], 2], ""]},
+With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[$Env["AppJSON", "recommended-client-version"], "."], 2], ""]},
   middleware[app_][request_] := With[{},
     If[KeyExistsQ[request["Headers"], "Electron"],
       If[TrueQ[Interpreter["Number"][request["Headers", "Electron"] ] >= minimalClient ],
