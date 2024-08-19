@@ -1,134 +1,142 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2179], 
-   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Demos/07 - User input/Views.wln", "ReadOnly" -> False|>, 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$55], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/07 - User input/Views.wln", "ReadOnly" -> False, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Dynamic text display", 
+      CellObj[JerryI`Notebook`CellObj`$33]], 
+     Notebook`Editor`TOC`Private`heading[1, "HTML display", 
+      CellObj[JerryI`Notebook`CellObj`$41]], 
+     Notebook`Editor`TOC`Private`heading[1, "Table view", 
+      CellObj[JerryI`Notebook`CellObj`$46]], 
+     Notebook`Editor`TOC`Private`heading[1, "Editor view", 
+      CellObj[JerryI`Notebook`CellObj`$50]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Dynamic text display\nUsing `TextView` and \
 `Offload` wrapper, one can tell a frontend to update a text field, if the \
 undelying symbols is updated.", "Display" -> "codemirror", 
-    "Hash" -> "0548b229-e931-4231-bc28-6c06def66111", "Invisible" -> False, 
+    "Hash" -> "193927ab-38c7-45ff-a28e-a6526f5d0f3e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "# Dynamic text display\nUsing `TextView` and `Offload` \
 wrapper, one can tell a frontend to update a text field, if the undelying \
 symbols is updated.", "Display" -> "markdown", 
-    "Hash" -> "cbb7701c-22f1-4452-99e1-2459eaa15101", "Invisible" -> False, 
+    "Hash" -> "df20a2bd-1dd4-401a-a8a5-a297f1ec6f82", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "pstr = \" \";\nTextView[pstr // Offload]", 
     "Display" -> "codemirror", "Hash" -> 
-     "cd315457-59e5-415b-9c29-7e1e183d336c", "Invisible" -> False, 
+     "b224ff25-7c00-4c65-b366-ebea258982ad", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> ".md\na button to update", "Display" -> "codemirror", 
-    "Hash" -> "4a9497e7-99dc-49a8-9800-74e2d986b4bf", "Invisible" -> False, 
+    "Hash" -> "11e68c8d-9c37-48e8-968d-361ecdf84876", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "a button to update", "Display" -> "markdown", 
-    "Hash" -> "f8badac8-be9c-4ab2-b21c-88b66ef5728a", "Invisible" -> False, 
+    "Hash" -> "da9eca92-5ffe-4dd3-ab14-bb3f3b775df9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> 
      "EventHandler[InputButton[], Function[Null, pstr = RandomWord[]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "76470d49-edd3-44eb-a97c-326894731e1a", "Invisible" -> False, 
+     "81d1126c-3c78-4137-a98d-f3de1864988a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "8fb5e197-e479-4d1a-aec9-7f554769aa65", "Invisible" -> False, 
+    "Hash" -> "7310d2dd-109f-4a84-905d-2ab3caad9a66", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> 
      ".md\n# HTML display\nThe same of before, but interpretes HTML tags", 
     "Display" -> "codemirror", "Hash" -> 
-     "7388a6a2-bc38-436f-8f89-f23989c0a05d", "Invisible" -> False, 
+     "e1367b74-5267-4197-84fb-0796aae101f8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "# HTML display\nThe same of before, but interpretes HTML \
 tags", "Display" -> "markdown", "Hash" -> 
-     "71020cf1-0725-4cf8-97a4-4ebedbd41c6a", "Invisible" -> False, 
+     "d57963a4-cff4-437a-a5b1-c7824c3454bd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "HTMLView[\"<h1 style=\\\"color:red\\\">Hello World</h1>\"]", 
     "Display" -> "codemirror", "Hash" -> 
-     "430d578c-9e37-4677-af6a-05dbff503160", "Invisible" -> False, 
+     "63320ab4-4e8d-496b-9e49-baa54e84d479", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d3cbe46c-b701-4cfb-9273-4e90814e80bb", "Invisible" -> False, 
+    "Hash" -> "c533a608-574a-457d-934d-9bd374569d17", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> ".md\n# Table view\nAn non-editable preview of 2D lists with a \
 lazy loading, so a really large tables can be loaded", 
     "Display" -> "codemirror", "Hash" -> 
-     "d998ee01-f9a3-4bd6-9a9d-17c49ebc6bda", "Invisible" -> False, 
+     "ed8464fc-7ee6-4e96-904a-5f9a91a8f7e3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "# Table view\nAn non-editable preview of 2D lists with a lazy \
 loading, so a really large tables can be loaded", "Display" -> "markdown", 
-    "Hash" -> "f449a6e6-879c-4e28-b8e0-797a7e8add36", "Invisible" -> False, 
+    "Hash" -> "22db4807-cd9b-4161-8d82-0caf3b44fef9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "Table[RandomReal[], {i,10000}, {j,5}] // TableView", 
     "Display" -> "codemirror", "Hash" -> 
-     "c14ba3bc-5ce2-48a3-993c-db84ac098cab", "Invisible" -> False, 
+     "f4a22afb-9b7f-42e5-b265-2e1493480a54", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "0e6440bc-4cc0-4c9a-b9b9-e9e5cd7de8c6", "Invisible" -> False, 
+    "Hash" -> "4aa7df3e-7831-45e6-a845-640abffea09c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> ".md\n# Editor view\nA dynamic field like `TextView`, but has \
 all editors features", "Display" -> "codemirror", 
-    "Hash" -> "5d0c4491-7b0b-4e15-a818-4a22da12e54e", "Invisible" -> False, 
+    "Hash" -> "67de1d02-91a6-49d1-8834-d8eee4cf7684", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "# Editor view\nA dynamic field like `TextView`, but has all \
 editors features", "Display" -> "markdown", 
-    "Hash" -> "842d7ad7-4a6b-4ef0-8969-4b74452b2b1d", "Invisible" -> False, 
+    "Hash" -> "06cce416-6e55-4a0a-a99c-73d61b0b77a3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> 
      "pview = ToString[Red, StandardForm];\nEditorView[pview // Offload]", 
     "Display" -> "codemirror", "Hash" -> 
-     "cea636d0-034a-4f10-b355-4c72cdc9f182", "Invisible" -> False, 
+     "085ae18c-5a9f-443d-97de-0388ca1f58f1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> ".md\na slider to control", "Display" -> "codemirror", 
-    "Hash" -> "082e78f0-798b-467c-97f8-3673ee3b410f", "Invisible" -> False, 
+    "Hash" -> "f576d12c-ecd7-4239-b1ca-bde1be1a8b1d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "a slider to control", "Display" -> "markdown", 
-    "Hash" -> "3f96dca1-197f-4247-84c2-9d0a19a51abe", "Invisible" -> False, 
+    "Hash" -> "1836afb3-160e-4ff1-9f60-5bed05bf072d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> "EventHandler[InputRange[0,1,0.1], Function[data,\n  pview = \
-\"\";\n  pview = ToString[\n    RGBColor[Sin[data], Cos[data], 1.]//N\n  , \
-StandardForm];\n]]", "Display" -> "codemirror", 
-    "Hash" -> "2fc1b88d-891b-4f8e-8726-443967800c9e", "Invisible" -> False, 
+ToString[\n    RGBColor[Sin[data], Cos[data], 1.]//N\n  , StandardForm];\n]]"\
+, "Display" -> "codemirror", "Hash" -> 
+     "eafeaaa9-515a-4795-bc43-85fe1e86cb37", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>, 
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "31862f95-1575-4f2a-9a71-f944d7d29e64", "Invisible" -> False, 
+    "Hash" -> "e787f5eb-c04f-43e6-a837-eaf2d1a7a8d5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "97acb862-bc5e-4d1b-a3b0-6ff0d5e58224"|>}, "serializer" -> "jsfn4"|>
+     "83c2aff2-d5ba-410f-8385-8db9f868c884"|>}, "serializer" -> "jsfn4"|>

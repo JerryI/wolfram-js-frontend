@@ -1013,6 +1013,11 @@ function create_window(opts, cbk = () => {}) {
             options.minWidth = 200;
         }
 
+        if ((new RegExp(/docFind/)).exec(options.url)) {
+            options.width = options.minWidth;
+        }
+        
+
         if (new RegExp(/acknowledgments/).exec(options.url)) {
             options.height = 310;
         }

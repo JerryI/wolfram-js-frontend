@@ -666,6 +666,7 @@ Component[OptionsPattern[]] := With[{
     
                 (*/* finish */*)
                 EventFire[event, "Loaded", notebook];
+                EventFire[controller, "NotebookShown", <|"Client"->$Client, "Notebook"->notebook|>];
             ]];
 
         ],

@@ -1,60 +1,64 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
    "Objects" -> <|"e1797651-3421-4ae3-a67a-c7aab4f5fdfb" -> 
       <|"Public" -> Hold[PlaceholderClock[]]|>|>, 
-   "Path" -> "/users/kirill/Library/Application \
-Support/wljs-notebook/Examples/08 - Frontend interpreter/Clocks.wln"|>, 
- "Cells" -> {<|"Data" -> ".js\ncore.PlaceholderClock = async (args, env) => \
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/12 - \
+Frontend interpreter/Clocks.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {}|>, "Cells" -> 
+  {<|"Data" -> ".js\ncore.PlaceholderClock = async (args, env) => \
 {\n\t//store the handler object in the local memory\n\tenv.local.start = new \
 Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
 env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
 instance is about to be destoryed - clear \
 timer\ncore.PlaceholderClock.destroy = (args, env) => \
 {\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
-env.local.start);\n\talert(passed+' passed');\n}", "Display" -> "codemirror", 
-    "Hash" -> "888cb317-f066-4978-82c4-823554cdccd3", "Invisible" -> False, 
+env.local.start);\n\talert(passed+' \
+passed');\n}\n\ncore.PlaceholderClock.virtual = true ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "28481768-e0c1-4f79-998d-5a2e2f662bec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
-   <|"Data" -> "\ncore.PlaceholderClock = (args, env) => {\n\t//store the \
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> "core.PlaceholderClock = async (args, env) => {\n\t//store the \
 handler object in the local memory\n\tenv.local.start = new \
 Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
 env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
 instance is about to be destoryed - clear \
 timer\ncore.PlaceholderClock.destroy = (args, env) => \
 {\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
-env.local.start);\n\talert(passed+' passed');\n}", "Display" -> "js", 
-    "Hash" -> "645e9dc7-7625-4886-982b-be3716d549a8", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+env.local.start);\n\talert(passed+' \
+passed');\n}\n\ncore.PlaceholderClock.virtual = true ", "Display" -> "js", 
+    "Hash" -> "59e904a7-a0f4-44d2-b95b-6fc2f471ec63", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
    <|"Data" -> "CreateFrontEndObject[PlaceholderClock[]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "815ab1f1-b1e8-4ff5-bc79-9dc35217e7c6", "Invisible" -> False, 
+     "ff4ef44b-f536-4297-98b2-d56b835e23d7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"e1797651-3421-4ae3-a67a-c7aab4f5fdfb\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxqaW\
 5qbmRrqGpsYGeqaJKYa6yaamSfqJpsnJiaZpJmmpaQlAQB6CxYB\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "5d9352ad-b77b-45a7-841f-de3911a8c3be", "Invisible" -> False, 
+     "406f2c47-2a58-4f7c-bcbb-165fea0efc99", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
    <|"Data" -> ".md\nTry to copy this object from the output cell and paste \
 somewhere else!", "Display" -> "codemirror", 
-    "Hash" -> "e83bd547-af8b-49d2-a4ce-85c1b228000d", "Invisible" -> False, 
+    "Hash" -> "58eee1ae-ae02-4cd3-b6e9-488d9dd8d443", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
    <|"Data" -> 
      "Try to copy this object from the output cell and paste somewhere else!"\
-, "Display" -> "markdown", "Hash" -> "2d8d1b4d-8d60-4748-bd33-1e3251e0dc12", 
+, "Display" -> "markdown", "Hash" -> "de426dc9-08c0-40b6-b211-0a0601eec99a", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>, 
+    "Notebook" -> "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
    <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "c8ece8eb-4c70-45fe-9fa6-6b2d8d7be610", "Invisible" -> False, 
+    "Hash" -> "1f7ae43d-d25a-4a69-afe7-79eda8f64ea4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "18bfdfc7-db00-4952-b530-a9ae79a605d5"|>}, "serializer" -> "jsfn4"|>
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>}, "serializer" -> "jsfn4"|>

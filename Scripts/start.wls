@@ -75,61 +75,8 @@ PacletRepositories[{
 (* WLJS Package manager *)
 <<JerryI`WLJSPM`
 
-WLJS`PM`Repositories[{
-  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
-  Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
-  Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
-  Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sound" -> "master",
-  Github -> "https://github.com/JerryI/wljs-video" -> "master",
-  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
-  Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
-  Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master"
-}, "Directory" -> Directory[] ]
 
-LocalKernel`LTPServerStart[];
-
-RandomWord[];
-
-WLJS`PM`Includes["js"];
-WLJS`PM`Includes["frontend"];
-
-EventHandler[AppExtensions`AppEvents // EventClone, {
- any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
-}];
-
-(* start a bit earlier, so that extensions can hook on*)
-$Server = <||>;
-$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
-
-Print["Staring HTTP server..."];
-
-tcp = TCPServer[];
-tcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
-tcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> http;
-
-http = HTTPHandler[];
-$Server["HTTPHandler"] = http;
-
-AppExtensions`HTTPHandler = http;
-
+(* env parameters *)
 System`$Env;
 
 $Env = <|
@@ -168,9 +115,104 @@ If[KeyExistsQ[$Env, "folder"],
   $Env["parent_folder"] = ParentDirectory[ $Env["folder"] ];
 ];
 
-Echo["ENV"];
+With[{appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"]},
+  $Env["AppJSON"] = appJSON;
+];
+
+Echo["System`$Env"];
 Echo[ToString[$Env, InputForm] ];
 
+(* ~~check version~~ *)
+Echo["Checking version of WLJS Notebook ..."];
+
+{loadSettings, storeSettings}        = Get[FileNameJoin[{"Frontend", "Settings.wl"}] ];
+
+Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] // ToExpression ]},
+  loadSettings[settings];
+  If[KeyExistsQ[settings, "CurrentVersion"],
+    Echo[StringTemplate["AppJSON: ``, Settings: ``"][$Env["AppJSON", "version"], settings["CurrentVersion"] ] ];
+    With[{},
+      If[toNumber[$Env["AppJSON", "version"] ] > toNumber[settings["CurrentVersion"] ],
+        Echo["Not in sync!"];
+        
+        If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages"}] ],
+          If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages_legacy"}] ], 
+            Echo["Purging `wljs_packages_legacy`"];
+            DeleteDirectory[FileNameJoin[{Directory[], "wljs_packages_legacy"}], DeleteContents->True];
+          ];
+          RenameDirectory[FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "wljs_packages_legacy"}] ];
+          Echo["Previous folder was moved to wljs_packages_legacy"];
+        ];
+        
+        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_lock.wl"}] ];
+        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_users.wl"}] ];
+        DeleteFile[FileNameJoin[{Directory[], ".wljs_timestamp"}] ];
+        
+        Echo["Everything will be in sync"];
+      ,
+        Echo["Everything is in sync!"];
+      ];
+    ];
+  ,
+    Echo["Undefined!"];
+  ];
+];
+
+WLJS`PM`Repositories[{
+  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
+  Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
+  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
+  Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
+  Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
+  Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
+  Github -> "https://github.com/JerryI/wljs-sound" -> "master",
+  Github -> "https://github.com/JerryI/wljs-video" -> "master",
+  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
+  Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
+  Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
+  Github -> "https://github.com/JerryI/wljs-toc" -> "master"  
+}, "Directory" -> Directory[] ]
+
+LocalKernel`LTPServerStart[];
+
+RandomWord[];
+
+WLJS`PM`Includes["js"];
+WLJS`PM`Includes["frontend"];
+
+EventHandler[AppExtensions`AppEvents // EventClone, {
+ any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
+}];
+
+(* start a bit earlier, so that extensions can hook on*)
+$Server = <||>;
+$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&
+
+Print["Staring HTTP server..."];
+
+tcp = TCPServer[];
+tcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
+tcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> http;
+
+http = HTTPHandler[];
+$Server["HTTPHandler"] = http;
+
+AppExtensions`HTTPHandler = http;
 
 AppExtensions`QuickNotesDir = FileNameJoin[{Directory[], "__ntemp"}];
 With[{now = Now},
@@ -239,7 +281,7 @@ ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "svg", "pdf", "gif", "dat"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
@@ -279,11 +321,7 @@ SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandle
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
-appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"];
-
-$Env["AppJSON"] = appJSON;
-
-With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[appJSON["recommended-client-version"], "."], 2], ""]},
+With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[$Env["AppJSON", "recommended-client-version"], "."], 2], ""]},
   middleware[app_][request_] := With[{},
     If[KeyExistsQ[request["Headers"], "Electron"],
       If[TrueQ[Interpreter["Number"][request["Headers", "Electron"] ] >= minimalClient ],
