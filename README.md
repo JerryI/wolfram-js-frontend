@@ -93,6 +93,12 @@ An entire notebook can be exported to a standalone `.html` file keeping all data
 
 ![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
 
+#### No more static pictures with code
+Even if you embed it to your blog page
+
+![](imgs/manipulate.gif)
+
+
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
 #### AI Assistant 🤖
@@ -112,6 +118,9 @@ Follows the mouse pointer and performs complex calculations.
 
 ![](imgs/rerer-ezgif.com-video-to-gif-converter.gif)
 
+or even fluid simulation
+
+![](imgs/fuid.webp)
 
 ### Many More
 #### Autocomplete
