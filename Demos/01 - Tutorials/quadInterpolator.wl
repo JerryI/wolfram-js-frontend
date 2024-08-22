@@ -1,3 +1,4 @@
+
 BeginPackage["Misc`QuadarticInterpolation`"]
 Begin["`Private`"]
 

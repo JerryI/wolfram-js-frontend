@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$352], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1807], 
    "Objects" -> <|"061e0ba5-ee09-492d-88fe-801fe1ab75b8" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
@@ -939,145 +939,147 @@
              {-1.2036200340509116, 3.7611738613762995}}, PlotRangeClipping -> 
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
-             Automatic}}]]|>|>, "Path" -> "/users/kirill/Library/CloudStorage\
-/OneDrive-Personal/\:0414\:043e\:043a\:0443\:043c\:0435\:043d\:0442\:044b/\
-\:041a\:043e\:043d\:0444\:0435\:0440\:0435\:043d\:0446\:0438\:0438/DPG2023/TH\
-z-TDS modelling.wln"|>, "Cells" -> 
-  {<|"Data" -> ".md\n# THz Time-domain modelling\nUsing a single \
+             Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
+ontend-dev/Demos/01 - Tutorials/C1 - THz-TDS modelling.wln", 
+   "ReadOnly" -> True, "Symbols" -> <|"udata" -> {{0, 0}, {500, 0}}|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "THz Time-domain modelling", 
+      CellObj[JerryI`Notebook`CellObj`$1793]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# THz Time-domain modelling\nUsing a single \
 Lorentz-Oscillator model we model the responce of a materials with a variable \
 thickneses", "Display" -> "codemirror", 
-    "Hash" -> "46774f0b-fccc-4713-ac26-06ec5b34d216", "Invisible" -> False, 
+    "Hash" -> "daa01858-3901-4136-94c7-066b34f6ae26", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> False, 
       "Hidden" -> True|>, "State" -> "Idle", "Type" -> "Input", 
-    "UID" -> Null, "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "UID" -> Null, "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "# THz Time-domain modelling\nUsing a single \
 Lorentz-Oscillator model we model the responce of a materials with a variable \
 thickneses", "Display" -> "markdown", 
-    "Hash" -> "0bbaf1be-43eb-41be-bb37-96e43d20ef6f", "Invisible" -> False, 
+    "Hash" -> "b877d7ae-6473-417e-900f-c83010184cb3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> ".md\nEvaluate __initialization cells first__", 
     "Display" -> "codemirror", "Hash" -> 
-     "278ebb56-eecf-4a44-b61b-368829d25833", "Invisible" -> False, 
+     "9c40a7a5-c815-436d-b5cd-37504593fdda", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "Evaluate __initialization cells first__", 
     "Display" -> "markdown", "Hash" -> 
-     "f0e559fc-be4c-4688-ad7c-11f1ebd93f66", "Invisible" -> False, 
+     "f52908e4-4c4b-479a-82d3-8cfa99dbc7b2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "f[\[Omega]_, eps_, \[Omega]0_, \[Omega]p_, \[Gamma]_] := eps \
 + \
 (*FB[*)(((*SpB[*)Power[\[Omega]p(*|*),(*|*)2](*]SpB*))(*,*)/(*,*)((*SpB[*)Pow\
 er[\[Omega]0(*|*),(*|*)2](*]SpB*) - \
 (*SpB[*)Power[\[Omega](*|*),(*|*)2](*]SpB*) + I \[Gamma] \[Omega]))(*]FB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "9ca873ed-01df-49df-a892-71af2be55106", "Invisible" -> False, 
+     "5691dabd-1b94-4c94-bd13-002c5cb521b3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "n[\[Omega]_, params__] := (*SqB[*)Sqrt[f[\[Omega], \
 params]](*]SqB*)\n\ne[\[Omega]_, L_, params__] := Exp[- (*FB[*)((I 2\[Pi] \
 (*SpB[*)Power[10(*|*),(*|*)12](*]SpB*) \[Omega] n[\[Omega], params] \
 L)(*,*)/(*,*)(c cm2THz))(*]FB*) ] /.{c -> 3.0 \
 (*SpB[*)Power[10(*|*),(*|*)10](*]SpB*), cm2THz -> 33.4}", 
     "Display" -> "codemirror", "Hash" -> 
-     "80506137-f6f1-4955-81ca-c4f1480d883c", "Invisible" -> False, 
+     "a715d09e-129d-48b9-aaf7-23e559309958", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> ".md\nMaterial parameters ($n$ and $\\\\kappa$)", 
     "Display" -> "codemirror", "Hash" -> 
-     "f0a401c0-a016-47c7-ac19-ea6de13d34e6", "Invisible" -> False, 
+     "a380f4bb-09a9-4d13-9483-6eec0f2ac8ba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "Material parameters ($n$ and $\\\\kappa$)", 
     "Display" -> "markdown", "Hash" -> 
-     "30a6447c-1c30-45db-9ed6-b771cb5443fc", "Invisible" -> False, 
+     "877ab8c4-9cdb-43bd-b8a4-33bf600ab7e5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "Plot[n[x, 9.8, 28.66, 15, 1.5] // ReIm // Evaluate, {x,28.66 \
 - 20, 28.66 + 20}, \n  FrameLabel->{\"wavenumber (cm^{-1})\"}, \
 Frame->True\n]", "Display" -> "codemirror", 
-    "Hash" -> "21538de9-6e4e-48cd-8201-167bd8af1c08", "Invisible" -> False, 
+    "Hash" -> "9deb3d9f-73fe-41bd-897e-c9e4d3758b9d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"061e0ba5-ee09-492d-88fe-801fe1ab75b8\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5gZp\
 hokJZrqpqYaWOqaWBql6FpYpKXqWhgYpqUaJiaZmyZZAACFChXW\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "c06f7dc7-2ae8-4ea1-8a4d-eef98d956dad", "Invisible" -> False, 
+     "50312ccf-1232-4dc5-93d1-02780b710835", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> 
      ".md\nA responce of a material to a short pulse ($\\\\delta$ - \
 function)", "Display" -> "codemirror", 
-    "Hash" -> "48215b1a-169c-4180-ad94-71dbab8c041c", "Invisible" -> False, 
+    "Hash" -> "4e2f5d12-1b4e-4d38-814a-4e5927d26446", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> 
      "A responce of a material to a short pulse ($\\\\delta$ - function)", 
     "Display" -> "markdown", "Hash" -> 
-     "576883fc-e815-438a-960a-55832c49c9dd", "Invisible" -> False, 
+     "a553f22e-4a66-454c-93b2-d2b8e094c993", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "tds[params__] := (Join[#, Reverse[#]] &@ Table[e[\[Omega], \
 params], {\[Omega], 0,100,0.1}]) // Fourier", "Display" -> "codemirror", 
-    "Hash" -> "50584ba5-c32a-4e4c-9924-65b142f048ef", "Invisible" -> False, 
+    "Hash" -> "8db44bcd-9c10-4f83-a911-abea44d65d9a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> 
      ".md\nMake it interactive\n\n*evaluate this after initialization cells*"\
 , "Display" -> "codemirror", "Hash" -> 
-     "ff4fa0d3-c0cd-46c1-ac3e-ffe0215d52ac", "Invisible" -> False, 
+     "f843e421-1c67-481f-8679-ab1ce8ada590", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> 
      "Make it interactive\n\n*evaluate this after initialization cells*", 
     "Display" -> "markdown", "Hash" -> 
-     "facec76f-6122-4593-a934-cde7bce74b74", "Invisible" -> False, 
+     "c6e017b9-a208-41ec-aea3-3f8c9adebe81", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
-   <|"Data" -> "udata = {{0,0}};\nGraphics[\n  Line[udata // Offload], \n  \n \
- PlotRange->{{0,400}, {-3,3}}, \n  \n  \"TransitionDuration\"->30, \n  \
-\"TransitionType\"->\"Linear\", \n  Axes->True\n]", 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
+   <|"Data" -> "udata = {{0,0}, {500,0}};\nGraphics[\n  Line[udata // \
+Offload], \n  \n  PlotRange->{{0,400}, {-3,3}}, \n  \n  \
+TransitionDuration->30, \n  TransitionType->\"Linear\", \n  Axes->True\n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "d5646661-7a63-4b62-99ad-76df00f5114b", "Invisible" -> False, 
+     "b98bec8e-b308-465a-9d1f-8c5e9882ae70", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> False|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> ".md\nTry __to drag this slider__", "Display" -> "codemirror", 
-    "Hash" -> "742d0552-6c29-4057-ab0b-943c44aff8e6", "Invisible" -> False, 
+    "Hash" -> "73c61ee0-9840-4b69-aec3-c6bcc68f45b6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "Try __to drag this slider__", "Display" -> "markdown", 
-    "Hash" -> "13ce3426-8a6c-470c-8c83-0d4bc66e9936", "Invisible" -> False, 
+    "Hash" -> "2b4d6d7c-704c-43b1-997e-ccf5cc1494c8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> "EventHandler[InputRange[0.001, 0.1, 0.01, \
 \"Label\"->\"Thickness\"], Function[thickness, \n  udata = {Range[Length[#]], \
 #} &@ (Drop[#, -Length[#]/2//Ceiling] &@ tds[thickness, 9.8, 28., 15., 0.05] \
 // Re) // Transpose;\n]]", "Display" -> "codemirror", 
-    "Hash" -> "794cdbd2-cff4-48d8-87d7-075ef7c4ebaf", "Invisible" -> False, 
+    "Hash" -> "a965c906-cb9f-4e33-931b-f399b789392a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "1839ac44-a51f-4931-8da3-3f7049d78635"|>, 
+    "Notebook" -> "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "cd3df05f-77d0-4234-9714-37500a66fbbb", "Invisible" -> False, 
+    "Hash" -> "de7909db-148b-4d4b-b5de-3e961d8ccd40", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "1839ac44-a51f-4931-8da3-3f7049d78635"|>}, "serializer" -> "jsfn4"|>
+     "43beff6c-ba32-4f2b-8f2e-4186b828e6f6"|>}, "serializer" -> "jsfn4"|>

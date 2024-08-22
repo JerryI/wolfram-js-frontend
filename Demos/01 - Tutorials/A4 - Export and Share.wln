@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2071], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2218], 
    "Objects" -> <|"a2c496d3-7721-4daa-be89-ec4e0dbb7d88" -> 
       <|"Public" -> Hold[Graphics3D[{EdgeForm[], GraphicsComplex[
             {{8.471697807312012, 1.6333129405975342, 0.43172258138656616}, 
@@ -7255,7 +7255,7 @@
              {0.16010081066759554, 0.1734987820524089}}, PlotRangeClipping -> 
             True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, 
              {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, 
-             Automatic}}]]|>|>, "Path" -> "/Users/kirill/Github/wolfram-js-fr\
+             Automatic}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
 ontend-dev/Demos/01 - Tutorials/A4 - Export and Share.wln", 
    "ReadOnly" -> True, "Storage" -> <|"OurModel" -> "1:eJztnfdDzu/797NViLIysp\
 OdjGRWQrYkioxo0s6MZCckJHuXTSgrZGSTKCtbiGSlrAbu53men/X9HMf1ve8/4PaDd96PXuM4H+e\
@@ -7459,222 +7459,229 @@ zr/Sl/UvlSIA/9EgtXM2/pv3QArxtwu0Jq6l/lSMB/s7+avOdlKscCfD5ZhHGNej5VY7EIY3vJasc\
 iUMaXzdKfx0OafxZhcqRAL/3YPG4Ovz8MskCXLyj8FmDvy7gXcPMhl2mr8lVjgR4wJu51xrS92tVj\
 gR4zfVzxjYS71eWErw8/uo9xXfCZC8/X/nNg6Z4e6tDa+Cvvr6T3QJ9XbzHDfCb4OLtFezmau3tN2\
 GSe5n/PHdQCXxhFVQWfzt3Nm1n3e5fX/bu8K8ve1oElfvXl6buJf55Antvv8le4l///l/ynOKbbf2\
-8Xa28vf8P6eQ9mQ=="|>, "Symbols" -> <||>|>, 
+8Xa28vf8P6eQ9mQ=="|>, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Exporting to a portable format", 
+      CellObj[JerryI`Notebook`CellObj`$2214]], 
+     Notebook`Editor`TOC`Private`heading[2, "Export to ASCII", 
+      CellObj[JerryI`Notebook`CellObj`$2234]], 
+     Notebook`Editor`TOC`Private`heading[2, "Notebook storage", 
+      CellObj[JerryI`Notebook`CellObj`$2237]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Exporting to a portable format\nOne of the \
 motivations for developing this platform is to enable the sharing of \
 computable data in a self-descriptive format, allowing it to be viewed with \
 __no software installation required on any PC, Mac, smartphone, tablet, or \
 other devices__.", "Display" -> "codemirror", 
-    "Hash" -> "16fef476-3745-481a-af03-8c656f925be6", "Invisible" -> False, 
+    "Hash" -> "50fe1eb7-dda7-40cb-a8ee-19eabca6fc4b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "# Exporting to a portable format\nOne of the motivations for \
 developing this platform is to enable the sharing of computable data in a \
 self-descriptive format, allowing it to be viewed with __no software \
 installation required on any PC, Mac, smartphone, tablet, or other \
 devices__.", "Display" -> "markdown", 
-    "Hash" -> "29be16ea-2bf5-4d2f-a8a7-9a0642f7951c", "Invisible" -> False, 
+    "Hash" -> "e1e129ec-be2e-48d9-9350-0e10e2fb7c29", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "46113cf1-61f3-4b22-9cd9-e7a2303337bd", "Invisible" -> False, 
+    "Hash" -> "9b1aabbe-32f5-42ef-8867-a1b3c8577cd0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\nTo try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
-src=\"/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
-save you notebook before exporting!__\n\n---\n\n<br/>", 
+src=\"/attachments/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't \
+forget to save you notebook before exporting!__\n\n---\n\n<br/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "038a7ca0-0065-4feb-a6c2-21a2f7535fe1", "Invisible" -> False, 
+     "e5f703c6-7e54-45c5-be5c-ab8063132393", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
-   <|"Data" -> ">To try this feature click here\n\n<img class=\"py-4\" \
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
+   <|"Data" -> "To try this feature click here\n\n<img class=\"py-4\" \
 width=\"200\" \
-src=\"/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't forget to \
-save you notebook before exporting!__\n\n---\n\n<br />", 
+src=\"/attachments/Screenshot%202024-03-12%20at%2021.57.37.png\"/>\n\n__Don't \
+forget to save you notebook before exporting!__\n\n---\n\n<br />", 
     "Display" -> "markdown", "Hash" -> 
-     "47c89d38-1137-4a02-b05a-f71d58dfa204", "Invisible" -> False, 
+     "82707a6c-af69-494c-aab0-bf79bfae1535", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\nYou can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "codemirror", "Hash" -> 
-     "382a4f14-fd5b-4f25-945e-3b7b492f2cc3", "Invisible" -> False, 
+     "e642bd4e-619c-49c1-b6a9-476abd6aa753", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "You can think about it if it was PDF with enabled \
 interactivity and possible editing of raw data inside", 
     "Display" -> "markdown", "Hash" -> 
-     "c46775fb-a30c-4272-a713-c7c1da5f19b8", "Invisible" -> False, 
+     "e8aa5c26-2adb-41bd-8de0-20cc8b22c2ec", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "ExampleData[{\"Geometry3D\",\"KleinBottle\"}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "09aa03cf-680e-43f4-a496-ceb1a5778a70", "Invisible" -> False, 
+     "9a54d3f2-e1f1-49d8-8e32-3a316e8d7f3c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"a2c496d3-7721-4daa-be89-ec4e0dbb7d88\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxolm\
 1iapRjrmpsbGeqapCQm6ialWljqpiabpBqkJCWZp1hYAACJZRY6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "c42b6c1f-2f75-4aab-a322-b143fda4fe76", "Invisible" -> False, 
+     "27573675-8006-449c-8c54-4345aa656ae2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\n*Note: use your mouse to manipulate the view*", 
     "Display" -> "codemirror", "Hash" -> 
-     "e47cf3bf-47af-4ab8-bd35-d96ee66c5f7b", "Invisible" -> False, 
+     "a3851f84-3ffe-4cb2-87bc-ff416d2307c1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "*Note: use your mouse to manipulate the view*", 
     "Display" -> "markdown", "Hash" -> 
-     "a78926d8-d84b-43b3-9844-3f327e91cf8d", "Invisible" -> False, 
+     "7adb71e7-0f27-4562-a096-58c502508418", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\nLet us embed here a figure from the previous tutorial \
 **A3 - Math and Fitting.wlx**", "Display" -> "codemirror", 
-    "Hash" -> "ba09b2e1-8429-4182-8f74-ccf37403857e", "Invisible" -> False, 
+    "Hash" -> "d815cfd4-e2e8-49f3-8708-af95f199591c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "Let us embed here a figure from the previous tutorial **A3 - \
 Math and Fitting.wlx**", "Display" -> "markdown", 
-    "Hash" -> "793a1531-b9ac-4de9-a1f5-523dfab18be2", "Invisible" -> False, 
+    "Hash" -> "6a358951-4b95-40a5-a2ac-45e9d89be5dd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "(*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-5fec.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8g8cJyRAQDvgAv9\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "57fdbf8a-2aa8-487f-8612-c03094a1e8db", "Invisible" -> False, 
+    "Hash" -> "ffe287c9-9d90-4e01-85d7-64dff33666e0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"959888d7-bbdb-473d-a066-f2c2f2b1b9a4\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW5paW\
 lhYpJjrJiWlJOmamBun6CYamJnpphklG6UZJRkmWSaaAACFKhXe\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "3cbf4ca8-e77f-47b6-9fe0-5b4f07152c34", "Invisible" -> False, 
+     "ac2503b7-e19e-425b-ad4d-85d82e87becd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\n*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "codemirror", "Hash" -> 
-     "588b35aa-3201-403b-9114-fb2e79d12734", "Invisible" -> False, 
+     "50713a71-1b34-4fe1-892b-aed6291bf38e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "*Note: try to pan and zoom graph in your browser*", 
     "Display" -> "markdown", "Hash" -> 
-     "e22cf50e-e3cd-40e9-9424-bc438701c106", "Invisible" -> False, 
+     "68cdff89-435b-417a-8d77-1c284966fcb3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "46e6d80b-770d-4e2c-ac15-ffadb38b0117", "Invisible" -> False, 
+    "Hash" -> "3a61b83a-daa3-488f-b356-1b714e557239", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\nAn exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "codemirror", "Hash" -> 
-     "dc34e636-c0e9-43fb-85ad-7e24d7fa7269", "Invisible" -> False, 
+     "03834075-76b7-4809-a9e7-18ad77ec2a17", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "An exported notebook can still be converted back \
 automatically to a normal one `.wln`, once it has been opened using WLJS \
 Notebook app. The data inside notebook will be preserved.", 
     "Display" -> "markdown", "Hash" -> 
-     "acf13211-643d-4c22-b132-147225399fc6", "Invisible" -> False, 
+     "9029f74e-a00c-463e-b2ec-0892cef5c426", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\n## Export to ASCII\nIt is also possible, so that the raw \
 data from the previous tutorial can be imported by other apps", 
     "Display" -> "codemirror", "Hash" -> 
-     "de99240b-ca24-4b2b-b0d6-203326935136", "Invisible" -> False, 
+     "34137e1a-f1f2-4dc8-b380-6f4aa964c69d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "## Export to ASCII\nIt is also possible, so that the raw data \
 from the previous tutorial can be imported by other apps", 
     "Display" -> "markdown", "Hash" -> 
-     "356bd91f-20c1-42cb-9953-36e5070ab458", "Invisible" -> False, 
+     "5b5b2c3b-54b0-489d-ab90-6ad07722712f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "With[{model = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)},\n  Export[\"data.dat\", Table[{x, \
 model[x]}, {x,3000,4000,10}]]\n]", "Display" -> "codemirror", 
-    "Hash" -> "a1fd941a-cf8a-4a92-a72a-cce2a26369ac", "Invisible" -> False, 
+    "Hash" -> "888c8a88-e148-4285-bfae-f4f3697ec763", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\n## Notebook storage\nOne can embedd raw data into the \
 notebook as well, __so you don't have to worry about external files while \
 sharing your notebook__.", "Display" -> "codemirror", 
-    "Hash" -> "1acac6d2-3394-45be-b5e1-d892d4581464", "Invisible" -> False, 
+    "Hash" -> "78855443-a91b-437e-bf5f-8463b4d9180d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "## Notebook storage\nOne can embedd raw data into the \
 notebook as well, __so you don't have to worry about external files while \
 sharing your notebook__.", "Display" -> "markdown", 
-    "Hash" -> "a1ea8e28-56ef-484a-bb9f-8213b72a0fa7", "Invisible" -> False, 
+    "Hash" -> "5b050c56-5691-42a7-9597-81f64344353a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "NotebookStore[\"OurModel\"] = \
 (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-c831.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8iUmMTIAADsQQsg\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "80e04287-5162-4d7b-bef6-f8c19579b9db", "Invisible" -> False, 
+    "Hash" -> "8b4b69e5-42fe-4e68-b30c-9fb1a364d9a1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, <|"Data" -> "\"OurModel\"", 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, <|"Data" -> "\"OurModel\"", 
     "Display" -> "codemirror", "Hash" -> 
-     "4c6bd7c6-f1ea-4c62-aacd-7cb78f032be4", "Invisible" -> False, 
+     "17501a15-b719-45f1-9cfd-5bdbcff38bd2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> ".md\n`NotebookStore` <span style=\"color:red\">is \
 preserved</span> even if a notebook has been exported to an HTML file.", 
     "Display" -> "codemirror", "Hash" -> 
-     "f11ea49c-f0ea-4537-93fb-90696abbc760", "Invisible" -> False, 
+     "aaf325dc-d3d6-48ff-a101-b2f49b144128", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "`NotebookStore` <span style=\"color:red\">is preserved</span> \
 even if a notebook has been exported to an HTML file.", 
     "Display" -> "markdown", "Hash" -> 
-     "f1f9802b-496d-4174-b919-feb82b404636", "Invisible" -> False, 
+     "7ebd6401-2f15-4dd8-8cd6-f236d29516d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "With[{model = NotebookStore[\"OurModel\"]},\n  Plot[model[x], \
 {x,3000,4000}]\n]", "Display" -> "codemirror", 
-    "Hash" -> "b26ff4f0-f9d0-49dc-858c-dfba16437677", "Invisible" -> False, 
+    "Hash" -> "83d7ca53-f257-4ca7-bf99-941af0fee36b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>, 
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"9ab5b3d5-6e41-4804-ac66-4a856fe487b0\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWyYmm\
 SYZp5jqmqWaGOqaWBiY6CYmm5npmiRamJqlpZpYmCcZAACD+hV6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "a097e74f-0f74-4d68-9064-87a5c81d6f6e", "Invisible" -> False, 
+     "7ba27d61-ba0a-4747-8678-d50e140f8f49", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "12fe89b2-0c17-437e-86e5-21db08d2ef20"|>}, "serializer" -> "jsfn4"|>
+     "71aeecbe-b781-420a-b783-db5915f7d669"|>}, "serializer" -> "jsfn4"|>
