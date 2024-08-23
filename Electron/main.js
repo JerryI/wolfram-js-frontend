@@ -2740,8 +2740,13 @@ function downloadFile(file_url, targetPath, cbk) {
     var received_bytes = 0;
     var total_bytes = 0;
 
+    let cnt = 0;
+
     const showProgress = (received, total) => {
-        windows.log.print("+ | " + received, '\x1b[32m');
+        cnt++;
+        if (cnt % 10) {
+            windows.log.print("::: " + (100.0 * received / total).toFixed(2), '\x1b[32m');
+        }
     }
 
     const ft = net.request(file_url);
@@ -2752,8 +2757,8 @@ function downloadFile(file_url, targetPath, cbk) {
     ft.on('response', (responce) => {
         // Change the total bytes value to get progress later.
         console.log(responce.headers);
-        //total_bytes = parseInt(responce.headers.get('Content-Length'));
-        //console.log(total_bytes);
+        total_bytes = parseInt(responce.headers.get('content-Length'));
+        console.log(responce.headers.get('content-Length'));
 
         responce.pipe(out);
 
@@ -2761,7 +2766,7 @@ function downloadFile(file_url, targetPath, cbk) {
             // Update the received bytes
             received_bytes += chunk.length;
 
-            showProgress(received_bytes);
+            showProgress(received_bytes, total_bytes);
         });
 
         responce.on('end', function() {
