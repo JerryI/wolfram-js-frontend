@@ -771,7 +771,7 @@ Component[OptionsPattern[]] := With[{
 
         "UpdateCell" -> Function[payload,
             With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},
-                cell["Data"] = content;
+                cell["Data"] = URLDecode[content];
                 If[cell["Type"] == "Output",
                     Echo["Morphing..."];
                     cell["Type"] = "Input";
