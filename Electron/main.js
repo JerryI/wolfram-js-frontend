@@ -2783,8 +2783,12 @@ function downloadFile(file_url, targetPath, cbk) {
     ft.on('response', (responce) => {
         // Change the total bytes value to get progress later.
         console.log(responce.headers);
-        total_bytes = parseInt(responce.headers.get('content-Length'));
-        console.log(responce.headers.get('content-Length'));
+        let lenHeader = responce.headers['content-Length'];
+        if (Array.isArray(lenHeader)) lenHeader = lenHeader[0];
+
+        if (isNaN(lenHeader)) lenHeader = 300*1024*1024;
+
+        total_bytes = parseInt(lenHeader);
 
         responce.pipe(out);
 

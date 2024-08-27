@@ -25,7 +25,7 @@
     "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
     "copyright": "WLJS © 2024 ${author}",
-    "artifactName": "wljs-notebook-offline-${version}.${ext}",
+    "artifactName": "wljs-notebook-${version}-${arch}.${ext}",
     "dmg": {
       "title": "${productName} ${version}",
       "icon": "./Electron/build/512x512.icns",
