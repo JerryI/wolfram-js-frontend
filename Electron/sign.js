@@ -1,9 +1,10 @@
 require('dotenv').config();
-import { existsSync } from 'fs';
-import { join } from 'path';
-import { notarize } from 'electron-notarize';
 
-export default async function (params) {
+const fs = require('fs');
+const path = require('path');
+const notarize= require('electron-notarize');
+
+module.exports = async function (params) {
 if (process.platform !== 'darwin') {
 return
 }
@@ -12,11 +13,11 @@ return
 
     let appId = 'com.coffeeliqueur.wljs'
 
-    let appPath = join(
+    let appPath = path.join(
         params.appOutDir,
         `${params.packager.appInfo.productFilename}.app`
     )
-    if (!existsSync(appPath)) {
+    if (!fs.existsSync(appPath)) {
         console.log('skip')
         return
     }
@@ -26,7 +27,7 @@ return
     )
 
     try {
-        await notarize({
+        await notarize.notarize({
             appBundleId: appId,
             appPath: appPath,
             appleId: process.env.APPLE_ID,
