@@ -24,21 +24,25 @@ EventHandler[Secret, {"Load" -> Function[Null,
         "CSSPreview" -> Function[state,
             settings = Join[settings, <|"CSSPreview"->state|>];
             onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]
         ],
 
         "WindowsLegacy" -> Function[state,
             settings = Join[settings, <|"WindowsLegacy"->state|>];
             onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]
         ],
 
         "UpdatesChannelBranch" -> Function[channel,
             settings = Join[settings, <|"UpdatesChannelBranch"->StringTrim[channel]|>];
-            onSave[settings];        
+            onSave[settings];   
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]    
         ],
 
         "UpdatesChannelRepo" -> Function[channel,
             settings = Join[settings, <|"UpdatesChannelRepo"->StringTrim[channel]|>];
-            onSave[settings];        
+            onSave[settings];  
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]      
         ]
     }];
 
