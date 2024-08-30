@@ -75,13 +75,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
 
-                socket.onmessage = function(event) {
-                  //create global context
-                  //callid
-                  const uid = Math.floor(Math.random() * 100);
-                  var global = {call: uid};
-                  interpretate(JSON.parse(event.data), {global: global});
-                };
+                socket.onmessage = server.kernel.onMessage;
 
                 socket.onclose = function(event) {
                   console.log(event);
