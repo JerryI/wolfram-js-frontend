@@ -384,6 +384,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 server.kernel.connected = true;
                 const socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
                 socket.binaryType = "arraybuffer";
+                socket.onmessage = interpretate.handleMessage;
 
                 socket.onopen = function(e) {
                   console.warn("[open] Evaluation Kernel");
@@ -391,7 +392,6 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
 
-                socket.onmessage = server.kernel.onMessage;
 
                 socket.onclose = function(event) {
                   console.log(event);
