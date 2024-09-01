@@ -392,6 +392,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
 
+                
 
                 socket.onclose = function(event) {
                   console.log(event);
@@ -519,6 +520,8 @@ Component[OptionsPattern[]] := With[{
 
     EventHandler[controller // EventClone, {
         "Save" -> Function[Null,
+            If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
@@ -531,6 +534,8 @@ Component[OptionsPattern[]] := With[{
         ],
 
         "SaveAs" -> Function[path,
+            If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
                 Then[tt, Function[Null,
                     Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
@@ -545,13 +550,20 @@ Component[OptionsPattern[]] := With[{
             EventFire[controller, "ReopenAsQuick", <|"Notebook" -> notebook, "Client"-> client, "Path" -> notebook["Path"]|>];
         ],
 
-        "Backup" -> Function[data,
+        "Backup" -> Function[data, With[{timer = AbsoluteTime[]},
+            If[TrueQ[notebook["_suspendBackups"]], Return[Null, Module]];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
                 Then[tt, Function[Null,
+                    If[AbsoluteTime[] - timer > 5,
+                        EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
+                        notebook["_suspendBackups"] = True;
+                    ];
+
                     EventFire[controller, "DumpSaveTemporal", notebook];
                 ]];
             ];            
-        ],        
+        ]],        
 
         "ChangeKernel" -> Function[Null,
         
