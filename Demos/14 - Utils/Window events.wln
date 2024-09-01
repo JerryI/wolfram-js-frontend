@@ -1,0 +1,40 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$84], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/13 - Utils/Window events.wln", "Symbols" -> <||>|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Detect closing window\nIt comes handy to \
+stop tasks, or free up memory when a user closes a notebook", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f8e7cda1-2c5e-4e39-811a-186fb0f938b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>, 
+   <|"Data" -> ">## Detect closing window\nIt comes handy to stop tasks, or \
+free up memory when a user closes a notebook", "Display" -> "markdown", 
+    "Hash" -> "201df6fe-8010-464c-9847-61a5401b3707", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>, 
+   <|"Data" -> "test = {0,1,0};\n\nEventHandler[CurrentWindow[], {\"Closed\" \
+-> Function[Null,\n  test = {1,0,0};\n]}];\n\nGraphics[{RGBColor[test // \
+Offload], Disk[{0,0}, 1]}]", "Display" -> "codemirror", 
+    "Hash" -> "0075f0bc-a19e-4943-b03e-9409facc031a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>, 
+   <|"Data" -> ".md\n*Try to close notebook and reopen again*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5ab7af75-169a-4519-97dc-8cebec4059d4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>, 
+   <|"Data" -> ">*Try to close notebook and reopen again*", 
+    "Display" -> "markdown", "Hash" -> 
+     "2f4efb2b-0ddc-4055-b007-bfbe2d0e7ef4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8b9c701d-50bb-4670-ac3a-ad8e05b899e4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "7c8bd456-7793-4cd3-9f4f-27849a3271e9"|>}, "serializer" -> "jsfn4"|>

@@ -1,0 +1,86 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$189], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/06 - Utils/Making cells.wln"|>, 
+ "Cells" -> 
+  {<|"data" -> ".md\n## Making cells from code\nand removing them as well", 
+    "Data" -> ".md\n## Making cells from code\nand removing them as well", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "10be8f9d-9465-47d5-98dc-aacf58002708", 
+    "id" -> "7ff0e89d-11c5-4018-9190-a07a94251e54", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> True|>, 
+    "Props" -> <|"Hidden" -> True|>, "sign" -> "geriatrician-dcc03", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"data" -> "\n## Making cells from code\nand removing them as well", 
+    "Data" -> "\n## Making cells from code\nand removing them as well", 
+    "display" -> "markdown", "Display" -> "markdown", 
+    "Hash" -> "75436c34-3a46-4153-8dcf-d54477e1e5f6", 
+    "id" -> "c2c81944-ccdc-4b54-9c14-f192cc070f08", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "geriatrician-dcc03", 
+    "State" -> "Idle", "type" -> "output", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"data" -> "EventHandler[InputButton[\"Click\"], Function[Null,\n  \
+Module[{cell},\n    cell = CellPrint[\"\\\"I will disappear in 3 \
+seconds\\\"\"];\n    Pause[3];\n    Delete[cell];\n  ]\n]]", 
+    "Data" -> "With[{ref = EvaluationCell[]},\n  \
+EventHandler[InputButton[\"Click\"], Function[Null,\n    Module[{cell},\n     \
+ cell = CellPrint[\"\\\"I will disappear in 3 seconds\\\"\", \
+\"After\"->ref];\n      SetTimeout[Delete[cell], 3000];\n    ]\n  ]]\n]", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "141c2bb0-5503-4f76-b76f-0b5a7e702f60", 
+    "id" -> "81deeb82-c357-4282-bd5f-32ae13b619f4", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "geriatrician-dcc03", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "35b88c6a-61e0-4f43-8419-fa24e1484963", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> ".md\nThis can work in the simplest way as well", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fc670660-dd3c-4249-abd5-7c7b2a0ee218", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> "This can work in the simplest way as well", 
+    "Display" -> "markdown", "Hash" -> 
+     "ddf5e624-3188-47ea-a600-d1f45cf627f6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> "cell = CellPrint[ToString[1/2, StandardForm]];\ncell ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "262169d6-22dd-4b53-83d8-95a589f85faa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> "1+1", "Display" -> "codemirror", 
+    "Hash" -> "d5132275-ff19-4ea6-96d9-903f3b90189c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> "RemoteCellObj[\"683cccb8-933f-4c5c-a8d3-0f59f5b21be7\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e7acf8d7-e7b3-4ae3-b54a-b0fd0c63400d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> ".md\nAnd then, one can simply remove it", 
+    "Display" -> "codemirror", "Hash" -> 
+     "501475ac-3849-4db4-a551-36d1eb3a0c9a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, 
+   <|"Data" -> "And then, one can simply remove it", "Display" -> "markdown", 
+    "Hash" -> "ee7dec76-c9c1-4302-88a1-620314647253", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>, <|"Data" -> "Delete[cell]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3d436497-2470-4738-ab29-0462d84b36ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c0aff5f4-28f8-49bd-98cd-6e97eb5cbd44"|>}, "serializer" -> "jsfn4"|>

@@ -1,0 +1,21 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$48], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/13 - Utils/Cell events.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\nTry to reevaluate this cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "37f72d38-70d9-4341-b7c3-66f849823c4b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>, 
+   <|"Data" -> "\nTry to reevaluate this cell", "Display" -> "markdown", 
+    "Hash" -> "2566e427-9422-48ce-a43d-81e74930005e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>, 
+   <|"Data" -> "With[{},\n  EventHandler[ResultCell[], {\"Destroy\" -> \
+(Print[\"Destroyed!\"] &)}];\n  \"Lovely day\"\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7af42ad8-8220-4fbf-81da-948e0747f88b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fddf055c-e672-44a2-8ab6-bef694545a60"|>}, "serializer" -> "jsfn4"|>

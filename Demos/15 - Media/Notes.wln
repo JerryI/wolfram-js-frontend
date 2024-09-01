@@ -1,0 +1,84 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2238], 
+   "Objects" -> <|"04b6b8a0-7b71-4bfc-be33-ea9fa9c193c0" -> 
+      <|"Public" -> Hold[Sound[SoundNote[0, "8n"]]]|>, 
+     "0cdad76a-61ce-48db-ba26-4cc96a3beb5d" -> 
+      <|"Public" -> Hold[Sound[{SoundNote["C"], SoundNote["G"], 
+           SoundNote["C5"]}]]|>, "2e0eac8d-f15d-499a-b407-12b2bbc903e0" -> 
+      <|"Public" -> Hold[Sound[SoundNote[{"C", "G"}, 1]]]|>|>, 
+   "Path" -> 
+    "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/14 - Media/Notes.wln"\
+, "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Plain musical notes", CellObj[JerryI`Notebook`CellObj`$2229]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Plain musical notes", 
+    "Display" -> "codemirror", "Hash" -> 
+     "18b506fb-c125-4360-8fdd-6549d054d380", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "># Plain musical notes", "Display" -> "markdown", 
+    "Hash" -> "5922d99c-6c8f-408a-8097-b841de6e8d9d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "Sound[SoundNote[0, \"8n\"]]", "Display" -> "codemirror", 
+    "Hash" -> "969ecd5d-ec64-4bd8-9106-dcf18143fbad", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"04b6b8a0-7b71-4bfc-be33-ea9fa9c193c0\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5gkm\
+SVZJBromieZG+qaJKUl6yalGhvrpiZapiVaJhtaGicbAACLhBYp\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9be4f20d-bfd5-424f-b561-4414f6656089", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> ".md\nPlay a sequence", "Display" -> "codemirror", 
+    "Hash" -> "45943c8b-ad68-4734-b97d-92928f95098a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> ">Play a sequence", "Display" -> "markdown", 
+    "Hash" -> "ec102d60-972f-4d31-9bc5-df6668ab0732", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> 
+     "Sound[{SoundNote[\"C\"], SoundNote[\"G\"], SoundNote[\"C5\"]}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f826eb2c-8b0a-46d9-8843-667efd04d9ea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"0cdad76a-61ce-48db-ba26-4cc96a3beb5d\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKGySnJ\
+KaYmyXqmhkmp+qaWKQk6SYlGpnpmiQnW5olGielJpmmAACXLBa4\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2c3f1ff1-927e-4c51-868c-0a7bfda2a4d4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> ".md\nPlay a chord", "Display" -> "codemirror", 
+    "Hash" -> "d45e4592-dcca-4ca8-8645-5b57e60c2451", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, <|"Data" -> ">Play a chord", 
+    "Display" -> "markdown", "Hash" -> 
+     "c104ed63-05bc-4c87-951b-7edae97b80bb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "Sound[SoundNote[{\"C\", \"G\"}, 1]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ad15c0ba-38e2-47c5-8eae-3b57eca696f8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"2e0eac8d-f15d-499a-b407-12b2bbc903e0\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG6Uap\
+CYmW6TophmapuiaWFom6iaZGJjrGholGSUlJVsaGKcaAACPGhXy\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f9843d1d-655a-4897-8311-2216bcff1b21", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6c448f02-1dcb-4f30-a86e-ff6941c10606"|>}, "serializer" -> "jsfn4"|>
