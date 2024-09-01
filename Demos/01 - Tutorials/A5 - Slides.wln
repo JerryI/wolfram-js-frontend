@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2125], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2321], 
    "Objects" -> <|"d69b3dbb-33aa-4074-9049-476acf09727f" -> 
       <|"Public" -> Hold[Graphics[{{{{}, {}, Annotation[{Directive[
                 Opacity[1], RGBColor[0.368417, 0.506779, 0.709798], 
@@ -2072,435 +2072,469 @@
            PlotRangeClipping -> True, PlotRangePadding -> 
             {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.02]}}, 
            Ticks -> {Automatic, Automatic}}]]|>|>, 
-   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/01 - \
-Tutorials/A5 - Slides.wln", "ReadOnly" -> True, "Symbols" -> <||>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Demos/01 - \
+Tutorials/A5 - Slides.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Preparing a report", 
+      CellObj[JerryI`Notebook`CellObj`$2248]], 
+     Notebook`Editor`TOC`Private`heading[2, "Text, heading, sections", 
+      CellObj[JerryI`Notebook`CellObj`$2252]], 
+     Notebook`Editor`TOC`Private`heading[3, "Projector feature", 
+      CellObj[JerryI`Notebook`CellObj`$2261]], 
+     Notebook`Editor`TOC`Private`heading[3, "Embed pictures", 
+      CellObj[JerryI`Notebook`CellObj`$2266]], 
+     Notebook`Editor`TOC`Private`heading[2, "Animation", 
+      CellObj[JerryI`Notebook`CellObj`$2276]], 
+     Notebook`Editor`TOC`Private`heading[2, "Embedding Wolfram Language", 
+      CellObj[JerryI`Notebook`CellObj`$2281]], 
+     Notebook`Editor`TOC`Private`heading[2, "Merging slides", 
+      CellObj[JerryI`Notebook`CellObj`$2294]], 
+     Notebook`Editor`TOC`Private`heading[1, "Scientific report", 
+      CellObj[JerryI`Notebook`CellObj`$2300]]}|>, 
  "Cells" -> 
   {<|"Data" -> 
      ".md\n# Preparing a report\nHow about making a presentation right here?"\
 , "Display" -> "codemirror", "Hash" -> 
-     "101d0dd9-1f97-4419-a874-b9a89611865d", "Invisible" -> False, 
+     "0d1f1ca7-b9af-4bc6-abe0-77762fdacb0c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> 
      "# Preparing a report\nHow about making a presentation right here?", 
     "Display" -> "markdown", "Hash" -> 
-     "06a9aa5f-f5da-439b-b394-a8a483c89607", "Invisible" -> False, 
+     "0db624f5-b938-4f7a-81fa-dbc8ccf1e346", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nMarkdown language together with \
 [WLX](https://jerryi.github.io/wlx-docs/docs/Reference/WLX/) (optional) to \
 make slides. The core technology is \
 [RevealJS](https://revealjs.com/markdown/), but you don't have to know it to \
 use it", "Display" -> "codemirror", 
-    "Hash" -> "0c8ba29a-65b0-4997-85fc-e686ad0983b8", "Invisible" -> False, 
+    "Hash" -> "0c3681b0-c1f6-45b9-8c93-46f6604ccdd2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Markdown language together with \
 [WLX](https://jerryi.github.io/wlx-docs/docs/Reference/WLX/) (optional) to \
 make slides. The core technology is \
 [RevealJS](https://revealjs.com/markdown/), but you don't have to know it to \
 use it", "Display" -> "markdown", "Hash" -> 
-     "8a4143a8-b563-4171-b236-83b80a683e11", "Invisible" -> False, 
+     "3a7c9471-84ba-4612-b02b-97d9cf469f6e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n## Text, heading, sections\nType in a new cell `.slide` \
 (first line) and then", "Display" -> "codemirror", 
-    "Hash" -> "47fc1b0a-fa13-4956-9bed-6d90cec3cc84", "Invisible" -> False, 
+    "Hash" -> "05e1973e-1204-4dad-be48-6fe81ebb256d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "## Text, heading, sections\nType in a new cell `.slide` \
 (first line) and then", "Display" -> "markdown", 
-    "Hash" -> "1e7c0fda-bee2-4911-a677-9ffb1757ce9f", "Invisible" -> False, 
+    "Hash" -> "48811e19-b84c-4e9f-a7a6-259fbcb737d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".slide\n\n# Slide 1\n\nSome text, other text...\n\n---\n\n# \
 Slide 2\n\nMay be even <span \
 style=\"color:red\">equations</span>\n\n$$\n\\\\hat{H} \\\\Psi = E \
 \\\\Psi\n$$", "Display" -> "codemirror", 
-    "Hash" -> "616eb67b-7511-4218-b92c-a99f4ca23a37", "Invisible" -> False, 
+    "Hash" -> "38f47d5b-28b4-4d6e-a193-75b3f9b916a3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "<dummy >\n# Slide 1\n\nSome text, other text...\n\n---\n\n# \
 Slide 2\n\nMay be even <span \
 style=\"color:red\">equations</span>\n\n$$\n\\\\hat{H} \\\\Psi = E \
 \\\\Psi\n$$</dummy>", "Display" -> "slide", 
-    "Hash" -> "44dc8dc8-4305-4f53-8283-facb0baf14bc", "Invisible" -> False, 
+    "Hash" -> "0b9213ae-8361-4f58-b93a-babd53518416", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*Note: use arrows to navigate, `Q` to place a pointer*", 
     "Display" -> "codemirror", "Hash" -> 
-     "962ad944-8f4f-4f6a-9480-074c4ed9bfaa", "Invisible" -> False, 
+     "4355fcdf-8811-4313-be75-a024b6c7a966", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "*Note: use arrows to navigate, `Q` to place a pointer*", 
     "Display" -> "markdown", "Hash" -> 
-     "5291eee9-c15f-48e8-8936-c3a3e9fcf331", "Invisible" -> False, 
+     "d0de9158-f489-42bf-955a-08e61149d938", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*Note: keep it simple. One cell - one \
 slide*\n\n<br/>\n\nCells with slides can be merged to a complete presentation \
 using `.slides` cell type", "Display" -> "codemirror", 
-    "Hash" -> "958c8b2a-6c73-43d4-ada5-cd88fc1ec02e", "Invisible" -> False, 
+    "Hash" -> "e3a6545b-ff87-40a7-b7da-2645e618ac1e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "*Note: keep it simple. One cell - one \
 slide*\n\n<br/>\n\nCells with slides can be merged to a complete presentation \
 using `.slides` cell type", "Display" -> "markdown", 
-    "Hash" -> "fca6bb1b-d614-47fe-91d1-4e71974de895", "Invisible" -> False, 
+    "Hash" -> "a1e19a40-f023-4d3b-afd6-ba8c79a808f4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "3cd41a9f-0482-49ef-a3bf-2891c3031d84", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> ".md\n### Projector feature", "Display" -> "codemirror", 
-    "Hash" -> "97e25c9e-ce25-4561-9949-80102ad25873", "Invisible" -> False, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> ".md\n__To go fullscrenn press `f` on a slide__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "43ba92c8-6bd6-4b9f-bf44-2f996666405a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> "### Projector feature", "Display" -> "markdown", 
-    "Hash" -> "0a3a253a-b39a-4de3-acef-21d4d4979aa2", "Invisible" -> False, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> "__To go fullscrenn press `f` on a slide__", 
+    "Display" -> "markdown", "Hash" -> 
+     "6b78669a-d3de-4514-8c1f-5f975d775ee8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "7cb1dd05-190b-4081-80d7-750af36e1dbc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> ".md\n### Projector feature", "Display" -> "codemirror", 
+    "Hash" -> "4fb4c04c-e7a0-4343-ba89-98e3c648bbf3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> "### Projector feature", "Display" -> "markdown", 
+    "Hash" -> "7661420e-47ec-4d05-af31-f3d4eaeec46d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nTo project slides to a new window (like a normal \
 presentation tool) navigate to a cell's \
 menu\n\n\n![](Screenshot%202024-03-13%20at%2012.34.29.png)\n\n<br/>\n\nand \
 click **Project to a window**. It will evaluate an input cell and show the \
 result in a new window.\n", "Display" -> "codemirror", 
-    "Hash" -> "a2cd60d2-b15b-4c30-9045-b98bd4bfcc2c", "Invisible" -> False, 
+    "Hash" -> "0d9bb2b2-dc30-4097-b2f4-288d4690f01a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "To project slides to a new window (like a normal presentation \
 tool) navigate to a cell's \
 menu\n\n\n![](Screenshot%202024-03-13%20at%2012.34.29.png)\n\n<br/>\n\nand \
 click **Project to a window**. It will evaluate an input cell and show the \
 result in a new window.\n", "Display" -> "markdown", 
-    "Hash" -> "12929670-735b-4fec-a48c-33fad5d4a490", "Invisible" -> False, 
+    "Hash" -> "a10fa62c-cb6a-4ceb-91dd-b9db060497bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "2313dd90-8d10-4805-970e-0fd728f18c46", "Invisible" -> False, 
+    "Hash" -> "926f278b-92cf-4bc9-aeb3-e8b248efad82", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n### Embed pictures\nIt uses the default markdown syntax \
 to show pictures. However, an editor does support simple __drag and drop \
 feature__", "Display" -> "codemirror", 
-    "Hash" -> "8b1389b9-facb-47f9-9331-fd2c8a2998c5", "Invisible" -> False, 
+    "Hash" -> "5f6655d8-ba14-4124-a99e-40cd1b995c19", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "### Embed pictures\nIt uses the default markdown syntax to \
 show pictures. However, an editor does support simple __drag and drop \
 feature__", "Display" -> "markdown", 
-    "Hash" -> "d3c3d5d8-d892-4cac-a348-6c28b90fd10d", "Invisible" -> False, 
+    "Hash" -> "6c2cbab7-5079-4055-a6fa-37de93a4632e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> ".md\n\n\n![](attachments/Dropfiles-ezgif.com-optipng.png)\n", 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> 
+     ".md\n\n\n![](/attachments/Dropfiles-ezgif.com-optipng.png)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "cac11d28-b760-4137-925f-7234109972f0", "Invisible" -> False, 
+     "b34a1b79-b209-4273-b55d-43177639fef8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> "\n\n![](attachments/Dropfiles-ezgif.com-optipng.png)\n", 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> "\n\n![](/attachments/Dropfiles-ezgif.com-optipng.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "a1017bea-0ed6-40e8-8e5e-99306e554cd5", "Invisible" -> False, 
+     "eb982e5b-2fb3-4eb0-8f42-1e7afc68dfa6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "f74888c2-82ce-4c98-b139-dba9a426f0a8", "Invisible" -> False, 
+    "Hash" -> "4434c32c-afd8-4c5e-bb9d-d07240be6c5e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, <|"Data" -> ".md\n---", 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, <|"Data" -> ".md\n---", 
     "Display" -> "codemirror", "Hash" -> 
-     "ac039696-721e-4d2c-b5d5-a754d30a5810", "Invisible" -> False, 
+     "6333a6ad-7727-4e60-9fa3-e7df8394b139", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "---", "Display" -> "markdown", 
-    "Hash" -> "170a8206-87a3-4418-8bfe-41e8765dfd25", "Invisible" -> False, 
+    "Hash" -> "812feb52-12b6-4bd3-964b-9646f776f568", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> ".slide\n\nThis is an example\n\n![](/Cover.png)\n", 
-    "Display" -> "codemirror", "Hash" -> 
-     "da822b08-fd7f-4e28-a97e-cb15065d68f8", "Invisible" -> False, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> ".slide\n\nThis is an \
+example\n\n![](/attachments/Cover.png)\n", "Display" -> "codemirror", 
+    "Hash" -> "d8d4f538-a5ed-4cdb-bbe6-0c0c0701a1b8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> "<dummy >\nThis is an example\n\n![](/Cover.png)</dummy>", 
-    "Display" -> "slide", "Hash" -> "96fd5da5-70d3-4132-9764-14511d61c512", 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> 
+     "<dummy >\nThis is an example\n\n![](/attachments/Cover.png)</dummy>", 
+    "Display" -> "slide", "Hash" -> "a07612a7-b340-4c1b-b990-4a78f2d7c95b", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+    "Notebook" -> "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "6a215c10-dd81-43a7-80a2-8fb16604c668", "Invisible" -> False, 
+    "Hash" -> "4d83d940-39ad-4f55-b33e-48e54a039277", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n## Animation\nA fragments of a text can be maked using \
 special tag in order to reveal it or highlight (see more \
 [here](https://revealjs.com/fragments/))", "Display" -> "codemirror", 
-    "Hash" -> "154068f2-54ee-4684-b53a-471d7d35de56", "Invisible" -> False, 
+    "Hash" -> "9f3ab5aa-c4ed-4d8d-ad21-7f253742e86f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "## Animation\nA fragments of a text can be maked using \
 special tag in order to reveal it or highlight (see more \
 [here](https://revealjs.com/fragments/))", "Display" -> "markdown", 
-    "Hash" -> "4fdab61d-619f-4cab-9132-bd25354b67ed", "Invisible" -> False, 
+    "Hash" -> "53969da1-ac86-436a-9c47-7cb728ae21d8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".slide\n\n# Slide Title\n\nThis will be revealed <!-- \
 .element: class=\"fragment\" data-fragment-index=\"1\" -->\n\nThis will be \
 gone <!-- .element: class=\"fragment fade-out\" data-fragment-index=\"2\" \
 -->\n\nThis will be highlighted <!-- .element: class=\"fragment \
 highlight-red\" data-fragment-index=\"3\" -->", "Display" -> "codemirror", 
-    "Hash" -> "52901899-50b7-4799-ab2e-62cc59c674b9", "Invisible" -> False, 
+    "Hash" -> "3493be1f-0c73-4b1f-847e-77f02eb3da65", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "<dummy >\n# Slide Title\n\nThis will be revealed <!-- \
 .element: class=\"fragment\" data-fragment-index=\"1\" -->\n\nThis will be \
 gone <!-- .element: class=\"fragment fade-out\" data-fragment-index=\"2\" \
 -->\n\nThis will be highlighted <!-- .element: class=\"fragment \
 highlight-red\" data-fragment-index=\"3\" --></dummy>", "Display" -> "slide", 
-    "Hash" -> "9dde213f-637e-483d-88f2-2a6ed1399868", "Invisible" -> False, 
+    "Hash" -> "257647eb-5ce5-41a8-b7ad-d2e18057ca0e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "187b4ac0-b28f-4ef9-b1fd-6cd1ce4bc21c", "Invisible" -> False, 
+    "Hash" -> "929f6fba-0c9e-4916-9528-7250175c2322", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> 
      ".md\n## Embedding Wolfram Language\nThe most use case is our figures", 
     "Display" -> "codemirror", "Hash" -> 
-     "83feaeb4-8036-4d32-b3b9-fd1335d617e5", "Invisible" -> False, 
+     "9af832ac-1520-4364-aa9d-5e54ee838cd4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> 
      "## Embedding Wolfram Language\nThe most use case is our figures", 
     "Display" -> "markdown", "Hash" -> 
-     "69659614-b2cf-4dbb-9d7c-47755043d4e0", "Invisible" -> False, 
+     "0a1dce55-53e1-4dee-bf67-4b49d49118fd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Figure = Plot[Sin[x], {x,0,2Pi}, ImageSize->500];", 
     "Display" -> "codemirror", "Hash" -> 
-     "64896bb2-bcbb-43c4-9394-85033415eaf8", "Invisible" -> False, 
+     "18d9bb3e-a6a0-4ab9-ae01-35423ea8ffc2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nNow lets embed it to our slide", 
     "Display" -> "codemirror", "Hash" -> 
-     "196ff2b0-5a57-4b35-8c9a-c2b5cd4b2c48", "Invisible" -> False, 
+     "5dea6079-da76-4309-9b42-2842223cca9b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Now lets embed it to our slide", "Display" -> "markdown", 
-    "Hash" -> "31a42849-97f7-4034-8b31-177ff170c544", "Invisible" -> False, 
+    "Hash" -> "a49e0120-44c5-4f46-8cad-1b8af90d7817", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".slide\n\n# Figure\n\n<Figure/>", "Display" -> "codemirror", 
-    "Hash" -> "c7c96bf3-ed27-41a9-a24b-12e7bd893908", "Invisible" -> False, 
+    "Hash" -> "d851728d-70c5-4303-8d71-f9347add1d99", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "<dummy >\n# \
 Figure\n\nFrontEndExecutable[d69b3dbb-33aa-4074-9049-476acf09727f]</dummy>", 
-    "Display" -> "slide", "Hash" -> "aa2b0e3b-e7d4-4f7c-b1f1-ff42849d680b", 
+    "Display" -> "slide", "Hash" -> "1621c96f-ff11-4308-ad8e-fd3ec6934fff", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+    "Notebook" -> "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nIt works it a way, if it was a special XML/HTML tag. Any \
 other wolfram expressions are also valid", "Display" -> "codemirror", 
-    "Hash" -> "b4c9cd99-48ce-44b3-8048-8703ba1b901b", "Invisible" -> False, 
+    "Hash" -> "ef08b6df-263f-450b-b7cf-368eb4ff5ae8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "It works it a way, if it was a special XML/HTML tag. Any \
 other wolfram expressions are also valid", "Display" -> "markdown", 
-    "Hash" -> "bb37ec01-dabf-422b-95ec-2d6abeef7b1c", "Invisible" -> False, 
+    "Hash" -> "10fa7576-3b1f-485c-b9d3-5f1833196d98", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
-   <|"Data" -> ".slide\n\nToday is <TextString><Now/></TextString>", 
-    "Display" -> "codemirror", "Hash" -> 
-     "a1c7dbc8-e540-4329-839f-2ad703ca95c0", "Invisible" -> False, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> "GetDate := TextString[Now]", "Display" -> "codemirror", 
+    "Hash" -> "ee0c9461-cf88-465d-ab98-c747a0a23a93", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
+   <|"Data" -> ".slide\n\nToday is <GetDate/>", "Display" -> "codemirror", 
+    "Hash" -> "57903cb1-411a-4c5c-b774-79214cc2168a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*This is more advanced topic and will be covered in \
 other tutorials*", "Display" -> "codemirror", 
-    "Hash" -> "bff112e2-04de-4ea5-8f27-d8c5ea840d93", "Invisible" -> False, 
+    "Hash" -> "d89e20fc-51e1-4392-a981-c1dfa522e873", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> 
      "*This is more advanced topic and will be covered in other tutorials*", 
     "Display" -> "markdown", "Hash" -> 
-     "efb77d5e-e91c-4142-b4e9-fd53e2ae6178", "Invisible" -> False, 
+     "da8ac1c5-6130-4aea-b417-24c14c413fab", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "e8ba2764-4dac-4045-b35f-840518a00a12", "Invisible" -> False, 
+    "Hash" -> "496985f5-2ccb-47f2-a5f1-8e8be0ca9c65", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n## Merging slides\ninto a complete \
 presentation\n\n<br/>\n\nCreate a new cell with `.slides` extension. ", 
     "Display" -> "codemirror", "Hash" -> 
-     "d70673e2-3736-4d95-b2a0-a7f959459962", "Invisible" -> False, 
+     "9cb23c88-f627-4766-9bd1-702437f5c03a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "## Merging slides\ninto a complete \
 presentation\n\n<br/>\n\nCreate a new cell with `.slides` extension. ", 
     "Display" -> "markdown", "Hash" -> 
-     "96c09a0d-ba30-4287-b526-eb061b9dda4c", "Invisible" -> False, 
+     "6e5f8bda-35df-4e09-a47c-1e19988170e2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".slides\n\nThank you for your attention", 
     "Display" -> "codemirror", "Hash" -> 
-     "bb416673-d9ff-4572-b5f8-f771309f7a32", "Invisible" -> False, 
+     "fb1d0fee-e8e5-49eb-a8ba-b88a31edcee8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*Once evaluated, it merges all slides from all cells \
 found in the notebook into a single presentation.*", 
     "Display" -> "codemirror", "Hash" -> 
-     "18355201-d2c6-45ec-8e35-3503e94c12e2", "Invisible" -> False, 
+     "d2ab631f-7618-45bd-89ac-46b12f78bde5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "*Once evaluated, it merges all slides from all cells found in \
 the notebook into a single presentation.*", "Display" -> "markdown", 
-    "Hash" -> "e42839fc-8052-4d3c-b240-c2bfceb262ad", "Invisible" -> False, 
+    "Hash" -> "e822e939-9412-4b71-8b88-2dd29cd2da68", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "83b50b03-0d49-4f08-9974-1f754b979920", "Invisible" -> False, 
+    "Hash" -> "72c44558-4d1d-47da-90f2-537b4ca64a21", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n# Scientific report\nAssumming you have gone thorugh the \
 previous tutorials, now we can take our fitted data and presented it here", 
     "Display" -> "codemirror", "Hash" -> 
-     "8c25ce0c-2fe8-4138-b43c-fecc5543d3da", "Invisible" -> False, 
+     "6569db64-1ea6-48e9-afd9-b6cc864e2019", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "# Scientific report\nAssumming you have gone thorugh the \
 previous tutorials, now we can take our fitted data and presented it here", 
     "Display" -> "markdown", "Hash" -> 
-     "fe694bb7-0b57-4451-a844-dccfbb3668bd", "Invisible" -> False, 
+     "798c4ffa-3e04-40a9-a25d-8a317b29b008", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nBefore we iconized the plot into the following symbol", 
     "Display" -> "codemirror", "Hash" -> 
-     "9472dfe6-6507-4d81-bff5-40f39626f4fe", "Invisible" -> False, 
+     "ef9158d8-52ca-41ab-927b-84d2ebb58181", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Before we iconized the plot into the following symbol", 
     "Display" -> "markdown", "Hash" -> 
-     "23e55cc8-8f2e-4283-ac44-d17a4807e96d", "Invisible" -> False, 
+     "4974399e-f7f3-440b-a720-1cfb817ee585", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Figure = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-5fec.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
 vMSXXKr8g8cJyRAQDvgAv9\"*)(*]VB*);\nFigure ", "Display" -> "codemirror", 
-    "Hash" -> "ed6f670b-a91f-415b-916c-e04048adc2f7", "Invisible" -> False, 
+    "Hash" -> "3f6573fb-2d33-4568-a481-c36603f8e3f8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"a06f8a7f-7541-402f-bf0f-a5142d30845f\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxqYp\
 VkkmqfpmpuaGOqaGBil6SalGaTpJpoamhilGBtYmJimAQCDPxVs\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "dc3a648c-fe65-4a6c-9588-d975c319e5ac", "Invisible" -> False, 
+     "92634fa6-1702-4533-9f9b-bd37309c56ee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*Note: please use variables starting from a Captial \
 letter to store data to be embedded to your slide layout*", 
     "Display" -> "codemirror", "Hash" -> 
-     "817ef657-8353-494f-af64-66bfe5200b45", "Invisible" -> False, 
+     "802df263-14b2-41e8-9ee9-07fd0f4df056", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "*Note: please use variables starting from a Captial letter to \
 store data to be embedded to your slide layout*", "Display" -> "markdown", 
-    "Hash" -> "36d0b05c-c37c-46f1-912e-2775970fbc1a", "Invisible" -> False, 
+    "Hash" -> "943ea279-4da6-4eaf-a597-fe1f1f3b0a6b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\nNow create a simple slide", "Display" -> "codemirror", 
-    "Hash" -> "e78dc1a2-06fd-46b9-a1f8-0c8212970134", "Invisible" -> False, 
+    "Hash" -> "40198b48-5d2c-4ba6-84ba-9d2a31964b1c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "Now create a simple slide", "Display" -> "markdown", 
-    "Hash" -> "a6a765eb-babc-46fb-9c19-a578770a231c", "Invisible" -> False, 
+    "Hash" -> "83e757fd-db21-4239-a046-2e03b9796bfe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".slide\n\n# Reflectivity in $Fe_2 Mo_3 O_8$\nPrepared by \
 Friedrich Vormelker\n\n---\n\n# Fitted with a single Lorentz \
 oscillator\n\n<Figure/>", "Display" -> "codemirror", 
-    "Hash" -> "51c63d06-c6fa-4551-9ac1-1d26ffe929f3", "Invisible" -> False, 
+    "Hash" -> "26cedc7b-3237-4614-bc66-164b0a37ba2f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "<dummy >\n# Reflectivity in $Fe_2 Mo_3 O_8$\nPrepared by \
 Friedrich Vormelker\n\n---\n\n# Fitted with a single Lorentz \
 oscillator\n\nFrontEndExecutable[2c27eca2-5882-48e3-81c6-56a21a596d91]</dummy\
->", "Display" -> "slide", "Hash" -> "02a865cf-ef92-4cfb-9c0e-4033865421cf", 
+>", "Display" -> "slide", "Hash" -> "e93a111c-9262-41f0-8edb-894435fabb9e", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+    "Notebook" -> "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> ".md\n*Note: try to zoom in and pan the plot*", 
     "Display" -> "codemirror", "Hash" -> 
-     "67ffcd5b-0565-494e-aad4-6df5c61cfa07", "Invisible" -> False, 
+     "0499544e-ba1b-4086-820c-a0abc347972d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> "*Note: try to zoom in and pan the plot*", 
     "Display" -> "markdown", "Hash" -> 
-     "eaafdae9-cac3-46f4-8222-f2beaccaf3ae", "Invisible" -> False, 
+     "5dd06550-79eb-49a2-a854-b8eafaabd339", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>, 
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d61c141b-8a1c-4ec1-9a2a-a325fd7cd413", "Invisible" -> False, 
+    "Hash" -> "493cfb83-970e-4d2b-a3ca-4f2cb1760512", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "5ada9c2c-f86f-4a11-bf75-6c8444eb3e22"|>}, "serializer" -> "jsfn4"|>
+     "90d526f1-2d8b-423d-b20e-cbefee659489"|>}, "serializer" -> "jsfn4"|>

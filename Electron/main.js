@@ -830,7 +830,7 @@ const windows = {
                     //nodeIntegration: true
                 }
              });
-            } else {
+            } else if (isWindows) {
                 win = new BrowserWindow({
                     vibrancy: "sidebar", // in my case...
                     frame: true,
@@ -855,6 +855,29 @@ const windows = {
 
 
 
+            } else {
+                win = new BrowserWindow({
+                    vibrancy: "sidebar", // in my case...
+                    frame: true,
+                    autoHideMenuBar: true,
+                    titleBarStyle: 'hidden',
+                    titleBarOverlay: {
+                        color: 'rgba(255, 255, 255, 0.0)',
+                        symbolColor: 'rgba(128, 128, 128, 1.0)'
+                    },
+                    autoHideMenuBar: true,
+                    width: 600,
+                    height: 400,
+                    resizable: false,
+                    title: 'Launcher',
+                    webPreferences: {
+                        preload: path.join(__dirname, 'preload_log.js'),
+                        //webSecurity: false,
+                        nodeIntegration: true
+                    },
+
+                    icon: path.join(__dirname, "build", "512x512.png")
+                 });                
             }
 
             win.webContents.setWindowOpenHandler((details) => {
@@ -1012,6 +1035,11 @@ function create_window(opts, cbk = () => {}) {
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
         }
+
+        if ((new RegExp(/docFind/)).exec(options.url)) {
+            options.width = options.minWidth;
+        }
+        
 
         if (new RegExp(/acknowledgments/).exec(options.url)) {
             options.height = 310;
@@ -1195,8 +1223,8 @@ function create_window(opts, cbk = () => {}) {
                 webPreferences: {
                     preload: path.join(__dirname, 'preload_main.js')
                 },
-                ...options.override
-
+                ...options.override,
+                icon: path.join(__dirname, "build", "512x512.png")
             });
         }
 
@@ -2176,7 +2204,7 @@ function check_wl (configuration, cbk, window) {
 
         //If OK
         //Wolframscript started
-        if (new RegExp('Wolfram Language').exec(s)) {
+        if (new RegExp('Wolfram').exec(s)) {
             windows.log.print(s);
             server.wolfram.process = program;
             server.running = false;
@@ -2194,7 +2222,7 @@ function check_wl (configuration, cbk, window) {
         program.stdout.once('data', (data) => {
             //If OK
             //Wolframscript started
-            if (new RegExp('Wolfram Language').exec(data.toString())) {
+            if (new RegExp('Wolfram').exec(data.toString())) {
                 windows.log.print(data.toString());
                 server.wolfram.process = program;
                 server.running = false;
@@ -2207,8 +2235,9 @@ function check_wl (configuration, cbk, window) {
             windows.log.print("");
             windows.log.print(data.toString());
             windows.log.print("");
-            windows.log.print("No reply. Restart in 5 sec", '\x1b[46m');
-            windows.log.info("No reply. Restart in 5 sec");
+            windows.log.print("Unexpected reply from wolframscript. Restart in 5 sec", '\x1b[46m');
+            windows.log.info("Unexpected reply from wolframscript. Restart in 5 sec");
+            windows.log.print("Expected 'Wolfram' string");
 
             setTimeout(()=>{
 
@@ -2251,7 +2280,7 @@ function default_error_handling(success, reject, s, program, window) {
 
 
     //#2 Too many running Kernels
-    if (new RegExp('The Wolfram Engine could not be activated using your Wolfram ID').exec(s)) {
+    if (new RegExp('The Wolfram Engine could not be').exec(s)) {
         windows.log.print("It seems you have some Wolfram Kernels running in the background or on another machine. Due to the Wolfram licensing limitations it is not allowed to run more than 2. WLJS Notebook requires exactly 2 to run locally.", '\x1b[44m');
         windows.log.print("");
         windows.log.info('It seems you have other Wolfram Kernels running in the background. Please stop them');
@@ -2494,7 +2523,7 @@ function check_installed (cbk, window) {
             const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
             let branch = server.frontend.UpdatesChannelBranch ||  'main';
 
-            if (branch == "updates") branch = 'main';
+            if (branch.trim() == "updates") branch = 'main';
 
             console.log([repo, branch]);
             //app.exit(-1);
@@ -2617,14 +2646,16 @@ function install_frontend(cbk, window) {
 
         windows.log.clear();
         windows.log.print('Downloading .zip archive to ' + installationFolder + '...', '\x1b[32m');
-        windows.log.info('Dowloading the latest release from ' + (server.frontend.UpdatesChannelBranch ||  'main'));
+        
 
         //path to zip
         const pathToFile = path.join(installationFolder, 'pkg.zip');
 
         const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
         let branch = server.frontend.UpdatesChannelBranch ||  'main';
-        if (branch == "updates") branch = 'main';
+        if (branch.trim() == "updates") branch = 'main';
+
+        windows.log.info('Dowloading the latest release from ' + (branch ));
 
         downloadFile('https://api.github.com/repos/'+repo+'/zipball/'+branch, pathToFile, (file) => {
             windows.log.print('Unzipping...', '\x1b[32m');
@@ -2735,8 +2766,13 @@ function downloadFile(file_url, targetPath, cbk) {
     var received_bytes = 0;
     var total_bytes = 0;
 
+    let cnt = 0;
+
     const showProgress = (received, total) => {
-        windows.log.print("+ | " + received, '\x1b[32m');
+        cnt++;
+        if (cnt % 10) {
+            windows.log.print("::: " + (100.0 * received / total).toFixed(2), '\x1b[32m');
+        }
     }
 
     const ft = net.request(file_url);
@@ -2747,8 +2783,12 @@ function downloadFile(file_url, targetPath, cbk) {
     ft.on('response', (responce) => {
         // Change the total bytes value to get progress later.
         console.log(responce.headers);
-        //total_bytes = parseInt(responce.headers.get('Content-Length'));
-        //console.log(total_bytes);
+        let lenHeader = responce.headers['content-Length'];
+        if (Array.isArray(lenHeader)) lenHeader = lenHeader[0];
+
+        if (isNaN(lenHeader)) lenHeader = 300*1024*1024;
+
+        total_bytes = parseInt(lenHeader);
 
         responce.pipe(out);
 
@@ -2756,7 +2796,7 @@ function downloadFile(file_url, targetPath, cbk) {
             // Update the received bytes
             received_bytes += chunk.length;
 
-            showProgress(received_bytes);
+            showProgress(received_bytes, total_bytes);
         });
 
         responce.on('end', function() {

@@ -383,6 +383,8 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
                 server.kernel.connected = true;
                 const socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
+                socket.binaryType = "arraybuffer";
+                socket.onmessage = interpretate.handleMessage;
 
                 socket.onopen = function(e) {
                   console.warn("[open] Evaluation Kernel");
@@ -390,13 +392,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
 
-                socket.onmessage = function(event) {
-                  //create global context
-                  //callid
-                  const uid = Math.floor(Math.random() * 100);
-                  var global = {call: uid};
-                  interpretate(JSON.parse(event.data), {global: global});
-                };
+                
 
                 socket.onclose = function(event) {
                   console.log(event);
@@ -524,6 +520,8 @@ Component[OptionsPattern[]] := With[{
 
     EventHandler[controller // EventClone, {
         "Save" -> Function[Null,
+            If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
@@ -536,6 +534,8 @@ Component[OptionsPattern[]] := With[{
         ],
 
         "SaveAs" -> Function[path,
+            If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
                 Then[tt, Function[Null,
                     Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
@@ -550,13 +550,20 @@ Component[OptionsPattern[]] := With[{
             EventFire[controller, "ReopenAsQuick", <|"Notebook" -> notebook, "Client"-> client, "Path" -> notebook["Path"]|>];
         ],
 
-        "Backup" -> Function[data,
+        "Backup" -> Function[data, With[{timer = AbsoluteTime[]},
+            If[TrueQ[notebook["_suspendBackups"]], Return[Null, Module]];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
                 Then[tt, Function[Null,
+                    If[AbsoluteTime[] - timer > 5,
+                        EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
+                        notebook["_suspendBackups"] = True;
+                    ];
+
                     EventFire[controller, "DumpSaveTemporal", notebook];
                 ]];
             ];            
-        ],        
+        ]],        
 
         "ChangeKernel" -> Function[Null,
         
@@ -666,6 +673,7 @@ Component[OptionsPattern[]] := With[{
     
                 (*/* finish */*)
                 EventFire[event, "Loaded", notebook];
+                EventFire[controller, "NotebookShown", <|"Client"->$Client, "Notebook"->notebook|>];
             ]];
 
         ],
@@ -770,7 +778,7 @@ Component[OptionsPattern[]] := With[{
 
         "UpdateCell" -> Function[payload,
             With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},
-                cell["Data"] = content;
+                cell["Data"] = URLDecode[content];
                 If[cell["Type"] == "Output",
                     Echo["Morphing..."];
                     cell["Type"] = "Input";

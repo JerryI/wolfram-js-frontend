@@ -65,7 +65,7 @@ checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["Current
       ];
 
       (*/* FIXME REMOVE FORCED Branch change! */*)
-      settings = Join[settings, <|"CurrentVersion" -> version, "UpdatesChannelBranch" -> "main"|>];
+      settings = Join[settings, <|"CurrentVersion" -> version|>];
       storeSettings[settings];
     ]
   ]
@@ -320,7 +320,7 @@ App[request_] := With[{
 
           <div id="sidebar" style="user-select: none; -webkit-app-region: drag;" class="hidden pt-10 md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
             <Kernels AppEvents={AppEvent} Controls={GlobalControls} Messager={GlobalMessanger} KernelList={kernels} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
-            <Sidebar Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
+            <Sidebar ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="osx:border-b border-gray-300 dark:border-gray-600"></div>
             <div class="px-4 flex flex-row h-10 mt-auto grow-0 shrink-0 items-center">
               <SettingsButton/>

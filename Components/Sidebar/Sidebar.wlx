@@ -84,6 +84,10 @@ With[{
     Icons     = OptionValue["Icons"],
     modals = OptionValue["Modals"],
     Parameters = OptionValue["Parameters"],
+    AppEvent = OptionValue["AppEvents"],
+    Messanger = OptionValue["Messanger"],
+
+    ExtensionTemplates = OptionValue["ExtensionTemplates"],
     Button1Id = CreateUUID[],
     Button2Id = CreateUUID[],
     dir = If[DirectoryQ[OptionValue["Path"]], OptionValue["Path"], DirectoryName[OptionValue["Path"]]]
@@ -172,6 +176,9 @@ With[{
     <WebUIRefresh Event={SidebarId} Class={"flex grow flex-col gap-y-5 overflow-y-auto px-4 sc-b"}>
       <Sidebar Port={Secret} Icons={Icons} Parameters={Parameters} Secret={"blackhole"} Path={Path} />
     </WebUIRefresh>
+
+  ,
+    <ExtensionTemplates Template={"AppSidebarBottom"} Path={Path} Controls={Controls} Modals={modals} AppEvents={AppEvent} MessagePort={Messanger}/>
   ,
     <script type="module">
       core.UIOpenExplorer = async (args, env) => {
@@ -204,9 +211,9 @@ With[{
         server.emitt('<Secret/>', 'True', 'CheckFiles');
       }, 3000);
     </script>
-  }
+  } // Flatten // StringRiffle
 ] ]
 
-Options[Component] = {"Icons"->"", "Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
+Options[Component] = {"Icons"->"", "Messanger"->"", "ExtensionTemplates" -> {}, "AppEvents"->"", "Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
 
 Component

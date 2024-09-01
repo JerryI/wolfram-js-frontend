@@ -13,7 +13,12 @@ Here is some to-do list grouped by repos
 - [ ] autotests in a format of WLJS notebook, which go though most features
 - [ ] more example on differnet topics (for data-scientists, scientists, students, ...)
 
-*Main repo is stable and there are no urget needs in refactoring*
+*Main repo is stable and there are no urget needs in any refactoring*
+
+## Demonstration project
+[A collection of examples](https://jerryi.github.io/wljs-demo/) showcasing WLJS Notebook for non-developers (directly exported from WLJS Notebooks).
+- [ ] possibly convert to similar format of our [Blog](https://jerryi.github.io/wljs-docs/blog) (in a discussion)
+- [ ] more examples on various topics
 
 ## wljs-graphics-d3
 ### Primary

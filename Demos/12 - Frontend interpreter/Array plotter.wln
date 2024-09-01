@@ -1,344 +1,59 @@
-<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$234], 
-   "Objects" -> <|"0d765fb5-63e3-4806-8acc-51cab0744426" -> 
-      <|"Public" -> ImportString[StringJoin["[\"Hold\", ", 
-          <|"notebook" -> <|"name" -> "Ashtray", "id" -> "chorale-7f2a2", 
-               "kernel" -> LocalKernel, "objects" :> Association[
-                 "0fbc17cd-4cd3-46ec-878e-0693f6e96684" -> Association[
-                   "json" -> "[\"ArrayDraw\",[\"Hold\",\"board\"]]", 
-                   "date" -> DateObject[{2023, 9, 8, 19, 8, 57.680735}, 
-                     "Instant", "Gregorian", 3]], 
-                 "1ef36331-7ae9-494b-bcb6-f8761cf401ba" -> Association[
-                   "json" -> "[\"ArrayDraw\",[\"List\",[\"List\",1,1,1,1,0,0,\
-0,1,0,0,0,0,1,0,0,0,1,0,1,0],[\"List\",0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,\
-0],[\"List\",0,1,0,0,1,1,1,1,1,0,0,0,1,1,0,1,0,0,0,0],[\"List\",0,0,0,0,1,0,0\
-,0,0,0,0,0,0,1,1,0,0,1,0,0],[\"List\",0,1,0,1,0,1,1,1,0,0,0,0,0,1,0,0,1,1,0,0\
-],[\"List\",0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,\
-0,0,0,0,0,0,1,1,0,0,0,1,0],[\"List\",0,0,0,0,1,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0]\
-,[\"List\",0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0],[\"List\",0,0,0,1,1,1,0,0\
-,0,0,0,0,0,0,0,1,0,1,0,0],[\"List\",0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0,1,0,0],\
-[\"List\",0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0,\
-0,0,0,0,1,1,0,1,1,0,0,0],[\"List\",0,1,1,1,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0],[\
-\"List\",0,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0],[\"List\",1,0,1,1,0,1,1,1,0\
-,0,0,0,0,0,0,0,0,0,0,0],[\"List\",0,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,1],[\
-\"List\",0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1],[\"List\",0,0,0,0,0,0,1,1,0\
-,0,0,0,0,0,0,1,1,0,0,0],[\"List\",1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1]]]"\
-, "date" -> DateObject[{2023, 9, 8, 19, 10, 41.481445}, "Instant", 
-                     "Gregorian", 3]], 
-                 "53be8f76-d16c-4c63-8a9a-6b6c04e74494" -> Association[
-                   "json" -> "[\"ArrayDraw\",[\"List\",[\"List\",0,0,1,0,1,0,\
-1,0,1,0,0,0,0,0,0,0,1,1,0,1],[\"List\",1,0,0,0,0,0,1,1,0,0,0,1,0,0,0,1,1,0,0,\
-1],[\"List\",1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,1],[\"List\",0,1,0,0,1,0,1\
-,0,0,0,1,1,1,1,0,1,1,1,1,1],[\"List\",1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\
-],[\"List\",1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,1,0,1,0],[\"List\",0,0,0,0,0,0,0,\
-0,0,0,1,0,0,0,0,0,0,0,1,0],[\"List\",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1]\
-,[\"List\",0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,1,0,1,0,0],[\"List\",0,0,1,1,1,0,0,1\
-,1,0,0,0,0,0,1,1,0,1,1,1],[\"List\",1,0,1,1,1,0,0,0,1,0,0,0,1,1,0,0,0,1,1,1],\
-[\"List\",0,0,1,0,1,0,0,1,1,1,1,0,0,0,1,0,0,0,0,1],[\"List\",1,0,0,0,1,0,0,0,\
-0,0,0,0,0,0,1,0,0,0,0,0],[\"List\",1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[\
-\"List\",1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1],[\"List\",0,1,0,0,0,1,0,1,0\
-,0,0,1,1,1,1,0,1,0,0,0],[\"List\",0,0,0,0,1,1,0,1,0,0,0,1,1,1,1,0,0,0,0,0],[\
-\"List\",0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0],[\"List\",0,0,0,0,1,1,0,0,0\
-,0,0,0,0,1,0,0,0,0,0,0],[\"List\",0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]]"\
-, "date" -> DateObject[{2023, 9, 8, 20, 14, 9.408548}, "Instant", 
-                     "Gregorian", 3]], 
-                 "f3a90625-f8b1-44b6-8920-0988aea3b4e9" -> Association[
-                   "json" -> "[\"ArrayDraw\",[\"List\",[\"List\",0,0,0,0,1,0,\
-0,0,0,0,0,1,0,0,0,1,1,1,1,0],[\"List\",0,0,0,0,1,0,1,1,0,0,1,0,0,0,1,1,1,1,0,\
-0],[\"List\",1,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1],[\"List\",0,0,0,0,1,0,0\
-,0,0,0,0,0,0,1,1,0,0,0,0,0],[\"List\",0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1\
-],[\"List\",0,0,0,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0],[\"List\",0,0,0,0,0,1,1,\
-1,0,1,0,0,0,0,0,0,0,0,1,0],[\"List\",1,1,0,1,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0]\
-,[\"List\",0,1,0,0,0,0,1,1,1,0,1,0,1,0,1,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0\
-,0,0,0,0,1,0,0,0,0,0,0,1],[\"List\",0,1,0,0,0,1,1,0,1,1,1,0,1,1,0,0,0,1,1,1],\
-[\"List\",0,0,0,0,0,0,0,1,0,1,1,0,1,1,0,1,1,0,0,0],[\"List\",0,0,0,0,0,1,1,1,\
-0,1,0,1,0,1,0,0,0,0,0,0],[\"List\",0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,1],[\
-\"List\",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],[\"List\",1,0,1,0,1,0,0,0,0\
-,1,1,1,1,0,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1],[\
-\"List\",1,0,0,0,1,0,0,0,0,1,1,0,1,1,0,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,1,1\
-,0,1,0,0,0,1,0,0,0,1,0],[\"List\",0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0]]]"\
-, "date" -> DateObject[{2023, 9, 8, 21, 28, 13.855095}, "Instant", 
-                     "Gregorian", 3]], 
-                 "0d765fb5-63e3-4806-8acc-51cab0744426" -> Association[
-                   "json" -> "[\"ArrayDraw\",[\"Offload\",\"sboard\"]]", 
-                   "date" -> DateObject[{2023, 9, 8, 21, 33, 5.587532}, 
-                     "Instant", "Gregorian", 3]]], "path" -> "/Volumes/Data/G\
-ithub/wolfram-js-frontend/Examples/FrontendFunctions/ArrayPlotter.wln", 
-               "cell" :> Exit[], "date" -> DateObject[{2023, 9, 9, 11, 55, 
-                  43.696431}, "Instant", "Gregorian", 2.], "symbols" -> <||>, 
-               "channel" -> WebSocketChannel[
-                 KirillBelov`WebSocketHandler`WebSocketChannel`$16]|>, 
-             "cells" -> {<|"id" -> 
-                 "b3279548-7ebe-4b55-ac8c-71faba194098df94368ae", 
-                "type" -> "input", "data" -> ".md\n# Frontend functions\n## \
-Animated array plotter\nIn this small session we will show how to write our \
-own raw function for the frontend, that allows to visualize an array of data \
-in a unique way.\n\n<br/>\n\nIt is important to note, that here it does not \
-rely on `Graphics` object or anyhting else. Just a plain HTML and Javascript \
-coupled to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of \
-handling the data from WL to a browser's screen__. Most in-build components \
-are made in this way.", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "a9963870-2141-48bb-885b-2968fcb9ba868ae", "type" -> 
-                 "output", "data" -> "\n# Frontend functions\n## Animated \
-array plotter\nIn this small session we will show how to write our own raw \
-function for the frontend, that allows to visualize an array of data in a \
-unique way.\n\n<br/>\n\nIt is important to note, that here it does not rely \
-on `Graphics` object or anyhting else. Just a plain HTML and Javascript \
-coupled to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of \
-handling the data from WL to a browser's screen__. Most in-build components \
-are made in this way.", "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "f6648b94-4216-469a-8443-739b616ce8998ae", "type" -> 
-                 "input", "data" -> ".md\nLet's sketch a plan!\n1. The size \
-of an array is determined in a runtime.\n2. It should use `canvas` element of \
-HTML5.\n3. It will be animated independently from the incomming data with a \
-nice fading effect.\n4. It should be synced to the framerate of the \
-browser.\n\nIt sound complicated, however using a modern Javascript thing are \
-going much easier", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "7b32fe03-7a55-4d24-a417-68242c54839e8ae", "type" -> 
-                 "output", "data" -> "\nLet's sketch a plan!\n1. The size of \
-an array is determined in a runtime.\n2. It should use `canvas` element of \
-HTML5.\n3. It will be animated independently from the incomming data with a \
-nice fading effect.\n4. It should be synced to the framerate of the \
-browser.\n\nIt sound complicated, however using a modern Javascript thing are \
-going much easier", "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "2a05d533-818d-4424-b513-3d392f2b0e12df94368ae", 
-                "type" -> "input", "data" -> ".js\ncore.ArrayDraw = async \
-(args, env) => {\n  const canvas = document.createElement('canvas');\n  \n  \
-//fixed, but one can use core._getRules(args, env) to derive the ImageSize \
-option\n  canvas.width = 300;\n  canvas.height = 300;\n  \n  //append our \
-canvas to the provided DOM element\n  env.element.appendChild(canvas);\n  \n  \
-let context = canvas.getContext(\"2d\");\n  \n  //use local memory to store \
-the canvas\n  env.local.ctx = context;\n\n  //get the provided data from WL\n \
- const array = await interpretate(args[0], env);\n\n  //copy by the reference \
-to the instance of a frontend object\n  env.local.array = array;  \n\n  \
-//check the width/height\n  const width = array.length;\n  const height = \
-array[0].length;\n\n  //some helpers to determine the sizes\n  \
-env.local.width = width;\n  env.local.height = height;\n\n  const sizex = \
-Math.floor((300/width)-1);\n  const sizey = Math.floor((300/height)-1);\n\n  \
-env.local.sizex = sizex;\n  env.local.sizey = sizey;\n\n  \
-env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  //animation \
-function\n  //this will be executed asynchroniously\n\n  function random \
-(min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  //our \
-heros\n  const particles = [];\n  \n  function animate() {\n    //randomly \
-select 60 potitions from the array\n    for (let i=0; i<60; ++i) {\n      if \
-(particles.length > 30*30*5) particles.shift();\n      \n      const ri = \
-Math.floor(random(0, env.local.width - 1));\n      const rj = \
-Math.floor(random(0, env.local.height - 1));\n      const val = \
-env.local.array[ri][rj];\n\n      //create a projectile\n      \
-particles.push({\n        r: 127+127*Math.sin(2048*val), \n        g: \
-127+127*Math.sin(1048*val), \n        b: 0,\n        lifetime: 1,\n        x: \
-ri * env.local.arr2screen.x,\n        y: rj * env.local.arr2screen.y,\n       \
- xvel: random(-1,1),\n        yvel: random(1,-1)\n      });\n    }\n\n    \
-//clearscreen\n    context.fillStyle = \"white\";\n    context.fillRect(0, 0, \
-300, 300);\n\n\n    //draw all projectiles\n    for (let i=0; \
-i<particles.length; ++i) {\n      //age of a projectile\n      const age = \
-1/particles[i].lifetime;\n\n      //draw a projectile\n      \
-context.fillStyle = `rgba(${particles[i].r}, ${particles[i].g}, \
-${particles[i].b}, ${age}`;\n      context.fillRect(particles[i].x + sizex/2, \
-particles[i].y + sizey/2, sizex, sizey);\n      \n      //a projectile gets \
-older\n      particles[i].lifetime = particles[i].lifetime + 0.2;\n\n      \
-//move it a bit\n      particles[i].x = particles[i].x + \
-0.1*particles[i].xvel;\n      particles[i].y = particles[i].y + \
-0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
-//and store the ID of a request to cancel it later if needed\n    \
-env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
-requestAnimationFrame(animate);\n}", "display" -> "codemirror", "sign" -> 
-                 "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, <|
-                "id" -> "93e32f83-b06b-40df-a87b-f4ae2bdb234b8ae", 
-                "type" -> "output", "data" -> "\ncore.ArrayDraw = async \
-(args, env) => {\n  const canvas = document.createElement('canvas');\n  \n  \
-//fixed, but one can use core._getRules(args, env) to derive the ImageSize \
-option\n  canvas.width = 300;\n  canvas.height = 300;\n  \n  //append our \
-canvas to the provided DOM element\n  env.element.appendChild(canvas);\n  \n  \
-let context = canvas.getContext(\"2d\");\n  \n  //use local memory to store \
-the canvas\n  env.local.ctx = context;\n\n  //store the current data on \
-browser's side for the animation purposes\n  //we need it to make it \
-possibl\n\n\n  //get the provided data from WL\n  const array = await \
-interpretate(args[0], env);\n\n  //store in to this instance of a frontend \
-object\n  env.local.array = array;  \n\n  //check the width/height\n  const \
-width = array.length;\n  const height = array[0].length;\n\n  env.local.width \
-= width;\n  env.local.height = height;\n\n  const sizex = \
-Math.floor((300/width)-1);\n  const sizey = Math.floor((300/height)-1);\n\n  \
-env.local.sizex = sizex;\n  env.local.sizey = sizey;\n\n  \
-env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  //animation \
-function\n  //this will be executed asynchroniously\n\n  function random \
-(min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  const \
-particles = [];\n  \n  function animate() {\n    for (let i=0; i<60; ++i) {\n \
-     if (particles.length > 30*30*5) particles.shift();\n      \n      const \
-ri = Math.floor(random(0, env.local.width - 1));\n      const rj = \
-Math.floor(random(0, env.local.height - 1));\n      const val = \
-env.local.array[ri][rj];\n      \n      particles.push({\n        r: \
-127+127*Math.sin(2048*val), \n        g: 127+127*Math.sin(1048*val), \n       \
- b: 0,\n        lifetime: 1,\n        x: ri * env.local.arr2screen.x,\n       \
- y: rj * env.local.arr2screen.y,\n        xvel: random(-1,1),\n        yvel: \
-random(1,-1)\n      });\n    }\n    \n    context.fillStyle = \"white\";\n    \
-context.fillRect(0, 0, 300, 300);\n\n\n    //draw all data from the local \
-store and fade it based on a lifetime\n    for (let i=0; i<particles.length; \
-++i) {\n      const age = 1/particles[i].lifetime;\n      context.fillStyle = \
-`rgba(${particles[i].r}, ${particles[i].g}, ${particles[i].b}, ${age}`;\n     \
- context.fillRect(particles[i].x + sizex/2, particles[i].y + sizey/2, sizex, \
-sizey);\n      \n      //a rectangle gets older\n      particles[i].lifetime \
-= particles[i].lifetime + 0.2;\n\n      particles[i].x = particles[i].x + \
-0.1*particles[i].xvel;\n      particles[i].y = particles[i].y + \
-0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
-//and store the ID of a request to cancel it later if needed\n    \
-env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
-requestAnimationFrame(animate);\n}", "display" -> "js", "sign" -> 
-                 "chorale-7f2a2", "props" -> <|"hidden" -> False|>|>, <|
-                "id" -> "adde46e1-9d29-4e25-bb56-ce874a98ac22df94368ae", 
-                "type" -> "input", "data" -> " ", "display" -> "codemirror", 
-                "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> 
-                   False|>|>, <|"id" -> 
-                 "6f060451-6916-43e5-b6ab-bec6c1cf205fdf94368ae", 
-                "type" -> "input", "data" -> ".md\n## Cleanning up \
-method\nOnce you delete this widget or object (i dunno how to call it), __we \
-should take care about animation loop__, otherwise it will continue to run in \
-the background", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "589ca2dc-72c4-4e13-bd2e-abba5d503f7e8ae", "type" -> 
-                 "output", "data" -> "\n## Cleanning up method\nOnce you \
-delete this widget or object (i dunno how to call it), __we should take care \
-about animation loop__, otherwise it will continue to run in the background", 
-                "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "4eb22dfb-2272-413b-b9cc-42a6988ac906df94368ae", 
-                "type" -> "input", "data" -> ".js\ncore.ArrayDraw.destroy = \
-async (args, env) => {\n  //remove animation loop\n  \
-cancelAnimationFrame(env.local.uid);\n  //make shure that all other nested \
-object will do the same\n  await interpretate(args[0], env);\n}", 
-                "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "ccb6914d-d811-4991-a3cf-025977fd78468ae", "type" -> 
-                 "output", "data" -> "\ncore.ArrayDraw.destroy = async (args, \
-env) => {\n  //remove animation loop\n  \
-cancelAnimationFrame(env.local.uid);\n  //make shure that all other nested \
-object will do the same\n  await interpretate(args[0], env);\n}", 
-                "display" -> "js", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "458d72da-a91e-423f-8d0f-94660dfd7e798ae", "type" -> 
-                 "input", "data" -> ".md\nNow the second important method", 
-                "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "d45c7610-b941-4f33-a7a7-5ae84ca5d5b28ae", "type" -> 
-                 "output", "data" -> "\nNow the second important method", 
-                "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "817ef267-a5e3-4db8-a677-761f9393f831df94368ae", 
-                "type" -> "input", "data" -> ".md\n## Update method\nWhen the \
-dependent variables changes, we should update the canvas without reevaluating \
-cells", "display" -> "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> True|>|>, <|"id" -> 
-                 "7fe5dc7e-d81a-4872-a462-09bf72725d028ae", "type" -> 
-                 "output", "data" -> "\n## Update method\nWhen the dependent \
-variables changes, we should update the canvas without reevaluating cells", 
-                "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "9a9f8c26-d27d-40d2-b6a3-6b42a959b690df94368ae", 
-                "type" -> "input", "data" -> ".js\ncore.ArrayDraw.update = \
-async (args, env) => {\n  const innerData = env.local.innerData;\n\n  //get \
-the provided data from WL\n  const array = await interpretate(args[0], \
-env);\n  if (array.length != env.local.array.length) return;\n  if \
-(array[0].length != env.local.array[0].length) return;\n  env.local.array = \
-array;\n}", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "8a9e1702-85c7-4a0f-b093-ba829c00abc78ae", "type" -> 
-                 "output", "data" -> "\ncore.ArrayDraw.update = async (args, \
-env) => {\n  const innerData = env.local.innerData;\n\n  //get the provided \
-data from WL\n  const array = await interpretate(args[0], env);\n  if \
-(array.length != env.local.array.length) return;\n  if (array[0].length != \
-env.local.array[0].length) return;\n  env.local.array = array;\n}", 
-                "display" -> "js", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "629efae4-3900-452f-9349-20904f1f04a58ae", "type" -> 
-                 "input", "data" -> ".md\nNow all data is stored inside the \
-`env.local` variable, which is unique for each instance.\n\nThen to call it \
-like a proper Wolfram Function, we need to wrap it into", "display" -> 
-                 "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> True|>|>, <|"id" -> 
-                 "cd747d9b-5a73-4fe2-a6f8-e574130e987c8ae", "type" -> 
-                 "output", "data" -> "\nNow all data is stored inside the \
-`env.local` variable, which is unique for each instance.\n\nThen to call it \
-like a proper Wolfram Function, we need to wrap it into", "display" -> 
-                 "markdown", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "105a463b-a08a-47b9-8134-dca610bf9a168ae", "type" -> 
-                 "input", "data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, \
-1, 2}, {2, 2, 2}}}, {1, 1}};\nbboard = RandomInteger[1, {20, \
-20}];\nCreateFrontEndObject[ArrayDraw[bboard = \
-Last[CellularAutomaton[gameOfLife, bboard, {{0, 1}}]]]]", "display" -> 
-                 "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "b725e42f-e1f8-4dac-a5e9-6cf1b371765a8ae", "type" -> 
-                 "output", "data" -> "FrontEndExecutable[\"f3a90625-f8b1-44b6\
--8920-0988aea3b4e9\"]", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "bbe13874-10c2-4796-9a0b-969993aafcc28ae", "type" -> 
-                 "input", "data" -> "", "display" -> "codemirror", 
-                "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> 
-                   False|>|>, <|"id" -> 
-                 "400833ad-0095-4cf6-bbdd-b3a9c85066068ae", "type" -> 
-                 "input", "data" -> "", "display" -> "codemirror", 
-                "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> 
-                   False|>|>, <|"id" -> 
-                 "c1c919bc-4a66-464d-89c7-a7ebbc72f1ad8ae", "type" -> 
-                 "input", "data" -> ".md\nYou __can copy and paste__, since \
-this is a proper frontend object.\n\nHowever, there is much more we need to \
-do as well. ", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "6974f717-a27a-4423-b522-d1edd59e6df88ae", "type" -> 
-                 "output", "data" -> "\nYou __can copy and paste__, since \
-this is a proper frontend object.\n\nHowever, there is much more we need to \
-do as well. ", "display" -> "markdown", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "f66849c9-1e77-41d4-8830-813949cf81438ae", "type" -> 
-                 "input", "data" -> ".md\n### Animation", "display" -> 
-                 "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> True|>|>, <|"id" -> 
-                 "11038ad8-9321-467c-b0df-e060e56745198ae", "type" -> 
-                 "output", "data" -> "\n### Animation", "display" -> 
-                 "markdown", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "f4b89f7e-edca-4a12-b011-6982bf5c230fdf94368ae", 
-                "type" -> "input", "data" -> ".md\nNow we can check the \
-result by rewritting the update cycle in WL in a much shorter way", 
-                "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> True|>|>, <|"id" -> 
-                 "4d927703-f5b1-41ae-aca9-ce28cb6b69234368ae", "type" -> 
-                 "output", "data" -> "\nNow we can check the result by \
-rewritting the update cycle in WL in a much shorter way", "display" -> 
-                 "markdown", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "6adf6c30-2040-4442-bc02-14a2ec0513f7df94368ae", 
-                "type" -> "input", "data" -> "\ngameOfLife = {224, {2, {{2, \
-2, 2}, {2, 1, 2}, {2, 2, 2}}}, {1, 1}};\nsboard = RandomInteger[1, {20, \
-20}];\nCreateFrontEndObject[ArrayDraw[sboard // Offload]]\n\nDo[\n  sboard = \
-Last[CellularAutomaton[gameOfLife, sboard, {{0, 1}}]];\n  Pause[0.2];\n, {i, \
-1, 30}]", "display" -> "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> False|>|>, <|"id" -> 
-                 "b14b11ee-0472-4bc3-b1d4-cb0a10127e108ae", "type" -> 
-                 "output", "data" -> "FrontEndExecutable[\"0d765fb5-63e3-4806\
--8acc-51cab0744426\"]", "display" -> "codemirror", "sign" -> "chorale-7f2a2", 
-                "props" -> <|"hidden" -> False|>|>, <|"id" -> 
-                 "955d6278-f856-4b1c-94d0-21ac8f02e9bddf94368ae", 
-                "type" -> "input", "data" -> ".md\nSo it just updates our \
-variable `sboard` without thinking of redrawing the canvas", "display" -> 
-                 "codemirror", "sign" -> "chorale-7f2a2", "props" -> 
-                 <|"hidden" -> True|>|>, <|"id" -> 
-                 "72d247af-0e48-4026-9374-cac98b2b66a38ae", "type" -> 
-                 "output", "data" -> "\nSo it just updates our variable \
-`sboard` without thinking of redrawing the canvas", "display" -> "markdown", 
-                "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> 
-                   False|>|>, <|"id" -> 
-                 "d24debcf-1c3b-4e9d-98d8-8a844074263edf94368ae", 
-                "type" -> "input", "data" -> " ", "display" -> "codemirror", 
-                "sign" -> "chorale-7f2a2", "props" -> <|"hidden" -> 
-                   False|>|>}, "serializer" -> "jsfn3"|>["notebook", 
-            "objects", "0d765fb5-63e3-4806-8acc-51cab0744426"]["json"], "]"], 
-         "ExpressionJSON"]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-fr\
-ontend-dev/Examples/09 - Frontend interpreter/ArrayPlotter.wln"|>, 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2115], 
+   "Objects" -> <|"b8ed468f-eb4a-43c6-89d5-e1ea907e05c5" -> 
+      <|"Public" -> Hold[ArrayDraw[{{0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 
+            0, 0, 0, 0, 0, 0, 0}, {0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 
+            0, 1, 0, 0, 0, 0}, {1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 1, 0}, {0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 1, 1, 0}, {1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            1, 0, 1}, {0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 
+            0, 1}, {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 
+            0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1}, 
+           {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 
+           {0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+           {1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
+           {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1}, 
+           {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1}, 
+           {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1}, 
+           {0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0}, 
+           {1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1}, 
+           {0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1}, 
+           {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0}, 
+           {1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0}, 
+           {0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0}}]]|>, 
+     "69b24a89-b6a3-4ec6-85dd-1047bee451c1" -> 
+      <|"Public" -> Hold[ArrayDraw[Offload[sboard]]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/12 - \
+Frontend interpreter/Array plotter.wln", "ReadOnly" -> True, 
+   "Symbols" -> <|"sboard" -> {{1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0, 0, 0}, {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        0}, {0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0}, 
+       {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1}, 
+       {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1}, 
+       {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0}, 
+       {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0}, 
+       {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}}|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Frontend functions", 
+      CellObj[JerryI`Notebook`CellObj`$2098]], 
+     Notebook`Editor`TOC`Private`heading[2, "Animated array plotter", 
+      CellObj[JerryI`Notebook`CellObj`$2098]], 
+     Notebook`Editor`TOC`Private`heading[2, "Cleanning up method", 
+      CellObj[JerryI`Notebook`CellObj`$2106]], 
+     Notebook`Editor`TOC`Private`heading[2, "Update method", 
+      CellObj[JerryI`Notebook`CellObj`$2111]], 
+     Notebook`Editor`TOC`Private`heading[3, "Animation", 
+      CellObj[JerryI`Notebook`CellObj`$2120]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Frontend functions\n## Animated array \
 plotter\nIn this small session we will show how to write our own raw function \
 for the frontend, that allows to visualize an array of data in a unique \
@@ -347,10 +62,10 @@ way.\n\n<br/>\n\nIt is important to note, that here it does not rely on \
 to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of handling \
 the data from WL to a browser's screen__. Most in-build components are made \
 in this way.", "Display" -> "codemirror", 
-    "Hash" -> "703c7d9b-7eb3-4e12-b721-0e1e1991b1cd", "Invisible" -> False, 
+    "Hash" -> "7c2b7609-bb22-4234-a630-c696156c2a5d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\n# Frontend functions\n## Animated array plotter\nIn this \
 small session we will show how to write our own raw function for the \
 frontend, that allows to visualize an array of data in a unique \
@@ -359,30 +74,30 @@ way.\n\n<br/>\n\nIt is important to note, that here it does not rely on \
 to Wolfram Language.\n\n<br/>\n\nThis __will be the fastest way of handling \
 the data from WL to a browser's screen__. Most in-build components are made \
 in this way.", "Display" -> "markdown", 
-    "Hash" -> "feeefc08-2976-4667-94ac-b979ad449247", "Invisible" -> False, 
+    "Hash" -> "153f14ae-15e3-4e25-8d43-ae7820eb93dc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nLet's sketch a plan!\n1. The size of an array is \
 determined in a runtime.\n2. It should use `canvas` element of HTML5.\n3. It \
 will be animated independently from the incomming data with a nice fading \
 effect.\n4. It should be synced to the framerate of the browser.\n\nIt sound \
 complicated, however using a modern Javascript thing are going much easier", 
     "Display" -> "codemirror", "Hash" -> 
-     "6fcf02be-3803-4c5b-ba96-f70aa1556916", "Invisible" -> False, 
+     "0bb016c1-f967-403c-968c-24eb19d01e15", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nLet's sketch a plan!\n1. The size of an array is determined \
 in a runtime.\n2. It should use `canvas` element of HTML5.\n3. It will be \
 animated independently from the incomming data with a nice fading effect.\n4. \
 It should be synced to the framerate of the browser.\n\nIt sound complicated, \
 however using a modern Javascript thing are going much easier", 
     "Display" -> "markdown", "Hash" -> 
-     "bc6c724e-60d3-42c2-bf2e-311e423ae5fe", "Invisible" -> False, 
+     "9b5dcbd2-08f2-42f7-8543-cb74e6c88c68", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".js\ncore.ArrayDraw = async (args, env) => {\n  const canvas \
 = document.createElement('canvas');\n  \n  //fixed, but one can use \
 core._getRules(args, env) to derive the ImageSize option\n  canvas.width = \
@@ -423,217 +138,241 @@ older\n      particles[i].lifetime = particles[i].lifetime + 0.2;\n\n      \
 0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
 //and store the ID of a request to cancel it later if needed\n    \
 env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
-requestAnimationFrame(animate);\n}", "Display" -> "codemirror", 
-    "Hash" -> "a44168bf-25e8-42ea-94a2-7c99c75cca45", "Invisible" -> False, 
+requestAnimationFrame(animate);\n}\n\ncore.ArrayDraw.virtual = true;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "df58238c-ace6-4e36-a65e-cb82e314d021", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
-   <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "894e4364-0737-4aa2-8904-d7e5f6aaee54", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
-   <|"Data" -> "\ncore.ArrayDraw = async (args, env) => {\n  const canvas = \
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
+   <|"Data" -> "core.ArrayDraw = async (args, env) => {\n  const canvas = \
 document.createElement('canvas');\n  \n  //fixed, but one can use \
 core._getRules(args, env) to derive the ImageSize option\n  canvas.width = \
 300;\n  canvas.height = 300;\n  \n  //append our canvas to the provided DOM \
 element\n  env.element.appendChild(canvas);\n  \n  let context = \
 canvas.getContext(\"2d\");\n  \n  //use local memory to store the canvas\n  \
-env.local.ctx = context;\n\n  //store the current data on browser's side for \
-the animation purposes\n  //we need it to make it possibl\n\n\n  //get the \
-provided data from WL\n  const array = await interpretate(args[0], env);\n\n  \
-//store in to this instance of a frontend object\n  env.local.array = array;  \
-\n\n  //check the width/height\n  const width = array.length;\n  const height \
-= array[0].length;\n\n  env.local.width = width;\n  env.local.height = \
-height;\n\n  const sizex = Math.floor((300/width)-1);\n  const sizey = \
-Math.floor((300/height)-1);\n\n  env.local.sizex = sizex;\n  env.local.sizey \
-= sizey;\n\n  env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  \
-//animation function\n  //this will be executed asynchroniously\n\n  function \
-random (min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  \
-const particles = [];\n  \n  function animate() {\n    for (let i=0; i<60; \
-++i) {\n      if (particles.length > 30*30*5) particles.shift();\n      \n    \
-  const ri = Math.floor(random(0, env.local.width - 1));\n      const rj = \
+env.local.ctx = context;\n\n  //get the provided data from WL\n  const array \
+= await interpretate(args[0], env);\n\n  //copy by the reference to the \
+instance of a frontend object\n  env.local.array = array;  \n\n  //check the \
+width/height\n  const width = array.length;\n  const height = \
+array[0].length;\n\n  //some helpers to determine the sizes\n  \
+env.local.width = width;\n  env.local.height = height;\n\n  const sizex = \
+Math.floor((300/width)-1);\n  const sizey = Math.floor((300/height)-1);\n\n  \
+env.local.sizex = sizex;\n  env.local.sizey = sizey;\n\n  \
+env.local.arr2screen = {x: 300.0/width, y: 300.0/height};\n\n  //animation \
+function\n  //this will be executed asynchroniously\n\n  function random \
+(min, max) {\n    return Math.random() * (max - min) + min;\n  }\n\n  //our \
+heros\n  const particles = [];\n  \n  function animate() {\n    //randomly \
+select 60 potitions from the array\n    for (let i=0; i<60; ++i) {\n      if \
+(particles.length > 30*30*5) particles.shift();\n      \n      const ri = \
+Math.floor(random(0, env.local.width - 1));\n      const rj = \
 Math.floor(random(0, env.local.height - 1));\n      const val = \
-env.local.array[ri][rj];\n      \n      particles.push({\n        r: \
-127+127*Math.sin(2048*val), \n        g: 127+127*Math.sin(1048*val), \n       \
- b: 0,\n        lifetime: 1,\n        x: ri * env.local.arr2screen.x,\n       \
- y: rj * env.local.arr2screen.y,\n        xvel: random(-1,1),\n        yvel: \
-random(1,-1)\n      });\n    }\n    \n    context.fillStyle = \"white\";\n    \
-context.fillRect(0, 0, 300, 300);\n\n\n    //draw all data from the local \
-store and fade it based on a lifetime\n    for (let i=0; i<particles.length; \
-++i) {\n      const age = 1/particles[i].lifetime;\n      context.fillStyle = \
-`rgba(${particles[i].r}, ${particles[i].g}, ${particles[i].b}, ${age}`;\n     \
- context.fillRect(particles[i].x + sizex/2, particles[i].y + sizey/2, sizex, \
-sizey);\n      \n      //a rectangle gets older\n      particles[i].lifetime \
-= particles[i].lifetime + 0.2;\n\n      particles[i].x = particles[i].x + \
+env.local.array[ri][rj];\n\n      //create a projectile\n      \
+particles.push({\n        r: 127+127*Math.sin(2048*val), \n        g: \
+127+127*Math.sin(1048*val), \n        b: 0,\n        lifetime: 1,\n        x: \
+ri * env.local.arr2screen.x,\n        y: rj * env.local.arr2screen.y,\n       \
+ xvel: random(-1,1),\n        yvel: random(1,-1)\n      });\n    }\n\n    \
+//clearscreen\n    context.fillStyle = \"white\";\n    context.fillRect(0, 0, \
+300, 300);\n\n\n    //draw all projectiles\n    for (let i=0; \
+i<particles.length; ++i) {\n      //age of a projectile\n      const age = \
+1/particles[i].lifetime;\n\n      //draw a projectile\n      \
+context.fillStyle = `rgba(${particles[i].r}, ${particles[i].g}, \
+${particles[i].b}, ${age}`;\n      context.fillRect(particles[i].x + sizex/2, \
+particles[i].y + sizey/2, sizex, sizey);\n      \n      //a projectile gets \
+older\n      particles[i].lifetime = particles[i].lifetime + 0.2;\n\n      \
+//move it a bit\n      particles[i].x = particles[i].x + \
 0.1*particles[i].xvel;\n      particles[i].y = particles[i].y + \
 0.1*particles[i].yvel;\n    }\n\n    //sync to the browser's frame rate\n    \
 //and store the ID of a request to cancel it later if needed\n    \
 env.local.uid = requestAnimationFrame(animate);\n  }\n\n  //kickstarter\n  \
-requestAnimationFrame(animate);\n}", "Display" -> "js", 
-    "Hash" -> "f940b5db-6ea8-45d6-b830-d94b6c2b0f08", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
-    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+requestAnimationFrame(animate);\n}\n\ncore.ArrayDraw.virtual = true;", 
+    "Display" -> "js", "Hash" -> "abc0d4cb-d484-4a69-b4d8-e3bcfd9ccbe1", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "d5ea136c-ec24-446e-9187-cd0229193100", "Invisible" -> False, 
+    "Hash" -> "9019f8f5-4ff4-4d5f-a7c9-b18bf66b57f5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\n## Cleanning up method\nOnce you delete this widget or \
 object (i dunno how to call it), __we should take care about animation \
 loop__, otherwise it will continue to run in the background", 
     "Display" -> "codemirror", "Hash" -> 
-     "3acf22e3-67b1-495c-b9f2-2da891cbf0bc", "Invisible" -> False, 
+     "415301cf-1d4f-46c8-b1de-d04a4664d284", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\n## Cleanning up method\nOnce you delete this widget or \
 object (i dunno how to call it), __we should take care about animation \
 loop__, otherwise it will continue to run in the background", 
     "Display" -> "markdown", "Hash" -> 
-     "4cb79868-b95a-46c3-bf3a-eda120aa6d66", "Invisible" -> False, 
+     "f83011a5-6769-4258-a542-07539db6c829", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".js\ncore.ArrayDraw.destroy = async (args, env) => {\n  \
 //remove animation loop\n  cancelAnimationFrame(env.local.uid);\n  //make \
 shure that all other nested object will do the same\n  await \
 interpretate(args[0], env);\n}", "Display" -> "codemirror", 
-    "Hash" -> "2e75106b-a17d-47cf-8bb2-00d1602408c6", "Invisible" -> False, 
+    "Hash" -> "ed663b58-6956-46bb-9cc5-5487fcadb822", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
+   <|"Data" -> "core.ArrayDraw.destroy = async (args, env) => {\n  //remove \
+animation loop\n  cancelAnimationFrame(env.local.uid);\n  //make shure that \
+all other nested object will do the same\n  await interpretate(args[0], \
+env);\n}", "Display" -> "js", "Hash" -> 
+     "06d959da-094c-4ed7-aa2d-90c7deae8714", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nNow the second important method", 
     "Display" -> "codemirror", "Hash" -> 
-     "15ede398-a906-4147-96be-bae7152c0cd2", "Invisible" -> False, 
+     "54a3b878-60a8-42fe-b6e2-fa100d390b7d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nNow the second important method", "Display" -> "markdown", 
-    "Hash" -> "94553f45-5806-4605-8a90-6fa37c23f862", "Invisible" -> False, 
+    "Hash" -> "138ed460-3c31-473d-848e-4c0a1027ec0a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\n## Update method\nWhen the dependent variables changes, \
 we should update the canvas without reevaluating cells", 
     "Display" -> "codemirror", "Hash" -> 
-     "cd79c337-4fba-400b-b586-b3249b0a0af0", "Invisible" -> False, 
+     "d2ce138f-7066-4d07-ae51-2bbf2fd45687", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\n## Update method\nWhen the dependent variables changes, we \
 should update the canvas without reevaluating cells", 
     "Display" -> "markdown", "Hash" -> 
-     "6f05c825-d02a-402b-9e2c-377de6985baa", "Invisible" -> False, 
+     "c9eb6032-92b8-42ad-9e2d-90d8da15457d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".js\ncore.ArrayDraw.update = async (args, env) => {\n  const \
 innerData = env.local.innerData;\n\n  //get the provided data from WL\n  \
 const array = await interpretate(args[0], env);\n  if (array.length != \
 env.local.array.length) return;\n  if (array[0].length != \
 env.local.array[0].length) return;\n  env.local.array = array;\n}", 
     "Display" -> "codemirror", "Hash" -> 
-     "ea1bfdf5-03d3-42ff-b6a0-8f89a704b795", "Invisible" -> False, 
+     "f9d19ec9-3c8b-486e-b51f-2723c33b7996", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
+   <|"Data" -> "core.ArrayDraw.update = async (args, env) => {\n  const \
+innerData = env.local.innerData;\n\n  //get the provided data from WL\n  \
+const array = await interpretate(args[0], env);\n  if (array.length != \
+env.local.array.length) return;\n  if (array[0].length != \
+env.local.array[0].length) return;\n  env.local.array = array;\n}", 
+    "Display" -> "js", "Hash" -> "c69bf1e8-8c2b-4cdd-ad3f-69c9c5130980", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nNow all data is stored inside the `env.local` variable, \
 which is unique for each instance.\n\nThen to call it like a proper Wolfram \
 Function, we need to wrap it into", "Display" -> "codemirror", 
-    "Hash" -> "845d0c78-cfbc-44b7-ad22-d9822cc0279c", "Invisible" -> False, 
+    "Hash" -> "05c2de85-7582-4e47-a028-1e55d1619110", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nNow all data is stored inside the `env.local` variable, \
 which is unique for each instance.\n\nThen to call it like a proper Wolfram \
 Function, we need to wrap it into", "Display" -> "markdown", 
-    "Hash" -> "17c0916a-963e-491e-bb8d-bd20768030c2", "Invisible" -> False, 
+    "Hash" -> "0b23c9e9-b15b-4fee-a4ba-796e24aa5a5d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, \
 {1, 1}};\nbboard = RandomInteger[1, {20, \
 20}];\nCreateFrontEndObject[ArrayDraw[bboard = \
 Last[CellularAutomaton[gameOfLife, bboard, {{0, 1}}]]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "e929d52f-ff55-4d6d-9d90-925aeb092e00", "Invisible" -> False, 
+     "ede4910d-6e97-4a4a-a436-6ae553bc6174", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"b8ed468f-eb4a-43c6-89d5-e1ea907e05c5\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1mkp\
+piYWaTppiaZJOqaGCeb6VpYppjqphqmJloamKcamCabAgCRrxYS\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c9c9e216-b378-4497-8088-efb94d02f79b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "d820cb58-1fef-4c01-87a6-0aca3b42c9c9", "Invisible" -> False, 
+    "Hash" -> "49ace0dc-7e09-4b41-9bfa-f12ca14515ca", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nYou __can copy and paste__, since this is a proper \
 frontend object.\n\nHowever, there is much more we need to do as well. ", 
     "Display" -> "codemirror", "Hash" -> 
-     "07eb5986-6c59-4a00-8989-59f89e4043cb", "Invisible" -> False, 
+     "0f4546f2-5728-4708-94da-538a34a9d05e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nYou __can copy and paste__, since this is a proper frontend \
 object.\n\nHowever, there is much more we need to do as well. ", 
     "Display" -> "markdown", "Hash" -> 
-     "5bbba5ea-7898-4f44-81a6-4f99b835e146", "Invisible" -> False, 
+     "bff52ca0-9cc6-4fe9-9c65-775d4d27e54d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\n### Animation", "Display" -> "codemirror", 
-    "Hash" -> "539dbdcf-d8e4-4fd8-9d66-92b1f76b3f22", "Invisible" -> False, 
+    "Hash" -> "892593e3-05db-4e06-9a7e-d549b9daf487", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, <|"Data" -> "\n### Animation", 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, <|"Data" -> "\n### Animation", 
     "Display" -> "markdown", "Hash" -> 
-     "a1661396-5d12-49bc-82b1-8421c0a36a82", "Invisible" -> False, 
+     "1190806e-ec48-44fc-9436-db1ffa4bae81", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nNow we can check the result by rewritting the update \
 cycle in WL in a much shorter way", "Display" -> "codemirror", 
-    "Hash" -> "ecb41204-40ab-41c7-8c92-6747fc323c15", "Invisible" -> False, 
+    "Hash" -> "57a27977-cfaf-4883-b2a7-37e56704be6d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nNow we can check the result by rewritting the update cycle \
 in WL in a much shorter way", "Display" -> "markdown", 
-    "Hash" -> "49f9d2e5-49dc-48f6-8373-df8fa2df6c54", "Invisible" -> False, 
+    "Hash" -> "cc845d27-98dd-4f7a-90be-4176b12d7ff9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\ngameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, \
 {1, 1}};\nsboard = RandomInteger[1, {20, \
 20}];\nCreateFrontEndObject[ArrayDraw[sboard // Offload]]\n\nDo[\n  sboard = \
 Last[CellularAutomaton[gameOfLife, sboard, {{0, 1}}]];\n  Pause[0.2];\n, {i, \
 1, 30}]", "Display" -> "codemirror", 
-    "Hash" -> "6d507eda-b337-4e4e-83df-ca58c8110089", "Invisible" -> False, 
+    "Hash" -> "349356c5-10a2-4a2b-9184-741fa6e2ad7b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
-   <|"Data" -> "(*VB[*)(FrontEndRef[\"0d765fb5-63e3-4806-8acc-51cab0744426\"]\
-)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeJJBwz8lPSsxJcCvKzytxzUtxrUhNLi1JTMpJD\
-VYByhqkmJuZpiWZ6poZpxrrmlgYmOlaJCYn65oaJicmGZibmJgYmQEASyAX9w==\"*)(*]VB*)", 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"69b24a89-b6a3-4ec6-85dd-1047bee451c1\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm1kmG\
+ZkkWljqJpklGuuapCab6VqYpqToGhqYmCelppqYGiYbAgCDnRWl\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "31594139-1662-4cf5-90d6-3c5307c2c581", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+     "6a894ec4-e11b-4a84-aa37-9a080463b281", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> ".md\nSo it just updates our variable `sboard` without \
 thinking of redrawing the canvas", "Display" -> "codemirror", 
-    "Hash" -> "47a12cef-53b5-4cce-88ad-096738e66079", "Invisible" -> False, 
+    "Hash" -> "860f3e04-ee6d-4f36-9341-24fd6335e6ce", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> "\nSo it just updates our variable `sboard` without thinking \
 of redrawing the canvas", "Display" -> "markdown", 
-    "Hash" -> "84c47781-0768-4dc6-88c2-7ec481375676", "Invisible" -> False, 
+    "Hash" -> "7c2120a6-a675-4a8e-93c8-7b6afbb77345", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>, 
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "513954bd-ee6f-4a85-8813-674df42d9e42", "Invisible" -> False, 
+    "Hash" -> "988d497a-9305-49a1-a3d0-d957d015ffa5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "9e66fe7f-0e6b-4034-bd49-494f4a4f026c"|>}, "serializer" -> "jsfn4"|>
+     "bc37cf2c-75e9-4bca-b116-f482382bf3a8"|>}, "serializer" -> "jsfn4"|>

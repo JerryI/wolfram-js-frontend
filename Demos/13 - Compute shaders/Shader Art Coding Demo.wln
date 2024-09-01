@@ -1,0 +1,129 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$50], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend/Dem\
+os/13 - Compute shaders/Shader Art Coding Demo.wln", "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Shader Art Coding Demo", 
+      CellObj[JerryI`Notebook`CellObj`$33]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Shader Art Coding Demo\nThis is an \
+adaptation of [@kishimisu](https://www.shadertoy.com/view/mtyGWy) at \
+ShaderToy. A generative art using compute shaders. Please run initialization \
+cells and the last one in the notebook to see it in action", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0479cdc7-57fd-4281-86ed-d475378584b4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "# Shader Art Coding Demo\nThis is an adaptation of \
+[@kishimisu](https://www.shadertoy.com/view/mtyGWy) at ShaderToy. A \
+generative art using compute shaders. Please run initialization cells and the \
+last one in the notebook to see it in action", "Display" -> "markdown", 
+    "Hash" -> "7e7fc6f9-187e-48d1-8724-ef793f2bce6f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "Needs[\"OpenCLLink`\"]", "Display" -> "codemirror", 
+    "Hash" -> "ba879ec3-e951-48f5-b462-0a0f973265ab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> ".md\nShader code", "Display" -> "codemirror", 
+    "Hash" -> "fa92d718-898f-4452-8686-456d83ad26f0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, <|"Data" -> "Shader code", 
+    "Display" -> "markdown", "Hash" -> 
+     "bf1c158b-8ca5-4557-94d3-8f7262d20e8b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "art.cl\n\nfloat3 palette( float t ) {\n    float3 a = \
+(float3)(0.5, 0.5, 0.5);\n    float3 b = (float3)(0.5, 0.5, 0.5);\n    float3 \
+c = (float3)(1.0, 1.0, 1.0);\n    float3 d = (float3)(0.263,0.416,0.557);\n\n \
+   return a + b*cos( 6.28318*(c*t+d) );\n}\n\ninline float2 fract(float2 x) \
+{\n  return x - floor(x);\n}\n\n//originally written \
+by\n//https://www.shadertoy.com/view/mtyGWy\n\n__kernel void render(\n  \
+__global uchar4* output, \n  const int width, \n  const int height,\n  float \
+time\n) {\n    unsigned int work_item_id = get_global_id(0);\n    \n    \
+unsigned int x_coord = work_item_id % width;\n    unsigned int y_coord = \
+work_item_id / width;\n\n    float2 uv = (float2)(2.0f*(float)x_coord / \
+(float)width - 1.0f, 2.0f*(float)y_coord / (float)height - 1.0f);  \n    \
+float2 uv0 = uv;\n    \n    float3 finalcolor = (float3)(0.0f, 0.0f, \
+0.0f);\n\n    for (float i = 0.0; i < 4.0; i++) {\n        uv = fract(uv * \
+1.5) - 0.5;\n\n        float d = length(uv) * exp(-length(uv0));\n\n        \
+float3 col = palette(length(uv0) + i*.4 + time*.4);\n\n        d = sin(d*8. + \
+time)/8.;\n        d = fabs(d);\n\n        d = pow(0.01 / d, 1.2);\n\n        \
+finalcolor += col * d;\n    }\n\n    //clamp to 8bits for each channel\n    \
+\n    uchar4 rgba;\n    rgba.x=(uchar)(finalcolor.x*255.0);\n    \
+rgba.y=(uchar)(finalcolor.y*255.0);\n    \
+rgba.z=(uchar)(finalcolor.z*255.0);\n    rgba.w=255;\n\n    \
+output[work_item_id] = rgba;\n}", "Display" -> "codemirror", 
+    "Hash" -> "f87152e9-ddde-4dcf-8289-fb61c7008fc8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "/users/kirill/Github/wolfram-js-frontend/Demos/13 - Compute \
+shaders/art.cl", "Display" -> "fileprint", 
+    "Hash" -> "abe9498a-c37c-43b5-bd01-fb05c6970e5b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> ".md\nAllocate memory", "Display" -> "codemirror", 
+    "Hash" -> "e81d33f4-123a-4b97-b6f0-6d36b6a25586", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, <|"Data" -> "Allocate memory", 
+    "Display" -> "markdown", "Hash" -> 
+     "03a990e3-2892-4e65-bb8a-d4fb198d197a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "image = OpenCLMemoryLoad[Table[{0, 0, 0, 0}, {i, 512}, {j, \
+512}], \"UnsignedByte[4]\"];", "Display" -> "codemirror", 
+    "Hash" -> "0a3ffd23-4df5-454c-9986-eec97b1f4dab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> ".md\nCompile", "Display" -> "codemirror", 
+    "Hash" -> "ff7891cf-ca9b-4327-a594-51766ba7f5c4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, <|"Data" -> "Compile", 
+    "Display" -> "markdown", "Hash" -> 
+     "1ddc2548-8abe-4f9c-a0c2-5de5b79e615c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "render = OpenCLFunctionLoad[File[\"art.cl\"], \n  \"render\", \
+{{\"UnsignedByte[4]\", _, \"Output\"}, _Integer, _Integer, \"Float\"}, 256, \
+\"ShellOutputFunction\"->Print];", "Display" -> "codemirror", 
+    "Hash" -> "afc96241-d08d-4251-a386-9ff2cfdce77a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "\" \"", "Display" -> "print", 
+    "Hash" -> "2659ab27-cbd4-4468-8537-371cc8855d58", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> ".md\nAnimation cycle\n\n__Run this one at the very last__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "089e37f1-3547-4aa0-9f47-1080fc048650", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "Animation cycle\n\n__Run this one at the very last__", 
+    "Display" -> "markdown", "Hash" -> 
+     "054a9478-5c1a-4a39-a57f-ed78b256c49d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>, 
+   <|"Data" -> "Module[{buffer, t=0.0, ev = CreateUUID[]},\n  \
+EventHandler[ev, Function[Null,\n    render[image, 512, 512, t, 512 512];\n   \
+ buffer = NumericArray[image // OpenCLMemoryGet, \"UnsignedInteger8\"];\n    \
+t += 0.1;\n  ]];\n\n  EventFire[ev, True];\n\n  Graphics[{\n    \
+Inset[Image[buffer // Offload, \"Byte\"], {0,0}, ViewMatrix->None],\n    \
+AnimationFrameListener[buffer // Offload, \"Event\"->ev]\n  }, \
+ImageSize->{512, 512}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "1ea57b0e-233b-4d7d-aca0-13f19af75998", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d6f0d0e5-bbf2-4e2c-a1fe-bd17603d2411"|>}, "serializer" -> "jsfn4"|>

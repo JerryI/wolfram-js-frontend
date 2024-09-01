@@ -1,0 +1,537 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$490], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/users/kirill/Githu\
+b/wolfram-js-frontend-dev/Demos/05 - Interaction/Fluid simulation.wln", 
+   "Quick" -> True, "Symbols" -> 
+    <|"fcolors" -> NumericArray[{{0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}, {0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 
+       0.3333333333333333}}, "Real64"], "fngrid" -> NumericArray[{{{0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, 
+       {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, 
+       {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, 
+       {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, 
+       {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}, {{0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 
+       0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}, {0., 0.}}}, "Real64"], 
+     "ffps" -> 36, "particles" -> NumericArray[{{6.155077240724342, 
+       6.256801204925768}, {7.429610202559605, 6.818783773826446}, 
+       {8.938864333616014, 9.097772148088541}, {10.951318484353532, 
+       9.35108187965015}, {5.102935523023776, 9.868085882446563}, 
+       {9.531371476876313, 7.346055908807016}, {5.808385050617353, 
+       8.787981624798554}, {10.887972124061992, 8.026931164514734}, 
+       {7.530046317755328, 9.412789479228483}, {9.419240035384796, 
+       6.917908776062394}, {7.722556114384197, 5.250072408334988}, 
+       {5.3153683707074695, 10.626018279742274}, {6.6041306211804915, 
+       6.375664382211192}, {8.802059424366169, 7.7880205221688055}, 
+       {8.074142500288168, 10.221022783670248}, {5.88740000617413, 
+       6.971475233200128}, {9.415019068827537, 9.326809085107637}, 
+       {5.413381599194575, 8.981547319206166}, {9.667315648622257, 
+       8.607611708776137}, {5.459424900522345, 8.223953760877505}, 
+       {9.77064701990094, 6.01453669603033}, {10.969474383966691, 
+       10.777217351627183}, {9.007048812766525, 5.50588462023723}, 
+       {9.001110307348513, 6.46753504882272}, {10.061926331469211, 
+       10.424563489108284}, {10.992183035520378, 8.54558367171174}, 
+       {7.774148738380834, 7.946142375171392}, {6.5114385741761875, 
+       10.976501383210314}, {6.957973058190088, 10.13406086899727}, 
+       {6.399127850236788, 8.19698293773149}, {5.582473448061686, 
+       9.822140876000914}, {9.002364940295811, 8.344660952954252}, 
+       {9.702084116484638, 10.14615511290602}, {8.688692576528442, 
+       6.763539166168888}, {9.641243441384635, 5.6312411366106705}, 
+       {5.25026402363541, 5.82921326167075}, {10.854237607826255, 
+       5.923732030638992}, {7.341073037539035, 10.465366621397395}, 
+       {5.472008113541909, 6.164741348691979}, {7.095478704583434, 
+       5.821209908864855}, {10.566033464800162, 8.346295428576648}, 
+       {6.0976429029160055, 5.025940045007107}, {10.991578069876432, 
+       9.912583518655858}, {7.925162046226587, 7.3582863292710226}, 
+       {5.97718730711679, 5.414561260471099}, {7.129730001206655, 
+       9.234429460043035}, {7.403694925704235, 8.1148330432813}, 
+       {9.965062743015288, 5.023499074284879}, {5.057660476706932, 
+       10.99600043802913}, {10.069902334333635, 6.741621122900513}, 
+       {6.953236620629018, 6.631303696819158}, {8.020377515212918, 
+       10.976088242429919}, {8.2869317850254, 9.698261520035114}, 
+       {8.513153432378832, 10.493144361668403}, {7.042336886590682, 
+       10.975107154774191}, {10.19722551825386, 9.514534723232055}, 
+       {6.35815435217941, 7.251616555188747}, {5.764826406393727, 
+       10.67360579835474}, {5.002863200269239, 8.920228393198517}, 
+       {7.829526959516819, 6.713465392481274}, {10.585681065130029, 
+       5.533573469083227}, {9.794086669077137, 10.999945174712794}, 
+       {6.709357166675426, 7.83352859360047}, {10.491719234902869, 
+       9.877151390603425}, {7.521306599072421, 6.423570664275875}, 
+       {6.575381287122381, 9.995082271061898}, {7.848838127132037, 
+       9.761687629697196}, {7.497063895255794, 7.370538809349618}, 
+       {10.497333183741626, 7.1630020686465095}, {6.103731135921484, 
+       10.948872828614403}, {10.593883669445752, 10.933434936393478}, 
+       {7.8035851416664865, 5.710895496722806}, {10.486872020849624, 
+       10.448063243512477}, {8.197458284298385, 5.937268630068325}, 
+       {6.281587218375292, 5.8641416386322875}, {10.351102834429675, 
+       8.007006246882058}, {10.390537642695584, 6.392843139779624}, 
+       {9.692556442850321, 9.02547766648789}, {7.010004979516289, 
+       8.261024664926428}, {8.2767102274753, 6.782875969236385}, 
+       {7.653839950965395, 10.191711929257686}, {7.481351821584844, 
+       8.968167472239404}, {7.831345834652919, 10.551025105238836}, 
+       {5.025923946810422, 6.803005628541779}, {5.417940809066394, 
+       9.43859353955462}, {9.652833991986496, 7.874543774066296}, 
+       {8.289299024888132, 9.042765908630003}, {10.919205503149048, 
+       10.377442046219336}, {6.866819837471551, 10.568451541935843}, 
+       {9.993398442598158, 8.317271857244789}, {8.626047723224262, 
+       9.354210621367434}, {9.041456294891248, 9.48538241320592}, 
+       {10.991508662791944, 7.485333096233649}, {6.1844394434033525, 
+       8.629104668496861}, {6.087907585961885, 10.170322065728174}, 
+       {10.867423831701405, 6.349751041781922}, {6.457974565968628, 
+       10.570998728627636}, {8.830777136262862, 10.179531712777393}, 
+       {9.19862193295261, 5.0047589764813605}, {9.046155841589195, 
+       10.531267377427067}, {5.632022977625496, 10.238947042985664}, 
+       {9.761185752336129, 9.61180803640693}, {5.709294242039604, 
+       6.563584159376898}, {5.693331780104895, 5.065546260299114}, 
+       {8.460150712364385, 10.936571863116669}, {6.7168326702665535, 
+       5.465715269117764}, {6.8097160717515495, 9.67050333759364}, 
+       {8.197141749265487, 8.196718973124641}, {10.558343575205768, 
+       9.259073811466346}, {10.967479211463882, 5.009045377615811}, 
+       {6.483867876645743, 5.136600638004697}, {10.448352893297217, 
+       7.573465763998271}, {10.057671158776763, 7.6744413886115055}, 
+       {8.911587575532014, 6.051886988318259}, {10.193808263433967, 
+       10.966771293414148}, {7.9316133488771055, 9.33600690749791}, 
+       {7.2446741266810815, 8.603854731657282}, {10.671289140152567, 
+       8.801099964667486}, {5.044385971552458, 7.286893862499845}, 
+       {7.943616387146491, 8.824836888203041}, {10.518741650771451, 
+       5.021768283958129}, {6.514583801055955, 9.189185107440085}, 
+       {6.1301544538865045, 9.058081492705929}, {7.161643311716098, 
+       7.149860767812065}, {7.824638910102905, 8.390765071948637}, 
+       {8.694212861819405, 5.235771615885202}, {10.578927181016692, 
+       6.76958105521976}, {5.825745025671351, 5.96558816396505}, 
+       {5.2320561080302515, 8.559330080884848}, {10.99449448292124, 
+       5.486438188758926}, {5.924495292488846, 7.933352786074577}, 
+       {8.602303353370395, 7.25323948530718}, {6.682105308820367, 
+       5.909267860124579}, {7.355646296366188, 5.501080170076559}, 
+       {9.999511545451721, 7.242138504860348}, {8.457200433617787, 
+       6.410940146356985}, {6.402956988428176, 9.59758494605785}, 
+       {9.276800079691675, 5.837977886035658}, {10.104814058334894, 
+       8.906560141796554}, {8.59547361616444, 5.688651361438377}, 
+       {5.0255945310162105, 10.328087902889369}, {5.089452994764271, 
+       6.394275539030196}, {8.183067677142969, 5.502763565302256}, 
+       {9.575968361505339, 5.178322071194243}, {7.17945231806643, 
+       7.6867837669155366}, {9.273525233031336, 10.093808930539339}, 
+       {5.217190467457999, 5.15663088488928}, {8.337117789503425, 
+       7.672062185864225}, {7.469093583890624, 6.011283933397154}, 
+       {7.542893089196703, 10.871045266818827}, {6.826127345460275, 
+       7.3945052546650745}, {8.245510069225869, 5.020558676754341}, 
+       {9.293727231739187, 8.890190646927529}, {9.667402546365365, 
+       6.584437431637779}, {7.912490750514499, 6.313051191704066}, 
+       {9.179287092298349, 7.564166040827681}, {7.233479292958187, 
+       9.813417685546112}, {5.453548948077647, 6.974221226834139}, 
+       {8.733028999105583, 9.755499024657766}, {9.507843965177488, 
+       10.530276905026563}, {6.906626485924866, 8.857425104155546}, 
+       {9.0282087481889, 7.080215471101194}, {8.625210488864406, 
+       8.186489625014566}, {10.19117710580388, 5.898693441955966}, 
+       {5.52306859843514, 5.504672358558322}, {6.646468320030463, 
+       6.924021484665784}, {9.351463166670701, 8.137911381931795}, 
+       {6.89054455416083, 5.100585344992708}, {9.39190115221214, 
+       6.243539711044772}, {5.012073558686482, 9.3229790461405}, 
+       {6.621570258775943, 8.539643795123064}, {10.09917059094761, 
+       5.435575525997569}, {5.712054704059353, 7.409576905385773}, 
+       {6.984258998583753, 6.2174552401883325}, {6.240527201469988, 
+       6.754360281169376}, {5.451013577459737, 7.821498775431669}, 
+       {5.04824500081895, 7.800220652171387}, {6.283564923545981, 
+       7.708817117362894}, {6.018857133231042, 9.719951432785074}, 
+       {5.839514571010377, 8.36887967780567}, {10.994079481114097, 
+       6.818790974321278}, {8.723625414874682, 8.63845837252121}, 
+       {9.355763233000829, 10.976875122281328}, {10.056185757529853, 
+       9.945225693724655}, {7.297379161057737, 5.075424640729527}, 
+       {8.93966496176994, 10.931205691188609}, {8.31738543640427, 
+       8.593835642566766}}, "Real64"]|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Real-time Fluid Simulation (Short)", 
+      CellObj[JerryI`Notebook`CellObj`$489]], 
+     Notebook`Editor`TOC`Private`heading[2, "Equations", 
+      CellObj[JerryI`Notebook`CellObj`$491]], 
+     Notebook`Editor`TOC`Private`heading[3, "Advection function", 
+      CellObj[JerryI`Notebook`CellObj`$493]], 
+     Notebook`Editor`TOC`Private`heading[3, "Function to remove divergence", 
+      CellObj[JerryI`Notebook`CellObj`$496]], 
+     Notebook`Editor`TOC`Private`heading[3, "Bilinear interpolator", 
+      CellObj[JerryI`Notebook`CellObj`$499]], 
+     Notebook`Editor`TOC`Private`heading[3, "Advection for test particles", 
+      CellObj[JerryI`Notebook`CellObj`$502]], 
+     Notebook`Editor`TOC`Private`heading[2, "Demonstration", 
+      CellObj[JerryI`Notebook`CellObj`$505]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Real-time Fluid Simulation (Short)\n*Using \
+Wolfram Language and WLJS libraries*\n\n__Please see the `Tutorials/D - *` \
+section__ for a step-by-step solution. Here, only the final example will be \
+presented.", "Display" -> "codemirror", 
+    "Hash" -> "b022f950-5579-47fc-b3e4-154f0db7e77b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "# Real-time Fluid Simulation (Short)\n*Using Wolfram Language \
+and WLJS libraries*\n\n__Please see the `Tutorials/D - *` section__ for a \
+step-by-step solution. Here, only the final example will be presented.", 
+    "Display" -> "markdown", "Hash" -> 
+     "9345bb49-9d85-4f7c-95f3-1d165719771c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n<span style=\"color:red\">Warning: this version is \
+optimized for the performance, please see the original tutorial for more \
+readable version</span>", "Display" -> "codemirror", 
+    "Hash" -> "cd52e426-c238-4163-b9ed-3393a831dac2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "<span style=\"color:red\">Warning: this version is optimized \
+for the performance, please see the original tutorial for more readable \
+version</span>", "Display" -> "markdown", 
+    "Hash" -> "d5dfa3d7-47e2-4239-8812-69b7eb018bb3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n## Equations\nWe based our implementation on the \
+Navier-Stokes equation for incompressible fluid with no \
+viscosity\n\n$$\n\\\\frac{\\\\partial \\\\mathbf{v}}{\\\\partial t} + \
+(\\\\mathbf{v} \\\\cdot \\\\nabla) \\\\mathbf{v} = f_{\\\\text{external}}, \
+\\\\qquad div~\\\\mathbf{v} = 0\n$$\n\nwhere $f_{external}$ accounts for the \
+pressure gradient and external forces.\n\nThen, we solve these two equations \
+in a discretized form on a grid using a technique mentioned in Jos Stam's \
+*Stable Fluids* work.", "Display" -> "codemirror", 
+    "Hash" -> "046d052d-77b0-4347-80fc-6ac8c3b0e117", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "## Equations\nWe based our implementation on the \
+Navier-Stokes equation for incompressible fluid with no \
+viscosity\n\n$$\n\\\\frac{\\\\partial \\\\mathbf{v}}{\\\\partial t} + \
+(\\\\mathbf{v} \\\\cdot \\\\nabla) \\\\mathbf{v} = f_{\\\\text{external}}, \
+\\\\qquad div~\\\\mathbf{v} = 0\n$$\n\nwhere $f_{external}$ accounts for the \
+pressure gradient and external forces.\n\nThen, we solve these two equations \
+in a discretized form on a grid using a technique mentioned in Jos Stam's \
+*Stable Fluids* work.", "Display" -> "markdown", 
+    "Hash" -> "372b0a74-5a12-44cf-b20c-2e403d96c95f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n### Advection function", "Display" -> "codemirror", 
+    "Hash" -> "8fc531c1-8066-4f4e-94e3-7e28689943a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "### Advection function", "Display" -> "markdown", 
+    "Hash" -> "cc45962a-1819-4733-95b9-b7b3b2ef995a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "advect = Compile[{{v, _Real, 3}, {u, _Real, 3}, {\[Delta]t, \
+_Real, 0}} , With[{max = Length[v]}, With[{\n \n},\n  Table[ \n  \n    \
+With[{\n      v1 =  (*FB[*)((If[i-1 >= 1, v[[i-1, j]], {0.,0.}] + v[[i, \
+j]])(*,*)/(*,*)(2.0))(*]FB*).{1,0},\n      v2 =  (*FB[*)((If[j+1 <= max, \
+v[[i, j+1]], {0.,0.}] + v[[i, j]])(*,*)/(*,*)(2.0))(*]FB*).{0,-1},\n      v3 \
+=  (*FB[*)((If[i+1 <= max, v[[i+1, j]], {0.,0.}] + v[[i, \
+j]])(*,*)/(*,*)(2.0))(*]FB*).{-1,0},\n      v4 =  (*FB[*)((If[j-1 >= 1, v[[i, \
+j-1]], {0.,0.}] + v[[i, j]])(*,*)/(*,*)(2.0))(*]FB*).{0,1},\n      org = \
+u[[i,j]]\n    },\n\n      org +  (\n      \n        v1 If[v1 >0, If[i-1 >= 1, \
+u[[i-1, j]], {0.,0.} ], org]  + v3 If[v3>0,If[i+1 <= max, u[[i+1, j]], \
+{0.,0.} ], org]+\n        \n        v4 If[v4 >0, If[j-1 >= 1, u[[i, j-1]], \
+{0.,0.} ], org] + v2 If[v2>0, If[j+1 <= max, u[[i, j+1]], {0.,0.} ], org]\n   \
+     \n      ) \[Delta]t \n    ]\n    \n  , {i, max}, {j, max}] // Chop\n ]] \
+];", "Display" -> "codemirror", "Hash" -> 
+     "a20160f3-5781-44d6-a065-9c4ed128f31d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n### Function to remove divergence", 
+    "Display" -> "codemirror", "Hash" -> 
+     "901f6fa5-7e12-48f6-b18f-e20c147ba63b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "### Function to remove divergence", "Display" -> "markdown", 
+    "Hash" -> "c09d075e-cf45-4080-8dcd-385b64afcbe5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "removeDivergence = Compile[{{grid, _Real, 3}}, With[{\n  max \
+= grid // Length\n},\n  MapIndexed[Function[{val, i}, \n    val + \
+(*FB[*)((1)(*,*)/(*,*)(8.0))(*]FB*) (\n      (\n        (\n          \
+If[i[[1]] - 1 >= 1 && i[[1]] - 1 <= max && i[[2]] - 1 >= 1 && i[[2]] - 1 <= \
+max, grid[[i[[1]] - 1, i[[2]] - 1]], {0.,0.}] \n          \n          + \
+If[i[[1]] + 1 >=1 && i[[1]] + 1 <= max && i[[2]] + 1 >= 1 && i[[2]] + 1 <= \
+max, grid[[i[[1]] + 1, i[[2]] + 1]], {0.,0.}]\n        \n        ).{1,1}\n    \
+    \n      ){1,1} +\n\n      (\n        (\n          If[i[[1]] - 1 >= 1 && \
+i[[1]] - 1 <= max && i[[2]] + 1 >= 1 && i[[2]] + 1 <= max, grid[[i[[1]] - 1, \
+i[[2]] + 1]], {0.,0.}]\n          \n          + If[i[[1]] + 1 >= 1 && i[[1]] \
++ 1 <= max && i[[2]] - 1 >= 1 && i[[2]] - 1 <= max, grid[[i[[1]] + 1, i[[2]] \
+- 1]], {0.,0.}]\n          \n        ).{1,-1}\n        \n      ){1,-1} +\n\n  \
+    (\n        If[i[[1]]-1 >= 1 && i[[1]]-1 <= max, grid[[i[[1]]-1, i[[2]] \
+]], {0.,0.}]\n        \n        + If[i[[1]]+1 >= 1 && i[[1]]+1 <= max, grid[[ \
+i[[1]]+1, i[[2]] ]], {0.,0.}]\n        \n        - If[i[[2]]-1 >= 1 && \
+i[[2]]-1 <= max, grid[[ i[[1]], i[[2]]-1 ]], {0.,0.}]\n        \n        - \
+If[i[[2]]+1 >= 1 && i[[2]]+1 <= max, grid[[i[[1]], i[[2]]+1]], {0.,0.}]\n     \
+   \n      ){2,-2} \n        \n        + grid[[ i[[1]], i[[2]] ]] (-4)\n\n    \
+)\n  ], grid, {2}]\n] ];", "Display" -> "codemirror", 
+    "Hash" -> "fe25e31e-0b73-4ccb-b9b8-df4a91c80006", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n### Bilinear interpolator", "Display" -> "codemirror", 
+    "Hash" -> "eea08bf8-2e4f-48d0-ba78-2ec4ffe8b800", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "### Bilinear interpolator", "Display" -> "markdown", 
+    "Hash" -> "d4968e6f-5209-48e9-8629-5c2d9f7d5784", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "bilinearInterpolation = Compile[{{array, _Real, 3}, {v, \
+_Real, 1}}, Module[\n  {rows, cols, x = v[[2]], y = v[[1]], x1, x2, y1, y2, \
+fQ11, fQ12, fQ21, fQ22},\n  \n  (* Get the dimensions of the array *)\n  \
+{rows, cols} = {Length[array], Length[array]};\n  \n  (* Clip points to the \
+boundaries *)\n  x = Clip[x, {1, cols}];\n  y = Clip[y, {1, rows}];\n  \n  (* \
+Find the bounding indices *)\n  x1 = Floor[x]; \n  x2 = Ceiling[x];\n  y1 = \
+Floor[y]; \n  y2 = Ceiling[y];\n  \n  (* Get the values at the four corners \
+*)\n  fQ11 = array[[y1, x1]];\n  fQ12 = array[[y2, x1]];\n  fQ21 = array[[y1, \
+x2]];\n  fQ22 = array[[y2, x2]];\n  \n  (* Perform bilinear interpolation \
+*)\n  If[x2 == x1,\n    If[y2 == y1,\n      fQ11,\n      1/(2 (y2 - y1)) * \
+(\n        fQ11 (y2 - y) +\n        fQ21 (y2 - y) +\n        fQ12 (y - y1) \
++\n        fQ22 (y - y1)\n      )\n    ],\n    If[y2 == y1,\n      1/(2 (x2 - \
+x1)) * (\n        fQ11 (x2 - x) +\n        fQ21 (x - x1) +\n        fQ12 (x2 \
+- x) +\n        fQ22 (x - x1)\n      ),\n      1/((x2 - x1) (y2 - y1)) * (\n  \
+      fQ11 (x2 - x) (y2 - y) +\n        fQ21 (x - x1) (y2 - y) +\n        \
+fQ12 (x2 - x) (y - y1) +\n        fQ22 (x - x1) (y - y1)\n      )\n    ]\n  \
+]\n] ];", "Display" -> "codemirror", 
+    "Hash" -> "c8e5f27e-7eb7-4489-85cd-dfc85abd295b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n### Advection for test particles", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9176a491-af08-4497-8d34-78ab30fdc984", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "### Advection for test particles", "Display" -> "markdown", 
+    "Hash" -> "3e60b821-d78e-4ce8-847a-91947b5dbbd2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "advectParticles[v_, pts_, \[Delta]t_:0.02] := Map[Function[p, \
+p + \[Delta]t (bilinearInterpolation[v, p])], pts]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "708b2fc1-637d-4712-9cf6-86017edf78a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> ".md\n---\n## Demonstration\n\n<span id=\"tldr\" \
+style=\"color: blue\"><b>Evaluate the cell below</b> in the notebook. Use \
+your mouse to draw velocity vectors.</span>", "Display" -> "codemirror", 
+    "Hash" -> "589d102c-0ac8-4d07-bebb-f7171277c18a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "---\n## Demonstration\n\n<span id=\"tldr\" style=\"color: \
+blue\"><b >Evaluate the cell below</b> in the notebook. Use your mouse to \
+draw velocity vectors.</span>", "Display" -> "markdown", 
+    "Hash" -> "391bd315-dc51-44b8-af9d-864f7f2bbfd9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>, 
+   <|"Data" -> "fgrid = Table[{0.,0.}, {i,15}, {j,15}];\nfngrid = fgrid // \
+NumericArray; (*BB[*)(*introduce a copy of fgrid wrapped as \
+NumericArray*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyf\
+m5uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJS\
+czMQVYCAOFrJEU=\"*)(*]BB*)\n\n(*BB[*)(*NumericArray is always faster than a \
+normal \
+List*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KU\
+XxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCA\
+OFrJEU=\"*)(*]BB*)\n\nfcolors = Table[1.0, {Length[fgrid]}, \
+{Length[fgrid]}];\n\nstart = {1,1};\ndrawing = False;\ndest = {0,0};\nffps = \
+0;\n\nparticles = RandomPointConfiguration[\n      \
+HardcorePointProcess[10000\n      , 0.4, 2],\n      Rectangle[{1+4,1+4}, \
+{15-4,15-4}], Method -> {\"LengthOfRun\" -> \
+10000000}][\"Points\"];\n\nWith[{\n  win = CurrentWindow[], (*BB[*)(* save \
+the current window to append graphics \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n  currentCell = ResultCell[]\n},\n\n  EventHandler[win, \
+{\"Closed\" -> Function[Null,\n    Delete[currentCell] (*BB[*)(* remove \
+output cell if a notebook has been closed \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n    (*BB[*)(* this will prevent the animation running \
+uncontrollably on the next start \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n  ]}];\n\n  Graphics[{Arrowheads[Medium/2],\n    \
+Table[With[{i=i, j=j}, \n      (*BB[*)(* now we have dynamic Hue and dynamic \
+Arrow \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n      Offload[{ \n        Hue[fcolors[[i]][[j]]],\n        \
+Arrow[{{i,j}, {i,j} +  fngrid[[i]][[j]]}]\n      }] \n    \n    ], {i,15}, \
+{j,15}],\n\n    (*BB[*)(*attach listeners to a user's mouse to manipulate the \
+grid*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KU\
+XxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCA\
+OFrJEU=\"*)(*]BB*)\n    EventHandler[Graphics`Canvas[], {\n      \"mouseup\" \
+-> Function[xy,\n        With[{v = -Normalize[start - xy]},\n          Do[ \
+(*BB[*)(* draw a line of velocities \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n            With[{p = Round /@ ((xy - start) a + start)},\n   \
+       \n              If[p[[1]] <= 15 && p[[1]] >=1 && p[[2]] <=15 && p[[2]] \
+>=1,\n                fgrid[[p[[1]],p[[2]]]] = {v[[1]], v[[2]]};\n            \
+  ];\n\n            ];\n          , {a, 0, 1,0.1}];\n          \n        \
+];\n\n        Delete[drawing]; (*BB[*)(* delete temporal arrow \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\n        drawing = False;\n      \n      ],\n\n      \
+\"mousemove\" -> Function[xy,\n        dest = xy;\n      ],\n    \n      \
+\"mousedown\" -> Function[xy,\n        start = xy;\n        dest = xy;\n      \
+\n        If[drawing =!= False, Delete[drawing]];\n        (*BB[*)(*append \
+GUI's arrow to existing \
+canvas*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
+CAOFrJEU=\"*)(*]BB*)\n        drawing = FrontSubmit[{\n          \
+AbsoluteThickness[3], Gray, \n          Arrow[{xy, dest // Offload}]\n        \
+}, \n          MetaMarker[\"fcanvas\"], \n          \"Window\"->win, \n       \
+   \"Tracking\"->True (*BB[*)(*enable tracking of created \
+object*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
+CAOFrJEU=\"*)(*]BB*)\n        ];\n      \n      ]\n    }], \n\n    \
+(*BB[*)(*sync with browser's repaint cycle and update of fps \
+label*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
+UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
+AOFrJEU=\"*)(*]BB*)\n    AnimationFrameListener[ffps // Offload, \
+\"Event\"->\"fframe\"], \n    (*BB[*)(*mark this instance of Graphics with \
+uid to append new \
+elements*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5ua\
+V+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQ\
+VYCAOFrJEU=\"*)(*]BB*)\n    MetaMarker[\"fcanvas\"], \n    PointSize[0.02], \
+Point[particles//Offload],\n    Text[ffps // Offload, {0,0}]\n  }, \n    \
+Controls->False, \n    ImageSize->500, \n    PlotRange->{{-0.5,15.5}, \
+{-0.5,15.5}}, \n    ImagePadding->None, \n    TransitionDuration->35 \
+(*BB[*)(*since the simulation is slow, we have to \
+interpolate*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm\
+5uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSc\
+zMQVYCAOFrJEU=\"*)(*]BB*)\n  ]\n]\n\n(* subscribe to animation event \
+*)\n\nftime = AbsoluteTime[];\n\n(*BB[*)(* 1 advection per 2 removeDivergence \
+*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
+Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
+EU=\"*)(*]BB*)\nfpipeline = Composition[removeDivergence, removeDivergence, \
+advect[#,#, 0.2]&];\n\nEventHandler[\"fframe\", Function[Null,\n\n  \
+(*BB[*)(*apply the whole pipline as a single \
+function*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5ua\
+V+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQ\
+VYCAOFrJEU=\"*)(*]BB*)\n  fgrid = fpipeline[fgrid];\n  fngrid = fgrid // \
+NumericArray; (*BB[*)(*speed up data-transfer by packaging \
+array*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
+UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
+AOFrJEU=\"*)(*]BB*)\n  \n  fcolors = Map[Function[val, (*FB[*)((\[Pi] + 2.0 \
+ToPolarCoordinates[val]// Last)(*,*)/(*,*)(3.0 \[Pi]))(*]FB*) ], fgrid, {2}] \
+// NumericArray;\n  \n  (*BB[*)(*2 times \
+advection*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5u\
+aV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczM\
+QVYCAOFrJEU=\"*)(*]BB*)\n  particles = With[{p = advectParticles[fgrid, \
+particles // Normal, 0.3]},\n    advectParticles[fgrid, p, 0.3] // \
+NumericArray\n  ];\n\n  ffps = (*FB[*)(((ffps + 1 / (AbsoluteTime[] - \
+ftime)))(*,*)/(*,*)(2.0))(*]FB*) // Round;\n  ftime = AbsoluteTime[]; \n]];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "aa051f58-3a0f-4939-bf4e-491d842ddf77", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "21a2f180-7403-45a4-9646-35cf1355d6ba"|>}, "serializer" -> "jsfn4"|>

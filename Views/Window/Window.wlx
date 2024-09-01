@@ -68,20 +68,14 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
                 server.kernel.connected = true;
                 const socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
-
+                socket.binaryType = "arraybuffer";
+                socket.onmessage = interpretate.handleMessage;
+                
                 socket.onopen = function(e) {
                   console.log("[open]");
                   server.kernel.init({socket: socket});
                   server.emitt(ev, 'True', 'WebSocketConnected');
                 }; 
-
-                socket.onmessage = function(event) {
-                  //create global context
-                  //callid
-                  const uid = Math.floor(Math.random() * 100);
-                  var global = {call: uid};
-                  interpretate(JSON.parse(event.data), {global: global});
-                };
 
                 socket.onclose = function(event) {
                   console.log(event);

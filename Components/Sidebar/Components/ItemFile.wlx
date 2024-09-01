@@ -13,14 +13,14 @@ Icon = FileExtension[File] /. Join[$Options["Icons"], {
 }];
 
 Href = If[TrueQ[$Options["Selected"]],
-    <div class="block rounded-md py-0 pr-0 text-sm">
+    <div class="block rounded-md py-0 pr-0 text-sm leading-tight">
         <FileNameTake>
             <File/>
         </FileNameTake>        
     </div>
 ,
     If[MemberQ[Join[Keys[$Options["Icons"]], {"wln"}], FileExtension[File]], 
-        <a href="/folder/{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm">
+        <a href="/folder/{URLEncode[File]}" class="block rounded-md py-0 pr-0 text-sm leading-tight">
             <FileNameTake>
                 <File/>
             </FileNameTake>

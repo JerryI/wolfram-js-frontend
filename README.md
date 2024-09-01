@@ -2,27 +2,36 @@
 
 ![Preview](imgs/Toster.png)
 
-__Made for scientists by scientists__ ⚗️
+__Made by the cooperation of physicists and programmers. Driven by solving real-life cases in science ⚗️, math 🧮 and teaching 📚__  
 
 *written with love using freeware Wolfram Engine, JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
 
-__[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__ 📚
+__[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__ 📔
+
+__[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)__ 🐺
+
+__[Freeware implementation](https://www.wolfram.com/engine/) of Wolfram Language__
 
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): 13.3 or higher**
 
-__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language Web Server developer)__
+__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language Web Stack developer)__
 
-To help maintain this project ❤️
-- [GitHub Sponsors](https://github.com/sponsors/JerryI)
-- [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
+> *To help maintain this open-source project* ❤️
+> - [__GitHub Sponsors__](https://github.com/sponsors/JerryI)
+> - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
 
-Any amount (one-time or monthly) is appreciated, and your profile will be permanently displayed on this page. Thank you for helping us!
+> Any amount (one-time or monthly) is appreciated, and your profile will be permanently displayed on this page. Thank you for helping us!
+
+## Showcase
+
+**[Blog posts](https://jerryi.github.io/wljs-docs/blog)**
+
+[🔗 Link](https://jerryi.github.io/wljs-docs/blog) Pages of real-life problems solved using WLJS Notebook and published as interactive notebooks runnning in your browser. Try it out
 
 
-<a href="https://jerryi.github.io/wljs-demo/"><img width="1058" alt="Screenshot 2024-08-05 at 22 39 49" src="https://github.com/user-attachments/assets/b548b9d9-e23f-4705-8735-d9daa1ba1705"></a>
-
+**[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-demo/)**
 
 [🔗 Link](https://jerryi.github.io/wljs-demo/)
 Notebooks posted as static web pages showcase various examples that demonstrate how to use the Wolfram Language and the dynamic features of our frontend. 
@@ -88,14 +97,26 @@ Or use toolboxes for complex structures such as integrals, sum, Greek letters
 
 
 
-### Compress to HTML / Markdown 🗜️
+### Export to HTML / Markdown / MDX 🗜️
 An entire notebook can be exported to a standalone `.html` file keeping all data inside. __No internet dependency, no additional software__ is required for viewing a notebook
 
 ![HTML-ezgif com-optipng](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/855bae87-b8e2-4f3a-bfaa-d64e7c50f71e)
 
+#### No more static pictures with code
+Even if you embed it to your blog page
+
+![](imgs/manipulate.gif)
+
+### Deploy as a web-page
+*still experimental feature*
+
+See some interactive examples from __our blog page__
+- [THz Time Domain modelling in 10 lines](https://jerryi.github.io/wljs-docs/blog/2024/05/20/thz-model) 
+- [FDTD Method of Solving Maxwell's Equations](https://jerryi.github.io/wljs-docs/blog/2024/07/12/maxwell)
+
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
-#### AI Assistant 🤖
+### AI Assistant 🤖
 We deeply integrated ChatGPT, so that AI can have a read/write acccess to your notebook
 
 ![AAI](imgs/ASKAI%20optimizer.gif)
@@ -106,19 +127,25 @@ Make a presentation right from the notebook.
 ![slides](imgs/ezgif.com-optimize-15.gif)
 
 ### Real-Time Interactivity ⏱️
-Follows the mouse pointer and performs complex calculations.
+Follows the mouse pointer and performs complex calculations
 
 ![](imgs/ezgif.com-optimize-5-55576aef6756b65dcc582b2f19964fa0.gif)
 
+You do not need to target *60FPS*, Javascript will interpolate the transitions smoothly
+
 ![](imgs/rerer-ezgif.com-video-to-gif-converter.gif)
 
+[A toy-like fluid simulation](https://jerryi.github.io/wljs-docs/blog/2024/08/18/fluid-1) is also possible
+
+![](imgs/fuid.webp)
 
 ### Many More
-#### Autocomplete
-#### JavaScript Cells and Integration with WL
-#### HTML Cells
-#### Markdown Cells
-#### Mermaid Diagrams
+- Autocomplete (no LSP support for now)
+- JavaScript cells deeply integrated with Wolfram Language
+- HTML cells
+- Markdown, KaTeX, Excalidraw
+- Command palette with built-in widgets for assisting you in typing equations, capturing images and others
+- Mermaid diagrams
 
 #### Offline documentation 🩺
 
@@ -169,7 +196,7 @@ wolframscript -f Scripts/start.wls host 0.0.0.0 http 8080 ws 8081 ws2 8082 docs 
 
 that will open __an HTTP server__ on `8080` port with `8081`, `8082` __used for realtime communication__ and __docs pages__ at `8085`
 
-### Extra arguments
+#### Extra arguments
 
 - set the home folder (overrides settings)
 ```
@@ -198,6 +225,7 @@ You might need to install the following (for `Image` and some other graphics to 
 - `Alt+.`, `Cmd+.` abort evaluation
 - `Ctrl+P`, `Cmd+P` open command palette
 - `Shift+Enter` evaluate current cell
+- `Ctrl+F`, `Cmd+F` search/replace inside a cell
 
 ### Cells
 - `Alt+2`, `Cmd+2` hide/show input cell
@@ -207,18 +235,27 @@ You might need to install the following (for `Image` and some other graphics to 
 - `Ctrl+-` make subscript on selected
 
 ## Package System
-
-The frontend uses its own package/plugin system. It doesn't require any software installed except wolframscript. Precompiled plugins are downloaded using URLFetch from GitHub repositories and imported to the system.
+WLJS Notebook fully supports the native Wolfram Language paclets/packages system and cna be installed from the command palette (paste there a Github url to a package)
 
 
 ## Technology Stack
-Wolfram Language, JavaScript
+Wolfram Language, WLX, HTML, CSS, JavaScript, C
+
+### Frameworks & Libraries
+- ~~Vanilla JS~~
+- TailwindCSS
+- Electron (only for the desktop app, used as a wrapper)
+- THREE.js, D3.js (graphics libraries)
+- Tone.js (sound library)
+- CodeMirror 6 (core cell editor)
+- Reveal.js (library for slides), Marked.js (markdown cells), KaTeX.js (math equations), Mermaid (diagram cells), Excalidraw (drawings inside cells), Plotly.js (alternative library for plotting)
+- XTerm.js (internal terminal)
 
 ## Inspired By
 
 - Wolfram Mathematica
 - Jupyter Notebook
-- Observable
+- Observable.io
 - Wolfram Language Notebook VSCode
 - Mathics
 

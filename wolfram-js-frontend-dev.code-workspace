@@ -86,6 +86,9 @@
 		},
 		{
 			"path": "wljs_packages/wljs-sharedlib-react"
+		},
+		{
+			"path": "wljs_packages/wljs-toc"
 		}
 	],
 	"settings": {

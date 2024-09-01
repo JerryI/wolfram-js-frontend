@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.5.3",
+  "version": "2.5.5",
   "recommended-client-version": "2.4.9",
   "description": "Web-based notebook interface for Wolfram Language",
   "author": {
@@ -25,6 +25,7 @@
     "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
     "copyright": "WLJS © 2024 ${author}",
+    "artifactName": "wljs-notebook-${version}-${arch}.${ext}",
     "dmg": {
       "title": "${productName} ${version}",
       "icon": "./Electron/build/512x512.icns",
