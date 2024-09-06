@@ -7,6 +7,7 @@ _settings.wl
 shipped/*
 *.DS_STORE
 public/.DS_STORE
+wljs_packages_legacy
 .obsidian
 Debug/*
 .lastpath
@@ -23,7 +24,6 @@ wljs_packages_lock.wl
 wljs_packages_users.wl
 .packages
 .env
-Electron/sign.js
 /LPM.wl
 .thumbnails
 Kernel/.lastpath

@@ -1,0 +1,99 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$33], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, 
+   "Path" -> 
+    "/Users/kirill/Github/wolfram-js-frontend/Demos/15 - Dev/Videostream.wln"\
+, "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Live video streaming", 
+      CellObj[JerryI`Notebook`CellObj`$76]]}|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# Live video streaming\nA stress test for the whole system ;)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "25695e52-e43d-49c4-a88c-6a99ecb6ee81", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "# Live video streaming\nA stress test for the whole system \
+;)", "Display" -> "markdown", "Hash" -> 
+     "a0720b53-7a35-49e4-badd-8801cac49188", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "v = Video[\"ExampleData/Caminandes.mp4\"];\nframes = \
+VideoFrameList[v, 600];", "Display" -> "codemirror", 
+    "Hash" -> "fd2101d9-1b96-466b-bbc8-fef36c4b6434", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> ".md\nEncode frames as numeric arrays", 
+    "Display" -> "codemirror", "Hash" -> 
+     "12c62b39-918e-46bd-a09e-feb68bc918af", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "Encode frames as numeric arrays", "Display" -> "markdown", 
+    "Hash" -> "3bb228b9-dc70-40bd-8cd8-dafb299c8f6a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "encoded  = Map[Function[f, \n\n  NumericArray[Map[Function[v, \
+Join[255.0 v, {255.0}]], ImageData[f], {2}], \"UnsignedInteger8\", \
+\"ClipAndRound\"]\n\n], frames];", "Display" -> "codemirror", 
+    "Hash" -> "b419204f-16b1-48ca-b2d4-bf658c5bbc1b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, <|"Data" -> ".md\n__Stream__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6bd5f72a-da50-4fda-825d-6f8dca707617", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, <|"Data" -> "__Stream__", 
+    "Display" -> "markdown", "Hash" -> 
+     "e6ef5a89-9e4b-4a75-b4a6-53886b0bd077", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "frame = encoded // First;\nfps = 0.4;\nGraphics[{\n  \
+Inset[Image[frame // Offload, \"Byte\"], {0,0}, ViewMatrix->None],\n  Red, \
+Directive[FontSize->18,Bold], Text[fps // Offload, {0.1,0.2}],\n  \
+AnimationFrameListener[fps // Offload, \"Event\"->\"film\"]\n\n}, \
+PlotRange->{{0,1}, {0,1}}, ImageSize->{600, 300}, Controls->False]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1197538f-5339-4e18-b02c-61b21d0beca2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> ".md\nStart streaming", "Display" -> "codemirror", 
+    "Hash" -> "fa53f9c4-11e0-49ca-8c68-71111add65e4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, <|"Data" -> "Start streaming", 
+    "Display" -> "markdown", "Hash" -> 
+     "1990b6b9-e086-4758-b5ce-461cb6352869", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "index = 1;\ntime = AbsoluteTime[];\n\nEventHandler[\"film\", \
+Function[Null,\n  frame = encoded[[index]];\n  index++;\n  If[index >= \
+Length[encoded], index = 1; Return[]];\n  \n  With[{t = AbsoluteTime[]},\n    \
+fps = Round[ (*FB[*)((fps + 1/(t - time))(*,*)/(*,*)(2.0))(*]FB*)];\n    time \
+= t;\n  ];\n]]\n\nEventFire[\"film\", True];", "Display" -> "codemirror", 
+    "Hash" -> "b2793ba5-f335-4bdf-a494-fca8514feaf1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, <|"Data" -> ".md\nStop", 
+    "Display" -> "codemirror", "Hash" -> 
+     "06ca65c1-4662-41a3-8493-a155508030b2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, <|"Data" -> "Stop", 
+    "Display" -> "markdown", "Hash" -> 
+     "4e3cf1a8-e633-4916-98b6-c0e269f8a3ed", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>, 
+   <|"Data" -> "EventRemove[\"film\", True];", "Display" -> "codemirror", 
+    "Hash" -> "c828ff2d-50b9-4bdf-85f3-4dddc62f228c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "65b9c081-cc6f-47d1-be41-46736b7aee1a"|>}, "serializer" -> "jsfn4"|>

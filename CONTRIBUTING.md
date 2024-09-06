@@ -13,7 +13,12 @@ Here is some to-do list grouped by repos
 - [ ] autotests in a format of WLJS notebook, which go though most features
 - [ ] more example on differnet topics (for data-scientists, scientists, students, ...)
 
-*Main repo is stable and there are no urget needs in refactoring*
+*Main repo is stable and there are no urget needs in any refactoring*
+
+## Demonstration project
+[A collection of examples](https://jerryi.github.io/wljs-demo/) showcasing WLJS Notebook for non-developers (directly exported from WLJS Notebooks).
+- [ ] possibly convert to similar format of our [Blog](https://jerryi.github.io/wljs-docs/blog) (in a discussion)
+- [ ] more examples on various topics
 
 ## wljs-graphics-d3
 ### Primary
@@ -23,7 +28,7 @@ Here is some to-do list grouped by repos
 ### Secondary
 - [x] misssing implementations for `FilledCurve`, ...
 - [ ] `GraphicsComplex` with many `Polygon` is too slow. Especially it can be seen on `ContourPlot`, since it produces tons of SVG paths. 
-- [ ] need to override Mathematica's `Export` on graphics objects. Probably use some tricks with rendering on frontend and communicating the result over websockets to a kernel
+
 
 ## wljs-graphics3d-threejs
 ### Primary
@@ -37,14 +42,16 @@ Here is some to-do list grouped by repos
 ### Primary
 - [ ] `TableForm` does not support styling
 - [ ] `Dataset` does not support nested sets with asscoiations or other datasets inside.
+- [ ] `Entity` is not supported
+
 
 ## wljs-markdown
 ### Primary
-- [ ] get rid of double backslashes from LaTeX somehow (single backslash causes problems with encoding)
+- [x] get rid of double backslashes from LaTeX somehow (single backslash causes problems with encoding)
 
 ## wljs-slides
 ### Primary
-- [ ] get rid of double backslashes from LaTeX somehow (single backslash causes problems with encoding)
+- [x] get rid of double backslashes from LaTeX somehow (single backslash causes problems with encoding)
 
 ## wljs-video
 ### Primary
@@ -60,4 +67,4 @@ Here is some to-do list grouped by repos
 ## Mics
 - [ ] **Wolfram Language Documentation** (frontend agnostic and in a Markdown format)
 - [ ] support for syntax sugar for `NeuralNetwork` package of Wolfram Language. For now it is not clear, how to clean up Mathematica's `MakeBoxes` definitons for various neural network object. There is a possibility to use wrapper function, see more in [Issue](https://github.com/JerryI/wolfram-js-frontend/issues/186).
-- [ ] write a fast implementation of parser/encoder of [WXF](https://github.com/JerryI/wolfram-js-frontend/issues/196) in Javascript. For now we use `ExpressionJSON` for communication, which does not use features of `NumericArray` and `ByteArray` and adds a large overhead in serializaing/deserializing on WL's and JS's sides. There is a [preliminaly work](https://github.com/xndc/uncompress) posted already.
+- [x] write a fast implementation of parser/encoder of [WXF](https://github.com/JerryI/wolfram-js-frontend/issues/196) in Javascript. For now we use `ExpressionJSON` for communication, which does not use features of `NumericArray` and `ByteArray` and adds a large overhead in serializaing/deserializing on WL's and JS's sides. There is a [preliminaly work](https://github.com/xndc/uncompress) posted already.
