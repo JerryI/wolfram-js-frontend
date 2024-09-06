@@ -7,6 +7,7 @@ _settings.wl
 shipped/*
 *.DS_STORE
 public/.DS_STORE
+wljs_packages_legacy
 .obsidian
 Debug/*
 .lastpath
