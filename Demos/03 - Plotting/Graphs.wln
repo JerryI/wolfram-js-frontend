@@ -1,4 +1,4 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$711], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$580], 
    "Objects" -> <|"e864a889-4313-4351-b64b-3e6f23a15d24" -> 
       <|"Public" -> Hold[Graphics[GraphicsComplex[{{-0.8660254037844384, 
              -0.4999999999999994}, {1.8369701987210297*^-16, 1}, 
@@ -438,83 +438,86 @@
              Disk[100, 0.0797025883283277], Disk[101, 0.0797025883283277]}}], 
           {FormatType -> TraditionalForm, FrameTicks -> None, 
            ImagePadding -> None, ImageSize -> 120, Controls -> False}]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev/Demos/03 - \
-Plotting/Graphs.wln", "ReadOnly" -> False|>, 
+   "Path" -> 
+    "/users/kirill/Github/wolfram-js-frontend/Demos/03 - Plotting/Graphs.wln"\
+, "ReadOnly" -> False, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Visualizing graphs", 
+      CellObj[JerryI`Notebook`CellObj`$585]]}|>, 
  "Cells" -> 
-  {<|"Data" -> ".md\n## Graphs packet\nHere we show some examples on \
-`Graph`s", "Display" -> "codemirror", 
-    "Hash" -> "d1ca20b3-1cf1-4c34-8526-562ab445fb18", "Invisible" -> False, 
+  {<|"Data" -> 
+     ".md\n## Visualizing graphs\nHere we show some examples on `Graph`s", 
+    "Display" -> "codemirror", "Hash" -> 
+     "48857e2b-4a8a-4bbb-ab77-3237701125e3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
-   <|"Data" -> "## Graphs packet\nHere we show some examples on `Graph`s", 
-    "Display" -> "markdown", "Hash" -> 
-     "daaa3653-398b-4abc-aaf8-e564f8b19dee", "Invisible" -> False, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
+   <|"Data" -> "## Visualizing graphs\nHere we show some examples on \
+`Graph`s", "Display" -> "markdown", 
+    "Hash" -> "7fb0de9d-29bb-476c-a568-f2938cfb13cd", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[{1 -> 2, 2 -> 3, \n  3 -> 1}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "860375e7-a93d-4ff4-8e39-5baedc7f4320", "Invisible" -> False, 
+     "75a5666d-78d1-4015-9f1e-d3350310e0bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {UndirectedEdge[1, 2], \
 UndirectedEdge[2, 3], UndirectedEdge[3, \
 1]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp\
 1qYmSRaWFjqmhgbGgMJU0PdJDOTJF3jVLM0I+NEQ9MUIxMAdH0U5A==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "41b4aff2-4d5f-486b-959f-f6ca1c161a0a", "Invisible" -> False, 
+     "dcec1f9f-f084-4e32-a24a-0e5fd15885ee", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[{1 -> 2, 2 -> 3, 3 -> 1}]", "Display" -> "codemirror", 
-    "Hash" -> "bf598122-206b-4d7c-8a9d-0103334f9a9d", "Invisible" -> False, 
+    "Hash" -> "2dfea874-a77b-4730-b478-c3730b30b05a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {DirectedEdge[1, 2], DirectedEdge[2, \
 3], DirectedEdge[3, \
 1]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW\
 5gbmCWlpJjppiRaGOuamKUY6lqmmRnqGqQYmJuYmVkmGyZZAgCBixVQ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "7e12a020-bbc2-441f-8afe-3d01c1b82ecc", "Invisible" -> False, 
+     "5f5d1843-844c-4263-8d09-495c12bff37a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[{1 -> 2, 2 -> 3, 3 -> 1},\n  VertexShapeFunction -> \
 \"Diamond\", VertexSize -> Medium]", "Display" -> "codemirror", 
-    "Hash" -> "574a0cac-3923-4cea-b802-84202b4c926e", "Invisible" -> False, 
+    "Hash" -> "0acf597d-4cf0-4cd9-8a9d-e7a8c41ef3de", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {DirectedEdge[1, 2], DirectedEdge[2, \
 3], DirectedEdge[3, 1]}, {VertexShapeFunction -> {\"Diamond\"}, VertexSize -> \
 {Medium}}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykk\
 NVgEKW5iYWCYZGiXrGhuYWeiaGJsn6iaaGSbqGpqZmyenGZomG1oaAwBznhTh\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "e9f1b1e7-4239-47df-807d-488fff3c320b", "Invisible" -> False, 
+     "03375671-7500-4c1c-86e8-a1f81ab7eae1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
-   <|"Data" -> ".md\nOr something more complicated", 
-    "Display" -> "codemirror", "Hash" -> 
-     "ff120b90-74d7-40d9-b37f-655c7e3c1bb7", "Invisible" -> False, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
+   <|"Data" -> ".md\nOr using `Annotate`", "Display" -> "codemirror", 
+    "Hash" -> "fbd1117f-9dbe-43cd-99d2-d8fe08107c84", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
-   <|"Data" -> "Or something more complicated", "Display" -> "markdown", 
-    "Hash" -> "ad27f65c-400a-44a6-bdc3-24a0b30631b0", "Invisible" -> False, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
+   <|"Data" -> "Or using `Annotate`", "Display" -> "markdown", 
+    "Hash" -> "8b9bf952-7f5e-4a52-a5e7-dfd6993188db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[Table[\n  Annotation[\n   v, {VertexSize -> 0.2 + 0.2 \
 Mod[v, 5], \n    VertexStyle -> Hue[v/15, 1, 1]}], {v, 0, 14}], \n Table[v \
 <-> Mod[v + 1, 15], {v, 0, 14}]]", "Display" -> "codemirror", 
-    "Hash" -> "b32412f1-0f7d-406d-9569-f7c110f22a10", "Invisible" -> False, 
+    "Hash" -> "0116b9e0-1cd6-4f29-b6c8-88033301b187", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, \
 14}, {UndirectedEdge[0, 1], UndirectedEdge[1, 2], UndirectedEdge[2, 3], \
 UndirectedEdge[3, 4], UndirectedEdge[4, 5], UndirectedEdge[5, 6], \
@@ -532,16 +535,26 @@ Hue[3/5, 1, \
 1]}}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 G5hYGlimGRnrpqVYmOmamCZa6FoYWVjomqQYmluam5gZmqamAgBzTBTS\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "17fb3740-2fbe-42a2-9609-a606ca8a48f8", "Invisible" -> False, 
+     "bc03958f-8546-4af8-a240-08a3d056a2d1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
+   <|"Data" -> ".md\nGenerate random graphs", "Display" -> "codemirror", 
+    "Hash" -> "e0c6ab72-3b83-40ad-bc9c-32305a462bcb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
+   <|"Data" -> "Generate random graphs", "Display" -> "markdown", 
+    "Hash" -> "90469051-80c4-4f19-ade3-12fb11d69b30", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[Thread[Range[20] -> RandomSample[Range[20]]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "de67fd8b-17c3-4e7c-9cf7-9e06ee863fa4", "Invisible" -> False, 
+     "c01b42f5-98cb-45ac-8503-4d13f9dffea9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 7, 2, 11, 3, 13, 4, 20, 5, 10, 6, 15, 18, \
 8, 14, 9, 12, 17, 16, 19}, {DirectedEdge[1, 7], DirectedEdge[2, 11], \
 DirectedEdge[3, 13], DirectedEdge[4, 20], DirectedEdge[5, 10], \
@@ -553,16 +566,16 @@ DirectedEdge[18, 19], DirectedEdge[19, 3], DirectedEdge[20, \
 9]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp\
 xhbmqaamqfqppiapemaWFqY61qmmhrqJpsap5pZJJmZGacYAQCCvRVo\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "15467446-1a57-445f-86ff-5b213537031c", "Invisible" -> False, 
+     "90ae0ba4-712f-47b9-aaac-7e86e3ba6966", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "Graph[Table[i -> Mod[i^2, 74], {i, 100}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "10498f43-202d-4896-bd9f-bb466ba8ad6d", "Invisible" -> False, 
+     "cc8fc1ff-5a9f-4f6d-8bd6-9e9a6e2f020b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>, 
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>, 
    <|"Data" -> "(*VB[*)(Graph[{1, 2, 4, 3, 9, 16, 5, 25, 6, 36, 7, 49, 8, 64, \
 10, 26, 11, 47, 12, 70, 13, 21, 14, 48, 15, 34, 17, 67, 18, 28, 19, 65, 20, \
 30, 71, 22, 40, 23, 24, 58, 33, 27, 63, 44, 29, 31, 73, 32, 62, 53, 46, 35, \
@@ -605,7 +618,7 @@ DirectedEdge[99, 33], DirectedEdge[100, \
 10]}])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEK\
 J6ZYmhmlmFjomhkmpuqaJKaa6CaZmybqmhpaJppZWBqYGVgaAACHNxVJ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "6a96a2a3-b4c2-414b-9e9e-3f64f3665722", "Invisible" -> False, 
+     "1d4607a3-e7d3-4259-9044-c846f73079a9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "75302174-ecee-46b4-9545-4e614e7e6619"|>}, "serializer" -> "jsfn4"|>
+     "db5c2e36-b26e-4d5f-9652-359dd46cb1fc"|>}, "serializer" -> "jsfn4"|>

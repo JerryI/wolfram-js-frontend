@@ -6,6 +6,8 @@ __Made by the cooperation of physicists and programmers. Driven by solving real-
 
 *written with love using freeware Wolfram Engine, JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
 
+__[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-demo/)__  🎉 A collection of various notebooks showcasing examples of how to use the Wolfram Language and the dynamic features of our frontend
+
 __[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__ 📔
 
 __[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)__ 🐺
@@ -15,6 +17,9 @@ __[Freeware implementation](https://www.wolfram.com/engine/) of Wolfram Language
 __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): 13.3 or higher**
+
+> All algorithms, functions, and other components of the Wolfram Language provided by the Wolfram Engine are the intellectual property of Wolfram Research, Inc.
+
 
 __Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language Web Stack developer)__
 
@@ -152,6 +157,7 @@ You do not need to target *60FPS*, Javascript will interpolate the transitions s
 WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved). __No internet connection is needed__.
 
 ## Sponsors (one-time or monthly) ☺️
+- Gani Ganapathi, USA
 - Jon L. Woodard, USA
 - @MitsuhaMiyamizu, Mars
 
