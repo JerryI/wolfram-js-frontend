@@ -1,0 +1,28 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$39], 
+   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/Users/kirill/Githu\
+b/wolfram-js-frontend/Demos/14 - Utils/Render screen to image.wln", 
+   "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, 
+      "Take a screenshot within an App", 
+      CellObj[JerryI`Notebook`CellObj`$44]]}|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Take a screenshot within an App\n*only for Desktop app*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a157654c-146a-4bac-b956-3fdefc166929", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4face765-38d5-42f9-b427-42206b3cf581"|>, 
+   <|"Data" -> "## Take a screenshot within an App\n*only for Desktop app*", 
+    "Display" -> "markdown", "Hash" -> 
+     "0ab36196-ca8b-41c9-b5bd-bae31c0f6685", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4face765-38d5-42f9-b427-42206b3cf581"|>, 
+   <|"Data" -> ".js\n\nconst img = \
+document.createElement('img');\nelectronAPI.requestScreenshot({}, (r) => {\n  \
+img.src = r;\n});\n\nreturn img;", "Display" -> "codemirror", 
+    "Hash" -> "e2f606c2-004a-4847-9489-88e08a8ec6fe", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4face765-38d5-42f9-b427-42206b3cf581"|>}, "serializer" -> "jsfn4"|>
