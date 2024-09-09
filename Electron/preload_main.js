@@ -60,6 +60,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     });
   },
 
+  requestScreenshot: (params, cbk) => {
+    ipcRenderer.invoke('capture', params).then((result) => {
+      cbk(result);
+    });
+  },  
+
   requestFolderWindow: (params, cbk) => {
     ipcRenderer.invoke('system-open-folder-something', params).then((result) => {
       cbk(result);

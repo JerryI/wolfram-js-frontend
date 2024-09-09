@@ -1664,6 +1664,11 @@ app.whenReady().then(() => {
         trackpadUtils.triggerFeedback();
     });
 
+    ipcMain.handle('capture', async (e, area) => {
+        const img = await e.sender.capturePage(area)
+        return img.toDataURL();
+    });
+
     ipcMain.on('set-progress', (e, p) => {
         const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
         if (senderWindow)
