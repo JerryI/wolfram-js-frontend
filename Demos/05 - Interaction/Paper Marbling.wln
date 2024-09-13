@@ -12968,7 +12968,7 @@ ColorData[37][RandomInteger[{1,50}]]}];\n      \n      calc;\n      calc;\n   \
     If[ListQ[drawing] == True,\n        streams = Append[streams, {drawing, \
 Normalize[xy - drawing]}];\n        calc;\n        calc;\n        drawing = \
 Null;\n      ,\n        drawing = xy;\n      ];    \n      \n    ]\n  }],\n\n \
- MetaMarker[\"canvas\"]\n}, PlotRange->{{-5,5}, {-5,5}}, Controls->False, \
+ MetaMarker[\"canvas\"]\n}, TransitionDuration->150, PlotRange->{{-5,5}, {-5,5}}, Controls->False, \
 ImagePadding->None] ]", "Display" -> "codemirror", 
     "Hash" -> "bb6ebe54-0c7e-421d-93fd-47f5fe71e10d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
