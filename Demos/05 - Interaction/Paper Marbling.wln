@@ -12964,7 +12964,7 @@ applyDiffs[buffer, drops, newDrops, rawDrops, MetaMarker[\"canvas\"], win];\n \
 Graphics[{\n  EventHandler[Graphics`Canvas[], {\n    \"altclick\" -> \
 Function[xy,\n      rawDrops = Append[rawDrops, {xy, RandomReal[{0.1,0.9}], \
 ColorData[37][RandomInteger[{1,50}]]}];\n      \n      calc;\n      calc;\n   \
-   Beep[];\n      drawing = Null;\n    ],\n\n    \"click\" -> Function[xy,\n  \
+   (*Beep[];*)\n      drawing = Null;\n    ],\n\n    \"click\" -> Function[xy,\n  \
     If[ListQ[drawing] == True,\n        streams = Append[streams, {drawing, \
 Normalize[xy - drawing]}];\n        calc;\n        calc;\n        drawing = \
 Null;\n      ,\n        drawing = xy;\n      ];    \n      \n    ]\n  }],\n\n \
