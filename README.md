@@ -6,7 +6,7 @@ __Made by the cooperation of physicists and programmers. Driven by solving real-
 
 *written with love using freeware Wolfram Engine, JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
 
-__[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-demo/)__  🎉 A collection of various notebooks showcasing examples of how to use the Wolfram Language and the dynamic features of our frontend
+__[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-docs/wljs-demo)__  🎉 A collection of various notebooks showcasing examples of how to use the Wolfram Language and the dynamic features of our frontend
 
 __[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)__ 📔
 
@@ -36,9 +36,9 @@ __Special thanks to our co-developer [@KirillBelovTest](https://github.com/Kiril
 [🔗 Link](https://jerryi.github.io/wljs-docs/blog) Pages of real-life problems solved using WLJS Notebook and published as interactive notebooks runnning in your browser. Try it out
 
 
-**[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-demo/)**
+**[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-docs/wljs-demo)**
 
-[🔗 Link](https://jerryi.github.io/wljs-demo/)
+[🔗 Link](https://jerryi.github.io/wljs-docs/wljs-demo)
 Notebooks posted as static web pages showcase various examples that demonstrate how to use the Wolfram Language and the dynamic features of our frontend. 
 
 
