@@ -1,0 +1,666 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$157], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "f471059c-9d14-4f18-bb80-8ab4d03f729d", 
+   "Objects" -> <|"4330ecb0-0a19-4273-b6d8-f2e5ada255d2" -> 
+      <|"Public" -> Hold[HTMLView["<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\"></label><input min=\"0\" max=\"1\" step=\"0.1\" \
+value=\"0.5\" id=\"n-#instanceId\" type=\"number\" class=\"ml-auto h-2 grow \
+max-w-60 block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md \
+border-2-gray-50 border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input min=\"0\" max=\"1\" step=\"0.1\" \
+value=\"0.5\" id=\"r-#instanceId\" type=\"range\" class=\"sm-controls w-full \
+h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer \
+\"></input></div>\n<script type=\"module\"> const num = \
+document.getElementById('n-#instanceId');\n        const ran = \
+document.getElementById('r-#instanceId');\n\n        let harpticQ = true;\n\n \
+       function isNumber(value) { return typeof value === 'number'}\n\n       \
+ num.addEventListener('input', (event)=> {\n            if (isNaN(num.value)) \
+return;\n            ran.value = num.value;\n            \
+server.kernel.emitt('4fdcc6b1-8ea5-49e0-ab4c-051765fd3055', num.value, \
+'Default');      \n        });\n\n        ran.addEventListener('input', \
+(event)=> {\n            if (isNaN(ran.value)) return;\n            num.value \
+= ran.value;\n            \
+server.kernel.emitt('4fdcc6b1-8ea5-49e0-ab4c-051765fd3055', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>", Prolog -> HTMLView`TemplateProcessor[Association[
+             "instanceId" -> CreateUUID[]]]]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/02 - Math and \
+Symbolics/Formatted output.wln", "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Formatted output", 
+      CellObj[JerryI`Notebook`CellObj`$574]], 
+     Notebook`Editor`TOC`Private`heading[2, "Lists, rows and columns", 
+      CellObj[JerryI`Notebook`CellObj`$593]], 
+     Notebook`Editor`TOC`Private`heading[2, "Stylizing expressions", 
+      CellObj[JerryI`Notebook`CellObj`$566]], 
+     Notebook`Editor`TOC`Private`heading[2, "Panels, labels, annotations", 
+      CellObj[JerryI`Notebook`CellObj`$595]]}|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n# Formatted output\nA showcase for all formatting \
+decorators\n\n<br/>", "Display" -> "codemirror", 
+    "Hash" -> "97eea294-7aad-4c7b-806d-b5558ace2460", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> 
+     "# Formatted output\nA showcase for all formatting decorators\n\n<br />"\
+, "Display" -> "markdown", "Hash" -> "00185e2f-a631-4252-bce2-5aa45af3536a", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\n## Lists, rows and columns\n\n`Row` places expressions \
+from the list in a row. Any strings are converted to normal text by the \
+default", "Display" -> "codemirror", 
+    "Hash" -> "9d134ce5-87ee-4966-b980-868a5e70b321", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "## Lists, rows and columns\n\n`Row` places expressions from \
+the list in a row. Any strings are converted to normal text by the default", 
+    "Display" -> "markdown", "Hash" -> 
+     "880d9ea4-e0d9-4fa0-9a82-3028441ccf79", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Row[{1, \"->\", 2}]", "Display" -> "codemirror", 
+    "Hash" -> "ae7b1b87-c4d0-4695-89cc-afc443ee4ade", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{1(*|*),(*|*)\"->\"(*|*),(*|*)2}}(*]GB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "984c37de-22f6-4f6d-8be2-10aa52306f40", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nAny expressions are valid", "Display" -> "codemirror", 
+    "Hash" -> "6afb3649-6eef-4f44-acc9-a904e7deb258", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Any expressions are valid", "Display" -> "markdown", 
+    "Hash" -> "806b6ea9-d542-4041-b469-dcc6c56b4831", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Column[{Red, Blue}]", "Display" -> "codemirror", 
+    "Hash" -> "0d07bd18-2189-42e3-8bcb-a377a2a7dba8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{(*VB[*)(RGBColor[1, 0, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHeyiDgQHOAAALpBNd\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0, 0, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAE644M9APZHE10=\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "e4e1783f-c763-453c-af22-7fb886f7a948", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\n`Grid` is a low-level primitive to construct tables", 
+    "Display" -> "codemirror", "Hash" -> 
+     "df79ce73-b425-4fee-ba75-e99722ca66a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "`Grid` is a low-level primitive to construct tables", 
+    "Display" -> "markdown", "Hash" -> 
+     "98d82e01-60be-4a20-b94f-7dbba114296b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Grid @ Table[KroneckerDelta[i,j], {i,3}, {j,3}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "87fd4639-6092-4c4f-ab45-ee394f121d16", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{1(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)\
+1(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)1}}(*]GB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1b153800-b8fe-4227-ac94-3c8c2f8a92d6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nGrids can be stylized using `Item` (accepts the same \
+options as `Style`)", "Display" -> "codemirror", 
+    "Hash" -> "4812caa2-1d91-4627-8bf5-2c0b6ae293b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> 
+     "Grids can be stylized using `Item` (accepts the same options as \
+`Style`)", "Display" -> "markdown", 
+    "Hash" -> "b1acc82d-ae6b-43bc-b742-f45b5b280090", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "au = {{1, 2}, {3, \
+4}};\nGrid[KroneckerProduct[IdentityMatrix[5], au]] /. {0 -> 0, \n   \
+x_?NumberQ -> Item[x, Background -> Orange]}", "Display" -> "codemirror", 
+    "Hash" -> "9015519a-d6ac-4448-a352-3dff4894c6d1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{1(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMI\
+B47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUW\
+gm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)2(*VB[*)(**)(\
+*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL\
+80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnO\
+HpI=\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*\
+|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){3(*VB[*)(**)(*,*)(*\"1:eJxTT\
+MoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t\
+3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)\
+(*|*),(*|*)4(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+\
+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+\
+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*\
+|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|\
+*),(*|*)0(*|*),(*|*)1(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kP\
+AsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AA\
+ZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)2(*VB[*)(**)(*,*)(\
+*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryU\
+NGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\
+\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),\
+(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)3(*VB[*)(**)(*,*)(*\"1:eJxTTMoPS\
+mNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT\
+8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*\
+),(*|*)4(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACIC\
+kg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55\
+BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),\
+(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(\
+*|*)0(*|*),(*|*)1(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc\
+11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSV\
+FmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)2(*VB[*)(**)(*,*)(*\"1\
+:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQ\
+JAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(\
+*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(\
+*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)3(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYG\
+AoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvyg\
+TZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|\
+*)4(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pz\
+Uou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlx\
+axAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)\
+0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0\
+(*|*),(*|*)1(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+\
+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+\
+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)2(*VB[*)(**)(*,*)(*\"1:eJxT\
+TMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0\
+t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*\
+)(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0\
+(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)3(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgE\
+SHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoR\
+Axg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)4(*\
+VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5g\
+AynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAb\
+fEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0\
+(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*)\
+,(*|*)1(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICk\
+g0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55B\
+aUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)2(*VB[*)(**)(*,*)(*\"1:eJxTTMoPS\
+mNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT\
+8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)}(*|\
+|*),(*||*){0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*),(*|*)0(*|*)\
+,(*|*)0(*|*),(*|*)0(*|*),(*|*)3(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5\
+KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8s\
+M8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJUABnOHpI=\"*)(*]VB*)(*|*),(*|*)4(*VB[*)\
+(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxO\
+Ts9KL80ryUNGaQJAdI0t3JOT8nvygTZFoRAxg8sM8EUWgm8AAZwSVFmQX+eZ55BaUlxaxAAbfEnOJ\
+UABnOHpI=\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "28eea6cc-67a3-4730-8385-5414ac03c8d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nMatrix form is also available", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4059ab90-2816-4a53-822f-3be8e6f3e048", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Matrix form is also available", "Display" -> "markdown", 
+    "Hash" -> "c2eccfa8-af8f-428c-b471-78d9e9039970", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "ClearAll[{a,b,c,d}]\nMatrixForm[{{a, b}, {Item[c, Background \
+-> Red], d}}]", "Display" -> "codemirror", 
+    "Hash" -> "83308501-516d-4f63-a43e-2e2b465fdaf5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "((*GB[*){{a(*|*),(*|*)b}(*||*),(*||*){c(*VB[*)(**)(*,*)(*\"1:\
+eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJ\
+AdI0t3JOT8nvygTZFomA4xA080DZASXFGUW+Od55hWUlhSzAgXcEnOKUwGXGx1q\"*)(*]VB*)(*|\
+*),(*|*)d}}(*]GB*))", "Display" -> "codemirror", 
+    "Hash" -> "1aa126e9-5268-45b7-ba17-00f3ea2f4a14", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nFormatted tables are also available", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c245addc-e04e-4fcf-a7ac-5244f7a29a10", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Formatted tables are also available", 
+    "Display" -> "markdown", "Hash" -> 
+     "d52a52ba-990e-4528-b1b2-0bdd0e1b0ae0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "TableForm[{{5, Item[7, Background->Yellow]}, {4, 2}, {10, \
+3}}, \n TableHeadings -> {{\"Group A\", \"Group B\", \"Group C\"}, {\"y1\", \
+\"y2\"}}]", "Display" -> "codemirror", 
+    "Hash" -> "f0c5f225-b35d-4f07-9b1b-a2649bb6f43c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{(*BB[*)()(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5AI\
+LqnMSXXKr0hjgskHleakFouApDLyy4NLijLz0p0zEosSk0tSi4qLWYESbok5xakAImsVPw==\"*)(\
+*]BB*)(*|*),(*|*)\"y1\"(*|*),(*|*)\"y2\"}(*||*),(*||*){\"Group \
+A\"(*|*),(*|*)5(*|*),(*|*)7(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlM\
+IB47kPAsSc11yq+ACICkg0pzUou5gAynxOTs9KL80ryUNGaQJAdI0t3JOT8nvygTZBqEAGIGNN08Q\
+EZwSVFmgX+eZ15BaUkxK1DALTGnOBUAl00daw==\"*)(*]VB*)}(*||*),(*||*){\"Group \
+B\"(*|*),(*|*)4(*|*),(*|*)2}(*||*),(*||*){\"Group \
+C\"(*|*),(*|*)10(*|*),(*|*)3}}(*||*)(*1:eJxTTMoPSmNkYGAoZgESHvk5KRAeO5BwL8pMc\
+cqvSGOCSQeV5qQW8yNkXDLLMlNSi4oRKnwyi0tQ1QeDTHLOzynNzStOY0FWV8wKZLgl5hSngoVCik\
+pTES5BUwBnoRkOZuSXU8NkAKaJOTA=*)(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "c6e8f45e-2287-45a4-b0cb-c06ae14ad06e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\n## Stylizing expressions\nThe most basic one is `Style`, \
+which can override font settings, color, background and etc", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8f7fedc3-6e10-4ede-842e-46980bc9d4e6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "## Stylizing expressions\nThe most basic one is `Style`, \
+which can override font settings, color, background and etc", 
+    "Display" -> "markdown", "Hash" -> 
+     "d9824496-11c3-412e-9a66-f26d383db3d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Style[1/Sqrt[2], 10, Red, Frame->True]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7189df97-4cf5-4dc2-87e5-05ffa6217fd5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)((*FB[*)((1)(*,*)/(*,*)((*SqB[*)Sqrt[2](*]SqB*)))(*]FB\
+*))(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkgRjEHkAguqcxJdcqvyOQCctKYYcJB7k7O+Tn\
+5RZkgbZkMMCKNCWZKUGlOajErkOFWlJibChYKKSpNRVPAA7ahKLPAP88zr6C0BKIjMac4FQAhTx5f\
+\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "04dd4a4b-145b-4396-8841-3e87b221fbd0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo make underlined text use `Squiggled`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4f0ee9eb-8a24-43d6-89ea-2471df03cb63", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To make underlined text use `Squiggled`", 
+    "Display" -> "markdown", "Hash" -> 
+     "e67345e4-0465-48f2-936a-5dbc98995dc8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Squiggled[\"Text\", Red]", "Display" -> "codemirror", 
+    "Hash" -> "567c161f-ff52-471d-b305-fbc6748d62b2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)(\"Text\")(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+B\
+SWZ+XnFaYwgCRYg4ZGfkwLhcQKJ4JKizLx0p/wKiE6QgqDSnNRiLiAjNC8ltSgnMy81JY0ZJMkBkn\
+R3cs7PyS/KBJmQyQAjUHUHs8FNBouFFJWmAgAmzSKW\"*)(*]BB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "609ab3ee-6224-4f59-8c3b-b12342325e97", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo fill up space", "Display" -> "codemirror", 
+    "Hash" -> "b31ef4f4-a43e-4471-98e5-26a8085332d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To fill up space", "Display" -> "markdown", 
+    "Hash" -> "69829bdb-5c6a-4710-86a5-c766a9bcda14", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "{x, Spacer[20], y} // Row", "Display" -> "codemirror", 
+    "Hash" -> "0569c998-3ac8-4478-a6dc-e7bbedb407dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{x(*|*),(*|*)(*VB[*)(Spacer[20])(*,*)(*\"1:eJxTTMoPSm\
+NkYGAoZgESHvk5KRAeJ5AILkhMTi1yyq/IFAHyALIcCJE=\"*)(*]VB*)(*|*),(*|*)y}}(*]GB*\
+)", "Display" -> "codemirror", "Hash" -> 
+     "fd301f0a-0f54-459f-b0e0-4b899eb1a4e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo rotate an expression (literally)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6e2759d1-43f5-4538-b939-561eeba83f69", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To rotate an expression (literally)", 
+    "Display" -> "markdown", "Hash" -> 
+     "22152ad6-30e6-4d74-a9ad-3cc10f566e4a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Rotate[x+y, 90 Degree]", "Display" -> "codemirror", 
+    "Hash" -> "d9022905-ab9e-47bc-9d7e-1a45258c882b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)(x+y)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5Kdh43EAiKL8ksS\
+QzP88pv6JIQtcl5LfiT3sAg5IPEA==\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "1e4e63e5-5814-4bb6-a6e6-b526a34fa295", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> 
+     ".md\nA pane box provides the control over the size of a widget", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9581e1a1-88a0-4e1b-b5e6-2230e217c708", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "A pane box provides the control over the size of a widget", 
+    "Display" -> "markdown", "Hash" -> 
+     "86082825-3cd0-4b17-afdb-2d978a172da4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, <|"Data" -> "Pane[30!, 100]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "634d6550-3550-44cc-bb62-33643faf20fd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)(265252859812191058636308480000000)(*,*)(*\"1:eJxTTMoP\
+SmNkYGAoZgESHvk5KRAeO5DwT0vLyU9EEghIzEt1yq9IY4KpDyrNSS3mBDI8cxPTU4Mzq1IzU4A8A\
+Ns2EhI=\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "31d5e4e2-da5d-49cf-bd73-704e9102e169", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nMagnification transform", "Display" -> "codemirror", 
+    "Hash" -> "fffa84d8-ff9e-4e5e-b27c-00780ee83445", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Magnification transform", "Display" -> "markdown", 
+    "Hash" -> "7cffb59c-af38-4967-9b64-c5f04e5bd8a8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, <|"Data" -> "Magnify[x+y, 2]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "74331e78-a0b8-4fb5-8745-e767191c4b68", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)(x+y)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkAguqc\
+xJdcqvgIiA5INKc1KLeYEM38T0vMy0zOTEksz8PIg8K5AIycxNLc4EczmBhGdeRmpRZklqCpoJPGD\
+DizIL/PM88wpKS8B63RJzilMB244hlA==\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "73287155-158e-4fe1-b6db-2b7425ee741e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo wrap an expression into a frame", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b17dec03-41f9-4d56-9a82-12e0b6ecab55", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To wrap an expression into a frame", "Display" -> "markdown", 
+    "Hash" -> "facbae3a-0cda-4cf3-b4f6-e8782c49158a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Framed[Integrate[f[x], x]]", "Display" -> "codemirror", 
+    "Hash" -> "d0c94439-4e0a-4789-91e2-ac971dff5e27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)((*TB[*)Integrate[(*|*)f[x](*|*), \
+(*|*)x(*|*)](*|*)(*1:eJxTTMoPSmNiYGAo5gESnnklqelFiSWpTvkVmYwgUVYg4ZaYU5wKAMfB\
+CcU=*)(*]TB*))(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleak\
+FvMAGcElRZkF/nmeeQWlJcWsILWJOcWpAG8uEdg=\"*)(*]BB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7c994114-9287-4dc8-92f6-3acdc9fdbbea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo do basic highlight", "Display" -> "codemirror", 
+    "Hash" -> "9bc0eee8-9f35-43e1-91a7-719f798111d3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To do basic highlight", "Display" -> "markdown", 
+    "Hash" -> "93e52c88-1a93-4bbb-b6cc-d35cd390fb00", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, <|"Data" -> "Highlighted[4]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "16750e2b-e181-4339-9963-15cc85021b2b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)(4)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWnMIB4HkHArSsxN\
+dcqvSGOCyQeV5qQWCwAZLqlpiaU5JU6JxanBJZU5qcEgQY/M9IwcIC5JTfHMKygtQdPHA2QElxRlF\
+vjngaWLWUF2JOYUp6Ip5ILZDTYaLO6Xn5cKANJHKvA=\"*)(*]BB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "99bb1a0c-5c6f-4507-bbb4-98f3ffdfd242", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nTo make expression invisible", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4df36dc4-f1e3-4b02-99cc-7cf9fdb3a077", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "To make expression invisible", "Display" -> "markdown", 
+    "Hash" -> "29e3195d-a58b-40db-a84b-950622877aaa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Framed[Invisible[1/2]]", "Display" -> "codemirror", 
+    "Hash" -> "d86d5ff2-c3be-4763-80c6-6e139fedd288", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*BB[*)((*BB[*)((*FB[*)((1)(*,*)/(*,*)(2))(*]FB*))(*,*)(*\"1:\
+eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4HkAguqcxJdcqvgIiA5INKc1KLeUBSGfnlzvl5Jal5JcXFr\
+EABt8Sc4lRsCkuKMgv88zzzCkpLEAoBE0ocRw==\"*)(*]BB*))(*,*)(*\"1:eJxTTMoPSmNkYGA\
+oZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJcWsILWJOcWpAG8uEdg=\
+\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "a1b93e5a-313f-44e7-b45d-345c14df596d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "f968a198-a39e-43b7-bc87-9d1e104159a5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\n## Panels, labels, annotations\nPanel is a special \
+container with a title and controllable margins", "Display" -> "codemirror", 
+    "Hash" -> "7eab3116-0927-4680-bce5-5ee0d65d875b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "## Panels, labels, annotations\nPanel is a special container \
+with a title and controllable margins", "Display" -> "markdown", 
+    "Hash" -> "2eeb009f-a635-4165-8165-936cd7f4432e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Panel[i = InputRange[0,1,0.1], Style[\"My slider\", 10]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cca1f0af-17a9-480e-8cc1-67dde883ae85", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{(*BB[*)(\"My \
+slider\")(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCRYg4ZGfkwLhc\
+QKJ4JKizLx0p/yKTC4gD6IdpCqoNCc1mA2uACwWUlSaCgCnOxcR\"*)(*]BB*)(*VB[*)(**)(*,*\
+)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB47kPAsSc11yq+ACICkg0pzUos5gQzHnMz0vNzUvB\
+KEnE9mcQmEkZpWAlbkmZeRWpRZkpqCZoAAkOGSmpZYmlPilFicGlxSmZMazAUUDEjMS83xSUxKzQE\
+AlWIj4w==\"*)(*]VB*)}(*||*),(*||*){(*BB[*)((*BB[*)(Panel[(*VB[*)(EventObject[\
+<|\"Id\" -> \"4fdcc6b1-8ea5-49e0-ab4c-051765fd3055\", \"Initial\" -> 0.5, \
+\"View\" -> \
+\"4330ecb0-0a19-4273-b6d8-f2e5ada255d2\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxgbG6QmJxnoGiQaWuqaGJkb6yaZpVjophmlmia\
+mJBqZmqYYAQB+IhWQ\"*)(*]VB*)])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4/kAgo\
+yi/LTElN8S8oyczPK05jAElwgCQS81JznPIrIEpBGoNKc1KDwSakJqYEs8LUAADiShU/\"*)(*]BB\
+*))(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeO5DwT0vLyU9MSWOCCQQk5qU65VdABEDqg0p\
+zUos5gQzHnMz0vNzUvBKEnE9mcUkxG5DhDBROLSrmADKdEotTczLzUtFMEECSCsgvzizJzM9DUQ8A\
+p40nag==\"*)(*]BB*)(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeO5DwLEnN\
+dcqvSGOCSQeV5qQWCwAZLqlpiaU5JU6JxanBJZU5qcEg5T6JSak5qSkAy0sTkQ==\"*)(*]VB*)}}\
+(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "1f35441e-d759-41b0-8174-5cb86a32dbcd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nLabels can by attached to any expressions", 
+    "Display" -> "codemirror", "Hash" -> 
+     "92117583-8576-4158-b895-54b626cdc751", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Labels can by attached to any expressions", 
+    "Display" -> "markdown", "Hash" -> 
+     "7c26aca7-11e3-4282-abf4-8ae3480150a9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Labeled[Framed[{a, b, c, d}], lbl, Right]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "54e5c3d4-a6bf-4060-b044-e24dea6cba73", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*GB[*){{(*BB[*)((*BB[*)({a,b,c,d})(*,*)(*\"1:eJxTTMoPSmNkYGA\
+oZgESHvk5KRAeB5BwK0rMTXXKr0hjgskHleakFvMAGcElRZkF/nmeeQWlJcWsILWJOcWpAG8uEdg=\
+\"*)(*]BB*))(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeO5DwT0vLyU9MSWOCCQQk5qU65V\
+dABEDqg0pzUos5gQzHnMz0vNzUvBKEnE9mcUkxG5DhDBROLSrmADKdEotTczLzUtFMEECSCsgvziz\
+JzM9DUQ8Ap40nag==\"*)(*]BB*)(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRA\
+eO5DwLEnNdcqvSGOCSQeV5qQWCwAZLqlpiaU5JU6JxanBJZU5qcEg5T6JSak5qSkAy0sTkQ==\"*)\
+(*]VB*)(*|*),(*|*)lbl(*VB[*)(**)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeO5DwLE\
+nNdcqvSGOCSQeV5qQWCwAZLqlpiaU5JU6JxanBJZU5qcE8QEGfxKTUnNQUMAUAMtsVdg==\"*)(*]\
+VB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "f5843359-a5c4-46c7-bf21-36e0b904df57", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nAny expression can be a label, even dynamic ones", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f36d4b02-ed09-41a1-9219-b07ae2d1531a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Any expression can be a label, even dynamic ones", 
+    "Display" -> "markdown", "Hash" -> 
+     "107c3807-2a3c-4f54-88be-bfcf45ad4368", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Module[{radius = 10.0}, \n  Labeled[Graphics[Disk[{0,0}, \
+radius // Offload], \n    TransitionDuration->500, ImagePadding->None\n  ], \
+EventHandler[InputButton[\"Collapse/Expand\"], Function[state, radius = \
+1.0/radius]], Background->Yellow] \n]", "Display" -> "codemirror", 
+    "Hash" -> "94482bd5-b65f-4d28-9583-676d5ed5a3df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nAnnotations are invisible wrappers in a global context", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e121a115-7855-42c1-91ee-7d670ebb4df6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Annotations are invisible wrappers in a global context", 
+    "Display" -> "markdown", "Hash" -> 
+     "0b005bd8-0576-449a-aa94-77098ae28d87", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "ap = Table[Annotation[i, PrimeQ[i]], {i, 20}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "17f55f65-79cf-4c47-b798-3344c33a798b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "af698bed-7506-4ed6-b72d-af4c59ab5b56", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nbut can still be harvested", "Display" -> "codemirror", 
+    "Hash" -> "00adbdb3-a146-4fe9-904b-fb094c2e71a0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "but can still be harvested", "Display" -> "markdown", 
+    "Hash" -> "149b880b-ef2f-45d8-ab65-926b1a38e920", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Cases[ap, Annotation[_, True]]", "Display" -> "codemirror", 
+    "Hash" -> "2f077879-8741-415d-b33b-81085272b299", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "{2,3,5,7,11,13,17,19}", "Display" -> "codemirror", 
+    "Hash" -> "10b386e3-6ab6-4274-8efd-55eb01420518", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> ".md\nIn the context of `Graph` they can decorate the edges", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0de316c4-3220-4dd6-8157-9c1f155e2f46", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "In the context of `Graph` they can decorate the edges", 
+    "Display" -> "markdown", "Hash" -> 
+     "d42f1fee-368c-4893-ab80-f1014dcfdb2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "Graph[{Annotation[1 \\[UndirectedEdge] 2, EdgeLabels -> \
+\"hello\"], \n  2 \\[UndirectedEdge] 3, 3 \\[UndirectedEdge] 1}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b6c2b00a-4bb6-4d5c-b180-d5522ea264ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>, 
+   <|"Data" -> "(*VB[*)(Graph[{1, 2, 3}, {UndirectedEdge[1, 2], \
+UndirectedEdge[2, 3], UndirectedEdge[3, 1]}, {EdgeLabels -> \
+{UndirectedEdge[1, 2] -> \
+\"hello\"}}])(*,*)(*\"1:eJy9UzFLAzEUvmqrthUE/4G/wUkQDrXWCkVLr4NrvHvXhqZNSa611\
+5/g7KKD4CIiuLp2VXBwd1AoiOLi4qyXXHNy12t1EN/wSPJeXr5833tL+7RsJzRN40nPFSix7Cmxm/\
+PcFkOtGja5fyLiRcwdOxnayVjacznMwHRwB/xys57bbSETOy6zpT3r9rSICFdoA1uWNtCDMNOkPem\
+RB8M7WT3juTXG6EENkMWHFzXNT02p4KQ67KK499K7fuuzj09hj/1IPHN4WlxxL1eHxd91dlNavDsb\
+HEXhJRQDHl9uETpAsMQS8FSBrmMIUDUghEaeOZcwHvpsRj5zr/v1sp7bbqAqGCYiYEUuKaJiGCu3C\
+Ug064iD4bgEjAla/heZV35cZ1kfcH8imX8AaES93wP6sb/ju/jkWNitWrwOhRTkb1pVyFPWGDssMd\
+0zfoiCj+Qwr4PIEydKASVADMGhfEXQhO4O5SvCRvlKxcsgG1EoKX6OnIrbAr4gpoEhCzuYNhH55iR\
+8gaEGVLBZ5/J8hzYhkjWvpqOELAs3q+Py0sEU4R7gbtBDQYJQZ4M2HUYJl52VR4TDFzU3VBs=\"*)\
+(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "a823897b-a69d-4e4a-a39a-c10b139acb06", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b1b41a4c-0444-45b7-a634-f71cd38294e4"|>}, "serializer" -> "jsfn4"|>
