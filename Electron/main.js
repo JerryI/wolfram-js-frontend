@@ -166,7 +166,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('new_file'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('newnotebook', true);
+                        windows.focused.call('newshortnote', true);
                     }
                 },
                 {
@@ -191,11 +191,11 @@ const buildMenu = (opts) => {
                 },
                 { type: 'separator' },
                 {
-                    label: 'New quick note',
+                    label: 'New note in folder',
                     accelerator: shortcut('new_quick_file'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('newshortnote', true);
+                        windows.focused.call('newnotebook', true);
                     }
                 },              
                 ...options.plugins.file,
