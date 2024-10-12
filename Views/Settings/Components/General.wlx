@@ -27,6 +27,8 @@ defaultTheme = If[KeyExistsQ[settings, "Theme"], settings["Theme"], "System"]
 defaultTray = If[KeyExistsQ[settings, "RunInTray"], settings["RunInTray"], False]
 defaultMaterial = If[KeyExistsQ[settings, "WindowsBackgroundMaterial"], settings["WindowsBackgroundMaterial"], "tabbed"]
 
+FrontEndCustomCSS = If[KeyExistsQ[settings, "FrontEndCustomCSS"], settings["FrontEndCustomCSS"], ""];
+
 DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
 
 EventHandler[Secret, {"Load" -> Function[Null,
@@ -114,6 +116,12 @@ EventHandler[Secret, {"Load" -> Function[Null,
         "CleanBackups" -> Function[Null,
             DeleteFile /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}]];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Cleaned"];
+        ],
+
+        "FrontEndCustomCSS" -> Function[value,
+            settings = Join[settings, <|"FrontEndCustomCSS"-> value|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied on the next window load"];            
         ]
     }];
 
@@ -213,6 +221,9 @@ EventHandler[Secret, {"Load" -> Function[Null,
             
             <Radio Label={"Background Material"} List={ {{"Mica", "mica"}, {"Acrylic", "acrylic"}, {"Tabbed", "tabbed"}, {"Auto", "auto"}} } Selected={defaultMaterial} Pattern={"Material"} Event={controller} />
         
+            <p class="mt-1 max-w-2xl text-sm  text-gray-500 dark:text-gray-500">Custom CSS</p>
+            <textarea rows="8" id="FrontEndCustomCSS" placeholder="paste your CSS directly" class="dark:bg-gray-800 dark:text-gray-400 text-sm sc-b block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"><FrontEndCustomCSS/></textarea> 
+            <WebUIEventListener Id={"FrontEndCustomCSS"} Type={"blur"} Event={controller} Pattern={"FrontEndCustomCSS"}/>
         
         </div>
     </div>  

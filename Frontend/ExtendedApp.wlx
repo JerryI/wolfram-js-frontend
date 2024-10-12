@@ -221,7 +221,18 @@ App[request_] := With[{
         GlobalParameters = Join[<|"Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]), "ElectronQ" -> ElectronQ[request], "AccentColor"->"teal", "BackupTimeout" -> (3 60 1000)|>, settings],
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
-        
+ 
+        FrontEndCustomCSS = If[KeyExistsQ[settings, "FrontEndCustomCSS"], If[
+          StringLength[settings["FrontEndCustomCSS"]] > 0,
+            With[{CSSValue = settings["FrontEndCustomCSS"]},
+              <style>
+                <CSSValue/>
+              </style>
+            ]
+          ,
+            ""
+        ], ""],
+
         Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"],
 
         FakeMenu = 
@@ -311,6 +322,7 @@ App[request_] := With[{
             <WebUIInitializationScript/>
             <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
+            <FrontEndCustomCSS/>
         </Head>  
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <div class="h-full">

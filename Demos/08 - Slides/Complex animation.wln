@@ -1,6 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$306], 
-   "HaveToSaveAs" -> False, "Objects" -> 
-    <|"74febafd-6a40-4b15-9ed9-a06044670190" -> 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1085], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "d04b2578-d755-4b5e-9a86-1c457261f32b", 
+   "Objects" -> <|"74febafd-6a40-4b15-9ed9-a06044670190" -> 
       <|"Public" -> Hold[EditorView["y(t) =  \
 sin((*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)(*SqB[*)Sqrt[t](*]SqB*))  \
 "]]|>, "41356f99-4779-4d4b-bb65-7787ade535e4" -> 
@@ -352,18 +353,19 @@ sin((*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)(*SqB[*)Sqrt[t](*]SqB*))  \
 Slides/Complex animation.wln", "Quick" -> True, 
    "Symbols" -> <|"text$176214" -> "(*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*\
 ]SbB*)  = 6.99(*SpB[*)Power[s(*|*),(*|*)-1](*]SpB*)", 
-     "buffer$176214" -> {{0, 0}, {0.1, 0.8017769883205891}, 
-       {0.2, 0.014299412046944437}, {0.30000000000000004, 
-        -0.6354128852777825}, {0.4, -0.9583212894101291}, 
-       {0.5, -0.9731406168305979}, {0.6000000000000001, -0.762103215905074}, 
-       {0.7000000000000001, -0.4191930179271931}, 
-       {0.8, -0.02859590009808828}, {0.9, 0.3436533584150294}, 
-       {1, 0.6515712452909878}, {1.1, 0.8679036248109826}, 
-       {1.2000000000000002, 0.9812967908729001}, {1.3, 0.9929181423962287}, 
-       {1.4000000000000001, 0.9130655861669097}, {1.5, 0.7580604567830402}, 
-       {1.6, 0.5475707511136494}, {1.7000000000000002, 0.3024206067644624}, 
-       {1.8, 0.042886540755538466}, {1.9000000000000001, 
-        -0.21255176853571714}, {2, -0.44805634396037036}, 
+     "text$210206" -> "(*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)  = \
+6.99(*SpB[*)Power[s(*|*),(*|*)-1](*]SpB*)", "buffer$176214" -> 
+      {{0, 0}, {0.1, 0.8017769883205891}, {0.2, 0.014299412046944437}, 
+       {0.30000000000000004, -0.6354128852777825}, 
+       {0.4, -0.9583212894101291}, {0.5, -0.9731406168305979}, 
+       {0.6000000000000001, -0.762103215905074}, {0.7000000000000001, 
+        -0.4191930179271931}, {0.8, -0.02859590009808828}, 
+       {0.9, 0.3436533584150294}, {1, 0.6515712452909878}, 
+       {1.1, 0.8679036248109826}, {1.2000000000000002, 0.9812967908729001}, 
+       {1.3, 0.9929181423962287}, {1.4000000000000001, 0.9130655861669097}, 
+       {1.5, 0.7580604567830402}, {1.6, 0.5475707511136494}, 
+       {1.7000000000000002, 0.3024206067644624}, {1.8, 0.042886540755538466}, 
+       {1.9000000000000001, -0.21255176853571714}, {2, -0.44805634396037036}, 
        {2.1, -0.6509299125704463}, {2.2, -0.8118295691430446}, 
        {2.3000000000000003, -0.9247536448263128}, {2.4000000000000004, 
         -0.9868559125398478}, {2.5, -0.9981354848597528}, 
@@ -496,8 +498,6 @@ Slides/Complex animation.wln", "Quick" -> True,
        {24.6, -0.1255034398553758}, {24.700000000000003, 
         -0.1950009260454705}, {24.8, -0.26339433927411365}, 
        {24.900000000000002, -0.3303536812708481}, {25, -0.3955592924008587}}, 
-     "trigger$176214" -> 214, "text$210206" -> "(*SbB[*)Subscript[\[Omega](*|\
-*),(*|*)0](*]SbB*)  = 6.99(*SpB[*)Power[s(*|*),(*|*)-1](*]SpB*)", 
      "buffer$210206" -> JSObject[0[0][0.1[0.8017769883205891], 
         0.2[0.014299412046944437], 0.30000000000000004[-0.6354128852777825], 
         0.4[-0.9583212894101291], 0.5[-0.9731406168305979], 
@@ -632,24 +632,24 @@ Slides/Complex animation.wln", "Quick" -> True,
         24.5[-0.05524072384337355], 24.6[-0.1255034398553758], 
         24.700000000000003[-0.1950009260454705], 24.8[-0.26339433927411365], 
         24.900000000000002[-0.3303536812708481], 25[-0.3955592924008587]]], 
-     "trigger$210206" -> 214|>, 
+     "trigger$176214" -> 214, "trigger$210206" -> 214|>, 
    "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Complex animations", 
-      CellObj[JerryI`Notebook`CellObj`$308]], 
+      CellObj[JerryI`Notebook`CellObj`$1074]], 
      Notebook`Editor`TOC`Private`heading[2, "Alternative version", 
-      CellObj[JerryI`Notebook`CellObj`$340]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$1084]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n## Complex animations\n*Using magic of \
 WL*\n\nFirstly it is important to prototype it outside slides", 
     "Display" -> "codemirror", "Hash" -> 
-     "b6963bde-e8ae-41ec-9e5e-c78a72a0061c", "Invisible" -> False, 
+     "0586070f-6244-4b99-a2ee-615ec8868c7f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "## Complex animations\n*Using magic of WL*\n\nFirstly it is \
 important to prototype it outside slides", "Display" -> "markdown", 
-    "Hash" -> "adbbee2b-3c11-4494-ad26-63f3aad3e920", "Invisible" -> False, 
+    "Hash" -> "d8a6f64c-6c5d-4159-a14d-ccd13b9074af", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "LeakyModule[{\n  buffer = {},\n  \\[Omega] = 7.,\n  text = \
 \"\",\n  recalc,\n  target,\n  trigger = 0,\n  ev = CreateUUID[],\n  blocked \
 = True,\n  p = 0.01\n},\n\n  blocked = False;\n\n  recalc[p_] := (\n    text \
@@ -669,10 +669,10 @@ sin((*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)(*SqB[*)Sqrt[t](*]SqB*))  \
 Line[buffer // Offload],\n      AnimationFrameListener[trigger // Offload, \
 \"Event\"->ev]\n    }, Axes->True, Frame->True]\n  } // Row\n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "9dcc6d3f-07a5-4101-ba31-16472f5f12d4", "Invisible" -> False, 
+     "740947e6-e1a4-49bd-a186-d8e62a3888b3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "(*GB[*){{(*GB[*){{(*VB[*)(FrontEndRef[\"74febafd-6a40-4b15-9e\
 d9-a06044670190\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0\
 uLUlMykkNVgEKm5ukpSYlpqXomiWaGOiaJBma6lqmpljqJhqYGZiYmJkbGFoaAACPlBVu\"*)(*]V\
@@ -685,24 +685,24 @@ qamKWa61pYpqXoJpqZGFoaJ5uamyYmAwCGZhWs\"*)(*]VB*)}}(*]GB*)(*|*),(*|*)(*VB[*)(\
 FrontEndRef[\"0686c34f-1761-44b8-8cb1-2c416fdb6906\"])(*,*)(*\"1:eJxTTMoPSmNk\
 YGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5hZmCUbm6TpGpqbGeqamCRZ6FokJ\
 xnqGiWbGJqlpSSZWRqYAQB2FRUX\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
-    "Hash" -> "df7d3b92-916c-4ab9-8e8a-46a4219fef8a", "Invisible" -> False, 
+    "Hash" -> "adb79237-4518-42d7-b0d9-fd38830fd8c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".md\nThe next step will be to assingn triggers:\n\n- enter \
 the slide : start animation\n- left the slide : stop and reset\n- close \
 presentation : stop and reset", "Display" -> "codemirror", 
-    "Hash" -> "c9e2124b-c117-43ad-8b53-3513a142473c", "Invisible" -> False, 
+    "Hash" -> "e932d6e6-e3ef-4dc6-9dd5-cd20d08397d2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "The next step will be to assingn triggers:\n\n- enter the \
 slide : start animation\n- left the slide : stop and reset\n- close \
 presentation : stop and reset", "Display" -> "markdown", 
-    "Hash" -> "5e553fcf-8a06-4f41-b517-7b8d96e0138e", "Invisible" -> False, 
+    "Hash" -> "affb9b95-4b67-496c-ad40-50d7d9935b14", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "Widget[Rule[\"Event\", id_]] := LeakyModule[{\n  buffer = \
 {},\n  \\[Omega] = 7.,\n  text = \"\",\n  recalc,\n  target,\n  trigger = \
 0,\n  ev = CreateUUID[],\n  blocked = True,\n  p = 0.01\n},\n\n  \
@@ -726,44 +726,44 @@ sin((*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)(*SqB[*)Sqrt[t](*]SqB*))  \
      \n    } // Column,\n    \n    Graphics[{\n      Blue, Line[target], Red, \
 Line[buffer // Offload],\n      AnimationFrameListener[trigger // Offload, \
 \"Event\"->ev]\n    }, Axes->True, Frame->True, PlotRange->{{0,25}, \
-{-1,1}}]\n  } // Row, StandardForm] // EditorView // CreateFrontEndObject\n]"\
-, "Display" -> "codemirror", "Hash" -> 
-     "fd871489-d674-4684-9d41-48b664133b5a", "Invisible" -> False, 
+{-1,1}}]\n  } // Row, StandardForm] // EditorView \n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f42aa674-be05-483a-aef6-0bf8c0087472", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".md\nNow let's test it on a slide", 
     "Display" -> "codemirror", "Hash" -> 
-     "dc77100c-535d-47d7-9e88-590c382acac7", "Invisible" -> False, 
+     "a5e927f2-32f6-4ea3-8ce5-ce67ae5bcbba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "Now let's test it on a slide", "Display" -> "markdown", 
-    "Hash" -> "5eaa136f-4934-49d7-9b61-0347f34481ef", "Invisible" -> False, 
+    "Hash" -> "b20d1415-1b74-4ccc-828f-e2787a8a45c6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".slide\n\n# Title\n\n<Widget \
 Event={\"slide-ev-name\"}/>\n\n<SlideEventListener Id={\"slide-ev-name\"}/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "3f27532b-03ac-4747-80c7-7dba74d7f123", "Invisible" -> False, 
+     "6e4faee5-cc1c-4310-955c-d891c41fb277", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".md\n## Alternative version\n*Using WLX*\n\nWe can get more \
 freedom in customization if we switch to WLX instead of WL's `Row` and \
 `Column` wrappers", "Display" -> "codemirror", 
-    "Hash" -> "345bc084-2640-4b05-98f2-8e06601a06d0", "Invisible" -> False, 
+    "Hash" -> "f711d145-48bb-49ba-9272-405eb6f2e41d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "## Alternative version\n*Using WLX*\n\nWe can get more \
 freedom in customization if we switch to WLX instead of WL's `Row` and \
 `Column` wrappers", "Display" -> "markdown", 
-    "Hash" -> "3c3271ca-8369-43d3-b4be-71729f6d2cb1", "Invisible" -> False, 
+    "Hash" -> "47374e0e-80a2-4183-956b-43af29105688", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".wlx\n\nWidget[Rule[\"Event\", id_]] := LeakyModule[{\n  \
 buffer = {},\n  Omega = 7.,\n  text = \"\",\n  recalc,\n  target,\n  trigger \
 = 0,\n  ev = CreateUUID[],\n  blocked = True,\n  p = 0.01,\n  EditorPart,\n  \
@@ -786,42 +786,41 @@ AnimationFrameListener[trigger // Offload, \"Event\"->ev]\n    }, Axes->True, \
 Frame->True, PlotRange->{{0,25}, {-1,1}}];\n\n  EditorPart[Rule[\"P\", 1]] = \
 EditorView[\"y(t) =  \
 sin((*SbB[*)Subscript[\[Omega](*|*),(*|*)0](*]SbB*)(*SqB[*)Sqrt[t](*]SqB*))  \
-\"] // CreateFrontEndObject;\n\n  EditorPart[Rule[\"P\", 2]] = \
-EditorView[text // Offload] // CreateFrontEndObject;    \n  \n        \n  \
-<div class=\"flex flex-row\" >\n    <div class=\"flex flex-col text-left\" \
-style=\"padding: 2rem 0\">\n      <EditorPart P={1}/>\n      <EditorPart \
-P={2}/>\n    </div>\n    <CanvasPart/>\n  </div>\n]", 
+\"] ;\n\n  EditorPart[Rule[\"P\", 2]] = EditorView[text // Offload] ;    \n  \
+\n        \n  <div class=\"flex flex-row\" >\n    <div class=\"flex flex-col \
+text-left\" style=\"padding: 2rem 0\">\n      <EditorPart P={1}/>\n      \
+<EditorPart P={2}/>\n    </div>\n    <CanvasPart/>\n  </div>\n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "d9b8c06c-e58f-485e-b633-a6783ba35c40", "Invisible" -> False, 
+     "2d157c1a-e402-437d-9925-eea1203291d1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".md\nFeel free to use the full power of HTML and CSS here. \
 Now let's see how it looks on a slide", "Display" -> "codemirror", 
-    "Hash" -> "ae5c3cf8-be94-4504-8401-e7a4735dc399", "Invisible" -> False, 
+    "Hash" -> "c5297b30-8698-493c-88ce-36bf1e18a709", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "Feel free to use the full power of HTML and CSS here. Now \
 let's see how it looks on a slide", "Display" -> "markdown", 
-    "Hash" -> "1562df87-66dc-4613-85f7-8431eaa20395", "Invisible" -> False, 
+    "Hash" -> "528ddd7e-6d24-4b20-a6ef-2d25daf44137", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> ".slide\n\n# Title\n\n<Widget \
 Event={\"slide-ev-name\"}/>\n\n<SlideEventListener Id={\"slide-ev-name\"}/>", 
     "Display" -> "codemirror", "Hash" -> 
-     "4b0f8023-fd49-4ba2-9511-ac93b857d024", "Invisible" -> False, 
+     "9637d15e-b00e-4ca8-ab64-cf910a9d9aa7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>, 
+     "7721e757-ee90-4972-9d11-2bfca94c6de9"|>, 
    <|"Data" -> "<dummy >\n# Title\n\n<div class=\"flex flex-row\"><div \
 class=\"flex flex-col text-left\" style=\"padding: 2rem \
 0\">FrontEndExecutable[5ddb3d84-48fd-4e77-ab32-692cb52fc430]FrontEndExecutabl\
 e[ee637877-cd41-482b-87a6-78f22c2a4e02]</div>FrontEndExecutable[88127f86-c224\
 -4878-97d7-6c2d6c217354]</div>RVJSEvent[\"slide-ev-name\",\"Slide\"]</dummy>"\
-, "Display" -> "slide", "Hash" -> "85f72538-60b4-4242-a7c7-b1139ee1d400", 
+, "Display" -> "slide", "Hash" -> "2d07ee90-5fff-476d-90ae-d4e8be86580d", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "c35bafda-50d4-454f-b75a-6c79749f3dc8"|>}, 
+    "Notebook" -> "7721e757-ee90-4972-9d11-2bfca94c6de9"|>}, 
  "serializer" -> "jsfn4"|>
