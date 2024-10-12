@@ -810,6 +810,10 @@ const windows = {
         },
 
         info (data) {
+            if (!this.readyQ || !this.aliveQ) {
+                console.log(data);
+                return;
+            };
             this.win.webContents.send('info', data);
         },
 
