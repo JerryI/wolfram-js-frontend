@@ -110,7 +110,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
         "BackupTimeout" -> Function[value,
             settings = Join[settings, <|"BackupTimeout"-> (60 1000 parseInt[value])|>];
             onSave[settings];
-            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied on the next window load"];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
         ],
 
         "CleanBackups" -> Function[Null,
@@ -121,7 +121,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
         "FrontEndCustomCSS" -> Function[value,
             settings = Join[settings, <|"FrontEndCustomCSS"-> value|>];
             onSave[settings];
-            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied on the next window load"];            
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];            
         ]
     }];
 
