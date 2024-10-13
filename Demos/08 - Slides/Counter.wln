@@ -1,0 +1,85 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$585], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "02c5be1a-0cb9-451e-bf77-9df48a6a3090", 
+   "Objects" -> <|"27368759-e66d-4de2-8ebd-a69d0da61126" -> 
+      <|"Public" -> Hold[HTMLView[
+          "<div style=\"\" class=\"p-2\" data-type=\"html-string\"></div>", 
+          Prolog -> HTMLView`TemplateProcessor[Association["instanceId" -> 
+              CreateUUID[]]], Epilog -> 
+           Notebook`Kernel`Inputs`Private`InternalElementUpdate[
+            Offload[cnt$181199], "html-string", "innerHTML"]]]|>, 
+     "1250d760-d5d7-462e-931f-b40b435c80db" -> 
+      <|"Public" -> Hold[HTMLView[
+          "<div style=\"\" class=\"p-2\" data-type=\"html-string\"></div>", 
+          Prolog -> HTMLView`TemplateProcessor[Association["instanceId" -> 
+              CreateUUID[]]], Epilog -> 
+           Notebook`Kernel`Inputs`Private`InternalElementUpdate[
+            Offload[cnt$181201], "html-string", "innerHTML"]]]|>|>, 
+   "Path" -> 
+    "/Users/kirill/Github/wolfram-js-frontend/Demos/08 - Slides/Counter.wln", 
+   "Quick" -> True, "Symbols" -> <|"cnt$181199" -> 128, 
+     "cnt$181201" -> 256|>, "TOC" -> {}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Simple stat counter\n\nWhat if you need to \
+add some dynamic stats to your presentation? One can make an independent \
+component for that", "Display" -> "codemirror", 
+    "Hash" -> "aba4eb20-1eec-47ee-8e69-92a845b53030", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> "# Simple stat counter\n\nWhat if you need to add some dynamic \
+stats to your presentation? One can make an independent component for that", 
+    "Display" -> "markdown", "Hash" -> 
+     "33823111-cdf6-4ab0-b144-a95cee98f425", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> ".md\nLet us try it on our slide", "Display" -> "codemirror", 
+    "Hash" -> "46d69538-854d-4256-bc5c-29e409769088", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> ".wlx\n\nStat[Text_, OptionsPattern[]] := LeakyModule[{\n  cnt \
+= 0, \n  task\n}, With[{\n  ev = CreateUUID[],\n  HTMLCounter = HTMLView[cnt \
+// Offload],\n  max = OptionValue[\"Count\"]\n},\n  EventHandler[ev, {\n    \
+\"Destroy\" -> Function[Null,\n      EventRemove[ev]; \n      \
+If[task[\"TaskStatus\"] === \"Running\", TaskRemove[task]];\n      \
+ClearAll[task];\n    ],\n\n    \"Left\" -> Function[Null,\n      cnt = 0;\n   \
+ ],\n\n    \"Slide\" -> Function[Null,\n      If[task[\"TaskStatus\"] === \
+\"Running\", TaskRemove[task]];\n      task = SetInterval[\n        If[cnt < \
+max, cnt = cnt + 1,\n          TaskRemove[task];\n        ];\n      , 15];\n  \
+  ]\n  }];\n\n  <div class=\"text-center text-gray-600 m-4 p-4 rounded \
+bg-gray-100 flex flex-col\">\n    <HTMLCounter/>\n    <span \
+class=\"text-md\"><Text/></span>\n    <SlideEventListener Id={ev}/>\n  \
+</div>\n] ]\n\nOptions[Stat] = {\"Count\"->1};", "Display" -> "codemirror", 
+    "Hash" -> "a108917c-f437-495a-bb57-306cb1f1c31a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> "Let us try it on our slide", "Display" -> "markdown", 
+    "Hash" -> "06f40be7-2466-40f4-acbd-476dd7540312", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> ".slide\n\n# Dynamic stats\nHere is our data\n\n<div \
+class=\"justify-center flex flex-row ml-auto mr-auto\">\n\n<Stat \
+Count={128}>Label 1</Stat>\n<Stat Count={256}>Label 2</Stat>\n\n</div>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "52712b06-0edf-42ed-99af-d2d2a9bca35c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>, 
+   <|"Data" -> "<dummy >\n# Dynamic stats\nHere is our data\n\n<div \
+class=\"justify-center flex flex-row ml-auto mr-auto\"><div \
+class=\"text-center text-gray-600 m-4 p-4 rounded bg-gray-100 flex \
+flex-col\">FrontEndExecutable[27368759-e66d-4de2-8ebd-a69d0da61126]<span \
+class=\"text-md\">Label \
+1</span>RVJSEvent[\"94afcaca-4280-40ff-abd8-446c93f93eb2\",\"Slide\"]</div><d\
+iv class=\"text-center text-gray-600 m-4 p-4 rounded bg-gray-100 flex \
+flex-col\">FrontEndExecutable[1250d760-d5d7-462e-931f-b40b435c80db]<span \
+class=\"text-md\">Label \
+2</span>RVJSEvent[\"76e3ba8c-0e46-4ac7-ad89-5b02dc9bc399\",\"Slide\"]</div></\
+div></dummy>", "Display" -> "slide", 
+    "Hash" -> "212ae13c-b3ec-47cd-a4db-727364051617", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "5a95d5d0-5676-414f-bcb9-e90a6da0724b"|>}, "serializer" -> "jsfn4"|>

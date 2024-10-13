@@ -1,0 +1,124 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$133], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "80561e5a-91b1-4503-bcb7-af0f3211ef51", 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
+os/16 - Dev/Pathtracing Recording.wln", "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Render Pathtracing into a video", 
+      CellObj[JerryI`Notebook`CellObj`$270]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Render Pathtracing into a video\nTo render \
+3D animation into a sequence of frames using Path-tracing, we need to arrange \
+an update loop. Using directly a `Rasterize` function will not be efficient \
+way, since it rebuilds the whole scene for each frame, while usually one need \
+to update only a couple of objects. \n\nLet us prepare a simple scene", 
+    "Display" -> "codemirror", "Hash" -> 
+     "2616f5ae-8a4d-4a6c-b8e0-07f0fb2435c3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "# Render Pathtracing into a video\nTo render 3D animation \
+into a sequence of frames using Path-tracing, we need to arrange an update \
+loop. Using directly a `Rasterize` function will not be efficient way, since \
+it rebuilds the whole scene for each frame, while usually one need to update \
+only a couple of objects. \n\nLet us prepare a simple scene", 
+    "Display" -> "markdown", "Hash" -> 
+     "b926cdee-4c9d-48f8-953f-7043d4ccbc75", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "light1 = RotationMatrix[120 Degree, {0, 0, 1}].{1, 1, \
+0};\nlight2 = RotationMatrix[120 Degree, {0, 0, 1}].light1;\nlight3 = \
+RotationMatrix[120 Degree, {0, 0, 1}].light2;\nframesCount = \
+0;\n\nGraphics3D[{\n   Shadows[True],\n   Cuboid[{-3, -3, -3}, {3, 3, -2}],\n \
+  AnimationFrameListener[framesCount // Offload, \"Event\" -> \"frame\"],\n   \
+\n   {Directive[\"Emissive\" -> Red, \"EmissiveIntensity\" -> 30.0], \n    \
+Sphere[light1 // Offload, 0.3]},\n   {Directive[\"Emissive\" -> Blue, \
+\"EmissiveIntensity\" -> 30.0], \n    Sphere[light2 // Offload, 0.3]},\n   \
+{Directive[\"Emissive\" -> Green, \"EmissiveIntensity\" -> 30.0], \n    \
+Sphere[light3 // Offload, 0.3]},\n   \n   {Green, \n    \
+Directive[\"Transmission\" -> 1.0, \"MaterialThickness\" -> 0.5, \n     \
+\"Ior\" -> 2.0, \"Metallness\" -> 0.0, \"Roughness\" -> 0.0], \n    \
+Cylinder[{{0, 0, -2}, {0, 0, 0}}, 0.7]},\n   MetaMarker[\"canvas\"]\n   },\n  \
+\"MinSamples\" -> 4,\n  \"FadeDuration\" -> 0,\n  \"RenderDelay\" -> 0,\n  \
+\"BackgroundAlpha\" -> 1,\n  \"EnvironmentIntensity\" -> 0.2,\n  \"Renderer\" \
+-> \"PathTracing\",\n  \"SleepAfter\" -> 2000000,\n  \
+\"MultipleImportanceSampling\" -> True\n]", "Display" -> "codemirror", 
+    "Hash" -> "2cf3118e-3339-4656-92e7-768cb984a89e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> ".md\nRun __this first__, move a camera to desired position. \
+After all this done, keep this window open and evaluate the next cell", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7ce3893c-af36-4299-a60b-ca17351261ad", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "Run __this first__, move a camera to desired position. After \
+all this done, keep this window open and evaluate the next cell", 
+    "Display" -> "markdown", "Hash" -> 
+     "eafab854-62ae-45bf-ab28-ab82e71aee31", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "frames = {};\n\nwin = CurrentWindow[];\nprogress  = \
+0.0;\n\nCellPrint[ToString[Graphics[{Rectangle[{0,0}, {1,1}],Green, \
+Rectangle[{0,0}, {progress//Offload, 1}]}, PlotRange->{{0,1}, {0,1}}, \
+ImageSize->{400,10}, ImagePadding->None], \
+StandardForm]];\n\nEventHandler[\"frame\", Function[Null, \n   \
+If[Mod[framesCount, 20 * 30] == 0,\n    Then[FrontFetchAsync[\n     \
+Graphics3D`toDataURL[], \n     MetaMarker[\"canvas\"], \n     \"Window\" -> \
+win\n    ], Function[value,\n     \n     frames = Append[\n       frames, \n  \
+     ImportString[\n        StringDrop[value // First, \n         \
+StringLength[\"data:image/png;base64,\"]], \"Base64\"]\n     ];\n     \n     \
+light1 = RotationMatrix[3 Degree, {0, 0, 1}].light1 // N;\n     light2 = \
+RotationMatrix[3 Degree, {0, 0, 1}].light2 // N;\n     light3 = \
+RotationMatrix[3 Degree, {0, 0, 1}].light3 // N;\n\n     progress = \
+Length[frames]/60.0;\n     \n     If[Length[frames] > 60, \n       \
+EventRemove[\"frame\"];\n       Beep[]; Print[\"Finished!\"];  \n     ];\n    \
+ \n     ]]\n    ];\n    \n   framesCount = framesCount + \
+1;\n]];\n\nframesCount = 0;", "Display" -> "codemirror", 
+    "Hash" -> "6904fc98-d81a-4525-a5f4-0a2075278d90", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> ".md\nWhen you start this, it will update objects position for \
+each frame, wait `10 * 30` frames to accumulate the samples and move to the \
+next one. It will beep, when it is finished.", "Display" -> "codemirror", 
+    "Hash" -> "e380f9e8-6772-4770-b8be-cf8293778acf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> ".md\nTo stop the process", "Display" -> "codemirror", 
+    "Hash" -> "9d0e5bf2-70cd-4bb8-8786-1dd2a882231a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "To stop the process", "Display" -> "markdown", 
+    "Hash" -> "642bb888-71c1-438e-9399-8b197da3f74c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "EventRemove[\"frame\"]", "Display" -> "codemirror", 
+    "Hash" -> "8d5c702a-de6c-484b-ba4f-28a83eff81ae", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> ".md\nNow you can transform it into a video", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0f70c462-67f1-44ed-8f40-aaaf199bff84", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "Now you can transform it into a video", 
+    "Display" -> "markdown", "Hash" -> 
+     "599f9595-7d18-4c14-9ad3-a79cb8128f8f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>, 
+   <|"Data" -> "video = FrameListVideo[frames, FrameRate->30]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4be98c54-7643-42a3-8c82-83293a9ebe2f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "0f5d8a92-2f50-4b2a-9ac3-9f75b5be6a29"|>}, "serializer" -> "jsfn4"|>

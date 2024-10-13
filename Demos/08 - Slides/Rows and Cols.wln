@@ -1,0 +1,42 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$372], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "a6f56085-0b5d-4f05-993d-27ff983bb971", 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
+os/08 - Slides/Rows and Cols.wln", "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Rows and Columns", 
+      CellObj[JerryI`Notebook`CellObj`$367]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Rows and Columns\nOne can define any Layout \
+helpers using WLX cells, however, the standard Wolfram's `Row` and `Column` \
+will also work", "Display" -> "codemirror", 
+    "Hash" -> "71452e0b-033a-4bff-b5cd-91bcf2713718", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>, 
+   <|"Data" -> "## Rows and Columns\nOne can define any Layout helpers using \
+WLX cells, however, the standard Wolfram's `Row` and `Column` will also work"\
+, "Display" -> "markdown", "Hash" -> "454f215b-f4ee-4a26-ba66-76a249faf8f8", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>, 
+   <|"Data" -> "Figure = Plot[x, {x,0,1}];\nEditor = EditorView[\"Plot[x, \
+{x,0,1}] -> \"];", "Display" -> "codemirror", 
+    "Hash" -> "6dd0840b-2ff9-42fa-a4f1-ac4dfac7e825", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>, 
+   <|"Data" -> ".md\nNow try it on a slide", "Display" -> "codemirror", 
+    "Hash" -> "83d01258-e013-4a6a-aab4-98ab85bce0ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>, 
+   <|"Data" -> "Now try it on a slide", "Display" -> "markdown", 
+    "Hash" -> "c31277db-88ea-4d14-bf85-66d31b4bc529", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>, 
+   <|"Data" -> ".slide\n\n<Row>\n\t<Editor/>\n\t<Figure/>\n</Row>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ff4ab216-bc14-402c-a226-343f3b5bb222", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4a8825d4-449c-45fd-a711-c8561e89d6ac"|>}, "serializer" -> "jsfn4"|>

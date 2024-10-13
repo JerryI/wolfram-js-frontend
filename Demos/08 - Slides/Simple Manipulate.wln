@@ -1,0 +1,31 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$335], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "ee63b7c0-3f05-4760-afb7-c8d3647caad0", 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
+os/08 - Slides/Simple Manipulate.wln", "Quick" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Simple Manipulate", 
+      CellObj[JerryI`Notebook`CellObj`$333]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Simple Manipulate\nFor the most widgets the \
+output form for slides as well as for WLX cells is defined", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f36df0af-db02-49b3-9887-a45f68ac8863", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "517dfa1c-8d04-4e23-b692-69daff992d29"|>, 
+   <|"Data" -> "## Simple Manipulate\nFor the most widgets the output form \
+for slides as well as for WLX cells is defined", "Display" -> "markdown", 
+    "Hash" -> "efee9bad-513b-47aa-973e-98b1ab4fa2b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "517dfa1c-8d04-4e23-b692-69daff992d29"|>, 
+   <|"Data" -> "Man = ManipulatePlot[Sinc[w x], {x,-10,10}, {w,0,10}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1999b8eb-2664-4007-be1d-f2cb0b3f20f3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "517dfa1c-8d04-4e23-b692-69daff992d29"|>, 
+   <|"Data" -> ".slide\n\n<Man/>", "Display" -> "codemirror", 
+    "Hash" -> "0659b76b-d7ec-4335-a09b-c64fe906a041", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "517dfa1c-8d04-4e23-b692-69daff992d29"|>}, "serializer" -> "jsfn4"|>

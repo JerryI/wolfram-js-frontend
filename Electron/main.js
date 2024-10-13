@@ -5,7 +5,9 @@ const path = require('path')
 const { platform } = require('node:process');
 
 
-
+function isFile(pathItem) {
+    return !!path.extname(pathItem);
+  }
 
 const zlib = require('zlib');
 
@@ -65,9 +67,13 @@ let tray;
 /* extesions for contex menu */
 const pluginsMenu = {};
 
-pluginsMenu.items = {kernel: [], edit: [], view: [], file: [], misc: []};
+pluginsMenu.items = {};
 pluginsMenu.fetch = () => {
+    pluginsMenu.items = {kernel: [], edit: [], view: [], file: [], misc: []}
+
     if (!fs.existsSync(path.join(installationFolder, 'wljs_packages'))) return;
+
+    
 
     fs.readdirSync(path.join(installationFolder, 'wljs_packages'), { withFileTypes: true }).filter(item => item.isDirectory()).map(item => {
         const p = path.join(installationFolder, 'wljs_packages', item.name, 'package.json');
@@ -166,7 +172,7 @@ const buildMenu = (opts) => {
                     accelerator: shortcut('new_file'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('newnotebook', true);
+                        windows.focused.call('newshortnote', true);
                     }
                 },
                 {
@@ -191,11 +197,11 @@ const buildMenu = (opts) => {
                 },
                 { type: 'separator' },
                 {
-                    label: 'New quick note',
-                    accelerator: shortcut('new_quick_file'),
+                    label: 'New note in folder',
+                    accelerator: shortcut('new_file_folder'),
                     click: async(ev) => {
                         console.log(ev);
-                        windows.focused.call('newshortnote', true);
+                        windows.focused.call('newnotebook', true);
                     }
                 },              
                 ...options.plugins.file,
@@ -804,6 +810,10 @@ const windows = {
         },
 
         info (data) {
+            if (!this.readyQ || !this.aliveQ) {
+                console.log(data);
+                return;
+            };
             this.win.webContents.send('info', data);
         },
 
@@ -1446,6 +1456,7 @@ app.on('window-all-closed', () => {
 })
 
 
+
 app.on('open-file', (ev, path) => {
     ev.preventDefault();
     app.addRecentDocument(path);
@@ -1454,7 +1465,10 @@ app.on('open-file', (ev, path) => {
         return;
     }
 
-    create_window({url: server.url.default('local') + `/` + encodeURIComponent(path), title: path, show: true, focus: true});
+    if (isFile(path))
+        create_window({url: server.url.default('local') + `/` + encodeURIComponent(path), title: path, show: true, focus: true});
+    else
+        create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path), title: path, show: true, focus: true});
 })
 
 app.on('open-url', (event, url) => {
@@ -1505,7 +1519,11 @@ else {
             if (new RegExp('--').exec(argv[pos])) pos++;
             if (new RegExp('--').exec(argv[pos])) pos++;
 
-            create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+            if (isFile(argv[pos])) {
+                create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+            } else {
+                create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+            }
         }
     });
 }
@@ -1662,6 +1680,11 @@ app.whenReady().then(() => {
 
     ipcMain.on('system-harptic', () => {
         trackpadUtils.triggerFeedback();
+    });
+
+    ipcMain.handle('capture', async (e, area) => {
+        const img = await e.sender.capturePage(area)
+        return img.toDataURL();
     });
 
     ipcMain.on('set-progress', (e, p) => {
@@ -1823,6 +1846,28 @@ app.whenReady().then(() => {
         callFakeMenu[menusection]();
     });
 
+    ipcMain.on('system-open-external', (e, p) => {
+        const url = p;
+        shell.openExternal(url);
+    });
+
+    ipcMain.on('system-open-path', (e, p) => {
+        const url = p;
+        shell.openPath(url);
+    });
+
+    ipcMain.on('system-show-folder', (e, p) => {
+        const url = p;
+        shell.showItemInFolder(url);
+    });
+
+    
+
+    ipcMain.on('system-beep', (e, p) => {
+        shell.beep();
+    });    
+
+
 
     //promts resolver
     ipcMain.on('promt-resolve', (e, id, val) => {
@@ -1924,10 +1969,15 @@ function start_server (window) {
 //applicable only to the first time!!!
 function create_first_window() {
     //we need to decide what to open!
+    if (server.wasUpdated) { //reset app menu
+        pluginsMenu.fetch();
+        buildMenu({plugins: pluginsMenu.items});
+    }
 
     //Windows/Unix open a file
     if (!isMac && server.startedQ && !server.running && process.argv[1]) {
         console.log('OPEN a FILE WIN/Linux');
+
 
         const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(process.argv[process.argv.length - 1]);
         if (protocol) {
@@ -1936,7 +1986,6 @@ function create_first_window() {
             server.wasUpdated = false;
             return;
         }
-
 
         if (process.argv[1].length > 3) {
             app.addRecentDocument(process.argv[1]);
@@ -1952,6 +2001,7 @@ function create_first_window() {
     //Mac
     if (isMac && server.startedQ && !server.running && server.protocol) {
         console.log('OPEN a URL on OSX');
+
         //app.addRecentDocument(server.path.requested);
         create_window({url: server.url.default() + '/protocol/' + server.protocol, title: 'WLJS Window', show: false, focus: true, cacheClear: server.wasUpdated});
         server.protocol = undefined;
@@ -1963,6 +2013,7 @@ function create_first_window() {
     //Mac
     if (isMac && server.startedQ && !server.running && server.path.requested) {
         console.log('OPEN a FILE OSX');
+
         app.addRecentDocument(server.path.requested);
         create_window({url: server.url.default() + '/' + encodeURIComponent(server.path.requested), title: server.path.requested, show: false, focus: true, cacheClear: server.wasUpdated});
         server.path.requested = undefined;
@@ -2070,6 +2121,26 @@ function check_wl (configuration, cbk, window) {
         }, window);
         return;
     }
+
+
+    program.on('close', (code) => {
+
+
+        if (_nohup) {
+            windows.log.info("Process exited with code "+code);
+            windows.log.print("Process exited with code "+code);
+            program.exitedAlready = true;
+
+        } else {
+            windows.log.info("Process exited abnormally with code "+code);
+            windows.log.print("Process exited abnormally with code "+code);
+            windows.log.print("Restarting soon...");
+            setTimeout(() => {
+                check_wl(undefined, cbk, window);
+            }, 3000);
+        }
+
+    });
 
     //error
     program.on('error', function(err) {
@@ -2307,9 +2378,11 @@ function default_error_handling(success, reject, s, program, window) {
         windows.log.info('Activation required');
 
         new promt('binary', 'Do you have a developer license activated?', (answer) => {
+
+
             if (!answer) {
                 windows.log.clear();
-                windows.log.print('Please get the license from Wolfram website. A window will open shortly...', '\x1b[42m');
+                windows.log.print('Please get the license from Wolfram website. A window will open shortly...');
                 shell.openExternal("https://www.wolfram.com/engine/free-license/");
                 setTimeout(() => {
                     windows.log.clear();
@@ -2321,7 +2394,19 @@ function default_error_handling(success, reject, s, program, window) {
                 }, 3000);
 
             } else {
+                
+
+                if (program.exitedAlready) {
+                    windows.log.print('Something went wrong with wolframscript.\n\r Try to run wolframscript from your terminal');
+                    windows.log.print('Quitting in 5 seconds');
+                    setTimeout(() => {
+                        app.quit();
+                    }, 5000);
+                    return;
+                }
+
                 windows.log.clear();
+
                 activate_wl(program, success, () => {
                     //if rejected
                     windows.log.clear();
@@ -2355,6 +2440,14 @@ function kill_all(cbk, window) {
 function activate_wl(program, success, rejection, window) {
     windows.log.clear();
 
+    if (program.exitedAlready) {
+        windows.log.print('Something went wrong with wolframscript.\n\r Try to run wolframscript from your terminal');
+        windows.log.print('Quitting in 5 seconds');
+        setTimeout(() => {
+            app.quit();
+        }, 5000);
+        return;
+    }
 
     //answer checkers
     const check = (string) => {
@@ -2381,23 +2474,39 @@ function activate_wl(program, success, rejection, window) {
     }
 
 
-    windows.log.print('Please, enter your Wolfram ID (usually - your email)', '\x1b[42m');
+    windows.log.print('Enter your Wolfram ID in the field box at the bottom');
 
     new promt('input', 'Wolfram ID', (result) => {
         program.stdin.write(result.trim());
         program.stdin.write('\n');
 
         windows.log.clear();
-        windows.log.print('Please, enter your password', '\x1b[42m');
+        windows.log.print('Please, enter your password in the field box');
         new promt('input', 'Password', (result) => {
             program.stdin.write(result.trim());
             program.stdin.write('\n');
 
+            windows.log.clear();
+            windows.log.print('Waiting for the responce from wolframscript');
+
             let _nohup = false;
+            let timer = setTimeout(() => {
+                windows.log.print('Timeout. Restarting in 3 seconds...', '\x1b[42m');
+                program.stdin.end();
+                program.stdout.destroy();
+                program.stderr.destroy();
+
+
+                program.kill('SIGKILL');
+                kill_all(() => console.log('killed!'));
+                setTimeout(rejection, 3000);
+            }, 15000);
 
             program.stderr.once('data', (data) => {
                 if (_nohup) return;
                 _nohup = true;
+
+                clearTimeout(timer);
 
                 windows.log.print(data.toString());
                 if (check(data.toString())) return;
@@ -2424,6 +2533,8 @@ function activate_wl(program, success, rejection, window) {
             program.stdout.once('data', (data) => {
                 if (_nohup) return;
                 _nohup = true;
+
+                clearTimeout(timer);
 
                 windows.log.print(data.toString());
                 if (check(data.toString())) return;
@@ -2754,10 +2865,13 @@ const install_shipped = (cbk, window) => {
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
 
+
     fse.copySync(sub, installationFolder, { overwrite: true });
     windows.log.print('');
     windows.log.print('Done!');
     windows.log.info('Done!');
+    server.wasUpdated = true;
+
     cbk();
 }
 

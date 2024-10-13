@@ -37,6 +37,22 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-open',  path);
   },
 
+
+  openPath: (path) => {
+    console.log(path);
+    ipcRenderer.send('system-open-path',  path);
+  },
+  openExternal: (path) => {
+    console.log(path);
+    ipcRenderer.send('system-open-external',  path);
+  }, 
+  beep: () => {
+    ipcRenderer.send('system-beep');
+  },  
+  openFolder: (path) => {
+    ipcRenderer.send('system-show-folder', path);
+  },    
+
   topMenu: (name) => {
     console.log(name);
     ipcRenderer.send('system-menu',  name);
@@ -59,6 +75,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
       cbk(result);
     });
   },
+
+  requestScreenshot: (params, cbk) => {
+    ipcRenderer.invoke('capture', params).then((result) => {
+      cbk(result);
+    });
+  },  
 
   requestFolderWindow: (params, cbk) => {
     ipcRenderer.invoke('system-open-folder-something', params).then((result) => {

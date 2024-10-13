@@ -51,7 +51,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Tit
                         document.addEventListener('keydown', keyListener);
                         const submit = (el) => {
                             document.removeEventListener('keydown', keyListener);
-                            server.emitt('<Uid/>', '"'+encodeURIComponent(text.innerText)+'"', 'Success');
+                            server.emitt('<Uid/>', '"'+encodeURIComponent(text.innerText.trim())+'"', 'Success');
                         };
 
                         const close = () => {

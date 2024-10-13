@@ -109,7 +109,7 @@ With[{Filename = URLEncode[$Options["Filename"]], Parameters = $Options["Paramet
         ]
   },
 
-    <div id="{Uid}" class="hidden absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-700 rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 dark:bg-gray-800 dark:outline-gray-700" style="top:0; box-shadow: 1px 1px 12px 3px rgba(0,0,0,0.2)" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div id="{Uid}" class="hidden absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-700 rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 dark:bg-gray-800 dark:outline-gray-700" style="-webkit-app-region:none; top:0; box-shadow: 1px 1px 12px 3px rgba(0,0,0,0.2)" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
         <Layout/>
         <script type="module">
             const holder = document.getElementById('<Uid/>');

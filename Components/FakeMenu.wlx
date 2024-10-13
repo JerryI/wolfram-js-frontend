@@ -8,7 +8,7 @@ Component[OptionsPattern[]] := With[{
   With[{Layout = 
   {
     <div class="py-0 px-2" role="none">     
-        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="newshort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New notebook
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+N</kbd></span>
         </button>  
@@ -19,8 +19,8 @@ Component[OptionsPattern[]] := With[{
     </div>
   ,
     <div class="py-0 px-2" role="none">        
-        <button data-name="newshort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          New quick note
+        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          New note in folder
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+Shift+N</kbd></span>
         </button> 
         <button data-name="prompt" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
