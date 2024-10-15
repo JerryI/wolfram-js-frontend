@@ -1,0 +1,95 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$230], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "5ff10efc-0083-44cf-8434-a366f4658e49", 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
+os/04 - Animation/Windows 3D Pipes screensaver.wln", "Quick" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Windows 3D Pipes screensaver", 
+      CellObj[JerryI`Notebook`CellObj`$466]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Windows 3D Pipes screensaver\nA legendary \
+screensaver recreated in Woflram Language.\n\n> Based on web port by \
+[1j01](https://github.com/1j01/pipes)", "Display" -> "codemirror", 
+    "Hash" -> "ff824b81-8950-43af-ae7b-64a20c24852a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+   <|"Data" -> "# Windows 3D Pipes screensaver\nA legendary screensaver \
+recreated in Woflram Language.\n\n> Based on web port by \
+[1j01](https://github.com/1j01/pipes)", "Display" -> "markdown", 
+    "Hash" -> "f755ad7d-5420-4b25-8fcf-a2167bf9bab9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+   <|"Data" -> "(* Helper functions \
+*)\nRandomIntegerVectorWithinBox[min_List, max_List] := Table[\n  \
+RandomInteger[{min[[i]], max[[i]]}],\n  {i, \
+Length[min]}\n]\n\nPositionKey[pos_] := ToString[pos]\n\nWithinBoundsQ[pos_, \
+gridMin_, gridMax_] := And @@ Thread[pos >= gridMin] && And @@ Thread[pos <= \
+gridMax]\n\nIsUnoccupied[pos_, occupiedPositions_] := ! \
+KeyExistsQ[occupiedPositions, PositionKey[pos]]\n\n(* Main function to \
+simulate a pipe *)\nSimulatePipe[] := Module[\n  {\n    gridMin = {-10, -10, \
+-10},\n    gridMax = {10, 10, 10},\n    occupiedPositions = <||>,\n    \
+currentPosition,\n    positions,\n    lastPosition,\n    lastDirectionVector \
+= Null,\n    directionVector,\n    newPosition,\n    axis,\n    dir,\n    \
+possibleDirections,\n    triedDirections,\n    moveMade\n  },\n  \n  (* \
+Initialize the starting position *)\n  currentPosition = \
+RandomIntegerVectorWithinBox[gridMin, gridMax];\n  positions = \
+{currentPosition};\n  occupiedPositions[PositionKey[currentPosition]] = \
+True;\n  \n  (* Simulate the pipe growth *)\n  Function[Null,\n    \n    (* \
+Initialize possible directions *)\n    possibleDirections = {\n      {1, 0, \
+0}, {-1, 0, 0},\n      {0, 1, 0}, {0, -1, 0},\n      {0, 0, 1}, {0, 0, -1}\n  \
+  };\n    \n    (* Prioritize continuing in the same direction *)\n    \
+If[lastDirectionVector =!= Null && RandomReal[] < 0.5,\n      (* Try to \
+continue in the same direction *)\n      directionVector = \
+lastDirectionVector;\n      possibleDirections = \
+Prepend[DeleteCases[possibleDirections, directionVector], \
+directionVector];,\n      (* Shuffle possible directions *)\n      \
+possibleDirections = RandomSample[possibleDirections];\n    ];\n    \n    \
+triedDirections = {};\n    moveMade = False;\n    (* Try each possible \
+direction *)\n    Do[\n      directionVector = dir;\n      newPosition = \
+currentPosition + directionVector;\n      If[\n        \
+WithinBoundsQ[newPosition, gridMin, gridMax] && IsUnoccupied[newPosition, \
+occupiedPositions],\n        (* Valid move found *)\n        positions = \
+Append[positions, newPosition];\n        \
+occupiedPositions[PositionKey[newPosition]] = True;\n        \
+lastDirectionVector = directionVector;\n        currentPosition = \
+newPosition;\n        moveMade = True;\n        Break[];\n      ];\n      \
+AppendTo[triedDirections, dir];\n      ,\n      {dir, possibleDirections}\n   \
+ ];\n    \n    If[!moveMade,\n      (* No valid moves, terminate simulation \
+*)\n      $Failed\n    ,\n      positions\n    ]\n\n    \n  ]\n  \n]\n\n", 
+    "Display" -> "codemirror", "Hash" -> 
+     "53718209-000c-44de-a0da-26fbd2d7b13b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+   <|"Data" -> ".md\nMake it animated", "Display" -> "codemirror", 
+    "Hash" -> "cd717951-66fd-4d7d-8579-60ae8b446eea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+   <|"Data" -> "Make it animated", "Display" -> "markdown", 
+    "Hash" -> "1e9d8a46-e30e-416a-b020-4c1f14b2c2be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+   <|"Data" -> "\nWith[{\n  frame = CreateUUID[],\n  win = \
+CurrentWindow[]\n},\n  Module[{\n    pipeFunction = Function[Null, \
+$Failed],\n    pipesNumber = 0,\n    trigger = 1\n  },\n\n    \
+EventHandler[frame, Function[Null,\n      With[{\n        result = \
+pipeFunction[]\n      },\n        If[FailureQ[result],\n          With[{\n    \
+        segments = Unique[\"pipe\"],\n            generator = \
+SimulatePipe[]\n          },\n            pipesNumber++;\n            \
+pipeFunction = Function[Null,\n              With[{seg = generator[]}, \n     \
+           If[FailureQ[seg],\n                  $Failed\n                ,\n  \
+                segments = seg // N;\n                ]\n              ]\n    \
+        ];\n\n            pipeFunction[];\n\n            FrontSubmit[{\n      \
+        ColorData[97][pipesNumber],\n              Tube[segments // Offload, \
+0.2]\n            }, MetaMarker[marker], \"Window\"->win];\n          ]\n     \
+   ]\n      ];\n\n      trigger++;\n    ]];\n    \n\n    Graphics3D[{\n      \
+Opacity[0], Cuboid[{-4,-4,-4}, {4,4,4}], Opacity[1], MetaMarker[marker],\n    \
+  AnimationFrameListener[trigger // Offload, \"Event\"->frame]\n    }]\n  \
+]\n]", "Display" -> "codemirror", "Hash" -> 
+     "09cfb0b9-90b0-41e0-ae17-db75a7235b43", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>}, "serializer" -> "jsfn4"|>
