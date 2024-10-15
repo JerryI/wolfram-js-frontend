@@ -1,6 +1,6 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$64], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$58], 
    "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "8751a846-f8ed-4430-b615-446edeb5ba5b", 
+   "ModalsChannel" -> "fe3ecf26-91e7-457c-add9-5c0fbe8766a5", 
    "Objects" -> <|"3c1fc4cb-22ae-4460-847d-9fe94f3f12f7" -> 
       <|"Public" -> Hold[PCMPlayer[Offload[buffer$125891], 
           {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -21235,16 +21235,16 @@ lMykkNVgEKG1maJZlZmCbrGpslpeqamCQb6FqYWpromlpapqakmpiamFimAgB6hRU1\"*)(*]VB*)\
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
      "bc55cda1-da1b-49bf-af0e-208fe846dac4"|>, 
-   <|"Data" -> "Module[{text = \"\", win = CurrentWindow[], status = \" \"}, \
+   <|"Data" -> "Module[{text = \" \", win = CurrentWindow[], status = \" \"}, \
 Panel[Column[{\n  {EventHandler[InputButton[\"Speak\"], Function[Null,\n    \
 status = \"Listerning...\";\n    Then[FrontFetchAsync[GetVoice[3000], \
 \"Window\"->win], Function[str,\n      status = \"Processing...\";\n      \
 text = StringJoin[text, \"\\n\", SpeechRecognize[ImportString[str, \
 \"Base64\"], Method->\"NeuralNetwork\"]];\n      status = \" \";\n    ]]\n  \
-]], HTMLView[status // Offload, \"Style\"->\"font-size:10pt; color:green\"]} \
-// Row,\n\n  HTMLView[text // Offload, \"Style\"->\"width:500px\"]\n}], \
-Style[\"Click and speak\", 10]]]", "Display" -> "codemirror", 
-    "Hash" -> "72b27d69-7af2-4459-8714-2bf2fc4d138d", "Invisible" -> False, 
+]], TextView[status // Offload]} // Row,\n\n  HTMLView[text // Offload, \
+\"Style\"->\"width:500px\"]\n}], Style[\"Click and speak\", 10]]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "72b27d69-7af2-4459-8714-2bf2fc4d138d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
      "bc55cda1-da1b-49bf-af0e-208fe846dac4"|>, 
