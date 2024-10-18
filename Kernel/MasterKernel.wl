@@ -23,6 +23,8 @@ start[o_MasterKernel] := Module[{link},
     Internal`Kernel`Host = "127.0.0.1";
     Internal`Kernel`Hash = o["Hash"];
 
+    System`$FrontEndWLJSQ = True;
+
     Unprotect[FileNameJoin];
     FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{split = FileNameJoin[{any}] // FileNameSplit},
       URLBuild[{url, split} // Flatten] // Internal`RemoteFS
