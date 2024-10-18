@@ -186,7 +186,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
   Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
   Github -> "https://github.com/JerryI/wljs-toc" -> "master",
-  Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master"
+  Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
+  Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
