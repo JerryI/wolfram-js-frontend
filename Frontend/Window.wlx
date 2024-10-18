@@ -57,10 +57,10 @@ App[request_] := With[{
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
-            <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
         <body class="h-full owin:border owin:border-slate-400"> 
+        <ExtensionTemplates Template={"AppHead"} />
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>
