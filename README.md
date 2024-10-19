@@ -49,6 +49,7 @@ See [here](CONTRIBUTING.md)
 
 
 ## Media
+- Wolfram R&D 📽️ [WL Javascript Notebook](https://www.youtube.com/watch?v=Hen5qWfm6P0) 
 - YTS 📽️ [You don't need to program your figures manually](https://youtube.com/shorts/vxEaryg8Hxg?feature=share)
 - YTS 📽️ [How to do Dynamics in Computation Notebook](https://youtube.com/shorts/ItXbjNtGlew?feature=share)
 - YTS 📽️ [We made AI Copilot in your Notebook 🤖](https://youtube.com/shorts/wenBdDRpD4g?feature=share)
