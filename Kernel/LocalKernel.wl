@@ -92,6 +92,8 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         Internal`Kernel`Type = "LocalKernel";
         Internal`Kernel`Hash = uid;
 
+        System`$FrontEndWLJSQ = True;
+
         Internal`Kernel`Ping[secret_] := EventFire[Internal`Kernel`Stdout[secret], "Pong", True];
 
         Unprotect[FileNameJoin];
