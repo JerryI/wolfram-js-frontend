@@ -297,9 +297,9 @@ App[request_] := With[{
             <WLJSHeader List={ExtensionsJS}/>  
             <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
-            <ExtensionTemplates Template={"AppHead"} />
             <ExtensionsStyles/>
         </Head>  
+        <ExtensionTemplates Template={"AppHead"} />
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <div class="h-full">
           <Alert/>
