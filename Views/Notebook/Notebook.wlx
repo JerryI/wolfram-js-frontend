@@ -593,7 +593,7 @@ Component[OptionsPattern[]] := With[{
 
         "ToggleFocusedCell" -> Function[Null,
             With[{focused = notebook["FocusedCell"]},
-                WebUISubmit[UINotebook["ToggleCell", focused["Hash"]], $Client];
+                If[MatchQ[focused, _CellObj], WebUISubmit[UINotebook["ToggleCell", focused["Hash"]], $Client] ];
             ]
         ],
 
