@@ -1,14 +1,15 @@
 #!/usr/bin/env wolframscript
 
-PacletDirectoryUnload /@ PacletDirectoryLoad[];
+PacletDirectoryUnload /@ PacletDirectoryLoad[]; (* FIXME WL autoloads some crap *)
+(*PacletUninstall /@ PacletFind["KirillBelov*"];  FIXME WL gives priority to globally installed WL paclets if they have newer version*)
 
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
-If[FileExistsQ["LPM.wl"], 
-  Get["LPM.wl"], 
+If[FileExistsQ["LPM2.wl"], (* autoinstall locally LPM package manager*)
+  Get["LPM2.wl"], 
   With[{lpm = Import["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl", "String"]}, 
-    Export["LPM.wl", lpm, "String"]; Get["LPM.wl"]; 
+    Export["LPM2.wl", lpm, "String"]; Get["LPM2.wl"]; 
   ]
 ];
 
