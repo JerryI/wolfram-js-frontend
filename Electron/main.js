@@ -95,7 +95,8 @@ pluginsMenu.fetch = () => {
                     let section = mi["section"];
                     if (!section) section =  "misc";
 
-                    pluginsMenu.items[section].push(mitem);
+                    if (!(pluginsMenu.items[section].find((el) => {return el.label == mitem.label})))
+                        pluginsMenu.items[section].push(mitem);
                 });
             }
 
@@ -111,7 +112,8 @@ pluginsMenu.fetch = () => {
                         mitem.visible = mi["visible"];
                     }
 
-                    contextMenuExtensions.push(mitem);
+                    if (!(contextMenuExtensions.find((el) => {return el.label == mitem.label})))
+                        contextMenuExtensions.push(mitem);
                 });
             }
         }
@@ -161,7 +163,11 @@ const buildMenu = (opts) => {
                 { role: 'unhide' },
                 { type: 'separator' },
                 ...(options.footermenu),
-                { role: 'quit' }
+                { 
+                    label: 'Close App',
+                    role: 'quit',
+                    accelerator: shortcut('close')
+                 }
             ]
         }] : []),
         // { role: 'fileMenu' }
@@ -1637,9 +1643,6 @@ app.whenReady().then(() => {
     pluginsMenu.fetch();
     buildMenu({plugins: pluginsMenu.items});
 
-    globalShortcut.register('CommandOrControl+W', () => {
-        console.log('Electron loves global shortcuts!')
-    });
 
     powerSaver();
 

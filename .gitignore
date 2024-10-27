@@ -25,6 +25,7 @@ wljs_packages_users.wl
 .packages
 .env
 /LPM.wl
+/LPM2.wl
 .thumbnails
 Kernel/.lastpath
 Demo/*.wl
