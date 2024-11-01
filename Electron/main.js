@@ -59,6 +59,97 @@ trackpadUtils.onForceClick(() => {
 	console.log("onForceClick");
 });
 
+const cli_info = {
+    'darwin': {
+        cliPath: '/usr/local/bin/',
+        cliLink: '/usr/local/bin/wljs',
+        script: path.join(__dirname, 'build', 'mac.sh')
+    }
+}
+
+
+var sudo = require('sudo-prompt');
+
+function check_cli_installed(log_window) {
+    if (!app.isPackaged) return;
+
+    if (!cli_info[process.platform]) {
+        console.warn('Cli is not supported on platform '+process.platform);
+        return;
+    }
+
+    fs.exists(cli_info[process.platform].cliLink, (existsQ) => {
+        if (existsQ) {
+            console.log('Cli is installed');
+            return;
+        }
+
+        const cliPath = cli_info[process.platform].cliPath;
+
+        console.log('Cli is not installed');
+
+        if (fs.existsSync(path.join(installationFolder, '.nocli_i'))) {
+            console.log('skipped because of a user');
+            return;
+        }
+
+        const install = () => {
+            const exePath = app.getPath('exe');
+
+                console.log(exePath);
+        
+                console.log(path.resolve(cli_info[process.platform].script));
+        
+                
+                const options = {
+                  name: 'WLJS Elevated module'
+                };
+                
+                sudo.exec('bash '+'"'+path.resolve(cli_info[process.platform].script)+'" '+'"'+cliPath+'" '+'"'+exePath+'"', options,
+                  function(error, stdout, stderr) {
+                    if (error) throw error;
+                    console.log('stdout: ' + stdout);
+                  }
+                );
+        }
+
+        if (!log_window) {
+            install();
+            return;
+        }
+
+        new promt('binary', 'Do you want to install CLI (wljs) as well?', (answer) => {
+            if (answer) {
+                install()
+            } else {
+                fs.writeFile(path.join(installationFolder, '.nocli_i'), 'Nothing to see here', function(err) {
+                    if (err) throw err;
+                    cbk();
+                });
+            }
+        }, log_window);
+
+        
+
+    })
+}
+
+
+
+    /*if (os_cli_file[process.platform]) {
+        const from = path.join(__dirname, 'build', os_cli_file[process.platform]);
+        const to = os_cli_dest[process.platform];
+
+        var sudoer = new Sudoer({name: 'WLJS Elevated Module'});
+        sudoer.spawn('cp', ['$PARAM'], {env: {PARAM: 'VALUE'}}).then(function (cp) {
+       
+        
+            const res = cp.output.stdout;
+            console.log(res);
+        });        
+    }
+    */
+    
 
 //fetch contex menus items from wljs_packages folder
 
@@ -1667,6 +1758,7 @@ app.whenReady().then(() => {
     //make a log window and start WL
     windows.log.construct((log_window) => {
         windows.log.version(app.getVersion());
+        check_cli_installed(log_window);
         ipcMain.on('reinstall', () => {
             reinstall((state) => {
                 if (state) {
@@ -1689,6 +1781,11 @@ app.whenReady().then(() => {
 
     ipcMain.on('system-harptic', () => {
         trackpadUtils.triggerFeedback();
+    });
+
+    ipcMain.on('install-cli', () => {
+        //trackpadUtils.triggerFeedback();
+        check_cli_installed();
     });
 
     ipcMain.handle('capture', async (e, area) => {

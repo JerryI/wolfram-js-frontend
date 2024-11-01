@@ -93,6 +93,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('system-window-expand',  {});
   },
 
+  installCli: () => {
+    ipcRenderer.send('install-cli',  {});
+  },  
+
   windowShrink: (path) => {
     console.log(path);
     ipcRenderer.send('system-window-shrink',  {});
