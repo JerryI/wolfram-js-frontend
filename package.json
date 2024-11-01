@@ -61,7 +61,9 @@
     "linux": {
       "target": [
         "AppImage",
-        "deb"
+        "deb",
+        "Snap",
+        "Flatpak"
       ],
       "fileAssociations": [
         {
