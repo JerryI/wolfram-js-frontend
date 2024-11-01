@@ -1522,8 +1522,14 @@ else {
             }
 
             let pos = 1;
-            if (new RegExp('--').exec(argv[pos])) pos++;
-            if (new RegExp('--').exec(argv[pos])) pos++;
+
+            while(pos < argv.length) {
+                if (new RegExp('--').exec(argv[pos])) {
+                    pos++;
+                } else {
+                    break;
+                }
+            }
 
             if (isFile(argv[pos])) {
                 create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
@@ -1991,8 +1997,18 @@ function create_first_window() {
         }
 
         if (process.argv[1].length > 3) {
-            app.addRecentDocument(process.argv[1]);
-            create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[1]), title: process.argv[1], show: false, focus: true, cacheClear: server.wasUpdated});
+            let pos = 1;
+
+            while(pos < process.argv.length) {
+                if (new RegExp('--').exec(process.argv[pos])) {
+                    pos++;
+                } else {
+                    break;
+                }
+            }
+
+            app.addRecentDocument(process.argv[pos]);
+            create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: process.argv[pos], show: false, focus: true, cacheClear: server.wasUpdated});
         } else  {
             create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false, cacheClear: server.wasUpdated});
         }
