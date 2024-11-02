@@ -21,7 +21,6 @@ Controls = $Options["Controls"];
         window.electronAPI.listener('reopenasquick', (ev) => {
             server.emitt('<Controls/>', `True`, 'ReopenAsQuickNote');
         });
-
         
 
         window.electronAPI.listener('unhideallcells', () => {

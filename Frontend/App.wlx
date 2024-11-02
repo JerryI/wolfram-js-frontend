@@ -70,6 +70,16 @@ NotebookQ[str_] := FileExtension[str] === "wln"
 
 reopenNotebookAsQuick[_, GlobalMessanger_, __] := EventFire[GlobalMessanger, "Info", "You are already in a quick view"]
 
+checkUpdates[GlobalMessanger_, ModalController_, Client_] := With[{},
+  DeleteFile[FileNameJoin[{Directory[], ".wljs_timestamp"}] ];
+  DeleteFile[FileNameJoin[{Directory[], ".wl_timestamp"}] ];
+
+  WebUISubmit[Global`UIClearCache[](*`*), Client];
+
+  EventFire[GlobalMessanger, "Warning", "Restart is required"];
+]
+
+
 renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
   filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
@@ -196,6 +206,8 @@ Map[Function[item,
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
+  ModalController = CreateUUID[],
+  GlobalMessanger = CreateUUID[],
   Path = Switch[$OperatingSystem,
     "Windows",  
     URLDecode @ StringDrop[request["Path"],1],  
@@ -214,9 +226,8 @@ App[request_] := With[{
         
         SidebarId = CreateUUID[],
         OnLoad    = CreateUUID[],
-        ModalController = CreateUUID[],
         kernels = Hold[AppExtensions`KernelList] (*`*),
-        GlobalMessanger = CreateUUID[],
+        
         GlobalParameters = Join[<|"Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]), "ElectronQ" -> ElectronQ[request], "AccentColor"->"teal", "BackupTimeout" -> (3 60 1000)|>, settings],
         AppClass = If[ElectronQ[request], "", "dark:bg-gray-800"],
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
@@ -254,6 +265,10 @@ App[request_] := With[{
                   "OpenDocs" -> Function[Null,
                     WebUISubmit[Global`UIDocsOpen[env["docs"], "index.html"](*`*), $Client];
                   ], 
+
+                  "CheckUpdates" -> Function[Null,
+                    checkUpdates[GlobalMessanger, ModalController, $Client];
+                  ],
 
                   "Exit" -> Function[Null,
                     Exit[0];
@@ -303,7 +318,8 @@ App[request_] := With[{
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
-      "ReopenAsQuick" -> (reopenNotebookAsQuick[#, GlobalMessanger, ModalController, $Client]&)
+      "ReopenAsQuick" -> (reopenNotebookAsQuick[#, GlobalMessanger, ModalController, $Client]&),
+      "CheckUpdates" -> (checkUpdates[GlobalMessanger, ModalController, $Client]&)
     }];
   {
     "<!DOCTYPE html>"
@@ -353,6 +369,14 @@ Script[Rule["Secret", Secret_]] := With[{},
             fake.target = "_blank";
             fake.href = window.location.protocol + "//" + window.location.hostname + ':'+String(port) + '/' + link;
             fake.click();
+    }
+
+    core.UIClearCache = async (args, env) => {
+      if (window.electronAPI) {
+        if (window.electronAPI.clearCache) {
+          window.electronAPI.clearCache();
+        }
+      }
     }
 
   </script>

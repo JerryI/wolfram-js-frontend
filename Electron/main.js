@@ -63,12 +63,61 @@ const cli_info = {
     'darwin': {
         cliPath: '/usr/local/bin/',
         cliLink: '/usr/local/bin/wljs',
-        script: path.join(__dirname, 'build', 'mac.sh')
+        cmd: 'bash',
+        
+        script_uninstall: path.join(__dirname, 'build', 'cli_unix_remove.sh'),
+        script: path.join(__dirname, 'build', 'cli_unix.sh')
+    },
+
+    'linux': {
+        cliPath: '/usr/local/bin/',
+        cliLink: '/usr/local/bin/wljs',
+        cmd: 'bash',
+        
+        script_uninstall: path.join(__dirname, 'build', 'cli_unix_remove.sh'),
+        script: path.join(__dirname, 'build', 'cli_unix.sh')
+    },
+    
+    'win32': {
+        cliPath: '%SystemRoot%\\System32\\wljs.bat',
+        cliLink: '%SystemRoot%\\System32\\wljs.bat',
+        cmd: '',
+        
+        script_uninstall: path.join(__dirname, 'build', 'cli_win_remove.bat'),
+        script: path.join(__dirname, 'build', 'cli_win.bat')        
     }
 }
 
 
 var sudo = require('sudo-prompt');
+
+function cli_uninstall() {
+    if (!app.isPackaged) return;
+    if (!cli_info[process.platform]) return;
+
+    fs.exists(cli_info[process.platform].cliLink, (existsQ) => {
+        if (!existsQ) {
+            console.log('Cli is not installed');
+            return;
+        }
+
+        const exePath = app.getPath('exe');
+        const cliPath = cli_info[process.platform].cliPath;
+
+        const options = {
+            name: 'WLJS Elevated module'
+          };
+          
+          sudo.exec((cli_info[process.platform].cmd + ' "'+path.resolve(cli_info[process.platform].script_uninstall)+'" '+'"'+cliPath+'" '+'"'+exePath+'"').trim(), options,
+            function(error, stdout, stderr) {
+              if (error) throw error;
+              console.log('stdout: ' + stdout);
+            }
+          ); 
+    });
+
+   
+}
 
 function check_cli_installed(log_window) {
     if (!app.isPackaged) return;
@@ -105,7 +154,7 @@ function check_cli_installed(log_window) {
                   name: 'WLJS Elevated module'
                 };
                 
-                sudo.exec('bash '+'"'+path.resolve(cli_info[process.platform].script)+'" '+'"'+cliPath+'" '+'"'+exePath+'"', options,
+                sudo.exec((cli_info[process.platform].cmd + ' "'+path.resolve(cli_info[process.platform].script)+'" '+'"'+cliPath+'" '+'"'+exePath+'"').trim(), options,
                   function(error, stdout, stderr) {
                     if (error) throw error;
                     console.log('stdout: ' + stdout);
@@ -410,7 +459,15 @@ const buildMenu = (opts) => {
                             console.log(ev);
                             shell.showItemInFolder(installationFolder);
                         }
-                    }
+                    },
+                    {
+                        label: 'Check updates',
+                        click: async(ev) => {
+                            console.log(ev);
+                            windows.focused.call('checkupdates', true);
+                        }
+                    },
+                    ...(isMac ? [{ type: 'separator' }] : [])                 
                 ] : []),
                 //win.webContents.send('context', 'Iconize');
                 ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...(options.footermenu), { role: 'quit' }])
@@ -760,6 +817,10 @@ callFakeMenu["prompt"] = () => {
 
 callFakeMenu["quickmode"] = () => {
     windows.focused.call('reopenasquick', true);
+}
+
+callFakeMenu["checkupdates"] = () => {
+    windows.focused.call('checkupdates', true);
 }
 
 callFakeMenu["exit"] = () => {
@@ -1788,6 +1849,11 @@ app.whenReady().then(() => {
         check_cli_installed();
     });
 
+    ipcMain.on('uninstall-cli', () => {
+        //trackpadUtils.triggerFeedback();
+        cli_uninstall();
+    });    
+
     ipcMain.handle('capture', async (e, area) => {
         const img = await e.sender.capturePage(area)
         return img.toDataURL();
@@ -1803,6 +1869,21 @@ app.whenReady().then(() => {
         const bonds = windows.focused.win.getBounds();
         if (bonds.width < 800) {
             windows.focused.win.setBounds({ width: 800 , animate: true}, true);
+        }
+    });
+
+    ipcMain.on('clear-cache', (e) => {
+        const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
+        windows.log.print('Cache reset');
+
+        session.defaultSession.clearStorageData();
+        session.defaultSession.clearCache();
+
+        if (senderWindow) {
+
+
+            const ses = senderWindow.webContents.session;
+            ses.clearCache();
         }
     });
 

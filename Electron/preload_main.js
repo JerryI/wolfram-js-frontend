@@ -97,6 +97,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.send('install-cli',  {});
   },  
 
+  clearCache: () => {
+    ipcRenderer.send('clear-cache',  {});
+  },
+
+  uninstallCli: () => {
+    ipcRenderer.send('uninstall-cli',  {});
+  },
+
   windowShrink: (path) => {
     console.log(path);
     ipcRenderer.send('system-window-shrink',  {});

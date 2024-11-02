@@ -27,9 +27,6 @@ cat << EOF > "$file_path"
 #!/bin/bash
 
 APP_PATH="$app_path"
-CONTENTS="\$APP_PATH/Contents"
-ELECTRON="\$CONTENTS/MacOS/WLJS Notebook"
-CLI="\$CONTENTS/Resources/Electron/main.js"
                                         
 P=\$(realpath "\$@")
 "\$APP_PATH" "\$P"
