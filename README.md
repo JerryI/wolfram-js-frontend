@@ -179,6 +179,21 @@ If you face any issues, try to install avahi daemon.
 ## Desktop App ✨
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
 
+### Notes for Windows users
+Works good
+
+### Note for Debian users
+Works good. You might need to install `libuv` dependency
+
+### Note for Ubuntu users
+There will be a problem with starting related to a new [AppArmor issue](https://github.com/electron/electron/issues/42510#issuecomment-2171583086) om Ubuntu 24.04. A temporal fix will be to lift the restrictions globally
+```bash
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+```
+
+### Note for MacOS users
+Works good.
+
 Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
 
 ```shell
