@@ -173,11 +173,18 @@ WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved
 brew install --cask wolfram-engine
 ```
 
-*a side note for Linux users*
-If you face any issues, try to install avahi daemon.
+*a side note for OSX/Linux users*
+If you face any issues, try to install avahi daemon and `libuv`.
 
 ## Desktop App ✨
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
+
+### CLI
+You can start it from the terminal like VSCode by typing
+
+```bash
+wljs .
+```
 
 ### Notes for Windows users
 Works good
@@ -190,6 +197,8 @@ There will be a problem with starting related to a new [AppArmor issue](https://
 ```bash
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 ```
+
+__You can always bypass this complexity by using [console application instead](#Standalone Server) (see Standalone Server or Docker).__
 
 ### Note for MacOS users
 Works good.
@@ -206,6 +215,8 @@ brew install --cask wljs-notebook
 See [here](container/README.md)
 
 ## Standalone Server
+Desktop application is just a wrapper with a built-in Chromium browser, context menu bindings and file associations. WLJS Notebook itself __is a web-based application and can run using just `wolframscript` with no external services or any other programs__.
+
 Clone this repository and run:
 
 ```shell
@@ -259,7 +270,7 @@ You might need to install the following (for `Image` and some other graphics to 
 - `Ctrl+-` make subscript on selected
 
 ## Package System
-WLJS Notebook fully supports the native Wolfram Language paclets/packages system and cna be installed from the command palette (paste there a Github url to a package)
+WLJS Notebook fully supports the native Wolfram Language paclets/packages system and cna be installed from the command palette (paste there a Github url to a package). It means most packages will work like in Mathematica with some limitations on dynamics (`DynamicModule`, `Opener` and etc).
 
 
 ## Technology Stack
