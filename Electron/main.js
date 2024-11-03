@@ -30,7 +30,7 @@ const { signal } = controller;
 
 const { shell } = require('electron')
 
-const { PARAMS, VALUE, MicaBrowserWindow, IS_WINDOWS_11, WIN10 } = require('mica-electron');
+const { IS_WINDOWS_11, WIN10 } = require('mica-electron');
 
 const isWindows = process.platform === 'win32'
 const isMac = process.platform === 'darwin'
@@ -80,7 +80,7 @@ const cli_info = {
     
     'win32': {
         cliPath: '%SystemRoot%\\System32\\wljs.bat',
-        cliLink: '%SystemRoot%\\System32\\wljs.bat',
+        cliLink: isWindows ? path.join(process.env.windir, 'System32', 'wljs.bat') : '',
         cmd: '',
         
         script_uninstall: path.join(__dirname, 'build', 'cli_win_remove.bat'),
@@ -173,7 +173,6 @@ function check_cli_installed(log_window) {
             } else {
                 fs.writeFile(path.join(installationFolder, '.nocli_i'), 'Nothing to see here', function(err) {
                     if (err) throw err;
-                    cbk();
                 });
             }
         }, log_window);
@@ -2185,10 +2184,15 @@ function create_first_window() {
                 }
             }
 
-            app.addRecentDocument(process.argv[pos]);
-            create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: process.argv[pos], show: false, focus: true, cacheClear: server.wasUpdated});
+            if (isFile(process.argv[pos])) {
+                app.addRecentDocument(process.argv[pos]);
+                create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+            } else {
+                create_window({url: server.url.default() + '/folder/' + encodeURIComponent(process.argv[pos]), title:  path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+            }
+
         } else  {
-            create_window({url: server.url.default(), title: 'Notebook', show: false, focus: false, cacheClear: server.wasUpdated});
+            create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
         }
 
         server.wasUpdated = false;
