@@ -306,7 +306,7 @@ const buildMenu = (opts) => {
                     label: 'Close App',
                     role: 'quit',
                     accelerator: shortcut('close')
-                 }
+                }
             ]
         }] : []),
         // { role: 'fileMenu' }
@@ -469,7 +469,7 @@ const buildMenu = (opts) => {
                     ...(isMac ? [{ type: 'separator' }] : [])                 
                 ] : []),
                 //win.webContents.send('context', 'Iconize');
-                ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...(options.footermenu), { role: 'quit' }])
+                ...(isMac ? [{ role: 'close' }] : [{ type: 'separator' }, ...(options.footermenu)])
             ]
         },
         // { role: 'editMenu' }
@@ -571,7 +571,11 @@ const buildMenu = (opts) => {
                     { type: 'separator' },
                     { role: 'window' }
                 ] : [
-                    { role: 'close' }
+                    { 
+                        label: 'Close Window',
+                        role: 'close',
+                        accelerator: shortcut('close')
+                    }
                 ])
             ]
         },
