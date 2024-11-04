@@ -160,6 +160,7 @@ You do not need to target *60FPS*, Javascript will interpolate the transitions s
 WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved). __No internet connection is needed__.
 
 ## Sponsors (one-time or monthly) ☺️
+- @VadimBim, ???
 - Gani Ganapathi, USA
 - Jon L. Woodard, USA
 - @MitsuhaMiyamizu, Mars
