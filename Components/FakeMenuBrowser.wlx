@@ -3,7 +3,7 @@ With[{
   Event = OptionValue["Event"],
   Plugins = Join[<|"view"->{}, "misc"->{}, "edit"->{}, "file"->{}|>, OptionValue["Plugins"]],
   AltKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Alt+", "Linux", "Alt+", _, "&#8984;/Alt+"],
-  ToggleKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;+2", "Windows", "Ctrl+W", "Linux", "Alt+2", _, "&#8984;+2/Ctrl+W"],
+  ToggleKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;+2", "Windows", "Alt+2", "Linux", "Alt+2", _, "&#8984;+2/Alt+2"],
   MetaKey = Switch[OptionValue["Navigator"],  "OSX", "&#8984;", "Windows", "Ctrl+", "Linux", "Ctrl+", _, "&#8984;/Ctrl+"]
 },
   With[{Layout = 

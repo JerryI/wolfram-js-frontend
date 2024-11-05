@@ -2854,6 +2854,10 @@ ol {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+[os="Unix"] .linux\:pt-0 {
+  padding-top: 0;
+}
+
 [os="Unix"] .linux\:m-4 {
   margin: 1rem;
 }

@@ -19,7 +19,7 @@ Component[OptionsPattern[]] := With[{
     </div>
   ,
     <div class="py-0 px-2" role="none">        
-        <button data-name="new" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="new" class="block w-full text-left hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New note in folder
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+Shift+N</kbd></span>
         </button> 
@@ -87,7 +87,7 @@ Component[OptionsPattern[]] := With[{
         <button data-name="togglecells" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
           Show/Hide cell
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Ctrl+W</kbd></span>
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+2</kbd></span>
         </button>                     
         <button data-name="clearoutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
