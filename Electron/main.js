@@ -1031,12 +1031,6 @@ const windows = {
                     vibrancy: "sidebar", // in my case...
                     frame: true,
                     autoHideMenuBar: true,
-                    titleBarStyle: 'hidden',
-                    titleBarOverlay: {
-                        color: 'rgba(255, 255, 255, 0.0)',
-                        symbolColor: 'rgba(128, 128, 128, 1.0)'
-                    },
-                    autoHideMenuBar: true,
                     width: 600,
                     height: 400,
                     resizable: false,
@@ -1192,6 +1186,7 @@ function create_window(opts, cbk = () => {}) {
             focus: false,
             width: 1024,
             height: 640,
+            linuxMenuBar: true,
             override: {}
         };
 
@@ -1205,21 +1200,29 @@ function create_window(opts, cbk = () => {}) {
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
+            options.linuxMenuBar = false;
         }
 
         if ((new RegExp(/docFind/)).exec(options.url)) {
             options.width = options.minWidth;
+            options.linuxMenuBar = false;
+        }
+
+        if ((new RegExp(/settings/)).exec(options.url)) {
+            options.linuxMenuBar = false;
         }
         
 
         if (new RegExp(/acknowledgments/).exec(options.url)) {
             options.height = 310;
+            options.linuxMenuBar = false;
         }
 
         if (new RegExp(/window/).exec(options.url)) {
             options.minWidth = 100;
             options.width = 500;
             options.height = 500;
+            options.linuxMenuBar = false;
         }        
         
 
@@ -1227,6 +1230,7 @@ function create_window(opts, cbk = () => {}) {
             options.minWidth = 500*1024.0/800.0;;
             options.width = 576*1024.0/800.0;
             options.height = 520*640.0/600.0;
+            options.linuxMenuBar = false;
         }
 
 
@@ -1235,6 +1239,7 @@ function create_window(opts, cbk = () => {}) {
             options.width = options.minWidth;
             options.height = 2*112 * 640.0/600.0;
             options.override.frame = false;
+            options.linuxMenuBar = false;
             options.override.resizable = false;
             options.override.transparent = true;
             options.override.titleBarStyle = undefined;
@@ -1380,9 +1385,7 @@ function create_window(opts, cbk = () => {}) {
         } else {
             win = new BrowserWindow({
                 frame: true,
-                autoHideMenuBar: true,
-                titleBarStyle: 'hidden',
-                titleBarOverlay: true,
+                autoHideMenuBar: !(options.linuxMenuBar),
                 width: Math.round(options.width),
                 height: Math.round(options.height),
                 minWidth: Math.round(options.minWidth),

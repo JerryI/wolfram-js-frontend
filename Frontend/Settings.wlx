@@ -22,6 +22,7 @@ App[request_] := With[{
         GlobalControls  = CreateUUID[],
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
+        NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>
     },
 
@@ -37,7 +38,7 @@ App[request_] := With[{
       any_ :> (EventFire[AppEvent, any, #]&)
     }]; 
 
-    <html class="h-full"> 
+    <html class="h-full" os="{NavigatorOS}"> 
         <Head Title={"Settings"}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
