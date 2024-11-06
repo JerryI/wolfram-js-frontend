@@ -18,6 +18,7 @@
     "dist-linux": "electron-builder --linux --x64",
     "dist86": "electron-builder --x64",
     "dist-all": "electron-builder -mwl --x64",
+    "remove-ds": "find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
