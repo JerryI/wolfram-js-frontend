@@ -1,6 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$281], 
-   "HaveToSaveAs" -> False, "Objects" -> 
-    <|"7fa3d105-973d-43df-aa2e-88d286b02c82" -> 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$894], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "8d407932-573c-4c34-a3c6-6415a2cf115a", 
+   "Objects" -> <|"7fa3d105-973d-43df-aa2e-88d286b02c82" -> 
       <|"Public" -> Hold[Graphics[{{{{}}, {{Hue[0.67, 0.6, 0.6], 
               Directive[RGBColor[0.2947336, 0.4054232, 0.5678384000000001]], 
               {{Arrowheads[{{0.028124999999999976, 1}}], 
@@ -33618,78 +33619,77 @@
                  3.9330177307128906}}]}, {Hue[0.340695716566418], 
               Arrow[{{5, 5}, {5.062976837158203, 5.002185821533203}}]}}}}, 
           PlotRange -> {{0, 6}, {0, 6}}, ImagePadding -> None]]|>|>, 
-   "Path" -> 
-    "/users/kirill/Temp/Sketches/Fluid simulation/Fluid Simulation Part \
-1.wln", "Quick" -> True, "Symbols" -> <||>, 
-   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
-      "Real-time Fluid Simulation", CellObj[JerryI`Notebook`CellObj`$383]], 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend/Demos/01 - \
+Tutorials/D2 - Fluid Simulation Part 1.wln", "Quick" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Real-time Fluid Simulation", CellObj[JerryI`Notebook`CellObj`$805]], 
      Notebook`Editor`TOC`Private`heading[2, "Working with a Grid", 
-      CellObj[JerryI`Notebook`CellObj`$284]], 
+      CellObj[JerryI`Notebook`CellObj`$809]], 
      Notebook`Editor`TOC`Private`heading[3, "Custom Syntax Sugar", 
-      CellObj[JerryI`Notebook`CellObj`$298]], 
+      CellObj[JerryI`Notebook`CellObj`$823]], 
      Notebook`Editor`TOC`Private`heading[2, "Divergence", 
-      CellObj[JerryI`Notebook`CellObj`$321]], 
+      CellObj[JerryI`Notebook`CellObj`$846]], 
      Notebook`Editor`TOC`Private`heading[3, "Example", 
-      CellObj[JerryI`Notebook`CellObj`$323]], 
+      CellObj[JerryI`Notebook`CellObj`$848]], 
      Notebook`Editor`TOC`Private`heading[3, "Removing the Divergence", 
-      CellObj[JerryI`Notebook`CellObj`$336]], 
+      CellObj[JerryI`Notebook`CellObj`$861]], 
      Notebook`Editor`TOC`Private`heading[3, "Interactive Example", 
-      CellObj[JerryI`Notebook`CellObj`$350]], 
+      CellObj[JerryI`Notebook`CellObj`$875]], 
      Notebook`Editor`TOC`Private`heading[3, "Dynamic Evaluation", 
-      CellObj[JerryI`Notebook`CellObj`$360]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$885]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Real-time Fluid Simulation\n*Using Wolfram \
 Language and WLJS libraries*\n\nIn this notebook, we will explore a simple \
 technique for simulating 2D incompressible fluids for visual effects. This \
 work is mostly based on Jos Stam. Stable Fluids SIGGRAPH 1999 as well as a \
 tutorial by [Karl Sims](https://www.karlsims.com/fluid-flow.html)", 
     "Display" -> "codemirror", "Hash" -> 
-     "4ef2422d-406d-462a-bad0-cbd0b8bef54a", "Invisible" -> False, 
+     "0703cf4b-5b1a-4f22-b919-a913014a87f5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "# Real-time Fluid Simulation\n*Using Wolfram Language and \
 WLJS libraries*\n\nIn this notebook, we will explore a simple technique for \
 simulating 2D incompressible fluids for visual effects. This work is mostly \
 based on Jos Stam. Stable Fluids SIGGRAPH 1999 as well as a tutorial by [Karl \
 Sims](https://www.karlsims.com/fluid-flow.html)", "Display" -> "markdown", 
-    "Hash" -> "a590103c-37c6-47be-aea3-2ea01ecb2f5f", "Invisible" -> False, 
+    "Hash" -> "3f88acf6-dc0d-415a-9c6e-b3954c9c1409", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n__TL;DR__\n\n<a href=\"#tldr\" class=\"p-1 border-gray \
 bg-teal-300 rounded text-sm\">Click here</a> to scroll to the final \
 example\n\n---", "Display" -> "codemirror", 
-    "Hash" -> "996aaaa7-6cc1-443d-b9e5-e123301e6d27", "Invisible" -> False, 
+    "Hash" -> "a681f0ac-3ac0-4a40-b307-43f5c18b33a5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">__TL;DR__\n\n<a href=\"#tldr\" class=\"p-1 border-gray \
 bg-teal-300 rounded text-sm\">Click here</a> to scroll to the final \
 example\n\n---", "Display" -> "markdown", 
-    "Hash" -> "49788f94-1d4e-45e8-b51f-e364482497c6", "Invisible" -> False, 
+    "Hash" -> "bd6fd862-efee-4684-a7b2-3c0ec09bf9b4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n## Working with a Grid\n\nHere we will use the Euler \
 method to represent a fluid, i.e., by storing velocity as a vector field \
 discretized to a uniform grid.", "Display" -> "codemirror", 
-    "Hash" -> "749081d3-0a53-49ed-b617-252c0445d523", "Invisible" -> False, 
+    "Hash" -> "8ef5b2e4-d831-46ee-823d-2fea2cc8f86b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">## Working with a Grid\n\nHere we will use the Euler method \
 to represent a fluid, i.e., by storing velocity as a vector field discretized \
 to a uniform grid.", "Display" -> "markdown", 
-    "Hash" -> "6ae03e8e-89a4-43ea-9d7d-ce1c12ddadd4", "Invisible" -> False, 
+    "Hash" -> "c1153151-67c5-4dfd-a649-5655f7e0f79b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = Table[Cross[{i,j,0}, {0,0,1}][[;;2]], {i, 5}, {j, \
 5}];\n% // MatrixForm ", "Display" -> "codemirror", 
-    "Hash" -> "779c45a2-8350-4ff7-ae40-4b59a37c05d1", "Invisible" -> False, 
+    "Hash" -> "74a3a573-87d2-4324-a102-0d6df63439f5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+    "Notebook" -> "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "((*GB[*){{((*GB[*){{1}(*||*),(*||*){-1}}(*]GB*))(*|*),(*|*)((\
 *GB[*){{2}(*||*),(*||*){-1}}(*]GB*))(*|*),(*|*)((*GB[*){{3}(*||*),(*||*){-1}}\
 (*]GB*))(*|*),(*|*)((*GB[*){{4}(*||*),(*||*){-1}}(*]GB*))(*|*),(*|*)((*GB[*){\
@@ -33707,94 +33707,94 @@ B[*){{4}(*||*),(*||*){-4}}(*]GB*))(*|*),(*|*)((*GB[*){{5}(*||*),(*||*){-4}}(*\
 ){{2}(*||*),(*||*){-5}}(*]GB*))(*|*),(*|*)((*GB[*){{3}(*||*),(*||*){-5}}(*]GB\
 *))(*|*),(*|*)((*GB[*){{4}(*||*),(*||*){-5}}(*]GB*))(*|*),(*|*)((*GB[*){{5}(*\
 ||*),(*||*){-5}}(*]GB*))}}(*]GB*))", "Display" -> "codemirror", 
-    "Hash" -> "9b083713-5c64-426a-923b-52fc43142179", "Invisible" -> False, 
+    "Hash" -> "7df65f24-80c7-401a-bf50-62ecc4935496", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nThen one can easily visualize it as a vector field:", 
     "Display" -> "codemirror", "Hash" -> 
-     "88ade982-53ba-441d-bb2d-844961185cd8", "Invisible" -> False, 
+     "203c78f6-8218-4718-890e-b7b82894e380", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Then one can easily visualize it as a vector field:", 
     "Display" -> "markdown", "Hash" -> 
-     "d50d00d5-4e9a-4b53-838c-17e4566c452d", "Invisible" -> False, 
+     "317041c8-4713-46c2-8232-8677fc6a464f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid // ListVectorPlot", "Display" -> "codemirror", 
-    "Hash" -> "81ba281e-d30d-40d9-a7b8-1bedebee860d", "Invisible" -> False, 
+    "Hash" -> "57756056-7501-4d9e-8547-d6213e8d7732", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"7fa3d105-973d-43df-aa2e-88d286b02c82\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6clG\
 qcYGpjqWpobp+iaGKek6SYmGqXqWlikGFmYJRkYJVsYAQCGjBWk\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "49d2f1b8-7e0d-4d68-a9e2-b496eb99bafb", "Invisible" -> False, 
+     "22f5cba7-8553-4e89-84bc-6f72a9ea4887", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nFor the best performance, we will use `Map` or \
 `MapIndexed` with a pure function inside. Then Wolfram Kernel is able to use \
 JIT compilation. For example:", "Display" -> "codemirror", 
-    "Hash" -> "d6d08530-f7bd-4414-b779-7110cb92fa79", "Invisible" -> False, 
+    "Hash" -> "a18b0fa5-3fcf-457c-9aa2-2a22bf660b75", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">For the best performance, we will use `Map` or `MapIndexed` \
 with a pure function inside. Then Wolfram Kernel is able to use JIT \
 compilation. For example:", "Display" -> "markdown", 
-    "Hash" -> "189f6021-5678-4ecd-8990-2dbac775eb85", "Invisible" -> False, 
+    "Hash" -> "fc37ace0-64ac-4a49-b846-fdc23dae965e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "Map[Function[vector, \
 ((*GB[*){{0(*|*),(*|*)-1}(*||*),(*||*){1(*|*),(*|*)0}}(*]GB*)) . vector], \
 grid, {2}]\nListVectorPlot[%]", "Display" -> "codemirror", 
-    "Hash" -> "6254c425-d2b0-4430-969d-27160c3515bd", "Invisible" -> False, 
+    "Hash" -> "8c3fa2b1-6b3e-4b1f-b192-63ab80b191bb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "{{{1,1},{1,2},{1,3},{1,4},{1,5}},{{2,1},{2,2},{2,3},{2,4},{2,\
 5}},{{3,1},{3,2},{3,3},{3,4},{3,5}},{{4,1},{4,2},{4,3},{4,4},{4,5}},{{5,1},{5\
 ,2},{5,3},{5,4},{5,5}}}", "Display" -> "codemirror", 
-    "Hash" -> "6c837ff0-0397-4c24-a3b9-ff3306d1a873", "Invisible" -> False, 
+    "Hash" -> "1a963ff2-bd9d-4e47-abb9-0944393b760c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"9d29d953-9bbb-46aa-805e-391ff5054311\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKW6YYW\
 aZYmhrrWiYlJemamCUm6loYmKbqGlsapqWZGpiaGBsaAgCEmxVJ\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "6543a778-e6bf-4159-b162-a263e60fc0f5", "Invisible" -> False, 
+     "da1b74b7-1f22-41d7-8fda-91060b8e9e2c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "5dcfd7c8-b316-44d6-8688-768d7c96b7be", "Invisible" -> False, 
+    "Hash" -> "414dfd79-d064-4b35-a745-bf0130441d97", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n### Custom Syntax Sugar\n\nAnother possibility to \
 visualize using pure syntax sugar would be to define our own output form for \
 a single velocity vector.\n\nThe most efficient way is to define a decorator \
 function in Javascript. Let it be a small arrow pointing to a desired \
 direction.", "Display" -> "codemirror", 
-    "Hash" -> "6b8ede4d-7a71-4b11-b049-30e272fc3f8e", "Invisible" -> False, 
+    "Hash" -> "ad72b7a7-c03a-497b-9b1d-4ed4befdff78", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">### Custom Syntax Sugar\n\nAnother possibility to visualize \
 using pure syntax sugar would be to define our own output form for a single \
 velocity vector.\n\nThe most efficient way is to define a decorator function \
 in Javascript. Let it be a small arrow pointing to a desired direction.", 
     "Display" -> "markdown", "Hash" -> 
-     "4396f6bb-e724-4270-8a1d-a213387d6133", "Invisible" -> False, 
+     "afca4015-d592-485b-9084-ebd82b3c53fb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".js\ncore.ArrowGuide = async (args, env) => {\n  const dir = \
 await interpretate(args[0], env);\n  const mag = \
 dir.map((el)=>el*el).reduce((c,a) => c+a);\n\n  const angle = Math.round(180 \
@@ -33803,10 +33803,10 @@ env.element.style.transform = `rotate(${angle}deg)`;\n  \n  if (mag < 0.01) { \
 //do not display if it is too small\n    env.element.style.opacity = 0.5;\n   \
  env.element.innerHTML = \".\";\n  } else {\n    env.element.innerHTML = \
 \"&uarr;\";\n  }\n}", "Display" -> "codemirror", 
-    "Hash" -> "bcc59522-5cc9-44a4-aec9-a441d5858af8", "Invisible" -> False, 
+    "Hash" -> "80d9ba13-b899-4f19-ae99-0ad772f0796e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "\ncore.ArrowGuide = async (args, env) => {\n  const dir = \
 await interpretate(args[0], env);\n  const mag = \
 dir.map((el)=>el*el).reduce((c,a) => c+a);\n\n  const angle = Math.round(180 \
@@ -33815,102 +33815,102 @@ env.element.style.transform = `rotate(${angle}deg)`;\n  \n  if (mag < 0.01) { \
 //do not display if it is too small\n    env.element.style.opacity = 0.5;\n   \
  env.element.innerHTML = \".\";\n  } else {\n    env.element.innerHTML = \
 \"&uarr;\";\n  }\n}", "Display" -> "js", 
-    "Hash" -> "0036e356-ff66-4962-8f65-925c586354a9", "Invisible" -> False, 
+    "Hash" -> "096909ea-cc93-470d-b07f-f7e9d6b37ae5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nNow we define a standard form `ArrowGuide`, which will \
 use the defined Javascript function to display itself inside a cell.", 
     "Display" -> "codemirror", "Hash" -> 
-     "93213aa4-4150-441e-9c83-506033d9f692", "Invisible" -> False, 
+     "31ba5fb2-48e0-46ce-93f2-add0c7798e7c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Now we define a standard form `ArrowGuide`, which will use \
 the defined Javascript function to display itself inside a cell.", 
     "Display" -> "markdown", "Hash" -> 
-     "a133e6a9-a81e-4ec5-a8d7-4b21359f2d59", "Invisible" -> False, 
+     "13aaf4d7-07a2-4590-88aa-2588739b15e8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "ArrowGuide /: MakeBoxes[a_ArrowGuide, StandardForm] := \n  \
 ViewBox[a//First, a]", "Display" -> "codemirror", 
-    "Hash" -> "a6a6f809-97b4-4494-a597-730fce30b6f7", "Invisible" -> False, 
+    "Hash" -> "59ea3062-81d1-473d-bde4-14cde7a0f505", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+    "Notebook" -> "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nThe first argument will be an actual expression used as \
 input; `First` will break our wrapper and substitute an original vector.", 
     "Display" -> "codemirror", "Hash" -> 
-     "fe77a172-3394-4dcc-a3ef-63716806bcbb", "Invisible" -> False, 
+     "ebdb6ba6-9207-40f4-9751-7c0d6193b2a2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">The first argument will be an actual expression used as \
 input; `First` will break our wrapper and substitute an original vector.", 
     "Display" -> "markdown", "Hash" -> 
-     "220a07cf-088e-478c-b2b0-685647e54764", "Invisible" -> False, 
+     "45268f56-9440-49e2-8ec9-11bfbef7de2c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "ArrowGuide[{1,1}]", "Display" -> "codemirror", 
-    "Hash" -> "8be15e86-a653-445d-abfc-56c25f80151e", "Invisible" -> False, 
+    "Hash" -> "c4478553-1bf2-4c62-84a6-76645f3b7636", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)({1, \
 1})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBKkAEwC\
 JmgvW\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "8dfb3894-5767-4763-922b-3364e1f078e9", "Invisible" -> False, 
+    "Hash" -> "1c68dc44-b6ee-460c-a102-f534482fd926", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nNow one can do some cool tricks like this one:", 
     "Display" -> "codemirror", "Hash" -> 
-     "f0061aaa-0877-4c9d-aa5f-780fb0a70ecd", "Invisible" -> False, 
+     "710fe667-1f04-47b6-9e62-0ba267f23340", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Now one can do some cool tricks like this one:", 
     "Display" -> "markdown", "Hash" -> 
-     "b9776023-afcf-4067-97a2-416d640b1fe0", "Invisible" -> False, 
+     "c676b9bd-59f0-4636-8782-7856f9d828c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)({1, \
 1})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBKkAEwC\
 JmgvW\"*)(*]VB*) . (*VB[*)({1, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBKnIBGI\
 GAImWC9U=\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "618e109c-29a0-40ce-b3a8-fe61b3593d82", "Invisible" -> False, 
+    "Hash" -> "e91e36d0-3637-4fed-9cbd-89f5b557d0e2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "1", "Display" -> "codemirror", 
-    "Hash" -> "dbbe5e3a-82fa-4e8f-9103-4544aebefdb4", "Invisible" -> False, 
+    "Hash" -> "0afb84e7-d747-475e-be77-ba2f0cbfaf8d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nNow we can basically apply this decoration wrapper to \
 our matrix using multidimensional `Map` function and then again output it as \
 a matrix", "Display" -> "codemirror", 
-    "Hash" -> "fa050e5e-ec6b-46ed-b78a-4b0a147614d1", "Invisible" -> False, 
+    "Hash" -> "b7cb057d-c1ab-4f00-9fd1-05b1c9917096", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Now we can basically apply this decoration wrapper to our \
 matrix using multidimensional `Map` function and then again output it as a \
 matrix", "Display" -> "markdown", "Hash" -> 
-     "cd0fc518-a199-48be-bab9-33e6934527f1", "Invisible" -> False, 
+     "e4784a9c-50e8-4143-8b24-1508f1445f77", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "Map[ArrowGuide, grid, {2}] // MatrixForm ", 
     "Display" -> "codemirror", "Hash" -> 
-     "f1d58348-42ea-4ba8-bddd-15bff11f6dde", "Invisible" -> False, 
+     "9044ba17-5f74-43f4-8cd3-bc96fab48bbe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "((*GB[*){{(*VB[*)({1, \
 -1})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBKnI/A\
 8EAJOMD9E=\"*)(*]VB*)(*|*),(*|*)(*VB[*)({2, \
@@ -33962,66 +33962,66 @@ z//x8Ak5sP0Q==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({5, \
 ///x8Ak5cP0A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({5, \
 -5})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JZAUyMn\
 ////8fAJOgD9E=\"*)(*]VB*)}}(*]GB*))", "Display" -> "codemirror", 
-    "Hash" -> "70173a88-f1fa-4977-93a5-edea6cb9d34f", "Invisible" -> False, 
+    "Hash" -> "f7433e0d-4054-4bfc-b7d1-bea9bf882c81", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nLet's define a helper function", 
     "Display" -> "codemirror", "Hash" -> 
-     "491246ae-f533-4eca-8c54-d72ac238abb2", "Invisible" -> False, 
+     "57965819-e880-49e3-9322-92966f3aa9d8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Let's define a helper function", "Display" -> "markdown", 
-    "Hash" -> "88e8020f-3c95-48c7-b943-140206d99e58", "Invisible" -> False, 
+    "Hash" -> "4bb315cc-8e3a-476d-a9ce-31882aae5e3d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "showAsMatrix[l_] := Map[ArrowGuide, l, {2}] // MatrixForm ", 
     "Display" -> "codemirror", "Hash" -> 
-     "c0dee426-8298-45bf-bee0-3ef6abfdaf2a", "Invisible" -> False, 
+     "a0d0d26e-ccc3-49aa-8370-8595ac2b585b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+    "Notebook" -> "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "a89c014e-0a4d-4e71-a02c-65370a5c6718", "Invisible" -> False, 
+    "Hash" -> "3170b88c-8486-49f1-8c6c-aeafd31482b7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n## Divergence\n__Conservation of mass__ for \
 incompressible fluid dictates\n\n$$\ndiv ~\\\\mathbf{v} = 0\n$$\n\nwhere \
 $\\\\mathbf{v}$ is velocity vector field we played with earlier - `grid`.\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "7befd0ed-6a99-47dd-b5aa-2ede4d63a6f5", "Invisible" -> False, 
+     "0a4983c7-a532-46f3-9907-cd2bd837c513", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "## Divergence\n__Conservation of mass__ for incompressible \
 fluid dictates\n\n$$\ndiv ~\\\\mathbf{v} = 0\n$$\n\nwhere $\\\\mathbf{v}$ is \
 velocity vector field we played with earlier - `grid`.\n", 
     "Display" -> "markdown", "Hash" -> 
-     "cc7f47d9-71ee-4533-ae21-56ffde4ed454", "Invisible" -> False, 
+     "ba1203bb-678f-4510-9819-472fa847cd33", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n\n### Example\n\nLet us start with a simples example", 
     "Display" -> "codemirror", "Hash" -> 
-     "65ceabf3-42f3-467c-b0fc-f7c2f6342173", "Invisible" -> False, 
+     "56d872b3-300e-4142-ade4-fdd8d1eb2813", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">\n### Example\n\nLet us start with a simples example", 
     "Display" -> "markdown", "Hash" -> 
-     "6aebf960-a6c0-4534-bc94-7c6a66065455", "Invisible" -> False, 
+     "f29d26b5-b88a-4f8d-ae9f-ba07921fa9af", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = Table[{0,0}, {i,5}, {j,5}];\ngrid // showAsMatrix", 
     "Display" -> "codemirror", "Hash" -> 
-     "020efa63-91c9-44f4-8e33-1ca9560f4a43", "Invisible" -> False, 
+     "ee7cc809-22c8-4a24-93e0-f8863aa9a58b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "((*GB[*){{(*VB[*)({0, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBNIMYAI\
 AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
@@ -34073,22 +34073,22 @@ AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
 AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBNIMYAI\
 AiY0L1A==\"*)(*]VB*)}}(*]GB*))", "Display" -> "codemirror", 
-    "Hash" -> "b0f53252-ac79-4491-844f-7b88c6c5eadf", "Invisible" -> False, 
+    "Hash" -> "3f25d4fb-b61c-4860-8cf9-0c186e93041b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nAnd put a single vector in the middle", 
     "Display" -> "codemirror", "Hash" -> 
-     "8a33daa3-8c06-4255-b678-193ec63d64ca", "Invisible" -> False, 
+     "4360d85d-975e-4475-990f-325feca1801e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">And put a single vector in the middle", 
     "Display" -> "markdown", "Hash" -> 
-     "df26cc1a-0bf9-4b44-a806-0a6463288f12", "Invisible" -> False, 
+     "022fadfa-f3b8-4393-9149-b85e324117e7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = ((*GB[*){{(*VB[*)({0, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBNIMYAI\
 AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
@@ -34140,60 +34140,61 @@ AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
 AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBNIMYAI\
 AiY0L1A==\"*)(*]VB*)}}(*]GB*));", "Display" -> "codemirror", 
-    "Hash" -> "7949acb4-e91c-4360-9ab1-82d346a560fb", "Invisible" -> False, 
+    "Hash" -> "e0f50781-ab65-467e-986d-1ea1ea2b1e60", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nTo visualize the divergence, one can use `DensityPlot`", 
     "Display" -> "codemirror", "Hash" -> 
-     "00b679a9-15f8-4470-a2de-3f04a2faae39", "Invisible" -> False, 
+     "6f43573b-0a94-4b4f-9391-689c9f882e05", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">To visualize the divergence, one can use `DensityPlot`", 
     "Display" -> "markdown", "Hash" -> 
-     "3165e140-9a98-4f24-aafe-08988061ecad", "Invisible" -> False, 
+     "0ce964d5-0d24-4b08-9ea5-1ed2c8d980b8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "{intX, intY} = {\n    ListInterpolation[grid[[All,All,1]]],\n \
    ListInterpolation[grid[[All,All,2]]]\n}; (*BB[*)(*interpolate data for the \
 convenience*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm\
 5uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSc\
 zMQVYCAOFrJEU=\"*)(*]BB*)\n\nCoolColor[ z_ ] := RGBColor[z, 0.5, 1 - \
-z];\n\nDiv[{intX[x,y], intY[x,y]}, {x,y}]; (*BB[*)(*find \
+z];\n\n(*BB[*)(*find \
 divergence*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5\
 uaV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJScz\
-MQVYCAOFrJEU=\"*)(*]BB*)\nContourPlot[%, {x,1,5}, {y,1,5}, \
-ColorFunction->CoolColor]", "Display" -> "codemirror", 
-    "Hash" -> "2ce39259-f556-4e31-8f7b-e6878cce6e27", "Invisible" -> False, 
+MQVYCAOFrJEU=\"*)(*]BB*)\nDiv[{intX[x,y], intY[x,y]}, {x,y}]; \
+\nContourPlot[%, {x,1,5}, {y,1,5}, ColorFunction->CoolColor]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d2858fc8-5802-4f49-9cd5-526d7c204439", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"15f4029b-3d6d-46e2-8893-95deb4f9c83e\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5qmm\
 RgYWSbpGqeYpeiamKUa6VpYWBrrWpqmpCaZpFkmWxinAgB8URWN\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "ca60e789-db91-48b3-93a4-c4e1ab0475ac", "Invisible" -> False, 
+     "431e957f-5467-48d4-8ec6-0864d75e5d01", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nFrom a physical point of view, it means that there is a \
 *source node* at the bottom and a *drain* at the top, which should not be a \
 feature of a closed system with incompressible fluid.", 
     "Display" -> "codemirror", "Hash" -> 
-     "12a7dc26-01e3-4669-a94a-2055658b9020", "Invisible" -> False, 
+     "659c0fd5-dacb-4c07-9ee8-af48324fd620", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">From a physical point of view, it means that there is a \
 *source node* at the bottom and a *drain* at the top, which should not be a \
 feature of a closed system with incompressible fluid.", 
     "Display" -> "markdown", "Hash" -> 
-     "70eb7a1b-9146-4191-9c4d-583223363d32", "Invisible" -> False, 
+     "6a65cb7f-7cf7-4e23-8292-4656bf7d3407", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n### Removing the Divergence\nOne can try to solve this \
 problem iteratively by taking a field with non-zero divergency and apply \
 artificial tranformation on it to make it satisfy the equation.\n\nThere is a \
@@ -34215,10 +34216,10 @@ from the previous state at $(x + i, y + j)$.\n\n\n> This is done by adding \
 flow away from high pressure converging areas, and toward low pressure \
 diverging areas. \n\n\nHere is our implementation", 
     "Display" -> "codemirror", "Hash" -> 
-     "ea687c3b-8450-4df2-bc55-3cb9578d312d", "Invisible" -> False, 
+     "a93ac50b-6668-4c5c-a6f3-fc2b978113ab", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "### Removing the Divergence\nOne can try to solve this \
 problem iteratively by taking a field with non-zero divergency and apply \
 artificial tranformation on it to make it satisfy the equation.\n\nThere is a \
@@ -34239,10 +34240,10 @@ new velocity vector at coordinates $(x,y)$ and others $v_{(i,j)}$ are ones \
 from the previous state at $(x + i, y + j)$.\n\n\n> This is done by adding \
 flow away from high pressure converging areas, and toward low pressure \
 diverging areas. \n\n\nHere is our implementation", "Display" -> "markdown", 
-    "Hash" -> "893e5485-5a1e-4dc7-967a-cd10df4f27b7", "Invisible" -> False, 
+    "Hash" -> "5f16be15-9709-4780-8370-4465bf3c6f89", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "removeDivergence[grid_] := With[{\n  (*BB[*)(*safety checks, \
 which enforce closed \
 boundaries*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5\
@@ -34256,27 +34257,27 @@ take[grid, i[[1]] + 1, i[[2]] - 1]).{1,-1}){1,-1} +\n\n      (take[grid, \
 i[[1]]-1, i[[2]]] + take[grid, i[[1]]+1, i[[2]]] - take[grid, i[[1]], \
 i[[2]]-1] - take[grid, i[[1]], i[[2]]+1]){2,-2} + take[grid, i[[1]], i[[2]]] \
 (-4)\n\n    )\n  ], grid, {2}]\n]", "Display" -> "codemirror", 
-    "Hash" -> "10ebff94-edf6-4588-b0a1-62b072840fee", "Invisible" -> False, 
+    "Hash" -> "a67839f1-1fe1-457e-a784-7f2234461627", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+    "Notebook" -> "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nLet us test it.", "Display" -> "codemirror", 
-    "Hash" -> "20220799-c59f-47f8-a8f9-c1e23955d219", "Invisible" -> False, 
+    "Hash" -> "d2e24fa6-c0e9-420a-a67a-7f9a56ea3a7b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Let us test it.", "Display" -> "markdown", 
-    "Hash" -> "74ecf1c7-4a57-4bf5-8754-789664d81316", "Invisible" -> False, 
+    "Hash" -> "94ecc5f2-0f4c-4e1e-8858-6c2954ffb17e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> 
      "Table[Nest[removeDivergence, grid, i] // showAsMatrix, {i, 0,2}] // Row \
 ", "Display" -> "codemirror", "Hash" -> 
-     "42892f48-4e68-4085-baad-9062af5753f1", "Invisible" -> False, 
+     "5ef74ab6-6f2d-48d1-a7f3-0b90cd3c8088", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*GB[*){{((*GB[*){{(*VB[*)({0, \
 0})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC7JBNIMYAI\
 AiY0L1A==\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0, \
@@ -34429,28 +34430,28 @@ oACKGPDfgDpmw1V\"*)(*]VB*)(*|*),(*|*)(*VB[*)({0.03125, \
 0.03125})(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeF5BwLCrKL3cvzUxJTWOCqfDJLC4pY\
 gCDBfZwBgDyUQ2k\"*)(*]VB*)}}(*]GB*))}(*||*),(*||*)}(*]GB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "9a618d8f-4a19-4d47-b1de-b4293aa7d500", "Invisible" -> False, 
+     "24dfce5d-2dc0-4d56-ba39-7e6a4fb41906", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nAs you can see, if we have a stream of fluid from *A* to \
 *B*, there must be some other streams made from *B* to *A*. The applied \
 procedure produces the missing one spread over the whole grid if \
 `removeDivergence` is applied multiple times.\n\nWe can check it directly by \
 calculating the divergence.", "Display" -> "codemirror", 
-    "Hash" -> "0204d722-d195-41c2-8fdc-00bf7e05e9b2", "Invisible" -> False, 
+    "Hash" -> "9c344f76-2b6b-4995-984c-3df4c64c1e24", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "As you can see, if we have a stream of fluid from *A* to *B*, \
 there must be some other streams made from *B* to *A*. The applied procedure \
 produces the missing one spread over the whole grid if `removeDivergence` is \
 applied multiple times.\n\nWe can check it directly by calculating the \
 divergence.", "Display" -> "markdown", 
-    "Hash" -> "c27cf73b-639b-4070-83a3-3125c4f88d94", "Invisible" -> False, 
+    "Hash" -> "9087875c-6b3b-4683-b646-b75b1bfceead", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "CoolColor[ z_ ] := RGBColor[z, 0.5, 1 - z];\n\nplotDiv[grid_] \
 := Module[{intX, intY, x, y},\n\n  {intX, intY} = {\n      \
 ListInterpolation[grid[[All,All,1]]],\n      \
@@ -34464,17 +34465,17 @@ scale*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
 UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
 AOFrJEU=\"*)(*]BB*)\n      ColorFunction -> ColorData[{\"ThermometerColors\", \
 {-1, 1}}]\n    ]\n  ]\n]\n", "Display" -> "codemirror", 
-    "Hash" -> "419496bf-5707-4fa4-998a-a11a18514d7c", "Invisible" -> False, 
+    "Hash" -> "6247d1de-940c-4a5c-8c06-e91a51ea94ed", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+    "Notebook" -> "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "{\n  {Style[\"Original\", 14], plotDiv[grid]}, \n  {Style[\"8 \
 iterations\", 14], plotDiv[Nest[removeDivergence, grid, 8]]}\n} // Transpose \
 // Grid ", "Display" -> "codemirror", 
-    "Hash" -> "e13b5341-ccae-427d-a2f9-53e77d96ef35", "Invisible" -> False, 
+    "Hash" -> "58dd0876-f1d9-4c80-b84b-f2eca343ef62", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*GB[*){{(*BB[*)(\"Original\")(*,*)(*\"1:eJxTTMoPSmNiYGAo5gcS\
 AUX5ZZkpqSn+BSWZ+XnFaYwgCRYg4ZGfkwLhcQKJ4JKizLx0p/yKTD4gD6IdpCqoNCc1mA2uACwWU\
 lSaCgCn0xcV\"*)(*]BB*)(*|*),(*|*)(*BB[*)(\"8 \
@@ -34486,24 +34487,24 @@ uuaJJmn6FqYGhvoJpqaGSempRiamaQmAwB/dRWX\"*)(*]VB*)(*|*),(*|*)(*VB[*)(FrontEnd\
 Ref[\"b99a3f97-955e-4d38-b5cb-4ec0903c77e3\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgES\
 Hvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1laJhqnWZrrWpqapuqapBhb6CaZJifpmqQmG\
 1gaGCebm6caAwCG1hW5\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
-    "Hash" -> "6f8ba7e4-fc9e-46bb-a0c3-0fdb38b3205d", "Invisible" -> False, 
+    "Hash" -> "b91d8db9-983a-4416-8868-f5ba4373ec56", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nApart from obvious artifacts caused by interpolation on \
 a small grid, this algorithm definitely works. However, it is still far from \
 modeling a fluid.", "Display" -> "codemirror", 
-    "Hash" -> "1aeaf147-0f87-4844-be8e-d3b36a045aeb", "Invisible" -> False, 
+    "Hash" -> "eb456b22-6b26-45b4-8533-b20f685ec4ad", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "Apart from obvious artifacts caused by interpolation on a \
 small grid, this algorithm definitely works. However, it is still far from \
 modeling a fluid.", "Display" -> "markdown", 
-    "Hash" -> "50bbc3eb-207d-4ba5-8829-6ce986f40efc", "Invisible" -> False, 
+    "Hash" -> "dbe8ef98-0778-43bf-8080-ef8293bad284", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n### Interactive Example\nWe can try to solve this in \
 real-time and see how it reacts live. However, the current approach to \
 visualizing will be quite slow when it comes to dynamics.\n\nIf we just try \
@@ -34512,10 +34513,10 @@ general, there is no need to reevaluate the whole expression for graphics. \
 The grid is the same, but vectors differ. We can go either fully `raster` \
 using `Image` or use SVG graphics. The latter is the easiest way. Let us \
 start from the ground up.", "Display" -> "codemirror", 
-    "Hash" -> "581f7369-2326-47fa-bd34-7399606d24cf", "Invisible" -> False, 
+    "Hash" -> "59fabefa-dbf9-40e9-ae73-b1cb0105eb1c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">### Interactive Example\nWe can try to solve this in \
 real-time and see how it reacts live. However, the current approach to \
 visualizing will be quite slow when it comes to dynamics.\n\nIf we just try \
@@ -34524,92 +34525,92 @@ general, there is no need to reevaluate the whole expression for graphics. \
 The grid is the same, but vectors differ. We can go either fully `raster` \
 using `Image` or use SVG graphics. The latter is the easiest way. Let us \
 start from the ground up.", "Display" -> "markdown", 
-    "Hash" -> "83feb751-7fe6-4481-a10a-a06f576e859d", "Invisible" -> False, 
+    "Hash" -> "e60d48fa-e23d-425c-bf4d-1490896841e4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = grid // removeDivergence;\n\nGraphics[{\n  Table[\n    \
 Arrow[{\n      {i,j}, \n      {i,j} + 1.5 grid[[i]][[j]]\n    }], {i, 5}, {j, \
 5}]\n}, PlotRange->{{0,6}, {0,6}}, ImagePadding->None]", 
     "Display" -> "codemirror", "Hash" -> 
-     "c37f80ce-6bff-4c6b-82c5-f4626b9ad3dc", "Invisible" -> False, 
+     "94f9755f-043a-4720-b399-feb5cb3f1aa0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"46f8ea9d-0f01-4681-82d9-35d40f2fba91\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5ilW\
 aQmWqboGqQZGOqamFkY6loYpVjqGpummBikGaUlJVoaAgCBGxV6\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "79799e4a-f37d-457a-a638-c28731ad30c4", "Invisible" -> False, 
+     "480fe257-f9b6-4a66-83e4-4badae70a6c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nNow we have basically recreated the `VectorPlot` \
 function in our primitive way. The next step will be to implement dynamic \
 updates.", "Display" -> "codemirror", 
-    "Hash" -> "e50492b7-b0d3-4587-aca6-14569bc7c4a4", "Invisible" -> False, 
+    "Hash" -> "b463c966-9023-4151-9241-27c3c577f171", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">What about a color you ask. One can calculate `Hue` based on \
 the polar angle of our vector", "Display" -> "markdown", 
-    "Hash" -> "c4437bf3-cc65-47eb-8362-bb39708596ce", "Invisible" -> False, 
+    "Hash" -> "541f9202-2133-4051-8907-799fc9dc1f2f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "Graphics[{\n  Table[{\n    Hue[(*FB[*)((\[Pi] + 2 \
 ToPolarCoordinates[grid[[i]][[j]]]// Last)(*,*)/(*,*)(3 \[Pi]))(*]FB*)],\n    \
 Arrow[{\n      {i,j}, \n      {i,j} + 1.5 grid[[i]][[j]]\n    }]\n  }, {i, \
 5}, {j, 5}]\n}, PlotRange->{{0,6}, {0,6}}, ImagePadding->None]", 
     "Display" -> "codemirror", "Hash" -> 
-     "2987f932-9fef-4677-9c22-070d5c3680ee", "Invisible" -> False, 
+     "9159daef-55b8-451a-969e-b287e8fe3de9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"5e1eca05-6839-466c-9b1d-9ac89c5ca036\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6Yap\
 iYnGpjqmlkYW+qamJkl61omGaboWiYmW1gmmwKljM0AhKkVrA==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "ca86e788-10f9-43c7-b0af-f9e0fae132fc", "Invisible" -> False, 
+     "4a7933eb-e29e-49e3-8a8d-d9a9bc6cc3df", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n*Side Note*\n\nWith SVG graphics provided by `Graphics` \
 and many primitives like `Arrow`, `Line`, etc., we can't scale up to even \
 $100\\\\times100 = 10^4$. Each SVG object still takes a lot of resources to \
 animate; therefore, __we will limit ourselves to somewhat close to $10^2$__."\
 , "Display" -> "codemirror", "Hash" -> 
-     "f134d415-a66c-4f85-adc1-4a3f6c6a5f01", "Invisible" -> False, 
+     "2899a5c7-6879-49b6-85c0-a28edc41711b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Now we basically recreated `VectorPlot` function in our \
 primitive way. The next step will be to implement dynamic updates.", 
     "Display" -> "markdown", "Hash" -> 
-     "a8f8c4aa-7a8f-4f60-97b8-3e72ac4c9244", "Invisible" -> False, 
+     "aeed9464-516d-4a45-ac0f-fb562ad51175", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n### Dynamic Evaluation\nThe key feature to fast dynamic \
 evaluation is to minimize the amount of data transferred between the Kernel \
 and frontend as well as the number of things updated.\n\nWe need to couple \
 the `Arrow` primitive to a specific element of our array `grid`. To do this, \
 one can use the `Offload` wrapper, which acts similarly to `Hold`", 
     "Display" -> "codemirror", "Hash" -> 
-     "34be86bd-d0b3-4a78-8dbe-53877cc53c04", "Invisible" -> False, 
+     "c01bac00-4866-4458-92c2-f94eb9e91e7b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "### Dynamic Evaluation\nThe key feature to fast dynamic \
 evaluation is to minimize the amount of data transferred between the Kernel \
 and frontend as well as the number of things updated.\n\nWe need to couple \
 the `Arrow` primitive to a specific element of our array `grid`. To do this, \
 one can use the `Offload` wrapper, which acts similarly to `Hold`", 
     "Display" -> "markdown", "Hash" -> 
-     "1783894c-d9b2-4dc9-af86-493041694b25", "Invisible" -> False, 
+     "3e1f5283-de07-4787-a756-7eaf4a6d99d5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = Table[{0.,0.}, {i,5}, {j,5}];\ngrid[[3,3]] = {0,1.0}; \
 (*BB[*)(* initial divergence \
 *)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
@@ -34622,64 +34623,87 @@ EU=\"*)(*]BB*)\n    Arrow[{\n      {i,j}, \n      {i,j} + 1.5 \
 grid[[i]][[j]]\n    } // Offload ]], {i, 5}, {j, 5}]\n}, \
 PlotRange->{{0.5,5.5}, {0.5,5.5}}, ImagePadding->None]", 
     "Display" -> "codemirror", "Hash" -> 
-     "3930febe-75a1-4a15-bae5-76a8b0fb4648", "Invisible" -> False, 
+     "446f7d67-bb2e-49ab-aa0e-33a388ce5b95", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nNow __try to evaluate the next cell__ multiple times.", 
     "Display" -> "codemirror", "Hash" -> 
-     "860777eb-2690-4415-9db8-659a210b1c2f", "Invisible" -> False, 
+     "ba008509-1f67-4052-98dc-890cb9ddc0cf", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "Now __try to evaluate the next cell__ multiple times.", 
     "Display" -> "markdown", "Hash" -> 
-     "f4923262-5e63-44ce-b32e-09937cfcef49", "Invisible" -> False, 
+     "d1b935c4-7548-436a-9c0b-826ab652bbd1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "grid = grid // removeDivergence;", "Display" -> "codemirror", 
-    "Hash" -> "7c3f9d41-d177-4aed-ba51-f05c6424b6c7", "Invisible" -> False, 
+    "Hash" -> "487a6513-25cf-4a41-999f-d8ab268d8125", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nLet us increase the resolution and automate the process \
 using `AnimationFrameListener`. In general, one can also add dynamic color to \
 our arrows as well.", "Display" -> "codemirror", 
-    "Hash" -> "0741c040-6265-49aa-89af-9f9c32738293", "Invisible" -> False, 
+    "Hash" -> "9c412ba5-fe68-48aa-941e-6c2a241a4949", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">Let us increase the resolution and automate the process \
 using `AnimationFrameListener`. In general, one can also add dynamic color to \
 our arrows as well.", "Display" -> "markdown", 
-    "Hash" -> "c2fbfa70-91bf-488d-a8b1-2f6f7957a8c6", "Invisible" -> False, 
+    "Hash" -> "5504a611-368d-4448-aaa8-8b63cf6c2dc5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\n---\n**TL;DR**\n\n<span id=\"tldr\" style=\"color: \
 blue\"><b>Evaluate the cell below</b> in the notebook. Use your mouse to draw \
 velocity vectors.</span>", "Display" -> "codemirror", 
-    "Hash" -> "196ef8f4-58a3-44f4-8a7a-6c2d5e81193e", "Invisible" -> False, 
+    "Hash" -> "452f708e-8790-4405-8bb1-03aec2738b69", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">---\n**TL;DR**\n\n<span id=\"tldr\" style=\"color: blue\"><b \
 >Evaluate the cell below</b> in the notebook. Use your mouse to draw velocity \
 vectors.</span>", "Display" -> "markdown", 
-    "Hash" -> "c6dc3994-2cea-4f56-a72b-0e4aa73bb776", "Invisible" -> False, 
+    "Hash" -> "26fc0279-7480-4830-a12f-83be20384841", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "bgrid = Table[{0.,0.}, {i,15}, {j,15}];\nbcolors = Table[1.0, \
-{Length[bgrid]}, {Length[bgrid]}];\n\nstart = {1,1};\ndrawing = False;\ndest \
-= {0,0};\nbfps = 0;\n\nWith[{\n  win = CurrentWindow[], (*BB[*)(* save the \
-current window to append graphics \
+{Length[bgrid]}, {Length[bgrid]}];\nbfps = 0;\n\nmouseHandler[bgrid_, win_, \
+canvas_] = Module[{\n  arrow = False,\n  dest = {0,0},\n  start = {0,0}\n}, \
+{\n      \"mouseup\" -> Function[xy,\n        With[{v = -Normalize[start - \
+xy]},\n          Do[ \n            With[{p = Clip[#, {1,15}] &/@ Round /@ \
+((xy - start) a + start)},\n              bgrid[[p[[1]],p[[2]]]] = {v[[1]], \
+v[[2]]};\n            ];\n          , {a, 0, 1,0.1}]; (* a very stipid way of \
+drawing lines *)\n          \n        ];\n\n        Delete[arrow]; \n        \
+arrow = False;\n      \n      ],\n\n      \"mousemove\" -> Function[xy,\n     \
+   dest = xy;\n      ],\n    \n      \"mousedown\" -> Function[xy,\n        \
+start = xy;\n        dest = xy + {1,1}; \n      \n        If[arrow =!= False, \
+Delete[arrow]];\n        \n        arrow = FrontSubmit[{\n          \
+AbsoluteThickness[3], Gray, \n          Arrow[{xy, dest // Offload}]\n        \
+}, \n          canvas, \n          \"Window\"->win, \n          \
+\"Tracking\"->True \n        ];\n      \n      ]\n  \
+}];\n\nSetAttributes[mouseHandler, HoldFirst]\n\n(*BB[*)(*define handler for \
+the \
+animation*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5u\
+aV+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczM\
+QVYCAOFrJEU=\"*)(*]BB*)\nbtime = AbsoluteTime[];\n\nEventHandler[\"bframe\", \
+Function[Null,\n  bgrid = removeDivergence[bgrid] // N;\n  bcolors = \
+Map[Function[val, (*FB[*)((\[Pi] + 2.0 ToPolarCoordinates[val]// \
+Last)(*,*)/(*,*)(3.0 \[Pi]))(*]FB*) ], bgrid, {2}];\n  \n  bfps = \
+(*FB[*)(((bfps + 1 / (AbsoluteTime[] - btime)))(*,*)/(*,*)(2.0))(*]FB*) // \
+Round;\n  btime = AbsoluteTime[]; \n]];\n\n\nWith[{\n  win = CurrentWindow[], \
+(*BB[*)(* save the current window to append graphics \
 *)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
 Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
-EU=\"*)(*]BB*)\n  currentCell = ResultCell[]\n},\n\n  EventHandler[win, \
-{\"Closed\" -> Function[Null,\n    Delete[currentCell] (*BB[*)(* remove \
-output cell if a notebook has been closed \
+EU=\"*)(*]BB*)\n  currentCell = ResultCell[],\n  canvasId = \
+CreateUUID[]\n},\n\n  EventHandler[win, {\"Closed\" -> Function[Null,\n    \
+Delete[currentCell] (*BB[*)(* remove output cell if a notebook has been \
+closed \
 *)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
 Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
 EU=\"*)(*]BB*)\n    (*BB[*)(* this will prevent the animation running \
@@ -34692,36 +34716,9 @@ EU=\"*)(*]BB*)\n  ]}];\n\n  Graphics[{\n    Table[With[{i=i, j=j}, \n      \
 Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
 EU=\"*)(*]BB*)\n      Offload[{ \n        Hue[bcolors[[i]][[j]]],\n        \
 Arrow[{{i,j}, {i,j} +  bgrid[[i]][[j]]}]\n      }] \n    \n    ], {i,15}, \
-{j,15}],\n\n    (*BB[*)(*attach listeners to a user's mouse to manipulate the \
-grid*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KU\
-XxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCA\
-OFrJEU=\"*)(*]BB*)\n    EventHandler[Graphics`Canvas[], {\n      \"mouseup\" \
--> Function[xy,\n        With[{v = -Normalize[start - xy]},\n          Do[ \
-(*BB[*)(* draw a line of velocities \
-*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
-Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
-EU=\"*)(*]BB*)\n            With[{p = Round /@ ((xy - start) a + start)},\n   \
-       \n              If[p[[1]] <= 15 && p[[1]] >=1 && p[[2]] <=15 && p[[2]] \
->=1,\n                bgrid[[p[[1]],p[[2]]]] = {v[[1]], v[[2]]};\n            \
-  ];\n\n            ];\n          , {a, 0, 1,0.1}];\n          \n        \
-];\n\n        Delete[drawing]; (*BB[*)(* delete temporal arrow \
-*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+KUXxEM\
-Uqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYCAOFrJ\
-EU=\"*)(*]BB*)\n        drawing = False;\n      \n      ],\n\n      \
-\"mousemove\" -> Function[xy,\n        dest = xy;\n      ],\n    \n      \
-\"mousedown\" -> Function[xy,\n        start = xy;\n        dest = xy;\n      \
-\n        If[drawing =!= False, Delete[drawing]];\n        (*BB[*)(*append \
-GUI's arrow to existing \
-canvas*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
-KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
-CAOFrJEU=\"*)(*]BB*)\n        drawing = FrontSubmit[{\n          \
-AbsoluteThickness[3], Gray, \n          Arrow[{xy, dest // Offload}]\n        \
-}, \n          MetaMarker[\"bcanvas\"], \n          \"Window\"->win, \n       \
-   \"Tracking\"->True (*BB[*)(*enable tracking of created \
-object*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+\
-KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVY\
-CAOFrJEU=\"*)(*]BB*)\n        ];\n      \n      ]\n    }], \n\n    \
-(*BB[*)(*sync with browser's repaint cycle and update of fps \
+{j,15}],\n\n    EventHandler[Graphics`Canvas[], mouseHandler[bgrid, win, \
+MetaMarker[canvasId]]], \n\n    (*BB[*)(*sync with browser's repaint cycle \
+and update of fps \
 label*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5uaV+K\
 UXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQVYC\
 AOFrJEU=\"*)(*]BB*)\n    AnimationFrameListener[bfps // Offload, \
@@ -34729,20 +34726,14 @@ AOFrJEU=\"*)(*]BB*)\n    AnimationFrameListener[bfps // Offload, \
 uid to append new \
 elements*)(*,*)(*\"1:eJxTTMoPSmNhYGAo5gcSAUX5ZZkpqSn+BSWZ+XnFaYwgCS4g4Zyfm5ua\
 V+KUXxEMUqxsbm6exgSSBPGCSnNSg9mAjOCSosy8dLBYSFFpKpoKkDkeqYkpEFXBILO1sCgJSczMQ\
-VYCAOFrJEU=\"*)(*]BB*)\n    MetaMarker[\"bcanvas\"], \n    Text[bfps // \
-Offload, {0,0}]\n  }, \n    Controls->False, \n    ImageSize->500, \n    \
+VYCAOFrJEU=\"*)(*]BB*)\n    MetaMarker[canvasId], \n    Text[bfps // Offload, \
+{0,0}]\n  }, \n    Controls->False, \n    ImageSize->500, \n    \
 PlotRange->{{-0.5,15.5}, {-0.5,15.5}}, \n    ImagePadding->None, \n    \
-TransitionType->None\n  ]\n]\n\n(* subscribe to animation event *)\n\nbtime = \
-AbsoluteTime[];\n\nEventHandler[\"bframe\", Function[Null,\n  bgrid = \
-removeDivergence[bgrid] // N;\n  bcolors = Map[Function[val, (*FB[*)((\[Pi] + \
-2.0 ToPolarCoordinates[val]// Last)(*,*)/(*,*)(3.0 \[Pi]))(*]FB*) ], bgrid, \
-{2}];\n  \n  bfps = (*FB[*)(((bfps + 1 / (AbsoluteTime[] - \
-btime)))(*,*)/(*,*)(2.0))(*]FB*) // Round;\n  btime = AbsoluteTime[]; \n]];", 
-    "Display" -> "codemirror", "Hash" -> 
-     "5b52b7f3-4dbe-49dd-a736-7c9c5f31c4e9", "Invisible" -> False, 
+TransitionType->None\n  ]\n]\n", "Display" -> "codemirror", 
+    "Hash" -> "4d83b66d-cbd5-487f-a5f0-76cfd8f8a112", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nThe code can be divided into two parts: *visualization \
 using Graphics and Arrow* and *calculation loop*.\n\nAs we discussed before, \
 we draw each point from a grid individually with a pair of `Hue` and `Arrow`. \
@@ -34757,10 +34748,10 @@ chosen it to be a trigger.\n\nThen, before a new frame, it fires an event \
 object with `\"bframe\"` uid, which is captured later by `EventHandler`. In \
 the animation loop, it removes divergence, recalculates colors, and then also \
 updates the FPS counter just for the statistics.", "Display" -> "codemirror", 
-    "Hash" -> "a3a3ed83-8fe3-4f9d-9980-6b89bd7df9ff", "Invisible" -> False, 
+    "Hash" -> "71a5554f-bc3f-43b9-bc78-32387c895eba", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> "The code can be divided into two parts: *visualization using \
 Graphics and Arrow* and *calculation loop*.\n\nAs we discussed before, we \
 draw each point from a grid individually with a pair of `Hue` and `Arrow`. At \
@@ -34775,40 +34766,40 @@ trigger.\n\nThen, before a new frame, it fires an event object with \
 `\"bframe\"` uid, which is captured later by `EventHandler`. In the animation \
 loop, it removes divergence, recalculates colors, and then also updates the \
 FPS counter just for the statistics.", "Display" -> "markdown", 
-    "Hash" -> "559d4e5b-a5f4-480e-b563-08c65cf65631", "Invisible" -> False, 
+    "Hash" -> "a15edc33-fc04-4a12-9f45-30fa1579ae98", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nAn expected result is shown on a GIF below \
 \n\n\n![](/attachments/resttest-ezgif.com-video-to-webp-converter.webp)\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "a21928b3-2a18-4c4f-8cc8-e7efdcbc123c", "Invisible" -> False, 
+     "3eb3b8ab-78bd-4236-91da-2ad541293d08", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">An expected result is shown on a GIF below \
 \n\n\n![](/attachments/resttest-ezgif.com-video-to-webp-converter.webp)", 
     "Display" -> "markdown", "Hash" -> 
-     "abb79702-f851-48d7-a07c-a397b7a370ef", "Invisible" -> False, 
+     "a917f5ee-d137-4cbe-a45f-bee949233947", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ".md\nIt is quite far from an actual fluid simulation. We \
 should also consider the momentum of it.\n\n\n__See you in Part 2__ \|01f984"\
 , "Display" -> "codemirror", "Hash" -> 
-     "03712e9b-0256-4fcf-955b-96f4d4c3126b", "Invisible" -> False, 
+     "923aeeee-522b-44d4-b95f-d8029e1fe7d1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> ">It is quite far from an actual fluid simulation. We should \
 also consider the momentum of it.\n\n__See you in Part 2__ \|01f984", 
     "Display" -> "markdown", "Hash" -> 
-     "cce14022-1ccb-4c41-870f-e4055c37e9aa", "Invisible" -> False, 
+     "02e9050d-8437-40b9-be15-f8cf29797828", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>, 
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "6cccfcf9-315c-4de8-b66b-ad5b9fb09564", "Invisible" -> False, 
+    "Hash" -> "13075a1c-d145-4960-a554-5e8db6229ed5", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "95269ae4-e3a5-49f9-9d67-e689d3ffec97"|>}, "serializer" -> "jsfn4"|>
+     "36a310dd-d5f8-40a8-b29a-535bca60d052"|>}, "serializer" -> "jsfn4"|>

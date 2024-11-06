@@ -286,6 +286,10 @@ App[request_] := With[{
               ""
             ,
 
+            "Unix",
+              ""
+            ,
+
             _,
               FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls,  "Class"->"ml-1", "Style"->""]
 
