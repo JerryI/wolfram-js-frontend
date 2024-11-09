@@ -1,7 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1718], 
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$6905], 
    "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "fdfa7e5a-4c4a-4c79-8559-d77fc85f858d", 
-   "Objects" -> <|"8164b5e0-6e6d-409e-8a13-b05e47af62b5" -> 
+   "ModalsChannel" -> "9f133bf0-3e61-40e8-804a-0c90f006362d", 
+   "Objects" -> <|"a1130804-f7fa-4468-bb04-64c462c755ec" -> 
       <|"Public" -> Hold[Graphics3D[GraphicsComplex[
            {{5, 4, 3.7252253874734524}, {4.586954756556576, 4, 4}, 
             {5, 3.7252253874734524, 4}, {5, 3.7252253874734524, 4}, 
@@ -168,7 +168,9 @@ js-frontend/Demos/09 - Mixing languages/Marching Cubes.wln", "Quick" -> True,
      Notebook`Editor`TOC`Private`heading[2, "3D Paint", 
       CellObj[JerryI`Notebook`CellObj`$1721]], 
      Notebook`Editor`TOC`Private`heading[2, "Meta-balls", 
-      CellObj[JerryI`Notebook`CellObj`$1769]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$1769]], 
+     Notebook`Editor`TOC`Private`heading[2, "Calculate normals", 
+      CellObj[JerryI`Notebook`CellObj`$6902]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Marching Cubes\n*using LibraryLink and fast \
 non-indexed geometry*\n\nThe idea is to use plain `Graphics3D` for drawing \
 shapes and possibly animating them up to 1 million polygons.", 
@@ -199,9 +201,9 @@ for isosurfaces of 3D array", "Display" -> "markdown",
    <|"Data" -> "Get[\"CCompilerDriver`\"]; \nGet[\"LibraryLink`\"];", 
     "Display" -> "codemirror", "Hash" -> 
      "710067b8-a3d7-4bc1-9ad6-c69e19975a20", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
    <|"Data" -> ".md\nNow define header files with all precomputed 254 cases \
 for vertices of cubes", "Display" -> "codemirror", 
     "Hash" -> "8c16a87f-af45-4f87-af30-d41fc4bc6df4", "Invisible" -> False, 
@@ -434,9 +436,9 @@ triangulationTable[TRIANGULATION_TABLE_SIZE][16] = {\n    {-1, -1, -1, -1, \
 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}\n};\n", 
     "Display" -> "codemirror", "Hash" -> 
      "d6932e07-4fdf-4f45-82d2-b1dcc6899ce4", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
    <|"Data" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/09 - Mixing \
 languages/tables.h", "Display" -> "fileprint", 
     "Hash" -> "ba607891-b6b0-4de2-9219-fad2f36535b5", "Invisible" -> False, 
@@ -558,9 +560,9 @@ out_data = libData->MTensor_getRealData(out);\n\n memcpy(out_data, vertices, \
 vertexCount*3*3*sizeof(double));\n\n MArgument_setMTensor(Res,out);\n return \
 err;\n\n\n}", "Display" -> "codemirror", 
     "Hash" -> "ed1dbdbb-c0d1-4ea3-ade4-f621d90c5208", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True, "InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
    <|"Data" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/09 - Mixing \
 languages/main.c", "Display" -> "fileprint", 
     "Hash" -> "abd1e80a-ba5c-4818-998c-8ff03269f03f", "Invisible" -> False, 
@@ -584,9 +586,9 @@ languages/main.c", "Display" -> "fileprint",
  \n   {Real, 3, \"Constant\"}, Real, Real \n }, {Real, 2, Automatic}]; ", 
     "Display" -> "codemirror", "Hash" -> 
      "87a4828d-93d3-47fa-86f6-d01ab768281c", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
-    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
    <|"Data" -> ".md\nBasic test on the simplest shape", 
     "Display" -> "codemirror", "Hash" -> 
      "0afef796-f838-4ed4-a408-aff420f76c9c", "Invisible" -> False, 
@@ -606,11 +608,11 @@ Graphics3D \n]", "Display" -> "codemirror",
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
      "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
-   <|"Data" -> "(*VB[*)(FrontEndRef[\"8164b5e0-6e6d-409e-8a13-b05e47af62b5\"]\
-)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKWxiam\
-SSZphromqWapeiaGFim6lokGhrrJhmYppqYJ6aZGSWZAgB9iRVz\"*)(*]VB*)", 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"a1130804-f7fa-4468-bb04-64c462c755ec\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxoaG\
+htYGJjoppmnJeqamJhZ6CYlAblmJskmZkbJ5qamqckAeLkVPA==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "65f072d9-085e-4166-a311-9af21877165e", "Invisible" -> False, 
+     "aa6b642f-b23f-4f11-b5da-958a55fe4918", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
      "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
@@ -710,6 +712,42 @@ SpotLight[Red, {10,10,10}],\n  AnimationFrameListener[vertices2 // Offload, \
 ImageSize->1000, Background->Black, Lighting->None]\n", 
     "Display" -> "codemirror", "Hash" -> 
      "57b8efce-2923-4ddd-803d-73cff32e0302", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "42bcab6c-1fa1-4feb-b6fc-e2b9f8a911ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> ".md\n## Calculate normals\nTo achieve non-flat shading, we \
+need to provide normals as well interpolated from the 3D data", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c9cbd290-6241-4fec-813c-684c3f7506ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> "## Calculate normals\nTo achieve non-flat shading, we need to \
+provide normals as well interpolated from the 3D data", 
+    "Display" -> "markdown", "Hash" -> 
+     "c78de899-8c0c-48c2-95d3-fafc105bf869", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> ".md\n<span style=\"color:red\">to be written</span>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6cd1f1e3-9755-4d8d-b088-2d840324a070", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> "<span style=\"color:red\">to be written</span>", 
+    "Display" -> "markdown", "Hash" -> 
+     "cebe1711-0462-4a0c-8bbb-d4cd1899c5a1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ce86f683-e9ab-4299-9bbc-893976763c70"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "62aace80-3f48-40b8-b4f8-6232f8579078", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
      "ce86f683-e9ab-4299-9bbc-893976763c70"|>}, "serializer" -> "jsfn4"|>
