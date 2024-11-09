@@ -3189,6 +3189,10 @@ ol {
 }
 
 @media (min-width: 768px) {
+  .md\:inline-block {
+    display: inline-block;
+  }
+    
   .md\:fixed {
     position: fixed;
   }
