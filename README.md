@@ -74,7 +74,11 @@ It supports dynamics, GUI building blocks, and powerful Mathematica syntax out o
 
 ![alt text](imgs/Isingspins-ezgif.com-optipng.png)
 
+
 ![alt text](imgs/Shorter-ezgif.com-optimize.gif)
+
+![alt text](imgs/morph-ezgif.com-video-to-gif-converter.gif)
+
 
 No more static graphics! Each primitive of `Graphics`/`Graphics3D` was recreated from scratch using `d3.js` and `THREE.js` libraries. Most native plotting functions of Mathematica are supported.
 
