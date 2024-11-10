@@ -1,6 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$92], 
+<|"Notebook" -> <|"Controller" -> "89dc6f93-9731-4d4e-bb3a-08bfe9405106", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$114], 
    "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "d10f86d2-00bf-4fcd-9389-f7471cabcda9", 
+   "ModalsChannel" -> "19903a12-cde6-4458-8479-5e5d6342546e", 
    "Objects" -> <|"f9b15308-6ceb-467a-a96d-df7639cc80ad" -> 
       <|"Public" -> Hold[Graphics3D[{{GraphicsComplex[
              {{1.0964214727996619*^-7, 4.920728063122499*^-14, 
@@ -46404,21 +46405,25 @@ MLkH+8V+zqFHPCL8+ufNrJ3fSSveUf66LI5arcr7s+LQ/rginqyP35BfvHAfMT5+2Iv2b1VeemDV9\
 convcrVMzSp+TEf51vOPF+nSpm9S/xgeP/O870rzt7aRaH+MSh8UZ894w3ZO91VFa/4L4u5f6Q+p3\
 87um8y31eyifIBw7meeBjPMWsC3lx/h+tlQBJ"|>, "Symbols" -> <||>, 
    "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Release notes *2.6.1*", 
-      CellObj[JerryI`Notebook`CellObj`$61]], 
+      CellObj[JerryI`Notebook`CellObj`$50]], 
      Notebook`Editor`TOC`Private`heading[2, 
       "GraphicsComplex now supports VertexNormals", 
-      CellObj[JerryI`Notebook`CellObj`$63]], 
+      CellObj[JerryI`Notebook`CellObj`$54]], 
      Notebook`Editor`TOC`Private`heading[2, 
       "Dynamic non-indexed geometry for Polygon", 
-      CellObj[JerryI`Notebook`CellObj`$67]], 
+      CellObj[JerryI`Notebook`CellObj`$58]], 
      Notebook`Editor`TOC`Private`heading[2, "Shared JS libraries", 
-      CellObj[JerryI`Notebook`CellObj`$77]], 
+      CellObj[JerryI`Notebook`CellObj`$67]], 
      Notebook`Editor`TOC`Private`heading[2, "Support for Image3D preview", 
-      CellObj[JerryI`Notebook`CellObj`$85]], 
+      CellObj[JerryI`Notebook`CellObj`$75]], 
      Notebook`Editor`TOC`Private`heading[2, "CLI", 
-      CellObj[JerryI`Notebook`CellObj`$90]], 
+      CellObj[JerryI`Notebook`CellObj`$84]], 
      Notebook`Editor`TOC`Private`heading[2, "Inbox", 
-      CellObj[JerryI`Notebook`CellObj`$102]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$87]], 
+     Notebook`Editor`TOC`Private`heading[2, "EvaluateCell", 
+      CellObj[JerryI`Notebook`CellObj`$92]], 
+     Notebook`Editor`TOC`Private`heading[2, "CellPrint to a new window", 
+      CellObj[JerryI`Notebook`CellObj`$108]]}|>, 
  "Cells" -> {<|"Data" -> ".html\n\n<style>\n  .balloon {\n  height: 125px;\n  \
 width: 105px;\n  border-radius: 75% 75% 70% 70%;\n  position: \
 relative;\n}\n\n.balloon:before {\n  content: \"\";\n  height: 75px;\n  \
@@ -46434,10 +46439,10 @@ position:fixed;\n  bottom: 0;\n  z-index: -99;  \n  padding: 1em;\n  \
 box-sizing: border-box;\n  display: flex;\n  flex-wrap: wrap;\n  overflow: \
 hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "codemirror", 
-    "Hash" -> "8e3fd069-32c7-4824-af2b-301b1d7a258f", "Invisible" -> False, 
+    "Hash" -> "ac2f66c5-891d-4907-9cff-771cead9638d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Locked" -> True, "Hidden" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+    "Notebook" -> "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "\n<style>\n  .balloon {\n  height: 125px;\n  width: 105px;\n  \
 border-radius: 75% 75% 70% 70%;\n  position: relative;\n}\n\n.balloon:before \
 {\n  content: \"\";\n  height: 75px;\n  width: 1px;\n  padding: 1px;\n  \
@@ -46452,10 +46457,10 @@ translateY(-300vh);\n  opacity: 0;}\n}\n#balloon-container {\n  height: \
 padding: 1em;\n  box-sizing: border-box;\n  display: flex;\n  flex-wrap: \
 wrap;\n  overflow: hidden;\n  transition: opacity 500ms;\n}\n</style>\n\n<div \
 id=\"balloon-container\">\n</div>", "Display" -> "html", 
-    "Hash" -> "d5a77528-ba6a-4682-bbd0-bec9f798fb5f", "Invisible" -> False, 
+    "Hash" -> "19ca881f-ef50-4a0b-9ca7-92e1cbd6aa67", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".js\n\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -46473,10 +46478,10 @@ balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 7000);\n\nreturn \
 '';\n", "Display" -> "codemirror", "Hash" -> 
-     "756c410b-4843-4b8b-83fa-cf4517e0ab3b", "Invisible" -> True, 
+     "1b01dd02-a11f-4fb5-9116-a4b64d3696c8", "Invisible" -> True, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "\nconst balloonContainer = \
 document.getElementById(\"balloon-container\");\n\nfunction random(num) {\n  \
 return Math.floor(Math.random() * num);\n}\n\nfunction getRandomStyles() {\n  \
@@ -46493,44 +46498,44 @@ balloonContainer.append(balloon);\n  }\n}\n\nfunction removeBalloons() {\n  \
 balloonContainer.style.opacity = 0;\n  setTimeout(() => {\n    \
 balloonContainer.remove()\n  }, \
 500)\n}\n\ncreateBalloons(10);\nsetTimeout(removeBalloons, 15000);\n\nreturn \
-'';\n", "Display" -> "js", "Hash" -> "3241c522-5c47-4d9f-abbd-9e657a970ef1", 
+'';\n", "Display" -> "js", "Hash" -> "247af9ef-28e2-45e6-a154-0fbecde44838", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+    "Notebook" -> "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n# Release notes *2.6.1*\n\n", "Display" -> "codemirror", 
-    "Hash" -> "2c3153f2-1374-44b7-92cc-dd67bc11ff68", "Invisible" -> False, 
+    "Hash" -> "8a0731a7-43e5-4b99-947a-0e7167471f18", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "# Release notes *2.6.1*\n\n", "Display" -> "markdown", 
-    "Hash" -> "fef87821-f6fd-4950-afd9-d0f75f809beb", "Invisible" -> False, 
+    "Hash" -> "cf6a0088-4cf6-4480-9f3d-21eb357bba56", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## GraphicsComplex now supports VertexNormals\nIt was an \
 old bug, that provided normals were ignored, which leaded to some visual \
 artifacts in terms of lighting. Looks at the differece now", 
     "Display" -> "codemirror", "Hash" -> 
-     "233467f8-10dc-4cc3-aa4e-5c8f9048e10f", "Invisible" -> False, 
+     "ec1952eb-0ca4-4c78-9d7f-5e20cbf85e0f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## GraphicsComplex now supports VertexNormals\nIt was an old \
 bug, that provided normals were ignored, which leaded to some visual \
 artifacts in terms of lighting. Looks at the differece now", 
     "Display" -> "markdown", "Hash" -> 
-     "51789b69-93b8-407e-b0d3-085e8fdbcdc0", "Invisible" -> False, 
+     "f9dcf907-d92e-4c6b-a5b7-182ef3e5e794", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "{SphericalPlot3D[SphericalHarmonicY[1,0, x,y], {x,0,Pi}, \
 {y,0,2Pi}]/.{VertexNormals->\"Hooo\"},Graphics[Arrow[{{0,0}, {1,0}}], \
 ImageSize->50, ImagePadding->None],\nSphericalPlot3D[SphericalHarmonicY[1,0, \
 x,y], {x,0,Pi}, {y,0,2Pi}]} // Row ", "Display" -> "codemirror", 
-    "Hash" -> "cbb5c9b3-fdba-4baf-a9a2-8ed1f82ecfeb", "Invisible" -> False, 
+    "Hash" -> "2558f2e1-52f8-4882-834f-5dd30b4088e3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(FrontEndRef[\"f9b15308-6ceb-467a-a96d-df7639\
 cc80ad\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkN\
 VgEKp1kmGZoaG1jomiWnJumamJkn6iZamqXopqSZmxlbJidbGCSmAACH2hYR\"*)(*]VB*)(*|*),\
@@ -46542,63 +46547,63 @@ CRi\"*)(*]VB*)(*|*),(*|*)(*VB[*)(FrontEndRef[\"37227be2-25df-4d3c-a000-357963\
 69ef66\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkN\
 VgEKG5sbGZknpRrpGpmmpOmapBgn6yYaGBjoGpuaW5oZm1mmppmZAQB7PxUY\"*)(*]VB*)}}(*]G\
 B*)", "Display" -> "codemirror", "Hash" -> 
-     "d4c2faf5-5b99-45c5-b9c0-f0c9d1e48699", "Invisible" -> False, 
+     "d6a6f454-2231-4f1c-a2a2-90893c75043a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## Dynamic non-indexed geometry for Polygon\nThere is no \
 such thing defined in standard library of Wolfram Language, but we did bring \
 it to you from WebGL world, since it may come handy for complex dynamic 3D \
 geometry.\n\nThe idea now, it that you can define starting and ending index \
 for all your triangles using `Polygon` inside `GraphicsComplex`", 
     "Display" -> "codemirror", "Hash" -> 
-     "86cf8c8b-3ee1-4fd3-a9c4-2c5fe0397e8d", "Invisible" -> False, 
+     "9e3905f0-f605-428d-ac74-6dae0ad5965f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## Dynamic non-indexed geometry for Polygon\nThere is no such \
 thing defined in standard library of Wolfram Language, but we did bring it to \
 you from WebGL world, since it may come handy for complex dynamic 3D \
 geometry.\n\nThe idea now, it that you can define starting and ending index \
 for all your triangles using `Polygon` inside `GraphicsComplex`", 
     "Display" -> "markdown", "Hash" -> 
-     "2b343784-eae1-424e-9e7d-1264cd9a2cff", "Invisible" -> False, 
+     "d5b1d6e1-074c-483a-b1d0-d19393928214", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "With[{vertices = (*VB[*)(Get[FileNameJoin[{\".iconized\", \
 \"iconized-3957.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWlMIB4fkPBMzs/LrE\
 p1y8xJdcqvyCyQY2CASIKUBpXmpAazAhk+iUmpOcEcQFZYalFJZnJqMQADMRNT\"*)(*]VB*)},\n \
  GraphicsComplex[vertices, {\n    Polygon[1, 312]\n  }] // Graphics3D \n]", 
     "Display" -> "codemirror", "Hash" -> 
-     "0a7e81ed-a38d-4c03-8348-e2bd661a6615", "Invisible" -> False, 
+     "6280144b-e6df-416f-a652-a42621727509", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"bc3577f2-0057-4047-b76c-5d3131017652\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJyUbm\
 5qbpxnpGhiYmuuaGJiY6yaZmyXrmqYYGxobGhiam5kaAQB1tBR5\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "8bba919c-81fc-4734-8aed-0c7ecbb3cd76", "Invisible" -> False, 
+     "0823b469-1a0a-4f78-9734-5d0f15ab35f9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\nIt means you can specify only the range of your \
 geometry, without indexes. The benifit of this approach, you can use fixed \
 length buffer for vertices and limit your drawing range using two arguments \
 of Polygon.\n\nLet us make it dynamic", "Display" -> "codemirror", 
-    "Hash" -> "503ea731-43bf-41d1-a320-c79a04b4f930", "Invisible" -> False, 
+    "Hash" -> "429eeff0-a75c-4114-9a45-55e2ade18569", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "It means you can specify only the range of your geometry, \
 without indexes. The benifit of this approach, you can use fixed length \
 buffer for vertices and limit your drawing range using two arguments of \
 Polygon.\n\nLet us make it dynamic", "Display" -> "markdown", 
-    "Hash" -> "583bda81-fc85-4e7c-8874-236f2ba05ef3", "Invisible" -> False, 
+    "Hash" -> "2e3bd36e-a06b-46b9-8a15-e6e3a8d2a1e6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "morph[{t1_, t2_, t3_}, size_, sizes_, value_] := With[{},\n  \
 If[value < 0.5,\n    With[{\n      min = Min[sizes[[1]], sizes[[2]], size],\n \
      max = Max[sizes[[1]], sizes[[2]], size]\n    },\n      With[{\n        \
@@ -46631,38 +46636,38 @@ Graphics3D[{{Opacity[0],Sphere[{0,0,0},0.05]}, GraphicsComplex[buffer // \
 Offload, {\n          Graphics3D`Materials[\"Glass\"], Green, \
 Directive[\"MaterialThickness\"->0.5], Polygon[1, range // Offload]\n        \
 }]}]\n      } // Column // Panel\n    ]\n  ]\n]", "Display" -> "codemirror", 
-    "Hash" -> "091ab3cb-51ac-4dc4-941f-384b47eccbbc", "Invisible" -> False, 
+    "Hash" -> "3d741f47-42ae-4e2b-ac6b-d55af548fb63", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n__See new examples!__", "Display" -> "codemirror", 
-    "Hash" -> "9b3590f1-334b-4bb2-b110-ccccb9f59209", "Invisible" -> False, 
+    "Hash" -> "3004173b-5e54-4189-901b-b91cf454d064", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "__See new examples!__", "Display" -> "markdown", 
-    "Hash" -> "0bbf67d0-7943-4702-827e-01b56cd62128", "Invisible" -> False, 
+    "Hash" -> "7d312377-3677-4554-886e-a024fc5d49c2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## Shared JS libraries\nD3.js, THREE.js, KaTeX.js, \
 Marked.js used by many modules of WLJS system are now available as sort of \
 shared libraries. It reduces the size of Javascript code for different \
 plugins as well as gives an access to them from JS cells (you to play with \
 them)", "Display" -> "codemirror", "Hash" -> 
-     "304ceb30-c4ba-4bb7-bbf1-62979140d8f7", "Invisible" -> False, 
+     "9649a494-0636-4f8c-9958-d5c957a864c7", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## Shared JS libraries\nD3.js, THREE.js, KaTeX.js, Marked.js \
 used by many modules of WLJS system are now available as sort of shared \
 libraries. It reduces the size of Javascript code for different plugins as \
 well as gives an access to them from JS cells (you to play with them)", 
     "Display" -> "markdown", "Hash" -> 
-     "52e9b4e5-ca5b-43d7-8fc7-c24ce7626369", "Invisible" -> False, 
+     "98402802-09a2-4a49-8a2c-e1eef173fc5d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".js\nconst dom = document.createElement('div');\nlet \
 animation;\n\nasync function buildScene() {\n  await \
 interpretate.shared.THREE.load(); //here\n  const THREE = \
@@ -46680,10 +46685,10 @@ animate();\n}\n\nthis.ondestroy = () => {\n  \
 cancelAnimationFrame(animation);\n  \
 console.log('removed');\n}\n\nbuildScene();\n\n\nreturn dom;", 
     "Display" -> "codemirror", "Hash" -> 
-     "3c3cb52a-6cc2-4eb1-88ef-c9e733e6e360", "Invisible" -> False, 
+     "b20df1b6-67a6-4d8e-83ed-a4de3272a160", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "\nconst dom = document.createElement('div');\nlet \
 animation;\n\nasync function buildScene() {\n  await \
 interpretate.shared.THREE.load();\n  const THREE = \
@@ -46700,40 +46705,40 @@ animation = requestAnimationFrame(animate);\n\n  } \n\n  \
 animate();\n}\n\nthis.ondestroy = () => {\n  \
 cancelAnimationFrame(animation);\n  \
 console.log('removed');\n}\n\nbuildScene();\n\n\nreturn dom;", 
-    "Display" -> "js", "Hash" -> "9dd9033a-918d-449f-9081-db9affdc4be0", 
+    "Display" -> "js", "Hash" -> "e38ea23a-4dac-4c50-8025-6d07485abe32", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+    "Notebook" -> "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\nIt won't cause double loading, shared libraries manager \
 will take care about loading process", "Display" -> "codemirror", 
-    "Hash" -> "cc5ba10f-232f-4cbf-ae09-ab32b097e7eb", "Invisible" -> False, 
+    "Hash" -> "56ad9e05-c703-40ff-8c30-68397b1aa06f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "It won't cause double loading, shared libraries manager will \
 take care about loading process", "Display" -> "markdown", 
-    "Hash" -> "c904328d-91b1-446c-8e06-cc68e42a9197", "Invisible" -> False, 
+    "Hash" -> "cb86c742-590f-4c5c-bb56-ca35c4c27d03", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## Support for Image3D preview\nWe use MarchingCubes \
 method to preview 3D images", "Display" -> "codemirror", 
-    "Hash" -> "44cdf983-54f5-4ef6-8bbb-574669838e07", "Invisible" -> False, 
+    "Hash" -> "07b42f41-9f0f-4444-b022-53e51c2a7ac3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## Support for Image3D preview\nWe use MarchingCubes method \
 to preview 3D images", "Display" -> "markdown", 
-    "Hash" -> "0f205280-04b1-4fcc-b3c0-0f99f9803233", "Invisible" -> False, 
+    "Hash" -> "c0e08bd7-ded2-4ca5-a31e-a33766793408", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "Image3D[#] & /@\n  CellularAutomaton[{14, {2, 1}, {1, 1, 1}}, \
 {{{{1}}}, 0}, 3];\nPartition[%, 2] // Grid ", "Display" -> "codemirror", 
-    "Hash" -> "dd2f0741-3247-4fbc-9c30-7c8206481cc0", "Invisible" -> False, 
+    "Hash" -> "a09fd2b5-8a12-41b2-9107-ee3b71a7ee0f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(Image3DDump42)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgE\
 SHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm1ikGFlYJCbqGpqnpeiapFkk6SaZJlroppmk\
 ppkZpKSkGhgaAwCNNhY5\"*)(*]VB*)(*|*),(*|*)(*VB[*)(Image3DDump43)(*,*)(*\"1:eJ\
@@ -46744,68 +46749,135 @@ EKWyYbmRsbmZjpJqaYm+qaJJom6lqkmVvomhknmZonJ1saGKWZAQB8FRVU\"*)(*]VB*)(*|*),(*\
 |*)(*VB[*)(Image3DDump45)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS\
 3GtSE0uLUlMykkNVgEKG5gZmVqYWSTrGhgYmOuaGJsZ6Saam1voJpqmJSabpFqmmaaaAwBtjhUf\"\
 *)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
-    "Hash" -> "701adba6-12c0-438f-97f2-fb37f44a6bc6", "Invisible" -> False, 
+    "Hash" -> "0fbac0c3-88ad-4d70-bda9-4b39c2a5ec1a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "4970a14e-9bd9-4cd0-b5d0-221ebd6fb080", "Invisible" -> False, 
+    "Hash" -> "3195899c-5a9e-45e0-9ccc-5f9c05493861", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## CLI\nAfter 2.6.0 version WLJS Notebook Desktop \
 application is available globally from the terminal. Simply \
 type\n\n```bash\nwljs .\n```\n\nlike on the screenshot \
 here\n\n\n![](/attachments/Screenshot%202024-11-08%20at%2022.27.49-eea.png)\n\
 \nto open the an app in the current directory", "Display" -> "codemirror", 
-    "Hash" -> "a3a29fdf-ca99-4b12-9b57-4505f4705348", "Invisible" -> False, 
+    "Hash" -> "fe0dd32c-3422-4c21-b388-fb87290dad57", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## CLI\nAfter 2.6.0 version WLJS Notebook Desktop application \
 is available globally from the terminal. Simply type\n\n```bash\nwljs \
 .\n```\n\nlike on the screenshot \
 here\n\n\n![](/attachments/Screenshot%202024-11-08%20at%2022.27.49-eea.png)\n\
 \nto open the an app in the current directory", "Display" -> "markdown", 
-    "Hash" -> "6384aa82-30d3-4885-8a15-a1aaa8f570ce", "Invisible" -> False, 
+    "Hash" -> "913a4c36-c69e-4767-9cf7-1799a81af744", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "fa527ae8-17a4-4d54-8573-da2d7fbda055", "Invisible" -> False, 
+    "Hash" -> "3ad825c8-5ee6-4a81-a968-debc008d61d6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## Inbox\nTo show all accumulated messages (prints, \
 warnings, errors) click on a inbox button", "Display" -> "codemirror", 
-    "Hash" -> "cb6a87a0-a091-4095-aaf9-b907b7b86f28", "Invisible" -> False, 
+    "Hash" -> "03c41c82-2cfb-4d59-8f50-b182cc65d1ef", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "## Inbox\nTo show all accumulated messages (prints, warnings, \
 errors) click on a inbox button", "Display" -> "markdown", 
-    "Hash" -> "862cf2d2-7cff-45f4-b93d-00fd56af6a7a", "Invisible" -> False, 
+    "Hash" -> "f3f12e13-4bf8-46e0-8e65-259d6cc2943c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n\n![](/attachments/Screenshot%202024-11-09%20at%2023.09.\
 12-eb9.png)\n", "Display" -> "codemirror", 
-    "Hash" -> "87657d31-4f53-4818-947f-706c7830a4a5", "Invisible" -> False, 
+    "Hash" -> "b4fd7141-6a09-41f3-b425-aea01da501e0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> 
      "\n![](/attachments/Screenshot%202024-11-09%20at%2023.09.12-eb9.png)", 
     "Display" -> "markdown", "Hash" -> 
-     "6ebf959e-b634-4fc9-91a7-fb9961996b3d", "Invisible" -> False, 
+     "de60b7a2-31ab-44cb-983a-ffc80ebdf176", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "f5ba5d95-a356-4245-85a0-bcfdd147856d", "Invisible" -> False, 
+    "Hash" -> "72a5e9b5-4ff6-4e28-9bb7-69253b7c0f4a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> ".md\n## EvaluateCell\nThere is a programmatic way of \
+evaluating printed cells", "Display" -> "codemirror", 
+    "Hash" -> "7bc81cbb-8035-43c7-b92c-824cb7fa59f8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> 
+     "## EvaluateCell\nThere is a programmatic way of evaluating printed \
+cells", "Display" -> "markdown", "Hash" -> 
+     "c6c2fb32-a451-4cfc-80bc-eff75950cdea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> 
+     "cell = CellPrint[\"Red\", \"Type\"->\"Input\"];\nEvaluateCell[cell];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d1ed0561-af0e-4e1d-93b2-d739752a38be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> "Red", "Display" -> "codemirror", 
+    "Hash" -> "0b88102b-edb2-4013-8357-6151970c8856", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> "(*VB[*)(RGBColor[1, 0, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHeyiDgQHOAAALpBNd\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "46e51930-03a4-44dc-a627-011c605e2099", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> ".md\n## CellPrint to a new window\nThere is a new option of \
+`CellPrint` to specify the target", "Display" -> "codemirror", 
+    "Hash" -> "8512c051-c254-45fd-823f-a37fe4f33000", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> "## CellPrint to a new window\nThere is a new option of \
+`CellPrint` to specify the target", "Display" -> "markdown", 
+    "Hash" -> "81740fbb-35c2-4b9f-b58e-0ecdf4dcf706", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> "cell = CellPrint[ToString[Plot[x,{x,0,1}], StandardForm], \n  \
+\"Target\"->_\n];", "Display" -> "codemirror", 
+    "Hash" -> "8a1c1df7-d3bf-4a3a-b6ca-ae6e65ba6cc4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> ".md\nThen you can delete it as normal cell, which will cause \
+closing of a window.", "Display" -> "codemirror", 
+    "Hash" -> "bfa59dc9-acaa-434a-b2ae-e04e7b21a0d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
+   <|"Data" -> "Then you can delete it as normal cell, which will cause \
+closing of a window.", "Display" -> "markdown", 
+    "Hash" -> "43e4d7c8-e448-486d-b09d-837a0d4ae70f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, <|"Data" -> "Delete[cell];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5a394896-2628-46fe-8bae-13485eac19fa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n## Figures export\nThere is a way to embed individual \
 graphs from your notebook to a web. You need just a little knowledge about \
 HTML \
@@ -46819,39 +46891,39 @@ your plots from the head section to reduce the loading time of your website. \
 WLJS cannot guess it automatically.\n\n<br/>\n\nThe code section for the \
 figure can be embedded to any place in your HTML document. Feel free to \
 customize CSS.\n", "Display" -> "codemirror", 
-    "Hash" -> "8c79ac6c-bc83-496f-a697-046f349ed92a", "Invisible" -> False, 
+    "Hash" -> "76a1ef60-5471-49ff-9d66-d96ee70fb90d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".md\n*Ballon animation by Jemima (codepen)*", 
     "Display" -> "codemirror", "Hash" -> 
-     "fa8a194c-2f50-44b5-909a-710dc80360d7", "Invisible" -> False, 
+     "a2d5fb2d-b938-44fe-8a58-50aa2cc37008", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ">*Ballon animation by Jemima (codepen)*", 
     "Display" -> "markdown", "Hash" -> 
-     "46865ba0-33c4-4390-9a5d-e0a8c30a6fcf", "Invisible" -> False, 
+     "57f028fe-79b0-4c74-982c-a8cf8120e546", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> ".html\n\n<style>\n  [transparency=\"false\"] .bg-g-trans {\n  \
   background: transparent !important;\n  }\n\n  [transparency=\"true\"] \
 .bg-g-trans {\n    background: transparent !important;\n  }\n</style>", 
     "Display" -> "codemirror", "Hash" -> 
-     "9a23c8fe-088d-46b9-b248-18f69b22af11", "Invisible" -> False, 
+     "27d558d1-cf6d-4ee8-922e-b02df754f398", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> "\n<style>\n  [transparency=\"false\"] .bg-g-trans {\n    \
 background: transparent !important;\n  }\n\n  [transparency=\"true\"] \
 .bg-g-trans {\n    background: transparent !important;\n  }\n</style>", 
-    "Display" -> "html", "Hash" -> "3ea1266c-c80f-4a24-b26d-66603711c124", 
+    "Display" -> "html", "Hash" -> "f235321d-e4ae-4b3f-84dc-fb33a8bee1be", 
     "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>, 
+    "Notebook" -> "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "48bbb9fc-02bb-4100-9313-1b1666ec569a", "Invisible" -> False, 
+    "Hash" -> "122575fe-b11f-4f02-8a7e-605eb34df2b8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "52fd2315-a9d4-4799-aaa3-eb748b6bd93d"|>}, "serializer" -> "jsfn4"|>
+     "a7a96fd9-083a-4d67-84eb-ae4e8c44e7b1"|>}, "serializer" -> "jsfn4"|>
