@@ -1,5 +1,10 @@
+escapeDangerous[string_] := escapeDangerous[ToString[string]]
 
-Component[Name_, Message_, OptionsPattern[]] := With[{Uid = CreateUUID[], class = OptionValue["Class"]},
+escapeDangerous[string_String] := StringReplace[string, 
+  {"&" -> "&amp;", "<" -> "&lt;", ">" -> "&gt;", "\"" -> "&quot;", 
+   "'" -> "&#39;"}];
+
+Component[Name_, message_, OptionsPattern[]] := With[{Uid = CreateUUID[], class = OptionValue["Class"], Message = escapeDangerous[message]},
     With[{template = 
       <div id="{Uid}" class=" pointer-events-auto {class} flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
             <div class="flex w-0 flex-1 items-start p-3">
@@ -20,7 +25,7 @@ Component[Name_, Message_, OptionsPattern[]] := With[{Uid = CreateUUID[], class 
     ]
 ];
 
-Component[Notifications`NotificationMessage[Name_](*`*), Message_, OptionsPattern[]] := With[{Uid = CreateUUID[], class = OptionValue["Class"]},
+Component[Notifications`NotificationMessage[Name_](*`*), message_, OptionsPattern[]] := With[{Uid = CreateUUID[], Message = escapeDangerous[message], class = OptionValue["Class"]},
     With[{template = 
       <div id="{Uid}" class=" pointer-events-auto {class} flex w-full max-w-xs divide-x divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700">
             <div class="flex w-0 flex-1 items-start p-3">
@@ -70,7 +75,9 @@ Component["Saved", Message_, OptionsPattern[]] := With[{Uid = CreateUUID[]},
     ]
 ];
 
-Component["Warning", Message_, OptionsPattern[]] := With[{Uid = CreateUUID[], class = OptionValue["Class"]},
+
+
+Component["Warning", message_, OptionsPattern[]] := With[{Uid = CreateUUID[], Message = escapeDangerous[message], class = OptionValue["Class"]},
     With[{template = 
       <div id="{Uid}" class="mb-1  pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 {class} dark:bg-gray-700">
        <div class="p-3">
