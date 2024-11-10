@@ -19,7 +19,7 @@ WindowObj /: EventFire[n_WindowObj, opts__] := EventFire[n["Hash"], opts]
 WindowObj /: EventClone[n_WindowObj] := EventClone[n["Hash"] ]
 WindowObj /: EventRemove[n_WindowObj, opts__] := EventRemove[n["Hash"], opts] 
 
-init[o_] := Module[{uid = CreateUUID[]},
+init[o_] := Module[{uid = If[o["Hash"] =!= Null, o["Hash"], CreateUUID[] ]},
     Print["Init WindowObj"];
 
     o["Hash"] = uid;
