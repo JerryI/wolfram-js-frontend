@@ -14,6 +14,7 @@
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
     "dist": "electron-builder",
+    "dist-mac": "electron-builder --mac --x64",
     "dist-win": "electron-builder --win --x64",
     "dist-linux": "electron-builder --linux --x64",
     "dist86": "electron-builder --x64",
