@@ -256,7 +256,7 @@ projectCellData[cell_, data_, display_, uid_,  notebook_, secret_String, log_Str
             Echo["project >> sending global event"];
             EventFire[notebook, "OnWindowCreate", <|"Window"->win, "Client"->client|>];
             WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
-    ]];
+    ];
 ] 
 
 checkEvaluationCells[currentCell_, notebook_, secret_, log_, kernels_, client_, modals_, parameters_, extensions__] := Module[{
