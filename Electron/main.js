@@ -2104,7 +2104,7 @@ function start_server (window) {
     }
 
     windows.log.info('Starting server');
-    server.wolfram.process.stdin.write(`Get["${runPath.replace(/\\/g, "\\\\")}"]\n`);
+    server.wolfram.process.stdin.write(`Get[URLDecode["${encodeURIComponent(runPath)}"]]\n`);
 
     const PACError = new RegExp(/Execution of PAC script at/);
 
