@@ -98,7 +98,7 @@ WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{trans
 Options[WindowObj`Evaluate] = {"EvaluationContext" -> <||>}
 
 WindowObj /: WindowObj`Serialize[n_WindowObj, OptionsPattern[] ] := Module[{props},
-    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"EvaluationContext", "Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "EvaluationContext", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
+    props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"EvaluationContext", "Format", "Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "Format", "EvaluationContext", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]

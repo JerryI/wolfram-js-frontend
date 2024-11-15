@@ -18,7 +18,7 @@ Transaction /: EventRemove[n_Transaction, opts__] := EventRemove[n["Hash"], opts
 Transaction /: EventClone[n_Transaction] := EventClone[n["Hash"] ] 
 
 Transaction /: Transaction`Serialize[n_Transaction, OptionsPattern[] ] := Module[{props},
-    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Properties","Icon","Self","Init"}];
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Properties","Icon","Format","Self","Init"}];
     props // Flatten // Association
 ]
 

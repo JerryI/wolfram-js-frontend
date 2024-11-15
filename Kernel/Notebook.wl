@@ -60,7 +60,7 @@ Notebook /: EventClone[n_Notebook] := EventClone[n["Hash"]]
 Notebook /: EventRemove[n_Notebook, opts__] := EventRemove[n["Hash"], opts] 
 
 Notebook`Serialize[n_Notebook] := Module[{props},
-    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "ChatBook", "CellsInitialized", "Socket", "EvaluationContext", "Opened","WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
+    props = {# -> n[#]} &/@ Complement[n["Properties"], {"Hash", "Format", "ChatBook", "CellsInitialized", "Socket", "EvaluationContext", "Opened","WebSocketQ", "Evaluator", "Cells", "Properties","Icon","Self", "Init", "Kernel"}];
     props // Flatten // Association
 ]
 
@@ -155,8 +155,8 @@ Notebook /: CellObj`FindCell[n_Notebook, pattern__] := With[{
 CellObj`Serialize[n_CellObj, OptionsPattern[] ] := Module[{props},
     props = {# -> n[#]} &/@ 
         If[OptionValue["MetaOnly"], 
-            Complement[n["Properties"], {"Properties", "Icon", "Self", "Data", "Notebook", "Init", "After", "Before"}], 
-            Complement[n["Properties"], {"Properties", "Icon", "Self", "Notebook", "Init", "After", "Before"}] 
+            Complement[n["Properties"], {"Properties", "Icon", "Format", "Self", "Data", "Notebook", "Init", "After", "Before"}], 
+            Complement[n["Properties"], {"Properties", "Icon", "Format", "Self", "Notebook", "Init", "After", "Before"}] 
         ];      
 
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
