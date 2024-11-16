@@ -63,7 +63,7 @@
     },
     "linux": {
       "target": [
-        "deb"
+        "deb", "rpm", "pacman", "tar.xz", "AppImage"
       ],
       "fileAssociations": [
         {
