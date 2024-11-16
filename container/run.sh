@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eux -o pipefail
+
 LICENSE_DIR=/home/wljs/.WolframEngine/Licensing
 
 PUID=${PUID:-1000}
