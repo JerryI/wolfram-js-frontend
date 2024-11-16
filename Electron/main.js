@@ -1,3 +1,4 @@
+//@ts-check
 const { session, app, Tray, Menu, BrowserWindow, dialog, ipcMain, nativeTheme } = require('electron')
 const { screen, globalShortcut} = require('electron/main')
 
@@ -831,7 +832,7 @@ callFakeMenu["exit"] = () => {
 }
 
 /* permissions for the main window, special headers */
-const setHID = (mainWindow) => {
+const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
     mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
         // Add events to handle devices being added or removed before the callback on
         // `select-hid-device` is called.
@@ -982,7 +983,7 @@ const windows = {
             this.win.webContents.send('version', data);
         },
 
-        construct(cbk = () => {}) {
+        construct(cbk = (...any) => {}) {
             let win;
 
             if (isMac) {
