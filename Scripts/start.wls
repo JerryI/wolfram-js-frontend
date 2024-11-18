@@ -218,7 +218,13 @@ $Server["HTTPHandler"] = http;
 
 AppExtensions`HTTPHandler = http;
 
-AppExtensions`QuickNotesDir = FileNameJoin[{Directory[], "__ntemp"}];
+AppExtensions`QuickNotesDir = FileNameJoin[{$TemporaryDirectory, "wljs_quicknotes"}];
+If[!DirectoryQ[AppExtensions`QuickNotesDir], CreateDirectory[AppExtensions`QuickNotesDir] ];
+
+AppExtensions`BackupsDir = FileNameJoin[{$TemporaryDirectory, "wljs_backups"}];
+If[!DirectoryQ[AppExtensions`BackupsDir], CreateDirectory[AppExtensions`BackupsDir] ];
+
+
 With[{now = Now},
   Function[file,
     If[now - FileDate[file] > Quantity[14, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
@@ -228,7 +234,7 @@ With[{now = Now},
 With[{now = Now},
   Function[file,
     If[now - FileDate[file] > Quantity[30, "Days"], DeleteFile[file]; Echo[StringTemplate["Removed old note ``"][file] ] ]
-  ] /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}] ]
+  ] /@ FileNames["*.wln", AppExtensions`BackupsDir]
 ];
 
 

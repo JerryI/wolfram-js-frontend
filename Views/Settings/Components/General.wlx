@@ -114,7 +114,7 @@ EventHandler[Secret, {"Load" -> Function[Null,
         ],
 
         "CleanBackups" -> Function[Null,
-            DeleteFile /@ FileNames["*.wln", FileNameJoin[{Directory[], "__backups"}]];
+            DeleteFile /@ FileNames["*.wln", AppExtensions`BackupsDir (*`*)];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Cleaned"];
         ],
 

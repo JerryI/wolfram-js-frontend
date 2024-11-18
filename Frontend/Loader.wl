@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`", "JerryI`WLX`WebUI`"}];
+BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`", "JerryI`WLX`WebUI`", "JerryI`Notebook`AppExtensions`"}];
     
     Begin["`Internal`"];
 
@@ -149,7 +149,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         If[FileExistsQ[path], path, False]
     ];
 
-    makeHashPath[path_String, secret_String:""] := FileNameJoin[{Directory[], "__backups", StringTemplate["``.wln"][{path, secret} // Hash]}]
+    makeHashPath[path_String, secret_String:""] := FileNameJoin[{AppExtensions`BackupsDir, StringTemplate["``.wln"][{path, secret} // Hash]}]
 
     save[notebook_Notebook, opts: OptionsPattern[] ] := With[{},
         If[ StringQ[notebook["Path"] ],
