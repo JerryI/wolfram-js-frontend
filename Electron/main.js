@@ -434,7 +434,7 @@ const buildMenu = (opts) => {
                     {
                         label: 'Open Examples',
                         click: async(ev) => {
-                            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+                            create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(app.getPath('documents'), 'WLJS Notebooks', 'Demos')), title: 'Examples'});
                         }
                     },
                     { type: 'separator' },
@@ -797,7 +797,7 @@ callFakeMenu["zoomOut"] = () => {
 }
 
 callFakeMenu["locateExamples"] = async(ev) => {
-    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(installationFolder, 'Demos')), title: 'Examples'});
+    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(path.join(app.getPath('documents'), 'WLJS Notebooks', 'Demos')), title: 'Examples'});
 }
 
 callFakeMenu["locateAppData"] = async(ev) => {

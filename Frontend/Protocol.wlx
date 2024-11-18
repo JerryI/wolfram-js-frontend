@@ -47,7 +47,7 @@ loadSettingsOnceMore := With[{},
 ];
 
 checkReleaseNotes[client_] := If[env["AppJSON", "version"] =!= settings["CurrentVersion"], With[{version = env["AppJSON", "version"]},
-  With[{files = FileNames["*.wln", FileNameJoin[{Directory[], "Demos", "Release notes"}]]},
+  With[{files = FileNames["*.wln", FileNameJoin[{AppExtensions`DemosDir (*`*), "Release notes"}]]},
     With[{books = Select[files, Function[name, StringMatchQ[FileNameTake[name], version~~__]]]},
       Echo[StringJoin["Checking release notes for ", version]];
       Echo[books];
@@ -174,7 +174,7 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
 ] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
-defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->FileNameJoin[{Directory[], "Demos"}]|>, settings]["Home"] ];
+defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->AppExtensions`DefaultDocumentsDir (*`*)|>, settings]["Home"] ];
 
 ExtensionMenuItems = <|"file"->{}, "misc"->{}, "view"->{}, "edit"->{}|>;
 
@@ -230,7 +230,7 @@ App[request_] := With[{
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[StringJoin["/folder/", URLEncode[FileNameJoin[{Directory[], "Demos"}]]], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_];
                   ],
 
                   "Acknowledgments" -> Function[Null,

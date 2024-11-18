@@ -82,6 +82,7 @@ With[{
     Path = OptionValue["Path"], 
     Controls = OptionValue["Controls"],
     Icons     = OptionValue["Icons"],
+    RawPath   = OptionValue["RawPath"],
     modals = OptionValue["Modals"],
     Parameters = OptionValue["Parameters"],
     AppEvent = OptionValue["AppEvents"],
@@ -174,7 +175,7 @@ With[{
     <WebUIEventListener Type={"click"} Id={Button2Id} Event={Button2Id} />
   ,
     <WebUIRefresh Event={SidebarId} Class={"flex grow flex-col gap-y-5 overflow-y-auto px-4 sc-b"}>
-      <Sidebar Port={Secret} Icons={Icons} Parameters={Parameters} Secret={"blackhole"} Path={Path} />
+      <Sidebar Port={Secret} RawPath={RawPath} Icons={Icons} Parameters={Parameters} Secret={"blackhole"} Path={Path} />
     </WebUIRefresh>
 
   ,
@@ -214,6 +215,6 @@ With[{
   } // Flatten // StringRiffle
 ] ]
 
-Options[Component] = {"Icons"->"", "Messanger"->"", "ExtensionTemplates" -> {}, "AppEvents"->"", "Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
+Options[Component] = {"RawPath"->"", "Icons"->"", "Messanger"->"", "ExtensionTemplates" -> {}, "AppEvents"->"", "Secret"->"", "Path"->"", "Controls"->"", "Parameters"->"", "Modals"->""}
 
 Component

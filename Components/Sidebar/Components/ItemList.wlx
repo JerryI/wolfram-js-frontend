@@ -1,6 +1,7 @@
 Level    = $Options["Level"];
 Class = StringJoin[$Options["Class"], " pl-", ToString[Level]];
 Path     = $Options["Path"];
+RawPath  = $Options["RawPath"];
 Current  = $Options["Current"];
 Parameters = $Options["Parameters"];
 
@@ -28,7 +29,7 @@ With[{
     parent = ParentDirectory[Path]
    },
     If[Level == 0 && StringQ[parent] && $Env["parent_folder"] =!= parent,
-      <li class="list-none"><Pl  File={parent}/></li>
+      <li class="list-none"><Pl RawPath={RawPath} File={parent}/></li>
     ,
       ""
     ]

@@ -123,6 +123,46 @@ With[{appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"]},
 Echo["System`$Env"];
 Echo[ToString[$Env, InputForm] ];
 
+MergeDirectories[source_String, target_String] := (
+  Echo[StringTemplate["Copy directory `` to ``"][source, target]];
+  If[!DirectoryQ[target], CreateDirectory[target]; ];
+  
+  With[{names = FileNames[All, source]},
+    With[{folders = Select[names, DirectoryQ[#] &], files = Select[names, !DirectoryQ[#] &]},
+
+    
+      Map[Function[folder,
+        With[{folderName = FileNameTake[folder, -1] },
+          MergeDirectories[folder, FileNameJoin[{target, folderName}]]
+        ]], folders];
+
+      Map[Function[file,
+        CopyFile[file, FileNameJoin[{target, FileNameTake[file, -1]}], OverwriteTarget->True];
+        Echo[StringTemplate["Copied `` to ``"][file, FileNameJoin[{target, FileNameTake[file, -1]}]]];
+      ], files];
+    ]
+  ];
+);
+
+syncDemoFolders[path_String] := With[{},
+  Echo["Syncing demo folders..."];
+  Echo[path];
+
+  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path];
+];
+
+AppExtensions`QuickNotesDir = FileNameJoin[{$TemporaryDirectory, "wljs_quicknotes"}];
+If[!DirectoryQ[AppExtensions`QuickNotesDir], CreateDirectory[AppExtensions`QuickNotesDir] ];
+
+AppExtensions`BackupsDir = FileNameJoin[{$TemporaryDirectory, "wljs_backups"}];
+If[!DirectoryQ[AppExtensions`BackupsDir], CreateDirectory[AppExtensions`BackupsDir] ];
+
+AppExtensions`DefaultDocumentsDir = FileNameJoin[{$UserDocumentsDirectory, "WLJS Notebooks"}];
+If[!DirectoryQ[AppExtensions`DefaultDocumentsDir], CreateDirectory[AppExtensions`DefaultDocumentsDir] ];
+
+AppExtensions`DemosDir = FileNameJoin[{AppExtensions`DefaultDocumentsDir, "Demos"}];
+If[!DirectoryQ[AppExtensions`DemosDir], CreateDirectory[AppExtensions`DemosDir]; syncDemoFolders[AppExtensions`DemosDir]; ];
+
 (* ~~check version~~ *)
 Echo["Checking version of WLJS Notebook ..."];
 
@@ -135,6 +175,8 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
     With[{},
       If[toNumber[$Env["AppJSON", "version"] ] > toNumber[settings["CurrentVersion"] ],
         Echo["Not in sync!"];
+
+        syncDemoFolders[AppExtensions`DemosDir];
         
         If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages"}] ],
           If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages_legacy"}] ], 
@@ -217,12 +259,6 @@ http = HTTPHandler[];
 $Server["HTTPHandler"] = http;
 
 AppExtensions`HTTPHandler = http;
-
-AppExtensions`QuickNotesDir = FileNameJoin[{$TemporaryDirectory, "wljs_quicknotes"}];
-If[!DirectoryQ[AppExtensions`QuickNotesDir], CreateDirectory[AppExtensions`QuickNotesDir] ];
-
-AppExtensions`BackupsDir = FileNameJoin[{$TemporaryDirectory, "wljs_backups"}];
-If[!DirectoryQ[AppExtensions`BackupsDir], CreateDirectory[AppExtensions`BackupsDir] ];
 
 
 With[{now = Now},
