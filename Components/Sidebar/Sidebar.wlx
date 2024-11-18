@@ -195,7 +195,7 @@ With[{
         const url = await interpretate(args[0], env);
         const name = await interpretate(args[1], env);
         const  link = document.createElement("a")
-        link.href = 'downloadFile/?path=' + url;
+        link.href = '/downloadFile/?path=' + url;
         link.download = name;
         link.click();        
       }
