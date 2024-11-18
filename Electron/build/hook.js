@@ -1,3 +1,4 @@
+//@ts-check
 const { promises: fs } = require( 'fs' )
 const log = ( ...messages ) => console.log( ...messages )
 
