@@ -4,6 +4,9 @@ AppExtensions::usage = ""
 ExtensionEvent::usage = ""
 
 AppExtensions`AppProtocol;
+AppExtensions`FrontendEnv;
+
+AppExtensions`WebServers;
 
 AppExtensions`HTTPHandler::usage = ""
 AppExtensions`KernelList::usage = ""
@@ -13,6 +16,8 @@ Begin["`Internal`"];
 Templates = <||>;
 
 emptyStringFunction[x__] := ""
+
+AppExtensions`WebServers = <||>;
 
 AppExtensions`Templates[ opts: OptionsPattern[] ] := With[{template = OptionValue["Template"]},
     If[KeyExistsQ[Templates, template],

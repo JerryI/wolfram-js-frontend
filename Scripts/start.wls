@@ -352,6 +352,15 @@ ws["MessageHandler", "Evaluate"]  = Function[True] -> WLJSTransportHandler
 
 SocketListen[CSocketOpen[$Env["host"], $Env["ws"] ], wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
 
+(* start all webservers from extensions *)
+Map[Function[key, 
+  With[{server = AppExtensions`WebServers[key]},
+    Echo[StringTemplate["Starting App extension server `` on ``:``"][key, server["Host"], server["Port"]]];
+    SocketListen[CSocketOpen[server["Host"], server["Port"]], server["Handler"]];
+  ]
+], Keys[AppExtensions`WebServers]];
+
+
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
