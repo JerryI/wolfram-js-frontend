@@ -79,15 +79,16 @@ EventHandler[EventClone[Event], {
         ]
     ],
     
-    _Notifications`Beeper (*`*) -> Function[Null,
+    _Notifications`Beeper (*`*) -> Function[type,
         Print["BEEE!P!"];
         If[Now - beepTimeout > Quantity[0.2, "Seconds"], 
             beepTimeout = Now;
             Print["BEEEP!"];
 
             With[{client = $Client},
-                WebUISubmit[Hold[Beep], client]
-            ]
+                WebUISubmit[Hold[Beep[type]], client]
+            ];
+
         ,
             Print["Too many. Suppressed"];
         ]
@@ -122,7 +123,14 @@ EventHandler[EventClone[Event], {
     <script type="module">
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        core.Beep = () => {
+        core.Beep = async (args, env) => {
+            const type = await interpretate(args[0], env);
+
+            if (type === "System") {
+                window.electronAPI.beep();
+                return;
+            }
+
             const oscillator = audioCtx.createOscillator();
             oscillator.type = "triangle";
             oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
@@ -141,8 +149,11 @@ EventHandler[EventClone[Event], {
         }
 
         core.HapticFeedback = () => {
-            if (!window.electronAPI) {console.warn('This is electron only feature'); return}
-            if (!window.electronAPI.harptic) {console.warn('Haptic feedback not supported in your App'); return}
+            if (!window.electronAPI) {
+                console.warn('This is electron only feature'); 
+                return;
+            }
+            //if (!window.electronAPI.harptic) {console.warn('Haptic feedback not supported in your App'); return}
             window.electronAPI.harptic();
         }
     </script>
