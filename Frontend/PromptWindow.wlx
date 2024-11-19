@@ -285,16 +285,6 @@ App[request_] := Module[{localExtensions}, With[{
 
 Script[Rule["Secret", Secret_]] := With[{},
   <script type="module">
-    core.UIDocsOpen = async (args, env) => {
-      const port = await interpretate(args[0], env);
-      const link = await interpretate(args[1], env);
-      const fake = document.createElement('a');
-            fake.target = "_blank";
-            fake.href = window.location.protocol + "//" + window.location.hostname + ':'+String(port) + '/' + link;
-            fake.click();
-    }
-
-
     const checkOverflow = (el) => {
       const isOverflowing = el.clientWidth < el.scrollWidth ||
         el.clientHeight < el.scrollHeight;

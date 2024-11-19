@@ -262,10 +262,6 @@ App[request_] := With[{
                     WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
                   ],
 
-                  "OpenDocs" -> Function[Null,
-                    WebUISubmit[Global`UIDocsOpen[env["docs"], "index.html"](*`*), $Client];
-                  ], 
-
                   "CheckUpdates" -> Function[Null,
                     checkUpdates[GlobalMessanger, ModalController, $Client];
                   ],
@@ -366,15 +362,6 @@ App[request_] := With[{
 
 Script[Rule["Secret", Secret_]] := With[{},
   <script type="module">
-    core.UIDocsOpen = async (args, env) => {
-      const port = await interpretate(args[0], env);
-      const link = await interpretate(args[1], env);
-      const fake = document.createElement('a');
-            fake.target = "_blank";
-            fake.href = window.location.protocol + "//" + window.location.hostname + ':'+String(port) + '/' + link;
-            fake.click();
-    }
-
     core.UIClearCache = async (args, env) => {
       if (window.electronAPI) {
         if (window.electronAPI.clearCache) {

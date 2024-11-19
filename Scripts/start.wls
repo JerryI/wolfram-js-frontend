@@ -85,8 +85,8 @@ $Env = <|
   "http" -> 20560,
   "ws"   -> 20559,
   "jtp"  -> 20562,
-  "ws2"  -> 20563,
-  "docs" -> 20540
+  "ws2"  -> 20563
+  (*,"docs" -> 20540*)
 |>;
 
 If[$ScriptCommandLine =!= {},
@@ -150,6 +150,8 @@ syncDemoFolders[path_String] := With[{},
 
   MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path];
 ];
+
+AppExtensions`FrontendEnv = $Env;
 
 AppExtensions`QuickNotesDir = FileNameJoin[{$TemporaryDirectory, "wljs_quicknotes"}];
 If[!DirectoryQ[AppExtensions`QuickNotesDir], CreateDirectory[AppExtensions`QuickNotesDir] ];
@@ -231,7 +233,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
   Github -> "https://github.com/JerryI/wljs-toc" -> "master",
   Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
-  Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master"
+  Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
+  Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -332,21 +335,6 @@ http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  
 )
 
 SocketListen[CSocketOpen[$Env["host"], $Env["http"]], tcp@#&]
-
-Print["Starting HTTP server for docs..."];
-
-dcp = TCPServer[];
-dcp["CompleteHandler", "HTTP"] = HTTPPacketQ -> HTTPPacketLength;
-dcp["MessageHandler", "HTTP"]  = HTTPPacketQ -> dhttp;
-
-dhttp = HTTPHandler[];
-dhttp["MessageHandler", "Index"]  = AssocMatchQ[<|"Path" -> "/"|>] -> (ImportFile["index.html", "Base"->FileNameJoin[{Directory[], "Documentation"}] ] &)
-dhttp["MessageHandler", "All"]  = AssocMatchQ[<|"Method" -> "GET"|>]  -> (
-  ImportFile[If[StringPart[#["Path"], -3] === "." || StringPart[#["Path"], -4] === "." || StringPart[#["Path"], -5] === ".", #, Join[#, <|"Path" -> StringJoin[#["Path"], "/index.html"]|>] ], "Base"->{FileNameJoin[{Directory[], "Documentation"}], FileNameJoin[{Directory[], "wljs_packages"}]} ] &
-)
-
-SocketListen[CSocketOpen[$Env["host"], $Env["docs"]], dcp@#&]
-
 
 
 Print["Staring WS/HTTP server..."];

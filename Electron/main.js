@@ -665,14 +665,6 @@ const buildMenu = (opts) => {
                 ...options.plugins.misc,
                 {
                     role: 'help',
-                    label: 'Documentation',
-                    click: async() => {
-                        //const { shell } = require('electron')
-                        shell.openExternal('http://127.0.0.1:20540')
-                    }
-                },
-                {
-                    role: 'help',
                     label: 'Acknowledgments',
                     click: async() => {
                         //const { shell } = require('electron')
