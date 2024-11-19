@@ -301,6 +301,11 @@ App[request_] := With[{
       any_ :> (EventFire[AppEvent, Messanger[any], #]&)
     }];
 
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalControls], {
+      any_ :> (EventFire[AppEvent, any, #]&)
+    }]; 
+
     
     EventHandler[EventClone[GlobalControls], {
       any_ :> (Print[any]&)

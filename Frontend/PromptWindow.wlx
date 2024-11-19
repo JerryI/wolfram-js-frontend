@@ -222,10 +222,10 @@ App[request_] := Module[{localExtensions}, With[{
       any_ :> (EventFire[AppEvent, Messanger[any], #]&)
     }];
 
-    (* /* redirect to extensions  
+    (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalControls], {
       any_ :> (EventFire[AppEvent, any, #]&)
-    }]; */ *)
+    }]; 
    
    
     

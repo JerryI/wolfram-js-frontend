@@ -305,10 +305,10 @@ App[request_] := With[{
       any_ :> (EventFire[AppEvent, Messanger[any], #]&)
     }];
 
-    (* /* redirect to extensions  
+    (* /* redirect to extensions  */ *)
     EventHandler[EventClone[GlobalControls], {
       any_ :> (EventFire[AppEvent, any, #]&)
-    }]; */ *)
+    }]; 
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
