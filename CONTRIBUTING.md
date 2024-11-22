@@ -15,15 +15,10 @@ Here is some to-do list grouped by repos
 
 *Main repo is stable and there are no urget needs in any refactoring*
 
-## Demonstration project
-[A collection of examples](https://jerryi.github.io/wljs-demo/) showcasing WLJS Notebook for non-developers (directly exported from WLJS Notebooks).
-- [ ] possibly convert to similar format of our [Blog](https://jerryi.github.io/wljs-docs/blog) (in a discussion)
-- [ ] more examples on various topics
-
 ## wljs-graphics-d3
 ### Primary
-- [ ] `Inset` works incorrectly on `Image` and other `Graphics` objects.
-- [ ] `PlotLegends` are not rendered inside a `Graphics` object (acts like a wrapper). Exported figures do not show legends.
+- [x] `Inset` works incorrectly on `Image` and other `Graphics` objects.
+- [x] `PlotLegends` are not rendered inside a `Graphics` object (acts like a wrapper). Exported figures do not show legends.
 
 ### Secondary
 - [x] misssing implementations for `FilledCurve`, ...
@@ -36,13 +31,13 @@ Here is some to-do list grouped by repos
 - [x] `Text` is not implemented in the context of `Graphics3D`
 
 ### Secondary
-- [ ] `RTX` feature shows incorrect faces of polygons (black triangles) on OSX (probably also depends on a browser)
+- [x] `RTX` feature shows incorrect faces of polygons (black triangles) on OSX (probably also depends on a browser)
 
 ## wljs-inputs
 ### Primary
-- [ ] `TableForm` does not support styling
+- [x] `TableForm` does not support styling
 - [ ] `Dataset` does not support nested sets with asscoiations or other datasets inside.
-- [ ] `Entity` is not supported
+- [x] `Entity` is not supported
 
 
 ## wljs-markdown
@@ -55,7 +50,7 @@ Here is some to-do list grouped by repos
 
 ## wljs-video
 ### Primary
-- [ ] video preview is extremely slow, decoding from video to a set of images is a main bottleneck.
+- [x] video preview is extremely slow, decoding from video to a set of images is a main bottleneck.
 - [ ] no sound (need to be used together with PCM streamer from wljs-audio)
 
 ## wljs-sound
@@ -66,5 +61,5 @@ Here is some to-do list grouped by repos
 
 ## Mics
 - [ ] **Wolfram Language Documentation** (frontend agnostic and in a Markdown format)
-- [ ] support for syntax sugar for `NeuralNetwork` package of Wolfram Language. For now it is not clear, how to clean up Mathematica's `MakeBoxes` definitons for various neural network object. There is a possibility to use wrapper function, see more in [Issue](https://github.com/JerryI/wolfram-js-frontend/issues/186).
+- [x] support for syntax sugar for `NeuralNetwork` package of Wolfram Language. For now it is not clear, how to clean up Mathematica's `MakeBoxes` definitons for various neural network object. There is a possibility to use wrapper function, see more in [Issue](https://github.com/JerryI/wolfram-js-frontend/issues/186).
 - [x] write a fast implementation of parser/encoder of [WXF](https://github.com/JerryI/wolfram-js-frontend/issues/196) in Javascript. For now we use `ExpressionJSON` for communication, which does not use features of `NumericArray` and `ByteArray` and adds a large overhead in serializaing/deserializing on WL's and JS's sides. There is a [preliminaly work](https://github.com/xndc/uncompress) posted already.
