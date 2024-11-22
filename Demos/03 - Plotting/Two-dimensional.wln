@@ -1,4 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$614], 
+<|"Notebook" -> <|"Controller" -> "d6225d26-bd1e-428c-9fd8-0430131f4676", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$87], 
+   "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "d0291635-9224-4cf8-8c95-9ca82f58e890", 
    "Objects" -> <|"41a6a71f-5798-4386-9609-f87cceaa5041" -> 
       <|"Public" -> Hold[Graphics[{GraphicsComplex[{{0, 0}, 
              {1.3962634015954636, 0}, {2.792526803190927, 0}, 
@@ -9302,306 +9305,393 @@
                 "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> 
                  {"ratio" -> 2}, "Droplines" -> {"freeformCursorMode" -> 
                    True, "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
-            "DefaultPlotStyle" -> Automatic}]]|>|>, 
-   "Path" -> "/users/kirill/Github/wolfram-js-frontend/Demos/03 - \
-Plotting/Two-dimensional.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
-   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Two dimensional plots", 
-      CellObj[JerryI`Notebook`CellObj`$1033]], 
+            "DefaultPlotStyle" -> Automatic}]]|>, 
+     "683f2a1a-d224-4bff-8c0d-a5dfb2e9a509" -> 
+      <|"Public" -> Hold[Graphics[{{RGBColor[1, 0, 0], Disk[{5, 5}, 4]}, 
+           Raster[{{{0.1, 0.1, 0.1, 0.1}, {0.1, 0.2, 0.1, 0.2}, 
+              {0.1, 0.30000000000000004, 0.1, 0.30000000000000004}, 
+              {0.1, 0.4, 0.1, 0.4}, {0.1, 0.5, 0.1, 0.5}, {0.1, 0.6, 0.1, 
+               0.6}, {0.1, 0.7000000000000001, 0.1, 0.7000000000000001}, 
+              {0.1, 0.8, 0.1, 0.8}, {0.1, 0.9, 0.1, 0.9}, {0.1, 1, 0.1, 1}}, 
+             {{0.2, 0.1, 0.2, 0.1}, {0.2, 0.2, 0.2, 0.2}, 
+              {0.2, 0.30000000000000004, 0.2, 0.30000000000000004}, 
+              {0.2, 0.4, 0.2, 0.4}, {0.2, 0.5, 0.2, 0.5}, {0.2, 0.6, 0.2, 
+               0.6}, {0.2, 0.7000000000000001, 0.2, 0.7000000000000001}, 
+              {0.2, 0.8, 0.2, 0.8}, {0.2, 0.9, 0.2, 0.9}, {0.2, 1, 0.2, 1}}, 
+             {{0.30000000000000004, 0.1, 0.30000000000000004, 0.1}, 
+              {0.30000000000000004, 0.2, 0.30000000000000004, 0.2}, 
+              {0.30000000000000004, 0.30000000000000004, 0.30000000000000004, 
+               0.30000000000000004}, {0.30000000000000004, 0.4, 
+               0.30000000000000004, 0.4}, {0.30000000000000004, 0.5, 
+               0.30000000000000004, 0.5}, {0.30000000000000004, 0.6, 
+               0.30000000000000004, 0.6}, {0.30000000000000004, 
+               0.7000000000000001, 0.30000000000000004, 0.7000000000000001}, 
+              {0.30000000000000004, 0.8, 0.30000000000000004, 0.8}, 
+              {0.30000000000000004, 0.9, 0.30000000000000004, 0.9}, 
+              {0.30000000000000004, 1, 0.30000000000000004, 1}}, 
+             {{0.4, 0.1, 0.4, 0.1}, {0.4, 0.2, 0.4, 0.2}, 
+              {0.4, 0.30000000000000004, 0.4, 0.30000000000000004}, 
+              {0.4, 0.4, 0.4, 0.4}, {0.4, 0.5, 0.4, 0.5}, {0.4, 0.6, 0.4, 
+               0.6}, {0.4, 0.7000000000000001, 0.4, 0.7000000000000001}, 
+              {0.4, 0.8, 0.4, 0.8}, {0.4, 0.9, 0.4, 0.9}, {0.4, 1, 0.4, 1}}, 
+             {{0.5, 0.1, 0.5, 0.1}, {0.5, 0.2, 0.5, 0.2}, 
+              {0.5, 0.30000000000000004, 0.5, 0.30000000000000004}, 
+              {0.5, 0.4, 0.5, 0.4}, {0.5, 0.5, 0.5, 0.5}, {0.5, 0.6, 0.5, 
+               0.6}, {0.5, 0.7000000000000001, 0.5, 0.7000000000000001}, 
+              {0.5, 0.8, 0.5, 0.8}, {0.5, 0.9, 0.5, 0.9}, {0.5, 1, 0.5, 1}}, 
+             {{0.6, 0.1, 0.6, 0.1}, {0.6, 0.2, 0.6, 0.2}, 
+              {0.6, 0.30000000000000004, 0.6, 0.30000000000000004}, 
+              {0.6, 0.4, 0.6, 0.4}, {0.6, 0.5, 0.6, 0.5}, {0.6, 0.6, 0.6, 
+               0.6}, {0.6, 0.7000000000000001, 0.6, 0.7000000000000001}, 
+              {0.6, 0.8, 0.6, 0.8}, {0.6, 0.9, 0.6, 0.9}, {0.6, 1, 0.6, 1}}, 
+             {{0.7000000000000001, 0.1, 0.7000000000000001, 0.1}, 
+              {0.7000000000000001, 0.2, 0.7000000000000001, 0.2}, 
+              {0.7000000000000001, 0.30000000000000004, 0.7000000000000001, 
+               0.30000000000000004}, {0.7000000000000001, 0.4, 
+               0.7000000000000001, 0.4}, {0.7000000000000001, 0.5, 
+               0.7000000000000001, 0.5}, {0.7000000000000001, 0.6, 
+               0.7000000000000001, 0.6}, {0.7000000000000001, 
+               0.7000000000000001, 0.7000000000000001, 0.7000000000000001}, 
+              {0.7000000000000001, 0.8, 0.7000000000000001, 0.8}, 
+              {0.7000000000000001, 0.9, 0.7000000000000001, 0.9}, 
+              {0.7000000000000001, 1, 0.7000000000000001, 1}}, 
+             {{0.8, 0.1, 0.8, 0.1}, {0.8, 0.2, 0.8, 0.2}, 
+              {0.8, 0.30000000000000004, 0.8, 0.30000000000000004}, 
+              {0.8, 0.4, 0.8, 0.4}, {0.8, 0.5, 0.8, 0.5}, {0.8, 0.6, 0.8, 
+               0.6}, {0.8, 0.7000000000000001, 0.8, 0.7000000000000001}, 
+              {0.8, 0.8, 0.8, 0.8}, {0.8, 0.9, 0.8, 0.9}, {0.8, 1, 0.8, 1}}, 
+             {{0.9, 0.1, 0.9, 0.1}, {0.9, 0.2, 0.9, 0.2}, 
+              {0.9, 0.30000000000000004, 0.9, 0.30000000000000004}, 
+              {0.9, 0.4, 0.9, 0.4}, {0.9, 0.5, 0.9, 0.5}, {0.9, 0.6, 0.9, 
+               0.6}, {0.9, 0.7000000000000001, 0.9, 0.7000000000000001}, 
+              {0.9, 0.8, 0.9, 0.8}, {0.9, 0.9, 0.9, 0.9}, {0.9, 1, 0.9, 1}}, 
+             {{1, 0.1, 1, 0.1}, {1, 0.2, 1, 0.2}, {1, 0.30000000000000004, 1, 
+               0.30000000000000004}, {1, 0.4, 1, 0.4}, {1, 0.5, 1, 0.5}, 
+              {1, 0.6, 1, 0.6}, {1, 0.7000000000000001, 1, 
+               0.7000000000000001}, {1, 0.8, 1, 0.8}, {1, 0.9, 1, 0.9}, 
+              {1, 1, 1, 1}}}]}]]|>|>, "Path" -> "/Users/kirill/Github/wolfram\
+-js-frontend/Demos/03 - Plotting/Two-dimensional.wln", "ReadOnly" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Two dimensional plots", CellObj[JerryI`Notebook`CellObj`$41]], 
      Notebook`Editor`TOC`Private`heading[2, "Contour Plot", 
-      CellObj[JerryI`Notebook`CellObj`$616]], 
+      CellObj[JerryI`Notebook`CellObj`$43]], 
      Notebook`Editor`TOC`Private`heading[3, "List-version", 
-      CellObj[JerryI`Notebook`CellObj`$640]], 
+      CellObj[JerryI`Notebook`CellObj`$54]], 
      Notebook`Editor`TOC`Private`heading[2, "Density Plot", 
-      CellObj[JerryI`Notebook`CellObj`$651]], 
+      CellObj[JerryI`Notebook`CellObj`$58]], 
      Notebook`Editor`TOC`Private`heading[2, "Vector plot", 
-      CellObj[JerryI`Notebook`CellObj`$664]], 
+      CellObj[JerryI`Notebook`CellObj`$62]], 
      Notebook`Editor`TOC`Private`heading[2, "Stream plot", 
-      CellObj[JerryI`Notebook`CellObj`$673]], 
+      CellObj[JerryI`Notebook`CellObj`$71]], 
      Notebook`Editor`TOC`Private`heading[2, "Matrixes & Arrays", 
-      CellObj[JerryI`Notebook`CellObj`$680]], 
+      CellObj[JerryI`Notebook`CellObj`$75]], 
      Notebook`Editor`TOC`Private`heading[3, "Array plot", 
-      CellObj[JerryI`Notebook`CellObj`$706]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$84]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Two dimensional plots\nMost examples were \
 adapted from the official pages of [Wolfram Language Documentation \
 Center](https://reference.wolfram.com/language/). <small>The algorithms and \
 implementations of those functions are the intellectual property of Wolfram \
 Research. WLJS Team only reimplemented underlying low-level primitives such \
 as `Line`, `Point`, `Polygon`, and etc.</small>", "Display" -> "codemirror", 
-    "Hash" -> "9dbac95c-1533-4166-b3d3-43e87d3c38be", "Invisible" -> False, 
+    "Hash" -> "87b7535b-3d7c-49db-92c8-a77c20afc7bb", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "# Two dimensional plots\nMost examples were adapted from the \
 official pages of [Wolfram Language Documentation \
 Center](https://reference.wolfram.com/language/). <small >The algorithms and \
 implementations of those functions are the intellectual property of Wolfram \
 Research. WLJS Team only reimplemented underlying low-level primitives such \
 as `Line`, `Point`, `Polygon`, and etc.</small>", "Display" -> "markdown", 
-    "Hash" -> "138a8a52-01e1-41fd-94f0-c8114a0e99bb", "Invisible" -> False, 
+    "Hash" -> "a8cc570f-f3f4-4632-ac48-e547d9c7c728", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n## Contour Plot\nGenerates a contour plot of  $f$ as a \
 function of $\\{x,y\\}$", "Display" -> "codemirror", 
-    "Hash" -> "6889dc89-3758-447c-a453-972592fddc6b", "Invisible" -> False, 
+    "Hash" -> "16f45ea9-a8bc-4355-9a29-6af7e568ac9a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "## Contour Plot\nGenerates a contour plot of  $f$ as a \
 function of $\\{x,y\\}$", "Display" -> "markdown", 
-    "Hash" -> "8a64286c-2e29-4a02-85df-876b7fab6e64", "Invisible" -> False, 
+    "Hash" -> "cdf561ed-48cd-41a5-9dd9-6850ecf3839c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "ContourPlot[\n  Cos[x] + Cos[y], {x, 0, 4 Pi}, {y, 0, 4 \
 Pi}\n, PerformanceGoal->\"Speed\"]", "Display" -> "codemirror", 
-    "Hash" -> "55f72c2b-d8b5-4f7a-a477-83b4f885e9a3", "Invisible" -> False, 
+    "Hash" -> "35b4d56b-3c59-476d-b011-48d2bdb4c111", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"41a6a71f-5798-4386-9609-f87cceaa5041\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxgmm\
 iWaG6bpmppbWuiaGFuY6VqaGVjqplmYJyenJiaaGpgYAgB3jhUk\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "23c379d7-a40f-4b3c-a1a4-3d7989e6dc1c", "Invisible" -> False, 
+     "ae0f1384-9b24-4922-a461-1a2e5ae6c127", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> 
      ".md\nOr plot contour lines for which the equation is satisfied", 
     "Display" -> "codemirror", "Hash" -> 
-     "a31e8fcf-7bba-47b4-8612-287b3f7e56c4", "Invisible" -> False, 
+     "6613e86b-09a4-435e-813c-b44466eaaf06", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "Or plot contour lines for which the equation is satisfied", 
     "Display" -> "markdown", "Hash" -> 
-     "2b16f4ff-ccf8-45eb-b6f6-623d60a04cff", "Invisible" -> False, 
+     "5835883f-012f-4735-bbbd-76ec97efcab8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "ContourPlot[(*SpB[*)Power[x(*|*),(*|*)2](*]SpB*) - \
 (*SpB[*)Power[y(*|*),(*|*)2](*]SpB*) == (*SpB[*)Power[x(*|*),(*|*)3](*]SpB*), \
 {x, -2, 2}, {y, -2, 2}]", "Display" -> "codemirror", 
-    "Hash" -> "bf3edd38-74ef-4600-9b1e-1eb2d2d6faec", "Invisible" -> False, 
+    "Hash" -> "4de6fee1-c3bb-46c3-84ec-05425dd57efa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"17562242-ec14-4f0d-a6e4-2105f8af166b\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKG5qbm\
 hkZmRjppiYbmuiapBmk6CaapZroGhkamKZZJKYZmpklAQB1eRU3\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "791173ba-7053-4ff8-bbd8-a9f8a8a29522", "Invisible" -> False, 
+     "2b058d16-c8a9-4e6b-81ee-8c6a96fbae10", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n### List-version", "Display" -> "codemirror", 
-    "Hash" -> "ee5023c6-a043-4f50-8b10-4b70497ffcb1", "Invisible" -> False, 
+    "Hash" -> "83f04df0-0789-4bb8-9706-497cc6acc457", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "### List-version", "Display" -> "markdown", 
-    "Hash" -> "ee38acf3-3406-47de-ac03-4584cf4d0d3e", "Invisible" -> False, 
+    "Hash" -> "68c65edf-7b15-4932-b994-32418506ab1d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "ListContourPlot[Table[Sin[i + \
 (*SpB[*)Power[j(*|*),(*|*)2](*]SpB*)], {i, 0, 3, 0.2}, {j, 0, 3, 0.2}], \
 ColorFunction -> \"SunsetColors\"]", "Display" -> "codemirror", 
-    "Hash" -> "2473e52c-5cd9-4579-9a9d-fd0129f2fafa", "Invisible" -> False, 
+    "Hash" -> "1d702d12-2f80-4279-b456-de9366bdb02d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"5f39bfbd-9f05-402a-98f9-5ff6032a27bb\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm6YZW\
 yalJaXoWqYZmOqaGBgl6lpapFnqmqalmRkYGyUamSclAQCKzxXd\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "d636408f-54fd-4357-9439-247be811e99c", "Invisible" -> False, 
+     "1a3ad9a1-6dc2-4ff6-a579-bc8e9e01f179", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n## Density Plot\nMake a simple styled density plot with \
 a custom color function", "Display" -> "codemirror", 
-    "Hash" -> "e653ac2e-9c3a-436d-8b56-64041b343ab0", "Invisible" -> False, 
+    "Hash" -> "54a2199e-c39b-4642-942f-36eee495965f", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "## Density Plot\nMake a simple styled density plot with a \
 custom color function", "Display" -> "markdown", 
-    "Hash" -> "38c01bc1-c697-41dd-92d3-9ccb755f311b", "Invisible" -> False, 
+    "Hash" -> "2f69310f-70c0-4db2-a2e3-ab611d1fef32", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "CoolColor[ z_ ] := RGBColor[z, 1 - z, \
 1];\n\nDensityPlot[Sin[x y], {x, -1, 1}, {y, -1, 1}, \n ColorFunction -> \
 CoolColor]", "Display" -> "codemirror", 
-    "Hash" -> "b9f09f11-8c2d-4391-bc07-296d720cf623", "Invisible" -> False, 
+    "Hash" -> "29c04fc0-0af6-4753-a581-c3402d3b34cc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"b287a631-d44e-4654-a042-484cce2fe6f2\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJxlZm\
 CeaGRvqppiYpOqamJma6CYamBjpmliYJCenGqWlmqUZAQB7FRVy\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "8bd99b9d-89dd-4b56-b792-59cdb44761ec", "Invisible" -> False, 
+     "8caa2dc2-91f6-4e6c-b347-19e11e4970b1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n## Vector plot\nGenerates a vector plot of the vector \
 field $\\{v_x, v_y\\}$ as a function of $x$ and $y$", 
     "Display" -> "codemirror", "Hash" -> 
-     "d7c8bad1-dedf-45f5-a2ed-023753327aa6", "Invisible" -> False, 
+     "1e57be77-a0b6-412c-9708-ee13ffa22014", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "## Vector plot\nGenerates a vector plot of the vector field \
 $\\{v_x, v_y\\}$ as a function of $x$ and $y$", "Display" -> "markdown", 
-    "Hash" -> "bace02a3-48fa-4846-a67e-be10392a38a8", "Invisible" -> False, 
+    "Hash" -> "94be15ff-c746-49a7-930f-f5f32ca8e41a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "VectorPlot[{x + y, y - x}, {x, -3, 3}, {y, -3, 3}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "ce492c23-d6e0-4095-a043-0d1e3cfe4630", "Invisible" -> False, 
+     "51ee3d94-4eba-4c18-b7cf-68f44d5a3855", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"c90ec165-9fa7-4a1f-aa27-1346176a9452\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ1sap\
 CYbmpnqWqYlmuuaJBqm6SYmGpnrGhqbmBmamyVampgaAQCGaRVC\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "c7bc4a80-819e-45f5-ae6d-02e195d5603d", "Invisible" -> False, 
+     "eb4223a0-45e3-4153-ad72-d17a30a53a96", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\nA __list__ version is also available", 
     "Display" -> "codemirror", "Hash" -> 
-     "73fdf708-1bf7-43e1-b5d5-81861cc7340e", "Invisible" -> False, 
+     "5ff249a3-dfe4-41cc-996a-2465e207ec4e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "A __list__ version is also available", 
     "Display" -> "markdown", "Hash" -> 
-     "c7223a5a-cc4a-4239-b1e2-4625746763bb", "Invisible" -> False, 
+     "76ed7484-313a-4c7f-bd5c-bd8e54a27166", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> 
      "ListVectorPlot[Table[{y, -x}, {x, -3, 3, 0.2}, {y, -3, 3, 0.2}]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "fe24b35f-8b26-41fb-b7aa-1aac13eade50", "Invisible" -> False, 
+     "bf23e0cd-c5e5-43d4-9fa0-a06f9a1ebd98", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"d4e33cf6-a00c-45b4-9708-f0217dd0fbff\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5ikG\
 hsnp5npJhoYJOuamCaZ6FqaG1jophkYGZqnpBikJaWlAQCG9hX8\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "e3029f3f-f2ea-4111-b2c4-34b6e1c432c7", "Invisible" -> False, 
+     "b9042c97-d457-4491-8feb-8b748c9da4b4", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> 
      ".md\n## Stream plot\nGenerates a stream plot of the vector field", 
     "Display" -> "codemirror", "Hash" -> 
-     "84db4224-b9c8-4c8d-9125-f06157648369", "Invisible" -> False, 
+     "05a5beb4-f5e8-4fc2-bdd3-d8e0f637d08d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "## Stream plot\nGenerates a stream plot of the vector field", 
     "Display" -> "markdown", "Hash" -> 
-     "2ec074f9-29f1-4ed9-96a5-90e5a065b46d", "Invisible" -> False, 
+     "6b9379cd-6680-4700-812d-8142a40046a9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "StreamPlot[{-1 - (*SpB[*)Power[x(*|*),(*|*)2](*]SpB*) + y, 1 \
 + x - (*SpB[*)Power[y(*|*),(*|*)2](*]SpB*)}, {x, -3, 3}, {y, -3, 3}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "a926400a-1288-4ff3-96e8-11e340011e2f", "Invisible" -> False, 
+     "c9dd7c1b-7ddf-4cd5-91ee-52a939a01b24", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"b5c7f485-bb4a-43ff-852e-a6c895c4068e\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKJ5kmm\
 6eZWJjqJiWZJOqaGKel6VqYGqXqJpolW1iaJpsYmFmkAgCNLBXl\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "a58dd229-f35f-4f16-9c58-330ba4a2b1fd", "Invisible" -> False, 
+     "1c8e0ff7-fb2a-4530-b122-4d7dfe6f9212", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n## Matrixes & Arrays\nPlots a 2D array or matrix", 
     "Display" -> "codemirror", "Hash" -> 
-     "1535168d-dc88-4f75-ba52-c51d9cc39d7b", "Invisible" -> False, 
+     "d2212bc0-81e8-471a-90eb-51e10e753de3", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "## Matrixes & Arrays\nPlots a 2D array or matrix", 
     "Display" -> "markdown", "Hash" -> 
-     "3356f505-4a07-40bf-8812-f5cf678b0be9", "Invisible" -> False, 
+     "453c2ded-af6e-4000-8bf9-fb5904685969", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "MatrixPlot[\n Fourier[Table[\n   UnitStep[i, 4 - i] \
 UnitStep[j, 7 - j], {i, -7, 7}, {j, -7, \n    7}]]]", 
     "Display" -> "codemirror", "Hash" -> 
-     "59ec487a-c357-425f-b038-577653ef12b8", "Invisible" -> False, 
+     "d4a5ef44-71e9-4822-8f19-2450e3f78e15", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"40eb9c0a-60bf-413f-8d4b-0b440d1a6312\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxikJ\
 lkmGyTqmhkkpemaGBqn6VqkmCTpGiSZmBikGCaaGRsaAQCIDxWF\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "0c7b5480-faa7-42e8-868b-cbd55ff723d6", "Invisible" -> False, 
+     "b7072e02-15ee-4abe-972c-60286445941c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\nAnother example", "Display" -> "codemirror", 
-    "Hash" -> "c24020aa-5dd2-499c-a2e4-c9011df2f468", "Invisible" -> False, 
+    "Hash" -> "b49a983f-975e-4273-9609-e7a99cd85364", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, <|"Data" -> "Another example", 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, <|"Data" -> "Another example", 
     "Display" -> "markdown", "Hash" -> 
-     "b30dd21a-e715-488b-9acd-ff09c56211f7", "Invisible" -> False, 
+     "cbd6f33c-fcd0-471a-a862-01e8e6ab3581", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "MatrixPlot[PauliMatrix[3]]", "Display" -> "codemirror", 
-    "Hash" -> "3f97b1ba-be40-4fcd-95e8-62b99f80e100", "Invisible" -> False, 
+    "Hash" -> "243371eb-d098-4529-8527-ff5422367bff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"490bad61-47c1-46f0-b359-853531993ed7\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm1gaJ\
 CWmmBnqmpgnAwmzNAPdJGNTS10LU2NTY0NLS+PUFHMAebIU7g==\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "dcea3d91-9c7a-4cbc-bd28-8d1e789a69d0", "Invisible" -> False, 
+     "4acf264e-4706-47cc-92e9-7d38b756cad6", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> ".md\n### Array plot\nGenerates a plot, where values are shown \
 in a discrete array of blocks", "Display" -> "codemirror", 
-    "Hash" -> "c6fb4d01-c575-4490-94b5-5700df05854c", "Invisible" -> False, 
+    "Hash" -> "c87d062a-6bf2-47d6-b15d-692c5956f9d0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "### Array plot\nGenerates a plot, where values are shown in a \
 discrete array of blocks", "Display" -> "markdown", 
-    "Hash" -> "613fc28d-51c5-451b-a0c4-4ee66d6f3af8", "Invisible" -> False, 
+    "Hash" -> "4a125588-9f3a-4379-b999-d988d23f4dcc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "ArrayPlot[{{1, 0, 0, Pink}, {1, 1, 0, Pink}, {1, 0, 1, \
 Red}}]", "Display" -> "codemirror", 
-    "Hash" -> "9b5f5e5f-9b38-4d83-815d-1673948b0632", "Invisible" -> False, 
+    "Hash" -> "82cf09fc-f2f3-4e03-a615-01d60bb3e231", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>, 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
    <|"Data" -> "(*VB[*)(FrontEndRef[\"d40c935a-36b0-4e55-afd9-4033c89cc91c\"]\
 )(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5gYJ\
 FsamybqGpslGeiapJqa6iampVjqmhgYGydbWCYnWxomAwCCMxWj\"*)(*]VB*)", 
     "Display" -> "codemirror", "Hash" -> 
-     "ac54ab50-ec23-4182-9893-1170f3239db2", "Invisible" -> False, 
+     "2da06d53-e455-4d6e-8cac-f35e84694796", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "8bb201a6-ab20-4540-b1fa-49a595f301e4"|>}, "serializer" -> "jsfn4"|>
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
+   <|"Data" -> ".md\nOverlay with other graphics", "Display" -> "codemirror", 
+    "Hash" -> "637c7602-434a-430a-9a14-a4455e3fd419", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
+   <|"Data" -> "Overlay with other graphics", "Display" -> "markdown", 
+    "Hash" -> "f2c9fb6a-4563-4bf2-9aaa-e0db4563f373", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
+   <|"Data" -> "Graphics[{{Red, Disk[{5, 5}, 4]}, \n  Raster[Table[{x, y, x, \
+y}, {x, .1, 1, .1}, {y, .1, 1, .1}]]}]", "Display" -> "codemirror", 
+    "Hash" -> "69045870-5184-4575-bd1a-67ca1a4f5077", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"683f2a1a-d224-4bff-8c0d-a5dfb2e9a509\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm1kYp\
+xklGibqphgZmeiaJKWl6VokG6ToJpqmpCUZpVommhpYAgCLJhYt\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "bd49a914-662d-4f55-80cd-49f3fdf09b70", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "43d1c1af-db66-4a4e-a363-a83e95ac7f0a"|>}, "serializer" -> "jsfn4"|>

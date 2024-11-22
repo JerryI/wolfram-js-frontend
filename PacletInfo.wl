@@ -5,10 +5,10 @@ PacletObject[
     "Name" -> "JerryI/WolframJSFrontend",
     "Description" -> "Implementation of web-frontend for Wolfram Engine",
     "Creator" -> "Kirill Vasin",
-    "License" -> "MIT",
+    "License" -> "GPL-3.0",
     "PublisherID" -> "JerryI",
-    "Version" -> "2.0.0",
-    "WolframVersion" -> "12+",
+    "Version" -> "2.6.2",
+    "WolframVersion" -> "13+",
     "Extensions" -> {
       {
         "Kernel",

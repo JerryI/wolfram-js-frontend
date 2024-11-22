@@ -22,7 +22,7 @@ With[{
       <li class="list-none"><Dir Icons={Icons} Port={Port} Parameters={Parameters} Level={Level+1} File={i} Selected={SameQ[Current, i]}/></li>,
       <li class="list-none"><Fl  Icons={Icons} Port={Port} Parameters={Parameters} File={i} Selected={SameQ[Current, i]}/></li>
     ]
-  , {i, FileNames["*", Path]}],
+  , {i, Select[FileNames["*", Path], !StringMatchQ[#, ___~~".DS_Store"]&]}],
 
   Extra =   
    With[{
