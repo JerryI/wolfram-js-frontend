@@ -1,6 +1,7 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$571], 
+<|"Notebook" -> <|"Controller" -> "c18f3982-57d5-4d45-924a-d5f84a543dc4", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$385], 
    "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "7694db7a-b7fd-4abd-abf7-7fd9bc2c634a", 
+   "ModalsChannel" -> "cc178e09-5666-45e9-ac99-4fec6586090e", 
    "Objects" -> <|"05fea7e6-4823-4a21-af6b-1d92479c0837" -> 
       <|"Public" -> Hold[Graphics3D[{{GraphicsComplex[
              {{-9.999998571428572, -9.999998571428572, -0.45647204238757677}, 
@@ -16465,33 +16466,33 @@
                 -0.6651188416447422, 0.7437857211676376}}], {}}, 
            {Directive[GrayLevel[1], "EmissiveIntensity" -> 0, "Ior" -> 1.51, 
              "Transmission" -> 1, "Roughness" -> 0.13], Sphere[{0, 0, 2}, 
-             6]}}]]|>|>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/\
+             6]}}]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-frontend/\
 Demos/03 - Plotting/Physically accurate materials.wln", "Quick" -> True, 
    "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
       "Physically accurate materials", 
-      CellObj[JerryI`Notebook`CellObj`$609]], 
+      CellObj[JerryI`Notebook`CellObj`$370]], 
      Notebook`Editor`TOC`Private`heading[2, "Real-time pathtracing", 
-      CellObj[JerryI`Notebook`CellObj`$576]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$380]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Physically accurate materials\nUse \
 `Directive` to tune the material parameters.", "Display" -> "codemirror", 
-    "Hash" -> "849b6c55-571b-4c6b-a8bb-4b3d914c73f9", "Invisible" -> False, 
+    "Hash" -> "8e65c4e3-d017-4554-b24d-efac191e620e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "# Physically accurate materials\nUse `Directive` to tune the \
 material parameters.", "Display" -> "markdown", 
-    "Hash" -> "d37fa6a4-5425-47ea-9e9b-4b1eedd2b8ec", "Invisible" -> False, 
+    "Hash" -> "d261e925-293e-43eb-bf81-1b33dd4ef662", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "Graphics3D[{Darker[White], Polygon[{{-2,-2,0}, {2,-2,0}, \
 {2,2,0}, {-2,2,0}}],{ Directive[Cyan, \"MaterialThickness\"->1.0, \
 \"Transmission\"->1.0,\"Roughness\"->0.13, \"Ior\"->2.0], Sphere[{0,0,1}, \
 1]}}]", "Display" -> "codemirror", "Hash" -> 
-     "831ef0ae-bf2d-43d2-b105-4a0b29dbefd9", "Invisible" -> False, 
+     "8ea51960-ef5e-4bf7-887d-3f7832a21f7d", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "(*VB[*)(Graphics3D[{RGBColor[0.6666666666666667, \
 0.6666666666666667, 0.6666666666666667], Polygon[{{-2, -2, 0}, {2, -2, 0}, \
 {2, 2, 0}, {-2, 2, 0}}], {Directive[RGBColor[0, 1, 1], \"MaterialThickness\" \
@@ -16502,17 +16503,17 @@ RJC7k3N+Tn5RUVgoCDy1x2RAjGMHEgH5OZXp+XlpLJhmwXiZ//7//w8hgCIMaJJMQAZ+STCBRRKsC\
 SHJhOICVhCPE0i4ZBalJpdklqViehCsL5MRRiBMCCrNSQ0WBDJ8E0tSizITc0KAIZadl1pcXMQABh\
 /s0RTzABkhRYl5xbmZxcWZ+Xm41IFcFJRfmp4BNmxJgS3X9cUH0BWBHOoJDH+IGQwOEGk2IBFckJF\
 alIoWDgywIEB4BQAKH3YD\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "9a8890f9-e45e-4c7f-b409-95133e59e2ad", "Invisible" -> False, 
+    "Hash" -> "8e1888b2-5141-4178-8484-d9138db4b3f2", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "Graphics3D[{Darker[White], Polygon[{{-2,-2,0}, {2,-2,0}, \
 {2,2,0}, {-2,2,0}}],{ Directive[\"Emissive\"->Red], Sphere[{0,0,1}, 1]}}]", 
     "Display" -> "codemirror", "Hash" -> 
-     "d090e70f-0a41-4b76-9264-e688b896334b", "Invisible" -> False, 
+     "181e80a0-dfae-4b29-b053-f6de93418b10", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "(*VB[*)(Graphics3D[{RGBColor[0.6666666666666667, \
 0.6666666666666667, 0.6666666666666667], Polygon[{{-2, -2, 0}, {2, -2, 0}, \
 {2, 2, 0}, {-2, 2, 0}}], {Directive[\"Emissive\" -> RGBColor[1, 0, 0]], \
@@ -16521,51 +16522,77 @@ Sphere[{0, 0, 1}, \
 RJC7k3N+Tn5RUVgoCDy1x2RAjGMHEgH5OZXp+XlpLJhmwXiZ//7//w8hgCIMaJJMQAZ+STCBRRKsC\
 SHJhOICsAM5gYRLZlFqcklmWSpCQVBpTmowyKeuuZnFxSApDL9nMsLMRTKcDUgEF2SkFqWiuQSuDq\
 INRAAA/RxXvQ==\"*)(*]VB*)", "Display" -> "codemirror", 
-    "Hash" -> "24cdffb6-f379-4dee-a9f9-8d03e329f955", "Invisible" -> False, 
+    "Hash" -> "34589ab6-3344-4293-85b5-2237d452aa28", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> ".md\nOr use built-in directives", "Display" -> "codemirror", 
-    "Hash" -> "896ee61a-7459-4e00-b6b3-b09d38aa4d1a", "Invisible" -> False, 
+    "Hash" -> "6aab7dc6-2761-4709-91a9-1b10f47177a8", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "Or use built-in directives", "Display" -> "markdown", 
-    "Hash" -> "2b50dbd1-e92d-4b2a-b991-9968c9848781", "Invisible" -> False, 
+    "Hash" -> "def4e7b3-977c-43e1-85c3-fddecf5925c0", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "Plot3D[Sin[x] Cos[y], {x,-10,10}, \
 {y,-10,10}][[1]];\nGraphics3D[{%, {Graphics3D`Materials[#],  Sphere[{0,0,2}, \
 6]}}] &/@ {\"Glass\"} // Column ", "Display" -> "codemirror", 
-    "Hash" -> "f859c0c4-13b7-4cea-9fe5-a10a6cce9ea4", "Invisible" -> False, 
+    "Hash" -> "1a5e0918-b51d-49e8-b018-93b0d9a27d17", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "(*GB[*){{(*VB[*)(FrontEndRef[\"05fea7e6-4823-4a21-af6b-1d9247\
 9c0837\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkN\
 VgEKG5impSaap5rpmlgYGeuaJBoZ6iammSXpGqZYGpmYWyYbWBibAwCDHRVH\"*)(*]VB*)}}(*]G\
 B*)", "Display" -> "codemirror", "Hash" -> 
-     "6f738671-72ff-4bab-a2e5-f15772af03e7", "Invisible" -> False, 
+     "022bb9a8-a539-4203-846a-df23938d5c37", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> ".md\n## Real-time pathtracing\nThis option allows to render \
 using unbiased methods", "Display" -> "codemirror", 
-    "Hash" -> "944c4050-eb55-4940-9baf-a747a7a5fff5", "Invisible" -> False, 
+    "Hash" -> "c36c993b-61af-42aa-9994-15dab7fc0990", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "## Real-time pathtracing\nThis option allows to render using \
 unbiased methods", "Display" -> "markdown", 
-    "Hash" -> "c1eb6733-b7cb-43b8-98d6-128fa0a9701b", "Invisible" -> False, 
+    "Hash" -> "2142828d-1018-4952-89ea-4649f39dd3bc", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>, 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
    <|"Data" -> "Plot3D[Sin[x] Cos[y], {x,-10,10}, \
 {y,-10,10}][[1]];\nGraphics3D[{%, {Graphics3D`Materials[\"Glass\"], Red, \
-Sphere[{0,0,2}, 6]}}, \"RTX\"->True]", "Display" -> "codemirror", 
-    "Hash" -> "1eabb6e7-4d55-44cb-b68b-f6ba87efffc5", "Invisible" -> False, 
+Sphere[{0,0,2}, 6]}}, \"Renderer\"->\"PathTracing\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f1cb03b7-dd82-49e5-bdc7-e2a5a70b6cc1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "69cabc9e-8f56-4a9b-980d-e6b51c2b5fa6"|>}, "serializer" -> "jsfn4"|>
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
+   <|"Data" -> ".md\nOne can specify directly in `Directive`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8b4ccded-2c12-4081-9355-baccea2fcb7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
+   <|"Data" -> "One can specify directly in `Directive`", 
+    "Display" -> "markdown", "Hash" -> 
+     "adbd4978-5e89-4c0f-9a81-d09fa334b205", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>, 
+   <|"Data" -> "Graphics3D[{\n  Polygon[30 {{-1,-1,0}, {-1,1,0}, {1,1,0}, \
+{1,-1,0}}],\n  {Directive[\"Metalness\"->1, \"Roughness\"->0], \
+Sphere[{-5,0,2},2]},\n  {Directive[\"Roughness\"->0], Red, \
+Sphere[{-5,5,2},2]},\n  {Directive[\"Roughness\"->0, \"Transmission\"->1.0, \
+\"MaterialThickness\"->0.2], Blue, Sphere[{3,-1,2},2]},\n\n  \
+{Directive[\"Emissive\"->White], Polygon[ \
+{{10,13,0},{10,13,30},{-20,13,30},{-20,13,0}}]}\n}, Lighting->None, \
+Background->Black, \"Renderer\"->\"PathTracing\"]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "067c4c2b-5ab5-46c9-b4ba-2f44c8b6b852", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9fb4f7df-35c6-4c95-a6bb-a07d966fa824"|>}, "serializer" -> "jsfn4"|>
