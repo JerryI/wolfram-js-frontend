@@ -9,7 +9,7 @@ With[{
   With[{Layout = 
   {
     <div class="py-0 px-2" role="none">     
-        <button data-name="NewNotebook" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="NewNotebook" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           New Notebook
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><MetaKey/>N</kbd></span>
         </button>          
@@ -17,26 +17,26 @@ With[{
     ,
       Table[ With[{event = Vi["event"], Label = Vi["label"]},
           <div class="py-0 px-2" role="none">     
-            <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+            <button data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
               <Label/>
             </button>          
           </div>        
       ], {Vi, Plugins["file"]}]
     ,
     <div class="py-0 px-2" role="none">
-      <button data-name="Save" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+      <button data-name="Save" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
         Save
         <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><MetaKey/>S</kbd></span>
       </button>        
     </div>      
     ,
       <div class="py-0 px-2" role="none">
-        <button data-name="Abort" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="Abort" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Abort
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><AltKey/>.</kbd></span>
         </button>
-        <button data-name="EvaluateInitCells" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="EvaluateInitCells" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
           Evaluate initialization cells
         </button>      
@@ -45,7 +45,7 @@ With[{
           Show/Hide cell
           <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans"><ToggleKey/></kbd></span>
         </button>                    
-        <button data-name="ClearOutputs" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="ClearOutputs" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
     
           Clear outputs
         </button>
@@ -53,18 +53,18 @@ With[{
     ,
       Table[ With[{event = Vi["event"], Label = Vi["label"]},
           <div class="py-0 px-2" role="none">     
-            <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+            <button data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
               <Label/>
             </button>          
           </div>        
       ], {Vi, Join[Plugins["edit"], Plugins["view"]]}]      
     ,
       <div class="py-0 px-2" role="none">
-        <button data-name="LocateExamples" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="LocateExamples" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
        
           Locate examples
         </button> 
-        <button data-name="CheckUpdates" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="CheckUpdates" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
        
           Check updates
         </button>              
@@ -73,18 +73,18 @@ With[{
     ,    
       Table[ With[{event = Vi["event"], Label = Vi["label"]},
       <div class="py-0 px-2" role="none">     
-        <button data-name="{event}" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+        <button data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
           <Label/>
         </button>          
       </div>        
       ], {Vi, Plugins["misc"]}]  
     ,
       <div class="py-0 px-2" role="none">       
-      <button data-name="Acknowledgments" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+      <button data-name="Acknowledgments" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
   
         Acknowledgments
       </button>        
-      <button data-name="Exit" class="block w-full hover:bg-teal-400 hover:text-white text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+      <button data-name="Exit" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
 
         Shutdown
       </button>
