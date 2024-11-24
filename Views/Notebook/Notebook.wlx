@@ -540,7 +540,7 @@ Component[OptionsPattern[]] := With[{
         "Save" -> Function[Null,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
 
-            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client, "Log"->log|>]},
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
                     Then[EventFire[controller, "DumpSave", notebook], Function[Null, 
@@ -554,7 +554,7 @@ Component[OptionsPattern[]] := With[{
         "SaveAs" -> Function[path,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
 
-            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client, "Log"->log|>], client = $Client},
                 Then[tt, Function[Null,
                     Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
                     Then[EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>], Function[Null, 
@@ -571,7 +571,7 @@ Component[OptionsPattern[]] := With[{
         "Backup" -> Function[data, With[{timer = AbsoluteTime[]},
             If[TrueQ[notebook["_suspendBackups"]], Return[Null, Module]];
 
-            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"], "Log"->log|>]},
                 Then[tt, Function[Null,
                     If[AbsoluteTime[] - timer > 5,
                         EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
