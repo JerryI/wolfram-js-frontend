@@ -540,47 +540,27 @@ Component[OptionsPattern[]] := With[{
         "Save" -> Function[Null,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
 
-            With[{spinner = Notifications`Spinner["Topic"->"Saving", "Body"->"Takes unusally long... Please wait"](*`*)},
-                With[{timer = SetTimeout[
-                    Echo["Watchdog: Too long to save..."];
-                    EventFire[log, spinner, Null];
-                , 1500]},
-
-           
-
-                    With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
-                        Then[tt, Function[Null,
-                            Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-                            Then[EventFire[controller, "DumpSave", notebook], Function[Null, 
-                                TaskRemove[timer];
-                                Delete[spinner];
-                                EventFire[log, "Saved", ""];
-                            ]];
-                            
-                        ]];
-                    ]; 
-                ];   
-            ];        
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>]},
+                Then[tt, Function[Null,
+                    Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    Then[EventFire[controller, "DumpSave", notebook], Function[Null, 
+                        EventFire[log, "Saved", ""];
+                    ]];
+                    
+                ]];
+            ];            
         ],
 
         "SaveAs" -> Function[path,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
 
-            With[{spinner = Notifications`Spinner["Topic"->"Saving", "Body"->"Takes unusally long... Please wait"](*`*)},
-                With[{timer = SetTimeout[
-                    Echo["Watchdog: Too long to save..."];
-                    EventFire[log, spinner, Null]
-                , 1500]},
-                    With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
-                        Then[tt, Function[Null,
-                            Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-                            Then[EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>], Function[Null, 
-                                TaskRemove[timer];
-                                Delete[spinner];
-                            ]];
-                        ]];
-                    ];
-                ];
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client|>], client = $Client},
+                Then[tt, Function[Null,
+                    Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    Then[EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>], Function[Null, 
+                        1+1
+                    ]];
+                ]];
             ];
         ],
 
@@ -591,26 +571,15 @@ Component[OptionsPattern[]] := With[{
         "Backup" -> Function[data, With[{timer = AbsoluteTime[]},
             If[TrueQ[notebook["_suspendBackups"]], Return[Null, Module]];
 
-            With[{spinner = Notifications`Spinner["Topic"->"Backing up", "Body"->"Takes unusally long... Please wait"](*`*)},
-                With[{timer = SetTimeout[
-                    Echo["Watchdog: Too long to save..."];
-                    EventFire[log, spinner, Null]
-                , 1500]},
-
-                    With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
-                        Then[tt, Function[Null,
-                            TaskRemove[timer];
-                            Delete[spinner];
-
-                            If[AbsoluteTime[] - timer > 5,
-                                EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
-                                notebook["_suspendBackups"] = True;
-                            ];
-        
-                            EventFire[controller, "DumpSaveTemporal", notebook];
-                        ]];
+            With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"]|>]},
+                Then[tt, Function[Null,
+                    If[AbsoluteTime[] - timer > 5,
+                        EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
+                        notebook["_suspendBackups"] = True;
                     ];
-                ];
+
+                    EventFire[controller, "DumpSaveTemporal", notebook];
+                ]];
             ];            
         ]],        
 
