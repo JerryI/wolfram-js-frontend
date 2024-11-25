@@ -1,0 +1,18 @@
+http                      =  $Options["HTTPHandler"];
+
+App[request_] := With[{
+    SecretString = ToString[StringReverse[URLDecode[ request["Path"] ] ] ]
+},
+
+    <SecretString/>
+];  
+
+Ping[request_] := With[{}, "OK"];
+
+http["MessageHandler", "Test"] = AssocMatchQ[<|"Path" -> "/test"|>] -> App;
+http["MessageHandler", "Ping"] = AssocMatchQ[<|"Path" -> "/ping"|>] -> Ping;
+Print["Test Loaded!"];
+
+
+
+

@@ -1,0 +1,64 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$4502], 
+   "Objects" -> <|"e1797651-3421-4ae3-a67a-c7aab4f5fdfb" -> 
+      <|"Public" -> Hold[PlaceholderClock[]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev/Demos/12 - \
+Frontend interpreter/Clocks.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {}|>, "Cells" -> 
+  {<|"Data" -> ".js\ncore.PlaceholderClock = async (args, env) => \
+{\n\t//store the handler object in the local memory\n\tenv.local.start = new \
+Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
+env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
+instance is about to be destoryed - clear \
+timer\ncore.PlaceholderClock.destroy = (args, env) => \
+{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
+env.local.start);\n\talert(passed+' \
+passed');\n}\n\ncore.PlaceholderClock.virtual = true ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "28481768-e0c1-4f79-998d-5a2e2f662bec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> "core.PlaceholderClock = async (args, env) => {\n\t//store the \
+handler object in the local memory\n\tenv.local.start = new \
+Date();\n\tenv.local.clock = setInterval(()=>{\n\t\tconst d = (new Date() - \
+env.local.start);\n\t\tenv.element.innerHTML = d;\n\t}, 10);\n}\n//when our \
+instance is about to be destoryed - clear \
+timer\ncore.PlaceholderClock.destroy = (args, env) => \
+{\n\twindow.clearInterval(env.local.clock);\n\tconst passed = (new Date() - \
+env.local.start);\n\talert(passed+' \
+passed');\n}\n\ncore.PlaceholderClock.virtual = true ", "Display" -> "js", 
+    "Hash" -> "59e904a7-a0f4-44d2-b95b-6fc2f471ec63", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> "CreateFrontEndObject[PlaceholderClock[]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ff4ef44b-f536-4297-98b2-d56b835e23d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"e1797651-3421-4ae3-a67a-c7aab4f5fdfb\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKpxqaW\
+5qbmRrqGpsYGeqaJKYa6yaamSfqJpsnJiaZpJmmpaQlAQB6CxYB\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "406f2c47-2a58-4f7c-bcbb-165fea0efc99", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> ".md\nTry to copy this object from the output cell and paste \
+somewhere else!", "Display" -> "codemirror", 
+    "Hash" -> "58eee1ae-ae02-4cd3-b6e9-488d9dd8d443", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> 
+     "Try to copy this object from the output cell and paste somewhere else!"\
+, "Display" -> "markdown", "Hash" -> "de426dc9-08c0-40b6-b211-0a0601eec99a", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "1f7ae43d-d25a-4a69-afe7-79eda8f64ea4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ce7ba937-21a7-4287-9276-7b86bb08a1cf"|>}, "serializer" -> "jsfn4"|>

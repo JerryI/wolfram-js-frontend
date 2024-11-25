@@ -1,0 +1,106 @@
+Checkbox = ImportComponent["Components/UI/Checkbox.wlx"];
+Extensions := ImportComponent["Components/Extensions.wlx"];
+GeneralSettings := ImportComponent["Components/General.wlx"];
+DevSettings := ImportComponent["Components/Dev.wlx"];
+
+{loadSettings, storeSettings}        = ImportComponent["Frontend/Settings.wl"];
+
+settings = <||>;
+loadSettings[settings];
+
+updateSettings[new_] := (
+    settings = Join[settings, new];
+    storeSettings[settings];
+);
+
+Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
+    <div>
+        <script type="module">
+            
+        </script>
+    </div>
+] 
+
+
+
+
+Component[OptionsPattern[]] := With[{
+    secret = OptionValue["Secret"], 
+    event = OptionValue["Event"],
+    parameters = OptionValue["Parameters"],
+    controller     = OptionValue["Controls"],
+    modals         = OptionValue["Modals"],
+    log = OptionValue["Messanger"],
+
+    appEvents = OptionValue["AppEvents"],
+
+    ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],  
+    ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
+    ExternalEventHandlers = OptionValue["ExternalEventHandlers"],
+
+    extensions = Sequence[
+        "ExtensionTemplateWrapper" -> OptionValue["ExtensionTemplateWrapper"], 
+        "ExtensionTemplateInjection" -> OptionValue["ExtensionTemplateInjection"]
+    ]
+},
+    
+    EventHandler[EventClone[secret], {
+        (* /* Add listeners and load cells */ *)
+
+        "Load" -> Function[Null,
+            Print["Settings is about to be shown"];
+            Echo[StringJoin["Connected using socket: ", $Client // ToString]];
+
+            
+
+            (* /* Destructor */ *)
+            With[{socket = EventClone[Global`$Client(*`*)]},
+                EventHandler[socket, {"Closed" -> Function[Null,
+                    Echo[">> SOCKET CLOSED!!!"];
+                    EventRemove[socket];
+                    EventFire[appEvents, "Settings:Close", True];
+                ]}];
+            ];
+        ],
+
+        else_String :> (Echo[StringTemplate["Unknown settings view event ``: ``"][else, #]]&)
+    }];
+
+    With[{},
+
+        <main class="grow flex flex-col overflow-hidden">
+            <div class="divide-y divide-gray-200 overflow-hidden h-full bg-white dark:bg-gray-700 dark:divide-gray-600">
+              <div class="px-4 py-2 text-center text-sm font-semibold dark:text-gray-400 linux:hidden win:h-titlebar owin:h-titlebar" style="-webkit-app-region: drag">
+                Settings
+              </div>
+              <div class="px-4 py-0 h-full overflow-y-auto dark:text-gray-400">
+                <ul role="list" class="p-0 divide-y divide-gray-200 dark:divide-gray-600">
+                    <li class="list-none px-4 py-4 sm:px-0">
+                        <GeneralSettings Modals={modals} Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
+                    </li>                    
+                    <li class="list-none px-4 py-4 sm:px-0">
+                        <Extensions Messager={log} Parameters={parameters} Secret={secret}/>
+                    </li>
+                    <li class="list-none px-4 py-0 sm:px-0">
+                        <ExtensionTemplateInjection Template={"SettingsFooter"}  Modals={modals} Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret} />
+                    </li>
+                    <li class="list-none px-4 py-4 sm:px-0">
+                        <DevSettings Messager={log} Settings={settings} OnSave={updateSettings} Secret={secret}/>
+                    </li>
+                </ul>                
+              </div>
+            </div>           
+            <WebUIOnLoad Event={secret} Pattern={"Load"}/>
+        </main>
+
+    ]
+]
+
+Options[Component] = {"Parameters"->Null, "Window"->"", "AppEvents"->"blacksheep", "Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
+Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
+
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+{Component, Script, initialize}
+

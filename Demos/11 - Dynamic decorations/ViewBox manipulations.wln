@@ -1,0 +1,55 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$132], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/05 - Decorations/ViewBox manipulations.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\nAny graphics object is `ViewBox`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "dddaf388-ee60-482b-a08d-8351a28f428d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> "Any graphics object is `ViewBox`", "Display" -> "markdown", 
+    "Hash" -> "19a41997-f732-4e74-bf77-1eb6889a319a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> "Plot[x, {x,0,1}, Epilog->{MetaMarker[\"pp\"]}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "32f75923-a6a6-4a1b-9ca4-31b26c52053b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> ".md\nThan can be trasformed using special keyword", 
+    "Display" -> "codemirror", "Hash" -> 
+     "11f0367d-7890-4db5-bf94-f7db1df17b55", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> "Than can be trasformed using special keyword", 
+    "Display" -> "markdown", "Hash" -> 
+     "c0e816fb-83ae-48ca-a6c7-bad77554f0e8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> "FrontSubmit[ViewBox`OuterExpression[\"Hello World\"], \
+MetaMarker[\"pp\"]] ", "Display" -> "codemirror", 
+    "Hash" -> "311fe9f9-2e4b-480a-9491-6e8215a30433", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> ".md\nwhere `MetaMarker` finds instance of a Plot on the \
+frontend and submits to it a given expression.", "Display" -> "codemirror", 
+    "Hash" -> "5cbfa499-1b7c-406c-97b1-49cf72d7abe3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> "where `MetaMarker` finds instance of a Plot on the frontend \
+and submits to it a given expression.", "Display" -> "markdown", 
+    "Hash" -> "e373e6e0-5225-4c9b-be64-394dd6c1029d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "a1c2d27d-c166-47b5-8089-558439091631", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9dd5b3bd-2c71-4b1f-b01b-5bb631d47ece"|>}, "serializer" -> "jsfn4"|>

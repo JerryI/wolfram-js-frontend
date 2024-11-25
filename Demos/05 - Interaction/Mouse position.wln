@@ -1,0 +1,39 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1246], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
+Support/wljs-notebook/Examples/Dynamics/Interaction/Mouse position.wln"|>, 
+ "Cells" -> {<|"Data" -> "generate[xy_, symbol_] := With[{dir = 0.05 \
+Normalize[xy]},\n  symbol = (Table[W[{{i,j}, {i,j} + dir / \
+((*SpB[*)Power[Norm[{i,j}-xy](*|*),(*|*)2](*]SpB*) + 0.1)}], {i, -1,1,0.2}, \
+{j, -1,1,0.2}] // Flatten) /. {W -> Identity}\n];\n\nSetAttributes[generate, \
+HoldRest]", "Display" -> "codemirror", 
+    "Hash" -> "8633daeb-7316-4848-8bbe-a509e9a9faa9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "666c6812-c62f-4b26-8fb2-c1888bb96869"|>, 
+   <|"Data" -> ".md\nTrack mouse position using white rectangle", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ed85777a-a2b3-482d-9c53-7e6975417053", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "666c6812-c62f-4b26-8fb2-c1888bb96869"|>, 
+   <|"Data" -> "Track mouse position using white rectangle", 
+    "Display" -> "markdown", "Hash" -> 
+     "0a6aaad6-3447-4c48-b2e8-974e4cc41856", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "666c6812-c62f-4b26-8fb2-c1888bb96869"|>, 
+   <|"Data" -> "LeakyModule[{lines}, \n  generate[{0,0}, lines];\n  \
+Graphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,-2}, \
+{2,2}],\n\t\t{\"mousemove\"->Function[xy, generate[xy, \
+lines]]}\n\t],\n\tBlack,\n   Line[lines // Offload]\n  }, \
+\"TransitionDuration\"->270, \"TransitionType\"->\"Linear\", \
+PlotRange->{{-1,1}, {-1,1}}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "aa0e7ebb-0867-408f-8114-f97c2c25f616", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, 
+      "projected" -> False|>, "State" -> "Idle", "Type" -> "Input", 
+    "UID" -> Null, "Notebook" -> "666c6812-c62f-4b26-8fb2-c1888bb96869"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "5e51ad08-5df7-41cd-a71c-65a4292d2f52", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "666c6812-c62f-4b26-8fb2-c1888bb96869"|>}, "serializer" -> "jsfn4"|>

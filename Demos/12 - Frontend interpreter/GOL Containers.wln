@@ -1,0 +1,199 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$134], 
+   "Objects" -> <|"77242086-a8a5-46e3-bd31-3206a0eff418" -> 
+      <|"Public" -> Hold[MyFunction[Offload[board]]]|>|>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/12 - Frontend \
+interpreter/GOL Containers.wln", "ReadOnly" -> True, 
+   "Symbols" -> <|"board" -> JSObject[0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0][0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 
+         1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 
+         1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 
+         1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 
+         1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
+         0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+        0[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]]|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "GOL: Example with containers", 
+      CellObj[JerryI`Notebook`CellObj`$125]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# GOL: Example with containers\nUsing the \
+advanced frontend functions definition", "Display" -> "codemirror", 
+    "Hash" -> "c5d0ad57-5a81-437d-ba78-6f82039f7d85", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "\n# GOL: Example with containers\nUsing the advanced frontend \
+functions definition", "Display" -> "markdown", 
+    "Hash" -> "504c4f2a-2181-4fb8-aa60-e590983412c7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> ".js\n\n//constructor\ncore.MyFunction = async (args, env) => \
+{\n  //just to make second object to be aware of the previous one\n  let data \
+= await interpretate(args[0], env);\n  if (data instanceof \
+NumericArrayObject) {\n    data = data.normal();\n  }\n  //create js canvas\n \
+ const canvas = document.createElement(\"canvas\");\n  canvas.width = 400;\n  \
+canvas.height = 400;\n\n  let context = canvas.getContext(\"2d\");\n  \
+context.fillStyle = \"lightgray\";\n  context.fillRect(0, 0, 500, 500);\n\n  \
+//an array to store the previous state\n  let old = new Array(40);\n  for \
+(let i = 0; i < old.length; i++) {\n    old[i] = new Array(40).fill(0); \n  \
+}\n\n  env.element.appendChild(canvas);\n  env.local.old = old;\n  \
+env.local.ctx = context;\n}\n\n//on update\ncore.MyFunction.update = async \
+(args, env) => {\n  let data = await interpretate(args[0], env);\n  if (data \
+instanceof NumericArrayObject) {\n    data = data.normal();\n  }\n  \n  const \
+context = env.local.ctx;\n  //draw our boxes\n  for(let i=0; i<40; ++i) {\n   \
+ for (let j=0; j<40; ++j) {\n      //old pixels will leave blue traces\n      \
+if (env.local.old[i][j] > 0) {\n        context.fillStyle = \
+\"rgba(0,0,255,0.2)\"; \n        context.fillRect(i*10 + 2, j*10 + 2, 6, \
+6);\n      }\n      //new pixels\n      if (data[i][j] > 0) {\n        \
+context.fillStyle = \"rgba(255,0,0,0.4)\"; \n        context.fillRect(i*10 + \
+1, j*10 + 1, 8, 8);\n      } else {\n        context.fillStyle = \
+\"rgba(255,255,255,0.4)\"; \n        context.fillRect(i*10 + 1, j*10 + 1, 8, \
+8);\n      }\n    }\n  }\n\n  env.local.old = \
+data;\n}\n\ncore.MyFunction.destroy = (args, env) => \
+{}\n\ncore.MyFunction.virtual = true\n\nreturn null;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "39a91ccb-737c-4afa-ac7a-91c34ce6f1aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "\n//constructor\ncore.MyFunction = async (args, env) => {\n  \
+//just to make second object to be aware of the previous one\n  let data = \
+await interpretate(args[0], env);\n  if (data instanceof NumericArrayObject) \
+{\n    data = data.normal();\n  }\n  //create js canvas\n  const canvas = \
+document.createElement(\"canvas\");\n  canvas.width = 400;\n  canvas.height = \
+400;\n\n  let context = canvas.getContext(\"2d\");\n  context.fillStyle = \
+\"lightgray\";\n  context.fillRect(0, 0, 500, 500);\n\n  //an array to store \
+the previous state\n  let old = new Array(40);\n  for (let i = 0; i < \
+old.length; i++) {\n    old[i] = new Array(40).fill(0); \n  }\n\n  \
+env.element.appendChild(canvas);\n  env.local.old = old;\n  env.local.ctx = \
+context;\n}\n\n//on update\ncore.MyFunction.update = async (args, env) => {\n \
+ let data = await interpretate(args[0], env);\n  if (data instanceof \
+NumericArrayObject) {\n    data = data.normal();\n  }\n  \n  const context = \
+env.local.ctx;\n  //draw our boxes\n  for(let i=0; i<40; ++i) {\n    for (let \
+j=0; j<40; ++j) {\n      //old pixels will leave blue traces\n      if \
+(env.local.old[i][j] > 0) {\n        context.fillStyle = \
+\"rgba(0,0,255,0.2)\"; \n        context.fillRect(i*10 + 2, j*10 + 2, 6, \
+6);\n      }\n      //new pixels\n      if (data[i][j] > 0) {\n        \
+context.fillStyle = \"rgba(255,0,0,0.4)\"; \n        context.fillRect(i*10 + \
+1, j*10 + 1, 8, 8);\n      } else {\n        context.fillStyle = \
+\"rgba(255,255,255,0.4)\"; \n        context.fillRect(i*10 + 1, j*10 + 1, 8, \
+8);\n      }\n    }\n  }\n\n  env.local.old = \
+data;\n}\n\ncore.MyFunction.destroy = (args, env) => \
+{}\n\ncore.MyFunction.virtual = true\n\nreturn null;", "Display" -> "js", 
+    "Hash" -> "983d1f2f-496d-47ad-bfc9-a60b22ddded3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> ".md\nWolfram Mathematica code", "Display" -> "codemirror", 
+    "Hash" -> "92900569-f03e-4908-ba3c-13edd0c0e55f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "\nWolfram Mathematica code", "Display" -> "markdown", 
+    "Hash" -> "6746c151-26d4-409b-a212-ef6686d8dcb0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "gameOfLife = {224, {2, {{2, 2, 2}, {2, 1, 2}, {2, 2, 2}}}, \
+{1, 1}};\nboard = RandomInteger[1, {40, \
+40}];\n\nCreateFrontEndObject[MyFunction[board // Offload]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "4a23fc64-625d-401d-b82c-b1539efc8cfd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"77242086-a8a5-46e3-bd31-3206a0eff418\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKm5sbm\
+RgZWJjpJlokmuqamKUa6yalGBvqGhsZmCUapKalmRhaAABzMRUM\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9f3324ad-ba80-479f-b7f5-24e1f5a75fab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> ".md\nPerform an update", "Display" -> "codemirror", 
+    "Hash" -> "d7bd7aeb-4fe0-4dfb-8df5-8ba752884e7a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "\nPerform an update", "Display" -> "markdown", 
+    "Hash" -> "ba440b3d-6dfc-4085-987f-700dd73a1591", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>, 
+   <|"Data" -> "\nDo[\n  board = CellularAutomaton[gameOfLife, board, {{0, \
+1}}] // Last;\n  Pause[0.03];\n, {i,1,100}]", "Display" -> "codemirror", 
+    "Hash" -> "416de126-9aa0-416c-979a-cb3a742688a2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a320d8f2-a595-4d25-952e-43fc5148d641"|>}, "serializer" -> "jsfn4"|>

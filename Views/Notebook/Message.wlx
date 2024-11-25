@@ -1,0 +1,45 @@
+
+Script[OptionsPattern[]] := With[{},
+    " "
+] 
+
+Component[OptionsPattern[]] := With[{
+    secret = OptionValue["Secret"], 
+    data = OptionValue["Data"], 
+    event = OptionValue["Event"],
+    parameters = OptionValue["Parameters"],
+    controller     = OptionValue["Controls"],
+    modals         = OptionValue["Modals"],
+    log = OptionValue["Messanger"],
+
+    appEvents = OptionValue["AppEvents"]
+},
+    
+    EventHandler[secret, {
+        (* /* Add listeners and load cells */ *)
+
+        "Load" -> Function[Null,
+            Print["Notebook message is about to be shown"];
+            EventFire[modals, data["Type"], Join[<|"Client"->$Client|>, data]];
+        ],
+
+        else_String :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
+    }];
+
+    With[{nid = notebook["Hash"]},
+
+        <main class="grow flex flex-col overflow-hidden"> 
+            <WebUIOnLoad Event={secret} Pattern={"Load"}/>
+        </main>
+
+    ]
+]
+
+Options[Component] = {"Parameters"->Null, "AppEvents"->"blacksheep", "Kernels"->{}, "Modals"->"", "Controls" ->"", "ControlsPort"->"", "Notebook"->Null, "Event"->"blackhole", "Messager"->"blackout", "Secret" :> CreateUUID[], "ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction, "ExternalEventHandlers" -> Null}
+Options[Script] = {"ExtensionTemplateInjection" -> emptyStringFunction}
+
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+{Component, Script}
+

@@ -1,0 +1,24 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$593], 
+   "Objects" -> <|"e4bf505c-3bc4-4b14-9e9d-e1b02aae3ced" -> 
+      <|"Public" -> Hold[Graphics3D[Cuboid[{0, 0, 0}], ImageSize -> 
+           100]]|>|>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/05 - Decorations/Interpretation.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> "Interpretation[Graphics3D[Cuboid[], ImageSize->100], 1]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "15c3f5df-a36c-44cb-a90c-12d45c09b0b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4688b675-1fa3-4aba-9d8c-93e510cfcbd2"|>, 
+   <|"Data" -> "(*VB[*)(1)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HN\
+S3GtSE0uLUlMykkNVgEKp5okpZkamCbrGiclm+iaJBma6FqmWqbophomGRglJqYaJ6emAACO8RaD\
+\"*)(*]VB*) - 1", "Display" -> "codemirror", 
+    "Hash" -> "93dd1f14-7a0c-4dec-bf1d-42730ca5a619", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4688b675-1fa3-4aba-9d8c-93e510cfcbd2"|>, 
+   <|"Data" -> "0", "Display" -> "codemirror", 
+    "Hash" -> "e5b8ce74-7000-4ce5-afd1-dbe4bdc7f38e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4688b675-1fa3-4aba-9d8c-93e510cfcbd2"|>}, "serializer" -> "jsfn4"|>

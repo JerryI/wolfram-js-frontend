@@ -1,0 +1,138 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$349], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Realtime data capture/Microphone capture.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Audio stream\nVisualize the waveform", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1933d2b9-1851-43eb-bad8-e5eccc323782", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "# Audio stream\nVisualize the waveform", 
+    "Display" -> "markdown", "Hash" -> 
+     "4f3b9708-b94b-4856-9312-e9088921ecc5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> 
+     ".md\n## Javascript\nGrab the data from AudioContext and send to WL", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1168a3a6-4f7c-4968-ad3c-1533e2585c3b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "## Javascript\nGrab the data from AudioContext and send to \
+WL", "Display" -> "markdown", "Hash" -> 
+     "1b33b8d9-ab59-4bf3-9e19-735e11ed0ea3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> ".js\n\n  // Constants\n  const audioContext = new \
+AudioContext();\n  const analyser = audioContext.createAnalyser();\n  const \
+scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);\n  const \
+chunks = [];\n\n  // Variables\n  let stream = null;\n  let input = null;\n  \
+let recorder = null;\n  let recording = null;\n  let isRecording = true;\n  \
+let isPlaying = false;\n\n  // Setup analyser node\n  \
+analyser.smoothingTimeConstant = 0.3;\n  analyser.fftSize = 1024;\n  \n  // \
+Request access to the user's microphone.\n  const requestMicrophoneAccess = \
+() => { \n    if (navigator.mediaDevices) {\n      \
+navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {\n        \
+setAudioStream(stream);\n      }, error => {\n        alert('Something went \
+wrong requesting the userMedia. <br/>Please make sure you\\'re viewing this \
+demo over https.');\n      });\n    } else {\n      alert('Your browser does \
+not support navigator.mediadevices. <br/>This is needed for this demo to \
+work. Please try again in a differen browser.');\n    }  \n  }\n\n  // Set \
+all variables which needed the audio stream\n  const setAudioStream = stream \
+=> {\n    stream = stream;\n    input = \
+audioContext.createMediaStreamSource(stream);\n    \n    \
+input.connect(analyser);\n    analyser.connect(scriptProcessor);\n    \
+scriptProcessor.connect(audioContext.destination);\n    \
+scriptProcessor.onaudioprocess = processInput;\n  };\n\n\n  // Process the \
+microphone input\n  const processInput = audioProcessingEvent => {\n      \
+const array = new Uint8Array(analyser.frequencyBinCount);\n      \
+analyser.getByteTimeDomainData(array);\n\n      server.kernel.emitt('audio', \
+'{'+array.map((el) => el).join(',')+'}');\n      \
+//bars.push(getAverageVolume(array));\n  }  \n  \n  // Start the \
+application\n\nlet state = false;\n\ncore.MicStart = async () => {\n  if \
+(state) return;\n  state = true;\n  requestMicrophoneAccess(); \n  sign.style \
+= \"color: red\";\n  sign.innerText = \"Recording...\";\n}\n\ncore.MicStop = \
+async () => {\n  state = false;\n  input.disconnect();\n  \
+analyser.disconnect();\n  scriptProcessor.disconnect();\n  \n  sign.style = \
+\"color: blue\";\n  sign.innerText = \"Stopped\";\n}\n\nthis.ondestroy = () \
+=> {\n  if (!state) return;\n  input.disconnect();\n  \
+analyser.disconnect();\n  scriptProcessor.disconnect();\n};\n\nconst sign = \
+document.createElement('div');\nsign.style = \"color: gray\";\nsign.innerText \
+= \"Idle\";\n\nreturn sign;", "Display" -> "codemirror", 
+    "Hash" -> "948d70bf-e373-46ab-8c41-1f5d179504a5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "\n  // Constants\n  const audioContext = new \
+AudioContext();\n  const analyser = audioContext.createAnalyser();\n  const \
+scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);\n  const \
+chunks = [];\n\n  // Variables\n  let stream = null;\n  let input = null;\n  \
+let recorder = null;\n  let recording = null;\n  let isRecording = true;\n  \
+let isPlaying = false;\n\n  // Setup analyser node\n  \
+analyser.smoothingTimeConstant = 0.3;\n  analyser.fftSize = 1024;\n  \n  // \
+Request access to the user's microphone.\n  const requestMicrophoneAccess = \
+() => { \n    if (navigator.mediaDevices) {\n      \
+navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {\n        \
+setAudioStream(stream);\n      }, error => {\n        alert('Something went \
+wrong requesting the userMedia. <br/>Please make sure you\\'re viewing this \
+demo over https.');\n      });\n    } else {\n      alert('Your browser does \
+not support navigator.mediadevices. <br/>This is needed for this demo to \
+work. Please try again in a differen browser.');\n    }  \n  }\n\n  // Set \
+all variables which needed the audio stream\n  const setAudioStream = stream \
+=> {\n    stream = stream;\n    input = \
+audioContext.createMediaStreamSource(stream);\n    \n    \
+input.connect(analyser);\n    analyser.connect(scriptProcessor);\n    \
+scriptProcessor.connect(audioContext.destination);\n    \
+scriptProcessor.onaudioprocess = processInput;\n  };\n\n\n  // Process the \
+microphone input\n  const processInput = audioProcessingEvent => {\n      \
+const array = new Uint8Array(analyser.frequencyBinCount);\n      \
+analyser.getByteTimeDomainData(array);\n\n      server.kernel.emitt('audio', \
+'{'+array.map((el) => el).join(',')+'}');\n      \
+//bars.push(getAverageVolume(array));\n  }  \n  \n  // Start the \
+application\n\nlet state = false;\n\ncore.MicStart = async () => {\n  if \
+(state) return;\n  state = true;\n  requestMicrophoneAccess(); \n  sign.style \
+= \"color: red\";\n  sign.innerText = \"Recording...\";\n}\n\ncore.MicStop = \
+async () => {\n  state = false;\n  input.disconnect();\n  \
+analyser.disconnect();\n  scriptProcessor.disconnect();\n  \n  sign.style = \
+\"color: blue\";\n  sign.innerText = \"Stopped\";\n}\n\nthis.ondestroy = () \
+=> {\n  if (!state) return;\n  input.disconnect();\n  \
+analyser.disconnect();\n  scriptProcessor.disconnect();\n};\n\nconst sign = \
+document.createElement('div');\nsign.style = \"color: gray\";\nsign.innerText \
+= \"Idle\";\n\nreturn sign;", "Display" -> "js", 
+    "Hash" -> "e37dbd56-485e-4d64-af10-7c659b27b959", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> ".md\n## Wolfram Language\nReceive and draw", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8b6ac124-ea07-4bc8-b750-1790473be4a7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "## Wolfram Language\nReceive and draw", 
+    "Display" -> "markdown", "Hash" -> 
+     "f04f644e-21d3-47f9-90c5-2d241c18ac03", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "LeakyModule[{line = {{0.,-256.}, {512.,256.}}},\n  \
+EventHandler[\"audio\", Function[data,\n    \n    line = MapIndexed[{#2[[1]], \
+#1}&, data];\n  ]];\n  Graphics[\n    Line[line // Offload], \n    PlotRange \
+-> {{0,512}, {127-50, 127+50}},\n    \n    \"TransitionDuration\"->30, \n    \
+\"TransitionType\"->\"Linear\"\n  ]\n]\n\nWith[{win = CurrentWindow[]},\n  \
+EventHandler[InputButton[\"Start\"], Function[Null, FrontSubmit[MicStart[], \
+\"Window\"->win]]]\n]\nWith[{win = CurrentWindow[]},\n  \
+EventHandler[InputButton[\"Stop\"], Function[Null, FrontSubmit[MicStop[], \
+\"Window\"->win]]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "173f8036-f012-4b2d-8616-72f56eb805c6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "2e5f70dd-68fa-4750-9981-2d346dcdb121", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "850290ea-d818-4b51-970e-698e2c00bf71"|>}, "serializer" -> "jsfn4"|>

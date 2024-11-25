@@ -1,0 +1,136 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$326], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/deactivate.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n## Dynamic plot\nUse sliders and graphics on a slide", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7ba7cbfb-2ca3-4d0c-9d9a-2d9036cbb2cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "## Dynamic plot\nUse sliders and graphics on a slid", 
+    "Display" -> "markdown", "Hash" -> 
+     "7635fba5-7d96-41ac-af7c-caad116ddf3e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> 
+     ".md\nDefine resampler function to keep the number of points the same", 
+    "Display" -> "codemirror", "Hash" -> 
+     "90fa17c1-9465-4da5-873d-f7445ac61ff1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> 
+     "Define resampler function to keep the number of points the same", 
+    "Display" -> "markdown", "Hash" -> 
+     "00558df1-e047-4e5d-ad06-528c77a5c840", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "reSampler[min_,max_,step_:0.1][data_List] := With[{i = \
+Interpolation[data, InterpolationOrder->1]},\n  Table[{x,  i[x]}, {x, min, \
+max, step}]\n]", "Display" -> "codemirror", 
+    "Hash" -> "8657fd88-b2d9-45db-aa00-8e222cd3967d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".md\nA slider for controlling the data part", 
+    "Display" -> "codemirror", "Hash" -> 
+     "49938090-cf98-4e19-98ef-bed1e1f104e0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "A slider for controlling the data part", 
+    "Display" -> "markdown", "Hash" -> 
+     "dd0905dd-a796-4473-983e-8135294d504b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "ControlSlider[OptionsPattern[]] := With[{ev = \
+OptionValue[\"Event\"]},\n  EventHandler[InputRange[1, 4, 1, 4, \
+\"Label\"->\"Part\"], Function[value,\n    EventFire[ev, \"Change\", \
+Round[value]];\n  ]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "ef18305f-a88b-4a9a-9eaf-61e7240bbaf3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".md\nMake a dynamic plot", "Display" -> "codemirror", 
+    "Hash" -> "925f465c-9dd3-407e-a1fc-8eb1d9772f62", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "Make a dynamic plot", "Display" -> "markdown", 
+    "Hash" -> "00205c76-984d-448e-b66e-4535893eba60", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "DynamicPlot[OptionsPattern[]] := \n  With[{\n    colors = \
+Table[Blend[OptionValue[\"Gradient\"], i], {i,0.,1.,1./8}],\n    data = \
+(*VB[*)(Get[FileNameJoin[{\".iconized\", \
+\"iconized-1073.wl\"}]])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRAeH5DwTM7Py6xKdc\
+vMSXXKr8h8cZ6FAQDwPgww\"*)(*]VB*),\n    ev = OptionValue[\"Event\"]\n  },\n\n \
+ LeakyModule[{lines = reSampler[35, 130] /@ data[[1]]},\n    EventHandler[ev, \
+{\"Change\" -> Function[part,\n      lines = reSampler[35, 130] /@ \
+data[[part]]\n    ]}];\n    \n    Graphics[Table[With[{i = i},\n        {\n   \
+       colors[[i]], \n          Line[lines[[i]] // Offload]\n        }\n      \
+], {i, 1, Length[lines]}], \n      \n      Axes->True,\n      \
+AxesLabel->{\"wavenumber (cm^{-1})\", \"absorption\"},\n      \n      \
+Epilog->{\n        Table[Style[Text[StringTemplate[\"``T\"][i], {50, 50 + 100 \
+i}], FontSize->14], {i, 0, 7}], \n        \
+MetaMarker[OptionValue[\"Marker\"]]\n      },\n      \n      \
+PlotRange->OptionValue[\"PlotRange\"],\n      \
+ImageSize->OptionValue[\"ImageSize\"],\n      TransitionDuration->400,\n      \
+TransitionType->\"Linear\"\n    ]  \n  ]\n]\n\nOptions[DynamicPlot] = \
+{\"Gradient\"->{Blue // Lighter, Red}, \"PlotRange\"->{{30, 120}, {0,830}}, \
+\"ImageSize\"->{450, 450}, \"Marker\"->Null, \"Event\"->Null};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7dde609f-1d89-45c1-a1d8-cb7d7d80934d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".md\nNow the __layout of the slide__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3cec18c4-89d8-4a8b-8d0f-fa5a2ca7b561", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "Now the __layout of the slide__", "Display" -> "markdown", 
+    "Hash" -> "646d57a9-74f1-4faf-a362-ea7907c0fe00", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".md\nhelper function", "Display" -> "codemirror", 
+    "Hash" -> "3251ab33-5c1e-4211-899d-b6431999cd1f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, <|"Data" -> "helper function", 
+    "Display" -> "markdown", "Hash" -> 
+     "6e8790dd-b4c4-4d97-bf7a-aab7a0e23f29", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".wlx\nColumns[Cols__, opts: OptionsPattern[]] := \
+Columns[List[Cols], opts]\nColumns[Cols_List, OptionsPattern[]] := With[{\n  \
+number = Length[Cols],\n  Layout = Table[<div><Item/></div>, {Item, Cols}],\n \
+ class = ToString[Length[Cols]]\n},\n    <div class=\"columns-{class}\">\n    \
+    <Layout/>\n    </div>                       \n];\n\nOptions[Columns] = \
+{\"Class\"->\"gap-4\"};", "Display" -> "codemirror", 
+    "Hash" -> "a113aa9f-6434-4caf-9f53-6d73421d85ca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> ".slide\n\n# Dynamic Plot\nTry to drag a slider on the \
+left\n\n<Columns>\n  <DynamicPlot Event={\"thz-dyn\"} \
+Marker={\"marked-dyn\"}/>\n  <div class=\"sm-controls text-left pt-4\">\n    \
+<ControlSlider Event={\"thz-dyn\"}/> \n  </div>\n</Columns>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c9ea3e2e-f874-4c0d-87c2-7c6ea9d89ebb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "0ef20cfb-1bd0-44ad-8242-d7858c027f53", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "154cc033-0dd5-461b-953e-6cf11ebc6e3f"|>}, "serializer" -> "jsfn4"|>

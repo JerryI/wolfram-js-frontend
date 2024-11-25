@@ -1,0 +1,109 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$203], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/06 - Utils/NotebookStore.wln", 
+   "Storage" -> 
+    <|"date" -> "1:eJxTTMoPChZnYGAITixRsFTwTSxSMDIwMlEwNLMytrAyNgYAeWwHJA==", 
+     "data" -> "1:eJxl0jkOgzAARFGzBAhLWMNOJO5DRW6QwpIbKMz9FbtEv/nSvHrW37nLjxB\
+C+yab0pd07PJMvupQdtzFhXgQH/KABJAQEkGekBiSQFJIBnlBckgBKSEVpIY0kDekhXSQHjJARsgE\
+mSELxJ7kD9kaTs0="|>|>, "Cells" -> 
+  {<|"data" -> ".md\n## NotebookStore\nA safe storage for arbitary \
+expressions inside a notebook", "Data" -> ".md\n## NotebookStore\nA safe \
+storage for arbitary expressions inside a notebook", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "c184c9ed-0987-497f-9c0d-20038b67d639", 
+    "id" -> "bea124bf-b5ae-4531-9e04-46ff92850a87", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> True|>, 
+    "Props" -> <|"Hidden" -> True|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"data" -> "\n## NotebookStore\nA safe storage for arbitary expressions \
+inside a notebook", "Data" -> "\n## NotebookStore\nA safe storage for \
+arbitary expressions inside a notebook", "display" -> "markdown", 
+    "Display" -> "markdown", "Hash" -> 
+     "9b4ca633-9a31-4cfc-81dc-775884ea75e1", 
+    "id" -> "996c61a9-0420-4e05-a760-f59725889d5b", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "output", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"data" -> 
+     "NotebookStore[\"date\"] = Now // TextString \nNotebookStore[\"date\"]", 
+    "Data" -> 
+     "NotebookStore[\"date\"] = Now // TextString \nNotebookStore[\"date\"]", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "50beb79c-a396-4c26-a468-8e41ba0d7ab5", 
+    "id" -> "c28c7d11-fffb-416a-9d17-a281f8b45c78", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "\"date\"", "Display" -> "codemirror", 
+    "Hash" -> "48e57138-a4f4-4722-9657-bb8aef549c43", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "\"Sat 9 Mar 2024 16:38:33\"", "Display" -> "codemirror", 
+    "Hash" -> "3d681601-dbd4-4c73-9dee-f80eb91ed0b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"data" -> ".md\nIt keeps sent Wolfram Expressions under `Hold`, however, \
+it is recommended for storing large chunks of data to apply `Compress`", 
+    "Data" -> ".md\nIt stores any expressions as compressed WL code", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "c4138393-7a82-4fee-82ef-e641d8eb274e", 
+    "id" -> "dc2bf967-72cb-4c0a-856e-540ab0e4cc76", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> True|>, 
+    "Props" -> <|"Hidden" -> True|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "It stores any expressions as compressed WL code", 
+    "Display" -> "markdown", "Hash" -> 
+     "3cb2bd17-0513-42b0-b32f-b80b4dec0c24", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"data" -> "NotebookStore[\"data\"] = Compress[Sin /@ \
+Range[30]]\nNotebookStore[\"data\"] // ByteCount\nNotebookStore[\"data\"] // \
+Uncompress // ByteCount", "Data" -> "NotebookStore[\"data\"] = Sin /@ \
+Range[30]\nNotebookStore[\"data\"] // ByteCount ", "display" -> "codemirror", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6e49ae49-9d0d-46fd-80b5-26d9f5cb07d7", 
+    "id" -> "8e5c2856-e318-41bb-8059-96e6870236d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "\"data\"", "Display" -> "codemirror", 
+    "Hash" -> "bece732e-cb70-4ccc-ae25-8ebe0b7bda27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, <|"Data" -> "2208", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d6812f53-dd35-4082-ae91-d62f9b947cd2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> ".md\nAnd to find all keys, use", "Display" -> "codemirror", 
+    "Hash" -> "dac7f7f1-9d3a-4937-baba-bdac532d5050", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "And to find all keys, use", "Display" -> "markdown", 
+    "Hash" -> "a134e5f3-bb69-4530-a5ab-d5478cd0be41", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"data" -> "NotebookStore // Keys", "Data" -> "NotebookStore[] // Keys", 
+    "display" -> "codemirror", "Display" -> "codemirror", 
+    "Hash" -> "cbcd9bbf-6cc1-4285-87bd-0335e2511b06", 
+    "id" -> "9118953d-5e99-4d56-a439-78d04b9b095e", "Invisible" -> False, 
+    "MetaOnly" -> False, "props" -> <|"hidden" -> False|>, 
+    "Props" -> <|"Hidden" -> False|>, "sign" -> "unpack-c3875", 
+    "State" -> "Idle", "type" -> "input", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>, 
+   <|"Data" -> "{\"date\",\"data\"}", "Display" -> "codemirror", 
+    "Hash" -> "d71d8110-0d3c-4346-9f67-f45580700a89", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fb3de56c-6c7e-403f-a790-a0db98bf4fd9"|>}, "serializer" -> "jsfn4"|>

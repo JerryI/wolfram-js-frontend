@@ -1,0 +1,74 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$235], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/04 - Animation/Falling balls.wln", "ReadOnly" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Simple fast animation", CellObj[JerryI`Notebook`CellObj`$750]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Simple fast animation\nFalling balls", 
+    "Display" -> "codemirror", "Hash" -> 
+     "258c59f4-1a27-435f-a094-becec4c95685", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "# Simple fast animation\nFalling balls", 
+    "Display" -> "markdown", "Hash" -> 
+     "f08492b6-1959-4494-bbf4-007a2c2af0bd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "balls = RandomReal[{-1,1}, {300,3}];\nvels  = \
+RandomReal[{-1,1}, {300,3}];\n\nGraphics3D[{\n  Table[With[{i = i},\n    {\n  \
+    RGBColor[RandomReal[{0,1}, 3]],\n      Sphere[balls[[i]] // Offload, \
+0.03]\n    }\n  ], {i, Length[balls]}], \n  AnimationFrameListener[balls // \
+Offload, \"Event\"->\"frame\"]\n}]", "Display" -> "codemirror", 
+    "Hash" -> "6580c8c5-5d5f-4178-b221-5e4b5ba86fd8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> ".md\nUpdate function", "Display" -> "codemirror", 
+    "Hash" -> "4b7f4fe5-7966-4798-9b15-34d4e8204e16", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, <|"Data" -> "Update function", 
+    "Display" -> "markdown", "Hash" -> 
+     "2f8f7a8b-01d3-4a7d-82fa-3e714cb1efd5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "EventHandler[\"frame\", Function[Null,\n\n  vels = Table[\n   \
+ If[Norm[balls[[i]]] < 0.01, -1, 1] vels[[i]] - 0.08 balls[[i]]\n  , {i, \
+Length[balls]}];\n  \n  balls = Table[balls[[i]] + 0.08 vels[[i]], {i, \
+Length[balls]}];\n]];", "Display" -> "codemirror", 
+    "Hash" -> "a2bf0e7a-8732-4d9b-a042-1bc46ac66b5e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> ".md\nTo start animation", "Display" -> "codemirror", 
+    "Hash" -> "9a10b980-23e7-4c7a-a795-ca9c8582a93b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "To start animation", "Display" -> "markdown", 
+    "Hash" -> "322e4250-85cb-47b0-947e-00b8d054ad85", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "EventFire[\"frame\", Null]", "Display" -> "codemirror", 
+    "Hash" -> "0c54c914-a31f-4787-a32e-1b42cf225075", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, <|"Data" -> ".md\nTo stop", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b1c57298-30c0-467a-bbf7-dbcef96c448a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, <|"Data" -> "To stop", 
+    "Display" -> "markdown", "Hash" -> 
+     "5a3c99ef-a8df-4fb7-9a7e-9c32d15c6157", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>, 
+   <|"Data" -> "EventRemove[\"frame\"]", "Display" -> "codemirror", 
+    "Hash" -> "c5232d40-dba8-49f0-bdde-221b9790fa8a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cf8accff-3840-4cdb-808f-80aa58f43998"|>}, "serializer" -> "jsfn4"|>

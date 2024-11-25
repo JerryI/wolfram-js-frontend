@@ -1,0 +1,139 @@
+Item := ImportComponent["Item.wlx"];
+
+appendHeld[Hold[list_], a_] := list = Append[list, a];
+removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
+SetAttributes[appendHeld, HoldFirst];
+SetAttributes[removeHeld, HoldFirst];
+
+
+addListeners[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
+  appendHeld[KernelList, kernel];
+
+  EventHandler[EventClone[kernel], {
+    "Exit" -> Function[Null, removeHeld[KernelList, kernel]; deinitKernel[kernel] ],
+    "Connected" -> Function[Null, initKernel[kernel]]
+  }];
+  
+];
+
+Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitKernel = OptionValue["OnExit"], appEvents = OptionValue["AppEvents"], initKernel = OptionValue["OnConnected"], Controller = CreateUUID[], ButtonId = CreateUUID[], LazyLoad = CreateUUID[], Messager=OptionValue["Messager"], KernelList = OptionValue["KernelList"]},
+  
+  EventHandler[EventClone[LazyLoad], {
+    "Load" -> Function[Null,
+      With[{cli = EventClone[$Client], client = $Client,  cloned = EventClone[appEvents]},
+        EventHandler[cloned, {"AppendKernel" -> Function[kernel,
+          Echo["Kernels.wlx --> append Kernel"];
+          EventFire[Controller, "Append", <|"Client"->client, "Data" -> Item["Messager"->Messager, "Kernel"->kernel, "Client"->client] |> ];
+        ]}];
+
+        EventHandler[cli, {"Closed" -> Function[Null,
+          Echo["Kernel list holder >> destroyed!"];
+          EventRemove[cloned];
+          EventRemove[cli];
+          EventRemove[LazyLoad];
+          EventRemove[Controller];
+        ]}];
+      ]
+    ]
+  }];
+  
+  EventHandler[ButtonId, {"New" -> Function[Type,
+    Echo[Type];
+    With[{client = $Client, m = Messager, kernel = Switch[Type,
+                                                    "Master", MasterKernel["Name"->RandomWord[]],
+                                                    _, LocalKernel["Name"->RandomWord[]]
+                                                  ]
+    },
+        Print["Working!"];
+        Print[initKernel];
+      
+        addListeners[kernel, KernelList, initKernel, deinitKernel];
+
+        EventFire[appEvents, "AppendKernel", kernel];
+        kernel // Kernel`Start;
+    ]    
+  ],
+    "Restart" -> Function[Null,
+      If[Length[ReleaseHold[KernelList] ] === 0,  
+        EventFire[m, "Warning", "No kernels found. Nothing to restart"];
+        Return[Null];
+      ];
+
+      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_Notebook, ___} :> n}},
+        If[MatchQ[onlineNotebook, _Notebook],
+          If[onlineNotebook["Evaluator"]["Kernel"]["State"] === "Initialized",
+            onlineNotebook["Evaluator"]["Kernel"] // Kernel`Restart;
+          ,
+            EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
+            First[ReleaseHold[KernelList]] // Kernel`Restart;
+          ]
+        ,
+          EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
+          First[ReleaseHold[KernelList]] // Kernel`Restart;
+        ]
+      ]
+    ],
+
+    "KillAll" -> Function[Null,
+      
+      Kernel`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
+      EventFire[m, "Info", "All kernels have been unlinked"];
+    ]
+  }];
+
+  {
+    <div class="text-xs group items-center osx:font-semibold px-4 leading-8 text-gray-454 win:text-gray-500 owin:text-gray-500 linux:text-gray-500 flex" style="-webkit-app-region:none">
+      Kernels
+      <button class="ml-auto" title="Spawn Kernel" id="{ButtonId}">
+      <svg  fill="currentColor" class="opacity-0 group-hover:opacity-100 h-4 w-4" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
+        <g>
+          <g>
+            <path d="M256,11C120.9,11,11,120.9,11,256s109.9,245,245,245s245-109.9,245-245S391.1,11,256,11z M256,460.2    c-112.6,0-204.2-91.6-204.2-204.2S143.4,51.8,256,51.8S460.2,143.4,460.2,256S368.6,460.2,256,460.2z"/>
+            <path d="m357.6,235.6h-81.2v-81.2c0-11.3-9.1-20.4-20.4-20.4-11.3,0-20.4,9.1-20.4,20.4v81.2h-81.2c-11.3,0-20.4,9.1-20.4,20.4s9.1,20.4 20.4,20.4h81.2v81.2c0,11.3 9.1,20.4 20.4,20.4 11.3,0 20.4-9.1 20.4-20.4v-81.2h81.2c11.3,0 20.4-9.1 20.4-20.4s-9.1-20.4-20.4-20.4z"/>
+          </g>
+        </g>
+      </svg>
+      </button>
+    </div>
+  ,
+    <WebUIEventListener Type={"click"} Id={ButtonId} Event={ButtonId} Pattern={"New"}/>
+  ,
+    With[{
+      KernelListComponent := 
+        Block[{client = $Client},
+          Table[
+            Item["Messager"->Messager, "Kernel"->K, "Client"->client]
+          , {K, ReleaseHold[KernelList]} ] // Flatten // ToStringRiffle
+        ]
+    },
+  
+    <WebUIContainer Event={Controller}>
+      <div class="mt-0 shrink-0 gap-y-1 flex flex-col" style="-webkit-app-region:none">
+          <WebUILazyLoad Event={EventClone[LazyLoad]}>
+            <KernelListComponent/>
+          </WebUILazyLoad>
+          <WebUIContainerChild/> 
+          <WebUIOnLoad Event={LazyLoad} Pattern={"Load"}/>
+      </div>  
+    </WebUIContainer>
+   ],
+
+   <script type="module">
+    if (window.electronAPI) {
+      //window.electronAPI.openFinder(JSON.stringify(filename));
+      window.electronAPI.listener('newmasterkernel', () => server.emitt('<ButtonId/>', '"Master"', 'New'));
+      window.electronAPI.listener('newlocalkernel', () => server.emitt('<ButtonId/>', '"Local"', 'New'));
+      window.electronAPI.listener('restartkernel', () => {
+        server.emitt('<ButtonId/>', 'True', "Restart")
+      });
+      window.electronAPI.listener('killallkernels', () => {
+        server.emitt('<ButtonId/>', 'True', "KillAll")
+      });
+    }   
+   </script>
+  }
+];
+
+Options[Component] = {"Messager"->"", "OnExit"->Print, "KernelList"->{}, "OnConnected"->Print, "OnStart"->Print, "Controls" -> "aaaa"}
+
+Component

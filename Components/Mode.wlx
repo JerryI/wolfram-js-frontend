@@ -1,0 +1,77 @@
+(*/* uids for events */*)
+ButtonId    = CreateUUID[];
+Controller  = CreateUUID[];
+TextId      = CreateUUID[];
+
+(*/* callback symbol */*)
+Change      = $Options["Change"];
+
+(*/* state of a widget */*)
+State = If[!StringQ[$Options["Default"]], $Options["Default"], "System"];
+
+(*/* handling clicks */*)
+EventHandler[ButtonId, Function[Null,
+    Print[State];
+    Switch[State,
+      "System",
+        State = "Dark";
+        With[{client = $Client},
+            EventFire[Controller, State, <|"Client"->client|>];
+        ],
+      
+      "Dark",
+        State = "Light";
+        With[{client = $Client},
+          EventFire[Controller, State, <|"Client"->client|>];
+        ], 
+      
+      "Light",
+        State = "System";
+        With[{client = $Client},
+          EventFire[Controller, State, <|"Client"->client|>];
+        ]       
+    ];
+
+    Change[State];
+]];
+
+<div class="px-0 flex h-7 shrink-0 items-center"><button id="{ButtonId}" class="flex items-center gap-x-4 px-2 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50 rounded-md">
+<svg class="text-gray-700 h-5 w-5 shrink-0 opacity-0" viewBox="-2 -1 22 18" fill="currentColor" >
+ 
+  <path d="M8,16c4.4,0,8-3.6,8-8s-3.6-8-8-8S0,3.6,0,8S3.6,16,8,16z M8,14.8V1.2
+                                                                           c3.8,0,6.8,3,6.8,6.8S11.8,14.8,8,14.8z"></path>
+                                                               </svg>
+    <span id="{TextId}" class="hidden transition-opacity" aria-hidden="true"><State/></span>
+  </button>
+
+  <WebUIEventListener Type={"click"} Id={ButtonId} Event={ButtonId} />
+
+  <WebUIJSBind Event={Controller}>
+    const text = document.getElementById('<TextId/>');
+    const fade = () => {
+      text.classList.remove('hidden');
+      text.classList.remove('opacity-0');
+      setTimeout(() => {
+        text.classList.add('opacity-0');
+        setTimeout(() => {
+          text.classList.add('hidden');
+        }, 150);
+      }, 100);
+    };
+
+    this.on('System', (data) => {
+      text.innerText = 'System';
+      fade();  
+    });
+
+    this.on('Dark', (data) => {
+      text.innerText = 'Dark';
+      fade();  
+    });        
+
+    this.on('Light', (data) => {
+      text.innerText = 'Light';
+      fade();  
+    });      
+  </WebUIJSBind>
+</div>

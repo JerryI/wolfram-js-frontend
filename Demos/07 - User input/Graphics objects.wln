@@ -1,0 +1,92 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$45], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/03 - User input/Graphics objects.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Events from SVG primitives", 
+    "Display" -> "codemirror", "Hash" -> 
+     "28ad126c-8d66-4ce7-b6ea-773334141a32", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "# Events from SVG primitives", "Display" -> "markdown", 
+    "Hash" -> "e75d831f-61cd-408f-bea8-de3471d8e216", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> ".md\nMousemove event", "Display" -> "codemirror", 
+    "Hash" -> "38f96fba-d09a-49d5-9285-6efa449d4187", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, <|"Data" -> "Mousemove event", 
+    "Display" -> "markdown", "Hash" -> 
+     "1e6aed1c-b4d9-45fd-947d-49a04d2ff8e8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "p = \
+{0,0};\nGraphics[{\n\tWhite,\n\tEventHandler[\n\t\tRectangle[{-2,-2}, \
+{2,2}],\n\t\t{\"mousemove\"->Function[xy, p = xy]}\n\t],\n\tPointSize[0.05], \
+Cyan,\n\tPoint[p // Offload]\n}, \"TransitionDuration\"->30, \
+\"TransitionType\"->\"Linear\", Controls->False]", "Display" -> "codemirror", 
+    "Hash" -> "ad3df681-bc28-4da1-a430-d12a9ee973b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> ".md\nDrag and zoom events", "Display" -> "codemirror", 
+    "Hash" -> "fc077c5b-20cf-488c-92a2-46af6b36935b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "Drag and zoom events", "Display" -> "markdown", 
+    "Hash" -> "fc737c6f-5af4-47b2-806f-625e190fdbca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "zm = 1.; xy = {0.,0.};\nGraphics[{\n\tWhite,\n    Red, \
+Rectangle[{-1,-1}, xy // Offload],\n\tPointSize[0.05], \
+Cyan,\n\tEventHandler[Disk[{0,0}, (zm 0.5) // Offload], {\n     \"drag\" -> \
+Function[data, xy = data],\n     \"zoom\" -> Function[data, zm = data]\n    \
+}]\n}, \"TransitionDuration\"->30, \"TransitionType\"->\"Linear\", \
+Controls->False]", "Display" -> "codemirror", 
+    "Hash" -> "3d11d1df-14b6-42a0-bc21-89581e94efbd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> ".md\nClick event", "Display" -> "codemirror", 
+    "Hash" -> "ab1cca2f-660e-4c55-a3af-3d96c576246b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, <|"Data" -> "Click event", 
+    "Display" -> "markdown", "Hash" -> 
+     "a31a625a-c313-42bc-9098-dc0b619af8dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "ppoints = {{0,0}};\nGraphics[{\n\tWhite,\n    Red, \
+EventHandler[\n      Rectangle[{-1,-1}, {1,1}],\n      {\n       \"click\" -> \
+Function[xy, ppoints = Append[ppoints, xy]]  \n      }\n    ], Cyan, \
+PointSize[0.06], Point[ppoints // Offload]       \n}, \
+\"TransitionDuration\"->30, \"TransitionType\"->\"Linear\", Controls->False]"\
+, "Display" -> "codemirror", "Hash" -> 
+     "5692b0ce-e09b-4f23-9e93-2715a3628c97", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> ".md\nTransform event (3D)", "Display" -> "codemirror", 
+    "Hash" -> "505ee93b-faf7-48e3-9692-1f71258bbac6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "Transform event (3D)", "Display" -> "markdown", 
+    "Hash" -> "8e48cc61-2ce0-4086-ae1d-35688dbdf267", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>, 
+   <|"Data" -> "tpos = {0,0,0};\nGraphics3D[{\n  EventHandler[Sphere[tpos], \
+{\n    \"transform\" -> Function[assoc, tpos = assoc[\"position\"]]\n  }],\n  \
+SpotLight[Red,100, \"Position\"->{0,0,5}, \"Target\"->Offload[tpos]],\n  \
+Polygon[5{{-1,1,-1}, {1,1,-1}, {1,-1,-1}, {-1,-1,-1}}]\n}, ImageSize->500, \
+\"Lighting\"->False]", "Display" -> "codemirror", 
+    "Hash" -> "2255d41b-c268-4781-83cc-78a5e4267ff8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2e5a2f0c-750c-4f70-9893-a4629c141471"|>}, "serializer" -> "jsfn4"|>

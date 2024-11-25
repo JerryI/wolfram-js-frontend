@@ -1,0 +1,93 @@
+http                      =  $Options["HTTPHandler"];
+AppEvent                  =  $Options["AppEvent"];
+ExtensionTemplates        =  $Options["ExtensionTemplates"];
+
+Head        := ImportComponent["Components/Head.wlx"];
+
+Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
+
+Alert           = ImportComponent["Components/Alert.wlx"];
+Modals           = ImportComponent["Components/Modals/Modals.wlx"];
+
+{loadSettings, storeSettings}        = ImportComponent["Settings.wl"];
+
+settings = <||>;
+loadSettings[settings];
+
+{Window, WindowScript}           = ImportComponent["Views/Window/Window.wlx"];
+
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
+  <link rel="stylesheet" href="{Path}"/> 
+] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+
+WindowView[opts__] := If[MatchQ["Window" /. List[opts], _WindowObj],
+  Window[opts]
+,
+  <div class="flex items-center flex-col text-gray-900 h-full leading-1">
+    <span class="mt-auto mb-auto">Window does not exist</span>
+  </div>
+]
+
+App[request_] := With[{
+        Secret = CreateUUID[], 
+        GlobalControls  = CreateUUID[],
+        ModalController = CreateUUID[],
+        GlobalMessanger = CreateUUID[],
+        GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
+        window        = WindowObj`HashMap[request["Query", "id"]] (*`*),
+        NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]
+    },
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalMessanger], {
+      any_ :> (EventFire[AppEvent, Messanger[any], #]&)
+    }];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalControls], {
+      any_ :> (EventFire[AppEvent, any, #]&)
+    }]; 
+    {
+      "<!DOCTYPE html>"
+    ,
+    <html class="h-full" os="{NavigatorOS}"> 
+        <Head Title={"Projector"} Settings={settings}>
+            <meta charset="utf-8"/>
+            <WLJSHeader List={ExtensionsJS}/>  
+            <WLJSTransportScript TwoKernels={True} Port={$Env["ws"]}/>     
+            <WebUIInitializationScript/>
+            <ExtensionsStyles/>
+        </Head>  
+        <body class="h-full owin:border owin:border-slate-400"> 
+        <ExtensionTemplates Template={"AppHead"} />
+        <div class="h-full">
+          <Alert/>
+          <Modals ModalsPort={ModalController}/>
+          
+          <div id="frame" class="h-full">
+            <div class="h-full flex flex-col">
+              <div style="z-index: 100;" class="sticky top-0 z-40 flex h-10 shrink-0 items-center gap-x-4 border-b border-gray-300 px-2 pl-20 md:pl-2 dark:border-gray-500 bg-239 dark:bg-gray-700 hidden osx:flex win:flex owin:flex win:h-titlebar owin:h-titlebar">
+                <div class="grow h-full" style="-webkit-app-region: drag"></div>       
+              </div>              
+              <Notifications MessagePort={GlobalMessanger}/>
+              <WindowView Parameters={GlobalParameters} Modals={ModalController} Window={window} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+            </div> 
+          </div>
+        </div>
+        <script type="module">
+          core._isWindow = true; 
+        </script>
+        <WindowScript Parameters={GlobalParameters} Modals={ModalController} Window={window} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+        <ExtensionTemplates Template={"AppScripts"} />
+        </body>
+    </html>
+  } // StringRiffle
+];
+
+
+http["MessageHandler", "Window"] = AssocMatchQ[<|"Path" -> "/window"|>] -> App;
+Print["Window Loaded!"];
+
+
+

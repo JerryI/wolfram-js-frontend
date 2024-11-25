@@ -1,0 +1,173 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$645], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/04 - Mixing languages/CrowdSimulator.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Crowd Simulator\nWritten in JS by [Szenia \
+Zadvornykh](https://codepen.io/zadvorsky/pen/xxwbBQV)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "47070769-5e70-469d-8891-e434b04fd667", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fbc082ef-eb99-48c3-aaff-9e4c74b01721"|>, 
+   <|"Data" -> "\n## Crowd Simulator\nWritten in JS by [Szenia \
+Zadvornykh](https://codepen.io/zadvorsky/pen/xxwbBQV)", 
+    "Display" -> "markdown", "Hash" -> 
+     "d33252a4-b470-46e0-9423-3bc875ce2a82", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "fbc082ef-eb99-48c3-aaff-9e4c74b01721"|>, 
+   <|"Data" -> ".js\n\nconsole.clear()\nconsole.log('lsakdfalskjdflnksd')\n\n\
+const config = {\n  src: \
+'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/open-peeps-sheet.png',\n \
+ rows: 15,\n  cols: 7\n}\n\n// UTILS\n\nconst randomRange = (min, max) => min \
++ Math.random() * (max - min)\n\nconst randomIndex = (array) => \
+randomRange(0, array.length) | 0\n\nconst removeFromArray = (array, i) => \
+array.splice(i, 1)[0]\n\nconst removeItemFromArray = (array, item) => \
+removeFromArray(array, array.indexOf(item))\n\nconst removeRandomFromArray = \
+(array) => removeFromArray(array, randomIndex(array))\n\nconst \
+getRandomFromArray = (array) => (\n  array[randomIndex(array) | 0]\n)\n\n// \
+TWEEN FACTORIES\n\nconst resetPeep = ({ stage, peep }) => {\n  const \
+direction = Math.random() > 0.5 ? 1 : -1\n  // using an ease function to skew \
+random to lower values to help hide that peeps have no legs\n  const offsetY \
+= 100 - 250 * gsap.parseEase('power2.in')(Math.random())\n  const startY = \
+stage.height - peep.height + offsetY\n  let startX\n  let endX\n  \n  if \
+(direction === 1) {\n    startX = -peep.width\n    endX = stage.width\n    \
+peep.scaleX = 1\n  } else {\n    startX = stage.width + peep.width\n    endX \
+= 0\n    peep.scaleX = -1\n  }\n  \n  peep.x = startX\n  peep.y = startY\n  \
+peep.anchorY = startY\n  \n  return {\n    startX,\n    startY,\n    endX\n  \
+}\n}\n\nconst normalWalk = ({ peep, props }) => {\n  const {\n    startX,\n   \
+ startY,\n    endX\n  } = props\n\n  const xDuration = 10\n  const yDuration \
+= 0.25\n  \n  const tl = gsap.timeline()\n  tl.timeScale(randomRange(0.5, \
+1.5))\n  tl.to(peep, {\n    duration: xDuration,\n    x: endX,\n    ease: \
+'none'\n  }, 0)\n  tl.to(peep, {\n    duration: yDuration,\n    repeat: \
+xDuration / yDuration,\n    yoyo: true,\n    y: startY - 10\n  }, 0)\n    \n  \
+return tl\n}\n\nconst walks = [\n  normalWalk,\n]\n\n// CLASSES\n\nclass Peep \
+{\n  constructor({\n    image,\n    rect,\n  }) {\n    this.image = image\n   \
+ this.setRect(rect)\n    \n    this.x = 0\n    this.y = 0\n    this.anchorY = \
+0\n    this.scaleX = 1\n    this.walk = null\n  }\n  \n  setRect (rect) {\n   \
+ this.rect = rect\n    this.width = rect[2]\n    this.height = rect[3]\n    \
+\n    this.drawArgs = [\n      this.image,\n      ...rect,\n      0, 0, \
+this.width, this.height\n    ]  \n  }\n  \n  render (ctx) {\n    ctx.save()\n \
+   ctx.translate(this.x, this.y)\n    ctx.scale(this.scaleX, 1)\n    \
+ctx.drawImage(...this.drawArgs)\n    ctx.restore()\n  }\n}\n\n// \
+MAIN\n\nconst img = document.createElement('img')\nimg.onload = init\nimg.src \
+= config.src\n\n\nconst canvas = document.createElement('canvas');\nconst ctx \
+= canvas.getContext('2d')\n\nconst stage = {\n  width: 0,\n  height: \
+0,\n}\n\nconst allPeeps = []\nconst availablePeeps = []\nconst crowd = \
+[]\n\nfunction init () {  \n  const lib = document.createElement('script')\n  \
+lib.src = \
+\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js\";\n  \
+document.body.appendChild(lib);\n  \n  lib.onload = () => {\n    \
+createPeeps()\n  \n    // resize also (re)populates the stage\n    resize()  \
+\n  }\n\n}\n\nfunction createPeeps () {\n  const {\n    rows,\n    cols\n  } \
+= config\n  const {\n    naturalWidth: width,\n    naturalHeight: height\n  } \
+= img\n  const total = rows * cols\n  const rectWidth = width / rows\n  const \
+rectHeight = height / cols\n  \n  for (let i = 0; i < total; i++) {\n    \
+allPeeps.push(new Peep({\n      image: img,\n      rect: [\n        (i % \
+rows) * rectWidth,\n        (i / rows | 0) * rectHeight,\n        \
+rectWidth,\n        rectHeight,\n      ]\n    }))\n  }  \n}\n\nfunction \
+resize () {\n  stage.width = 600\n  stage.height = 300\n  canvas.width = \
+stage.width * devicePixelRatio\n  canvas.height = stage.height * \
+devicePixelRatio\n  \n  crowd.forEach((peep) => {\n    peep.walk.kill()\n  \
+})\n  \n  crowd.length = 0\n  availablePeeps.length = 0\n  \
+availablePeeps.push(...allPeeps)\n  \n  initCrowd()\n}\n\nfunction initCrowd \
+() {\n  while (availablePeeps.length) {\n    // setting random tween progress \
+spreads the peeps out\n    addPeepToCrowd().walk.progress(Math.random())\n  \
+}\n}\n\nfunction addPeepToCrowd () {\n  const peep = \
+removeRandomFromArray(availablePeeps)\n  const walk = \
+getRandomFromArray(walks)({\n    peep,\n    props: resetPeep({\n      peep,\n \
+     stage,\n    })\n  }).eventCallback('onComplete', () => {\n    \
+removePeepFromCrowd(peep)\n    addPeepToCrowd()\n  })\n  \n  peep.walk = \
+walk\n  \n  crowd.push(peep)\n  crowd.sort((a, b) => a.anchorY - b.anchorY)\n \
+ \n  return peep\n}\n\nfunction removePeepFromCrowd (peep) {\n  \
+removeItemFromArray(crowd, peep)\n  availablePeeps.push(peep)\n}\n\nlet \
+ruid;\n\nfunction render () {\n  canvas.width = canvas.width\n  ctx.save()\n  \
+ctx.scale(devicePixelRatio, devicePixelRatio)\n  \n  crowd.forEach((peep) => \
+{\n    peep.render(ctx)\n  })\n  \n  ctx.restore()\n\n  ruid = \
+requestAnimationFrame(render);\n}\n\nrequestAnimationFrame(render);\n\n//on \
+destroy - remove the handler\nthis.ondestroy = () => {\n  \
+cancelAnimationFrame(ruid);\n  alert('removed');\n}\n\nreturn canvas;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "321c6c26-0519-431d-a32a-ea62d6756fb1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fbc082ef-eb99-48c3-aaff-9e4c74b01721"|>, 
+   <|"Data" -> "\n\nconsole.clear()\nconsole.log('lsakdfalskjdflnksd')\n\ncon\
+st config = {\n  src: \
+'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/open-peeps-sheet.png',\n \
+ rows: 15,\n  cols: 7\n}\n\n// UTILS\n\nconst randomRange = (min, max) => min \
++ Math.random() * (max - min)\n\nconst randomIndex = (array) => \
+randomRange(0, array.length) | 0\n\nconst removeFromArray = (array, i) => \
+array.splice(i, 1)[0]\n\nconst removeItemFromArray = (array, item) => \
+removeFromArray(array, array.indexOf(item))\n\nconst removeRandomFromArray = \
+(array) => removeFromArray(array, randomIndex(array))\n\nconst \
+getRandomFromArray = (array) => (\n  array[randomIndex(array) | 0]\n)\n\n// \
+TWEEN FACTORIES\n\nconst resetPeep = ({ stage, peep }) => {\n  const \
+direction = Math.random() > 0.5 ? 1 : -1\n  // using an ease function to skew \
+random to lower values to help hide that peeps have no legs\n  const offsetY \
+= 100 - 250 * gsap.parseEase('power2.in')(Math.random())\n  const startY = \
+stage.height - peep.height + offsetY\n  let startX\n  let endX\n  \n  if \
+(direction === 1) {\n    startX = -peep.width\n    endX = stage.width\n    \
+peep.scaleX = 1\n  } else {\n    startX = stage.width + peep.width\n    endX \
+= 0\n    peep.scaleX = -1\n  }\n  \n  peep.x = startX\n  peep.y = startY\n  \
+peep.anchorY = startY\n  \n  return {\n    startX,\n    startY,\n    endX\n  \
+}\n}\n\nconst normalWalk = ({ peep, props }) => {\n  const {\n    startX,\n   \
+ startY,\n    endX\n  } = props\n\n  const xDuration = 10\n  const yDuration \
+= 0.25\n  \n  const tl = gsap.timeline()\n  tl.timeScale(randomRange(0.5, \
+1.5))\n  tl.to(peep, {\n    duration: xDuration,\n    x: endX,\n    ease: \
+'none'\n  }, 0)\n  tl.to(peep, {\n    duration: yDuration,\n    repeat: \
+xDuration / yDuration,\n    yoyo: true,\n    y: startY - 10\n  }, 0)\n    \n  \
+return tl\n}\n\nconst walks = [\n  normalWalk,\n]\n\n// CLASSES\n\nclass Peep \
+{\n  constructor({\n    image,\n    rect,\n  }) {\n    this.image = image\n   \
+ this.setRect(rect)\n    \n    this.x = 0\n    this.y = 0\n    this.anchorY = \
+0\n    this.scaleX = 1\n    this.walk = null\n  }\n  \n  setRect (rect) {\n   \
+ this.rect = rect\n    this.width = rect[2]\n    this.height = rect[3]\n    \
+\n    this.drawArgs = [\n      this.image,\n      ...rect,\n      0, 0, \
+this.width, this.height\n    ]  \n  }\n  \n  render (ctx) {\n    ctx.save()\n \
+   ctx.translate(this.x, this.y)\n    ctx.scale(this.scaleX, 1)\n    \
+ctx.drawImage(...this.drawArgs)\n    ctx.restore()\n  }\n}\n\n// \
+MAIN\n\nconst img = document.createElement('img')\nimg.onload = init\nimg.src \
+= config.src\n\n\nconst canvas = document.createElement('canvas');\nconst ctx \
+= canvas.getContext('2d')\n\nconst stage = {\n  width: 0,\n  height: \
+0,\n}\n\nconst allPeeps = []\nconst availablePeeps = []\nconst crowd = \
+[]\n\nfunction init () {  \n  const lib = document.createElement('script')\n  \
+lib.src = \
+\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js\";\n  \
+document.body.appendChild(lib);\n  \n  lib.onload = () => {\n    \
+createPeeps()\n  \n    // resize also (re)populates the stage\n    resize()  \
+\n  }\n\n}\n\nfunction createPeeps () {\n  const {\n    rows,\n    cols\n  } \
+= config\n  const {\n    naturalWidth: width,\n    naturalHeight: height\n  } \
+= img\n  const total = rows * cols\n  const rectWidth = width / rows\n  const \
+rectHeight = height / cols\n  \n  for (let i = 0; i < total; i++) {\n    \
+allPeeps.push(new Peep({\n      image: img,\n      rect: [\n        (i % \
+rows) * rectWidth,\n        (i / rows | 0) * rectHeight,\n        \
+rectWidth,\n        rectHeight,\n      ]\n    }))\n  }  \n}\n\nfunction \
+resize () {\n  stage.width = 600\n  stage.height = 300\n  canvas.width = \
+stage.width * devicePixelRatio\n  canvas.height = stage.height * \
+devicePixelRatio\n  \n  crowd.forEach((peep) => {\n    peep.walk.kill()\n  \
+})\n  \n  crowd.length = 0\n  availablePeeps.length = 0\n  \
+availablePeeps.push(...allPeeps)\n  \n  initCrowd()\n}\n\nfunction initCrowd \
+() {\n  while (availablePeeps.length) {\n    // setting random tween progress \
+spreads the peeps out\n    addPeepToCrowd().walk.progress(Math.random())\n  \
+}\n}\n\nfunction addPeepToCrowd () {\n  const peep = \
+removeRandomFromArray(availablePeeps)\n  const walk = \
+getRandomFromArray(walks)({\n    peep,\n    props: resetPeep({\n      peep,\n \
+     stage,\n    })\n  }).eventCallback('onComplete', () => {\n    \
+removePeepFromCrowd(peep)\n    addPeepToCrowd()\n  })\n  \n  peep.walk = \
+walk\n  \n  crowd.push(peep)\n  crowd.sort((a, b) => a.anchorY - b.anchorY)\n \
+ \n  return peep\n}\n\nfunction removePeepFromCrowd (peep) {\n  \
+removeItemFromArray(crowd, peep)\n  availablePeeps.push(peep)\n}\n\nlet \
+ruid;\n\nfunction render () {\n  canvas.width = canvas.width\n  ctx.save()\n  \
+ctx.scale(devicePixelRatio, devicePixelRatio)\n  \n  crowd.forEach((peep) => \
+{\n    peep.render(ctx)\n  })\n  \n  ctx.restore()\n\n  ruid = \
+requestAnimationFrame(render);\n}\n\nrequestAnimationFrame(render);\n\n//on \
+destroy - remove the handler\nthis.ondestroy = () => {\n  \
+cancelAnimationFrame(ruid);\n  alert('removed');\n}\n\nreturn canvas;", 
+    "Display" -> "js", "Hash" -> "af7fa98d-b761-4760-878a-3fdab9151c5b", 
+    "Invisible" -> False, "MetaOnly" -> False, 
+    "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", "Type" -> "Output", 
+    "UID" -> Null, "Notebook" -> "fbc082ef-eb99-48c3-aaff-9e4c74b01721"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "f8239a32-560f-4f2d-9ef6-73162945e4d6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "fbc082ef-eb99-48c3-aaff-9e4c74b01721"|>}, "serializer" -> "jsfn4"|>

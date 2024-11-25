@@ -1,0 +1,66 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$210], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/11 - Dynamic decorations/State preservation.wln", 
+   "ReadOnly" -> False|>, "Cells" -> 
+  {<|"Data" -> ".md\n# State preservation\nAn example of mutable deffered \
+decoration in a form of a slider", "Display" -> "codemirror", 
+    "Hash" -> "a32c2376-0c88-4d37-90de-a488bb94c4d8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> "# State preservation\nAn example of mutable deffered \
+decoration in a form of a slider", "Display" -> "markdown", 
+    "Hash" -> "e54332f0-066f-4555-8381-d81c0891633a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> "handler[state_String, marker_, window_] := Module[{\n\tobject \
+= InputRange[0,1, 0.1, ToExpression[state]]\n},\n\tEventHandler[object, \
+Function[value,\n       FrontSubmit[ViewBox`InnerExpression[ToString[value]], \
+MetaMarker[marker], \"Window\"->window];\n    ]];\n  \n\n\t{PaneBox[], \
+object[[1, \"View\"]] // CreateFrontEndObject}\n]\n\nslider /: \
+MakeBoxes[slider[initial_:0.5], StandardForm] := With[{\n  uid = \
+CreateUUID[]\n},\n  EventHandler[uid, {\"Mounted\" :> Function[marker,\n    \
+With[{win = WindowObj[<|\"Socket\"->$Client|>]},\n\t  \
+Then[FrontFetchAsync[ViewBox`InnerExpression[], MetaMarker[marker], \
+\"Window\"->win], Function[payload,\n        \
+FrontSubmit[handler[{payload}//Flatten//First, marker, win], \
+MetaMarker[marker], \"Window\"->win];\n      ]]\n    ]\n   ]\n  }];\n  \n  \
+ViewBox[initial, Null, \"Event\"->uid]\n]", "Display" -> "codemirror", 
+    "Hash" -> "0af01270-b10b-4304-ad2f-37692e73d060", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> ".md\nCreate a slider", "Display" -> "codemirror", 
+    "Hash" -> "50037aa5-2aa6-4485-bb15-f63dc5d672ba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "Create a slider", 
+    "Display" -> "markdown", "Hash" -> 
+     "363828bb-cf28-4598-a120-d9fafc7e14fd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "slider[0.4]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cdb6ecbd-5d03-46c8-a46b-9b4693027748", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> 
+     ".md\nTry to copy and paste or evaluate. It will keep the value ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fd31ec53-630c-4cfe-a5a6-a47d0d84b095", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> "Try to copy and paste or evaluate. It will keep the value ", 
+    "Display" -> "markdown", "Hash" -> 
+     "435e7fdb-c053-4bc1-aee4-674690a79ade", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "c2a2d2cd-74cf-4d63-8f52-f1e975445003", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "76be94c8-6d83-45e8-9fec-f713b692f980"|>}, "serializer" -> "jsfn4"|>

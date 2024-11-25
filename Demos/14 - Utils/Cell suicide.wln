@@ -1,0 +1,23 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$84], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/06 - Utils/CellSuicide.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Force cell to commit suicide\nA fun \
+experiment with cells manipulation", "Display" -> "codemirror", 
+    "Hash" -> "4c4889b8-5d8c-429a-b365-1039abe13fe6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cd8ccca5-4631-4762-ba2b-578d814c4d60"|>, 
+   <|"Data" -> "\n## Force cell to commit suicide\nA fun experiment with \
+cells manipulation", "Display" -> "markdown", 
+    "Hash" -> "aef76f62-37fe-436a-9f97-b3f2212a328e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cd8ccca5-4631-4762-ba2b-578d814c4d60"|>, 
+   <|"Data" -> "With[{cell = ResultCell[]}, \n  \
+EventHandler[InputButton[\"Bye\"],\n    Function[Null,\n      \
+Print[\"Delete\"];\n      cell // Delete;\n    ]\n  ]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "893501f7-3656-45dc-8338-989d0c49112b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cd8ccca5-4631-4762-ba2b-578d814c4d60"|>}, "serializer" -> "jsfn4"|>

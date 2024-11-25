@@ -1,0 +1,211 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$288], 
+   "Objects" -> <|"526842ec-2f3d-450b-a329-29c68d418c72" -> 
+      <|"Public" -> Hold[gauge[0.3]]|>|>, "Path" -> "/Users/kirill/Github/wol\
+fram-js-frontend-dev/Demos/10 - Decorations/Dynamic gauge.wln", 
+   "Symbols" -> <|"gvalue" -> 0.3|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Dynamic gauge", 
+      CellObj[JerryI`Notebook`CellObj`$263]], 
+     Notebook`Editor`TOC`Private`heading[2, "Dynamics", 
+      CellObj[JerryI`Notebook`CellObj`$278]], 
+     Notebook`Editor`TOC`Private`heading[2, 
+      "Make it as a regular decorated symbol", 
+      CellObj[JerryI`Notebook`CellObj`$284]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Dynamic gauge\nAn example of advanced \
+decoration, which supports changing data", "Display" -> "codemirror", 
+    "Hash" -> "d6015122-f3d4-4b71-894a-fa90d2441660", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "# Dynamic gauge\nAn example of advanced decoration, which \
+supports changing data", "Display" -> "markdown", 
+    "Hash" -> "d182bb09-7c7b-473a-83a4-2e60c164c90f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> ".md\nDefine", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1a9312bb-81a9-4488-9fab-0a7bc0da2aa3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> "Define", 
+    "Display" -> "markdown", "Hash" -> 
+     "6377c28e-594b-4533-9b26-1e3f349a18d1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "gauge /: MakeBoxes[g_gauge, StandardForm] := With[{\n  o = \
+CreateFrontEndObject[g]\n},\n  MakeBoxes[o, StandardForm]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5d7275fd-9ea0-47f4-be59-e4932a223efe", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".md\nNow we need to implement the interpretation function on \
+the frontend", "Display" -> "codemirror", 
+    "Hash" -> "980818cf-56ba-48fc-a03c-1727595fc993", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> 
+     "Now we need to implement the interpretation function on the frontend", 
+    "Display" -> "markdown", "Hash" -> 
+     "419ddd0e-2f66-468e-85ce-eb8d83e72ee2", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".js\n\ncore.gauge = async (args, env) => {\n  \n  // Create a \
+gauge meter element\n  const gauge = document.createElement('div');\n  \
+gauge.style.width = '100px'; // half the original width\n  gauge.style.height \
+= '50px'; // half the original height\n  gauge.style.border = '1px solid \
+#000';\n  gauge.style.borderRadius = '50px 50px 0 0'; // adjusted for smaller \
+size\n  gauge.style.position = 'relative';\n  gauge.style.background = \
+'linear-gradient(to right, red 0%, yellow 50%, green 100%)';\n\n  // Create a \
+needle for the gauge\n  const needle = document.createElement('div');\n  \
+needle.style.width = '2px';\n  needle.style.height = '40px'; // made the \
+needle longer for better visibility\n  needle.style.background = '#000';\n  \
+needle.style.position = 'absolute';\n  needle.style.bottom = '0';\n  \
+needle.style.left = '50%';\n  needle.style.transformOrigin = 'bottom';\n\n  \
+// Function to set the needle position based on input value\n  function \
+setNeedlePosition(value) {\n    // Ensure value is between 0 and 1\n    value \
+= Math.max(0, Math.min(1, value));\n    // Convert value to angle\n    const \
+angle = value * 180 - 90; // -90 to 90 degrees\n    needle.style.transform = \
+`rotate(${angle}deg)`;\n  }\n\n  // Set initial needle position\n  const pos \
+= await interpretate(args[0], env);\n  setNeedlePosition(pos); // Middle \
+position\n  \n\n  gauge.appendChild(needle);\n\n  \
+env.element.appendChild(gauge);\n  env.local.update = \
+setNeedlePosition;\n}\n\ncore.gauge.update = async (args, env) => {\n  const \
+val = await interpretate(args[0], env);\n  \
+env.local.update(val);\n}\n\ncore.gauge.destroy = () => {\n  \
+console.log('Nothing to do');\n}\n\ncore.gauge.virtual = true;", 
+    "Display" -> "codemirror", "Hash" -> 
+     "981ae6c6-7ef3-41b9-9c6d-3bf57120123e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "\ncore.gauge = async (args, env) => {\n  \n  // Create a \
+gauge meter element\n  const gauge = document.createElement('div');\n  \
+gauge.style.width = '100px'; // half the original width\n  gauge.style.height \
+= '50px'; // half the original height\n  gauge.style.border = '1px solid \
+#000';\n  gauge.style.borderRadius = '50px 50px 0 0'; // adjusted for smaller \
+size\n  gauge.style.position = 'relative';\n  gauge.style.background = \
+'linear-gradient(to right, red 0%, yellow 50%, green 100%)';\n\n  // Create a \
+needle for the gauge\n  const needle = document.createElement('div');\n  \
+needle.style.width = '2px';\n  needle.style.height = '40px'; // made the \
+needle longer for better visibility\n  needle.style.background = '#000';\n  \
+needle.style.position = 'absolute';\n  needle.style.bottom = '0';\n  \
+needle.style.left = '50%';\n  needle.style.transformOrigin = 'bottom';\n\n  \
+// Function to set the needle position based on input value\n  function \
+setNeedlePosition(value) {\n    // Ensure value is between 0 and 1\n    value \
+= Math.max(0, Math.min(1, value));\n    // Convert value to angle\n    const \
+angle = value * 180 - 90; // -90 to 90 degrees\n    needle.style.transform = \
+`rotate(${angle}deg)`;\n  }\n\n  // Set initial needle position\n  const pos \
+= await interpretate(args[0], env);\n  setNeedlePosition(pos); // Middle \
+position\n  \n\n  gauge.appendChild(needle);\n\n  \
+env.element.appendChild(gauge);\n  env.local.update = \
+setNeedlePosition;\n}\n\ncore.gauge.update = async (args, env) => {\n  const \
+val = await interpretate(args[0], env);\n  \
+env.local.update(val);\n}\n\ncore.gauge.destroy = () => {\n  \
+console.log('Nothing to do');\n}\n\ncore.gauge.virtual = true;", 
+    "Display" -> "js", "Hash" -> "59c61a5b-a402-45d9-95e0-1faac3b97b54", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".md\nLet us test it!", "Display" -> "codemirror", 
+    "Hash" -> "f227b7eb-1ab8-4726-b834-494094e82b7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> "Let us test it!", 
+    "Display" -> "markdown", "Hash" -> 
+     "1f5ff4e1-ceac-4c26-bbe5-9414d1f957c1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> "gauge[0.3]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1411bde4-a537-43b8-a21c-dc2e81dd1e40", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "(*VB[*)(FrontEndRef[\"526842ec-2f3d-450b-a329-29c68d418c72\"]\
+)(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKmxqZW\
+ZgYpSbrGqUZp+iamBok6SYaG1nqGlkmm1mkmBhaJJsbAQB6VxUY\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "552be003-410f-4f64-b81f-80c9ed237636", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "4291c94b-fff0-42cf-a76f-0e8e9f2ef6e8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "", "Display" -> "markdown", 
+    "Hash" -> "93752fce-f499-4feb-a3ea-84bd7ab01282", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".md\n## Dynamics", "Display" -> "codemirror", 
+    "Hash" -> "6a10be8c-720e-45f0-a919-76cb3c1aa607", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> "## Dynamics", 
+    "Display" -> "markdown", "Hash" -> 
+     "d59e4cb0-0e1f-48e7-b89e-7c772943875c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "gvalue = 0.1;\nEventHandler[InputRange[0, 1, 0.1, 0.1], \
+(gvalue = #) &]\n\ngauge[gvalue // Offload]", "Display" -> "codemirror", 
+    "Hash" -> "14be0483-d910-4424-bc35-c6fb553fe9d3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".md\n*In this way it make an expression not copyable to other \
+notebooks* \n\nSee below how to make it better", "Display" -> "codemirror", 
+    "Hash" -> "f2e0814f-4c38-4569-b05f-eab6510912a6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "*In this way it make an expression not copyable to other \
+notebooks* \n\nSee below how to make it better", "Display" -> "markdown", 
+    "Hash" -> "320fd82f-8c27-4c0b-9a33-305d325ec56d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "316a5c36-a89b-4c3d-b342-15a344b9106f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> ".md\n## Make it as a regular decorated symbol\nWe can preseve \
+the original `gauge` symbol by a few changes", "Display" -> "codemirror", 
+    "Hash" -> "84b78b17-825d-4033-8f73-4fc2b05969b6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "## Make it as a regular decorated symbol\nWe can preseve the \
+original `gauge` symbol by a few change", "Display" -> "markdown", 
+    "Hash" -> "3f53ccfe-7ce1-406f-909a-00ccf7fd16a3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "gauge /: MakeBoxes[g_gauge, StandardForm] := With[{\n  \n},\n \
+ ViewBox[g, g]\n]", "Display" -> "codemirror", 
+    "Hash" -> "63eb065a-99d7-401e-944c-610ae6c44c29", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> ".md\nTest it", 
+    "Display" -> "codemirror", "Hash" -> 
+     "64b51ed1-e805-48ed-b85a-3fa3ea8540a9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, <|"Data" -> "Test it", 
+    "Display" -> "markdown", "Hash" -> 
+     "d8145fab-d631-48aa-806d-7bfe02f285bd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>, 
+   <|"Data" -> "gvalue = 0.1;\nEventHandler[InputRange[0, 1, 0.1, 0.1], \
+(gvalue = #) &]\n\ngauge[gvalue // Offload]", "Display" -> "codemirror", 
+    "Hash" -> "893f2635-23d8-4b2c-9749-ce807871083b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "2348d26a-f765-4fbc-8a2f-614094e9939b"|>}, "serializer" -> "jsfn4"|>

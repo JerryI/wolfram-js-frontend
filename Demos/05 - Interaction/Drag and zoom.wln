@@ -1,0 +1,73 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1112], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Library/Application \
+Support/wljs-notebook/Examples/Dynamics/Interaction/Drag and zoom.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Interactive Plot", 
+    "Display" -> "codemirror", "Hash" -> 
+     "aa1174bd-073c-4bc8-8f49-0e3ef890403a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "\n# Interactive Plot", "Display" -> "markdown", 
+    "Hash" -> "a496aa82-3ae7-4bfd-9b23-65ae0ca26f54", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "getGauss[x0_, A_, width_] := (\n  Table[{x, A \
+(*SpB[*)Power[E(*|*),(*|*)-(*FB[*)(((*SpB[*)Power[(x-x0)(*|*),(*|*)2](*]SpB*)\
+)(*,*)/(*,*)(2 ((*SpB[*)Power[width(*|*),(*|*)2](*]SpB*))))(*]FB*)](*]SpB*) \
+}, {x,-1,1,0.01}] // Quiet\n);\ngetGauss[{x0_, A_}, width_] := getGauss[x0, \
+A, width];\ngetGauss[{x0_, A_, width_}] := getGauss[x0, A, width];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b385c378-797c-4881-b9c4-f49da02cfb38", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> ".md\nNow lets define our plot with event handlers", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b778153b-2147-4d8f-903b-ea04b0c275f7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "\nNow lets define our plot with event handlers", 
+    "Display" -> "markdown", "Hash" -> 
+     "2ce2a8d6-5838-4fe1-8315-21349b727dc8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "LeakyModule[{line, initial},\n initial = {-0.2,0.8,0.1};\n \
+line = getGauss[initial];\n\n Graphics[{\n   Red, PointSize[0.1], \n   \
+EventHandler[\n     Point[initial[[1;;2]]]\n   , {\n      \
+\"drag\"->Function[c, initial[[1;;2]] = c; line = getGauss[initial]],\n      \
+\n      \"zoom\"->Function[k, initial[[3]] = k/10.0; line = \
+getGauss[initial]]\n     }],\n  \n   Cyan, Line[line // Offload]\n }, \
+PlotRange->{{-1,1},{0,1}}, \"TransitionType\"->\"Linear\", \
+\"TransitionDuration\"->30, Axes->{True, False}]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ec694729-bfa1-4c79-84ff-1916078e2acc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> ".md\n__Use wheel to change the linewidth__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9ef18c34-02fb-497e-9644-00396d99e5be", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "\n__Use wheel to change the linewidth__", 
+    "Display" -> "markdown", "Hash" -> 
+     "b20feadd-b70d-4e21-b2d0-6032da66bbca", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> ".md\nHere we used `LeakyModule` to make sure, that our \
+temporary defined variables will be kept alive.", "Display" -> "codemirror", 
+    "Hash" -> "9ef944b6-4156-4866-b026-71e4878910cb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>, 
+   <|"Data" -> "\nHere we used `LeakyModule` to make sure, that our temporary \
+defined variables will be kept alive.", "Display" -> "markdown", 
+    "Hash" -> "cd7b8651-f496-4904-8665-38110491db3c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "c16f34d3-eed0-47fc-abc5-60a039efd270"|>}, "serializer" -> "jsfn4"|>

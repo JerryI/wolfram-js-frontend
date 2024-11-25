@@ -1,0 +1,3 @@
+ *.wls linguist-language=Mathematica
+ *.wl  linguist-language=Mathematica
+ *.wsp linguist-language=HTML

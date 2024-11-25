@@ -1,0 +1,98 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$290], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/01 - Introduction/Markdown.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Markdown\nBy typing `.md` in the beginning \
+of a cell, it switches to Markdown mode. Markdown mode supports an HTML \
+insets as well", "Display" -> "codemirror", 
+    "Hash" -> "ca46b536-edc6-4964-9304-ad2ec7c8ab36", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "\n# Markdown\nBy typing `.md` in the beginning of a cell, it \
+switches to Markdown mode. Markdown mode supports an HTML insets as well", 
+    "Display" -> "markdown", "Hash" -> 
+     "c7a44b61-b629-4b8e-b391-b4a3ec452757", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> 
+     ".md\n<span style=\"color:red\">\n\n__Different color__\n\n</span>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cb2e370f-04ba-40d5-adb9-79cf029c1623", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> 
+     "\n<span style=\"color:red\">\n\n__Different color__\n\n</span>", 
+    "Display" -> "markdown", "Hash" -> 
+     "549d7ba4-6ffb-448e-afe4-1e67c8be70ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> ".md\nBut in general, markdown is quite rich, when it comes to \
+the basic text formatting like", "Display" -> "codemirror", 
+    "Hash" -> "b06b8845-a891-4ea6-acd5-85c3bdeb5ad9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "\nBut in general, markdown is quite rich, when it comes to \
+the basic text formatting like", "Display" -> "markdown", 
+    "Hash" -> "2c21458e-cdb9-4f9d-b0c4-f80412d4db8c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> ".md\nlists\n- 1\n- 2\n- 3", "Display" -> "codemirror", 
+    "Hash" -> "26152697-093e-47ac-80df-15eaa4883936", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "\nlists\n- 1\n- 2\n- 3", "Display" -> "markdown", 
+    "Hash" -> "3117d94d-ee0e-4e65-8f79-3b32b317c1b0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> ".md\nor emphasis\n\n*italic*\n\n__bold__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6434b47f-c615-4af1-9545-07daa65b49dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "\nor emphasis\n\n*italic*\n\n__bold__", 
+    "Display" -> "markdown", "Hash" -> 
+     "0c955dae-e518-44f0-82ab-36f8a5f4bea8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> ".md\nit also does support $\\\\TeX$ \
+equations\n\n$$m\\\\mathbf{a} = \\\\mathbf{F}$$", "Display" -> "codemirror", 
+    "Hash" -> "ab5ed298-b851-4bc1-a855-1e311df75356", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "it also does support $\\\\TeX$ equations\n\n$$m\\\\mathbf{a} \
+= \\\\mathbf{F}$$", "Display" -> "markdown", 
+    "Hash" -> "d4a20b9a-7b0e-4294-af29-d0e188887a3c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> ".md\nor images as \
+well\n\n![alt](https://thechive.com/wp-content/uploads/2019/12/person-hilario\
+usly-photoshops-animals-onto-random-things-xx-photos-25.jpg?attachment_cache_\
+bust=3136487&quality=85&strip=info&w=400)", "Display" -> "codemirror", 
+    "Hash" -> "4b55230d-9ffc-412e-9fa9-13f26cfe2887", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> "or images as \
+well\n\n![alt](https://thechive.com/wp-content/uploads/2019/12/person-hilario\
+usly-photoshops-animals-onto-random-things-xx-photos-25.jpg?attachment_cache_\
+bust=3136487&quality=85&strip=info&w=400)", "Display" -> "markdown", 
+    "Hash" -> "2fa24813-a7a3-4c1f-833d-97c283dc9b5f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "f7bcc145-cd2f-49cb-857b-9c1c6093690d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "e4b435a8-c0d3-4b81-b96c-64c8b30401bf"|>}, "serializer" -> "jsfn4"|>

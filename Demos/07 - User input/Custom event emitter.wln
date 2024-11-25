@@ -1,0 +1,200 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1168], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/07 - User input/Custom event emitter.wln", "ReadOnly" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[2, 
+      "Custom event generator", CellObj[JerryI`Notebook`CellObj`$1146]], 
+     Notebook`Editor`TOC`Private`heading[2, "Javascript version", 
+      CellObj[JerryI`Notebook`CellObj`$1148]], 
+     Notebook`Editor`TOC`Private`heading[2, "WLX + JS version", 
+      CellObj[JerryI`Notebook`CellObj`$1161]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Custom event generator\nLet us create a \
+custom UI element that can read users input", "Display" -> "codemirror", 
+    "Hash" -> "12b0d764-848c-4710-a50a-3a2c0da38f6a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "## Custom event generator\nLet us create a custom UI element \
+that can read users input", "Display" -> "markdown", 
+    "Hash" -> "144ea96e-a93a-4532-a102-5cefa9d2a4c5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\n## Javascript version", "Display" -> "codemirror", 
+    "Hash" -> "268f5c45-80ab-445c-a27a-f793f8cece12", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "## Javascript version", "Display" -> "markdown", 
+    "Hash" -> "49b53d6c-4d77-477f-864d-9e61abe6892b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\nCustom Button example", "Display" -> "codemirror", 
+    "Hash" -> "0a4bd466-c549-4e85-af5b-09415a8e66ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "\nCustom Button example", "Display" -> "markdown", 
+    "Hash" -> "305aeb3d-4128-4145-a08f-dc986962bc5e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".js\n\ncore.CustomButtonView = async (args, env) => {\n  \
+const options = await core._getRules(args, env);\n  const button = \
+document.createElement('input');\n  button.type = \"button\";\n  \
+button.classList.add(\"bg-teal-300\", \"hover:bg-teal-400\", \"font-bold\", \
+\"py-2\", \"px-4\", \"rounded\");\n  button.value = options.Label;\n  \
+button.addEventListener('click', ()=>{\n    \
+server.kernel.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
+env.element.appendChild(button);\n}\n\nreturn '';", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c178aeaf-7135-4d25-9196-701014cfb4bc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "\ncore.CustomButtonView = async (args, env) => {\n  const \
+options = await core._getRules(args, env);\n  const button = \
+document.createElement('input');\n  button.type = \"button\";\n  \
+button.classList.add(\"bg-teal-300\", \"hover:bg-teal-400\", \"font-bold\", \
+\"py-2\", \"px-4\", \"rounded\");\n  button.value = options.Label;\n  \
+button.addEventListener('click', ()=>{\n    \
+server.kernel.emitt(options.Event, '\"Clicked!\"');\n  });\n\n  \
+env.element.appendChild(button);\n}\n\nreturn '';", "Display" -> "js", 
+    "Hash" -> "f48d6c54-4c87-405c-a515-6f3bbc44e589", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\nCapture events on WL Kernel", "Display" -> "codemirror", 
+    "Hash" -> "dbbd21c0-c3e5-409e-b9b9-f098d50ef9e4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "Capture events on WL Kernel", "Display" -> "markdown", 
+    "Hash" -> "697659c8-36f0-4bb2-93a1-d35d8dbe8cec", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "CustomButton[label_] := With[{uid = CreateUUID[]},\n  \
+EventObject[<|\"Id\"->uid, \"Initial\"->False, \
+\"View\"->CustomButtonView[\"Label\"->label, \"Event\"->uid]|>]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "cf386cc2-7bd6-4a14-b939-59c81d4fd563", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False, "init" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\nUse like a normal `Input-` element", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6507122d-8457-4bfa-beb2-8aea9cd03f80", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "Use like a normal `Input-` element", "Display" -> "markdown", 
+    "Hash" -> "608e8d45-231f-4910-8dde-b35592710a79", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "EventHandler[CustomButton[\"Woo\"], Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1636e3b9-3569-4c03-94ab-413ed48b6e5a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "8525d834-4c04-437d-a562-d2a49ac4cc68", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\n## WLX + JS version\nThis way allows to combine power of \
+HTML and JS", "Display" -> "codemirror", 
+    "Hash" -> "74a010b2-8fde-46e0-bcc6-4d8351531d7d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> 
+     "## WLX + JS version\nThis way allows to combine power of HTML and JS", 
+    "Display" -> "markdown", "Hash" -> 
+     "e2dc3a35-4ef4-42ae-bc4c-20e2e5f49685", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".wlx\n\nMyButton[OptionsPattern[]] := With[{Event = \
+OptionValue[\"Event\"], Label = OptionValue[\"Label\"], UId = \
+CreateUUID[]},\n<div>\n  <button type=\"button\" id=\"{UId}\" class=\"rounded \
+bg-indigo-600 px-2 py-1 text-sm font-semibold shadow-sm hover:bg-indigo-500 \
+focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 \
+focus-visible:outline-indigo-600\">\n    <Label/>\n  </button>\n  <script \
+type=\"module\">\n    const doc = document.getElementById('<UId/>');\n    \
+doc.addEventListener('click', ()=>{\n      server.kernel.emitt('<Event/>', \
+'True');\n    })\n  </script>\n</div>\n]\n\nOptions[MyButton] = \
+{\"Event\"->\"\", \"Label\"->\"Press me\"};", "Display" -> "codemirror", 
+    "Hash" -> "fa1189ee-4fa8-40ed-8047-0b1cc33c23d8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\nNow let us make a handy wrapper for it", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e2fe5968-582c-4e7a-8250-a56167fbe058", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "Now let us make a handy wrapper for it", 
+    "Display" -> "markdown", "Hash" -> 
+     "6e84f6ef-064d-4129-831d-b226d7f1248d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "InputMyButton[opts: OptionsPattern[]] := With[{ev = \
+CreateUUID[]},\n  EventObject[<|\"Id\"->ev, \"View\"->HTMLView[MyButton[opts, \
+\"Event\"->ev]]|>]\n]", "Display" -> "codemirror", 
+    "Hash" -> "d8bf0e71-1e8e-46ed-a497-43c2d15b0183", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, <|"Data" -> ".md\nTest it!", 
+    "Display" -> "codemirror", "Hash" -> 
+     "203e5296-8529-4f03-983a-304ea852e00d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, <|"Data" -> "Test it", 
+    "Display" -> "markdown", "Hash" -> 
+     "e87088fc-8e2c-4063-a214-748c9e3054ea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "EventHandler[InputMyButton[], Print]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3a9916ba-1f8f-49fa-b66e-f1b77e7e30dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> ".md\nIn principle, one can use just `MyButton` wrapped with \
+`WLXEmbed` expression to display a button. Howvever, in this case you would \
+have to generate `Event Id` manually and assign all handler to it.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a4921f42-d454-4fd8-9584-c2444d666358", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "In principle, one can use just `MyButton` wrapped with \
+`WLXEmbed` expression to display a button. Howvever, in this case you would \
+have to generate `Event Id` manually and assign all handler to it.", 
+    "Display" -> "markdown", "Hash" -> 
+     "d156ed5d-34fe-4547-bb4d-843afeebcff6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, <|"Data" -> ".md\nLike this", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b1fc05db-219d-4c30-abb0-fa26f212da2c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, <|"Data" -> "Like this", 
+    "Display" -> "markdown", "Hash" -> 
+     "13dcdd7a-042a-4463-9729-ff539759e44b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>, 
+   <|"Data" -> "EventHandler[\"c-ev\", Print];\nMyButton[\"Event\"->\"c-ev\"] \
+// HTMLView", "Display" -> "codemirror", 
+    "Hash" -> "711960dd-8a68-42c2-9bf2-0aed1c281cea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "f88a9fd1-e1cc-4687-932e-b676075a04c5"|>}, "serializer" -> "jsfn4"|>

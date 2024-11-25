@@ -1,0 +1,25 @@
+WindowGroup     := ImportComponent["Components/Group.wlx"];
+WindowWrapper     := ImportComponent["Components/Wrapper.wlx"];
+
+Component[window_WindowObj, cli_, parameters_, OptionsPattern[]] := With[{
+    ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
+    ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],
+    Class = StringJoin["hover:b0g-", (If[StringQ[#], #, "teal"]&) @ (parameters["AccentColor"]), "-700/5"],
+    Style = "border-radius:2px"
+},
+
+        <WindowGroup Window={window} Class={Class} Style={Style}>
+            <WindowWrapper Window={window} />
+        </WindowGroup>
+]
+
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+Options[Component] = {"ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction}
+
+Script = With[{},
+    ""
+]
+
+{Component, Script}

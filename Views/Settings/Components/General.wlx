@@ -1,0 +1,231 @@
+Checkbox = ImportComponent["UI/Checkbox.wlx"];
+Knob     = ImportComponent["UI/Button.wlx"];
+Radio     = ImportComponent["UI/Radio.wlx"];
+
+Secret = $Options["Secret"] // EventClone;
+
+Messager = $Options["Messager"];
+
+Modals = $Options["Modals"];
+
+settings = $Options["Settings"];
+
+onSave = $Options["OnSave"];
+
+controller = CreateUUID[];
+localEvent = CreateUUID[];
+installEvent = CreateUUID[];
+updateEvent = CreateUUID[];
+homefolderEvent = CreateUUID[];
+
+parseInt[any_String] := ToExpression[any]
+parseInt[any_] := any 
+
+defaultBackupTime = If[KeyExistsQ[settings, "BackupTimeout"], Round[settings["BackupTimeout"]/60/1000], 3]
+defaultTheme = If[KeyExistsQ[settings, "Theme"], settings["Theme"], "System"]
+
+defaultTray = If[KeyExistsQ[settings, "RunInTray"], settings["RunInTray"], False]
+defaultMaterial = If[KeyExistsQ[settings, "WindowsBackgroundMaterial"], settings["WindowsBackgroundMaterial"], "tabbed"]
+
+FrontEndCustomCSS = If[KeyExistsQ[settings, "FrontEndCustomCSS"], settings["FrontEndCustomCSS"], ""];
+
+DefaultHome = Join[<|"Home"->FileNameJoin[{Directory[], "Examples"}]|>, settings]["Home"];
+
+EventHandler[Secret, {"Load" -> Function[Null,
+    EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->URLEncode[DefaultHome]|>];
+
+    EventHandler[controller, {
+        "Autostart" -> Function[state,
+            settings = Join[settings, <|"Autostart"->state|>];
+            onSave[settings];
+        ],
+
+        "Transparency" -> Function[state,
+            settings = Join[settings, <|"Transparency"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],
+
+        "RunInTray" -> Function[state,
+            settings = Join[settings, <|"RunInTray"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],
+
+        "ExpertMode" -> Function[state,
+            settings = Join[settings, <|"ExpertMode"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],        
+
+        "Theme" -> Function[state,
+            settings = Join[settings, <|"Theme"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],  
+        
+        "Material" -> Function[state,
+            If[$OperatingSystem =!= "Windows", 
+                EventFire[Messager, "Warning", "This options is available only on Windows OS"];
+                Return[];
+            ];
+
+            settings = Join[settings, <|"WindowsBackgroundMaterial"->state|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Restart to see an effect"];
+        ],  
+
+        "ChangeHome" -> Function[Null,
+            With[{p = Promise[], cli = $Client},
+                EventFire[homefolderEvent, "Ask", <|"Client" -> $Client, "Promise"->First[p]|>];
+                Then[p, Function[result,
+                    EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->result|>];
+                    settings = Join[settings, <|"Home"->URLDecode[result]|>];
+                    EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
+                    onSave[settings];
+                ],
+                    Function[reason,
+                        If[reason === "NoElectron",
+                            With[{request = CreateUUID[]},
+                                EventHandler[request, {
+                                    "Success" -> Function[path,
+                                        EventFire[homefolderEvent, "ChangeLabel", <|"Client" -> $Client, "Text"->path|>];
+                                        settings = Join[settings, <|"Home"->path|>];
+                                        EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
+                                        onSave[settings];
+                                    ],
+                                
+                                    _ -> Function[Null,
+                                        EventRemove[request];
+                                    ]
+                                }];
+                                EventFire[Modals, "TextField", <|"Client"->cli, "Callback"->request, "Title"->"Enter the default path", "String"-> DefaultHome|>];
+                            ];                            
+                        ];
+                    ]
+                ];
+            ]
+        ],
+
+        "BackupTimeout" -> Function[value,
+            settings = Join[settings, <|"BackupTimeout"-> (60 1000 parseInt[value])|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];
+        ],
+
+        "CleanBackups" -> Function[Null,
+            DeleteFile /@ FileNames["*.wln", AppExtensions`BackupsDir (*`*)];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Cleaned"];
+        ],
+
+        "FrontEndCustomCSS" -> Function[value,
+            settings = Join[settings, <|"FrontEndCustomCSS"-> value|>];
+            onSave[settings];
+            EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "Changes will be applied after restart"];            
+        ]
+    }];
+
+    With[{socket = EventClone[$Client]},
+        EventHandler[socket, {
+            "Closed" -> Function[Null,
+                EventRemove[socket];
+                EventRemove[controller];
+                EventRemove[updateEvent];
+                EventRemove[Secret];
+                EventRemove[installEvent];
+                Echo["GeneralSettings >> destoryed"];
+            ]
+        }]
+    ];
+]}];
+
+
+{
+    <div class="px-4 sm:px-0 pb-3 border-b border-gray-100">
+        <h3 class="text-base font-semibold leading-7 text-gray-900 dark:text-gray-300">General settings</h3>
+        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500"></p>
+    </div>
+,
+    <div class="mt-4 overflow-y-auto" style="max-height:60%">   
+        <span class="dark:text-gray-400">Kernel</span>
+        <StringRiffle>
+            <Checkbox Label={"Kernel autolaunch"} Event={controller} Topic={"Autostart"} Description={"Spawns local Wolfram Kernel on startup"} Checked={settings["Autostart"]}/>
+        </StringRiffle>
+    </div>  
+,
+    <div class="mt-4 overflow-y-auto" style="max-height:60%">   
+        <span class="dark:text-gray-400">Frontend</span>
+        <div class="pb-10 mt-5 gap-y-2 flex flex-col">
+            <p class="mt-1 max-w-2xl text-sm  text-gray-500 dark:text-gray-500">Home folder</p>
+            <p id="doc-home" class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500"></p>
+            <StringRiffle>
+                <Knob Label={"Change home folder"} Topic={"ChangeHome"} Event={controller} Class={"w15"}/>
+            </StringRiffle>
+            <WebUIJSBind Event={homefolderEvent}>
+                this.on('Ask', async (data) => {
+                    const assoc = await interpretate(data, {hold:true});
+                    const promise = await interpretate(assoc.Promise, {});
+                    
+                    if (!window.electronAPI) {
+                        server._emitt(promise, '"NoElectron"', 'Reject');
+                        return;
+                    }
+
+                    window.electronAPI.requestFolderWindow({title:"Home"}, (result) => {
+                        if (!result) {
+                            console.log('Cancelled');
+                            server._emitt(promise, '"Cancel"', 'Reject');
+                            return;
+                        }
+
+                        console.log(result);
+                        server._emitt(promise, '"'+result+'"', 'Resolve');
+                    });
+                });
+
+                const doc = document.getElementById("doc-home");
+                this.on('ChangeLabel', async (data) => {
+                    const assoc = await interpretate(data, {hold:true});
+                    const text = await interpretate(assoc.Text, {});
+                    doc.innerText = decodeURIComponent(text);
+                })
+            </WebUIJSBind>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 dark:text-gray-500">Purge internal backup storage</p>
+            <StringRiffle>
+                <Knob Label={"Clean up"} Topic={"CleanBackups"} Event={controller} Class={"w15"}/>
+            </StringRiffle>
+
+            <div class="pb-2 mt-2 mt-5 gap-y-2 flex flex-col">
+                <div class="rounded-md px-3 pb-3 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+                    <label for="BackupTimeout" class="block text-xs font-medium text-gray-900 dark:text-gray-400">Backup time interval</label>
+                    <input type="number" value="{defaultBackupTime}" min="3" max="3000" step="1" id="BackupTimeout" class="block w-full border-0 p-0 dark:bg-gray-700 text-gray-900 dark:text-gray-300 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"/>
+                    <WebUIEventListener Id={"BackupTimeout"} Type={"blur"} Event={controller} Pattern={"BackupTimeout"}/>
+                </div> 
+            </div> 
+
+            <StringRiffle>
+                <Checkbox Label={"Expert mode"} Event={controller} Topic={"ExpertMode"} Description={"Shows invisible cells"} Checked={settings["ExpertMode"]}/>
+            </StringRiffle>
+
+            <StringRiffle>
+                <Checkbox Label={"Inner window transparency"} Event={controller} Topic={"Transparency"} Description={"Makes a notebook background transparent. It might not work on all OS"} Checked={settings["Transparency"]}/>
+            </StringRiffle>
+
+            <StringRiffle>
+                <Checkbox Label={"Run in a tray"} Event={controller} Topic={"RunInTray"} Description={"Keeps WLJS kernel alive, even if all windows are closed (Windows/Linux only)"} Checked={defaultTray}/>
+            </StringRiffle>
+
+
+
+            <Radio Label={"UI Theme"} List={ {{"System", "System"}, {"Light", "Light"}, {"Dark", "Dark"}} } Selected={defaultTheme} Pattern={"Theme"} Event={controller} />
+            
+            <Radio Label={"Background Material"} List={ {{"Mica", "mica"}, {"Acrylic", "acrylic"}, {"Tabbed", "tabbed"}, {"Auto", "auto"}} } Selected={defaultMaterial} Pattern={"Material"} Event={controller} />
+        
+            <p class="mt-1 max-w-2xl text-sm  text-gray-500 dark:text-gray-500">Custom CSS</p>
+            <textarea rows="8" id="FrontEndCustomCSS" placeholder="paste your CSS directly" class="dark:bg-gray-800 dark:text-gray-400 text-sm sc-b block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"><FrontEndCustomCSS/></textarea> 
+            <WebUIEventListener Id={"FrontEndCustomCSS"} Type={"blur"} Event={controller} Pattern={"FrontEndCustomCSS"}/>
+        
+        </div>
+    </div>  
+
+}

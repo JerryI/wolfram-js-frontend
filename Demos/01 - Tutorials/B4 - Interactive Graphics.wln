@@ -1,0 +1,94 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$173], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/DPG2024 - Berlin/B4 - Interactive Graphics.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Interactive Graphics\nIn the previous \
+tutorial, we tried input element slider, however, graphics primitives can \
+also act like an virtual input device.", "Display" -> "codemirror", 
+    "Hash" -> "6fa709e8-8800-4399-bec6-fc6e4d3858b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "# Interactive Graphics\nIn the previous tutorial, we tried \
+input element slider, however, graphics primitives can also act like an \
+virtual input device.", "Display" -> "markdown", 
+    "Hash" -> "75eb759c-b95c-422d-a8cb-f8eb3ebd8c44", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> ".md\nThere are several events we can capture, but lets focus \
+on `zoom` and `drag`", "Display" -> "codemirror", 
+    "Hash" -> "24c324ac-988a-4388-b0a6-db934f1a4524", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "There are several events we can capture, but lets focus on \
+`zoom` and `drag`", "Display" -> "markdown", 
+    "Hash" -> "630992e8-040f-426e-a47d-f0061cba22a5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "udata = {{-1,0}, {1,0}};\n\nGraphics[{\n  Cyan, Line[udata // \
+Offload], Red, PointSize[0.05],\n  EventHandler[Point[{0,0.5}], {\n    \
+\"drag\" -> drag,\n    \"zoom\" -> zoom\n  }]\n}, PlotRange->{{-1,1}, \
+{0,1}}]", "Display" -> "codemirror", 
+    "Hash" -> "9eb02347-aafd-4c4d-ad5c-4c52a9bc17bf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> ".md\nOk, then lets generate the data", 
+    "Display" -> "codemirror", "Hash" -> 
+     "59fd77a2-2d08-4e34-b70f-60a1b2ef1266", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "Ok, then lets generate the data", "Display" -> "markdown", 
+    "Hash" -> "b591479d-0d3f-466e-a69b-c61f6863330c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "generate[{x_, y_}, k_] := Table[{t, y Exp[- \
+(*FB[*)(((*SpB[*)Power[(x - t)(*|*),(*|*)2](*]SpB*))(*,*)/(*,*)(2 \
+k))(*]FB*)]}, {t,-1,1, 0.03}]", "Display" -> "codemirror", 
+    "Hash" -> "a40f18ad-0f53-46ca-8bf5-944e1a759f9c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> 
+     ".md\nWe should generate it everytime, when we have interact with a dot"\
+, "Display" -> "codemirror", "Hash" -> 
+     "3d807a03-d691-41b8-b207-c326dbbdfcdd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> 
+     "We should generate it everytime, when we have interact with a dot", 
+    "Display" -> "markdown", "Hash" -> 
+     "37c1fb5e-44d3-4310-8a21-73ecdf6fd8af", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "defaults = {{0, 0.5}, 1/20.};\n\ndrag[xy_] := (\n  \
+defaults[[1]] = xy;\n  udata = generate @@ defaults;\n)\n\nzoom[k_] := (\n  \
+defaults[[2]] = k / 20.;\n  udata = generate @@ defaults;\n)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "e1c43051-d30c-41e4-abdb-11c5e0b96365", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> ".md\n*Now try to drag and use a mouse wheel on a point \
+above*", "Display" -> "codemirror", 
+    "Hash" -> "6edc4206-a62f-481e-9b44-91cfb05801b1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> "*Now try to drag and use a mouse wheel on a point above*", 
+    "Display" -> "markdown", "Hash" -> 
+     "2e4b18a1-d048-43cb-bbff-e52278a7292c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "fe9a7dc1-21ba-4547-9998-dbc49eb871f4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9c0b6ed4-0314-44db-b3c4-b203027ff23f"|>}, "serializer" -> "jsfn4"|>

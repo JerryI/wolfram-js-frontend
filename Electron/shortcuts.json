@@ -1,0 +1,16 @@
+{
+    "new_file"      : ["Cmd+N", "Ctrl+N"],
+    "new_file_folder": ["Cmd+Shift+N", "Ctrl+Shift+N"],
+    "new_quick_file": ["Cmd+Shift+N", "Ctrl+Shift+N"],
+    "overlay":        ["Shift+Alt+Space", "Shift+Alt+Space"],
+    "open_file"     : ["Cmd+O", "Ctrl+O"],
+    "save"          : ["Cmd+S", "Ctrl+S"],
+    "find"          : ["Cmm+F", "Ctrl+F"],
+    "toggle_cell"   : ["Cmd+2", "Alt+2"],
+    "delete_cell"   : ["Cmd+'", "Ctrl+d"],
+    "abort"         : ["Cmd+.", "Alt+."],
+    "evaluate_init" : ["Cmd+i", "Alt+i"],
+    "clear_outputs" : ["Cmd+u", "Alt+u"],
+    "evaluate_all"  : ["Cmd+a", "Alt+a"],
+    "close"         : ["Cmd+q", "Alt+q"]
+}

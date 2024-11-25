@@ -1,0 +1,142 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$608], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/05 - Decorations/MutableViewBox.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Mutable view-box\nA decoration that can \
+responce on clicks and change its content", "Display" -> "codemirror", 
+    "Hash" -> "ef4a2e78-dc70-474d-ade5-a32bd3f2b89a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "\n## Mutable view-box\nA decoration that can responce on \
+clicks and change its content", "Display" -> "markdown", 
+    "Hash" -> "5ebfb4f0-e2d2-4dfa-95b3-85d30c999c31", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> ".md\n__here we use Javascript__ but later it will be possible \
+using pure WL", "Display" -> "codemirror", 
+    "Hash" -> "196509ce-e6ed-4799-9eea-65c3cd4bca27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "CheckObject /: MakeBoxes[CheckObject[state_:(True | False)], \
+StandardForm] := With[{},\n  ViewBox[CheckObject[state], \
+CheckBoxDecorator[]]\n]", "Display" -> "codemirror", 
+    "Hash" -> "828ff2c6-4d34-445a-9ab3-2f1d7d43c0b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> ".md\n__here we use javascript__ but later it will be possible \
+using pure WL", "Display" -> "codemirror", 
+    "Hash" -> "60ffff4e-5bd8-41e7-a8e1-dcbc5ea3e420", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> 
+     "\n__here we use javascript__ but later it will be possible using pure \
+WL", "Display" -> "markdown", "Hash" -> 
+     "86d046c6-e369-4e43-a443-386156235246", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> ".js\n\ncore.CheckBoxDecorator = async (args, env) => {\n  let \
+state = false;\n  const p = document.createElement('div');\n\n  //check the \
+raw data from the viewbox to determine the state\n  if \
+(env.global.EditorWidget.getDoc() == 'CheckObject[True]') state = true;\n\n  \
+//make a rectangle\n  env.element.style.width = \"1rem\";\n  \
+env.element.style.height = \"1rem\";\n\n  env.element.appendChild(p);\n\n  \
+const update = (s) => env.element.style.background = s ? 'red' : 'blue';\n\n  \
+//color it depending on state\n  update(state);\n\n  //logic for updates when \
+a user click on it\n  env.element.addEventListener(\"click\", () => {\n    \
+state = !state;\n    update(state);\n    \n    const stringState = state ? \
+'True' : 'False';\n    \
+env.global.EditorWidget.applyChanges('CheckObject['+stringState+']');\n  \
+});\n}", "Display" -> "codemirror", 
+    "Hash" -> "7819bd77-52e0-4149-a24e-fdb80c6ddf52", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "\ncore.CheckBoxDecorator = async (args, env) => {\n  let \
+state = false;\n  const p = document.createElement('div');\n\n  //check the \
+raw data from the viewbox to determine the state\n  if \
+(env.global.EditorWidget.getDoc() == 'CheckObject[True]') state = true;\n\n  \
+//make a rectangle\n  env.element.style.width = \"1rem\";\n  \
+env.element.style.height = \"1rem\";\n\n  env.element.appendChild(p);\n\n  \
+const update = (s) => env.element.style.background = s ? 'red' : 'blue';\n\n  \
+//color it depending on state\n  update(state);\n\n  //logic for updates when \
+a user click on it\n  env.element.addEventListener(\"click\", () => {\n    \
+state = !state;\n    update(state);\n    \n    const stringState = state ? \
+'True' : 'False';\n    \
+env.global.EditorWidget.applyChanges('CheckObject['+stringState+']');\n  \
+});\n}", "Display" -> "js", "Hash" -> "bcd2348c-8473-4530-8936-e760e2371d01", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> ".md\nActual testing!", "Display" -> "codemirror", 
+    "Hash" -> "fe9eca43-110d-4423-9239-03171082bef7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "\nActual testing!", "Display" -> "markdown", 
+    "Hash" -> "0d5a1d36-1744-4c7e-8154-30a9e5bf676f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "CheckObject[True]", "Display" -> "codemirror", 
+    "Hash" -> "d59c30ba-2c78-46b9-9d3d-24a4540a3cb0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5\
+KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1be9a827-4b84-473f-8bf4-16a51e934b44", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5\
+KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*) \
+(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3O\
+dsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*) \
+(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3\
+OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)", "Display" -> "codemirror", 
+    "Hash" -> "b13dcac7-72d8-40bd-8182-0da9efcffa77", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> ".md\nTry to click on it", "Display" -> "codemirror", 
+    "Hash" -> "d654497e-9ade-4af0-986c-0ad4411cce82", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "\nTry to click on it", "Display" -> "markdown", 
+    "Hash" -> "e5ee3d28-7bd4-4058-ae91-0f234fc723eb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "Table[CheckObject[True], {i, 3}, {j, 3}] // MatrixForm ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6470ffdb-05cb-48c6-a741-d22141b3f7d5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>, 
+   <|"Data" -> "((*GB[*){{(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkY\
+GAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB\
+[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3Odsq\
+vcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True])(*,*)(*\
+\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB\
+*)}(*||*),(*||*){(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk\
+5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckO\
+bject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLM\
+kvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMo\
+PSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)}(*||*),(\
+*||*){(*VB[*)(CheckObject[False])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gk\
+HDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True\
+])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\
+\"*)(*]VB*)(*|*),(*|*)(*VB[*)(CheckObject[True])(*,*)(*\"1:eJxTTMoPSmNkYGAoZg\
+ESHvk5KWkMIJ4gkHDOSE3OdsqvcElNzi9KLMkvAgDUmQs+\"*)(*]VB*)}}(*]GB*))", 
+    "Display" -> "codemirror", "Hash" -> 
+     "df1fdd65-78f9-4b8d-8af4-d0ecf31b8c8a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "068d97ba-2417-47a8-9454-8b8c5253de5e"|>}, "serializer" -> "jsfn4"|>

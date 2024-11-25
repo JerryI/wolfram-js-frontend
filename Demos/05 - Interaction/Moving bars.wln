@@ -1,0 +1,47 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$191], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Dynamics/Interaction/Moving bars.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Movable Bars\nEach instance of `bar` has its own state", 
+    "Display" -> "codemirror", "Hash" -> 
+     "0af98ccb-8005-412c-a5c0-5ec5d6cdf9a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> "## Movable Bars\nEach instance of `bar` has its own state", 
+    "Display" -> "markdown", "Hash" -> 
+     "40f7d6cd-9541-443e-879c-d4cd37141cff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> "bar[initial_:0, dims_:{{-1,-1}, {1,1}}] := LeakyModule[{state \
+= initial},\n  {\n    LightBlue, EventHandler[Rectangle@@dims, {\"mousemove\" \
+-> Function[pos, state = pos[[2]]]}], \n    LightRed, Rectangle[{dims[[1,1]], \
+0}, {dims[[2,1]], Offload[state]}]\n  }\n]", "Display" -> "codemirror", 
+    "Hash" -> "aa22d8de-7c1d-4e2c-92a1-9ce0dbfe6e5d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> ".md\nPlot many of them", "Display" -> "codemirror", 
+    "Hash" -> "d43f4963-1007-4346-a7c8-2fa45644ebdb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> "Plot many of them", "Display" -> "markdown", 
+    "Hash" -> "764e57e4-afce-4cba-88e6-f4a3ddfe0bc1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> "Graphics[Table[Translate[bar[], {2i,0}], {i, -5,5}], \
+PlotRange->{{-10,10}, {-1,1}}, ImagePadding->None]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5e796c21-e589-4b2f-8100-8af95d5d7c0b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "395291fd-b83a-435c-ad66-9f99cb52af73", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "95d6d744-88b1-4a38-b920-c76383edfc39"|>}, "serializer" -> "jsfn4"|>

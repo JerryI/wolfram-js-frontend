@@ -1,0 +1,81 @@
+body {
+    -webkit-app-region: drag;
+    padding-top:2em;
+    overflow: hidden;
+}
+
+:root {
+  --filter : invert(1);
+}
+/* https://manuel.pinto.dev */
+body {
+	background: linear-gradient(-45deg, #ee77521f, #e7ce3c1a, #d523760f, #23d5ab2e);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	height: 100vh;
+	/* opacity: 0.1; */
+}
+
+.dark-static {
+  background: linear-gradient(-45deg, rgb(64,55,65), rgb(61,61,64),  rgb(52, 45, 64),  rgb(52, 75, 81));
+  background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
+.light-static {
+  background: linear-gradient(-45deg, rgb(251, 239, 235), rgb(252, 250, 238), rgb(252, 243, 247), rgb(227, 247, 240));
+  background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+body[data-theme='dark'] {
+  --filter : invert(0);
+}
+
+.xterm .xterm-screen {
+  filter: var(--filter);
+}
+
+.logs {
+    height: 200px;
+    overflow: hidden;
+}
+
+.xterm .xterm-viewport  {
+  -webkit-app-region: no-drag;
+    background-color: transparent important!;
+    scrollbar-width: 2px;
+    scrollbar-color: rgba(15, 15, 15, 0.2) transparent;
+  }
+  
+  .xterm-viewport::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  
+  .xterm-viewport::-webkit-scrollbar-thumb {
+    background: rgba(15, 15, 15, 0.2);
+    border-radius: 5px;
+  }
+  
+  .xterm-viewport::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .xterm-viewport::-webkit-scrollbar-button {
+    background-color: transparent;
+    border-radius: 5px;
+  }

@@ -1,0 +1,150 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$142], 
+   "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "8273a96d-f983-4c66-8451-fbe8f07beac4", "Objects" -> <||>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/08 - \
+Slides/Example slide 1.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "A slide about how to animate", CellObj[JerryI`Notebook`CellObj`$156]], 
+     Notebook`Editor`TOC`Private`heading[2, "Prepare our widgets", 
+      CellObj[JerryI`Notebook`CellObj`$158]], 
+     Notebook`Editor`TOC`Private`heading[2, "Actual slide", 
+      CellObj[JerryI`Notebook`CellObj`$170]]}|>, 
+ "Cells" -> 
+  {<|"Data" -> ".md\n# A slide about how to animate\nor use dynamic symbols", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7b03f095-2f52-4ce6-87c0-dc8c9aa20d18", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "# A slide about how to animate\nor use dynamic symbols", 
+    "Display" -> "markdown", "Hash" -> 
+     "bc616157-fed1-480b-b4a5-479297aec2cd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\n## Prepare our widgets\nCode syntax highlighting", 
+    "Display" -> "codemirror", "Hash" -> 
+     "94eb64f0-3bc1-4efa-86aa-4920d9c8e9ad", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "## Prepare our widgets\nCode syntax highlighting", 
+    "Display" -> "markdown", "Hash" -> 
+     "b20ff228-b19c-453d-af3a-1340fe1c74df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".wlx\nCodeBlock[str_String] := With[{Fe = EditorView[str]},\n \
+ <div class=\"text-left text-sm\"><Fe/></div>\n]", "Display" -> "codemirror", 
+    "Hash" -> "2466688c-263a-4460-b1bc-d2bce7e82feb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\njust in case of a bad aligment (fix)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3ea5eae0-80e7-4806-8c94-19fdb3402bc5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "just in case of a bad aligment (fix)", 
+    "Display" -> "markdown", "Hash" -> 
+     "03b453c2-5585-486f-bb8a-bc88de3896ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".wlx\n\n<style>\n  .slide-frontend-object .cm-editor {\n    \
+text-align: left;\n  }\n</style>", "Display" -> "codemirror", 
+    "Hash" -> "b6364bc5-cc37-4160-a46e-99095e81fe98", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "<style > .slide-frontend-object .cm-editor {\n    text-align: \
+left;\n  }</style>", "Display" -> "wlx", 
+    "Hash" -> "21f267ea-2828-4e31-9c76-ba02a0de10ab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\nNow an animation widget itself", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a2d1895e-e8bd-4a75-a4b8-edbed18f22b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "Now an animation widget itself", "Display" -> "markdown", 
+    "Hash" -> "77a97a5b-e644-4c21-a905-fa5e92b5e85a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".wlx\n\nAnimationWidget := LeakyModule[{\n  SliderItem = \
+InputRange[0.1, 1, 0.05, 0.1],\n  symbol = 0.1\n},\n\n  \
+EventHandler[SliderItem, Function[value, symbol = value]];\n\n  With[{\n    \
+Widget = Graphics[{\n      Green, Disk[{0,0}, symbol // Offload], Pink,\n     \
+ Rotate[Rectangle[{-1,-1}, {1,1}], 3.14 symbol // Offload]\n    }, \
+Controls->False]\n  }, \n  <div class=\"divide-y divide-gray-200 \
+overflow-hidden rounded-lg bg-white shadow\">\n    <div class=\"px-2 py-3 \
+sm:p-6\">\n      <Widget/>\n    </div>\n    <div class=\"px-2 py-2 \
+sm:px-6\">\n      <SliderItem/>\n    </div>\n  </div>\n  ]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c66478e5-5571-4361-8a79-a73421ba1a0f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\nWe use WLX here only because it gives more freedom in \
+styling the final look and layout. You can also make similar using `Row`, or \
+`Column` in pure WL.", "Display" -> "codemirror", 
+    "Hash" -> "227d495f-b5d0-4cde-bc14-be0bdf543d08", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "We use WLX here only because it gives more freedom in styling \
+the final look and layout. You can also make similar using `Row`, or `Column` \
+in pure WL.", "Display" -> "markdown", 
+    "Hash" -> "c7619b53-50d0-4d25-8adc-7e28f211dc2d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\n## Actual slide", "Display" -> "codemirror", 
+    "Hash" -> "d3f218a9-38c1-4e25-8c50-2826e6694a35", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, <|"Data" -> "## Actual slide", 
+    "Display" -> "markdown", "Hash" -> 
+     "c82721d1-daf7-4473-bcf4-2139345f8d7c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".slide\n\n# How to animate things in WLJS?\n\n---\n\n# Use \
+Offload\n\n\n<div class=\"columns-2\">\n  <div class=\"text-left \
+mt-2\">\n\nDefine own values of some symbol and assign it to graphics \
+primitives you want\n\n\n<CodeBlock>\nsymbol = 0.1;\nGraphics[{\n      \
+(*VB[*)(RGBColor[0, 1, \
+0])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEeLgIAAP0TXQ==\"*)(*]VB*), Disk[{0,0}, symbol // Offload], \
+(*VB[*)(RGBColor[1, 0.5, \
+0.5])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJT\
+WMGyXMgyRcxgMEHeyjjAYIBABm5FZs=\"*)(*]VB*),\n      Rotate[Rectangle[{-1,-1}, \
+{1,1}], 3.14 symbol // Offload]\n}]\n</CodeBlock>\n\nthen create a slider and \
+assign handler to it\n\n<CodeBlock>\nEventHandler[InputRange[0.1, 1, 0.05], \
+(symbol = #)&]\n</CodeBlock>\n  \n  </div>\n\n  <AnimationWidget/>\n\n</div>"\
+, "Display" -> "codemirror", "Hash" -> 
+     "156ff4df-b052-4f75-be55-a575342810c1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> ".md\n*Press f on a slide to go fullscreen*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "777d3969-e6d6-4603-bf5c-ca6c9c933d24", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> "*Press f on a slide to go fullscreen*", 
+    "Display" -> "markdown", "Hash" -> 
+     "95e69a4c-cd18-4c97-83fe-3e0f0d02ddff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "cb0fcb88-cad6-45cd-a1c7-9f8bff6a5a56", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "1b4b111d-74eb-4190-98a8-2b2d465a4114"|>}, "serializer" -> "jsfn4"|>

@@ -1,0 +1,73 @@
+http                      =  $Options["HTTPHandler"];
+AppEvent                  =  $Options["AppEvent"];
+ExtensionTemplates        =  $Options["ExtensionTemplates"];
+
+Head        := ImportComponent["Components/Head.wlx"];
+
+Notifications  = ImportComponent["Components/Notifications/Notifications.wlx"];
+
+Alert           = ImportComponent["Components/Alert.wlx"];
+Modals           = ImportComponent["Components/Modals/Modals.wlx"];
+
+{Settings, SettingsScript, Initialization}           = ImportComponent["Views/Settings/Settings.wlx"];
+
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
+  <link rel="stylesheet" href="{Path}"/> 
+] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+
+
+App[request_] := With[{
+        Secret = CreateUUID[], 
+        GlobalControls  = CreateUUID[],
+        ModalController = CreateUUID[],
+        GlobalMessanger = CreateUUID[],
+        NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
+        GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>
+    },
+
+
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalMessanger], {
+      any_ :> (EventFire[AppEvent, Messanger[any], #]&)
+    }];
+
+    (* /* redirect to extensions  */ *)
+    EventHandler[EventClone[GlobalControls], {
+      any_ :> (EventFire[AppEvent, any, #]&)
+    }]; 
+
+    <html class="h-full" os="{NavigatorOS}"> 
+        <Head Title={"Settings"}>
+            <meta charset="utf-8"/>
+            <WLJSHeader List={ExtensionsJS}/>  
+            <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
+            <WebUIInitializationScript/>
+            <ExtensionsStyles/>
+        </Head>  
+        <body class="h-full owin:border owin:border-slate-400"> 
+        <ExtensionTemplates Template={"AppHead"} />
+        <div>
+          <Alert/>
+          <Modals ModalsPort={ModalController}/>
+          
+          <div id="frame">
+            <div class="h-full flex flex-col">          
+              <Notifications MessagePort={GlobalMessanger}/>
+              <Settings Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+            </div> 
+          </div>
+        </div>
+        <SettingsScript Parameters={GlobalParameters} Modals={ModalController} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+        <ExtensionTemplates Template={"AppScripts"} />
+        </body>
+    </html>
+];
+
+
+http["MessageHandler", "Settings"] = AssocMatchQ[<|"Path" -> "/settings"|>] -> App;
+Print["Settings Loaded!"];
+
+
+

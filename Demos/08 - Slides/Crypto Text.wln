@@ -1,0 +1,268 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$229], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Examples/Slides/Crypto Text.wln"|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Crypto text\nA demo for a text-component \
+used in slides with a special visual effect\n\n<span \
+style=\"color:red\">Warning: it will not work in the projected view</span>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "15e43c6d-6be5-45b3-886f-b225d480c92c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "## Crypto text\nA demo for a text-component used in slides \
+with a special visual effect\n\n<span style=\"color:red\">Warning: it will \
+not work in the projected view</span>", "Display" -> "markdown", 
+    "Hash" -> "4d93d739-5de7-46d8-a803-9aba882677cc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\nWe need a dynamic field, which we can bind to a \
+variable", "Display" -> "codemirror", 
+    "Hash" -> "a17202c8-16e2-4133-a880-d208d11683bc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "We need a dynamic field, which we can bind to a variable", 
+    "Display" -> "markdown", "Hash" -> 
+     "1e0ea428-3756-430d-96af-1b8d718b1614", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".js\n\nconst hashTable = {};\n\ncore.UpdateTextField = async \
+(args, env) => {\n  const uid = await interpretate(args[1], env);\n  const \
+data = await interpretate(args[0], env);\n  if (uid in hashTable) {\n    \
+hashTable[uid].innerText = data;\n  } else {\n    hashTable[uid] = \
+document.getElementById(uid);\n    hashTable[uid].innerText = data;\n  }\n}", 
+    "Display" -> "codemirror", "Hash" -> 
+     "13283b83-ffc6-4f97-83ea-c99cc25382df", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "\nconst hashTable = {};\n\ncore.UpdateTextField = async \
+(args, env) => {\n  const uid = await interpretate(args[1], env);\n  const \
+data = await interpretate(args[0], env);\n  if (uid in hashTable) {\n    \
+hashTable[uid].innerText = data;\n  } else {\n    hashTable[uid] = \
+document.getElementById(uid);\n    hashTable[uid].innerText = data;\n  }\n}", 
+    "Display" -> "js", "Hash" -> "24e6841d-4b16-4bf0-a0c6-c4d167cc4b35", 
+    "Invisible" -> False, "MetaOnly" -> False, "Props" -> <||>, 
+    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
+    "Notebook" -> "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\n## Simple test", "Display" -> "codemirror", 
+    "Hash" -> "919c437c-b76d-46d9-87a6-8b9e54ad7e1d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, <|"Data" -> "## Simple test", 
+    "Display" -> "markdown", "Hash" -> 
+     "fc1bfa04-119e-485c-8ce5-13dc274f9f20", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\nNow we can use it in WLX. See an example", 
+    "Display" -> "codemirror", "Hash" -> 
+     "168ede4a-546b-4252-90fa-dd6c85c08302", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "Now we can use it in WLX. See an example", 
+    "Display" -> "markdown", "Hash" -> 
+     "726412c4-3c86-424b-ad77-dc3a017a4fb7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".wlx\n\n<span id=\"someId\"></span>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9e5d975b-c0c9-468b-ab58-149ff075b8b0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "<span id=\"someId\"></span>", "Display" -> "wlx", 
+    "Hash" -> "12a632b6-f472-4ebe-ad81-52c0f031bf27", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\nNow we can bind to it from the frontend", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9932c132-776a-4a8a-82d9-3f703a69f4f1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "Now we can bind to it from the frontend", 
+    "Display" -> "markdown", "Hash" -> 
+     "a1257a51-83f1-408d-b500-9714a626213a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "FrontSubmit[UpdateTextField[RandomWord[], \"someId\"]]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "f2d96ed5-984e-4b9c-8ecf-5bccc5b6c055", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\n## Cryto effect\nReplace each letter with a random one \
+with some probabillity", "Display" -> "codemirror", 
+    "Hash" -> "0290ca6f-79d4-4c22-89ea-3582f8ed51f8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "## Cryto effect\nReplace each letter with a random one with \
+some probabillity", "Display" -> "markdown", 
+    "Hash" -> "75963573-b14a-451c-a532-e04f122d610f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "CT`prop[T_] := Join[{Exp[(*FB[*)((1)(*,*)/(*,*)(2 \
+T))(*]FB*)]},  (Exp[(*FB[*)((-1)(*,*)/(*,*)(2 \
+T))(*]FB*)])&/@Range[26]]\nCT`variants[c_] := If[LowerCaseQ[c], Join[{c}, \
+Alphabet[]], Join[{c}, ToUpperCase/@Alphabet[]]]", "Display" -> "codemirror", 
+    "Hash" -> "6a80f9f7-f94b-455c-8d8d-6303be7a4fde", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\nfor example", "Display" -> "codemirror", 
+    "Hash" -> "ac311058-1e1a-4905-8225-2c86ea9dc9e0", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, <|"Data" -> "for example", 
+    "Display" -> "markdown", "Hash" -> 
+     "bd9b1772-2cf4-40bb-b712-a80e9f9492e8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "RandomChoice[CT`prop[0.2] -> CT`variants[#]] &/@ \
+StringSplit[\"Hello World\", \"\"] // StringRiffle", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9616c8af-5b45-404e-b73c-ece5ac326fa1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "\"H w l l o   F o r l d\"", "Display" -> "codemirror", 
+    "Hash" -> "2c23726e-095d-4091-a4b1-c24644e08d37", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\n## Making a component\nLet us make a component", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3ef6a5a5-994b-49dd-ac0b-0a7b2c5808d7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "## Making a component\nLet us make a component", 
+    "Display" -> "markdown", "Hash" -> 
+     "2128adfd-0082-4c0b-9d00-96806a93123a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".wlx\n\nCryptoText[TextX_String, OptionsPattern[]] := \
+With[{\n  UId = CreateUUID[], cell = ResultCell[], win = CurrentWindow[], \n  \
+slide = EventClone[OptionValue[\"Slide\"]], onStartEvent = \
+OptionValue[\"OnStart\"],\n  StyleX = OptionValue[\"Style\"]\n},\n  \
+Module[{task, new, original, temperature = 1.0, mainTask, easeTask, finished \
+= False},\n    original = StringSplit[TextX, \"\"];\n    new = original;\n\n  \
+  EventHandler[slide, {\n      \"Slide\" -> Function[Null,\n        (* show \
+first time -> start *)\n        \n        mainTask = SetInterval[\n          \
+(new[[#]] = If[original[[#]] =!= \" \", RandomChoice[CT`prop[temperature] -> \
+CT`variants[original[[#]]]], original[[#]]]) &/@ \
+RandomSample[Range[Length[original]]];\n          \n          \
+FrontSubmit[UpdateTextField[StringRiffle[new, \"\"], UId], \
+\"Window\"->win];\n      , 100];\n      \n      ],\n\n      onStartEvent -> \
+Function[Null,\n        (* slowely morph into the original text *)\n        \
+\n        With[{easeTask = SetInterval[temperature = temperature + 0.1(0.05 - \
+temperature), 200]},\n          SetTimeout[\n            \
+TaskRemove[easeTask];\n            TaskRemove[mainTask];\n          , \
+6000];\n        ];\n\n        EventRemove[slide];\n        finished = True;\n \
+     ]\n    }];\n    \n\n    EventHandler[cell, {\"Destroy\"->Function[Null, \
+\n      (* if a cell was removed *)\n      Print[\"Removed\"];\n\n      \
+If[finished, Return[]];\n\n      TaskRemove[mainTask];\n      \
+EventRemove[slide];\n      \n    ]}];\n\n    <span style=\"{StyleX}\" \
+id=\"{UId}\"><TextX/></span>\n  ]\n]\n\nOptions[CryptoText] = \
+{\"OnStart\"->\"\", \"Slide\"->\"\", \"Style\"->\"\"};", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3ddc3503-3170-4617-bfce-29fb5b3bef8b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\nIt uses two options\n- `Slide` - you need to attach it \
+to your `SlideEventListener`, it connects all events from the given slide to \
+a component\n- `OnStart` - a topic (usually a name of a fragment), that \
+triggers the slow morphing into the original text and shut animation down", 
+    "Display" -> "codemirror", "Hash" -> 
+     "a647de56-c7d5-4744-ab1f-e416b744c949", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "It uses two options\n- `Slide` - you need to attach it to \
+your `SlideEventListener`, it connects all events from the given slide to a \
+component\n- `OnStart` - a topic (usually a name of a fragment), that \
+triggers the slow morphing into the original text and shut animation down", 
+    "Display" -> "markdown", "Hash" -> 
+     "0bf81b71-dc6c-4a72-8814-fcf0f8178455", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".md\n__let us test it!__", "Display" -> "codemirror", 
+    "Hash" -> "0311db4b-1679-4146-bae0-2e433577daba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "__let us test it!__", "Display" -> "markdown", 
+    "Hash" -> "3f8c62e1-0280-40e5-a11e-19c6eea70a49", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> "textStyle = \"font-family:monospace\";", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ab93b9d8-076e-4995-999f-6c974ebe82e9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> ".slide\n\nJust an empty slide to trigger an event on the next \
+one\n\n---\n\n# <CryptoText Style={textStyle} OnStart={\"fragment-1\"} \
+Slide={\"slide-1\"}>Heading</CryptoText>\n\nThis is a body of the \
+slide\n\n<CryptoText Style={textStyle} OnStart={\"fragment-1\"} \
+Slide={\"slide-1\"}>Housework could be everyone\[CloseCurlyQuote]s work, not \
+just \[OpenCurlyDoubleQuote]women\[CloseCurlyQuote]s \
+work\[CloseCurlyDoubleQuote]. Why do women enable men to act oblivious to \
+cleaning, grocery shopping, pet feeding, etc? Somehow when men live alone \
+they figure out how to do all of those things all on their own. My \
+friend\[CloseCurlyQuote]s husband claimed he didn\[CloseCurlyQuote]t know \
+that sheets should be washed more than once a season. He said he \
+didn\[CloseCurlyQuote]t know one had to clean toilets. He assumed that since \
+you flush toilets they clean themselves. She tried to get him to help but he \
+did an awful job so she let him off the \
+hook.</CryptoText>\n\n<br/>\n\n<CryptoText Style={textStyle} \
+OnStart={\"fragment-1\"} Slide={\"slide-1\"}>Wouldn\[CloseCurlyQuote]t it be \
+better if she spent the time and energy to get him to do it right instead of \
+letting him claim he is \[OpenCurlyDoubleQuote]just bad at \
+it\[CloseCurlyDoubleQuote]. My sons were raised to clean toilets and change \
+their own sheets. Hopefully, in their future homes, the housework will be \
+equally divided.</CryptoText>\n\n\n\nStop <!-- .element: class=\"fragment\" \
+data-fragment-index=\"1\" -->\n\n<SlideEventListener Id={\"slide-1\"}/>", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b061663d-c8ff-44bd-b293-0a3d48959125", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> 
+     ".md\nGo to the second slide and text click again to finish an \
+animation.", "Display" -> "codemirror", 
+    "Hash" -> "0847656a-8412-4d66-bc11-a9fe37c824eb", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "2c7119e8-1bcf-43c9-8f0f-479295914329", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> 
+     "Go to the second slide and text click again to finish an animation.", 
+    "Display" -> "markdown", "Hash" -> 
+     "303767db-cd28-4f05-b2c2-907049f0e373", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "18c8e670-b75b-4d70-98af-a96c8c30f494", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "6bcbf967-0849-4923-8539-ba3deb682c83"|>}, "serializer" -> "jsfn4"|>

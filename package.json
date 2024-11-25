@@ -1,0 +1,184 @@
+{
+  "name": "wljs-notebook",
+  "version": "2.6.2",
+  "recommended-client-version": "2.4.9",
+  "description": "Dynamic Notebook Environment for Wolfram Language written in Javascript",
+  "author": {
+    "name": "Coffee liqueur",
+    "email": "krikus.ms@gmail.com"
+  },
+  "main": "Electron/main.js",
+  "scripts": {
+    "start": "wolframscript -f Scripts/run.wls",
+    "build-terminal": "rollup --config Electron/rollup.config.mjs",
+    "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
+    "el": "electron .",
+    "dist": "electron-builder",
+    "dist-mac": "electron-builder --mac --x64",
+    "dist-win": "electron-builder --win --x64",
+    "dist-linux": "electron-builder --linux --x64",
+    "dist86": "electron-builder --x64",
+    "dist-all": "electron-builder -mwl --x64",
+    "remove-ds": "find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch",
+    "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
+  },
+  "build": {
+    "afterSign": "./Electron/sign.js",
+    "afterPack": "./Electron/build/hook.js",
+    "appId": "wljs-notebook",
+    "productName": "WLJS Notebook",
+    "copyright": "WLJS © 2024 ${author}",
+    "artifactName": "wljs-notebook-${version}-${arch}.${ext}",
+    "dmg": {
+      "title": "${productName} ${version}",
+      "icon": "./Electron/build/512x512.icns",
+      "sign": false
+    },
+    "mac": {
+      "icon": "./Electron/build/512x512.icns",
+      "fileAssociations": [
+        {
+          "ext": "wln",
+          "name": "WLJS Notebook",
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.icns"
+        }
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Please give us access to your microphone"
+      },
+      "entitlements": "./Electron/build/entitlements.mac.plist",
+      "entitlementsInherit": "./Electron/build/entitlements.mac.plist",
+      "protocols": [
+        {
+          "name": "WLJS URL communication",
+          "schemes": [
+            "wljs-url-message"
+          ],
+          "role": "Editor"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb", "rpm", "pacman", "tar.xz", "AppImage"
+      ],
+      "fileAssociations": [
+        {
+          "mimeType": "application/wln",
+          "ext": "wln",
+          "name": "WLJS Notebook",
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.png"
+        }
+      ],
+      "icon": "./Electron/build/512x512.png",
+      "protocols": [
+        {
+          "name": "WLJS URL communication",
+          "schemes": [
+            "wljs-url-message"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "./Electron/build/512x512.ico",
+      "fileAssociations": [
+        {
+          "ext": "wln",
+          "name": "WLJS Notebook",
+          "role": "Editor",
+          "icon": "./Electron/build/file/512x512.ico"
+        }
+      ],
+      "protocols": [
+        {
+          "name": "WLJS URL communication",
+          "schemes": [
+            "wljs-url-message"
+          ]
+        }
+      ]
+    },
+    "files": [
+      "./Electron/main.js",
+      "./Electron/preload_main.js",
+      "./Electron/bundle/log.js",
+      "./Electron/electron.css",
+      "./Electron/log.html",
+      "./Electron/log_padded.html",
+      "./Electron/tailwind.css",
+      "./Electron/tailwind.config.js",
+      "./Electron/shortcuts.json",
+      "./Electron/preload_log.js",
+      "./Electron/build/**/*",
+      "./Electron/build/**/",
+      "./shipped/**"
+    ],
+    "asar": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JerryI/wolfram-js-frontend.git"
+  },
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/JerryI/wolfram-js-frontend/issues"
+  },
+  "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
+  "devDependencies": {
+    "@electron/notarize": "^2.3.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "rollup": "^3.29.3",
+    "rollup-plugin-combine": "^2.1.1",
+    "serve-static": "^1.14.1",
+    "systemjs": "^6.14.1"
+  },
+  "dependencies": {
+    "@electron/packager": "^18.3.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "15.0.1",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "ansi-colors": "^4.1.3",
+    "autoprefixer": "^10.4.19",
+    "cssnano": "^6.1.2",
+    "custom-electron-titlebar": "^4.2.8",
+    "electron-context-menu": "^3.6.1",
+    "electron-find": "^1.0.7",
+    "electron-notarize": "^1.2.2",
+    "electron-trackpad-utils": "^1.0.1",
+    "fflate": "^0.8.0",
+    "fkill": "^9.0.0",
+    "fs-extra": "^11.1.1",
+    "jsoncrush": "^1.1.8",
+    "mica-electron": "^1.5.5",
+    "native-prompt": "^2.1.4",
+    "node-fetch": "^3.3.2",
+    "node-stream-zip": "^1.15.0",
+    "pako": "^2.1.0",
+    "party-js": "^2.2.0",
+    "postcss-cli": "^11.0.0",
+    "postcss-nested": "^6.0.1",
+    "random-words": "^2.0.0",
+    "sudo-prompt": "^9.2.1",
+    "tailwindcss": "^3.4.1",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0"
+  },
+  "overrides": {
+    "globalthis": "npm:@nolyfill/globalthis@^1",
+    "is-core-module": "npm:@nolyfill/is-core-module@^1",
+    "isarray": "npm:@nolyfill/isarray@^1",
+    "safe-buffer": "npm:@nolyfill/safe-buffer@^1",
+    "safer-buffer": "npm:@nolyfill/safer-buffer@^1"
+  }
+}

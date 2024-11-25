@@ -1,0 +1,66 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$107], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/10 - Decorations/Simple BoxBox.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n# BoxBox example\nA simple demonstration of editable boxes", 
+    "Display" -> "codemirror", "Hash" -> 
+     "19ce7c9e-4eea-4529-86e9-b7d8c030e8b3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> "# BoxBox example\nA simple demonstration of editable boxes", 
+    "Display" -> "markdown", "Hash" -> 
+     "f1172a61-4d01-4cd5-85c8-a3967ea9cfa7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> "boxObject /: MakeBoxes[boxObject[s_], StandardForm] := \
+With[{},\n  BoxBox[s, PaneBox[], Head->boxObject]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "6364fa96-2750-4481-8fc1-92c80a1785b8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, <|"Data" -> "boxObject[22]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "79d13ca9-574c-464f-95c1-975b1361c707", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> "(*BB[*)(boxObject[22])(*,*)(*\"1:eJxTTMoPSmNmYGAo5gcSAUX5ZZkp\
+qSn+BSWZ+XnFaYwgCRYg4ZGfk5LGAOKxg5Ql5qU65VekMcGkg0pzUoPB6lITU4I5gYyk/Ar/pKzU5\
+BI0RaxAhmtZal4JWMivNCcHAI+YHWo=\"*)(*]BB*)", "Display" -> "codemirror", 
+    "Hash" -> "c96d9afc-3728-4966-8216-652d9eb209aa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> ".md\nTry to edit the number inside and then evaluate it \
+again", "Display" -> "codemirror", "Hash" -> 
+     "8320262a-8d99-4a1d-97de-f1bd17687daa", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> "Try to edit the number inside and then evaluate it again", 
+    "Display" -> "markdown", "Hash" -> 
+     "88ab6c55-5faa-4c2a-b09a-404d93923839", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "d58399c6-1365-4974-b604-f84244260230", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, 
+   <|"Data" -> "(*BB[*)(boxObject[22])(*,*)(*\"1:eJxTTMoPSmNmYGAo5gcSAUX5ZZkp\
+qSn+BSWZ+XnFaYwgCRYg4ZGfk5LGAOKxg5Ql5qU65VekMcGkg0pzUoPB6lITU4I5gYyk/Ar/pKzU5\
+BI0RaxAhmtZal4JWMivNCcHAI+YHWo=\"*)(*]BB*) // Head ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "37e43de1-8098-407d-ad5d-c8ecc5673e03", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>, <|"Data" -> "boxObject", 
+    "Display" -> "codemirror", "Hash" -> 
+     "05d9a4f5-5746-4920-9578-0dc20be6fa8d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "05224a79-455b-44c2-82b9-320799737407"|>}, "serializer" -> "jsfn4"|>

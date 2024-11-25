@@ -1,0 +1,108 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$267], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/05 - Interaction/Crossbar.wln", "ReadOnly" -> False|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Crossbar example\nA static and dynamic way \
+of appending tool onto your plot", "Display" -> "codemirror", 
+    "Hash" -> "0ae72d60-9318-4ef0-a751-a991c0188df1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "# Crossbar example\nA static and dynamic way of appending \
+tool onto your plot", "Display" -> "markdown", 
+    "Hash" -> "8d167788-657d-4697-8643-90eb7bba580a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> ".md\n## Static way\nDefine some global variables and add \
+graphics to our plot directly", "Display" -> "codemirror", 
+    "Hash" -> "0be070ef-41ff-4712-9b57-9881d7266212", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "## Static way\nDefine some global variables and add graphics \
+to our plot directly", "Display" -> "markdown", 
+    "Hash" -> "73a63e24-dd2a-4e3a-8188-f6ffb9e65abe", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "point = {0.,0.};\ntext = \" \";\n\n(* plot some dummy \
+function *)\nPlot[Sinc[x], {x,-10,10}, Epilog->{\n  Red,\n\n  (* crossbar \
+*)\n  Line[With[{p = point[[1]]},\n    {{p, -10}, {p, 10}}\n  ] // \
+Offload],\n\n  Line[With[{p = point[[2]]},\n    {{-10, p}, {10, p}}\n  ] // \
+Offload],\n\n\n  EventHandler[Graphics`Canvas[], {\n    \"mousemove\" -> \
+Function[xy, \n\t    point = xy;\n\t    text = ToString[Round[xy, \
+0.01]];\n\t]\n  }]\n}]\n", "Display" -> "codemirror", 
+    "Hash" -> "c52a2325-09c6-4ee3-a548-30a349a116e3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "TextView[text // Offload]", "Display" -> "codemirror", 
+    "Hash" -> "c03c3987-9d95-4191-af0a-f6300bfe99ff", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "115d79fc-5302-41b9-8375-f82a207e3739", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> ".md\n## Dynamic way\nAppend to any plot using `MetaMarker`", 
+    "Display" -> "codemirror", "Hash" -> 
+     "3bf49bdc-8494-4002-ab17-ea7abef2ecd5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "## Dynamic way\nAppend to any plot using `MetaMarker`", 
+    "Display" -> "markdown", "Hash" -> 
+     "3eace3c2-2215-4ebf-9be8-6141417dbfe8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "placeCrossbar[meta_String, pos_:{0.,0.}] := \
+LeakyModule[{point = pos, text = \"\"},\n  FrontSubmit[{\n    Red,\n\n    (* \
+crossbar *)\n    Line[With[{p = point[[1]]},\n      {{p, -10}, {p, 10}}\n    \
+] // Offload],\n\n    Line[With[{p = point[[2]]},\n      {{-10, p}, {10, \
+p}}\n    ] // Offload],\n\n    EventHandler[Graphics`Canvas[], {\n    \
+\"mousemove\" -> Function[xy, \n\t    point = xy;\n\t    text = \
+ToString[Round[xy, 0.01]];\n\t]\n  }]\n  }, MetaMarker[meta]];\n  \n  \
+TextView[text // Offload]\n]", "Display" -> "codemirror", 
+    "Hash" -> "aefbbd08-25b4-4884-a8b7-45c013e83c80", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> ".md\nAnd now an example", "Display" -> "codemirror", 
+    "Hash" -> "8c09d954-e8ee-4342-9085-b7a46e8170ac", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "And now an example", "Display" -> "markdown", 
+    "Hash" -> "853fa98f-9115-4228-87ee-0011906e9552", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "\n(* plot some dummy function *)\nPlot[Sinc[x], {x,-10,10}, \
+Epilog->{MetaMarker[\"plt\"]}]", "Display" -> "codemirror", 
+    "Hash" -> "da66a6e1-0d07-441c-8837-8d28654008b9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, <|"Data" -> ".md\nappend", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c799cc0c-df0e-44e9-a6cb-fe9f0bc9a467", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, <|"Data" -> "append", 
+    "Display" -> "markdown", "Hash" -> 
+     "6a8e1d3f-90ee-4f3f-8fd0-65a0b75ede3d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> "placeCrossbar[\"plt\"]", "Display" -> "codemirror", 
+    "Hash" -> "48bcd737-f9f8-4f6c-8f90-48ad2fdf4048", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "c1b61a02-520f-4f09-8578-49dd021ffd3b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "ac8d311d-243b-4655-9444-3af6fa9a7a05"|>}, "serializer" -> "jsfn4"|>

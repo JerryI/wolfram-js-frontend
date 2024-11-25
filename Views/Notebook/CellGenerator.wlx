@@ -1,0 +1,73 @@
+CellsGroup     := ImportComponent["Components/CellGroup.wlx"];
+CellFrame      := ImportComponent["Components/CellFrame.wlx"];
+Children       := ImportComponent["Components/Children.wlx"];
+CellsSubgroup  := ImportComponent["Components/CellSubgroup.wlx"];
+
+Border          = ImportComponent["Components/Border.wlx"];
+
+CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
+{Hr, HrScript}  = ImportComponent["Components/Hr.wlx"];
+
+{ControlsLeft, ControlsRight, ControlsScript}            = ImportComponent["Components/Controls.wlx"];
+
+{EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
+
+Component[cell_CellObj, cli_, parameters_, OptionsPattern[]] := With[{
+    ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
+    ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],
+    Class = StringJoin["hover:b0g-", (If[StringQ[#], #, "teal"]&) @ (parameters["AccentColor"]), "-700/5", " ", If[TrueQ[cell["Invisible"]], "invisible-cell", ""]],
+    Style = "border-radius:2px"
+},
+    If[InputCellQ @ cell,
+        EventHandler[cell, {
+            "Focus" -> Function[Null, Print["Focus!"]; With[{n = cell["Notebook"]}, n["FocusedCell"] = cell] ]
+        }];
+        
+
+        <CellsGroup Cell={cell} Class={Class} Style={Style}>
+            <ExtensionTemplateInjection Template={"CellGroup-Prolog"} Cell={cell} Client={cli}/>
+            <CellsSubgroup Cell={cell}>
+                <ControlsLeft Cell={cell}/>
+                <CellFrame Cell={cell}>
+                    <ExtensionTemplateInjection Template={"CellFrame-Prolog"} Cell={cell} Client={cli}/>
+                    <ExtensionTemplateWrapper Template={"CellWrapper"} Cell={cell} Client={cli}>
+                        <CellWrapper Parameters={parameters} Cell={cell}/>
+                    </ExtensionTemplateWrapper>
+                    <EvaluationBar Cell={cell} Client={cli}/>
+                    <Hr Cell={cell}/> 
+                    <ExtensionTemplateWrapper Template={"Children"} Cell={cell} Client={cli}>
+                        <Children Cell={cell}></Children>
+                    </ExtensionTemplateWrapper>
+                    <ExtensionTemplateInjection Template={"CellFrame-Epilog"} Cell={cell} Client={cli}/>
+                </CellFrame>
+                <ControlsRight Cell={cell}/>
+                <Border/>
+            </CellsSubgroup>
+            <ExtensionTemplateInjection Template={"CellGroup-Epilog"} Cell={cell} Client={cli}/>
+        </CellsGroup>
+    ,
+        <CellsGroup Cell={cell}>
+            <ExtensionTemplateInjection Template={"CellGroup-Prolog"} Cell={cell} Client={cli}/>
+            <CellFrame Cell={cell}>
+                <ExtensionTemplateInjection Template={"CellFrame-Prolog"} Cell={cell} Client={cli}/>
+                <ExtensionTemplateWrapper Template={"CellWrapper"} Cell={cell} Client={cli}>
+                    <CellWrapper Cell={cell}/>
+                </ExtensionTemplateWrapper>
+                <ExtensionTemplateInjection Template={"CellFrame-Epilog"} Cell={cell} Client={cli}/>
+            </CellFrame>   
+            <Hr Cell={cell}/> 
+            <ExtensionTemplateInjection Template={"CellGroup-Epilog"} Cell={cell} Client={cli}/>
+        </CellsGroup>  
+    ]
+]
+
+emptyStringFunction[x__] := ""
+sequenceIdentity[first__, rulels___Rule] := first 
+
+Options[Component] = {"ExtensionTemplateWrapper"-> sequenceIdentity, "ExtensionTemplateInjection" -> emptyStringFunction}
+
+Script = With[{},
+    ""
+]
+
+{Component, Script}

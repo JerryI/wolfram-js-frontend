@@ -1,0 +1,116 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$266], 
+   "Objects" -> <|"d5e7d031-bc27-46f5-825f-c9fb88a32b06" -> 
+      <|"Public" -> Hold[HTMLView["<div class=\"divide-y divide-gray-200 \
+overflow-hidden rounded-md bg-white shadow sm-controls\"><div class=\"px-2 \
+py-2\"></div><div class=\"px-2 py-2 flex flex-col gap-y-3\" \
+data-type=\"group\"></div><div class=\"px-2 py-2\"></div></div>", 
+          Epilog -> Notebook`Kernel`Inputs`Private`HandleGroup[
+            {FrontEndExecutable[
+              "6304931b-4061-4ceb-9368-a72b0876201b"]}]]]|>, 
+     "365a3960-7a4d-426f-8e03-8f9a93b88647" -> 
+      <|"Public" -> Hold[EditorView[Offload[code$272997]]]|>, 
+     "6304931b-4061-4ceb-9368-a72b0876201b" -> 
+      <|"Public" -> Hold[HTMLView["<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\">n</label><input min=\"1.0\" max=\"6.0\" \
+step=\"1.0\" value=\"4\" id=\"n-#instanceId\" type=\"number\" class=\"ml-auto \
+h-2 grow max-w-60 block p-2.5 text-xs text-gray-900 bg-gray-50 rounded-md \
+border-2-gray-50 border border-gray-300 focus:ring-blue-500 \
+focus:border-blue-500\"></input></div><input min=\"1.0\" max=\"6.0\" \
+step=\"1.0\" value=\"4\" id=\"r-#instanceId\" type=\"range\" \
+class=\"sm-controls w-full h-1 bg-gray-200 rounded-lg appearance-none \
+cursor-pointer \"></input></div>\n<script type=\"module\"> const num = \
+document.getElementById('n-#instanceId');\n        const ran = \
+document.getElementById('r-#instanceId');\n\n        let harpticQ = true;\n\n \
+       function isNumber(value) { return typeof value === 'number'}\n\n       \
+ num.addEventListener('input', (event)=> {\n            if (isNaN(num.value)) \
+return;\n            ran.value = num.value;\n            \
+server.kernel.emitt('9a0e02ac-7a00-476e-be1c-84dac3740c54', num.value, \
+'Default');      \n        });\n\n        ran.addEventListener('input', \
+(event)=> {\n            if (isNaN(ran.value)) return;\n            num.value \
+= ran.value;\n            \
+server.kernel.emitt('9a0e02ac-7a00-476e-be1c-84dac3740c54', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>", Prolog -> HTMLView`TemplateProcessor[Association[
+             "instanceId" -> CreateUUID[]]]]]|>|>, 
+   "Path" -> "/users/kirill/Github/wolfram-js-frontend/Demos/05 - \
+Interaction/Manipulate.wln", "ReadOnly" -> True, 
+   "Symbols" -> <|"code$270628" -> "(*VB[*)(SeriesData[x, 0, {1, 0, -1/6, 0, \
+1/120}, 1, 7, \
+1])(*,*)(*\"1:eJyNkV1TgkAUhq3poulXkFe7K41SYh93ghIqorJIpXGBw2I7gBBggNV/b8Gbbpp\
+p5sw75+x55j27ey43keGdNBqN9IyJGgWud1pVF0yGLs2ixKIkx68MKa4AQIq0RhAAAQLEI9iuFfQg\
+K21FQhByjMFxBc2jnCTrAqAvBPlab2xGsSbDWn9ZCded/5mJv82QVXthklCSDpzMWRc81+G5z2+eu\
+61DsI9jAGoKD2RcmOY0muNQ918e+9FqO8Tqhy9OnoLpSOo++6qkl/gw1vJEM+XO3Nq6pb7BsiyWND\
+MXg7s0M2lPu4/KjOob4z0bGEI+WYi+NNUC3cNvs60aGqtlGOvOoa/QWHbC1swLrNFYWXTjyTJXcFv\
+Kd83qPrbF3nD89GoFxj4g6XmVEMed7YKyPjWTPfkBByhxLw==\"*)(*]VB*)", 
+     "code$271384" -> "(*VB[*)(SeriesData[x, 0, {1, 0, -1/6}, 1, 4, \
+1])(*,*)(*\"1:eJwlkF1TgkAUhq3poummv0Be7a40yaROdScoISIqi1Q6XGAsugO4BBhg9d9bcOb\
+MO+fjmfN1t2VWcNFqtbIrLhqL/OCyjm64jH2as9ShpMC3HCnvAUCqvEEQAAkCJCL40CgYQB66qowg\
+FDiDkxpasIKkmxKgXwTFRh9dTvEixzoAOU0nTFJKspGXe5tSFLqi8PMnCr3GJPc8BKC29EL00rZnb\
+IFjM/x4HbL1boy177A/fYtmE7n3HmqyWeGTbhSpYSvdhbPzK3OLFaVf0dxejp6y3KYD45lVOTW31l\
+c+sqRiutRDeWZEZoD3850WW+tVnJjeaajSRPHizjyInImuLnvJdFWo+HNfhO16H9fhN5z/VH/NOkY\
+ku64d4vnzQ1Q1WTs9kn973l/V\"*)(*]VB*)", "code$272997" -> "(*VB[*)(SeriesData[x\
+, 0, {1, 0, -1/6}, 1, 5, \
+1])(*,*)(*\"1:eJwlkF1TgkAUhq3poummv0Be7a40yaROdScooSIqi1Q6XOCw2A6LS4ABVv+9BWf\
+OvHM+njlfdztuhxetViu7EmJwFoSXdXQjZBzQnKcuJQW+FUh5DwDS1S2CACgQIBnBh0bBAIrQ01UE\
+oSQYnNTQkhck3ZYA/SIoN/roCUoUBdYByG06YZJSko383N+WstSVpZ8/Weo3pnjnIQC1lRcyLR1nz\
+pc4tqKP1yHf7MfY+I76szc2n6i998hQrQqfpmaRmo7WXbr7oLJ2WNP6Fc2d1egpyx06MJ95lVNrZ3\
+/lI1spZqskUucms0L8udgbsb1Zx4nln4Y6TTQ/7ixC5k6m+qqXzNaFjrlasHa9j+eKG85/qr9mHxn\
+JrmuH+MHiwKom66RH8g+GyF/k\"*)(*]VB*)"|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "ManipulatePlot", 
+      CellObj[JerryI`Notebook`CellObj`$260]], 
+     Notebook`Editor`TOC`Private`heading[2, "Manipulate", 
+      CellObj[JerryI`Notebook`CellObj`$277]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## ManipulatePlot\nAn example of built-in \
+function for interactive plotting", "Display" -> "codemirror", 
+    "Hash" -> "78c71446-698a-4b3c-9258-1ccd4bf06b7b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> "## ManipulatePlot\nAn example of built-in function for \
+interactive plotting", "Display" -> "markdown", 
+    "Hash" -> "e7634c47-9e0e-46a1-90b4-7b983ae2772c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> 
+     "ManipulatePlot[Sin[w z + p], {z,0,10}, {w, 0, 15.1, 1}, {p, 0, Pi, \
+0.1}]", "Display" -> "codemirror", "Hash" -> 
+     "facee7f4-866d-4bb8-8fff-18c7c7e56ec7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> ".md\n## Manipulate\nA more general approach", 
+    "Display" -> "codemirror", "Hash" -> 
+     "010382d4-84ad-4588-9000-ad9e920578c4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> "## Manipulate\nA more general approach", 
+    "Display" -> "markdown", "Hash" -> 
+     "659f2532-cd7f-4d59-b807-b6b64953444d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> "Manipulate[Series[Sin[x], {x, 0, n}], {n, 1, 6, 1}]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "1ab5110e-8e33-445d-a668-47cc0ec452c3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>, 
+   <|"Data" -> "(*GB[*){{(*VB[*)(EventObject[<|\"Id\" -> \
+\"37d703f6-c8cf-45b0-a115-6817ebc9fbc7\", \"Initial\" -> {4}, \"View\" -> \
+\"d5e7d031-bc27-46f5-825f-c9fb88a32b06\"|>])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHv\
+k5KRCeEJBwK8rPK3HNS3GtSE0uLUlMykkNVgEKp5immqcYGBvqJiUbmeuamKWZ6loYmabpJlumJVl\
+YJBobJRmYAQCGqxWq\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(FrontEndRef[\"365a3960-7a4\
+d-426f-8e03-8f9a93b88647\"])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeEJBwK8rPK3\
+HNS3GtSE0uLUlMykkNVgEKG5uZJhpbmhnomieapOiaGJml6VqkGhjrWqRZJloaJ1lYmJmYAwB3QBT\
+9\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "cc61e002-fc67-44a9-ad12-196df9b8ad21", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "cb466a63-d68b-4fb0-8d20-929da31455cb"|>}, "serializer" -> "jsfn4"|>

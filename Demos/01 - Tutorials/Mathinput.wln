@@ -1,0 +1,300 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$2311], 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/01 - Tutorials/Mathinput.wln", "ReadOnly" -> True, 
+   "Symbols" -> <||>|>, "Cells" -> 
+  {<|"Data" -> ".md\n## 2D Math input\nThis is a syntax sugar borrowed from \
+Mathematica, but in a much simpler way", "Display" -> "codemirror", 
+    "Hash" -> "e5514707-2067-47ab-a3fa-8318e9cba799", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\n## 2D Math input\nThis is a syntax sugar borrowed from \
+Mathematica, but in a much simpler way", "Display" -> "markdown", 
+    "Hash" -> "294a0988-cf92-41bb-b3db-e9fce8237ce5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "(*FB[*)((1)(*,*)/(*,*)(2))(*]FB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fc2ef342-9c41-4b84-a31a-b8ea90cc8f81", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nPress `Ctrl+/` on  the selection __to make a fraction__. \
+Underheath in the code it is still a valid Wolfram Language expression \
+wrapped by some special comments", "Display" -> "codemirror", 
+    "Hash" -> "7142da31-faf1-4188-9000-035295bfde35", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nPress `Ctrl+/` on  the selection __to make a fraction__. \
+Underheath in the code it is still a valid Wolfram Language expression \
+wrapped by some special comments", "Display" -> "markdown", 
+    "Hash" -> "a3c5c4a4-8125-4998-868c-9f0618ecd893", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "(*FractionBox[*)((1)(*,*)/(*,*)(2))(*]FractionBox*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "07a4400d-2f1e-4ccd-8a2b-256b71a15f10", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nYou can navigate thorugh them using arrows (one has to \
+click on it firstly)", "Display" -> "codemirror", 
+    "Hash" -> "a875618b-7bac-4b90-98cc-8b2c19406ef7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nYou can navigate thorugh them using arrows (one has to \
+click on it firstly)", "Display" -> "markdown", 
+    "Hash" -> "c4f0c22d-4497-4ba6-b9c5-8ddad2dd3878", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nWolfram Kernel can generate them as well like you can \
+expect in Mathematica", "Display" -> "codemirror", 
+    "Hash" -> "7b5f0c41-41b4-43e6-8e09-c5f64823029e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nWolfram Kernel can generate them as well like you can \
+expect in Mathematica", "Display" -> "markdown", 
+    "Hash" -> "147c5bfa-c444-42ea-935d-b63ad86e14dc", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "Series[Sinc[(*SqB[*)Sqrt[x](*]SqB*)], {x,0,4}] // Normal ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9fe64f40-96a7-460e-8fb4-faab85c9e770", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "1-(*FB[*)((x)(*,*)/(*,*)(6))(*]FB*)+((*FB[*)((1)(*,*)/(*,*)(1\
+20))(*]FB*)) \
+((*SpB[*)Power[x(*|*),(*|*)2](*]SpB*))-(*FB[*)(((*SpB[*)Power[x(*|*),(*|*)3](\
+*]SpB*))(*,*)/(*,*)(5040))(*]FB*)+(*FB[*)(((*SpB[*)Power[x(*|*),(*|*)4](*]SpB\
+*))(*,*)/(*,*)(362880))(*]FB*)", "Display" -> "codemirror", 
+    "Hash" -> "410e4315-d22d-4ecf-86ed-8d8a53655a62", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nPress `Ctrl+^` __to make superscripts__ and `Ctrl+_` \
+__to make subscripts__", "Display" -> "codemirror", 
+    "Hash" -> "6c4e26f0-9ef0-469c-b9ae-73ef99982df3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nPress `Ctrl+^` __to make superscripts__ and `Ctrl+_` __to \
+make subscripts__", "Display" -> "markdown", 
+    "Hash" -> "9cbcbe00-e766-4e8c-8fbb-c158d6280960", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "(*SbB[*)Subscript[(*SpB[*)Power[x(*|*),(*|*)2](*]SpB*)(*|*),(\
+*|*)y_](*]SbB*)", "Display" -> "codemirror", 
+    "Hash" -> "010df638-8245-47a2-b580-04db467a54a4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nPress `Ctrl+2` __to make a square root__", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c1a8b4d0-53e9-4f1a-9ca0-fd4533c7c90e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nPress `Ctrl+2` __to make a square root__", 
+    "Display" -> "markdown", "Hash" -> 
+     "20b4eac9-5fec-4562-a4f9-23851248acf6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "1/(*SqB[*)Sqrt[2](*]SqB*)", "Display" -> "codemirror", 
+    "Hash" -> "258fcd9b-7bff-43cf-ae32-885309dd35f9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "(*FB[*)((1)(*,*)/(*,*)((*SqB[*)Sqrt[2](*]SqB*)))(*]FB*)", 
+    "Display" -> "codemirror", "Hash" -> 
+     "88dcc8f3-a2ed-4e1b-94ed-f2aca347de1d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nOne can also operate with matrixes and multiply them \
+like normal. __Use `MatrixForm`__ or use a snippet tool `Ctrl/CMD+P` __and \
+locate `Insert Matrix` helper widget__", "Display" -> "codemirror", 
+    "Hash" -> "32515e17-f711-47f5-a18a-3ea53c67febd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "One can also operate with matrixes and multiply them like \
+normal. __Use `MatrixForm`__ or use a snippet tool `Ctrl/CMD+P` __and locate \
+`Insert Matrix` helper widget__", "Display" -> "markdown", 
+    "Hash" -> "ac177df0-031b-4f3b-89b3-082faf9d6a72", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "((*GB[*){{1(*|*),(*|*)0(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*\
+)a(*|*),(*|*)0}(*||*),(*||*){0(*|*),(*|*)0(*|*),(*|*)1}}(*]GB*)).((*GB[*){{0(\
+*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){1(*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*)\
+{1(*|*),(*|*)0(*|*),(*|*)0}}(*]GB*)) // MatrixForm", 
+    "Display" -> "codemirror", "Hash" -> 
+     "d453f781-a1b9-4aac-b0e7-ae324067b411", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "((*GB[*){{0(*|*),(*|*)0(*|*),(*|*)1}(*||*),(*||*){a(*|*),(*|*\
+)0(*|*),(*|*)a}(*||*),(*||*){1(*|*),(*|*)0(*|*),(*|*)0}}(*]GB*))", 
+    "Display" -> "codemirror", "Hash" -> 
+     "b0d73620-70cd-4a5b-b1a7-6c1aff5863a5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nTo enter Greek's symbols __use `ESC` key__ and type the \
+first letter. The autocomplete will suggest the corresponding letter", 
+    "Display" -> "codemirror", "Hash" -> 
+     "50215bc6-972a-4445-a524-4b6a473ece1b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\nTo enter Greek's symbols __use `ESC` key__ and type the \
+first letter. The autocomplete will suggest the corresponding letter", 
+    "Display" -> "markdown", "Hash" -> 
+     "4d5190cf-2cf5-4230-9c01-b466dbc1899a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "\[Alpha], \[Beta], \[Gamma]", "Display" -> "codemirror", 
+    "Hash" -> "b1571b2c-b7ed-49d4-97e9-4379078e3e7f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> ".md\nFor colors and dates the decorations are also supported. \
+For example", "Display" -> "codemirror", 
+    "Hash" -> "e31c850a-733f-4e0c-9bfb-80da365349c5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> 
+     "\nFor colors and dates the decorations are also supported. For example"\
+, "Display" -> "markdown", "Hash" -> "e00f26c7-5772-4499-ad34-5d528f7af5ff", 
+    "Invisible" -> False, "MetaOnly" -> False, 
+    "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", "Type" -> "Output", 
+    "UID" -> Null, "Notebook" -> "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> 
+     "Table[RGBColor[i,j,1], {i,0,1,0.2}, {j,0,1,0.2}] // TableForm  ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "8f43bbfc-0457-48c6-ae27-2429e4cbc913", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>, 
+   <|"Data" -> "(*GB[*){{(*VB[*)(RGBColor[0., 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAE644M9APZHE10=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., 0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkgcNIeKvLBHgA1fxf8\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkgcNMeKvLBHgA2LxgM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEGRiTEIPLaHinywBwAT8xWy\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQEHRrJkg8NIeKvLBHgA23xgc\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0., \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxQAGU8cEezgAAAxwUjA==\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0.2, \
+0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LGKAAyvhgDwBfFhf8\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.2, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+0RDAYw+GAPAJ4/HJs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.2, \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2hjJv2RQxg8MEeAJ7vHKs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.2, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LTIxB4LF9EQMYfLAHAHyzGlE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.2, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2hjJf2RQxg8MEeAJ+fHLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.2, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCJ+2LGMDgA4IBAGvcGSs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.4, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LGKAAyvhgDwBgVhgM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.4, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2hjJP2RQxg8MEeAJ9/HKs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.4, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+0RDAYw+GAPAKAvHLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.4, \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LTIxB4LF9EQMYfLAHAH3zGmE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.4, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2hjJf2RQxg8MEeAKDfHMs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.4, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCN+2LGMDgA4IBAG0cGTs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.6, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/siBiiAMj7YAwAo8BWy\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.6, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KR9EQMYfLAHAGgZGlE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KZ9EQMYfLAHAGjJGmE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY3sEgwEMPtgDAEaNGAc=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.6, \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/uiWTNB4KV9EQMYfLAHAGl5GnE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.6, 1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyReZGIPAY/siBjD4gGAAADW2FuE=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[0\
+.8, 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LGKAAyvhgDwBhlhgc\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.8, \
+0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2hjJP2RQxg8MEeAKC/HLs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.8, 0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2hjJv2RQxg8MEeAKFvHMs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0\
+.8, 0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LTIxB4LF9EQMYfLAHAH8zGnE=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBCol\
+or[0.8, 0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+0RDAYw+GAPAKIfHNs=\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[0.8, \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRfNmgkCL+2LGMDgA4IBAG5cGUs=\"*)(*]VB*)}(*||*),(*||*){(*VB[*)(RGBColor[1\
+., 0., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHeyiDgQEuAgANwxSM\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., 0.2, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0HgpD1cBABM7Bkr\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.4, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0Hgpj1cBABNnBk7\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.6, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+yITYxB4bA8XAQArYBbh\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+0.8, \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEH+6JZM0HgpT1cBABOTBlL\"*)(*]VB*)(*|*),(*|*)(*VB[*)(RGBColor[1., \
+1., \
+1])(*,*)(*\"1:eJxTTMoPSmNkYGAoZgESHvk5KRCeGJAIcndyzs/JLwouTyxJzghJzS3ISSxJTWM\
+GyXMgyRcxgMEHe0wGABqJFbs=\"*)(*]VB*)}}(*]GB*)", "Display" -> "codemirror", 
+    "Hash" -> "01ec6226-f1ff-4b6c-8acb-7c3af9c447f4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "8790a038-5a0c-4b0e-8c58-0feb2fd4cd19"|>}, "serializer" -> "jsfn4"|>

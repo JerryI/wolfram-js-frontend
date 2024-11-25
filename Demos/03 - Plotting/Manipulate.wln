@@ -1,0 +1,49 @@
+<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$47], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
+/Demos/03 - Plotting/Manipulate.wln", "ReadOnly" -> True, "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "ManipulatePlot", 
+      CellObj[JerryI`Notebook`CellObj`$39]], 
+     Notebook`Editor`TOC`Private`heading[2, "General Manipulate function", 
+      CellObj[JerryI`Notebook`CellObj`$46]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## ManipulatePlot\nAn example of built-in \
+function for interactive plotting", "Display" -> "codemirror", 
+    "Hash" -> "c84f0f9a-61c3-45b3-bc95-0aebb78bf90a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> "## ManipulatePlot\nAn example of built-in function for \
+interactive plotting", "Display" -> "markdown", 
+    "Hash" -> "975e04c3-68df-4a4d-8959-82a4621eda8d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> 
+     "ManipulatePlot[Sin[w z + p], {z,0,10}, {w, 0, 15.1, 1}, {p, 0, Pi, \
+0.1}]", "Display" -> "codemirror", "Hash" -> 
+     "d07afda2-8f52-4ab8-a3a2-5ea5b6ef3ac7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "c430c60b-c238-484f-a7b3-60d7f26714a1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> ".md\n## General Manipulate function\nIt is not recommened to \
+use for plotting, but still available for a user", "Display" -> "codemirror", 
+    "Hash" -> "8057559e-7723-46ac-a1f7-2a955654e182", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> "## General Manipulate function\nIt is not recommened to use \
+for plotting, but still available for a user", "Display" -> "markdown", 
+    "Hash" -> "ffc681af-8427-4135-bebb-078c2a733f6a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>, 
+   <|"Data" -> "Manipulate[\n  Plot3D[Sin[n x] Cos[n y], {x,-1,1}, \
+{y,-1,1}]\n, {n, 1, 5, 1}]", "Display" -> "codemirror", 
+    "Hash" -> "6714ef7f-ced2-4c4c-ae54-e6db7029bdee", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "72fcffd8-0fe4-434c-bdc3-ec3eb3b0a4e7"|>}, "serializer" -> "jsfn4"|>

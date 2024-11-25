@@ -1,0 +1,44 @@
+<|"Notebook" -> <|"ReadOnly"->True, "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1284], 
+   "Objects" -> <||>, "Path" -> "/users/kirill/Library/Application \
+Support/wljs-notebook/Examples/Dynamics/Interaction/Wave packet.wln"|>, 
+ "Cells" -> 
+  {<|"Data" -> 
+     ".md\n## Travelling wave-packet\na simple example of dynamic plotting", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7ecd95bc-ce0c-4740-a1ef-77370f47cb65", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>, 
+   <|"Data" -> 
+     "\n## Travelling wave-packet\na simple example of dynamic plotting", 
+    "Display" -> "markdown", "Hash" -> 
+     "d494ce5f-c9a7-4c40-a2d6-da21c542ac35", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>, 
+   <|"Data" -> "packet[x_, t_] := Sum[Sin[- w t + w x], {w, 0,3,0.05}] / \
+10;\nline = Table[{x, packet[x, 0]}, {x, 0, 10, 0.1}];\nGraphics[\n  \
+Line[line // Offload]\n, Frame->True, FrameLabel->{{\"amplitude\"}, \
+{\"distance\"}}, \"TransitionDuration\" -> 30]", "Display" -> "codemirror", 
+    "Hash" -> "290daba1-2860-4693-b9a5-0a8b5318e7b5", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>, 
+   <|"Data" -> ".md\nand a slider to control a time variable", 
+    "Display" -> "codemirror", "Hash" -> 
+     "c0ae8887-fa3c-42d9-9ae4-d6fd9bb5b8de", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>, 
+   <|"Data" -> "\nand a slider to control a time variable", 
+    "Display" -> "markdown", "Hash" -> 
+     "daee0d13-eb64-4ac1-a53c-83498a67b00c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>, 
+   <|"Data" -> "EventHandler[InputRange[0,10,0.5, 0], Function[t, \n  line = \
+Table[{x, packet[x, t]}, {x, 0, 10, 0.1}];\n]]", "Display" -> "codemirror", 
+    "Hash" -> "dec07b61-7ee0-4818-ace1-c3ad875f688b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "a4d9e376-5a35-4a02-a592-2bb1ef2ae255"|>}, "serializer" -> "jsfn4"|>
