@@ -55,6 +55,8 @@ PacletRepositories[{
 
 <<JerryI`Misc`Async`
 
+<<JerryI`Misc`Parallel`
+
 <<JerryI`Notebook`Kernel`
 <<JerryI`Notebook`LocalKernel`
 <<JerryI`Notebook`MasterKernel`

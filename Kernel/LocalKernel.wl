@@ -204,6 +204,7 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Async`"] ];
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Language`"] ];
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Events`Promise`"] ];
+        LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Parallel`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`WebSocketHandler`"] ];
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`WLJS`Transport`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
