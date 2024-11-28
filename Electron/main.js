@@ -2291,6 +2291,8 @@ function check_wl (configuration, cbk, window) {
     windows.log.print("Starting wolframscript by path: " + server.wolfram.path);
     let program;
 
+    let cautch = false;
+
     try{
         console.log('TRY');
         program = spawn(server.wolfram.path, server.wolfram.args, { cwd: workingDir });
@@ -2299,6 +2301,8 @@ function check_wl (configuration, cbk, window) {
         windows.log.print(err);
         console.log(err);
         windows.log.info("wolframscript was not found!");
+
+        cautch = true;
         //windows.log.print('Do you have Wolfram Engine installed?', '\x1b[42m');
         new promt('binary', 'Do you have Wolfram Engine installed?', (answer) => {
             if (answer) {
@@ -2335,11 +2339,15 @@ function check_wl (configuration, cbk, window) {
         if (_nohup) {
             windows.log.info("Process exited with code "+code);
             windows.log.print("Process exited with code "+code);
+            windows.log.print("No hup");
             program.exitedAlready = true;
 
         } else {
+
             windows.log.info("Process exited abnormally with code "+code);
             windows.log.print("Process exited abnormally with code "+code);
+            if (cautch) return;
+            cautch = true;
             windows.log.print("Restarting soon...");
             setTimeout(() => {
                 check_wl(undefined, cbk, window);
@@ -2355,6 +2363,9 @@ function check_wl (configuration, cbk, window) {
         windows.log.print("Cannot execute a given process", '\x1b[46m');
         windows.log.print(String(err));
 
+        if (cautch) return;
+        cautch = true;
+
         setTimeout(() => {
             windows.log.clear();
             windows.log.print(err);
@@ -2368,9 +2379,21 @@ function check_wl (configuration, cbk, window) {
                     windows.log.print('Please, locate an executable called `wolframscript` or `WolframKernel`', '\x1b[44m');
 
                     setTimeout(() => {
-                        const promise = dialog.showOpenDialog({ title: 'Locate wolframscript', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
+                        const promise = dialog.showOpenDialog({ title: 'Locate wolframscript or WolframKernel', properties: ['openFile', 'showHiddenFiles', 'treatPackageAsDirectory', 'dontAddToRecent']});
                         promise.then((res) => {
                             if (!res.canceled) {
+                                //throw ;
+                                if (path.basename(res.filePaths[0]) == 'Wolfram Engine' && isMac) {
+                                    
+                                    windows.log.clear();
+                                    windows.log.print("Error!");
+                                    windows.log.print('Please do not select "Wolfram Engine" Unix binary on OSX! Use WolframKernel link file instead', '\x1b[44m');
+                                    windows.log.print('Restarting in 2 seconds...');
+                                    
+                                    setTimeout(() => {check_wl(undefined, cbk, window);}, 2000);
+                                    
+                                    return;
+                                }
                                 server.wolfram.path = res.filePaths[0];
                                 console.log(res.filePaths);
                                 windows.log.clear();
