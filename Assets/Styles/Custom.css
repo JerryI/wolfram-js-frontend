@@ -11,6 +11,7 @@
 }
 
 
+
   
 .cm-line {
   font-family: 'Hasklig' !important;
@@ -83,6 +84,10 @@
 }
 
 input::selection {
+  color: #2fa1d6;
+}
+
+.selectable::selection {
   color: #2fa1d6;
 }
 
