@@ -1,0 +1,54 @@
+<|"Notebook" -> <|"Controller" -> "c0919742-2c84-423c-ae2b-70a5fa1ec056", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1074], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "1b76bd24-3917-41ca-a272-40e8e5ddd094", 
+   "Path" -> 
+    "/Users/kirill/Github/wolfram-js-frontend/Demos/16 - Dev/Proxy.wln", 
+   "Quick" -> True, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Proxy test", CellObj[JerryI`Notebook`CellObj`$979]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Proxy test\nA proxy entites, which emulate \
+objects creation and stores, operates with them in a very efficient way. ", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9210938a-8bc6-4fd0-88ee-2f9695a4a00f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9e68bc84-649b-42c7-bdc9-c6362342f467"|>, 
+   <|"Data" -> "# Proxy test\nA proxy entites, which emulate objects creation \
+and stores, operates with them in a very efficient way. ", 
+    "Display" -> "markdown", "Hash" -> 
+     "7f4b13ac-f5df-40c8-8d5d-005a03874df6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "9e68bc84-649b-42c7-bdc9-c6362342f467"|>, 
+   <|"Data" -> "rect = CreateFrontProxy[{t, vel, angle, life}, \n  \
+Translate[{Opacity[life], RGBColor[life, 0, 1-life], Rectangle[{-1,-1}, \
+{1,1}]}, t]\n];\n\nprimitives = {};\nnew = {};\ntodispose = {};\ntrigger = \
+1;\n\nscene = FrontInstanceReference[];\n\nadd[xy_] := new = {new, Table[\n  \
+rect[xy, {Cos[x], Sin[x]}//N, RandomReal[{0,3.14}], 1.0]\n, {x, 0., 2Pi, 2Pi \
+/ 12.0}]} // Flatten;\n\nModule[{pos, vel, angle, \
+life},\nEventHandler[\"frame\", Function[Null,\n  \n  Do[\n    {pos, vel, \
+angle, life} = FrontProxyGet[i];\n    FrontProxySet[i, {pos +  vel, vel, \
+angle + 0.4, life 0.98}];\n    If[life < 0.2, AppendTo[todispose, i]];\n  , \
+{i, primitives}];\n  \n  FrontProxyDispatch[rect];\n\n  If[Length[todispose] \
+>0,\n    Delete @@ todispose;\n    primitives = Complement[primitives, \
+todispose];\n    todispose = {};\n  ];\n  \n  If[Length[new] > 0, \n    \
+primitives = Join[primitives, new];\n    FrontSubmit[Show /@ new, scene];\n   \
+ new = {};\n  ];\n  \n  trigger = trigger;\n  \n]]];\n\n\nGraphics[{scene, \
+AnimationFrameListener[trigger // Offload, \"Event\"->\"frame\"], \
+EventHandler[Graphics`Canvas[], {\n  \"mousemove\" -> add\n}]}, \
+PlotRange->{{-100,100}, {-100,100}}, TransitionType->None]\n\ntrigger = \
+trigger;", "Display" -> "codemirror", 
+    "Hash" -> "baceef48-30e0-4fd3-95ac-f11f57c536ab", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9e68bc84-649b-42c7-bdc9-c6362342f467"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "8302a561-410e-4182-a7ed-274111ed3afd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9e68bc84-649b-42c7-bdc9-c6362342f467"|>, 
+   <|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "88d45dfb-dc94-478d-bb25-e4ddff9e6eba", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "9e68bc84-649b-42c7-bdc9-c6362342f467"|>}, "serializer" -> "jsfn4"|>

@@ -22,10 +22,8 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Tit
                <ul class="max-h-80 scroll-py-2 divide-y divide-gray-500 divide-opacity-10 overflow-y-auto p-0">
                   <li class="p-4 pt-2 list-none">
                      <h2 class="mb-2 mt-2 text-xs font-semibold text-gray-900 dark:text-gray-400"><Title/></h2>
-                     <ul class="text-sm text-gray-700 flex flex-col gap-y-1 p-0">
-                        <div id="{Uid}" type="button" contenteditable="true" class="relative w-full cursor-default rounded-md 0 pl-3  pr-2 text-left text-gray-600 dark:text-gray-300  ring-1 ring-inset ring-gray-400 sm:text-xs sm:leading-6 items-center bg-d9 dark:bg-gray-700" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
-                            <DefaultValue/>
-                        </div>
+                     <ul class="text-sm flex flex-col p-0">
+                        <input id="{Uid}" type="text" value="{DefaultValue}" class="relative w-full cursor-default rounded-md p-1 pl-3  pr-2 text-left text-gray-600 dark:text-gray-300  sm:text-xs items-center bg-d9 dark:bg-gray-700"/>
                      </ul>
                      <script type="module">
                         const text = document.getElementById('<Uid/>');
@@ -51,7 +49,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], Tit
                         document.addEventListener('keydown', keyListener);
                         const submit = (el) => {
                             document.removeEventListener('keydown', keyListener);
-                            server.emitt('<Uid/>', '"'+encodeURIComponent(text.innerText.trim())+'"', 'Success');
+                            server.emitt('<Uid/>', '"'+encodeURIComponent(text.value.trim())+'"', 'Success');
                         };
 
                         const close = () => {
