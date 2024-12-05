@@ -206,7 +206,7 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
 ];
 
 WLJS`PM`Repositories[{
-  Github -> "https://github.com/JerryI/wljs-editor" -> "december_update",
+  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
   Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
   Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
   Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
