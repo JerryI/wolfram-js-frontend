@@ -247,6 +247,39 @@ input::selection {
   scrollbar-color: rgba(15, 15, 15, 0.2) transparent;
 }
 
+.pt02 {
+  padding-top: 0.2rem
+}
+
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity));
+}
+
+[os="Windows"] .owin\:pt035 {
+  padding-top: 0.30rem
+}
+
+[os="WindowsLegacy"] .win\:pt035 {
+  padding-top: 0.30rem
+}
+
+[os="Windows"] .owin\:pt015 {
+  padding-top: 0.15rem
+}
+
+[os="WindowsLegacy"] .win\:pt015 {
+  padding-top: 0.15rem
+}
+
+[os="Windows"] .owin\:hidden {
+  display: none;
+}
+
+[os="WindowsLegacy"] .win\:hidden {
+  display: none;
+}
+
 [os="WindowsLegacy"] .owin\:sc-b::-webkit-scrollbar {
   width: 2px;
   height: 2px;

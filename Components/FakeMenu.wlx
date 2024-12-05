@@ -204,35 +204,35 @@ LayoutMisc =
 },
 
     <div class="h-titlebar flex {Class}" style="-webkit-app-region:none">
-        <div class="my-auto mr-auto pr-1 flex gap-x-1 text-sm" style="padding-top: 0.3rem">
-            <button id="fake-menu-file" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+        <div class="mr-auto pr-4 flex gap-x-1 text-sm" style="{Style}">
+            <button id="fake-menu-file" class="text-gray-500 hover:text-black dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
                 File
             </button>
 
-            <button id="fake-menu-view" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+            <button id="fake-menu-view" class="text-gray-500 hover:text-black dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
                 View
             </button>
 
-            <button id="fake-menu-evaluation" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+            <button id="fake-menu-evaluation" class="text-gray-500 hover:text-black dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
                 Evaluation
             </button>            
 
-            <button id="fake-menu-misc" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+            <button id="fake-menu-misc" class="text-gray-500 hover:text-black dark:hover:bg-gray-700 rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
                 Misc
             </button>
 
         </div>
-        <div class="grow h-full" style="-webkit-app-region: drag"></div>
-        <div id="dropdown-fake-file" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; " role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="grow h-full" style="-webkit-app-region: drag;"></div>
+        <div id="dropdown-fake-file" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <LayoutFile/>
         </div>  
-        <div id="dropdown-fake-view" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; " role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div id="dropdown-fake-view" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <LayoutView/>
         </div> 
-        <div id="dropdown-fake-evaluation" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; " role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div id="dropdown-fake-evaluation" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <LayoutEvaluation/>
         </div>        
-        <div id="dropdown-fake-misc" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; " role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div id="dropdown-fake-misc" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <LayoutMisc/>
         </div>                 
         <script type="module">
