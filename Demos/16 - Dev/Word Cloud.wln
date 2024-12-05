@@ -1,0 +1,368 @@
+<|"Notebook" -> <|"Controller" -> "3d717af6-3310-448e-91d2-04fedf9ac662", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$195], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "95039214-4e98-4e61-882c-d7c4af5b458d", 
+   "Objects" -> <|"ddb97791-35cb-4ef5-b377-dc0f99c4aabb" -> 
+      <|"Public" -> Hold[HTMLView["<div class=\"relative shrink-0 gap-y-3 \
+pb-2 flex flex-col sm-controls\"><div class=\"flex gap-x-5 \
+sm-controls\"><label for=\"default-range\" class=\"block mb-2 text-sm \
+font-medium text-gray-900\">Spread</label><input min=\"0.05\" max=\"0.5\" \
+step=\"0.01\" value=\"0.25\" id=\"n-#instanceId\" type=\"number\" \
+class=\"ml-auto h-2 grow max-w-60 block p-2.5 text-xs text-gray-900 \
+bg-gray-50 rounded-md border-2-gray-50 border border-gray-300 \
+focus:ring-blue-500 focus:border-blue-500\"></input></div><input min=\"0.05\" \
+max=\"0.5\" step=\"0.01\" value=\"0.25\" id=\"r-#instanceId\" type=\"range\" \
+class=\"sm-controls w-full h-1 bg-gray-200 rounded-lg appearance-none \
+cursor-pointer \"></input></div>\n<script type=\"module\"> const num = \
+document.getElementById('n-#instanceId');\n        const ran = \
+document.getElementById('r-#instanceId');\n\n        let harpticQ = true;\n\n \
+       function isNumber(value) { return typeof value === 'number'}\n\n       \
+ num.addEventListener('input', (event)=> {\n            if (isNaN(num.value)) \
+return;\n            ran.value = num.value;\n            \
+server.kernel.emitt('4434440a-b246-4460-98f9-7288266e6450', num.value, \
+'Default');      \n        });\n\n        ran.addEventListener('input', \
+(event)=> {\n            if (isNaN(ran.value)) return;\n            num.value \
+= ran.value;\n            \
+server.kernel.emitt('4434440a-b246-4460-98f9-7288266e6450', ran.value, \
+'Default');   \n            if (harpticQ) {\n                if \
+(!window.electronAPI) {harpticQ = false; return}\n                if \
+(!window.electronAPI.harptic) {harpticQ = false; return}\n                \
+window.electronAPI.harptic();\n            }               \n        \
+});</script>", Prolog -> HTMLView`TemplateProcessor[Association[
+             "instanceId" -> CreateUUID[]]]]]|>, 
+     "ad224a9b-9f5f-489e-bcec-b0949162f42b" -> 
+      <|"Public" -> Hold[Graphics[{{FrontInstanceGroup[
+             "c9ad4641-0287-482d-9b3d-69522ea06989", Offload[
+              {RGBColor[{1 - color$360314[[1]], 0, color$360314[[1]]}], Text[
+                "Wryly", pos$360314[[1]], {0, 0}]}]], FrontInstanceGroup[
+             "ea70f3fc-396f-4eab-83f2-7ce3cd39f281", Offload[
+              {RGBColor[{1 - color$360314[[2]], 0, color$360314[[2]]}], Text[
+                "Satyric", pos$360314[[2]], {0, 0}]}]], FrontInstanceGroup[
+             "665ec867-2cc0-4f7f-93a7-fcce1715d855", Offload[
+              {RGBColor[{1 - color$360314[[3]], 0, color$360314[[3]]}], Text[
+                "Unleavened", pos$360314[[3]], {0, 0}]}]], FrontInstanceGroup[
+             "6b67c4b4-4fd8-48be-a45e-81004affa797", Offload[
+              {RGBColor[{1 - color$360314[[4]], 0, color$360314[[4]]}], Text[
+                "Forearm", pos$360314[[4]], {0, 0}]}]], FrontInstanceGroup[
+             "5fa41851-8241-47bb-bc2e-6e2b06d54698", Offload[
+              {RGBColor[{1 - color$360314[[5]], 0, color$360314[[5]]}], Text[
+                "Prolix", pos$360314[[5]], {0, 0}]}]], FrontInstanceGroup[
+             "90023921-0bf9-4494-b423-f8a0b941cc14", Offload[
+              {RGBColor[{1 - color$360314[[6]], 0, color$360314[[6]]}], Text[
+                "Potent", pos$360314[[6]], {0, 0}]}]], FrontInstanceGroup[
+             "e1d037f7-a260-442b-b367-e411625e88bd", Offload[
+              {RGBColor[{1 - color$360314[[7]], 0, color$360314[[7]]}], Text[
+                "Insupportable", pos$360314[[7]], {0, 0}]}]], 
+            FrontInstanceGroup["23fa0f99-23b9-484c-a114-3519824c11a0", 
+             Offload[{RGBColor[{1 - color$360314[[8]], 0, color$360314[[
+                  8]]}], Text["Circumflex", pos$360314[[8]], {0, 0}]}]], 
+            FrontInstanceGroup["115732f6-e988-472a-bdd6-8ddac18392b0", 
+             Offload[{RGBColor[{1 - color$360314[[9]], 0, color$360314[[
+                  9]]}], Text["Purveyor", pos$360314[[9]], {0, 0}]}]], 
+            FrontInstanceGroup["dc13a147-476e-4caa-b4ca-e6ab1eaa1fb6", 
+             Offload[{RGBColor[{1 - color$360314[[10]], 0, color$360314[[
+                  10]]}], Text["Massage", pos$360314[[10]], {0, 0}]}]], 
+            FrontInstanceGroup["091c9915-0579-48f9-ada8-d51968de0e1f", 
+             Offload[{RGBColor[{1 - color$360314[[11]], 0, color$360314[[
+                  11]]}], Text["Manila", pos$360314[[11]], {0, 0}]}]], 
+            FrontInstanceGroup["187c716a-1d46-465b-b714-1d1c61fe4de2", 
+             Offload[{RGBColor[{1 - color$360314[[12]], 0, color$360314[[
+                  12]]}], Text["Dissembler", pos$360314[[12]], {0, 0}]}]], 
+            FrontInstanceGroup["2fb2be5a-d9c8-4b75-86b0-50564c420a29", 
+             Offload[{RGBColor[{1 - color$360314[[13]], 0, color$360314[[
+                  13]]}], Text["Pejorative", pos$360314[[13]], {0, 0}]}]], 
+            FrontInstanceGroup["369c02ab-0ccf-4bf9-9368-b5b1c002b7ae", 
+             Offload[{RGBColor[{1 - color$360314[[14]], 0, color$360314[[
+                  14]]}], Text["Dinar", pos$360314[[14]], {0, 0}]}]], 
+            FrontInstanceGroup["50f6b8df-9588-4be7-b837-e1bb22cf7dee", 
+             Offload[{RGBColor[{1 - color$360314[[15]], 0, color$360314[[
+                  15]]}], Text["Busby", pos$360314[[15]], {0, 0}]}]], 
+            FrontInstanceGroup["bcc0c267-70d2-4473-be2d-56078be401d4", 
+             Offload[{RGBColor[{1 - color$360314[[16]], 0, color$360314[[
+                  16]]}], Text["Monstrous", pos$360314[[16]], {0, 0}]}]], 
+            FrontInstanceGroup["544f8683-a771-459c-8bde-5873beafbc6e", 
+             Offload[{RGBColor[{1 - color$360314[[17]], 0, color$360314[[
+                  17]]}], Text["Brio", pos$360314[[17]], {0, 0}]}]], 
+            FrontInstanceGroup["a5eadaf6-eaef-4b47-abec-e95b36fc4eab", 
+             Offload[{RGBColor[{1 - color$360314[[18]], 0, color$360314[[
+                  18]]}], Text["Avuncular", pos$360314[[18]], {0, 0}]}]], 
+            FrontInstanceGroup["5c65f9e6-83fc-4904-9603-8f21d3cc12b0", 
+             Offload[{RGBColor[{1 - color$360314[[19]], 0, color$360314[[
+                  19]]}], Text["Squalidness", pos$360314[[19]], {0, 0}]}]], 
+            FrontInstanceGroup["949c03c6-85af-40ef-9b8c-7b27edb62ea8", 
+             Offload[{RGBColor[{1 - color$360314[[20]], 0, color$360314[[
+                  20]]}], Text["Brittleness", pos$360314[[20]], {0, 0}]}]], 
+            FrontInstanceGroup["a5f041b1-6f59-4feb-88c8-22ec4b670c63", 
+             Offload[{RGBColor[{1 - color$360314[[21]], 0, color$360314[[
+                  21]]}], Text["Hostage", pos$360314[[21]], {0, 0}]}]], 
+            FrontInstanceGroup["bd21fe6d-d13d-458e-953e-9dbbdbe3b423", 
+             Offload[{RGBColor[{1 - color$360314[[22]], 0, color$360314[[
+                  22]]}], Text["Conic", pos$360314[[22]], {0, 0}]}]], 
+            FrontInstanceGroup["4e587470-eeab-4784-9534-75c055bb601d", 
+             Offload[{RGBColor[{1 - color$360314[[23]], 0, color$360314[[
+                  23]]}], Text["Concluded", pos$360314[[23]], {0, 0}]}]], 
+            FrontInstanceGroup["388f0f35-a825-4d0c-b40c-e911e38dac23", 
+             Offload[{RGBColor[{1 - color$360314[[24]], 0, color$360314[[
+                  24]]}], Text["Traitorously", pos$360314[[24]], {0, 0}]}]], 
+            FrontInstanceGroup["b7011994-7b2d-43b7-a084-14ffcfde96a2", 
+             Offload[{RGBColor[{1 - color$360314[[25]], 0, color$360314[[
+                  25]]}], Text["Sedateness", pos$360314[[25]], {0, 0}]}]], 
+            FrontInstanceGroup["dfc39e01-844a-462d-adaa-da9015fbced0", 
+             Offload[{RGBColor[{1 - color$360314[[26]], 0, color$360314[[
+                  26]]}], Text["Landscape", pos$360314[[26]], {0, 0}]}]], 
+            FrontInstanceGroup["30d4dd06-4a35-4d7a-9899-9ffadee0cbb3", 
+             Offload[{RGBColor[{1 - color$360314[[27]], 0, color$360314[[
+                  27]]}], Text["Dissonant", pos$360314[[27]], {0, 0}]}]], 
+            FrontInstanceGroup["a99563fa-5b06-4b8b-860a-4aceafaf9a3f", 
+             Offload[{RGBColor[{1 - color$360314[[28]], 0, color$360314[[
+                  28]]}], Text["Outlook", pos$360314[[28]], {0, 0}]}]], 
+            FrontInstanceGroup["83a3e76f-e1e2-4432-9555-f34d190bf274", 
+             Offload[{RGBColor[{1 - color$360314[[29]], 0, color$360314[[
+                  29]]}], Text["Mellowing", pos$360314[[29]], {0, 0}]}]], 
+            FrontInstanceGroup["158ee656-18bb-4a7d-9a28-4e09c2604b54", 
+             Offload[{RGBColor[{1 - color$360314[[30]], 0, color$360314[[
+                  30]]}], Text["Atheism", pos$360314[[30]], {0, 0}]}]], 
+            FrontInstanceGroup["e2f7dcd8-c33d-4798-8d02-a52dfa5987f9", 
+             Offload[{RGBColor[{1 - color$360314[[31]], 0, color$360314[[
+                  31]]}], Text["Transistor", pos$360314[[31]], {0, 0}]}]], 
+            FrontInstanceGroup["f0145296-df4c-4f2a-810a-cd7ffa2bfdc8", 
+             Offload[{RGBColor[{1 - color$360314[[32]], 0, color$360314[[
+                  32]]}], Text["Unlighted", pos$360314[[32]], {0, 0}]}]], 
+            FrontInstanceGroup["29e012d9-3545-4450-8f3d-c55f978c36cb", 
+             Offload[{RGBColor[{1 - color$360314[[33]], 0, color$360314[[
+                  33]]}], Text["Precognitive", pos$360314[[33]], {0, 0}]}]], 
+            FrontInstanceGroup["360ec0dc-93fa-484d-9f0d-973c78e56153", 
+             Offload[{RGBColor[{1 - color$360314[[34]], 0, color$360314[[
+                  34]]}], Text["Churl", pos$360314[[34]], {0, 0}]}]], 
+            FrontInstanceGroup["b302b935-ce74-45a2-a88d-03864a5b4b0f", 
+             Offload[{RGBColor[{1 - color$360314[[35]], 0, color$360314[[
+                  35]]}], Text["Reprise", pos$360314[[35]], {0, 0}]}]], 
+            FrontInstanceGroup["20a12f72-7a3d-4801-8ff0-3419b493401b", 
+             Offload[{RGBColor[{1 - color$360314[[36]], 0, color$360314[[
+                  36]]}], Text["Banal", pos$360314[[36]], {0, 0}]}]], 
+            FrontInstanceGroup["b184230e-22de-41e6-9384-a971f3ece279", 
+             Offload[{RGBColor[{1 - color$360314[[37]], 0, color$360314[[
+                  37]]}], Text["Antiserum", pos$360314[[37]], {0, 0}]}]], 
+            FrontInstanceGroup["95a163c7-6565-4e4b-a8df-b96fe0de5f4e", 
+             Offload[{RGBColor[{1 - color$360314[[38]], 0, color$360314[[
+                  38]]}], Text["Foghorn", pos$360314[[38]], {0, 0}]}]], 
+            FrontInstanceGroup["004a403c-dc48-49dc-80d1-f69d76ad2363", 
+             Offload[{RGBColor[{1 - color$360314[[39]], 0, color$360314[[
+                  39]]}], Text["Stocktaking", pos$360314[[39]], {0, 0}]}]], 
+            FrontInstanceGroup["cd12df4f-b4b7-4fef-8f1a-53fd931716f9", 
+             Offload[{RGBColor[{1 - color$360314[[40]], 0, color$360314[[
+                  40]]}], Text["Separated", pos$360314[[40]], {0, 0}]}]], 
+            FrontInstanceGroup["953fe08b-8501-4415-b2fd-4dcc3cf16d61", 
+             Offload[{RGBColor[{1 - color$360314[[41]], 0, color$360314[[
+                  41]]}], Text["Nimble", pos$360314[[41]], {0, 0}]}]], 
+            FrontInstanceGroup["b8703ee6-30dd-4064-a687-fd5618b3e5a7", 
+             Offload[{RGBColor[{1 - color$360314[[42]], 0, color$360314[[
+                  42]]}], Text["Tetra", pos$360314[[42]], {0, 0}]}]], 
+            FrontInstanceGroup["cc4121bb-2fad-4183-9dae-cdbfa388789f", 
+             Offload[{RGBColor[{1 - color$360314[[43]], 0, color$360314[[
+                  43]]}], Text["Skip", pos$360314[[43]], {0, 0}]}]], 
+            FrontInstanceGroup["4fb11f78-71da-4e71-bc5e-83beed2e9d29", 
+             Offload[{RGBColor[{1 - color$360314[[44]], 0, color$360314[[
+                  44]]}], Text["Catamaran", pos$360314[[44]], {0, 0}]}]], 
+            FrontInstanceGroup["0deb7590-068e-4335-aaa9-d0a529d83a82", 
+             Offload[{RGBColor[{1 - color$360314[[45]], 0, color$360314[[
+                  45]]}], Text["Overload", pos$360314[[45]], {0, 0}]}]], 
+            FrontInstanceGroup["ef552b5c-5320-494c-b3c6-2009ac1f5b28", 
+             Offload[{RGBColor[{1 - color$360314[[46]], 0, color$360314[[
+                  46]]}], Text["Different", pos$360314[[46]], {0, 0}]}]], 
+            FrontInstanceGroup["4d77306f-c19c-47b8-b87c-46095e647d48", 
+             Offload[{RGBColor[{1 - color$360314[[47]], 0, color$360314[[
+                  47]]}], Text["Fluctuating", pos$360314[[47]], {0, 0}]}]], 
+            FrontInstanceGroup["2d3ef60c-ca48-47b9-bbdf-fb5621bc0173", 
+             Offload[{RGBColor[{1 - color$360314[[48]], 0, color$360314[[
+                  48]]}], Text["Antiquarian", pos$360314[[48]], {0, 0}]}]], 
+            FrontInstanceGroup["cb2cfcf8-832e-4f49-ab4d-3f39e4ce5b43", 
+             Offload[{RGBColor[{1 - color$360314[[49]], 0, color$360314[[
+                  49]]}], Text["Nonpartisan", pos$360314[[49]], {0, 0}]}]], 
+            FrontInstanceGroup["a12f4e5b-aa2e-4660-9b77-e257fb2c63d0", 
+             Offload[{RGBColor[{1 - color$360314[[50]], 0, color$360314[[
+                  50]]}], Text["Vitiation", pos$360314[[50]], {0, 0}]}]]}, 
+           AnimationFrameListener[Offload[trigger], "Event" -> "cycle"], 
+           EventListener[Graphics`Canvas[], {"mousemove" -> 
+              "b81ec786-86d2-4825-831e-8f2af2151a9e"}]}, 
+          ImageSize -> {500, 300}, PlotRange -> {{-1, 1}, {-1, 1}}, 
+          TransitionType -> None]]|>|>, "Path" -> "/Users/kirill/Github/wolfr\
+am-js-frontend/Demos/16 - Dev/Word Cloud.wln", "Quick" -> True, 
+   "Symbols" -> <|"color$360314" -> JSObject[0.012074385445893334[
+        0.07680698100003226, 0.30847422191178525, 0.17261555870900497, 
+        0.26928347133301417, 0.241468588122427, 0.2671804988208423, 
+        0.12290774438953903, 0.023780605088946118, 0.2015791749595487, 
+        0.14088079955333194, 0.07987682134788664, 0.19628880038421487, 
+        0.10238257222781454, 0.18220685568325776, 0.23270967454982755, 
+        0.1421638400344882, 0.05628720449588129, 0.13878591916271263, 
+        0.24306580658378224, 0.01957882764091024, 0.08366999550992703, 
+        0.08667807634063633, 0.01261525880280985, 0.1747612451945532, 
+        0.1250267774589044, 0.1480883422686905, 0.1924940651450438, 
+        0.1699422196976141, 0.16258668120984288, 0.2698464148151167, 
+        0.06869899962601926, 0.13961527101071072, 0.21651641524248094, 
+        0.1690037064222908, 0.08461274112515758, 0.2924121334718778, 
+        0.21817608250958156, 0.07842864941330199, 0.12411866328652232, 
+        0.06951008778203771, 0.020542661847927267, 0.2605604440743118, 
+        0.05555927754803787, 0.055015266850476904, 0.14451521627053773, 
+        0.03005906562548441, 0.10878337858689119, 0.03601023500766176, 
+        0.12129499728102988, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 
+        0.8, 0.8, 0.8]], "pos$360314" -> 
+      JSObject[0.9433962800275514[0.2331118491352551][(-0.6851049812403924)[
+         -0.7139596160336754], 0.48735030527307616[-0.44679419850254987], 
+        0.3930045718967481[0.2973576462486339], (-0.12900718036412126)[
+         -0.2336636435004379], 0.9337345316937551[-0.7571886755061822], 
+        (-0.02649038214389662)[-0.8806138626978373], 0.29591610589846856[
+         0.9078189914712963], (-1.3373220678707936)[-0.014866897872666292], 
+        (-0.07168059890647084)[-1.5588005991845364], (-0.8338350489233222)[
+         0.7801568934867336], 0.728114715852428[0.6732905530587961], 
+        (-0.044266605803050356)[1.0914932125935246], (-0.7342533237614584)[
+         -1.2770697781494667], (-0.5498393549528693)[1.028852941515135], 
+        (-0.25811560634428987)[-1.4089039402301733], 0.049058827845853005[
+         0.44705119590604653], (-1.1402543709292428)[-0.9121928877638357], 
+        0.5225824894106335[0.901417554892455], 0.7401825186586379[
+         -1.212620600061963], 1.1545907905530983[-0.01446315967244185], 
+        (-1.0950743144370012)[0.3963618798279075], (-0.9988577151262382)[
+         -0.41275927929054673], (-0.9825549088738594)[-1.248047342794059], 
+        (-0.7991620995752777)[-0.08031222796690986], (-0.18453456094944182)[
+         0.9869004563203496], (-0.9710294439509475)[0.7950498750831293], 
+        (-0.3811329491172597)[-0.8303305927132724], 0.9994491739702503[
+         -0.8940699716224583], (-0.37193316538205135)[0.5205944559105177], 
+        0.22968274311154835[-0.2535197676992534], 0.9601331768522453[
+         0.47586637096536055], 0.4298541829121177[-0.866859851777319], 
+        (-0.2940007796856546)[-0.5760550044228225], (-0.5969390542511456)[
+         0.2395837530534011], (-1.3013284661135145)[0.4053932720341187], 
+        0.08452194512624929[-0.5944974070326337], 0.4358719328899945[
+         -1.4307551543423125], 0.9460016303659837[-0.2261506288951207], 
+        (-0.49412275934940325)[-0.07109154281015259], (-0.5517847402075737)[
+         -1.4801048623351285], (-1.3160723591172603)[-0.8422785074486895], 
+        0.24609561419366788[-1.3467092740119209], (-1.453435976605573)[
+         -0.09028255493000484], 1.1576565396046372[-0.4319121544778667], 
+        0.4553737415538553[-0.053065238278180014], (-1.4281657111318375)[
+         -0.49012307008726674], (-0.5931378498706068)[-0.3936340577670884], 
+        (-0.22089671294311106)[0.20003767557295274], 0.13393789306986525[
+         0.0909623774212505], 0.2069936847660494, -0.40036202053615044, 
+        0.2069936847660494, -0.40036202053615044, 0.2069936847660494, 
+        -0.40036202053615044, 0.2069936847660494, -0.40036202053615044, 
+        0.2069936847660494, -0.40036202053615044, 0.2069936847660494, 
+        -0.40036202053615044]], "trigger" -> 1|>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Word Cloud", 
+      CellObj[JerryI`Notebook`CellObj`$246]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Word Cloud\n*Utilizing an efficient \
+object-like data structure `FrontProxy` to dynamically render and manage word \
+positions and colors in a word cloud visualization, responding interactively \
+to user input.*", "Display" -> "codemirror", 
+    "Hash" -> "6b82ee4e-5074-4884-941e-3a230029d82d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "# Word Cloud\n*Utilizing an efficient object-like data \
+structure `FrontProxy` to dynamically render and manage word positions and \
+colors in a word cloud visualization, responding interactively to user \
+input.*", "Display" -> "markdown", "Hash" -> 
+     "faa41aaf-beca-4cc8-a6bb-d5e3562dab1d", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> ".md\nCreate a new generator function. Here we expose `color` \
+and `pos` as mutable properties to allow for real-time updates and animations \
+within the word cloud", "Display" -> "codemirror", 
+    "Hash" -> "9e286539-a9b0-4ecf-ae48-24125e325de1", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> False|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "Create a new generator function. Here we expose `color` and \
+`pos` as mutable properties to allow for real-time updates and animations \
+within the word cloud", "Display" -> "markdown", 
+    "Hash" -> "94bc1922-6304-427a-beb1-1bd517618bea", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "label = CreateFrontProxy[{color, pos, text}, {\n  \
+RGBColor[With[{h = color}, {1-h, 0, h}]], \n  Text[text, pos, {0,0}]\n}, \
+{color, pos}];", "Display" -> "codemirror", 
+    "Hash" -> "dafd7a57-94f5-4edd-8fb4-53c4c82b84e3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> ".md\nNow we spawn 50 labels using a random word generator to \
+populate the word cloud", "Display" -> "codemirror", 
+    "Hash" -> "7b2d993e-e966-4ad0-bd5d-a8025b057c17", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "Now we spawn 50 labels using a random word generator to \
+populate the word cloud", "Display" -> "markdown", 
+    "Hash" -> "3b0b7c0f-a160-403d-a127-90d635dafacf", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "labels = Table[\n  label[\n    0.8, \n    RandomReal[{-1,1}, \
+2], \n    RandomWord[]//Capitalize\n  ]\n, {50}];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "47ae0edd-b01e-454e-91e9-3127a5a7d7c8", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> ".md\nOne can think of this as a simulation of mass density \
+where gradients of concentration push labels to spread them evenly", 
+    "Display" -> "codemirror", "Hash" -> 
+     "fad31567-8860-41f2-8581-d377fc5470f6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "One can think of this as a simulation of mass density where \
+gradients of concentration push labels to spread them evenly", 
+    "Display" -> "markdown", "Hash" -> 
+     "8e7b45bd-ba2b-4e2d-a4f8-2ad37c4b4e2f", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "Module[{\n  c, pos, gradient\n}, spread[sigma_, hand_] := \
+(Do[\n  \n    {c, pos} = FrontProxyGet[i];\n  \n    gradient = Sum[If[i===j, \
+{0.,0.}, With[{neib = FrontProxyGet[j][[2]], \\[Sigma] = sigma},\n  \n      ( \
+(*FB[*)((((*SpB[*)Power[E(*|*),(*|*)-(*FB[*)((SquaredEuclideanDistance[pos, \
+neib])(*,*)/(*,*)(2. \
+((*SpB[*)Power[\\[Sigma](*|*),(*|*)2](*]SpB*))))(*]FB*)](*]SpB*)) \
+)(*,*)/(*,*)(((*SqB[*)Sqrt[2. \\[Pi]](*]SqB*)) \
+((*SpB[*)Power[\\[Sigma](*|*),(*|*)3](*]SpB*))))(*]FB*)  - 0.1) (pos - neib) \
+// N\n  \n    ]], {j, labels}] +  With[{\\[Sigma] = sigma}, \n    \n    ( \
+(*FB[*)((((*SpB[*)Power[E(*|*),(*|*)-(*FB[*)((SquaredEuclideanDistance[pos, \
+hand])(*,*)/(*,*)(2. \
+((*SpB[*)Power[\\[Sigma](*|*),(*|*)2](*]SpB*))))(*]FB*)](*]SpB*)) \
+)(*,*)/(*,*)(((*SqB[*)Sqrt[2. \\[Pi]](*]SqB*)) \
+((*SpB[*)Power[\\[Sigma](*|*),(*|*)3](*]SpB*))))(*]FB*)  - 0.1) (pos - \
+hand)];\n\n\n    pos = pos + 0.01 gradient;\n    c = Clip[20.0 \
+Norm[gradient]/Length[labels], {0,1}];\n\n    FrontProxySet[i, {c, pos}];\n  \
+\n  , {i, labels}];\n\n  FrontProxyDispatch[label];\n\n  );\n];", 
+    "Display" -> "codemirror", "Hash" -> 
+     "7e930d56-1bbd-4c7a-a2e4-34eed1c2652e", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> ".md\nNow let's arrange the scene and integrate all handlers \
+to facilitate interactive elements as users interact with the word cloud.", 
+    "Display" -> "codemirror", "Hash" -> 
+     "ef0a8307-2b70-4dcf-ac17-4d2e1166f7cd", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "Now let's arrange the scene and integrate all handlers to \
+facilitate interactive elements as users interact with the word cloud.", 
+    "Display" -> "markdown", "Hash" -> 
+     "566597ca-94ef-46d9-98ee-3eb24ed7cda4", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "b9e480f7-2575-4017-af95-784c8080da45"|>, 
+   <|"Data" -> "trigger = 1;\n\nsigma = 0.25;\nEventHandler[InputRange[0.14, \
+0.5, 0.01, sigma, \"Label\"->\"Spread\"], Function[value, sigma = \
+value]]\n\nhand = {0.,0.};\n\nEventHandler[\"cycle\", Function[Null,\n  \
+spread[sigma, hand];\n  trigger = 1;\n]];\n\nGraphics[{\n  Show @@ labels, \n \
+ AnimationFrameListener[trigger // Offload, \"Event\"->\"cycle\"],\n  \
+EventHandler[Graphics`Canvas[], {\n    \"mousemove\" -> Function[xy, hand = \
+xy]\n  }]\n}, \n  ImageSize->{500,300}, \n  PlotRange->{{-1,1}, {-1,1}}, \n  \
+TransitionType->None\n]", "Display" -> "codemirror", 
+    "Hash" -> "8dafe3c7-61ca-42d4-9741-33550f254be9", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True|>, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "b9e480f7-2575-4017-af95-784c8080da45"|>}, 
+ "serializer" -> "jsfn4"|>
