@@ -5,7 +5,7 @@ Component[OptionsPattern[]] := With[{
   Class = OptionValue["Class"],
   Style = OptionValue["Style"]
 },
-  With[{Layout = 
+  With[{LayoutFile = 
   {
     <div class="py-0 px-2" role="none">     
         <button data-name="newshort" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -52,75 +52,7 @@ Component[OptionsPattern[]] := With[{
         Save As
       </button>          
     </div>
-    ,
-      Table[ With[{event = Vi["event"], Label = Vi["label"]},
-      <div class="py-0 px-2" role="none">     
-        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          <Label/>
-        </button>          
-      </div>        
-      ], {Vi, Join[Plugins["view"], {}]}]
-    ,
-    <div class="py-0 px-2" role="none">
-      <button data-name="reload" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Reload page
-      </button>
-      <button data-name="OnTop" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Always on top
-      </button>      
-    </div>
-      
-    ,
-      <div class="py-0 px-2" role="none">
-        <button data-name="abort" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-          Abort
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+.</kbd></span>
-        </button>
-        <button data-name="evalInit" class="block text-left w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-          Evaluate initialization cells
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+I</kbd></span>
-        </button>   
-        <button data-name="togglecells" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-    
-          Show/Hide cell
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+2</kbd></span>
-        </button>                     
-        <button data-name="clearoutputs" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-    
-          Clear outputs
-          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+U</kbd></span>
-        </button>
-      </div> 
-    ,
-    <div class="py-0 px-2" role="none">
-      <button data-name="newlocalkernel" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-       New Kernel
-        
-      </button>    
-      <button data-name="restartkernels" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Restart Kernel
-        
-      </button>
-      <button data-name="shutdownall" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Shutdown all 
-      </button>      
-    </div>
-    ,    
-      Table[ With[{event = Vi["event"], Label = Vi["label"]},
-      <div class="py-0 px-2" role="none">     
-        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          <Label/>
-        </button>          
-      </div>        
-      ], {Vi, Join[Plugins["edit"], {}]}]
-    ,
+,   
       <div class="py-0 px-2" role="none">
         <button data-name="locateExamples" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
        
@@ -136,26 +68,6 @@ Component[OptionsPattern[]] := With[{
         </button>               
       </div>
       
-    ,
-    <div class="py-0 px-2" role="none">
-      <button data-name="zoomIn" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Zoom in
-        
-      </button>
-      <button data-name="zoomOut" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-
-        Zoom out
-      </button>      
-    </div>
-    ,
-      Table[ With[{event = Vi["event"], Label = Vi["label"]},
-      <div class="py-0 px-2" role="none">     
-        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
-          <Label/>
-        </button>          
-      </div>        
-      ], {Vi, Join[Plugins["misc"], {}]}]
     ,  
      <div class="py-0 px-2" role="none">
        <button data-name="OpenSettings" data-ctl="true" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
@@ -185,35 +97,149 @@ Component[OptionsPattern[]] := With[{
     </div>  
 
   } // Flatten
+,
+LayoutView = 
+  {
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+      <div class="py-0 px-2" role="none">     
+        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          <Label/>
+        </button>          
+      </div>        
+      ], {Vi, Join[Plugins["view"], {}]}]
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="reload" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Reload page
+      </button>
+      <button data-name="OnTop" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Always on top
+      </button>      
+    </div>
+      
+    ,
+      <div class="py-0 px-2" role="none"> 
+        <button data-name="togglecells" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+    
+          Show/Hide cell
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+2</kbd></span>
+        </button>                     
+        <button data-name="clearoutputs" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+    
+          Clear outputs
+          <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+U</kbd></span>
+        </button>
+      </div> 
+    ,    
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+      <div class="py-0 px-2" role="none">     
+        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          <Label/>
+        </button>          
+      </div>        
+      ], {Vi, Join[Plugins["edit"], {}]}]
+    ,
+    <div class="py-0 px-2" role="none">
+      <button data-name="zoomIn" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Zoom in
+        
+      </button>
+      <button data-name="zoomOut" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Zoom out
+      </button>      
+    </div>
+  
+  } // Flatten
+,
+LayoutEvaluation = {
+  <div class="py-0 px-2" role="none">
+    <button data-name="abort" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+      Abort
+      <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+.</kbd></span>
+    </button>
+    <button data-name="evalInit" class="block text-left w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+      Evaluate initialization cells
+      <span class="ml-auto flex-none text-xs  text-gray-400"><kbd class="font-sans">Alt+I</kbd></span>
+    </button> 
+  </div>
+,
+    
+    
+    <div class="py-0 px-2" role="none">
+      <button data-name="newlocalkernel" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+       New Kernel
+        
+      </button>    
+      <button data-name="restartkernels" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Restart Kernel
+        
+      </button>
+      <button data-name="shutdownall" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+
+        Shutdown all 
+      </button>      
+    </div>
+
+} // Flatten
+,
+LayoutMisc = 
+  {
+   
+      Table[ With[{event = Vi["event"], Label = Vi["label"]},
+      <div class="py-0 px-2" role="none">     
+        <button data-ctl="true" data-name="{event}" class="block w-full  text-black group flex items-center px-1 my-1 py-1 rounded text-sm leading-4 dark:text-gray-400" role="menuitem" tabindex="-1">
+          <Label/>
+        </button>          
+      </div>        
+      ], {Vi, Join[Plugins["misc"], {}]}]
+  } // Flatten
 },
 
     <div class="h-titlebar flex {Class}" style="-webkit-app-region:none">
-        <div class="my-auto mr-auto pr-1" style="{Style}">
-            <button id="fake-menu-close" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 owin:ml-0 linux:ml-0">
-                <svg fill="currentColor" class="w-5 h-5 mr-auto ml-auto" viewBox="0 -1 16 20" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="currentColor">
-                        <path d="m 1 2 h 14 v 2 h -14 z m 0 0"></path>
-                        <path d="m 1 7 h 14 v 2 h -14 z m 0 0"></path>
-                        <path d="m 1 12 h 14 v 2 h -14 z m 0 0"></path>
-                    </g>
-                </svg>
+        <div class="mr-auto pr-4 flex gap-x-1 text-sm" style="{Style}">
+            <button id="fake-menu-file" class="text-gray-500 hover:text-black dark:hover:text-white rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+                File
             </button>
-            <button id="fake-menu-open" class="text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-8 h-6 bro:hidden win:ml-0 owin:ml-0 linux:ml-0">
-                <svg fill="none" class="w-5 h-5 mr-auto ml-auto" viewBox="2 3 22 21" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.2686 14.2686L15 16M12.0627 6.06274L11.9373 5.93726C11.5914 5.59135 11.4184 5.4184 11.2166 5.29472C11.0376 5.18506 10.8425 5.10425 10.6385 5.05526C10.4083 5 10.1637 5 9.67452 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V10.2C21 9.0799 21 8.51984 20.782 8.09202C20.5903 7.71569 20.2843 7.40973 19.908 7.21799C19.4802 7 18.9201 7 17.8 7H14.3255C13.8363 7 13.5917 7 13.3615 6.94474C13.1575 6.89575 12.9624 6.81494 12.7834 6.70528C12.5816 6.5816 12.4086 6.40865 12.0627 6.06274ZM14 12.5C14 13.8807 12.8807 15 11.5 15C10.1193 15 9 13.8807 9 12.5C9 11.1193 10.1193 10 11.5 10C12.8807 10 14 11.1193 14 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-        <div class="grow h-full" style="-webkit-app-region: drag"></div>
-        <div id="dropdown-fake" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0; left:0.5rem; height:80vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-            <Layout/>
-            <script type="module">
-                const holder = document.getElementById('dropdown-fake');
 
-                const openfolder = document.getElementById('fake-menu-open');
-                openfolder.addEventListener('click', () => {
-                  window.electronAPI.topMenu('openFolder');
-                });
+            <button id="fake-menu-view" class="text-gray-500 hover:text-black dark:hover:text-white rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+                View
+            </button>
+
+            <button id="fake-menu-evaluation" class="text-gray-500 hover:text-black dark:hover:text-white rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+                Evaluation
+            </button>            
+
+            <button id="fake-menu-misc" class="text-gray-500 hover:text-black dark:hover:text-white rounded-md px-2 h-6 win:ml-0 owin:ml-0 linux:ml-0">
+                Misc
+            </button>
+
+        </div>
+        <div class="grow h-full" style="-webkit-app-region: drag;"></div>
+        <div id="dropdown-fake-file" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <LayoutFile/>
+        </div>  
+        <div id="dropdown-fake-view" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <LayoutView/>
+        </div> 
+        <div id="dropdown-fake-evaluation" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <LayoutEvaluation/>
+        </div>        
+        <div id="dropdown-fake-misc" class="hidden sc-b absolute right-0 z-10 mt-6 w-56 origin-top-right divide-y divide-gray-400 dark:divide-gray-700 overflow-y-scroll rounded backdrop-blur-xl bg-white/90 drop-shadow-xl outline outline-gray-300 outline-offset-0 outline-1 text-gray-800 dark:bg-gray-800 dark:outline-gray-700" style="top:0.4rem; left:0.5rem; max-height: 90vh" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <LayoutMisc/>
+        </div>                 
+        <script type="module">
+          const exts = ['file', 'view', 'evaluation', 'misc'];
+          for (const ext of exts) {
+               const holder = document.getElementById('dropdown-fake-'+ext);
+
 
                 const close = () => {
                     holder.classList.add('hidden');
@@ -236,9 +262,9 @@ Component[OptionsPattern[]] := With[{
                 }
 
                 const spawn = () => {
-
+                
                     holder.classList.remove('hidden');
-
+                
                     //const placeholder = document.getElementById('dropdown-holder-'+uid).getBoundingClientRect();
                     //console.log(placeholder);
                     //holder.style.top = - 25 + placeholder.bottom + 'px';
@@ -250,11 +276,10 @@ Component[OptionsPattern[]] := With[{
                     }, 40);
                 };   
 
-                const hamburger = document.getElementById('fake-menu-close');
+                const hamburger = document.getElementById('fake-menu-'+ext);
                 hamburger.addEventListener('click', spawn);
-
-            </script>
-        </div>        
+          }
+      </script>              
     </div>
 
   ]]

@@ -1,25 +1,26 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$230], 
+<|"Notebook" -> <|"Controller" -> "5859359a-739a-4646-8208-435f59ca73c1", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$574], 
    "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "5ff10efc-0083-44cf-8434-a366f4658e49", 
+   "ModalsChannel" -> "d958e486-a680-45c9-8a21-b948879c320f", 
    "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
 os/04 - Animation/Windows 3D Pipes screensaver.wln", "Quick" -> True, 
    "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
       "Windows 3D Pipes screensaver", 
-      CellObj[JerryI`Notebook`CellObj`$466]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$569]]}|>, 
  "Cells" -> {<|"Data" -> ".md\n# Windows 3D Pipes screensaver\nA legendary \
 screensaver recreated in Woflram Language.\n\n> Based on web port by \
 [1j01](https://github.com/1j01/pipes)", "Display" -> "codemirror", 
-    "Hash" -> "ff824b81-8950-43af-ae7b-64a20c24852a", "Invisible" -> False, 
+    "Hash" -> "85e99fb4-edd1-4e8d-981a-e2f240e412da", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+     "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>, 
    <|"Data" -> "# Windows 3D Pipes screensaver\nA legendary screensaver \
 recreated in Woflram Language.\n\n> Based on web port by \
 [1j01](https://github.com/1j01/pipes)", "Display" -> "markdown", 
-    "Hash" -> "f755ad7d-5420-4b25-8fcf-a2167bf9bab9", "Invisible" -> False, 
+    "Hash" -> "cd982d5d-ac8c-4123-9ee4-1b3602f3bf7e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+     "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>, 
    <|"Data" -> "(* Helper functions \
 *)\nRandomIntegerVectorWithinBox[min_List, max_List] := Table[\n  \
 RandomInteger[{min[[i]], max[[i]]}],\n  {i, \
@@ -58,22 +59,22 @@ AppendTo[triedDirections, dir];\n      ,\n      {dir, possibleDirections}\n   \
  ];\n    \n    If[!moveMade,\n      (* No valid moves, terminate simulation \
 *)\n      $Failed\n    ,\n      positions\n    ]\n\n    \n  ]\n  \n]\n\n", 
     "Display" -> "codemirror", "Hash" -> 
-     "53718209-000c-44de-a0da-26fbd2d7b13b", "Invisible" -> False, 
+     "f550a26b-7e4c-47d5-ab16-2b46bcc355c9", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"InitGroup" -> True, "Fade" -> True|>, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+    "Notebook" -> "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>, 
    <|"Data" -> ".md\nMake it animated", "Display" -> "codemirror", 
-    "Hash" -> "cd717951-66fd-4d7d-8579-60ae8b446eea", "Invisible" -> False, 
+    "Hash" -> "a4965154-ae9e-45ac-a4cd-08bf731b0020", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
+     "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>, 
    <|"Data" -> "Make it animated", "Display" -> "markdown", 
-    "Hash" -> "1e9d8a46-e30e-416a-b020-4c1f14b2c2be", "Invisible" -> False, 
+    "Hash" -> "9d0b3ace-a19e-41ef-b5a7-b1119022e2de", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>, 
-   <|"Data" -> "\nWith[{\n  frame = CreateUUID[],\n  win = \
-CurrentWindow[]\n},\n  Module[{\n    pipeFunction = Function[Null, \
+     "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>, 
+   <|"Data" -> "\nWith[{\n  frame = CreateUUID[],\n  scene = \
+FrontInstanceReference[]\n},\n  Module[{\n    pipeFunction = Function[Null, \
 $Failed],\n    pipesNumber = 0,\n    trigger = 1\n  },\n\n    \
 EventHandler[frame, Function[Null,\n      With[{\n        result = \
 pipeFunction[]\n      },\n        If[FailureQ[result],\n          With[{\n    \
@@ -84,12 +85,12 @@ pipeFunction = Function[Null,\n              With[{seg = generator[]}, \n     \
                 segments = seg // N;\n                ]\n              ]\n    \
         ];\n\n            pipeFunction[];\n\n            FrontSubmit[{\n      \
         ColorData[97][pipesNumber],\n              Tube[segments // Offload, \
-0.2]\n            }, MetaMarker[marker], \"Window\"->win];\n          ]\n     \
-   ]\n      ];\n\n      trigger++;\n    ]];\n    \n\n    Graphics3D[{\n      \
-Opacity[0], Cuboid[{-4,-4,-4}, {4,4,4}], Opacity[1], MetaMarker[marker],\n    \
-  AnimationFrameListener[trigger // Offload, \"Event\"->frame]\n    }]\n  \
-]\n]", "Display" -> "codemirror", "Hash" -> 
-     "09cfb0b9-90b0-41e0-ae17-db75a7235b43", "Invisible" -> False, 
+0.2]\n            }, scene];\n          ]\n        ]\n      ];\n\n      \
+trigger++;\n    ]];\n    \n\n    Graphics3D[{\n      Opacity[0], \
+Cuboid[{-4,-4,-4}, {4,4,4}], Opacity[1], scene,\n      \
+AnimationFrameListener[trigger // Offload, \"Event\"->frame]\n    }]\n  ]\n]"\
+, "Display" -> "codemirror", "Hash" -> 
+     "3428a019-71c8-4456-9f63-010c5a25733e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "72e3064f-07aa-4ed5-ba74-87164714b61f"|>}, "serializer" -> "jsfn4"|>
+     "0b8401f0-c605-4e4a-8be5-6c226a3bc452"|>}, "serializer" -> "jsfn4"|>

@@ -1,0 +1,45 @@
+<|"Notebook" -> <|"Controller" -> "c1e6b067-736f-4c94-acba-125bfa53ecc4", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$303], 
+   "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "98df05a5-6668-4192-a92d-25da697a8f83", "Objects" -> <||>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/14 - \
+Utils/Detect closing window.wln", "Symbols" -> <||>, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, "Detect closing window", 
+      CellObj[JerryI`Notebook`CellObj`$314]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n## Detect closing window\nIt comes handy to \
+stop tasks, or free up memory when a user closes a notebook", 
+    "Display" -> "codemirror", "Hash" -> 
+     "557541a7-d75e-4c8b-b429-ca7ec9919da3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>, 
+   <|"Data" -> ">## Detect closing window\nIt comes handy to stop tasks, or \
+free up memory when a user closes a notebook", "Display" -> "markdown", 
+    "Hash" -> "b0e97015-75c1-4e5a-99f2-71424988f147", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>, 
+   <|"Data" -> "test = {0,1,0};\n\nEventHandler[CurrentWindow[], {\"Closed\" \
+-> Function[Null,\n  test = {1,0,0};\n]}];\n\nGraphics[{RGBColor[test // \
+Offload], Disk[{0,0}, 1]}]", "Display" -> "codemirror", 
+    "Hash" -> "f13086e6-a8d2-439b-9866-b1790f66feef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>, 
+   <|"Data" -> ".md\n*Try to close notebook and reopen again*", 
+    "Display" -> "codemirror", "Hash" -> 
+     "5d118def-6509-4219-8f73-0bea70e69143", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>, 
+   <|"Data" -> ">*Try to close notebook and reopen again*", 
+    "Display" -> "markdown", "Hash" -> 
+     "66f602c4-524d-43bb-a0c5-d4fbd83e29c6", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>, 
+   <|"Data" -> " ", "Display" -> "codemirror", 
+    "Hash" -> "27eae448-1af2-41ed-9d9f-86ff8b035143", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "261a4605-1672-4743-a76e-e0d0e4562f84"|>}, "serializer" -> "jsfn4"|>

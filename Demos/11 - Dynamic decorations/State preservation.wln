@@ -1,66 +1,69 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$210], 
-   "Objects" -> <||>, "Path" -> "/users/kirill/Github/wolfram-js-frontend-dev\
-/Demos/11 - Dynamic decorations/State preservation.wln", 
-   "ReadOnly" -> False|>, "Cells" -> 
-  {<|"Data" -> ".md\n# State preservation\nAn example of mutable deffered \
-decoration in a form of a slider", "Display" -> "codemirror", 
-    "Hash" -> "a32c2376-0c88-4d37-90de-a488bb94c4d8", "Invisible" -> False, 
+<|"Notebook" -> <|"Controller" -> "c32b9a50-5175-4ce1-b51d-64131c44aa2d", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$219], 
+   "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "a03f0d39-722e-4c3a-9ea2-8470c9053a56", "Objects" -> <||>, 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/11 - Dynamic \
+decorations/State preservation.wln", "ReadOnly" -> False, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "State preservation", 
+      CellObj[JerryI`Notebook`CellObj`$215]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# State preservation\nAn example of mutable \
+deffered decoration in a form of a slider", "Display" -> "codemirror", 
+    "Hash" -> "35d71414-5289-4f1a-8c7c-548a07a5745e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
    <|"Data" -> "# State preservation\nAn example of mutable deffered \
 decoration in a form of a slider", "Display" -> "markdown", 
-    "Hash" -> "e54332f0-066f-4555-8381-d81c0891633a", "Invisible" -> False, 
+    "Hash" -> "0544f7dc-43bb-4d00-b534-a5ed18769d37", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
-   <|"Data" -> "handler[state_String, marker_, window_] := Module[{\n\tobject \
-= InputRange[0,1, 0.1, ToExpression[state]]\n},\n\tEventHandler[object, \
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
+   <|"Data" -> "handler[state_String, ref_, window_] := Module[{\n\tobject = \
+InputRange[0,1, 0.1, ToExpression[state]]\n},\n\tEventHandler[object, \
 Function[value,\n       FrontSubmit[ViewBox`InnerExpression[ToString[value]], \
-MetaMarker[marker], \"Window\"->window];\n    ]];\n  \n\n\t{PaneBox[], \
-object[[1, \"View\"]] // CreateFrontEndObject}\n]\n\nslider /: \
-MakeBoxes[slider[initial_:0.5], StandardForm] := With[{\n  uid = \
-CreateUUID[]\n},\n  EventHandler[uid, {\"Mounted\" :> Function[marker,\n    \
-With[{win = WindowObj[<|\"Socket\"->$Client|>]},\n\t  \
-Then[FrontFetchAsync[ViewBox`InnerExpression[], MetaMarker[marker], \
-\"Window\"->win], Function[payload,\n        \
-FrontSubmit[handler[{payload}//Flatten//First, marker, win], \
-MetaMarker[marker], \"Window\"->win];\n      ]]\n    ]\n   ]\n  }];\n  \n  \
-ViewBox[initial, Null, \"Event\"->uid]\n]", "Display" -> "codemirror", 
-    "Hash" -> "0af01270-b10b-4304-ad2f-37692e73d060", "Invisible" -> False, 
+ref];\n    ]];\n  \n\n\tobject[[1, \"View\"]] // \
+CreateFrontEndObject\n]\n\nslider /: MakeBoxes[slider[initial_:0.5], \
+StandardForm] := With[{\n  uid = CreateUUID[]\n},\n  EventHandler[uid, \
+{\"Mounted\" :> Function[ref,\n    With[{},\n\t  \
+Then[FrontFetchAsync[ViewBox`InnerExpression[], FrontInstanceReference[ref]], \
+Function[payload,\n        FrontSubmit[handler[{payload}//Flatten//First, \
+FrontInstanceReference[ref]], FrontInstanceReference[ref]];\n      ]]\n    \
+]\n   ]\n  }];\n  \n  ViewBox[initial, Null, \"Event\"->uid]\n]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "48ef5f7b-80f4-4093-a2a5-0cdc4f52f814", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Fade" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
    <|"Data" -> ".md\nCreate a slider", "Display" -> "codemirror", 
-    "Hash" -> "50037aa5-2aa6-4485-bb15-f63dc5d672ba", "Invisible" -> False, 
+    "Hash" -> "8a446fa1-e2e9-496a-b73e-db082032445c", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "Create a slider", 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, <|"Data" -> "Create a slider", 
     "Display" -> "markdown", "Hash" -> 
-     "363828bb-cf28-4598-a120-d9fafc7e14fd", "Invisible" -> False, 
+     "6758209a-189f-42fd-aab3-60bf6375940b", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, <|"Data" -> "slider[0.4]", 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, <|"Data" -> "slider[0.4]", 
     "Display" -> "codemirror", "Hash" -> 
-     "cdb6ecbd-5d03-46c8-a46b-9b4693027748", "Invisible" -> False, 
+     "778fa9db-5516-4257-a586-c91f80942135", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
    <|"Data" -> 
      ".md\nTry to copy and paste or evaluate. It will keep the value ", 
     "Display" -> "codemirror", "Hash" -> 
-     "fd31ec53-630c-4cfe-a5a6-a47d0d84b095", "Invisible" -> False, 
+     "ce2980be-839b-4afa-bf3e-b820639de58e", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
    <|"Data" -> "Try to copy and paste or evaluate. It will keep the value ", 
     "Display" -> "markdown", "Hash" -> 
-     "435e7fdb-c053-4bc1-aee4-674690a79ade", "Invisible" -> False, 
+     "01c93b9b-87ce-4be9-93a7-6170176493ff", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>, 
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>, 
    <|"Data" -> " ", "Display" -> "codemirror", 
-    "Hash" -> "c2a2d2cd-74cf-4d63-8f52-f1e975445003", "Invisible" -> False, 
+    "Hash" -> "d42310b4-0619-40cf-b675-aeac9cebb587", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "76be94c8-6d83-45e8-9fec-f713b692f980"|>}, "serializer" -> "jsfn4"|>
+     "f9304838-5f89-4e97-b453-9a946eb2d6a2"|>}, "serializer" -> "jsfn4"|>

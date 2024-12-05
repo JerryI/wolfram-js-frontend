@@ -1,28 +1,37 @@
-<|"Notebook" -> <|"FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$39], 
-   "HaveToSaveAs" -> False, "Objects" -> <||>, "Path" -> "/Users/kirill/Githu\
-b/wolfram-js-frontend/Demos/14 - Utils/Render screen to image.wln", 
-   "Quick" -> True, "Symbols" -> <||>, 
-   "TOC" -> {Notebook`Editor`TOC`Private`heading[2, 
+<|"Notebook" -> <|"Controller" -> "8a290ecf-8127-4950-949f-41e6af91e23f", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$254], 
+   "HaveToSaveAs" -> False, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "fbc2902b-42ba-4a08-be73-b0832ec33e66", 
+   "Objects" -> <||>, "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Dem\
+os/14 - Utils/Render screen to image.wln", "Quick" -> True, 
+   "Symbols" -> <||>, "TOC" -> {Notebook`Editor`TOC`Private`heading[2, 
       "Take a screenshot within an App", 
-      CellObj[JerryI`Notebook`CellObj`$44]]}|>, 
+      CellObj[JerryI`Notebook`CellObj`$253]]}|>, 
  "Cells" -> 
   {<|"Data" -> 
      ".md\n## Take a screenshot within an App\n*only for Desktop app*", 
     "Display" -> "codemirror", "Hash" -> 
-     "a157654c-146a-4bac-b956-3fdefc166929", "Invisible" -> False, 
+     "482d3a0a-ddb2-40be-9aef-0a02411908d1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4face765-38d5-42f9-b427-42206b3cf581"|>, 
+     "96138a2a-441a-45ee-a5c6-39f08d5f89a4"|>, 
    <|"Data" -> "## Take a screenshot within an App\n*only for Desktop app*", 
     "Display" -> "markdown", "Hash" -> 
-     "0ab36196-ca8b-41c9-b5bd-bae31c0f6685", "Invisible" -> False, 
+     "df2a8755-a14b-405e-88d5-31e64e00baad", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Output", "UID" -> Null, "Notebook" -> 
-     "4face765-38d5-42f9-b427-42206b3cf581"|>, 
+     "96138a2a-441a-45ee-a5c6-39f08d5f89a4"|>, 
    <|"Data" -> ".js\n\nconst img = \
 document.createElement('img');\nelectronAPI.requestScreenshot({}, (r) => {\n  \
 img.src = r;\n});\n\nreturn img;", "Display" -> "codemirror", 
-    "Hash" -> "e2f606c2-004a-4847-9489-88e08a8ec6fe", "Invisible" -> False, 
+    "Hash" -> "d63fe1f1-e06f-4405-ab6e-3b15ea71c3c1", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
     "Type" -> "Input", "UID" -> Null, "Notebook" -> 
-     "4face765-38d5-42f9-b427-42206b3cf581"|>}, "serializer" -> "jsfn4"|>
+     "96138a2a-441a-45ee-a5c6-39f08d5f89a4"|>, 
+   <|"Data" -> "\nconst img = \
+document.createElement('img');\nelectronAPI.requestScreenshot({}, (r) => {\n  \
+img.src = r;\n});\n\nreturn img;", "Display" -> "js", 
+    "Hash" -> "dd64c8d7-dfc4-4e1e-b47a-942f0a76d12a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "96138a2a-441a-45ee-a5c6-39f08d5f89a4"|>}, "serializer" -> "jsfn4"|>
