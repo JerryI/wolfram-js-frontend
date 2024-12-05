@@ -137,7 +137,7 @@ Component[OptionsPattern[]] := With[{
         <ExtensionTemplates Template={"AppTopBar"} Type={"App"} Path={Path} Parameters={parameters} Modals={modals} AppEvent={AppEvent} Controls={Controls} Messanger={messages}/>
 
         <div class="grow h-full" style="-webkit-app-region: drag; max-width:300px"></div>  
-        <div class="my-auto ml-auto lg:border-l flex border-gray-300 dark:border-gray-500 pl-1 h-full osx:h-fit overflow-hidden pt02 win:pt035 owin:pt035">
+        <div class="my-auto ml-auto lg:border-l flex border-gray-300 dark:border-gray-500 pl-1 h-full osx:h-fit overflow-hidden win:pt035 owin:pt035">
           <NotebookOnly Path={Path}> 
             <List> 
               <Identity>
