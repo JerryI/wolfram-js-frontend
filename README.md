@@ -208,11 +208,6 @@ __You can always bypass this complexity by using [console application instead](#
 ### Note for MacOS users
 Works good.
 
-Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
-
-```shell
-brew install --cask wljs-notebook
-```
 
 ## Docker Container
 *contributed by [@yloose](https://github.com/yloose)*
