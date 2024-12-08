@@ -1,4 +1,4 @@
-# Dynamic Notebook Environment for Wolfram Language
+# Freeware Notebook Environment for Wolfram Language
 
 ![Preview](imgs/Toster.png)
 
