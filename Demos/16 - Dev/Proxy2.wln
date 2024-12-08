@@ -1,0 +1,35 @@
+<|"Notebook" -> <|"Controller" -> "dc891408-1e10-40cb-af6f-5e6c107b88a9", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$42], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "36ddc90a-8919-4d10-a9b1-a1b5dc65c095", 
+   "Path" -> 
+    "/Users/kirill/Github/wolfram-js-frontend/Demos/16 - Dev/Proxy2.wln", 
+   "Quick" -> True, "TOC" -> {}|>, 
+ "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "2a09f95b-8da4-42be-93e4-b03d766208ef", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "58a03de1-625b-411a-95b1-d66efc7ddde4"|>, 
+   <|"Data" -> "rect = CreateFrontProxy[{t, vel, angle, life}, \n  \
+Translate[{Opacity[life], RGBColor[life, 0, 1-life], Rectangle[{-1,-1}, \
+{1,1}]}, t]\n];\n\nprimitives = {};\nnew = {};\ntodispose = {};\ntrigger = \
+1;\n\nscene = FrontInstanceReference[];\n\nadd[xy_] := new = {new, Table[\n  \
+rect[xy, {Cos[x], Sin[x]}//N, RandomReal[{0,3.14}], 1.0]\n, {x, 0., 2Pi, 2Pi \
+/ 12.0}]} // Flatten;\n\nModule[{},\nEventHandler[\"frame\", \
+Function[Null,\n\n  With[{\n    pos = FrontProxyBuffer[rect, 1],\n    vel = \
+FrontProxyBuffer[rect, 2],\n    life = FrontProxyBuffer[rect, 4],\n    validQ \
+= FrontProxyBuffer[rect, -1]\n  },\n\n    todispose = MapThread[If[#1 && #2 < \
+0.2, #3, Nothing]&, {validQ, life, Range[Length[life]]}];\n  \n    \
+FrontProxyBufferSet[rect, 1, pos +  vel ];\n    FrontProxyBufferSet[rect, 4, \
+life 0.95];\n  ];\n\n  \n  FrontProxyDispatch[rect];\n\n  \
+If[Length[todispose] >0,\n\n    FrontProxyRemove[rect, todispose];\n    \
+todispose = {};\n  ];\n  \n  If[Length[new] > 0, \n    FrontSubmit[Show @@ \
+new, scene];\n    new = {};\n  ];\n  \n  trigger = 1;\n  \
+\n]]];\n\n\nGraphics[{scene, AnimationFrameListener[trigger // Offload, \
+\"Event\"->\"frame\"], EventHandler[Graphics`Canvas[], {\n  \"mousemove\" -> \
+add\n}]}, PlotRange->{{-100,100}, {-100,100}}, TransitionType->None]", 
+    "Display" -> "codemirror", "Hash" -> 
+     "9d6339af-09e6-4870-868a-3a2da9908ee3", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "58a03de1-625b-411a-95b1-d66efc7ddde4"|>}, "serializer" -> "jsfn4"|>
