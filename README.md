@@ -20,9 +20,6 @@ __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 
 > All algorithms, functions, and other components of the Wolfram Language provided by the Wolfram Engine are the intellectual property of Wolfram Research, Inc.
 
-
-__Special thanks to our co-developer [@KirillBelovTest](https://github.com/KirillBelovTest) (Wolfram Language Web Stack developer)__
-
 > *To help maintain this open-source project* ❤️
 > - [__GitHub Sponsors__](https://github.com/sponsors/JerryI)
 > - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
@@ -183,6 +180,11 @@ If you face any issues, try to install avahi daemon and `libuv`.
 
 ## Desktop App ✨
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
+
+Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
+```shell
+brew install --cask wljs-notebook
+```
 
 ### CLI
 You can start it from the terminal like VSCode by typing
