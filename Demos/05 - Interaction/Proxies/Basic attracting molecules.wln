@@ -1,0 +1,59 @@
+<|"Notebook" -> <|"Controller" -> "8c0d805c-2f15-48c7-bdda-ef33e050d190", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1890], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "6f6943ee-b755-463e-b29b-a19c7eca17e9", 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/04 - \
+Animation/Proxies/Basic attracting molecules.wln", "Quick" -> True, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, 
+      "Spherical attracting molecules", 
+      CellObj[JerryI`Notebook`CellObj`$1896]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Spherical attracting molecules\n*An example \
+of FrontProxy abstraction used for animating many complex primitives in \
+real-time*\n\nThis simulation models a system of interacting disks in a 2D \
+space, governed by a potential field that includes attractive and repulsive \
+forces. The disks move dynamically, with their positions and velocities \
+updated in real-time, while their colors reflect changes in velocity or \
+interaction strength. Users can click to add new disks, which immediately \
+integrate into the ongoing animation", "Display" -> "codemirror", 
+    "Hash" -> "93779812-951f-4bfc-a06e-991840e86b9b", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4c737a93-26ba-42f2-914d-cda6c2693210"|>, 
+   <|"Data" -> "# Spherical attracting molecules\n*An example of FrontProxy \
+abstraction used for animating many complex primitives in real-time*\n\nThis \
+simulation models a system of interacting disks in a 2D space, governed by a \
+potential field that includes attractive and repulsive forces. The disks move \
+dynamically, with their positions and velocities updated in real-time, while \
+their colors reflect changes in velocity or interaction strength. Users can \
+click to add new disks, which immediately integrate into the ongoing \
+animation", "Display" -> "markdown", 
+    "Hash" -> "f824ca09-6e43-4c19-ad86-15178ce8b0c7", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "4c737a93-26ba-42f2-914d-cda6c2693210"|>, 
+   <|"Data" -> "disk = FrontProxy[{pos, c}, {\n\tOpacity[0.2], \
+RGBColor[With[{h=c}, {h, 1-h, 0.}]],\n    Disk[pos, 0.1]\n}];\n\ndisks = \
+Table[disk[RandomReal[{-1,1}, 2], 0.2], {10}];\n\nanimation = \
+CreateUUID[];\nscene = FrontInstanceReference[];\n\ntrigger = 1;\n\npotential \
+= Function[{a,b}, With[{r = Norm[a-b]+0.001, r0 = 0.22},\n  With[{c = \
+(*FB[*)((3.0 \
+((*SpB[*)Power[r0(*|*),(*|*)6](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|*\
+)8](*]SpB*)))(*]FB*)-(*FB[*)((3.0 \
+((*SpB[*)Power[r0(*|*),(*|*)12](*]SpB*)))(*,*)/(*,*)((*SpB[*)Power[r(*|*),(*|\
+*)14](*]SpB*)))(*]FB*)},\n    If[Abs[c] > 100.0, {0.,0.}, (a-b) c]\n  \
+]\n]];\n\nEventHandler[animation, Function[Null,\n  With[{\n    position = \
+FrontProxyBuffer[disk, 1],\n    state    = FrontProxyBuffer[disk, 2]\n  },\n  \
+  With[{velocity = Map[Total] @ Table[potential[a,b], {a, position}, {b, \
+position}]},\n      With[{\n        character = Map[Clip[5.0 Norm[#], {0.2, \
+0.8}]&, velocity]\n      },\n        FrontProxyBufferSet[disk, 1, position - \
+0.001 velocity];\n        FrontProxyBufferSet[disk, 2, character];\n\n        \
+FrontProxyDispatch[disk];\n      ];\n    ];\n  ];\n\n  trigger = \
+1;\n]];\n\nadd = With[{new = disk[#, 0.2]},\n  FrontProxyDispatch[disk];\n  \
+FrontSubmit[new // Show, scene];\n]&;\n\nGraphics[{\n  Show @@ disks, \
+scene,\n  AnimationFrameListener[trigger // Offload, \"Event\"->animation],\n \
+ EventHandler[Graphics`Canvas[], {\"click\" -> add}]\n}, PlotRange->{{-1,1}, \
+{-1,1}}, TransitionType->None]", "Display" -> "codemirror", 
+    "Hash" -> "2b9bbc55-b859-42b2-a614-1760dbe1b276", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "4c737a93-26ba-42f2-914d-cda6c2693210"|>}, "serializer" -> "jsfn4"|>

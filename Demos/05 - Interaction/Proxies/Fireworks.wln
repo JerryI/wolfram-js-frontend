@@ -1,0 +1,67 @@
+<|"Notebook" -> <|"Controller" -> "688c7f3f-6451-4a8c-affa-b12fd3ec67f7", 
+   "FocusedCell" -> CellObj[JerryI`Notebook`CellObj`$1917], 
+   "HaveToSaveAs" -> True, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "aaabd6f2-6eef-495c-baf1-b5ba0f791f66", 
+   "Path" -> "/Users/kirill/Github/wolfram-js-frontend/Demos/05 - \
+Interaction/Proxies/Fireworks.wln", "Quick" -> True, 
+   "TOC" -> {Notebook`Editor`TOC`Private`heading[1, "Fireworks", 
+      CellObj[JerryI`Notebook`CellObj`$1916]]}|>, 
+ "Cells" -> {<|"Data" -> ".md\n# Fireworks\n*Demo demonstrating dynamic \
+creation and removing of proxies*\n\nIt uses a rectangle primitive coupled \
+with controlled opacity and color. It reacts on a user's mouse and spawns \
+more objects.", "Display" -> "codemirror", 
+    "Hash" -> "4d7f663a-6a7f-4c77-a7e2-5a2b94c98625", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <|"Hidden" -> True|>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "66c9ec5c-f648-4b55-87b0-63cff9071a3a"|>, 
+   <|"Data" -> "# Fireworks\n*Demo demonstrating dynamic creation and \
+removing of proxies*\n\nIt uses a rectangle primitive coupled with controlled \
+opacity and color. It reacts on a user's mouse and spawns more objects.", 
+    "Display" -> "markdown", "Hash" -> 
+     "2104493d-5ef8-4ffc-8175-b3914491ae80", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Output", "UID" -> Null, "Notebook" -> 
+     "66c9ec5c-f648-4b55-87b0-63cff9071a3a"|>, 
+   <|"Data" -> "(* Define the rectangle proxy with initial properties \
+*)\nrectangleProxy = FrontProxy[\n  {position, velocity, rotationAngle, \
+lifeSpan}, \n  Translate[\n    {Opacity[lifeSpan], RGBColor[With[{l = \
+lifeSpan}, {l, 0, 1 - l}]], Rectangle[{-1, -1}, {1, 1}]}, \n    position\n  \
+]\n];\n\n(* Initialize variables *)\nnewProxies = {};\nexpiredProxies = \
+{};\nframeCounter = 1;\nframeRate = 1;\nlastUpdateTime = \
+AbsoluteTime[];\n\nsceneReference = FrontInstanceReference[];\n\n(* Function \
+to add new proxies at a given position *)\naddProxyAtPosition[position_] := \
+newProxies = {\n  newProxies, \n  FrontProxyAdd[\n    rectangleProxy, \n    \
+Sequence @@ Table[\n      {position, RandomReal[{0.99, 1.01}] {Cos[angle], \
+Sin[angle]} // N, RandomReal[{0, 3.14}], 1.0},\n      {angle, 0., 2 Pi, 2 Pi \
+/ 12.0}\n    ]\n  ]\n};\n\n(* Frame update logic *)\nModule[{},\n  \
+EventHandler[\"frame\", Function[Null,\n    With[{\n      positions = \
+FrontProxyBuffer[rectangleProxy, 1],\n      velocities = \
+FrontProxyBuffer[rectangleProxy, 2],\n      lifeSpans = \
+FrontProxyBuffer[rectangleProxy, 4],\n      isValid = \
+FrontProxyBuffer[rectangleProxy, -1]\n    },\n      (* Identify expired \
+proxies for disposal *)\n      expiredProxies = MapThread[\n        If[#1 && \
+#2 < 0.2, #3, Nothing] &, \n        {isValid, lifeSpans, \
+Range[Length[lifeSpans]]}\n      ];\n      \n      (* Update positions and \
+life spans *)\n      FrontProxyBufferSet[rectangleProxy, 1, positions + \
+velocities];\n      FrontProxyBufferSet[rectangleProxy, 4, lifeSpans * \
+0.95];\n    ];\n\n    (* Dispatch updates to proxies *)\n    \
+FrontProxyDispatch[rectangleProxy];\n\n    (* Remove expired proxies *)\n    \
+If[Length[expiredProxies] > 0,\n      FrontProxyRemove[rectangleProxy, \
+expiredProxies];\n      expiredProxies = {};\n    ];\n\n    (* Submit new \
+proxies *)\n    If[Length[newProxies] > 0, \n      \
+FrontSubmit[FrontProxyShow[rectangleProxy, newProxies // Flatten], \
+sceneReference];\n      newProxies = {};\n    ];\n\n    (* Update FPS counter \
+*)\n    With[{currentTime = AbsoluteTime[]},\n      If[currentTime - \
+lastUpdateTime > 1.0,\n        frameRate = Round[(frameCounter + frameRate) / \
+2.0];\n        frameCounter = 1;\n        lastUpdateTime = currentTime;\n     \
+ ,\n        frameCounter++;\n      ];\n    ];\n  ]]\n];\n\n(* Create the \
+graphics and event handlers *)\nGraphics[\n  {\n    sceneReference, \n    \
+{Directive[FontSize -> 20], Text[frameRate // Offload, {-80, -80}]}, \n    \
+AnimationFrameListener[frameCounter // Offload, \"Event\" -> \"frame\"], \n   \
+ EventHandler[\n      Graphics`Canvas[], \n      {\"mousemove\" -> \
+addProxyAtPosition}\n    ]\n  }, \n  PlotRange -> {{-100, 100}, {-100, 100}}, \
+\n  TransitionType -> None\n]", "Display" -> "codemirror", 
+    "Hash" -> "e2df916d-4c43-4355-a408-77606c233e5c", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "66c9ec5c-f648-4b55-87b0-63cff9071a3a"|>}, "serializer" -> "jsfn4"|>
