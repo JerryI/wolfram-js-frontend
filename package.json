@@ -63,7 +63,7 @@
     },
     "linux": {
       "target": [
-        "deb", "rpm", "pacman", "tar.xz", "AppImage"
+        "deb", "snap"
       ],
       "fileAssociations": [
         {
