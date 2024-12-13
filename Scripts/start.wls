@@ -250,9 +250,9 @@ RandomWord[];
 WLJS`PM`Includes["js"];
 WLJS`PM`Includes["frontend"];
 
-EventHandler[AppExtensions`AppEvents // EventClone, {
+(*EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
-}];
+}];*)
 
 (* start a bit earlier, so that extensions can hook on*)
 $Server = <||>;
