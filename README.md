@@ -167,7 +167,9 @@ WLJS Notebook __runs locally__ and belongs to you (no cloud-based stuff involved
 - @MitsuhaMiyamizu, Mars
 
 # Installation 🛠️
-[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version 13.3 is preferable). Activation can be done later using WLJS Notebook App.
+
+## Wolfram Engine
+[The freeware Wolfram Engine](https://www.wolfram.com/engine/) is required (Version >13.3 is preferable). Activation after installation or later using WLJS Notebook App.
 
 *On macOS, if you have [Homebrew](https://brew.sh/) installed, you can install it through [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):*
 
@@ -178,47 +180,69 @@ brew install --cask wolfram-engine
 *a side note for OSX/Linux users*
 If you face any issues, try to install avahi daemon and `libuv`.
 
-## Desktop App ✨
+## WLJS Notebook App ✨
 Download from the __[releases](https://github.com/JerryI/wolfram-js-frontend/releases)__ section.
 
-Again, if you have [Homebrew](https://brew.sh/) installed, you can install this app using:
-```shell
-brew install --cask wljs-notebook
-```
+#### Normal vs offline version
+Binaries are given in two formats. An offline version does contain the fixed versions of all necessary modules, documentation and examples, while a normal one will download the most recent ones from Github during the installation and will keep them to work fully offline.
 
-### CLI
-You can start it from the terminal like VSCode by typing
+#### CLI
+You will be prompted to install cli binary. If you agree, it will make a symlink available from the terminal like VSCode. It will allow you to open a folder in WLJS Notebook by the command
 
 ```bash
 wljs .
 ```
 
-### Notes for Windows users
-Works good
+#### URL Protocol
+App will automatically register `wljs-message` url protocol, so you can open any published notebooks from web-pages. 
 
-### Note for Debian users
-Works good. You might need to install `libuv` dependency
+### Installation on Windows
+Use x64 binaries `.exe` from the releases.
 
-### Note for Ubuntu users
-There will be a problem with starting related to a new [AppArmor issue](https://github.com/electron/electron/issues/42510#issuecomment-2171583086) om Ubuntu 24.04. A temporal fix will be to lift the restrictions globally
+### Installation on GNU/Linux
+
+#### Using `deb` package
+You might need to install `libuv` dependency, then install the executable.
+
+*A note for Ubuntu users*
+There might be a problem with starting related to a new [AppArmor issue](https://github.com/electron/electron/issues/42510#issuecomment-2171583086) om Ubuntu 24.04. A temporal fix will be to lift the restrictions
+
 ```bash
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 ```
 
-__You can always bypass this complexity by using [console application instead](#Standalone Server) (see Standalone Server or Docker).__
+and then start an app from the terminal `wljs-notebook`
 
-### Note for MacOS users
-Works good.
+#### Using `snap` package
+Open a terminal and navigate to the folder where you downloaded the installation `.snap` file.
 
+In the terminal, run the following command to install the Snap package: (the `--dangerous` flag is required because Canonical, the company who created Snap, didn't have a chance to review our package, the `--classic` flag allows WLJS Notebook to access outside of the sandbox, where your notes are stored)
 
-## Docker Container
-*contributed by [@yloose](https://github.com/yloose)*
+```bash
+snap install wljs-notebook-<version name>.snap --dangerous --classic
+```
 
-See [here](container/README.md)
+### Installation on MacOS
+
+#### Using `dmg`
+If you have Apple Silicon, please, download and run `-arm64.dmg` binary from the releases page, otherwise use just `.dmg` version.
+
+#### Using `homebrew`
+If you have [Homebrew](https://brew.sh/) installed, you can install this app using:
+```shell
+brew install --cask wljs-notebook
+```
+
 
 ## Standalone Server
 Desktop application is just a wrapper with a built-in Chromium browser, context menu bindings and file associations. WLJS Notebook itself __is a web-based application and can run using just `wolframscript` with no external services or any other programs__.
 
+### Docker Container
+*contributed by [@yloose](https://github.com/yloose)*
+
+See [here](container/README.md)
+
+### Local run
 Clone this repository and run:
 
 ```shell
@@ -243,11 +267,6 @@ wolframscript -f Scripts/start.wls folder "Demos"
 - disable autolaunch of the evaluation kernel
 ```
 wolframscript -f Scripts/start.wls noautolaunch True
-```
-
-- disable autotest
-```
-wolframscript -f Scripts/start.wls bypasstest True
 ```
 
 ### A side note for servers with no desktop interface
