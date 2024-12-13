@@ -272,13 +272,13 @@ CellObj /: CellObj`Evaluate[o_CellObj, OptionsPattern[] ] := Module[{transaction
                 o["State"] = "Idle";
                 Echo["Finished!"];
                 EventFire[o, "State", "Idle"];
+                EventFire[o, "Finished", True];
             ],
 
             "Error" -> Function[error,
                 o["State"] = "Idle";
                 EventFire[o, "State", "Idle"];
                 Echo["Error in evalaution... check syntax"];
-                EventFire[o["Notebook"], "CellError", {o, error}];
                 EventFire[o, "Error", error];
             ]
         }];
