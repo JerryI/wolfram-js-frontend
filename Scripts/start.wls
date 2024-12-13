@@ -147,10 +147,13 @@ MergeDirectories[source_String, target_String] := (
 );
 
 syncDemoFolders[path_String] := With[{},
-  Echo["Syncing demo folders..."];
+  (*Echo["Syncing demo folders..."];
   Echo[path];
 
-  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path];
+  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path]; 
+  
+  Moved to a separate extension
+  *)
 ];
 
 AppExtensions`FrontendEnv = $Env;
