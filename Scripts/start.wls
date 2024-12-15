@@ -147,10 +147,13 @@ MergeDirectories[source_String, target_String] := (
 );
 
 syncDemoFolders[path_String] := With[{},
-  Echo["Syncing demo folders..."];
+  (*Echo["Syncing demo folders..."];
   Echo[path];
 
-  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path];
+  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path]; 
+  
+  Moved to a separate extension
+  *)
 ];
 
 AppExtensions`FrontendEnv = $Env;
@@ -236,7 +239,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-toc" -> "master",
   Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
   Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
-  Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master"
+  Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
+  Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -246,9 +250,9 @@ RandomWord[];
 WLJS`PM`Includes["js"];
 WLJS`PM`Includes["frontend"];
 
-EventHandler[AppExtensions`AppEvents // EventClone, {
+(*EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
-}];
+}];*)
 
 (* start a bit earlier, so that extensions can hook on*)
 $Server = <||>;
