@@ -63,7 +63,7 @@
     },
     "linux": {
       "target": [
-        "deb", "snap"
+        "deb", "zip"
       ],
       "fileAssociations": [
         {

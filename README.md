@@ -213,14 +213,9 @@ sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
 and then start an app from the terminal `wljs-notebook`
 
-#### Using `snap` package
-Open a terminal and navigate to the folder where you downloaded the installation `.snap` file.
+#### Using `zip` archive
+Open an extracted folder and run an executable directly.
 
-In the terminal, run the following command to install the Snap package: (the `--dangerous` flag is required because Canonical, the company who created Snap, didn't have a chance to review our package, the `--classic` flag allows WLJS Notebook to access outside of the sandbox, where your notes are stored)
-
-```bash
-snap install wljs-notebook-<version name>.snap --dangerous --classic
-```
 
 ### Installation on MacOS
 
