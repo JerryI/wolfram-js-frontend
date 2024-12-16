@@ -3045,8 +3045,8 @@ function install_frontend(cbk, window) {
                 windows.log.print('Done');
 
                 //remove specific files
-                const toremove = ['.thumbnails', 'LPM.wl', 'main.js', 'wl_packages_lock.wl', 'wljs_packages_lock.wl', 'wljs_packages_users.wl', '.wl_timestamp', '.wljs_timestamp'];
-                const dirtoremove = ['wljs_packages', 'wl_packages'];
+                const toremove = ['main.js', '.wl_timestamp', '.wljs_timestamp'];
+                const dirtoremove = [];
 
                 //windows.log.print('removing Packages...');
                 //windows.log.print('removing wl_packages...');
@@ -3129,7 +3129,7 @@ function downloadFile(file_url, targetPath, cbk) {
         let lenHeader = responce.headers['content-Length'];
         if (Array.isArray(lenHeader)) lenHeader = lenHeader[0];
 
-        if (isNaN(lenHeader)) lenHeader = 300*1024*1024;
+        if (isNaN(lenHeader)) lenHeader = 30*1024*1024;
 
         total_bytes = parseInt(lenHeader);
 

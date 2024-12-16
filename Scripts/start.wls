@@ -183,19 +183,6 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
       If[toNumber[$Env["AppJSON", "version"] ] > toNumber[settings["CurrentVersion"] ],
         Echo["Not in sync!"];
 
-        syncDemoFolders[AppExtensions`DemosDir];
-        
-        If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages"}] ],
-          If[FileExistsQ[FileNameJoin[{Directory[], "wljs_packages_legacy"}] ], 
-            Echo["Purging `wljs_packages_legacy`"];
-            DeleteDirectory[FileNameJoin[{Directory[], "wljs_packages_legacy"}], DeleteContents->True];
-          ];
-          RenameDirectory[FileNameJoin[{Directory[], "wljs_packages"}], FileNameJoin[{Directory[], "wljs_packages_legacy"}] ];
-          Echo["Previous folder was moved to wljs_packages_legacy"];
-        ];
-        
-        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_lock.wl"}] ];
-        DeleteFile[FileNameJoin[{Directory[], "wljs_packages_users.wl"}] ];
         DeleteFile[FileNameJoin[{Directory[], ".wljs_timestamp"}] ];
         
         Echo["Everything will be in sync"];
