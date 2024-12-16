@@ -95,8 +95,8 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
   temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), "overlayNote.wln"}];
   dumpNotebook[temporalNotebook, Null, Null, Null];
 
-
-  EventHandler[EventClone[n], {
+  With[{cloned = EventClone[n]},
+  EventHandler[cloned, {
     "New Cell" -> Function[cell,
         If[Length[n["Cells"]] > 2 && !TrueQ[n["AskedToExtend"]],
           With[{
@@ -106,12 +106,16 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
             With[{request = CreateUUID[]},
               EventHandler[request, {
                   "Success" -> Function[Null, 
+                      EventRemove[cloned];
+                      n["AskedToExtend"] = True;
+                      n["ShowToolbox"] = True;
                       EventRemove[request];
                       transformNotebook[n, cli];
                       
                   ],
                 
                   _ -> Function[Null,
+                      EventRemove[cloned];
                       EventRemove[request];
                       Echo["Cannecled"];
                       n["AskedToExtend"] = True;
@@ -149,7 +153,7 @@ recreateNotebook[modals_] := With[{n = Notebook[]},
         ];
     ]
   }];
-]
+] ]
 
 
 localTemplates = <||>;
@@ -206,11 +210,19 @@ App[request_] := Module[{localExtensions}, With[{
     Echo[n["Path"]];
 
     EventHandler[promtEventUID, {
+      
       "CleanUp" -> Function[Null, With[{notebook = n},
         Delete /@ Select[n["Cells"], InputCellQ];
         CellObj["Notebook" -> n];
       ]],
+
       "Expand" -> Function[Null, With[{},
+
+        With[{n0 = temporalNotebook},
+          n0["AskedToExtend"] = True;
+          n0["ShowToolbox"] = True;
+        ];
+
         EventRemove[promtEventUID];
         transformNotebook[temporalNotebook, $Client];
       ] ]
