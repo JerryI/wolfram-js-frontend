@@ -146,15 +146,7 @@ MergeDirectories[source_String, target_String] := (
   ];
 );
 
-syncDemoFolders[path_String] := With[{},
-  (*Echo["Syncing demo folders..."];
-  Echo[path];
-
-  MergeDirectories[FileNameJoin[{Directory[], "Demos"}], path]; 
-  
-  Moved to a separate extension
-  *)
-];
+syncDemoFolders[path_String] := Null;
 
 AppExtensions`FrontendEnv = $Env;
 
@@ -323,7 +315,7 @@ ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"wl", "jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"}] -> (
+http["MessageHandler", "File"]  = GetFileRequestQ[{"jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"}] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
