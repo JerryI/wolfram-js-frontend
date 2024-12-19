@@ -1,10 +1,35 @@
-# Freeware Notebook Environment for Wolfram Language
+<h1 style="text-align:center">Open-source notebook interface for Wolfram Language</h1>
 
 ![Preview](imgs/Toster.png)
 
+
+<div style="text-align: center;">
+  <b style="color: var(--ifm-link-color);">
+    A lightweight alternative to Mathematica built using open-source tools and freeware Wolfram Engine
+  </b>
+</div>
+
+<h3 style="text-align: center;">
+  <a href="https://jerryi.github.io/wljs-docs/frontend/Overview">Overview 🚀</a> &nbsp;&nbsp; 
+  <a href="https://jerryi.github.io/wljs-docs/wljs-demo">Demo 📺</a>
+</h3>
+
+<div class="note">
+  <p>
+    WLJS Notebook <b>is a freeware software</b>, which is based on Wolfram Engine.
+  </p>
+  <p>
+    You do not need to have Mathematica installed to run WLJS Notebook. <b>No subscription model</b>, only one-time registration at <em>wolfram.com</em> is needed for personal use.
+  </p>
+  <p>
+    Please check the <a href="https://www.wolfram.com/legal/terms/wolfram-engine.html">license agreement</a>.
+  </p>
+</div>
+
 __Made by the cooperation of physicists and programmers. Driven by solving real-life cases in science ⚗️, math 🧮 and teaching 📚__  
 
-*written with love using freeware Wolfram Engine, JavaScript and [WLX](https://jerryi.github.io/wlx-docs/)*
+
+## Resources
 
 __[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-docs/wljs-demo)__  🎉 A collection of various notebooks showcasing examples of how to use the Wolfram Language and the dynamic features of our frontend
 
@@ -19,12 +44,6 @@ __[Telegram support chat](https://t.me/+PBotB9UJw-hiZDEy)__ 💬
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): 13.3 or higher**
 
 > All algorithms, functions, and other components of the Wolfram Language provided by the Wolfram Engine are the intellectual property of Wolfram Research, Inc.
-
-> *To help maintain this open-source project* ❤️
-> - [__GitHub Sponsors__](https://github.com/sponsors/JerryI)
-> - [__PayPal__](https://www.paypal.com/donate/?hosted_button_id=BN9LWUUUJGW54)
-
-> Any amount (one-time or monthly) is appreciated, and your profile will be permanently displayed on this page. Thank you for helping us!
 
 ## Showcase
 
