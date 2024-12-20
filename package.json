@@ -42,6 +42,12 @@
           "name": "WLJS Notebook",
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.icns"
+        },
+        {
+          "ext": "wle",
+          "name": "WLJS Executable",
+          "role": "App",
+          "icon": "./Electron/build/exec/512x512.icns"
         }
       ],
       "hardenedRuntime": true,
