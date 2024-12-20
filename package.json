@@ -78,6 +78,13 @@
           "name": "WLJS Notebook",
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.png"
+        },
+        {
+          "mimeType": "application/wlw",
+          "ext": "wlw",
+          "name": "WLJS Widget",
+          "role": "Viewer",
+          "icon": "./Electron/build/exec/512x512.png"
         }
       ],
       "icon": "./Electron/build/512x512.png",
@@ -99,6 +106,12 @@
           "name": "WLJS Notebook",
           "role": "Editor",
           "icon": "./Electron/build/file/512x512.ico"
+        },
+        {
+          "ext": "wlw",
+          "name": "WLJS Widget",
+          "role": "Viewer",
+          "icon": "./Electron/build/exec/512x512.ico"
         }
       ],
       "protocols": [
