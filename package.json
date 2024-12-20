@@ -47,7 +47,7 @@
           "ext": "wlw",
           "name": "WLJS Widget",
           "role": "Viewer",
-          "icon": "./Electron/build/exec/512x512.icns"
+          "icon": "./Electron/build/file/512x512-2.icns"
         }
       ],
       "hardenedRuntime": true,
@@ -69,7 +69,8 @@
     },
     "linux": {
       "target": [
-        "deb", "zip"
+        "deb",
+        "zip"
       ],
       "fileAssociations": [
         {
@@ -171,6 +172,7 @@
     "autoprefixer": "^10.4.19",
     "cssnano": "^6.1.2",
     "custom-electron-titlebar": "^4.2.8",
+    "dmg-license": "^1.0.11",
     "electron-context-menu": "^3.6.1",
     "electron-find": "^1.0.7",
     "electron-notarize": "^1.2.2",
