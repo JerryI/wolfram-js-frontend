@@ -328,7 +328,7 @@ const buildMenu = (opts) => {
                         const promise = dialog.showOpenDialog({
                             title: 'Open File',
                             filters: [
-                                { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
+                                { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html', 'wlw', 'wl'] }
                             ],
                             properties: ['openFile']
                         });
@@ -684,7 +684,7 @@ callFakeMenu["openFile"] = async () => {
     const promise = dialog.showOpenDialog({
         title: 'Open File',
         filters: [
-            { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html'] }
+            { name: 'Notebooks', extensions: ['wln', 'nb', 'md', 'html', 'wlw', 'wl'] }
         ],
         properties: ['openFile']
     });
