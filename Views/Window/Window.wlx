@@ -8,6 +8,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
     EventHandler[window, {
         "Ready" -> Function[Null,
             Echo["Window.wlx >> Ready to show!"];
+            window["EvalautedQ"] = True;
             WebUISubmit[Global`UIWindow["Load", WindowGenerator[window, client, parameters, extensions], WindowObj`Serialize[window] ,  secret], client]
         ]
     }];
@@ -41,7 +42,12 @@ checkWSLink[window_, client_, event_String] := Module[{},
 
 evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] := Module[{},
     checkWSLink[window, client, secret];
-    WindowObj`Evaluate[window];(*`*)
+    If[TrueQ[window["EvalautedQ"]],
+        EventFire[window["Hash"], "Ready", True];
+    ,
+        WindowObj`Evaluate[window];(*`*)
+    ]
+    
 ];
 
 Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"]},
@@ -111,7 +117,7 @@ destructor[window_, secret_, __] := With[{},
     EventRemove[secret];
     (* /* make sure that WebSocketQ flag is removed */ *)
     window["WebSocketQ"] = False;
-    Delete[window];
+    (* /* Delete[window]; */ *)
 ];
 
 (* /*  Exstension API */  *)
