@@ -138,9 +138,10 @@ Even if you embed it to your blog page
 ### Deploy as a web-page
 *still experimental feature*
 
-See some interactive examples from __our blog page__
-- [THz Time Domain modelling in 10 lines](https://jerryi.github.io/wljs-docs/blog/2024/05/20/thz-model) 
-- [FDTD Method of Solving Maxwell's Equations](https://jerryi.github.io/wljs-docs/blog/2024/07/12/maxwell)
+See some interactive examples from __our blog page__ and demonstration project
+- [TDS-THz in 10 lines](https://jerryi.github.io/wljs-docs/wljs-demo/mid-thz-tds/)
+- [2D Fourier Image Filtering](https://jerryi.github.io/wljs-docs/wljs-demo/intro-2df)
+- [Electric field 3D plot](https://jerryi.github.io/wljs-demo/pointcharge3D.html)
 
 Later, once opened using WLJS Notebook application, it is unpacked back to a normal editable format.
 
