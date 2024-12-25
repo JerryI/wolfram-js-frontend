@@ -77,6 +77,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     });
   },
 
+  requestOpenFileWindow: (params, cbk) => {
+    ipcRenderer.invoke('system-open-something', params).then((result) => {
+      cbk(result);
+    });
+  },  
+
   requestScreenshot: (params, cbk) => {
     ipcRenderer.invoke('capture', params).then((result) => {
       cbk(result);

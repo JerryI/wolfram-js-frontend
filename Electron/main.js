@@ -1969,7 +1969,7 @@ app.whenReady().then(() => {
     });
 
     ipcMain.handle('system-save-something', async (event, p) => {
-        const result = await dialog.showSaveDialog({ title: p.title, properties: ['createDirectory'], filters: [
+        const result = await dialog.showSaveDialog({ title: p.title, properties: ['createDirectory'], filters: p.filters || [
             { extensions: p.extension }
         ]});
 
@@ -1980,8 +1980,20 @@ app.whenReady().then(() => {
         }
     });
 
+    ipcMain.handle('system-open-something', async (event, p) => {
+        const result = await dialog.showOpenDialog({ title: p.title, filters: p.filters || [
+            { extensions: p.extension }
+        ]});
+
+        if (!result.canceled) {
+            return encodeURIComponent(result.filePaths[0]);
+        } else {
+            return false;
+        }
+    });    
+
     ipcMain.handle('system-open-folder-something', async (event, p) => {
-        const result = await dialog.showOpenDialog({ title: p.title, buttonLabel:'Set home', properties: ['openDirectory', 'createDirectory']});
+        const result = await dialog.showOpenDialog({ title: p.title, buttonLabel:'Set', properties: ['openDirectory', 'createDirectory']});
 
         if (!result.canceled) {
             return encodeURIComponent(result.filePaths[0]);
