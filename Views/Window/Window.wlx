@@ -8,7 +8,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
     EventHandler[window, {
         "Ready" -> Function[Null,
             Echo["Window.wlx >> Ready to show!"];
-            window["EvalautedQ"] = True;
+            window["EvaluatedQ"] = True;
             WebUISubmit[Global`UIWindow["Load", WindowGenerator[window, client, parameters, extensions], WindowObj`Serialize[window] ,  secret], client]
         ]
     }];
@@ -42,7 +42,7 @@ checkWSLink[window_, client_, event_String] := Module[{},
 
 evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] := Module[{},
     checkWSLink[window, client, secret];
-    If[TrueQ[window["EvalautedQ"]],
+    If[TrueQ[window["EvaluatedQ"]],
         EventFire[window["Hash"], "Ready", True];
     ,
         WindowObj`Evaluate[window];(*`*)
