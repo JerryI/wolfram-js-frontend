@@ -117,6 +117,7 @@ destructor[window_, secret_, __] := With[{},
     EventRemove[secret];
     (* /* make sure that WebSocketQ flag is removed */ *)
     window["WebSocketQ"] = False;
+    window["Opened"] = False;
     (* /* Delete[window]; */ *)
 ];
 
