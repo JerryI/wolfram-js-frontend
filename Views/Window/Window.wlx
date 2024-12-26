@@ -5,7 +5,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
     (* /* don't clone  event, must be one ! */ *)
     Echo["Add listeners::::"];
     Echo[window["Hash"]];
-    EventHandler[window, {
+    EventHandler[EventClone @ window , {
         "Ready" -> Function[Null,
             Echo["Window.wlx >> Ready to show!"];
             window["EvaluatedQ"] = True;
@@ -43,7 +43,7 @@ checkWSLink[window_, client_, event_String] := Module[{},
 evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] := Module[{},
     checkWSLink[window, client, secret];
     If[TrueQ[window["EvaluatedQ"]],
-        EventFire[window["Hash"], "Ready", True];
+        EventFire[window, "Ready", True];
     ,
         WindowObj`Evaluate[window];(*`*)
     ]
