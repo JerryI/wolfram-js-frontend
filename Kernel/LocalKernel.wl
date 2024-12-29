@@ -44,7 +44,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Print["Ok!"];
 ]
 
-CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "CreatedQ"->False, "StandardOutput":>CreateUUID[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 heartBeat[k_] := Module[{ok = True, orig}, With[{secret = CreateUUID[]},
     EventHandler[secret, {_ -> Function[Null, ok = True]}];
@@ -113,12 +113,6 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
     ) // HoldRemotePacket
 ]
 
-decryptor[ Hold[TextPacket[s_] ], print_, error_] := print[s];
-decryptor[ Hold[ReturnPacket[Null] ], __ ] := Null;
-decryptor[ Hold[OutputStream[__] ], __ ] := Null;
-decryptor[ any_ , a__] := Print[any];
-
-decryptor[ Hold[MessagePacket[symbol_, type_] ], print_, error_ ] := error[StringTemplate["``::``"][symbol, type] ]
 
 (* launch kernel *)
 restart[k_LocalKernelObject] := With[{},
@@ -216,19 +210,24 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "LPM2.wl"}] ] ] ];
     ];
 
-    
-    k["PrintTask"] = With[{kernel = k}, Looper`Submit[
-        If[LinkReadyQ[kernel["Link"] ],
-            decryptor[ LinkRead[kernel["Link"], Hold], 
-                Function[data,
-                    EventFire[k, "Print", data]
-                ],
-                Function[data,
-                    EventFire[k, "Warning", data]
-                ]
-            ]
-        ]
-    , "Continuous" -> True] ];
+
+    If[!TrueQ[k["CreatedQ"] ], With[{kernel = k},
+        With[{stdout = EventClone[k["StandardOutput"] ]},
+
+            EventHandler[stdout, {
+                TextPacket[s_] :> (EventFire[kernel, "Print", s]&),
+                MessagePacket[symbol_, type_] :> (EventFire[kernel, "Warning", StringTemplate["``::``"][symbol, type] ]&),
+                any_ :> (Echo[any]&)
+            }];
+
+            k["PrintTask"] = Looper`Submit[
+                If[LinkReadyQ[kernel["Link"] ], EventFire[kernel["StandardOutput"], LinkRead[kernel["Link"] ], kernel] ];
+            , "Continuous" -> True];
+        ];
+    ] ];
+
+    kernel["CreatedQ"] = True;
+
 
     LinkWrite[link, tcpConnect[ LocalKernel`port, k ]  ];
 
