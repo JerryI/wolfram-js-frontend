@@ -44,7 +44,7 @@ LocalKernel`LTPConnected[uid_String] := With[{o = Kernel`HashMap[uid]},
     Print["Ok!"];
 ]
 
-CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "CreatedQ"->False, "StandardOutput":>CreateUUID[], "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+CreateType[LocalKernelObject, Kernel, {"RootDirectory"->Directory[], "CreatedQ"->False, "StandardOutput"->Null, "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 heartBeat[k_] := Module[{ok = True, orig}, With[{secret = CreateUUID[]},
     EventHandler[secret, {_ -> Function[Null, ok = True]}];
@@ -212,6 +212,8 @@ start[k_LocalKernelObject] := Module[{link},
 
 
     If[!TrueQ[k["CreatedQ"] ], With[{kernel = k},
+        k["StandardOutput"] = CreateUUID[];
+        
         With[{stdout = EventClone[k["StandardOutput"] ]},
 
             EventHandler[stdout, {
