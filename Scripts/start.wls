@@ -219,7 +219,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
   Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
   Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master"
+  Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
+  Github -> "https://github.com/JerryI/wljs-debugger" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
