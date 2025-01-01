@@ -632,7 +632,11 @@ Component[OptionsPattern[]] := With[{
         ],
 
         "Abort" -> Function[Null,
-            
+            If[Length[Select[notebook["Cells"], (#["State"] =!= "Idle") &]] == 0,
+                EventFire[log, "Warning", "No cells are under evaluation"]
+                Return[];
+            ];
+
             If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized", Kernel`Abort[notebook["Evaluator"]["Kernel"]] (*`*) ];
             Map[Function[cell,
                 cell["State"] = "Idle";
