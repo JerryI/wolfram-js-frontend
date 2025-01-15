@@ -121,7 +121,7 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := 
                     Function[savedResult,
                       notebook["HaveToSaveAs"] = False;
                       EventFire[promise, Resolve, True];
-                      WebUILocation[ StringJoin["/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
+                      WebUILocation[ StringJoin["/iframe/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
                     ], 
                     Function[error,
                       EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
@@ -275,7 +275,7 @@ App[request_] := With[{
           <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
               <Notifications Controls={GlobalControls} MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>

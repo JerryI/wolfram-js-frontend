@@ -68,9 +68,10 @@
   },
 
   requestFileWindow: (params, cbk) => {
-    const uuid = uuid4();
+    const uuid = uuidv4();
     promisesTable[uuid] = cbk;
 
+    console.log('iframe >> send a post message to parent window');
     window.parent.postMessage({'type':'request', 'method':'requestFileWindow', 'params':params, 'promise':uuid}, "*");
   },
 
