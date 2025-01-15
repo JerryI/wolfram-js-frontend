@@ -45,13 +45,17 @@ Component[OptionsPattern[]] := With[{Event = OptionValue["Events"], Channel = Cr
           const title = await interpretate(assoc.Title, {});
           const ext   = await interpretate(assoc.Ext, {});
 
-          if (!window.electronAPI) {
+          let targetAPI = window.electronAPI;
+
+          if (!window.electronAPI && !window.iframeAPI) {
             server._emitt(promise, '"NoElectron"', 'Reject');
             console.warn('No ElectronJS found');
             return;
-          } 
+          } else if (!window.electronAPI) {
+            targetAPI = window.iframeAPI;
+          }
 
-          window.electronAPI.requestFileWindow({title:title, extension:[ext]}, (result) => {
+          targetAPI.requestFileWindow({title:title, extension:[ext]}, (result) => {
             if (!result) {
                 console.log('Cancelled');
                 server._emitt(promise, '"Cancel"', 'Reject');
