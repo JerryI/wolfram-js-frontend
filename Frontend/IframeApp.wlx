@@ -23,6 +23,7 @@ TopBar           = ImportComponent["Components/Topbar.wlx"];
 
 ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
 
+IframeAPI        = ImportComponent["Components/IframeAPI.wlx"];
 
 BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
 
@@ -253,7 +254,7 @@ App[request_] := With[{
     "<!DOCTYPE html>"
   ,
 
-    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" > 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="false" > 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
@@ -261,6 +262,7 @@ App[request_] := With[{
             <WebUIInitializationScript/>
             <ExtensionsStyles/>
             <FrontEndCustomCSS/>
+            <IframeAPI/>
         </Head>  
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <ExtensionTemplates Template={"AppHead"} />

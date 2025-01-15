@@ -1682,10 +1682,14 @@ else {
                 }
             }
 
-            if (isFile(argv[pos])) {
-                create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+            if (!(typeof argv[pos] == 'string')) {
+                create_window({url: server.url.default('local') + `/folder/`, title: 'WLJS Notebook', focus: false, show: false});
             } else {
-                create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+                if (isFile(argv[pos])) {
+                    create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+                } else {
+                    create_window({url: server.url.default('local') + `/folder/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
+                }
             }
         }
     });

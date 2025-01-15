@@ -1,6 +1,110 @@
 <script type="module">
-window.iframeAPI = {};
+ const VOID = () => console.log('iframeAPI does not support this command yet');
+ const promisesTable = {};
 
+ window.addEventListener('message', function(event) {
+    console.log(event.data);
+    if (event.data.type === 'promise') {
+        const id = event.data.promise;
+        promisesTable[id](event.data.data);
+        delete promisesTable[id];
+    }
+ });
 
+ window.iframeAPI = {
+
+  onfocus: (callback) => VOID(),
+  onblur: (callback) => VOID(),
+
+  contextMenu: (callback) => VOID(),
+  call: (callback) => VOID(),
+
+  devTools: () => VOID(),
+
+  listener: (name, callback) => VOID(),
+
+  cellop: (callback) => VOID(),
+
+  pluginsMenu: (callback) => VOID(),
+
+  setProgress: (p) => VOID(),
+
+  changeWindowSizeBy: (p) => VOID(),
+
+  openFinder: (path) => {
+    VOID()
+  },
+
+  openPath: (path) => {
+    VOID()
+  },
+
+  openExternal: (path) => {
+    VOID()
+  }, 
+
+  beep: () => {
+    VOID()
+  },  
+
+  openFolder: (path) => {
+    VOID()
+  },    
+
+  topMenu: (name) => {
+    VOID()
+  },
+
+  toggleWindowSize: () => {
+    VOID()
+  },
+
+  harptic: () => {
+    VOID()
+  },
+
+  enlargeWindowSizeIfneeded: () => {
+    VOID()
+  },
+
+  requestFileWindow: (params, cbk) => {
+    const uuid = uuid4();
+    promisesTable[uuid] = cbk;
+
+    window.parent.postMessage({'type':'request', 'method':'requestFileWindow', 'params':params, 'promise':uuid}, "*");
+  },
+
+  requestOpenFileWindow: (params, cbk) => {
+    VOID()
+  },  
+
+  requestScreenshot: (params, cbk) => {
+    VOID()
+  },  
+
+  requestFolderWindow: (params, cbk) => {
+    VOID()
+  },
+
+  windowExpand: (path) => {
+    VOID()
+  },
+
+  installCli: () => {
+    VOID()
+  },  
+
+  clearCache: () => {
+    VOID()
+  },
+
+  uninstallCli: () => {
+    VOID()
+  },
+
+  windowShrink: (path) => {
+    VOID()
+  }
+}
 
 </script>
