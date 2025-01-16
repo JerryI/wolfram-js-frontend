@@ -2,7 +2,7 @@ Event    = $Options["Event"];
 Controls = $Options["Controls"];
 
 <script type="module">
-    const api = window.electronAPI;
+    const api = window.electronAPI || window.iframeAPI;
     if (api) {
         api.listener('abort', () => {
             server.emitt('<Controls/>', 'True', 'Abort');
