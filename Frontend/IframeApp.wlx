@@ -154,7 +154,7 @@ If[TrueQ[notebook["ReadOnly?"]],
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
     Function[result,
       EventFire[promise, Resolve, True];
-      WebUILocation[ StringJoin["/", URLEncode[ path ] ], client ];
+      WebUILocation[ StringJoin["/iframe/", URLEncode[ path ] ], client ];
     ], Function[error,
     EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
     ]

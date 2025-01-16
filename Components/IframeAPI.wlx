@@ -1,14 +1,22 @@
 <script type="module">
  const VOID = () => console.log('iframeAPI does not support this command yet');
  const promisesTable = {};
+ const listeners = {};
+ const messageHandler = {};
+
+ messageHandler.promise = (data) => {
+  const id = data.promise;
+  promisesTable[id](data.data);
+  delete promisesTable[id];
+ } 
+
+ messageHandler.controls = (data) => {
+  listeners[data.name].forEach((c) => c(null, data.data));
+ } 
 
  window.addEventListener('message', function(event) {
     console.log(event.data);
-    if (event.data.type === 'promise') {
-        const id = event.data.promise;
-        promisesTable[id](event.data.data);
-        delete promisesTable[id];
-    }
+    messageHandler[event.data.type](event.data);
  });
 
  window.iframeAPI = {
@@ -21,7 +29,13 @@
 
   devTools: () => VOID(),
 
-  listener: (name, callback) => VOID(),
+  listener: (name, callback) => {
+    if (!Array.isArray(listeners[name])) {
+      listeners[name] = [];
+    }
+
+    listeners[name].push(callback);
+  },
 
   cellop: (callback) => VOID(),
 
@@ -107,5 +121,24 @@
     VOID()
   }
 }
+
+window.addEventListener("keydown", function (e) {
+  if (e.ctrlKey && e.key == "s" || e.metaKey && e.key == "s") {
+      window.parent.postMessage({'type':'shortcut', 'data':'save'}, "*");
+      e.preventDefault();
+      return false;
+  }
+  if (e.altKey && e.key == "." || e.metaKey && e.key == ".") {
+    window.parent.postMessage({'type':'shortcut', 'data':'abort'}, "*");
+      e.preventDefault();
+      return false;
+  }           
+  
+  if (e.altKey && e.key == "2" || e.metaKey && e.key == "2") {
+      window.parent.postMessage({'type':'shortcut', 'data':'togglefocusedcell'}, "*");
+      e.preventDefault();
+      return false;
+  }
+});
 
 </script>
