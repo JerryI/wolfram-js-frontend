@@ -149,6 +149,8 @@ dumpNotebookAs[assoc_Association, GlobalMessanger_, ModalController_, client_] :
 If[TrueQ[notebook["ReadOnly?"]],
   EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
 ,
+  notebook["HaveToSaveAs"] = False;
+  
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
     Function[result,
       EventFire[promise, Resolve, True];
