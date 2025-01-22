@@ -891,6 +891,7 @@ majorVersion = majorVersion.join('');
 const server = {
     startedQ: false,
     running: false,
+    electronCode: 1,
     path: {
         //called via args
     },
@@ -2113,6 +2114,7 @@ function start_server (window) {
     }
 
     windows.log.info('Starting server');
+    server.wolfram.process.stdin.write('System`$Env = <|"ElectronCode"->'+server.electronCode+'|>;');
     server.wolfram.process.stdin.write(`Get[URLDecode["${encodeURIComponent(runPath)}"]]\n`);
 
     const PACError = new RegExp(/Execution of PAC script at/);
@@ -2948,6 +2950,7 @@ function check_installed (cbk, window) {
                                     windows.log.print('Unable to check updates!', '\x1b[42m');
                                     windows.log.print('skipping...', '\x1b[32m');
                                     windows.log.info('Unable to check updates');
+                                    server.electronCode = 3;
                                     cbk();
                                 }
                             })
@@ -2956,6 +2959,7 @@ function check_installed (cbk, window) {
                             windows.log.print('status code ' + result.status, '\x1b[34m');
                             windows.log.print('skipping...', '\x1b[32m');
                             windows.log.info('Unable to check updates');
+                            server.electronCode = 3;
                             cbk();
                         }
                     },
@@ -2964,12 +2968,14 @@ function check_installed (cbk, window) {
                         windows.log.print(JSON.stringify(rejection), '\x1b[34m');
                         windows.log.print('skipping...', '\x1b[32m');
                         windows.log.info('Unable to check updates');
+                        server.electronCode = 3;
                         cbk();
                     });
 
                 } else {
                     windows.log.print('Failed! using ' + repo + ' and branch ' + branch, '\x1b[32m');
                     windows.log.info('Failed!');
+                    server.electronCode = 5;
                 }
             });
         });
@@ -2988,6 +2994,7 @@ function install_frontend(cbk, window) {
     const watchdog = setTimeout(() => {
         windows.log.print('No internet connection! Using shipped version...', '\x1b[32m');
         windows.log.info('Offline mode. Using shipped packages');
+        server.electronCode = 4;
         install_shipped(cbk, window);
     }, 5000);
 
