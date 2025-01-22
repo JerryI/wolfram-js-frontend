@@ -2119,14 +2119,32 @@ function start_server (window) {
 
     const PACError = new RegExp(/Execution of PAC script at/);
 
+    const help_me_sign = new RegExp(/@Electron, fetch me libraries/);
+    let help_me_sign_match;
+
     let url_match;
     const url_reg = new RegExp(/Open http:\/\/(?<ip>[0-9|.]*):(?<port>[0-9]*) in your browser/);
 
     server.wolfram.streamer = (data) => {
+        if (help_me_sign_match) return;
+
         const string = data.toString();
         windows.log.print(string);
 
-        
+        help_me_sign_match = help_me_sign.exec(string);
+        if (help_me_sign_match && !server.running) {
+            server.shutdown();
+
+
+            windows.log.clear();
+            windows.log.print("Running recovery mode. Installing shipped libraries...");
+
+            install_frontend(() => {
+                check_wl(load_configuration(), () => store_configuration(() => start_server(window)), window)
+            }, window, true);
+            
+            return;
+        }
 
         //listerning for a specific line in output
         url_match = url_reg.exec(string);
@@ -2153,6 +2171,7 @@ function start_server (window) {
 
     };
     server.wolfram.errors = (data) => {
+        if (help_me_sign_match) return;
         const string = data.toString();
 
         //checking errors
@@ -2989,7 +3008,12 @@ function check_installed (cbk, window) {
 }
 
 
-function install_frontend(cbk, window) {
+function install_frontend(cbk, window, force=false) {
+    if (force) {
+        install_shipped(cbk, window);
+        return;
+    }
+
     //watchdog for internet connection
     const watchdog = setTimeout(() => {
         windows.log.print('No internet connection! Using shipped version...', '\x1b[32m');
@@ -3112,19 +3136,35 @@ function install_frontend(cbk, window) {
 //in a case of a powerful firewall or apocalipse
 const install_shipped = (cbk, window) => {
 
-    windows.log.print('Copying to installation folder of a shipped package...');
+    windows.log.print('...');
     windows.log.info('Restoring the shipped version');
     const sub = path.join(app.getAppPath(), 'shipped');
     windows.log.print(sub);
 
+    if (fs.existsSync(sub)) {
+        windows.log.print('Copying files...');
+        fse.copySync(sub, installationFolder, { overwrite: true });
+        windows.log.print('');
+        windows.log.print('Done!');
+        windows.log.info('Done!');
+        server.wasUpdated = true;
 
-    fse.copySync(sub, installationFolder, { overwrite: true });
-    windows.log.print('');
-    windows.log.print('Done!');
-    windows.log.info('Done!');
-    server.wasUpdated = true;
+        cbk();
+    } else {
+        windows.log.clear();
+        windows.log.print('You are using a minimal installer. ');
+        windows.log.print('Due to problems with internet connection, you need to download *-offline version of our installer');
+        windows.log.print('A window will open shortly');
+        windows.log.info('Need offline installer');
 
-    cbk();
+        setTimeout(() => {
+            shell.openExternal("https://github.com/JerryI/wolfram-js-frontend/releases/"); 
+        }, 1000);
+
+        setTimeout(() => {
+            app.quit();
+        }, 5000);
+    }
 }
 
 function downloadFile(file_url, targetPath, cbk) {

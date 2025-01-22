@@ -94,7 +94,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
         ];
       ,
         Echo["LPM >> URLRead or proxy connection failed"];
-        Echo["Please turn off the internet connection and click reinstall"];
+        Echo["@Electron, fetch me libraries"];
         
         Exit[-1];
       ];
