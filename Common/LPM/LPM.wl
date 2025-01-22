@@ -12,6 +12,9 @@ electronConfirmed = System`$Env["ElectronCode"] === 1;
 JerryI`LPM`Private`Version = 15
 pacletDirectoryLoad = PacletDirectoryLoad
 
+urlImport = Import;
+urlDownload= URLDownload;
+urlGet = Get;
 
 convertVersion[str_String] := ToExpression[StringReplace[str, "."->""]]
 convertVersion[any_PacletObject] := convertVersion[any["Version"]]
@@ -92,6 +95,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
       ,
         Echo["LPM >> URLRead or proxy connection failed"];
         Echo["Please turn off the internet connection and click reinstall"];
+        
         Exit[-1];
       ];
     ];
@@ -206,7 +210,7 @@ FetchInfo[a_Association, Rule[Github, url_String]] := Module[{new, data},
     Echo["LPM >> fetching releases info for "<>new<>" on a Github..."];
 
   (* here we FETCH GITHUB API RESPONCE and use releases metadata *)
-  data = Import["https://api.github.com/repos/"<>new<>"releases/latest", "JSON"] // Association // Quiet;
+  data = urlImport["https://api.github.com/repos/"<>new<>"releases/latest", "JSON"] // Association // Quiet;
 
   (* if there is NO RELEASES *)
   If[!StringQ[data["zipball_url"]],
@@ -228,7 +232,7 @@ Module[{new, data},
     Echo["LPM >> fetching info for "<>new<>" on a Github..."];
 
     (* here we FETCH PACLETINFO.WL file and use its metadata *)
-    data = Check[Get["https://raw.githubusercontent.com/"<>new<>"/"<>ToLowerCase[branch]<>"/PacletInfo.wl"], $Failed];
+    data = Check[urlGet["https://raw.githubusercontent.com/"<>new<>"/"<>ToLowerCase[branch]<>"/PacletInfo.wl"], $Failed];
     
     (* if failed. we just STOP *)
     If[FailureQ[data],
@@ -267,7 +271,7 @@ InstallPaclet[dir_String][a_Association, Rule[Github, url_String]] := Module[{di
 
     (* download release *)
     Echo["LPM >> fetching a release..."];    
-    URLDownload[a["zipball_url"], FileNameJoin[{dir, "___temp.zip"}]];
+    urlDownload[a["zipball_url"], FileNameJoin[{dir, "___temp.zip"}]];
     
     (* extract to temporary directory and copy *)
     Echo["LPM >> extracting..."];
@@ -308,7 +312,7 @@ InstallPaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_St
 
     (* download branch as zip using old API *)
     Echo["LPM >> fetching a zip archive from the master branch..."];    
-    URLDownload["https://github.com/"<>a["git-url"]<>"/zipball/"<>ToLowerCase[branch], FileNameJoin[{dir, "___temp.zip"}]];
+    urlDownload["https://github.com/"<>a["git-url"]<>"/zipball/"<>ToLowerCase[branch], FileNameJoin[{dir, "___temp.zip"}]];
     
     Echo["LPM >> extracting..."];
     ExtractArchive[FileNameJoin[{dir, "___temp.zip"}], FileNameJoin[{dir, "___temp"}]];

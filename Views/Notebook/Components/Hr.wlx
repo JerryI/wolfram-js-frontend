@@ -20,52 +20,7 @@ Script = With[{},
                 let left = () => insideQ = false;
                 let entered = () => insideQ = true;
 
-                const over = () => {
-                    //console.log(Date.now() - lastHover);
-
-                    if (/*lastHover - lastlastHover < 1500 && */Date.now() - lastHover < 300 && !activated) {
-                        activated = true;
-                        button.style.height = "1.5rem";
-                        button.style.opacity = 1;
-
-                        insideQ = true;
-
-                        button.addEventListener('mouseleave', left);
-                        button.addEventListener('mouseenter', entered);
-
-                        setTimeout(() => {
-                            button.removeEventListener('mouseleave', left);
-                            button.removeEventListener('mouseenter', entered);
-                            
-                            if (!insideQ) {
-                                button.style.height = '0.75rem';
-                                button.style.opacity = 0;
-                                activated = false;
-                            } else {
-                                let check;
-                                
-                                check = () => {
-                                    button.style.height = '0.75rem';
-                                    button.style.opacity = 0;
-                                    activated = false;
-                                    button.removeEventListener('mouseleave', check);
-                                }
-
-                                button.addEventListener('mouseleave', check);
-                            }
-                            
-                        }, 600);
-                    }
-
-                    lastlastHover = lastHover;
-                    lastHover = Date.now();
-
-                    
-                }
-
-                setTimeout(() => {
-                    button.addEventListener('mouseover', over);
-                }, 200);
+            
                 
                 
                 button.addEventListener('click', () => {
