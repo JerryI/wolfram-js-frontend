@@ -88,7 +88,7 @@ Script = With[{},
                             object.hidden = true;
                         }
 
-                        self.clicks = 2;
+                        object.clicks = 2;
 
                         separator.focus()
                     },
