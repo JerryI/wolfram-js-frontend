@@ -41,8 +41,6 @@ Script = With[{},
             self.element.addEventListener('keydown', self.keyListener);
             self.element.classList.remove('opacity-0');
             event.stopPropagation();
-
-            self.clicks = 1;
         }
 
         const blur = (self) => {
@@ -58,13 +56,15 @@ Script = With[{},
         }
 
         const controls = (opts) => {
+            if (opts.morph) {
+                console.warn('Morph. Reconnect separator');
+                opts.cell.inner.focusable.pop();
+            }
             const cell = opts.cell;
             const event = opts.event;
     
             const separator = document.getElementById('separator-'+cell.uid);
-
-
-            
+ 
 
             let object;
 
@@ -88,7 +88,7 @@ Script = With[{},
                             object.hidden = true;
                         }
 
-                        
+                        self.clicks = 1;
 
                         separator.focus()
                     },
