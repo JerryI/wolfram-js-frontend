@@ -17,6 +17,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   debug: () => {
     ipcRenderer.send('debug', {})
   },  
+  update: () => {
+    ipcRenderer.send('update', {})
+  },
   resolveInput: (id, data) => {
     // Send IPC event to main process to read the file.
     ipcRenderer.send('promt-resolve', id, data)

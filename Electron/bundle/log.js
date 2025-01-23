@@ -3065,6 +3065,12 @@ window.electronAPI.addPromt((event, id, title) => {
     modal.classList.remove('hidden');
 });
 
+const updateBtn = document.getElementById("update_button");
+updateBtn.addEventListener('click', () => {
+    window.electronAPI.update();
+    updateBtn.remove();
+})
+
 
 window.electronAPI.addDialog((event, id, title) => {
 
