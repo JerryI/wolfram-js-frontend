@@ -36,6 +36,7 @@
     },
     "mac": {
       "icon": "./Electron/build/512x512.icns",
+      "artifactName": "wljs-notebook-${version}-${arch}-macos.${ext}",
       "fileAssociations": [
         {
           "ext": "wln",
@@ -72,6 +73,7 @@
         "deb",
         "zip"
       ],
+      "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
           "mimeType": "application/wln",
@@ -101,6 +103,7 @@
     "win": {
       "target": "NSIS",
       "icon": "./Electron/build/512x512.ico",
+      "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
         {
           "ext": "wln",
