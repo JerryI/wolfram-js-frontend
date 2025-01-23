@@ -1691,7 +1691,7 @@ else {
             }
 
             if (!(typeof argv[pos] == 'string')) {
-                create_window({url: server.url.default('local') + `/folder/`, title: 'WLJS Notebook', focus: false, show: false});
+                create_window({url: server.url.default('local') + `/`, title: 'WLJS Notebook', focus: false, show: false});
             } else {
                 if (isFile(argv[pos])) {
                     create_window({url: server.url.default('local') + `/` + encodeURIComponent(argv[pos]), title: argv[pos], focus: true, show: false});
@@ -3248,17 +3248,17 @@ const install_shipped = (cbk, window) => {
     } else {
         windows.log.clear();
         windows.log.print('You are using a minimal installer. ');
-        windows.log.print('Due to problems with internet connection, you need to download *-offline version of our installer');
+        windows.log.print('There are some problems with internet connection, \nplease download *-offline version\n');
         windows.log.print('A window will open shortly');
         windows.log.info('Need offline installer');
 
         setTimeout(() => {
             shell.openExternal("https://github.com/JerryI/wolfram-js-frontend/releases/"); 
-        }, 1000);
+        }, 3000);
 
         setTimeout(() => {
             app.quit();
-        }, 5000);
+        }, 15000);
     }
 }
 
