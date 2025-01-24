@@ -33,6 +33,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   changeWindowSizeBy: (p) => ipcRenderer.send('resize-window-by', p),
 
+  blockWindow: (state, message) => {
+    ipcRenderer.send('block-window', {state:state, message:message})
+  },
+
   openFinder: (path) => {
     console.log(path);
     ipcRenderer.send('system-open',  path);
@@ -120,6 +124,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
   searchText: (searchText, direction) => ipcRenderer.send('search-text', { searchText, direction }),
   stopSearch: () => ipcRenderer.send('stop-search')
 })
+
+ipcRenderer.on('confirm',  (ev, params) => {
+  if (window.confirm(params.message)) {
+    ipcRenderer.send('confirmed',  {uid: params.uid, result: true});
+  } else {
+    ipcRenderer.send('confirmed',  {uid: params.uid, result: false});
+  }
+});
 
 function search(direction) {
   let searched = document.getElementById("searchInput").value.trim();

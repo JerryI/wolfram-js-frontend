@@ -68,7 +68,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
 
             
         ,
-            With[{h = checkbackups[notebook]}, If[h =!= False, DeleteFile[h] ] ];
+            With[{h = checkbackups[notebook]}, If[h =!= False, moveBackupSomewhere[h] ] ];
 
             saveByPath := (
                 With[{r = Put[<| 
@@ -147,6 +147,18 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         path = makeHashPath[p]
     },
         If[FileExistsQ[path], path, False]
+    ];
+
+    moveBackupSomewhere[file_] := With[{
+        dir = FileNameJoin[{AppExtensions`BackupsDir, "overwritten"}]
+    },
+        If[!FileExistsQ[dir], CreateDirectory[dir] ];
+        With[{target = FileNameJoin[{dir, FileNameTake[file]} ]},
+            Echo["Moving backup to "<>target ];
+            CopyFile[file, target, OverwriteTarget->True ];
+        ];
+
+        DeleteFile[file];
     ];
 
     makeHashPath[path_String, secret_String:""] := FileNameJoin[{AppExtensions`BackupsDir, StringTemplate["``.wln"][{path, secret} // Hash]}]

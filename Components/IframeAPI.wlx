@@ -81,6 +81,10 @@
     VOID()
   },
 
+  blockWindow: (state, message) => {
+    window.parent.postMessage({'type':'action', 'method':'blockWindow', 'state':state, 'message': message}, "*");
+  },
+
   requestFileWindow: (params, cbk) => {
     const uuid = uuidv4();
     promisesTable[uuid] = cbk;

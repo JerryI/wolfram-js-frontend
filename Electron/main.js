@@ -1178,6 +1178,37 @@ const read_wl_settings = () => {
     console.log(server.frontend);
 }
 
+const blocked_windows = {};
+let blocked_window_counter = 1;
+const blocked_windows_messages = {};
+
+const closing_handler = (event, id) => {
+    blocked_window_counter++;
+
+    if (blocked_windows[id]) {
+
+        const uid = blocked_window_counter;
+        blocked_windows_messages[uid] = (result) => {
+            if (!blocked_windows[id]) return;
+
+            if (!result) return; 
+            const win = blocked_windows[id].window;
+            delete blocked_windows[id];
+                
+            win.close();
+            return; 
+        }
+
+        blocked_windows[id].window.webContents.send('confirm', {message: blocked_windows[id].message, uid: uid});
+        
+
+        event.preventDefault();
+        return false;
+    }
+
+    return true;
+}
+
 function create_window(opts, cbk = () => {}) {
         //default options
         const defaults = {
@@ -1430,9 +1461,11 @@ function create_window(opts, cbk = () => {}) {
 
         win.uuid = uuid4();
 
-        win.on('close', () => {
-            windows.focused.remove(win);
-            windows.windows.splice(windows.windows.findIndex(a => a.uuid === win.uuid) , 1);
+        win.on('close', (event) => {
+            if (closing_handler(event, win.id)) {
+                windows.focused.remove(win);
+                windows.windows.splice(windows.windows.findIndex(a => a.uuid === win.uuid) , 1);
+            }
         });
 
         //extend context menu
@@ -1948,6 +1981,29 @@ app.whenReady().then(() => {
         const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
         if (senderWindow)
             senderWindow.setProgressBar(p);
+    });
+
+    ipcMain.on('confirmed', (e, p) => {
+        if (blocked_windows_messages[p.uid]) {
+            blocked_windows_messages[p.uid](p.result);
+            delete blocked_windows_messages[p.uid];
+        }
+    });
+
+
+    ipcMain.on('block-window', (e, p) => {
+        const senderWindow = BrowserWindow.fromWebContents(e.sender); // BrowserWindow or null
+        if (senderWindow) {
+            if (p.state) {
+                if (!blocked_windows[senderWindow.id]) {
+                    blocked_windows[senderWindow.id] = {window: senderWindow, message:p.message};
+                }
+            } else {
+                if (blocked_windows[senderWindow.id]) {
+                    delete blocked_windows[senderWindow.id];
+                }
+            }
+        }
     });
 
     ipcMain.on('system-window-enlarge-if-needed', (e, p) => {

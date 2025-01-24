@@ -539,10 +539,13 @@ Component[OptionsPattern[]] := With[{
     EventHandler[controller // EventClone, {
         "Save" -> Function[Null,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
+            EventFire[log, "Notebook:Sync:Started", True];
 
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client, "Log"->log|>]},
                 Then[tt, Function[Null,
                     Echo["SAVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    EventFire[log, "Notebook:Sync:Finished", True];
+                    
                     Then[EventFire[controller, "DumpSave", notebook], Function[Null, 
                         EventFire[log, "Saved", ""];
                     ]];
@@ -553,10 +556,12 @@ Component[OptionsPattern[]] := With[{
 
         "SaveAs" -> Function[path,
             If[TrueQ[notebook["_suspendBackups"]], notebook["_suspendBackups"] = .];
-
+            EventFire[log, "Notebook:Sync:Started", True];
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> $Client, "Log"->log|>], client = $Client},
+
                 Then[tt, Function[Null,
                     Echo["SAVEDAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+                    EventFire[log, "Notebook:Sync:Finished", True];
                     Then[EventFire[controller, "DumpSaveAs", <|"Notebook" -> notebook, "Client"-> client, "Path" -> URLDecode[path]|>], Function[Null, 
                         1+1
                     ]];
@@ -571,8 +576,11 @@ Component[OptionsPattern[]] := With[{
         "Backup" -> Function[data, With[{timer = AbsoluteTime[]},
             If[TrueQ[notebook["_suspendBackups"]], Return[Null, Module]];
 
+            EventFire[log, "Notebook:Sync:Started", True];
+
             With[{tt = EventFire[notebook, "OnBeforeSave", <|"Client" -> data["Client"], "Log"->log|>]},
                 Then[tt, Function[Null,
+                    EventFire[log, "Notebook:Sync:Finished", True];
                     If[AbsoluteTime[] - timer > 5,
                         EventFire[log, "Warning", "Saving takes too long. Automatic backups were suspended."];
                         notebook["_suspendBackups"] = True;
