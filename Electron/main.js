@@ -2125,9 +2125,12 @@ app.whenReady().then(() => {
     ipcMain.handle('system-open-something', async (event, p) => {
         const result = await dialog.showOpenDialog({ title: p.title, filters: p.filters || [
             { extensions: p.extension }
-        ]});
+        ],
+            properties: p.list? ["multiSelections", "openFile"] : []
+        });
 
         if (!result.canceled) {
+            if (p.list) return result.filePaths.map(encodeURIComponent);
             return encodeURIComponent(result.filePaths[0]);
         } else {
             return false;
