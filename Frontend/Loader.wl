@@ -42,7 +42,10 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
 
-        cache[dir] = notebook;
+        If[!TrueQ[OptionValue["NoCache"] ],
+            cache[dir] = notebook;
+        ];
+        
         notebook["Path"] = dir;
 
         If[OptionValue["Props"] =!= Null,
@@ -242,7 +245,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     Options[load] = {"Events"->"Blackhole"}
-    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
+    Options[save] = {"Events"->"Blackhole", "NoCache"->False, "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
     Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
 
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},

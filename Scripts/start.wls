@@ -297,13 +297,41 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
   (*$ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];*)
  ],
  "Loader:NewNotebook" -> Function[notebook,
-  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  Echo["New notebook load and add it to the path! >>"];
+
+  If[MemberQ[notebook["Properties"], "WorkingDirectory"],
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+  ,
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  ];
  ],
  "Loader:LoadNotebook" -> Function[notebook,
   Echo["Load notebook and adding it to the path! >>"];
-  Echo[notebook["Path"] // DirectoryName];
-  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
- ]
+  
+
+  If[MemberQ[notebook["Properties"], "WorkingDirectory"],
+    Echo[notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+  ,
+    Echo[notebook["Path"] // DirectoryName];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  ];
+  
+ ],
+
+ "App:ExtendPath" -> Function[paths,
+  $ExposedDirectories = {$ExposedDirectories, paths};
+ ],
+
+ "App:RemovePath" -> Function[paths, Module[{p = $ExposedDirectories},
+    With[{index = Position[p, #]},
+      If[Length[index] > 0,
+        p = ReplacePart[p, index[[1]] -> Nothing];
+      ]
+    ] & /@ paths;
+
+    $ExposedDirectories = p;
+  ] ]
 }];
 
 

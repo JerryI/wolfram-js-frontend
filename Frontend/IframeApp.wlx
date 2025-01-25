@@ -115,11 +115,13 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := 
               Module[{filename = StringJoin[result, ".wln"]},
                   If[filename === ".wln", filename = StringJoin[name, filename] ];
                   If[DirectoryName[filename] === "", filename = FileNameJoin[{path, filename}] ];
-                  
+   
+                  notebook["HaveToSaveAs"] = False;
+                  notebook["WorkingDirectory"] = .;                  
                   
                   Then[saveNotebook[filename, notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
                     Function[savedResult,
-                      notebook["HaveToSaveAs"] = False;
+
                       EventFire[promise, Resolve, True];
                       WebUILocation[ StringJoin["/iframe/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
                     ], 
@@ -152,6 +154,8 @@ If[TrueQ[notebook["ReadOnly?"]],
   EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
 ,
   notebook["HaveToSaveAs"] = False;
+  notebook["WorkingDirectory"] = .;
+  
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
     Function[result,
       EventFire[promise, Resolve, True];
