@@ -35,7 +35,7 @@ initializeKernel[parameters_][kernel_] := With[{
     
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       
-      Kernel`Async[kernel,  ToExpression[processed, InputForm] ](*`*);
+      Kernel`Async[kernel,  ImportString[processed, "WL"] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
       Echo[u];
@@ -72,16 +72,16 @@ wsStartListerning[kernel_, port_, host_] := With[{},
     
     Kernel`Init[kernel,  (  
         (*Print["Establishing WS link..."];*)
-        Global`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
-        Module[{wcp, ws},
-          wcp = TCPServer[];
-          wcp["CompleteHandler", "WebSocket"] = WebSocketPacketQ -> WebSocketPacketLength;
+        System`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
+        Module[{Internal`Kernel`wcp, Internal`Kernel`ws},
+          Internal`Kernel`wcp = TCPServer[];
+          Internal`Kernel`wcp["CompleteHandler", "WebSocket"] = WebSocketPacketQ -> WebSocketPacketLength;
           
-          ws = WebSocketHandler[];
-          wcp["MessageHandler", "WebSocket"]  = WebSocketPacketQ -> ws;
+          Internal`Kernel`ws = WebSocketHandler[];
+          Internal`Kernel`wcp["MessageHandler", "WebSocket"]  = WebSocketPacketQ -> Internal`Kernel`ws;
 
           (* configure the handler for WLJS communications *)
-          ws["MessageHandler", "Evaluate"]  = Function[True] -> WLJSTransportHandler;
+          Internal`Kernel`ws["MessageHandler", "Evaluate"]  = Function[True] -> WLJSTransportHandler;
 
           (* symbols tracking *)
           WLJSTransportHandler["AddTracking"] = Function[{symbol, name, cli, callback},
@@ -99,7 +99,7 @@ wsStartListerning[kernel_, port_, host_] := With[{},
           ];
 
           (*Echo[StringTemplate["starting @ ``:port ``"][Internal`Kernel`Host, port] ];*)
-          SocketListen[CSocketOpen[host, port ], wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
+          SocketListen[CSocketOpen[host, port ], Internal`Kernel`wcp@#&, "SocketEventsHandler"->CSocketsClosingHandler];
 
           (*SocketListen[port, wcp@#&];*)
         ];
