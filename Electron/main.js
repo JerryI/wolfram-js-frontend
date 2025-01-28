@@ -1621,7 +1621,7 @@ app.on('will-quit', (e) => {
 });
 
 app.on('before-quit', (e) => {
-    console.log('aaahhh...');
+
     if (server.debug) {
         e.preventDefault();
 
@@ -1637,7 +1637,6 @@ app.on('before-quit', (e) => {
     if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
     
         e.preventDefault();
-        console.log('aaahhh...');
         tray.fireBallon()
 
         
@@ -1647,7 +1646,7 @@ app.on('before-quit', (e) => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin' && !(server.browserMode || server.frontend.RunInTray)) {app.quit()} else {
         if ((server.browserMode || server.frontend.RunInTray) && process.platform !== 'darwin') {
-            console.log('aaahhh...');
+            
             tray.fireBallon()
         }
     }
@@ -1831,12 +1830,7 @@ app.whenReady().then(() => {
                 content: "Running in the background as a server",
                 largeIcon: false
               });
-              setTimeout(() => {tray.displayBalloon({
-                title: "WLJS Server",
-                content: "Running in the background as a server",
-                largeIcon: false
-              });console.log("QQQ")}, 1000);
-              console.log("QQQ")
+              console.log("Balloon")
         }  
 
           
