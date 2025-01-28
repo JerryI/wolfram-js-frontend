@@ -1,17 +1,11 @@
 #!/usr/bin/env wolframscript
 
 PacletDirectoryUnload /@ PacletDirectoryLoad[]; (* FIXME WL autoloads some crap *)
-(*PacletUninstall /@ PacletFind["KirillBelov*"];  FIXME WL gives priority to globally installed WL paclets if they have newer version*)
 
 ParentDirectory[DirectoryName[$InputFileName]] // SetDirectory;
 PacletDirectoryLoad[Directory[]];
 
-If[FileExistsQ["LPM2.wl"], (* autoinstall locally LPM package manager*)
-  Get["LPM2.wl"], 
-  With[{lpm = Import["https://raw.githubusercontent.com/JerryI/wl-localpackages/main/Kernel/LPM.wl", "String"]}, 
-    Export["LPM2.wl", lpm, "String"]; Get["LPM2.wl"]; 
-  ]
-];
+Get[FileNameJoin[{Directory[], "Common", "LPM", "LPM.wl"}] ];
 
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
@@ -82,14 +76,15 @@ PacletRepositories[{
 (* env parameters *)
 System`$Env;
 
-$Env = <|
+
+$Env = Join[<|
   "host" -> "127.0.0.1",
   "http" -> 20560,
   "ws"   -> 20559,
   "jtp"  -> 20562,
   "ws2"  -> 20563
   (*,"docs" -> 20540*)
-|>;
+|>, If[AssociationQ[$Env], $Env, <||> ] ];
 
 If[$ScriptCommandLine =!= {},
   With[{argv = Rest @ $ScriptCommandLine},
@@ -220,7 +215,8 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
   Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
   Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-debugger" -> "master"
+  Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
+  Github -> "https://github.com/JerryI/wljs-api" -> "master"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
@@ -281,6 +277,7 @@ Sponsors       := ImportComponent["Frontend/Sponsors.wlx"];
 ServerError       := ImportComponent["Frontend/ServerError.wlx"];
 Protocol          := ImportComponent["Frontend/Protocol.wlx"];
 ExtendedApp               := ImportComponent["Frontend/ExtendedApp.wlx"];
+IframeApp    := ImportComponent["Frontend/IframeApp.wlx"];
 App         := ImportComponent["Frontend/App.wlx"];
 PromptWindow         := ImportComponent["Frontend/PromptWindow.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
@@ -300,13 +297,41 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
   (*$ExposedDirectories = ReplacePart[$ExposedDirectories, FirstPosition[$ExposedDirectories, notebook["Path"] // DirectoryName ] -> Nothing];*)
  ],
  "Loader:NewNotebook" -> Function[notebook,
-  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  Echo["New notebook load and add it to the path! >>"];
+
+  If[MemberQ[notebook["Properties"], "WorkingDirectory"],
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+  ,
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  ];
  ],
  "Loader:LoadNotebook" -> Function[notebook,
   Echo["Load notebook and adding it to the path! >>"];
-  Echo[notebook["Path"] // DirectoryName];
-  $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
- ]
+  
+
+  If[MemberQ[notebook["Properties"], "WorkingDirectory"],
+    Echo[notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+  ,
+    Echo[notebook["Path"] // DirectoryName];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+  ];
+  
+ ],
+
+ "App:ExtendPath" -> Function[paths,
+  $ExposedDirectories = {$ExposedDirectories, paths};
+ ],
+
+ "App:RemovePath" -> Function[paths, Module[{p = $ExposedDirectories},
+    With[{index = Position[p, #]},
+      If[Length[index] > 0,
+        p = ReplacePart[p, index[[1]] -> Nothing];
+      ]
+    ] & /@ paths;
+
+    $ExposedDirectories = p;
+  ] ]
 }];
 
 
@@ -377,6 +402,7 @@ Settings["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTem
 Window["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates];
 PromptWindow["HTTPHandler"->http, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 ExtendedApp["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
+IframeApp["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 App["HTTPHandler"->http, "Middleware"->middleware, "AppEvent"->AppExtensions`AppEvents, "ExtensionTemplates"->AppExtensions`Templates, "ExtensionSidebarIcons"->AppExtensions`SidebarIcons, "Env"->$Env];
 
 (*Echo["Autotest start!"];

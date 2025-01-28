@@ -2,46 +2,47 @@ Event    = $Options["Event"];
 Controls = $Options["Controls"];
 
 <script type="module">
-    if (window.electronAPI) {
-        window.electronAPI.listener('abort', () => {
+    const api = window.electronAPI || window.iframeAPI;
+    if (api) {
+        api.listener('abort', () => {
             server.emitt('<Controls/>', 'True', 'Abort');
         });
-        window.electronAPI.listener('changekernel', () => {
+        api.listener('changekernel', () => {
             server.emitt('<Controls/>', 'True', 'ChangeKernel');
         });
 
-        window.electronAPI.listener('save', () => {
+        api.listener('save', () => {
             server.emitt('<Controls/>', 'True', 'Save');
         });
 
-        window.electronAPI.listener('saveas', (ev, path) => {
+        api.listener('saveas', (ev, path) => {
             server.emitt('<Controls/>', `"${path}"`, 'SaveAs');
         });
 
-        window.electronAPI.listener('reopenasquick', (ev) => {
+        api.listener('reopenasquick', (ev) => {
             server.emitt('<Controls/>', `True`, 'ReopenAsQuickNote');
         });
         
 
-        window.electronAPI.listener('unhideallcells', () => {
+        api.listener('unhideallcells', () => {
             server.emitt('<Controls/>', 'True', 'UnhideAllCells');
         });
 
-        window.electronAPI.listener('clearoutputs', () => {
+        api.listener('clearoutputs', () => {
             server.emitt('<Controls/>', 'True', 'ClearOutputs');
         });
 
-        window.electronAPI.listener('togglecell', () => {
+        api.listener('togglecell', () => {
             server.emitt('<Controls/>', 'True', 'ToggleFocusedCell');
         });
 
-        window.electronAPI.listener('deletecell', () => {
+        api.listener('deletecell', () => {
             server.emitt('<Controls/>', 'True', 'DeleteFocusedCell');
         });
 
         
     
-        window.electronAPI.listener('evaluateinit', () => {
+        api.listener('evaluateinit', () => {
             server.emitt('<Controls/>', 'True', 'EvaluateInitCells');
         });
         

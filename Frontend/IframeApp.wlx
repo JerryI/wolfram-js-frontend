@@ -23,6 +23,8 @@ TopBar           = ImportComponent["Components/Topbar.wlx"];
 
 ElectronBinds           := ImportComponent["Components/ElectronAppBinds.wlx"];
 
+IframeAPI        = ImportComponent["Components/IframeAPI.wlx"];
+
 BrowserMenu            = ImportComponent["Components/FakeMenuBrowser.wlx"];
 
 FakeMenu            = ImportComponent["Components/FakeMenu.wlx"];
@@ -87,14 +89,9 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
 
 backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   If[!TrueQ[notebook["ReadOnly?"]], 
-    EventFire[GlobalMessanger, "Notebook:Saving:Started", True];
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
-        EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
         Print[result];
-      ], Function[error, 
-          EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
-          EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]
-      ]
+      ], Function[error, EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"]]
     ]
   ]
 ]
@@ -118,40 +115,31 @@ dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := 
               Module[{filename = StringJoin[result, ".wln"]},
                   If[filename === ".wln", filename = StringJoin[name, filename] ];
                   If[DirectoryName[filename] === "", filename = FileNameJoin[{path, filename}] ];
+   
+                  notebook["HaveToSaveAs"] = False;
+                  notebook["WorkingDirectory"] = .;                  
                   
-                  EventFire[GlobalMessanger, "Notebook:Saving:Started", True];
-                  notebook["WorkingDirectory"] = .;
-
                   Then[saveNotebook[filename, notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
                     Function[savedResult,
-                      notebook["HaveToSaveAs"] = False;
-                      
-                      EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
 
                       EventFire[promise, Resolve, True];
-                      WebUILocation[ StringJoin["/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
+                      WebUILocation[ StringJoin["/iframe/", URLEncode[ notebook["Path"] ]], client, "Target"->"self" ];
                     ], 
                     Function[error,
-                      EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
-
                       EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
                     ]
                   ];                  
               ];
-          ], Function[result, EventFire[GlobalMessanger, "Notebook:Saving:Finished", True]; Echo["!!!R!!"]; Echo[result] ] ];
+          ], Function[result, Echo["!!!R!!"]; Echo[result] ] ];
 
       ]
     ,
-      EventFire[GlobalMessanger, "Notebook:Saving:Started", True];
-
       Then[saveNotebook[notebook, "Events"->AppEvent, "Modals"->ModalController, "Client"->client], 
         Function[result,
-          EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
           Print[result];
           EventFire[promise, Resolve, True];
         ], 
         Function[error,
-          EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
           EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
         ]
       ]
@@ -168,17 +156,12 @@ If[TrueQ[notebook["ReadOnly?"]],
   notebook["HaveToSaveAs"] = False;
   notebook["WorkingDirectory"] = .;
   
-
-  EventFire[GlobalMessanger, "Notebook:Saving:Started", True];
-
   Then[cloneNotebook[notebook, path, "Modals"->ModalController, "Client"->client], 
     Function[result,
-      EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
       EventFire[promise, Resolve, True];
-      WebUILocation[ StringJoin["/", URLEncode[ path ] ], client ];
+      WebUILocation[ StringJoin["/iframe/", URLEncode[ path ] ], client ];
     ], Function[error,
-      EventFire[GlobalMessanger, "Notebook:Saving:Finished", True];
-      EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
+    EventFire[GlobalMessanger, "Error", "Failed to save a notebook!"];
     ]
   ]
   
@@ -192,34 +175,22 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
 ] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
 
-defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->AppExtensions`DefaultDocumentsDir (*`*)|>, settings]["Home"] ];
-
-ExtensionMenuItems = <|"file"->{}, "misc"->{}, "view"->{}, "edit"->{}|>;
-
-Map[Function[item, 
-  If[KeyExistsQ[item, "section"], 
-    With[{sec = item["section"]},
-      ExtensionMenuItems[sec] = Append[ExtensionMenuItems[sec], item]
-    ]
-  ,
-    ExtensionMenuItems["misc"] = Append[ExtensionMenuItems["misc"], item]
-  ];
-], Select[Flatten[WLJS`PM`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJS`PM`Packages]], AssociationQ]];
 
 App[request_] := With[{
   Secret = CreateUUID[], 
   GlobalControls  = CreateUUID[],
   ModalController = CreateUUID[],
   GlobalMessanger = CreateUUID[],
-  Path = Switch[$OperatingSystem,
-    "Windows",  
-    URLDecode @ StringDrop[request["Path"],1],  
-    
-    "Linux",
-    URLDecode @ StringDrop[request["Path"],1 ],
-
-    _,
-    URLDecode @ StringDrop[request["Path"],1 ]]
+  Path = URLDecode @ StringDrop[request["Path"], 
+    Switch[$OperatingSystem,
+      "Windows", 
+      StringLength["/iframe/"], 
+      "Linux",
+      StringLength["iframe"],
+      _,  
+      StringLength["iframe/"] 
+    ]
+  ] 
 },
 
   Print["## Loading by path : "]; Print[Path];
@@ -246,53 +217,7 @@ App[request_] := With[{
             ""
         ], ""],
 
-        Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"],
-
-        FakeMenu = 
-          Switch[If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"],
-            "Browser",
-              With[{middleware = CreateUUID[]},
-                EventHandler[middleware, {
-                  "NewNotebook" -> Function[Null,
-                    EventFire[GlobalControls, "NewNotebook", True]
-                  ],
-
-                  "LocateExamples" -> Function[Null,
-                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_];
-                  ],
-
-                  "Acknowledgments" -> Function[Null,
-                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
-                  ],
-
-                  "CheckUpdates" -> Function[Null,
-                    checkUpdates[GlobalMessanger, ModalController, $Client];
-                  ],
-
-                  "Exit" -> Function[Null,
-                    Exit[0];
-                  ],
-
-                  any_String :> (EventFire[GlobalControls, any, #]&)
-                }];
-              
-
-                BrowserMenu["Event" -> middleware, "Plugins"->ExtensionMenuItems, "Navigator"->(If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"])]
-              ]
-            ,
-
-            "OSX",
-              ""
-            ,
-
-            "Unix",
-              ""
-            ,
-
-            _,
-              FakeMenu["Plugins" -> ExtensionMenuItems, "Controls"-> GlobalControls,  "Class"->"ml-1", "Style"->""]
-
-          ]
+        Transparency = If[KeyExistsQ[settings, "Transparency"], If[settings["Transparency"], "true", "false"], "false"]
     },
 
     (* /* collect any runtime changes  */ *)
@@ -334,7 +259,7 @@ App[request_] := With[{
     "<!DOCTYPE html>"
   ,
 
-    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="{Transparency}" > 
+    <html class="h-full {AppClass}" os="{NavigatorOS}" transparency="false" > 
         <Head Title={FileNameTake[Path]} Settings={settings}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
@@ -342,6 +267,7 @@ App[request_] := With[{
             <WebUIInitializationScript/>
             <ExtensionsStyles/>
             <FrontEndCustomCSS/>
+            <IframeAPI/>
         </Head>  
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
         <ExtensionTemplates Template={"AppHead"} />
@@ -353,9 +279,8 @@ App[request_] := With[{
 
           <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
-              <TopBar Menu={FakeMenu} ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications Controls={GlobalControls} MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>
@@ -382,10 +307,9 @@ Script[Rule["Secret", Secret_]] := With[{},
   </script>
 ];
 
-http["MessageHandler", "App"] = AssocMatchQ[<|"Method" -> "GET"|>] -> middleware[App];
+http["MessageHandler", "Iframe"] = AssocMatchQ[<|"Method" -> "GET", "Path" -> "/iframe/" ~~ ___|>] -> middleware[App];
 
-
-Print["App Loaded!"];
+Print["Iframe app Loaded!"];
 
 
 

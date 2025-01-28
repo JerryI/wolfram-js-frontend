@@ -1,5 +1,5 @@
 Element[OptionsPattern[]] := With[{uid = OptionValue["Cell"]["Hash"], Class = If[OptionValue["Cell"]["Type"] == "Input" && TrueQ[OptionValue["Cell"]["Props"]["Hidden"]], "hidden", ""]}, 
-    <div class="cseparator h-3 w-full opacity-0 ttint cursor-vertical-text {Class}" id="separator-{uid}"></div>
+    <div tabIndex="-1" class="cseparator h-3 w-full focus:outline-none opacity-0 ttint cursor-vertical-text {Class}" id="separator-{uid}"></div>
 ]
 
 Options[Element] = {"Cell"->""}
@@ -7,76 +7,107 @@ Options[Element] = {"Cell"->""}
 Script = With[{},
     <Placebo>
     {       
+        const focus = (self) => {
+
+            const index = self.findIndex();
+            const origin = self.origin;
+
+            self.keyListener = (event) => {
+                switch(event.key) {
+                    case 'ArrowUp':
+                        
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        self.focusPrev();
+                    break;
+
+                    case 'ArrowDown':
+                        
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        self.focusNext();
+                    break;
+
+                    case 'Enter':
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        server.emitt(self.event, '"'+origin.uid+'"', 'AddAfter');
+                        CellWrapper.forceFocusNew();
+                        self.blur();
+                    break;
+                }
+            }
+
+            self.element.addEventListener('keydown', self.keyListener);
+            self.element.classList.remove('opacity-0');
+            event.stopPropagation();
+        }
+
+        const blur = (self) => {
+            self.element.classList.add('opacity-0');
+            self.element.removeEventListener('keydown', self.keyListener);
+
+            if (self.hidden) {
+                self.hidden = false;
+                self.element.classList.add('hidden');
+            }
+
+            self.clicks = 0;
+        }
+
         const controls = (opts) => {
-                const cell = opts.cell;
-                const event = opts.event;
-        
-                const button = document.getElementById('separator-'+cell.uid);
-                let lastHover = Date.now();
-                let lastlastHover = Date.now();
-                let activated = false;
-                let insideQ = false;
+            if (opts.morph) {
+                console.warn('Morph. Reconnect separator');
+                opts.cell.inner.focusable.pop();
+            }
+            const cell = opts.cell;
+            const event = opts.event;
+    
+            const separator = document.getElementById('separator-'+cell.uid);
+ 
 
-                let left = () => insideQ = false;
-                let entered = () => insideQ = true;
+            let object;
 
-                const over = () => {
-                    //console.log(Date.now() - lastHover);
-
-                    if (/*lastHover - lastlastHover < 1500 && */Date.now() - lastHover < 300 && !activated) {
-                        activated = true;
-                        button.style.height = "1.5rem";
-                        button.style.opacity = 1;
-
-                        insideQ = true;
-
-                        button.addEventListener('mouseleave', left);
-                        button.addEventListener('mouseenter', entered);
-
-                        setTimeout(() => {
-                            button.removeEventListener('mouseleave', left);
-                            button.removeEventListener('mouseenter', entered);
-                            
-                            if (!insideQ) {
-                                button.style.height = '0.75rem';
-                                button.style.opacity = 0;
-                                activated = false;
-                            } else {
-                                let check;
-                                
-                                check = () => {
-                                    button.style.height = '0.75rem';
-                                    button.style.opacity = 0;
-                                    activated = false;
-                                    button.removeEventListener('mouseleave', check);
-                                }
-
-                                button.addEventListener('mouseleave', check);
-                            }
-                            
-                        }, 600);
-                    }
-
-                    lastlastHover = lastHover;
-                    lastHover = Date.now();
-
-                    
+            separator.addEventListener('click', () => {
+                if (object.clicks > 0) {
+                    server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+                    CellWrapper.forceFocusNew();
+                    self.blur();
                 }
 
-                setTimeout(() => {
-                    button.addEventListener('mouseover', over);
-                }, 200);
-                
-                
-                button.addEventListener('click', () => {
-                    server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
-                    return;
-                    if (cell.type == "Output") {
-                        server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
-                    } else {
-                        server.emitt(event, '"'+cell.uid+'"', 'AddAfterOutputs');
+                object.clicks++;
+            });            
+
+            object = new CellWrapper.focusable({
+                origin: cell,
+                element: separator,
+                handler: {
+                    onfocus: () => {
+                        if (separator.classList.contains('hidden')) {
+                            separator.classList.remove('hidden');
+                            object.hidden = true;
+                        }
+
+                        object.clicks = 2;
+
+                        separator.focus()
+                    },
+                    onblur: () => {
+                        separator.blur();
+              
                     }
-                });
+                }
+            });
+
+            object.event = event;
+            object.clicks = 0;
+
+            separator.addEventListener('focus', () => focus(object));
+            separator.addEventListener('blur', () => blur(object))
+
+            //server.emitt(event, '"'+cell.uid+'"', 'AddAfter');
+
+            return object;
         }
 
         //add it to the constructor

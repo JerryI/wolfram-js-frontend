@@ -68,6 +68,12 @@ debug.addEventListener('click', () => {
     debug.remove();
 })
 
+const updateBtn = document.getElementById("update_button");
+updateBtn.addEventListener('click', () => {
+    window.electronAPI.update();
+    updateBtn.remove();
+})
+
 const info = document.getElementById("modal_info");
 
 const installDir = document.getElementById('log_file')

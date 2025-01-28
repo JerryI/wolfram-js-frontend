@@ -78,13 +78,13 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         
         Internal`Kernel`Stdout = CSocketConnect[addr] // LTPTransport;
         Print["Establishing starting LTP server for backlink... using "<>(StringTemplate["127.0.0.1:``"][p])];
-        Module[{tcp},
-            tcp = TCPServer[];
+        Module[{Internal`Kernel`ltcp},
+            Internal`Kernel`ltcp = TCPServer[];
      
-            tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
-            tcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
+            Internal`Kernel`ltcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;
+            Internal`Kernel`ltcp["MessageHandler", "LTP"]  = LTPQ -> LTPHandler;
 
-            SocketListen[CSocketOpen["127.0.0.1:"<>ToString[p] ], tcp@#&];
+            SocketListen[CSocketOpen["127.0.0.1:"<>ToString[p] ], Internal`Kernel`ltcp@#&];
             
         ];
 
@@ -207,7 +207,7 @@ start[k_LocalKernelObject] := Module[{link},
         (* unknown bug, doesn't work in initialization ... *)
         LinkWrite[link, EnterTextPacket["Unprotect[Interpretation, InterpretationBox]"] ];
 
-        LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "LPM2.wl"}] ] ] ];
+        LinkWrite[link, Unevaluated[ Get[FileNameJoin[{Directory[], "Common", "LPM", "LPM.wl"}] ] ] ];
     ];
 
 

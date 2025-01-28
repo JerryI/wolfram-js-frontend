@@ -42,7 +42,10 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
 
-        cache[dir] = notebook;
+        If[!TrueQ[OptionValue["NoCache"] ],
+            cache[dir] = notebook;
+        ];
+        
         notebook["Path"] = dir;
 
         If[OptionValue["Props"] =!= Null,
@@ -68,7 +71,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
 
             
         ,
-            With[{h = checkbackups[notebook]}, If[h =!= False, DeleteFile[h] ] ];
+            With[{h = checkbackups[notebook]}, If[h =!= False, moveBackupSomewhere[h] ] ];
 
             saveByPath := (
                 With[{r = Put[<| 
@@ -147,6 +150,18 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
         path = makeHashPath[p]
     },
         If[FileExistsQ[path], path, False]
+    ];
+
+    moveBackupSomewhere[file_] := With[{
+        dir = FileNameJoin[{AppExtensions`BackupsDir, "overwritten"}]
+    },
+        If[!FileExistsQ[dir], CreateDirectory[dir] ];
+        With[{target = FileNameJoin[{dir, FileNameTake[file]} ]},
+            Echo["Moving backup to "<>target ];
+            CopyFile[file, target, OverwriteTarget->True ];
+        ];
+
+        DeleteFile[file];
     ];
 
     makeHashPath[path_String, secret_String:""] := FileNameJoin[{AppExtensions`BackupsDir, StringTemplate["``.wln"][{path, secret} // Hash]}]
@@ -230,7 +245,7 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     ];
 
     Options[load] = {"Events"->"Blackhole"}
-    Options[save] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
+    Options[save] = {"Events"->"Blackhole", "NoCache"->False, "Temporal"->False, "Modals"->"Nulll", "Props"->Null}
     Options[loadToCache] = {"Events"->"Blackhole", "Temporal"->False, "Modals"->"Nulll"}
 
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},

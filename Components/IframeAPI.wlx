@@ -1,0 +1,148 @@
+<script type="module">
+ const VOID = () => console.log('iframeAPI does not support this command yet');
+ const promisesTable = {};
+ const listeners = {};
+ const messageHandler = {};
+
+ messageHandler.promise = (data) => {
+  const id = data.promise;
+  promisesTable[id](data.data);
+  delete promisesTable[id];
+ } 
+
+ messageHandler.controls = (data) => {
+  listeners[data.name].forEach((c) => c(null, data.data));
+ } 
+
+ window.addEventListener('message', function(event) {
+    console.log(event.data);
+    messageHandler[event.data.type](event.data);
+ });
+
+ window.iframeAPI = {
+
+  onfocus: (callback) => VOID(),
+  onblur: (callback) => VOID(),
+
+  contextMenu: (callback) => VOID(),
+  call: (callback) => VOID(),
+
+  devTools: () => VOID(),
+
+  listener: (name, callback) => {
+    if (!Array.isArray(listeners[name])) {
+      listeners[name] = [];
+    }
+
+    listeners[name].push(callback);
+  },
+
+  cellop: (callback) => VOID(),
+
+  pluginsMenu: (callback) => VOID(),
+
+  setProgress: (p) => VOID(),
+
+  changeWindowSizeBy: (p) => VOID(),
+
+  openFinder: (path) => {
+    VOID()
+  },
+
+  openPath: (path) => {
+    VOID()
+  },
+
+  openExternal: (path) => {
+    VOID()
+  }, 
+
+  beep: () => {
+    VOID()
+  },  
+
+  openFolder: (path) => {
+    VOID()
+  },    
+
+  topMenu: (name) => {
+    VOID()
+  },
+
+  toggleWindowSize: () => {
+    VOID()
+  },
+
+  harptic: () => {
+    VOID()
+  },
+
+  enlargeWindowSizeIfneeded: () => {
+    VOID()
+  },
+
+  blockWindow: (state, message) => {
+    window.parent.postMessage({'type':'action', 'method':'blockWindow', 'state':state, 'message': message}, "*");
+  },
+
+  requestFileWindow: (params, cbk) => {
+    const uuid = uuidv4();
+    promisesTable[uuid] = cbk;
+
+    console.log('iframe >> send a post message to parent window');
+    window.parent.postMessage({'type':'request', 'method':'requestFileWindow', 'params':params, 'promise':uuid}, "*");
+  },
+
+  requestOpenFileWindow: (params, cbk) => {
+    VOID()
+  },  
+
+  requestScreenshot: (params, cbk) => {
+    VOID()
+  },  
+
+  requestFolderWindow: (params, cbk) => {
+    VOID()
+  },
+
+  windowExpand: (path) => {
+    VOID()
+  },
+
+  installCli: () => {
+    VOID()
+  },  
+
+  clearCache: () => {
+    VOID()
+  },
+
+  uninstallCli: () => {
+    VOID()
+  },
+
+  windowShrink: (path) => {
+    VOID()
+  }
+}
+
+window.addEventListener("keydown", function (e) {
+  if (e.ctrlKey && e.key == "s" || e.metaKey && e.key == "s") {
+      window.parent.postMessage({'type':'shortcut', 'data':'save'}, "*");
+      e.preventDefault();
+      return false;
+  }
+  if (e.altKey && e.key == "." || e.metaKey && e.key == ".") {
+    window.parent.postMessage({'type':'shortcut', 'data':'abort'}, "*");
+      e.preventDefault();
+      return false;
+  }           
+  
+  if (e.altKey && e.key == "2" || e.metaKey && e.key == "2") {
+      window.parent.postMessage({'type':'shortcut', 'data':'togglefocusedcell'}, "*");
+      e.preventDefault();
+      return false;
+  }
+});
+
+</script>
