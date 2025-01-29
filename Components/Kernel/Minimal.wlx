@@ -68,7 +68,7 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
         addListeners[kernel, KernelList, initKernel, deinitKernel];
 
         EventFire[appEvents, "AppendKernel", kernel];
-        kernel // KernelObject`Start;
+        kernel // GenericKernel`Start;
     ]    
   ],
     "Restart" -> Function[Null,
@@ -80,21 +80,21 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
       With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_Notebook, ___} :> n}},
         If[MatchQ[onlineNotebook, _Notebook],
           If[onlineNotebook["Evaluator"]["Kernel"]["State"] === "Initialized",
-            onlineNotebook["Evaluator"]["Kernel"] // KernelObject`Restart;
+            onlineNotebook["Evaluator"]["Kernel"] // GenericKernel`Restart;
           ,
             EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
-            First[ReleaseHold[KernelList]] // KernelObject`Restart;
+            First[ReleaseHold[KernelList]] // GenericKernel`Restart;
           ]
         ,
           EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
-          First[ReleaseHold[KernelList]] // KernelObject`Restart;
+          First[ReleaseHold[KernelList]] // GenericKernel`Restart;
         ]
       ]
     ],
 
     "KillAll" -> Function[Null,
       
-      KernelObject`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
+      GenericKernel`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
       EventFire[m, "Info", "All kernels have been unlinked"];
     ]
   }];

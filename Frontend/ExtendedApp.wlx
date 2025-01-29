@@ -70,7 +70,7 @@ createNotebook[assoc_Association, GlobalMessanger_, ModalController_, client_, c
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ StringJoin["/folder/", URLEncode[ result["Path"] ] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+      WebUILocation[ StringJoin["/folder/", URLEncode[ result["Path"] ] ], client, "Target"->If[NotebookQ[currentpath], _, "Same"], "Features"->If[NotebookQ[currentpath], "left=100,top=100", ""] ];
     
   ], Function[error,
     EventFire[GlobalMessanger, "Error", "Failed to create a new notebook! Check if the working directory is writable"];
@@ -88,9 +88,9 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       Print[result["Path"]];
       
       If[props["Quick"] =!= True,
-        WebUILocation[ StringJoin["/folder/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+        WebUILocation[ StringJoin["/folder/", URLEncode[ result["Path"] ]], client, "Target"->_, "Features"->"left=100,top=100" ];
       , 
-        WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->If[NotebookQ[currentpath], _, "Same"] ];
+        WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->If[NotebookQ[currentpath], _, "Same"], "Features"->If[NotebookQ[currentpath], "left=100,top=100", ""] ];
       ];
       
     
@@ -245,11 +245,11 @@ App[request_] := With[{
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_, "Features"->"top=100,right=100"];
                   ],
 
                   "Acknowledgments" -> Function[Null,
-                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_, "Features"->"width=600,height=400"];
                   ],
 
                   "CheckUpdates" -> Function[Null,
@@ -314,7 +314,7 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_]&), 
+      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_, "Features"->"width=600,height=800"]&), 
       "RenameFile" -> ((renameFile @@ #)&),
       "NewNotebook" -> (createNotebook[#, GlobalMessanger, ModalController, $Client, Path]&),
       "_NewNotebook" -> (createNotebook[<|"BaseDirectory"->If[DirectoryQ[Path], Path, DirectoryName[Path]]|>, GlobalMessanger, ModalController, $Client, Path]&),

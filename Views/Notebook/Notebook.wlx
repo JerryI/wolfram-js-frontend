@@ -612,7 +612,7 @@ Component[OptionsPattern[]] := With[{
 
         "RestartKernel" -> Function[Null,
             Echo["Manual Kernel restart"];
-            notebook["Evaluator"]["Kernel"] // KernelObject`Restart;
+            notebook["Evaluator"]["Kernel"] // GenericKernel`Restart;
         ],
 
         "ClearOutputs" -> Function[Null,
@@ -652,7 +652,7 @@ Component[OptionsPattern[]] := With[{
                 Return[];
             ];
 
-            If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized", KernelObject`AbortEvaluation[notebook["Evaluator"]["Kernel"]] (*`*) ];
+            If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized", GenericKernel`AbortEvaluation[notebook["Evaluator"]["Kernel"]] (*`*) ];
             Map[Function[cell,
                 cell["State"] = "Idle";
                 EventFire[cell, "State", "Idle"];

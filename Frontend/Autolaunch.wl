@@ -12,7 +12,7 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
 
 Begin["`Internal`"];
 
-Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 appendHeld[Hold[list_], a_] := list = Append[list, a];
 removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
@@ -28,7 +28,7 @@ autostart[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
   }];
 
 
-  kernel // KernelObject`Start;
+  kernel // GenericKernel`Start;
 ];
 
 End[]

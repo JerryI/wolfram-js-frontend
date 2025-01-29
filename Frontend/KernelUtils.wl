@@ -10,10 +10,12 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
   "JerryI`Misc`WLJS`Transport`"
 }];
 
-Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
-Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"]
+
 
 Begin["`Internal`"];
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
+Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"]
 
 initializeKernel[parameters_][kernel_] := With[{
   wsPort = parameters["env", "ws2"], 
@@ -36,11 +38,11 @@ initializeKernel[parameters_][kernel_] := With[{
     
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       
-      KernelObject`Async[kernel,  ImportString[processed, "WL"] ](*`*);
+      GenericKernel`Async[kernel,  ImportString[processed, "WL"] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
       Echo[u];
-      KernelObject`Init[kernel,  ToExpression[ u ] ](*`*);
+      GenericKernel`Init[kernel,  ToExpression[ u ] ](*`*);
     ];*)
   ] &/@ WLJS`PM`Includes["kernel"];
 
@@ -57,8 +59,8 @@ initializeKernel[parameters_][kernel_] := With[{
   kernel["State"] = "Initialized";
 
   With[{hash = kernel["Hash"], s = spinner["Promise"] // First},
-    KernelObject`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
-    KernelObject`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, True ]; ];
+    GenericKernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
+    GenericKernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, True ]; ];
   ];
 ]
 
@@ -71,7 +73,7 @@ deinitializeKernel[kernel_] := With[{},
 
 wsStartListerning[kernel_, port_, host_] := With[{},
     
-    KernelObject`Init[kernel,  (  
+    GenericKernel`Init[kernel,  (  
         (*Print["Establishing WS link..."];*)
         System`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
         Module[{Internal`Kernel`wcp, Internal`Kernel`ws},

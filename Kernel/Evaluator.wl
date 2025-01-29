@@ -1,4 +1,4 @@
-BeginPackage["CoffeeLiqueur`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "CoffeeLiqueur`Notebook`Transactions`", "CoffeeLiqueur`Notebook`Kernel`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "CoffeeLiqueur`Notebook`Transactions`"}]
 
 StandardEvaluator::usage = "StandardEvaluator[opts__] creates a basic Evaluator"
 EvaluateTransaction;
@@ -8,6 +8,8 @@ Container::usage = "a static construction used for combinning StaticEvaluators a
 InitializedContainer;
 
 Begin["`Private`"]
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 init[o_] := With[{uid = CreateUUID[]},
     If[!ListQ[eList], eList = {}];
@@ -46,7 +48,7 @@ StandardEvaluator /: Print[evaluator_StandardEvaluator, msg_] := Echo[evaluator[
 StandardEvaluator /: Print[evaluator_StandardEvaluator, msg_, args__] := Echo[evaluator["Name"] <> " >> " <> StringTemplate[msg // ToString][args] ]
 
 (* Primitive Evaluator *)
-
+(*
 primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKernel" -> initPrimitiveEvaluator, "Priority"->(Infinity)];
 
     ReadyQ[primitive, kernel_] := (
@@ -57,13 +59,13 @@ primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKern
     EvaluateTransaction[primitive, kernel_, t_] := (
         t["Evaluator"] = Internal`Kernel`Evaluator`Simple;
 
-        Print[primitive, "KernelObject`Submit!"];
-        KernelObject`Submit[kernel, t];
+        Print[primitive, "GenericKernel`Submit!"];
+        GenericKernel`Submit[kernel, t];
     );
 
 initPrimitiveEvaluator[k_] := Module[{},
     Print["Kernel init..."];
-    KernelObject`Init[k, 
+    GenericKernel`Init[k, 
         Print["Init primitive Kernel (Local)"];
         Internal`Kernel`Evaluator`Simple = Function[t, 
             With[{result = ToExpression[ t["Data"], InputForm ] },
@@ -81,6 +83,7 @@ initPrimitiveEvaluator[k_] := Module[{},
         ];        
     ]
 ]
+*)
 
 End[]
 EndPackage[]

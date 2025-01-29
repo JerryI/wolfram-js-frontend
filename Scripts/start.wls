@@ -30,9 +30,10 @@ Needs["KirillBelov`HTTPHandler`Extensions`"]
 Needs["KirillBelov`WebSocketHandler`"]
 Needs["KirillBelov`LTP`"]
 
-(* notebook abstraction *)
-Needs["CoffeeLiqueur`Notebook`Packages`"]
-Needs["CoffeeLiqueur`Notebook`Utils`"]
+
+Needs["CoffeeLiqueur`Notebook`Utils`"];
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 Needs["CoffeeLiqueur`Notebook`Cells`"];
 
@@ -53,7 +54,8 @@ Needs["JerryI`Misc`Async`"]
 
 Needs["JerryI`Misc`Parallel`"]
 
-Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
+
+
 Needs["CoffeeLiqueur`Notebook`LocalKernel`" -> "LocalKernel`"];
 Needs["CoffeeLiqueur`Notebook`Transactions`"]
 

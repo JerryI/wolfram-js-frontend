@@ -19,7 +19,6 @@ PacletObject[
           {"CoffeeLiqueur`Notebook`Evaluator`", "Evaluator.wl"},
           {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
 
-          {"CoffeeLiqueur`Notebook`Packages`", "Packages.wl"},
           {"CoffeeLiqueur`Notebook`Utils`", "Utils.wl"},
           {"CoffeeLiqueur`Notebook`FrontendObject`", "FrontendObject.wl"},
           {"CoffeeLiqueur`Notebook`Kernel`", "Kernel.wl"},
@@ -33,13 +32,6 @@ PacletObject[
 
 
           {"CoffeeLiqueur`Notebook`Windows`", "Windows.wl"}
-        }
-      },
-      {"Documentation", "Language" -> "English"},
-      {
-        "Asset",
-        "Assets" -> {
-          {"webgui", "public"}
         }
       }
     }

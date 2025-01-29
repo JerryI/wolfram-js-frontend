@@ -3,11 +3,13 @@ BeginPackage["CoffeeLiqueur`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "Jerr
 LocalKernel;
 LTPServerStart;
 
-Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
 
 Begin["`Private`"]
 
-CreateType[LocalKernelObject, KernelObject`Kernel, {"RootDirectory"->Directory[], "CreatedQ"->False, "StandardOutput"->Null, "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
+
+
+CreateType[LocalKernelObject, GenericKernel`Kernel, {"RootDirectory"->Directory[], "CreatedQ"->False, "StandardOutput"->Null, "InitList"-> {}, "Host"->"127.0.0.1", "Port"->36808, "ReadyQ"->False, "State"->"Undefined", "wolframscript" -> ("\""<>First[$CommandLine]<>"\" -wstp")}]
 
 
 LocalKernel[opts___] := LocalKernelObject[opts]
@@ -24,7 +26,7 @@ LTPServerStart[port_:36800] := With[{},
 ]
 
 (*  internal function that will be called by other kernel remotely *)
-Internal`Kernel`LTPConnected[uid_String] := With[{o = KernelObject`HashMap[uid]},
+Internal`Kernel`LTPConnected[uid_String] := With[{o = GenericKernel`HashMap[uid]},
     Echo["LocalKernel >> local kernel link connected!"];
     o["LTPSocket"] = SocketConnect[ "127.0.0.1:"<>ToString[o["Port"] ] ] ;
     Echo[o["LTPSocket"] ];
@@ -246,19 +248,19 @@ checkState[k_LocalKernelObject] := Module[{},
     EventFire[k, "Error", "Timeout"];
 ]
 
-LocalKernelObject /: KernelObject`SubmitTransaction[k_LocalKernelObject, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
+LocalKernelObject /: GenericKernel`SubmitTransaction[k_LocalKernelObject, t_] := With[{ev = t["Evaluator"], s = Transaction`Serialize[t]},
     LinkWrite[k["Link"], EnterExpressionPacket[ Internal`Kernel`Apply[ ev, s ] ] // Unevaluated  ]
 ]
 
-LocalKernelObject /: KernelObject`Async[k_LocalKernelObject, expr_] := With[{},
+LocalKernelObject /: GenericKernel`Async[k_LocalKernelObject, expr_] := With[{},
     LTPEvaluate[k["LTPSocket"], expr]
 ]
 
-KernelObject`Stdout[k_LocalKernelObject][any_] := k["LTPSocket"][any]
+GenericKernel`Stdout[k_LocalKernelObject][any_] := k["LTPSocket"][any]
 
-SetAttributes[KernelObject`Async, HoldRest]
+SetAttributes[GenericKernel`Async, HoldRest]
 
-LocalKernelObject /: KernelObject`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"], tracker = OptionValue["TrackingProgress"]},
+LocalKernelObject /: GenericKernel`Init[k_LocalKernelObject, expr_, OptionsPattern[] ] := With[{once = OptionValue["Once"], tracker = OptionValue["TrackingProgress"]},
     If[!once,
         With[{
                 value = expr // Hold // Compress // HeldRemotePacket
@@ -306,11 +308,11 @@ LocalKernelObject /: KernelObject`Init[k_LocalKernelObject, expr_, OptionsPatter
 
 
 
-LocalKernelObject /: KernelObject`Start[k_LocalKernelObject] := start[k];
-LocalKernelObject /: KernelObject`Unlink[k_LocalKernelObject] := unlink[k];
-LocalKernelObject /: KernelObject`Restart[k_LocalKernelObject] := restart[k];
+LocalKernelObject /: GenericKernel`Start[k_LocalKernelObject] := start[k];
+LocalKernelObject /: GenericKernel`Unlink[k_LocalKernelObject] := unlink[k];
+LocalKernelObject /: GenericKernel`Restart[k_LocalKernelObject] := restart[k];
 
-LocalKernelObject /: KernelObject`AbortEvaluation[k_LocalKernelObject] := With[{},
+LocalKernelObject /: GenericKernel`AbortEvaluation[k_LocalKernelObject] := With[{},
     LinkInterrupt[k["Link"], 3]; 
     Print["localkernel >> aborted"];
     LinkWrite[k["Link"], Unevaluated[$Aborted] ];     

@@ -1,5 +1,2 @@
-- [ ] LTP
 - [ ] Notebook
-- [ ] Transactions
 - [ ] Window
-- [ ] Why do we get error in $ContextAliases

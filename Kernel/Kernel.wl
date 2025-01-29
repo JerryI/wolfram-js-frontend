@@ -38,7 +38,7 @@ SetAttributes[Async, HoldRest]
 
 Stdout[k_][any_] := Print["Dummy Stdout"]
 
-Init[k_, expr_, OptionsPattern[]] := Print["Dummy Init"]
+Init[k_, expr_, OptionsPattern[] ] := Print["Dummy Init"]
 
 Options[Init] = {"Once" -> False, "TrackingProgress"->Null}
 SetAttributes[Init, HoldRest]
