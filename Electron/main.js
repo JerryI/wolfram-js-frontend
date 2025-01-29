@@ -1209,6 +1209,15 @@ const closing_handler = (event, id) => {
     return true;
 }
 
+function parseWindowFeatures(features) {
+    return Object.fromEntries(
+        features.split(',').map(feature => {
+            let [key, value] = feature.split('=').map(str => str.trim());
+            return [key, Number(value)]; // Convert value to number
+        })
+    );
+}
+
 function create_window(opts, cbk = () => {}) {
         //default options
         const defaults = {
@@ -1281,6 +1290,12 @@ function create_window(opts, cbk = () => {}) {
         }
 
         let win;
+
+        if (options.features) {
+            options.features = parseWindowFeatures(options.features);
+            options.width = options.features.width || options.width;
+            options.height = options.features.height || options.height;
+        }
 
         if (isMac) {
             win = new BrowserWindow({
@@ -1549,7 +1564,7 @@ function create_window(opts, cbk = () => {}) {
 
             //if it is on the same domain
             if (u.hostname === (new URL(server.url.default())).hostname) {
-                create_window({url: url, show: true, parent: win});
+                create_window({url: url, show: true, parent: win, features:features});
 
             } else {
                 //open in the default user's browser
