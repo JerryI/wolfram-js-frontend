@@ -1455,6 +1455,19 @@ function create_window(opts, cbk = () => {}) {
             })
         }
 
+        if (options.features) {
+            if (options.features.top || options.features.right || options.features.left || options.features.bottom) {
+                const pos = options.parent.getPosition();
+                pos[0] = pos[0] + (options.features.right || 0) - (options.features.left || 0);
+                pos[1] = pos[1] + (options.features.top || 0) - (options.features.bottom || 0);
+                
+                if(pos[0] < 0) pos[0] = 0;
+                if(pos[1] < 0) pos[1] = 0;
+                
+                win.setPosition(pos[0], pos[1], true);
+            }
+        }
+
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
             //show results when Ctrl+F pressed
