@@ -1539,9 +1539,11 @@ function create_window(opts, cbk = () => {}) {
 
 
 
-        win.webContents.setWindowOpenHandler(({ url }) => {
+        win.webContents.setWindowOpenHandler(({ url , frameName, features}) => {
             console.log(url);
             const u = new URL(url);
+
+            //console.error(features);
 
 
 

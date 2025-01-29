@@ -30,20 +30,18 @@ PacletRepositories[{
 <<KirillBelov`WebSocketHandler`
 <<KirillBelov`LTP`
 
-<<CoffeeLiqueur`Aliases`
-
 (* notebook abstraction *)
 <<CoffeeLiqueur`Notebook`Packages`
 <<CoffeeLiqueur`Notebook`Utils`
 
-<<CoffeeLiqueur`Notebook`;
+<<CoffeeLiqueur`Notebook`Cells`;
 <<CoffeeLiqueur`Notebook`Evaluator`;
 <<CoffeeLiqueur`Notebook`Windows`;
 
 <<CoffeeLiqueur`Notebook`AppExtensions`;
 
 (* WLJS transport *)
-<<CoffeeLiqueur`Transport`
+<<JerryI`Misc`WLJS`Transport`
 
 (* event system  *)
 <<JerryI`Misc`Events`

@@ -19,8 +19,6 @@ PacletObject[
           {"CoffeeLiqueur`Notebook`Evaluator`", "Evaluator.wl"},
           {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
 
-          {"CoffeeLiqueur`Aliases`", "Aliases.wl"},
-
           {"CoffeeLiqueur`Notebook`Packages`", "Packages.wl"},
           {"CoffeeLiqueur`Notebook`Utils`", "Utils.wl"},
           {"CoffeeLiqueur`Notebook`FrontendObject`", "FrontendObject.wl"},

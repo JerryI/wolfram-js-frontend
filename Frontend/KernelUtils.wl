@@ -9,7 +9,7 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
   "KirillBelov`Internal`",
   "KirillBelov`TCPServer`",
   "KirillBelov`WebSocketHandler`",
-  "CoffeeLiqueur`Transport`"
+  "JerryI`Misc`WLJS`Transport`"
 }];
 
 Begin["`Internal`"];
