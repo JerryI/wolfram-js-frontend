@@ -20,57 +20,58 @@ PacletRepositories[{
 }, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
 
 (* web-server *)
-<<KirillBelov`CSockets`
-<<KirillBelov`Objects`
-<<KirillBelov`Internal`
-<<KirillBelov`TCPServer`
+Needs["KirillBelov`CSockets`"]
+Needs["KirillBelov`Objects`"]
+Needs["KirillBelov`Internal`"]
+Needs["KirillBelov`TCPServer`"]
 
-<<KirillBelov`HTTPHandler`
-<<KirillBelov`HTTPHandler`Extensions`
-<<KirillBelov`WebSocketHandler`
-<<KirillBelov`LTP`
+Needs["KirillBelov`HTTPHandler`"]
+Needs["KirillBelov`HTTPHandler`Extensions`"]
+Needs["KirillBelov`WebSocketHandler`"]
+Needs["KirillBelov`LTP`"]
 
 (* notebook abstraction *)
-<<CoffeeLiqueur`Notebook`Packages`
-<<CoffeeLiqueur`Notebook`Utils`
+Needs["CoffeeLiqueur`Notebook`Packages`"]
+Needs["CoffeeLiqueur`Notebook`Utils`"]
 
-<<CoffeeLiqueur`Notebook`Cells`;
-<<CoffeeLiqueur`Notebook`Evaluator`;
-<<CoffeeLiqueur`Notebook`Windows`;
+Needs["CoffeeLiqueur`Notebook`Cells`"];
 
-<<CoffeeLiqueur`Notebook`AppExtensions`;
+Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"];
+
+Needs["CoffeeLiqueur`Notebook`Windows`"];
+
+Needs["CoffeeLiqueur`Notebook`AppExtensions`" -> "AppExtensions`"];
 
 (* WLJS transport *)
-<<JerryI`Misc`WLJS`Transport`
+Needs["JerryI`Misc`WLJS`Transport`"]
 
 (* event system  *)
-<<JerryI`Misc`Events`
-<<JerryI`Misc`Events`Promise`
+Needs["JerryI`Misc`Events`"]
+Needs["JerryI`Misc`Events`Promise`"]
 
-<<JerryI`Misc`Async`
+Needs["JerryI`Misc`Async`"]
 
-<<JerryI`Misc`Parallel`
+Needs["JerryI`Misc`Parallel`"]
 
-<<CoffeeLiqueur`Notebook`Kernel`
-<<CoffeeLiqueur`Notebook`LocalKernel`
-<<CoffeeLiqueur`Notebook`MasterKernel`
-<<CoffeeLiqueur`Notebook`Transactions`
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
+Needs["CoffeeLiqueur`Notebook`LocalKernel`" -> "LocalKernel`"];
+Needs["CoffeeLiqueur`Notebook`Transactions`"]
 
 
-<<KirillBelov`CSockets`EventsExtension`
+Needs["KirillBelov`CSockets`EventsExtension`"]
 
 (* WLX template engine *)
-<<JerryI`WLX`
-<<JerryI`WLX`Importer`
-<<JerryI`WLX`WLJS`
+Needs["JerryI`WLX`"]
+Needs["JerryI`WLX`Importer`"]
+Needs["JerryI`WLX`WLJS`"]
 
 (* WebUI Toolkit *)
-<<JerryI`WLX`WebUI`
+Needs["JerryI`WLX`WebUI`"]
 
-<<CodeParser`
+Needs["CodeParser`"]
 
 (* WLJS Package manager *)
-<<JerryI`WLJSPM`
+Needs["JerryI`WLJSPM`"]
 
 
 (* env parameters *)

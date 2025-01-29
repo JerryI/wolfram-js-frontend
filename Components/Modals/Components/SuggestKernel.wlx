@@ -39,7 +39,7 @@ Window[OptionsPattern[]] := With[{request = OptionValue["Data"]["Callback"], loa
       EventHandler[Uid, {
         "Success" -> Function[uid,
             EventFire[loader, "Remove", <|"Client" -> client|>];
-            With[{kernel = Kernel`HashMap[uid](*`*)},
+            With[{kernel = KernelObject`HashMap[uid](*`*)},
                 If[TrueQ[kernel["ContainerReadyQ"]] && TrueQ[kernel["ReadyQ"]],
                     EventFire[request, "Success", kernel];
                 ,

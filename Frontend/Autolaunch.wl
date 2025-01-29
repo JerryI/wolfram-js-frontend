@@ -1,7 +1,5 @@
 BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
-  "CoffeeLiqueur`Notebook`Evaluator`", 
   "JerryI`WLJSPM`", 
-  "CoffeeLiqueur`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -11,7 +9,10 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
   "JerryI`Misc`WLJS`Transport`"
 }];
 
+
 Begin["`Internal`"];
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
 
 appendHeld[Hold[list_], a_] := list = Append[list, a];
 removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
@@ -27,7 +28,7 @@ autostart[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
   }];
 
 
-  kernel // Kernel`Start;
+  kernel // KernelObject`Start;
 ];
 
 End[]

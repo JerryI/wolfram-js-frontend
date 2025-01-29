@@ -425,7 +425,7 @@ Print["App Loaded!"];
 
 If[settings["Autostart"] && !TrueQ[$Env["noautolaunch"]],
   Print["Autolaunch!"];
-  autolaunch[LocalKernel["Name"->"Auto"], Hold[AppExtensions`KernelList], initKernel[serverParams], deinitKernel];
+  autolaunch[LocalKernel`LocalKernel["Name"->"Auto"], Hold[AppExtensions`KernelList], initKernel[serverParams], deinitKernel];
 ];
 
 Print["Done?"];

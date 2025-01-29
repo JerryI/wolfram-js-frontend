@@ -1,7 +1,5 @@
 BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
-  "CoffeeLiqueur`Notebook`Evaluator`", 
   "JerryI`WLJSPM`", 
-  "CoffeeLiqueur`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -11,6 +9,9 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
   "KirillBelov`WebSocketHandler`",
   "JerryI`Misc`WLJS`Transport`"
 }];
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "KernelObject`"];
+Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"]
 
 Begin["`Internal`"];
 
@@ -35,11 +36,11 @@ initializeKernel[parameters_][kernel_] := With[{
     
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
       
-      Kernel`Async[kernel,  ImportString[processed, "WL"] ](*`*);
+      KernelObject`Async[kernel,  ImportString[processed, "WL"] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
       Echo[u];
-      Kernel`Init[kernel,  ToExpression[ u ] ](*`*);
+      KernelObject`Init[kernel,  ToExpression[ u ] ](*`*);
     ];*)
   ] &/@ WLJS`PM`Includes["kernel"];
 
@@ -56,8 +57,8 @@ initializeKernel[parameters_][kernel_] := With[{
   kernel["State"] = "Initialized";
 
   With[{hash = kernel["Hash"], s = spinner["Promise"] // First},
-    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
-    Kernel`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, True ]; ];
+    KernelObject`Init[kernel,  EventFire[Internal`Kernel`Stdout[ hash ], "State", "Initialized" ]; ];
+    KernelObject`Init[kernel,  EventFire[Internal`Kernel`Stdout[ s ], Resolve, True ]; ];
   ];
 ]
 
@@ -70,7 +71,7 @@ deinitializeKernel[kernel_] := With[{},
 
 wsStartListerning[kernel_, port_, host_] := With[{},
     
-    Kernel`Init[kernel,  (  
+    KernelObject`Init[kernel,  (  
         (*Print["Establishing WS link..."];*)
         System`$DefaultSerializer = ExportByteArray[#, "ExpressionJSON"]&;
         Module[{Internal`Kernel`wcp, Internal`Kernel`ws},

@@ -1,4 +1,11 @@
-BeginPackage["CoffeeLiqueur`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "CoffeeLiqueur`Notebook`Cells`", "JerryI`WLX`WebUI`", "CoffeeLiqueur`Notebook`AppExtensions`"}];
+BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
+    "JerryI`Misc`Events`", 
+    "JerryI`Misc`Events`Promise`", 
+    "CoffeeLiqueur`Notebook`Cells`", 
+    "JerryI`WLX`WebUI`"
+}];
+
+    Needs["CoffeeLiqueur`Notebook`AppExtensions`" -> "AppExtensions`"];
     
     Begin["`Internal`"];
 
