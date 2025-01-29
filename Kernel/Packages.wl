@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Packages`", {"KirillBelov`HTTPHandler`Extensions`", "JerryI`Notebook`Utils`"}];
+BeginPackage["CoffeeLiqueur`Notebook`Packages`", {"KirillBelov`HTTPHandler`Extensions`", "CoffeeLiqueur`Notebook`Utils`"}];
 
 
 

@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`MasterKernel`", {"KirillBelov`Objects`", "JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Notebook`Kernel`"}]
+BeginPackage["CoffeeLiqueur`Notebook`MasterKernel`", {"KirillBelov`Objects`", "JerryI`Misc`Async`", "JerryI`Misc`Events`", "CoffeeLiqueur`Notebook`Kernel`"}]
 
 MasterKernel::usage = ""
 Kernel`Init::usage = ""

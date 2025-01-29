@@ -1,4 +1,4 @@
-Begin["JerryI`Notebook`Views`"];
+Begin["CoffeeLiqueur`Notebook`Views`"];
 
 {saveNotebook, loadNotebook, renameXXX, cloneXXX}               = ImportComponent["Loader.wl"];
 {EmptyComponent,       EmptyScript}        = ImportComponent["Views/Empty.wlx"];
@@ -36,4 +36,4 @@ Router[any_?NotebookQ, appevents_String] := With[{n = loadNotebook[any, "Events"
 
 End[];
 
-JerryI`Notebook`Views`View
+CoffeeLiqueur`Notebook`Views`View

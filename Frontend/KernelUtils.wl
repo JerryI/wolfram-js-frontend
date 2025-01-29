@@ -1,7 +1,7 @@
-BeginPackage["JerryI`Notebook`KernelUtils`", {
-  "JerryI`Notebook`Evaluator`", 
+BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
+  "CoffeeLiqueur`Notebook`Evaluator`", 
   "JerryI`WLJSPM`", 
-  "JerryI`Notebook`Kernel`", 
+  "CoffeeLiqueur`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -9,7 +9,7 @@ BeginPackage["JerryI`Notebook`KernelUtils`", {
   "KirillBelov`Internal`",
   "KirillBelov`TCPServer`",
   "KirillBelov`WebSocketHandler`",
-  "JerryI`Misc`WLJS`Transport`"
+  "CoffeeLiqueur`Transport`"
 }];
 
 Begin["`Internal`"];
@@ -110,4 +110,4 @@ End[];
 
 EndPackage[];
 
-{JerryI`Notebook`KernelUtils`Internal`deinitializeKernel, JerryI`Notebook`KernelUtils`Internal`initializeKernel}
+{CoffeeLiqueur`Notebook`KernelUtils`Internal`deinitializeKernel, CoffeeLiqueur`Notebook`KernelUtils`Internal`initializeKernel}

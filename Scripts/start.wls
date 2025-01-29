@@ -17,7 +17,7 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev",
   Github -> "https://github.com/JerryI/wl-wljs-packages" -> "master"
-}, "Directory" -> Directory[] ]
+}, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
 
 (* web-server *)
 <<KirillBelov`CSockets`
@@ -30,18 +30,20 @@ PacletRepositories[{
 <<KirillBelov`WebSocketHandler`
 <<KirillBelov`LTP`
 
+<<CoffeeLiqueur`Aliases`
+
 (* notebook abstraction *)
-<<JerryI`Notebook`Packages`
-<<JerryI`Notebook`Utils`
+<<CoffeeLiqueur`Notebook`Packages`
+<<CoffeeLiqueur`Notebook`Utils`
 
-<<JerryI`Notebook`;
-<<JerryI`Notebook`Evaluator`;
-<<JerryI`Notebook`Windows`;
+<<CoffeeLiqueur`Notebook`;
+<<CoffeeLiqueur`Notebook`Evaluator`;
+<<CoffeeLiqueur`Notebook`Windows`;
 
-<<JerryI`Notebook`AppExtensions`;
+<<CoffeeLiqueur`Notebook`AppExtensions`;
 
 (* WLJS transport *)
-<<JerryI`Misc`WLJS`Transport`
+<<CoffeeLiqueur`Transport`
 
 (* event system  *)
 <<JerryI`Misc`Events`
@@ -51,10 +53,10 @@ PacletRepositories[{
 
 <<JerryI`Misc`Parallel`
 
-<<JerryI`Notebook`Kernel`
-<<JerryI`Notebook`LocalKernel`
-<<JerryI`Notebook`MasterKernel`
-<<JerryI`Notebook`Transactions`
+<<CoffeeLiqueur`Notebook`Kernel`
+<<CoffeeLiqueur`Notebook`LocalKernel`
+<<CoffeeLiqueur`Notebook`MasterKernel`
+<<CoffeeLiqueur`Notebook`Transactions`
 
 
 <<KirillBelov`CSockets`EventsExtension`
@@ -217,7 +219,7 @@ WLJS`PM`Repositories[{
   Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
   Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
   Github -> "https://github.com/JerryI/wljs-api" -> "master"
-}, "Directory" -> Directory[] ]
+}, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
 
 LocalKernel`LTPServerStart[];
 

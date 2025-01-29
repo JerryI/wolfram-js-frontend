@@ -1,14 +1,14 @@
-BeginPackage["JerryI`Notebook`KernelAutolaunch`", {
-  "JerryI`Notebook`Evaluator`", 
+BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
+  "CoffeeLiqueur`Notebook`Evaluator`", 
   "JerryI`WLJSPM`", 
-  "JerryI`Notebook`Kernel`", 
+  "CoffeeLiqueur`Notebook`Kernel`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
   "KirillBelov`Internal`",
   "KirillBelov`TCPServer`",
   "KirillBelov`WebSocketHandler`",
-  "JerryI`Misc`WLJS`Transport`"
+  "CoffeeLiqueur`Transport`"
 }];
 
 Begin["`Internal`"];
@@ -33,4 +33,4 @@ autostart[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
 End[]
 EndPackage[]
 
-JerryI`Notebook`KernelAutolaunch`Internal`autostart
+CoffeeLiqueur`Notebook`KernelAutolaunch`Internal`autostart

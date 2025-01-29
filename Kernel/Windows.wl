@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Windows`", {"JerryI`Notebook`", "JerryI`Misc`Events`", "KirillBelov`Objects`", "JerryI`Notebook`Transactions`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Windows`", {"CoffeeLiqueur`Notebook`Cells`", "JerryI`Misc`Events`", "KirillBelov`Objects`", "CoffeeLiqueur`Notebook`Transactions`"}]
 
 WindowObj::usage = ""
 

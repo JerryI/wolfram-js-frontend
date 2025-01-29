@@ -4,11 +4,11 @@ PacletDirectoryLoad[Directory[]];
 PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Misc`Events`
-<<JerryI`Notebook`Kernel`
-<<JerryI`Notebook`MasterKernel`
+<<CoffeeLiqueur`Notebook`Kernel`
+<<CoffeeLiqueur`Notebook`MasterKernel`
 <<JerryI`Misc`Async`
-<<JerryI`Notebook`Evaluator`
-<<JerryI`Notebook`Transactions`
+<<CoffeeLiqueur`Notebook`Evaluator`
+<<CoffeeLiqueur`Notebook`Transactions`
 
 kernel = MasterKernel[];
 EventHandler[kernel, {any_ :> Function[data, Echo["Kernel: " <> any <> ": " <> ToString[data] ] ]}];

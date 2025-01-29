@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`AppExtensions`"]
+BeginPackage["CoffeeLiqueur`Notebook`AppExtensions`"]
 
 AppExtensions::usage = ""
 ExtensionEvent::usage = ""

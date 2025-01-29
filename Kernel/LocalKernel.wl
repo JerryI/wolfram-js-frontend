@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`", "KirillBelov`CSockets`"}]
+BeginPackage["CoffeeLiqueur`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "CoffeeLiqueur`Notebook`Kernel`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`", "KirillBelov`CSockets`"}]
 
 LocalKernel::usage = ""
 
@@ -200,9 +200,10 @@ start[k_LocalKernelObject] := Module[{link},
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Events`Promise`"] ];
         LinkWrite[link, EnterTextPacket["<<JerryI`Misc`Parallel`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`WebSocketHandler`"] ];
-        LinkWrite[link, EnterTextPacket["<<JerryI`Misc`WLJS`Transport`"] ];
+        LinkWrite[link, EnterTextPacket["<<CoffeeLiqueur`Aliases`"] ];
+        LinkWrite[link, EnterTextPacket["<<CoffeeLiqueur`Transport`"] ];
         LinkWrite[link, EnterTextPacket["<<KirillBelov`CSockets`EventsExtension`"] ];
-        LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`JerryI`Events`"] ];
+        LinkWrite[link, EnterTextPacket["<<KirillBelov`LTP`Events`"] ];
 
         (* unknown bug, doesn't work in initialization ... *)
         LinkWrite[link, EnterTextPacket["Unprotect[Interpretation, InterpretationBox]"] ];

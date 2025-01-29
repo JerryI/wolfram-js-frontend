@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`", {"JerryI`Misc`Events`", "KirillBelov`Objects`", "JerryI`Notebook`Transactions`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Cells`", {"JerryI`Misc`Events`", "KirillBelov`Objects`", "CoffeeLiqueur`Notebook`Transactions`"}]
 
 Notebook::usage = "Notebook[opts__] _Notebook creates an notebook object."
 (* :: opts ::                       *)

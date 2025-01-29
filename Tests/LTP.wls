@@ -8,7 +8,7 @@ PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 <<KirillBelov`Internal`
 <<KirillBelov`LTP`
 <<KirillBelov`TCPServer`
-<<KirillBelov`LTP`JerryI`Events`
+<<KirillBelov`LTP`Events`
 
 tcp = TCPServer[];
 tcp["CompleteHandler", "LTP"] = LTPQ -> LTPLength;

@@ -3,10 +3,10 @@ PacletDirectoryLoad[Directory[]];
 
 PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
-<< JerryI`Notebook`;
-<< JerryI`Notebook`Evaluator`;
+<< CoffeeLiqueur`Notebook`;
+<< CoffeeLiqueur`Notebook`Evaluator`;
 << JerryI`Misc`Events`;
-<< JerryI`Notebook`MasterKernel`;
+<< CoffeeLiqueur`Notebook`MasterKernel`;
 
 stat := With[{},
     Print["-----------------------"];

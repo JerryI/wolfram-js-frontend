@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Kernel`", {"JerryI`Misc`Events`", "KirillBelov`Objects`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Kernel`", {"JerryI`Misc`Events`", "KirillBelov`Objects`"}]
 
 Kernel::usage = ""
 KernelQ::usage = ""

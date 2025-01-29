@@ -1,4 +1,4 @@
-BeginPackage["KirillBelov`LTP`JerryI`Events`", {
+BeginPackage["KirillBelov`LTP`Events`", {
     "JerryI`Misc`Events`", "KirillBelov`LTP`", "JerryI`Misc`Events`Promise`"
 }]
 

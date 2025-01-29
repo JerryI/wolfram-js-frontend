@@ -14,25 +14,27 @@ PacletObject[
         "Kernel",
         "Root" -> "Kernel",
         "Context" -> {
-          {"JerryI`Notebook`", "Notebook.wl"},
-          {"JerryI`Notebook`Transactions`", "Transactions.wl"},
-          {"JerryI`Notebook`Evaluator`", "Evaluator.wl"},
-          {"JerryI`Notebook`Transactions`", "Transactions.wl"},
+          {"CoffeeLiqueur`Notebook`Cells`", "Notebook.wl"},
+          {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
+          {"CoffeeLiqueur`Notebook`Evaluator`", "Evaluator.wl"},
+          {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
 
-          {"JerryI`Notebook`Packages`", "Packages.wl"},
-          {"JerryI`Notebook`Utils`", "Utils.wl"},
-          {"JerryI`Notebook`FrontendObject`", "FrontendObject.wl"},
-          {"JerryI`Notebook`Kernel`", "Kernel.wl"},
-          {"JerryI`Notebook`LocalKernel`", "LocalKernel.wl"},
+          {"CoffeeLiqueur`Aliases`", "Aliases.wl"},
+
+          {"CoffeeLiqueur`Notebook`Packages`", "Packages.wl"},
+          {"CoffeeLiqueur`Notebook`Utils`", "Utils.wl"},
+          {"CoffeeLiqueur`Notebook`FrontendObject`", "FrontendObject.wl"},
+          {"CoffeeLiqueur`Notebook`Kernel`", "Kernel.wl"},
+          {"CoffeeLiqueur`Notebook`LocalKernel`", "LocalKernel.wl"},
           {"KirillBelov`LTP`", "LTP.wl"},
-          {"KirillBelov`LTP`JerryI`Events`", "LTPEvents.wl"},
-          {"JerryI`Notebook`FrontendObject`", "FrontendObject.wl"},
-          {"JerryI`Notebook`MasterKernel`", "MasterKernel.wl"},
+          {"KirillBelov`LTP`Events`", "LTPEvents.wl"},
+          {"CoffeeLiqueur`Notebook`FrontendObject`", "FrontendObject.wl"},
+          {"CoffeeLiqueur`Notebook`MasterKernel`", "MasterKernel.wl"},
 
-          {"JerryI`Notebook`AppExtensions`", "AppExtensions.wl"},
+          {"CoffeeLiqueur`Notebook`AppExtensions`", "AppExtensions.wl"},
 
 
-          {"JerryI`Notebook`Windows`", "Windows.wl"}
+          {"CoffeeLiqueur`Notebook`Windows`", "Windows.wl"}
         }
       },
       {"Documentation", "Language" -> "English"},

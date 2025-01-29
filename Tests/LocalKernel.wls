@@ -4,11 +4,11 @@ PacletDirectoryLoad[Directory[]];
 PacletDirectoryLoad[FileNameJoin[{Directory[], "wl_packages"}]];
 
 <<JerryI`Misc`Events`
-<<JerryI`Notebook`Kernel`
-<<JerryI`Notebook`LocalKernel`
+<<CoffeeLiqueur`Notebook`Kernel`
+<<CoffeeLiqueur`Notebook`LocalKernel`
 <<JerryI`Misc`Async`
-<<JerryI`Notebook`Evaluator`
-<<JerryI`Notebook`Transactions`
+<<CoffeeLiqueur`Notebook`Evaluator`
+<<CoffeeLiqueur`Notebook`Transactions`
 
 LocalKernel`LTPServerStart[];
 

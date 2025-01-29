@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "JerryI`Notebook`", "JerryI`WLX`WebUI`", "JerryI`Notebook`AppExtensions`"}];
+BeginPackage["CoffeeLiqueur`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "CoffeeLiqueur`Notebook`Cells`", "JerryI`WLX`WebUI`", "CoffeeLiqueur`Notebook`AppExtensions`"}];
     
     Begin["`Internal`"];
 
@@ -269,4 +269,4 @@ BeginPackage["JerryI`Notebook`Loader`", {"JerryI`Misc`Events`", "JerryI`Misc`Eve
     
 EndPackage[];
 
-{JerryI`Notebook`Loader`Internal`save, JerryI`Notebook`Loader`Internal`load, JerryI`Notebook`Loader`Internal`rename, JerryI`Notebook`Loader`Internal`clone}
+{CoffeeLiqueur`Notebook`Loader`Internal`save, CoffeeLiqueur`Notebook`Loader`Internal`load, CoffeeLiqueur`Notebook`Loader`Internal`rename, CoffeeLiqueur`Notebook`Loader`Internal`clone}

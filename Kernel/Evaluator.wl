@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "JerryI`Notebook`Transactions`", "JerryI`Notebook`Kernel`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "CoffeeLiqueur`Notebook`Transactions`", "CoffeeLiqueur`Notebook`Kernel`"}]
 
 StandardEvaluator::usage = "StandardEvaluator[opts__] creates a basic Evaluator"
 (* :: Options :: *)
