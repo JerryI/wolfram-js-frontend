@@ -59,7 +59,7 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
         Return[Null];
       ];
 
-      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_Notebook, ___} :> n}},
+      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_nb`NotebookObj, ___} :> n}},
         If[MatchQ[onlineNotebook, _nb`NotebookObj],
           If[onlineNotebook["Evaluator"]["Kernel"]["State"] === "Initialized",
             onlineNotebook["Evaluator"]["Kernel"] // GenericKernel`Restart;

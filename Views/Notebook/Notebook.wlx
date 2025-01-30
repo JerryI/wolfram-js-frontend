@@ -20,7 +20,7 @@ ApplySync[f_, w_, {first_, rest___}, final_] := f[w@@first, Function[Null, Echo[
 ApplySync[f_, w_, {}, final_] := final[];
 
 
-addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
+addListeners[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[clonedEvent, {
         "New Cell" -> Function[cell,
@@ -45,7 +45,7 @@ addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions_
     ];
 ];
 
-restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
+restoreCells[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{},
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},

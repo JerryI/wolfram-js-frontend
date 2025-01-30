@@ -52,7 +52,7 @@ NotebookQ[str_] := FileExtension[str] === "wln"
 
 reopenNotebookAsQuick[_, GlobalMessanger_, __] := EventFire[GlobalMessanger, "Info", "You are already in a quick view"]
 
-renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
+renameFile[notebook_nb`NotebookObj, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
   filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
   RenameFile[oldPath, filename];
@@ -78,7 +78,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
   ]]
 ]
 
-backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
+backupNotebook[notebook_nb`NotebookObj, GlobalMessanger_, client_] := With[{},
   If[!TrueQ[notebook["ReadOnly?"]], 
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
         Print[result];
@@ -87,7 +87,7 @@ backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   ]
 ]
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
+dumpNotebook[notebook_nb`NotebookObj, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
   If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,

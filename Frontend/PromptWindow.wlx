@@ -40,7 +40,7 @@ loadSettings[settings];
 NotebookQ[str_] := FileExtension[str] === "wln"
 
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{},
+dumpNotebook[notebook_nb`NotebookObj, GlobalMessanger_, ModalController_, client_] := With[{},
   If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
@@ -89,7 +89,7 @@ transformNotebook[n_, cli_] := With[{},
   temporalNotebook = Null;
 ]
 
-recreateNotebook[modals_] := With[{n = Notebook[]},
+recreateNotebook[modals_] := With[{n = nb`NotebookObj[]},
   temporalNotebook = n;
   _cell`CellObj["Notebook"->temporalNotebook];
   temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), "overlayNote.wln"}];
