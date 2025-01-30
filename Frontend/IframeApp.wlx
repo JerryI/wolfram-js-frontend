@@ -170,10 +170,10 @@ promise
 ]
 
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 
 App[request_] := With[{

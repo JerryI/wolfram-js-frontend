@@ -205,7 +205,7 @@ projectCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals_
 
     
     With[{project = Function[Null,
-        With[{win = WindowObj["Notebook" -> cell["Notebook"], "Data" -> cell["Data"], "Ref" -> cell["Hash"] ]},
+        With[{win = win`WindowObj["Notebook" -> cell["Notebook"], "Data" -> cell["Data"], "Ref" -> cell["Hash"] ]},
             Echo["project >> sending global event"];
             EventFire[notebook, "OnWindowCreate", <|"Window"->win, "Client"->client|>];
             WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
@@ -252,7 +252,7 @@ projectCellData[cell_, evaluatedQ_, data_, display_, uid_,  imageSize_, notebook
 
 
     
-    With[{win = WindowObj["Notebook" -> notebook, "EvaluatedQ" -> evaluatedQ, "Display"->display, "Hash"->uid, "Data" -> data, "Ref" -> cell["Hash"] ]},
+    With[{win = win`WindowObj["Notebook" -> notebook, "EvaluatedQ" -> evaluatedQ, "Display"->display, "Hash"->uid, "Data" -> data, "Ref" -> cell["Hash"] ]},
             Echo["project >> sending global event"];
             EventFire[notebook, "OnWindowCreate", <|"Window"->win, "Client"->client|>];
 
@@ -638,7 +638,7 @@ Component[OptionsPattern[]] := With[{
 
         "DeleteFocusedCell" -> Function[Null,
             notebook["FocusedCell"] // Delete;
-            If[notebook["Cells"] === {}, _cell`CellObj["Notebook"->notebook, "Data"->""]];
+            If[notebook["Cells"] === {}, cell`CellObj["Notebook"->notebook, "Data"->""]];
         ],
         
         "EvaluateInitCells" -> Function[Null,
@@ -833,7 +833,7 @@ Component[OptionsPattern[]] := With[{
 
         "RemoveCell" -> Function[uid,
             cell`HashMap[uid] (*`*) //Delete;
-            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && cell`InputCellQ[c]]] === {}, _cell`CellObj["Notebook"->notebook, "Data"->""]];
+            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && cell`InputCellQ[c]]] === {}, cell`CellObj["Notebook"->notebook, "Data"->""]];
         ],
 
         "SetProperty" -> Function[json,
@@ -851,7 +851,7 @@ Component[OptionsPattern[]] := With[{
             (*/* request from the client with event provided */*)
 
             With[{o = cell`HashMap[uid] (*`*)},
-                _cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
+                cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
             ]
         ],
 
@@ -859,7 +859,7 @@ Component[OptionsPattern[]] := With[{
             (*/* request from the client with event provided */*)
 
             With[{o = cell`HashMap[uid] (*`*)},
-                _cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> Sequence[o, ___?cell`OutputCellQ]];   
+                cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> Sequence[o, ___?cell`OutputCellQ]];   
             ]
         ],        
 
@@ -867,7 +867,7 @@ Component[OptionsPattern[]] := With[{
             (*/* request from the client with event provided */*)
 
             With[{o = cell`HashMap[uid] (*`*)},
-                _cell`CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
+                cell`CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
             ]
         ],        
 

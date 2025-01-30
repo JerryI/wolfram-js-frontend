@@ -1,5 +1,4 @@
 BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
-  "JerryI`WLJSPM`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -12,6 +11,7 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
 
 Begin["`Internal`"];
 
+Needs["CoffeeLiqueur`ExtensionManager`" -> "WLJSPackages`"];
 Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 appendHeld[Hold[list_], a_] := list = Append[list, a];

@@ -57,10 +57,10 @@ dumpNotebook[notebook_nb`NotebookObj, GlobalMessanger_, ModalController_, client
 
 
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->AppExtensions`DefaultDocumentsDir (*`*)|>, settings]["Home"] ];
 
@@ -74,7 +74,7 @@ Map[Function[item,
   ,
     ExtensionMenuItems["misc"] = Append[ExtensionMenuItems["misc"], item]
   ];
-], Select[Flatten[WLJS`PM`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJS`PM`Packages]], AssociationQ]];
+], Select[Flatten[WLJSPackages`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJSPackages`Packages]], AssociationQ]];
 
 temporalNotebook = Null;
 
@@ -91,7 +91,7 @@ transformNotebook[n_, cli_] := With[{},
 
 recreateNotebook[modals_] := With[{n = nb`NotebookObj[]},
   temporalNotebook = n;
-  _cell`CellObj["Notebook"->temporalNotebook];
+  cell`CellObj["Notebook"->temporalNotebook];
   temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), "overlayNote.wln"}];
   dumpNotebook[temporalNotebook, Null, Null, Null];
 
@@ -213,7 +213,7 @@ App[request_] := Module[{localExtensions}, With[{
       
       "CleanUp" -> Function[Null, With[{notebook = n},
         Delete /@ Select[n["Cells"], cell`InputCellQ];
-        _cell`CellObj["Notebook" -> n];
+        cell`CellObj["Notebook" -> n];
       ]],
 
       "Expand" -> Function[Null, With[{},

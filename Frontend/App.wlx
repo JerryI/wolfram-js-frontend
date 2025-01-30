@@ -187,10 +187,10 @@ promise
 ]
 
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->AppExtensions`DefaultDocumentsDir (*`*)|>, settings]["Home"] ];
 
@@ -204,7 +204,7 @@ Map[Function[item,
   ,
     ExtensionMenuItems["misc"] = Append[ExtensionMenuItems["misc"], item]
   ];
-], Select[Flatten[WLJS`PM`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJS`PM`Packages]], AssociationQ]];
+], Select[Flatten[WLJSPackages`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJSPackages`Packages]], AssociationQ]];
 
 App[request_] := With[{
   Secret = CreateUUID[], 

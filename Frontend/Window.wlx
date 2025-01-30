@@ -16,12 +16,12 @@ loadSettings[settings];
 
 {Window, WindowScript}           = ImportComponent["Views/Window/Window.wlx"];
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
-WindowView[opts__] := If[MatchQ["Window" /. List[opts], _WindowObj],
+WindowView[opts__] := If[MatchQ["Window" /. List[opts], _win`WindowObj],
   Window[opts]
 ,
   <div class="flex items-center flex-col text-gray-900 h-full leading-1">
@@ -35,7 +35,7 @@ App[request_] := With[{
         ModalController = CreateUUID[],
         GlobalMessanger = CreateUUID[],
         GlobalParameters = <|"ElectronQ" -> ElectronQ[request], "AccentColor"->"teal"|>,
-        window        = WindowObj`HashMap[request["Query", "id"]] (*`*),
+        window        = win`HashMap[request["Query", "id"]] (*`*),
         NavigatorOS = If[KeyExistsQ[#, "AppOS"], #["AppOS"], "Browser"] &@ request["Headers"]
     },
 

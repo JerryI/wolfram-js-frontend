@@ -15,8 +15,7 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/WebSocketHandler" -> "master",
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
-  Github -> "https://github.com/JerryI/wl-misc" -> "dev",
-  Github -> "https://github.com/JerryI/wl-wljs-packages" -> "master"
+  Github -> "https://github.com/JerryI/wl-misc" -> "dev"
 }, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
 
 (* web-server *)
@@ -40,7 +39,7 @@ Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
 
 Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"];
 
-Needs["CoffeeLiqueur`Notebook`Windows`"];
+Needs["CoffeeLiqueur`Notebook`Windows`" -> "win`"];
 
 Needs["CoffeeLiqueur`Notebook`AppExtensions`" -> "AppExtensions`"];
 
@@ -74,7 +73,7 @@ Needs["JerryI`WLX`WebUI`"]
 Needs["CodeParser`"]
 
 (* WLJS Package manager *)
-Needs["JerryI`WLJSPM`"]
+Needs["CoffeeLiqueur`ExtensionManager`" -> "WLJSPackages`"];
 
 
 (* env parameters *)
@@ -186,49 +185,49 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
   ];
 ];
 
-WLJS`PM`Repositories[{
-  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
-  Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "master",
-  Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
-  Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sound" -> "master",
-  Github -> "https://github.com/JerryI/wljs-video" -> "master",
-  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
-  Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
-  Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
-  Github -> "https://github.com/JerryI/wljs-toc" -> "master",
-  Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
-  Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
-  Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
-  Github -> "https://github.com/JerryI/wljs-api" -> "master"
+WLJSPackages`Repositories[{
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sound" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-video" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-templates" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-toc" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "master"
 }, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
 
 LocalKernel`LTPServerStart[];
 
 RandomWord[];
 
-WLJS`PM`Includes["js"];
-WLJS`PM`Includes["frontend"];
+WLJSPackages`Includes["js"];
+WLJSPackages`Includes["frontend"];
 
 (*EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
@@ -269,7 +268,7 @@ Echo["Loading packages: FRONTEND"];
   If[FailureQ[Get[FileNameJoin[{Directory[], "wljs_packages",  UniversalPathConverter[#]}] ] ],
     Echo["Failed to load some of the packages (see logs)"];
     Exit[0]
-  ] &/@ WLJS`PM`Includes["frontend"]; 
+  ] &/@ WLJSPackages`Includes["frontend"]; 
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 

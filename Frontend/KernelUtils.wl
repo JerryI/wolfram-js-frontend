@@ -1,5 +1,4 @@
 BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
-  "JerryI`WLJSPM`", 
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -14,6 +13,7 @@ BeginPackage["CoffeeLiqueur`Notebook`KernelUtils`", {
 
 Begin["`Internal`"];
 
+Needs["CoffeeLiqueur`ExtensionManager`" -> "WLJSPackages`"];
 Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"]
 
@@ -44,7 +44,7 @@ initializeKernel[parameters_][kernel_] := With[{
       Echo[u];
       GenericKernel`Init[kernel,  ToExpression[ u ] ](*`*);
     ];*)
-  ] &/@ WLJS`PM`Includes["kernel"];
+  ] &/@ WLJSPackages`Includes["kernel"];
 
   Echo["Starting WS link"];
   wsStartListerning[kernel,  wsPort, parameters["env", "host"] ];

@@ -10,19 +10,19 @@ installEvent = CreateUUID[];
 updateEvent = CreateUUID[];
 
 
-categoryPackages = SortBy[#, Function[item, -WLJS`PM`Packages[item, "wljs-meta", "priority"]]] &/@ GroupBy[
-    Association[(# -> (Function[c, If[MissingQ[c], "Misc", c]] @ WLJS`PM`Packages[#, "wljs-meta", "category"])) &/@ Keys[WLJS`PM`Packages]]
+categoryPackages = SortBy[#, Function[item, -WLJSPackages`Packages[item, "wljs-meta", "priority"]]] &/@ GroupBy[
+    Association[(# -> (Function[c, If[MissingQ[c], "Misc", c]] @ WLJSPackages`Packages[#, "wljs-meta", "category"])) &/@ Keys[WLJSPackages`Packages]]
   
   , Identity, Keys]; 
 
 EventHandler[Secret, {"Load" -> Function[Null,
     EventHandler[controller, {
         name_String :> Function[state,
-            If[TrueQ[WLJS`PM`Packages[name,"wljs-meta","important"]], WebUISubmit[Alert["This is a core-package. Do it on your own risk!"], $Client]];
-            WLJS`PM`Packages[name, "enabled"] = state;
+            If[TrueQ[WLJSPackages`Packages[name,"wljs-meta","important"]], WebUISubmit[Alert["This is a core-package. Do it on your own risk!"], $Client]];
+            WLJSPackages`Packages[name, "enabled"] = state;
             Echo["CHanged!"];
             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), "A restart is required"]
-            WLJS`PM`SaveConfiguration;
+            WLJSPackages`SaveConfiguration;
 
         ]
     }];
@@ -53,11 +53,11 @@ EventHandler[installEvent, Function[val,
             If[KeyExistsQ[Association[data], "wljs-meta"],
                 With[{spinner = Notifications`Spinner["Topic"->"Installation", "Body"->StringTemplate["Please wait, until an intalation of `` is finished..."][Last @ url]] (*`*)},
                     EventFire[Messager, spinner, Null];
-                    WLJS`PM`InstallByURL[val, Function[{result, message},
+                    WLJSPackages`InstallByURL[val, Function[{result, message},
                         EventFire[spinner["Promise"], Resolve, True];
                         If[result,
                             EventFire[Messager, Notifications`NotificationMessage["Info"](*`*), message];
-                            WLJS`PM`SaveConfiguration;
+                            WLJSPackages`SaveConfiguration;
                         ,
                             EventFire[Messager, "Error", message];
                         ];
@@ -80,7 +80,7 @@ EventHandler[installEvent, Function[val,
 ,
     Table[
         With[{Tb = Table[
-            With[{Name = WLJS`PM`Packages[key, "name"], Desc = WLJS`PM`Packages[key, "description"], enabled = WLJS`PM`Packages[key, "enabled"]},
+            With[{Name = WLJSPackages`Packages[key, "name"], Desc = WLJSPackages`Packages[key, "description"], enabled = WLJSPackages`Packages[key, "enabled"]},
                 <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={enabled}/>
             ]
         , {key, categoryPackages[CategoryName]}]},

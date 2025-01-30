@@ -20,6 +20,8 @@ PacletObject[
           {"CoffeeLiqueur`Notebook`Evaluator`", "Evaluator.wl"},
           {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
 
+          {"CoffeeLiqueur`ExtensionManager`", "Extensions.wl"},
+
           {"CoffeeLiqueur`Notebook`Utils`", "Utils.wl"},
           {"CoffeeLiqueur`Notebook`FrontendObject`", "FrontendObject.wl"},
           {"CoffeeLiqueur`Notebook`Kernel`", "Kernel.wl"},
