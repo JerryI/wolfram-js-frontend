@@ -91,7 +91,7 @@ transformNotebook[n_, cli_] := With[{},
 
 recreateNotebook[modals_] := With[{n = Notebook[]},
   temporalNotebook = n;
-  CellObj["Notebook"->temporalNotebook];
+  _cell`CellObj["Notebook"->temporalNotebook];
   temporalNotebook["Path"] = FileNameJoin[{ AppExtensions`QuickNotesDir(*`*), "overlayNote.wln"}];
   dumpNotebook[temporalNotebook, Null, Null, Null];
 
@@ -212,8 +212,8 @@ App[request_] := Module[{localExtensions}, With[{
     EventHandler[promtEventUID, {
       
       "CleanUp" -> Function[Null, With[{notebook = n},
-        Delete /@ Select[n["Cells"], InputCellQ];
-        CellObj["Notebook" -> n];
+        Delete /@ Select[n["Cells"], cell`InputCellQ];
+        _cell`CellObj["Notebook" -> n];
       ]],
 
       "Expand" -> Function[Null, With[{},

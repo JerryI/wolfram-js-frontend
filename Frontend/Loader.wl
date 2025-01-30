@@ -1,10 +1,11 @@
 BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
     "JerryI`Misc`Events`", 
     "JerryI`Misc`Events`Promise`", 
-    "CoffeeLiqueur`Notebook`Cells`", 
     "JerryI`WLX`WebUI`"
 }];
 
+    Needs["CoffeeLiqueur`Notebook`Cells`" -> "cell`"];
+    Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
     Needs["CoffeeLiqueur`Notebook`AppExtensions`" -> "AppExtensions`"];
     
     Begin["`Internal`"];
@@ -30,21 +31,21 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
         Echo["Loader >> renamed."];
     ];
 
-    rename[notebook_Notebook, new_String] := With[{path = notebook["Path"]},
+    rename[notebook_nb`NotebookObj, new_String] := With[{path = notebook["Path"]},
         cache[path] = .;
         notebook["Path"] = new;
         cache[new] = notebook;
         Echo["Loader >> renamed."];
     ];    
 
-    clone[notebook_Notebook, newPath_String, opts: OptionsPattern[] ] := With[{oldPath = notebook["Path"]},
+    clone[notebook_nb`NotebookObj, newPath_String, opts: OptionsPattern[] ] := With[{oldPath = notebook["Path"]},
         cache[oldPath] = .;
         cache[newPath] = notebook;
         notebook["Path"] = newPath;
         save[notebook, opts]
     ];
     
-    save[path_String, notebook_Notebook, opts: OptionsPattern[] ] := With[{modals = OptionValue["Modals"], promise = Promise[], client = OptionValue["Client"]}, Module[{dir = path},
+    save[path_String, notebook_nb`NotebookObj, opts: OptionsPattern[] ] := With[{modals = OptionValue["Modals"], promise = Promise[], client = OptionValue["Client"]}, Module[{dir = path},
         If[DirectoryQ[dir],
             dir = FileNameJoin[{dir, RandomWord[]<>".wln"}];
         ];
@@ -67,8 +68,8 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
 
         If[OptionValue["Temporal"],
             With[{r = Put[<| 
-                "Notebook" -> Notebook`Serialize[notebook], 
-                "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
+                "Notebook" -> nb`Serialize[notebook], 
+                "Cells" -> ( cell`Serialize /@ notebook["Cells"]), 
                 "serializer" -> "jsfn4" 
             |>, makeHashPath[dir] ]},
                 If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r],
@@ -82,8 +83,8 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
 
             saveByPath := (
                 With[{r = Put[<| 
-                    "Notebook" -> Notebook`Serialize[notebook], 
-                    "Cells" -> ( CellObj`Serialize /@ notebook["Cells"]), 
+                    "Notebook" -> nb`Serialize[notebook], 
+                    "Cells" -> ( cell`Serialize /@ notebook["Cells"]), 
                     "serializer" -> "jsfn4" 
                 |>, dir] },
                     If[!StringQ[r] && (r =!= Null), Echo["Loader >> Put >> error"]; Echo[r]; EventFire[promise, Reject, r],
@@ -152,7 +153,7 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
         promise
     ] ];
 
-    checkbackups[notebook_Notebook] := notebook["Path"] // checkbackups
+    checkbackups[notebook_nb`NotebookObj] := notebook["Path"] // checkbackups
     checkbackups[p_String] := With[{
         path = makeHashPath[p]
     },
@@ -173,7 +174,7 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
 
     makeHashPath[path_String, secret_String:""] := FileNameJoin[{AppExtensions`BackupsDir, StringTemplate["``.wln"][{path, secret} // Hash]}]
 
-    save[notebook_Notebook, opts: OptionsPattern[] ] := With[{},
+    save[notebook_nb`NotebookObj, opts: OptionsPattern[] ] := With[{},
         If[ StringQ[notebook["Path"] ],
             save[notebook["Path"], notebook, opts]
         ,
@@ -182,11 +183,11 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
         ]
     ];
 
-    save[path_String, opts: OptionsPattern[] ] := With[{notebook = Notebook[]},
+    save[path_String, opts: OptionsPattern[] ] := With[{notebook = nb`NotebookObj[]},
         Echo["Loader >> Created new notebook"];
         
 
-        CellObj["Notebook" -> notebook, "Data" -> ""];
+        cell`CellObj["Notebook" -> notebook, "Data" -> ""];
         save[path, notebook, opts]
     ];
 
@@ -258,8 +259,8 @@ BeginPackage["CoffeeLiqueur`Notebook`Loader`", {
     loadToCache[path_String, pathcache_String, pathnotebook_String, OptionsPattern[] ] := Module[{data = Get[path]},
         Echo["Loading to cache..."];
         
-        With[{notebook = Notebook`Deserialize[ data ]},
-            If[!MatchQ[notebook, _Notebook], Return[notebook] ];
+        With[{notebook = nb`Deserialize[ data ]},
+            If[!MatchQ[notebook, _nb`NotebookObj], Return[notebook] ];
 
             
             notebook["Path"] = pathnotebook;

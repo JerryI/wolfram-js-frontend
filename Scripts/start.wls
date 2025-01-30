@@ -35,7 +35,8 @@ Needs["CoffeeLiqueur`Notebook`Utils`"];
 
 Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
-Needs["CoffeeLiqueur`Notebook`Cells`"];
+Needs["CoffeeLiqueur`Notebook`Cells`" -> "cell`"];
+Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
 
 Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"];
 

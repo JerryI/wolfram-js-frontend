@@ -1,4 +1,7 @@
-BeginPackage["CoffeeLiqueur`Notebook`Windows`", {"CoffeeLiqueur`Notebook`Cells`", "JerryI`Misc`Events`", "KirillBelov`Objects`", "CoffeeLiqueur`Notebook`Transactions`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Windows`", {"JerryI`Misc`Events`", "KirillBelov`Objects`", "CoffeeLiqueur`Notebook`Transactions`"}]
+
+Needs["CoffeeLiqueur`Notebook`Cells`" -> "cell`"];
+Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
 
 WindowObj::usage = ""
 

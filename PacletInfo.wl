@@ -14,7 +14,8 @@ PacletObject[
         "Kernel",
         "Root" -> "Kernel",
         "Context" -> {
-          {"CoffeeLiqueur`Notebook`Cells`", "Notebook.wl"},
+          {"CoffeeLiqueur`Notebook`", "Notebook.wl"},
+          {"CoffeeLiqueur`Notebook`Cells`", "Cells.wl"},
           {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},
           {"CoffeeLiqueur`Notebook`Evaluator`", "Evaluator.wl"},
           {"CoffeeLiqueur`Notebook`Transactions`", "Transactions.wl"},

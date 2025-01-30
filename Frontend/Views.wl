@@ -23,7 +23,7 @@ NotebookQ[path_] := FileExtension[path] === "wln";
 Router[any_?NotebookQ, appevents_String] := With[{n = loadNotebook[any, "Events"->appevents]},
     Print["Notebook router"];
     Switch[n
-        ,_Notebook
+        ,_nb`NotebookObj
         ,    ({NotebookComponent[##, "Notebook"->n], NotebookScript[##]} &)
         ,_Association
         ,    ({NotebookMessage[##, "Data"->n], NotebookMessageScript[##]} &)
