@@ -7,6 +7,7 @@ PacletDirectoryLoad[Directory[]];
 
 Get[FileNameJoin[{Directory[], "Common", "LPM", "LPM.wl"}] ];
 
+
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
   Github -> "https://github.com/JerryI/Internal" -> "master",
@@ -16,7 +17,7 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
   Github -> "https://github.com/JerryI/wl-misc" -> "dev"
-}, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
+}, "Directory" -> Directory[] ]
 
 (* web-server *)
 Needs["KirillBelov`CSockets`"]
@@ -186,41 +187,41 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
 ];
 
 WLJSPackages`Repositories[{
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sound" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-video" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-templates" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-toc" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
-  WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "master"
-}, "Directory" -> Directory[], "UpdateInterval" -> Quantity[99999, "Days"] ]
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-editor" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-html-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-inputs" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-interpreter" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-js-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-markdown-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-magic-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-plotly" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-cells" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-revealjs" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wlx-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-snippets" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-export-html" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-manipulate" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sound" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-video" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-templates" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-xterm" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-excalidraw" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-toc" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-neuralnet" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-docs-archive" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-demos-archive" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-debugger" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "base"
+}, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
 
