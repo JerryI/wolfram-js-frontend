@@ -103,7 +103,7 @@ WindowObj /: EvaluateWindowObj[o_WindowObj, OptionsPattern[] ] := Module[{transa
     o
 ]
 
-Options[WindowObj`Evaluate] = {"EvaluationContext" -> <||>}
+Options[EvaluateWindowObj] = {"EvaluationContext" -> <||>}
 
 WindowObj /: Serialize[n_WindowObj, OptionsPattern[] ] := Module[{props},
     props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"EvaluationContext", "Format", "Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "Format", "EvaluationContext", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
