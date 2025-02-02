@@ -850,9 +850,13 @@ const createHIDDialog = (deviceList, cbk) => {
     win.loadFile(path.join(__dirname, 'device.html'));
 
     win.on('ready-to-show', () => {
+
         const list = deviceList.map((e) => {
             return {name: e.name || e.deviceName, id: e.deviceId}
         });
+        console.log(deviceList);
+
+
         win.webContents.send('load', {
             list: list
         });
@@ -884,26 +888,11 @@ const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
     mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
         // Add events to handle devices being added or removed before the callback on
         // `select-hid-device` is called.
-        mainWindow.webContents.session.on('hid-device-added', (event, device) => {
-            console.log('hid-device-added FIRED WITH', device)
-                // Optionally update details.deviceList
-            devicesHID[device.device.deviceId] = device.device; 
-        })
 
-
-
-        mainWindow.webContents.session.on('hid-device-removed', (event, device) => {
-            console.log('hid-device-removed FIRED WITH', device)
-                // Optionally update details.deviceList
-            delete devicesHID[device.device.deviceId];
-        })
 
         event.preventDefault();
 
-        createHIDDialog(Object.keys(devicesHID).map((e) => {
-            const t = devicesHID[e];
-            return {name: t.name, deviceId: t.deviceId};
-        }), callback);
+        createHIDDialog(details.deviceList, callback);
     })
 
     mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {

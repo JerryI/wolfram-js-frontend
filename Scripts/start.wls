@@ -7,6 +7,7 @@ PacletDirectoryLoad[Directory[]];
 
 Get[FileNameJoin[{Directory[], "Common", "LPM", "LPM.wl"}] ];
 
+Off[General::shdw]; (* avoid warning messages from ContextAliases *)
 
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
