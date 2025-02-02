@@ -824,14 +824,70 @@ callFakeMenu["exit"] = () => {
     app.quit();
 }
 
+const devicesHID = {};
+
+const createHIDDialog = (deviceList, cbk) => {
+    let done = false;
+
+    console.log('HID Dialog!');
+
+    const win = new BrowserWindow({
+        vibrancy: "sidebar", // in my case...
+        frame: true,
+        show: false,
+        titleBarStyle: 'hiddenInset',
+        width: 400,
+        height: 300,
+        resizable: false,
+        title: 'Device selector',
+        webPreferences: {
+            preload: path.join(__dirname, 'preload_device.js'),
+            webSecurity: false,
+            //nodeIntegration: true
+        }
+    });
+
+    win.loadFile(path.join(__dirname, 'device.html'));
+
+    win.on('ready-to-show', () => {
+        const list = deviceList.map((e) => {
+            return {name: e.name || e.deviceName, id: e.deviceId}
+        });
+        win.webContents.send('load', {
+            list: list
+        });
+        
+        ipcMain.once('choise_hid', (e, id) => {
+            done = true;
+            cbk(id);
+            win.close();
+        });
+
+        win.show();
+    });
+
+    win.on('close', () => {
+        if (done) return;
+        cbk('');
+    })
+}
+
 /* permissions for the main window, special headers */
 const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
+
+
+    mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
+        event.preventDefault()
+        createHIDDialog(deviceList, callback);
+    });
+
     mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
         // Add events to handle devices being added or removed before the callback on
         // `select-hid-device` is called.
         mainWindow.webContents.session.on('hid-device-added', (event, device) => {
             console.log('hid-device-added FIRED WITH', device)
                 // Optionally update details.deviceList
+            devicesHID[device.device.deviceId] = device.device; 
         })
 
 
@@ -839,12 +895,15 @@ const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
         mainWindow.webContents.session.on('hid-device-removed', (event, device) => {
             console.log('hid-device-removed FIRED WITH', device)
                 // Optionally update details.deviceList
+            delete devicesHID[device.device.deviceId];
         })
 
-        event.preventDefault()
-        if (details.deviceList && details.deviceList.length > 0) {
-            callback(details.deviceList[0].deviceId)
-        }
+        event.preventDefault();
+
+        createHIDDialog(Object.keys(devicesHID).map((e) => {
+            const t = devicesHID[e];
+            return {name: t.name, deviceId: t.deviceId};
+        }), callback);
     })
 
     mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
