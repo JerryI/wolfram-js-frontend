@@ -43,25 +43,25 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
     (* locating project directory *)
     If[OptionValue["Directory"]//StringQ,
       projectDir = OptionValue["Directory"];
-      If[!StringQ[projectDir], Echo["WLJS::PM >> Sorry. wrong folder!"]; Abort[] ];
+      If[!StringQ[projectDir], Echo["WLJS Extensions >> Sorry. wrong folder!"]; Abort[] ];
     ,
       projectDir = NotebookDirectory[];
       If[!StringQ[projectDir], projectDir = DirectoryName[$InputFileName] ];
-      If[!StringQ[projectDir], Echo["WLJS::PM >> Sorry. cannot work without project directory. Save your notebook / script first"]; Abort[] ];    
+      If[!StringQ[projectDir], Echo["WLJS Extensions >> Sorry. cannot work without project directory. Save your notebook / script first"]; Abort[] ];    
     ];
 
     If[!FileExistsQ[projectDir],
       CreateDirectory[projectDir, CreateIntermediateDirectories->True];
-      If[!FileExistsQ[projectDir], Echo["WLJS::PM >> Cannot create project directory by path "<>projectDir<>" !!!"]; Abort[] ];
+      If[!FileExistsQ[projectDir], Echo["WLJS Extensions >> Cannot create project directory by path "<>projectDir<>" !!!"]; Abort[] ];
     ];
 
-    Echo["WLJS::PM >> project directory >> "<>projectDir];
+    Echo["WLJS Extensions >> project directory >> "<>projectDir];
 
     If[FileExistsQ[FileNameJoin[{projectDir, ".wljs_timestamp"}] ] && !OptionValue["ForceUpdates"],
       With[{time = Get[ FileNameJoin[{projectDir, ".wljs_timestamp"}] ]},
         If[Now - time < OptionValue["UpdateInterval"],
           skipUpdates = True;
-          Echo[StringJoin["WLJS::PM >> last updated >> ", time // TextString] ];
+          Echo[StringJoin["WLJS Extensions >> last updated >> ", time // TextString] ];
         ]
       ]
     ];    
@@ -72,15 +72,15 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
 
     If[!skipUpdates, If[FailureQ[ URLFetch["https://github.com"] ], skipUpdates = True] ];
 
-    Echo["WLJS::PM >> fetching paclet infos..."];
+    Echo["WLJS Extensions >> fetching paclet infos..."];
 
     If[skipUpdates,
-      Echo["WLJS::PM >> passive mode"];
-      Echo["WLJS::PM >> checking cached"];
+      Echo["WLJS Extensions >> passive mode"];
+      Echo["WLJS Extensions >> checking cached"];
       cache = CacheLoad[projectDir];
       
       If[!MissingQ[cache], 
-        Echo["WLJS::PM >> using stored data"];
+        Echo["WLJS Extensions >> using stored data"];
         
         (* finally load dirs *)
         repos = OverlayReposMeta[projectDir, cache];
@@ -95,7 +95,7 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
 
         Return[Null, Module];
       ,
-        Echo["WLJS::PM >> ERROR! no cache found ;()"];
+        Echo["WLJS Extensions >> ERROR! no cache found ;()"];
         Abort[];
       ];
     ];
@@ -106,7 +106,7 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
     repos = repos // DeleteMissing;
 
     (* fetching cached data (current status of all packages in the project) *)
-    Echo["WLJS::PM >> checking cached"];
+    Echo["WLJS Extensions >> checking cached"];
     cache = CacheLoad[projectDir];
 
 
@@ -119,23 +119,44 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
       (* we have local versions of all packages *)
       (* we need to compare them to one, which were just loaded via internet *)
 
-      current    =  (#->cache[#])&/@ Intersection[Keys[repos], Keys[cache] ] // Association;
-      new = (#->repos[#])&/@ Complement[Keys[repos], Keys[cache] ] // Association;
+      If[!ContainsExactly[Keys[repos], Select[Keys[cache], Function[item, Head[item[[1]]] =!= Anonymous] ] ],
+        Echo["WLJS Extensions >> out of sync! Danger! The data will be deleted" ];
+        With[{
+          temp = FileNameJoin[{projectDir, "wljs_packages_backup"}],
+          origin = FileNameJoin[{projectDir, "wljs_packages"}]
+        },
+          Echo["WLJS Extensions >> temporary moving to "<>temp];
+          If[FileExistsQ[temp], DeleteDirectory[temp, DeleteContents->True] ];
+          CopyDirectory[origin, temp];
+          DeleteDirectory[origin];
+        ];
 
-      Echo[StringTemplate["WLJS::PM >> will be INSTALLED: ``"][Length[new] ] ];
+        Echo["WLJS Extensions >> installing"];
+        repos = InstallPaclet[projectDir] /@ repos;
 
-      (* install new *)
-      new = InstallPaclet[projectDir] /@ new;
+      ,
 
-      (* what must be updated *)
-      updatable = Select[current, CheckUpdates];
-      (* will be updated *)
-      updated   = ((#->repos[#])&/@ Keys[updatable]) // Association;
- 
-      Echo[StringTemplate["WLJS::PM >> will be UPDATED: ``"][Length[updatable] ] ];
 
-      (* update our list with fresh data *)
-      repos = Join[cache, InstallPaclet[projectDir] /@ updated, new];
+
+        current    =  (#->cache[#])&/@ Intersection[Keys[repos], Keys[cache] ] // Association;
+        new = (#->repos[#])&/@ Complement[Keys[repos], Keys[cache] ] // Association;
+
+        Echo[StringTemplate["WLJS Extensions >> will be INSTALLED: ``"][Length[new] ] ];
+
+        (* install new *)
+        new = InstallPaclet[projectDir] /@ new;
+
+        (* what must be updated *)
+        updatable = Select[current, CheckUpdates];
+        (* will be updated *)
+        updated   = ((#->repos[#])&/@ Keys[updatable]) // Association;
+  
+        Echo[StringTemplate["WLJS Extensions >> will be UPDATED: ``"][Length[updatable] ] ];
+
+        (* update our list with fresh data *)
+        repos = Join[cache, InstallPaclet[projectDir] /@ updated, new];      
+      
+      ];
     ];
 
     (* finally load dirs *)
@@ -186,7 +207,7 @@ OverlayAnonymousReposMeta[dir_String, repos_Association] := With[{
     found = FileNames["package.json", FileNameJoin[{dir, "wljs_packages"}], 2]    
 },
     With[{ new = Complement[found, registered] },
-        If[Length[new] =!= 0, Echo["WLJS::PM >> Found an unregistered packages! Probably created by a user outside"] ];
+        If[Length[new] =!= 0, Echo["WLJS Extensions >> Found an unregistered packages! Probably created by a user outside"] ];
 
         Join[repos, Association @ Map[
             Function[path,
@@ -230,13 +251,13 @@ convertVersion[str_String] := ToExpression[StringReplace[str, "." -> ""]]
 CheckUpdates[a_Association, Rule[Github, _]] := Module[{package, new, now},
   (* fetch any *)
   package = FetchInfo[a];
-  If[!AssociationQ[package], Echo["WLJS::PM >> cannot check github repos! skipping..."]; Return[False, Module]];
+  If[!AssociationQ[package], Echo["WLJS Extensions >> cannot check github repos! skipping..."]; Return[False, Module]];
 
   new = package["version"] // convertVersion;
   now = a["version"] //convertVersion;
   If[!NumericQ[now], now = -1];
 
-  Echo[StringTemplate["WLJS::PM >> installed `` remote ``"][now, new]];
+  Echo[StringTemplate["WLJS Extensions >> installed `` remote ``"][now, new]];
   now < new  
 ]
 
@@ -259,15 +280,15 @@ Module[{new, data},
   (* extracting from given url *)    
     new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First];
-    Echo["WLJS::PM >> fetching info by "<>new<>" on a Github..."];
+    Echo["WLJS Extensions >> fetching info by "<>new<>" on a Github..."];
 
     (* here we FETCH PACLETINFO.WL file and use its metadata *)
     data = Check[Import["https://raw.githubusercontent.com/"<>new<>"/"<>ToLowerCase[branch]<>"/package.json", "RawJSON"], $Failed];
     
     (* if failed. we just STOP *)
     If[FailureQ[data],
-      Echo["WLJS::PM >> ERROR cannot get "<>new<>"!"];
-      Echo["WLJS::PM >> Failed"];
+      Echo["WLJS Extensions >> ERROR cannot get "<>new<>"!"];
+      Echo["WLJS Extensions >> Failed"];
       Return[a];
     ];
 
@@ -278,13 +299,13 @@ InstallByURL[url_String, cbk_:Null] := Module[{remote},
     remote = FetchInfo[<|"key" -> (Github -> url)|>];
 
     If[!KeyExistsQ[remote, "name"],
-        Echo["WLJS::PM >> Can't load by the given url"];
+        Echo["WLJS Extensions >> Can't load by the given url"];
         cbk[False, "Can't load by the given url"]; 
         Return[$Failed, Module];
     ];
 
     If[ MemberQ[Values[#["name"] &/@ $packages], remote["name"] ],
-        Echo["WLJS::PM >> Already exists!"];
+        Echo["WLJS Extensions >> Already exists!"];
         cbk[False, "Already exists!"]; 
         Return[$Failed, Module] ;       
     ];
@@ -312,35 +333,35 @@ InstallPaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_St
     If[!FileExistsQ[dirName], CreateDirectory[dirName]];
 
     (* internal error, if there is no url provided *)
-    If[MissingQ[a["git-url"]], Echo["WLJS::PM >> ERROR!!! not git-url was found"]; Abort[]];
+    If[MissingQ[a["git-url"]], Echo["WLJS Extensions >> ERROR!!! not git-url was found"]; Abort[]];
 
     (* construct name of the folder *)
     dirName = FileNameJoin[{dirName, StringReplace[a["name"], "/"->"_"]}];
 
     If[FileExistsQ[dirName],
-        Echo["WLJS::PM >> package folder "<>dirName<>" is already exists!"];
-        Echo["WLJS::PM >> purging..."];
+        Echo["WLJS Extensions >> package folder "<>dirName<>" is already exists!"];
+        Echo["WLJS Extensions >> purging..."];
         DeleteDirectory[dirName, DeleteContents -> True];
     ];
 
     (* download branch as zip using old API *)
-    Echo["WLJS::PM >> fetching a zip archive from the branch..."];    
+    Echo["WLJS Extensions >> fetching a zip archive from the branch..."];    
     URLDownload["https://github.com/"<>a["git-url"]<>"/zipball/"<>ToLowerCase[branch], FileNameJoin[{dir, "___temp.zip"}]];
     
-    Echo["WLJS::PM >> extracting..."];
+    Echo["WLJS Extensions >> extracting..."];
     ExtractArchive[FileNameJoin[{dir, "___temp.zip"}], FileNameJoin[{dir, "___temp"}]];
     DeleteFile[FileNameJoin[{dir, "___temp.zip"}]];
     
     pacletPath = FileNames["package.json", FileNameJoin[{dir, "___temp"}], 2] // First;
 
-    If[!FileExistsQ[pacletPath], Echo["WLJS::PM >> FAILED!!! to fetch by "<>ToString[pacletPath]]; Abort[]];
+    If[!FileExistsQ[pacletPath], Echo["WLJS Extensions >> FAILED!!! to fetch by "<>ToString[pacletPath]]; Abort[]];
     pacletPath = DirectoryName[pacletPath];
 
-    Echo[StringTemplate["WLJS::PM >> copying... from `` to ``"][pacletPath, dirName]];
+    Echo[StringTemplate["WLJS Extensions >> copying... from `` to ``"][pacletPath, dirName]];
  
     CopyDirectory[pacletPath, dirName];
     DeleteDirectory[FileNameJoin[{dir, "___temp"}], DeleteContents -> True];
-    Print["WLJS::PM >> finished!"];
+    Print["WLJS Extensions >> finished!"];
 
     Join[a, <|"enabled" -> True|>]
 ]
@@ -360,12 +381,12 @@ RemovePaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_Str
     dirName = FileNameJoin[{dirName, StringReplace[a["name"], "/"->"_"]}];
 
     If[FileExistsQ[dirName],
-        Echo["WLJS::PM >> package folder "<>dirName<>" is about to be removed"];
-        Echo["WLJS::PM >> purging..."];
+        Echo["WLJS Extensions >> package folder "<>dirName<>" is about to be removed"];
+        Echo["WLJS Extensions >> purging..."];
         DeleteDirectory[dirName, DeleteContents -> True];
     ,
-        Echo["WLJS::PM >> package folder "<>dirName<>" was already removed!"];
-        Echo["WLJS::PM >> UNEXPECTED BEHAVIOUR!"]; Abort[];
+        Echo["WLJS Extensions >> package folder "<>dirName<>" was already removed!"];
+        Echo["WLJS Extensions >> UNEXPECTED BEHAVIOUR!"]; Abort[];
     ];
 
     a
