@@ -123,6 +123,10 @@
 
   windowShrink: (path) => {
     VOID()
+  },
+
+  sendMessage: (type, data) => {
+    window.parent.postMessage({'type':type, 'data':data}, "*");
   }
 }
 

@@ -60,6 +60,7 @@ checkUpdates[GlobalMessanger_, ModalController_, Client_] := With[{},
   EventFire[GlobalMessanger, "Warning", "Restart is required"];
 ]
 
+Global`UIAPISend;
 
 renameFile[notebook_nb`NotebookObj, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
@@ -79,7 +80,8 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+      WebUISubmit[Global`UIAPISend["open", StringJoin["/iframe/", URLEncode[ result["Path"] ]]], client];
+
       
     
   ], Function[error,
@@ -299,6 +301,14 @@ Script[Rule["Secret", Secret_]] := With[{},
         if (window.electronAPI.clearCache) {
           window.electronAPI.clearCache();
         }
+      }
+    }
+
+    core.UIAPISend = async (args, env) => {
+      if (window.iframeAPI) {
+        const type = await interpretate(args[0], env);
+        const url = await interpretate(args[1], env);
+        window.iframeAPI.sendMessage(type, url);
       }
     }
 
