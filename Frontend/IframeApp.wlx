@@ -183,6 +183,7 @@ App[request_] := With[{
   GlobalControls  = CreateUUID[],
   ModalController = CreateUUID[],
   GlobalMessanger = CreateUUID[],
+  query = request["Query"],
   Path = URLDecode @ StringDrop[request["Path"], 
     Switch[$OperatingSystem,
       "Windows", 
@@ -197,7 +198,11 @@ App[request_] := With[{
 
   Print["## Loading by path : "]; Print[Path];
 
-  
+  If[KeyExistsQ[query, "root"],
+    Print["## Extening HTTP path using provided root directory"];
+    EventFire[AppExtensions`AppEvents, "App:ExtendPath", URLDecode[query["root"] ] ];
+  ];  
+
   With[{
         
         SidebarId = CreateUUID[],
@@ -280,7 +285,7 @@ App[request_] := With[{
           <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
               <Notifications Controls={GlobalControls} MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Query={query} Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>

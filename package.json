@@ -129,10 +129,13 @@
     },
     "files": [
       "./Electron/main.js",
+      "./Electron/device.js",
       "./Electron/preload_main.js",
+      "./Electron/preload_device.js",
       "./Electron/bundle/log.js",
       "./Electron/electron.css",
       "./Electron/log.html",
+      "./Electron/device.html",
       "./Electron/log_padded.html",
       "./Electron/tailwind.css",
       "./Electron/tailwind.config.js",

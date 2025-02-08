@@ -305,9 +305,9 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
   Echo["New notebook load and add it to the path! >>"];
 
   If[MemberQ[notebook["Properties"], "WorkingDirectory"],
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ]  // DeleteDuplicates;
   ,
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ]  // DeleteDuplicates;
   ];
  ],
  "Loader:LoadNotebook" -> Function[notebook,
@@ -316,26 +316,20 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 
   If[MemberQ[notebook["Properties"], "WorkingDirectory"],
     Echo[notebook["WorkingDirectory"] ];
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ] // DeleteDuplicates;
   ,
     Echo[notebook["Path"] // DirectoryName];
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ]  // DeleteDuplicates;
   ];
   
  ],
 
- "App:ExtendPath" -> Function[paths,
-  $ExposedDirectories = {$ExposedDirectories, paths};
+ "App:ExtendPath" -> Function[path,
+  $ExposedDirectories = Append[$ExposedDirectories, path] // DeleteDuplicates;
  ],
 
  "App:RemovePath" -> Function[paths, Module[{p = $ExposedDirectories},
-    With[{index = Position[p, #]},
-      If[Length[index] > 0,
-        p = ReplacePart[p, index[[1]] -> Nothing];
-      ]
-    ] & /@ paths;
-
-    $ExposedDirectories = p;
+    $ExposedDirectories = p /. {paths -> Nothing};
   ] ]
 }];
 

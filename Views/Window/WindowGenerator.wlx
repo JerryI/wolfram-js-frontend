@@ -8,7 +8,7 @@ Component[window_win`WindowObj, cli_, parameters_, OptionsPattern[]] := With[{
     Style = "border-radius:2px"
 },
 
-        <WindowGroup Window={window} Class={Class} Style={Style}>
+        <WindowGroup Window={window}>
             <WindowWrapper Window={window} />
         </WindowGroup>
 ]

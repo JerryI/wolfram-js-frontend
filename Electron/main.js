@@ -826,7 +826,12 @@ callFakeMenu["exit"] = () => {
 
 const devicesHID = {};
 
+let deviceDialogOpen = false;
+
 const createHIDDialog = (deviceList, cbk) => {
+    if (deviceDialogOpen) return;
+
+    deviceDialogOpen = true;
     let done = false;
 
     console.log('HID Dialog!');
@@ -871,6 +876,7 @@ const createHIDDialog = (deviceList, cbk) => {
     });
 
     win.on('close', () => {
+        deviceDialogOpen = false;
         if (done) return;
         cbk('');
     })
@@ -881,7 +887,9 @@ const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
 
 
     mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
-        event.preventDefault()
+        event.preventDefault();
+        //select bluetooth
+        console.log('select bluetooth');
         createHIDDialog(deviceList, callback);
     });
 
@@ -892,6 +900,7 @@ const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
 
         event.preventDefault();
 
+        console.log('select hid');
         createHIDDialog(details.deviceList, callback);
     })
 
@@ -1284,7 +1293,7 @@ function create_window(opts, cbk = () => {}) {
         const options = Object.assign({}, defaults, opts);
         options.minWidth = 576;
         if (!isMac) {
-            options.minWidth = 688;
+            options.minWidth = 700;
         }        
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
