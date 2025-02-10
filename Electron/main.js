@@ -2054,6 +2054,13 @@ app.whenReady().then(() => {
     });    
 
     ipcMain.handle('capture', async (e, area) => {
+        let zoom = e.sender.zoomFactor;
+        if (area) {
+            area.x = Math.round(area.x * zoom);
+            area.y = Math.round(area.y * zoom);
+            area.width = Math.round(area.width * zoom);
+            area.height = Math.round(area.height * zoom);
+        }
         const img = await e.sender.capturePage(area)
         return img.toDataURL();
     });
