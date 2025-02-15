@@ -28,7 +28,7 @@
     "appId": "wljs-notebook",
     "productName": "WLJS Notebook",
     "copyright": "WLJS © 2024 ${author}",
-    "artifactName": "wljs-notebook-${version}-offline-${arch}.${ext}",
+    "artifactName": "wljs-notebook-${version}-${arch}.${ext}",
     "dmg": {
       "title": "${productName} ${version}",
       "icon": "./Electron/build/512x512.icns",
@@ -36,7 +36,7 @@
     },
     "mac": {
       "icon": "./Electron/build/512x512.icns",
-      "artifactName": "wljs-notebook-${version}-offline-${arch}-macos.${ext}",
+      "artifactName": "wljs-notebook-${version}-${arch}-macos.${ext}",
       "fileAssociations": [
         {
           "ext": "wln",
@@ -73,7 +73,7 @@
         "deb",
         "zip"
       ],
-      "artifactName": "wljs-notebook-${version}-offline-${arch}-gnulinux.${ext}",
+      "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
           "mimeType": "application/wln",
@@ -103,7 +103,7 @@
     "win": {
       "target": "NSIS",
       "icon": "./Electron/build/512x512.ico",
-      "artifactName": "wljs-notebook-${version}-offline-${arch}-win.${ext}",
+      "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
         {
           "ext": "wln",
