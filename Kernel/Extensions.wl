@@ -52,7 +52,7 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
 
     If[!FileExistsQ[projectDir],
       CreateDirectory[projectDir, CreateIntermediateDirectories->True];
-      If[!FileExistsQ[projectDir], Echo["WLJS Extensions >> Cannot create project directory by path "<>projectDir<>" !!!"]; Abort[] ];
+      If[!FileExistsQ[projectDir], Echo["WLJS Extensions >> Cannot create project directory at path "<>projectDir<>" !!!"]; Abort[] ];
     ];
 
     Echo["WLJS Extensions >> project directory >> "<>projectDir];
@@ -280,7 +280,7 @@ Module[{new, data},
   (* extracting from given url *)    
     new = StringCases[url, RegularExpression[".com\\/(.*).git"]->"$1"]//First // Quiet;
     If[!StringQ[new], new = StringCases[url, RegularExpression[".com\\/(.*)"]->"$1"]//First];
-    Echo["WLJS Extensions >> fetching info by "<>new<>" on a Github..."];
+    Echo["WLJS Extensions >> fetching info from "<>new<>" on a Github..."];
 
     (* here we FETCH PACLETINFO.WL file and use its metadata *)
     data = Check[Import["https://raw.githubusercontent.com/"<>new<>"/"<>ToLowerCase[branch]<>"/package.json", "RawJSON"], $Failed];
@@ -299,8 +299,8 @@ InstallByURL[url_String, cbk_:Null] := Module[{remote},
     remote = FetchInfo[<|"key" -> (Github -> url)|>];
 
     If[!KeyExistsQ[remote, "name"],
-        Echo["WLJS Extensions >> Can't load by the given url"];
-        cbk[False, "Can't load by the given url"]; 
+        Echo["WLJS Extensions >> Can't load from the given url"];
+        cbk[False, "Can't load from the given url"]; 
         Return[$Failed, Module];
     ];
 
@@ -354,7 +354,7 @@ InstallPaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_St
     
     pacletPath = FileNames["package.json", FileNameJoin[{dir, "___temp"}], 2] // First;
 
-    If[!FileExistsQ[pacletPath], Echo["WLJS Extensions >> FAILED!!! to fetch by "<>ToString[pacletPath]]; Abort[]];
+    If[!FileExistsQ[pacletPath], Echo["WLJS Extensions >> FAILED!!! to fetch for "<>ToString[pacletPath]]; Abort[]];
     pacletPath = DirectoryName[pacletPath];
 
     Echo[StringTemplate["WLJS Extensions >> copying... from `` to ``"][pacletPath, dirName]];
