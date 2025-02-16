@@ -1,18 +1,26 @@
-BeginPackage["JerryI`Notebook`Windows`", {"JerryI`Notebook`", "JerryI`Misc`Events`", "KirillBelov`Objects`", "JerryI`Notebook`Transactions`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Windows`", {"JerryI`Misc`Events`", "KirillBelov`Objects`", "CoffeeLiqueur`Notebook`Transactions`"}]
+
+Needs["CoffeeLiqueur`Notebook`Cells`" -> "cell`"];
+Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
 
 WindowObj::usage = ""
+
+EvaluateWindowObj;
+Serialize;
+
+HashMap;
 
 Begin["`Private`"]
 
 NullQ[any_] := any === Null
 
-WindowObj`HashMap = <||>
+HashMap = <||>
 
 
 
 
 
-CreateType[WindowObj, init, {"Notebook"->Null, "Display"->"codemirror", "EvaluatedQ"->False, "Hash"->Null, "Data"->"", "Ref"->""}]
+CreateType[WindowObj, init, {"Notebook"->Null, ImageSize->Automatic, "Display"->"codemirror", "EvaluatedQ"->False, "Hash"->Null, "Data"->"", "Ref"->""}]
 
 WindowObj /: EventHandler[n_WindowObj, opts__] := EventHandler[n["Hash"], opts] 
 WindowObj /: EventFire[n_WindowObj, opts__] := EventFire[n["Hash"], opts]
@@ -23,7 +31,7 @@ init[o_] := Module[{uid = If[o["Hash"] =!= Null, o["Hash"], CreateUUID[] ]},
     Print["Init WindowObj"];
 
     o["Hash"] = uid;
-    WindowObj`HashMap[uid] = o;
+    HashMap[uid] = o;
     If[!NullQ[ o["Notebook"] ],
         o["EvaluationContext"] = Join[o["Notebook"]["EvaluationContext"], <|"Notebook"->o["Notebook"]["Hash"]|>];
     ];
@@ -32,7 +40,7 @@ init[o_] := Module[{uid = If[o["Hash"] =!= Null, o["Hash"], CreateUUID[] ]},
 ]
 
 
-WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{transaction, result = Null},
+WindowObj /: EvaluateWindowObj[o_WindowObj, OptionsPattern[] ] := Module[{transaction, result = Null},
     Print["Submit WindowObj"];
     If[!NullQ[ o["Notebook"] ],
 
@@ -95,15 +103,15 @@ WindowObj /: WindowObj`Evaluate[o_WindowObj, OptionsPattern[] ] := Module[{trans
     o
 ]
 
-Options[WindowObj`Evaluate] = {"EvaluationContext" -> <||>}
+Options[EvaluateWindowObj] = {"EvaluationContext" -> <||>}
 
-WindowObj /: WindowObj`Serialize[n_WindowObj, OptionsPattern[] ] := Module[{props},
+WindowObj /: Serialize[n_WindowObj, OptionsPattern[] ] := Module[{props},
     props = {# -> n[#]} &/@ If[OptionValue["MetaOnly"], Complement[n["Properties"], {"EvaluationContext", "Format", "Socket","Properties","Icon","Self","Data", "Notebook", "Init", "After", "Before"}], Complement[n["Properties"], {"Socket", "Format", "EvaluationContext", "Properties","Icon","Self", "Notebook", "Init", "After", "Before"}] ];
     props = Join[props, {"Notebook" -> n["Notebook", "Hash"]}];
     props // Flatten // Association
 ]
 
-Options[WindowObj`Serialize] = {"MetaOnly" -> False}
+Options[Serialize] = {"MetaOnly" -> False}
 
 End[]
 EndPackage[]

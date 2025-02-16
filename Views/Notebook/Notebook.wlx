@@ -20,12 +20,12 @@ ApplySync[f_, w_, {first_, rest___}, final_] := f[w@@first, Function[Null, Echo[
 ApplySync[f_, w_, {}, final_] := final[];
 
 
-addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
+addListeners[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[clonedEvent, {
         "New Cell" -> Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell] , list, secret], client]
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], cell`Serialize[cell] , list, secret], client]
             ];
         ],
 
@@ -45,11 +45,11 @@ addListeners[notebook_Notebook, secret_String, client_, parameters_, extensions_
     ];
 ];
 
-restoreCells[notebook_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
+restoreCells[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{},
     Map[
         Function[cell,
             With[{list = #["Hash"] &/@ (cell["Notebook","Cells"])},
-                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], CellObj`Serialize[cell], list, secret, "IgnoreList" -> True, "FocusFirst" -> True] (*`*), client];
+                WebUISubmit[UINotebook["NewCell", CellGenerator[cell, client, parameters, extensions], cell`Serialize[cell], list, secret, "IgnoreList" -> True, "FocusFirst" -> True] (*`*), client];
             ]
         ]   
     ,    
@@ -205,7 +205,7 @@ projectCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals_
 
     
     With[{project = Function[Null,
-        With[{win = WindowObj["Notebook" -> cell["Notebook"], "Data" -> cell["Data"], "Ref" -> cell["Hash"] ]},
+        With[{win = win`WindowObj["Notebook" -> cell["Notebook"], "Data" -> cell["Data"], "Ref" -> cell["Hash"] ]},
             Echo["project >> sending global event"];
             EventFire[notebook, "OnWindowCreate", <|"Window"->win, "Client"->client|>];
             WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
@@ -246,16 +246,23 @@ projectCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals_
     ];
 ] 
 
-projectCellData[cell_, evaluatedQ_, data_, display_, uid_,  notebook_, secret_String, log_String, kernels_, cli_, modals_, parameters_, extensions__] := With[{
+projectCellData[cell_, evaluatedQ_, data_, display_, uid_,  imageSize_, notebook_, secret_String, log_String, kernels_, cli_, modals_, parameters_, extensions__] := With[{
     client = If[MatchQ[cli, _Symbol], notebook["Socket"], cli]
 },
 
 
     
-    With[{win = WindowObj["Notebook" -> notebook, "EvaluatedQ" -> evaluatedQ, "Display"->display, "Hash"->uid, "Data" -> data, "Ref" -> cell["Hash"] ]},
+    With[{win = win`WindowObj["Notebook" -> notebook, "EvaluatedQ" -> evaluatedQ, "Display"->display, "Hash"->uid, "Data" -> data, "Ref" -> cell["Hash"] ]},
             Echo["project >> sending global event"];
             EventFire[notebook, "OnWindowCreate", <|"Window"->win, "Client"->client|>];
-            WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
+
+            If[imageSize === Automatic,
+                WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_];
+            ,
+                With[{features = If[ListQ[imageSize], StringTemplate["width=``,height=``"][imageSize[[1]], imageSize[[2]] ], StringTemplate["width=``,height=``"][imageSize, 0.76 imageSize ] ]},
+                    WebUILocation[StringJoin["/window?id=", win["Hash"] ], client, "Target"->_, "Features" -> features];
+                ]
+            ];
     ];
 ] 
 
@@ -309,7 +316,7 @@ evaluateCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals
             cell["Type"] = "Input";
 
             With[{template = CellGenerator[cell, client, parameters, extensions]},
-                WebUISubmit[UINotebook["Morph", cell["Hash"], template, CellObj`Serialize[cell, "MetaOnly"->True] (*`*)], client];
+                WebUISubmit[UINotebook["Morph", cell["Hash"], template, cell`Serialize[cell, "MetaOnly"->True] (*`*)], client];
             ];
         ];
     ];
@@ -337,7 +344,7 @@ evaluateCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals
             ,
                 Then[checkWSLink[notebook, client, secret, log], Function[Null,
                     Then[checkEvaluationCells[cell, notebook, secret, log, kernels, client, modals, parameters, extensions], Function[Null,
-                        cell // CellObj`Evaluate;
+                        cell // cell`EvaluateCellObj;
                         EventFire[promise, Resolve, True];
                     ],
                     Function[Null,
@@ -358,7 +365,7 @@ evaluateCell[cell_, notebook_, secret_String, log_String, kernels_, cli_, modals
                             Echo["Success!"];
                             Then[checkWSLink[notebook, client, secret, log], Function[Null,
                                 Then[checkEvaluationCells[cell, notebook, secret, log, kernels, client, modals, parameters, extensions], Function[Null,
-                                    cell // CellObj`Evaluate;
+                                    cell // cell`EvaluateCellObj;
                                     EventFire[promise, Resolve, True];
                                 ],
                                 Function[Null,
@@ -605,12 +612,12 @@ Component[OptionsPattern[]] := With[{
 
         "RestartKernel" -> Function[Null,
             Echo["Manual Kernel restart"];
-            notebook["Evaluator"]["Kernel"] // Kernel`Restart;
+            notebook["Evaluator"]["Kernel"] // GenericKernel`Restart;
         ],
 
         "ClearOutputs" -> Function[Null,
             Echo["ClearOutputs"];
-            Delete /@ Select[notebook["Cells"], (OutputCellQ[#] && #["Display"] =!= "markdown") &];
+            Delete /@ Select[notebook["Cells"], (cell`OutputCellQ[#] && #["Display"] =!= "markdown") &];
         ],  
         
         "UnhideAllCells" -> Function[Null,
@@ -619,7 +626,7 @@ Component[OptionsPattern[]] := With[{
 
         "ToggleFocusedCell" -> Function[Null,
             With[{focused = notebook["FocusedCell"]},
-                If[MatchQ[focused, _CellObj], WebUISubmit[UINotebook["ToggleCell", focused["Hash"]], $Client] ];
+                If[MatchQ[focused, _cell`CellObj], WebUISubmit[UINotebook["ToggleCell", focused["Hash"]], $Client] ];
             ]
         ],
 
@@ -631,7 +638,7 @@ Component[OptionsPattern[]] := With[{
 
         "DeleteFocusedCell" -> Function[Null,
             notebook["FocusedCell"] // Delete;
-            If[notebook["Cells"] === {}, CellObj["Notebook"->notebook, "Data"->""]];
+            If[notebook["Cells"] === {}, cell`CellObj["Notebook"->notebook, "Data"->""]];
         ],
         
         "EvaluateInitCells" -> Function[Null,
@@ -645,7 +652,7 @@ Component[OptionsPattern[]] := With[{
                 Return[];
             ];
 
-            If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized", Kernel`Abort[notebook["Evaluator"]["Kernel"]] (*`*) ];
+            If[notebook["Evaluator"]["Kernel"]["State"] === "Initialized", GenericKernel`AbortEvaluation[notebook["Evaluator"]["Kernel"]] (*`*) ];
             Map[Function[cell,
                 cell["State"] = "Idle";
                 EventFire[cell, "State", "Idle"];
@@ -655,7 +662,7 @@ Component[OptionsPattern[]] := With[{
 
         "NotebookCellEvaluate" -> Function[cell, evaluateCell[cell, notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
         "NotebookCellProject" -> Function[cell, projectCell[cell, notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
-        "NotebookCellDataProject" -> Function[assoc, projectCellData[assoc["Cell"], Lookup[assoc, "EvaluatedQ", False], Lookup[assoc, "Data", assoc["Cell"]["Data"]], Lookup[assoc, "Display", "codemirror"], Lookup[assoc, "Hash", Null], notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
+        "NotebookCellDataProject" -> Function[assoc, projectCellData[assoc["Cell"], Lookup[assoc, "EvaluatedQ", False], Lookup[assoc, "Data", assoc["Cell"]["Data"]], Lookup[assoc, "Display", "codemirror"], Lookup[assoc, "Hash", Null], Lookup[assoc, ImageSize, Automatic], notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
 
         "NotebookQ" -> Function[Null,
             notebook
@@ -735,7 +742,7 @@ Component[OptionsPattern[]] := With[{
 
         "MakeInit" -> Function[uid,
             Echo["Toggle initialization cell..."];
-            With[{cell = CellObj`HashMap[uid](*`*)},
+            With[{cell = cell`HashMap[uid](*`*)},
                 cell["Props"] = Join[cell["Props"], <|"InitGroup" -> !TrueQ[cell["Props", "InitGroup"]]|>];
                 WebUISubmit[UINotebook["ToggleInitGroup", uid, TrueQ[cell["Props", "InitGroup"]]], $Client];
             ]
@@ -743,7 +750,7 @@ Component[OptionsPattern[]] := With[{
 
         "Lock" -> Function[uid,
             Echo["Lock cell..."];
-            With[{cell = CellObj`HashMap[uid](*`*)},
+            With[{cell = cell`HashMap[uid](*`*)},
                 cell["Props"] = Join[cell["Props"], <|"Locked" -> !TrueQ[cell["Props", "Locked"]]|>];
                 WebUISubmit[UINotebook["ToggleLock", uid, TrueQ[cell["Props", "Locked"]]], $Client];
             ]
@@ -751,14 +758,14 @@ Component[OptionsPattern[]] := With[{
 
         "Hide" -> Function[uid,
             Echo["Fade cell..."];
-            With[{cell = CellObj`HashMap[uid](*`*)},
+            With[{cell = cell`HashMap[uid](*`*)},
                 WebUISubmit[UINotebook["ToggleCell", cell["Hash"]], $Client];
             ]            
         ],         
         
         "Fade" -> Function[uid,
             Echo["Fade cell..."];
-            With[{cell = CellObj`HashMap[uid](*`*)},
+            With[{cell = cell`HashMap[uid](*`*)},
                 cell["Props"] = Join[cell["Props"], <|"Fade" -> !TrueQ[cell["Props", "Fade"]]|>];
                 WebUISubmit[UINotebook["ToggleFade", uid, TrueQ[cell["Props", "Fade"]]], $Client];
             ]
@@ -766,19 +773,19 @@ Component[OptionsPattern[]] := With[{
 
         "ClearOutputs" -> Function[uid,
             Echo["Clear outputs"];
-            With[{cell = CellObj`HashMap[uid](*`*)},
-                Delete /@ CellObj`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?OutputCellQ]](*`*);
+            With[{cell = cell`HashMap[uid](*`*)},
+                Delete /@ cell`SelectCells[cell["Notebook"]["Cells"], Sequence[cell, __?cell`OutputCellQ]](*`*);
             ]
         ],
 
         "Vanish" -> Function[uid,
-            If[!TrueQ[CellObj`HashMap[uid]["Invisible"](*`*)],
+            If[!TrueQ[cell`HashMap[uid]["Invisible"](*`*)],
                 With[{request = CreateUUID[]},
                     EventHandler[request, {
                         "Success" -> Function[Null, 
                             EventRemove[request];
 
-                            With[{cell = CellObj`HashMap[uid](*`*)},
+                            With[{cell = cell`HashMap[uid](*`*)},
                                 cell["Invisible"] = !TrueQ[cell["Invisible"]];
                                 WebUISubmit[UINotebook["ToggleInvisible", uid, TrueQ[cell["Invisible"]]], $Client];
                             ]                        
@@ -801,39 +808,39 @@ Component[OptionsPattern[]] := With[{
 
                 ];
             ,
-                With[{cell = CellObj`HashMap[uid](*`*)},
+                With[{cell = cell`HashMap[uid](*`*)},
                     cell["Invisible"] = !TrueQ[cell["Invisible"]];
                     WebUISubmit[UINotebook["ToggleInvisible", uid, TrueQ[cell["Invisible"]]], $Client];
                 ] 
             ];
         ],
 
-        "Project" -> Function[uid, projectCell[CellObj`HashMap[uid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
+        "Project" -> Function[uid, projectCell[cell`HashMap[uid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
 
         "UpdateCell" -> Function[payload,
-            With[{cell = CellObj`HashMap[payload // First], content = payload // Last (*`*)},
+            With[{cell = cell`HashMap[payload // First], content = payload // Last (*`*)},
                 cell["Data"] = URLDecode[content];
                 If[cell["Type"] == "Output",
                     Echo["Morphing..."];
                     cell["Type"] = "Input";
     
                     With[{template = CellGenerator[cell, client, parameters, extensions]},
-                        WebUISubmit[UINotebook["Morph", payload // First, template, CellObj`Serialize[cell, "MetaOnly"->True]], $Client];
+                        WebUISubmit[UINotebook["Morph", payload // First, template, cell`Serialize[cell, "MetaOnly"->True]], $Client];
                     ];
                 ];                
             ];   
         ],
 
         "RemoveCell" -> Function[uid,
-            CellObj`HashMap[uid] (*`*) //Delete;
-            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && InputCellQ[c]]] === {}, CellObj["Notebook"->notebook, "Data"->""]];
+            cell`HashMap[uid] (*`*) //Delete;
+            If[Select[notebook["Cells"], Function[c, !TrueQ[c["Invisible"]] && cell`InputCellQ[c]]] === {}, cell`CellObj["Notebook"->notebook, "Data"->""]];
         ],
 
         "SetProperty" -> Function[json,
             Print["Prop set..."];
             With[{obj = ImportString[json, "JSON"] // Association},
                 If[AssociationQ[obj],
-                    With[{c = CellObj`HashMap[obj["Cell"]]  (*`*), key = obj["Key"]},
+                    With[{c = cell`HashMap[obj["Cell"]]  (*`*), key = obj["Key"]},
                         c["Props", key] = obj["Value"];
                     ];
                 ];
@@ -843,24 +850,24 @@ Component[OptionsPattern[]] := With[{
         "AddAfter" -> Function[uid,
             (*/* request from the client with event provided */*)
 
-            With[{o = CellObj`HashMap[uid] (*`*)},
-                CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
+            With[{o = cell`HashMap[uid] (*`*)},
+                cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
             ]
         ],
 
         "AddAfterOutputs" -> Function[uid,
             (*/* request from the client with event provided */*)
 
-            With[{o = CellObj`HashMap[uid] (*`*)},
-                CellObj["Notebook"->notebook, "Data"->"", "After"-> Sequence[o, ___?OutputCellQ]];   
+            With[{o = cell`HashMap[uid] (*`*)},
+                cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> Sequence[o, ___?cell`OutputCellQ]];   
             ]
         ],        
 
         "AddBefore" -> Function[uid,
             (*/* request from the client with event provided */*)
 
-            With[{o = CellObj`HashMap[uid] (*`*)},
-                CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
+            With[{o = cell`HashMap[uid] (*`*)},
+                cell`CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
             ]
         ],        
 
@@ -875,7 +882,7 @@ Component[OptionsPattern[]] := With[{
             
         ],
 
-        "Evaluate" -> Function[celluid, evaluateCell[CellObj`HashMap[celluid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
+        "Evaluate" -> Function[celluid, evaluateCell[cell`HashMap[celluid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
 
         else_ :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
     }];

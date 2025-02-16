@@ -12,13 +12,13 @@ CellWrapper    := ImportComponent["Components/CellWrapper.wlx"];
 
 {EvaluationBar, EvaluationBarScript}  = ImportComponent["Components/EvaluationBar.wlx"];
 
-Component[cell_CellObj, cli_, parameters_, OptionsPattern[]] := With[{
+Component[cell_cell`CellObj, cli_, parameters_, OptionsPattern[]] := With[{
     ExtensionTemplateInjection = OptionValue["ExtensionTemplateInjection"], 
     ExtensionTemplateWrapper = OptionValue["ExtensionTemplateWrapper"],
     Class = StringJoin["hover:b0g-", (If[StringQ[#], #, "teal"]&) @ (parameters["AccentColor"]), "-700/5", " ", If[TrueQ[cell["Invisible"]], "invisible-cell", ""]],
     Style = "border-radius:2px"
 },
-    If[InputCellQ @ cell,
+    If[cell`InputCellQ @ cell,
         EventHandler[cell, {
             "Focus" -> Function[Null, Print["Focus!"]; With[{n = cell["Notebook"]}, n["FocusedCell"] = cell] ]
         }];

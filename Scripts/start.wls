@@ -7,6 +7,9 @@ PacletDirectoryLoad[Directory[]];
 
 Get[FileNameJoin[{Directory[], "Common", "LPM", "LPM.wl"}] ];
 
+Off[General::shdw]; (* avoid warning messages from ContextAliases *)
+Off[Part::partd]; (* avoid warning messages from WLX *)
+
 PacletRepositories[{
   Github -> "https://github.com/KirillBelovTest/Objects" -> "master",
   Github -> "https://github.com/JerryI/Internal" -> "master",
@@ -15,62 +18,65 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/WebSocketHandler" -> "master",
   Github -> "https://github.com/JerryI/CSocketListener" -> "dev2024",
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
-  Github -> "https://github.com/JerryI/wl-misc" -> "dev",
-  Github -> "https://github.com/JerryI/wl-wljs-packages" -> "master"
+  Github -> "https://github.com/JerryI/wl-misc" -> "dev"
 }, "Directory" -> Directory[] ]
 
 (* web-server *)
-<<KirillBelov`CSockets`
-<<KirillBelov`Objects`
-<<KirillBelov`Internal`
-<<KirillBelov`TCPServer`
+Needs["KirillBelov`CSockets`"]
+Needs["KirillBelov`Objects`"]
+Needs["KirillBelov`Internal`"]
+Needs["KirillBelov`TCPServer`"]
 
-<<KirillBelov`HTTPHandler`
-<<KirillBelov`HTTPHandler`Extensions`
-<<KirillBelov`WebSocketHandler`
-<<KirillBelov`LTP`
+Needs["KirillBelov`HTTPHandler`"]
+Needs["KirillBelov`HTTPHandler`Extensions`"]
+Needs["KirillBelov`WebSocketHandler`"]
+Needs["KirillBelov`LTP`"]
 
-(* notebook abstraction *)
-<<JerryI`Notebook`Packages`
-<<JerryI`Notebook`Utils`
 
-<<JerryI`Notebook`;
-<<JerryI`Notebook`Evaluator`;
-<<JerryI`Notebook`Windows`;
+Needs["CoffeeLiqueur`Notebook`Utils`"];
 
-<<JerryI`Notebook`AppExtensions`;
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
+
+Needs["CoffeeLiqueur`Notebook`Cells`" -> "cell`"];
+Needs["CoffeeLiqueur`Notebook`" -> "nb`"];
+
+Needs["CoffeeLiqueur`Notebook`Evaluator`" -> "StandardEvaluator`"];
+
+Needs["CoffeeLiqueur`Notebook`Windows`" -> "win`"];
+
+Needs["CoffeeLiqueur`Notebook`AppExtensions`" -> "AppExtensions`"];
 
 (* WLJS transport *)
-<<JerryI`Misc`WLJS`Transport`
+Needs["JerryI`Misc`WLJS`Transport`"]
 
 (* event system  *)
-<<JerryI`Misc`Events`
-<<JerryI`Misc`Events`Promise`
+Needs["JerryI`Misc`Events`"]
+Needs["JerryI`Misc`Events`Promise`"]
 
-<<JerryI`Misc`Async`
+Needs["JerryI`Misc`Async`"]
 
-<<JerryI`Misc`Parallel`
-
-<<JerryI`Notebook`Kernel`
-<<JerryI`Notebook`LocalKernel`
-<<JerryI`Notebook`MasterKernel`
-<<JerryI`Notebook`Transactions`
+Needs["JerryI`Misc`Parallel`"]
 
 
-<<KirillBelov`CSockets`EventsExtension`
+
+Needs["CoffeeLiqueur`Notebook`LocalKernel`" -> "LocalKernel`"];
+Needs["CoffeeLiqueur`Notebook`Transactions`"]
+
+
+Needs["KirillBelov`CSockets`EventsExtension`"]
 
 (* WLX template engine *)
-<<JerryI`WLX`
-<<JerryI`WLX`Importer`
-<<JerryI`WLX`WLJS`
+Needs["JerryI`WLX`"]
+Needs["JerryI`WLX`Importer`"]
+Needs["JerryI`WLX`WLJS`"]
 
 (* WebUI Toolkit *)
-<<JerryI`WLX`WebUI`
+Needs["JerryI`WLX`WebUI`"]
 
-<<CodeParser`
+Needs["CodeParser`"]
 
 (* WLJS Package manager *)
-<<JerryI`WLJSPM`
+Needs["CoffeeLiqueur`ExtensionManager`" -> "WLJSPackages`"];
 
 
 (* env parameters *)
@@ -182,49 +188,49 @@ Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] //
   ];
 ];
 
-WLJS`PM`Repositories[{
-  Github -> "https://github.com/JerryI/wljs-editor" -> "dev",
-  Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "master",
-  Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-html-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-inputs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-interpreter" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-js-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-markdown-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-magic-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-plotly" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-cells" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-revealjs" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-wlx-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-snippets" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "dev",
-  Github -> "https://github.com/JerryI/wljs-export-html" -> "master",
-  Github -> "https://github.com/JerryI/wljs-manipulate" -> "master",
-  Github -> "https://github.com/JerryI/wljs-sound" -> "master",
-  Github -> "https://github.com/JerryI/wljs-video" -> "master",
-  Github -> "https://github.com/JerryI/wljs-templates" -> "master",
-  Github -> "https://github.com/JerryI/wljs-xterm" -> "master",
-  Github -> "https://github.com/JerryI/wljs-excalidraw" -> "master",
-  Github -> "https://github.com/JerryI/wljs-toc" -> "master",
-  Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "master",
-  Github -> "https://github.com/JerryI/wljs-neuralnet" -> "master",
-  Github -> "https://github.com/JerryI/wljs-docs-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-demos-archive" -> "master",
-  Github -> "https://github.com/JerryI/wljs-debugger" -> "master",
-  Github -> "https://github.com/JerryI/wljs-api" -> "master"
+WLJSPackages`Repositories[{
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-editor" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-d3" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-mk" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sharedlib-three" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-graphics-d3" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-html-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-inputs" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-interpreter" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-js-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-markdown-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-magic-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-plotly" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-cells" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-revealjs" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wlx-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-mermaid-support" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-snippets" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-alt-cell-controls" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-print-redirect-fix" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-export-html" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-manipulate" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-sound" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-video" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-templates" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-xterm" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-excalidraw" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-toc" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-wxf-accelerator" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-neuralnet" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-docs-archive" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-demos-archive" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-debugger" -> "base",
+  WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "base"
 }, "Directory" -> Directory[] ]
 
 LocalKernel`LTPServerStart[];
 
 RandomWord[];
 
-WLJS`PM`Includes["js"];
-WLJS`PM`Includes["frontend"];
+WLJSPackages`Includes["js"];
+WLJSPackages`Includes["frontend"];
 
 (*EventHandler[AppExtensions`AppEvents // EventClone, {
  any_ :> (Echo[StringTemplate["App Event ``: ``"][any, #]]&)
@@ -265,7 +271,7 @@ Echo["Loading packages: FRONTEND"];
   If[FailureQ[Get[FileNameJoin[{Directory[], "wljs_packages",  UniversalPathConverter[#]}] ] ],
     Echo["Failed to load some of the packages (see logs)"];
     Exit[0]
-  ] &/@ WLJS`PM`Includes["frontend"]; 
+  ] &/@ WLJSPackages`Includes["frontend"]; 
 
 JerryI`WLX`Importer`Private`CacheControl["Hour"];
 
@@ -300,9 +306,9 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
   Echo["New notebook load and add it to the path! >>"];
 
   If[MemberQ[notebook["Properties"], "WorkingDirectory"],
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ]  // DeleteDuplicates;
   ,
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ]  // DeleteDuplicates;
   ];
  ],
  "Loader:LoadNotebook" -> Function[notebook,
@@ -311,26 +317,20 @@ EventHandler[AppExtensions`AppEvents // EventClone, {
 
   If[MemberQ[notebook["Properties"], "WorkingDirectory"],
     Echo[notebook["WorkingDirectory"] ];
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["WorkingDirectory"] ] // DeleteDuplicates;
   ,
     Echo[notebook["Path"] // DirectoryName];
-    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ];
+    $ExposedDirectories = Append[$ExposedDirectories, notebook["Path"] // DirectoryName ]  // DeleteDuplicates;
   ];
   
  ],
 
- "App:ExtendPath" -> Function[paths,
-  $ExposedDirectories = {$ExposedDirectories, paths};
+ "App:ExtendPath" -> Function[path,
+  $ExposedDirectories = Append[$ExposedDirectories, path] // DeleteDuplicates;
  ],
 
  "App:RemovePath" -> Function[paths, Module[{p = $ExposedDirectories},
-    With[{index = Position[p, #]},
-      If[Length[index] > 0,
-        p = ReplacePart[p, index[[1]] -> Nothing];
-      ]
-    ] & /@ paths;
-
-    $ExposedDirectories = p;
+    $ExposedDirectories = p /. {paths -> Nothing};
   ] ]
 }];
 

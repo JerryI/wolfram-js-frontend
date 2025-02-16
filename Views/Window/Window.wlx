@@ -9,7 +9,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
         "Ready" -> Function[Null,
             Echo["Window.wlx >> Ready to show!"];
             window["EvaluatedQ"] = True;
-            WebUISubmit[Global`UIWindow["Load", WindowGenerator[window, client, parameters, extensions], WindowObj`Serialize[window] ,  secret], client]
+            WebUISubmit[Global`UIWindow["Load", WindowGenerator[window, client, parameters, extensions], win`Serialize[window] ,  secret], client]
         ]
     }];
 
@@ -22,7 +22,7 @@ addListeners[window_, secret_String, client_, parameters_, extensions__] := Modu
     ];
 ];
 
-restoreCells[window_Notebook, secret_String, client_, parameters_, extensions__] := Module[{},
+restoreCells[window_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{},
     Print["nothing to do"];
 ];
 
@@ -45,7 +45,7 @@ evaluate[window_, secret_String, client_, modals_, parameters_, extensions__] :=
     If[TrueQ[window["EvaluatedQ"]],
         EventFire[window, "Ready", True];
     ,
-        WindowObj`Evaluate[window];(*`*)
+        win`EvaluateWindowObj[window];(*`*)
     ]
     
 ];
@@ -209,7 +209,7 @@ Component[OptionsPattern[]] := With[{
 
     With[{},
 
-        <main class="grow flex flex-col overflow-hidden dark:invert dark:hue-rotate-180 dark:contrast-75 dark:brightness-5">
+        <main class="h-full dark:invert dark:hue-rotate-180 dark:contrast-75 dark:brightness-5">
             <Container Parameters={parameters} Window={window} Event={secret}>
                 <div class="flex-shrink-0">
                     <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-teal-600" viewBox="0 0 100 101" fill="none">

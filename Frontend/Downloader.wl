@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`HTTPDownLoader`", {
+BeginPackage["CoffeeLiqueur`Notebook`HTTPDownLoader`", {
     "KirillBelov`HTTPHandler`",
     "KirillBelov`HTTPHandler`Extensions`",
     "KirillBelov`Internal`"
@@ -22,4 +22,4 @@ BeginPackage["JerryI`Notebook`HTTPDownLoader`", {
 
 EndPackage[]
 
-JerryI`Notebook`HTTPDownLoader`Internal`module
+CoffeeLiqueur`Notebook`HTTPDownLoader`Internal`module

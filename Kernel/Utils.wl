@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`Utils`"];
+BeginPackage["CoffeeLiqueur`Notebook`Utils`"];
 
 (*
 	Useful utilites package

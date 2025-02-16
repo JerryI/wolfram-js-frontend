@@ -1,18 +1,15 @@
-BeginPackage["JerryI`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "JerryI`Notebook`Transactions`", "JerryI`Notebook`Kernel`"}]
+BeginPackage["CoffeeLiqueur`Notebook`Evaluator`", {"KirillBelov`Objects`", "JerryI`Misc`Events`", "CoffeeLiqueur`Notebook`Transactions`"}]
 
 StandardEvaluator::usage = "StandardEvaluator[opts__] creates a basic Evaluator"
-(* :: Options :: *)
-(* "Q" -> Function[{t_Transaction}, ...] -> Boolean *)
+EvaluateTransaction;
 
-(* :: Upvalues :: *)
-(* ReadyQ[_StandardEvaluator, _Kernel] -> True | "Error code"_String *)
-(* Kernel`Submit[_StandardEvaluator, _Kernel, _Transaction] *)
-
-StandardEvaluator`Container::usage = "a static construction used for combinning StaticEvaluators and Kernels"
-(* :: usage ::                                          *)
-(* StandardEvaluator[kernel_Kernel][t_Transaction]      *)
+ReadyQ;
+Container::usage = "a static construction used for combinning StaticEvaluators and Kernels"
+InitializedContainer;
 
 Begin["`Private`"]
+
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 init[o_] := With[{uid = CreateUUID[]},
     If[!ListQ[eList], eList = {}];
@@ -25,50 +22,50 @@ init[o_] := With[{uid = CreateUUID[]},
 CreateType[StandardEvaluator, init, {"Priority"->Infinity, "InitKernel"->Identity, "Pattern"->(_), "Name"->"Untitled Static Evaluator"}]
 
 (* static structure with a single instance or??? *)
-StandardEvaluator`Container[k_(*Kernel*)] := Module[{},
+Container[k_(*Kernel*)] := Module[{},
     (* perform initial tuning of a Kernel *)
     #["InitKernel"][k] &/@ eList;
-    StandardEvaluator`InitializedContainer[k]
+    InitializedContainer[k]
 ]
 
-StandardEvaluator`InitializedContainer[k_]["Kernel"] := k;
+InitializedContainer[k_]["Kernel"] := k;
 
-StandardEvaluator`InitializedContainer[k_(*Kernel*)][t_Transaction] := Module[{evaluator, state},
+InitializedContainer[k_(*Kernel*)][t_Transaction] := Module[{evaluator, state},
     Print["Standard Eval"];
 
     evaluator = t /. Flatten[{#["Pattern"] -> #} &/@ eList]; (* apply patterns like t /. {_ -> evaluator 1, _?watever -> evaluator 2} *)
 
-    state = (StandardEvaluator`ReadyQ[evaluator, k]);
+    state = (ReadyQ[evaluator, k]);
     If[!TrueQ[state], EventFire[t, "Error", state]; Return[t] ];
 
-    StandardEvaluator`Evaluate[evaluator, k, t];
+    EvaluateTransaction[evaluator, k, t];
     t 
 ]
 
-StandardEvaluator /: StandardEvaluator`ReadyQ[StandardEvaluator[o_(*Kernel*)] ] := True
+StandardEvaluator /: ReadyQ[StandardEvaluator[o_(*Kernel*)] ] := True
 
-StandardEvaluator /: StandardEvaluator`Print[evaluator_StandardEvaluator, msg_] := Echo[evaluator["Name"] <> " >> " <> ToString[msg] ]
-StandardEvaluator /: StandardEvaluator`Print[evaluator_StandardEvaluator, msg_, args__] := Echo[evaluator["Name"] <> " >> " <> StringTemplate[msg // ToString][args] ]
+StandardEvaluator /: Print[evaluator_StandardEvaluator, msg_] := Echo[evaluator["Name"] <> " >> " <> ToString[msg] ]
+StandardEvaluator /: Print[evaluator_StandardEvaluator, msg_, args__] := Echo[evaluator["Name"] <> " >> " <> StringTemplate[msg // ToString][args] ]
 
 (* Primitive Evaluator *)
-
+(*
 primitive  = StandardEvaluator["Name" -> "Primitive Static Evaluator", "InitKernel" -> initPrimitiveEvaluator, "Priority"->(Infinity)];
 
-    StandardEvaluator`ReadyQ[primitive, kernel_] := (
-        StandardEvaluator`Print[primitive, "I am always ready"];
+    ReadyQ[primitive, kernel_] := (
+        Print[primitive, "I am always ready"];
         True
     );
 
-    StandardEvaluator`Evaluate[primitive, kernel_, t_] := (
+    EvaluateTransaction[primitive, kernel_, t_] := (
         t["Evaluator"] = Internal`Kernel`Evaluator`Simple;
 
-        StandardEvaluator`Print[primitive, "Kernel`Submit!"];
-        Kernel`Submit[kernel, t];
+        Print[primitive, "GenericKernel`Submit!"];
+        GenericKernel`Submit[kernel, t];
     );
 
 initPrimitiveEvaluator[k_] := Module[{},
     Print["Kernel init..."];
-    Kernel`Init[k, 
+    GenericKernel`Init[k, 
         Print["Init primitive Kernel (Local)"];
         Internal`Kernel`Evaluator`Simple = Function[t, 
             With[{result = ToExpression[ t["Data"], InputForm ] },
@@ -86,6 +83,7 @@ initPrimitiveEvaluator[k_] := Module[{},
         ];        
     ]
 ]
+*)
 
 End[]
 EndPackage[]

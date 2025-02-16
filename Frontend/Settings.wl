@@ -1,4 +1,4 @@
-BeginPackage["JerryI`Notebook`SettingsUtils`"];
+BeginPackage["CoffeeLiqueur`Notebook`SettingsUtils`"];
 Begin["`Internal`"];
 
 loadConfiguration  := If[FileExistsQ[FileNameJoin[{Directory[], "_settings.wl"}]], Get[FileNameJoin[{Directory[], "_settings.wl"}]], Missing[]];
@@ -15,4 +15,4 @@ Options[initialize] = {"Defaults" -> <|"Autostart" -> True|>}
 End[]
 EndPackage[]
 
-{JerryI`Notebook`SettingsUtils`Internal`initialize, JerryI`Notebook`SettingsUtils`Internal`storeConfiguration}
+{CoffeeLiqueur`Notebook`SettingsUtils`Internal`initialize, CoffeeLiqueur`Notebook`SettingsUtils`Internal`storeConfiguration}

@@ -60,8 +60,9 @@ checkUpdates[GlobalMessanger_, ModalController_, Client_] := With[{},
   EventFire[GlobalMessanger, "Warning", "Restart is required"];
 ]
 
+Global`UIAPISend;
 
-renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
+renameFile[notebook_nb`NotebookObj, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
   filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
   RenameFile[oldPath, filename];
@@ -79,7 +80,8 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+      WebUISubmit[Global`UIAPISend["open", StringJoin["/iframe/", URLEncode[ result["Path"] ]]], client];
+
       
     
   ], Function[error,
@@ -87,7 +89,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
   ]]
 ]
 
-backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
+backupNotebook[notebook_nb`NotebookObj, GlobalMessanger_, client_] := With[{},
   If[!TrueQ[notebook["ReadOnly?"]], 
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
         Print[result];
@@ -96,7 +98,7 @@ backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   ]
 ]
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
+dumpNotebook[notebook_nb`NotebookObj, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
   If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
@@ -170,10 +172,10 @@ promise
 ]
 
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 
 App[request_] := With[{
@@ -181,6 +183,7 @@ App[request_] := With[{
   GlobalControls  = CreateUUID[],
   ModalController = CreateUUID[],
   GlobalMessanger = CreateUUID[],
+  query = request["Query"],
   Path = URLDecode @ StringDrop[request["Path"], 
     Switch[$OperatingSystem,
       "Windows", 
@@ -195,7 +198,11 @@ App[request_] := With[{
 
   Print["## Loading by path : "]; Print[Path];
 
-  
+  If[KeyExistsQ[query, "root"],
+    Print["## Extening HTTP path using provided root directory"];
+    EventFire[AppExtensions`AppEvents, "App:ExtendPath", URLDecode[query["root"] ] ];
+  ];  
+
   With[{
         
         SidebarId = CreateUUID[],
@@ -243,17 +250,15 @@ App[request_] := With[{
     EventHandler[EventClone[GlobalControls], {
       any_ :> (EventFire[AppEvent, any, #]&)
     }]; 
+
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_]&), 
       "RenameFile" -> ((renameFile @@ #) &),
        ("NewNotebook" | "_NewNotebook" | "_NewQuickNotebook") -> (createNotebook[<|"Quick"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),
       "DumpSaveAs" -> (dumpNotebookAs[#, GlobalMessanger, ModalController, $Client]&),
-      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&),
-      "ReopenAsQuick" -> (reopenNotebookAsQuick[#, GlobalMessanger, ModalController, $Client]&),
-      "CheckUpdates" -> (checkUpdates[GlobalMessanger, ModalController, $Client]&)
+      "DumpSaveTemporal" -> (backupNotebook[#, GlobalMessanger, $Client]&)
     }];
   {
     "<!DOCTYPE html>"
@@ -280,7 +285,7 @@ App[request_] := With[{
           <div class="h-full" id="frame">
             <div class="h-full flex flex-col">
               <Notifications Controls={GlobalControls} MessagePort={GlobalMessanger}/>
-              <Views Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
+              <Views Query={query} Parameters={GlobalParameters} Modals={ModalController} Kernels={kernels} IframeQ={True} Path={Path} AppEvents={AppEvent} Messanger={GlobalMessanger} Controls={GlobalControls} ExtensionTemplateInjection={ExtensionTemplates}/>
               <ExtensionTemplates Template={"AppFooter"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
             </div> 
           </div>
@@ -301,6 +306,14 @@ Script[Rule["Secret", Secret_]] := With[{},
         if (window.electronAPI.clearCache) {
           window.electronAPI.clearCache();
         }
+      }
+    }
+
+    core.UIAPISend = async (args, env) => {
+      if (window.iframeAPI) {
+        const type = await interpretate(args[0], env);
+        const url = await interpretate(args[1], env);
+        window.iframeAPI.sendMessage(type, url);
       }
     }
 

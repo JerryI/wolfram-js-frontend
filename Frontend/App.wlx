@@ -59,7 +59,7 @@ checkUpdates[GlobalMessanger_, ModalController_, Client_] := With[{},
 ]
 
 
-renameFile[notebook_Notebook, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
+renameFile[notebook_nb`NotebookObj, name_String, client_] := Module[{filename = name, oldPath = notebook["Path"]},
   If[StringTake[filename, -3] =!= "wln", filename = StringJoin[filename, ".wln"]];
   filename = FileNameJoin[Join[Drop[FileNameSplit[notebook["Path"]], -1], {filename}]];
   RenameFile[oldPath, filename];
@@ -77,7 +77,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
       Print["Redirect"];
       Print[result["Path"]];
       
-      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_ ];
+      WebUILocation[ StringJoin["/", URLEncode[ result["Path"] ]], client, "Target"->_, "Features"->"left=100,top=100"];
       
     
   ], Function[error,
@@ -85,7 +85,7 @@ createNotebook[props_Association, assoc_Association, GlobalMessanger_, ModalCont
   ]]
 ]
 
-backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
+backupNotebook[notebook_nb`NotebookObj, GlobalMessanger_, client_] := With[{},
   If[!TrueQ[notebook["ReadOnly?"]], 
     EventFire[GlobalMessanger, "Notebook:Saving:Started", True];
     Then[saveNotebook[notebook, "Events"->AppEvent, "Temporal"->True], Function[result,
@@ -99,7 +99,7 @@ backupNotebook[notebook_Notebook, GlobalMessanger_, client_] := With[{},
   ]
 ]
 
-dumpNotebook[notebook_Notebook, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
+dumpNotebook[notebook_nb`NotebookObj, GlobalMessanger_, ModalController_, client_] := With[{promise = Promise[]},
   If[TrueQ[notebook["ReadOnly?"]],
     EventFire[GlobalMessanger, "Error", "This is read-only notebook"];
   ,
@@ -187,10 +187,10 @@ promise
 ]
 
 
-ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJS`PM`Includes["js"];
+ExtensionsJS = (StringJoin["/", FileNameToURLPath[#]]) &/@ WLJSPackages`Includes["js"];
 ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
   <link rel="stylesheet" href="{Path}"/> 
-] &/@ WLJS`PM`Includes["styles"] // ToStringRiffle;
+] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 defaultHomeFolder = If[KeyExistsQ[$Env, "folder"], $Env["folder"], Join[<|"Home"->AppExtensions`DefaultDocumentsDir (*`*)|>, settings]["Home"] ];
 
@@ -204,7 +204,7 @@ Map[Function[item,
   ,
     ExtensionMenuItems["misc"] = Append[ExtensionMenuItems["misc"], item]
   ];
-], Select[Flatten[WLJS`PM`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJS`PM`Packages]], AssociationQ]];
+], Select[Flatten[WLJSPackages`Packages[#, "wljs-meta", "menu"] &/@ Keys[WLJSPackages`Packages]], AssociationQ]];
 
 App[request_] := With[{
   Secret = CreateUUID[], 
@@ -258,11 +258,11 @@ App[request_] := With[{
                   ],
 
                   "LocateExamples" -> Function[Null,
-                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/folder/", URLEncode[AppExtensions`DemosDir (*`*)]], $Client, "Target"->_, "Features"->"top=100,right=100"];
                   ],
 
                   "Acknowledgments" -> Function[Null,
-                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_];
+                    WebUILocation[StringJoin["/acknowledgments", ""], $Client, "Target"->_, "Features"->"width=600,height=400"];
                   ],
 
                   "CheckUpdates" -> Function[Null,
@@ -321,7 +321,7 @@ App[request_] := With[{
    
     (*/* Hard logic */*)
     EventHandler[EventClone[GlobalControls], {
-      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_]&), 
+      "OpenSettings" -> (WebUILocation[StringJoin["/settings", ""], $Client, "Target"->_, "Features"->"width=600,height=800"]&), 
       "RenameFile" -> ((renameFile @@ #) &),
        ("NewNotebook" | "_NewNotebook" | "_NewQuickNotebook") -> (createNotebook[<|"Quick"->True, "HaveToSaveAs"->True|>, <|"BaseDirectory"->AppExtensions`QuickNotesDir(*`*)|>, GlobalMessanger, ModalController, $Client, Path]&),
       "DumpSave" -> (dumpNotebook[#, GlobalMessanger, ModalController, $Client]&),

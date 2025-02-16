@@ -824,27 +824,84 @@ callFakeMenu["exit"] = () => {
     app.quit();
 }
 
+const devicesHID = {};
+
+let deviceDialogOpen = false;
+
+const createHIDDialog = (deviceList, cbk) => {
+    if (deviceDialogOpen) return;
+
+    deviceDialogOpen = true;
+    let done = false;
+
+    console.log('HID Dialog!');
+
+    const win = new BrowserWindow({
+        vibrancy: "sidebar", // in my case...
+        frame: true,
+        show: false,
+        titleBarStyle: 'hiddenInset',
+        width: 400,
+        height: 300,
+        resizable: false,
+        title: 'Device selector',
+        webPreferences: {
+            preload: path.join(__dirname, 'preload_device.js'),
+            webSecurity: false,
+            //nodeIntegration: true
+        }
+    });
+
+    win.loadFile(path.join(__dirname, 'device.html'));
+
+    win.on('ready-to-show', () => {
+
+        const list = deviceList.map((e) => {
+            return {name: e.name || e.deviceName, id: e.deviceId}
+        });
+        console.log(deviceList);
+
+
+        win.webContents.send('load', {
+            list: list
+        });
+        
+        ipcMain.once('choise_hid', (e, id) => {
+            done = true;
+            cbk(id);
+            win.close();
+        });
+
+        win.show();
+    });
+
+    win.on('close', () => {
+        deviceDialogOpen = false;
+        if (done) return;
+        cbk('');
+    })
+}
+
 /* permissions for the main window, special headers */
 const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
+
+
+    mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
+        event.preventDefault();
+        //select bluetooth
+        console.log('select bluetooth');
+        createHIDDialog(deviceList, callback);
+    });
+
     mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
         // Add events to handle devices being added or removed before the callback on
         // `select-hid-device` is called.
-        mainWindow.webContents.session.on('hid-device-added', (event, device) => {
-            console.log('hid-device-added FIRED WITH', device)
-                // Optionally update details.deviceList
-        })
 
 
+        event.preventDefault();
 
-        mainWindow.webContents.session.on('hid-device-removed', (event, device) => {
-            console.log('hid-device-removed FIRED WITH', device)
-                // Optionally update details.deviceList
-        })
-
-        event.preventDefault()
-        if (details.deviceList && details.deviceList.length > 0) {
-            callback(details.deviceList[0].deviceId)
-        }
+        console.log('select hid');
+        createHIDDialog(details.deviceList, callback);
     })
 
     mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
@@ -1209,6 +1266,15 @@ const closing_handler = (event, id) => {
     return true;
 }
 
+function parseWindowFeatures(features) {
+    return Object.fromEntries(
+        features.split(',').map(feature => {
+            let [key, value] = feature.split('=').map(str => str.trim());
+            return [key, Number(value)]; // Convert value to number
+        })
+    );
+}
+
 function create_window(opts, cbk = () => {}) {
         //default options
         const defaults = {
@@ -1227,7 +1293,7 @@ function create_window(opts, cbk = () => {}) {
         const options = Object.assign({}, defaults, opts);
         options.minWidth = 576;
         if (!isMac) {
-            options.minWidth = 688;
+            options.minWidth = 700;
         }        
 
         if ((new RegExp(/gptchat/)).exec(options.url)) {
@@ -1281,6 +1347,12 @@ function create_window(opts, cbk = () => {}) {
         }
 
         let win;
+
+        if (options.features) {
+            options.features = parseWindowFeatures(options.features);
+            options.width = options.features.width || options.width;
+            options.height = options.features.height || options.height;
+        }
 
         if (isMac) {
             win = new BrowserWindow({
@@ -1440,6 +1512,19 @@ function create_window(opts, cbk = () => {}) {
             })
         }
 
+        if (options.features) {
+            if (options.features.top || options.features.right || options.features.left || options.features.bottom) {
+                const pos = options.parent.getPosition();
+                pos[0] = pos[0] + (options.features.right || 0) - (options.features.left || 0);
+                pos[1] = pos[1] + (options.features.top || 0) - (options.features.bottom || 0);
+                
+                if(pos[0] < 0) pos[0] = 0;
+                if(pos[1] < 0) pos[1] = 0;
+                
+                win.setPosition(pos[0], pos[1], true);
+            }
+        }
+
         //search on the page (just for debugging)
         win.webContents.on('found-in-page', (event, result) => {
             //show results when Ctrl+F pressed
@@ -1539,15 +1624,17 @@ function create_window(opts, cbk = () => {}) {
 
 
 
-        win.webContents.setWindowOpenHandler(({ url }) => {
+        win.webContents.setWindowOpenHandler(({ url , frameName, features}) => {
             console.log(url);
             const u = new URL(url);
+
+            //console.error(features);
 
 
 
             //if it is on the same domain
             if (u.hostname === (new URL(server.url.default())).hostname) {
-                create_window({url: url, show: true, parent: win});
+                create_window({url: url, show: true, parent: win, features:features});
 
             } else {
                 //open in the default user's browser
@@ -1967,6 +2054,13 @@ app.whenReady().then(() => {
     });    
 
     ipcMain.handle('capture', async (e, area) => {
+        let zoom = e.sender.zoomFactor;
+        if (area) {
+            area.x = Math.round(area.x * zoom);
+            area.y = Math.round(area.y * zoom);
+            area.width = Math.round(area.width * zoom);
+            area.height = Math.round(area.height * zoom);
+        }
         const img = await e.sender.capturePage(area)
         return img.toDataURL();
     });

@@ -59,7 +59,7 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
     Echo[Type];
     With[{client = $Client, m = Messager, kernel = Switch[Type,
                                                     "Master", MasterKernel["Name"->RandomWord[]],
-                                                    _, LocalKernel["Name"->RandomWord[]]
+                                                    _, LocalKernel`LocalKernel["Name"->RandomWord[]]
                                                   ]
     },
         Print["Working!"];
@@ -68,7 +68,7 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
         addListeners[kernel, KernelList, initKernel, deinitKernel];
 
         EventFire[appEvents, "AppendKernel", kernel];
-        kernel // Kernel`Start;
+        kernel // GenericKernel`Start;
     ]    
   ],
     "Restart" -> Function[Null,
@@ -77,24 +77,24 @@ Component[OptionsPattern[]] := With[{controls = OptionValue["Controls"], deinitK
         Return[Null];
       ];
 
-      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_Notebook, ___} :> n}},
-        If[MatchQ[onlineNotebook, _Notebook],
+      With[{onlineNotebook = EventFire[controls, "NotebookQ", True] /. {{___, n_nb`NotebookObj, ___} :> n}},
+        If[MatchQ[onlineNotebook, _nb`NotebookObj],
           If[onlineNotebook["Evaluator"]["Kernel"]["State"] === "Initialized",
-            onlineNotebook["Evaluator"]["Kernel"] // Kernel`Restart;
+            onlineNotebook["Evaluator"]["Kernel"] // GenericKernel`Restart;
           ,
             EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
-            First[ReleaseHold[KernelList]] // Kernel`Restart;
+            First[ReleaseHold[KernelList]] // GenericKernel`Restart;
           ]
         ,
           EventFire[m, "Info", "No active notebooks with kernels. Restarting the first Kernel..."];
-          First[ReleaseHold[KernelList]] // Kernel`Restart;
+          First[ReleaseHold[KernelList]] // GenericKernel`Restart;
         ]
       ]
     ],
 
     "KillAll" -> Function[Null,
       
-      Kernel`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
+      GenericKernel`Unlink[#](*`*) &/@ ReleaseHold[KernelList];
       EventFire[m, "Info", "All kernels have been unlinked"];
     ]
   }];

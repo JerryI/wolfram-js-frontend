@@ -53,9 +53,9 @@ EventHandler[assignedEvent3, {
 
 With[{kernel = kernel},
    EventHandler[Uid, {
-      "Restart" -> Function[Null, kernel // Kernel`Restart],
+      "Restart" -> Function[Null, kernel // GenericKernel`Restart],
       "Unlink" -> Function[Null, 
-         kernel // Kernel`Unlink;
+         kernel // GenericKernel`Unlink;
          destoryWidget;
       ]
    }]

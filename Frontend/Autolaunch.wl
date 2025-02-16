@@ -1,7 +1,4 @@
-BeginPackage["JerryI`Notebook`KernelAutolaunch`", {
-  "JerryI`Notebook`Evaluator`", 
-  "JerryI`WLJSPM`", 
-  "JerryI`Notebook`Kernel`", 
+BeginPackage["CoffeeLiqueur`Notebook`KernelAutolaunch`", {
   "JerryI`Misc`Events`",
   "JerryI`Misc`Events`Promise`",
   "KirillBelov`CSockets`",
@@ -11,7 +8,11 @@ BeginPackage["JerryI`Notebook`KernelAutolaunch`", {
   "JerryI`Misc`WLJS`Transport`"
 }];
 
+
 Begin["`Internal`"];
+
+Needs["CoffeeLiqueur`ExtensionManager`" -> "WLJSPackages`"];
+Needs["CoffeeLiqueur`Notebook`Kernel`" -> "GenericKernel`"];
 
 appendHeld[Hold[list_], a_] := list = Append[list, a];
 removeHeld[Hold[list_], a_] := list = (list /. a -> Nothing);
@@ -27,10 +28,10 @@ autostart[kernel_, KernelList_, initKernel_, deinitKernel_] := Module[{},
   }];
 
 
-  kernel // Kernel`Start;
+  kernel // GenericKernel`Start;
 ];
 
 End[]
 EndPackage[]
 
-JerryI`Notebook`KernelAutolaunch`Internal`autostart
+CoffeeLiqueur`Notebook`KernelAutolaunch`Internal`autostart

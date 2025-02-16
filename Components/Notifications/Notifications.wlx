@@ -25,13 +25,15 @@ Filter[_Notifications`NotificationMessage(*`*)]   = True
 
 beepTimeout = Now
 
-assignClient[target_, data_, buffer_] := With[{c = EventClone[data]},
+assignClient[target_, data_, buffer_, evCloned_] := With[{c = EventClone[data]},
 target = data;
 EventHandler[c, {
     "Closed" -> Function[Null,
         EventRemove[c];
         ClearAll[buffer];
+        buffer = {};
         ClearAll[target];
+        EventRemove[evCloned]; (*/* FIX me, why doesn't it stop even flow ? */*)
         Echo["Purged messager buffer"];
     ]
 }];
@@ -46,7 +48,8 @@ Controller = CreateUUID[],
 globalControls = OptionValue["Controls"], 
 localControls = CreateUUID[], 
 JSBinds = CreateUUID[],
-listController = CreateUUID[]
+listController = CreateUUID[],
+evCloned = EventClone[OptionValue["MessagePort"]]
 },
 EventHandler[EventClone[globalControls], {"ShowMessages" -> Function[Null,
     With[{client = $Client},
@@ -54,7 +57,7 @@ EventHandler[EventClone[globalControls], {"ShowMessages" -> Function[Null,
     ]
 ]}];
 
-EventHandler[EventClone[Event], {
+EventHandler[evCloned, {
     (*/* dialog_Dialog :> (lazyAppend[#, DialogTemplate[dialog]]&), */*)
 
     n_Notifications`Spinner (*`*)  :> Function[Null,
@@ -98,7 +101,7 @@ EventHandler[EventClone[Event], {
         With[{client = $Client, g = GenericTemplate[any, data]},
             EventFire[Controller, "Append", Join[<|"Client"->client, "Type"->"Generic"|>, g] ];
             buffer = Append[buffer, <|"Type"->any, "Message" -> data, "Date"->Now|>];
-            If[lastClient === Null, assignClient[lastClient, client, buffer]];
+            If[lastClient === Null, assignClient[lastClient, client, buffer, evCloned]];
 
             
         ]

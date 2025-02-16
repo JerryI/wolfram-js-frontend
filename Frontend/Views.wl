@@ -1,4 +1,4 @@
-Begin["JerryI`Notebook`Views`"];
+Begin["CoffeeLiqueur`Notebook`Views`"];
 
 {saveNotebook, loadNotebook, renameXXX, cloneXXX}               = ImportComponent["Loader.wl"];
 {EmptyComponent,       EmptyScript}        = ImportComponent["Views/Empty.wlx"];
@@ -23,7 +23,7 @@ NotebookQ[path_] := FileExtension[path] === "wln";
 Router[any_?NotebookQ, appevents_String] := With[{n = loadNotebook[any, "Events"->appevents]},
     Print["Notebook router"];
     Switch[n
-        ,_Notebook
+        ,_nb`NotebookObj
         ,    ({NotebookComponent[##, "Notebook"->n], NotebookScript[##]} &)
         ,_Association
         ,    ({NotebookMessage[##, "Data"->n], NotebookMessageScript[##]} &)
@@ -36,4 +36,4 @@ Router[any_?NotebookQ, appevents_String] := With[{n = loadNotebook[any, "Events"
 
 End[];
 
-JerryI`Notebook`Views`View
+CoffeeLiqueur`Notebook`Views`View
