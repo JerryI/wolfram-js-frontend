@@ -13,12 +13,11 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
-    "dist": "electron-builder --publish always",
-    "dist-mac": "electron-builder --mac --x64",
-    "dist-win": "electron-builder --win --x64",
-    "dist-linux": "electron-builder --linux --x64",
-    "dist86": "electron-builder --x64",
-    "dist-all": "electron-builder -mwl --publish always",
+    "dist-mac": "electron-builder --mac --arm64 --publish always",
+    "dist-mac86": "electron-builder --mac --x64 --publish always",
+    "dist-win86": "electron-builder --win --x64 --publish always",
+    "dist-linux86": "electron-builder --linux --x64 --publish always",
+    "dist-linux": "electron-builder --linux --arm64 --publish always",
     "remove-ds": "find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
@@ -38,12 +37,6 @@
       "sign": false
     },
     "mac": {
-      "target": [
-        {
-          "target": "default",
-          "arch": ["x64", "arm64"]
-        }
-      ],
       "icon": "./Electron/build/512x512.icns",
       "artifactName": "wljs-notebook-${version}-${arch}-macos.${ext}",
       "fileAssociations": [
@@ -78,16 +71,7 @@
       ]
     },
     "linux": {
-      "target": [
-        {
-          "target": "deb",
-          "arch": ["x64", "arm64"]
-        },
-        {
-          "target": "zip",
-          "arch": ["x64", "arm64"]
-        }        
-      ],      
+      "target": ["deb", "zip"],      
       "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
@@ -116,12 +100,7 @@
       ]
     },
     "win": {
-      "target": [
-        {
-          "target": "NSIS",
-          "arch": ["x64", "arm64"]
-        }
-      ],        
+      "target": "NSIS",        
       "icon": "./Electron/build/512x512.ico",
       "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
