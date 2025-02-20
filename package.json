@@ -23,6 +23,7 @@
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
+    "publish": ["github"],
     "afterSign": "./Electron/sign.js",
     "afterPack": "./Electron/build/hook.js",
     "appId": "wljs-notebook",
@@ -143,7 +144,7 @@
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
       "./Electron/build/**/",
-      "./shipped/**"
+      "./bundle/**"
     ],
     "asar": false
   },
@@ -183,23 +184,20 @@
     "electron-find": "^1.0.7",
     "electron-notarize": "^1.2.2",
     "electron-trackpad-utils": "^1.0.1",
+    "electron-updater": "^6.3.9",
     "fflate": "^0.8.0",
     "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",
-    "jsoncrush": "^1.1.8",
     "mica-electron": "^1.5.5",
     "native-prompt": "^2.1.4",
     "node-fetch": "^3.3.2",
     "node-stream-zip": "^1.15.0",
     "pako": "^2.1.0",
-    "party-js": "^2.2.0",
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.0.1",
     "random-words": "^2.0.0",
     "sudo-prompt": "^9.2.1",
-    "tailwindcss": "^3.4.1",
-    "xterm": "^5.3.0",
-    "xterm-addon-fit": "^0.8.0"
+    "tailwindcss": "^3.4.1"
   },
   "overrides": {
     "globalthis": "npm:@nolyfill/globalthis@^1",

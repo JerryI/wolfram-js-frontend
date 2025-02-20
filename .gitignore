@@ -19,6 +19,7 @@ wljs_packages
 .gcss
 .env
 wl_packages
+package-lock.json
 wl_packages_lock.wl
 wljs_packages_lock.wl
 wljs_packages_users.wl
@@ -34,7 +35,9 @@ Packages/*
 2minutesLog.txt
 dist
 shipped
+bundle
 null
 log.txt
 configuration.ini
+dist
 wljs_packages_backup
