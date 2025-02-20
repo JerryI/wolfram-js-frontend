@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.6.8",
+  "version": "2.7.0",
   "recommended-client-version": "2.6.3",
   "description": "Dynamic Notebook Environment for Wolfram Language written in Javascript",
   "author": {
@@ -13,17 +13,19 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
-    "dist": "electron-builder",
+    "dist": "electron-builder --publish always",
     "dist-mac": "electron-builder --mac --x64",
     "dist-win": "electron-builder --win --x64",
     "dist-linux": "electron-builder --linux --x64",
     "dist86": "electron-builder --x64",
-    "dist-all": "electron-builder -mwl --x64",
+    "dist-all": "electron-builder -mwl --publish always",
     "remove-ds": "find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
-    "publish": ["github"],
+    "publish": [
+      "github"
+    ],
     "afterSign": "./Electron/sign.js",
     "afterPack": "./Electron/build/hook.js",
     "appId": "wljs-notebook",
@@ -36,6 +38,12 @@
       "sign": false
     },
     "mac": {
+      "target": [
+        {
+          "target": "default",
+          "arch": ["x64", "arm64"]
+        }
+      ],
       "icon": "./Electron/build/512x512.icns",
       "artifactName": "wljs-notebook-${version}-${arch}-macos.${ext}",
       "fileAssociations": [
@@ -71,9 +79,15 @@
     },
     "linux": {
       "target": [
-        "deb",
-        "zip"
-      ],
+        {
+          "target": "deb",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }        
+      ],      
       "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
@@ -102,7 +116,12 @@
       ]
     },
     "win": {
-      "target": "NSIS",
+      "target": [
+        {
+          "target": "NSIS",
+          "arch": ["x64", "arm64"]
+        }
+      ],        
       "icon": "./Electron/build/512x512.ico",
       "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
@@ -150,13 +169,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JerryI/wolfram-js-frontend.git"
+    "url": "git+https://github.com/JerryI/test-repo-wljs.git"
   },
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/JerryI/wolfram-js-frontend/issues"
+    "url": "https://github.com/JerryI/test-repo-wljs/issues"
   },
-  "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
+  "homepage": "https://github.com/JerryI/test-repo-wljs#readme",
   "devDependencies": {
     "@electron/notarize": "^2.3.0",
     "@rollup/plugin-commonjs": "^24.0.1",
@@ -197,7 +216,8 @@
     "postcss-nested": "^6.0.1",
     "random-words": "^2.0.0",
     "sudo-prompt": "^9.2.1",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "xterm": "^5.3.0"
   },
   "overrides": {
     "globalthis": "npm:@nolyfill/globalthis@^1",

@@ -3172,10 +3172,6 @@ function install_frontend(cbk, window, force=false) {
     } else {
         windows.log.clear();
         windows.log.print('Fatal error. No bundle files found ');
-
-        setTimeout(() => {
-            app.quit();
-        }, 15000);
     }
 
 }
