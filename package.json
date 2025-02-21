@@ -23,7 +23,10 @@
   },
   "build": {
     "publish": [
-      "github"
+      {
+        "provider": "github",
+        "channel": "latest-${arch}"
+      }
     ],
     "afterSign": "./Electron/sign.js",
     "afterPack": "./Electron/build/hook.js",
