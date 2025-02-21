@@ -288,7 +288,6 @@ App         := ImportComponent["Frontend/App.wlx"];
 PromptWindow         := ImportComponent["Frontend/PromptWindow.wlx"];
 Window      := ImportComponent["Frontend/Window.wlx"];
 Settings    := ImportComponent["Frontend/Settings.wlx"];
-AutoTest    := ImportComponent["Frontend/Test.wlx"];
 Downloader   = ImportComponent["Frontend/Downloader.wl"];
 
 (* Global variables *)
@@ -375,23 +374,7 @@ Map[Function[key,
 (* reseved keyword for WLJS interpreter *)
 SetAttributes[Offload, HoldFirst];
 
-With[{minimalClient = ToExpression @ StringRiffle[Take[StringSplit[$Env["AppJSON", "recommended-client-version"], "."], 2], ""]},
-  middleware[app_][request_] := With[{},
-    If[KeyExistsQ[request["Headers"], "Electron"],
-      If[TrueQ[Interpreter["Number"][request["Headers", "Electron"] ] >= minimalClient ],
-        app[request]
-      ,
-        Echo["Error!"];
-        Echo["Client App is outdated! Needed: " <> ToString[minimalClient] ];
-        ServerError["We apologize for the inconvenience. Your app appears outdated and is not compatible with desktop mode. Please try running it from the console, or download a new version of the WLJS app from the <a target=\"_blank\" href=\"https://github.com/JerryI/wolfram-js-frontend/releases\">Releases page</a>. Although this issue occurs rarely, we regret any inconvenience it may have caused."]
-      ]
-    ,
-      app[request]
-    ]
-  ]
-]
-
-
+middleware[app_][request_] := app[request]
 
 (* hook all routes handlers *)
 AutoTest["HTTPHandler"->http];

@@ -1951,6 +1951,8 @@ app.whenReady().then(() => {
         ipcMain.on('reinstall', () => {
             reinstall((state) => {
                 if (state) {
+                    server.browserMode = false; 
+                    server.frontend.RunInTray = false;
                     app.relaunch();
                     app.quit();
                 }
