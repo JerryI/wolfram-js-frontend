@@ -15,7 +15,7 @@
 	"forwardPorts": [8080, 8081, 8082, 8085],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bash ./.devcontainer/armlinux.sh"
+	"postCreateCommand": "bash ./.devcontainer/default.sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
