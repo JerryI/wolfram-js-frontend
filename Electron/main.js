@@ -888,21 +888,25 @@ const setHID = (/** @type {BrowserWindow} */ mainWindow) => {
 
 
     mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
+        console.log('Select HID');
+        
         event.preventDefault();
         //select bluetooth
         console.log('select bluetooth');
         createHIDDialog(deviceList, callback);
+        return false;
     });
 
     mainWindow.webContents.session.on('select-hid-device', (event, details, callback) => {
         // Add events to handle devices being added or removed before the callback on
         // `select-hid-device` is called.
-
+        console.log('Select HID');
 
         event.preventDefault();
 
         console.log('select hid');
         createHIDDialog(details.deviceList, callback);
+        return false;
     })
 
     mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
