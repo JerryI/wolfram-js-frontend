@@ -13,8 +13,10 @@ Script = With[{},
             const origin = self.origin;
 
             self.keyListener = (event) => {
+                console.error(event);
                 switch(event.key) {
                     case 'ArrowUp':
+                    case 'ArrowLeft':    
                         
                         event.preventDefault();
                         event.stopImmediatePropagation();
@@ -29,12 +31,31 @@ Script = With[{},
                     break;
 
                     case 'Enter':
+                    case 'ArrowRight':
                         event.preventDefault();
                         event.stopImmediatePropagation();
-                        server.emitt(self.event, '"'+origin.uid+'"', 'AddAfter');
+                        server.io.fire(self.event, origin.uid, 'AddAfter');
                         CellWrapper.forceFocusNew();
                         self.blur();
                     break;
+
+                    case 'Escape':
+                    break;
+
+                    case 'Shift':
+                    case 'Meta':
+                    case 'Ctrl':
+                    break;
+
+                    default:
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        let letter = event.key;
+                        if (event.shiftKey) letter = letter.toUpperCase();
+                        server.io.fire(self.event, [origin.uid, letter], 'AddAfter');
+                        CellWrapper.forceFocusNew();
+                        self.blur();
+
                 }
             }
 

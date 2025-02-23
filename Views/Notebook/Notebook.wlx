@@ -19,6 +19,21 @@ Global`UINotebook (*`*);
 ApplySync[f_, w_, {first_, rest___}, final_] := f[w@@first, Function[Null, Echo["Async >> Next"]; ApplySync[f,w, {rest}, final]]]
 ApplySync[f_, w_, {}, final_] := final[];
 
+addAfterHelper[notebook_, uid_] := With[{},
+    (*/* request from the client with event provided */*)
+
+    With[{o = cell`HashMap[uid] (*`*)},
+        cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
+    ]
+]
+
+addAfterHelper[notebook_, {uid_, data_}] := With[{},
+    (*/* request from the client with event provided */*)
+
+    With[{o = cell`HashMap[uid] (*`*)},
+        cell`CellObj["Notebook"->notebook, "Data"->data, "After"-> o];   
+    ]
+]
 
 addListeners[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
@@ -847,13 +862,7 @@ Component[OptionsPattern[]] := With[{
             ]
         ],
         
-        "AddAfter" -> Function[uid,
-            (*/* request from the client with event provided */*)
-
-            With[{o = cell`HashMap[uid] (*`*)},
-                cell`CellObj["Notebook"->notebook, "Data"->"", "After"-> o];   
-            ]
-        ],
+        "AddAfter" -> (addAfterHelper[notebook, ##]&),
 
         "AddAfterOutputs" -> Function[uid,
             (*/* request from the client with event provided */*)
