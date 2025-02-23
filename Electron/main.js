@@ -5,6 +5,7 @@ const { screen, globalShortcut} = require('electron/main')
 const path = require('path')
 const { platform } = require('node:process');
 
+const { autoUpdater } = require("electron-updater")
 
 function isFile(pathItem) {
     return !!path.extname(pathItem);
@@ -1950,6 +1951,8 @@ app.whenReady().then(() => {
         ipcMain.on('reinstall', () => {
             reinstall((state) => {
                 if (state) {
+                    server.browserMode = false; 
+                    server.frontend.RunInTray = false;
                     app.relaunch();
                     app.quit();
                 }
@@ -2033,6 +2036,8 @@ app.whenReady().then(() => {
 
     //again in a case if something changed
     read_wl_settings();
+
+    if (!server.frontend.NoUpdates) autoUpdater.checkForUpdatesAndNotify();
 
     
 
@@ -3065,10 +3070,8 @@ function activate_wl(program, success, rejection, window) {
 
 function install_wl(window) {
     windows.log.clear();
-    windows.log.info('Wolfram Engine is required. Please, install > 13.0.1');
+    windows.log.info('Wolfram Engine is required');
     windows.log.print("Please download and install Wolfram Engine manually. A windows will open shortly. A feature for auto-installation is not supported for now.");
-    windows.log.print("");
-    windows.log.print("Recommended version is 13.0.1", '\x1b[42m');
     setTimeout(() => {
         shell.openExternal("https://www.wolfram.com/engine/");
         app.quit();
@@ -3112,275 +3115,46 @@ function reinstall(cbk, window) {
 }
 
 function check_installed (cbk, window) {
-    windows.log.print('checking the installation folder...', '\x1b[32m');
+    if (!app.isPackaged) return cbk(); //development env
+
+    windows.log.print('checking WLJS Application Data...', '\x1b[32m');
     windows.log.print(installationFolder, '\x1b[32m');
 
     const package = path.join(installationFolder, 'package.json');
-    const script = path.join(installationFolder, 'Scripts', 'start.wls');
 
-    //if it is already installed
-    if (fs.existsSync(script)) {
-        fs.readFile(package, (err, raw) => {
+    if (fs.existsSync(package)) {
+        windows.log.print('package-data located');
+        fs.readFile(package, 'utf8', (err, raw) => {
             if (err) {
                 windows.log.print('Cannot read '+package+'!');
-                windows.log.info('Cannot read bundle files!');
-                throw err;
+                windows.log.info('Cannot read package files');
+                windows.log.print('Clean installation', '\x1b[34m');
+                install_frontend(cbk, window);
+                return;
             }
 
-            let data = JSON.parse(raw);
-            windows.log.print("");
-            windows.log.print('Current version: ' + data["version"], '\x1b[34m');
-            const version = parseInt(data["version"].replaceAll(/\./gm, ''));
-
-            //watchdog for internet connection
-            const watchdog = setTimeout(() => {
-                windows.log.info('Offline mode');
-                windows.log.print('No internet connection! Skipping update checks...', '\x1b[32m');
-                cbk();
-            }, 5000);
-
-            const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
-            let branch = server.frontend.UpdatesChannelBranch ||  'main';
-
-            if (branch.trim() == "updates") branch = 'main';
-
-            console.log([repo, branch]);
-            //app.exit(-1);
-
-            //check internet
-            windows.log.info('Checking updates');
-            const test = net.fetch('https://github.com');
-            test.then((result) => {
-                if (result.status === 200) {
-                    clearTimeout(watchdog);
-
-                    //check the official version
-
-
-                    const request = net.fetch('https://raw.githubusercontent.com/'+repo+'/'+branch+'/package.json');
-                    request.then((result) => {
-                        if (result.status === 200) {
-                            console.log(result);
-
-                            result.text().then((data) => {
-
-                                console.log(data);
-                                const remote = JSON.parse(data);
-                                if (remote["version"]) {
-                                    const rersion = parseInt(remote["version"].replaceAll(/\./gm, ''));
-                                    if (rersion > version) {
-
-                                        
-
-                                        windows.log.print('A new version is available. Should we install it?', '\x1b[44m');
-
-
-
-                                        windows.log.print(':: warning :: it will clean up `wl_packages`, `wljs_packages` and `Examples` folders', '\x1b[32m');
-                                        windows.log.info('Update is available');
-
-                                        new promt('binary', 'A new version is available. Should we install it?', (answer) => {
-                                            if (answer) {
-                                                const appVersion = parseInt(app.getVersion().replaceAll(/\./gm, ''));
-                                                const remoteAppVersion = parseInt(remote["recommended-client-version"].replaceAll(/\./gm, ''));
-                                                if (appVersion < remoteAppVersion) {
-                                                    new promt('binary', 'A recommended Desktop App version is '+ remote["recommended-client-version"] + ', but you have installed ' + app.getVersion() + '. Some features might not work properly. Continue?', (answer) => {
-                                                        if (answer) {
-                                                            install_frontend(cbk, window);
-                                                        } else {
-                                                            cbk();
-                                                        }
-                                                    });
-                                                } else {
-                                                    install_frontend(cbk, window);
-                                                }                           
-
-                                                
-                                            } else {
-                                                cbk();
-                                            }
-                                        }, window);
-
-
-                                    } else {
-                                        windows.log.print('You are using the latest release', '\x1b[32m');
-                                        windows.log.info('You are using the latest');
-                                        cbk();
-                                    }
-                                } else {
-                                    windows.log.print('Unable to check updates!', '\x1b[42m');
-                                    windows.log.print('skipping...', '\x1b[32m');
-                                    windows.log.info('Unable to check updates');
-                                    server.electronCode = 3;
-                                    cbk();
-                                }
-                            })
-                        } else {
-                            windows.log.print('Unable to check updates!', '\x1b[32m');
-                            windows.log.print('status code ' + result.status, '\x1b[34m');
-                            windows.log.print('skipping...', '\x1b[32m');
-                            windows.log.info('Unable to check updates');
-                            server.electronCode = 3;
-                            cbk();
-                        }
-                    },
-                    (rejection) => {
-                        windows.log.print('Unable to check updates! Reason:', '\x1b[32m');
-                        windows.log.print(JSON.stringify(rejection), '\x1b[34m');
-                        windows.log.print('skipping...', '\x1b[32m');
-                        windows.log.info('Unable to check updates');
-                        server.electronCode = 3;
-                        cbk();
-                    });
-
-                } else {
-                    windows.log.print('Failed! using ' + repo + ' and branch ' + branch, '\x1b[32m');
-                    windows.log.info('Failed!');
-                    server.electronCode = 5;
-                }
-            });
+            const data = JSON.parse(raw);
+            
+            windows.log.print('AppData: ' + data["version"], '\x1b[34m');
+            windows.log.print('Binary: ' + app.getVersion(), '\x1b[34m');
+            if ((app.getVersion().trim()) != (data["version"].trim())) {
+                windows.log.print('Needs an update', '\x1b[34m');
+                install_frontend(cbk, window);
+            } else {
+                return cbk();
+            }
         });
-
-        return;
+    } else {
+        windows.log.print('Clean installation', '\x1b[34m');
+        install_frontend(cbk, window);
     }
-
-    windows.log.print('System folder is empty! Starting installation...', '\x1b[32m');
-    windows.log.info('Installing WLJS');
-    install_frontend(cbk, window);
 }
 
 
 function install_frontend(cbk, window, force=false) {
-    if (force) {
-        install_shipped(cbk, window);
-        return;
-    }
+    if (!app.isPackaged) return cbk(); //development env
 
-    //watchdog for internet connection
-    const watchdog = setTimeout(() => {
-        windows.log.print('No internet connection! Using shipped version...', '\x1b[32m');
-        windows.log.info('Offline mode. Using shipped packages');
-        server.electronCode = 4;
-        install_shipped(cbk, window);
-    }, 5000);
-
-    //check internet
-    const test = net.fetch('https://github.com');
-    test.then((result) => {
-     if (result.status === 200) {
-        clearTimeout(watchdog);
-
-        //set the flag to reset cache of the HTTP client
-        server.wasUpdated = true;
-
-        windows.log.clear();
-        windows.log.print('Downloading .zip archive to ' + installationFolder + '...', '\x1b[32m');
-        
-
-        //path to zip
-        const pathToFile = path.join(installationFolder, 'pkg.zip');
-
-        const repo = server.frontend.UpdatesChannelRepo ||  'JerryI/wolfram-js-frontend';
-        let branch = server.frontend.UpdatesChannelBranch ||  'main';
-        if (branch.trim() == "updates") branch = 'main';
-
-        windows.log.info('Dowloading the latest release from ' + (branch ));
-
-        downloadFile('https://api.github.com/repos/'+repo+'/zipball/'+branch, pathToFile, (file) => {
-            windows.log.print('Unzipping...', '\x1b[32m');
-            windows.log.info('Unzipping');
-
-            const extracted = path.join(installationFolder, '__extracted');
-
-            if (!fs.existsSync(extracted)) {
-                fs.mkdirSync(extracted);
-            } else {
-                fs.rmSync(extracted, { recursive: true, force: true });
-                fs.mkdirSync(extracted);
-            }
-
-            const StreamZip = require('node-stream-zip');
-            const zip = new StreamZip.async({ file: file });
-
-            zip.extract(null, extracted).then((res) => {
-                windows.log.print(res);
-                windows.log.print('Extracted', '\x1b[32m');
-
-                windows.log.info('Extracted');
-
-                //remove zip archive
-                zip.close();
-                fs.unlinkSync(file);
-
-                //read extracted folder
-                const sub = fs.readdirSync(extracted)[0];
-                windows.log.print(sub);
-
-                //git rid of .git folder
-                //fs.unlinkSync(path.join(extracted, sub, 'main.js'));
-                if (fs.existsSync(path.join(extracted, sub, '.git'))) fs.rmSync(path.join(extracted, sub, '.git'), { recursive: true, force: true });
-                windows.log.print('`.git` was removed');
-
-                //remove examples from the previous build
-                if (fs.existsSync(path.join(installationFolder, 'Examples'))) {
-                    //fs.rmSync(path.join(installationFolder, 'Examples'), { recursive: true, force: true });
-                    //windows.log.print('`Examples` was removed');
-                }
-
-
-                windows.log.print('Copying new data...');
-                windows.log.info('Copying new data over the previous');
-                fse.copySync(path.join(extracted, sub), installationFolder, { overwrite: true });
-                windows.log.print('Done');
-
-                //remove specific files
-                const toremove = ['main.js', '.wl_timestamp', '.wljs_timestamp'];
-                const dirtoremove = [];
-
-                //windows.log.print('removing Packages...');
-                //windows.log.print('removing wl_packages...');
-
-                toremove.forEach((p) => {
-                    if (fs.existsSync(path.join(installationFolder, p))) {
-                        fs.unlinkSync(path.join(installationFolder, p));
-                    }
-                });
-
-                dirtoremove.forEach((p) => {
-                    if (fs.existsSync(path.join(installationFolder, p))) {
-                        fs.rmSync(path.join(installationFolder, p), { recursive: true, force: true });
-                    }
-                });
-
-                //resetting cache
-                windows.log.print('Cache reset');
-
-                session.defaultSession.clearStorageData();
-                session.defaultSession.clearCache();
-
-                windows.log.print('Done');
-
-                fs.rmSync(extracted, { recursive: true, force: true });
-
-                windows.log.print('Temporal folders were cleaned up');
-
-                windows.log.info('Done!');
-
-                cbk();
-
-            })
-        });
-     }
-    });
-}
-
-
-//in a case of a powerful firewall or apocalipse
-const install_shipped = (cbk, window) => {
-
-    windows.log.print('...');
-    windows.log.info('Restoring the shipped version');
-    const sub = path.join(app.getAppPath(), 'shipped');
+    const sub = path.join(app.getAppPath(), 'bundle');
     windows.log.print(sub);
 
     if (fs.existsSync(sub)) {
@@ -3391,72 +3165,20 @@ const install_shipped = (cbk, window) => {
         windows.log.info('Done!');
         server.wasUpdated = true;
 
+        windows.log.print('Cache reset');
+
+        session.defaultSession.clearStorageData();
+        session.defaultSession.clearCache();
+
         cbk();
     } else {
         windows.log.clear();
-        windows.log.print('You are using a minimal installer. ');
-        windows.log.print('There are some problems with internet connection, \nplease download *-offline version\n');
-        windows.log.print('A window will open shortly');
-        windows.log.info('Need offline installer');
-
-        setTimeout(() => {
-            shell.openExternal("https://github.com/JerryI/wolfram-js-frontend/releases/"); 
-        }, 3000);
-
-        setTimeout(() => {
-            app.quit();
-        }, 15000);
-    }
-}
-
-function downloadFile(file_url, targetPath, cbk) {
-    // Save variable to know progress
-    var received_bytes = 0;
-    var total_bytes = 0;
-
-    let cnt = 0;
-
-    const showProgress = (received, total) => {
-        cnt++;
-        if (cnt % 10) {
-            windows.log.print("::: " + (100.0 * received / total).toFixed(2), '\x1b[32m');
-        }
+        windows.log.print('Fatal error. No bundle files found ');
     }
 
-    const ft = net.request(file_url);
-
-    var out = fs.createWriteStream(targetPath);
-    //req.pipe(out);
-
-    ft.on('response', (responce) => {
-        // Change the total bytes value to get progress later.
-        console.log(responce.headers);
-        let lenHeader = responce.headers['content-Length'];
-        if (Array.isArray(lenHeader)) lenHeader = lenHeader[0];
-
-        if (isNaN(lenHeader)) lenHeader = 30*1024*1024;
-
-        total_bytes = parseInt(lenHeader);
-
-        responce.pipe(out);
-
-        responce.on('data', function(chunk) {
-            // Update the received bytes
-            received_bytes += chunk.length;
-
-            showProgress(received_bytes, total_bytes);
-        });
-
-        responce.on('end', function() {
-            windows.log.print("File succesfully downloaded", '\x1b[34m');
-            cbk(targetPath);
-        });
-    });
-
-
-
-    ft.end()
 }
+
+
 
 
 /* uuid v4 generator */

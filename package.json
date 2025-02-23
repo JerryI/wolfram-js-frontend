@@ -1,6 +1,6 @@
 {
   "name": "wljs-notebook",
-  "version": "2.6.8",
+  "version": "2.6.9",
   "recommended-client-version": "2.6.3",
   "description": "Dynamic Notebook Environment for Wolfram Language written in Javascript",
   "author": {
@@ -13,16 +13,21 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
-    "dist": "electron-builder",
-    "dist-mac": "electron-builder --mac --x64",
-    "dist-win": "electron-builder --win --x64",
-    "dist-linux": "electron-builder --linux --x64",
-    "dist86": "electron-builder --x64",
-    "dist-all": "electron-builder -mwl --x64",
+    "dist-mac": "electron-builder --mac --arm64 --publish always",
+    "dist-mac86": "electron-builder --mac --x64 --publish always",
+    "dist-win86": "electron-builder --win --x64 --publish always",
+    "dist-linux86": "electron-builder --linux --x64 --publish always",
+    "dist-linux": "electron-builder --linux --arm64 --publish always",
     "remove-ds": "find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch",
     "build-css": "npx tailwindcss build Assets/Styles/Tailwind.css -o Assets/Styles/Optimized.css"
   },
   "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "channel": "latest-${arch}"
+      }
+    ],
     "afterSign": "./Electron/sign.js",
     "afterPack": "./Electron/build/hook.js",
     "appId": "wljs-notebook",
@@ -69,10 +74,7 @@
       ]
     },
     "linux": {
-      "target": [
-        "deb",
-        "zip"
-      ],
+      "target": ["deb", "zip"],      
       "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
@@ -101,7 +103,7 @@
       ]
     },
     "win": {
-      "target": "NSIS",
+      "target": "NSIS",        
       "icon": "./Electron/build/512x512.ico",
       "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
@@ -143,7 +145,7 @@
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
       "./Electron/build/**/",
-      "./shipped/**"
+      "./bundle/**"
     ],
     "asar": false
   },
@@ -183,23 +185,20 @@
     "electron-find": "^1.0.7",
     "electron-notarize": "^1.2.2",
     "electron-trackpad-utils": "^1.0.1",
+    "electron-updater": "^6.3.9",
     "fflate": "^0.8.0",
     "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",
-    "jsoncrush": "^1.1.8",
     "mica-electron": "^1.5.5",
     "native-prompt": "^2.1.4",
     "node-fetch": "^3.3.2",
     "node-stream-zip": "^1.15.0",
-    "pako": "^2.1.0",
-    "party-js": "^2.2.0",
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.0.1",
     "random-words": "^2.0.0",
     "sudo-prompt": "^9.2.1",
     "tailwindcss": "^3.4.1",
-    "xterm": "^5.3.0",
-    "xterm-addon-fit": "^0.8.0"
+    "xterm": "^5.3.0"
   },
   "overrides": {
     "globalthis": "npm:@nolyfill/globalthis@^1",

@@ -10,7 +10,6 @@ if (process.platform !== 'darwin') {
 return
 }
 
-    console.log('afterSign hook triggered', params)
 
     let appId = 'com.coffeeliqueur.wljs'
 
