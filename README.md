@@ -35,7 +35,7 @@ __Developed through the collaboration of physicists and programmers. Designed fo
 - **[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)** 🐺
 - **[Freeware Wolfram Language](https://www.wolfram.com/engine/)**
 - **[Github Discussions](https://github.com/JerryI/wolfram-js-frontend/discussions)** 💬
-- **[Telegram Support Chat](https://t.me/+PBotB9UJw-hiZDEy)** 🐴
+- **[Telegram Support Chat](https://t.me/wljs_support)** 🐴
 
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): Version 13.3 or higher**
 
