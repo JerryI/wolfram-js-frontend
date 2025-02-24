@@ -891,9 +891,7 @@ Component[OptionsPattern[]] := With[{
             
         ],
 
-        "Evaluate" -> Function[celluid, evaluateCell[cell`HashMap[celluid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]],
-
-        else_ :> (Echo[StringTemplate["Unknown notebook view event ``: ``"][else, #]]&)
+        "Evaluate" -> Function[celluid, evaluateCell[cell`HashMap[celluid](*`*), notebook, secret, log, kernels, $Client, modals, parameters, extensions]]
     }];
 
     With[{nid = notebook["Hash"]},
@@ -907,7 +905,7 @@ Component[OptionsPattern[]] := With[{
             </ExtensionTemplateWrapper>
             <ExtensionTemplateInjection Template={"Notebook-Epilog"} Notebook={notebook} Event={secret} />
 
-            <CellDropdown Parameters={parameters} Event={secret} ExtesionInjector={ExtensionTemplateInjection}/>
+            <CellDropdown Parameters={parameters} Messager={log} Event={secret} ExtesionInjector={ExtensionTemplateInjection}/>
             <ElectronBinds Event={secret} Controls={controller}/>
 
             <ExtensionTemplateInjection Template={"Footer"} Modals={modals} Messager={log} Notebook={notebook} Event={secret} Controls={controller}/>

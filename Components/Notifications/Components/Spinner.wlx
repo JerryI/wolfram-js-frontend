@@ -2,6 +2,8 @@ CreateType[Notifications`Spinner(*`*), init, {"Topic"->"Title", "Promise"->Null,
 
 (*/* Might be an issue since this component it imported multiple times, could rewrite definitions */*)
 
+Echo["Notifications >> Created spinner notifications type"];
+
 init[n_] := With[{dom = CreateUUID[]},
     Echo["Created! Spinner"];
     n["DOM"] = dom;

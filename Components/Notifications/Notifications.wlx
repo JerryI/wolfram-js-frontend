@@ -9,10 +9,10 @@ CreateType[NotificationsDialog, initDialog, {"Message"->"Dummy", "Event"->Null}]
 
 ImportComponent["Components/Types.wl"];
 
-MessageList  = ImportComponent["Components/MessagesList.wlx"]; 
-{SpinnerTemplate, SpinnerScript}  = ImportComponent["Components/Spinner.wlx"]; 
-CustomTemplate                    = ImportComponent["Components/Custom.wlx"]; 
-{GenericTemplate, GenericScript}  = ImportComponent["Components/Generic.wlx"]; 
+MessageList  = Once[ImportComponent["Components/MessagesList.wlx"]]; 
+{SpinnerTemplate, SpinnerScript}  = Once[ImportComponent["Components/Spinner.wlx"]]; 
+CustomTemplate                    = Once[ImportComponent["Components/Custom.wlx"]]; 
+{GenericTemplate, GenericScript}  = Once[ImportComponent["Components/Generic.wlx"]]; 
 
 
 Filter[_]               = False

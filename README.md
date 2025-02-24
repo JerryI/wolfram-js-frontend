@@ -113,6 +113,15 @@ Export entire notebooks as standalone `.html` files, retaining all embedded data
 ### **Wolfram Engine**
 [Download Wolfram Engine](https://www.wolfram.com/engine/) (Version 13.3+ recommended). Activation is required after installation.
 
+#### Tested
+- Wolfram Engine 13.1 (no copilot)
+- Wolfram Engine 13.2 (no copilot)
+- Wolfram Engine 13.3 (no copilot)
+- Wolfram Engine 13.4 (no copilot)
+- Wolfram Engine 14.0
+- Wolfram Engine 14.1
+- Wolfram Engine 14.2
+
 **macOS Installation via Homebrew:**
 ```shell
 brew install --cask wolfram-engine
@@ -120,10 +129,6 @@ brew install --cask wolfram-engine
 
 ### **WLJS Notebook App ✨**
 Download from the **[releases](https://github.com/JerryI/wolfram-js-frontend/releases)** section.
-
-#### Normal vs Offline Version
-- The __offline version__ includes fixed versions of modules, documentation, and examples.
-- The __normal version__ fetches the latest updates from GitHub upon installation.
 
 #### CLI Installation
 WLJS Notebook provides a CLI tool. You can open a folder in WLJS Notebook with:

@@ -1,4 +1,4 @@
-Component[OptionsPattern[]] := With[{Color = (If[StringQ[#], #, "teal"]&) @ OptionValue["Parameters"]["AccentColor"], Event = OptionValue["Event"], ExtesionInjector = OptionValue["ExtesionInjector"]},
+Component[OptionsPattern[]] := With[{Messager = OptionValue["Messager"],  Color = (If[StringQ[#], #, "teal"]&) @ OptionValue["Parameters"]["AccentColor"], Event = OptionValue["Event"], ExtesionInjector = OptionValue["ExtesionInjector"]},
   EventHandler[Event, {
     "CallDropdown" -> ((Print["CallDropdown!"]; WebUISubmit[Global`UICellsDropdown[#], Global`$Client])&)
   }];
@@ -18,7 +18,7 @@ Component[OptionsPattern[]] := With[{Color = (If[StringQ[#], #, "teal"]&) @ Opti
             </svg>
               Project to a window
             </button>
-            <ExtesionInjector Template={"CellDropdown-Section-1"} Event={Event}/>
+            <ExtesionInjector Template={"CellDropdown-Section-1"} Messager={Messager} Event={Event}/>
         </div>
         ,
           <div class="py-0 px-2" role="none">
@@ -29,7 +29,7 @@ Component[OptionsPattern[]] := With[{Color = (If[StringQ[#], #, "teal"]&) @ Opti
             </svg>
               Make initialization cell
             </button>
-            <ExtesionInjector Template={"CellDropdown-Section-2"} Event={Event}/>
+            <ExtesionInjector Template={"CellDropdown-Section-2"} Messager={Messager} Event={Event}/>
           </div>
 ,
           <div class="py-0 px-2" role="none">
@@ -99,6 +99,7 @@ Component[OptionsPattern[]] := With[{Color = (If[StringQ[#], #, "teal"]&) @ Opti
             
             for (let i=0; i<buttons.length; i++) {
                 const el = buttons[i];
+                if (!el.dataset.name) continue;
                 el.addEventListener('click', () => {
                     server.emitt('<Event/>', '"'+currentCell+'"', el.dataset.name);
                 });
@@ -126,7 +127,7 @@ Component[OptionsPattern[]] := With[{Color = (If[StringQ[#], #, "teal"]&) @ Opti
   ]
 ];
 
-Options[Component] = {"Event"->"", "Parameters"->Null, "ExtesionInjector"->( "" &)};
+Options[Component] = {"Event"->"", "Messager"->"", "Parameters"->Null, "ExtesionInjector"->( "" &)};
 
 Script = "";
 
