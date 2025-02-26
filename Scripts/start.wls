@@ -168,26 +168,6 @@ Echo["Checking version of WLJS Notebook ..."];
 
 {loadSettings, storeSettings}        = Get[FileNameJoin[{"Frontend", "Settings.wl"}] ];
 
-Module[{settings = <||>, toNumber = Function[str, StringReplace[str, "."->""] // ToExpression ]},
-  loadSettings[settings];
-  If[KeyExistsQ[settings, "CurrentVersion"],
-    Echo[StringTemplate["AppJSON: ``, Settings: ``"][$Env["AppJSON", "version"], settings["CurrentVersion"] ] ];
-    With[{},
-      If[toNumber[$Env["AppJSON", "version"] ] > toNumber[settings["CurrentVersion"] ],
-        Echo["Not in sync!"];
-
-        DeleteFile[FileNameJoin[{Directory[], ".wljs_timestamp"}] ];
-        
-        Echo["Everything will be in sync"];
-      ,
-        Echo["Everything is in sync!"];
-      ];
-    ];
-  ,
-    Echo["Undefined!"];
-  ];
-];
-
 WLJSPackages`Repositories[{
   WLJSPackages`Github -> "https://github.com/JerryI/wljs-editor" -> "base",
   WLJSPackages`Github -> "https://github.com/JerryI/Mathematica-ThreeJS-graphics-engine" -> "base",
