@@ -320,7 +320,8 @@ ElectronQ[request_] := (KeyExistsQ[request["Headers"], "Electron"]);
 ElectronGetVersion[request_] := If[KeyExistsQ[request["Headers"], "Electron"], request["Headers", "Electron"], "false"];
 
 (* serve static *)
-http["MessageHandler", "File"]  = GetFileRequestQ[{"jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"}] -> (
+AppExtensions`HTTPFileExtensions = {"jpeg", "wlx", "ttf",  "otf", "woff", "woff2", "css", "js", "png", "jpg", "webp", "svg", "pdf", "gif", "dat"};
+http["MessageHandler", "File"]  = GetFileRequestQ[AppExtensions`HTTPFileExtensions] -> (
   ImportFile[#, "Base":>$ExposedDirectories] &
 )
 
