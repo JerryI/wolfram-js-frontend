@@ -12,7 +12,9 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
         docker run -it -v ~/Documents/wljs:/workspace -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:latest
 
-    You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
+    You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal. 
+
+    !Note that a local folder (~/Documents/wljs) __folder will be mounted__ to the container.
 
 4. Open a web browser at
 
