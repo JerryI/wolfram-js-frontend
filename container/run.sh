@@ -11,7 +11,5 @@ usermod -o -u "$PUID" wljs
 chown -R wljs:wljs /wljs
 chown -R wljs:wljs /home/wljs
 
-chown -R wljs:wljs /home/wljs/.WolframEngine
-
 nginx
 su - wljs -c "wolframscript -f /wljs/Scripts/start.wls host 0.0.0.0 http 4000 ws 4001 ws2 4002 docs 4003"
