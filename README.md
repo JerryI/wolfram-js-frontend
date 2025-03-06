@@ -152,6 +152,27 @@ For Ubuntu 24.04, disable AppArmor restrictions:
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 ```
 
+### **Running on a server**
+Clone this repository
+
+```bash
+git clone https://github.com/JerryI/wolfram-js-frontend
+cd wolfram-js-frontend
+wolframscript -f Scripts/start.wls
+```
+
+#### Docker Image
+*contributed by [@yloose](https://github.com/yloose)*
+
+See [instructions here](./container/README.md)
+
+```bash
+docker run -it -v ~/Documents/wljs:/workspace -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+```
+
+Then open `http://127.0.0.1:4000`
+
+
 ## **Technology Stack**
 **Languages:** Wolfram Language, HTML, CSS, JavaScript, C
 
