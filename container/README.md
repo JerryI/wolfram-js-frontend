@@ -16,6 +16,12 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
     !Note that a local folder (~/Documents/wljs) __folder will be mounted__ to the container.
 
+    To start container again run
+
+    ```bash
+    docker start -ai wljs
+    ```
+
 4. Open a web browser at
 
         http://127.0.0.1:4000/
