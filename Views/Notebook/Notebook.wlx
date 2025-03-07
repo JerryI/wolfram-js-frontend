@@ -96,7 +96,7 @@ checkWSLink[notebook_, client_, event_String, log_String, p_:Null] := With[{
 
                 EventFire[log, "WebSocket:Kernel:RequestConnection", notebook];
 
-                WebUISubmit[UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"], event ], client];
+                WebUISubmit[UINotebook["WSConnect", notebook["Evaluator"]["Kernel"]["WebSocket"], event , "PrefixMode"->$Env["ws2prefix"]], client];
 
                 With[{},
                     EventHandler[notebookEvent, {
@@ -412,6 +412,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
             core.UINotebook.WSConnect = async (args, env) => {
                 
+                const options = await core._getRules(args, env);
                 const port = await interpretate(args[0], env);
                 const ev = await interpretate(args[1], env);
 
@@ -422,7 +423,13 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
                 }
 
                 server.kernel.connected = true;
-                const socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
+                let socket;
+                if (options.PrefixMode) {
+                    socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+'/'+options.PrefixMode);
+                } else {
+                    socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
+                }
+
                 socket.binaryType = "arraybuffer";
                 socket.onmessage = interpretate.handleMessage;
 

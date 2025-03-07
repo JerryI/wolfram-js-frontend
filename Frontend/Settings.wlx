@@ -42,7 +42,7 @@ App[request_] := With[{
         <Head Title={"Settings"}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
-            <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
+            <WLJSTransportScript TwoKernels={False} PrefixMode={$Env["wsprefix"]} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
             <ExtensionsStyles/>
         </Head>  

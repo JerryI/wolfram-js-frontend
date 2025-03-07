@@ -13,4 +13,4 @@ chown -R wljs:wljs /home/wljs
 
 nginx
 su - wljs -c "wolframscript -activate"
-su - wljs -c "wolframscript -f /wljs/Scripts/start.wls host 0.0.0.0 http 4000 ws 4001 ws2 4002 docs 4003"
+su - wljs -c "wolframscript -f /wljs/Scripts/start.wls host 0.0.0.0 http 4000 ws 4001 ws2 4002 wsprefix ws ws2prefix ws2"

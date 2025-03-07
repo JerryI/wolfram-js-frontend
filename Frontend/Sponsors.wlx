@@ -33,7 +33,7 @@ App[request_] := With[{
         <Head Title={"Acknowledgments"}>
             <meta charset="utf-8"/>
             <WLJSHeader List={ExtensionsJS}/>  
-            <WLJSTransportScript TwoKernels={False} Port={$Env["ws"]}/>     
+            <WLJSTransportScript TwoKernels={False} PrefixMode={$Env["wsprefix"]} Port={$Env["ws"]}/>     
             <WebUIInitializationScript/>
             <ExtensionsStyles/>
             <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>

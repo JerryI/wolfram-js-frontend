@@ -1,57 +1,63 @@
 name: Container image
 
 on:
-  # Build container on manual dispatch or on a new release
   workflow_dispatch:
   release:
     types: [published]
 
 env:
-  # Github container registry
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Run on host machine with Docker installed
     permissions:
       contents: read
       packages: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4   
+        with:
+          fetch-depth: 0             
 
-      # Set up BuildKit Docker container builder to be able to build multi-platform images and export cache
-      # https://github.com/docker/setup-buildx-action
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
+        uses: docker/setup-buildx-action@v3
 
-      # Login against a Docker registry except
-      # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
-        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
+      - name: Start Wolfram Engine Container
+        run: |
+          docker run -d --name wolfram \
+            -v $GITHUB_WORKSPACE:/workspace \
+            -w /workspace \
+            wolframresearch/wolframengine:14.2 tail -f /dev/null
+
+      - name: Fix permissions for /workspace directory at host level
+        run: |
+          sudo chmod -R 777 $GITHUB_WORKSPACE
+
+      - name: Fetch all dependencies inside Wolfram container
+        run: |
+          docker exec -e WOLFRAMSCRIPT_ENTITLEMENTID=${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }} wolfram \
+          wolframscript -script ./Scripts/update.wls
+
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
+        uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # Build and push Docker image with Buildx
-      # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: "./container/Containerfile"
