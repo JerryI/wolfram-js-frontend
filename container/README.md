@@ -10,11 +10,11 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 2. Register at the [Wolfram Engine download page](https://www.wolfram.com/engine/). Click to download (only needed to be redirected to the right place) and then follow the `Get your license` instructions. Register on the next page and acquire the license (it is free). A confirmation message will be sent to your email address. Please follow the link received by email.
 3. Start the container:
 
-        docker run -it -v ~/Documents/wljs:/workspace -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
 
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal. 
 
-    !Note that a local folder (~/Documents/wljs) __folder will be mounted__ to the container.
+    !Note that a local folder (~/wljs) __folder will be mounted__ to the container.
 
     To start container again run
 
@@ -30,7 +30,7 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
 The container is capable of following features:
 
-- An external working directory can be mounted inside the container at `/workspace`.
+- An external working directory `~wljs` will be mounted inside the container default wljs notebooks directory.
 - The container allows specifying the `PUID` and `PGID` environment variables to set the user id and group id of the user accessing the `/workspace` directory. Both default to 1000.
 - A volume or bind mount can be used at `/Licensing` inside the container to persist licensing information.
 - The WLJS server is started on the following ports: http 4000 (Main http port); ws 4001 (Websocket port); ws2 4002 (Alternate websocket port); docs 4003 (Documentation). 
