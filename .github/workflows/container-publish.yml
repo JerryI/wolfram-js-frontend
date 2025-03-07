@@ -42,7 +42,7 @@ jobs:
 
       - name: Fix permissions for /workspace directory at host level
         run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE
+          sudo chmod -R 777 $GITHUB_WORKSPACE
 
       - name: Fetch all dependencies inside Wolfram container
         run: |
