@@ -12,10 +12,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
-services:
-  docker:
-    image: docker:dind
-    options: --privileged
+
 
 jobs:
   build:
@@ -27,6 +24,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+
+    services:
+      docker:
+        image: docker:dind
+        options: --privileged      
 
     steps:
 
