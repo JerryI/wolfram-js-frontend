@@ -4,12 +4,6 @@ server {
   location / {
     include snippets/proxy.conf;
 
-    # Replaces request inside the html made to the websocket ports to the nginx location endpoints
-    sub_filter_once off;
-    sub_filter_types *;
-    sub_filter "window.location.hostname+':'+4001" "window.location.host + '/ws/'";
-    sub_filter "window.location.hostname+':'+port" "window.location.host + (port == 4001 ? '/ws/' : '/ws2/')";
-
     proxy_pass http://127.0.0.1:4000/;
   }
 
