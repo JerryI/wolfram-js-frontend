@@ -41,7 +41,21 @@ The container is capable of following features:
 - An external working directory `~wljs` will be mounted inside the container default wljs notebooks directory.
 - The container allows specifying the `PUID` and `PGID` environment variables to set the user id and group id of the user accessing the `/workspace` directory. Both default to 1000.
 - A volume or bind mount can be used at `~/wljs/Licensing` inside the container to persist licensing information and `~/wljs/` as a user's default directory.
-- To first activate the container you can either start it in interactive mode like shown in the Getting Started section or use environment variables. Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and `WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use.
+- To first activate the container you can either start it in interactive mode like shown in the Getting Started section or use environment variables. Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and `WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use. For example
+
+```bash
+docker run -it \
+  -v wljs_data:/wljs \
+  -v ~/wljs:"/root/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/root/.WolframEngine/Licensing \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  -e WOLFRAMID_USERNAME=your@email.com \
+  -e WOLFRAMID_PASSWORD=password \
+  -p 80:3000 \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:docker-env
+```
 
 ## Persistent storage for WLJS configuration
 Use named volume to store your configuration, settings and packages updates. Mount `/wljs` path inside the container, for instance
