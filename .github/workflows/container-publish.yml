@@ -12,6 +12,10 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
+services:
+  docker:
+    image: docker:dind
+    options: --privileged
 
 jobs:
   build:
@@ -32,6 +36,16 @@ jobs:
           apt-get -y install git
           # one time fix to avoid permission problems later on
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Install Docker in container
+        run: |
+          apt-get update
+          apt-get install -y docker.io
+
+      - name: Configure Docker CLI
+        run: |
+          export DOCKER_HOST=tcp://docker:2375
+          docker info
 
       - name: Checkout repository
         uses: actions/checkout@v4   
