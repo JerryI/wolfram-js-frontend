@@ -7,13 +7,13 @@ server {
     proxy_pass http://127.0.0.1:4000/;
   }
 
-  location /ws/ {
+  location /ws {
     include snippets/proxy.conf;
 
     proxy_pass http://127.0.0.1:4001/;
   }
 
-  location /ws2/ {
+  location /ws2 {
     include snippets/proxy.conf;
 
     proxy_pass http://127.0.0.1:4002/;
