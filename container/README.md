@@ -48,6 +48,7 @@ Use named volume to store your configuration, settings and packages updates. Mou
 ```bash
 docker run -it \
   -v wljs_data:/wljs \
+  -v ~/wljs:"/root/WLJS Notebooks" \
   -v ~/wljs/License:/home/wljs/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
   -e PGID=$(id -g) \
