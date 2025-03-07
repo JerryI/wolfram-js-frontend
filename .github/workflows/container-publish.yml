@@ -17,13 +17,34 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container:
+      image: wolframresearch/wolframengine:14.2
+      options: --user root    
     permissions:
       contents: read
       packages: write
 
     steps:
+
+      - name: Install Git in container
+        run: |
+          apt-get -y update
+          apt-get -y install git
+          # one time fix to avoid permission problems later on
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4   
+        with:
+          fetch-depth: 0             
+
+      - name: Fetch all dependencies
+        env:
+          WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
+        run: |
+          ls -a
+          wolframscript -script ./Scripts/update.wls
+
 
       # Set up BuildKit Docker container builder to be able to build multi-platform images and export cache
       # https://github.com/docker/setup-buildx-action
