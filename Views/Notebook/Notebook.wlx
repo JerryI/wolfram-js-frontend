@@ -424,7 +424,7 @@ Script[OptionsPattern[]] := With[{ExtensionTemplateInjection = OptionValue["Exte
 
                 server.kernel.connected = true;
                 let socket;
-                if (options.Prefix) {
+                if (options.PrefixMode) {
                     socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+'/'+options.Prefix);
                 } else {
                     socket = new WebSocket((window.location.protocol == "https:" ? "wss://" : "ws://")+window.location.hostname+':'+port);
