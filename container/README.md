@@ -54,7 +54,7 @@ docker run -it \
   -e WOLFRAMID_PASSWORD=password \
   -p 80:3000 \
   --name wljs \
-  ghcr.io/jerryi/wolfram-js-frontend:docker-env
+  ghcr.io/jerryi/wolfram-js-frontend:main
 ```
 
 ## Persistent storage for WLJS configuration
