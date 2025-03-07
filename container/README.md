@@ -37,10 +37,24 @@ You may change port mapping in the starting sequence.
 
 The container is capable of following features:
 
+- The container aggreggates the http and 2 websockets ports into one port
 - An external working directory `~wljs` will be mounted inside the container default wljs notebooks directory.
 - The container allows specifying the `PUID` and `PGID` environment variables to set the user id and group id of the user accessing the `/workspace` directory. Both default to 1000.
 - A volume or bind mount can be used at `~/wljs/Licensing` inside the container to persist licensing information and `~/wljs/` as a user's default directory.
 
+## Persistent storage for WLJS configuration
+Use named volume to store your configuration, settings and packages updates. Mount `/wljs` path inside the container, for instance
+
+```bash
+docker run -it \
+  -v wljs_data:/wljs \
+  -v ~/wljs/License:/home/wljs/.WolframEngine/Licensing \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  -p 80:3000 \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:main
+```
 
 
 ## NGINX Proxy
@@ -84,5 +98,5 @@ Make sure to change port mapping from `80:3000` to `3000:3000` in the starting s
 
 ## Known Issues
 
-- Release notes are not mapped correctly and might show 404
+- Release notes are not mapped correctly and might show 404 error
 - Offline documentation is not available
