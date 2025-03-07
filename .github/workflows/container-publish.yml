@@ -40,9 +40,9 @@ jobs:
             -w /workspace \
             wolframresearch/wolframengine:14.2 tail -f /dev/null
 
-      - name: Fix permissions for the `/workspace` directory
+      - name: Fix permissions for /workspace directory at host level
         run: |
-          docker exec wolfram chmod -R 777 /workspace
+          sudo chown -R $USER:$USER $GITHUB_WORKSPACE
 
       - name: Fetch all dependencies inside Wolfram container
         run: |
