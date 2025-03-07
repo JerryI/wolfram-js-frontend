@@ -10,7 +10,7 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 2. Register at the [Wolfram Engine download page](https://www.wolfram.com/engine/). Click to download (only needed to be redirected to the right place) and then follow the `Get your license` instructions. Register on the next page and acquire the license (it is free). A confirmation message will be sent to your email address. Please follow the link received by email.
 3. Start the container:
 
-        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -v ~/wljs/License:/home/wljs/.WolframEngine/Licensing -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
 
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal. 
 
