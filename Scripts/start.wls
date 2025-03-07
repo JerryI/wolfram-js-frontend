@@ -90,7 +90,7 @@ $Env = Join[<|
   "jtp"  -> 20562,
   "ws2"  -> 20563,
 
-  "ws1prefix" -> False,
+  "wsprefix" -> False,
   "ws2prefix" -> False
   (*,"docs" -> 20540*)
 |>, If[AssociationQ[$Env], $Env, <||> ] ];
