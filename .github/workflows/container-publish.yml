@@ -40,9 +40,9 @@ jobs:
             -w /workspace \
             wolframresearch/wolframengine:14.2 tail -f /dev/null
 
-      - name: Fix permissions for the `/workspace/wl_packages` directory
+      - name: Fix permissions for the `/workspace` directory
         run: |
-          docker exec wolfram chmod -R 777 /workspace/wl_packages
+          docker exec wolfram chmod -R 777 /workspace
 
       - name: Fetch all dependencies inside Wolfram container
         run: |
