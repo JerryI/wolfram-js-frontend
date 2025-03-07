@@ -7,12 +7,15 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 ## Getting Started
 
 1. Make sure you have either installed [docker](https://docs.docker.com/engine/install/) or [podman](https://podman.io/get-started) on your machine.
+
 2. Register at the [Wolfram Engine download page](https://www.wolfram.com/engine/). Click to download (only needed to be redirected to the right place) and then follow the `Get your license` instructions. Register on the next page and acquire the license (it is free). A confirmation message will be sent to your email address. Please follow the link received by email.
+
 3. Start the container:
+    For example
 
-        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -v ~/wljs/License:/home/wljs/.WolframEngine/Licensing -e PUID=$(id -u) -e PGID=$(id -g) -p 4000:4000 -p 4001:4001 -p 4002:4002 -p 4003:4003 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -v ~/wljs/License:/home/wljs/.WolframEngine/Licensing -e PUID=$(id -u) -e PGID=$(id -g) -p 80:3000 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
 
-    You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal. 
+    You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
 
     !Note that a local folder (~/wljs) __folder will be mounted__ to the container.
 
@@ -24,7 +27,11 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
 4. Open a web browser at
 
-        http://127.0.0.1:4000/
+        http://127.0.0.1/
+
+You may change port mapping in the starting sequence.
+
+
 
 ## Features
 
@@ -32,18 +39,12 @@ The container is capable of following features:
 
 - An external working directory `~wljs` will be mounted inside the container default wljs notebooks directory.
 - The container allows specifying the `PUID` and `PGID` environment variables to set the user id and group id of the user accessing the `/workspace` directory. Both default to 1000.
-- A volume or bind mount can be used at `/Licensing` inside the container to persist licensing information.
-- The WLJS server is started on the following ports: http 4000 (Main http port); ws 4001 (Websocket port); ws2 4002 (Alternate websocket port); docs 4003 (Documentation). 
-- To first activate the container you can either start it in interactive mode like shown in the [Getting Started](#Getting-Started) section or use environment variables.
-Use `WOLFRAMID_USERNAME` for the email belonging to the Wolfram Account and `WOLFRAMID_PASSWORD` for the corresponding password. The environment variables only have to be passed on first use.
+- A volume or bind mount can be used at `~/wljs/Licensing` inside the container to persist licensing information and `~/wljs/` as a user's default directory.
+
+
 
 ## NGINX Proxy
-
-The container also includes a nginx proxy running by default. This aggreggates the http and websockets ports into one port at 3000. It also makes it possible to further reverse proxy the application and add TLS encryption as normally the ports and protocols (ws/wss) are hardcoded into the app. To achieve this, nginx rewrites certain parts of the html and javascript during transit.
-
-> **Warning** This is pretty instable and can break at any slight change upstream. The docs also do not work this way.
-
-To use simply expose port 3000 and access the app over there.
+The container also includes a nginx proxy running by default. This aggreggates the http and websockets ports into one port at 3000 (inside the container). It also makes it possible to further reverse proxy the application and add TLS encryption
 
 ### TLS proxy config
 
@@ -78,3 +79,10 @@ server {
 }
 
 ```
+
+Make sure to change port mapping from `80:3000` to `3000:3000` in the starting sequence.
+
+## Known Issues
+
+- Release notes are not mapped correctly and might show 404
+- Offline documentation is not available
