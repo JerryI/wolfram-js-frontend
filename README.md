@@ -173,7 +173,7 @@ docker run -it \
   -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
   -e PGID=$(id -g) \
-  -p 80:3000 \
+  -p 8000:3000 \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
