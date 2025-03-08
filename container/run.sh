@@ -16,6 +16,7 @@ fi
 
 mkdir -p $LICENSE_DIR
 
+chmod -R 777 $WL_DIR
 
 groupmod -o -g "$PGID" wljs
 usermod -o -u "$PUID" wljs
@@ -63,8 +64,6 @@ function activate_wolframscript {
 if [ ! -f $LICENSE_DIR/mathpass ]; then
   activate_wolframscript
 fi
-
-chown -R wljs:wljs $WL_DIR
 
 chown -R wljs:wljs /wljs
 chown -R wljs:wljs /home/wljs
