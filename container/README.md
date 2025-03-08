@@ -10,7 +10,7 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
 2. Register at the [Wolfram Engine download page](https://www.wolfram.com/engine/). Click to download (only needed to be redirected to the right place) and then follow the `Get your license` instructions. Register on the next page and acquire the license (it is free). A confirmation message will be sent to your email address. Please follow the link received by email.
 
-3. Start the container:
+3. Start the container (*not by a superuser*):
     For example
 
     docker run -it \
@@ -79,20 +79,7 @@ docker run -it \
 ```
 
 ## Running as root
-You will need to completely ommit `PUID` and `PGID`
-
-```bash
-docker run -it \
-  -v wljs_data:/wljs \
-  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
-  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
-  -p 80:3000 \
-  --name wljs \
-  ghcr.io/jerryi/wolfram-js-frontend:main
-```
-
-or change the mounting directories
-
+Change the mounting directories
 
 ```bash
 docker run -it \
@@ -105,8 +92,6 @@ docker run -it \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
-
-
 
 ## NGINX Proxy
 The container also includes a nginx proxy running by default. This aggreggates the http and websockets ports into one port at 3000 (inside the container). It also makes it possible to further reverse proxy the application and add TLS encryption
