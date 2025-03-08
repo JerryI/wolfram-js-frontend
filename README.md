@@ -167,7 +167,15 @@ wolframscript -f Scripts/start.wls
 See [instructions here](./container/README.md)
 
 ```bash
-docker run -it -v ~/wljs:"/root/WLJS Notebooks" -v ~/wljs/Licensing:/root/.WolframEngine/Licensing -e PUID=$(id -u) -e PGID=$(id -g) -p 8000:3000 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+docker run -it \
+  -v wljs_data:/wljs \
+  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  -p 80:3000 \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:main
 ```
 
 Then open `http://127.0.0.1:8000`
