@@ -2,6 +2,9 @@
 
 set -eux -o pipefail
 
+PUID=${PUID:-1000}
+PGID=${PGID:-1000}
+
 # Check if the script is running as root and set LICENSE_DIR accordingly
 if [ "$PGID" -eq 0 ]; then
   LICENSE_DIR=/root/.WolframEngine/Licensing
@@ -9,8 +12,6 @@ else
   LICENSE_DIR=/home/wljs/.WolframEngine/Licensing
 fi
 
-PUID=${PUID:-1000}
-PGID=${PGID:-1000}
 
 groupmod -o -g "$PGID" wljs
 usermod -o -u "$PUID" wljs
