@@ -22,8 +22,9 @@ function activate_wolframscript {
     su - wljs -c "wolframscript -activate"
     
     if [ $? -ne 0 ]; then
-      echo "Activation failed, exiting."
-      exit -1
+      echo "ERROR: Activation failed, exiting."
+      echo "Giving a user an interactive shell"
+      exec bash
     fi
   else
     su - wljs -c "expect << 'EOF'
@@ -38,8 +39,9 @@ function activate_wolframscript {
     EOF"
 
     if [ $? -ne 0 ]; then
-      echo "Activation with provided credentials failed."
-      exit -1
+      echo "ERROR: Activation with provided credentials failed."
+      echo "Giving a user an interactive shell"
+      exec bash
     fi
   fi
 
@@ -47,8 +49,9 @@ function activate_wolframscript {
     # Activation success. 
     echo "Success!"
   else
-    echo "License file missing after activation."
-    exit -1
+    echo "ERROR: License file missing after activation."
+    echo "Giving a user an interactive shell"
+    exec bash
   fi
 }
 
