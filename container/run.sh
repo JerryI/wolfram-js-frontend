@@ -8,9 +8,13 @@ PGID=${PGID:-1000}
 # Check if the script is running as root and set LICENSE_DIR accordingly
 if [ "$PGID" -eq 0 ]; then
   LICENSE_DIR=/root/.WolframEngine/Licensing
+  WL_DIR=/root/.WolframEngine
 else
   LICENSE_DIR=/home/wljs/.WolframEngine/Licensing
+  WL_DIR=/home/wljs/.WolframEngine
 fi
+
+mkdir -p $LICENSE_DIR
 
 
 groupmod -o -g "$PGID" wljs
@@ -59,6 +63,8 @@ function activate_wolframscript {
 if [ ! -f $LICENSE_DIR/mathpass ]; then
   activate_wolframscript
 fi
+
+chown -R wljs:wljs $WL_DIR
 
 chown -R wljs:wljs /wljs
 chown -R wljs:wljs /home/wljs

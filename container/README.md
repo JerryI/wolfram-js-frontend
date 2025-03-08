@@ -79,7 +79,7 @@ docker run -it \
 ```
 
 ## Running as root
-You would need to completely ommit `PUID` and `PGID`
+You will need to completely ommit `PUID` and `PGID`
 
 ```bash
 docker run -it \
