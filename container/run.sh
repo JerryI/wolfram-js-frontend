@@ -2,7 +2,12 @@
 
 set -eux -o pipefail
 
-LICENSE_DIR=/root/.WolframEngine/Licensing
+# Check if the script is running as root and set LICENSE_DIR accordingly
+if [ "$PGID" -eq 0 ]; then
+  LICENSE_DIR=/root/.WolframEngine/Licensing
+else
+  LICENSE_DIR=/home/wljs/.WolframEngine/Licensing
+fi
 
 PUID=${PUID:-1000}
 PGID=${PGID:-1000}
@@ -11,18 +16,15 @@ groupmod -o -g "$PGID" wljs
 usermod -o -u "$PUID" wljs
 
 function activate_wolframscript {
-  
   if [ -z ${WOLFRAMID_USERNAME+x} -o -z ${WOLFRAMID_PASSWORD+x} ]; then
     # Manual activation
     su - wljs -c "wolframscript -activate"
     
     if [ $? -ne 0 ]; then
-      echo "Activation failed, exiting.";
-      exit -1;
+      echo "Activation failed, exiting."
+      exit -1
     fi
-
   else
-
     su - wljs -c "expect << 'EOF'
     spawn sh -c {wolframscript -activate}
     
@@ -35,10 +37,9 @@ function activate_wolframscript {
     EOF"
 
     if [ $? -ne 0 ]; then
-      echo "Activation with provided credentials failed.";
-      exit -1;
+      echo "Activation with provided credentials failed."
+      exit -1
     fi
-
   fi
 
   if [ -f $LICENSE_DIR/mathpass ]; then
@@ -46,9 +47,8 @@ function activate_wolframscript {
     echo "Success!"
   else
     echo "License file missing after activation."
-    exit -1;
+    exit -1
   fi
-
 }
 
 # Check if license exists else continue

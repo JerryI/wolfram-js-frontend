@@ -13,7 +13,14 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 3. Start the container:
     For example
 
-        docker run -it -v ~/wljs:"/root/WLJS Notebooks" -v ~/wljs/Licensing:/root/.WolframEngine/Licensing -e PUID=$(id -u) -e PGID=$(id -g) -p 80:3000 --name wljs ghcr.io/jerryi/wolfram-js-frontend:main
+    docker run -it \
+      -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+      -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
+      -e PUID=$(id -u) \
+      -e PGID=$(id -g) \
+      -p 80:3000 \
+      --name wljs \
+      ghcr.io/jerryi/wolfram-js-frontend:main
 
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
 
@@ -45,9 +52,8 @@ The container is capable of following features:
 
 ```bash
 docker run -it \
-  -v wljs_data:/wljs \
-  -v ~/wljs:"/root/WLJS Notebooks" \
-  -v ~/wljs/Licensing:/root/.WolframEngine/Licensing \
+  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
   -e PGID=$(id -g) \
   -e WOLFRAMID_USERNAME=your@email.com \
@@ -63,6 +69,34 @@ Use named volume to store your configuration, settings and packages updates. Mou
 ```bash
 docker run -it \
   -v wljs_data:/wljs \
+  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  -p 80:3000 \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:main
+```
+
+## Running as root
+You would need to completely ommit `PUID` and `PGID`
+
+```bash
+docker run -it \
+  -v wljs_data:/wljs \
+  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
+  -p 80:3000 \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:main
+```
+
+or change the mounting directories
+
+
+```bash
+docker run -it \
+  -v wljs_data:/wljs \
   -v ~/wljs:"/root/WLJS Notebooks" \
   -v ~/wljs/Licensing:/root/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
@@ -71,6 +105,7 @@ docker run -it \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
+
 
 
 ## NGINX Proxy
