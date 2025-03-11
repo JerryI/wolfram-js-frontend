@@ -10,8 +10,8 @@
 </div>
 
 <h3 align="center">
-  <a href="https://jerryi.github.io/wljs-docs/frontend/Overview">Overview 🚀</a> &nbsp;&nbsp; 
-  <a href="https://jerryi.github.io/wljs-docs/wljs-demo">Demo 📺</a>
+  <a href="https://wljs.io/frontend/Overview">Overview 🚀</a> &nbsp;&nbsp; 
+  <a href="https://wljs.io/wljs-demo">Demo 📺</a>
 </h3>
 
 <div class="note">
@@ -30,8 +30,8 @@ __Developed through the collaboration of physicists and programmers. Designed fo
 
 ## Resources
 
-- **[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-docs/wljs-demo)** 🎉 A collection of notebooks demonstrating Wolfram Language and the dynamic features of our frontend.
-- **[Documentation & Tutorials](https://jerryi.github.io/wljs-docs/)** 📔
+- **[WLJS Notebook Demonstration Project](https://wljs.io/wljs-demo)** 🎉 A collection of notebooks demonstrating Wolfram Language and the dynamic features of our frontend.
+- **[Documentation & Tutorials](https://wljs.io/)** 📔
 - **[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)** 🐺
 - **[Freeware Wolfram Language](https://www.wolfram.com/engine/)**
 - **[Github Discussions](https://github.com/JerryI/wolfram-js-frontend/discussions)** 💬
@@ -43,10 +43,10 @@ __Developed through the collaboration of physicists and programmers. Designed fo
 
 ## Showcase
 
-### **[Blog Posts](https://jerryi.github.io/wljs-docs/blog)** 🔗
+### **[Blog Posts](https://wljs.io/blog)** 🔗
 Pages featuring real-world problems solved using WLJS Notebook, published as interactive notebooks running in your browser.
 
-### **[WLJS Notebook Demonstration Project](https://jerryi.github.io/wljs-docs/wljs-demo)** 🔗
+### **[WLJS Notebook Demonstration Project](https://wljs.io/wljs-demo)** 🔗
 Notebooks presented as static web pages showcasing various examples demonstrating the power of Wolfram Language and our frontend.
 
 ## Highlights
@@ -65,7 +65,7 @@ Blazing-fast dynamics, GUI components, and powerful Mathematica syntax enhanceme
 
 > The entire scene above is generated on the Wolfram Kernel and streamed to WebGL buffers via low-latency binary sockets.
 
-[🔗 Interactive Fluid Simulation](https://jerryi.github.io/wljs-docs/blog/2024/08/18/fluid-1)
+[🔗 Interactive Fluid Simulation](https://wljs.io/blog/2024/08/18/fluid-1)
 
 ![Fluid Simulation](./imgs/fuid.webp)
 
