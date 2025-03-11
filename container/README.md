@@ -130,7 +130,69 @@ server {
 
 ```
 
-Make sure to change port mapping from `80:3000` to `3000:3000` in the starting sequence.
+Make sure to change port mapping from `80:3000` to `3000:3000` in the starting sequence if you start nginx TLS proxy outside the container
+
+### Basic Authentication
+*We do recommend to set this if you plan to access it from the public IP*
+
+1. Following [the guide](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/) we install a simple util to generate login data
+
+```bash
+sudo apt install apache2-utils
+```
+
+then generate user and password
+
+```bash
+sudo htpasswd -c /etc/apache2/.htpasswd user1
+```
+
+2. Now set up NGIX proxy
+
+```bash
+nano /etc/nginx/sites-available/default
+```
+
+```nginx
+server {
+    listen 80; 
+    server_name mydomain.io;
+
+    auth_basic           "WLJS Notebook";
+    auth_basic_user_file /etc/apache2/.htpasswd;
+
+    set $upstream http://127.0.0.1:3000;
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "keep-alive, upgrade";
+
+        proxy_pass $upstream;
+    }
+}
+```
+
+Restart nginx.
+
+3. Set up the container
+
+```bash
+docker run -it \
+  -v wljs_data:/wljs \
+  -v ~/wljs:"/home/wljs/WLJS Notebooks" \
+  -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
+  -e PUID=$(id -u) \
+  -e PGID=$(id -g) \
+  -p "127.0.0.1:3000:3000" \
+  --name wljs \
+  ghcr.io/jerryi/wolfram-js-frontend:main
+```
+
+
+
 
 ## Known Issues
 
