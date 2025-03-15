@@ -40,21 +40,14 @@ Script = With[{},
                     break;
 
                     case 'Escape':
-                    break;
-
-                    case 'Shift':
-                    case 'Meta':
-                    case 'Ctrl':
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        self.blur();
                     break;
 
                     default:
-                        /*event.preventDefault();
+                        event.preventDefault();
                         event.stopImmediatePropagation();
-                        let letter = event.key;
-                        if (event.shiftKey) letter = letter.toUpperCase();
-                        server.io.fire(self.event, [origin.uid, letter], 'AddAfter');
-                        CellWrapper.forceFocusNew();
-                        self.blur();*/
 
                 }
             }
