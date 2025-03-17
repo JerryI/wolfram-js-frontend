@@ -1,0 +1,13 @@
+<|"Notebook" -> <|"Controller" -> "8b5ebb5d-806f-4375-a021-b812d0a76e8a", 
+   "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
+     CoffeeLiqueur`Notebook`Cells`CellObj`$1001], "HaveToSaveAs" -> False, 
+   "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "323b3ea1-762c-4869-afee-856c3b18ce45", "Objects" -> <||>, 
+   "Path" -> 
+    "/Users/kirill/Github/playwright/tests/integration/notebook.wln", 
+   "Quick" -> True, "Symbols" -> <||>, "TOC" -> {}|>, 
+ "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "f8b71c80-fc2f-4d69-9593-51aec69b1a0a", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "State" -> "Idle", 
+    "Type" -> "Input", "UID" -> Null, "Notebook" -> 
+     "d01ca819-13e9-4152-8325-5e9f305a1b56"|>}, "serializer" -> "jsfn4"|>

@@ -41,3 +41,7 @@ log.txt
 configuration.ini
 dist
 wljs_packages_backup
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

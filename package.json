@@ -13,6 +13,7 @@
     "build-terminal": "rollup --config Electron/rollup.config.mjs",
     "build-terminal-preload": "rollup --config Electron/rollup.config_preload.mjs",
     "el": "electron .",
+    "test": "npx playwright test",
     "dist-mac": "electron-builder --mac --arm64 --publish always",
     "dist-mac86": "electron-builder --mac --x64 --publish always",
     "dist-win86": "electron-builder --win --x64 --publish always",
@@ -166,7 +167,9 @@
     "rollup": "^3.29.3",
     "rollup-plugin-combine": "^2.1.1",
     "serve-static": "^1.14.1",
-    "systemjs": "^6.14.1"
+    "systemjs": "^6.14.1",
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10"   
   },
   "dependencies": {
     "@electron/packager": "^18.3.1",
@@ -198,7 +201,7 @@
     "random-words": "^2.0.0",
     "sudo-prompt": "^9.2.1",
     "tailwindcss": "^3.4.1",
-    "xterm": "^5.3.0"
+    "xterm": "^5.3.0" 
   },
   "overrides": {
     "globalthis": "npm:@nolyfill/globalthis@^1",
