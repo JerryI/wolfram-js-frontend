@@ -9,13 +9,13 @@ export const delay = (ms) => {
 }
 
 const checkIfKernelAttached = async (page) => {
-  await delay(100);
+  await delay(1500);
   let kernelSelection = page.locator('button').filter({ hasText: 'Auto' });
   if (page.kernelQ) return;
-  if (await kernelSelection.isVisible({timeout: 1000})) {
+  if (await kernelSelection.isVisible({timeout: 2000})) {
     kernelSelection.click();
     console.log('Attaching kernel');
-    await delay(5000);
+    await delay(8000);
     page.kernelQ = true;
   } 
 }
@@ -27,12 +27,14 @@ export const url = 'http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.reso
 export const evaluate = async (page, input="1+1", timeout=5000, extra=500) => {
   const editor = page.locator('.cm-editor').first();
   // Click to focus
+  await delay(100);
   await editor.click();
+  await delay(200);
   // Type text into the editor
   await page.keyboard.type(input);
   await delay(400);
   await page.keyboard.type(' ');
-
+  await delay(200);
   const play = page.locator('.button-cplay').first();
   play.click();
 
