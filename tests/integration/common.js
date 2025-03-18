@@ -24,6 +24,8 @@ const os = process.platform;
 const selectAllShortcut = os === 'darwin' ? 'Meta+A' : 'Control+A'; // macOS uses Meta (Cmd)
 export const url = 'http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'notebook.wln'));
 
+console.warn('Using url:'+url);
+
 export const evaluate = async (page, input="1+1", timeout=5000, extra=500) => {
   const editor = page.locator('.cm-editor').first();
   // Click to focus
