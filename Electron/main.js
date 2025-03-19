@@ -1881,12 +1881,6 @@ const powerSaver = () => {
 
 const os = require('node:os');
 
-const stat = () => {
-    //usage statistics
-    const info = [os.machine(), os.platform(), app.getVersion()];
-    console.log(info);
-    net.fetch(`${atob('aHR0cHM6Ly9kYXRhZHJvcC53b2xmcmFtY2xvdWQuY29tL2FwaS92MS4wL0FkZD9iaW49MXRXS3M1TDZ5JmRhdGE9')}${encodeURIComponent(JSON.stringify(info))}`);
-}
 
 
 /* App Ready */
@@ -1943,7 +1937,7 @@ app.whenReady().then(() => {
 
     powerSaver();
 
-    stat();
+
 
     ipcMain.on('debug', () => {
         server.debug = true;
