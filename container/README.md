@@ -78,6 +78,9 @@ docker run -it \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
 
+***Note***
+To update WLJS Notebook image, please, remove named volume `wljs_data` as well. Otherwise some packages may appear to be outdated
+
 ## Running as root
 Change the mounting directories
 
