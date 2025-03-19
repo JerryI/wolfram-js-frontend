@@ -199,5 +199,4 @@ docker run -it \
 
 ## Known Issues
 
-- Release notes are not mapped correctly and might show 404 error
-- Offline documentation is not available
+- Offline offline documentation is not available
