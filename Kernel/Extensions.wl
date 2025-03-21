@@ -339,7 +339,7 @@ InstallPaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_St
     dirName = FileNameJoin[{dirName, StringReplace[a["name"], "/"->"_"]}];
 
     If[FileExistsQ[dirName],
-        Echo["WLJS Extensions >> package folder "<>dirName<>" is already exists!"];
+        Echo["WLJS Extensions >> package folder "<>dirName<>" already exists!"];
         Echo["WLJS Extensions >> purging..."];
         DeleteDirectory[dirName, DeleteContents -> True];
     ];
@@ -385,7 +385,7 @@ RemovePaclet[dir_String][a_Association, Rule[Github, Rule[url_String, branch_Str
         Echo["WLJS Extensions >> purging..."];
         DeleteDirectory[dirName, DeleteContents -> True];
     ,
-        Echo["WLJS Extensions >> package folder "<>dirName<>" was already removed!"];
+        Echo["WLJS Extensions >> package folder "<>dirName<>" was removed before!"];
         Echo["WLJS Extensions >> UNEXPECTED BEHAVIOUR!"]; Abort[];
     ];
 
