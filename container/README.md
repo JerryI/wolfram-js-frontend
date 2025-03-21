@@ -13,14 +13,16 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 3. Start the container (*not by a superuser*):
     For example
 
+    ```bash
     docker run -it \
       -v ~/wljs:"/home/wljs/WLJS Notebooks" \
       -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
       -e PUID=$(id -u) \
       -e PGID=$(id -g) \
-      -p 80:3000 \
+      -p 8080:3000 \
       --name wljs \
       ghcr.io/jerryi/wolfram-js-frontend:main
+    ```
 
     You will now be prompted for your Wolfram login information, enter it and wait for the message `Open your browser at http://...`. You can now safely detach from the container using <kbd>Ctrl</kbd>+<kbd>p</kbd> <kbd>Ctrl</kbd>+<kbd>q</kbd> and close your terminal.
 
@@ -34,7 +36,7 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
 4. Open a web browser at
 
-        http://127.0.0.1/
+        http://127.0.0.1:8080
 
 You may change port mapping in the starting sequence.
 
@@ -58,7 +60,7 @@ docker run -it \
   -e PGID=$(id -g) \
   -e WOLFRAMID_USERNAME=your@email.com \
   -e WOLFRAMID_PASSWORD=password \
-  -p 80:3000 \
+  -p 8080:3000 \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
@@ -73,7 +75,7 @@ docker run -it \
   -v ~/wljs/Licensing:/home/wljs/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
   -e PGID=$(id -g) \
-  -p 80:3000 \
+  -p 8080:3000 \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```
@@ -91,7 +93,7 @@ docker run -it \
   -v ~/wljs/Licensing:/root/.WolframEngine/Licensing \
   -e PUID=$(id -u) \
   -e PGID=$(id -g) \
-  -p 80:3000 \
+  -p 8080:3000 \
   --name wljs \
   ghcr.io/jerryi/wolfram-js-frontend:main
 ```

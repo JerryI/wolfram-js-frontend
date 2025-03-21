@@ -80,8 +80,8 @@ EventHandler[installEvent, Function[val,
 ,
     Table[
         With[{Tb = Table[
-            With[{Name = WLJSPackages`Packages[key, "name"], Desc = WLJSPackages`Packages[key, "description"], enabled = WLJSPackages`Packages[key, "enabled"]},
-                <Checkbox Label={Name} Event={controller} Topic={Name} Description={Desc} Checked={enabled}/>
+            With[{FullName = StringJoin[WLJSPackages`Packages[key, "name"], " :: ", WLJSPackages`Packages[key, "version"]], Name = WLJSPackages`Packages[key, "name"], Desc = WLJSPackages`Packages[key, "description"], enabled = WLJSPackages`Packages[key, "enabled"]},
+                <Checkbox Label={FullName} Event={controller} Topic={Name} Description={Desc} Checked={enabled}/>
             ]
         , {key, categoryPackages[CategoryName]}]},
             <div class="mt-4 overflow-y-auto" style="max-height:60%">   

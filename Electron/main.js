@@ -2023,6 +2023,10 @@ app.whenReady().then(() => {
                             server.down = false;
 
                             windows.log.info('Finished');
+
+                            session.defaultSession.clearStorageData();
+                            session.defaultSession.clearCache();
+                            windows.log.print('Cache clear');
                             
                             setTimeout(() => {
                                 initServer();
