@@ -48,6 +48,13 @@ test.describe('2D Plot', () => {
     const outputCell = await evaluate(page, 'VectorPlot[{x + y, y - x}, {x, -3, 3}, {y, -3, 3}]', 5000, 1000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'vector.png']);
   }); 
+
+  test('Complex Plot (Texture mapping)', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'ComplexPlot[z^2 + z, {z, -5 - 5I, 5 + 5I}]', 5000, 1000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'complexplot.png']);
+  });   
   
   test('Matrix plot', async () => {
     await clearCell(page);
