@@ -129,20 +129,6 @@ With[{appJSON = Import[FileNameJoin[{Directory[], "package.json"}], "RawJSON"]},
 Echo["System`$Env"];
 Echo[ToString[$Env, InputForm] ];
 
-(* send usage statistics to DataBin         *)
-(* delete it if you don;t want to share     *)
-(* we just want to know how many you are ;0 *)
-
-URLSubmit["https://datadrop.wolframcloud.com/api/v1.0/Add?bin=1tY9YmgHb&data="<>(
-  ExportString[
-    <|
-      "SystemID"->$SystemID, 
-      "MachineID"->$MachineID, 
-      "Language"->$Language, 
-      "TimeZone"->$TimeZone, 
-      "Electron"->If[AssociationQ[System`$Env], Lookup[System`$Env, "ElectronCode", 0], -1000]
-    |>, "JSON"
-] // URLEncode)];
 
 MergeDirectories[source_String, target_String] := (
   Echo[StringTemplate["Copy directory `` to ``"][source, target]];
