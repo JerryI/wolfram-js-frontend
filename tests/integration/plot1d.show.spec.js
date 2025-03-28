@@ -97,6 +97,24 @@ test.describe('1D Plot', () => {
     const outputCell = await evaluate(page, 'Legended[Grid[Partition[Table[If[PrimeQ[n], Item[n, Background -> LightBlue], n], {n, 100}], 10], Frame -> All], SwatchLegend[{LightBlue}, {"prime numbers"}]]', 5000, 2000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'legendedPrime.png']);
   });
+
+  test('Placed Swatch Legend', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Plot[{x,x^2}, {x,0,1}, PlotLegends->Placed[SwatchLegend[Automatic], {0.2,0.2}]]', 5000, 2000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'placedSwatch.png']);
+  });  
+
+  test('Placed Swatch Legend 2', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Plot[{x,x^2}, {x,0,1}, PlotLegends->Placed[SwatchLegend[Automatic], After]]', 5000, 2000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'placedSwatch2.png']);
+  });   
+
+  
+
+  
   
 
 });

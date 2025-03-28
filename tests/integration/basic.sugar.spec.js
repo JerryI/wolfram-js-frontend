@@ -266,6 +266,34 @@ test.describe('Easy check for most basic decorators', () => {
     await expect(outputCell).toHaveScreenshot(['screenshorts', '2bornot2b.png']);
   });
 
+  test('TeXForm', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'TeXForm[Series[Sin[x], {x,0,4}]//Normal]', 8000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'texform.png']);
+  });
+
+  test('TeXForm back', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'ToExpression[TeXForm[Series[Sin[x], {x,0,4}]//Normal], TeXForm]', 8000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'texform_back.png']);
+  });  
+
+  test('TeXForm + Markdown Cells', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'CellView[StringJoin["$$\[NewLine]", TeXForm[Series[Sin[x], {x,0,7}] // Normal], "\[NewLine]$$"], "Display"->"markdown"]', 8000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'texform_markdown.png']);
+  });   
+
+  test('Geographics', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'GeoGraphics[{EdgeForm[Black], FaceForm[Red], Polygon[Entity["Country", "Italy"]]}]', 18000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'geo.png']);
+  });    
+
 
 });
 

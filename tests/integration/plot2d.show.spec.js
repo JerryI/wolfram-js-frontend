@@ -24,7 +24,7 @@ test.describe('2D Plot', () => {
   test('Contour plot', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'ContourPlot[Cos[x] + Cos[y], {x, 0, 4 Pi}, {y, 0, 4 Pi}, PerformanceGoal->"Speed"]', 5000, 1500);
+    const outputCell = await evaluate(page, 'ContourPlot[Cos[x] + Cos[y], {x, 0, 4 Pi}, {y, 0, 4 Pi}, PlotLegends->Automatic]', 5000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'countour.png']);
   });  
 
