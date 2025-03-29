@@ -27,6 +27,9 @@ Packages /: Set[ Packages[name_String, fields__], value_ ] := With[{tag = $name2
     $packages[tag, fields] = value 
 ]
 
+VersionsStore[dir_String, repos_Association] := Export[FileNameJoin[{dir, "wljs_packages_version.wl"}], Map[Function[data, data["version"] ], repos] ]
+VersionsLoad[dir_String] := If[FileExistsQ[FileNameJoin[{dir, "wljs_packages_version.wl"}] ], Import[FileNameJoin[{dir, "wljs_packages_version.wl"}] ], None ]
+
 
 Includes[param_] := Includes[param] = 
 Table[ 
@@ -36,7 +39,7 @@ Table[
 , {i, Select[Packages // Keys, (Packages[#, "enabled"] && KeyExistsQ[Packages[#, "wljs-meta"], param])&]}] // Flatten;
 
 
-Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = False},
+Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = False, versionControl, maxVersionDiff = OptionValue["MaxVersionDiff"]},
     (* making key-values pairs *)
     repos = (#-><|"key"->#|>)&/@list // Association;
 
@@ -150,6 +153,31 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
         updatable = Select[current, CheckUpdates];
         (* will be updated *)
         updated   = ((#->repos[#])&/@ Keys[updatable]) // Association;
+
+        If[maxVersionDiff =!= None,
+          (* filter if the version is too high *)
+          versionControl = VersionsLoad[projectDir];
+          If[versionControl =!= None,
+            (* apply filter *)
+
+            updated = Table[ With[{
+              lookupVersion = Lookup[versionControl, key, Missing[] ]
+            },
+
+              If[
+                MissingQ[lookupVersion] || (
+                  convertVersion[ updated[key]["version"] ] - convertVersion[lookupVersion] <= maxVersionDiff
+                ),
+
+                  key -> updated[key],
+
+                  Echo["WLJS Extensions >> Version difference is too high. Bundled: "<>lookupVersion<>" vs Remote: "<>updated[key]["version"] ]; 
+                  Echo["Skipping..."];
+                  Nothing
+            ] ], {key, Keys[updated]}] // Association;
+          ];
+        ];
+
   
         Echo[StringTemplate["WLJS Extensions >> will be UPDATED: ``"][Length[updatable] ] ];
 
@@ -167,6 +195,11 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
     (* update local cache file aka packages.json *)
     CacheStore[projectDir, repos];   
 
+    (* store version (if applicable) *)
+    If[maxVersionDiff =!= None && versionControl === None,
+      VersionsStore[projectDir, repos]
+    ];    
+
     Put[Now, FileNameJoin[{projectDir, ".wljs_timestamp"}] ]; 
 
     $ProjectDir = projectDir;
@@ -174,7 +207,7 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
     $packages = sortPackages[$packages];
 ]
 
-Options[Repositories] = {"Directory"->Directory[], "ForceUpdates" -> False, "UpdateInterval" -> Quantity[3, "Days"]}
+Options[Repositories] = {"Directory"->Directory[], "ForceUpdates" -> False, "MaxVersionDiff" -> None, "UpdateInterval" -> Quantity[4, "Days"]}
 
 sortPackages[assoc_Association] := With[{},
     Map[

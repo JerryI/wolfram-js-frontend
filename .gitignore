@@ -14,6 +14,8 @@ Debug/*
 wljs_packages
 .wl_timestamp
 .wljs_timestamp
+wl_packages_version.wl
+wljs_packages_version.wl
 .settings
 .theme
 .gcss

@@ -38,7 +38,7 @@ inspectPackages[dir_String, cbk_] := Module[{
   ] &/@ packages;
 ]
 
-PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = OptionValue["Passive"]},
+PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = OptionValue["Passive"], versionControl, maxVersionDiff = OptionValue["MaxVersionDiff"]},
     (* making key-values pairs *)
     repos = (#-><|"key"->#|>)&/@list // Association;
 
@@ -133,8 +133,33 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
 
       (* what must be updated *)
       updatable = Select[current, CheckUpdates];
+
       (* will be updated *)
       updated   = ((#->repos[#])&/@ Keys[updatable]) // Association;
+
+      If[maxVersionDiff =!= None,
+        (* filter if the version is too high *)
+        versionControl = VersionsLoad[projectDir];
+        If[versionControl =!= None,
+          (* apply filter *)
+
+          updated = Table[ With[{
+            lookupVersion = Lookup[versionControl, key, Missing[] ]
+          },
+            
+            If[
+              MissingQ[lookupVersion] || (
+                convertVersion[ updated[key]["Version"] ] - convertVersion[lookupVersion] <= maxVersionDiff
+              ),
+
+                key -> updated[key],
+
+                Echo["LPM >> Version difference is too high. Bundled: "<>lookupVersion<>" vs Remote: "<>updated[key]["Version"] ]; 
+                Echo["Skipping..."];
+                Nothing
+          ] ], {key, Keys[updated]}] // Association;
+        ];
+      ];
  
       Echo[StringTemplate["LPM >> will be UPDATED: ``"][Length[updatable]]];
 
@@ -145,6 +170,11 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
     (* update local cache file aka packages.json *)
     CacheStore[projectDir, repos];
 
+    (* store version (if applicable) *)
+    If[maxVersionDiff =!= None && versionControl === None,
+      VersionsStore[projectDir, repos]
+    ];
+
     Put[Now, FileNameJoin[{projectDir, ".wl_timestamp"}] ];
 
     (* finally load dirs *)
@@ -152,7 +182,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
     Map[pacletDirectoryLoad] @  Map[DirectoryName] @  FileNames["PacletInfo.wl", {#}, {2}]& @ FileNameJoin[{projectDir, "wl_packages"}];
 ]
 
-Options[PacletRepositories] = {"Directory"->None, "Passive"->False, "ForceUpdates" -> False, "UpdateInterval" -> Quantity[7, "Days"], "ConflictResolutionFunction" -> Function[{conflicting, true}, 
+Options[PacletRepositories] = {"Directory"->None, "Passive"->False, "ForceUpdates" -> False, "MaxVersionDiff" -> None, "UpdateInterval" -> Quantity[14, "Days"], "ConflictResolutionFunction" -> Function[{conflicting, true}, 
   Echo["LPM >> resolving by uninstalling a global one"];
   If[PacletUninstall[conflicting] =!= Null,
     Echo["FAILED!"];
@@ -162,6 +192,10 @@ Options[PacletRepositories] = {"Directory"->None, "Passive"->False, "ForceUpdate
 
 CacheStore[dir_String, repos_Association] := Export[FileNameJoin[{dir, "wl_packages_lock.wl"}], repos]
 CacheLoad[dir_String] := If[!FileExistsQ[FileNameJoin[{dir, "wl_packages_lock.wl"}]], Missing[], Import[FileNameJoin[{dir, "wl_packages_lock.wl"}]]];
+
+VersionsStore[dir_String, repos_Association] := Export[FileNameJoin[{dir, "wl_packages_version.wl"}], Map[Function[data, data["Version"] ], repos] ]
+VersionsLoad[dir_String] := If[FileExistsQ[FileNameJoin[{dir, "wl_packages_version.wl"}] ], Import[FileNameJoin[{dir, "wl_packages_version.wl"}] ], None ]
+
 
 CheckUpdates[a_Association] := Module[{result},
   CheckUpdates[a, a["key"]]

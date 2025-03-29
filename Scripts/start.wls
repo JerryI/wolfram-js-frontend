@@ -19,7 +19,7 @@ PacletRepositories[{
   Github -> "https://github.com/JerryI/CSocketListener" -> "master",
   Github -> "https://github.com/JerryI/wl-wlx" -> "master",
   Github -> "https://github.com/JerryI/wl-misc" -> "main"
-}, "Directory" -> Directory[] ]
+}, "Directory" -> Directory[], "MaxVersionDiff"-> 1 ]
 
 (* web-server *)
 Needs["KirillBelov`CSockets`"]
@@ -207,7 +207,7 @@ WLJSPackages`Repositories[{
   WLJSPackages`Github -> "https://github.com/JerryI/wljs-demos-archive" -> "base",
   WLJSPackages`Github -> "https://github.com/JerryI/wljs-debugger" -> "base",
   WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "base"
-}, "Directory" -> Directory[] ]
+}, "Directory" -> Directory[], "MaxVersionDiff"-> 3 ]
 
 LocalKernel`LTPServerStart[];
 
