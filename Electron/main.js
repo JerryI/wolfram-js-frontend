@@ -2061,6 +2061,14 @@ app.whenReady().then(() => {
         trackpadUtils.triggerFeedback();
     });
 
+    ipcMain.on('system-window-zoom-set', (e, value) => {
+        e.sender.setZoomFactor(value);
+    });
+
+    ipcMain.handle('system-window-zoom-get', async (e) => {
+        return e.sender.getZoomFactor();
+    });
+
     ipcMain.on('install-cli', () => {
         //trackpadUtils.triggerFeedback();
         check_cli_installed();
@@ -2073,6 +2081,8 @@ app.whenReady().then(() => {
 
     ipcMain.handle('capture', async (e, area) => {
         let zoom = e.sender.zoomFactor;
+
+
         if (area) {
             area.x = Math.round(area.x * zoom);
             area.y = Math.round(area.y * zoom);

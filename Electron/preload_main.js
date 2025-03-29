@@ -120,6 +120,16 @@ contextBridge.exposeInMainWorld('electronAPI', {
     console.log(path);
     ipcRenderer.send('system-window-shrink',  {});
   },   
+
+  setZoom: (val) => {
+    ipcRenderer.send('system-window-zoom-set', val);
+  },
+
+  getZoom: (cbk) => {
+      ipcRenderer.invoke('system-window-zoom-get', {}).then((result) => {
+        cbk(result);
+      });  
+  },
   
   searchText: (searchText, direction) => ipcRenderer.send('search-text', { searchText, direction }),
   stopSearch: () => ipcRenderer.send('stop-search')
