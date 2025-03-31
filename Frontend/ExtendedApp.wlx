@@ -40,6 +40,7 @@ serverParams = <|"env" -> env|>;
 settings = <||>;
 
 sidebarState = "show";
+SidebarSize = 16;
 
 loadSettings[settings];
 
@@ -210,7 +211,8 @@ App[request_] := With[{
 
   Print["# Loading by path : "]; Print[Path];
   EventHandler[Secret, {
-    "SaveSidebarState" -> Function[state, sidebarState = state]
+    "SaveSidebarState" -> Function[state, sidebarState = state],
+    "ResizeSidebar" -> Function[val, SidebarSize = val]
   }];
   
   With[{
@@ -340,13 +342,16 @@ App[request_] := With[{
             <FrontEndCustomCSS/>
         </Head>  
         <body class="h-full dark:linux:bg-gray-700 dark:owin:bg-gray-700 owin:bg-white owin:border owin:border-slate-400"> 
+        <style>
+          :root {--system-main-padding-left: <SidebarSize/>rem}
+        </style>
         <ExtensionTemplates Template={"AppHead"} />
         <div class="h-full">
           <Alert/>
           <Modals ModalsPort={ModalController}/>
           <ExtensionTemplates Template={"AppOverlay"} Path={Path} AppEvents={AppEvent} MessagePort={GlobalMessanger}/>
 
-          <div id="sidebar" style="user-select: none; -webkit-app-region: drag;" class="hidden pt-10 linux:pt-0 md:fixed zen:hidden md:inset-y-0 md:z-50 md:flex md:flex-col md:w-70 osx:border-r border-gray-300 dark:border-gray-600 filter">        
+          <div id="sidebar" style="user-select: none; -webkit-app-region: drag; overflow:hidden" class="hidden pt-10 linux:pt-0 md:fixed zen:hidden md:inset-y-0 md:z-50 md:w-sidesys md:flex md:flex-col osx:border-r border-gray-300 dark:border-gray-600 filter">        
             <Kernels AppEvents={AppEvent} Controls={GlobalControls} Messager={GlobalMessanger} KernelList={kernels} OnConnected={initKernel[serverParams]} OnExit={deinitKernel}/>
             <Sidebar RawPath={RawPath} ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Icons={ExtensionSidebarIcons} Parameters={GlobalParameters} Modals={ModalController} Secret={Secret} Path={Path} Controls={GlobalControls}/>
             <div class="osx:border-b border-gray-300 dark:border-gray-600"></div>
@@ -355,7 +360,8 @@ App[request_] := With[{
             </div>
           </div>
           
-          <div class="md:pl-70 zen:pl-0 h-full" id="frame">
+          <div class="md:pl-sidesys zen:pl-0 h-full" id="frame">
+            <div id="s-resizer" class="hidden h-full md:block zen:hidden top-0 absolute w-1" style="cursor: ew-resize; z-index:1000"></div>          
             <div class="h-full flex flex-col">
               <TopBar Menu={FakeMenu} ExtensionTemplates={ExtensionTemplates} AppEvents={AppEvent} Messanger={GlobalMessanger} Parameters={GlobalParameters} Controls={GlobalControls} Path={Path} Modals={ModalController}/>
               <Notifications Controls={GlobalControls} MessagePort={GlobalMessanger}/>
@@ -411,6 +417,39 @@ Script[Rule["Secret", Secret_]] := With[{},
         });
       }
     }
+
+    const r = document.querySelector(':root'); //get root element
+    const resizer = document.getElementById("s-resizer");
+    let unsub; let x=0;
+    let rootFontSize;
+
+    const resize = (ev) => {
+      ev.preventDefault();
+      const size = ((ev.clientX - x)/rootFontSize);
+      
+      if (size >= 0.35*window.innerWidth/rootFontSize) return;
+      if (size < 150/rootFontSize) return;
+
+      r.style.setProperty('--system-main-padding-left', size+'rem');
+      server.io.fire('<Secret/>', size, 'ResizeSidebar');
+    }
+
+    unsub = (ev) => {
+      ev.preventDefault();
+      window.removeEventListener('mousemove', resize);
+      window.addEventListener('mouseup', unsub);
+      console.log('unsubcribe')
+    }
+
+    resizer.addEventListener('mousedown', (ev) => {
+      ev.preventDefault();
+      rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      console.log(r.style.getPropertyValue('--system-main-padding-left'));
+      x = ev.clientX - rootFontSize*(parseFloat(window.getComputedStyle(document.documentElement).getPropertyValue('--system-main-padding-left')));   
+      window.addEventListener('mousemove', resize);
+      console.log('subcribe');
+      window.addEventListener('mouseup', unsub);
+    });
   </script>
 ];
 

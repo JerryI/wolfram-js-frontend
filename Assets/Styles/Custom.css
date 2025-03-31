@@ -69,6 +69,8 @@
     --editor-bracket-5-a: #978d00;
     --editor-bracket-6-a: #019e79;
     --editor-bracket-7-a: #008dc1;
+
+    --system-main-padding-left: 16rem;
   }
   
 /*.bg-d9 {
@@ -141,12 +143,19 @@ input::selection {
  .md\:pl-70 {
     padding-left: 16rem;
  }
+ .md\:pl-sidesys {
+    padding-left: var(--system-main-padding-left);
+ }
 }
 
 @media (min-width: 768px) {
   .md\:w-70 {
     width:16rem;
   }
+  .md\:w-sidesys {
+    width:var(--system-main-padding-left);
+  }  
+  
 }
 
 @media (min-width: 1024px) {
