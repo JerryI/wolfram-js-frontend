@@ -7,6 +7,8 @@ AppEvents;
 AppProtocol;
 FrontendEnv;
 
+SidebarIcons;
+
 HTTPFileExtensions;
 
 WebServers;

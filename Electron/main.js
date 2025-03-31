@@ -1363,6 +1363,7 @@ function create_window(opts, cbk = () => {}) {
             win = new BrowserWindow({
                 vibrancy: "sidebar", // in my case...
                 frame: true,
+
                 titleBarStyle: 'hiddenInset',
                 width: Math.round(options.width*800.0/1024),
                 height: Math.round(options.height*600.0/640),
@@ -1372,6 +1373,7 @@ function create_window(opts, cbk = () => {}) {
                 //transparent:true,
                 show: options.show,
                 webPreferences: {
+                    //scrollBounce: true,
                     preload: path.join(__dirname, 'preload_main.js')
                 },
                 ...options.override
@@ -2062,11 +2064,11 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on('system-window-zoom-set', (e, value) => {
-        e.sender.setZoomFactor(value);
+        e.sender.setZoomLevel(value-1);
     });
 
     ipcMain.handle('system-window-zoom-get', async (e) => {
-        return e.sender.getZoomFactor();
+        return e.sender.getZoomLevel()+1;
     });
 
     ipcMain.on('install-cli', () => {
