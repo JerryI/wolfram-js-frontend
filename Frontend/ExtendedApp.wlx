@@ -427,7 +427,7 @@ Script[Rule["Secret", Secret_]] := With[{},
       ev.preventDefault();
       const size = ((ev.clientX - x)/rootFontSize);
       
-      if (size >= 0.35*window.innerWidth/rootFontSize) return;
+      if (size >= 0.45*window.innerWidth/rootFontSize) return;
       if (size < 150/rootFontSize) return;
 
       r.style.setProperty('--system-main-padding-left', size+'rem');
