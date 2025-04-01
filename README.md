@@ -5,7 +5,7 @@
 
 <div align="center">
   <b style="color: var(--ifm-link-color);">
-    A lightweight, cross-platform alternative to Mathematica, built using open-source tools and the free Wolfram Engine.
+    WLJS Notebook is an interactive computing platform, web-based environment for running Wolfram Language (WL) scripts, Javascript. A lightweight, cross-platform alternative to Mathematica, built using open-source tools and the free Wolfram Engine.
   </b>
 </div>
 
@@ -13,6 +13,15 @@
   <a href="https://wljs.io/frontend/Overview">Overview 🚀</a> &nbsp;&nbsp; 
   <a href="https://wljs.io/wljs-demo">Demo 📺</a>
 </h3>
+
+The notebook combines live code in WL, JS, Mermaid and many more, GUI blocks for user input, equations, narrative text, visualizations, interactive widgets
+
+- [x] Write reproducible notebooks with no external dependencies
+- [x] Publish interactive notebooks online or give to a college on a thumb-drive
+- [x] Blazingly fast dynamic, realtime 2D/3D graphics and sound output
+- [x] Hackable rich sandbox with 5+ cell types
+- [x] Open-source frontend written in Vanilla JS and Wolfram Language
+- [x] Develop interactive widgets & small apps for your sci-tools collection  
 
 <div class="note">
   <p>
