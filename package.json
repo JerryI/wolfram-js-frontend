@@ -15,6 +15,7 @@
     "el": "electron .",
     "test": "npx playwright test",
     "test-update": "npx playwright test --update-snapshots",
+    "pre-dist": "wolframscript -f Scripts/bundle.wls",
     "dist-mac": "electron-builder --mac --arm64 --publish always",
     "dist-mac86": "electron-builder --mac --x64 --publish always",
     "dist-win86": "electron-builder --win --x64 --publish always",
