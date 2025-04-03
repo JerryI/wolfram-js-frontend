@@ -40,6 +40,17 @@ A docker container for the [Wolfram JS Frontend](https://github.com/JerryI/wolfr
 
 You may change port mapping in the starting sequence.
 
+## How to update an image
+To feath a new version, you need to purge the old one including a named volume
+
+```bash
+docker stop wljs
+docker rm wljs
+docker volume rm wljs_data
+docker system prune -a
+```
+
+And clear browser's cache as well.
 
 
 ## Features
