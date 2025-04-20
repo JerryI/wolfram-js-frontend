@@ -151,7 +151,7 @@
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
       "./Electron/build/**/",
-      "./Electron/build/pdfjs/**",
+      "./Electron/pdfjs/**",
       "./bundle/**"
     ],
     "asar": false
