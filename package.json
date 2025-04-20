@@ -151,6 +151,7 @@
       "./Electron/preload_log.js",
       "./Electron/build/**/*",
       "./Electron/build/**/",
+      "./Electron/build/pdfjs/**",
       "./bundle/**"
     ],
     "asar": false
@@ -199,10 +200,10 @@
     "fs-extra": "^11.1.1",
     "mica-electron": "^1.5.5",
     "native-prompt": "^2.1.4",
+    "node-ensure": "^0.0.0",
     "node-fetch": "^3.3.2",
     "node-stream-zip": "^1.15.0",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "2.3",
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.0.1",
     "random-words": "^2.0.0",

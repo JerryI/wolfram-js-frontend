@@ -64,7 +64,7 @@ trackpadUtils.onForceClick(() => {
 
 
 const { Canvas, createCanvas, Image, ImageData } = require("@napi-rs/canvas")
-const pdfjsLib = require("pdfjs-dist");
+const pdfjsLib = require("./pdfjs/pdf");
 const { PDFDocument } = require('pdf-lib');
 //pdf-tools
 
@@ -105,7 +105,7 @@ async function cropPdfBuffer(inputBuffer, margin = 10, pageNumber = 1) {
   }
   
   async function getVisualBoundingBox(pdfBuffer, pageNumber = 1, scale = 2.0) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = require.resolve('pdfjs-dist/build/pdf.worker.js');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = require.resolve('./pdfjs/pdf.worker.js');
     const loadingTask = pdfjsLib.getDocument({ data: pdfBuffer });
     const pdf = await loadingTask.promise;
   
