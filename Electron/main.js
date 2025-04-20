@@ -62,6 +62,92 @@ trackpadUtils.onForceClick(() => {
 	console.log("onForceClick");
 });
 
+
+const { Canvas, createCanvas, Image, ImageData } = require("@napi-rs/canvas")
+const pdfjsLib = require("pdfjs-dist");
+const { PDFDocument } = require('pdf-lib');
+//pdf-tools
+
+const NodeCanvasFactory = {
+    create: (width, height) => {
+      const canvas = createCanvas(width, height);
+      return {
+        canvas,
+        context: canvas.getContext('2d'),
+      };
+    },
+    reset: (canvasAndContext, width, height) => {
+      canvasAndContext.canvas.width = width;
+      canvasAndContext.canvas.height = height;
+    },
+    destroy: (canvasAndContext) => {
+      canvasAndContext.canvas = null;
+      canvasAndContext.context = null;
+    },
+  };
+
+async function cropPdfBuffer(inputBuffer, margin = 10, pageNumber = 1) {
+    const bbox = await getVisualBoundingBox(inputBuffer, pageNumber);
+  
+    const pdfDoc = await PDFDocument.load(inputBuffer);
+    const page = pdfDoc.getPages()[pageNumber - 1];
+    const pageWidth = page.getWidth();
+    const pageHeight = page.getHeight();
+  
+    const x = Math.max(0, bbox.x - margin);
+    const y = Math.max(0, bbox.y - margin);
+    const width = Math.min(pageWidth - x, bbox.width + 2 * margin);
+    const height = Math.min(pageHeight - y, bbox.height + 2 * margin);
+  
+    page.setCropBox(x, y, width, height);
+  
+    return await pdfDoc.save();
+  }
+  
+  async function getVisualBoundingBox(pdfBuffer, pageNumber = 1, scale = 2.0) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = require.resolve('pdfjs-dist/build/pdf.worker.js');
+    const loadingTask = pdfjsLib.getDocument({ data: pdfBuffer });
+    const pdf = await loadingTask.promise;
+  
+    const page = await pdf.getPage(pageNumber);
+    const viewport = page.getViewport({ scale });
+  
+    const canvasFactory = NodeCanvasFactory;
+    const canvasAndContext = canvasFactory.create(viewport.width, viewport.height);
+    const canvas = canvasAndContext.canvas;
+    const context = canvasAndContext.context;
+  
+    await page.render({ canvasContext: context, viewport, canvasFactory: canvasFactory }).promise;
+  
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height).data;
+  
+    let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+  
+    for (let y = 0; y < canvas.height; y++) {
+      for (let x = 0; x < canvas.width; x++) {
+        const idx = (y * canvas.width + x) * 4;
+        const r = imageData[idx];
+        const g = imageData[idx + 1];
+        const b = imageData[idx + 2];
+        const a = imageData[idx + 3];
+  
+        const isNotWhite = !(r === 255 && g === 255 && b === 255 && a === 255);
+        if (isNotWhite) {
+          minX = Math.min(minX, x);
+          maxX = Math.max(maxX, x);
+          minY = Math.min(minY, y);
+          maxY = Math.max(maxY, y);
+        }
+      }
+    }
+  
+    return {
+      x: minX / scale,
+      y: (canvas.height - maxY) / scale,
+      width: (maxX - minX) / scale,
+      height: (maxY - minY) / scale,
+    };
+  }
 const cli_info = {
     'darwin': {
         cliPath: '/usr/local/bin/',
@@ -2069,6 +2155,23 @@ app.whenReady().then(() => {
 
     ipcMain.handle('system-window-zoom-get', async (e) => {
         return e.sender.getZoomLevel()+1;
+    });
+
+    ipcMain.handle('print-pdf', async (e, opts) => {
+        const promiseBuf = await e.sender.printToPDF({
+            printBackground:false,
+            ...opts
+        });
+
+        const margin = opts.margin || 10;
+
+        if (opts.crop) {
+            console.log('Cropping...');
+            const cropped = await cropPdfBuffer(promiseBuf, margin)
+            return cropped
+        }
+
+        return promiseBuf
     });
 
     ipcMain.on('install-cli', () => {

@@ -130,6 +130,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
         cbk(result);
       });  
   },
+
+  toPDF: (params, cbk) => {
+    ipcRenderer.invoke('print-pdf', params).then((result) => {
+      cbk(result);
+    });
+  },
+  
   
   searchText: (searchText, direction) => ipcRenderer.send('search-text', { searchText, direction }),
   stopSearch: () => ipcRenderer.send('stop-search')

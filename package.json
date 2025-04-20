@@ -77,7 +77,10 @@
       ]
     },
     "linux": {
-      "target": ["deb", "zip"],      
+      "target": [
+        "deb",
+        "zip"
+      ],
       "artifactName": "wljs-notebook-${version}-${arch}-gnulinux.${ext}",
       "fileAssociations": [
         {
@@ -106,7 +109,7 @@
       ]
     },
     "win": {
-      "target": "NSIS",        
+      "target": "NSIS",
       "icon": "./Electron/build/512x512.ico",
       "artifactName": "wljs-notebook-${version}-${arch}-win.${ext}",
       "fileAssociations": [
@@ -163,18 +166,19 @@
   "homepage": "https://github.com/JerryI/wolfram-js-frontend#readme",
   "devDependencies": {
     "@electron/notarize": "^2.3.0",
+    "@playwright/test": "^1.51.0",
     "@rollup/plugin-commonjs": "^24.0.1",
+    "@types/node": "^22.13.10",
     "electron": "32.2.5",
     "electron-builder": "^25.1.8",
     "rollup": "^3.29.3",
     "rollup-plugin-combine": "^2.1.1",
     "serve-static": "^1.14.1",
-    "systemjs": "^6.14.1",
-    "@playwright/test": "^1.51.0",
-    "@types/node": "^22.13.10"   
+    "systemjs": "^6.14.1"
   },
   "dependencies": {
     "@electron/packager": "^18.3.1",
+    "@napi-rs/canvas": "^0.1.69",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -191,19 +195,20 @@
     "electron-notarize": "^1.2.2",
     "electron-trackpad-utils": "^1.0.1",
     "electron-updater": "^6.3.9",
-    "fflate": "^0.8.0",
     "fkill": "^9.0.0",
     "fs-extra": "^11.1.1",
     "mica-electron": "^1.5.5",
     "native-prompt": "^2.1.4",
     "node-fetch": "^3.3.2",
     "node-stream-zip": "^1.15.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "2.3",
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.0.1",
     "random-words": "^2.0.0",
     "sudo-prompt": "^9.2.1",
     "tailwindcss": "^3.4.1",
-    "xterm": "^5.3.0" 
+    "xterm": "^5.3.0"
   },
   "overrides": {
     "globalthis": "npm:@nolyfill/globalthis@^1",
