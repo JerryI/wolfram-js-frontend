@@ -1,0 +1,88 @@
+name: Build for GNULinux 
+on: workflow_dispatch
+jobs:
+  build-x86:
+    runs-on: ubuntu-latest
+    container:
+      image: wolframresearch/wolframengine:14.2
+      options: --user root
+    env:
+      WOLFRAM_SYSTEM_ID: Linux-x86-64-v8
+    steps:
+      - name: Install build tools
+        run: |
+          apt-get -y update
+          apt-get -y install build-essential
+          apt-get -y install libuv1-dev
+
+      - name: Install Git in container
+        run: |
+          apt-get -y update
+          apt-get -y install git
+          # one time fix to avoid permission problems later on
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      # Checks-out the repository under $GITHUB_WORKSPACE.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0         
+          token: ${{ secrets.GH_TOKEN }}           
+
+      - name: Compile function
+        env:
+          WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
+        run: |
+          wolframscript -script ./Scripts/BuildLibrary.wls /usr/include/ /usr/lib/x86_64-linux-gnu/libuv.so
+
+      - name: Commit files
+        run: |
+          git config pull.rebase false        
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add LibraryResources/
+          git add UV/
+          git commit -m "Add binary for ${{ env.WOLFRAM_SYSTEM_ID }}"
+          git pull
+          git push 
+
+  build-ARM:
+    runs-on: ubuntu-24.04-arm
+    env:
+      WOLFRAM_SYSTEM_ID: Linux-ARM
+      WOLFRAMENGINE_CACHE_KEY: WolframEngine-BA
+      WOLFRAMENGINE_INSTALLATION_DIRECTORY: "/Applications/Wolfram Engine.app"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Install WE
+        run: |
+            set -eux -o pipefail
+            chmod +x ./.github/workflows/install_arm.sh
+            WE_MODE=install bash ./.github/workflows/install_arm.sh
+            sudo apt install libuv1-dev -y
+
+
+      - name: Compile function
+        env:
+          WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
+        run: |
+          /opt/Wolfram/WolframEngine/14.1/SystemFiles/Kernel/Binaries/Linux-ARM64/wolframscript -debug -verbose -script ./Scripts/BuildLibrary.wls /usr/include /usr/lib/aarch64-linux-gnu/libuv.so
+
+
+      - name: Commit files
+        run: |
+          git config pull.rebase true
+          git fetch
+          git pull
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add LibraryResources/
+          git add UV/
+          git commit -m "Add binary for ${{ env.WOLFRAM_SYSTEM_ID }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}
