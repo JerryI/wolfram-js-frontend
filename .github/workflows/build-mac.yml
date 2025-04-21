@@ -28,11 +28,6 @@ jobs:
           brew install libuv
           echo 'Installed Wolfram Engine.'
 
-      - name: Install Python build deps via Homebrew
-        run: |
-          brew install python@3.12
-          pip3 install --user setuptools
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -44,9 +39,17 @@ jobs:
           node -v
           npm -v
 
-      - name: Install dependencies
+      - name: Set up Python virtual environment for node-gyp
         run: |
-          npm i
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          echo "source $PWD/venv/bin/activate" >> $GITHUB_ENV  # persist env
+
+      - name: Install Node.js dependencies
+        run: |
+          source venv/bin/activate
+          npm install
 
       - name: Prepare bundle
         env:
@@ -90,11 +93,6 @@ jobs:
           brew install libuv
           echo 'Installed Wolfram Engine.'
 
-      - name: Install Python build deps via Homebrew
-        run: |
-          brew install python@3.12
-          pip3 install --user setuptools
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -106,9 +104,17 @@ jobs:
           node -v
           npm -v
 
-      - name: Install dependencies
+      - name: Set up Python virtual environment for node-gyp
         run: |
-          npm i
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          echo "source $PWD/venv/bin/activate" >> $GITHUB_ENV  # persist env
+
+      - name: Install Node.js dependencies
+        run: |
+          source venv/bin/activate
+          npm install
 
       - name: Bundle files
         env:
