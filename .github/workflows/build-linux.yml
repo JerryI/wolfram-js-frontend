@@ -147,11 +147,12 @@ jobs:
         run: |
           sudo gem install fpm
 
-      - name: Set environment for FPM
+      - name: Set up Ruby environment
         run: |
           echo "USE_SYSTEM_FPM=true" >> $GITHUB_ENV
-          echo 'GEM_HOME="$(ruby -e "puts Gem.user_dir")"' >> $GITHUB_ENV
-          echo 'PATH="$PATH:$GEM_HOME/bin"' >> $GITHUB_ENV
+          export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+          echo "GEM_HOME=$GEM_HOME" >> $GITHUB_ENV
+          echo "$GEM_HOME/bin" >> $GITHUB_PATH
 
       - name: Display Ruby and FPM info
         run: |
