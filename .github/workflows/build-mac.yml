@@ -28,6 +28,11 @@ jobs:
           brew install libuv
           echo 'Installed Wolfram Engine.'
 
+      - name: Install Python build deps via Homebrew
+        run: |
+          brew install python@3.12
+          pip3 install --user setuptools
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -84,6 +89,11 @@ jobs:
           brew install --cask wolfram-engine
           brew install libuv
           echo 'Installed Wolfram Engine.'
+
+      - name: Install Python build deps via Homebrew
+        run: |
+          brew install python@3.12
+          pip3 install --user setuptools
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
