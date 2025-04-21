@@ -115,8 +115,7 @@ jobs:
 
       - name: Clean up keychain and provisioning profile
         run: |
-          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.provisionprofile    
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db  
 
 
   build-MacOSX-x64:
@@ -219,3 +218,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |
           npm run dist-mac86          
+
+      - name: Clean up keychain and provisioning profile
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db           
