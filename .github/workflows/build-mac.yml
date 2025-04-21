@@ -130,6 +130,17 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}        
 
+      - name: Install Python 3.11
+        run: |
+          brew install python@3.11
+          echo "/opt/homebrew/opt/python@3.11/bin" >> $GITHUB_PATH
+          echo "PYTHON=/opt/homebrew/opt/python@3.11/bin/python3.11" >> $GITHUB_ENV
+
+      - name: Check Python version
+        run: |
+          python3.11 -V
+          which python3.11
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -141,11 +152,16 @@ jobs:
           node -v
           npm -v
 
-      - name: Set up Python virtual environment
+      - name: Create Python virtual environment
         run: |
-          python3 -m venv venv
+          python3.11 -m venv venv
           source venv/bin/activate
           pip install --upgrade pip setuptools wheel
+
+      - name: Install Node.js dependencies
+        run: |
+          source venv/bin/activate
+          npm install
 
       - name: Install the Apple certificate and provisioning profile
         env:
