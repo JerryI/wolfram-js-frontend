@@ -125,7 +125,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '23'  # or '25', etc.
+          node-version: 'latest'  # or '25', etc.
           architecture: 'x86'
 
       - name: Verify Node.js
