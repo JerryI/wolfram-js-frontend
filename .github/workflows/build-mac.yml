@@ -13,6 +13,28 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}        
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'  # or '25', etc.
+          architecture: 'arm64'
+
+      - name: Verify Node.js
+        run: |
+          node -v
+          npm -v
+
+      - name: Set up Python virtual environment
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+
+      - name: Install Node.js dependencies
+        run: |
+          source venv/bin/activate
+          npm install
+
       - name: Cache/restore Wolfram Engine install
         id: cache-restore
         uses: actions/cache@v4
@@ -27,29 +49,6 @@ jobs:
           brew install --cask wolfram-engine
           brew install libuv
           echo 'Installed Wolfram Engine.'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '23'  # or '25', etc.
-          architecture: 'arm64'
-
-      - name: Verify Node.js
-        run: |
-          node -v
-          npm -v
-
-      - name: Set up Python virtual environment for node-gyp
-        run: |
-          python3 -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip setuptools wheel
-          echo "source $PWD/venv/bin/activate" >> $GITHUB_ENV  # persist env
-
-      - name: Install Node.js dependencies
-        run: |
-          source venv/bin/activate
-          npm install
 
       - name: Prepare bundle
         env:
