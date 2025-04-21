@@ -22,7 +22,6 @@ jobs:
 
           $dependenciesToRemove = @(
             "dmg-license",
-            "electron-notarize",
             "electron-trackpad-utils"
           )
 
