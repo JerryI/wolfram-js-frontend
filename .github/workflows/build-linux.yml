@@ -88,26 +88,6 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Install Ruby and dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby ruby-dev build-essential
-
-      - name: Install FPM gem
-        run: |
-          sudo gem install fpm
-
-      - name: Set environment for FPM
-        run: |
-          echo "USE_SYSTEM_FPM=true" >> $GITHUB_ENV
-          echo 'GEM_HOME="$(ruby -e "puts Gem.user_dir")"' >> $GITHUB_ENV
-          echo 'PATH="$PATH:$GEM_HOME/bin"' >> $GITHUB_ENV
-
-      - name: Display Ruby and FPM info
-        run: |
-          echo "Ruby version: $(ruby -v)"
-          echo "FPM version: $(fpm --version)"
-
       - name: Install WE
         run: |
             set -eux -o pipefail
@@ -158,6 +138,25 @@ jobs:
         run: |
           /opt/Wolfram/WolframEngine/14.1/SystemFiles/Kernel/Binaries/Linux-ARM64/wolframscript -debug -verbose -script ./Scripts/bundle.wls
 
+      - name: Install Ruby and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential
+
+      - name: Install FPM gem
+        run: |
+          sudo gem install fpm
+
+      - name: Set environment for FPM
+        run: |
+          echo "USE_SYSTEM_FPM=true" >> $GITHUB_ENV
+          echo 'GEM_HOME="$(ruby -e "puts Gem.user_dir")"' >> $GITHUB_ENV
+          echo 'PATH="$PATH:$GEM_HOME/bin"' >> $GITHUB_ENV
+
+      - name: Display Ruby and FPM info
+        run: |
+          echo "Ruby version: $(ruby -v)"
+          echo "FPM version: $(fpm --version)"
 
       - name: Build electron
         env:
