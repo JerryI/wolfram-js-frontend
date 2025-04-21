@@ -70,6 +70,8 @@ Blazing-fast dynamics, GUI components, and powerful Mathematica syntax enhanceme
 
 ![Dynamic Plots](imgs/manipulatePlot-ezgif.com-optimize.gif)
 
+![Dynamic Plots](imgs/DynamicsFast-ezgif.com-optimize.gif)
+
 ![High-Performance Rendering](imgs/flowerPot-ezgif.com-video-to-gif-converter.gif)
 
 > The entire scene above is generated on the Wolfram Kernel and streamed to WebGL buffers via low-latency binary sockets.
