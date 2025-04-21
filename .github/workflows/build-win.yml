@@ -14,6 +14,30 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}        
 
+      - name: Patch specific dependencies from package.json
+        shell: pwsh
+        run: |
+          $pkgPath = "package.json"
+          $json = Get-Content $pkgPath -Raw | ConvertFrom-Json
+
+          $dependenciesToRemove = @(
+            "dmg-license",
+            "electron-notarize",
+            "electron-trackpad-utils"
+          )
+
+          foreach ($dep in $dependenciesToRemove) {
+            if ($json.dependencies.$dep) {
+              $json.dependencies.PSObject.Properties.Remove($dep)
+            }
+            if ($json.devDependencies.$dep) {
+              $json.devDependencies.PSObject.Properties.Remove($dep)
+            }
+          }
+
+          $json | ConvertTo-Json -Depth 10 | Out-File -Encoding UTF8 $pkgPath
+
+
       - name: Install Node.js manually
         run: |
           Invoke-WebRequest https://nodejs.org/dist/v23.9.0/node-v23.9.0-x64.msi -OutFile nodejs.msi
@@ -77,28 +101,6 @@ jobs:
 
           wolfram -script ./Scripts/bundle.wls
 
-      - name: Patch specific dependencies from package.json
-        shell: pwsh
-        run: |
-          $pkgPath = "package.json"
-          $json = Get-Content $pkgPath -Raw | ConvertFrom-Json
-
-          $dependenciesToRemove = @(
-            "dmg-license",
-            "electron-notarize",
-            "electron-trackpad-utils"
-          )
-
-          foreach ($dep in $dependenciesToRemove) {
-            if ($json.dependencies.$dep) {
-              $json.dependencies.PSObject.Properties.Remove($dep)
-            }
-            if ($json.devDependencies.$dep) {
-              $json.devDependencies.PSObject.Properties.Remove($dep)
-            }
-          }
-
-          $json | ConvertTo-Json -Depth 10 | Out-File -Encoding UTF8 $pkgPath
 
       - name: Build Electron
         run: |
