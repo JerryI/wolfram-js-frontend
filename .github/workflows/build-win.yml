@@ -103,6 +103,8 @@ jobs:
 
 
       - name: Build Electron
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |
           npm run dist-win86
         
