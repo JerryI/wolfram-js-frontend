@@ -44,7 +44,6 @@ jobs:
 
           const depsToRemove = [
             "dmg-license",
-            "electron-notarize",
             "electron-trackpad-utils"
           ];
 
@@ -113,7 +112,6 @@ jobs:
 
           const depsToRemove = [
             "dmg-license",
-            "electron-notarize",
             "electron-trackpad-utils"
           ];
 
