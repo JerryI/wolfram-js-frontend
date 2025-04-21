@@ -130,10 +130,11 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}        
 
-      - name: Install Python 3.11
+      - name: Install Python 3.11 + distutils
         run: |
-          brew install python@3.11 || true
-          brew link --overwrite python@3.11 || brew link python@3.11
+          brew install python@3.11
+          /opt/homebrew/opt/python@3.11/bin/python3.11 -m ensurepip
+          /opt/homebrew/opt/python@3.11/bin/python3.11 -m pip install setuptools
           echo "/opt/homebrew/opt/python@3.11/bin" >> $GITHUB_PATH
           echo "PYTHON=/opt/homebrew/opt/python@3.11/bin/python3.11" >> $GITHUB_ENV
 
@@ -153,15 +154,8 @@ jobs:
           node -v
           npm -v
 
-      - name: Create Python virtual environment
-        run: |
-          python3.11 -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip setuptools wheel
-
       - name: Install Node.js dependencies
         run: |
-          source venv/bin/activate
           npm install
 
       - name: Install the Apple certificate and provisioning profile
@@ -194,11 +188,6 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
-
-      - name: Install Node.js dependencies
-        run: |
-          source venv/bin/activate
-          npm install
 
       - name: Cache/restore Wolfram Engine install
         id: cache-restore
