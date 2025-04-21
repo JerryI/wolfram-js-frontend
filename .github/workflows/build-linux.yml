@@ -36,7 +36,7 @@ jobs:
 
       - name: Patch specific dependencies from package.json
         run: |
-          node <<'EOF'
+          cat << 'EOF' > clean-package-json.js
           const fs = require('fs');
           const path = './package.json';
 
@@ -44,6 +44,7 @@ jobs:
 
           const depsToRemove = [
             "dmg-license",
+            "electron-notarize",
             "electron-trackpad-utils"
           ];
 
@@ -56,7 +57,10 @@ jobs:
           });
 
           fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
-          EOF          
+          EOF
+
+          node clean-package-json.js
+          rm clean-package-json.js        
 
       - name: Install dependencies
         run: npm install                  
@@ -101,7 +105,7 @@ jobs:
 
       - name: Patch specific dependencies from package.json
         run: |
-          node <<'EOF'
+          cat << 'EOF' > clean-package-json.js
           const fs = require('fs');
           const path = './package.json';
 
@@ -109,6 +113,7 @@ jobs:
 
           const depsToRemove = [
             "dmg-license",
+            "electron-notarize",
             "electron-trackpad-utils"
           ];
 
@@ -121,7 +126,10 @@ jobs:
           });
 
           fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
-          EOF          
+          EOF
+
+          node clean-package-json.js
+          rm clean-package-json.js         
 
       - name: Install dependencies
         run: npm install                  
