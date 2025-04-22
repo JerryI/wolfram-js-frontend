@@ -8,9 +8,8 @@ Here is some to-do list grouped by repos
 ## wolfram-js-frontend
 *server, IO, UI, cells manager, render process and client app*
 ### Primary
-- [ ] Electron app auto-updater. Use Github releases to update client app automatically (probably won't work for linux)
+- [x] Electron app auto-updater. Use Github releases to update client app automatically (probably won't work for linux)
 - [ ] tutorials/examples for new users (no WL background) on Wolfram Language
-- [ ] autotests in a format of WLJS notebook, which go though most features
 - [ ] more example on differnet topics (for data-scientists, scientists, students, ...)
 
 *Main repo is stable and there are no urget needs in any refactoring*
@@ -22,7 +21,7 @@ Here is some to-do list grouped by repos
 
 ### Secondary
 - [x] misssing implementations for `FilledCurve`, ...
-- [ ] `GraphicsComplex` with many `Polygon` is too slow. Especially it can be seen on `ContourPlot`, since it produces tons of SVG paths. 
+- [x] `GraphicsComplex` with many `Polygon` is too slow. Especially it can be seen on `ContourPlot`, since it produces tons of SVG paths. 
 
 
 ## wljs-graphics3d-threejs
