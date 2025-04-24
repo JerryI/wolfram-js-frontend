@@ -25,24 +25,56 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0         
-          token: ${{ secrets.GH_TOKEN }}           
+          token: ${{ secrets.GH_TOKEN }}   
 
-      - name: Compile function
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+
+
+      - name: Patch specific dependencies from package.json
+        run: |
+          cat << 'EOF' > clean-package-json.js
+          const fs = require('fs');
+          const path = './package.json';
+
+          const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+
+          const depsToRemove = [
+            "dmg-license",
+            "electron-trackpad-utils"
+          ];
+
+          ['dependencies', 'devDependencies'].forEach(section => {
+            if (pkg[section]) {
+              depsToRemove.forEach(dep => {
+                delete pkg[section][dep];
+              });
+            }
+          });
+
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+          EOF
+
+          node clean-package-json.js
+          rm clean-package-json.js        
+
+      - name: Install dependencies
+        run: npm install                  
+
+      - name: Bundle
         env:
           WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
         run: |
-          wolframscript -script ./Scripts/BuildLibrary.wls /usr/include/ /usr/lib/x86_64-linux-gnu/libuv.so
+          npm run pre-dist
 
-      - name: Commit files
-        run: |
-          git config pull.rebase false        
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add LibraryResources/
-          git add UV/
-          git commit -m "Add binary for ${{ env.WOLFRAM_SYSTEM_ID }}"
-          git pull
-          git push 
+      - name: Build electron
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}       
+        run: npm run dist-linux86
+
 
   build-ARM:
     runs-on: ubuntu-24.04-arm
@@ -52,7 +84,7 @@ jobs:
       WOLFRAMENGINE_INSTALLATION_DIRECTORY: "/Applications/Wolfram Engine.app"
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
 
@@ -64,25 +96,70 @@ jobs:
             sudo apt install libuv1-dev -y
 
 
-      - name: Compile function
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+
+
+      - name: Patch specific dependencies from package.json
+        run: |
+          cat << 'EOF' > clean-package-json.js
+          const fs = require('fs');
+          const path = './package.json';
+
+          const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+
+          const depsToRemove = [
+            "dmg-license",
+            "electron-trackpad-utils"
+          ];
+
+          ['dependencies', 'devDependencies'].forEach(section => {
+            if (pkg[section]) {
+              depsToRemove.forEach(dep => {
+                delete pkg[section][dep];
+              });
+            }
+          });
+
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+          EOF
+
+          node clean-package-json.js
+          rm clean-package-json.js         
+
+      - name: Install dependencies
+        run: npm install                  
+
+      - name: Bundle
         env:
           WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
         run: |
-          /opt/Wolfram/WolframEngine/14.1/SystemFiles/Kernel/Binaries/Linux-ARM64/wolframscript -debug -verbose -script ./Scripts/BuildLibrary.wls /usr/include /usr/lib/aarch64-linux-gnu/libuv.so
+          /opt/Wolfram/WolframEngine/14.1/SystemFiles/Kernel/Binaries/Linux-ARM64/wolframscript -debug -verbose -script ./Scripts/bundle.wls
 
-
-      - name: Commit files
+      - name: Install Ruby and dependencies
         run: |
-          git config pull.rebase true
-          git fetch
-          git pull
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add LibraryResources/
-          git add UV/
-          git commit -m "Add binary for ${{ env.WOLFRAM_SYSTEM_ID }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: ${{ github.ref }}
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential
+
+      - name: Install FPM gem
+        run: |
+          sudo gem install fpm
+
+      - name: Set up Ruby environment
+        run: |
+          echo "USE_SYSTEM_FPM=true" >> $GITHUB_ENV
+          export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+          echo "GEM_HOME=$GEM_HOME" >> $GITHUB_ENV
+          echo "$GEM_HOME/bin" >> $GITHUB_PATH
+
+      - name: Display Ruby and FPM info
+        run: |
+          echo "Ruby version: $(ruby -v)"
+          echo "FPM version: $(fpm --version)"
+
+      - name: Build electron
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}       
+        run: npm run dist-linux

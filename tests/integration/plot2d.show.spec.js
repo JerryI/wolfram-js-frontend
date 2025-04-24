@@ -21,6 +21,31 @@ test.describe('2D Plot', () => {
       browser.close;
   });
 
+  test('Graphics Basics 1', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Graphics[Style[RegularPolygon[5], Orange], ImageSize->100]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsRegularPoly.png']);
+  });
+
+  test('Array Plot', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'ArrayPlot[Table[i*j / 25.0, {i, 5}, {j, 5}]]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'arrayPlot.png']);
+  });
+
+  test('Graphics Basics 2', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, ' Graphics[Table[Circle[{x, 0}, x], {x, 10}], ImageSize->100]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsBasic2.png']);
+  });  
+
+ 
+
+  
+
   test('Contour plot', async () => {
     await clearCell(page);
   

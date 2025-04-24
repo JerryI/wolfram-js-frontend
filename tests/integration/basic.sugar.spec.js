@@ -292,7 +292,24 @@ test.describe('Easy check for most basic decorators', () => {
   
     const outputCell = await evaluate(page, 'GeoGraphics[{EdgeForm[Black], FaceForm[Red], Polygon[Entity["Country", "Italy"]]}]', 18000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'geo.png']);
-  });    
+  });   
+
+  test('Column table', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Table[Column[Range[n]], {n, 8}]', 18000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'ctable.png']);
+  });   
+  
+  test('Moon phase', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'MoonPhase[Now, "Icon"]', 18000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'moon.png']);
+  });  
+  
+  
+  
 
 
 });

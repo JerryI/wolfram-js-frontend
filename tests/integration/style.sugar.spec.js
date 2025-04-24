@@ -203,6 +203,25 @@ test.describe('Wolfram Expressions Styling', () => {
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'short.png']);
   }); 
   
+  test('Style 1000', async () => {
+    await clearCell(page);
   
+    const outputCell = await evaluate(page, 'Style[1000, Background->Green]', 5000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'style1000.png']);
+  }); 
+
+  test('Style 1000 (String)', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Style["1000", Green]', 5000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'style1000string.png']);
+  });   
+  
+  test('Style Scaled (expr)', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Table[Style[100, n], {n, 30}]', 5000);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'styleScaled100.png']);
+  });    
   
 });

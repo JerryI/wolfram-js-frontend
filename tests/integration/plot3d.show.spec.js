@@ -20,6 +20,38 @@ test.describe('3D Plot', () => {
       browser.close;
   });
 
+  test('Graphics3D Basics 1', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Graphics3D[Style[Dodecahedron[], Yellow], ImageSize->150]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsDodecahedron.png']);
+  });
+
+  test('Graphics3D Basics 2', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Graphics3D[Table[Style[Sphere[RandomInteger[10, 3]], Opacity[0.5]], 50]]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsBasic2.png']);
+  });
+
+
+  test('Graphics3D Basics 3', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Graphics3D[{Opacity[0.6], EdgeForm[], Table[{ColorData["Rainbow"][Rescale[c, {0, 2 Pi}]], GeometricTransformation[Tetrahedron[], RotationTransform[c, {0, 0, 1}, {0.5, 0, 0}]]}, {c, 0, 2 Pi, 2 Pi/30}]}]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsBasic3.png']);
+  });
+
+  test('Graphics3D Basics 4 (Lighting)', async () => {
+    await clearCell(page);
+  
+    const outputCell = await evaluate(page, 'Graphics3D[{PointLight[Red, -{2, 2, -2}],PointLight[Green, -{-2, 2, -2}],PointLight[Blue, -{-2, -2, -2}],{Directive["Roughness" -> 1],Icosahedron[1]}}]', 5000, 1500);
+    await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsBasic4.png']);
+  });
+
+
+  
+
   test('Spherical Plot', async () => {
     await clearCell(page);
   
