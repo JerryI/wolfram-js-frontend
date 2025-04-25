@@ -1876,14 +1876,14 @@ function parseCommandLine(input) {
       args: {}
     };
   
-    // Split using regex to preserve quoted values
-    const tokens = input.match(/(?:[^\s"]+|"[^"]*")+/g).map(token =>
-      token.replace(/^"(.+(?="$))"$/, '$1') // remove quotes if quoted
-    );
+    // Match space-separated tokens, preserving quoted strings
+    const tokens =
+      input.match(/(?:[^\s"]+|"[^"]*")+/g)?.map(token =>
+        token.replace(/^"(.+)"$/, "$1") // remove surrounding quotes
+      ) || [];
   
-    if (!tokens.length) return result;
+    if (tokens.length === 0) return result;
   
-    // First token is the command name
     result.command = tokens[0];
   
     let i = 1;
@@ -1892,25 +1892,23 @@ function parseCommandLine(input) {
   
       if (token.startsWith("-")) {
         const key = token.replace(/^-+/, "");
-  
-        // If the next token exists and is not a flag, treat it as a value
         const next = tokens[i + 1];
+  
         if (next && !next.startsWith("-")) {
-          result.args[key] = next;
+          // Encode only the full value (quoted if needed)
+          result.args[key] = encodeURIComponent(next);
           i += 2;
         } else {
-          result.args[key] = true; // flag-style key
+          result.args[key] = true; // boolean flag
           i += 1;
         }
       } else {
-        // Unexpected token without flag, skip or handle
         i += 1;
       }
     }
   
     return result;
   }
-
 // Behaviour on the second instance for the parent process
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
 if (!gotSingleInstanceLock) app.quit();
@@ -1929,18 +1927,37 @@ else {
 
 
 
-      
+            const urlencArg = argv.find(arg => typeof arg === "string" && arg.startsWith("urlenc_"));
 
-            const protocolEncoded = new RegExp('urlenc_(.*)').exec(argv[argv.length - 1]);
-            if (protocolEncoded) {
-                const decoded = parseCommandLine(decodeURIComponent(protocolEncoded[1]));
+            if (urlencArg) {
+              const raw = urlencArg
+                .replace(/^urlenc_/, '')   // remove prefix
+                .replace(/\n/g, '')        // remove embedded newlines
+                .replace(/\r/g, '');       // remove carriage returns if present
+            
+              let decodedStr;
+              try {
+                decodedStr = decodeURIComponent(raw);
+              } catch (err) {
+                throw new Error("Failed to decode URL-encoded CLI input: " + err.message);
+              }
+            
+              console.log(decodedStr);
+              const parsed = parseCommandLine(decodedStr);
+              console.log(parsed);
+            
+              parsed.type = 'cmd_' + parsed.command;
+            
+              create_window({
+                url: server.url.default('local') + `/protocol/` + encodeURIComponent(JSON.stringify(parsed)),
+                title: 'WLJS Notebook',
+                focus: true,
+                show: false
+              });
+            
+              return;
+            } 
 
-                console.log(decoded);
-                decoded.type = 'cmd_'+decoded.command;
-
-                create_window({url: server.url.default('local') + `/protocol/` + encodeURIComponent(JSON.stringify(decoded)), title:'WLJS Notebook', focus: true, show: false});
-                return;                
-            }
 
             const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(argv[argv.length - 1]);
             if (protocol) {
