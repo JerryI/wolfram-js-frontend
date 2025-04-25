@@ -39,7 +39,7 @@ if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
 
 # Case 2: wljs -v (version info)
 elif [ "\$1" = "-v" ] || [ "\$1" = "--version" ]; then
-  echo "wljs version 0.1"
+  echo "v0.1"
 
 # Case 3: wljs -c some command
 elif [ "\$1" = "-c" ]; then
