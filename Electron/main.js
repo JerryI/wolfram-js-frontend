@@ -1870,6 +1870,46 @@ app.on('activate', () => {
     }
 })
 
+function parseCommandLine(input) {
+    const result = {
+      command: null,
+      args: {}
+    };
+  
+    // Split using regex to preserve quoted values
+    const tokens = input.match(/(?:[^\s"]+|"[^"]*")+/g).map(token =>
+      token.replace(/^"(.+(?="$))"$/, '$1') // remove quotes if quoted
+    );
+  
+    if (!tokens.length) return result;
+  
+    // First token is the command name
+    result.command = tokens[0];
+  
+    let i = 1;
+    while (i < tokens.length) {
+      const token = tokens[i];
+  
+      if (token.startsWith("-")) {
+        const key = token.replace(/^-+/, "");
+  
+        // If the next token exists and is not a flag, treat it as a value
+        const next = tokens[i + 1];
+        if (next && !next.startsWith("-")) {
+          result.args[key] = next;
+          i += 2;
+        } else {
+          result.args[key] = true; // flag-style key
+          i += 1;
+        }
+      } else {
+        // Unexpected token without flag, skip or handle
+        i += 1;
+      }
+    }
+  
+    return result;
+  }
 
 // Behaviour on the second instance for the parent process
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
@@ -1884,6 +1924,23 @@ else {
             windows.log.print(argv[0]);
             windows.log.print(argv[1]);
             windows.log.print(argv);
+
+            console.log(argv);
+
+
+
+      
+
+            const protocolEncoded = new RegExp('urlenc_(.*)').exec(argv[argv.length - 1]);
+            if (protocolEncoded) {
+                const decoded = parseCommandLine(decodeURIComponent(protocolEncoded[1]));
+
+                console.log(decoded);
+                decoded.type = 'cmd_'+decoded.command;
+
+                create_window({url: server.url.default('local') + `/protocol/` + encodeURIComponent(JSON.stringify(decoded)), title:'WLJS Notebook', focus: true, show: false});
+                return;                
+            }
 
             const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(argv[argv.length - 1]);
             if (protocol) {

@@ -28,10 +28,37 @@ cat << EOF > "$file_path"
 
 APP_PATH="$app_path"
 
-# Handle single '.' case
+# URL encode function (pure bash)
+urlencode() {
+  local raw="\$1"
+  local encoded=""
+  local i char hex
+
+  for (( i = 0; i < \${#raw}; i++ )); do
+    char="\${raw:\$i:1}"
+    case "\$char" in
+      [a-zA-Z0-9.~_-]) encoded+="\$char" ;;
+      *) printf -v hex '%%%02X' "'\$char"
+         encoded+="\$hex"
+         ;;
+    esac
+  done
+  echo "\$encoded"
+}
+
+# Case 1: wljs .
 if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
     TARGET_PATH="\$(realpath ".")"
     "\$APP_PATH" "\$TARGET_PATH"
+
+# Case 2: wljs -c some command with args
+elif [ "\$1" = "-c" ]; then
+    shift
+    CMD_STRING="\$*"
+    ENCODED=\$(urlencode "\$CMD_STRING")
+    "\$APP_PATH" "urlenc_\$ENCODED"
+
+# Case 3: anything else
 else
     "\$APP_PATH" "\$@"
 fi
