@@ -48,6 +48,9 @@ elif [ "\$1" = "-c" ]; then
   ENCODED=\$(urlencode "\$CMD_STRING")
   "\$APP_PATH" "urlenc_\${ENCODED}"
 
+elif [ "\$1" = "-c" ]; then
+  echo "v.01"
+
 # Case 3: passthrough
 else
   "\$APP_PATH" "\$@"
