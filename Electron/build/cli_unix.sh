@@ -37,7 +37,11 @@ if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
   TARGET_PATH="\$(realpath ".")"
   "\$APP_PATH" "\$TARGET_PATH"
 
-# Case 2: wljs -c some command
+# Case 2: wljs -v (version info)
+elif [ "\$1" = "-v" ] || [ "\$1" = "--version" ]; then
+  echo "wljs version 0.1"
+
+# Case 3: wljs -c some command
 elif [ "\$1" = "-c" ]; then
   shift
   CMD_STRING=""
@@ -48,10 +52,7 @@ elif [ "\$1" = "-c" ]; then
   ENCODED=\$(urlencode "\$CMD_STRING")
   "\$APP_PATH" "urlenc_\${ENCODED}"
 
-elif [ "\$1" = "-v" ]; then
-  echo "v.01"
-
-# Case 3: passthrough
+# Case 4: passthrough
 else
   "\$APP_PATH" "\$@"
 fi
