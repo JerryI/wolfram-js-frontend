@@ -58,7 +58,11 @@ elif [ "\$1" = "-c" ]; then
     ENCODED=\$(urlencode "\$CMD_STRING")
     "\$APP_PATH" "urlenc_\$ENCODED"
 
-# Case 3: anything else
+# Case 3: wljs -v return version
+elif [ "\$1" = "-v" ]; then
+    echo "v.01"  
+
+# Case 4: anything else
 else
     "\$APP_PATH" "\$@"
 fi
