@@ -16,8 +16,8 @@ if [ ! -d "$target_dir" ]; then
   exit 1
 fi
 
-# Set the application path from the second argument
-app_path="$2"
+# Set the application path from the second argument (resolve to absolute path)
+app_path=$(realpath "$2")
 
 # Define the target file path
 file_path="$target_dir/wljs"
@@ -27,12 +27,17 @@ cat << EOF > "$file_path"
 #!/bin/bash
 
 APP_PATH="$app_path"
-                                        
-P=\$(realpath "\$@")
-"\$APP_PATH" "\$P"
+
+# Handle single '.' case
+if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
+    TARGET_PATH="\$(realpath ".")"
+    "\$APP_PATH" "\$TARGET_PATH"
+else
+    "\$APP_PATH" "\$@"
+fi
 EOF
 
-# Make the file executable (if needed)
+# Make the file executable
 chmod +x "$file_path"
 
 # Confirm file creation
