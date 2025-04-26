@@ -1913,7 +1913,7 @@ function parseCommandLine(input) {
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
 if (!gotSingleInstanceLock) app.quit();
 else {
-    app.on('second-instance', (_, argv) => {
+    app.on('second-instance', async (_, argv) => {
         //User requested a second instance of the app.
         //argv has the process.argv arguments of the second instance.
         //on windows IT SENDS --allow-file-access-from-files as a second argument.!!!
@@ -1948,14 +1948,16 @@ else {
             
               parsed.type = 'cmd_' + parsed.command;
             
-              create_window({
-                url: server.url.default('local') + `/protocol/` + encodeURIComponent(JSON.stringify(parsed)),
-                title: 'WLJS Notebook',
-                focus: true,
-                show: false
-              });
+
+              const response = await net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsed)))
+              if (response.ok) {
+                const body = await response.json()
+                console.log(body);
+              }
+
+
             
-              return;
+                return;
             } 
 
 

@@ -318,7 +318,32 @@ Script[Rule["Secret", Secret_]] := With[{},
 ];
 
 
+CMDAPIHandler[request_] := With[{
+  Secret = CreateUUID[], 
+  GlobalControls  = CreateUUID[],
+  Path = defaultHomeFolder,
+  Protocol = If[StringTake[#, -1] === "/", StringDrop[#, -1], # ] &@ (If[StringTake[#, 1] === "/", StringDrop[#, 1], #] &@ URLDecode @ StringDrop[request["Path"], 
+    Switch[$OperatingSystem,
+      "Windows", 
+      StringLength["/cmdapi/"], 
+      "Linux",
+      StringLength["cmdapi"],
+      _,  
+      StringLength["cmdapi/"] 
+    ]
+  ]) 
+ },
+      With[{msg = ImportString[Protocol, "RawJSON"]},
+        Echo[msg];
+        With[{reply = EventFire[AppProtocol, msg["type"], Join[<|"URL" -> Protocol, "KernelList"->kernels|>, msg]]},
+          reply
+        ]
+      ]
+]
+
+
 http["MessageHandler", "Protocol"] = AssocMatchQ[<|"Path" -> "/protocol/" ~~ ___|>] -> middleware[App];
+http["MessageHandler", "CMD API"] = AssocMatchQ[<|"Path" -> "/cmdapi/" ~~ ___|>] -> middleware[CMDAPIHandler];
 
 
 
