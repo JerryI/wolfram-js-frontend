@@ -1,5 +1,7 @@
 <h1 align="center">Open-Source Notebook Interface for Wolfram Language</h1>
-<h2 align="center">Your Next-Gen Digital Notebook for Physics, Math, and Data Science</h2>
+<h2 align="center">Next-Gen Digital Notebook for Physics, Math, and Data Science</h2>
+
+It is the first open-source solution featuring true 2D math input combined with powerful syntax sugar and the fastest granular interactive evaluation engine, making it ideal for advanced mathematical workflows, scientific computing, and data exploration.
 
 ![Preview](imgs/Toster.png)
 
@@ -10,18 +12,12 @@
 </div>
 
 <h3 align="center">
-  <a href="https://wljs.io/frontend/Overview">Overview 🚀</a> &nbsp;&nbsp; 
-  <a href="https://wljs.io/wljs-demo">Demo 📺</a>
+  <a href="https://wljs.io/">Overview 🚀</a> &nbsp;&nbsp; 
+  <a href="https://wljs.io/wljs-demo">Online demo 📺</a>
 </h3>
 
-The notebook combines live code in WL, JS, Mermaid and many more, GUI blocks for user input, equations, narrative text, visualizations, interactive widgets
+The notebook combines live code in WL, JS, Mermaid and many more, GUI blocks for user input, equations, narrative text, visualizations, interactive widgets.
 
-- [x] Write reproducible notebooks with no external dependencies
-- [x] Publish interactive notebooks online or give to a college on a thumb-drive
-- [x] Blazingly fast dynamic, realtime 2D/3D graphics and sound output
-- [x] Hackable rich sandbox with 5+ cell types
-- [x] Open-source frontend written in Vanilla JS and Wolfram Language
-- [x] Develop interactive widgets & small apps for your sci-tools collection  
 
 <div class="note">
   <p>
@@ -39,7 +35,6 @@ __Developed through the collaboration of physicists and programmers. Designed fo
 
 ## Resources
 
-- **[WLJS Notebook Demonstration Project](https://wljs.io/wljs-demo)** 🎉 A collection of notebooks demonstrating Wolfram Language and the dynamic features of our frontend.
 - **[Documentation & Tutorials](https://wljs.io/)** 📔
 - **[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)** 🐺
 - **[Freeware Wolfram Language](https://www.wolfram.com/engine/)**
@@ -49,6 +44,13 @@ __Developed through the collaboration of physicists and programmers. Designed fo
 **Recommended [Wolfram Engine](https://www.wolfram.com/engine/): Version 13.3 or higher**
 
 > The algorithms, functions, and other components of the Wolfram Language provided by the Wolfram Engine are the intellectual property of Wolfram Research, Inc.
+
+## We need your support
+As an independent open-source project, we’re unaffiliated with Wolfram or any company. Your support keeps this project alive:
+
+- [ ] +1 ⭐️ on this Github repo
+- [ ] Share it with your colleague
+- [ ] [Buy us a coffee](https://wljs.io/sponsorship) ☕️
 
 ## Showcase
 
