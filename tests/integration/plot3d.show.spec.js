@@ -30,7 +30,7 @@ test.describe('3D Plot', () => {
   test('Graphics3D Basics 2', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'Graphics3D[Table[Style[Sphere[RandomInteger[10, 3]], Opacity[0.5]], 50]]', 5000, 1500);
+    const outputCell = await evaluate(page, 'SeedRandom[10]; Graphics3D[Table[Style[Sphere[RandomInteger[10, 3]], Opacity[0.5]], 50]]', 5000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'graphicsBasic2.png']);
   });
 
