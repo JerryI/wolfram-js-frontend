@@ -36,26 +36,7 @@ set "exePath=%~2"
     echo     set "TARGET_PATH=!CD!"
     echo     call "!APP_PATH!" "!TARGET_PATH!"
     echo     goto :eof
-    echo ^)
-
-echo :: Handle -c with URL encoding
-echo if "%%~1"=="-c" ^(
-echo     shift
-echo     set CMD_STRING=
-echo     :buildcmd
-echo     if "%%~1"=="" goto endcmd
-echo     set CMD_STRING=!CMD_STRING! "%%~1"
-echo     shift
-echo     goto buildcmd
-echo     :endcmd
-echo     rem URL encode the entire command string (preserve spaces)
-echo     for /f "delims=" %%E in ^('powershell -nologo -command "[uri]::EscapeDataString('!CMD_STRING!')"^') do set "ENCODED=%%%%E"
-echo     echo Encoded command: !ENCODED!
-echo     call "!APP_PATH!" "urlenc_!ENCODED!"
-echo     goto :eof
-echo ^)
-
-    
+    echo ^)    
 
     echo rem Passthrough
     echo call "%%APP_PATH%%" %%*

@@ -216,7 +216,7 @@ function check_cli_installed(log_window) {
         return;
     }
 
-    fs.exists(cli_info[process.platform].cliLink, (existsQ) => {
+    fs.exists(path.join(installationFolder, '.cli_i'), (existsQ) => {
         if (existsQ) {
             console.log('Cli is installed');
             return;
@@ -247,6 +247,10 @@ function check_cli_installed(log_window) {
                   function(error, stdout, stderr) {
                     if (error) throw error;
                     console.log('stdout: ' + stdout);
+
+                    fs.writeFile(path.join(installationFolder, '.cli_i'), 'Nothing to see here', function(err) {
+                        if (err) throw err;
+                    });                    
                   }
                 );
         }
@@ -1870,41 +1874,36 @@ app.on('activate', () => {
     }
 })
 
-function parseCommandLine(input) {
-    const result = {
-      command: null,
-      args: {}
-    };
+function parseArgs(args) {
+    const result = {};
+    const pendingFlags = [];
+    const booleanShortFlags = ['cdn']; // flags like -cdn that are boolean
+    const startIndex = 1; // skip the path at index 0
   
-    // Match space-separated tokens, preserving quoted strings
-    const tokens =
-      input.match(/(?:[^\s"]+|"[^"]*")+/g)?.map(token =>
-        token.replace(/^"(.+)"$/, "$1") // remove surrounding quotes
-      ) || [];
+    for (let i = startIndex; i < args.length; i++) {
+      const arg = args[i];
   
-    if (tokens.length === 0) return result;
-  
-    result.command = tokens[0];
-  
-    let i = 1;
-    while (i < tokens.length) {
-      const token = tokens[i];
-  
-      if (token.startsWith("-")) {
-        const key = token.replace(/^-+/, "");
-        const next = tokens[i + 1];
-  
-        if (next && !next.startsWith("-")) {
-          // Encode only the full value (quoted if needed)
-          result.args[key] = encodeURIComponent(next);
-          i += 2;
+      if (arg.startsWith('--')) {
+        result[arg.slice(2)] = true;
+      } else if (arg.startsWith('-')) {
+        const flag = arg.slice(1);
+        if (booleanShortFlags.includes(flag)) {
+          result[flag] = true;
         } else {
-          result.args[key] = true; // boolean flag
-          i += 1;
+          pendingFlags.push(flag);
         }
       } else {
-        i += 1;
+        // Not a flag: assign it to the next pending short flag
+        const flag = pendingFlags.shift();
+        if (flag) {
+          result[flag] = arg;
+        }
       }
+    }
+  
+    // Assign empty string to any flags that didn't get a value
+    for (const flag of pendingFlags) {
+      result[flag] = '';
     }
   
     return result;
@@ -1924,32 +1923,15 @@ else {
             windows.log.print(argv);
 
             console.log(argv);
+            const parsedCommndLine = parseArgs(argv);
+            console.log(parsedCommndLine);
+
+            if (parsedCommndLine.c) {
+              console.log('Parsed command line parameters');
+              console.log(parsedCommndLine);
 
 
-
-            const urlencArg = argv.find(arg => typeof arg === "string" && arg.startsWith("urlenc_"));
-
-            if (urlencArg) {
-              const raw = urlencArg
-                .replace(/^urlenc_/, '')   // remove prefix
-                .replace(/\n/g, '')        // remove embedded newlines
-                .replace(/\r/g, '');       // remove carriage returns if present
-            
-              let decodedStr;
-              try {
-                decodedStr = decodeURIComponent(raw);
-              } catch (err) {
-                throw new Error("Failed to decode URL-encoded CLI input: " + err.message);
-              }
-            
-              console.log(decodedStr);
-              const parsed = parseCommandLine(decodedStr);
-              console.log(parsed);
-            
-              parsed.type = 'cmd_' + parsed.command;
-            
-
-              const response = await net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsed)))
+              const response = await net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsedCommndLine)))
               if (response.ok) {
                 const body = await response.json()
                 console.log(body);
@@ -2638,9 +2620,15 @@ function create_first_window() {
         buildMenu({plugins: pluginsMenu.items});
     }
 
+    const parsedCommndLine = parseArgs(process.argv);
+    const commandOnly = parsedCommndLine.c;
+
+    if (commandOnly) net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsedCommndLine)))
+   
+
     //Windows/Unix open a file
-    if (!isMac && server.startedQ && !server.running && process.argv[1]) {
-        console.log('OPEN a FILE WIN/Linux');
+    if (!isMac && server.startedQ && !server.running && process.argv[1] && !commandOnly) {
+        console.log('OPEN a FILE WIN/Linux'); 
 
 
         const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(process.argv[process.argv.length - 1]);
@@ -2662,17 +2650,20 @@ function create_first_window() {
                 }
             }
 
-            if (isFile(process.argv[pos])) {
-                app.addRecentDocument(process.argv[pos]);
-                create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
-            } else {
-                if (typeof process.argv[pos] == 'string') {
-                    create_window({url: server.url.default() + '/folder/' + encodeURIComponent(process.argv[pos]), title:  path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+        
+
+                if (isFile(process.argv[pos])) {
+                    app.addRecentDocument(process.argv[pos]);
+                    create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
                 } else {
-                    create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
+                    if (typeof process.argv[pos] == 'string') {
+                        create_window({url: server.url.default() + '/folder/' + encodeURIComponent(process.argv[pos]), title:  path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+                    } else {
+                        create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
+                    }
+
                 }
-                
-            }
+            
 
         } else  {
             create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
@@ -2683,7 +2674,7 @@ function create_first_window() {
     }
 
     //Mac
-    if (isMac && server.startedQ && !server.running && server.protocol) {
+    if (isMac && server.startedQ && !server.running && server.protocol && !commandOnly) {
         console.log('OPEN a URL on OSX');
 
         //app.addRecentDocument(server.path.requested);
@@ -2695,7 +2686,7 @@ function create_first_window() {
     }
 
     //Mac
-    if (isMac && server.startedQ && !server.running && server.path.requested) {
+    if (isMac && server.startedQ && !server.running && server.path.requested && !commandOnly) {
         console.log('OPEN a FILE OSX');
 
         app.addRecentDocument(server.path.requested);

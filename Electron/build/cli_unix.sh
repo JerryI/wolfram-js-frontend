@@ -41,18 +41,7 @@ if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
 elif [ "\$1" = "-v" ] || [ "\$1" = "--version" ]; then
   echo "v0.1"
 
-# Case 3: wljs -c some command
-elif [ "\$1" = "-c" ]; then
-  shift
-  CMD_STRING=""
-  for arg in "\$@"; do
-    CMD_STRING+="\\\"\$arg\\\" "
-  done
-  CMD_STRING="\${CMD_STRING% }"
-  ENCODED=\$(urlencode "\$CMD_STRING")
-  "\$APP_PATH" "urlenc_\${ENCODED}"
-
-# Case 4: passthrough
+# Case 3: passthrough
 else
   "\$APP_PATH" "\$@"
 fi

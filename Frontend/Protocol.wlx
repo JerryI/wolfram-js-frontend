@@ -335,7 +335,7 @@ CMDAPIHandler[request_] := With[{
  },
       With[{msg = ImportString[Protocol, "RawJSON"]},
         Echo[msg];
-        With[{reply = EventFire[AppProtocol, msg["type"], Join[<|"URL" -> Protocol, "KernelList"->kernels|>, msg]]},
+        With[{reply = EventFire[AppProtocol, msg["c"], Join[<|"URL" -> Protocol, "KernelList"->kernels|>, msg]]},
           reply
         ]
       ]
