@@ -357,7 +357,6 @@ pluginsMenu.fetch = () => {
 let shortcuts_table = require("./shortcuts.json");
 if (fs.existsSync(path.join(installationFolder, "Electron", "shortcuts.json"))) {
     shortcuts_table = JSON.parse(fs.readFileSync(path.join(installationFolder, "Electron", "shortcuts.json"), 'utf8'));
-    console.log(shortcuts_table);
 } 
 
 const { spawnSync, spawn } = require('child_process');
