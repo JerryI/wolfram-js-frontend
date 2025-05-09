@@ -35,6 +35,22 @@ addAfterHelper[notebook_, {uid_, data_}] := With[{},
     ]
 ]
 
+addBeforeHelper[notebook_, uid_] := With[{},
+    (*/* request from the client with event provided */*)
+
+    With[{o = cell`HashMap[uid] (*`*)},
+        cell`CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
+    ]
+]
+
+addBeforeHelper[notebook_, {uid_, data_}] := With[{},
+    (*/* request from the client with event provided */*)
+
+    With[{o = cell`HashMap[uid] (*`*)},
+        cell`CellObj["Notebook"->notebook, "Data"->data, "Before"-> o];   
+    ]
+]
+
 addListeners[notebook_nb`NotebookObj, secret_String, client_, parameters_, extensions__] := Module[{clonedEvent = EventClone[notebook]},
     (* /* don't clone Notebook event, must be one ! */ *)
     EventHandler[clonedEvent, {
@@ -879,13 +895,7 @@ Component[OptionsPattern[]] := With[{
             ]
         ],        
 
-        "AddBefore" -> Function[uid,
-            (*/* request from the client with event provided */*)
-
-            With[{o = cell`HashMap[uid] (*`*)},
-                cell`CellObj["Notebook"->notebook, "Data"->"", "Before"-> o];   
-            ]
-        ],        
+        "AddBefore" -> (addBeforeHelper[notebook, ##]&),        
 
         Global`Forwarded[type_] (*`*):> Function[data,
             (*/* redirected events to Controls */*)

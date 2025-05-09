@@ -28,12 +28,22 @@ cat << EOF > "$file_path"
 
 APP_PATH="$app_path"
 
-# Handle single '.' case
+urlencode() {
+  echo -n "\$1" | xxd -plain | tr -d '\\n' | sed 's/../%&/g' | tr 'a-f' 'A-F'
+}
+
+# Case 1: wljs .
 if [ "\$#" -eq 1 ] && [ "\$1" = "." ]; then
-    TARGET_PATH="\$(realpath ".")"
-    "\$APP_PATH" "\$TARGET_PATH"
+  TARGET_PATH="\$(realpath ".")"
+  "\$APP_PATH" "\$TARGET_PATH"
+
+# Case 2: wljs -v (version info)
+elif [ "\$1" = "-v" ] || [ "\$1" = "--version" ]; then
+  echo "v0.1"
+
+# Case 3: passthrough
 else
-    "\$APP_PATH" "\$@"
+  "\$APP_PATH" "\$@"
 fi
 EOF
 

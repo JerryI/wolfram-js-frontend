@@ -216,7 +216,7 @@ function check_cli_installed(log_window) {
         return;
     }
 
-    fs.exists(cli_info[process.platform].cliLink, (existsQ) => {
+    fs.exists(path.join(installationFolder, '.cli_i'), (existsQ) => {
         if (existsQ) {
             console.log('Cli is installed');
             return;
@@ -247,6 +247,10 @@ function check_cli_installed(log_window) {
                   function(error, stdout, stderr) {
                     if (error) throw error;
                     console.log('stdout: ' + stdout);
+
+                    fs.writeFile(path.join(installationFolder, '.cli_i'), 'Nothing to see here', function(err) {
+                        if (err) throw err;
+                    });                    
                   }
                 );
         }
@@ -353,7 +357,6 @@ pluginsMenu.fetch = () => {
 let shortcuts_table = require("./shortcuts.json");
 if (fs.existsSync(path.join(installationFolder, "Electron", "shortcuts.json"))) {
     shortcuts_table = JSON.parse(fs.readFileSync(path.join(installationFolder, "Electron", "shortcuts.json"), 'utf8'));
-    console.log(shortcuts_table);
 } 
 
 const { spawnSync, spawn } = require('child_process');
@@ -1870,12 +1873,45 @@ app.on('activate', () => {
     }
 })
 
-
+function parseArgs(args) {
+    const result = {};
+    const pendingFlags = [];
+    const booleanShortFlags = ['cdn']; // flags like -cdn that are boolean
+    const startIndex = 1; // skip the path at index 0
+  
+    for (let i = startIndex; i < args.length; i++) {
+      const arg = args[i];
+  
+      if (arg.startsWith('--')) {
+        result[arg.slice(2)] = true;
+      } else if (arg.startsWith('-')) {
+        const flag = arg.slice(1);
+        if (booleanShortFlags.includes(flag)) {
+          result[flag] = true;
+        } else {
+          pendingFlags.push(flag);
+        }
+      } else {
+        // Not a flag: assign it to the next pending short flag
+        const flag = pendingFlags.shift();
+        if (flag) {
+          result[flag] = arg;
+        }
+      }
+    }
+  
+    // Assign empty string to any flags that didn't get a value
+    for (const flag of pendingFlags) {
+      result[flag] = '';
+    }
+  
+    return result;
+  }
 // Behaviour on the second instance for the parent process
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
 if (!gotSingleInstanceLock) app.quit();
 else {
-    app.on('second-instance', (_, argv) => {
+    app.on('second-instance', async (_, argv) => {
         //User requested a second instance of the app.
         //argv has the process.argv arguments of the second instance.
         //on windows IT SENDS --allow-file-access-from-files as a second argument.!!!
@@ -1884,6 +1920,27 @@ else {
             windows.log.print(argv[0]);
             windows.log.print(argv[1]);
             windows.log.print(argv);
+
+            console.log(argv);
+            const parsedCommndLine = parseArgs(argv);
+            console.log(parsedCommndLine);
+
+            if (parsedCommndLine.c) {
+              console.log('Parsed command line parameters');
+              console.log(parsedCommndLine);
+
+
+              const response = await net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsedCommndLine)))
+              if (response.ok) {
+                const body = await response.json()
+                console.log(body);
+              }
+
+
+            
+                return;
+            } 
+
 
             const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(argv[argv.length - 1]);
             if (protocol) {
@@ -2044,7 +2101,7 @@ app.whenReady().then(() => {
     //make a log window and start WL
     windows.log.construct((log_window) => {
         windows.log.version(app.getVersion());
-        check_cli_installed(log_window);
+        
         ipcMain.on('reinstall', () => {
             reinstall((state) => {
                 if (state) {
@@ -2466,6 +2523,7 @@ app.whenReady().then(() => {
 
 function start_server (window) {
     console.log('Started! app');
+    if (window) check_cli_installed(window);
     // app.quit();
     if (!server.startedQ) {
         windows.log.clear();
@@ -2562,9 +2620,15 @@ function create_first_window() {
         buildMenu({plugins: pluginsMenu.items});
     }
 
+    const parsedCommndLine = parseArgs(process.argv);
+    const commandOnly = parsedCommndLine.c;
+
+    if (commandOnly) net.fetch(server.url.default('local') + `/cmdapi/` + encodeURIComponent(JSON.stringify(parsedCommndLine)))
+   
+
     //Windows/Unix open a file
-    if (!isMac && server.startedQ && !server.running && process.argv[1]) {
-        console.log('OPEN a FILE WIN/Linux');
+    if (!isMac && server.startedQ && !server.running && process.argv[1] && !commandOnly) {
+        console.log('OPEN a FILE WIN/Linux'); 
 
 
         const protocol = new RegExp('wljs-url-message:\/\/(.*)').exec(process.argv[process.argv.length - 1]);
@@ -2586,17 +2650,20 @@ function create_first_window() {
                 }
             }
 
-            if (isFile(process.argv[pos])) {
-                app.addRecentDocument(process.argv[pos]);
-                create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
-            } else {
-                if (typeof process.argv[pos] == 'string') {
-                    create_window({url: server.url.default() + '/folder/' + encodeURIComponent(process.argv[pos]), title:  path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+        
+
+                if (isFile(process.argv[pos])) {
+                    app.addRecentDocument(process.argv[pos]);
+                    create_window({url: server.url.default() + '/' + encodeURIComponent(process.argv[pos]), title: path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
                 } else {
-                    create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
+                    if (typeof process.argv[pos] == 'string') {
+                        create_window({url: server.url.default() + '/folder/' + encodeURIComponent(process.argv[pos]), title:  path.basename(process.argv[pos]), show: false, focus: true, cacheClear: server.wasUpdated});
+                    } else {
+                        create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
+                    }
+
                 }
-                
-            }
+            
 
         } else  {
             create_window({url: server.url.default(), title: 'Default', show: false, focus: false, cacheClear: server.wasUpdated});
@@ -2607,7 +2674,7 @@ function create_first_window() {
     }
 
     //Mac
-    if (isMac && server.startedQ && !server.running && server.protocol) {
+    if (isMac && server.startedQ && !server.running && server.protocol && !commandOnly) {
         console.log('OPEN a URL on OSX');
 
         //app.addRecentDocument(server.path.requested);
@@ -2619,7 +2686,7 @@ function create_first_window() {
     }
 
     //Mac
-    if (isMac && server.startedQ && !server.running && server.path.requested) {
+    if (isMac && server.startedQ && !server.running && server.path.requested && !commandOnly) {
         console.log('OPEN a FILE OSX');
 
         app.addRecentDocument(server.path.requested);
