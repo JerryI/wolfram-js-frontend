@@ -2102,7 +2102,7 @@ app.whenReady().then(() => {
     //make a log window and start WL
     windows.log.construct((log_window) => {
         windows.log.version(app.getVersion());
-        check_cli_installed(log_window);
+        
         ipcMain.on('reinstall', () => {
             reinstall((state) => {
                 if (state) {
@@ -2524,6 +2524,7 @@ app.whenReady().then(() => {
 
 function start_server (window) {
     console.log('Started! app');
+    if (window) check_cli_installed(window);
     // app.quit();
     if (!server.startedQ) {
         windows.log.clear();
