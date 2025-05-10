@@ -1,73 +1,76 @@
 name: Autotest
-on: workflow_dispatch
-jobs:
-  runs-on: macos-latest
-  env:
-    WOLFRAM_SYSTEM_ID: MacOSX-ARM
-    WOLFRAMENGINE_CACHE_KEY: WolframEngine-B
-    WOLFRAMENGINE_INSTALLATION_DIRECTORY: "/Applications/Wolfram Engine.app"
-  steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.GH_TOKEN }}        
-    - name: Install Python 3.11
-      run: |
-        brew install python@3.11
-        echo "/opt/homebrew/opt/python@3.11/bin" >> $GITHUB_PATH
-        echo "PYTHON=/opt/homebrew/opt/python@3.11/bin/python3.11" >> $GITHUB_ENV
-    - name: Check Python version
-      run: |
-        python3.11 -V
-        which python3.11
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '23'  # or '25', etc.
-        architecture: 'arm64'
-    - name: Verify Node.js
-      run: |
-        node -v
-        npm -v
-    - name: Create Python virtual environment
-      run: |
-        python3.11 -m venv venv
-        source venv/bin/activate
-        pip install --upgrade pip setuptools wheel
-    - name: Install Node.js dependencies
-      run: |
-        source venv/bin/activate
-        npm install
-    - name: Cache/restore Wolfram Engine install
-      id: cache-restore
-      uses: actions/cache@v4
-      with:
-        path: ${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}
-        key: wolframengine-${{ env.WOLFRAM_SYSTEM_ID }}-${{ env.WOLFRAMENGINE_CACHE_KEY }}
-    - name: Install Wolfram Engine
-      if: steps.cache-restore.outputs.cache-hit != 'true'
-      run: |
-        echo 'Installing Wolfram Engine...'
-        brew install --cask wolfram-engine
-        brew install libuv
-        echo 'Installed Wolfram Engine.'
-    - name: Prepare bundle
-      env:
-        WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
-        WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
-        WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"
-      run: |
-        export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
-        timeout 260s bash -c "wolframscript -f Scripts/start.wls | tee /tmp/wolfram.log | grep -q 'Open http://'"
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 3
+on: workflow_dispatch
+
+jobs:
+  autotest:
+    runs-on: macos-latest
+    env:
+      WOLFRAM_SYSTEM_ID: MacOSX-ARM
+      WOLFRAMENGINE_CACHE_KEY: WolframEngine-B
+      WOLFRAMENGINE_INSTALLATION_DIRECTORY: "/Applications/Wolfram Engine.app"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}        
+      - name: Install Python 3.11
+        run: |
+          brew install python@3.11
+          echo "/opt/homebrew/opt/python@3.11/bin" >> $GITHUB_PATH
+          echo "PYTHON=/opt/homebrew/opt/python@3.11/bin/python3.11" >> $GITHUB_ENV
+      - name: Check Python version
+        run: |
+          python3.11 -V
+          which python3.11
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'  # or '25', etc.
+          architecture: 'arm64'
+      - name: Verify Node.js
+        run: |
+          node -v
+          npm -v
+      - name: Create Python virtual environment
+        run: |
+          python3.11 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+      - name: Install Node.js dependencies
+        run: |
+          source venv/bin/activate
+          npm install
+      - name: Cache/restore Wolfram Engine install
+        id: cache-restore
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}
+          key: wolframengine-${{ env.WOLFRAM_SYSTEM_ID }}-${{ env.WOLFRAMENGINE_CACHE_KEY }}
+      - name: Install Wolfram Engine
+        if: steps.cache-restore.outputs.cache-hit != 'true'
+        run: |
+          echo 'Installing Wolfram Engine...'
+          brew install --cask wolfram-engine
+          brew install libuv
+          echo 'Installed Wolfram Engine.'
+      - name: Prepare bundle
+        env:
+          WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
+          WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
+          WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"
+        run: |
+          export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
+          timeout 260s bash -c "wolframscript -f Scripts/start.wls | tee /tmp/wolfram.log | grep -q 'Open http://'"
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 3
       
