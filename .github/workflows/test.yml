@@ -2,6 +2,10 @@ name: Autotest
 
 on: workflow_dispatch
 
+# WL cannot spawn evaluation kernel using entitlements
+# LinkObject::linkd: Unable to communicate with closed link LinkObject["/Applications/Wolfram Engine.app/Contents/Resources/Wolfram Player.app/Contents/MacOS/WolframKernel" -wstp, 6290, 13].
+# >> $Failed
+
 jobs:
   autotest:
     runs-on: macos-latest
@@ -54,6 +58,10 @@ jobs:
           brew install --cask wolfram-engine
           brew install libuv
           echo 'Installed Wolfram Engine.'
+
+      - name: Install GNU timeout
+        run: |
+          brew install coreutils          
       - name: Prepare bundle
         env:
           WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
@@ -61,8 +69,19 @@ jobs:
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
-          timeout 260s bash -c "wolframscript -f Scripts/start.wls | tee /tmp/wolfram.log | grep -q 'Open http://'"
-
+          # Start script, stream logs to console and file
+          gtimeout 260s bash -c '
+            wolframscript -f Scripts/start.wls | tee /tmp/wolfram.log &
+            pid=$!
+            while ! grep -q "Open http://" /tmp/wolfram.log; do
+              sleep 1
+              if ! kill -0 $pid 2>/dev/null; then
+                echo "❌ wolframscript exited early before printing expected output."
+                exit 1
+              fi
+            done
+            echo "✅ Found expected signal: Open http://"
+          '
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
