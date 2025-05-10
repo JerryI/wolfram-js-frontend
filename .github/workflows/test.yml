@@ -71,22 +71,32 @@ jobs:
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
           brew install coreutils
-          echo "Starting Wolfram server..."
+          echo "Authenticating Wolfram..."
+          wolframscript -authenticate "$WOLFRAM_ID" "$WOLFRAM_PASS"
+          wolframscript -activate
+
+          echo "Starting Wolfram server in background..."
           wolframscript -f Scripts/start.wls > /tmp/wolfram.log 2>&1 &
           echo $! > wolfram.pid
-          echo "Waiting for signal..."
-
+      
+          # Start log tailing in background
+          tail -f /tmp/wolfram.log &
+          TAIL_PID=$!
+      
+          echo "Waiting up to 260s for 'Open http://'..."
           for i in {1..260}; do
             if grep -q "Open http://" /tmp/wolfram.log; then
-              echo "✅ Found 'Open http://' in logs."
+              echo "✅ Wolfram server is ready."
+              kill $TAIL_PID
               break
             fi
             sleep 1
           done
-
+      
           if ! grep -q "Open http://" /tmp/wolfram.log; then
-            echo "❌ Wolfram server failed to start within timeout."
-            cat /tmp/wolfram.log
+            echo "❌ Timeout: Wolfram server did not start in time."
+            kill $TAIL_PID
+            tail -n 20 /tmp/wolfram.log
             exit 1
           fi
       - name: Install Playwright Browsers
