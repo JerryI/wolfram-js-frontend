@@ -62,7 +62,7 @@ jobs:
       - name: Install GNU timeout
         run: |
           brew install coreutils          
-      - name: Prepare bundle
+      - name: Start Wolfram server in background
         env:
           WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
           WOLFRAM_ID: "${{ secrets.WOLFRAM_ID }}"
@@ -70,24 +70,25 @@ jobs:
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
-          # Activate
-          echo $WOLFRAM_ID
-          echo $WOLFRAM_PASS
-          wolframscript -authenticate $WOLFRAM_ID $WOLFRAM_PASS
-          wolframscript -activate
-          # Start script, stream logs to console and file
-          gtimeout 260s bash -c '
-            wolframscript -f Scripts/start.wls | tee /tmp/wolfram.log &
-            pid=$!
-            while ! grep -q "Open http://" /tmp/wolfram.log; do
-              sleep 1
-              if ! kill -0 $pid 2>/dev/null; then
-                echo "❌ wolframscript exited early before printing expected output."
-                exit 1
-              fi
-            done
-            echo "✅ Found expected signal: Open http://"
-          '
+          brew install coreutils
+          echo "Starting Wolfram server..."
+          wolframscript -f Scripts/start.wls > /tmp/wolfram.log 2>&1 &
+          echo $! > wolfram.pid
+          echo "Waiting for signal..."
+
+          for i in {1..260}; do
+            if grep -q "Open http://" /tmp/wolfram.log; then
+              echo "✅ Found 'Open http://' in logs."
+              break
+            fi
+            sleep 1
+          done
+
+          if ! grep -q "Open http://" /tmp/wolfram.log; then
+            echo "❌ Wolfram server failed to start within timeout."
+            cat /tmp/wolfram.log
+            exit 1
+          fi
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
