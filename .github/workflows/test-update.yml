@@ -68,8 +68,8 @@ jobs:
       - name: Activate WL
         env:
           WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
-          WOLFRAM_ID: "${{ secrets.WOLFRAM_ID }}"
-          WOLFRAM_PASS: "${{ secrets.WOLFRAM_PASS }}"
+          WOLFRAM_ID: "${{ secrets.WOLFRAM_ID2 }}"
+          WOLFRAM_PASS: "${{ secrets.WOLFRAM_PASS2 }}"
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
@@ -81,8 +81,8 @@ jobs:
       - name: Run tests with live Wolfram logs
         env:
           WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
-          WOLFRAM_ID: "${{ secrets.WOLFRAM_ID }}"
-          WOLFRAM_PASS: "${{ secrets.WOLFRAM_PASS }}"
+          WOLFRAM_ID: "${{ secrets.WOLFRAM_ID2 }}"
+          WOLFRAM_PASS: "${{ secrets.WOLFRAM_PASS2 }}"
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"      
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
