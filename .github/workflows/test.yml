@@ -71,6 +71,8 @@ jobs:
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
           # Activate
+          echo $WOLFRAM_ID
+          echo $WOLFRAM_PASS
           wolframscript -authenticate $WOLFRAM_ID $WOLFRAM_PASS
           wolframscript -activate
           # Start script, stream logs to console and file
