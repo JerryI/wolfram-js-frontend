@@ -121,12 +121,11 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
     ,
       (* we have local versions of all packages *)
       (* we need to compare them to one, which were just loaded via internet *)
-
-      If[!ContainsExactly[Keys[repos], Select[Keys[cache], Function[item, Head[item[[1]]] =!= Anonymous] ] ],
-        Echo["WLJS Extensions >> detected local changes. Ignoring..."];
-      ];  
-      (* UPD: more harm than actualy practical *)
-      (* If[!ContainsExactly[Keys[repos], Select[Keys[cache], Function[item, Head[item[[1]]] =!= Anonymous] ] ],
+  
+      (* UPD: *)
+      (* this check was removed *)
+      
+      If[False && !ContainsExactly[Keys[repos], Select[Keys[cache], Function[item, Head[item[[1]]] =!= Anonymous] ] ],
         Echo["WLJS Extensions >> out of sync! Danger! The data will be deleted" ];
         With[{
           temp = FileNameJoin[{projectDir, "wljs_packages_backup"}],
@@ -136,14 +135,16 @@ Repositories[list_List, OptionsPattern[] ] := Module[{projectDir, info, repos, c
           If[FileExistsQ[temp], DeleteDirectory[temp, DeleteContents->True] ];
           CopyDirectory[origin, temp];
           DeleteDirectory[origin];
-        ]; *)
+        ];
 
         Echo["WLJS Extensions >> installing"];
         repos = InstallPaclet[projectDir] /@ repos;
 
       ,
 
-
+        If[!ContainsExactly[Keys[repos], Select[Keys[cache], Function[item, Head[item[[1]]] =!= Anonymous] ] ],
+          Echo["WLJS Extensions >> note: local changes detected. "];
+        ];
 
         current    =  (#->cache[#])&/@ Intersection[Keys[repos], Keys[cache] ] // Association;
         new = (#->repos[#])&/@ Complement[Keys[repos], Keys[cache] ] // Association;
