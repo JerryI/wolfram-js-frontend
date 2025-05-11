@@ -75,20 +75,18 @@ jobs:
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
           brew install coreutils
           echo "Authenticating Wolfram..."
-          wolframscript -authenticate "$WOLFRAM_ID" "$WOLFRAM_PASS"
-          wolframscript -activate
+          echo "Skipped..."
 
       - name: Run tests with live Wolfram logs
         env:
           WOLFRAMENGINE_EXECUTABLES_DIRECTORY: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/Resources/Wolfram Player.app/Contents/MacOS"
-          WOLFRAM_ID: "${{ secrets.WOLFRAM_ID }}"
-          WOLFRAM_PASS: "${{ secrets.WOLFRAM_PASS }}"
+          WOLFRAMSCRIPT_ENTITLEMENTID: ${{ secrets.WOLFRAM_LICENSE_ENTITLEMENT_ID }}
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"      
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
 
           echo "🚀 Starting Wolfram server..."
-          wolframscript -f Scripts/start.wls > /tmp/wolfram.log 2>&1 &
+          wolframscript -f Scripts/start.wls -entitlement "$WOLFRAMSCRIPT_ENTITLEMENTID" > /tmp/wolfram.log 2>&1 &
           echo $! > wolfram.pid
 
           echo "📺 Tailing logs..."
