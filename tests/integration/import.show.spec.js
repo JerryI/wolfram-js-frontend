@@ -39,14 +39,14 @@ test.describe('Cell types', () => {
 
   test('Import markdown', async () => {
     await page.goto('http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'import.md')));
-    await delay(4000);
+    await delay(6000);
 
     await expect(page).toHaveScreenshot(['screenshorts', 'markdown.png']);
   });  
 
   test('Import html', async () => {
     await page.goto('http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'import.html')));
-    await delay(4000);
+    await delay(6000);
 
     await expect(page).toHaveScreenshot(['screenshorts', 'html.png']);
   });     

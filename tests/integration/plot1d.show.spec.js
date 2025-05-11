@@ -13,7 +13,7 @@ test.describe('1D Plot', () => {
       page.route('**', route => route.continue());
       
       await page.goto(url);
-      await delay(4000);
+      await delay(6000);
   });
 
   test.afterAll(async ({ browser }) => {

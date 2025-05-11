@@ -15,7 +15,7 @@ test.describe('Easy check for most basic decorators', () => {
       page.route('**', route => route.continue());
 
       await page.goto(url);
-      await delay(4000);
+      await delay(6000);
   });
 
   test.afterAll(async ({ browser }) => {
