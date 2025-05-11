@@ -1,4 +1,4 @@
-<h1 align="center">Open-Source Notebook Interface for Wolfram Language</h1>
+<h1 align="center">WLJS Notebook</h1>
 <h2 align="center">Next-Gen Digital Notebook for Physics, Math, and Data Science</h2>
 
 It is the first open-source solution featuring true 2D math input combined with powerful syntax sugar and the fastest granular interactive evaluation engine, making it ideal for advanced mathematical workflows, scientific computing, and data exploration.
@@ -27,21 +27,20 @@ The notebook combines live code in WL, JS, Mermaid and many more, GUI blocks for
     You don’t need Mathematica installed to use WLJS Notebook. <b>No subscription required</b>—just a one-time registration at <em>wolfram.com</em> for personal use.
   </p>
   <p>
-    See the <a href="https://www.wolfram.com/legal/terms/wolfram-engine.html">license agreement</a> for details.
+    See the <a href="https://www.wolfram.com/legal/terms/wolfram-engine.html">license agreement</a> for commercial use.
   </p>
 </div>
 
-__Developed through the collaboration of physicists and programmers. Designed for real-world applications in science ⚗️, math 🧮, and education 📚.__  
 
 ## Resources
 
 - **[Documentation & Tutorials](https://wljs.io/)** 📔
+- **[Freeware Wolfram Language Interpreter](https://www.wolfram.com/engine/)**
 - **[Wolfram Language Introduction](https://www.wolfram.com/language/elementary-introduction/3rd-ed/01-starting-out-elementary-arithmetic.html)** 🐺
-- **[Freeware Wolfram Language](https://www.wolfram.com/engine/)**
 - **[Github Discussions](https://github.com/JerryI/wolfram-js-frontend/discussions)** 💬
 - **[Telegram Support Chat](https://t.me/wljs_support)** 🐴
 
-**Recommended [Wolfram Engine](https://www.wolfram.com/engine/): Version 13.3 or higher**
+**Recommended [Wolfram Engine](https://www.wolfram.com/engine/): Version > 13.3**
 
 > The algorithms, functions, and other components of the Wolfram Language provided by the Wolfram Engine are the intellectual property of Wolfram Research, Inc.
 
@@ -60,17 +59,16 @@ Pages featuring real-world problems solved using WLJS Notebook, published as int
 ### **[WLJS Notebook Demonstration Project](https://wljs.io/wljs-demo)** 🔗
 Notebooks presented as static web pages showcasing various examples demonstrating the power of Wolfram Language and our frontend.
 
-## Highlights
+## Why WLJS Notebook?
 
-### Not Just Another Jupyter-Like Notebook 🧨
-Blazing-fast dynamics, GUI components, and powerful Mathematica syntax enhancements out of the box.
+### Feels like Mathematica and Jupyter
+WLJS Notebook is compatible with Wolfram Mathematica and has a flat and minimal notebook structure like in Jupyter Lab. All power of Wolfram Language standard library is at your hands
 
-![alt text](imgs/Isingspins-ezgif.com-optipng.png)
+### Batteries included
+More than 200 importers/exporters formats. Vast standard library of Wolfram Mathematica (Language) for every computational need, from data analysis to visualization, symbolic computation, and beyond
 
-- No more static pre-rendered graphics! Most native Mathematica plotting functions are supported.
-- Optimized for real-time dynamics and interactivity.
-
-![Dynamic Plots](imgs/manipulatePlot-ezgif.com-optimize.gif)
+### Interactive & Powerful
+WLJS Notebook is optimized for interactive computing and allows to make complex real-time computations like these ones below
 
 ![Dynamic Plots](imgs/DynamicsFast-ezgif.com-optimize.gif)
 
@@ -78,9 +76,6 @@ Blazing-fast dynamics, GUI components, and powerful Mathematica syntax enhanceme
 
 > The entire scene above is generated on the Wolfram Kernel and streamed to WebGL buffers via low-latency binary sockets.
 
-[🔗 Interactive Fluid Simulation](https://wljs.io/blog/2024/08/18/fluid-1)
-
-![Fluid Simulation](./imgs/fuid.webp)
 
 ### Command Palette & GUI-in-Code Emulation 🎨
 ### Native Math Input/Output in the Code Editor 🧮
@@ -105,8 +100,8 @@ Or use toolboxes for complex structures like integrals, summations, and Greek le
 
 ![Command Palette](https://github.com/JerryI/wolfram-js-frontend/assets/4111822/5f24d9d2-bd36-40df-85c8-c50cbc37a8cd)
 
-### Integrate Your Favorite JavaScript Libraries
-Extend your data visualization capabilities with JavaScript integrations.
+### Javascript Sandbox
+First class support of Javascript and with a dedicated IPC channel to Wolfram Kernel
 
 ![JS Libraries](./imgs/libJS-ezgif.com-optimize.gif)
 
