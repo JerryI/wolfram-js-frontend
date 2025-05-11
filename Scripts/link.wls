@@ -4,7 +4,9 @@
 
 Pause[2];
 
-With[{l=LinkConnect["36831", LinkProtocol->"TCPIP"]}, 
+With[{tcplink = Position[$CommandLine, "-tcplink"]},
+
+With[{l=LinkConnect[If[Length[tcplink] > 0, $CommandLine[[tcplink[[1]] + 1]], "36831"], LinkProtocol->"TCPIP"]}, 
     LinkActivate[l]; 
     While[True, 
         With[{r = LinkRead[l]},
@@ -17,5 +19,5 @@ With[{l=LinkConnect["36831", LinkProtocol->"TCPIP"]},
         ];
         
     ]
-]
+] ]
 
