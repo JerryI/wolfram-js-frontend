@@ -160,8 +160,28 @@ unlink[k_LocalKernelObject] := With[{},
 start[k_LocalKernelObject] := Module[{link},
     LTPServerStart[];
 
-    Echo[">> Starting using path: "<>k["wolframscript"] ];
-    link = LinkLaunch[ k["wolframscript"] ];
+    If[Length[Cases[$CommandLine, "-entitlement"] ] > 0,
+        Echo["LocalKernel >> WARNING: Entitlement mode detected!"];
+        Echo["LocalKernel >> WARNING: Entitlement mode detected!"];
+        Echo["LocalKernel >> WARNING: Entitlement mode detected!"];
+        Echo["LocalKernel >> WARNING: evaluation kernel might not work properly"];
+        Echo["LocalKernel >> Please use normal authentification with login and password next time"];
+
+        link = LinkCreate["36831", LinkProtocol -> "TCPIP"];
+        Echo["LocalKernel >> starting secondary wolframscript process"];
+        
+        With[{e = $CommandLine[[Flatten[{Position[$CommandLine, "-entitlement"]}][[1]] + 1]]},
+            StartProcess[{"wolframscript", "-entitlement", e, "-f", FileNameJoin[{"Scripts", "link.wls"}] } ] // Echo ;
+        ];
+        
+
+        Print["LocalKernel >> Waiting the client to respond."];
+        LinkActivate[link];
+        Print["LocalKernel >> Got IT!"];
+    ,
+        Echo["LocalKernel >> Starting using path: "<>k["wolframscript"] ];
+        link = LinkLaunch[ k["wolframscript"] ];
+    ];
 
     k["Dead"] = False;
 
