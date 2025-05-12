@@ -1,7 +1,6 @@
 BeginPackage["CoffeeLiqueur`Notebook`LocalKernel`", {"JerryI`Misc`Async`", "JerryI`Misc`Events`", "JerryI`Misc`Events`Promise`", "KirillBelov`Objects`", "KirillBelov`Internal`",  "KirillBelov`LTP`", "KirillBelov`TCPServer`", "KirillBelov`CSockets`"}]
 
 LocalKernel;
-LTPServerStart;
 
 
 Begin["`Private`"]
@@ -14,7 +13,10 @@ CreateType[LocalKernelObject, GenericKernel`Kernel, {"RootDirectory"->Directory[
 
 LocalKernel[opts___] := LocalKernelObject[opts]
 
+ltpRunning = False;
 LTPServerStart[port_:36800] := With[{},
+    If[ltpRunning, Return[] ];
+    ltpRunning = True;
     Echo[">> Starting local LTP server ..."];
 
     tcp = TCPServer[];
@@ -156,8 +158,37 @@ unlink[k_LocalKernelObject] := With[{},
 ]
 
 start[k_LocalKernelObject] := Module[{link},
-    Echo[">> Starting using path: "<>k["wolframscript"] ];
-    link = LinkLaunch[ k["wolframscript"] ];
+    LTPServerStart[];
+
+    If[Length[Cases[$CommandLine, "-entitlement"] ] > 0 || Length[Cases[$CommandLine, "-tcplink"] ] > 0, Module[{addr = "36831"},
+        Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
+        Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
+        Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
+        Echo["LocalKernel >> WARNING: Evaluation might be slow"];
+        Echo["LocalKernel >> WARNING: Print outputs might not work"];
+
+        With[{tcplink = Position[$CommandLine, "-tcplink"]},
+            If[Length[tcplink] > 0,
+                link = LinkCreate[$CommandLine[[tcplink[[1]] + 1]], LinkProtocol -> "TCPIP"];
+            ,
+                link = LinkCreate[addr, LinkProtocol -> "TCPIP"];
+                Echo["LocalKernel >> starting secondary wolframscript process"];
+
+                With[{e = $CommandLine[[Flatten[{Position[$CommandLine, "-entitlement"]}][[1]] + 1]]},
+                    StartProcess[{"wolframscript", "-tcplink", addr,  "-entitlement", e, "-f", FileNameJoin[{"Scripts", "link.wls"}] } ] // Echo ;
+                ];
+            ]
+        ];
+
+        
+
+        Print["LocalKernel >> Waiting the client to respond."];
+        LinkActivate[link];
+        Print["LocalKernel >> Got IT!"];
+    ],
+        Echo["LocalKernel >> Starting using path: "<>k["wolframscript"] ];
+        link = LinkLaunch[ k["wolframscript"] ];
+    ];
 
     k["Dead"] = False;
 

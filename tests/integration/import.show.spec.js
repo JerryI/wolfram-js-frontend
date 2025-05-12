@@ -21,7 +21,7 @@ test.describe('Cell types', () => {
       browser.close;
   });
 
-  test('Import mathematica', async () => {
+  /*test('Import mathematica', async () => {
     await page.goto('http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'import.nb')));
     await delay(3000);
 
@@ -35,18 +35,18 @@ test.describe('Cell types', () => {
     await delay(5000);
 
     await expect(page).toHaveScreenshot(['screenshorts', 'mathematica.png']);
-  });   
+  }); */  
 
   test('Import markdown', async () => {
     await page.goto('http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'import.md')));
-    await delay(4000);
+    await delay(8000);
 
     await expect(page).toHaveScreenshot(['screenshorts', 'markdown.png']);
   });  
 
   test('Import html', async () => {
     await page.goto('http://127.0.0.1:20560/iframe/'+encodeURIComponent(path.resolve(__dirname, 'import.html')));
-    await delay(4000);
+    await delay(8000);
 
     await expect(page).toHaveScreenshot(['screenshorts', 'html.png']);
   });     

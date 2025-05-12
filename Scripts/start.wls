@@ -209,8 +209,6 @@ WLJSPackages`Repositories[{
   WLJSPackages`Github -> "https://github.com/JerryI/wljs-api" -> "base"
 }, "Directory" -> Directory[], "MaxVersionDiff"-> 3 ]
 
-LocalKernel`LTPServerStart[];
-
 RandomWord[];
 
 WLJSPackages`Includes["js"];

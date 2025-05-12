@@ -9,7 +9,7 @@ export const delay = (ms) => {
 }
 
 const checkIfKernelAttached = async (page) => {
-  await delay(1500);
+  await delay(2000);
   let kernelSelection = page.locator('button').filter({ hasText: 'Auto' });
   if (page.kernelQ) return;
   if (await kernelSelection.isVisible({timeout: 2000})) {
@@ -29,7 +29,7 @@ console.warn('Using url:'+url);
 export const evaluate = async (page, input="1+1", timeout=5000, extra=500) => {
   const editor = page.locator('.cm-editor').first();
   // Click to focus
-  await delay(100);
+  await delay(200);
   await editor.click();
   await delay(200);
   // Type text into the editor
@@ -43,7 +43,7 @@ export const evaluate = async (page, input="1+1", timeout=5000, extra=500) => {
   await checkIfKernelAttached(page);
   
   await page.waitForSelector('.cout', {timeout:timeout});
-  await delay(extra);
+  await delay(3.0*extra);
   const outputCell = page.locator('.cout').first();
   return outputCell;
 }

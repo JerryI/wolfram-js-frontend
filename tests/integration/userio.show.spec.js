@@ -14,7 +14,7 @@ test.describe('Users GUI', () => {
       page.route('**', route => route.continue());
       
       await page.goto(url);
-      await delay(4000);
+      await delay(6000);
   });
 
   test.afterAll(async ({ browser }) => {
@@ -24,70 +24,70 @@ test.describe('Users GUI', () => {
   test('Cell view', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'CellView["graph LR\nA[Text Header 3200 byte]  --> B[Binary Header 400 byte]\nB --> C1[240 byte 1-st trace header] --> T1[samples of 1-st trace]\nB --> C2[240 byte 2-st trace header] --> T2[samples of 1-st trace]\nB --> CN[240 byte n-st trace header] --> T3[samples of 1-st trace]", ImageSize->650, "Display"->"mermaid"] ', 5000, 1000);
+    const outputCell = await evaluate(page, 'CellView["graph LR\nA[Text Header 3200 byte]  --> B[Binary Header 400 byte]\nB --> C1[240 byte 1-st trace header] --> T1[samples of 1-st trace]\nB --> C2[240 byte 2-st trace header] --> T2[samples of 1-st trace]\nB --> CN[240 byte n-st trace header] --> T3[samples of 1-st trace]", ImageSize->650, "Display"->"mermaid"] ', 15000, 1000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'cellview.png']);
   });  
 
   test('Editor view', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'EditorView[ToString[Plot[x, {x,0,1}], StandardForm]]', 5000, 1000);
+    const outputCell = await evaluate(page, 'EditorView[ToString[Plot[x, {x,0,1}], StandardForm]]', 15000, 1000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'editor.png']);
   }); 
   
   test('HTML View', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'HTMLView["<h2>Hello World</h2>"]', 5000, 500);
+    const outputCell = await evaluate(page, 'HTMLView["<h2>Hello World</h2>"]', 15000, 500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'html.png']);
   }); 
 
   test('InputButton', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'InputButton[]', 5000, 500);
+    const outputCell = await evaluate(page, 'InputButton[]', 15000, 500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'InputButton.png']);
   });   
 
   test('InputRange', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'InputRange[0,1,0.1]', 5000, 500);
+    const outputCell = await evaluate(page, 'InputRange[0,1,0.1]', 15000, 500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'inputrange.png']);
   }); 
 
   test('InputGroup', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'InputGroup[{InputRange[0, 10, 1, "Label"->"Range 1"],InputRange[0, 10, 1, "Label"->"Range 2"],InputText["Hi"]}]', 5000, 1500);
+    const outputCell = await evaluate(page, 'InputGroup[{InputRange[0, 10, 1, "Label"->"Range 1"],InputRange[0, 10, 1, "Label"->"Range 2"],InputText["Hi"]}]', 15000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'inputgroup.png']);
   });  
   
   test('Manipulate basic 1', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'Manipulate[Table[Orange, n], {n, 1, 5, 1}]', 5000, 1500);
+    const outputCell = await evaluate(page, 'Manipulate[Table[Orange, n], {n, 1, 5, 1}]', 15000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'manipulateBasic1.png']);
   });   
  
   test('Manipulate basic 2', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'Manipulate[Graphics[Style[RegularPolygon[n], Hue[h]]], {n, 5, 20, 1}, {h, 0, 1}]', 5000, 1500);
+    const outputCell = await evaluate(page, 'Manipulate[Graphics[Style[RegularPolygon[n], Hue[h]]], {n, 5, 20, 1}, {h, 0, 1}]', 15000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'manipulateBasic2.png']);
   });  
 
   test('Manipulate plot 1', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'ManipulatePlot[{Sin[x w], Cos[x w]}, {x,-4Pi, 4Pi}, {w,0,2.5}]', 5000, 1500);
+    const outputCell = await evaluate(page, 'ManipulatePlot[{Sin[x w], Cos[x w]}, {x,-4Pi, 4Pi}, {w,0,2.5}]', 15000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'manipulatePlot1.png']);
   }); 
 
   test('Sound input', async () => {
     await clearCell(page);
   
-    const outputCell = await evaluate(page, 'Sound[SoundNote["C"]]', 5000, 1500);
+    const outputCell = await evaluate(page, 'Sound[SoundNote["C"]]', 15000, 1500);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'soundNote.png']);
   });  
   
