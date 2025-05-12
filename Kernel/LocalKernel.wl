@@ -164,7 +164,8 @@ start[k_LocalKernelObject] := Module[{link},
         Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
         Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
         Echo["LocalKernel >> WARNING: WSTP Link is TCPIP / Entitlement mode detected"];
-        Echo["LocalKernel >> WARNING: Evaluation might not work properly"];
+        Echo["LocalKernel >> WARNING: Evaluation might be slow"];
+        Echo["LocalKernel >> WARNING: Print outputs might not work"];
 
         With[{tcplink = Position[$CommandLine, "-tcplink"]},
             If[Length[tcplink] > 0,

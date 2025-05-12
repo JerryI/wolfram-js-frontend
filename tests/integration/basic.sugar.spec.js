@@ -274,10 +274,15 @@ test.describe('Easy check for most basic decorators', () => {
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'ctable.png']);
   });   
   
+
+  
+
   test('Moon phase', async () => {
+    await delay(5000);
     await clearCell(page);
   
     const outputCell = await evaluate(page, 'MoonPhase[DateObject[{2025,1,10,18,3},"Instant","Gregorian",2], "Icon"]', 18000);
+    await delay(15000);
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'moon.png']);
   });  
   
