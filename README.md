@@ -51,6 +51,10 @@ As an independent open-source project, we’re unaffiliated with Wolfram or any 
 - [ ] Share it with your colleague
 - [ ] [Buy us a coffee](https://wljs.io/sponsorship) ☕️
 
+---
+
+<a href="https://scoutforge.net/reviews/wljs-notebook/" title="Trusted and reviewed by Scout Forge"><img src="https://scoutforge.net/wp-content/themes/wp-theme/assets/img/badges/badge-light.webp" style="max-width: 300px" alt="Trusted and Reviewed by Scout Forge"></a>
+
 ## Showcase
 
 ### **[Blog Posts](https://wljs.io/blog)** 🔗
