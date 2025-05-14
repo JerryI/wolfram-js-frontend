@@ -1393,21 +1393,25 @@ function create_window(opts, cbk = () => {}) {
         if ((new RegExp(/gptchat/)).exec(options.url)) {
             options.minWidth = 200;
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }
 
         if ((new RegExp(/docFind/)).exec(options.url)) {
             options.width = options.minWidth;
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }
 
         if ((new RegExp(/settings/)).exec(options.url)) {
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }
         
 
         if (new RegExp(/acknowledgments/).exec(options.url)) {
             options.height = 310;
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }
 
         if (new RegExp(/window/).exec(options.url)) {
@@ -1415,6 +1419,7 @@ function create_window(opts, cbk = () => {}) {
             options.width = 500;
             options.height = 500;
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }        
         
 
@@ -1423,6 +1428,7 @@ function create_window(opts, cbk = () => {}) {
             options.width = 576*1024.0/800.0;
             options.height = 520*640.0/600.0;
             options.linuxMenuBar = false;
+            options.contextMenu = false;
         }
 
 
