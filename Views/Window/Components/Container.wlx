@@ -1,7 +1,7 @@
 id = $Options["Window"]["Notebook"]["Hash"];
 Color = If[StringQ[#], #, "teal"]& @ ($Options["Parameters"]["AccentColor"]);
 
-<div class="h-full overflow-y-scroll" id="container-{id}">
+<div class="h-full overflow-hidden" id="container-{id}">
     <style>
         :root {
             --editor-selected-tint: #0088550d;
