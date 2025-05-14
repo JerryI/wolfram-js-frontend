@@ -2404,7 +2404,7 @@ app.whenReady().then(() => {
         const result = await dialog.showOpenDialog({ title: p.title, filters: p.filters || [
             { extensions: p.extension }
         ],
-            properties: p.list? ["multiSelections", "openFile"] : []
+            properties: p.list? ["multiSelections", "openFile"] : ["openFile"]
         });
 
         if (!result.canceled) {
