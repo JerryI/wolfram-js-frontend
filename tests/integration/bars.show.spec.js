@@ -15,6 +15,9 @@ test.describe('Bar and Charts', () => {
       
       await page.goto(url);
       await delay(6000);
+
+      page.on('console', msg => console.log(msg.text()));
+
   });
 
   test.afterAll(async ({ browser }) => {

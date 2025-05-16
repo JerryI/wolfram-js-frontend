@@ -15,6 +15,7 @@ test.describe('Cell types', () => {
       const context = await browser.newContext();
       page = await context.newPage();
       page.route('**', route => route.continue());
+      page.on('console', msg => console.log(msg.text()));
   });
 
   test.afterAll(async ({ browser }) => {
