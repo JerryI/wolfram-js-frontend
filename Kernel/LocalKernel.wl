@@ -105,6 +105,7 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         Internal`Kernel`Watchdog;
         Internal`Kernel`Watchdog`store = <||>;
         Internal`Kernel`Watchdog`state = <||>;
+        Internal`Kernel`Watchdog["Enabled"] := True;
         SetAttributes[Internal`Kernel`Watchdog, HoldAll];
 
         Internal`Kernel`Ping[secret_] := (
