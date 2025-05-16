@@ -28,16 +28,14 @@ initializeKernel[parameters_][kernel_] := With[{
 
   (* load kernels and provide remote path *)
   With[{
-    p = Import[FileNameJoin[{"wljs_packages", #}], "String"], 
-    path = ToString[URLBuild[<|"Scheme" -> "http", "Domain" -> (StringTemplate["``:``"][With[{h =  parameters["env", "host"]}, If[h === "0.0.0.0", "127.0.0.1", h] ], parameters["env", "http"] ]), "Path" -> StringRiffle[Drop[FileNameSplit[#], -2], "/"]|> ], InputForm],
-    dir = FileNameJoin[{Directory[], "wljs_packages", #}]
+    path = ToString[URLBuild[<|"Scheme" -> "http", 	"Query"->{"path" -> URLEncode[FileNameJoin[{Directory[], "wljs_packages", FileNameSplit[#][[1]] }] ]}, "Domain" -> (StringTemplate["``:``"][With[{h =  parameters["env", "host"]}, If[h === "0.0.0.0", "127.0.0.1", h] ], parameters["env", "http"] ]), "Path" -> "downloadFile/"|> ], InputForm],
+    p = Import[FileNameJoin[{"wljs_packages", #}], "String"]
   },
     Echo[StringJoin["Loading into Kernel... ", #] ];
-    Echo[kernel];
-    Echo[kernel["LTPSocket"] ];
+
+
     
     With[{processed = StringReplace[p, "$RemotePackageDirectory" -> ("Internal`RemoteFS["<>path<>"]")]},
-      
       GenericKernel`Async[kernel,  ImportString[processed, "WL"] ](*`*);
     ];
     (*With[{u = StringJoin["Block[{System`$RemotePackageDirectory = Internal`RemoteFS[",path,"]}, Get[\"",dir,"\"] ];"]},
