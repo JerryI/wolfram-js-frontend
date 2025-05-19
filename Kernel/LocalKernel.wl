@@ -128,6 +128,7 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
                 If[Internal`Kernel`Watchdog`state[key] =!= ReleaseHold[value[[1]]],
                     Message[Internal`Kernel`Watchdog::assert, key];
                     value[[2]] // ReleaseHold;
+                    Internal`Kernel`Watchdog`state[key] = ReleaseHold[value[[1]]];
                 ];
             ], Internal`Kernel`Watchdog`store ];
         ];
