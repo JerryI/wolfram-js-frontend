@@ -5,7 +5,7 @@ import { delay, evaluate, clearCell} from './common'
 import path from 'path';
 
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 
 test.describe('Cell types', () => {

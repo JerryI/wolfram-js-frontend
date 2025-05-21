@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test';
 import {url, delay, evaluate, clearCell} from './common'
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 
 test.describe('Bar and Charts', () => {
