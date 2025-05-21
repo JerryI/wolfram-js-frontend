@@ -8,6 +8,7 @@ ExtensionsStyles = With[{Path = StringJoin["/", FileNameToURLPath[#]]},
 ] &/@ WLJSPackages`Includes["styles"] // ToStringRiffle;
 
 Sponsors = {
+    {"Travon", "China"},
     {"Volodymyr Kulinsky", "Ukraine"},
     {"Huan Thieu Nguyen", "Github"},
     {"Munteanu Vadim", "Github"},
