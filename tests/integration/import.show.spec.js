@@ -5,7 +5,7 @@ import { delay, evaluate, clearCell} from './common'
 import path from 'path';
 
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 
 test.describe('Cell types', () => {
@@ -15,6 +15,7 @@ test.describe('Cell types', () => {
       const context = await browser.newContext();
       page = await context.newPage();
       page.route('**', route => route.continue());
+      page.on('console', msg => console.log(msg.text()));
   });
 
   test.afterAll(async ({ browser }) => {

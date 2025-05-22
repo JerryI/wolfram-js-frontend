@@ -169,6 +169,14 @@ If[!DirectoryQ[AppExtensions`DemosDir], CreateDirectory[AppExtensions`DemosDir];
 
 (* ~~check version~~ *)
 Echo["Checking version of WLJS Notebook ..."];
+Echo[AppExtensions`FrontendEnv["AppJSON"]["version"] ];
+
+Echo["Default paths:"];
+Echo[">> QuickNotesDir: "<> AppExtensions`QuickNotesDir];
+Echo[">> BackupsDir: "<> AppExtensions`BackupsDir];
+Echo[">> DefaultDocumentsDir: "<> AppExtensions`DefaultDocumentsDir];
+Echo[">> DemosDir: "<> AppExtensions`DemosDir];
+Echo[">> Root: "<> Directory[] ];
 
 {loadSettings, storeSettings}        = Get[FileNameJoin[{"Frontend", "Settings.wl"}] ];
 
@@ -420,5 +428,7 @@ SetTimeout[
   StringTemplate["Open http://``:`` in your browser"][$Env["host"], $Env["http"]] // Print;
 , 1000
 ];
+
+(* Main sync thread *)
 
 Looper[];

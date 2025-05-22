@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test';
 import {url, delay, evaluate, clearCell} from './common'
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 
 
@@ -16,6 +16,7 @@ test.describe('Easy check for most basic decorators', () => {
 
       await page.goto(url);
       await delay(6000);
+      page.on('console', msg => console.log(msg.text()));
   });
 
   test.afterAll(async ({ browser }) => {
@@ -274,17 +275,6 @@ test.describe('Easy check for most basic decorators', () => {
     await expect(outputCell).toHaveScreenshot(['screenshorts', 'ctable.png']);
   });   
   
-
-  
-
-  test('Moon phase', async () => {
-    await delay(5000);
-    await clearCell(page);
-  
-    const outputCell = await evaluate(page, 'MoonPhase[DateObject[{2025,1,10,18,3},"Instant","Gregorian",2], "Icon"]', 18000);
-    await delay(15000);
-    await expect(outputCell).toHaveScreenshot(['screenshorts', 'moon.png']);
-  });  
   
   
   

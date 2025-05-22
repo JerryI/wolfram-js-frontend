@@ -84,36 +84,42 @@ jobs:
           WOLFRAMSCRIPT_KERNELPATH: "${{ env.WOLFRAMENGINE_INSTALLATION_DIRECTORY }}/Contents/MacOS/WolframKernel"      
         run: |
           export PATH="${{ env.WOLFRAMENGINE_EXECUTABLES_DIRECTORY }}:$PATH"
-
-          echo "🚀 Starting Wolfram server..."
+      
+          RED='\033[0;31m'
+          GREEN='\033[0;32m'
+          YELLOW='\033[1;33m'
+          CYAN='\033[0;36m'
+          NC='\033[0m' # No Color
+      
+          echo -e "${CYAN}🚀 Starting Wolfram server...${NC}"
           wolframscript -f Scripts/start.wls -entitlement "$WOLFRAMSCRIPT_ENTITLEMENTID" > /tmp/wolfram.log 2>&1 &
           echo $! > wolfram.pid
-
-          echo "📺 Tailing logs..."
-          tail -f /tmp/wolfram.log &
+      
+          echo -e "${YELLOW}📺 Tailing logs...${NC}"
+          tail -f /tmp/wolfram.log | sed "s/^/[WOLFRAM] /" &
           echo $! > tail.pid
-
-          echo "⏳ Waiting for Wolfram to be ready..."
+      
+          echo -e "${CYAN}⏳ Waiting for Wolfram to be ready...${NC}"
           for i in {1..260}; do
             if grep -q "Open http://" /tmp/wolfram.log; then
-              echo "✅ Server ready!"
+              echo -e "${GREEN}✅ Server ready!${NC}"
               break
             fi
             sleep 1
           done
-
+      
           if ! grep -q "Open http://" /tmp/wolfram.log; then
-            echo "❌ Timeout. Last log lines:"
-            tail -n 20 /tmp/wolfram.log
+            echo -e "${RED}❌ Timeout. Last log lines:${NC}"
+            tail -n 20 /tmp/wolfram.log | sed "s/^/[WOLFRAM] /"
             kill $(cat tail.pid)
             exit 1
           fi
-
-          echo "🧪 Running Playwright tests..."
-          npx playwright test
-
-          echo "🧼 Cleaning up log tailer..."
-          kill $(cat tail.pid)        
+      
+          echo -e "${CYAN}🧪 Running Playwright tests...${NC}"
+          npx playwright test 2>&1 | sed "s/^/[PLAYWRIGHT] /"
+      
+          echo -e "${CYAN}🧼 Cleaning up log tailer...${NC}"
+          kill $(cat tail.pid)     
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

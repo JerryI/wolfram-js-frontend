@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test';
 import {url, delay, evaluate, clearCell} from './common'
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 
 test.describe('Cell types', () => {
@@ -15,6 +15,7 @@ test.describe('Cell types', () => {
       
       await page.goto(url);
       await delay(6000);
+      page.on('console', msg => console.log(msg.text()));
   });
 
   test.afterAll(async ({ browser }) => {

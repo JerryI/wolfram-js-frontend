@@ -102,11 +102,44 @@ tcpConnect[port_, o_LocalKernelObject] := With[{host = o["Host"], uid = o["Hash"
         Internal`Kernel`WLJSQ = True;
         System`$FrontEndWLJSQ = True; (* DEPRICATED *)
 
-        Internal`Kernel`Ping[secret_] := EventFire[Internal`Kernel`Stdout[secret], "Pong", True];
+        Internal`Kernel`Watchdog;
+        Internal`Kernel`Watchdog`store = <||>;
+        Internal`Kernel`Watchdog`state = <||>;
+        Internal`Kernel`Watchdog["Enabled"] := True;
+        SetAttributes[Internal`Kernel`Watchdog, HoldAll];
+
+        Internal`Kernel`Ping[secret_] := (
+            Internal`Kernel`Watchdog["Test"];
+            EventFire[Internal`Kernel`Stdout[secret], "Pong", True];
+        );
+
+        Internal`Kernel`Watchdog["Assertion", name_String, test_, action_] := (
+           If[!KeyExistsQ[Internal`Kernel`Watchdog`store, name],
+             Echo["Added watchdog >> "<>name];
+             Internal`Kernel`Watchdog`store[name] = {Hold[test], Hold[action]};
+             Internal`Kernel`Watchdog`state[name] = ReleaseHold[test];
+           ];
+        );
+
+        Internal`Kernel`Watchdog::assert = "Assertion failed ``. Actions were applied";
+
+        Internal`Kernel`Watchdog["Test"] := With[{},
+            KeyValueMap[Function[{key, value},
+                If[Internal`Kernel`Watchdog`state[key] =!= ReleaseHold[value[[1]]],
+                    Message[Internal`Kernel`Watchdog::assert, key];
+                    value[[2]] // ReleaseHold;
+                    Internal`Kernel`Watchdog`state[key] = ReleaseHold[value[[1]]];
+                ];
+            ], Internal`Kernel`Watchdog`store ];
+        ];
+
+        Internal`Kernel`Watchdog["QuickTest"] := Internal`Kernel`Watchdog["Test"];
 
         Unprotect[FileNameJoin];
-        FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{split = FileNameJoin[{any}] // FileNameSplit},
-          URLBuild[{url, split} // Flatten] // Internal`RemoteFS
+        FileNameJoin[{Internal`RemoteFS[url_], any__}] := With[{parsed = URLParse[url]},
+          With[{r = Join[parsed, <|"Query" -> {"path" -> URLEncode[FileNameJoin[{URLDecode["path" /. parsed["Query"] ], any}] ]}|>] // URLBuild // Internal`RemoteFS},
+            r
+          ]
         ];
 
         Protect[FileNameJoin];   
