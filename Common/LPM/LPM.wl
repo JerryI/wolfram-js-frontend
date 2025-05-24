@@ -38,7 +38,7 @@ inspectPackages[dir_String, cbk_] := Module[{
   ] &/@ packages;
 ]
 
-PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = OptionValue["Passive"], versionControl, maxVersionDiff = OptionValue["MaxVersionDiff"]},
+PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, repos, cache, updated, removed, new, current, updatable, skipUpdates = OptionValue["Passive"], automaticUpdates = OptionValue["AutomaticUpdates"], versionControl, maxVersionDiff = OptionValue["MaxVersionDiff"]},
     (* making key-values pairs *)
     repos = (#-><|"key"->#|>)&/@list // Association;
 
@@ -132,7 +132,12 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
       new = InstallPaclet[projectDir] /@ new;
 
       (* what must be updated *)
-      updatable = Select[current, CheckUpdates];
+      If[automaticUpdates,
+        updatable = Select[current, CheckUpdates];
+      ,
+        Echo["LPM >> Automatic updates are suppressed by default since 2.7.6"];
+        updatable = <||>;
+      ];
 
       (* will be updated *)
       updated   = ((#->repos[#])&/@ Keys[updatable]) // Association;
@@ -182,7 +187,7 @@ PacletRepositories[list_List, OptionsPattern[]] := Module[{projectDir, info, rep
     Map[pacletDirectoryLoad] @  Map[DirectoryName] @  FileNames["PacletInfo.wl", {#}, {2}]& @ FileNameJoin[{projectDir, "wl_packages"}];
 ]
 
-Options[PacletRepositories] = {"Directory"->None, "Passive"->False, "ForceUpdates" -> False, "MaxVersionDiff" -> None, "UpdateInterval" -> Quantity[14, "Days"], "ConflictResolutionFunction" -> Function[{conflicting, true}, 
+Options[PacletRepositories] = {"Directory"->None, "Passive"->False, "ForceUpdates" -> False, "AutomaticUpdates"->True, "MaxVersionDiff" -> None, "UpdateInterval" -> Quantity[14, "Days"], "ConflictResolutionFunction" -> Function[{conflicting, true}, 
   Echo["LPM >> resolving by uninstalling a global one"];
   If[PacletUninstall[conflicting] =!= Null,
     Echo["FAILED!"];
